@@ -54,6 +54,7 @@ For more examples see the examples directory
 
 Links
 ------
+- `coc.py Documentation <https://cocpy.readthedocs.io/en/latest/?>`_
 - `Official Clash of Clans API Page <https://developer.clashofclans.com/>`_
 
 
