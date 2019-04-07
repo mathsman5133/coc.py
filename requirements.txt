@@ -1,2 +1,2 @@
 python-dateutil
-aiohttp
+aiohttp>=3.3.0,<3.6.0
