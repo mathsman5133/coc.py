@@ -1,4 +1,3 @@
-======
 coc.py
 ======
 
@@ -18,6 +17,7 @@ Installing
 **Python 3.5 or higher is required**
 
 .. code:: sh
+
     # Linux/OS X
     python3 -m pip install -U coc.py
 
@@ -27,6 +27,7 @@ Installing
 Quick Example
 --------------
 .. code:: py
+
     import coc
     import asyncio
 
