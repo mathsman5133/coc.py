@@ -38,8 +38,7 @@ class HTTPException(ClashOfClansException):
     -----------
     response: aiohttp.ClientResponse
         The response of the failed HTTP request. This is an
-        instance of `aiohttp.ClientResponse`__. 
-            ___http://aiohttp.readthedocs.org/en/stable/client_reference.html#aiohttp.ClientResponse
+        instance of `aiohttp.ClientResponse`
 
     status: :class:`int`
             The status code of the HTTP request
