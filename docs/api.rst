@@ -2,7 +2,7 @@
 API Reference
 ==============
 
-The following section outlines the API of coc.py
+The following section outlines the API Reference of coc.py
 
 
 Client
@@ -28,69 +28,149 @@ inherit :class:`WarMember`
 Clans
 ~~~~~~
 
-.. autoclass:: Clan
-.. autoclass:: BasicClan
-.. autoclass:: SearchClan
-.. autoclass:: WarClan
+.. autoclass:: Clan()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: BasicClan()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: SearchClan()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: WarClan()
+	:members:
+	:inherited-members:
+	
 
 Players
 ~~~~~~~~
-.. autoclass:: Player
-.. autoclass:: BasicPlayer
-.. autoclass:: WarMember
-.. autoclass:: SearchPlayer
+
+.. autoclass:: Player()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: BasicPlayer()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: WarMember()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: SearchPlayer()
+	:members:
+	:inherited-members:
+	
 
 Wars
 ~~~~~
-.. autoclass:: BaseWar
-.. autoclass:: WarLog
-.. autoclass:: CurrentWar
+
+.. autoclass:: BaseWar()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: WarLog()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: CurrentWar()
+	:members:
+	:inherited-members:
+	
 
 WarAttack
 ~~~~~~~~~~
-.. autoclass:: WarAttack
+
+.. autoclass:: WarAttack()
+	:members:
+	
 
 Acheivement
 ~~~~~~~~~~~~
-.. autoclass:: Acheivement
+
+.. autoclass:: Acheivement()
+	:members:
+	
 
 Troop
 ~~~~~~
-.. autoclass:: Troop
+.. autoclass:: Troop()
+	:members:
+	
 
 Hero
 ~~~~~
-.. autoclass:: Hero
+
+.. autoclass:: Hero()
+	:members:
+	
 
 Spell
 ~~~~~~
-.. autoclass:: Spell
 
+.. autoclass:: Spell()
+	:members:
+	
+	
 Location
 ~~~~~~~~~
-.. autoclass:: Location
+
+.. autoclass:: Location()
+	:members:
+	
 
 League Objects
 ~~~~~~~~~~~~~~~
-.. autoclass:: League
-.. autoclass:: LeagueRankedPlayer
-.. autoclass:: LegendStatistics
+
+.. autoclass:: League()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: LeagueRankedPlayer()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: LegendStatistics()
+	:members:
+	:inherited-members:
+	
 
 Badge
 ~~~~~~
-.. autoclass:: Badge
+
+.. autoclass:: Badge()
+	:members:
+	
 
 Timestamp
 ~~~~~~~~~~
-.. autoclass:: Timestamp
+
+.. autoclass:: Timestamp()
+	:members:
+	
 
 League War Objects
 ~~~~~~~~~~~~~~~~~~~
-.. autoclass:: LeaguePlayer
-.. autoclass:: LeagueClan
-.. autoclass:: LeagueGroup
-.. autoclass:: LeagueWar
 
+.. autoclass:: LeaguePlayer()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: LeagueClan()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: LeagueGroup()
+	:members:
+	:inherited-members:
+	
+.. autoclass:: LeagueWar()
+	:members:
+	:inherited-members:
+	
 
 
 
@@ -102,12 +182,10 @@ The following exceptions are thrown by the library.
 
 .. autoexception:: HTTPException
 
-.. autoexception:: Forbidden
-
-.. autoexception:: NotFound
-
-.. autoexception:: InvalidArguement
+.. autoexception:: InvalidArgument
 
 .. autoexception:: InvalidToken
+
+.. autoexception:: NotFound
 
 .. autoexception:: Maitenance
