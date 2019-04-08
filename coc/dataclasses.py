@@ -105,10 +105,8 @@ class BasicClan(Clan):
                  'member_count', 'rank', 'previous_rank')
 
     def __init__(self, *, data):
-        self._from_data(data=data)
         super().__init__(data=data)
 
-    def _from_data(self, data):
         self.location = try_enum(Location, data.get('location', None))
         self.level = data.get('clanLevel', None)
         self.points = data.get('clanPoints', None)
@@ -153,10 +151,8 @@ class SearchClan(BasicClan):
 
     def __init__(self, *, data):
         self._members = {}
-        self._from_data(data)
         super().__init__(data=data)
 
-    def _from_data(self, data):
         self.type = data.get('type', None)
         self.required_trophies = data.get('requiredTrophies', None)
         self.war_frequency = data.get('warFrequency', None)
@@ -228,7 +224,6 @@ class WarClan(Clan):
         self.destruction = data.get('destructionPercentage', None)
         self.exp_earned = data.get('expEarned', None)
 
-    def _from_data(self, data):
         self.attacks_used = data.get('attacks')
         self.total_attacks = self._war.war_size * 2
         self.stars = data.get('stars')
@@ -339,12 +334,9 @@ class BasicPlayer(Player):
                  'received', 'attack_wins', 'defense_wins')
 
     def __init__(self, *, data, clan=None):
-        self.clan = clan
-        self._add_data(data)
-
         super(BasicPlayer, self).__init__(data)
 
-    def _add_data(self, data):
+        self.clan = clan
         self.level = data.get('expLevel', None)
         self.league = try_enum(League, data.get('league', None))
         self.trophies = data.get('trophies', None)
@@ -448,7 +440,7 @@ class SearchPlayer(BasicPlayer):
         self.versus_attacks_wins = data.get('versusBattleWins', None)
 
         for adata in data.get('achievements', []):
-            achievement = Acheivement(data=adata, player=self)
+            achievement = Achievement(data=adata, player=self)
             self._add_achievement(achievement)
 
         for tdata in data.get('troops', []):
@@ -508,9 +500,6 @@ class BaseWar:
 
     def __init__(self, *, data):
         self._data = data
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.team_size = data.get('teamSize', None)
 
         clan = data.get('clan', None)
@@ -592,7 +581,7 @@ class CurrentWar(BaseWar):
         return m
 
 
-class Acheivement:
+class Achievement:
     r"""Represents a Clash of Clans Hero.
 
     Attributes
@@ -626,9 +615,6 @@ class Acheivement:
 
     def __init__(self, *, data, player):
         self.player = player
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.name = data['name']
         self.stars = data.get('stars')
         self.value = data['value']
@@ -677,9 +663,6 @@ class Troop:
 
     def __init__(self, *, data, player):
         self.player = player
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.name = data['name']
         self.level = data['level']
         self.max_level = data['maxLevel']
@@ -725,9 +708,6 @@ class Hero:
 
     def __init__(self, *, data, player):
         self.player = player
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.name = data['name']
         self.level = data['level']
         self.max_level = data['maxLevel']
@@ -773,9 +753,6 @@ class Spell:
 
     def __init__(self, *, data, player):
         self.player = player
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.name = data['name']
         self.level = data['level']
         self.max_level = data['maxLevel']
@@ -825,9 +802,6 @@ class WarAttack:
     def __init__(self, *, data, war, member):
         self.war = war
         self.member = member
-        self._add_data(data=data)
-
-    def _add_data(self, data):
         self.stars = data['stars']
         self.destruction = data['destructionPercentage']
         self.order = data['order']
@@ -860,16 +834,13 @@ class Location:
     __slots__ = ('id', 'name', 'is_country', 'country_code')
 
     def __init__(self, *, data):
-        self._from_data(data=data)
-
-    def __str__(self):
-        return self.name
-
-    def _from_data(self, data):
         self.id = data.get('id')
         self.name = data.get('name')
         self.is_country = data.get('isCountry')
         self.country_code = data.get('countryCode')
+
+    def __str__(self):
+        return self.name
 
 
 class League:
@@ -899,7 +870,7 @@ class League:
 class LeagueRankedPlayer(BasicPlayer):
     r"""Represents a Clash of Clans League Ranked Player.
     Note that league season information is available only for Legend League.
-    
+
     Attributes
     -----------
     rank: :class:`int`
@@ -917,9 +888,6 @@ class Season:
     __slots__ = ('rank', 'trophies', 'id')
 
     def __init__(self, *, data):
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.rank = data['rank']
         self.trophies = data['trophies']
         self.id = data['id']
@@ -943,9 +911,6 @@ class LegendStatistics:
 
     def __init__(self, *, data, player):
         self.player = player
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.legend_trophies = data['legendTrophies']
         self.current_season = try_enum(Season, data=data.get('currentSeason', None))
         self.previous_season = try_enum(Season, data=data.get('previousSeason', None))
@@ -1093,9 +1058,6 @@ class LeagueGroup:
     def __init__(self, *, data):
         self._clans = {}
         self._rounds = []
-        self._from_data(data)
-
-    def _from_data(self, data):
         self.state = data.get('state', None)
         self.season = data.get('season', None)
 
