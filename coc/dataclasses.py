@@ -105,8 +105,8 @@ class BasicClan(Clan):
                  'member_count', 'rank', 'previous_rank')
 
     def __init__(self, *, data):
-        super().__init__(data=data)
         self._from_data(data=data)
+        super().__init__(data=data)
 
     def _from_data(self, data):
         self.location = try_enum(Location, data.get('location', None))
@@ -153,9 +153,8 @@ class SearchClan(BasicClan):
 
     def __init__(self, *, data):
         self._members = {}
-        super().__init__(data=data)
-
         self._from_data(data)
+        super().__init__(data=data)
 
     def _from_data(self, data):
         self.type = data.get('type', None)
@@ -341,9 +340,9 @@ class BasicPlayer(Player):
 
     def __init__(self, *, data, clan=None):
         self.clan = clan
+        self._add_data(data)
 
         super(BasicPlayer, self).__init__(data)
-        self._add_data(data)
 
     def _add_data(self, data):
         self.level = data.get('expLevel', None)
@@ -436,6 +435,8 @@ class SearchPlayer(BasicPlayer):
         self._spells = {}
 
         super(SearchPlayer, self).__init__(data=data)
+
+        self._add_data(data)
 
     def _add_data(self, data):
         self.clan = try_enum(Clan, data.get('clan', None))
@@ -539,6 +540,7 @@ class WarLog(BaseWar):
     __slots__ = ('result', 'end_time')
 
     def __init__(self, *, data):
+        self._from_data(data)
         super(WarLog, self).__init__(data=data)
 
     def _from_data(self, data):
@@ -569,6 +571,7 @@ class CurrentWar(BaseWar):
                  'start_time', 'end_time')
 
     def __init__(self, *, data):
+        self._from_data(data)
         super(CurrentWar, self).__init__(data=data)
 
     def _from_data(self, data):
@@ -1125,5 +1128,5 @@ class LeagueWar(CurrentWar):
             The war tag
     """
     def __init__(self, *, data):
-        super(LeagueWar, self).__init__(data=data)
         self.tag = data.get('tag', None)
+        super(LeagueWar, self).__init__(data=data)
