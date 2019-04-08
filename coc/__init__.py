@@ -15,7 +15,7 @@ from .dataclasses import (
     BaseWar,
     WarLog,
     CurrentWar,
-    Acheivement,
+    Achievement,
     Troop,
     Hero,
     Spell,
