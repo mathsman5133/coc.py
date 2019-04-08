@@ -27,10 +27,32 @@ SOFTWARE.
 
 
 class ClashOfClansException(Exception):
-    pass
+    """Base exception for coc.py
+    """
 
 
 class HTTPException(ClashOfClansException):
+    """Base exception for when a HTTP request fails
+
+    Attributes
+    -----------
+    response: aiohttp.ClientResponse
+        The response of the failed HTTP request. This is an
+        instance of `aiohttp.ClientResponse`__. 
+            ___http://aiohttp.readthedocs.org/en/stable/client_reference.html#aiohttp.ClientResponse
+
+    status: :class:`int`
+            The status code of the HTTP request
+
+    reason: :class:`str`
+            The reason provided by the API.
+            This could be an empty string if none was supplied
+
+    message: :class:`str`
+            The more detailed message provided by the API.
+            This could be an empty string if none was supplied
+
+    """
     def __init__(self, response, message):
         self.response = response
         self.status = response.status
@@ -49,22 +71,45 @@ class HTTPException(ClashOfClansException):
         super().__init__(fmt.format(self.response, self.message))
 
 
-class Forbidden(HTTPException):
-    pass
+class InvalidArgument(ClashOfClansException):
+    """
+    Thrown when an error status 400 occurs.
 
+    Client provided incorrect parameters for the request.
 
-class NotFound(HTTPException):
-    pass
-
-
-class InvalidArguement(ClashOfClansException):
+    Subclass of :exc:`HTTPException`
+    """
     pass
 
 
 class InvalidToken(HTTPException):
+    """Thrown when an error status 403 occurs.
+
+        Missing/incorrect credentials, or API token does not
+        grant access to the requested resource.
+
+    Subclass of :exc:`HTTPException`
+    """
+
+    pass
+
+
+class NotFound(HTTPException):
+    """Thrown when an error status 404 occurs.
+
+        The resource was not found.
+
+    Subclass of :exc:`HTTPException`
+    """
     pass
 
 
 class Maitenance(HTTPException):
+    """Thrown when an error status 503 occurs.
+
+            Service is temporarily unavailable because of maintenance.
+
+    Subclass of :exc:`HTTPException`
+    """
     pass
 

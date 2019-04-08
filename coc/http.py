@@ -33,7 +33,7 @@ import asyncio
 
 from urllib.parse import urlencode
 
-from .errors import HTTPException, Maitenance, NotFound, InvalidArguement, InvalidToken
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken
 
 log = logging.getLogger(__name__)
 
@@ -108,7 +108,7 @@ class HTTPClient:
                 return data
 
             if r.status == 400:
-                raise InvalidArguement(r, data)
+                raise InvalidArgument(r, data)
             if r.status == 403:
                 if self.update_tokens:
                     log.info('Resetting Clash of Clans token')

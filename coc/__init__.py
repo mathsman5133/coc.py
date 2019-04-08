@@ -35,9 +35,8 @@ from .dataclasses import (
 from .errors import (
     ClashOfClansException,
     HTTPException,
-    Forbidden,
     NotFound,
-    InvalidArguement,
+    InvalidArgument,
     InvalidToken,
     Maitenance
 )
