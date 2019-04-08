@@ -73,9 +73,9 @@ class Clan:
 
     def __init__(self, *, data):
         self._data = data
-        self.tag = data['tag']
-        self.name = data['name']
-        self.badge = Badge(data=data['badgeUrls'])
+        self.tag = data.get('tag')
+        self.name = data.get('name')
+        self.badge = try_enum(Badge, data.get('badgeUrls'))
 
 
 # @flatten(Clan)
@@ -502,13 +502,13 @@ class BaseWar:
         self._data = data
         self.team_size = data.get('teamSize', None)
 
-        clan = data.get('clan', None)
+        clan = data.get('clan')
         if clan:
             self.clan = WarClan(data=clan, war=self)
         else:
             self.clan = None
 
-        opponent = data.get('opponent', None)
+        opponent = data.get('opponent')
         if opponent:
             self.opponent = WarClan(data=opponent, war=self)
         else:
@@ -529,12 +529,9 @@ class WarLog(BaseWar):
     __slots__ = ('result', 'end_time')
 
     def __init__(self, *, data):
-        self._from_data(data)
-        super(WarLog, self).__init__(data=data)
-
-    def _from_data(self, data):
         self.result = data.get('result')
         self.end_time = try_enum(Timestamp, data.get('endTime'))
+        super(WarLog, self).__init__(data=data)
 
 
 # @flatten(BaseWar)
@@ -560,14 +557,12 @@ class CurrentWar(BaseWar):
                  'start_time', 'end_time')
 
     def __init__(self, *, data):
-        self._from_data(data)
-        super(CurrentWar, self).__init__(data=data)
-
-    def _from_data(self, data):
         self.state = data.get('state')
         self.preparation_start_time = try_enum(Timestamp, data.get('preparationStartTime'))
         self.start_time = try_enum(Timestamp, data.get('startTime'))
         self.end_time = try_enum(Timestamp, data.get('endTime'))
+
+        super(CurrentWar, self).__init__(data=data)
 
     @property
     def attacks(self):
