@@ -502,14 +502,19 @@ class BaseWar:
         self._data = data
         self.team_size = data.get('teamSize', None)
 
-        clan = data.get('clan')
-        if clan:
+        clan = data.get('clan', {})
+        if clan and ('tag' in clan.keys()):
+            # at the moment, if the clan is in notInWar, the API returns
+            # 'clan' and 'opponent' as dicts containing only badge urls of
+            # no specific clan. very strange
+
             self.clan = WarClan(data=clan, war=self)
         else:
             self.clan = None
 
-        opponent = data.get('opponent')
-        if opponent:
+        opponent = data.get('opponent', {})
+        if opponent and ('tag' in opponent.keys()):
+            # same problem as clan
             self.opponent = WarClan(data=opponent, war=self)
         else:
             self.opponent = None
