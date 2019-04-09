@@ -272,7 +272,7 @@ class HTTPClient:
         r = await self.request(Route('POST', '/apikey/create', {}, api_page=True), json=data, headers=headers)
         return r['key']['key']
 
-    async def delete_token(self, cookies, token_id):
+    def delete_token(self, cookies, token_id):
         headers = {
             "cookie": cookies,
             "content-type": "application/json"
