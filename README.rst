@@ -40,15 +40,15 @@ Quick Example
         # alternatively,
         print(str(player))
 
-    async def get_five_players(name):
-        players = await client.search_players(name=name, limit=5)
+    async def get_five_clans(name):
+        players = await client.search_clans(name=name, limit=5)
         for n in players:
             print(n, n.tag)
 
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
         loop.run_until_complete(get_some_player('tag'))
-        loop.run_until_complete(get_five_players('name')
+        loop.run_until_complete(get_five_clans('name')
 
 For more examples see the examples directory
 
