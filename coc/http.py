@@ -38,6 +38,13 @@ from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Invali
 log = logging.getLogger(__name__)
 
 
+async def json_or_text(response):
+    text = await response.text(encoding='utf-8')
+    if response.headers['content-type'] == 'application/json':
+        return json.loads(text)
+    return text
+
+
 class Route:
     BASE = 'https://api.clashofclans.com/v1'
     API_PAGE_BASE = 'https://developer.clashofclans.com/api'
@@ -95,9 +102,12 @@ class HTTPClient:
         else:
             kwargs['headers'] = headers
 
+        if 'json' in kwargs:
+            headers['Content-Type'] = 'application/json'
+
         async with self.__session.request(method, url, **kwargs) as r:
             log.debug('%s (%s) has returned %s', url, method, r.status)
-            data = await r.json()
+            data = await json_or_text(r)
 
             if 200 <= r.status < 300:
                 log.debug('%s has received %s', url, data)
