@@ -40,7 +40,7 @@ log = logging.getLogger(__name__)
 
 async def json_or_text(response):
     try:
-        ret = response.json()
+        ret = await response.json()
     except:
         ret = await response.text(encoding='utf-8')
 
