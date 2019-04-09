@@ -95,10 +95,6 @@ class HTTPClient:
         else:
             kwargs['headers'] = headers
 
-        if 'json' in kwargs:
-            headers['Content-Type'] = 'application/json'
-            kwargs['data'] = json.loads(kwargs.pop('json'))
-
         async with self.__session.request(method, url, **kwargs) as r:
             log.debug('%s (%s) has returned %s', url, method, r.status)
             data = await r.json()
@@ -276,7 +272,7 @@ class HTTPClient:
         r = await self.request(Route('POST', '/apikey/create', {}, api_page=True), json=data, headers=headers)
         return r['key']['key']
 
-    def delete_token(self, cookies, token_id):
+    async def delete_token(self, cookies, token_id):
         headers = {
             "cookie": cookies,
             "content-type": "application/json"
