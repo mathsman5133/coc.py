@@ -3,10 +3,12 @@ import json
 
 def to_json(model):
     dct = {}
-    for attr, value in model.__dict__.items():
+    for attr in dir(model):
         # ignore private methods
         if attr.startswith('_'):
             continue
+
+        value = getattr(model, attr)
 
         # iterate through lists - may be a list of objects eg. members in war
         if isinstance(value, list):
