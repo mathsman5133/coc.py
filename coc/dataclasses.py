@@ -27,6 +27,8 @@ SOFTWARE.
 
 
 import itertools
+import pytz
+
 
 from dateutil import parser
 from datetime import datetime
@@ -998,7 +1000,12 @@ class Timestamp:
 
     @property
     def utc_timestamp(self):
-        return parser.parse(self.time)
+        utc = pytz.UTC
+        parse = parser.parse(self.time)
+
+        in_utc = parse.replace(tzinfo=utc)
+
+        return in_utc
 
     @property
     def now(self):
@@ -1006,7 +1013,7 @@ class Timestamp:
 
     @property
     def seconds_until(self):
-        delta = datetime.utcfromtimestamp(self.utc_timestamp) - self.now
+        delta = self.utc_timestamp - self.now
         return delta.total_seconds()
 
 
