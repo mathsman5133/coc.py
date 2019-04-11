@@ -32,6 +32,7 @@ import json as json_pckg
 
 from .http import HTTPClient
 from .dataclasses import *
+from .utils import to_json
 
 log = logging.getLogger(__name__)
 
@@ -41,7 +42,7 @@ def check_json(clss, obj, json_bool):
         return obj
 
     if isinstance(obj, clss) and json_bool is True:
-        return json_pckg.loads(obj._data)
+        return to_json(obj)
 
     if json_pckg is False:
         return clss(data=obj)
