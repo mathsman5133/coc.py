@@ -1006,7 +1006,7 @@ class Timestamp:
 
     @property
     def seconds_until(self):
-        delta = self.utc_timestamp - self.now
+        delta = datetime.utcfromtimestamp(self.utc_timestamp) - self.now
         return delta.total_seconds()
 
 
