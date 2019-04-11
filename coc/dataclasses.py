@@ -57,17 +57,17 @@ def flatten(cls, *inherit_from):
 
 
 class Clan:
-    r"""Represents the most stripped down version of clan info.
+    """Represents the most stripped down version of clan info.
     All other clan classes inherit this.
 
     Attributes
     ------------
-    tag: :class:`str`
-        The clan tag
-    name: :class:`str`
-        The clan name
-    badge: :class:`Badge`
-        The clan badges
+    tag:
+        :class:`str` - The clan tag
+    name:
+        :class:`str` - The clan name
+    badge:
+        :class:`Badge` - The clan badges
     """
     __slots__ = ('tag', 'name', 'badge', '_data')
 
@@ -80,26 +80,29 @@ class Clan:
 
 # @flatten(Clan)
 class BasicClan(Clan):
-    r"""Represents a Basic Clan that the API returns.
+    """Represents a Basic Clan that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits :class:`Clan`, and thus all attributes
+    of :class:`Clan` can be expected to be present.
+
     Attributes
     -----------
-    :location: :class:`Location`
-            The clan location
-    :level: :class:`int`
-            The clan level.
-    :points: :class:`int`
-            The clan trophy points.
-    :versus_points: :class:`int`
-            The clan versus trophy points.
-    :member_count: :class:`int`
-            The member count of the clan
-    :rank: :class:`int`
-            The clan rank for it's location this season
-    :previous_rank: :class:`int`
-            The clan rank for it's location in the previous season
+    location:
+        :class:`Location` - The clan location
+    level:
+        :class:`int` - The clan level.
+    points:
+        :class:`int` - The clan trophy points.
+    versus_points:
+        :class:`int` - The clan versus trophy points.
+    member_count:
+        :class:`int` - The member count of the clan
+    rank:
+        :class:`int` - The clan rank for it's location this season
+    previous_rank:
+        :class:`int` - The clan rank for it's location in the previous season
     """
     __slots__ = ('location', 'level', 'points', 'versus_points',
                  'member_count', 'rank', 'previous_rank')
@@ -118,32 +121,35 @@ class BasicClan(Clan):
 
 # @flatten(BasicClan, Clan)
 class SearchClan(BasicClan):
-    r"""Represents a Basic Clan that the API returns.
+    """Represents a Searched Clan that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits both :class:`Clan` and :class:`BasicClan`,
+    and thus all attributes of these classes can be expected to be present.
+
     Attributes
     -----------
-    type :class:`str`
-        The clan type: open, closed, invite-only etc.
-    required_trophies: :class:`int`
-                    The required trophies to join
-    war_frequency: :class:`str`
-                The war frequency of the clan
-    war_win_streak: :class:`int`
-                The current war win streak of the clan
-    war_wins: :class:`int`
-            The total war wins of the clan
-    war_ties: :class:`int`
-            The total war ties of the clan
-    war_losses: :class:`int`
-            The total war losses of the clan
-    public_war_log: :class:`bool`
-            Indicates whether the war log is public
-    description: :class:`str`
-            The clan description
-    members: :class:`list` :class:`BasicMember`
-            List of clan members
+    type:
+        :class:`str` - The clan type: open, closed, invite-only etc.
+    required_trophies:
+        :class:`int` - The required trophies to join
+    war_frequency:
+        :class:`str` - The war frequency of the clan
+    war_win_streak:
+        :class:`int` - The current war win streak of the clan
+    war_wins:
+        :class:`int` - The total war wins of the clan
+    war_ties:
+        :class:`int` - The total war ties of the clan
+    war_losses:
+        :class:`int` - The total war losses of the clan
+    public_war_log:
+        :class:`bool` - Indicates whether the war log is public
+    description:
+        :class:`str` - The clan description
+    members:
+        :class:`list` of :class:`BasicMember` - List of clan members
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
@@ -179,30 +185,33 @@ class SearchClan(BasicClan):
 
 # @flatten(Clan)
 class WarClan(Clan):
-    r"""Represents a Basic Clan that the API returns.
+    """Represents a War Clan that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits :class:`Clan`, and thus all attributes
+    of :class:`Clan` can be expected to be present.
+
     Attributes
     -----------
-    members: :class:`list` :class:`WarMember`
-            List of all clan members in war
-    attacks: :class:`list` :class:`WarAttack`
-            List of all attacks used this war
-    defenses: :class:`list` :class:`WarAttack`
-            List of all defenses by clan members this war
-    attack_count: :class:`int`
-            Number of attacks by clan this war
-    stars: :class:`int`
-            Number of stars by clan this war
-    destruction: :class:`float`
-            Destruction as a percentage
-    exp_earned: :class:`int`
-            Total XP earned by clan this war
-    attacks_used: :class:`int`
-            Total attacks used by clan this war
-    max_stars: :class:`int`
-            Total possible stars achievable
+    members:
+        :class:`list` of :class:`WarMember` - List of all clan members in war
+    attacks:
+        :class:`list` of :class:`WarAttack` - List of all attacks used this war
+    defenses:
+        :class:`list` of :class:`WarAttack` - List of all defenses by clan members this war
+    attack_count:
+        :class:`int` - Number of attacks by clan this war
+    stars:
+        :class:`int` - Number of stars by clan this war
+    destruction:
+        :class:`float` - Destruction as a percentage
+    exp_earned:
+        :class:`int` - Total XP earned by clan this war
+    attacks_used:
+        :class:`int` - Total attacks used by clan this war
+    max_stars:
+        :class:`int` - Total possible stars achievable
     """
     __slots__ = ('_war', '_members', '_attacks', '_defenses', 'level',
                  'attack_count', 'stars', 'destruction', 'exp_earned',
@@ -274,16 +283,16 @@ class WarClan(Clan):
 
 
 class Player:
-    r"""Represents the most stripped down version of a Player
+    """Represents the most stripped down version of a player.
     All other player classes inherit this.
 
 
     Attributes
     ------------
-    tag: :class:`str`
-        The clan tag
-    name: :class:`str`
-        The clan name
+    tag:
+        :class:`str` - The clan tag
+    name:
+        :class:`str` - The clan name
     """
     __slots__ = ('name', 'tag', '_data')
 
@@ -298,36 +307,39 @@ class Player:
 
 # @flatten(Player)
 class BasicPlayer(Player):
-    r"""Represents a Basic Player that the API returns.
+    """Represents a Basic Player that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits :class:`Player`, and thus all attributes
+    of :class:`Player` can be expected to be present.
+
     Attributes
     -----------
-    clan: :class:`Basic Clan`
-            The clan the member belongs to. May be ``None``
-    level: :class:`int`
-            The player level.
-    trophies: :class:`int`
-            The player's trophy count.
-    versus_trophies: :class:`int`
-            The player's versus trophy count.
-    role: :class:`str`
-            The members role in the clan - member, elder, etc.
-    clan_rank: :class:`int`
-            The members clan rank
-    clan_previous_rank :class:`int`
-            The members clan rank last season
-    league_rank: :class:`int`
-            The player's current rank in their league for this season
-    donations: :class:`int`
-            The members current donation count
-    received: :class:`int`
-            The member's current donation received count
-    attack_wins: :class:`int`
-            The players current attack wins for this season
-    defense_wins: :class:`int`
-            The players current defense wins for this season
+    clan:
+        :class:`Basic Clan` - The clan the member belongs to. May be ``None``
+    level:
+        :class:`int` - The player level.
+    trophies:
+        :class:`int` - The player's trophy count.
+    versus_trophies:
+        :class:`int` - The player's versus trophy count.
+    role:
+        :class:`str` - The members role in the clan - member, elder, etc.
+    clan_rank:
+        :class:`int` - The members clan rank
+    clan_previous_rank
+        :class:`int` - The members clan rank last season
+    league_rank:
+        :class:`int` - The player's current rank in their league for this season
+    donations:
+        :class:`int` - The members current donation count
+    received:
+        :class:`int` - The member's current donation received count
+    attack_wins:
+        :class:`int` - The players current attack wins for this season
+    defense_wins:
+        :class:`int` - The players current defense wins for this season
     """
     __slots__ = ('clan', 'level', 'league', 'trophies', 'versus_trophies', 'role',
                  'clan_rank', 'clan_previous_rank', 'league_rank', 'donations',
@@ -358,20 +370,24 @@ class BasicPlayer(Player):
 
 # @flatten(Player)
 class WarMember(Player):
-    r"""Represents a Basic Player that the API returns.
+    """Represents a War Member that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits :class:`Player`, and thus all attributes
+    of :class:`Player` can be expected to be present.
+
+
     Attributes
     -----------
-    town_hall: :class:`int`
-            The members TH level
-    map_position: :class:`int`
-            The members map position this war
-    attacks: :class:`list` :class: `WarAttack`
-            The member's attacks this war. Could be an empty list
-    war: :class:`War`
-            The war this member belongs to
+    town_hall:
+        :class:`int` - The members TH level
+    map_position:
+        :class:`int` - The members map position this war
+    attacks:
+        :class:`list` of :class:`WarAttack` - The member's attacks this war. Could be an empty list
+    war:
+        :class:`War` - The war this member belongs to
     """
     __slots__ = ('town_hall', 'map_position', 'attacks', 'war')
 
@@ -389,32 +405,35 @@ class WarMember(Player):
 
 # @flatten(BasicPlayer)
 class SearchPlayer(BasicPlayer):
-    r"""Represents a Basic Player that the API returns.
+    """Represents a Searched Player that the API returns.
     Depending on which method calls this, some attributes may
     be ``None``.
 
+    This class inherits both :class:`Player` and :class:`BasicPlayer`,
+    and thus all attributes of these classes can be expected to be present
+
     Attributes
     -----------
-    achievements: :class:`list` :class:`Achievement`
-            List of the player's achievements
-    troops: :class:`list` :class:`Troop`
-            List of the player's troops
-    heroes: :class:`list` :class:`Hero`
-            List of the player's heroes
-    spells: :class:`list` :class:`Spell`
-            List of the player's spells
-    best_trophies: :class:`int`
-            The players top trophy count
-    best_versus_trophies: :class:`int`
-            The players top versus trophy count
-    war_stars: :class:`int`
-            The players war star count
-    town_hall: :class:`int`
-            The players TH level
-    builder_hall: :class:`int`
-            The players BH level
-    versus_attacks_wins: :class:`int`
-            The players total BH wins
+    achievements:
+        :class:`list` of :class:`Achievement` - List of the player's achievements
+    troops:
+        :class:`list` of :class:`Troop` - List of the player's troops
+    heroes:
+        :class:`list` of :class:`Hero` - List of the player's heroes
+    spells:
+        :class:`list` of :class:`Spell` - List of the player's spells
+    best_trophies:
+        :class:`int` - The players top trophy count
+    best_versus_trophies:
+        :class:`int` - The players top versus trophy count
+    war_stars:
+        :class:`int` - The players war star count
+    town_hall:
+        :class:`int` - The players TH level
+    builder_hall:
+        :class:`int` - The players BH level
+    versus_attacks_wins:
+        :class:`int` - The players total BH wins
     """
     __slots__ = ('_achievements', '_troops', '_heroes', '_spells',
                  'best_trophies', 'war_stars', 'town_hall',
@@ -485,16 +504,16 @@ class SearchPlayer(BasicPlayer):
 
 
 class BaseWar:
-    r"""Represents the most basic Clash of Clans War
+    """Represents the most basic Clash of Clans War
 
     Attributes
     -----------
-    team_size: :class:`int`
-            The number of players per clan in war
-    clan: :class:`WarClan`
-            The offensive clan
-    opponent: :class:`WarClan`
-            The opposition clan
+    team_size:
+        :class:`int` - The number of players per clan in war
+    clan:
+        :class:`WarClan` - The offensive clan
+    opponent:
+        :class:`WarClan` - The opposition clan
     """
     __slots__ = ('team_size', 'clan', 'opponent', '_data')
 
@@ -522,14 +541,17 @@ class BaseWar:
 
 # @flatten(BaseWar)
 class WarLog(BaseWar):
-    r"""Represents a Clash of Clans War Log Entry
+    """Represents a Clash of Clans War Log Entry
+
+    This class inherits :class:`BaseWar`, and thus all attributes
+    of :class:`BaseWar` can be expected to be present.
 
     Attributes
     -----------
-    result: :class:`str`
-            The result of the war - `win` or `loss`
-    end_time: :class:`Timestamp`
-            The end time of the war as a Timestamp object
+    result:
+        :class:`str` - The result of the war - `win` or `loss`
+    end_time:
+        :class:`Timestamp` - The end time of the war as a Timestamp object
     """
     __slots__ = ('result', 'end_time')
 
@@ -541,18 +563,21 @@ class WarLog(BaseWar):
 
 # @flatten(BaseWar)
 class CurrentWar(BaseWar):
-    r"""Represents a Current Clash of Clans War
+    """Represents a Current Clash of Clans War
+
+    This class inherits :class:`BaseWar`, and thus all attributes
+    of :class:`BaseWar` can be expected to be present.
 
     Attributes
     -----------
-    state: :class:`str`
-            The clan's current war state
-    preparation_start_time: :class:`Timestamp`
-            The start time of preparation day as a Timestamp object
-    start_time: :class:`Timestamp`
-            The start time of battle day as a Timestamp object
-    end_time: :class:`Timestamp`
-            The end time of battle day day as a Timestamp object
+    state:
+        :class:`str` - The clan's current war state
+    preparation_start_time:
+        :class:`Timestamp` - The start time of preparation day as a Timestamp object
+    start_time:
+        :class:`Timestamp` - The start time of battle day as a Timestamp object
+    end_time:
+        :class:`Timestamp` - The end time of battle day day as a Timestamp object
     attacks: :class:`list` of :class:`WarAttack`
             A list of all attacks this war
     members: :class:`list` of :class:`WarMember`
@@ -582,32 +607,33 @@ class CurrentWar(BaseWar):
 
 
 class Achievement:
-    r"""Represents a Clash of Clans Hero.
+    """Represents a Clash of Clans Hero.
+
 
     Attributes
     -----------
-    player: :class:`SearchPlayer`
-            The player this achievement is assosiated with
-    name: :class:`str`
-            The name of the hero
-    stars: :class:`int`
-            The current stars achieved for the achievement
-    value: :class:`int`
-            The number of X things attained for this achievement
-    target: :class:`int`
-            The number of X things required to complete this achievement
-    info: :class:`str`
-            Information regarding the achievement
-    completion_info: :class:`str`
-            Information regarding completion of the achievement
-    village: :class:`str`
-            Either `home` or `builderBase`
-    is_completed: :class:`bool`
-            Indicates whether the achievement is completed (3 stars achieved)
-    is_home_base: :class:`bool`
-            Helper property to tell you if the achievement belongs to the home base
-    is_builder_base: :class:`bool`
-            Helper property to tell you if the achievement belongs to the builder base
+    player:
+        :class:`SearchPlayer` - The player this achievement is assosiated with
+    name:
+        :class:`str` - The name of the hero
+    stars:
+        :class:`int` - The current stars achieved for the achievement
+    value:
+        :class:`int` - The number of X things attained for this achievement
+    target:
+        :class:`int` - The number of X things required to complete this achievement
+    info:
+        :class:`str` - Information regarding the achievement
+    completion_info:
+        :class:`str` - Information regarding completion of the achievement
+    village:
+        :class:`str` - Either `home` or `builderBase`
+    is_completed:
+        :class:`bool` - Indicates whether the achievement is completed (3 stars achieved)
+    is_home_base:
+        :class:`bool` - Helper property to tell you if the achievement belongs to the home base
+    is_builder_base:
+        :class:`bool` - Helper property to tell you if the achievement belongs to the builder base
     """
 
     __slots__ = ('player', 'name', 'stars', 'value', 'target',
@@ -637,26 +663,26 @@ class Achievement:
 
 
 class Troop:
-    r"""Represents a Clash of Clans Troop.
+    """Represents a Clash of Clans Troop.
 
     Attributes
     -----------
-    player: :class:`SearchPlayer`
-            player this troop is assosiated with
-    name: :class:`str`
-            The name of the troop
-    level: :class:`int`
-            The level of the troop
-    max_level: :class:`int`
-            The overall max level of the troop, excluding townhall limitations
-    village: :class:`str`
-            Either `home` or `builderBase`
-    is_max: :class:`bool`
-            Indicates whether the troop is maxed overall, excluding townhall limitations
-    is_home_base: :class:`bool`
-            Helper property to tell you if the troop belongs to the home base
-    is_builder_base: :class:`bool`
-            Helper property to tell you if the troop belongs to the builder base
+    player:
+        :class:`SearchPlayer` - player this troop is assosiated with
+    name:
+        :class:`str` - The name of the troop
+    level:
+        :class:`int` - The level of the troop
+    max_level:
+        :class:`int` - The overall max level of the troop, excluding townhall limitations
+    village:
+        :class:`str` - Either `home` or `builderBase`
+    is_max:
+        :class:`bool` - Indicates whether the troop is maxed overall, excluding townhall limitations
+    is_home_base:
+        :class:`bool` - Helper property to tell you if the troop belongs to the home base
+    is_builder_base:
+        :class:`bool` - Helper property to tell you if the troop belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village')
@@ -682,26 +708,26 @@ class Troop:
 
 
 class Hero:
-    r"""Represents a Clash of Clans Hero.
+    """Represents a Clash of Clans Hero.
 
     Attributes
     -----------
-    player: :class:`SearchPlayer`
-            The player this hero is assosiated with
-    name: :class:`str`
-            The name of the hero
-    level: :class:`int`
-            The level of the hero
-    max_level: :class:`int`
-            The overall max level of the hero, excluding townhall limitations
-    village: :class:`str`
-            Either `home` or `builderBase`
-    is_max: :class:`bool`
-            Indicates whether the hero is maxed overall, excluding townhall limitations
-    is_home_base: :class:`bool`
-            Helper property to tell you if the hero belongs to the home base
-    is_builder_base: :class:`bool`
-            Helper property to tell you if the hero belongs to the builder base
+    player:
+        :class:`SearchPlayer` - The player this hero is assosiated with
+    name:
+        :class:`str` - The name of the hero
+    level:
+        :class:`int` - The level of the hero
+    max_level:
+        :class:`int` - The overall max level of the hero, excluding townhall limitations
+    village:
+        :class:`str` - Either `home` or `builderBase`
+    is_max:
+        :class:`bool` - Indicates whether the hero is maxed overall, excluding townhall limitations
+    is_home_base:
+        :class:`bool` - Helper property to tell you if the hero belongs to the home base
+    is_builder_base:
+        :class:`bool` - Helper property to tell you if the hero belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village')
@@ -727,26 +753,26 @@ class Hero:
 
 
 class Spell:
-    r"""Represents a Clash of Clans Spell.
+    """Represents a Clash of Clans Spell.
 
     Attributes
     -----------
-    player: :class:`SearchPlayer`
-            The player this spell is assosiated with
-    name: :class:`str`
-            The name of the spell
-    level: :class:`int`
-            The level of the spell
-    max_level: :class:`int`
-            The overall max level of the spell, excluding townhall limitations
-    village: :class:`str`
-            Either `home` or `builderBase`
-    is_max: :class:`bool`
-            Indicates whether the spell is maxed overall, excluding townhall limitations
-    is_home_base: :class:`bool`
-            Helper property to tell you if the spell belongs to the home base
-    is_builder_base: :class:`bool`
-            Helper property to tell you if the spell belongs to the builder base
+    player:
+        :class:`SearchPlayer` - The player this spell is assosiated with
+    name:
+        :class:`str` - The name of the spell
+    level:
+        :class:`int` - The level of the spell
+    max_level:
+        :class:`int` - The overall max level of the spell, excluding townhall limitations
+    village:
+        :class:`str` - Either `home` or `builderBase`
+    is_max:
+        :class:`bool` - Indicates whether the spell is maxed overall, excluding townhall limitations
+    is_home_base:
+        :class:`bool` - Helper property to tell you if the spell belongs to the home base
+    is_builder_base:
+        :class:`bool` - Helper property to tell you if the spell belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village')
@@ -772,27 +798,27 @@ class Spell:
 
 
 class WarAttack:
-    r"""
+    """
     Represents a Clash of Clans War Attack
 
     Attributes
     -----------
-    war: :class:`War`
-            The war this attack belongs to
-    stars: :class:`int`
-            The stars achieved
-    destruction: :class:`float`
-            The destruction achieved as a percentage (of 100)
-    order: :class:`int`
-            The attack order in this war
-    attacker_tag: :class:`int`
-            The attacker tag
-    defender_tag: :class:`int`
-            The defender tag
-    attacker: :class:`WarMember`
-            The attacker
-    defender: :class:`WarMember`
-            The defender
+    war:
+        :class:`War` - The war this attack belongs to
+    stars:
+        :class:`int` - The stars achieved
+    destruction:
+        :class:`float` - The destruction achieved as a percentage (of 100)
+    order:
+        :class:`int` - The attack order in this war
+    attacker_tag:
+        :class:`int` - The attacker tag
+    defender_tag:
+        :class:`int` - The defender tag
+    attacker:
+        :class:`WarMember` - The attacker
+    defender:
+        :class:`WarMember` - The defender
 
     """
     __slots__ = ('war', 'member', 'stars',
@@ -818,18 +844,18 @@ class WarAttack:
 
 
 class Location:
-    r"""Represents a Clash of Clans Location
+    """Represents a Clash of Clans Location
 
     Attributes
     -----------
-    id: :class:`str`
-            The location ID
-    name: :class:`str`
-            The location name
-    is_country: :class:`bool`
-            Indicates whether the location is a country
-    country_code: :class:`str`
-            The shorthand country code, if the location is a country
+    id:
+        :class:`str` - The location ID
+    name:
+        :class:`str` - The location name
+    is_country:
+        :class:`bool` - Indicates whether the location is a country
+    country_code:
+        :class:`str` - The shorthand country code, if the location is a country
     """
     __slots__ = ('id', 'name', 'is_country', 'country_code')
 
@@ -844,16 +870,16 @@ class Location:
 
 
 class League:
-    r"""Represents a Clash of Clans League
+    """Represents a Clash of Clans League
 
     Attributes
     -----------
-    id: :class:`str`
-            The league ID
-    name: :class:`str`
-            The league name
-    badge: :class:`Badge`
-            The league badge
+    id:
+        :class:`str` - The league ID
+    name:
+        :class:`str` - The league name
+    badge:
+        :class:`Badge` - The league badge
     """
     __slots__ = ('id', 'name', 'badge')
 
@@ -868,13 +894,17 @@ class League:
 
 # @flatten(BasicPlayer)
 class LeagueRankedPlayer(BasicPlayer):
-    r"""Represents a Clash of Clans League Ranked Player.
+    """Represents a Clash of Clans League Ranked Player.
     Note that league season information is available only for Legend League.
+
+    This class inherits both :class:`Player` and :class:`BasicPlayer`,
+    and thus all attributes of these classes can be expected to be present.
+
 
     Attributes
     -----------
-    rank: :class:`int`
-            The players rank in their league for this season
+    rank:
+        :class:`int` - The players rank in their league for this season
     """
     def __init__(self, *, data):
         self.rank = data.get('rank', None)
@@ -882,7 +912,7 @@ class LeagueRankedPlayer(BasicPlayer):
 
 
 class Season:
-    r"""Represents a Clash of Clans Player's Season.
+    """Represents a Clash of Clans Player's Season.
 
     rank: """
     __slots__ = ('rank', 'trophies', 'id')
@@ -894,17 +924,20 @@ class Season:
 
 
 class LegendStatistics:
-    r"""Represents the Legend Statistics for a player.
+    """Represents the Legend Statistics for a player.
 
-    player: :class:`Player`
-    legend_trophies: :class:`int`
-            The player's legend trophies
-    current_season: :class:`int`
-            Legend trophies for this season
-    previous_season: :class:`int`
-            Legend trophies for the previous season
-    best_season: :class:`int`
-            Legend trophies for the player's best season
+    Attributes
+    -----------
+    player:
+        :class:`Player` - The player
+    legend_trophies:
+        :class:`int` - The player's legend trophies
+    current_season:
+        :class:`int` - Legend trophies for this season
+    previous_season:
+        :class:`int` - Legend trophies for the previous season
+    best_season:
+        :class:`int` - Legend trophies for the player's best season
     """
     __slots__ = ('player', 'legend_trophies', 'current_season',
                  'previous_season', 'best_season')
@@ -918,16 +951,18 @@ class LegendStatistics:
 
 
 class Badge:
-    r"""Represents a Clash Of Clans Badge.
+    """Represents a Clash Of Clans Badge.
 
-    small: :class:`str`
-            URL for a small sized badge
-    medium: :class:`str`
-            URL for a medium sized badge
-    large: :class:`str`
-            URL for a large sized badge
-    url: :class:`str`
-            Medium, the default URL badge size
+    Attributes
+    -----------
+    small:
+        :class:`str` - URL for a small sized badge
+    medium:
+        :class:`str` - URL for a medium sized badge
+    large:
+        :class:`str` - URL for a large sized badge
+    url:
+        :class:`str` - Medium, the default URL badge size
     """
     __slots__ = ('small', 'medium', 'large', 'url')
 
@@ -940,18 +975,17 @@ class Badge:
         self.url = self.medium
 
     async def save(self, fp, size=None):
-        """
-        Save this badge as a file-like object
+        """This funtion is a coroutine. Save this badge as a file-like object.
 
         :param fp: :class:`os.PathLike`
                     The filename to save the badge to
         :param size: Optional[:class:`str`] Either `small`, `medium` or `large`. The default is `medium`
 
-        :raises HTTPException
-                Saving the badge failed
-        :raises NotFound
-                The url was not found
-        :returns :class:`int` The number of bytes written
+        :raise HTTPException: Saving the badge failed
+
+        :raise NotFound: The url was not found
+
+        :return :class:`int` The number of bytes written
         """
         sizes = {'small': self.small,
                  'medium': self.medium,
@@ -969,14 +1003,16 @@ class Badge:
 
 
 class Timestamp:
-    r"""Represents a Clash of Clans Timestamp
+    """Represents a Clash of Clans Timestamp
 
-    utc_timestamp: :class:`datetime`
-            The timestamp as a UTC datetime object
-    now: :class:`datetime`
-            The time in UTC now as a datetime object
-    seconds_until: :class:`int`
-            Number of seconds until the timestamp. This may be negative.
+    Attributes
+    -----------
+    utc_timestamp:
+        :class:`datetime` - The timestamp as a UTC datetime object
+    now:
+        :class:`datetime` - The time in UTC now as a datetime object
+    seconds_until:
+        :class:`int` - Number of seconds until the timestamp. This may be negative.
     """
     __slots__ = 'time'
 
@@ -998,14 +1034,16 @@ class Timestamp:
 
 
 class LeaguePlayer:
-    r"""Represents a Clash of Clans League Player
+    """Represents a Clash of Clans League Player
 
-    tag: :class:`str`
-            The player's tag
-    name: :class:`str`
-            The player's name
-    town_hall: :class:`int`
-            The player's town hall level"""
+    Attributes
+    -----------
+    tag:
+        :class:`str` - The player's tag
+    name:
+        :class:`str` - The player's name
+    town_hall:
+        :class:`int` - The player's town hall level"""
 
     __slots__ = ('tag', 'name', 'town_hall')
 
@@ -1020,10 +1058,15 @@ class LeaguePlayer:
 
 # @flatten(BasicClan)
 class LeagueClan(BasicClan):
-    r"""Represents a Clash of Clans League Clan
+    """Represents a Clash of Clans League Clan
 
-    members: :class:`list` :class:`LeaguePlayer`
-            A list of players participating in this league season
+    This class inherits both :class:`Clan` and :class:`BasicClan`,
+    and thus all attributes of these classes can be expected to be present.
+
+    Attributes
+    -----------
+    members:
+        :class:`list` of :class:`LeaguePlayer` A list of players participating in this league season
     """
     def __init__(self, *, data):
         self._members = {}
@@ -1042,16 +1085,18 @@ class LeagueClan(BasicClan):
 
 
 class LeagueGroup:
-    r"""Represents a Clash of Clans League Group
+    """Represents a Clash of Clans League Group
 
-    state: :class:`str`
-            The current state of the league group (`inWar` `preparation` etc.)
-    season: :class:`str`
-            The current season of the league group
-    clans: :class:`list` :class:`LeagueClan`
-            A list of participating clans
-    rounds: :class:`list` of :class:`list`
-            A list of lists containing all war tags for each round
+    Attributes
+    -----------
+    state:
+        :class:`str` - The current state of the league group (`inWar`, `preparation` etc.)
+    season:
+        :class:`str` - The current season of the league group
+    clans:
+        :class:`list` of :class:`LeagueClan` A list of participating clans
+    rounds:
+        :class:`list` of :class:`list` - A list of lists containing all war tags for each round
     """
     __slots__ = ('state', 'season', '_clans', '_rounds')
 
@@ -1084,10 +1129,15 @@ class LeagueGroup:
 
 # @flatten(CurrentWar)
 class LeagueWar(CurrentWar):
-    r"""Represents a Clash of Clans LeagueWar
+    """Represents a Clash of Clans LeagueWar
 
-    tag: :class:`str`
-            The war tag
+    This class inherits both :class:`BaseWar` and :class:`CurrentWar`,
+    and thus all attributes of these classes can be expected to be present.
+
+    Attributes
+    -----------
+    tag:
+        :class:`str` - The war tag
     """
     def __init__(self, *, data):
         self.tag = data.get('tag', None)

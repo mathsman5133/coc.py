@@ -29,148 +29,148 @@ Clans
 ~~~~~~
 
 .. autoclass:: Clan()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: BasicClan()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: SearchClan()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: WarClan()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 
 Players
 ~~~~~~~~
 
 .. autoclass:: Player()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: BasicPlayer()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: WarMember()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: SearchPlayer()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 
 Wars
 ~~~~~
 
 .. autoclass:: BaseWar()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: WarLog()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: CurrentWar()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 
 WarAttack
 ~~~~~~~~~~
 
 .. autoclass:: WarAttack()
-	:members:
-	
+    :members:
 
-Acheivement
+
+Achievement
 ~~~~~~~~~~~~
 
-.. autoclass:: Acheivement()
-	:members:
-	
+.. autoclass:: Achievement()
+    :members:
+
 
 Troop
 ~~~~~~
 .. autoclass:: Troop()
-	:members:
-	
+    :members:
+
 
 Hero
 ~~~~~
 
 .. autoclass:: Hero()
-	:members:
-	
+    :members:
+
 
 Spell
 ~~~~~~
 
 .. autoclass:: Spell()
-	:members:
-	
-	
+    :members:
+
+
 Location
 ~~~~~~~~~
 
 .. autoclass:: Location()
-	:members:
-	
+    :members:
+
 
 League Objects
 ~~~~~~~~~~~~~~~
 
 .. autoclass:: League()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: LeagueRankedPlayer()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: LegendStatistics()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 
 Badge
 ~~~~~~
 
 .. autoclass:: Badge()
-	:members:
-	
+    :members:
+
 
 Timestamp
 ~~~~~~~~~~
 
 .. autoclass:: Timestamp()
-	:members:
-	
+    :members:
+
 
 League War Objects
 ~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: LeaguePlayer()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: LeagueClan()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: LeagueGroup()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 .. autoclass:: LeagueWar()
-	:members:
-	:inherited-members:
-	
+    :members:
+    :inherited-members:
+
 
 
 

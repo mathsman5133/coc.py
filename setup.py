@@ -21,5 +21,6 @@ setup(name='coc.py',
       long_description=readme,
       long_description_content_type="text/x-rst",
       python_requires='>=3.5.3',
-      install_requires=requirements
+      install_requires=requirements,
+      extra_requires={'docs': ['sphinx==1.7.4', 'sphinx_rtd_theme']}
       )

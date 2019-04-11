@@ -385,8 +385,7 @@ class Client:
         return war
 
     async def get_league_group(self, clan_tag, cache=False, fetch=True, json=False):
-        """
-        Retrieve information about clan's current clan war league group
+        """Retrieve information about clan's current clan war league group
 
         :param clan_tag: :class:`str` The tag to search for
         :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
@@ -611,8 +610,7 @@ class Client:
         return league
 
     async def get_seasons(self, league_id):
-        """
-        Get league seasons. Note that league season information is available only for Legend League.
+        """Get league seasons. Note that league season information is available only for Legend League.
 
         :param league_id: :class:`str` The league ID to search for
 
@@ -625,14 +623,13 @@ class Client:
             }
 
         where `id` is the season ID
-
         """
         r = await self.http.get_league_seasons(league_id)
         return r['items']
 
     async def get_season_rankings(self, league_id, season_id, cache=False, fetch=True, json=False):
-        """
-        Get league season rankings. Note that league season information is available only for Legend League.
+        """Get league season rankings.
+        Note that league season information is available only for Legend League.
 
         :param league_id: :class:`str` The league ID to search for
         :param season_id: :class:`str` The season ID to search for
@@ -666,8 +663,7 @@ class Client:
 
     # players
     async def get_player(self, player_tag, cache=False, fetch=True, json=False):
-        """
-        Get information about a single player by player tag.
+        """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
         :param player_tag: :class:`str` The player tag to search for

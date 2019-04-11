@@ -36,20 +36,19 @@ class HTTPException(ClashOfClansException):
 
     Attributes
     -----------
-    response: aiohttp.ClientResponse
-        The response of the failed HTTP request. This is an
-        instance of `aiohttp.ClientResponse`
+    response:
+        :class:`aiohttp.ClientResponse` - The response of the failed HTTP request.
 
-    status: :class:`int`
-            The status code of the HTTP request
+    status:
+        :class:`int` - The status code of the HTTP request
 
-    reason: :class:`str`
-            The reason provided by the API.
-            This could be an empty string if none was supplied
+    reason:
+        :class:`str` - The reason provided by the API.
+            This could be an empty string if nothing was given.
 
-    message: :class:`str`
-            The more detailed message provided by the API.
-            This could be an empty string if none was supplied
+    message:
+        :class:`str` - The more detailed message provided by the API.
+            This could be an empty string if nothing was given
 
     """
     def __init__(self, response, message):
@@ -84,8 +83,8 @@ class InvalidArgument(ClashOfClansException):
 class InvalidToken(HTTPException):
     """Thrown when an error status 403 occurs.
 
-        Missing/incorrect credentials, or API token does not
-        grant access to the requested resource.
+    Missing/incorrect credentials, or API token does not
+    grant access to the requested resource.
 
     Subclass of :exc:`HTTPException`
     """
@@ -96,7 +95,7 @@ class InvalidToken(HTTPException):
 class NotFound(HTTPException):
     """Thrown when an error status 404 occurs.
 
-        The resource was not found.
+    The resource was not found.
 
     Subclass of :exc:`HTTPException`
     """
@@ -106,7 +105,7 @@ class NotFound(HTTPException):
 class Maitenance(HTTPException):
     """Thrown when an error status 503 occurs.
 
-            Service is temporarily unavailable because of maintenance.
+    Service is temporarily unavailable because of maintenance.
 
     Subclass of :exc:`HTTPException`
     """
