@@ -38,24 +38,6 @@ def try_enum(_class, data):
     return _class(data=data)
 
 
-def flatten(cls, *inherit_from):
-    for inherited in inherit_from:
-        for attr, value in itertools.chain(inherited.__dict__.items()):
-            if attr.startswith('_'):
-                continue
-
-            if attr in cls.__dict__:
-                continue
-
-            def get_attribute(self, x=attr):
-                return getattr(self, x)
-
-            setattr(cls, attr, property(get_attribute,
-                                        doc='Equivilant to :attr:`{}.{}`'.format(inherited.__name__, attr)))
-
-    return cls
-
-
 class Clan:
     """Represents the most stripped down version of clan info.
     All other clan classes inherit this.
@@ -78,7 +60,6 @@ class Clan:
         self.badge = try_enum(Badge, data.get('badgeUrls'))
 
 
-# @flatten(Clan)
 class BasicClan(Clan):
     """Represents a Basic Clan that the API returns.
     Depending on which method calls this, some attributes may
@@ -119,7 +100,6 @@ class BasicClan(Clan):
         self.previous_rank = data.get('previous_rank')
 
 
-# @flatten(BasicClan, Clan)
 class SearchClan(BasicClan):
     """Represents a Searched Clan that the API returns.
     Depending on which method calls this, some attributes may
@@ -183,7 +163,6 @@ class SearchClan(BasicClan):
         return list(self._members.values())
 
 
-# @flatten(Clan)
 class WarClan(Clan):
     """Represents a War Clan that the API returns.
     Depending on which method calls this, some attributes may
@@ -234,9 +213,9 @@ class WarClan(Clan):
         self.exp_earned = data.get('expEarned', None)
 
         self.attacks_used = data.get('attacks')
-        self.total_attacks = self._war.war_size * 2
+        self.total_attacks = self._war.team_size * 2
         self.stars = data.get('stars')
-        self.max_stars = self._war.war_size * 3
+        self.max_stars = self._war.team_size * 3
         self.destruction = []
 
         for mdata in data.get('members', []):
@@ -305,7 +284,7 @@ class Player:
         return self.name
 
 
-# @flatten(Player)
+
 class BasicPlayer(Player):
     """Represents a Basic Player that the API returns.
     Depending on which method calls this, some attributes may
@@ -368,7 +347,7 @@ class BasicPlayer(Player):
                 self.clan = BasicClan(data=cdata)
 
 
-# @flatten(Player)
+
 class WarMember(Player):
     """Represents a War Member that the API returns.
     Depending on which method calls this, some attributes may
@@ -403,7 +382,7 @@ class WarMember(Player):
             self.attacks.append(WarAttack(data=adata, war=war, member=self))
 
 
-# @flatten(BasicPlayer)
+
 class SearchPlayer(BasicPlayer):
     """Represents a Searched Player that the API returns.
     Depending on which method calls this, some attributes may
@@ -539,7 +518,6 @@ class BaseWar:
             self.opponent = None
 
 
-# @flatten(BaseWar)
 class WarLog(BaseWar):
     """Represents a Clash of Clans War Log Entry
 
@@ -561,7 +539,6 @@ class WarLog(BaseWar):
         super(WarLog, self).__init__(data=data)
 
 
-# @flatten(BaseWar)
 class CurrentWar(BaseWar):
     """Represents a Current Clash of Clans War
 
@@ -892,7 +869,7 @@ class League:
         return self.name
 
 
-# @flatten(BasicPlayer)
+
 class LeagueRankedPlayer(BasicPlayer):
     """Represents a Clash of Clans League Ranked Player.
     Note that league season information is available only for Legend League.
@@ -985,7 +962,7 @@ class Badge:
 
         :raise NotFound: The url was not found
 
-        :return :class:`int` The number of bytes written
+        :return: :class:`int` The number of bytes written
         """
         sizes = {'small': self.small,
                  'medium': self.medium,
@@ -1056,7 +1033,6 @@ class LeaguePlayer:
         self.town_hall = data.get('townHall')
 
 
-# @flatten(BasicClan)
 class LeagueClan(BasicClan):
     """Represents a Clash of Clans League Clan
 
@@ -1127,7 +1103,6 @@ class LeagueGroup:
         return self._rounds
 
 
-# @flatten(CurrentWar)
 class LeagueWar(CurrentWar):
     """Represents a Clash of Clans LeagueWar
 
