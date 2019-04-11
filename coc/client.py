@@ -42,7 +42,7 @@ def check_json(clss, obj, json_bool):
         return obj
 
     if isinstance(obj, clss) and json_bool is True:
-        return to_json(obj)
+        return json_pckg.loads(obj._data)
 
     if json_pckg is False:
         return clss(data=obj)

@@ -286,7 +286,6 @@ class Player:
         return self.name
 
 
-
 class BasicPlayer(Player):
     """Represents a Basic Player that the API returns.
     Depending on which method calls this, some attributes may
@@ -349,7 +348,6 @@ class BasicPlayer(Player):
                 self.clan = BasicClan(data=cdata)
 
 
-
 class WarMember(Player):
     """Represents a War Member that the API returns.
     Depending on which method calls this, some attributes may
@@ -382,7 +380,6 @@ class WarMember(Player):
 
         for adata in data.get('attacks', []):
             self.attacks.append(WarAttack(data=adata, war=war, member=self))
-
 
 
 class SearchPlayer(BasicPlayer):
@@ -616,9 +613,11 @@ class Achievement:
     """
 
     __slots__ = ('player', 'name', 'stars', 'value', 'target',
-                 'info', 'completion_info', 'village')
+                 'info', 'completion_info', 'village', '_data')
 
     def __init__(self, *, data, player):
+        self._data = data
+
         self.player = player
         self.name = data['name']
         self.stars = data.get('stars')
@@ -664,9 +663,11 @@ class Troop:
         :class:`bool` - Helper property to tell you if the troop belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village')
+                 'max_level', 'village', '_data')
 
     def __init__(self, *, data, player):
+        self._data = data
+
         self.player = player
         self.name = data['name']
         self.level = data['level']
@@ -709,9 +710,11 @@ class Hero:
         :class:`bool` - Helper property to tell you if the hero belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village')
+                 'max_level', 'village', '_data')
 
     def __init__(self, *, data, player):
+        self._data = data
+
         self.player = player
         self.name = data['name']
         self.level = data['level']
@@ -754,9 +757,11 @@ class Spell:
         :class:`bool` - Helper property to tell you if the spell belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village')
+                 'max_level', 'village', '_data')
 
     def __init__(self, *, data, player):
+        self._data = data
+
         self.player = player
         self.name = data['name']
         self.level = data['level']
@@ -802,9 +807,11 @@ class WarAttack:
     """
     __slots__ = ('war', 'member', 'stars',
                  'destruction', 'order',
-                 'attacker_tag', 'defender_tag')
+                 'attacker_tag', 'defender_tag', '_data')
 
     def __init__(self, *, data, war, member):
+        self._data = data
+
         self.war = war
         self.member = member
         self.stars = data['stars']
@@ -836,9 +843,11 @@ class Location:
     country_code:
         :class:`str` - The shorthand country code, if the location is a country
     """
-    __slots__ = ('id', 'name', 'is_country', 'country_code')
+    __slots__ = ('id', 'name', 'is_country', 'country_code', '_data')
 
     def __init__(self, *, data):
+        self._data = data
+
         self.id = data.get('id')
         self.name = data.get('name')
         self.is_country = data.get('isCountry')
@@ -860,16 +869,17 @@ class League:
     badge:
         :class:`Badge` - The league badge
     """
-    __slots__ = ('id', 'name', 'badge')
+    __slots__ = ('id', 'name', 'badge', '_data')
 
     def __init__(self, *, data):
+        self._data = data
+
         self.id = data.get('id')
         self.name = data.get('name')
         self.badge = try_enum(Badge, data=data.get('iconUrls', None))
 
     def __str__(self):
         return self.name
-
 
 
 class LeagueRankedPlayer(BasicPlayer):
@@ -919,9 +929,11 @@ class LegendStatistics:
         :class:`int` - Legend trophies for the player's best season
     """
     __slots__ = ('player', 'legend_trophies', 'current_season',
-                 'previous_season', 'best_season')
+                 'previous_season', 'best_season', '_data')
 
     def __init__(self, *, data, player):
+        self._data = data
+
         self.player = player
         self.legend_trophies = data['legendTrophies']
         self.current_season = try_enum(Season, data=data.get('currentSeason', None))
@@ -943,10 +955,12 @@ class Badge:
     url:
         :class:`str` - Medium, the default URL badge size
     """
-    __slots__ = ('small', 'medium', 'large', 'url')
+    __slots__ = ('small', 'medium', 'large', 'url', '_data')
 
     def __init__(self, *, data):
         # self._http = http
+        self._data = data
+
         self.small = data.get('small')
         self.medium = data.get('medium')
         self.large = data.get('large')
@@ -993,9 +1007,11 @@ class Timestamp:
     seconds_until:
         :class:`int` - Number of seconds until the timestamp. This may be negative.
     """
-    __slots__ = 'time'
+    __slots__ = ('time', '_data')
 
     def __init__(self, *, data):
+        self._data = data
+
         self.time = data
 
     @property
@@ -1034,12 +1050,14 @@ class LeaguePlayer:
     town_hall:
         :class:`int` - The player's town hall level"""
 
-    __slots__ = ('tag', 'name', 'town_hall')
+    __slots__ = ('tag', 'name', 'town_hall', '_data')
 
     def __str__(self):
         return self.name
 
     def __init__(self, *, data):
+        self._data = data
+
         self.tag = data.get('tag')
         self.name = data.get('name')
         self.town_hall = data.get('townHall')
@@ -1086,9 +1104,11 @@ class LeagueGroup:
     rounds:
         :class:`list` of :class:`list` - A list of lists containing all war tags for each round
     """
-    __slots__ = ('state', 'season', '_clans', '_rounds')
+    __slots__ = ('state', 'season', '_clans', '_rounds', '_data')
 
     def __init__(self, *, data):
+        self._data = data
+
         self._clans = {}
         self._rounds = []
         self.state = data.get('state', None)
