@@ -1009,7 +1009,12 @@ class Timestamp:
 
     @property
     def now(self):
-        return datetime.utcnow()
+        utc = pytz.UTC
+        parse = datetime.utcnow()
+
+        in_utc = parse.replace(tzinfo=utc)
+
+        return in_utc
 
     @property
     def seconds_until(self):
