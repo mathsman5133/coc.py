@@ -342,7 +342,8 @@ class Client:
 
                     Defaults to ``False``.
 
-        :return: :class:`list` of :class:`WarLog` If ``json=False``, else :class:`dict`
+        :return: :class:`list` of either :class:`WarLog` or :class:`LeagueWarLogEntry`, according to which war it is,
+         If ``json=False``, else :class:`dict`
         """
         if cache:
             data = self._war_logs.get(clan_tag, None)
