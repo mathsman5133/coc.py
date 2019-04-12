@@ -55,9 +55,8 @@ class HTTPException(ClashOfClansException):
         self.response = response
         self.status = response.status
         try:
-            self.reason = message.get('reason', '')
+            self.reason = message.get('reason', 'Unknown')
             self.message = message.get('message', '')
-
         except Exception:
             self.reason = 'Unknown'
             self.message = ''
@@ -81,15 +80,22 @@ class InvalidArgument(ClashOfClansException):
 
 
 class InvalidToken(HTTPException):
-    """Thrown when an error status 403 occurs.
+    """Thrown when an error status 403 occurs and the reason is an invalid token.
 
-    Missing/incorrect credentials, or API token does not
-    grant access to the requested resource.
-
+    Special Exception thrown when missing/incorrect credentials
+    were passed. This is most likely an invalid token.
     Subclass of :exc:`HTTPException`
     """
 
     pass
+
+
+class Forbidden(HTTPException):
+    """Thrown when an error status 403 occurs.
+
+    API token does not grant access to the requested resource.
+
+    Subclass of :exc:`HTTPException`"""
 
 
 class NotFound(HTTPException):

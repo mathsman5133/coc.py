@@ -39,6 +39,7 @@ from .errors import (
     NotFound,
     InvalidArgument,
     InvalidToken,
+    Forbidden,
     Maitenance
 )
 from .http import HTTPClient

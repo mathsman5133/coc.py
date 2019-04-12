@@ -187,6 +187,8 @@ The following exceptions are thrown by the library.
 
 .. autoexception:: InvalidToken
 
+.. autoexception:: Forbidden
+
 .. autoexception:: NotFound
 
 .. autoexception:: Maitenance
