@@ -38,7 +38,14 @@ log = logging.getLogger(__name__)
 
 LEAGUE_WAR_STATE = 'notInWar'
 
+
 def check_json(clss, obj, json_bool):
+    if isinstance(obj, list):
+        to_return = []
+        for n in obj:
+            to_return.append(check_json(clss, n, json_bool))
+        return to_return
+
     if isinstance(obj, clss) and json_bool is False:
         return obj
 
@@ -335,7 +342,7 @@ class Client:
 
                     Defaults to ``False``.
 
-        :return: :class:`WarLog` If ``json=False``, else :class:`dict`
+        :return: :class:`list` of :class:`WarLog` If ``json=False``, else :class:`dict`
         """
         if cache:
             data = self._war_logs.get(clan_tag, None)
@@ -346,8 +353,15 @@ class Client:
                 return None
 
         r = await self.http.get_clan_warlog(clan_tag)
-        wars = list(WarLog(data=n) for n in r.get('items', []))
-        self._add_war_log(wars)
+
+        wars = []
+        for n in r.get('items', []):
+            if n.get('result') is None:
+                wars.append(LeagueWarLogEntry(data=n))
+                continue
+
+            wars.append(WarLog(data=n))
+            self._add_war_log(wars)
 
         return wars
 
