@@ -171,7 +171,8 @@ League War Objects
     :members:
     :inherited-members:
 
-
+.. autoclass:: LeagueWarLogEntry()
+    :members:
 
 
 Exceptions

@@ -30,7 +30,8 @@ from .dataclasses import (
     LeaguePlayer,
     LeagueClan,
     LeagueGroup,
-    LeagueWar
+    LeagueWar,
+    LeagueWarLogEntry
 )
 from .errors import (
     ClashOfClansException,

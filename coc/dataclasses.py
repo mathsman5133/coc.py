@@ -220,7 +220,6 @@ class WarClan(Clan):
         self.total_attacks = self._war.team_size * 2
         self.stars = data.get('stars')
         self.max_stars = self._war.team_size * 3
-        self.destruction = []
 
         for mdata in data.get('members', []):
             member = WarMember(data=mdata, war=self._war)
@@ -1151,3 +1150,45 @@ class LeagueWar(CurrentWar):
     def __init__(self, *, data):
         self.tag = data.get('tag', None)
         super(LeagueWar, self).__init__(data=data)
+
+
+class LeagueWarLogEntry:
+    """Represents a Clash of Clans War Log entry for a League Season
+
+    Attributes
+    -----------
+    end_time:
+        :class:`Timestamp` - The end time of the war as a Timestamp object
+    team_size:
+        :class:`int` - The number of players per clan in war
+    clan:
+        :class:`Clan` - The offensive clan. Note this is only a :class:`Clan`, unlike that of a :class:`WarLog`
+    enemy_stars:
+        :class:`int` - Total enemy stars for all wars
+    attack_count:
+        :class:`int` - The total attacks completed by your clan over all wars
+    stars:
+        :class:`int` The total stars by your clan over all wars
+    destruction:
+        :class:`float` - The total destruction by your clan over all wars
+    clan_level:
+        :class:`int` - Your clan level.
+    """
+
+    __slots__ = ('end_time', 'team_size', 'clan', 'enemy_stars',
+                 'attack_count', 'stars', 'destruction', 'clan_level')
+
+    def __init__(self, *, data):
+        self.end_time = try_enum(Timestamp, data.get('endTime'))
+        self.team_size = data.get('teamSize')
+        self.clan = try_enum(Clan, data.get('clan'))
+        try:
+            self.enemy_stars = data['opponent']['stars']
+        except KeyError:
+            self.enemy_stars = None
+
+        if self.clan:
+            self.attack_count = self.clan._data.get('attacks')
+            self.stars = self.clan._data.get('stars')
+            self.destruction = self.clan._data.get('destructionPercentag')
+            self.clan_level = self.clan._data.get('clanLevel')
