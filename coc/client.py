@@ -36,13 +36,14 @@ from .utils import to_json
 
 log = logging.getLogger(__name__)
 
+LEAGUE_WAR_STATE = 'notInWar'
 
 def check_json(clss, obj, json_bool):
     if isinstance(obj, clss) and json_bool is False:
         return obj
 
     if isinstance(obj, clss) and json_bool is True:
-        return json_pckg.loads(obj._data)
+        return json_pckg.dumps(obj._data)
 
     if json_pckg is False:
         return clss(data=obj)
@@ -258,8 +259,6 @@ class Client:
                                          minClanLevel=min_clan_level, limit=limit, before=before, after=after)
 
         clans = list(SearchClan(data=n) for n in r.get('items', []))
-        for n in clans:
-            self._add_search_clan(n)
 
         return clans
 
@@ -289,7 +288,7 @@ class Client:
 
         c = SearchClan(data=r)
         self._add_search_clan(c)
-        return SearchClan(data=r)
+        return c
 
     async def get_members(self, clan_tag, cache=False, fetch=True):
         """
@@ -618,7 +617,9 @@ class Client:
         :return: :class:`dict`
 
         In the form
+
         .. code-block:: json
+
             {
                 "id": "string"
             }

@@ -61,6 +61,8 @@ class Clan:
         self.name = data.get('name')
         self.badge = try_enum(Badge, data.get('badgeUrls'))
 
+    def __str__(self):
+        return self.name
 
 class BasicClan(Clan):
     """Represents a Basic Clan that the API returns.
