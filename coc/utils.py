@@ -14,32 +14,22 @@ def to_json(model):
         if isinstance(value, list):
             for i in value:
                 if not isinstance(i, (list, str, bool)):
-                    if attr not in dct.keys():
-                        dct[attr] = [to_json(i)]
-                    else:
-                        dct[attr].append(to_json(i))
+                    dct[attr] = [to_json(i)] if attr not in dct.keys() else dct[attr].append(to_json(i))
                     continue
-                if attr not in dct.keys():
-                    dct[attr] = [to_json(i)]
-                else:
-                    dct[attr].append(to_json(i))
+
+                dct[attr] = [to_json(i)] if attr not in dct.keys() else dct[attr].append(to_json(i))
+
             continue
 
         # if it is an object attribute
         if not isinstance(value, (list, str, bool)):
-            if attr not in dct.keys():
-                dct[attr] = [to_json(value)]
-            else:
-                dct[attr].append(to_json(value))
+            dct[attr] = [to_json(value)] if attr not in dct.keys() else dct[attr].append(to_json(value))
             continue
 
         # just a bool, string or int now so can safely add to dict
-        if attr not in dct.keys():
-            dct[attr] = [to_json(value)]
-        else:
-            dct[attr].append(to_json(value))
+        dct[attr] = [to_json(value)] if attr not in dct.keys() else dct[attr].append(to_json(value))
 
-    return json.dumps(dct, separators=(',', ':'), ensure_ascii=True)
+    return json.loads(dct, separators=(',', ':'), ensure_ascii=True)
 
 
 

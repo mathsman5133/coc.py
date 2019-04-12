@@ -305,11 +305,3 @@ class HTTPClient:
             else:
                 raise HTTPException(r, 'failed to get image')
 
-
-
-
-
-
-
-
-

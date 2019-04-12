@@ -14,6 +14,12 @@ API Reference
 
    api
 
+Changelog
+----------
+.. toctree::
+   :maxdepth: 2
+
+   changelog
 
 If you still can't find what you're looking for, try in one of the following pages:
 

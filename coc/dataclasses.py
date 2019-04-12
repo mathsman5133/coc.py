@@ -26,7 +26,6 @@ SOFTWARE.
 """
 
 
-import itertools
 import pytz
 
 
@@ -1190,5 +1189,5 @@ class LeagueWarLogEntry:
         if self.clan:
             self.attack_count = self.clan._data.get('attacks')
             self.stars = self.clan._data.get('stars')
-            self.destruction = self.clan._data.get('destructionPercentag')
+            self.destruction = self.clan._data.get('destructionPercentage')
             self.clan_level = self.clan._data.get('clanLevel')

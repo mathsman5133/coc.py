@@ -32,7 +32,6 @@ import json as json_pckg
 
 from .http import HTTPClient
 from .dataclasses import *
-from .utils import to_json
 
 log = logging.getLogger(__name__)
 
