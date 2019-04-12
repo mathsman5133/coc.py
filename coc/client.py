@@ -111,8 +111,12 @@ class Client:
 
     """
 
-    def __init__(self, token, *, loop=None, email, password, update_tokens=False):
-        self.loop = loop if loop is not None else asyncio.get_event_loop()
+    def __init__(self, token, *, loop=None, email=None, password=None, update_tokens=False):
+        self.loop = self.loop = loop or asyncio.get_event_loop()
+
+        if update_tokens is True and (not email) or (not password):
+            raise RuntimeError('An email and password must be set if update_tokens is True')
+
         self.http = HTTPClient(token=token, loop=self.loop, email=email,
                                password=password, update_tokens=update_tokens)
         log.info('Clash of Clans API client created')
