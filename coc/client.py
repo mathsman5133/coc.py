@@ -348,7 +348,7 @@ class Client:
         if cache:
             data = self._war_logs.get(clan_tag, None)
             if data:
-                return check_json(WarLog, data, json)
+                return check_json((WarLog, LeagueWarLogEntry), data, json)
 
             if fetch is False:
                 return None
@@ -357,7 +357,13 @@ class Client:
 
         wars = []
         for n in r.get('items', []):
+            # lately war log entries for sccwl can be distinguished by a `null` result
             if n.get('result') is None:
+                wars.append(LeagueWarLogEntry(data=n))
+                continue
+
+            # for earlier logs this is distinguished by no opponent tag (result called `tie`)
+            if n.get('opponent', {}).get('tag', None) is None:
                 wars.append(LeagueWarLogEntry(data=n))
                 continue
 
