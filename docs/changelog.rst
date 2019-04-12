@@ -15,18 +15,18 @@ BugFixes
 - Add a private ``_data`` attribute to all data classes.
 This is the json as the API returns it. It makes ``json=True`` parameters in
 requests easy to handle.
-- Only cache complete clan results - ie. `search_clans` only returned a :class:`BasicClan`,
+- Only cache complete clan results - ie. ``Client.search_clans`` only returned a :class:`BasicClan`,
 so in order to add some cache consistency, cached clans now only contain :class:`SearchClan`.
 
 Important
-----------
+~~~~~~~~~~
 - New Class - :class:`.LeagueWarLogEntry` is similar to :class:`WarLog`, however it has it's own
 set of attributes to ensure it is easier to use and know which ones are present and not.
 - This new class is utilised in ``Client.get_warlog``, which returns a ``list`` of both
 ``LeagueWarLogEntry`` and ``WarLog``, depending on the war.
 
 Documentation
---------------
+~~~~~~~~~~~~~~
 - Utilise `sphinx_rtd_theme` for the RTD page
 - Add this changelog
 - Continue to fix typos and little errors as they are found.
