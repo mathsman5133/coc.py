@@ -33,7 +33,7 @@ import asyncio
 
 from urllib.parse import urlencode
 
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken, Forbidden
 
 log = logging.getLogger(__name__)
 
@@ -51,13 +51,13 @@ class Route:
     BASE = 'https://api.clashofclans.com/v1'
     API_PAGE_BASE = 'https://developer.clashofclans.com/api'
 
-    def __init__(self, method, path, kwargs: dict, api_page=False):
+    def __init__(self, method, path, kwargs: dict=None, api_page=False):
         if '#' in path:
             path = path.replace('#', '%23')
 
         self.method = method
         self.path = path
-        url = (self.API_PAGE_BASE if api_page else self.BASE + self.path)
+        url = (self.API_PAGE_BASE + self.path if api_page else self.BASE + self.path)
 
         if kwargs:
             self.url = '{}?{}'.format(url, urlencode({k: v for k, v in kwargs.items() if v is not None}))
@@ -81,7 +81,7 @@ class HTTPClient:
         # try:
         #     data = await self.request(Route('GET', '', {}))
         # except HTTPException as e:
-        #     if e.response.status == 401:
+        #     if e.response.status == 403:
         #         raise InvalidToken(e, 'invalid token has been passed') from e
         #     raise
         # return self
@@ -118,17 +118,21 @@ class HTTPClient:
             if r.status == 400:
                 raise InvalidArgument(r, data)
             if r.status == 403:
-                if self.update_tokens:
-                    log.info('Resetting Clash of Clans token')
-                    await self.reset_token()
-                    return await self.request(route, **kwargs)
-                raise InvalidToken(r, data)
+                if r.reason == 'accessDenied.invalidIp':
+                    if self.update_tokens:
+                        log.info('Resetting Clash of Clans token')
+                        await self.reset_token()
+                        return await self.request(route, **kwargs)
+                    log.info('detected invalid token, however client requested not to reset.')
+                    raise InvalidToken(r, data)
+
+                raise Forbidden(r, data)
 
             if r.status == 404:
-                raise NotFound(r, {})
+                raise NotFound(r, data)
 
             if r.status == 503:
-                raise Maitenance(r, {})
+                raise Maitenance(r, data)
             else:
                 raise HTTPException(r, data)
 
@@ -281,7 +285,7 @@ class HTTPClient:
             "cidrRanges": cidr_ranges
         }
 
-        r = await self.request(Route('POST', '/apikey/create', {}, api_page=True), json=data, headers=headers)
+        r = await self.request(Route('POST', '/apikey/create', api_page=True), json=data, headers=headers)
         return r['key']['key']
 
     def delete_token(self, cookies, token_id):
@@ -294,7 +298,7 @@ class HTTPClient:
             "id": token_id
         }
 
-        return self.request(Route('POST', '/apikey/revoke', {}, api_page=True), json=data, headers=headers)
+        return self.request(Route('POST', '/apikey/revoke', api_page=True), json=data, headers=headers)
 
     async def get_data_from_url(self, url):
         async with self.__session.get(url) as r:
