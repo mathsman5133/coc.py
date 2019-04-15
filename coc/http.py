@@ -66,7 +66,8 @@ class Route:
 
 
 class HTTPClient:
-    def __init__(self, token, loop=None, *, email, password, update_tokens=False):
+    def __init__(self, client, token, loop=None, *, email, password, update_tokens=False):
+        self.client = client
         self.token = token
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.__session = None
@@ -176,6 +177,7 @@ class HTTPClient:
         clean_token = response['key']['key']
 
         self.token = clean_token
+        self.client.dispatch('token_reset', clean_token)
         return clean_token
 
     # clans

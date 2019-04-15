@@ -117,7 +117,7 @@ class Client:
         if update_tokens is True and (not email) or (not password):
             raise RuntimeError('An email and password must be set if update_tokens is True')
 
-        self.http = HTTPClient(token=token, loop=self.loop, email=email,
+        self.http = HTTPClient(client=self, token=token, loop=self.loop, email=email,
                                password=password, update_tokens=update_tokens)
         log.info('Clash of Clans API client created')
         self._add_cache()
@@ -129,6 +129,74 @@ class Client:
         """
         log.info('Clash of Clans client logging out...')
         await self.http.close()
+
+    async def on_token_reset(self, new_token):
+        """Event: called when the client's token is reset.
+
+        By default this does nothing.
+
+        Example
+        ---------
+
+        You can manually override this by either:
+
+        Subclassing Client:
+
+        .. code-block:: python3
+
+            class Client(coc.Client):
+                def __init__(self, token, email, password):
+                    super().__init__(token=token, email=email,
+                                     password=password, update_token=True)
+
+                def on_token_reset(token):
+                    print('My new token is {}'.format(token))
+
+        Using the event decorator:
+
+        .. code-block:: python3
+
+        @client.event()
+        async def on_token_reset(token):
+            print('My new token is {}'.format(token))
+
+        :param new_token: :class:`str` The new token
+        """
+        pass
+
+    def event(self, fctn):
+        """A decorator that registers an event.
+
+        The only event at present is :func:`on_token_reset`.
+
+        This could be a coro or regular function.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+        @client.event()
+        async def on_token_reset(token):
+            print('My new token is {}'.format(token))
+        """
+        setattr(self, fctn.__name__, fctn)
+        log.info('Successfully registered %s event', fctn.__name__)
+        return fctn
+
+    def dispatch(self, event_name, *args, **kwargs):
+        log.debug('Dispatching %s event', event_name)
+        event = 'on_' + event_name
+
+        try:
+            fctn = getattr(self, event)
+        except AttributeError:
+            return
+        else:
+            if asyncio.iscoroutinefunction(fctn):
+                asyncio.ensure_future(event(*args, **kwargs), loop=self.loop)
+            else:
+                event(*args, **kwargs)
 
     def _add_cache(self):
         self._search_clans = {}
