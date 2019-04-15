@@ -33,7 +33,7 @@ Quick Example
 
     client = coc.Client('token')
 
-    async def player_name(tag):
+    async def get_some_player(tag):
         player = await client.get_player(tag)
 
         print(player.name)
