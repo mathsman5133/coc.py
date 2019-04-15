@@ -583,7 +583,7 @@ class CurrentWar(BaseWar):
 
 
 class Achievement:
-    """Represents a Clash of Clans Hero.
+    """Represents a Clash of Clans Achievement.
 
 
     Attributes
@@ -591,7 +591,7 @@ class Achievement:
     player:
         :class:`SearchPlayer` - The player this achievement is assosiated with
     name:
-        :class:`str` - The name of the hero
+        :class:`str` - The name of the achievement
     stars:
         :class:`int` - The current stars achieved for the achievement
     value:
@@ -614,6 +614,9 @@ class Achievement:
 
     __slots__ = ('player', 'name', 'stars', 'value', 'target',
                  'info', 'completion_info', 'village', '_data')
+
+    def __str__(self):
+        return self.name
 
     def __init__(self, *, data, player):
         self._data = data
@@ -665,6 +668,9 @@ class Troop:
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
 
+    def __str__(self):
+        return self.name
+
     def __init__(self, *, data, player):
         self._data = data
 
@@ -712,6 +718,9 @@ class Hero:
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
 
+    def __str__(self):
+        return self.name
+
     def __init__(self, *, data, player):
         self._data = data
 
@@ -758,6 +767,9 @@ class Spell:
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
+
+    def __str__(self):
+        return self.name
 
     def __init__(self, *, data, player):
         self._data = data
