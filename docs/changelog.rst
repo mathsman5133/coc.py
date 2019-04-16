@@ -7,6 +7,34 @@ This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
 
+v0.0.5
+-------
+BugFixes
+~~~~~~~~~
+- Fixed how the lib detects an invalid IP error, as SC changed how the error message works
+- Fixed bug with semi-complete URL when using the API dev site
+- ``email`` and ``password`` in :class:`Client` are now ``None`` by default. This was throwing
+    and error before.
+- str() for :class:`Achievement`, :class:`Hero`, :class:`Troop`, :class:`Spell` now all return
+    respective names
+
+Important
+-----------
+- Added a new exception: :exc:`Forbidden`. This is thrown when a 403 is returned, but the error is not
+    one of invalid token, instead when you aren't allowed to get the resource eg. private war log.
+- A :exc:`RuntimeError` will be raised if you try to pass ``update_stats`` as ``True`` but don't set
+    the ``email`` or ``password``
+- Added the :func:`Client.on_token_reset` which is called whenever the lib updates your token.
+    By default this does nothing, however you can override it by either subclassing or
+    using the decorator ``@Client.event()`` above your new ``async def on_token_reset``.
+    This function can be a regular or coroutine.
+
+Documentation
+--------------
+- Add examples. I will expand on these as I see fit. Feel free to let me know if you want more.
+- Fix broken codeblock examples
+- Update incorrect function name in the example in README.rst (``player_name`` --> ``get_some_player``
+
 v0.0.4
 -------
 BugFixes
