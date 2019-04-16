@@ -156,9 +156,9 @@ class Client:
 
         .. code-block:: python3
 
-        @client.event()
-        async def on_token_reset(token):
-            print('My new token is {}'.format(token))
+            @client.event()
+            async def on_token_reset(token):
+                print('My new token is {}'.format(token))
 
         :param new_token: :class:`str` The new token
         """
@@ -176,9 +176,9 @@ class Client:
 
         .. code-block:: python3
 
-        @client.event()
-        async def on_token_reset(token):
-            print('My new token is {}'.format(token))
+            @client.event()
+            async def on_token_reset(token):
+                print('My new token is {}'.format(token))
         """
         setattr(self, fctn.__name__, fctn)
         log.info('Successfully registered %s event', fctn.__name__)
