@@ -6,6 +6,11 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.0.6
+--------
+BugFixes
+~~~~~~~~~
+- Fix bug with always raising RuntimeError
 
 v0.0.5
 -------
