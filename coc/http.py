@@ -32,6 +32,7 @@ import aiohttp
 import asyncio
 
 from urllib.parse import urlencode
+from itertools import cycle
 
 from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken, Forbidden
 
@@ -66,9 +67,10 @@ class Route:
 
 
 class HTTPClient:
-    def __init__(self, client, token, loop=None, *, email, password, update_tokens=False):
+    def __init__(self, client, tokens, loop=None, *, email, password, update_tokens=False):
         self.client = client
-        self.token = token
+        self._tokens = tokens
+        self.tokens = cycle(tokens)
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.__session = None
         self.email = email
@@ -92,6 +94,7 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
+        token = next(self.tokens)
         method = route.method
         url = route.url
 
@@ -122,7 +125,7 @@ class HTTPClient:
                 if r.reason == 'accessDenied.invalidIp':
                     if self.update_tokens:
                         log.info('Resetting Clash of Clans token')
-                        await self.reset_token()
+                        await self.reset_token(token)
                         return await self.request(route, **kwargs)
                     log.info('detected invalid token, however client requested not to reset.')
                     raise InvalidToken(r, data)
@@ -137,15 +140,16 @@ class HTTPClient:
             else:
                 raise HTTPException(r, data)
 
-    async def reset_token(self):
+    async def reset_token(self, token):
         async with self.__session.request('GET', 'http://ip.42.pl/short') as r:
             log.debug('%s (%s) has returned %s', 'http://ip.42.pl/short', 'GET', r.status)
-
             ip = await r.text()
-
             log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
 
+        # should probably put something else in here
+        # to distinguish each token like a date
         token_name = 'aio-coc created token'
+        #Also, probably fix this as well
         token_description = 'learn more about this project at: '
 
         whitelisted_ips = [ip]
@@ -157,29 +161,26 @@ class HTTPClient:
 
         cookies = f'session={session};game-api-url={game_api_url};game-api-token={game_api_token}'
 
-        current_tokens = await self.find_site_tokens(cookies)
-
-        for token in current_tokens['keys']:
-
-            if ip in token['cidrRanges']:
-                self.token = token['key']
-                return token['key']
-
-            else:
-                # otherwise if its an outdated IP adress we don't need it anymore,
-                # so lets delete it to not clog them up
-                # and to prevent hitting the 10 token limit
-                token_id = token['id']
-                await self.delete_token(cookies, token_id)
+        await self.delete_token(cookies, token)
 
         response = await self.create_token(cookies, token_name, token_description, whitelisted_ips)
 
-        clean_token = response['key']['key']
+        new_token = response['key']['key']
 
-        self.token = clean_token
-        self.client.dispatch('token_reset', clean_token)
-        return clean_token
+        #this is to prevent reusing an already used tokens.
+        #All it does is move the current token to the front,
+        #by moving any already used ones to the end so
+        #we keep the original token order moving forward.
+        tokens = self._tokens
+        token_index = tokens.index(token)
+        self._tokens = tokens[token_index:] + tokens[:token_index]
 
+        #now we can set the new token which is the first
+        #one in self._tokens, then start the cycle over.
+        self._tokens[0] = new_token
+        self.tokens = cycle(self.tokens)
+        self.client.dispatch('token_reset', new_token)
+        
     # clans
 
     def search_clans(self, **kwargs):
@@ -310,4 +311,3 @@ class HTTPClient:
                 raise NotFound(r, 'image not found')
             else:
                 raise HTTPException(r, 'failed to get image')
-
