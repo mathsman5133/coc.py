@@ -30,6 +30,8 @@ import logging
 
 import json as json_pckg
 
+from typing import Union
+
 from .http import HTTPClient
 from .dataclasses import *
 
@@ -72,8 +74,8 @@ class Client:
 
     Parameters
     -------------
-    token: :class:`str`
-        The authentication token. This can be found from the developers page at
+    tokens: Union[:class:`str`, :class:`list`, :class:`tuple`]
+        The authentication tokens. These can be found on the developers page at
         https://developer.clashofclans.com
 
     loop: Optional[event loop]
@@ -111,14 +113,13 @@ class Client:
 
     """
 
-    def __init__(self, token, *, loop=None, email=None, password=None, update_tokens=False):
+    def __init__(self, tokens: Union[str, list, tuple], *, loop=None, email=None, password=None, update_tokens=False):
         self.loop = self.loop = loop or asyncio.get_event_loop()
 
-        if update_tokens is True:
-            if password is None or email is None:
+        if update_tokens and not(password or email):
                 raise RuntimeError('An email and password must be set if update_tokens is True')
 
-        self.http = HTTPClient(client=self, token=token, loop=self.loop, email=email,
+        self.http = HTTPClient(client=self, tokens=tokens, loop=self.loop, email=email,
                                password=password, update_tokens=update_tokens)
         log.info('Clash of Clans API client created')
         self._add_cache()
@@ -785,7 +786,3 @@ class Client:
         self._add_search_player(p)
 
         return p
-
-
-
-
