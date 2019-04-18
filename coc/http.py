@@ -79,7 +79,7 @@ class HTTPClient:
         if not tokens:
             response_dict, session = await self.login_to_site(self.email, self.password)
             cookies = self.create_cookies(response_dict, session)
-            self._tokens = await self.find_site_tokens(cookies)['keys']
+            self._tokens = (await self.find_site_tokens(cookies))['keys']
         else:
             self._tokens = tokens
             
@@ -158,7 +158,11 @@ class HTTPClient:
         return ip
     
     def create_cookies(self, response_dict, session):
-        return f"session={session};game-api-url={response_dict['swaggerUrl']};game-api-token={response_dict['temporaryAPIToken']}"
+        return "session={};game-api-url={};game-api-token={}".format(
+            session,
+            response_dict['swaggerUrl'],
+            response_dict['temporaryAPIToken']
+        )
     
     async def reset_token(self, token):
         ip = await self.get_ip()
