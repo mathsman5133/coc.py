@@ -75,13 +75,19 @@ class HTTPClient:
         self.email = email
         self.password = password
         self.update_tokens = update_tokens
+        self.loop.run_until_complete(self.login())
         
         if not self._tokens:
+            response_dict, session = await self.login_to_site(self.email, self.password)
+            game_api_token = response_dict['temporaryAPIToken']
+            game_api_url = response_dict['swaggerUrl']
+            cookies = f'session={session};game-api-url={game_api_url};game-api-token={game_api_token}'
             current_tokens = await self.find_site_tokens(cookies)['keys']
+            
             self._tokens = [token['key'] for token in current_tokens]
         
         self.tokens = cycle(self._tokens)
-        self.loop.run_until_complete(self.login())
+        
 
     async def login(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
@@ -145,22 +151,23 @@ class HTTPClient:
             else:
                 raise HTTPException(r, data)
 
-    async def reset_token(self, token):
+    async def get_ip(self):
         async with self.__session.request('GET', 'http://ip.42.pl/short') as r:
             log.debug('%s (%s) has returned %s', 'http://ip.42.pl/short', 'GET', r.status)
             ip = await r.text()
             log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
-
+        return ip
+    
+    async def reset_token(self, token):
+        ip = await self.get_ip()
         # should probably put something else in here
         # to distinguish each token like a date
         token_name = 'aio-coc created token'
         #Also, probably fix this as well
         token_description = 'learn more about this project at: '
-
         whitelisted_ips = [ip]
 
         response_dict, session = await self.login_to_site(self.email, self.password)
-
         game_api_token = response_dict['temporaryAPIToken']
         game_api_url = response_dict['swaggerUrl']
 
