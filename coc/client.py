@@ -127,7 +127,7 @@ class Client:
             if not has_auth:
                 raise RuntimeError('An email and password must be set if no tokens are provided')
 
-        if update_tokens and :
+        if update_tokens and not has_auth:
                 raise RuntimeError('An email and password must be set if update_tokens is True')
 
         self.http = HTTPClient(client=self, tokens=tokens, loop=self.loop, email=email,
