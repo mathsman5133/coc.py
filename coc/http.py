@@ -77,14 +77,19 @@ class HTTPClient:
         self.loop.run_until_complete(self.login())
         
         if not tokens:
+            ip = self.get_ip()
             response_dict, session = await self.login_to_site(self.email, self.password)
             cookies = self.create_cookies(response_dict, session)
-            self._tokens = (await self.find_site_tokens(cookies))['keys']
+            current_tokens = (await self.find_site_tokens(cookies))['keys']
+            self._tokens = [token['key'] for token in current_tokens if ip in token['cidrRanges']]
+            if not len(self._tokens):
+                if len(current_tokens) < 10:
+                    #Create token
+                else:
+                    raise RuntimeError("There are already 10 tokens tand none relate to this IP")
         else:
             self._tokens = tokens
             
-            self._tokens = [token['key'] for token in current_tokens]
-        
         self.tokens = cycle(self._tokens)
         
 
