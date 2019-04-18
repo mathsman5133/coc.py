@@ -74,9 +74,11 @@ class Client:
 
     Parameters
     -------------
-    tokens: Union[:class:`str`, :class:`list`, :class:`tuple`]
+    tokens: Union[:class:`str`, :class:`list`]
         The authentication tokens. These can be found on the developers page at
         https://developer.clashofclans.com
+        Defaults to None, if tokens is None, then the client will attempt to
+        retrieve them from the API. email and password will be required.
 
     loop: Optional[event loop]
         The `event loop`_ to use for HTTP requests.
@@ -113,8 +115,14 @@ class Client:
 
     """
 
-    def __init__(self, tokens: Union[str, list, tuple], *, loop=None, email=None, password=None, update_tokens=False):
+    def __init__(self, tokens=None, loop=None, email=None, password=None, update_tokens=False):
         self.loop = self.loop = loop or asyncio.get_event_loop()
+        
+        if tokens:
+            if isinstance(tokens, str): tokens = [tokens]
+            elif isinstance(tokens, list): pass
+            else: raise RuntimeError('tokens must be either a str or list of str tokens')
+        #no need for else as None is handled in HTTPClient
 
         if update_tokens and not(password or email):
                 raise RuntimeError('An email and password must be set if update_tokens is True')
