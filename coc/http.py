@@ -67,9 +67,9 @@ class Route:
 
 
 class HTTPClient:
-    def __init__(self, client, tokens, loop=None, *, email, password, update_tokens=False):
+    def __init__(self, client, loop, tokens=None, *, email, password, update_tokens=False):
         self.client = client
-        self.loop = asyncio.get_event_loop() if loop is None else loop
+        self.loop = loop
         self.__session = None
         self.email = email
         self.password = password
