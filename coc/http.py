@@ -69,7 +69,6 @@ class Route:
 class HTTPClient:
     def __init__(self, client, tokens, loop=None, *, email, password, update_tokens=False):
         self.client = client
-        self._tokens = tokens
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.__session = None
         self.email = email
@@ -77,12 +76,12 @@ class HTTPClient:
         self.update_tokens = update_tokens
         self.loop.run_until_complete(self.login())
         
-        if not self._tokens:
+        if not tokens:
             response_dict, session = await self.login_to_site(self.email, self.password)
-            game_api_token = response_dict['temporaryAPIToken']
-            game_api_url = response_dict['swaggerUrl']
-            cookies = f'session={session};game-api-url={game_api_url};game-api-token={game_api_token}'
-            current_tokens = await self.find_site_tokens(cookies)['keys']
+            cookies = self.create_cookies(response_dict, session)
+            self._tokens = await self.find_site_tokens(cookies)['keys']
+        else:
+            self._tokens = tokens
             
             self._tokens = [token['key'] for token in current_tokens]
         
@@ -158,6 +157,9 @@ class HTTPClient:
             log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
         return ip
     
+    def create_cookies(self, response_dict, session):
+        return f"session={session};game-api-url={response_dict['swaggerUrl']};game-api-token={response_dict['temporaryAPIToken']}"
+    
     async def reset_token(self, token):
         ip = await self.get_ip()
         # should probably put something else in here
@@ -168,10 +170,7 @@ class HTTPClient:
         whitelisted_ips = [ip]
 
         response_dict, session = await self.login_to_site(self.email, self.password)
-        game_api_token = response_dict['temporaryAPIToken']
-        game_api_url = response_dict['swaggerUrl']
-
-        cookies = f'session={session};game-api-url={game_api_url};game-api-token={game_api_token}'
+        cookies = self.create_cookies(response_dict, session)
 
         await self.delete_token(cookies, token)
 
