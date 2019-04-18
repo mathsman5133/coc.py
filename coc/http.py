@@ -70,12 +70,17 @@ class HTTPClient:
     def __init__(self, client, tokens, loop=None, *, email, password, update_tokens=False):
         self.client = client
         self._tokens = tokens
-        self.tokens = cycle(tokens)
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.__session = None
         self.email = email
         self.password = password
         self.update_tokens = update_tokens
+        
+        if not self._tokens:
+            current_tokens = await self.find_site_tokens(cookies)['keys']
+            self._tokens = [token['key'] for token in current_tokens]
+        
+        self.tokens = cycle(self._tokens)
         self.loop.run_until_complete(self.login())
 
     async def login(self):
