@@ -365,21 +365,20 @@ class WarMember(Player):
         :class:`int` - The members map position this war
     attacks:
         :class:`list` of :class:`WarAttack` - The member's attacks this war. Could be an empty list
+    defenses:
+        :class:`list` of :class:`WarAttack` - The member's defenses this war. Could be an empty list
     war:
         :class:`War` - The war this member belongs to
     """
     __slots__ = ('town_hall', 'map_position', 'attacks', 'war')
 
     def __init__(self, data, war):
-        self.attacks = []
-
         super(WarMember, self).__init__(data)
-
+        
         self.town_hall = data.get('townHallLevel', None)
         self.map_position = data.get('mapPosition', None)
-
-        for adata in data.get('attacks', []):
-            self.attacks.append(WarAttack(data=adata, war=war, member=self))
+        self.attacks = [war.get_member(adata.tag) for adata in data.get('attacks')]
+        self.defenses = [war.get_member(ddata.tag) for ddata in war.opponent.get('attacks')]
 
 
 class SearchPlayer(BasicPlayer):
@@ -499,8 +498,8 @@ class BaseWar:
         self._data = data
         self.team_size = data.get('teamSize', None)
 
-        clan = data.get('clan', {})
-        if clan and ('tag' in clan.keys()):
+        clan = data.get('clan')
+        if clan and 'tag' in clan):
             # at the moment, if the clan is in notInWar, the API returns
             # 'clan' and 'opponent' as dicts containing only badge urls of
             # no specific clan. very strange
@@ -509,8 +508,8 @@ class BaseWar:
         else:
             self.clan = None
 
-        opponent = data.get('opponent', {})
-        if opponent and ('tag' in opponent.keys()):
+        opponent = data.get('opponent')
+        if opponent and 'tag' in opponent:
             # same problem as clan
             self.opponent = WarClan(data=opponent, war=self)
         else:
@@ -839,6 +838,7 @@ class WarAttack:
     @property
     def defender(self):
         return self.war.get_member(self.defender_tag)
+    
 
 
 class Location:
