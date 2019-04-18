@@ -115,8 +115,8 @@ class Client:
 
     """
 
-    def __init__(self, tokens=None, loop=None, email=None, password=None, update_tokens=False):
-        self.loop = self.loop = loop or asyncio.get_event_loop()
+    def __init__(self, loop, tokens=None, email=None, password=None, update_tokens=False):
+        self.loop = loop or asyncio.get_event_loop()
         has_auth = not(password or email)
         
         if tokens:
