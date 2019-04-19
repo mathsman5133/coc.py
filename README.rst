@@ -31,7 +31,8 @@ Quick Example
     import coc
     import asyncio
 
-    client = coc.Client('token')
+    loop = asyncio.get_event_loop()
+    client = coc.Client('token', loop)
 
     async def get_some_player(tag):
         player = await client.get_player(tag)
@@ -46,9 +47,8 @@ Quick Example
             print(n, n.tag)
 
     if __name__ == '__main__':
-        loop = asyncio.get_event_loop()
         loop.run_until_complete(get_some_player('tag'))
-        loop.run_until_complete(get_five_clans('name')
+        loop.run_until_complete(get_five_clans('name'))
 
 For more examples see the examples directory
 
