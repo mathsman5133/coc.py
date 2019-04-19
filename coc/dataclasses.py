@@ -132,7 +132,7 @@ class SearchClan(BasicClan):
     description:
         :class:`str` - The clan description
     members:
-        :class:`list` of :class:`BasicMember` - List of clan members
+        :class:`list` of :class:`BasicPlayer` - List of clan members
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
@@ -377,9 +377,8 @@ class WarMember(Player):
         
         self.town_hall = data.get('townHallLevel', None)
         self.map_position = data.get('mapPosition', None)
-        self.attacks = [war.get_member(adata.tag) for adata in data.get('attacks')]
-        self.defenses = [war.get_member(ddata.tag) for ddata in war.opponent.get('attacks')]
-
+        self.attacks = [WarAttack(data=adata, war=war, member=self) for adata in data.get('attacks', [])]
+        
 
 class SearchPlayer(BasicPlayer):
     """Represents a Searched Player that the API returns.
@@ -499,7 +498,7 @@ class BaseWar:
         self.team_size = data.get('teamSize', None)
 
         clan = data.get('clan')
-        if clan and 'tag' in clan):
+        if clan and 'tag' in clan:
             # at the moment, if the clan is in notInWar, the API returns
             # 'clan' and 'opponent' as dicts containing only badge urls of
             # no specific clan. very strange
@@ -552,14 +551,14 @@ class CurrentWar(BaseWar):
     start_time:
         :class:`Timestamp` - The start time of battle day as a Timestamp object
     end_time:
-        :class:`Timestamp` - The end time of battle day day as a Timestamp object
+        :class:`Timestamp` - The end time of battle day as a Timestamp object
     attacks: :class:`list` of :class:`WarAttack`
             A list of all attacks this war
     members: :class:`list` of :class:`WarMember`
             A list of all members this war
     """
     __slots__ = ('state', 'preparation_start_time',
-                 'start_time', 'end_time')
+                 'start_time', 'end_time', '_members')
 
     def __init__(self, *, data):
         self.state = data.get('state')
@@ -579,6 +578,8 @@ class CurrentWar(BaseWar):
     def members(self):
         m = [].extend(self.clan.members).extend(self.opponent.members)
         return m
+    
+    
 
 
 class Achievement:
