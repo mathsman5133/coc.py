@@ -25,11 +25,6 @@ SOFTWARE.
 
 """
 
-
-import pytz
-
-
-from dateutil import parser
 from datetime import datetime
 
 
@@ -1029,21 +1024,11 @@ class Timestamp:
 
     @property
     def utc_timestamp(self):
-        utc = pytz.UTC
-        parse = parser.parse(self.time)
-
-        in_utc = parse.replace(tzinfo=utc)
-
-        return in_utc
+        return datetime.strptime(self.time, '%Y%m%dT%H%M%S.000Z')
 
     @property
     def now(self):
-        utc = pytz.UTC
-        parse = datetime.utcnow()
-
-        in_utc = parse.replace(tzinfo=utc)
-
-        return in_utc
+        return datetime.utcnow()
 
     @property
     def seconds_until(self):
