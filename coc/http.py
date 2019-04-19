@@ -74,28 +74,35 @@ class HTTPClient:
         self.email = email
         self.password = password
         self.update_tokens = update_tokens
-        self.loop.run_until_complete(self.login())
-        
+
+        asyncio.ensure_future(self.login(tokens))
+
+    async def login(self, tokens):
+        self.__session = aiohttp.ClientSession(loop=self.loop)
+
         if not tokens:
-            ip = self.get_ip()
+            ip = await self.get_ip()
+
             response_dict, session = await self.login_to_site(self.email, self.password)
             cookies = self.create_cookies(response_dict, session)
             current_tokens = (await self.find_site_tokens(cookies))['keys']
+
             self._tokens = [token['key'] for token in current_tokens if ip in token['cidrRanges']]
             if not len(self._tokens):
                 if len(current_tokens) < 10:
-                    #Create token
+                    raise RuntimeError("No tokens found related to this IP. If you are interested in seeing this TODO"
+                                       " fixed, please open a PR on the repo.")
+                    # TODO: Create token
                 else:
-                    raise RuntimeError("There are already 10 tokens tand none relate to this IP")
+                    raise RuntimeError("There are already 10 tokens and none relate to this IP")
         else:
             self._tokens = tokens
-            
+
         self.tokens = cycle(self._tokens)
-        
+        self.token = self._tokens[0]
 
-    async def login(self):
-        self.__session = aiohttp.ClientSession(loop=self.loop)
-
+        # TODO: Ensure token(s) work.
+        # Alternatively, log into site to ensure tokens are both in IP range and valid on site.
         # try:
         #     data = await self.request(Route('GET', '', {}))
         # except HTTPException as e:
@@ -115,7 +122,7 @@ class HTTPClient:
 
         headers = {
             "Accept": "application/json",
-            "authorization": "Bearer {}".format(self.token),
+            "authorization": "Bearer {}".format(token),
         }
 
         if 'headers' in kwargs:
@@ -136,8 +143,9 @@ class HTTPClient:
 
             if r.status == 400:
                 raise InvalidArgument(r, data)
+
             if r.status == 403:
-                if r.reason == 'accessDenied.invalidIp':
+                if data.get('reason') == 'accessDenied':
                     if self.update_tokens:
                         log.info('Resetting Clash of Clans token')
                         await self.reset_token(token)
@@ -149,6 +157,12 @@ class HTTPClient:
 
             if r.status == 404:
                 raise NotFound(r, data)
+            if r.status == 429:
+                # TODO: Implement ratelimits
+                # This could look like an optional user set ratelimit (default 10req/sec)
+                # or some other method you think up.
+                # for now divert to HTTPException
+                raise HTTPException(r, data)
 
             if r.status == 503:
                 raise Maitenance(r, data)
@@ -161,8 +175,9 @@ class HTTPClient:
             ip = await r.text()
             log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
         return ip
-    
-    def create_cookies(self, response_dict, session):
+
+    @staticmethod
+    def create_cookies(response_dict, session):
         return "session={};game-api-url={};game-api-token={}".format(
             session,
             response_dict['swaggerUrl'],
@@ -171,11 +186,12 @@ class HTTPClient:
     
     async def reset_token(self, token):
         ip = await self.get_ip()
+        # TODO: Distinguish/recognise by token name rather than current ip for running clients on multiple IPs
         # should probably put something else in here
         # to distinguish each token like a date
-        token_name = 'aio-coc created token'
-        #Also, probably fix this as well
-        token_description = 'learn more about this project at: '
+        token_name = 'coc.py created token'
+        # Also, probably fix this as well
+        token_description = 'learn more about this project at: https://github.com/mathsman5133/coc.py'
         whitelisted_ips = [ip]
 
         response_dict, session = await self.login_to_site(self.email, self.password)
@@ -187,16 +203,16 @@ class HTTPClient:
 
         new_token = response['key']['key']
 
-        #this is to prevent reusing an already used tokens.
-        #All it does is move the current token to the front,
-        #by moving any already used ones to the end so
-        #we keep the original token order moving forward.
+        # this is to prevent reusing an already used tokens.
+        # All it does is move the current token to the front,
+        # by moving any already used ones to the end so
+        # we keep the original token order moving forward.
         tokens = self._tokens
         token_index = tokens.index(token)
         self._tokens = tokens[token_index:] + tokens[:token_index]
 
-        #now we can set the new token which is the first
-        #one in self._tokens, then start the cycle over.
+        # now we can set the new token which is the first
+        # one in self._tokens, then start the cycle over.
         self._tokens[0] = new_token
         self.tokens = cycle(self.tokens)
         self.client.dispatch('token_reset', new_token)
