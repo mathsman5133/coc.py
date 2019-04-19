@@ -145,7 +145,7 @@ class HTTPClient:
                 raise InvalidArgument(r, data)
 
             if r.status == 403:
-                if data.get('reason') == 'accessDenied':
+                if data.get('reason') in ['accessDenied.invalidIp']:
                     if self.update_tokens:
                         log.info('Resetting Clash of Clans token')
                         await self.reset_token(token)
@@ -197,11 +197,12 @@ class HTTPClient:
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
 
-        await self.delete_token(cookies, token)
+        existing_tokens = (await self.find_site_tokens(cookies))['keys']
+        token_id = [t['id'] for t in existing_tokens if t['key'] == token]
 
-        response = await self.create_token(cookies, token_name, token_description, whitelisted_ips)
+        await self.delete_token(cookies, token_id)
 
-        new_token = response['key']['key']
+        new_token = await self.create_token(cookies, token_name, token_description, whitelisted_ips)
 
         # this is to prevent reusing an already used tokens.
         # All it does is move the current token to the front,
@@ -332,6 +333,7 @@ class HTTPClient:
             "cookie": cookies,
             "content-type": "application/json"
         }
+        log.critical(headers)
 
         data = {
             "id": token_id
