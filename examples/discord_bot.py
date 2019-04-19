@@ -18,6 +18,24 @@ async def player_heroes(ctx, player_tag):
         to_send += '{}: Lv{}/{}'.format(str(hero), hero.level, hero.max_level)
 
     await ctx.send(to_send)
+    
+    
+@bot.command()
+async def clan_info(ctx, clan_tag):
+    clan = await coc_client.get_clan(clan_tag)
+    
+    e = discord.Embed(colour=discord.Colour.green())
+    e.set_thumbnail(url=clan.badgeUrls.medium)
+    e.add_field(name=clan.name,
+                value=clan.tag)
+    e.add_field(name="Description",
+                value=clan.description)
+    e.add_field(name="Members",
+                value=clan.members)
+    e.add_field(name="Clan Record",
+                value=f"{clan.warWins}-{clan.warLosses}-{clan.warTies}")
+    
+    await ctx.send(embed=e)
 
 
 @bot.command()
