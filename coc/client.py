@@ -38,7 +38,7 @@ from .dataclasses import *
 log = logging.getLogger(__name__)
 
 LEAGUE_WAR_STATE = 'notInWar'
-
+KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 def check_json(clss, obj, json_bool):
     if isinstance(obj, list):
@@ -74,39 +74,29 @@ class Client:
 
     Parameters
     -------------
-    tokens: Union[:class:`str`, :class:`list`]
-        The authentication tokens. These can be found on the developers page at
-        https://developer.clashofclans.com
-        Defaults to None, if tokens is None, then the client will attempt to
-        retrieve them from the API. email and password will be required.
+
+    email: :class:`str`
+        Your password email from https://developer.clashofclans.com
+        This is used when updating the key automatically if your IP changes
+
+    password: :class:`str`
+        Your password login from https://developer.clashofclans.com
+        This is used when updating the key automatically if your IP changes
+
+    key_count: Optional[:class:`int`]
+        The amount of keys to use for this client. Maximum of 10.
+        Defaults to 1
+
+    key_names: Optional[:class:`str`]
+        Default name for keys created to use for this client.
+        All keys created or to be used with this client must
+        have this name.
+
+        Defaults to "Created with coc.py Client"
 
     loop: Optional[event loop]
-        The `event loop`_ to use for HTTP requests.
+        The `event loop` to use for HTTP requests.
         An ``asyncio.get_event_loop()`` will be used if none is passed
-
-    email: Optional[:class:`str`]
-        Your password email from https://developer.clashofclans.com
-        This is used when updating the token automatically if your IP changes
-
-        If `update_tokens` is set to ``True``, this must be passed.
-
-    password: Optional[:class:`str`]
-        Your password login from https://developer.clashofclans.com
-        This is used when updating the token automatically if your IP changes
-
-        If `update_tokens` is set to ``True``, this must be passed.
-
-    update_tokens: Optional[:class:`bool`]
-        This indicates whether the client should by default update your API Token
-        when your IP Adress changes.
-
-        More can be found on dynamic IP Adresses this API uses at:
-            https://developer.clashofclans.com
-
-        If an invalid token is passed and this is set to false, an ``InvalidToken``
-        error will be raised.
-
-        If this is ``True``, ``email`` and ``password`` parameters must be set.
 
     Attributes
     -----------
@@ -115,27 +105,19 @@ class Client:
 
     """
 
-    def __init__(self, tokens=None, loop=None, email=None, password=None, update_tokens=False):
+    def __init__(self, email, password, key_count=1,
+                 key_names='Created with coc.py Client', loop=None):
+
         self.loop = loop or asyncio.get_event_loop()
-        has_auth = password or email
+        correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
-        if tokens:
-            if isinstance(tokens, str):
-                tokens = [tokens]
-            elif isinstance(tokens, list):
-                pass
-            else:
-                raise RuntimeError('tokens must be either a str or list of str tokens')
+        if not key_count == correct_key_count:
+            raise RuntimeError("Key count must be within {}-{}".format(
+                KEY_MINIMUM, KEY_MAXIMUM))
 
-        else:
-            if not has_auth:
-                raise RuntimeError('An email and password must be set if no tokens are provided')
-
-        if update_tokens and not has_auth:
-                raise RuntimeError('An email and password must be set if update_tokens is True')
-
-        self.http = HTTPClient(client=self, tokens=tokens, loop=self.loop, email=email,
-                               password=password, update_tokens=update_tokens)
+        self.http = HTTPClient(client=self, email=email, password=password,
+                               key_names=key_names, loop=self.loop,
+                               key_count=correct_key_count)
         log.info('Clash of Clans API client created')
         self._add_cache()
         log.debug('Added cache')
@@ -147,8 +129,8 @@ class Client:
         log.info('Clash of Clans client logging out...')
         await self.http.close()
 
-    async def on_token_reset(self, new_token):
-        """Event: called when the client's token is reset.
+    async def on_key_reset(self, new_key):
+        """Event: called when one of the client's keys are reset.
 
         By default this does nothing.
 
@@ -162,29 +144,29 @@ class Client:
         .. code-block:: python3
 
             class Client(coc.Client):
-                def __init__(self, token, email, password):
-                    super().__init__(token=token, email=email,
-                                     password=password, update_token=True)
+                def __init__(self, key, email, password):
+                    super().__init__(email, password, key_count=1,
+                                 key_names='Created with coc.py Client', loop=None)
 
-                def on_token_reset(token):
-                    print('My new token is {}'.format(token))
+                def on_key_reset(key):
+                    print('My new key is {}'.format(key))
 
         Using the event decorator:
 
         .. code-block:: python3
 
             @client.event()
-            async def on_token_reset(token):
-                print('My new token is {}'.format(token))
+            async def on_key_reset(key):
+                print('My new key is {}'.format(key))
 
-        :param new_token: :class:`str` The new token
+        :param new_key: :class:`str` The new key
         """
         pass
 
     def event(self, fctn):
         """A decorator that registers an event.
 
-        The only event at present is :func:`on_token_reset`.
+        The only event at present is :func:`on_key_reset`.
 
         This could be a coro or regular function.
 
@@ -194,8 +176,8 @@ class Client:
         .. code-block:: python3
 
             @client.event()
-            async def on_token_reset(token):
-                print('My new token is {}'.format(token))
+            async def on_key_reset(key):
+                print('My new key is {}'.format(key))
         """
         setattr(self, fctn.__name__, fctn)
         log.info('Successfully registered %s event', fctn.__name__)
