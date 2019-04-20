@@ -112,13 +112,14 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
+        key = next(self.keys)
         method = route.method
         url = route.url
 
         if 'headers' not in kwargs:
             headers = {
                 "Accept": "application/json",
-                "authorization": "Bearer {}".format(next(self.keys)),
+                "authorization": "Bearer {}".format(key),
             }
             kwargs['headers'] = headers
 
@@ -141,7 +142,6 @@ class HTTPClient:
                     log.info('Resetting Clash of Clans key')
                     await self.reset_key(key)
                     return await self.request(route, **kwargs)
-                    log.info('detected invalid key, however client requested not to reset.')
 
                 raise Forbidden(r, data)
 
