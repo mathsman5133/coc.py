@@ -115,27 +115,12 @@ class Client:
 
     """
 
-    def __init__(self, tokens=None, loop=None, email=None, password=None, update_tokens=False):
+    def __init__(self, email, password, token_count=1,
+                 token_names='Created with coc.py Client', loop=None):
+        
         self.loop = loop or asyncio.get_event_loop()
-        has_auth = password or email
-
-        if tokens:
-            if isinstance(tokens, str):
-                tokens = [tokens]
-            elif isinstance(tokens, list):
-                pass
-            else:
-                raise RuntimeError('tokens must be either a str or list of str tokens')
-
-        else:
-            if not has_auth:
-                raise RuntimeError('An email and password must be set if no tokens are provided')
-
-        if update_tokens and not has_auth:
-                raise RuntimeError('An email and password must be set if update_tokens is True')
-
-        self.http = HTTPClient(client=self, tokens=tokens, loop=self.loop, email=email,
-                               password=password, update_tokens=update_tokens)
+        self.http = HTTPClient(client=self, email=email, password=password,
+                               token_names=token_names, loop=self.loop)
         log.info('Clash of Clans API client created')
         self._add_cache()
         log.debug('Added cache')
