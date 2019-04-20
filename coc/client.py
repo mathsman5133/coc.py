@@ -84,15 +84,18 @@ class Client:
         This is used when updating the key automatically if your IP changes
 
     key_count: Optional[:class:`int`]
-        The ammount of keys to use for this client.
+        The amount of keys to use for this client. Maximum of 10.
         Defaults to 1
 
     key_names: Optional[:class:`str`]
-        The ammount of keys to use for this client.
+        Default name for keys created to use for this client.
+        All keys created or to be used with this client must
+        have this name.
+
         Defaults to "Created with coc.py Client"
 
     loop: Optional[event loop]
-        The `event loop`_ to use for HTTP requests.
+        The `event loop` to use for HTTP requests.
         An ``asyncio.get_event_loop()`` will be used if none is passed
 
     Attributes
@@ -109,7 +112,7 @@ class Client:
         correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
         if not key_count == correct_key_count:
-            raise RuntimeError("Token count must be within {}-{}".format(
+            raise RuntimeError("Key count must be within {}-{}".format(
                 KEY_MINIMUM, KEY_MAXIMUM))
 
         self.http = HTTPClient(client=self, email=email, password=password,
@@ -127,7 +130,7 @@ class Client:
         await self.http.close()
 
     async def on_key_reset(self, new_key):
-        """Event: called when the client's key is reset.
+        """Event: called when one of the client's keys are reset.
 
         By default this does nothing.
 
@@ -142,8 +145,8 @@ class Client:
 
             class Client(coc.Client):
                 def __init__(self, key, email, password):
-                    super().__init__(key=key, email=email,
-                                     password=password, update_key=True)
+                    super().__init__(email, password, key_count=1,
+                                 key_names='Created with coc.py Client', loop=None)
 
                 def on_key_reset(key):
                     print('My new key is {}'.format(key))
