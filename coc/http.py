@@ -29,7 +29,6 @@ SOFTWARE.
 import json
 import logging
 import aiohttp
-import asyncio
 
 from urllib.parse import urlencode
 from itertools import cycle
@@ -140,11 +139,11 @@ class HTTPClient:
 
             if r.status == 403:
                 if data.get('reason') in ['accessDenied.invalidIp']:
-                    try:
+                    if 'key' in locals():
                         await self.reset_key(key)
                         log.info('Reset Clash of Clans key')
                         return await self.request(route, **kwargs)
-                    except NameError:
+                    else:
                         raise HTTPException(r, data)
 
                 raise Forbidden(r, data)
