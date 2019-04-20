@@ -26,12 +26,32 @@ SOFTWARE.
 """
 
 from datetime import datetime
-
+from operator import attrgetter
 
 def try_enum(_class, data):
     if data is None:
         return None
     return _class(data=data)
+
+def find(predicate, seq):
+    for element in seq:
+        if predicate(element):
+            return element
+    return None
+
+def get(iterable, **attrs):
+    def predicate(elem):
+        for attr, val in attrs.items():
+            nested = attr.split('__')
+            obj = elem
+            for attribute in nested:
+                obj = getattr(obj, attribute)
+
+            if obj != val:
+                return False
+        return True
+
+    return find(predicate, iterable)
 
 
 class Clan:
@@ -47,13 +67,16 @@ class Clan:
     badge:
         :class:`Badge` - The clan badges
     """
-    __slots__ = ('tag', 'name', 'badge', '_data')
+    __slots__ = ('tag', 'name', '_data')
 
     def __init__(self, *, data):
         self._data = data
         self.tag = data.get('tag')
         self.name = data.get('name')
-        self.badge = try_enum(Badge, data.get('badgeUrls'))
+
+    @property
+    def badge(self):
+        return try_enum(Badge, data.get('badgeUrls'))
 
     def __str__(self):
         return self.name
@@ -83,19 +106,22 @@ class BasicClan(Clan):
     previous_rank:
         :class:`int` - The clan rank for it's location in the previous season
     """
-    __slots__ = ('location', 'level', 'points', 'versus_points',
+    __slots__ = ('level', 'points', 'versus_points',
                  'member_count', 'rank', 'previous_rank')
 
     def __init__(self, *, data):
         super().__init__(data=data)
 
-        self.location = try_enum(Location, data.get('location', None))
-        self.level = data.get('clanLevel', None)
-        self.points = data.get('clanPoints', None)
-        self.versus_points = data.get('clanVersusPoints', None)
-        self.member_count = data.get('members', None)
+        self.level = data.get('clanLevel')
+        self.points = data.get('clanPoints')
+        self.versus_points = data.get('clanVersusPoints')
+        self.member_count = data.get('members')
         self.rank = data.get('rank')
         self.previous_rank = data.get('previous_rank')
+
+    @property
+    def location(self):
+        return try_enum(Location, data.get('location'))
 
 
 class SearchClan(BasicClan):
@@ -134,31 +160,28 @@ class SearchClan(BasicClan):
                  'description', '_members')
 
     def __init__(self, *, data):
-        self._members = {}
         super().__init__(data=data)
 
-        self.type = data.get('type', None)
-        self.required_trophies = data.get('requiredTrophies', None)
-        self.war_frequency = data.get('warFrequency', None)
-        self.war_win_streak = data.get('warWinStreak', None)
-        self.war_wins = data.get('warWins', None)
-        self.war_ties = data.get('warTies', None)
-        self.war_losses = data.get('warLosses', None)
-        self.public_war_log = data.get('isWarLogPublic', None)
-        self.description = data.get('description')
-
-        for mdata in data.get('memberList', []):
-            self._add_member(BasicPlayer(data=mdata))
-
-    def _add_member(self, data):
-        self._members[data.tag] = data
-
-    def get_member(self, tag):
-        return self._members.get(tag)
+        self.type = data.get('type')
+        self.required_trophies = data.get('requiredTrophies')
+        self.war_frequency = data.get('warFrequency')
+        self.war_win_streak = data.get('warWinStreak')
+        self.war_wins = data.get('warWins')
+        self.war_ties = data.get('warTies')
+        self.war_losses = data.get('warLosses')
+        self.public_war_log = data.get('isWarLogPublic')
+        self.description = data.get('description', '')
 
     @property
     def members(self):
-        return list(self._members.values())
+        return [BasicPlayer(mdata, self) for mdata in self._data.get('memberList')]
+
+    @property
+    def member_dict(self, attr='tag'):
+        return {getattr(m, attr): m for m in self.members}
+
+    def get_member(self, **attrs):
+        return get(self.members, **attrs)
 
 
 class WarClan(Clan):
@@ -195,68 +218,29 @@ class WarClan(Clan):
                  'attacks_used', 'total_attacks', 'max_stars')
 
     def __init__(self, *, data, war):
-
-        self._war = war
-
-        self._members = {}
-        self._attacks = {}
-        self._defenses = {}
-
         super(WarClan, self).__init__(data=data)
 
-        self.level = data.get('clanLevel', None)
-        self.attack_count = data.get('attacks', None)
-        self.stars = data.get('stars', None)
-        self.destruction = data.get('destructionPercentage', None)
-        self.exp_earned = data.get('expEarned', None)
+        self._war = war
+        self.level = data.get('clanLevel')
+        self.attack_count = data.get('attacks')
+        self.stars = data.get('stars')
+        self.destruction = data.get('destructionPercentage')
+        self.exp_earned = data.get('expEarned')
 
         self.attacks_used = data.get('attacks')
         self.total_attacks = self._war.team_size * 2
         self.stars = data.get('stars')
         self.max_stars = self._war.team_size * 3
-
-        for mdata in data.get('members', []):
-            member = WarMember(data=mdata, war=self._war)
-            self._add_member(member)
-
-    def _add_member(self, data):
-        self._members[data.tag] = data
-
-    def _add_attack(self, data):
-        if data.attacker_tag in self._attacks.keys():
-            self._attacks[data.attacker_tag].append(data)
-        else:
-            self._attacks[data.attacker_tag] = [data]
-
-    def _add_defense(self, data):
-        if data.defender_tag in self._defenses.keys():
-            self._defenses[data.defender_tag].append(data)
-        else:
-            self._defenses[data.defender_tag] = [data]
-
-    def _find_add_defender(self, data):
-        defender_tag = data.defender_tag
-        member = self._war.get_member(defender_tag)
-        member._add_defense(data)
-
-    def _load_attacks(self):
-        for member in self._members:
-            for attack in member.attacks:
-                self._add_attack(attack)
-                self._find_add_defender(attack)
-
+            
     @property
     def members(self):
-        return list(self._members.values())
+        return [WarMember(data=mdata, war=self._war, self) 
+                for mdata in self._data.get('members', [])]
 
     @property
-    def attacks(self):
-        return list(self._attacks.values())
-
-    @property
-    def defenses(self):
-        return list(self._defenses.values())
-
+    def members_dict(self, attr='tag'):
+        return {getattr(m, attr): m for m in self.members}
+    
 
 class Player:
     """Represents the most stripped down version of a player.
@@ -316,31 +300,40 @@ class BasicPlayer(Player):
     defense_wins:
         :class:`int` - The players current defense wins for this season
     """
-    __slots__ = ('clan', 'level', 'league', 'trophies', 'versus_trophies', 'role',
+    __slots__ = ('clan', 'level', 'trophies', 'versus_trophies',
                  'clan_rank', 'clan_previous_rank', 'league_rank', 'donations',
                  'received', 'attack_wins', 'defense_wins')
 
-    def __init__(self, *, data, clan=None):
+    def __init__(self, data, clan=None):
         super(BasicPlayer, self).__init__(data)
 
         self.clan = clan
-        self.level = data.get('expLevel', None)
-        self.league = try_enum(League, data.get('league', None))
-        self.trophies = data.get('trophies', None)
-        self.versus_trophies = data.get('versusTrophies', None)
-        self.role = data.get('role', None)
-        self.clan_rank = data.get('clanRank', None)
-        self.clan_previous_rank = data.get('clanRank', None)
-        self.league_rank = data.get('rank', None)
-        self.donations = data.get('donations', None)
-        self.received = data.get('donationsReceived', None)
-        self.attack_wins = data.get('attackWins', None)
-        self.defense_wins = data.get('defenseWins', None)
+        self.level = data.get('expLevel')
+        self.trophies = data.get('trophies')
+        self.versus_trophies = data.get('versusTrophies')
+        self.clan_rank = data.get('clanRank')
+        self.clan_previous_rank = data.get('clanRank')
+        self.league_rank = data.get('rank')
+        self.donations = data.get('donations')
+        self.received = data.get('donationsReceived')
+        self.attack_wins = data.get('attackWins')
+        self.defense_wins = data.get('defenseWins')
 
         if not self.clan:
             cdata = data.get('clan')
             if cdata:
                 self.clan = BasicClan(data=cdata)
+    @property
+    def league(self):
+        try_enum(League, data.get('league'))
+
+    @property
+    def role(self):
+        role = data.get('role')
+        if role == 'admin':
+            return 'elder'
+        return role
+    
 
 
 class WarMember(Player):
@@ -365,15 +358,30 @@ class WarMember(Player):
     war:
         :class:`War` - The war this member belongs to
     """
-    __slots__ = ('town_hall', 'map_position', 'attacks', 'war')
+    __slots__ = ('town_hall', 'map_position')
 
-    def __init__(self, data, war):
+    def __init__(self, data, war, clan):
         super(WarMember, self).__init__(data)
+
+        self.town_hall = data.get('townHallLevel')
+        self.map_position = data.get('mapPosition')
+
+        @property
+        def attacks(self):
+            return [WarAttack(data=adata, war=war, member=self)
+                    for adata 
+                    in data.get('attacks', [])
+                    if adata['attackerTag'] == self.tag]
+
+        @property
+        def defenses(self):
+            return [WarAttack(data=adata, war=war, member=self)
+                    for adata 
+                    in data.get('attacks', [])
+                    if adata['attackerTag'] == self.tag]
+
         
-        self.town_hall = data.get('townHallLevel', None)
-        self.map_position = data.get('mapPosition', None)
-        self.attacks = [WarAttack(data=adata, war=war, member=self) for adata in data.get('attacks', [])]
-        
+
 
 class SearchPlayer(BasicPlayer):
     """Represents a Searched Player that the API returns.
@@ -406,72 +414,55 @@ class SearchPlayer(BasicPlayer):
     versus_attacks_wins:
         :class:`int` - The players total BH wins
     """
-    __slots__ = ('_achievements', '_troops', '_heroes', '_spells',
-                 'best_trophies', 'war_stars', 'town_hall',
+    __slots__ = ('best_trophies', 'war_stars', 'town_hall',
                  'builder_hall', 'best_versus_trophies', 'versus_attacks_wins')
 
     def __init__(self, *, data):
-        self._achievements = {}
-        self._troops = {}
-        self._heroes = {}
-        self._spells = {}
-
         super(SearchPlayer, self).__init__(data=data)
 
-        self._add_data(data)
-
-    def _add_data(self, data):
-        self.clan = try_enum(Clan, data.get('clan', None))
-        self.best_trophies = data.get('bestTrophies', None)
-        self.war_stars = data.get('warStars', None)
-        self.town_hall = data.get('townHallLevel', None)
-        self.builder_hall = data.get('builderHallLevel', None)
-        self.best_versus_trophies = data.get('bestVersusTrophies', None)
-        self.versus_attacks_wins = data.get('versusBattleWins', None)
-
-        for adata in data.get('achievements', []):
-            achievement = Achievement(data=adata, player=self)
-            self._add_achievement(achievement)
-
-        for tdata in data.get('troops', []):
-            troop = Troop(data=tdata, player=self)
-            self._add_troop(troop)
-
-        for hdata in data.get('heroes', []):
-            hero = Hero(data=hdata, player=self)
-            self._add_hero(hero)
-
-        for sdata in data.get('spells', []):
-            spell = Spell(data=sdata, player=self)
-            self._add_spell(spell)
-
-    def _add_achievement(self, data):
-        self._achievements[data.name] = data
-
-    def _add_troop(self, data):
-        self._troops[data.name] = data
-
-    def _add_hero(self, data):
-        self._heroes[data.name] = data
-
-    def _add_spell(self, data):
-        self._spells[data.name] = data
+        self.clan = try_enum(Clan, data.get('clan'))
+        self.best_trophies = data.get('bestTrophies')
+        self.war_stars = data.get('warStars')
+        self.town_hall = data.get('townHallLevel')
+        self.builder_hall = data.get('builderHallLevel')
+        self.best_versus_trophies = data.get('bestVersusTrophies')
+        self.versus_attacks_wins = data.get('versusBattleWins')
 
     @property
     def achievements(self):
-        return list(self._achievements.values())
+        return [Achievement(data=adata, player=self)
+                for adata in self._data.get('achievements', [])]
 
     @property
     def troops(self):
-        return list(self._troops.values())
+        return [Spell(data=sdata, player=self)
+                for sdata in self._data.get('troops', [])]
 
     @property
     def heroes(self):
-        return list(self._heroes.values())
+        return [Hero(data=hdata, player=self)
+                for hdata in self._data.get('heroes', [])]
 
     @property
     def spells(self):
-        return list(self._spells.values())
+        return [Spell(data=sdata, player=self)
+                for sdata in self._data.get('spells', [])]
+            
+    @property
+    def achievements_dict(self):
+        return {getattr(m, attr): m for m in self.achievements}
+
+    @property
+    def troops_dict(self):
+        return {getattr(m, attr): m for m in self.troops}
+
+    @property
+    def heroes_dict(self):
+        return {getattr(m, attr): m for m in self.heroes}
+
+    @property
+    def spells_dict(self):
+        return {getattr(m, attr): m for m in self.spells}
 
 
 class BaseWar:
@@ -486,29 +477,24 @@ class BaseWar:
     opponent:
         :class:`WarClan` - The opposition clan
     """
-    __slots__ = ('team_size', 'clan', 'opponent', '_data')
+    __slots__ = ('team_size', '_data')
 
     def __init__(self, *, data):
         self._data = data
-        self.team_size = data.get('teamSize', None)
+        self.team_size = data.get('teamSize')
 
-        clan = data.get('clan')
-        if clan and 'tag' in clan:
-            # at the moment, if the clan is in notInWar, the API returns
-            # 'clan' and 'opponent' as dicts containing only badge urls of
-            # no specific clan. very strange
+    @property
+    def clan(self):
+        clan = data.get('clan', {})
+        if 'tag' in clan:
+            return WarClan(data=clan, war=self)
 
-            self.clan = WarClan(data=clan, war=self)
-        else:
-            self.clan = None
-
-        opponent = data.get('opponent')
-        if opponent and 'tag' in opponent:
-            # same problem as clan
-            self.opponent = WarClan(data=opponent, war=self)
-        else:
-            self.opponent = None
-
+    @property
+    def opponent(self):
+        opponent = data.get('opponent', {})
+        if 'tag' in opponent:
+            return WarClan(data=opponent, war=self)
+        
 
 class WarLog(BaseWar):
     """Represents a Clash of Clans War Log Entry
@@ -566,15 +552,15 @@ class CurrentWar(BaseWar):
     @property
     def attacks(self):
         a = [].extend(self.clan.attacks).extend(self.opponent.attacks)
-        a.sort(key=lambda o: o.order)
+        a.sort(key=attrgetter('order'))
         return a
 
     @property
     def members(self):
         m = [].extend(self.clan.members).extend(self.opponent.members)
         return m
-    
-    
+
+
 
 
 class Achievement:
@@ -834,7 +820,7 @@ class WarAttack:
     @property
     def defender(self):
         return self.war.get_member(self.defender_tag)
-    
+
 
 
 class Location:
@@ -884,7 +870,10 @@ class League:
 
         self.id = data.get('id')
         self.name = data.get('name')
-        self.badge = try_enum(Badge, data=data.get('iconUrls', None))
+
+        @property
+        def badge(self):
+            return try_enum(Badge, data=data.get('iconUrls'))
 
     def __str__(self):
         return self.name
@@ -904,7 +893,7 @@ class LeagueRankedPlayer(BasicPlayer):
         :class:`int` - The players rank in their league for this season
     """
     def __init__(self, *, data):
-        self.rank = data.get('rank', None)
+        self.rank = data.get('rank')
         super(LeagueRankedPlayer, self).__init__(data=data)
 
 
@@ -915,9 +904,9 @@ class Season:
     __slots__ = ('rank', 'trophies', 'id')
 
     def __init__(self, *, data):
-        self.rank = data['rank']
-        self.trophies = data['trophies']
-        self.id = data['id']
+        self.rank = data.get('rank')
+        self.trophies = data.get('trophies')
+        self.id = data.get('id')
 
 
 class LegendStatistics:
@@ -944,9 +933,18 @@ class LegendStatistics:
 
         self.player = player
         self.legend_trophies = data['legendTrophies']
-        self.current_season = try_enum(Season, data=data.get('currentSeason', None))
-        self.previous_season = try_enum(Season, data=data.get('previousSeason', None))
-        self.best_season = try_enum(Season, data=data.get('bestSeason', None))
+
+        @property
+        def current_season(self):
+            return try_enum(Season, data=data.get('currentSeason'))
+
+        @property
+        def previous_season(self):
+            return try_enum(Season, data=data.get('previousSeason'))
+            
+        @property
+        def best_season(self):
+            return try_enum(Season, data=data.get('bestSeason'))
 
 
 class Badge:
@@ -1109,8 +1107,8 @@ class LeagueGroup:
 
         self._clans = {}
         self._rounds = []
-        self.state = data.get('state', None)
-        self.season = data.get('season', None)
+        self.state = data.get('state')
+        self.season = data.get('season')
 
         for cdata in data.get('clans', []):
             self._add_clan(LeagueClan(data=cdata))
@@ -1145,7 +1143,7 @@ class LeagueWar(CurrentWar):
         :class:`str` - The war tag
     """
     def __init__(self, *, data):
-        self.tag = data.get('tag', None)
+        self.tag = data.get('tag')
         super(LeagueWar, self).__init__(data=data)
 
 
