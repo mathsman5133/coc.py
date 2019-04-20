@@ -34,7 +34,7 @@ import asyncio
 from urllib.parse import urlencode
 from itertools import cycle
 from datetime import datetime
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken, Forbidden
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidKey, Forbidden
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -97,7 +97,7 @@ class HTTPClient:
                     self._keys.append(await self.create_key(
                         cookies,self.key_names, key_description, [ip]))
             else:
-                await self.__session.close()
+                await self.close()
                 raise RuntimeError(("There are {} API keys already created and {} match \"{}\" out of a max of "
                                     "{} please goto {} and delete unused keys or rename to \"{}\".").format(
                     len(current_keys), len(self._keys),
@@ -138,12 +138,10 @@ class HTTPClient:
 
             if r.status == 403:
                 if data.get('reason') in ['accessDenied.invalidIp']:
-                    if self.update_keys:
-                        log.info('Resetting Clash of Clans key')
-                        await self.reset_key(key)
-                        return await self.request(route, **kwargs)
+                    log.info('Resetting Clash of Clans key')
+                    await self.reset_key(key)
+                    return await self.request(route, **kwargs)
                     log.info('detected invalid key, however client requested not to reset.')
-                    raise InvalidToken(r, data)
 
                 raise Forbidden(r, data)
 
@@ -170,10 +168,10 @@ class HTTPClient:
 
     @staticmethod
     def create_cookies(response_dict, session):
-        return "session={};game-api-url={};game-api-key={}".format(
+        return "session={};game-api-url={};game-api-token={}".format(
             session,
             response_dict['swaggerUrl'],
-            response_dict['temporaryAPIToken']
+            response_dict['temporaryAPIKey']
         )
 
     async def reset_key(self, key):
