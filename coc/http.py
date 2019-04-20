@@ -34,7 +34,7 @@ import asyncio
 from urllib.parse import urlencode
 from itertools import cycle
 from datetime import datetime
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidKey, Forbidden
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -72,7 +72,6 @@ class HTTPClient:
                  key_names, key_count):
         self.client = client
         self.loop = loop
-        self.__session = aiohttp.ClientSession(loop=self.loop)
         self.email = email
         self.password = password
         self.key_names = key_names
@@ -81,6 +80,7 @@ class HTTPClient:
         loop.run_until_complete(self.get_keys())
 
     async def get_keys(self):
+        self.__session = aiohttp.ClientSession(loop=self.loop)
         key_count = self.key_count
         ip = await self.get_ip()
         response_dict, session = await self.login_to_site(self.email, self.password)
@@ -171,7 +171,7 @@ class HTTPClient:
         return "session={};game-api-url={};game-api-token={}".format(
             session,
             response_dict['swaggerUrl'],
-            response_dict['temporaryAPIKey']
+            response_dict['temporaryAPIToken']
         )
 
     async def reset_key(self, key):
