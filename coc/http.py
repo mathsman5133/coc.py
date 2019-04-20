@@ -33,10 +33,11 @@ import asyncio
 
 from urllib.parse import urlencode
 from itertools import cycle
-
+from datetime import datetime
 from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, InvalidToken, Forbidden
 
 log = logging.getLogger(__name__)
+KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 
 async def json_or_text(response):
@@ -67,71 +68,62 @@ class Route:
 
 
 class HTTPClient:
-    def __init__(self, client, loop, tokens=None, *, email, password, update_tokens=False):
+    def __init__(self, client, loop, email, password,
+                 key_names, key_count):
         self.client = client
         self.loop = loop
-        self.__session = None
+        self.__session = aiohttp.ClientSession(loop=self.loop)
         self.email = email
         self.password = password
-        self.update_tokens = update_tokens
+        self.key_names = key_names
+        self.key_count = key_count
 
-        asyncio.ensure_future(self.login(tokens))
+        loop.run_until_complete(self.get_keys())
 
-    async def login(self, tokens):
-        self.__session = aiohttp.ClientSession(loop=self.loop)
+    async def get_keys(self):
+        key_count = self.key_count
+        ip = await self.get_ip()
+        response_dict, session = await self.login_to_site(self.email, self.password)
+        cookies = self.create_cookies(response_dict, session)
+        current_keys = (await self.find_site_keys(cookies))['keys']
+        self._keys = [key['key'] for key in current_keys if key['name'] == self.key_names]
+        available_keys = KEY_MAXIMUM - len(current_keys)
 
-        if not tokens:
-            ip = await self.get_ip()
+        if len(self._keys) <= key_count:
+            keys_needed = key_count - len(self._keys)
+            if available_keys >= keys_needed:
+                for _ in range(keys_needed):
+                    key_description = "Created on {}".format(datetime.now().strftime('%c'))
+                    self._keys.append(await self.create_key(
+                        cookies,self.key_names, key_description, [ip]))
+            else:
+                await self.__session.close()
+                raise RuntimeError(("There are {} API keys already created and {} match \"{}\" out of a max of "
+                                    "{} please goto {} and delete unused keys or rename to \"{}\".").format(
+                    len(current_keys), len(self._keys),
+                    self.key_names, KEY_MAXIMUM,
+                    'https://developer.clashofclans.com',
+                    self.key_names))
 
-            response_dict, session = await self.login_to_site(self.email, self.password)
-            cookies = self.create_cookies(response_dict, session)
-            current_tokens = (await self.find_site_tokens(cookies))['keys']
-
-            self._tokens = [token['key'] for token in current_tokens if ip in token['cidrRanges']]
-            if not len(self._tokens):
-                if len(current_tokens) < 10:
-                    raise RuntimeError("No tokens found related to this IP. If you are interested in seeing this TODO"
-                                       " fixed, please open a PR on the repo.")
-                    # TODO: Create token
-                else:
-                    raise RuntimeError("There are already 10 tokens and none relate to this IP")
-        else:
-            self._tokens = tokens
-
-        self.tokens = cycle(self._tokens)
-        self.token = self._tokens[0]
-
-        # TODO: Ensure token(s) work.
-        # Alternatively, log into site to ensure tokens are both in IP range and valid on site.
-        # try:
-        #     data = await self.request(Route('GET', '', {}))
-        # except HTTPException as e:
-        #     if e.response.status == 403:
-        #         raise InvalidToken(e, 'invalid token has been passed') from e
-        #     raise
-        # return self
+        self.keys = cycle(self._keys)
 
     async def close(self):
         if self.__session:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
-        token = next(self.tokens)
         method = route.method
         url = route.url
 
-        headers = {
-            "Accept": "application/json",
-            "authorization": "Bearer {}".format(token),
-        }
-
-        if 'headers' in kwargs:
-            kwargs['headers'].update(headers)
-        else:
+        if 'headers' not in kwargs:
+            headers = {
+                "Accept": "application/json",
+                "authorization": "Bearer {}".format(next(self.keys)),
+            }
             kwargs['headers'] = headers
 
         if 'json' in kwargs:
-            headers['Content-Type'] = 'application/json'
+            kwargs['headers']['Content-Type'] = 'application/json'
 
         async with self.__session.request(method, url, **kwargs) as r:
             log.debug('%s (%s) has returned %s', url, method, r.status)
@@ -146,11 +138,11 @@ class HTTPClient:
 
             if r.status == 403:
                 if data.get('reason') in ['accessDenied.invalidIp']:
-                    if self.update_tokens:
-                        log.info('Resetting Clash of Clans token')
-                        await self.reset_token(token)
+                    if self.update_keys:
+                        log.info('Resetting Clash of Clans key')
+                        await self.reset_key(key)
                         return await self.request(route, **kwargs)
-                    log.info('detected invalid token, however client requested not to reset.')
+                    log.info('detected invalid key, however client requested not to reset.')
                     raise InvalidToken(r, data)
 
                 raise Forbidden(r, data)
@@ -178,46 +170,46 @@ class HTTPClient:
 
     @staticmethod
     def create_cookies(response_dict, session):
-        return "session={};game-api-url={};game-api-token={}".format(
+        return "session={};game-api-url={};game-api-key={}".format(
             session,
             response_dict['swaggerUrl'],
             response_dict['temporaryAPIToken']
         )
-    
-    async def reset_token(self, token):
+
+    async def reset_key(self, key):
         ip = await self.get_ip()
-        # TODO: Distinguish/recognise by token name rather than current ip for running clients on multiple IPs
+        # TODO: Distinguish/recognise by key name rather than current ip for running clients on multiple IPs
         # should probably put something else in here
-        # to distinguish each token like a date
-        token_name = 'coc.py created token'
+        # to distinguish each key like a date
+        key_name = 'coc.py created key'
         # Also, probably fix this as well
-        token_description = 'learn more about this project at: https://github.com/mathsman5133/coc.py'
+        key_description = 'learn more about this project at: https://github.com/mathsman5133/coc.py'
         whitelisted_ips = [ip]
 
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
 
-        existing_tokens = (await self.find_site_tokens(cookies))['keys']
-        token_id = [t['id'] for t in existing_tokens if t['key'] == token]
+        existing_keys = (await self.find_site_keys(cookies))['keys']
+        key_id = [t['id'] for t in existing_keys if t['key'] == key]
 
-        await self.delete_token(cookies, token_id)
+        await self.delete_key(cookies, key_id)
 
-        new_token = await self.create_token(cookies, token_name, token_description, whitelisted_ips)
+        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
 
-        # this is to prevent reusing an already used tokens.
-        # All it does is move the current token to the front,
+        # this is to prevent reusing an already used keys.
+        # All it does is move the current key to the front,
         # by moving any already used ones to the end so
-        # we keep the original token order moving forward.
-        tokens = self._tokens
-        token_index = tokens.index(token)
-        self._tokens = tokens[token_index:] + tokens[:token_index]
+        # we keep the original key order moving forward.
+        keys = self._keys
+        key_index = keys.index(key)
+        self._keys = keys[key_index:] + keys[:key_index]
 
-        # now we can set the new token which is the first
-        # one in self._tokens, then start the cycle over.
-        self._tokens[0] = new_token
-        self.tokens = cycle(self.tokens)
-        self.client.dispatch('token_reset', new_token)
-        
+        # now we can set the new key which is the first
+        # one in self._keys, then start the cycle over.
+        self._keys[0] = new_key
+        self.keys = cycle(self.keys)
+        self.client.dispatch('key_reset', new_key)
+
     # clans
 
     def search_clans(self, **kwargs):
@@ -280,7 +272,7 @@ class HTTPClient:
     def get_player(self, player_tag):
         return self.request(Route('GET', '/players/{}'.format(player_tag), {}))
 
-    # token updating management
+    # key updating management
 
     async def login_to_site(self, email, password):
         login_data = {
@@ -300,35 +292,35 @@ class HTTPClient:
 
         return response_dict, session
 
-    async def find_site_tokens(self, cookies):
+    async def find_site_keys(self, cookies):
         headers = {
             "cookie": cookies,
             "content-type": "application/json"
         }
         async with self.__session.post('https://developer.clashofclans.com/api/apikey/list',
                                        data=json.dumps({}), headers=headers) as sess:
-            existing_tokens_dict = await sess.json()
+            existing_keys_dict = await sess.json()
             log.debug('%s has received %s', 'https://developer.clashofclans.com/api/apikey/list',
-                      existing_tokens_dict)
+                      existing_keys_dict)
 
-        return existing_tokens_dict
+        return existing_keys_dict
 
-    async def create_token(self, cookies, token_name, token_description, cidr_ranges):
+    async def create_key(self, cookies, key_name, key_description, cidr_ranges):
         headers = {
             "cookie": cookies,
             "content-type": "application/json"
         }
 
         data = {
-            "name": token_name,
-            "description": token_description,
+            "name": key_name,
+            "description": key_description,
             "cidrRanges": cidr_ranges
         }
 
         r = await self.request(Route('POST', '/apikey/create', api_page=True), json=data, headers=headers)
         return r['key']['key']
 
-    def delete_token(self, cookies, token_id):
+    def delete_key(self, cookies, key_id):
         headers = {
             "cookie": cookies,
             "content-type": "application/json"
@@ -336,7 +328,7 @@ class HTTPClient:
         log.critical(headers)
 
         data = {
-            "id": token_id
+            "id": key_id
         }
 
         return self.request(Route('POST', '/apikey/revoke', api_page=True), json=data, headers=headers)
