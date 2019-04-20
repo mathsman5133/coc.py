@@ -112,15 +112,16 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
-        key = next(self.keys)
         method = route.method
         url = route.url
 
         if 'headers' not in kwargs:
+            key = next(self.keys)
+
             headers = {
-                "Accept": "application/json",
-                "authorization": "Bearer {}".format(key),
-            }
+                    "Accept": "application/json",
+                    "authorization": "Bearer {}".format(key),
+                }
             kwargs['headers'] = headers
 
         if 'json' in kwargs:
@@ -139,9 +140,12 @@ class HTTPClient:
 
             if r.status == 403:
                 if data.get('reason') in ['accessDenied.invalidIp']:
-                    log.info('Resetting Clash of Clans key')
-                    await self.reset_key(key)
-                    return await self.request(route, **kwargs)
+                    try:
+                        await self.reset_key(key)
+                        log.info('Reset Clash of Clans key')
+                        return await self.request(route, **kwargs)
+                    except NameError:
+                        raise HTTPException(r, data)
 
                 raise Forbidden(r, data)
 
