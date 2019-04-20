@@ -42,7 +42,7 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 async def json_or_text(response):
     try:
         ret = await response.json()
-    except:
+    except aiohttp.ContentTypeError:
         ret = await response.text(encoding='utf-8')
 
     return ret
