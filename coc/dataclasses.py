@@ -27,17 +27,21 @@ SOFTWARE.
 
 from datetime import datetime
 from operator import attrgetter
+from itertools import chain
+
 
 def try_enum(_class, data):
     if data is None:
         return None
     return _class(data=data)
 
+
 def find(predicate, seq):
     for element in seq:
         if predicate(element):
             return element
     return None
+
 
 def get(iterable, **attrs):
     def predicate(elem):
@@ -64,8 +68,6 @@ class Clan:
         :class:`str` - The clan tag
     name:
         :class:`str` - The clan name
-    badge:
-        :class:`Badge` - The clan badges
     """
     __slots__ = ('tag', 'name', '_data')
 
@@ -76,10 +78,12 @@ class Clan:
 
     @property
     def badge(self):
-        return try_enum(Badge, data.get('badgeUrls'))
+        """:class:`Badge` - The clan badges"""
+        return try_enum(Badge, self._data.get('badgeUrls'))
 
     def __str__(self):
         return self.name
+
 
 class BasicClan(Clan):
     """Represents a Basic Clan that the API returns.
@@ -91,8 +95,6 @@ class BasicClan(Clan):
 
     Attributes
     -----------
-    location:
-        :class:`Location` - The clan location
     level:
         :class:`int` - The clan level.
     points:
@@ -121,7 +123,8 @@ class BasicClan(Clan):
 
     @property
     def location(self):
-        return try_enum(Location, data.get('location'))
+        """:class:`Location` - The clan's location"""
+        return try_enum(Location, self._data.get('location'))
 
 
 class SearchClan(BasicClan):
@@ -152,12 +155,10 @@ class SearchClan(BasicClan):
         :class:`bool` - Indicates whether the war log is public
     description:
         :class:`str` - The clan description
-    members:
-        :class:`list` of :class:`BasicPlayer` - List of clan members
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
-                 'description', '_members')
+                 'description')
 
     def __init__(self, *, data):
         super().__init__(data=data)
@@ -173,15 +174,40 @@ class SearchClan(BasicClan):
         self.description = data.get('description', '')
 
     @property
+    def _members(self):
+        """|iter|
+
+        Returns an iterable of :class:`BasicPlayer`: A list of clan members.
+        """
+        return iter(BasicPlayer(mdata, self) for mdata in self._data.get('memberList', []))
+
+    @property
     def members(self):
-        return [BasicPlayer(mdata, self) for mdata in self._data.get('memberList')]
+        """List[:class:`BasicPlayer`]: A list of clan members"""
+        return list(self._members)
 
     @property
     def member_dict(self, attr='tag'):
-        return {getattr(m, attr): m for m in self.members}
+        """Dict{attr: :class:`BasicPlayer`}: A dict of clan members by tag.
+
+        Pass in an attribute of :class:`BasicPlayer` to get that attribute as the key
+        """
+        return {getattr(m, attr): m for m in self._members}
 
     def get_member(self, **attrs):
-        return get(self.members, **attrs)
+        """Returns the first :class:`BasicPlayer` that meets the attributes passed
+
+        This will return the first member matching the attributes passed.
+
+        An example of this looks like:
+
+        .. code-block:: python3
+
+            member = SearchClan.get_member(tag='tag')
+
+        This search implements the :func:`coc.utils.get` function
+        """
+        return get(self._members, **attrs)
 
 
 class WarClan(Clan):
@@ -194,12 +220,6 @@ class WarClan(Clan):
 
     Attributes
     -----------
-    members:
-        :class:`list` of :class:`WarMember` - List of all clan members in war
-    attacks:
-        :class:`list` of :class:`WarAttack` - List of all attacks used this war
-    defenses:
-        :class:`list` of :class:`WarAttack` - List of all defenses by clan members this war
     attack_count:
         :class:`int` - Number of attacks by clan this war
     stars:
@@ -213,7 +233,7 @@ class WarClan(Clan):
     max_stars:
         :class:`int` - Total possible stars achievable
     """
-    __slots__ = ('_war', '_members', '_attacks', '_defenses', 'level',
+    __slots__ = ('_war', 'level',
                  'attack_count', 'stars', 'destruction', 'exp_earned',
                  'attacks_used', 'total_attacks', 'max_stars')
 
@@ -233,14 +253,53 @@ class WarClan(Clan):
         self.max_stars = self._war.team_size * 3
             
     @property
+    def _members(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarMember`: all clan members in war.
+        """
+        return iter(WarMember(data=mdata, war=self._war, clan=self)
+                    for mdata in self._data.get('members', []))
+
+    @property
     def members(self):
-        return [WarMember(data=mdata, war=self._war, self) 
-                for mdata in self._data.get('members', [])]
+        """List[:class:`WarMember`]: List of all clan members in war"""
+        return list(self._members)
 
     @property
     def members_dict(self, attr='tag'):
-        return {getattr(m, attr): m for m in self.members}
-    
+        """Dict{attr: :class:`WarMember`}: A dict of clan members in war by tag.
+
+        Pass in an attribute of :class:`WarMember` to get that attribute as the key.
+        """
+        return {getattr(m, attr): m for m in self._members}
+
+    @property
+    def _attacks(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarAttack`: all attacks used by the clan this war.
+        """
+        return chain.from_iterable(iter(n._attacks for n in self._members))
+
+    @property
+    def attacks(self):
+        """List[:class:`WarAttack`]: List of all attacks used this war."""
+        return list(self._attacks)
+
+    @property
+    def _defenses(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarAttack`: all defenses by clan members this war.
+        """
+        return chain.from_iterable(iter(n._defenses for n in self._members))
+
+    @property
+    def defenses(self):
+        """List[:class:`WarAttack`]: List of all defenses by clan members this war."""
+        return list(self._defenses)
+
 
 class Player:
     """Represents the most stripped down version of a player.
@@ -283,8 +342,6 @@ class BasicPlayer(Player):
         :class:`int` - The player's trophy count.
     versus_trophies:
         :class:`int` - The player's versus trophy count.
-    role:
-        :class:`str` - The members role in the clan - member, elder, etc.
     clan_rank:
         :class:`int` - The members clan rank
     clan_previous_rank
@@ -323,17 +380,19 @@ class BasicPlayer(Player):
             cdata = data.get('clan')
             if cdata:
                 self.clan = BasicClan(data=cdata)
+
     @property
     def league(self):
-        try_enum(League, data.get('league'))
+        """:class:`League`: The player's current league."""
+        return try_enum(League, self._data.get('league'))
 
     @property
     def role(self):
-        role = data.get('role')
+        """:class:`str`: The members role in the clan - member, elder, etc."""
+        role = self._data.get('role')
         if role == 'admin':
             return 'elder'
         return role
-    
 
 
 class WarMember(Player):
@@ -351,36 +410,46 @@ class WarMember(Player):
         :class:`int` - The members TH level
     map_position:
         :class:`int` - The members map position this war
-    attacks:
-        :class:`list` of :class:`WarAttack` - The member's attacks this war. Could be an empty list
-    defenses:
-        :class:`list` of :class:`WarAttack` - The member's defenses this war. Could be an empty list
     war:
         :class:`War` - The war this member belongs to
+    clan:
+        :class:`WarClan` - The war clan this member belongs to.
     """
-    __slots__ = ('town_hall', 'map_position')
+    __slots__ = ('town_hall', 'map_position', 'war', 'clan')
 
     def __init__(self, data, war, clan):
         super(WarMember, self).__init__(data)
 
+        self.war = war
+        self.clan = clan
+
         self.town_hall = data.get('townHallLevel')
         self.map_position = data.get('mapPosition')
 
-        @property
-        def attacks(self):
-            return [WarAttack(data=adata, war=war, member=self)
-                    for adata 
-                    in data.get('attacks', [])
-                    if adata['attackerTag'] == self.tag]
+    @property
+    def _attacks(self):
+        """|iter|
 
-        @property
-        def defenses(self):
-            return [WarAttack(data=adata, war=war, member=self)
-                    for adata 
-                    in data.get('attacks', [])
-                    if adata['attackerTag'] == self.tag]
+        Returns an iterable of :class:`WarAttack`: the member's attacks this war"""
+        return iter(WarAttack(data=adata, war=self.war, member=self)
+                    for adata in self._data.get('attacks', []))
 
-        
+    @property
+    def attacks(self):
+        """List[:class:`WarAttack`]: The member's attacks this war. Could be an empty list"""
+        return list(self._attacks)
+
+    @property
+    def _defenses(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarAttack`: the member's defenses this war"""
+        return filter(lambda o: o.defender_tag == self.tag, self.war.opponent._attacks)
+
+    @property
+    def defenses(self):
+        """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list"""
+        return list(self._defenses)
 
 
 class SearchPlayer(BasicPlayer):
@@ -393,14 +462,6 @@ class SearchPlayer(BasicPlayer):
 
     Attributes
     -----------
-    achievements:
-        :class:`list` of :class:`Achievement` - List of the player's achievements
-    troops:
-        :class:`list` of :class:`Troop` - List of the player's troops
-    heroes:
-        :class:`list` of :class:`Hero` - List of the player's heroes
-    spells:
-        :class:`list` of :class:`Spell` - List of the player's spells
     best_trophies:
         :class:`int` - The players top trophy count
     best_versus_trophies:
@@ -429,39 +490,66 @@ class SearchPlayer(BasicPlayer):
         self.versus_attacks_wins = data.get('versusBattleWins')
 
     @property
+    def _achievements(self):
+        """|iter|
+
+        Returns an iterable of :class:`Achievement`: the player's achievements."""
+        return iter(Achievement(data=adata, player=self)
+                    for adata in self._data.get('achievements', []))
+
+    @property
     def achievements(self):
-        return [Achievement(data=adata, player=self)
-                for adata in self._data.get('achievements', [])]
+        """List[:class:`Achievement`]: List of the player's achievements"""
+        return list(self._achievements)
 
     @property
     def troops(self):
+        """List[:class:`Troop`]: List of the player's troops"""
         return [Spell(data=sdata, player=self)
                 for sdata in self._data.get('troops', [])]
 
     @property
     def heroes(self):
+        """List[:class:`Hero`]: List of the player's heroes"""
         return [Hero(data=hdata, player=self)
                 for hdata in self._data.get('heroes', [])]
 
     @property
     def spells(self):
+        """List[:class:`Spell`]: List of the player's spells"""
         return [Spell(data=sdata, player=self)
                 for sdata in self._data.get('spells', [])]
             
     @property
-    def achievements_dict(self):
-        return {getattr(m, attr): m for m in self.achievements}
+    def achievements_dict(self, attr='name'):
+        """Dict{name: :class:`Achievement`}: A dict of achievements by name.
+
+        Pass in an attribute of :class:`Achievement` to get that attribute as the key
+        """
+        return {getattr(m, attr): m for m in self._achievements}
 
     @property
-    def troops_dict(self):
+    def troops_dict(self, attr='name'):
+        """Dict{name: :class:`Troop`}: A dict of troops by name.
+
+        Pass in an attribute of :class:`Troop` to get that attribute as the key
+        """
         return {getattr(m, attr): m for m in self.troops}
 
     @property
-    def heroes_dict(self):
+    def heroes_dict(self, attr='name'):
+        """Dict{name: :class:`Hero`}: A dict of heroes by name.
+
+        Pass in an attribute of :class:`Hero` to get that attribute as the key
+        """
         return {getattr(m, attr): m for m in self.heroes}
 
     @property
-    def spells_dict(self):
+    def spells_dict(self, attr='name'):
+        """Dict{name: :class:`Spell`}: A dict of spells by name.
+
+        Pass in an attribute of :class:`Spell` to get that attribute as the key
+        """
         return {getattr(m, attr): m for m in self.spells}
 
 
@@ -472,10 +560,6 @@ class BaseWar:
     -----------
     team_size:
         :class:`int` - The number of players per clan in war
-    clan:
-        :class:`WarClan` - The offensive clan
-    opponent:
-        :class:`WarClan` - The opposition clan
     """
     __slots__ = ('team_size', '_data')
 
@@ -485,14 +569,21 @@ class BaseWar:
 
     @property
     def clan(self):
-        clan = data.get('clan', {})
+        """:class:`WarClan`: The offensive clan"""
+        clan = self._data.get('clan', {})
         if 'tag' in clan:
+            # at the moment, if the clan is in notInWar, the API returns
+            # 'clan' and 'opponent' as dicts containing only badge urls of
+            # no specific clan. very strange
+
             return WarClan(data=clan, war=self)
 
     @property
     def opponent(self):
-        opponent = data.get('opponent', {})
+        """:class:`WarClan`: The opposition clan"""
+        opponent = self._data.get('opponent', {})
         if 'tag' in opponent:
+            # same issue as clan
             return WarClan(data=opponent, war=self)
         
 
@@ -533,13 +624,9 @@ class CurrentWar(BaseWar):
         :class:`Timestamp` - The start time of battle day as a Timestamp object
     end_time:
         :class:`Timestamp` - The end time of battle day as a Timestamp object
-    attacks: :class:`list` of :class:`WarAttack`
-            A list of all attacks this war
-    members: :class:`list` of :class:`WarMember`
-            A list of all members this war
     """
     __slots__ = ('state', 'preparation_start_time',
-                 'start_time', 'end_time', '_members')
+                 'start_time', 'end_time')
 
     def __init__(self, *, data):
         self.state = data.get('state')
@@ -550,17 +637,45 @@ class CurrentWar(BaseWar):
         super(CurrentWar, self).__init__(data=data)
 
     @property
+    def _attacks(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarAttack`: all attacks this war"""
+        return chain(self.clan._attacks, self.opponent._attacks)
+
+    @property
     def attacks(self):
-        a = [].extend(self.clan.attacks).extend(self.opponent.attacks)
+        """List[:class:`WarAttack`]: A list of all attacks this war"""
+        a = list(self._attacks)
         a.sort(key=attrgetter('order'))
         return a
 
     @property
+    def _members(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarMember`: all members this war"""
+        return chain(self.clan._members, self.opponent._members)
+
+    @property
     def members(self):
-        m = [].extend(self.clan.members).extend(self.opponent.members)
-        return m
+        """List[:class:`WarMember`]: A list of all members this war"""
+        return list(self._members)
 
+    def get_member(self, **attrs):
+        """Returns the first :class:`WarMember` that meets the attributes passed
 
+        This will return the first member matching the attributes passed.
+
+        An example of this looks like:
+
+        .. code-block:: python3
+
+            member = CurrentWar.get_member(tag='tag')
+
+        This search implements the :func:`coc.utils.get` function
+        """
+        return get(self._members, **attrs)
 
 
 class Achievement:
@@ -585,12 +700,6 @@ class Achievement:
         :class:`str` - Information regarding completion of the achievement
     village:
         :class:`str` - Either `home` or `builderBase`
-    is_completed:
-        :class:`bool` - Indicates whether the achievement is completed (3 stars achieved)
-    is_home_base:
-        :class:`bool` - Helper property to tell you if the achievement belongs to the home base
-    is_builder_base:
-        :class:`bool` - Helper property to tell you if the achievement belongs to the builder base
     """
 
     __slots__ = ('player', 'name', 'stars', 'value', 'target',
@@ -613,14 +722,17 @@ class Achievement:
 
     @property
     def is_builder_base(self):
+        """:class:`bool`: Helper property to tell you if the achievement belongs to the builder base"""
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
+        """:class:`bool`: Helper property to tell you if the achievement belongs to the home base"""
         return self.village == 'home'
 
     @property
     def is_completed(self):
+        """:class:`bool`: Indicates whether the achievement is completed (3 stars achieved)"""
         return self.stars == 3
 
 
@@ -639,12 +751,6 @@ class Troop:
         :class:`int` - The overall max level of the troop, excluding townhall limitations
     village:
         :class:`str` - Either `home` or `builderBase`
-    is_max:
-        :class:`bool` - Indicates whether the troop is maxed overall, excluding townhall limitations
-    is_home_base:
-        :class:`bool` - Helper property to tell you if the troop belongs to the home base
-    is_builder_base:
-        :class:`bool` - Helper property to tell you if the troop belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
@@ -663,14 +769,17 @@ class Troop:
 
     @property
     def is_max(self):
+        """:class:`bool`: Helper property to tell you if the troop is the max level"""
         return self.max_level == self.level
 
     @property
     def is_builder_base(self):
+        """:class:`bool`: Helper property to tell you if the troop belongs to the builder base"""
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
+        """:class:`bool`: Helper property to tell you if the troop belongs to the home base"""
         return self.village == 'home'
 
 
@@ -689,12 +798,6 @@ class Hero:
         :class:`int` - The overall max level of the hero, excluding townhall limitations
     village:
         :class:`str` - Either `home` or `builderBase`
-    is_max:
-        :class:`bool` - Indicates whether the hero is maxed overall, excluding townhall limitations
-    is_home_base:
-        :class:`bool` - Helper property to tell you if the hero belongs to the home base
-    is_builder_base:
-        :class:`bool` - Helper property to tell you if the hero belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
@@ -713,14 +816,17 @@ class Hero:
 
     @property
     def is_max(self):
+        """:class:`bool`: Helper property to tell you if the hero is the max level"""
         return self.level == self.max_level
 
     @property
     def is_builder_base(self):
+        """:class:`bool`: Helper property to tell you if the hero belongs to the builder base"""
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
+        """:class:`bool`: Helper property to tell you if the hero belongs to the home base"""
         return self.village == 'home'
 
 
@@ -739,12 +845,6 @@ class Spell:
         :class:`int` - The overall max level of the spell, excluding townhall limitations
     village:
         :class:`str` - Either `home` or `builderBase`
-    is_max:
-        :class:`bool` - Indicates whether the spell is maxed overall, excluding townhall limitations
-    is_home_base:
-        :class:`bool` - Helper property to tell you if the spell belongs to the home base
-    is_builder_base:
-        :class:`bool` - Helper property to tell you if the spell belongs to the builder base
     """
     __slots__ = ('player', 'name', 'level',
                  'max_level', 'village', '_data')
@@ -763,14 +863,17 @@ class Spell:
 
     @property
     def is_max(self):
+        """:class:`bool`: Helper property to tell you if the spell is the max level"""
         return self.max_level == self.level
 
     @property
     def is_builder_base(self):
+        """:class:`bool`: Helper property to tell you if the spell belongs to the builder base"""
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
+        """:class:`bool`: Helper property to tell you if the spell belongs to the home base"""
         return self.village == 'home'
 
 
@@ -792,11 +895,6 @@ class WarAttack:
         :class:`int` - The attacker tag
     defender_tag:
         :class:`int` - The defender tag
-    attacker:
-        :class:`WarMember` - The attacker
-    defender:
-        :class:`WarMember` - The defender
-
     """
     __slots__ = ('war', 'member', 'stars',
                  'destruction', 'order',
@@ -815,12 +913,13 @@ class WarAttack:
 
     @property
     def attacker(self):
-        return self.war.get_member(self.attacker_tag)
+        """:class:`WarMember`: The attacker."""
+        return self.war.get_member(tag=self.attacker_tag)
 
     @property
     def defender(self):
-        return self.war.get_member(self.defender_tag)
-
+        """:class:`WarMember`: The defender."""
+        return self.war.get_member(tag=self.defender_tag)
 
 
 class Location:
@@ -860,10 +959,8 @@ class League:
         :class:`str` - The league ID
     name:
         :class:`str` - The league name
-    badge:
-        :class:`Badge` - The league badge
     """
-    __slots__ = ('id', 'name', 'badge', '_data')
+    __slots__ = ('id', 'name', '_data')
 
     def __init__(self, *, data):
         self._data = data
@@ -871,9 +968,10 @@ class League:
         self.id = data.get('id')
         self.name = data.get('name')
 
-        @property
-        def badge(self):
-            return try_enum(Badge, data=data.get('iconUrls'))
+    @property
+    def badge(self):
+        """:class:`Badge`: The league's badge"""
+        return try_enum(Badge, data=self._data.get('iconUrls'))
 
     def __str__(self):
         return self.name
@@ -918,15 +1016,8 @@ class LegendStatistics:
         :class:`Player` - The player
     legend_trophies:
         :class:`int` - The player's legend trophies
-    current_season:
-        :class:`int` - Legend trophies for this season
-    previous_season:
-        :class:`int` - Legend trophies for the previous season
-    best_season:
-        :class:`int` - Legend trophies for the player's best season
     """
-    __slots__ = ('player', 'legend_trophies', 'current_season',
-                 'previous_season', 'best_season', '_data')
+    __slots__ = ('player', 'legend_trophies', '_data')
 
     def __init__(self, *, data, player):
         self._data = data
@@ -934,17 +1025,20 @@ class LegendStatistics:
         self.player = player
         self.legend_trophies = data['legendTrophies']
 
-        @property
-        def current_season(self):
-            return try_enum(Season, data=data.get('currentSeason'))
+    @property
+    def current_season(self):
+        """:class:`int`: Legend trophies for this season."""
+        return try_enum(Season, data=self._data.get('currentSeason'))
 
-        @property
-        def previous_season(self):
-            return try_enum(Season, data=data.get('previousSeason'))
-            
-        @property
-        def best_season(self):
-            return try_enum(Season, data=data.get('bestSeason'))
+    @property
+    def previous_season(self):
+        """:class:`int`: Legend trophies for the previous season."""
+        return try_enum(Season, data=self._data.get('previousSeason'))
+
+    @property
+    def best_season(self):
+        """:class:`int`: Legend trophies for the player's best season."""
+        return try_enum(Season, data=self._data.get('bestSeason'))
 
 
 class Badge:
@@ -1006,12 +1100,7 @@ class Timestamp:
 
     Attributes
     -----------
-    utc_timestamp:
-        :class:`datetime` - The timestamp as a UTC datetime object
-    now:
-        :class:`datetime` - The time in UTC now as a datetime object
-    seconds_until:
-        :class:`int` - Number of seconds until the timestamp. This may be negative.
+    time: :class:`str`: The raw timestamp string (ISO8601) as given by the API.
     """
     __slots__ = ('time', '_data')
 
@@ -1022,14 +1111,17 @@ class Timestamp:
 
     @property
     def utc_timestamp(self):
+        """:class:`datetime`: The timestamp as a UTC datetime object"""
         return datetime.strptime(self.time, '%Y%m%dT%H%M%S.000Z')
 
     @property
     def now(self):
+        """:class:`datetime`: The time in UTC now as a datetime object"""
         return datetime.utcnow()
 
     @property
     def seconds_until(self):
+        """:class:`int`: Number of seconds until the timestamp. This may be negative."""
         delta = self.utc_timestamp - self.now
         return delta.total_seconds()
 
@@ -1056,7 +1148,7 @@ class LeaguePlayer:
 
         self.tag = data.get('tag')
         self.name = data.get('name')
-        self.town_hall = data.get('townHall')
+        self.town_hall = data.get('townHallLevel')
 
 
 class LeagueClan(BasicClan):
@@ -1067,23 +1159,22 @@ class LeagueClan(BasicClan):
 
     Attributes
     -----------
-    members:
-        :class:`list` of :class:`LeaguePlayer` A list of players participating in this league season
+
     """
     def __init__(self, *, data):
-        self._members = {}
-
         super(LeagueClan, self).__init__(data=data)
 
-        for mdata in data.get('members', []):
-            self._add_member(LeaguePlayer(data=mdata))
+    @property
+    def _members(self):
+        """|iter|
 
-    def _add_member(self, data):
-        self._members[data.tag] = data
+        Returns an iterable of :class:`LeaguePlayer`: all players participating in this league season"""
+        return iter(LeaguePlayer(data=mdata) for mdata in self._data.get('members', []))
 
     @property
     def members(self):
-        return list(self._members.values())
+        """List[:class:`LeaguePlayer`} A list of players participating in this league season"""
+        return list(self._members)
 
 
 class LeagueGroup:
@@ -1095,40 +1186,37 @@ class LeagueGroup:
         :class:`str` - The current state of the league group (`inWar`, `preparation` etc.)
     season:
         :class:`str` - The current season of the league group
-    clans:
-        :class:`list` of :class:`LeagueClan` A list of participating clans
-    rounds:
-        :class:`list` of :class:`list` - A list of lists containing all war tags for each round
     """
-    __slots__ = ('state', 'season', '_clans', '_rounds', '_data')
+    __slots__ = ('state', 'season', '_rounds', '_data')
 
     def __init__(self, *, data):
         self._data = data
 
-        self._clans = {}
         self._rounds = []
         self.state = data.get('state')
         self.season = data.get('season')
 
-        for cdata in data.get('clans', []):
-            self._add_clan(LeagueClan(data=cdata))
+    @property
+    def _clans(self):
+        """|iter|
 
-        for rdata in data.get('rounds', []):
-            self._add_round(rdata)
-
-    def _add_clan(self, data):
-        self._clans[data.tag] = data
-
-    def _add_round(self, data):
-        self._rounds.append(data['warTags'])
+        Returns an iterable of class:`LeagueClan`: all participating clans"""
+        return iter(LeagueClan(data=cdata) for cdata in self._data.get('clans', []))
 
     @property
     def clans(self):
-        return list(self._clans.values())
+        """List[class:`LeagueClan`]: A list of participating clans."""
+        return list(self._clans)
 
     @property
     def rounds(self):
-        return self._rounds
+        """List[List[]]: A list of lists containing all war tags for each round"""
+        # TODO: Find a better method of doing this
+        rounds = []
+        for rdata in self._data.get('rounds', []):
+            rounds.append(rdata['warTags'])
+
+        return rounds
 
 
 class LeagueWar(CurrentWar):
