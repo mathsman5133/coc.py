@@ -78,7 +78,7 @@ class HTTPClient:
         self.key_names = key_names
         self.key_count = key_count
 
-        asyncio.ensure_future(self.get_keys())
+        self.login = asyncio.ensure_future(self.get_keys())
 
     async def get_keys(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
@@ -117,6 +117,9 @@ class HTTPClient:
         url = route.url
 
         if 'headers' not in kwargs:
+            while not self.login.done():
+                await asyncio.sleep(0)
+
             key = next(self.keys)
 
             headers = {
