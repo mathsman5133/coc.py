@@ -7,7 +7,8 @@ Key Features
 -------------
 - Asynchronous code
 - Entire coverage of the official Clash of Clans API
-- Auto updating tokens for use with dynamic IPs
+- Email/password login removes the stress of managing tokens
+- Optimised for speed and performance
 
 Getting Started
 ================
@@ -31,8 +32,7 @@ Quick Example
     import coc
     import asyncio
 
-    loop = asyncio.get_event_loop()
-    client = coc.Client('token', loop)
+    client = coc.Client('email', 'password')
 
     async def get_some_player(tag):
         player = await client.get_player(tag)
@@ -47,6 +47,7 @@ Quick Example
             print(n, n.tag)
 
     if __name__ == '__main__':
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(get_some_player('tag'))
         loop.run_until_complete(get_five_clans('name'))
 

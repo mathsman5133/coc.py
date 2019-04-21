@@ -7,18 +7,17 @@ log.setLevel(logging.DEBUG)
 
 
 class COCClient(coc.Client):
-    def __init__(self, token, **kwargs):
-        super().__init__(token, **kwargs)
+    def __init__(self, email, password, **kwargs):
+        super().__init__(email, password, **kwargs)
 
-    def on_token_reset(self, new_token):
-        """We want to override how the default on_token_reset is run
+    def on_key_reset(self, new_key):
+        """We want to override how the default on_key_reset is run
         """
-        log.info('New token {} was created!'.format(new_token))
+        log.info('New key {} was created!'.format(new_key))
 
 
-# because we want to update our token if our IP changes, we need to pass in our email and password
-# from https://developer.clashofclans.com
-cocclient = COCClient('token', email='email', password='password', update_tokens=True)
+# email and password is your login credentials used at https://developer.clashofclans.com
+coc_client = COCClient(email='email', password='password', key_count=5)
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -26,7 +25,7 @@ async def get_warlog_for_clans(clan_tags: list):
     for tag in clan_tags:
         # if we're not allowed to view warlog (private in game), this will raise an exception
         try:
-            warlog = await cocclient.get_warlog(tag, cache=True)
+            warlog = await coc_client.get_warlog(tag, cache=True)
         except coc.Forbidden:
             warlog = []
 
@@ -37,7 +36,7 @@ async def get_warlog_for_clans(clan_tags: list):
 
 
 async def get_clan_tags_names(name: str, limit: int):
-    clans = await cocclient.search_clans(name=name, limit=limit)
+    clans = await coc_client.search_clans(name=name, limit=limit)
     # return a list of tuples of name/tag pair ie. [(name, tag), (another name, another tag)]
     return [(n.name, n.tag) for n in clans]
 
@@ -63,7 +62,7 @@ if __name__ == '__main__':
     loop = asyncio.get_event_loop()
 
     loop.run_until_complete(get_warlog_opponents_from_clan_name('name', 5))
-    loop.run_until_complete(cocclient.close())
+    loop.run_until_complete(coc_client.close())
 
 
 
