@@ -6,7 +6,7 @@ from discord.ext import commands
 import coc
 
 bot = commands.Bot(command_prefix='?')
-coc_client = coc.Client('coc token')
+coc_client = coc.Client('email', 'password', key_count=5, key_names='My funky name!')
 
 
 @bot.command()
@@ -33,7 +33,7 @@ async def clan_info(ctx, clan_tag):
     e.add_field(name="Members",
                 value=clan.members)
     e.add_field(name="Clan Record",
-                value=f"{clan.warWins}-{clan.warLosses}-{clan.warTies}")
+                value="{}-{}-{}".format(clan.war_wins, clan.war_losses, clan.war_ties))
     
     await ctx.send(embed=e)
 
