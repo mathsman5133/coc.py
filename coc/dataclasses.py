@@ -29,33 +29,13 @@ from datetime import datetime
 from operator import attrgetter
 from itertools import chain
 
+from .utils import get, from_timestamp
+
 
 def try_enum(_class, data):
     if data is None:
         return None
     return _class(data=data)
-
-
-def find(predicate, seq):
-    for element in seq:
-        if predicate(element):
-            return element
-    return None
-
-
-def get(iterable, **attrs):
-    def predicate(elem):
-        for attr, val in attrs.items():
-            nested = attr.split('__')
-            obj = elem
-            for attribute in nested:
-                obj = getattr(obj, attribute)
-
-            if obj != val:
-                return False
-        return True
-
-    return find(predicate, iterable)
 
 
 class Clan:
@@ -1112,7 +1092,7 @@ class Timestamp:
     @property
     def utc_timestamp(self):
         """:class:`datetime`: The timestamp as a UTC datetime object"""
-        return datetime.strptime(self.time, '%Y%m%dT%H%M%S.000Z')
+        return from_timestamp(self.time)
 
     @property
     def now(self):
