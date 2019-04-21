@@ -29,10 +29,12 @@ SOFTWARE.
 import json
 import logging
 import aiohttp
+import asyncio
 
 from urllib.parse import urlencode
 from itertools import cycle
 from datetime import datetime
+
 from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden
 
 log = logging.getLogger(__name__)
@@ -76,7 +78,7 @@ class HTTPClient:
         self.key_names = key_names
         self.key_count = key_count
 
-        loop.run_until_complete(self.get_keys())
+        asyncio.ensure_future(self.get_keys())
 
     async def get_keys(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
