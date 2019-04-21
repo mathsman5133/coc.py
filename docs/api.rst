@@ -30,18 +30,22 @@ Clans
 
 .. autoclass:: Clan()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: BasicClan()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: SearchClan()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: WarClan()
     :members:
+    :private-members:
     :inherited-members:
 
 
@@ -50,18 +54,22 @@ Players
 
 .. autoclass:: Player()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: BasicPlayer()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: WarMember()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: SearchPlayer()
     :members:
+    :private-members:
     :inherited-members:
 
 
@@ -70,14 +78,17 @@ Wars
 
 .. autoclass:: BaseWar()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: WarLog()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: CurrentWar()
     :members:
+    :private-members:
     :inherited-members:
 
 
@@ -86,6 +97,7 @@ WarAttack
 
 .. autoclass:: WarAttack()
     :members:
+    :private-members:
 
 
 Achievement
@@ -93,12 +105,14 @@ Achievement
 
 .. autoclass:: Achievement()
     :members:
+    :private-members:
 
 
 Troop
 ~~~~~~
 .. autoclass:: Troop()
     :members:
+    :private-members:
 
 
 Hero
@@ -106,6 +120,7 @@ Hero
 
 .. autoclass:: Hero()
     :members:
+    :private-members:
 
 
 Spell
@@ -113,6 +128,7 @@ Spell
 
 .. autoclass:: Spell()
     :members:
+    :private-members:
 
 
 Location
@@ -120,6 +136,7 @@ Location
 
 .. autoclass:: Location()
     :members:
+    :private-members:
 
 
 League Objects
@@ -127,14 +144,17 @@ League Objects
 
 .. autoclass:: League()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LeagueRankedPlayer()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LegendStatistics()
     :members:
+    :private-members:
     :inherited-members:
 
 
@@ -143,6 +163,7 @@ Badge
 
 .. autoclass:: Badge()
     :members:
+    :private-members:
 
 
 Timestamp
@@ -150,6 +171,7 @@ Timestamp
 
 .. autoclass:: Timestamp()
     :members:
+    :private-members:
 
 
 League War Objects
@@ -157,22 +179,27 @@ League War Objects
 
 .. autoclass:: LeaguePlayer()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LeagueClan()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LeagueGroup()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LeagueWar()
     :members:
+    :private-members:
     :inherited-members:
 
 .. autoclass:: LeagueWarLogEntry()
     :members:
+    :private-members:
 
 
 Exceptions
