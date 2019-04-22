@@ -367,7 +367,7 @@ class Client:
         self._add_search_clan(c)
         return c
     
-    async def get_clan(self, tags, cache=False, fetch=True, json=False):
+    async def get_clans(self, tags, cache=False, fetch=True, json=False):
         """
         Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
         
