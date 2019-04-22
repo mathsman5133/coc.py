@@ -1,3 +1,4 @@
+import re
 import json
 
 from datetime import datetime
@@ -59,4 +60,12 @@ def get(iterable, **attrs):
 def from_timestamp(timestamp):
     return datetime.strptime(timestamp, '%Y%m%dT%H%M%S.000Z')
 
-
+def correct_tag(tag, prefix='#'):
+    """Attempts to correct malformed Clash of Clans tags
+    to match how they are formatted in game
+    
+    Example
+    ---------
+        ' 123aBc O' -> '#123ABC0'
+    """
+    return prefix + re.sub(r'[^A-Z0-9]+', '', tag.upper()).replace('O', '0')
