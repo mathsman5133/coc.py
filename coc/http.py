@@ -30,6 +30,7 @@ import json
 import logging
 import aiohttp
 import asyncio
+import signal
 
 from urllib.parse import urlencode
 from itertools import cycle
@@ -40,6 +41,22 @@ from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbid
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
+def timeout(seconds, error_message = '"Client timed out.'):
+    def decorated(func):
+        def _handle_timeout(signum, frame):
+            raise TimeoutError(error_message)
+
+        def wrapper(*args, **kwargs):
+            signal.signal(signal.SIGALRM, _handle_timeout)
+            signal.alarm(seconds)
+            try:
+                result = func(*args, **kwargs)
+            finally:
+                signal.alarm(0)
+            return result
+
+        return functools.wraps(func)(wrapper)
+    return decorated
 
 async def json_or_text(response):
     try:
@@ -78,7 +95,7 @@ class HTTPClient:
         self.key_names = key_names
         self.key_count = key_count
 
-        self.login = asyncio.ensure_future(self.get_keys())
+        asyncio.ensure_future(self.get_keys())
 
     async def get_keys(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
@@ -111,15 +128,18 @@ class HTTPClient:
     async def close(self):
         if self.__session:
             await self.__session.close()
+    
+    @timeout(60, "Client timed out while attempting to establish a connection to the Developer Portal")
+    async def ensure_logged_in(self, ):
+         while not hasattr(self, 'keys'):
+             await asyncio.sleep(0.1)
 
     async def request(self, route, **kwargs):
         method = route.method
         url = route.url
 
         if 'headers' not in kwargs:
-            while not self.login.done():
-                await asyncio.sleep(0)
-
+            await self.ensure_logged_in()
             key = next(self.keys)
 
             headers = {
