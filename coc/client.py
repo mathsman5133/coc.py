@@ -388,6 +388,47 @@ class Client:
         c = SearchClan(data=r)
         self._add_search_clan(c)
         return c
+    
+    async def get_clans(self, tags, cache=False, fetch=True, json=False):
+        """
+        Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
+        
+        Example
+        ---------
+
+        .. code-block:: python3
+        
+            tags = [...]
+            async for clan in Client.get_clans(tags):
+                print(clan)
+                
+        :param tags: :class:`collections.Iterable` The tags to search for
+        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
+                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
+                        ``None`` will be returned
+        :param json: Optional[:class:`bool`] Indicates to return a :class:`SearchClan` object or json as returned by API
+                    Defaults to ``False``.
+
+        :return: :class:`SearchClan` If ``json=False``, else :class:`dict`
+        """
+        
+        tags = iter(tags)
+        
+        for tag in tags:
+            if cache:
+                data = self._search_clans.get(tag, None)
+                if data:
+                    return check_json(SearchClan, data, json)
+
+                if fetch is False:
+                    return None
+
+            r = await self.http.get_clan(tag)
+
+            c = SearchClan(data=r)
+            self._add_search_clan(c)
+            yield c
 
     async def get_members(self, clan_tag, cache=False, fetch=True):
         """
@@ -496,6 +537,52 @@ class Client:
         self._add_current_war(war)
 
         return war
+    
+    async def get_current_wars(self, clan_tags, cache=False, fetch=True, json=False):
+        """
+        Retrieve information multiple clan's current clan wars
+        
+        Example
+        ---------
+
+        .. code-block:: python3
+        
+            tags = [...]
+            async for clan_war in Client.get_current_wars(tags):
+                print(clan_war.opponent)
+
+        :param clan_tags: :class:`collections.Iterable` The clan tags to search for
+        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
+                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
+                        ``None`` will be returned
+        :param json: Optional[:class:`bool`] Indicates to return a :class:`CurrentWar` object or json as returned by API
+                    Defaults to ``False``.
+
+        :return: :class:`CurrentWar` If ``json=False``, else :class:`dict`
+        """
+        
+        clan_tags = iter(clan_tags)
+        
+        for clan_tag in clan_tags:
+            if cache:
+                wl = self._current_wars.get(clan_tag, None)
+                if wl:
+                    return check_json(CurrentWar, wl, json)
+
+                if fetch is False:
+                    return None
+
+            r = await self.http.get_clan_current_war(clan_tag)
+
+            if json is False:
+                war = CurrentWar(data=r)
+            else:
+                war = r
+
+            self._add_current_war(war)
+
+            yield war
 
     async def get_league_group(self, clan_tag, cache=False, fetch=True, json=False):
         """Retrieve information about clan's current clan war league group
@@ -805,3 +892,45 @@ class Client:
         self._add_search_player(p)
 
         return p
+    
+    async def get_players(self, player_tags, cache=False, fetch=True, json=False):
+        """Get information about a multiple players by player tag.
+        Player tags can be found either in game or by from clan member lists.
+        
+        Example
+        ---------
+
+        .. code-block:: python3
+        
+            tags = [...]
+            async for player in Client.get_players(tags):
+                print(player)
+
+        :param player_tags: :class:`collections.Iterable` The player tags to search for
+        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
+                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
+                        ``None`` will be returned
+        :param json: Optional[:class:`bool`] Indicates to return a :class:`LeaguePlayer` object
+                                            or json as returned by API
+                    Defaults to ``False``.
+
+        :return: :class:`SearchPlayer` if ``json=False``, else :class:`dict`
+        """
+        
+        player_tags = iter(player_tags)
+        
+        for player_tag in player(tags):
+            if cache:
+                data = self._search_players.get(player_tag, None)
+                if data:
+                    return check_json(SearchPlayer, data, json)
+
+                if fetch is False:
+                    return None
+
+            r = await self.http.get_player(player_tag)
+            p = SearchPlayer(data=r)
+            self._add_search_player(p)
+
+            yield p
