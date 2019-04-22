@@ -94,6 +94,24 @@ class Client:
 
         Defaults to "Created with coc.py Client"
 
+    throttle_limit: Optional[:class:`int`]
+        The number of requests per token per second to send to the API.
+        Once hitting this limit, the library will automatically throttle
+        your requests.
+
+        .. note::
+
+            Setting this value too high may result in the API rate-limiting
+            your requests. This means you cannot request for ~30-60 seconds.
+
+        .. warning::
+
+            Setting this value too high may result in your requests being
+            deemed "API Abuse", potentially resulting in an IP ban.
+
+
+        Defaults to 10 requests per token, per second.
+
     loop: Optional[event loop]
         The `event loop` to use for HTTP requests.
         An ``asyncio.get_event_loop()`` will be used if none is passed
@@ -106,7 +124,9 @@ class Client:
     """
 
     def __init__(self, email, password, key_count=1,
-                 key_names='Created with coc.py Client', loop=None):
+                 key_names='Created with coc.py Client',
+                 throttle_limit=10,
+                 loop=None):
 
         self.loop = loop or asyncio.get_event_loop()
         correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
@@ -117,7 +137,9 @@ class Client:
 
         self.http = HTTPClient(client=self, email=email, password=password,
                                key_names=key_names, loop=self.loop,
-                               key_count=correct_key_count)
+                               key_count=correct_key_count,
+                               throttle_limit=throttle_limit)
+
         log.info('Clash of Clans API client created')
         self._add_cache()
         log.debug('Added cache')

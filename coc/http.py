@@ -31,17 +31,20 @@ import logging
 import aiohttp
 import asyncio
 import signal
+import functools
 
 from urllib.parse import urlencode
 from itertools import cycle
 from datetime import datetime
+from collections import deque
 
 from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
-def timeout(seconds, error_message = '"Client timed out.'):
+
+def timeout(seconds, error_message='Client timed out.'):
     def decorated(func):
         def _handle_timeout(signum, frame):
             raise TimeoutError(error_message)
@@ -58,6 +61,7 @@ def timeout(seconds, error_message = '"Client timed out.'):
         return functools.wraps(func)(wrapper)
     return decorated
 
+
 async def json_or_text(response):
     try:
         ret = await response.json()
@@ -65,6 +69,44 @@ async def json_or_text(response):
         ret = await response.text(encoding='utf-8')
 
     return ret
+
+
+class Throttler:
+    """Simple throttler for asyncio"""
+
+    def __init__(self, rate_limit, retry_interval=0.001, loop=None):
+        self.rate_limit = rate_limit
+        self.retry_interval = retry_interval
+        self.loop = loop or asyncio.get_event_loop()
+
+        self._task_logs = deque()
+
+    async def __aenter__(self):
+        while True:
+            now = self.loop.time()
+
+            # Pop items(which are start times) that are no longer in the
+            # time window
+            while self._task_logs:
+                if now - self._task_logs[0] > 1.0:
+                    self._task_logs.popleft()
+                else:
+                    break
+
+            # Exit the infinite loop when new task can be processed
+            if len(self._task_logs) < self.rate_limit:
+                break
+
+            log.info('Request throttled. Sleeping for %s seconds.', self.retry_interval)
+            await asyncio.sleep(self.retry_interval)
+
+        # Push new task's start time
+        self._task_logs.append(self.loop.time())
+
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        pass
 
 
 class Route:
@@ -87,18 +129,25 @@ class Route:
 
 class HTTPClient:
     def __init__(self, client, loop, email, password,
-                 key_names, key_count):
+                 key_names, key_count, throttle_limit):
         self.client = client
         self.loop = loop
         self.email = email
         self.password = password
         self.key_names = key_names
         self.key_count = key_count
+        self.throttle_limit = throttle_limit
+
+        per_second = key_count * throttle_limit
+
+        self.__lock = asyncio.Semaphore(per_second)
+        self.__throttle = Throttler(per_second, loop=self.loop)
 
         asyncio.ensure_future(self.get_keys())
 
     async def get_keys(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
+
         key_count = self.key_count
         ip = await self.get_ip()
         response_dict, session = await self.login_to_site(self.email, self.password)
@@ -113,7 +162,7 @@ class HTTPClient:
                 for _ in range(keys_needed):
                     key_description = "Created on {}".format(datetime.now().strftime('%c'))
                     self._keys.append(await self.create_key(
-                        cookies,self.key_names, key_description, [ip]))
+                        cookies, self.key_names, key_description, [ip]))
             else:
                 await self.close()
                 raise RuntimeError(("There are {} API keys already created and {} match \"{}\" out of a max of "
@@ -131,8 +180,8 @@ class HTTPClient:
     
     @timeout(60, "Client timed out while attempting to establish a connection to the Developer Portal")
     async def ensure_logged_in(self):
-         while not hasattr(self, 'keys'):
-             await asyncio.sleep(0.1)
+        while not hasattr(self, 'keys'):
+            await asyncio.sleep(0.1)
 
     async def request(self, route, **kwargs):
         method = route.method
@@ -151,41 +200,40 @@ class HTTPClient:
         if 'json' in kwargs:
             kwargs['headers']['Content-Type'] = 'application/json'
 
-        async with self.__session.request(method, url, **kwargs) as r:
-            log.debug('%s (%s) has returned %s', url, method, r.status)
-            data = await json_or_text(r)
+        async with self.__lock:
+            async with self.__throttle, self.__session.request(method, url, **kwargs) as r:
+                log.debug('%s (%s) has returned %s', url, method, r.status)
+                data = await json_or_text(r)
 
-            if 200 <= r.status < 300:
-                log.debug('%s has received %s', url, data)
-                return data
+                if 200 <= r.status < 300:
+                    log.debug('%s has received %s', url, data)
+                    return data
 
-            if r.status == 400:
-                raise InvalidArgument(r, data)
+                if r.status == 400:
+                    raise InvalidArgument(r, data)
 
-            if r.status == 403:
-                if data.get('reason') in ['accessDenied.invalidIp']:
-                    if 'key' in locals():
-                        await self.reset_key(key)
-                        log.info('Reset Clash of Clans key')
-                        return await self.request(route, **kwargs)
-                    else:
-                        raise HTTPException(r, data)
+                if r.status == 403:
+                    if data.get('reason') in ['accessDenied.invalidIp']:
+                        if 'key' in locals():
+                            await self.reset_key(key)
+                            log.info('Reset Clash of Clans key')
+                            return await self.request(route, **kwargs)
+                        else:
+                            raise HTTPException(r, data)
 
-                raise Forbidden(r, data)
+                    raise Forbidden(r, data)
 
-            if r.status == 404:
-                raise NotFound(r, data)
-            if r.status == 429:
-                # TODO: Implement ratelimits
-                # This could look like an optional user set ratelimit (default 10req/sec)
-                # or some other method you think up.
-                # for now divert to HTTPException
-                raise HTTPException(r, data)
+                if r.status == 404:
+                    raise NotFound(r, data)
+                if r.status == 429:
+                    log.error('We have been rate-limited by the API. '
+                              'Reconsider the number of requests you are allowing per second.')
+                    raise HTTPException(r, data)
 
-            if r.status == 503:
-                raise Maitenance(r, data)
-            else:
-                raise HTTPException(r, data)
+                if r.status == 503:
+                    raise Maitenance(r, data)
+                else:
+                    raise HTTPException(r, data)
 
     async def get_ip(self):
         async with self.__session.request('GET', 'http://ip.42.pl/short') as r:
@@ -351,7 +399,6 @@ class HTTPClient:
             "cookie": cookies,
             "content-type": "application/json"
         }
-        log.critical(headers)
 
         data = {
             "id": key_id
