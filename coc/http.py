@@ -130,7 +130,7 @@ class HTTPClient:
             await self.__session.close()
     
     @timeout(60, "Client timed out while attempting to establish a connection to the Developer Portal")
-    async def ensure_logged_in(self, ):
+    async def ensure_logged_in(self):
          while not hasattr(self, 'keys'):
              await asyncio.sleep(0.1)
 
