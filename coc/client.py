@@ -419,10 +419,10 @@ class Client:
             if cache:
                 data = self._search_clans.get(tag, None)
                 if data:
-                    return check_json(SearchClan, data, json)
+                    yield check_json(SearchClan, data, json)
 
                 if fetch is False:
-                    return None
+                    yield None
 
             r = await self.http.get_clan(tag)
 
@@ -568,10 +568,10 @@ class Client:
             if cache:
                 wl = self._current_wars.get(clan_tag, None)
                 if wl:
-                    return check_json(CurrentWar, wl, json)
+                    yield check_json(CurrentWar, wl, json)
 
                 if fetch is False:
-                    return None
+                    yield None
 
             r = await self.http.get_clan_current_war(clan_tag)
 
@@ -920,14 +920,14 @@ class Client:
         
         player_tags = iter(player_tags)
         
-        for player_tag in player(tags):
+        for player_tag in player_tags:
             if cache:
                 data = self._search_players.get(player_tag, None)
                 if data:
-                    return check_json(SearchPlayer, data, json)
+                    yield check_json(SearchPlayer, data, json)
 
                 if fetch is False:
-                    return None
+                    yield None
 
             r = await self.http.get_player(player_tag)
             p = SearchPlayer(data=r)
