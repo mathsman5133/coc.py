@@ -31,7 +31,6 @@ import logging
 import aiohttp
 import asyncio
 import sys
-import time
 
 from functools import wraps
 from threading import Thread
@@ -168,7 +167,6 @@ class HTTPClient:
         url = route.url
 
         if 'headers' not in kwargs:
-            #self.ensure_logged_in()
             key = next(self.keys)
 
             headers = {
