@@ -31,7 +31,9 @@ import logging
 import aiohttp
 import asyncio
 import sys
+import time
 
+from contextlib import contextmanager
 from functools import wraps
 from threading import Thread
 from urllib.parse import urlencode
@@ -109,7 +111,6 @@ class Route:
         else:
             self.url = url
 
-
 class HTTPClient:
     def __init__(self, client, loop, email, password,
                  key_names, key_count, throttle_limit):
@@ -126,10 +127,11 @@ class HTTPClient:
         self.__lock = asyncio.Semaphore(per_second)
         self.__throttle = Throttler(per_second, loop=self.loop)
 
-        loop.run_until_complete(loop.create_task(self.get_keys()))
+        __key_loop__ = asyncio.new_event_loop()
+        __key_loop__.run_until_complete(self.get_keys(__key_loop__))
 
 
-    async def get_keys(self):
+    async def get_keys(self, loop):
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
         key_count = self.key_count
@@ -167,6 +169,7 @@ class HTTPClient:
         url = route.url
 
         if 'headers' not in kwargs:
+            #self.ensure_logged_in()
             key = next(self.keys)
 
             headers = {
@@ -179,45 +182,61 @@ class HTTPClient:
             kwargs['headers']['Content-Type'] = 'application/json'
 
         async with self.__lock:
-            async with self.__throttle, self.__session.request(method, url, **kwargs) as r:
-                log.debug('%s (%s) has returned %s', url, method, r.status)
-                data = await json_or_text(r)
-                log.debug(data)
+            with self.get_correct_loop_session() as session:
+                async with self.__throttle, session.request(method, url, **kwargs) as r:
+                    log.debug('%s (%s) has returned %s', url, method, r.status)
+                    data = await json_or_text(r)
+                    log.debug(data)
 
-                if 200 <= r.status < 300:
-                    log.debug('%s has received %s', url, data)
-                    return data
+                    if 200 <= r.status < 300:
+                        log.debug('%s has received %s', url, data)
+                        return data
 
-                if r.status == 400:
-                    raise InvalidArgument(r, data)
+                    if r.status == 400:
+                        raise InvalidArgument(r, data)
 
-                if r.status == 403:
-                    if data.get('reason') in ['accessDenied.invalidIp']:
-                        if 'key' in locals():
-                            await self.reset_key(key)
-                            log.info('Reset Clash of Clans key')
-                            return await self.request(route, **kwargs)
+                    if r.status == 403:
+                        if data.get('reason') in ['accessDenied.invalidIp']:
+                            if 'key' in locals():
+                                await self.reset_key(key)
+                                log.info('Reset Clash of Clans key')
+                                return await self.request(route, **kwargs)
 
-                    raise Forbidden(r, data)
+                        raise Forbidden(r, data)
 
-                if r.status == 404:
-                    raise NotFound(r, data)
-                if r.status == 429:
-                    log.error('We have been rate-limited by the API. '
-                              'Reconsider the number of requests you are allowing per second.')
-                    raise HTTPException(r, data)
+                    if r.status == 404:
+                        raise NotFound(r, data)
+                    if r.status == 429:
+                        log.error('We have been rate-limited by the API. '
+                                  'Reconsider the number of requests you are allowing per second.')
+                        raise HTTPException(r, data)
 
-                if r.status == 503:
-                    raise Maitenance(r, data)
-                else:
-                    raise HTTPException(r, data)
+                    if r.status == 503:
+                        raise Maitenance(r, data)
+                    else:
+                        raise HTTPException(r, data)
+
+    @contextmanager
+    def get_correct_loop_session(self):
+        loop = asyncio.get_event_loop()
+        try:
+            session = None
+            if loop != self.__session:
+                session = aiohttp.ClientSession(loop=loop)
+                yield session
+            else:
+                yield self.__session
+        finally:
+            if session:
+                asyncio.ensure_future(session.close())
 
     async def get_ip(self):
-        async with self.__session.request('GET', 'http://ip.42.pl/short') as r:
-            log.debug('%s (%s) has returned %s', 'http://ip.42.pl/short', 'GET', r.status)
-            ip = await r.text()
-            log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
-        return ip
+        with self.get_correct_loop_session() as session:
+            async with session.request('GET', 'http://ip.42.pl/short') as r:
+                log.debug('%s (%s) has returned %s', 'http://ip.42.pl/short', 'GET', r.status)
+                ip = await r.text()
+                log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
+            return ip
 
     @staticmethod
     def create_cookies(response_dict, session):
@@ -333,13 +352,14 @@ class HTTPClient:
         headers = {
             'content-type': 'application/json'
         }
-        async with self.__session.post('https://developer.clashofclans.com/api/login',
-                                       json=login_data, headers=headers) as sess:
-            response_dict = await sess.json()
-            log.debug('%s has received %s', 'https://developer.clashofclans.com/api/login',
-                      response_dict)
+        with self.get_correct_loop_session() as session:
+            async with session.post('https://developer.clashofclans.com/api/login',
+                                    json=login_data, headers=headers) as sess:
+                response_dict = await sess.json()
+                log.debug('%s has received %s', 'https://developer.clashofclans.com/api/login',
+                          response_dict)
 
-            session = sess.cookies.get('session').value
+                session = sess.cookies.get('session').value
 
         return response_dict, session
 
@@ -348,11 +368,12 @@ class HTTPClient:
             "cookie": cookies,
             "content-type": "application/json"
         }
-        async with self.__session.post('https://developer.clashofclans.com/api/apikey/list',
-                                       data=json.dumps({}), headers=headers) as sess:
-            existing_keys_dict = await sess.json()
-            log.debug('%s has received %s', 'https://developer.clashofclans.com/api/apikey/list',
-                      existing_keys_dict)
+        with self.get_correct_loop_session() as session:
+            async with session.post('https://developer.clashofclans.com/api/apikey/list',
+                                           data=json.dumps({}), headers=headers) as sess:
+                existing_keys_dict = await sess.json()
+                log.debug('%s has received %s', 'https://developer.clashofclans.com/api/apikey/list',
+                          existing_keys_dict)
 
         return existing_keys_dict
 
