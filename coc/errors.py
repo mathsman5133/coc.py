@@ -79,11 +79,11 @@ class InvalidArgument(ClashOfClansException):
     pass
 
 
-class InvalidToken(HTTPException):
-    """Thrown when an error status 403 occurs and the reason is an invalid token.
+class InvalidCredentials(HTTPException):
+    """Thrown when an error status 403 occurs and the reason is invalid credentials.
 
     Special Exception thrown when missing/incorrect credentials
-    were passed. This is most likely an invalid token.
+    were passed. This is when your email/password pair is incorrect.
     Subclass of :exc:`HTTPException`
     """
 

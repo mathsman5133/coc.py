@@ -38,8 +38,12 @@ from .errors import (
     HTTPException,
     NotFound,
     InvalidArgument,
-    InvalidToken,
+    InvalidCredentials,
     Forbidden,
     Maitenance
 )
 from .http import HTTPClient
+
+from .enums import (
+    CacheType
+)

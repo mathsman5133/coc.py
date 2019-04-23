@@ -39,7 +39,7 @@ from itertools import cycle
 from datetime import datetime
 from collections import deque
 
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -366,6 +366,8 @@ class HTTPClient:
             response_dict = await sess.json()
             log.debug('%s has received %s', 'https://developer.clashofclans.com/api/login',
                       response_dict)
+            if sess.status == 403:
+                raise InvalidCredentials(sess, response_dict)
 
             session = sess.cookies.get('session').value
 

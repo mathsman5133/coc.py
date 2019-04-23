@@ -212,7 +212,7 @@ The following exceptions are thrown by the library.
 
 .. autoexception:: InvalidArgument
 
-.. autoexception:: InvalidToken
+.. autoexception:: InvalidCredentials
 
 .. autoexception:: Forbidden
 
