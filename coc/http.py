@@ -31,6 +31,7 @@ import logging
 import aiohttp
 import asyncio
 import signal
+import sys
 import functools
 
 from urllib.parse import urlencode
@@ -50,6 +51,11 @@ def timeout(seconds, error_message='Client timed out.'):
             raise TimeoutError(error_message)
 
         def wrapper(*args, **kwargs):
+            if sys.platform == 'win32':
+                # TODO: Fix for windows
+                # for now just return function and ignore the problem
+                return func(*args, **kwargs)
+
             signal.signal(signal.SIGALRM, _handle_timeout)
             signal.alarm(seconds)
             try:
@@ -204,6 +210,7 @@ class HTTPClient:
             async with self.__throttle, self.__session.request(method, url, **kwargs) as r:
                 log.debug('%s (%s) has returned %s', url, method, r.status)
                 data = await json_or_text(r)
+                log.debug(data)
 
                 if 200 <= r.status < 300:
                     log.debug('%s has received %s', url, data)
@@ -218,8 +225,6 @@ class HTTPClient:
                             await self.reset_key(key)
                             log.info('Reset Clash of Clans key')
                             return await self.request(route, **kwargs)
-                        else:
-                            raise HTTPException(r, data)
 
                     raise Forbidden(r, data)
 
