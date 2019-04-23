@@ -207,13 +207,27 @@ class Client:
             else:
                 event(*args, **kwargs)
 
-    def set_cache(self, cache_to_edit, max_size=128, ttl=None):
-        cache_type = getattr(self, cache_to_edit)
-        if not cache_type:
-            raise ValueError('{} is not a cached data class'.format(cache_to_edit))
+    def set_cache(self, *cache_to_edit, max_size=128, ttl=None):
+        """Set the max size and expiry time for a cached object.
 
-        cache = Cache(max_size=max_size, ttl=ttl)
-        setattr(self, cache_to_edit, cache)
+        .. note::
+
+            Calling this method will override and create a new cache instance,
+            removing all previously cached objects
+
+
+        :param cache_to_edit: :class:`str` or :class:`CacheType` enum. The name of cache type to change.
+        :param max_size: :class:`int` The max size of the created cache. Defaults to 128
+        :param ttl: :class:`int` The expiry time in seconds of the cache. Defaults to None (cache does not expire)
+        """
+        for cache_type in cache_to_edit:
+            if not getattr(self, cache_type):
+                raise ValueError('{} is not a valid cached data class type'.format(cache_to_edit))
+
+            cache = Cache(max_size=max_size, ttl=ttl)
+            log.debug('Cache type %s has been set with max size %s and expiry %s seconds',
+                      cache_type, max_size, ttl)
+            setattr(self, cache_type, cache)
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
