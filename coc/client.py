@@ -96,7 +96,6 @@ class Client:
 
     """
     cache_search_clans = Cache()
-
     cache_war_clans = Cache()
 
     cache_search_players = Cache()
@@ -227,7 +226,7 @@ class Client:
             cache = Cache(max_size=max_size, ttl=ttl)
             log.debug('Cache type %s has been set with max size %s and expiry %s seconds',
                       cache_type, max_size, ttl)
-            setattr(self, cache_type, cache)
+            setattr(Client, cache_type, cache)
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
