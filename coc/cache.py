@@ -9,14 +9,21 @@ import re
 log = logging.getLogger(__name__)
 
 
-def validate_tag(tag):
+def validate_tag(string):
     # Legal clan tags only have these characters:
     # Numbers: 0, 2, 8, 9
     # Letters: P, Y, L, Q, G, R, J, C, U, V
-    if not isinstance(tag, str):
+    if not isinstance(string, str):
         return False
-    match = re.match("^#[PYLQGRJCUV0289]+$", tag)
-    return True if match else False
+
+    match = re.match("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})", string)
+
+    if match.group('tag'):
+        return True
+    if match.group('location'):
+        return True
+
+    return False
 
 
 def find_key(args, kwargs):
