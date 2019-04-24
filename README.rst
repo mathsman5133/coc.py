@@ -46,10 +46,14 @@ Quick Example
         for n in players:
             print(n, n.tag)
 
+    async def main():
+        await get_some_player('tag')
+        await get_five_clans('name')
+        await client.close()
+
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
-        loop.run_until_complete(get_some_player('tag'))
-        loop.run_until_complete(get_five_clans('name'))
+        loop.run_until_complete(main())
 
 For more examples see the examples directory
 
