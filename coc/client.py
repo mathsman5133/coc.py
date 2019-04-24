@@ -220,6 +220,7 @@ class Client:
         :param expiry: :class:`int` The expiry time in seconds of the cache. Defaults to None (cache does not expire)
         """
         for cache_type in cache_to_edit:
+            cache_type = str(cache_type)
             if not getattr(self, cache_type):
                 raise ValueError('{} is not a valid cached data class type'.format(cache_to_edit))
 
