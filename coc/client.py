@@ -257,7 +257,7 @@ class Client:
                                          minMembers=min_members, maxMembers=max_members, minClanPoints=min_clan_points,
                                          minClanLevel=min_clan_level, limit=limit, before=before, after=after)
 
-        clans = list(SearchClan(data=n) for n in r.get('items', []))
+        clans = list(SearchClan(data=n, http=self.http) for n in r.get('items', []))
 
         return clans
 
@@ -274,7 +274,7 @@ class Client:
         :return: :class:`SearchClan`
         """
         r = await self.http.get_clan(tag)
-        return SearchClan(data=r)
+        return SearchClan(data=r, http=self.http)
 
     async def get_clans(self, tags, cache=False, fetch=True):
         """Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
@@ -308,7 +308,7 @@ class Client:
                     yield None
 
             r = await self.http.get_clan(tag)
-            c = SearchClan(data=r)
+            c = SearchClan(data=r, http=self.http)
             self.cache_search_clans.add(c.tag, c)
 
             yield c
@@ -333,7 +333,7 @@ class Client:
                 return None
 
         r = await self.http.get_clan(clan_tag)
-        clan = SearchClan(data=r)
+        clan = SearchClan(data=r, http=self.http)
 
         self.cache_search_clans.add(clan.tag, clan)
 

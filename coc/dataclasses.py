@@ -138,11 +138,12 @@ class SearchClan(BasicClan):
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
-                 'description')
+                 'description', '_http')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, http):
         super().__init__(data=data)
 
+        self._http = http
         self.type = data.get('type')
         self.required_trophies = data.get('requiredTrophies')
         self.war_frequency = data.get('warFrequency')
@@ -188,6 +189,29 @@ class SearchClan(BasicClan):
         This search implements the :func:`coc.utils.get` function
         """
         return get(self._members, **attrs)
+
+    async def get_detailed_members(self, cache=False, fetch=True):
+        """Get detailed player information for every player in the clan.
+        This will return an AsyncIterator of :class:`SearchPlayer`.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            clan = client.get_clan('tag')
+
+            async for player in clan.get_detailed_members(cache=True):
+                print(player.name)
+
+        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
+                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
+                        ``None`` will be returned
+        :return: AsyncIterator of :class:`SearchPlayer`
+        """
+        for n in self._members:
+            yield self._http.client.get_player(n.tag, cache=cache, fetch=fetch)
 
 
 class WarClan(Clan):
