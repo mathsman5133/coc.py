@@ -6,12 +6,69 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.1.1
+--------
+BugFixes
+~~~~~~~~~
+- Stop nested asyncio loops from failing.
+
+Important
+~~~~~~~~~~
+
+- New methods
+
+    - :meth:`.Client.get_clans(tags)` returns an AsyncIterator of clans.
+    - :meth:`.Client.get_current_wars(tags)` returns an AsyncIterator of current wars
+    - :meth:`.Client.get_players(tags)` returns an AsyncIterator of players
+    - :meth:`.SearchClan.get_detailed_members` returns an AsyncIterator of :class:`.SearchPlayer` for clans members
+    - :meth:`.Client.set_cache(*cache_names, max_size, expiry)` enables you to override the default cache settings
+      on a per-cache basis. Expiry is in seconds.
+
+- Removed parameters
+
+    - ``json=False`` on all calls has been removed. Use :attr:`DataClass._data` to get the dict as returned by the API
+      if you so desire
+
+- Implemented ratelimits
+
+    - ``throttle_limit`` has been added as a parameter to :class:`.Client`. This is the number of calls per token, per second,
+      to be made
+
+- asyncio.Semaphore lock has been implemented
+
+- New cache structure and implementation.
+
+    - Max size and expiry (in seconds) can be set with :meth:`Client.set_cache`
+    - New instances of cache on a per-object (returned) basis, so different methods will implement
+      different instances of the cache.
+    - ``lru-dict`` has been added as a requirement.
+    - LRU is very fast and memory efficient, written in C.
+
+- Enum for :class:`CacheType` has been implemented. This is the preferred way to pass in ``cache_names`` to :meth:`Client.set_cache`
+  as string names may change.
+
+    - Can be called with :meth:`Client.set_cache(CacheType.search_clans, max_size=128, expiry=10)`
+
+- New Exception: :exc:`InvalidCredentials`
+
+    - This essentially replaces the (now redundant) :exc:`InvalidToken` exception, and is called when the email/pass pair
+      passed is incorrect.
+
+- New util function: :func:`coc.utils.clean_tag(tag, prefix='#')` will return a 'cleaned up' version of the tag.
+  It will:
+
+    - Make all letters UPPERCASE
+    - Replace o ('oh') with 0 (zero)s
+    - Remove non-alphanumeric and whitespace
+
+
+
 v0.1.0
 ---------
 BugFixes
 ~~~~~~~~~~
 - Fixed bug with loops breaking when reloading the client in a discord cog.
-- A more specific error, `aiohttp.ContentTypeError` is raised when parsing non-json responses.
+- A more specific error, ``aiohttp.ContentTypeError`` is raised when parsing non-json responses.
 
 Important
 ~~~~~~~~~~~
