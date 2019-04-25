@@ -235,9 +235,9 @@ class HTTPClient:
         # TODO: Distinguish/recognise by key name rather than current ip for running clients on multiple IPs
         # should probably put something else in here
         # to distinguish each key like a date
-        key_name = 'coc.py created key'
+        key_name = self.key_names
         # Also, probably fix this as well
-        key_description = 'learn more about this project at: https://github.com/mathsman5133/coc.py'
+        key_description = "Created on {}".format(datetime.now().strftime('%c'))
         whitelisted_ips = [ip]
 
         response_dict, session = await self.login_to_site(self.email, self.password)
@@ -261,7 +261,7 @@ class HTTPClient:
         # now we can set the new key which is the first
         # one in self._keys, then start the cycle over.
         self._keys[0] = new_key
-        self.keys = cycle(self.keys)
+        self.keys = cycle(self._keys)
         self.client.dispatch('key_reset', new_key)
 
     # clans
