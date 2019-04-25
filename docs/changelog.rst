@@ -6,6 +6,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.1.2
+--------
+BugFixes
+~~~~~~~~~
+- Fixed 2 problems which meant automatic token resets weren't working.
+  Please report any more bugs!
+
 v0.1.1
 --------
 BugFixes
