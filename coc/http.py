@@ -163,14 +163,19 @@ class HTTPClient:
     async def request(self, route, **kwargs):
         method = route.method
         url = route.url
+        api_request = kwargs.pop('api_request', False)
 
-        if 'headers' not in kwargs:
+        # if it is not an api request we need to set auth headers.
+        # if it is a re-request after a token reset we need to reset
+        # these headers rather than using the old ones (prev. prob)
+
+        if not api_request:
             key = next(self.keys)
 
             headers = {
-                    "Accept": "application/json",
-                    "authorization": "Bearer {}".format(key),
-                }
+                "Accept": "application/json",
+                "authorization": "Bearer {}".format(key),
+            }
             kwargs['headers'] = headers
 
         if 'json' in kwargs:
@@ -191,7 +196,7 @@ class HTTPClient:
 
                 if r.status == 403:
                     if data.get('reason') in ['accessDenied.invalidIp']:
-                        if 'key' in locals():
+                        if not api_request:
                             await self.reset_key(key)
                             log.info('Reset Clash of Clans key')
                             return await self.request(route, **kwargs)
@@ -327,7 +332,7 @@ class HTTPClient:
         login_data = {
             'email': email,
             'password': password
-                      }
+        }
         headers = {
             'content-type': 'application/json'
         }
@@ -368,7 +373,8 @@ class HTTPClient:
             "cidrRanges": cidr_ranges
         }
 
-        r = await self.request(Route('POST', '/apikey/create', api_page=True), json=data, headers=headers)
+        r = await self.request(Route('POST', '/apikey/create', api_page=True),
+                               json=data, headers=headers, api_request=True)
         return r['key']['key']
 
     def delete_key(self, cookies, key_id):
@@ -381,7 +387,8 @@ class HTTPClient:
             "id": key_id
         }
 
-        return self.request(Route('POST', '/apikey/revoke', api_page=True), json=data, headers=headers)
+        return self.request(Route('POST', '/apikey/revoke', api_page=True),
+                            json=data, headers=headers, api_request=True)
 
     async def get_data_from_url(self, url):
         async with self.__session.get(url) as r:
