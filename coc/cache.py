@@ -18,6 +18,8 @@ def validate_tag(string):
 
     match = re.match("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})", string)
 
+    if not match:
+        return False
     if match.group('tag'):
         return True
     if match.group('location'):
