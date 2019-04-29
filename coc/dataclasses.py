@@ -457,6 +457,7 @@ class WarMember(Player):
 
     @property
     def is_opponent(self):
+        """Bool: Indicates whether the member is from the opponent clan or not."""
         return self.clan.tag == self.war.opponent.tag
 
 
