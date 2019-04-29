@@ -455,6 +455,10 @@ class WarMember(Player):
         """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list"""
         return list(self._defenses)
 
+    @property
+    def is_opponent(self):
+        return self.clan.tag == self.war.opponent.tag
+
 
 class SearchPlayer(BasicPlayer):
     """Represents a Searched Player that the API returns.
