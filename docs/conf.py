@@ -52,8 +52,9 @@ extensions = [
 # templates_path = ['_templates']
 
 rst_prolog = """
-.. |iter| replace:: This returns an `**iterator** <https://docs.python.org/3/glossary.html#term-iterator>`
- 
+.. |iter| replace:: This returns an |iterator|_.
+.. |iterator| replace:: *iterator*
+.. _iterator: https://docs.python.org/3/glossary.html#term-iterator
 """
 
 # The suffix(es) of source filenames.

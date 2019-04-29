@@ -86,13 +86,13 @@ class Client:
         Defaults to 10 requests per token, per second.
 
     loop: Optional[event loop]
-        The `event loop` to use for HTTP requests.
-        An ``asyncio.get_event_loop()`` will be used if none is passed
+        The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
+        An :func:`asyncio.get_event_loop()` will be used if None is passed
 
     Attributes
     -----------
     loop
-        The `event_loop`_ that is used for HTTP requests
+        The :class:`asyncio.AbstractEventLoop` that is used for HTTP requests
 
     """
     cache_search_clans = Cache()
@@ -315,7 +315,7 @@ class Client:
             yield c
 
     async def get_members(self, clan_tag, cache=False, fetch=True):
-        """List clan members. This is equivilant to `Client.get_clan('tag').members.
+        """List clan members. This is equivilant to ``(await Client.get_clan('tag')).members``.
 
         :param clan_tag: :class:`str` The clan tag to search for
         :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
