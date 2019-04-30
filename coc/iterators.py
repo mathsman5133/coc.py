@@ -1,6 +1,3 @@
-from .client import Client
-
-
 class _AsyncIterator:
     async def __aiter__(self):
         return self
@@ -25,7 +22,7 @@ class _AsyncIterator:
 
 
 class TaggedIterator(_AsyncIterator):
-    def __init__(self, client: Client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: list, cache: bool, fetch: bool):
         self.client = client
         self.tags = tags
         self.retrieved = 0
@@ -46,18 +43,18 @@ class TaggedIterator(_AsyncIterator):
 
 
 class ClanIterator(TaggedIterator):
-    def __init__(self, client: Client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: list, cache: bool, fetch: bool):
         super(ClanIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_clan
 
 
 class PlayerIterator(TaggedIterator):
-    def __init__(self, client: Client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: list, cache: bool, fetch: bool):
         super(PlayerIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_player
 
 
 class WarIterator:
-    def __init__(self, client: Client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: list, cache: bool, fetch: bool):
         super(WarIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_player
