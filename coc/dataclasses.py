@@ -30,6 +30,7 @@ from operator import attrgetter
 from itertools import chain
 
 from .utils import get, from_timestamp
+from .iterators import PlayerIterator
 
 
 def try_enum(_class, data):
@@ -138,12 +139,12 @@ class SearchClan(BasicClan):
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
-                 'description', '_http')
+                 'description', '_client')
 
-    def __init__(self, *, data, http):
+    def __init__(self, *, data, client):
         super().__init__(data=data)
 
-        self._http = http
+        self._client = client
         self.type = data.get('type')
         self.required_trophies = data.get('requiredTrophies')
         self.war_frequency = data.get('warFrequency')
@@ -190,7 +191,7 @@ class SearchClan(BasicClan):
         """
         return get(self._members, **attrs)
 
-    async def get_detailed_members(self, cache=False, fetch=True):
+    def get_detailed_members(self, cache=False, fetch=True):
         """Get detailed player information for every player in the clan.
         This will return an AsyncIterator of :class:`SearchPlayer`.
 
@@ -210,8 +211,8 @@ class SearchClan(BasicClan):
                         ``None`` will be returned
         :return: AsyncIterator of :class:`SearchPlayer`
         """
-        for n in self._members:
-            yield self._http.client.get_player(n.tag, cache=cache, fetch=fetch)
+        tags = list(n.tag for n in self._members)
+        return PlayerIterator(self._client, tags, cache, fetch)
 
 
 class WarClan(Clan):

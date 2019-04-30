@@ -31,6 +31,7 @@ import logging
 
 from .cache import Cache
 from .http import HTTPClient
+from .iterators import PlayerIterator, ClanIterator, WarIterator
 from .dataclasses import *
 
 log = logging.getLogger(__name__)
@@ -258,7 +259,7 @@ class Client:
                                          minMembers=min_members, maxMembers=max_members, minClanPoints=min_clan_points,
                                          minClanLevel=min_clan_level, limit=limit, before=before, after=after)
 
-        clans = list(SearchClan(data=n, http=self.http) for n in r.get('items', []))
+        clans = list(SearchClan(data=n, client=self) for n in r.get('items', []))
 
         return clans
 
@@ -275,20 +276,20 @@ class Client:
         :return: :class:`SearchClan`
         """
         r = await self.http.get_clan(tag)
-        return SearchClan(data=r, http=self.http)
+        return SearchClan(data=r, client=self)
 
-    async def get_clans(self, tags, cache=False, fetch=True):
+    def get_clans(self, tags, cache=False, fetch=True):
         """Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
-        
+
         Example
         ---------
 
         .. code-block:: python3
-        
+
             tags = [...]
             async for clan in Client.get_clans(tags):
-                print(clan)
-                
+                print(clan.name)
+
         :param tags: :class:`collections.Iterable` The tags to search for
         :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
         :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
@@ -297,22 +298,8 @@ class Client:
 
         :return: :class:`SearchClan`
         """
-        
-        tags = iter(tags)
-        
-        for tag in tags:
-            if cache:
-                c = self.cache_search_clans.get(tag)
-                if c:
-                    yield c
-                if fetch is False:
-                    yield None
-
-            r = await self.http.get_clan(tag)
-            c = SearchClan(data=r, http=self.http)
-            self.cache_search_clans.add(c.tag, c)
-
-            yield c
+        tags = list(tags)
+        return ClanIterator(self, tags, cache, fetch)
 
     async def get_members(self, clan_tag, cache=False, fetch=True):
         """List clan members. This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -334,7 +321,7 @@ class Client:
                 return None
 
         r = await self.http.get_clan(clan_tag)
-        clan = SearchClan(data=r, http=self.http)
+        clan = SearchClan(data=r, client=self)
 
         self.cache_search_clans.add(clan.tag, clan)
 
@@ -388,16 +375,16 @@ class Client:
         """
         r = await self.http.get_clan_current_war(clan_tag)
         return CurrentWar(data=r)
-    
-    async def get_current_wars(self, clan_tags, cache=False, fetch=True):
+
+    def get_current_wars(self, clan_tags, cache=False, fetch=True):
         """
         Retrieve information multiple clan's current clan wars
-        
+
         Example
         ---------
 
         .. code-block:: python3
-        
+
             tags = [...]
             async for clan_war in Client.get_current_wars(tags):
                 print(clan_war.opponent)
@@ -410,23 +397,8 @@ class Client:
 
         :return: :class:`CurrentWar`
         """
-        
-        clan_tags = iter(clan_tags)
-        
-        for clan_tag in clan_tags:
-            if cache:
-                wl = self.cache_current_wars.get(clan_tag)
-                if wl:
-                    yield wl
-
-                if fetch is False:
-                    yield None
-
-            r = await self.http.get_clan_current_war(clan_tag)
-            war = CurrentWar(data=r)
-
-            self.cache_current_wars.add(war.clan.tag, war)
-            yield war
+        clan_tags = list(clan_tags)
+        return WarIterator(self, clan_tags, cache, fetch)
 
     @cache_league_groups.get_cache()
     async def get_league_group(self, clan_tag, cache=False, fetch=True):
@@ -658,15 +630,15 @@ class Client:
         r = await self.http.get_player(player_tag)
         return SearchPlayer(data=r)
 
-    async def get_players(self, player_tags, cache=False, fetch=True):
+    def get_players(self, player_tags, cache=False, fetch=True):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
-        
+
         Example
         ---------
 
         .. code-block:: python3
-        
+
             tags = [...]
             async for player in Client.get_players(tags):
                 print(player)
@@ -679,21 +651,5 @@ class Client:
 
         :return: :class:`SearchPlayer`
         """
-        
-        player_tags = iter(player_tags)
-        
-        for player_tag in player_tags:
-            if cache:
-                data = self.cache_search_players.get(player_tag)
-                if data:
-                    yield data
-
-                if fetch is False:
-                    yield None
-
-            r = await self.http.get_player(player_tag)
-            p = SearchPlayer(data=r)
-            self.cache_search_players.add(p.tag, p)
-
-            yield p
-
+        player_tags = list(player_tags)
+        return PlayerIterator(self, player_tags, cache, fetch)
