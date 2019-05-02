@@ -170,7 +170,7 @@ class SearchClan(BasicClan):
 
     @property
     def member_dict(self, attr='tag'):
-        """Dict{attr: :class:`BasicPlayer`}: A dict of clan members by tag.
+        """Dict: {attr: :class:`BasicPlayer`}: A dict of clan members by tag.
 
         Pass in an attribute of :class:`BasicPlayer` to get that attribute as the key
         """
@@ -273,7 +273,7 @@ class WarClan(Clan):
 
     @property
     def members_dict(self, attr='tag'):
-        """Dict - {attr: :class:`WarMember`} - A dict of clan members in war by tag.
+        """Dict: {attr: :class:`WarMember`} - A dict of clan members in war by tag.
 
         Pass in an attribute of :class:`WarMember` to get that attribute as the key.
         """
@@ -532,7 +532,7 @@ class SearchPlayer(BasicPlayer):
             
     @property
     def achievements_dict(self, attr='name'):
-        """Dict{name: :class:`Achievement`}: A dict of achievements by name.
+        """Dict: {name: :class:`Achievement`}: A dict of achievements by name.
 
         Pass in an attribute of :class:`Achievement` to get that attribute as the key
         """
@@ -540,7 +540,7 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def troops_dict(self, attr='name'):
-        """Dict{name: :class:`Troop`}: A dict of troops by name.
+        """Dict: {name: :class:`Troop`}: A dict of troops by name.
 
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
@@ -548,7 +548,7 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def heroes_dict(self, attr='name'):
-        """Dict{name: :class:`Hero`}: A dict of heroes by name.
+        """Dict: {name: :class:`Hero`}: A dict of heroes by name.
 
         Pass in an attribute of :class:`Hero` to get that attribute as the key
         """
@@ -556,7 +556,7 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def spells_dict(self, attr='name'):
-        """Dict{name: :class:`Spell`}: A dict of spells by name.
+        """Dict: {name: :class:`Spell`}: A dict of spells by name.
 
         Pass in an attribute of :class:`Spell` to get that attribute as the key
         """

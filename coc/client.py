@@ -67,6 +67,7 @@ class Client:
         The number of requests per token per second to send to the API.
         Once hitting this limit, the library will automatically throttle
         your requests.
+
         .. note::
 
             Setting this value too high may result in the API rate-limiting
@@ -576,7 +577,7 @@ class Client:
 
         This is somewhat equivilant to:
 
-        ..code-block:: python
+        .. code-block:: python3
 
             locations = await client.search_locations(limit=None)
             return utils.get(locations, name=location_name)
@@ -736,7 +737,7 @@ class Client:
 
         This is somewhat equivilant to
 
-        ..code-block:: python
+        .. code-block:: python3
 
             leagues = await client.search_leagues(limit=None)
             return utils.get(leagues, name=league_name)
