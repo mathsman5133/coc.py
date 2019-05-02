@@ -510,7 +510,20 @@ class Client:
         return LeagueWar(data=r)
 
     # locations
-    async def search_locations(self, *, limit: int=10,
+    async def _populate_locations(self):
+        if self.cache_locations.fully_populated is True:
+            return self.cache_locations.get_all_values()
+
+        self.cache_locations.clear()
+        all_locations = await self.search_locations(limit=None)
+
+        for n in all_locations:
+            self.cache_locations.add(n.id, n)
+
+        self.cache_locations.fully_populated = True
+        return all_locations
+
+    async def search_locations(self, *, limit: int=None,
                                before: int=None, after: int=None):
         """List all available locations
 
@@ -523,6 +536,9 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
+        if self.cache_locations.fully_populated is True:
+            return self.cache_locations.get_limit(limit)
+
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data['items'])
@@ -554,6 +570,29 @@ class Client:
         """
         r = await self.http.get_location(location_id)
         return Location(data=r)
+
+    async def get_location_named(self, location_name: str):
+        """Get a location by name.
+
+        This is somewhat equivilant to:
+
+        ..code-block:: python
+
+            locations = await client.search_locations(limit=None)
+            return utils.get(locations, name=location_name)
+
+
+        Parameters
+        -----------
+        location_name : str
+            The location name to search for
+
+        Returns
+        --------
+        :class:`Location`
+            The first location matching the location name"""
+        locations = await self._populate_locations()
+        return get(locations, name=location_name)
 
     async def get_location_clan(self, location_id: int, *, limit: int=None,
                                 before: int=None, after: int=None):
@@ -630,6 +669,19 @@ class Client:
 
     # leagues
 
+    async def _populate_leagues(self):
+        if self.cache_leagues.fully_populated is True:
+            return self.cache_leagues.get_all_values()
+
+        self.cache_leagues.clear()
+        all_leagues = await self.search_leagues(limit=None)
+
+        for n in all_leagues:
+            self.cache_leagues.add(n.id, n)
+
+        self.cache_leagues.fully_populated = True
+        return all_leagues
+
     async def search_leagues(self, *, limit: int=None, before: int=None, after: int=None):
         """Get list of leagues.
 
@@ -644,6 +696,8 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
+        if self.cache_leagues.fully_populated is True:
+            return self.cache_leagues.get_limit(limit)
 
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n) for n in r['items'])
@@ -676,6 +730,29 @@ class Client:
         """
         r = await self.http.get_league(league_id)
         return League(data=r)
+
+    async def get_league_named(self, league_name: str):
+        """Get a location by name.
+
+        This is somewhat equivilant to
+
+        ..code-block:: python
+
+            leagues = await client.search_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The league name to search for
+
+        Returns
+        --------
+        :class:`League`
+            The first location matching the location name"""
+        leagues = await self._populate_leagues()
+        return get(leagues, name=league_name)
 
     async def get_seasons(self, league_id: int):
         """Get league seasons. Note that league season information is available only for Legend League.
