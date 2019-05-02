@@ -44,11 +44,11 @@ class Clan:
     All other clan classes inherit this.
 
     Attributes
-    ------------
-    tag:
-        :class:`str` - The clan tag
-    name:
-        :class:`str` - The clan name
+    -----------
+    tag : str
+        The clan tag.
+    name : str
+        The clan name.
     """
     __slots__ = ('tag', 'name', '_data')
 
@@ -273,7 +273,7 @@ class WarClan(Clan):
 
     @property
     def members_dict(self, attr='tag'):
-        """Dict{attr: :class:`WarMember`}: A dict of clan members in war by tag.
+        """Dict - {attr: :class:`WarMember`} - A dict of clan members in war by tag.
 
         Pass in an attribute of :class:`WarMember` to get that attribute as the key.
         """

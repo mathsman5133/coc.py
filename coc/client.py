@@ -41,38 +41,32 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 
 class Client:
-    """
-    This is the client connection used to interact with the Clash of Clans API.
-
-    .. _event loop: https://docs.python.org/3/library/asyncio-eventloops.html
+    """This is the client connection used to interact with the Clash of Clans API.
 
     Parameters
     -------------
-
-    email: :class:`str`
+    email : str
         Your password email from https://developer.clashofclans.com
         This is used when updating the key automatically if your IP changes
 
-    password: :class:`str`
+    password : str
         Your password login from https://developer.clashofclans.com
         This is used when updating the key automatically if your IP changes
 
-    key_count: Optional[:class:`int`]
+    key_count : int
         The amount of keys to use for this client. Maximum of 10.
-        Defaults to 1
+        Defaults to 1.
 
-    key_names: Optional[:class:`str`]
+    key_names : str
         Default name for keys created to use for this client.
         All keys created or to be used with this client must
         have this name.
+        Defaults to "Created with coc.py Client".
 
-        Defaults to "Created with coc.py Client"
-
-    throttle_limit: Optional[:class:`int`]
+    throttle_limit : int
         The number of requests per token per second to send to the API.
         Once hitting this limit, the library will automatically throttle
         your requests.
-
         .. note::
 
             Setting this value too high may result in the API rate-limiting
@@ -83,18 +77,16 @@ class Client:
             Setting this value too high may result in your requests being
             deemed "API Abuse", potentially resulting in an IP ban.
 
-
         Defaults to 10 requests per token, per second.
 
-    loop: Optional[event loop]
+    loop : :class:`asyncio.AbstractEventLoop`, optional
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
-        An :func:`asyncio.get_event_loop()` will be used if None is passed
+        An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
 
     Attributes
     -----------
-    loop
-        The :class:`asyncio.AbstractEventLoop` that is used for HTTP requests
-
+    loop : :class:`asyncio.AbstractEventLoop`
+        The loop that is used for HTTP requests
     """
     cache_search_clans = Cache()
     cache_war_clans = Cache()
@@ -113,10 +105,10 @@ class Client:
     cache_leagues = Cache()
     cache_seasons = Cache()
 
-    def __init__(self, email, password, key_count=1,
-                 key_names='Created with coc.py Client',
-                 throttle_limit=10,
-                 loop=None):
+    def __init__(self, email: str, password: str, key_count: int=1,
+                 key_names: str='Created with coc.py Client',
+                 throttle_limit: int=10,
+                 loop: asyncio.AbstractEventLoop=None):
 
         self.loop = loop or asyncio.get_event_loop()
         correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
@@ -139,7 +131,7 @@ class Client:
         log.info('Clash of Clans client logging out...')
         await self.http.close()
 
-    async def on_key_reset(self, new_key):
+    async def on_key_reset(self, new_key: str):
         """Event: called when one of the client's keys are reset.
 
         By default this does nothing.
@@ -193,7 +185,7 @@ class Client:
         log.info('Successfully registered %s event', fctn.__name__)
         return fctn
 
-    def dispatch(self, event_name, *args, **kwargs):
+    def dispatch(self, event_name: str, *args, **kwargs):
         log.debug('Dispatching %s event', event_name)
         event = 'on_' + event_name
 
@@ -205,9 +197,9 @@ class Client:
             if asyncio.iscoroutinefunction(fctn):
                 asyncio.ensure_future(fctn(*args, **kwargs), loop=self.loop)
             else:
-                event(*args, **kwargs)
+                fctn(*args, **kwargs)
 
-    def set_cache(self, *cache_to_edit, max_size=128, expiry=None):
+    def set_cache(self, *cache_to_edit, max_size: int=128, expiry: int=None):
         """Set the max size and expiry time for a cached object.
 
         .. note::
@@ -215,10 +207,15 @@ class Client:
             Calling this method will override and create a new cache instance,
             removing all previously cached objects
 
-
-        :param cache_to_edit: :class:`str` or :class:`CacheType` enum. The name of cache type to change.
-        :param max_size: :class:`int` The max size of the created cache. Defaults to 128
-        :param expiry: :class:`int` The expiry time in seconds of the cache. Defaults to None (cache does not expire)
+        Parameters
+        -----------
+        cache_to_edit : str
+            The name of cache type to change.
+        max_size : int
+            The max size of the created cache. Defaults to 128
+        expiry : int, optional
+            The expiry time in seconds of the cache.
+            Defaults to None (cache does not expire)
         """
         for cache_type in cache_to_edit:
             cache_type = str(cache_type)
@@ -240,19 +237,34 @@ class Client:
         At least one filtering criteria must be defined and if name is used as part
         of search, it is required to be at least three characters long.
 
-        :param name: Optional[:class:`str`]
-        :param war_frequency: Optional[:class:`str`]
-        :param location_id: Optional[:class:`int`]
-        :param min_members: Optional[:class:`int`]
-        :param max_members: Optional[:class:`int`]
-        :param min_clan_points: Optional[:class:`int`]
-        :param min_clan_level: Optional[:class:`int`]
-        :param limit: Optional[:class:`int`]
+        Parameters
+        -----------
+        name : str, optional
+            The clan name.
+        war_frequency : str, optional
+            The war frequency.
+        location_id : int, optional
+            The location id.
+        min_members : int, optional
+            The minimum number of members.
+        max_members : int, optional
+            The maximum number of members.
+        min_clan_points : int, optional
+            The minumum clan points.
+        min_clan_level : int, optional
+            The minimum clan level.
+        limit : int
+            The number of clans to search for.
 
-        :raise HTTPException: no options were passed
+        Returns
+        --------
+        :class:`list` of :class:`SearchClan`
+            A list of all clans found matching criteria provided.
 
-        :return: :class:`list` of all :class:`SearchClan` found
-
+        Raises
+        -------
+        HTTPException
+            No options were passed.
         """
 
         r = await self.http.search_clans(name=name, warFrequency=war_frequency, locationId=location_id,
@@ -264,21 +276,30 @@ class Client:
         return clans
 
     @cache_search_clans.get_cache()
-    async def get_clan(self, tag, cache=False, fetch=True):
+    async def get_clan(self, tag: str, cache: bool=False, fetch: bool=True):
         """Get information about a single clan by clan tag. Clan tags can be found using clan search operation.
 
-        :param tag: :class:`str` The tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        tag : str
+            The clan tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`SearchClan`
+        Returns
+        --------
+        :class:`SearchClan`
+            The clan with provided tag.
         """
         r = await self.http.get_clan(tag)
         return SearchClan(data=r, client=self)
 
-    def get_clans(self, tags, cache=False, fetch=True):
+    def get_clans(self, tags: list, cache: bool=False, fetch: bool=True):
         """Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
 
         Example
@@ -290,27 +311,44 @@ class Client:
             async for clan in Client.get_clans(tags):
                 print(clan.name)
 
-        :param tags: :class:`collections.Iterable` The tags to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        tags : list
+            A list of clan tags to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`SearchClan`
+        Returns
+        --------
+        :class:`ClanIterator` of :class:`SearchClan`
         """
-        tags = list(tags)
         return ClanIterator(self, tags, cache, fetch)
 
-    async def get_members(self, clan_tag, cache=False, fetch=True):
-        """List clan members. This is equivilant to ``(await Client.get_clan('tag')).members``.
+    async def get_members(self, clan_tag: str, cache: bool=False, fetch: bool=True):
+        """List clan members.
 
-        :param clan_tag: :class:`str` The clan tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        This is equivilant to ``(await Client.get_clan('tag')).members``.
 
-        :return: :class:`list` of :class:`BasicPlayer`
+        Parameters
+        -----------
+        clan_tag : str
+            The clan tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
+
+        Returns
+        --------
+        :class:`list` of :class:`BasicPlayer`
         """
         if cache:
             c = self.cache_search_clans.get(clan_tag)
@@ -328,17 +366,26 @@ class Client:
         return clan.members
 
     @cache_war_logs.get_cache()
-    async def get_warlog(self, clan_tag, cache=False, fetch=True):
+    async def get_warlog(self, clan_tag: str, cache: bool=False, fetch: bool=True):
         """Retrieve clan's clan war log
 
-        :param clan_tag: :class:`str` The tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        clan_tag : str
+            The clan tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`list` of either :class:`WarLog` or :class:`LeagueWarLogEntry`, according to which war it is,
-
+        Returns
+        --------
+        :class:`list` of either :class:`WarLog` or :class:`LeagueWarLogEntry`
+            Return type will depend on what kind of war it is.
+            These two classes have different attributes.
         """
         r = await self.http.get_clan_warlog(clan_tag)
 
@@ -361,22 +408,30 @@ class Client:
         return wars
 
     @cache_current_wars.get_cache()
-    async def get_current_war(self, clan_tag, cache=False, fetch=True):
+    async def get_current_war(self, clan_tag: str, cache: bool=False, fetch: bool=True):
         """
         Retrieve information about clan's current clan war
 
-        :param clan_tag: :class:`str` The clan tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        clan_tag : str
+            The clan tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`CurrentWar`
+        Returns
+        --------
+        :class:`CurrentWar`
         """
         r = await self.http.get_clan_current_war(clan_tag)
         return CurrentWar(data=r)
 
-    def get_current_wars(self, clan_tags, cache=False, fetch=True):
+    def get_current_wars(self, clan_tags: list, cache: bool=False, fetch: bool=True):
         """
         Retrieve information multiple clan's current clan wars
 
@@ -389,44 +444,67 @@ class Client:
             async for clan_war in Client.get_current_wars(tags):
                 print(clan_war.opponent)
 
-        :param clan_tags: :class:`collections.Iterable` The clan tags to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        clan_tags : list
+            A list of clan tags to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``.
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned.
 
-        :return: :class:`CurrentWar`
+        Returns
+        --------
+        :class:`coc.iterators.WarIterator` of :class:`CurrentWar`
         """
-        clan_tags = list(clan_tags)
         return WarIterator(self, clan_tags, cache, fetch)
 
     @cache_league_groups.get_cache()
-    async def get_league_group(self, clan_tag, cache=False, fetch=True):
+    async def get_league_group(self, clan_tag: str, cache: bool=False, fetch: bool=True):
         """Retrieve information about clan's current clan war league group
 
-        :param clan_tag: :class:`str` The tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        clan_tag : str
+            The clan tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``.
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned.
 
-        :return: :class:`LeagueGroup`
+        Returns
+        --------
+        :class:`LeagueGroup`
         """
         r = await self.http.get_clan_war_league_group(clan_tag)
         return LeagueGroup(data=r)
 
     @cache_league_wars.get_cache()
-    async def get_league_war(self, war_tag, cache=False, fetch=True):
+    async def get_league_war(self, war_tag: str, cache: bool=False, fetch: bool=True):
         """
         Retrieve information about a clan war league war
 
-        :param war_tag: :class:`str` The tag of league war to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        war_tag : str
+            The league war tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`LeagueWar`
+        Returns
+        --------
+        :class:`LeagueWar`
         """
         r = await self.http.get_cwl_wars(war_tag)
         return LeagueWar(data=r)
@@ -434,17 +512,17 @@ class Client:
     # locations
     async def search_locations(self, *, limit: int=10,
                                before: int=None, after: int=None):
+        """List all available locations
+
+        Parameters
+        -----------
+        limit : int, optional
+            Number of items to fetch. Default is None, which returns all available locations
+
+        Returns
+        --------
+        :class:`list` of :class:`Location`
         """
-        List all available locations
-
-        :param limit: Optional[:class:`int`] Number of items to fetch. Default is 10
-
-        :raise HTTPException: no options were passed
-
-        :return: :class:`list` of all :class:`Location` found
-
-        """
-
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data['items'])
@@ -455,71 +533,97 @@ class Client:
         return locations
 
     @cache_locations.get_cache()
-    async def get_location(self, location_id, cache=False, fetch=True):
-        """
-        Get information about specific location
+    async def get_location(self, location_id: int, cache: bool=False, fetch: bool=True):
+        """Get information about specific location
 
-        :param location_id: :class:`int` The location ID to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`Location`
+        Returns
+        --------
+        :class:`Location`
         """
         r = await self.http.get_location(location_id)
         return Location(data=r)
 
-    async def get_location_clan(self, location_id, *, limit: int=None,
+    async def get_location_clan(self, location_id: int, *, limit: int=None,
                                 before: int=None, after: int=None):
-        """
-        Get clan rankings for a specific location
+        """Get clan rankings for a specific location
 
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+        limit : int
+            The number of results to fetch.
 
-        :param location_id: :class:`int` The location ID to search
-        :param limit: :class:`int` The number of results to fetch
-
-        :return: :class:`Clan`
+        Returns
+        --------
+        :class:`list` of :class:`Clan`
         """
 
         r = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
         return list(Clan(data=n) for n in r['items'])
 
-    async def get_location_players(self, location_id, *, limit: int=None,
+    async def get_location_players(self, location_id: int, *, limit: int=None,
                                    before: int=None, after: int=None):
-        """
-        Get player rankings for a specific location
+        """Get player rankings for a specific location
 
-        :param location_id: :class:`int` The location ID to search
-        :param limit: :class:`int` The number of results to fetch
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+        limit : int
+            The number of results to fetch.
 
-        :return: :class:`Player`
+        Returns
+        --------
+        :class:`list` of :class:`Player`
         """
         r = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
         return list(Player(data=n) for n in r['items'])
 
-    async def get_location_clans_versus(self, location_id, *, limit: int=None,
+    async def get_location_clans_versus(self, location_id: int, *, limit: int=None,
                                         before: int=None, after: int=None):
-        """
-        Get clan versus rankings for a specific location
+        """Get clan versus rankings for a specific location
 
-        :param location_id: :class:`int` The location ID to search
-        :param limit: :class:`int` The number of results to fetch
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+        limit : int
+            The number of results to fetch.
 
-        :return: :class:`Clan`
+        Returns
+        --------
+        :class:`list` of :class:`Clan`
         """
         r = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
         return list(Clan(data=n) for n in r['items'])
 
-    async def get_location_players_versus(self, location_id, *, limit: int = None,
+    async def get_location_players_versus(self, location_id: int, *, limit: int = None,
                                           before: int = None, after: int = None):
-        """
-        Get player versus rankings for a specific location
+        """Get player versus rankings for a specific location
 
-        :param location_id: :class:`int` The location ID to search
-        :param limit: :class:`int` The number of results to fetch
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+        limit : int
+            The number of results to fetch.
 
-        :return: :class:`Player`
+        Returns
+        --------
+        :class:`list` of :class:`Player`
         """
         r = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
         return list(Player(data=n) for n in r['items'])
@@ -527,16 +631,20 @@ class Client:
     # leagues
 
     async def search_leagues(self, *, limit: int=None, before: int=None, after: int=None):
+        """Get list of leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+
+        Returns
+        --------
+        :class:`list` of :class:`League`
+            Returns a list of all leagues found. Could be ``None``
+
         """
-        Get list of leagues.
 
-        :param limit: Optional[:class:`int`] Number of items to fetch. Default is 10
-
-        :raise HTTPException: no options were passed
-
-        :return: :class:`list` of all :class:`League` found
-
-        """
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n) for n in r['items'])
 
@@ -546,53 +654,74 @@ class Client:
         return leagues
 
     @cache_leagues.get_cache()
-    async def get_league(self, league_id, cache=False, fetch=True):
+    async def get_league(self, league_id: int, cache: bool=False, fetch: bool=True):
         """
         Get league information
 
-        :param league_id: :class:`str` The ID to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`League`
+        Returns
+        --------
+        :class:`League`
         """
         r = await self.http.get_league(league_id)
         return League(data=r)
 
-    async def get_seasons(self, league_id):
+    async def get_seasons(self, league_id: int):
         """Get league seasons. Note that league season information is available only for Legend League.
 
-        :param league_id: :class:`str` The league ID to search for
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
 
-        :return: :class:`dict`
+        Returns
+        --------
+        :class:`dict`
+            In the form
 
-        In the form
+            .. code-block:: json
 
-        .. code-block:: json
+                {
+                    "id": "string"
+                }
 
-            {
-                "id": "string"
-            }
-
-        where `id` is the season ID
+            where ``id`` is the Season ID
         """
         r = await self.http.get_league_seasons(league_id)
         return r['items']
 
-    async def get_season_rankings(self, league_id, season_id, cache=False, fetch=True):
+    async def get_season_rankings(self, league_id: int, season_id: int, cache: bool=False, fetch: bool=True):
         """Get league season rankings.
         Note that league season information is available only for Legend League.
 
-        :param league_id: :class:`str` The league ID to search for
-        :param season_id: :class:`str` The season ID to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        season_id : str
+            The Season ID to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`list` of :class:`LeagueRankedPlayer`
+        Returns
+        --------
+        :class:`list` of :class:`LeagueRankedPlayer`
         """
         if cache:
             try:
@@ -614,23 +743,32 @@ class Client:
         return players
 
     # players
+
     @cache_search_players.get_cache()
-    async def get_player(self, player_tag, cache=False, fetch=True):
+    async def get_player(self, player_tag: str, cache: bool=False, fetch: bool=True):
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
-        :param player_tag: :class:`str` The player tag to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        ----------
+        player_tag : str
+            The player tag to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`SearchPlayer`
+        Returns
+        --------
+        :class:`SearchPlayer`
         """
         r = await self.http.get_player(player_tag)
         return SearchPlayer(data=r)
 
-    def get_players(self, player_tags, cache=False, fetch=True):
+    def get_players(self, player_tags: list, cache: bool=False, fetch: bool=True):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -643,13 +781,21 @@ class Client:
             async for player in Client.get_players(tags):
                 print(player)
 
-        :param player_tags: :class:`collections.Iterable` The player tags to search for
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
-                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
-                        ``None`` will be returned
+        Parameters
+        ----------
+        player_tags : list
+            A list of player tags to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
 
-        :return: :class:`SearchPlayer`
+        Returns
+        --------
+        :class:`PlayerIterator` of :class:`SearchPlayer`
         """
         player_tags = list(player_tags)
         return PlayerIterator(self, player_tags, cache, fetch)
