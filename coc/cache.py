@@ -60,6 +60,8 @@ class Cache:
     def __init__(self, max_size=128, ttl=None):
         self.__lru_instance = LRU(max_size)
         self.__ttl = ttl
+        self.max_size = max_size
+        self.fully_populated = False
 
     def __call__(self, *args, **kwargs):
         self.check_expiry()
@@ -124,10 +126,22 @@ class Cache:
 
     def get(self, key):
         try:
-            return self.__lru_instance[key]
+            return self.__lru_instance[key][0]
         except KeyError:
             return None
 
     def add(self, key, value):
         self.__lru_instance[key] = (value, time.monotonic())
+
+    def clear(self):
+        self.__lru_instance = LRU(self.max_size)
+
+    def get_all_values(self):
+        return list(n[0] for n in self.__lru_instance.values())
+
+    def get_limit(self, limit: int=None):
+        if not limit:
+            return self.get_all_values()
+
+        return self.get_all_values()[:limit]
 
