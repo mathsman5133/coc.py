@@ -5,7 +5,7 @@ class CacheType(Enum):
     search_clans = 'cache_search_clans'
     war_clans = 'cache_war_clans'
 
-    cache_search_players = 'cache_search_players'
+    search_players = 'cache_search_players'
     war_players = 'cache_war_players'
 
     current_wars = 'cache_current_wars'
