@@ -25,13 +25,13 @@ async def clan_info(ctx, clan_tag):
     clan = await coc_client.get_clan(clan_tag)
     
     e = discord.Embed(colour=discord.Colour.green())
-    e.set_thumbnail(url=clan.badgeUrls.medium)
+    e.set_thumbnail(url=clan.badge.url)
     e.add_field(name=clan.name,
                 value=clan.tag)
     e.add_field(name="Description",
                 value=clan.description)
     e.add_field(name="Members",
-                value=clan.members)
+                value=", ".join([member.name for member in clan.members]))
     e.add_field(name="Clan Record",
                 value="{}-{}-{}".format(clan.war_wins, clan.war_losses, clan.war_ties))
     
