@@ -131,7 +131,6 @@ class HTTPClient:
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
         key_count = self.key_count
-        ip = await self.get_ip()
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
         current_keys = (await self.find_site_keys(cookies))['keys']
@@ -141,6 +140,7 @@ class HTTPClient:
         if len(self._keys) <= key_count:
             keys_needed = key_count - len(self._keys)
             if available_keys >= keys_needed:
+                ip = await self.get_ip()
                 for _ in range(keys_needed):
                     key_description = "Created on {}".format(datetime.now().strftime('%c'))
                     self._keys.append(await self.create_key(
