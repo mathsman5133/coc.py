@@ -32,7 +32,7 @@ from collections import OrderedDict
 
 from .utils import get, from_timestamp
 from .iterators import PlayerIterator
-from .enums import TROOP_ORDER, SPELL_ORDER, HERO_ORDER
+from .enums import HOME_TROOP_ORDER, BUILDER_TROOPS_ORDER, SPELL_ORDER, HERO_ORDER
 
 
 def try_enum(_class, data):
@@ -258,7 +258,7 @@ class WarClan(Clan):
         self.total_attacks = self._war.team_size * 2
         self.stars = data.get('stars')
         self.max_stars = self._war.team_size * 3
-            
+
     @property
     def _members(self):
         """|iter|
@@ -531,26 +531,34 @@ class SearchPlayer(BasicPlayer):
         """List[:class:`Spell`]: List of the player's spells"""
         return [Spell(data=sdata, player=self)
                 for sdata in self._data.get('spells', [])]
-            
+
     @property
     def achievements_dict(self, attr='name'):
-        """Dict: {name: :class:`Achievement`}: A dict of achievements by name.
+        """:class:`dict` - {name: :class:`Achievement`} A dict of achievements by name.
 
         Pass in an attribute of :class:`Achievement` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self._achievements}
 
     @property
-    def troops_dict(self, attr='name'):
-        """Dict: {name: :class:`Troop`}: A dict of troops by name.
+    def home_troops_dict(self, attr='name'):
+        """:class:`dict` - {name: :class:`Troop`}: A dict of home base troops by name.
 
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
-        return {getattr(m, attr): m for m in self.troops}
+        return {getattr(m, attr): m for m in self.troops if m.is_home_base}
+
+    @property
+    def builder_troops_dict(self, attr='name'):
+        """:class:`dict` - {name: :class:`Troop`}: A dict of builder base troops by name.
+
+        Pass in an attribute of :class:`Troop` to get that attribute as the key
+        """
+        return {getattr(m, attr): m for m in self.troops if m.is_builder_base}
 
     @property
     def heroes_dict(self, attr='name'):
-        """Dict: {name: :class:`Hero`}: A dict of heroes by name.
+        """:class:`dict` - {name: :class:`Hero`}: A dict of heroes by name.
 
         Pass in an attribute of :class:`Hero` to get that attribute as the key
         """
@@ -558,20 +566,29 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def spells_dict(self, attr='name'):
-        """Dict: {name: :class:`Spell`}: A dict of spells by name.
+        """:class:`dict` - {name: :class:`Spell`}: A dict of spells by name.
 
         Pass in an attribute of :class:`Spell` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.spells}
-    
+
     @property
-    def ordered_troops(self):
+    def ordered_home_troops(self):
         """:class:`collections.OrderedDict` - An ordered dict of troops by name.
 
         This will return troops in the order found in both barracks and labatory in-game.
         """
-        key_order = {k: v for v, k in enumerate(TROOP_ORDER)}
-        return OrderedDict(sorted(self.troops_dict.values(), key=lambda i: key_order.get(i.name)))
+        key_order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
+        return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+
+    @property
+    def ordered_builder_troops(self):
+        """:class:`collections.OrderedDict` - An ordered dict of home base troops by name.
+
+        This will return troops in the order found in both barracks and labatory in-game.
+        """
+        key_order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
+        return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_spells(self):
@@ -580,7 +597,7 @@ class SearchPlayer(BasicPlayer):
         This will return spells in the order found in both spell factory and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(SPELL_ORDER)}
-        return OrderedDict(sorted(self.spells_dict.values(), key=lambda i: key_order.get(i.name)))
+        return OrderedDict(sorted(self.spells_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_heroes(self):
@@ -589,7 +606,7 @@ class SearchPlayer(BasicPlayer):
         This will return heroes in the order found in the labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(HERO_ORDER)}
-        return OrderedDict(sorted(self.heroes_dict.values(), key=lambda i: key_order.get(i.name)))
+        return OrderedDict(sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0])))
 
 
 class BaseWar:
@@ -624,7 +641,7 @@ class BaseWar:
         if 'tag' in opponent:
             # same issue as clan
             return WarClan(data=opponent, war=self)
-        
+
 
 class WarLog(BaseWar):
     """Represents a Clash of Clans War Log Entry

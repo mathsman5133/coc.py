@@ -22,7 +22,7 @@ class CacheType(Enum):
         return self.value
 
 
-TROOP_ORDER = [
+HOME_TROOP_ORDER = [
     'Barbarian',
     'Archer',
     'Giant',
@@ -43,7 +43,20 @@ TROOP_ORDER = [
     'Witch',
     'Lava Hound',
     'Bowler',
-    'Ice Golem'
+    'Ice Golem',
+]
+
+BUILDER_TROOPS_ORDER = [
+    'Raged Barbarian',
+    'Sneaky Archer',
+    'Boxer Giant',
+    'Beta Minion',
+    'Bomber',
+    'Baby Dragon',
+    'Cannon Cart',
+    'Night Witch',
+    'Drop Ship',
+    'Super P.E.K.K.A'
 ]
 
 SPELL_ORDER = [
