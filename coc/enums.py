@@ -20,3 +20,55 @@ class CacheType(Enum):
 
     def __str__(self):
         return self.value
+
+
+TROOP_ORDER = [
+    'Barbarian',
+    'Archer',
+    'Giant',
+    'Goblin',
+    'Wall Breaker',
+    'Balloon',
+    'Wizard',
+    'Healer',
+    'Dragon',
+    'P.E.K.K.A',
+    'Baby Dragon',
+    'Miner',
+    'Electro Dragon',
+    'Minion',
+    'Hog Rider',
+    'Valkyrie',
+    'Golem',
+    'Witch',
+    'Lava Hound',
+    'Bowler',
+    'Ice Golem'
+]
+
+SPELL_ORDER = [
+    'Lightning Spell',
+    'Healing Spell',
+    'Rage Spell',
+    'Jump Spell',
+    'Freeze Spell',
+    'Clone Spell',
+    'Poison Spell',
+    'Earthquake Spell',
+    'Haste Spell',
+    'Skeleton Spell',
+    'Bat Spell'
+]
+
+HERO_ORDER = [
+    'Barbarian King',
+    'Archer Queen',
+    'Grand Warden',
+    'Battle Machine'
+]
+
+SIEGE_MACHINE_ORDER = [
+    'Wall Wrecker',
+    'Battle Blimp',
+    'Stone Slammer'
+]

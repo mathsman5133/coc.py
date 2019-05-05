@@ -28,9 +28,11 @@ SOFTWARE.
 from datetime import datetime
 from operator import attrgetter
 from itertools import chain
+from collections import OrderedDict
 
 from .utils import get, from_timestamp
 from .iterators import PlayerIterator
+from .enums import TROOP_ORDER, SPELL_ORDER, HERO_ORDER
 
 
 def try_enum(_class, data):
@@ -515,7 +517,7 @@ class SearchPlayer(BasicPlayer):
     @property
     def troops(self):
         """List[:class:`Troop`]: List of the player's troops"""
-        return [Spell(data=sdata, player=self)
+        return [Troop(data=sdata, player=self)
                 for sdata in self._data.get('troops', [])]
 
     @property
@@ -561,6 +563,33 @@ class SearchPlayer(BasicPlayer):
         Pass in an attribute of :class:`Spell` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.spells}
+    
+    @property
+    def ordered_troops(self):
+        """:class:`collections.OrderedDict` - An ordered dict of troops by name.
+
+        This will return troops in the order found in both barracks and labatory in-game.
+        """
+        key_order = {k: v for v, k in enumerate(TROOP_ORDER)}
+        return OrderedDict(sorted(self.troops_dict.values(), key=lambda i: key_order.get(i.name)))
+
+    @property
+    def ordered_spells(self):
+        """:class:`collections.OrderedDict` - An ordered dict of spells by name.
+
+        This will return spells in the order found in both spell factory and labatory in-game.
+        """
+        key_order = {k: v for v, k in enumerate(SPELL_ORDER)}
+        return OrderedDict(sorted(self.spells_dict.values(), key=lambda i: key_order.get(i.name)))
+
+    @property
+    def ordered_heroes(self):
+        """:class:`collections.OrderedDict` - An ordered dict of heroes by name.
+
+        This will return heroes in the order found in the labatory in-game.
+        """
+        key_order = {k: v for v, k in enumerate(HERO_ORDER)}
+        return OrderedDict(sorted(self.heroes_dict.values(), key=lambda i: key_order.get(i.name)))
 
 
 class BaseWar:
