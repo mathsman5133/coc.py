@@ -44,6 +44,9 @@ HOME_TROOP_ORDER = [
     'Lava Hound',
     'Bowler',
     'Ice Golem',
+    'Wall Wrecker',
+    'Battle Blimp',
+    'Stone Slammer'
 ]
 
 BUILDER_TROOPS_ORDER = [
