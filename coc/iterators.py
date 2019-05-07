@@ -54,7 +54,7 @@ class PlayerIterator(TaggedIterator):
         self.get_method = client.get_player
 
 
-class WarIterator:
+class WarIterator(TaggedIterator):
     def __init__(self, client, tags: list, cache: bool, fetch: bool):
         super(WarIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_current_war
