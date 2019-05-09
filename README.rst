@@ -25,6 +25,10 @@ Installing
     # Windows
     py -3 -m pip install -U coc.py
 
+    # to install the development version:
+    python3 -m pip install -U git+https://github.com/mathsman5133/coc.py --upgrade
+
+
 Quick Example
 --------------
 .. code:: py
