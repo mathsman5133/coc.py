@@ -328,6 +328,7 @@ class Client:
         --------
         :class:`ClanIterator` of :class:`SearchClan`
         """
+        tags = list(tags)
         return ClanIterator(self, tags, cache, fetch)
 
     async def get_members(self, clan_tag: str, cache: bool=False, fetch: bool=True):
@@ -461,6 +462,7 @@ class Client:
         --------
         :class:`coc.iterators.WarIterator` of :class:`CurrentWar`
         """
+        clan_tags = list(clan_tags)
         return WarIterator(self, clan_tags, cache, fetch)
 
     @cache_league_groups.get_cache()
