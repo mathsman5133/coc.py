@@ -1,3 +1,6 @@
+from .errors import NotFound, Forbidden
+
+
 class _AsyncIterator:
     async def __aiter__(self):
         return self
@@ -38,8 +41,12 @@ class TaggedIterator(_AsyncIterator):
         self.retrieved += 1
 
         tag = self.tags[index]
-        clan = await self.get_method(tag, cache=self.cache, fetch=self.fetch)
-        return clan
+        try:
+            item = await self.get_method(tag, cache=self.cache, fetch=self.fetch)
+        except (NotFound, Forbidden):
+            return await self.next()
+
+        return item
 
 
 class ClanIterator(TaggedIterator):
