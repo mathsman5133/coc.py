@@ -6,6 +6,64 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.1.3
+--------
+BugFixes
+~~~~~~~~~
+- TypeError will no longer be raised if no tags were found
+- Iterators will continue to search for next item if one fails
+
+Important
+~~~~~~~~~~
+New Properties/Attributes
+
+    - :attr:`WarMember.is_opponent` indicates if the member is a clanmate (false) or opponent (true)
+    - :attr:`SearchPlayer.ordered_home_troops`, :attr:`SearchPlayer.ordered_builder_troops` - returns an
+      :class:`collections.OrderedDict` of players troops, in the order found in game.
+      Note: Siege Machines are included at the end of this.
+    - :attr:`SearchPlayer.ordered_spells` - same, but for spells
+    - :attr:`SearchPlayer.ordered_heroes` - same, but for heroes.
+    - :attr:`BaseWar.clan_tag` - all wars now have a permenant `clan_tag` attribute regardless of war state.
+    - :attr:`cache.fully_populated` - helper bool to indicate if all possible items are cached,
+      for eg. with locations and leagues - static information
+
+New Methods:
+
+    - :meth:`client.get_league_named()` - get a league (ie. Bronze III etc.) by name.
+    - :meth:`client.get_location_named()` - get a location (ie. Australia etc.) by name.
+    - :meth:`cache.clear()` - reset the cache and clear all objects inside for that instance.
+    - :meth:`cache.get_all_values()` - returns all values in the cache.
+    - :meth:`cache.get_limit(limit)` - get the first limit number of items in cache.
+
+New Iterators:
+
+    - :class:`PlayerIterator`, :class:`ClanIterator`, :class:`WarIterator` - returned when a function eg.
+      :meth:`client.get_players(tags)` is called. These allow normal dot notion to be used inside `async for`,
+      eg. `async for clan in client.get_clans(tags): print(clan.name)`.
+    - :meth:`Iterator.flatten()` will return a list of all objects inside the iterator. Note: operation may be slow.
+
+Changed Attribute:
+
+    - :attr:`SearchPlayer.troops_dict` has been changed to both :attr:`SearchPlayer.home_troops_dict` and
+      :attr:`SearchPlayer.builder_troops_dict`, returning a dict of either home, or builder troops respectively.
+
+    - :attr:`SearchPlayer.ordered_troops_dict` has been changed to both :attr:`SearchPlayer.ordered_home_troops_dict`
+      and :attr:`SearchPlayer.ordered_builder_troops_dict`, returning a dict of either home, or builder troops respectively.
+
+Removed Dependency:
+
+    - `lru-dict` has been removed as a dependency due to a few windows problems while installing,
+      and utilising :class:`collections.OrderedDict` appears to be faster.
+
+
+Documentation
+~~~~~~~~~~~~~~
+
+- Many type-hints were added to functions to aid IDE integration
+- Documentation was re-written to use the NumPy style.
+- Discord Bot examples were updated
+
+
 v0.1.2
 --------
 BugFixes
