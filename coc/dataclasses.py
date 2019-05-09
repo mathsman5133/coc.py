@@ -1128,18 +1128,18 @@ class Badge:
         self.url = self.medium
 
     async def save(self, fp, size=None):
-        """This funtion is a coroutine. Save this badge as a file-like object.
-
-        :param fp: :class:`os.PathLike`
-                    The filename to save the badge to
-        :param size: Optional[:class:`str`] Either `small`, `medium` or `large`. The default is `medium`
-
-        :raise HTTPException: Saving the badge failed
-
-        :raise NotFound: The url was not found
-
-        :return: :class:`int` The number of bytes written
-        """
+        # """This funtion is a coroutine. Save this badge as a file-like object.
+        #
+        # :param fp: :class:`os.PathLike`
+        #             The filename to save the badge to
+        # :param size: Optional[:class:`str`] Either `small`, `medium` or `large`. The default is `medium`
+        #
+        # :raise HTTPException: Saving the badge failed
+        #
+        # :raise NotFound: The url was not found
+        #
+        # :return: :class:`int` The number of bytes written
+        # """
         sizes = {'small': self.small,
                  'medium': self.medium,
                  'large': self.large}
@@ -1290,9 +1290,9 @@ class LeagueWar(CurrentWar):
     tag:
         :class:`str` - The war tag
     """
-    def __init__(self, *, data):
+    def __init__(self, *, data, clan_tag):
         self.tag = data.get('tag')
-        super(LeagueWar, self).__init__(data=data)
+        super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag)
 
 
 class LeagueWarLogEntry:
