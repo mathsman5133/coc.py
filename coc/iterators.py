@@ -1,3 +1,5 @@
+import asyncio
+
 from .errors import NotFound, Forbidden
 
 
@@ -28,25 +30,40 @@ class TaggedIterator(_AsyncIterator):
     def __init__(self, client, tags: list, cache: bool, fetch: bool):
         self.client = client
         self.tags = tags
-        self.retrieved = 0
 
         self.cache = cache
         self.fetch = fetch
+        self.queue = asyncio.Queue(loop=client.loop)
+        self.queue_empty = True
+
+    async def run_method(self, tag):
+        try:
+            return await self.get_method(tag, cache=self.cache, fetch=self.fetch)
+        except (NotFound, Forbidden):
+            return None
+
+    async def fill_queue(self):
+        tasks = []
+
+        for tag in self.tags:
+            task = asyncio.ensure_future(self.run_method(tag))
+            tasks.append(task)
+
+        result = await asyncio.gather(*tasks)
+        result = [n for n in result if n]
+
+        for n in result:
+            await self.queue.put(n)
 
     async def next(self):
-        index = self.retrieved
-        if index > len(self.tags) - 1:
-            raise StopAsyncIteration
+        if self.queue_empty:
+            await self.fill_queue()
+            self.queue_empty = False
 
-        self.retrieved += 1
-
-        tag = self.tags[index]
         try:
-            item = await self.get_method(tag, cache=self.cache, fetch=self.fetch)
-        except (NotFound, Forbidden):
-            return await self.next()
-
-        return item
+            return self.queue.get_nowait()
+        except asyncio.QueueEmpty:
+            raise StopAsyncIteration
 
 
 class ClanIterator(TaggedIterator):
@@ -63,5 +80,6 @@ class PlayerIterator(TaggedIterator):
 
 class WarIterator(TaggedIterator):
     def __init__(self, client, tags: list, cache: bool, fetch: bool):
+        self.tags = tags
         super(WarIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_current_war
