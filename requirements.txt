@@ -1,2 +1,2 @@
 aiohttp>=3.3.0,<3.6.0
-lru-dict
+lru-dict==1.1.6
