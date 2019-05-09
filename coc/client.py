@@ -394,15 +394,15 @@ class Client:
         for n in r.get('items', []):
             # lately war log entries for sccwl can be distinguished by a `null` result
             if n.get('result') is None:
-                wars.append(LeagueWarLogEntry(data=n))
+                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag))
                 continue
 
             # for earlier logs this is distinguished by no opponent tag (result called `tie`)
             if n.get('opponent', {}).get('tag', None) is None:
-                wars.append(LeagueWarLogEntry(data=n))
+                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag))
                 continue
 
-            wars.append(WarLog(data=n))
+            wars.append(WarLog(data=n, clan_tag=clan_tag))
 
         self.cache_war_logs.add(wars[0].clan.tag, wars)
 
@@ -430,7 +430,7 @@ class Client:
         :class:`CurrentWar`
         """
         r = await self.http.get_clan_current_war(clan_tag)
-        return CurrentWar(data=r)
+        return CurrentWar(data=r, clan_tag=clan_tag)
 
     def get_current_wars(self, clan_tags: list, cache: bool=False, fetch: bool=True):
         """

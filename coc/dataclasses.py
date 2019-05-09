@@ -616,12 +616,16 @@ class BaseWar:
     -----------
     team_size:
         :class:`int` - The number of players per clan in war
+    clan_tag:
+        :class:`str` - The clan tag passed for the request.
+        This attribute is always present regardless of the war state.
     """
-    __slots__ = ('team_size', '_data')
+    __slots__ = ('team_size', '_data', 'clan_tag')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, clan_tag):
         self._data = data
         self.team_size = data.get('teamSize')
+        self.clan_tag = clan_tag
 
     @property
     def clan(self):
@@ -658,10 +662,10 @@ class WarLog(BaseWar):
     """
     __slots__ = ('result', 'end_time')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, clan_tag):
         self.result = data.get('result')
         self.end_time = try_enum(Timestamp, data.get('endTime'))
-        super(WarLog, self).__init__(data=data)
+        super(WarLog, self).__init__(data=data, clan_tag=clan_tag)
 
 
 class CurrentWar(BaseWar):
@@ -684,13 +688,13 @@ class CurrentWar(BaseWar):
     __slots__ = ('state', 'preparation_start_time',
                  'start_time', 'end_time')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, clan_tag):
         self.state = data.get('state')
         self.preparation_start_time = try_enum(Timestamp, data.get('preparationStartTime'))
         self.start_time = try_enum(Timestamp, data.get('startTime'))
         self.end_time = try_enum(Timestamp, data.get('endTime'))
 
-        super(CurrentWar, self).__init__(data=data)
+        super(CurrentWar, self).__init__(data=data, clan_tag=clan_tag)
 
     @property
     def _attacks(self):
@@ -1312,15 +1316,20 @@ class LeagueWarLogEntry:
         :class:`float` - The total destruction by your clan over all wars
     clan_level:
         :class:`int` - Your clan level.
+    clan_tag:
+        :class:`str` - The clan tag searched for.
+        This attribute is always present regardless of the state of war.
     """
 
     __slots__ = ('end_time', 'team_size', 'clan', 'enemy_stars',
-                 'attack_count', 'stars', 'destruction', 'clan_level')
+                 'attack_count', 'stars', 'destruction', 'clan_level',
+                 'clan_tag')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, clan_tag):
         self.end_time = try_enum(Timestamp, data.get('endTime'))
         self.team_size = data.get('teamSize')
         self.clan = try_enum(Clan, data.get('clan'))
+        self.clan_tag = clan_tag
         try:
             self.enemy_stars = data['opponent']['stars']
         except KeyError:
