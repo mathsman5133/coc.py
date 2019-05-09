@@ -120,7 +120,7 @@ class Cache:
                     return func(*args, **kwargs)
 
                 if cache:
-                    data = self.cache.get(key)
+                    data = self.get(key)
                 else:
                     if fetch:
                         data = func(*args, **kwargs)
@@ -156,7 +156,11 @@ class Cache:
         return deco
 
     def get(self, key):
-        return self.cache.get(key)
+        self.cache.check_expiry()
+        o = self.cache.get(key)
+        if not o:
+            return None
+        return o[1]
 
     def add(self, key, value):
         self.cache[key] = value
@@ -165,9 +169,11 @@ class Cache:
         self.cache = LRU(self.max_size, self.ttl)
 
     def get_all_values(self):
+        self.cache.check_expiry()
         return list(n[1] for n in self.cache.values())
 
     def get_limit(self, limit: int=None):
+        self.cache.check_expiry()
         if not limit:
             return self.get_all_values()
 
