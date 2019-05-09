@@ -1,10 +1,13 @@
-from lru import LRU
-from functools import wraps
 import time
-from coc.utils import find
 import inspect
 import logging
 import re
+
+from functools import wraps
+from collections import OrderedDict
+
+from coc.utils import find
+
 
 log = logging.getLogger(__name__)
 
@@ -44,61 +47,89 @@ def find_key(args, kwargs):
 
 def _wrap_coroutine(result):
     async def new_coro():
-        return result[0]
+        return result
     return new_coro()
 
 
 def _wrap_store_coro(cache, key, coro):
     async def fctn():
         value = await coro
-        cache[key] = (value, time.monotonic())
+        cache[key] = value
         return value
     return fctn()
 
 
+class LRU(OrderedDict):
+    def __init__(self, max_size, ttl):
+        self.max_size = max_size
+        self.ttl = ttl
+        super().__init__()
+
+    def __getitem__(self, key):
+        self.check_expiry()
+
+        value = super().__getitem__(key)
+        self.move_to_end(value)
+        return value[1]
+
+    def __setitem__(self, key, value):
+        value = (time.monotonic(), value)
+        super().__setitem__(key, value)
+        self.check_expiry()
+        self.check_max_size()
+
+    def check_expiry(self):
+        if not self.ttl:
+            return
+
+        current_time = time.monotonic()
+        to_delete = [k for (k, (v, t)) in self.items() if current_time > (t + self.ttl)]
+        for k in to_delete:
+            log.debug('Removed item with key %s and TTL %s seconds from cache.', k, self.ttl)
+            del self[k]
+
+    def check_max_size(self):
+        if not self.max_size:
+            return
+
+        while len(self) > self.max_size:
+            oldest = next(iter(self))
+            log.debug('Removed item with key %s from cache due to max size %s reached', oldest, self.max_size)
+            del self[oldest]
+
+
 class Cache:
     def __init__(self, max_size=128, ttl=None):
-        self.__lru_instance = LRU(max_size)
-        self.__ttl = ttl
+        self.cache = LRU(max_size, ttl)
+        self.ttl = ttl
         self.max_size = max_size
         self.fully_populated = False
 
     def __call__(self, *args, **kwargs):
-        self.check_expiry()
-
-    def check_expiry(self):
-        if not self.__ttl:
-            return
-
-        current_time = time.monotonic()
-        to_delete = [k for (k, (v, t)) in self.__lru_instance.items() if current_time > (t + self.__ttl)]
-        for k in to_delete:
-            log.debug('Removed item with key %s and TTL %s seconds from cache.', k, self.__ttl)
-            del self.__lru_instance[k]
+        self.cache.check_expiry()
 
     def get_cache(self):
         def deco(func):
             @wraps(func)
             def wrapper(*args, **kwargs):
-                self.check_expiry()
                 key = find_key(args, kwargs)
                 cache = kwargs.pop('cache', False)
                 fetch = kwargs.pop('fetch', True)
 
                 if not key:
                     return func(*args, **kwargs)
-                try:
-                    if cache:
-                        data = self.__lru_instance[key]
-                    else:
-                        if fetch:
-                            data = func(*args, **kwargs)
-                            return _wrap_store_coro(self.__lru_instance,
-                                                    key, data)
-                        else:
-                            return None
 
-                except KeyError:
+                if cache:
+                    data = self.cache.get(key)
+                else:
+                    if fetch:
+                        data = func(*args, **kwargs)
+                        return _wrap_store_coro(self.cache,
+                                                key, data)
+                    else:
+                        return None
+
+                if not data:
                     if fetch:
                         data = func(*args, **kwargs)
                     else:
@@ -108,14 +139,14 @@ class Cache:
                         return data
 
                     if inspect.isawaitable(data):
-                        return _wrap_store_coro(self.__lru_instance,
+                        return _wrap_store_coro(self.cache,
                                                 key, data)
 
-                    self.__lru_instance[key] = (data, time.monotonic())
+                    self.cache[key] = data
                     return data
 
                 else:
-                    log.debug('Using object cached at %s', data[1])
+                    log.debug('Using cached object with KEY: %s and VALUE: %s', key, data)
                     if inspect.iscoroutinefunction(func):
                         return _wrap_coroutine(data)
 
@@ -125,19 +156,16 @@ class Cache:
         return deco
 
     def get(self, key):
-        try:
-            return self.__lru_instance[key][0]
-        except KeyError:
-            return None
+        return self.cache.get(key)
 
     def add(self, key, value):
-        self.__lru_instance[key] = (value, time.monotonic())
+        self.cache[key] = value
 
     def clear(self):
-        self.__lru_instance = LRU(self.max_size)
+        self.cache = LRU(self.max_size, self.ttl)
 
     def get_all_values(self):
-        return list(n[0] for n in self.__lru_instance.values())
+        return list(n[1] for n in self.cache.values())
 
     def get_limit(self, limit: int=None):
         if not limit:
