@@ -40,7 +40,7 @@ def find_key(args, kwargs):
     for k, v in kwargs.items():
         key = validate_tag(v)
         if key:
-            return key
+            return v
 
     return None
 
@@ -59,6 +59,16 @@ def _wrap_store_coro(cache, key, coro):
     return fctn()
 
 
+def _try_wrap_store_coro(cache, key, data):
+    if inspect.isawaitable(data):
+        return _wrap_store_coro(cache, key, data)
+    if inspect.isasyncgen(data):
+        return data
+
+    cache[key] = data
+    return data
+
+
 class LRU(OrderedDict):
     def __init__(self, max_size, ttl):
         self.max_size = max_size
@@ -69,12 +79,11 @@ class LRU(OrderedDict):
         self.check_expiry()
 
         value = super().__getitem__(key)
-        self.move_to_end(value)
+        self.move_to_end(key)
         return value[1]
 
     def __setitem__(self, key, value):
-        value = (time.monotonic(), value)
-        super().__setitem__(key, value)
+        super().__setitem__(key, (time.monotonic(), value))
         self.check_expiry()
         self.check_max_size()
 
@@ -83,7 +92,7 @@ class LRU(OrderedDict):
             return
 
         current_time = time.monotonic()
-        to_delete = [k for (k, (v, t)) in self.items() if current_time > (t + self.ttl)]
+        to_delete = [k for (k, (t, v)) in self.items() if current_time > (t + self.ttl)]
         for k in to_delete:
             log.debug('Removed item with key %s and TTL %s seconds from cache.', k, self.ttl)
             del self[k]
@@ -101,8 +110,8 @@ class LRU(OrderedDict):
 class Cache:
     def __init__(self, max_size=128, ttl=None):
         self.cache = LRU(max_size, ttl)
-        self.ttl = ttl
-        self.max_size = max_size
+        self.ttl = self.cache.ttl
+        self.max_size = self.cache.max_size
         self.fully_populated = False
 
     def __call__(self, *args, **kwargs):
@@ -124,8 +133,8 @@ class Cache:
                 else:
                     if fetch:
                         data = func(*args, **kwargs)
-                        return _wrap_store_coro(self.cache,
-                                                key, data)
+                        return _try_wrap_store_coro(self.cache, key, data)
+
                     else:
                         return None
 
@@ -135,15 +144,7 @@ class Cache:
                     else:
                         return None
 
-                    if inspect.isasyncgen(data):
-                        return data
-
-                    if inspect.isawaitable(data):
-                        return _wrap_store_coro(self.cache,
-                                                key, data)
-
-                    self.cache[key] = data
-                    return data
+                    return _try_wrap_store_coro(self.cache, key, data)
 
                 else:
                     log.debug('Using cached object with KEY: %s and VALUE: %s', key, data)
@@ -157,16 +158,21 @@ class Cache:
 
     def get(self, key):
         self.cache.check_expiry()
-        o = self.cache.get(key)
-        if not o:
+        try:
+            return self.cache[key]
+        except KeyError:
             return None
-        return o[1]
 
     def add(self, key, value):
         self.cache[key] = value
 
-    def clear(self):
-        self.cache = LRU(self.max_size, self.ttl)
+    def clear(self, max_size=None, ttl=None):
+        if not max_size:
+            max_size = self.max_size
+        if not ttl:
+            ttl = self.ttl
+
+        self.cache = LRU(max_size, ttl)
 
     def get_all_values(self):
         self.cache.check_expiry()
@@ -178,4 +184,3 @@ class Cache:
             return self.get_all_values()
 
         return self.get_all_values()[:limit]
-
