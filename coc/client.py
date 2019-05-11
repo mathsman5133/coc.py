@@ -28,6 +28,7 @@ SOFTWARE.
 import asyncio
 import logging
 
+from collections import Iterable
 
 from .cache import Cache
 from .http import HTTPClient
@@ -38,6 +39,24 @@ log = logging.getLogger(__name__)
 
 LEAGUE_WAR_STATE = 'notInWar'
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
+
+
+cache_search_clans = Cache()
+cache_war_clans = Cache()
+
+cache_search_players = Cache()
+cache_war_players = Cache()
+
+cache_current_wars = Cache()
+cache_war_logs = Cache()
+
+cache_league_groups = Cache()
+cache_league_wars = Cache()
+
+cache_locations = Cache()
+
+cache_leagues = Cache()
+cache_seasons = Cache()
 
 
 class Client:
@@ -89,23 +108,6 @@ class Client:
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
-    cache_search_clans = Cache()
-    cache_war_clans = Cache()
-
-    cache_search_players = Cache()
-    cache_war_players = Cache()
-
-    cache_current_wars = Cache()
-    cache_war_logs = Cache()
-
-    cache_league_groups = Cache()
-    cache_league_wars = Cache()
-
-    cache_locations = Cache()
-
-    cache_leagues = Cache()
-    cache_seasons = Cache()
-
     def __init__(self, email: str, password: str, key_count: int=1,
                  key_names: str='Created with coc.py Client',
                  throttle_limit: int=10,
@@ -200,6 +202,22 @@ class Client:
             else:
                 fctn(*args, **kwargs)
 
+    def get_cache(self, *cache_names):
+        """Get a cache object by name.
+        Cache objects are otherwise not accessible by the client except through this method.
+
+        Parameters
+        -----------
+        cache_names : str
+            The cache names to search for.
+
+        Returns
+        --------
+        :class:`list` of cache objects found. If a name is not found, it will not be present in this list.
+        """
+        cache_objects = [self._get_cache_from_name(str(n)) for n in cache_names]
+        return [n for n in cache_objects if n]
+
     def set_cache(self, *cache_to_edit, max_size: int=128, expiry: int=None):
         """Set the max size and expiry time for a cached object.
 
@@ -219,14 +237,38 @@ class Client:
             Defaults to None (cache does not expire)
         """
         for cache_type in cache_to_edit:
-            cache_type = str(cache_type)
-            if not getattr(self, cache_type):
+            attr = self._get_cache_from_name(str(cache_type))
+            if not attr:
                 raise ValueError('{} is not a valid cached data class type'.format(cache_to_edit))
 
-            cache = Cache(max_size=max_size, ttl=expiry)
+            attr.clear(max_size, expiry)
             log.debug('Cache type %s has been set with max size %s and expiry %s seconds',
                       cache_type, max_size, expiry)
-            setattr(Client, cache_type, cache)
+
+    @staticmethod
+    def _get_cache_from_name(name):
+        lookup = {
+            'cache_search_clans': cache_search_clans,
+            'cache_war_clans': cache_war_clans,
+
+            'cache_search_players': cache_search_players,
+            'cache_war_players': cache_war_players,
+
+            'cache_current_wars': cache_current_wars,
+            'cache_war_logs': cache_war_logs,
+
+            'cache_league_groups': cache_league_groups,
+            'cache_league_wars': cache_league_wars,
+
+            'cache_locations': cache_locations,
+
+            'cache_leagues': cache_leagues,
+            'cache_seasons': cache_seasons
+        }
+        try:
+            return lookup[str(name)]
+        except KeyError:
+            return None
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
@@ -300,7 +342,7 @@ class Client:
         r = await self.http.get_clan(tag)
         return SearchClan(data=r, client=self)
 
-    def get_clans(self, tags: list, cache: bool=False, fetch: bool=True):
+    def get_clans(self, tags: Iterable, cache: bool=False, fetch: bool=True):
         """Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
 
         Example
@@ -314,8 +356,8 @@ class Client:
 
         Parameters
         -----------
-        tags : list
-            A list of clan tags to search for.
+        tags : :class:`collections.Iterable`
+            An iterable of clan tags to search for.
         cache : bool
             Indicates whether to search the cache before making an HTTP request.
             Defaults to ``True``
@@ -328,7 +370,9 @@ class Client:
         --------
         :class:`ClanIterator` of :class:`SearchClan`
         """
-        tags = list(tags)
+        if not isinstance(tags, Iterable):
+            raise TypeError('Tags are not an iterable.')
+
         return ClanIterator(self, tags, cache, fetch)
 
     async def get_members(self, clan_tag: str, cache: bool=False, fetch: bool=True):
@@ -353,7 +397,7 @@ class Client:
         :class:`list` of :class:`BasicPlayer`
         """
         if cache:
-            c = self.cache_search_clans.get(clan_tag)
+            c = cache_search_clans.get(clan_tag)
             if c:
                 return c.members
 
@@ -363,7 +407,7 @@ class Client:
         r = await self.http.get_clan(clan_tag)
         clan = SearchClan(data=r, client=self)
 
-        self.cache_search_clans.add(clan.tag, clan)
+        cache_search_clans.add(clan.tag, clan)
 
         return clan.members
 
@@ -405,7 +449,7 @@ class Client:
 
             wars.append(WarLog(data=n, clan_tag=clan_tag))
 
-        self.cache_war_logs.add(wars[0].clan.tag, wars)
+        cache_war_logs.add(wars[0].clan.tag, wars)
 
         return wars
 
@@ -433,7 +477,7 @@ class Client:
         r = await self.http.get_clan_current_war(clan_tag)
         return CurrentWar(data=r, clan_tag=clan_tag)
 
-    def get_current_wars(self, clan_tags: list, cache: bool=False, fetch: bool=True):
+    def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True):
         """
         Retrieve information multiple clan's current clan wars
 
@@ -448,8 +492,8 @@ class Client:
 
         Parameters
         -----------
-        clan_tags : list
-            A list of clan tags to search for.
+        clan_tags : :class:`collections.Iterable`
+            An iterable of clan tags to search for.
         cache : bool
             Indicates whether to search the cache before making an HTTP request.
             Defaults to ``True``.
@@ -462,7 +506,9 @@ class Client:
         --------
         :class:`coc.iterators.WarIterator` of :class:`CurrentWar`
         """
-        clan_tags = list(clan_tags)
+        if not isinstance(clan_tags, Iterable):
+            raise TypeError('Tags are not an iterable.')
+
         return WarIterator(self, clan_tags, cache, fetch)
 
     @cache_league_groups.get_cache()
@@ -514,16 +560,16 @@ class Client:
 
     # locations
     async def _populate_locations(self):
-        if self.cache_locations.fully_populated is True:
-            return self.cache_locations.get_all_values()
+        if cache_locations.fully_populated is True:
+            return cache_locations.get_all_values()
 
-        self.cache_locations.clear()
+        cache_locations.clear()
         all_locations = await self.search_locations(limit=None)
 
         for n in all_locations:
-            self.cache_locations.add(n.id, n)
+            cache_locations.add(n.id, n)
 
-        self.cache_locations.fully_populated = True
+        cache_locations.fully_populated = True
         return all_locations
 
     async def search_locations(self, *, limit: int=None,
@@ -539,15 +585,15 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        if self.cache_locations.fully_populated is True:
-            return self.cache_locations.get_limit(limit)
+        if cache_locations.fully_populated is True:
+            return cache_locations.get_limit(limit)
 
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data['items'])
 
         for n in locations:
-            self.cache_locations.add(n.id, n)
+            cache_locations.add(n.id, n)
 
         return locations
 
@@ -673,16 +719,16 @@ class Client:
     # leagues
 
     async def _populate_leagues(self):
-        if self.cache_leagues.fully_populated is True:
-            return self.cache_leagues.get_all_values()
+        if cache_leagues.fully_populated is True:
+            return cache_leagues.get_all_values()
 
-        self.cache_leagues.clear()
+        cache_leagues.clear()
         all_leagues = await self.search_leagues(limit=None)
 
         for n in all_leagues:
-            self.cache_leagues.add(n.id, n)
+            cache_leagues.add(n.id, n)
 
-        self.cache_leagues.fully_populated = True
+        cache_leagues.fully_populated = True
         return all_leagues
 
     async def search_leagues(self, *, limit: int=None, before: int=None, after: int=None):
@@ -699,14 +745,14 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        if self.cache_leagues.fully_populated is True:
-            return self.cache_leagues.get_limit(limit)
+        if cache_leagues.fully_populated is True:
+            return cache_leagues.get_limit(limit)
 
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n) for n in r['items'])
 
         for n in leagues:
-            self.cache_leagues.add(n.id, n)
+            cache_leagues.add(n.id, n)
 
         return leagues
 
@@ -805,7 +851,7 @@ class Client:
         """
         if cache:
             try:
-                data = self.cache_seasons.get(league_id)[season_id]
+                data = cache_seasons.get(league_id)[season_id]
                 if data:
                     return data
 
@@ -818,7 +864,7 @@ class Client:
         r = await self.http.get_league_season_info(league_id, season_id)
         players = list(LeagueRankedPlayer(data=n) for n in r.get('items', []))
 
-        self.cache_seasons.add(league_id, {season_id: players})
+        cache_seasons.add(league_id, {season_id: players})
 
         return players
 
@@ -848,7 +894,7 @@ class Client:
         r = await self.http.get_player(player_tag)
         return SearchPlayer(data=r)
 
-    def get_players(self, player_tags: list, cache: bool=False, fetch: bool=True):
+    def get_players(self, player_tags: Iterable, cache: bool=False, fetch: bool=True):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -863,8 +909,8 @@ class Client:
 
         Parameters
         ----------
-        player_tags : list
-            A list of player tags to search for.
+        player_tags : :class:`collections.Iterable`
+            An iterable of player tags to search for.
         cache : bool
             Indicates whether to search the cache before making an HTTP request.
             Defaults to ``True``
@@ -877,5 +923,7 @@ class Client:
         --------
         :class:`PlayerIterator` of :class:`SearchPlayer`
         """
-        player_tags = list(player_tags)
+        if not isinstance(player_tags, Iterable):
+            raise TypeError('Tags are not an iterable.')
+
         return PlayerIterator(self, player_tags, cache, fetch)
