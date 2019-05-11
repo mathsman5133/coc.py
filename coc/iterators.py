@@ -1,5 +1,7 @@
 import asyncio
 
+from collections import Iterable
+
 from .errors import NotFound, Forbidden
 
 
@@ -27,7 +29,7 @@ class _AsyncIterator:
 
 
 class TaggedIterator(_AsyncIterator):
-    def __init__(self, client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
         self.client = client
         self.tags = tags
 
@@ -67,18 +69,18 @@ class TaggedIterator(_AsyncIterator):
 
 
 class ClanIterator(TaggedIterator):
-    def __init__(self, client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
         super(ClanIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_clan
 
 
 class PlayerIterator(TaggedIterator):
-    def __init__(self, client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
         super(PlayerIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_player
 
 
 class WarIterator(TaggedIterator):
-    def __init__(self, client, tags: list, cache: bool, fetch: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
         super(WarIterator, self).__init__(client, tags, cache, fetch)
         self.get_method = client.get_current_war

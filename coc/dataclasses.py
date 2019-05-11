@@ -213,7 +213,7 @@ class SearchClan(BasicClan):
                         ``None`` will be returned
         :return: AsyncIterator of :class:`SearchPlayer`
         """
-        tags = list(n.tag for n in self._members)
+        tags = iter(n.tag for n in self._members)
         return PlayerIterator(self._client, tags, cache, fetch)
 
 
@@ -1290,9 +1290,11 @@ class LeagueWar(CurrentWar):
     tag:
         :class:`str` - The war tag
     """
-    def __init__(self, *, data, clan_tag):
+    def __init__(self, *, data):
         self.tag = data.get('tag')
+        clan_tag = ''
         super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag)
+        self.clan_tag = getattr(self.clan, 'tag')
 
 
 class LeagueWarLogEntry:
