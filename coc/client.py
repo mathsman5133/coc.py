@@ -59,19 +59,17 @@ cache_leagues = Cache()
 cache_seasons = Cache()
 
 
+def login(email, password, **kwargs):
+    client = Client(**kwargs)
+    client.loop.run_until_complete(client.login(email, password))
+    return client
+
+
 class Client:
     """This is the client connection used to interact with the Clash of Clans API.
 
     Parameters
     -------------
-    email : str
-        Your password email from https://developer.clashofclans.com
-        This is used when updating the key automatically if your IP changes
-
-    password : str
-        Your password login from https://developer.clashofclans.com
-        This is used when updating the key automatically if your IP changes
-
     key_count : int
         The amount of keys to use for this client. Maximum of 10.
         Defaults to 1.
@@ -108,24 +106,47 @@ class Client:
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
-    def __init__(self, email: str, password: str, key_count: int=1,
+    def __init__(self, *, key_count: int=1,
                  key_names: str='Created with coc.py Client',
                  throttle_limit: int=10,
                  loop: asyncio.AbstractEventLoop=None):
 
         self.loop = loop or asyncio.get_event_loop()
-        correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
+        self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
-        if not key_count == correct_key_count:
+        if not key_count == self.correct_key_count:
             raise RuntimeError("Key count must be within {}-{}".format(
                 KEY_MINIMUM, KEY_MAXIMUM))
 
-        self.http = HTTPClient(client=self, email=email, password=password,
-                               key_names=key_names, loop=self.loop,
-                               key_count=correct_key_count,
-                               throttle_limit=throttle_limit)
+        self.key_names = key_names
+        self.throttle_limit = throttle_limit
 
-        log.info('Clash of Clans API client created')
+        self.http = None  # set in method login()
+        self._ready = asyncio.Event(loop=loop)
+
+        log.info('Clash of Clans client created')
+
+    async def login(self, email: str, password: str):
+        """Retrieves all keys and creates an HTTP connection ready for use.
+
+        Parameters
+        ------------
+        email : str
+            Your password email from https://developer.clashofclans.com
+            This is used when updating keys automatically if your IP changes
+
+        password : str
+            Your password login from https://developer.clashofclans.com
+            This is used when updating keys automatically if your IP changes
+        """
+        self.http = HTTPClient(client=self, email=email, password=password,
+                               key_names=self.key_names, loop=self.loop,
+                               key_count=self.correct_key_count,
+                               throttle_limit=self.throttle_limit)
+        await self.http.get_keys()
+        await self._ready.wait()
+        self._ready.clear()
+        log.debug('HTTP connection created. Client is ready for use.')
 
     async def close(self):
         """
@@ -133,40 +154,6 @@ class Client:
         """
         log.info('Clash of Clans client logging out...')
         await self.http.close()
-
-    async def on_key_reset(self, new_key: str):
-        """Event: called when one of the client's keys are reset.
-
-        By default this does nothing.
-
-        Example
-        ---------
-
-        You can manually override this by either:
-
-        Subclassing Client:
-
-        .. code-block:: python3
-
-            class Client(coc.Client):
-                def __init__(self, key, email, password):
-                    super().__init__(email, password, key_count=1,
-                                 key_names='Created with coc.py Client', loop=None)
-
-                def on_key_reset(key):
-                    print('My new key is {}'.format(key))
-
-        Using the event decorator:
-
-        .. code-block:: python3
-
-            @client.event()
-            async def on_key_reset(key):
-                print('My new key is {}'.format(key))
-
-        :param new_key: :class:`str` The new key
-        """
-        pass
 
     def event(self, fctn):
         """A decorator that registers an event.
@@ -319,7 +306,7 @@ class Client:
         return clans
 
     @cache_search_clans.get_cache()
-    async def get_clan(self, tag: str, cache: bool=False, fetch: bool=True):
+    async def get_clan(self, tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about a single clan by clan tag. Clan tags can be found using clan search operation.
 
         Parameters
@@ -342,7 +329,7 @@ class Client:
         r = await self.http.get_clan(tag)
         return SearchClan(data=r, client=self)
 
-    def get_clans(self, tags: Iterable, cache: bool=False, fetch: bool=True):
+    def get_clans(self, tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about multiple clans by clan tag. Refer to `Client.get_clan` for more information.
 
         Example
@@ -373,9 +360,9 @@ class Client:
         if not isinstance(tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return ClanIterator(self, tags, cache, fetch)
+        return ClanIterator(self, tags, cache, fetch, update_cache)
 
-    async def get_members(self, clan_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_members(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """List clan members.
 
         This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -407,12 +394,13 @@ class Client:
         r = await self.http.get_clan(clan_tag)
         clan = SearchClan(data=r, client=self)
 
-        cache_search_clans.add(clan.tag, clan)
+        if update_cache:
+            cache_search_clans.add(clan.tag, clan)
 
         return clan.members
 
     @cache_war_logs.get_cache()
-    async def get_warlog(self, clan_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_warlog(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Retrieve clan's clan war log
 
         Parameters
@@ -449,12 +437,13 @@ class Client:
 
             wars.append(WarLog(data=n, clan_tag=clan_tag))
 
-        cache_war_logs.add(wars[0].clan.tag, wars)
+        if update_cache:
+            cache_war_logs.add(wars[0].clan.tag, wars)
 
         return wars
 
     @cache_current_wars.get_cache()
-    async def get_current_war(self, clan_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_current_war(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Retrieve information about clan's current clan war
 
@@ -477,7 +466,7 @@ class Client:
         r = await self.http.get_clan_current_war(clan_tag)
         return CurrentWar(data=r, clan_tag=clan_tag)
 
-    def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True):
+    def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Retrieve information multiple clan's current clan wars
 
@@ -509,10 +498,10 @@ class Client:
         if not isinstance(clan_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return WarIterator(self, clan_tags, cache, fetch)
+        return WarIterator(self, clan_tags, cache, fetch, update_cache)
 
     @cache_league_groups.get_cache()
-    async def get_league_group(self, clan_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_league_group(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Retrieve information about clan's current clan war league group
 
         Parameters
@@ -535,7 +524,7 @@ class Client:
         return LeagueGroup(data=r)
 
     @cache_league_wars.get_cache()
-    async def get_league_war(self, war_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_league_war(self, war_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Retrieve information about a clan war league war
 
@@ -598,7 +587,7 @@ class Client:
         return locations
 
     @cache_locations.get_cache()
-    async def get_location(self, location_id: int, cache: bool=False, fetch: bool=True):
+    async def get_location(self, location_id: int, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about specific location
 
         Parameters
@@ -757,7 +746,7 @@ class Client:
         return leagues
 
     @cache_leagues.get_cache()
-    async def get_league(self, league_id: int, cache: bool=False, fetch: bool=True):
+    async def get_league(self, league_id: int, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Get league information
 
@@ -827,7 +816,8 @@ class Client:
         r = await self.http.get_league_seasons(league_id)
         return r['items']
 
-    async def get_season_rankings(self, league_id: int, season_id: int, cache: bool=False, fetch: bool=True):
+    async def get_season_rankings(self, league_id: int, season_id: int, cache: bool=False,
+                                  fetch: bool=True, update_cache: bool=True):
         """Get league season rankings.
         Note that league season information is available only for Legend League.
 
@@ -864,14 +854,15 @@ class Client:
         r = await self.http.get_league_season_info(league_id, season_id)
         players = list(LeagueRankedPlayer(data=n) for n in r.get('items', []))
 
-        cache_seasons.add(league_id, {season_id: players})
+        if update_cache:
+            cache_seasons.add(league_id, {season_id: players})
 
         return players
 
     # players
 
     @cache_search_players.get_cache()
-    async def get_player(self, player_tag: str, cache: bool=False, fetch: bool=True):
+    async def get_player(self, player_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -894,7 +885,7 @@ class Client:
         r = await self.http.get_player(player_tag)
         return SearchPlayer(data=r)
 
-    def get_players(self, player_tags: Iterable, cache: bool=False, fetch: bool=True):
+    def get_players(self, player_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -926,4 +917,4 @@ class Client:
         if not isinstance(player_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return PlayerIterator(self, player_tags, cache, fetch)
+        return PlayerIterator(self, player_tags, cache, fetch, update_cache)
