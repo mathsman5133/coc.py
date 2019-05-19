@@ -29,18 +29,19 @@ class _AsyncIterator:
 
 
 class TaggedIterator(_AsyncIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
         self.client = client
         self.tags = tags
 
         self.cache = cache
         self.fetch = fetch
+        self.update_cache = update_cache
         self.queue = asyncio.Queue(loop=client.loop)
         self.queue_empty = True
 
     async def run_method(self, tag):
         try:
-            return await self.get_method(tag, cache=self.cache, fetch=self.fetch)
+            return await self.get_method(tag, cache=self.cache, fetch=self.fetch, update_cache=self.update_cache)
         except (NotFound, Forbidden):
             return None
 
@@ -69,18 +70,18 @@ class TaggedIterator(_AsyncIterator):
 
 
 class ClanIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
-        super(ClanIterator, self).__init__(client, tags, cache, fetch)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+        super(ClanIterator, self).__init__(client, tags, cache, fetch, update_cache)
         self.get_method = client.get_clan
 
 
 class PlayerIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
-        super(PlayerIterator, self).__init__(client, tags, cache, fetch)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+        super(PlayerIterator, self).__init__(client, tags, cache, fetch, update_cache)
         self.get_method = client.get_player
 
 
 class WarIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool):
-        super(WarIterator, self).__init__(client, tags, cache, fetch)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+        super(WarIterator, self).__init__(client, tags, cache, fetch, update_cache)
         self.get_method = client.get_current_war
