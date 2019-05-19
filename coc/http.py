@@ -30,6 +30,7 @@ import json
 import logging
 import aiohttp
 import asyncio
+import re
 
 from urllib.parse import urlencode
 from itertools import cycle
@@ -37,7 +38,7 @@ from datetime import datetime
 from collections import deque
 
 import coc.nest_asyncio
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials, GatewayError
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -125,8 +126,6 @@ class HTTPClient:
         self.__lock = asyncio.Semaphore(per_second)
         self.__throttle = Throttler(per_second, loop=self.loop)
 
-        loop.run_until_complete(self.get_keys())
-
     async def get_keys(self):
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
@@ -155,6 +154,7 @@ class HTTPClient:
                     self.key_names))
 
         self.keys = cycle(self._keys)
+        self.client._ready.set()
 
     async def close(self):
         if self.__session:
@@ -212,6 +212,10 @@ class HTTPClient:
 
                 if r.status == 503:
                     raise Maitenance(r, data)
+                if r.status in [502, 504]:  # bad gateway, gateway timeout
+                    # gateway errors return html
+                    text = re.compile(r'<[^>]+>').sub(data, '')
+                    raise GatewayError(r, text)
                 else:
                     raise HTTPException(r, data)
 
