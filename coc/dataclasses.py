@@ -41,7 +41,17 @@ def try_enum(_class, data):
     return _class(data=data)
 
 
-class Clan:
+class EqualityComparable:
+    __slots__ = ()
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and self._data == other._data
+
+    def __hash__(self):
+        return hash(len(self._data))
+
+
+class Clan(EqualityComparable):
     """Represents the most stripped down version of clan info.
     All other clan classes inherit this.
 
@@ -308,7 +318,7 @@ class WarClan(Clan):
         return list(self._defenses)
 
 
-class Player:
+class Player(EqualityComparable):
     """Represents the most stripped down version of a player.
     All other player classes inherit this.
 
@@ -609,7 +619,7 @@ class SearchPlayer(BasicPlayer):
         return OrderedDict(sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0])))
 
 
-class BaseWar:
+class BaseWar(EqualityComparable):
     """Represents the most basic Clash of Clans War
 
     Attributes
@@ -738,7 +748,7 @@ class CurrentWar(BaseWar):
         return get(self._members, **attrs)
 
 
-class Achievement:
+class Achievement(EqualityComparable):
     """Represents a Clash of Clans Achievement.
 
 
@@ -796,7 +806,7 @@ class Achievement:
         return self.stars == 3
 
 
-class Troop:
+class Troop(EqualityComparable):
     """Represents a Clash of Clans Troop.
 
     Attributes
@@ -843,7 +853,7 @@ class Troop:
         return self.village == 'home'
 
 
-class Hero:
+class Hero(EqualityComparable):
     """Represents a Clash of Clans Hero.
 
     Attributes
@@ -890,7 +900,7 @@ class Hero:
         return self.village == 'home'
 
 
-class Spell:
+class Spell(EqualityComparable):
     """Represents a Clash of Clans Spell.
 
     Attributes
@@ -937,7 +947,7 @@ class Spell:
         return self.village == 'home'
 
 
-class WarAttack:
+class WarAttack(EqualityComparable):
     """
     Represents a Clash of Clans War Attack
 
@@ -982,7 +992,7 @@ class WarAttack:
         return self.war.get_member(tag=self.defender_tag)
 
 
-class Location:
+class Location(EqualityComparable):
     """Represents a Clash of Clans Location
 
     Attributes
@@ -1010,7 +1020,7 @@ class Location:
         return self.name
 
 
-class League:
+class League(EqualityComparable):
     """Represents a Clash of Clans League
 
     Attributes
@@ -1055,7 +1065,7 @@ class LeagueRankedPlayer(BasicPlayer):
         super(LeagueRankedPlayer, self).__init__(data=data)
 
 
-class Season:
+class Season(EqualityComparable):
     """Represents a Clash of Clans Player's Season.
 
     rank: """
@@ -1067,7 +1077,7 @@ class Season:
         self.id = data.get('id')
 
 
-class LegendStatistics:
+class LegendStatistics(EqualityComparable):
     """Represents the Legend Statistics for a player.
 
     Attributes
@@ -1101,7 +1111,7 @@ class LegendStatistics:
         return try_enum(Season, data=self._data.get('bestSeason'))
 
 
-class Badge:
+class Badge(EqualityComparable):
     """Represents a Clash Of Clans Badge.
 
     Attributes
@@ -1155,7 +1165,7 @@ class Badge:
         #     return f.write(data)
 
 
-class Timestamp:
+class Timestamp(EqualityComparable):
     """Represents a Clash of Clans Timestamp
 
     Attributes
@@ -1186,7 +1196,7 @@ class Timestamp:
         return delta.total_seconds()
 
 
-class LeaguePlayer:
+class LeaguePlayer(EqualityComparable):
     """Represents a Clash of Clans League Player
 
     Attributes
@@ -1237,7 +1247,7 @@ class LeagueClan(BasicClan):
         return list(self._members)
 
 
-class LeagueGroup:
+class LeagueGroup(EqualityComparable):
     """Represents a Clash of Clans League Group
 
     Attributes
@@ -1297,7 +1307,7 @@ class LeagueWar(CurrentWar):
         self.clan_tag = getattr(self.clan, 'tag')
 
 
-class LeagueWarLogEntry:
+class LeagueWarLogEntry(EqualityComparable):
     """Represents a Clash of Clans War Log entry for a League Season
 
     Attributes
