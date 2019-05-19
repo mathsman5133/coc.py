@@ -117,3 +117,13 @@ class Maitenance(HTTPException):
     """
     pass
 
+
+class GatewayError(HTTPException):
+    """Thrown when a gateway error occurs. These are either status 502 or 504
+
+    Error code 502: Bad Gateway
+    Error code 504: The Gateway has timed-out.
+
+    Subclass of :exc:`HTTPException`
+    """
+    pass
