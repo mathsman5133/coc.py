@@ -31,9 +31,13 @@ import logging
 from collections import Iterable
 
 from .cache import Cache
+from .clans import Clan, SearchClan
+from .miscmodels import Location, League
 from .http import HTTPClient
 from .iterators import PlayerIterator, ClanIterator, WarIterator
-from .dataclasses import *
+from .players import Player, LeagueRankedPlayer, SearchPlayer
+from .utils import get
+from .wars import CurrentWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
 
 log = logging.getLogger(__name__)
 
@@ -320,6 +324,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -352,6 +359,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -378,6 +388,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -414,6 +427,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -458,6 +474,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -489,7 +508,10 @@ class Client:
         fetch : bool
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
-            ``None`` will be returned.
+            ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``.
 
         Returns
         --------
@@ -514,7 +536,10 @@ class Client:
         fetch : bool
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
-            ``None`` will be returned.
+            ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``.
 
         Returns
         --------
@@ -539,6 +564,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -601,6 +629,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -649,7 +680,7 @@ class Client:
         """
 
         r = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-        return list(Clan(data=n) for n in r['items'])
+        return list(Clan(data=n, http=self.http) for n in r['items'])
 
     async def get_location_players(self, location_id: int, *, limit: int=None,
                                    before: int=None, after: int=None):
@@ -685,7 +716,7 @@ class Client:
         :class:`list` of :class:`Clan`
         """
         r = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-        return list(Clan(data=n) for n in r['items'])
+        return list(Clan(data=n, http=self.http) for n in r['items'])
 
     async def get_location_players_versus(self, location_id: int, *, limit: int = None,
                                           before: int = None, after: int = None):
@@ -761,6 +792,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -834,6 +868,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
@@ -852,7 +889,7 @@ class Client:
                 return None
 
         r = await self.http.get_league_season_info(league_id, season_id)
-        players = list(LeagueRankedPlayer(data=n) for n in r.get('items', []))
+        players = list(LeagueRankedPlayer(data=n, http=self.http) for n in r.get('items', []))
 
         if update_cache:
             cache_seasons.add(league_id, {season_id: players})
@@ -877,13 +914,16 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
         :class:`SearchPlayer`
         """
         r = await self.http.get_player(player_tag)
-        return SearchPlayer(data=r)
+        return SearchPlayer(data=r, http=self.http)
 
     def get_players(self, player_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Get information about a multiple players by player tag.
@@ -909,6 +949,9 @@ class Client:
             Indicates whether an HTTP call should be made if cache is empty.
             Defaults to ``True``. If this is ``False`` and item in cache was not found,
             ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``
 
         Returns
         --------
