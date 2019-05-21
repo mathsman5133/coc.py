@@ -239,6 +239,23 @@ class EventsClient(Client):
         self._player_retry_interval = retry_interval
 
     def start_updates(self, event_name='all'):
+        """Starts an, or all, events.
+
+        .. note::
+            This method **must** be called before any events are run.
+
+        The lookup for event_name is as follows:
+        'clan' - to register clan events
+        'player' - to register player events
+        'war' - to register war events
+        'all' - to register all of the above.
+
+        Parameters
+        -----------
+        event_name : str
+            See above for which string corresponds to events.
+            Defaults to 'all'
+        """
         lookup = {
             'clan': self._clan_update_event,
             'player': self._player_update_event,
@@ -253,6 +270,24 @@ class EventsClient(Client):
             e.clear()
 
     def stop_updates(self, event_name='all'):
+        """Stops an, or all, events.
+
+        .. note::
+            This method **must** be called in order to stop any events.
+
+        The lookup for event_name is as follows:
+        'clan' - to stop clan events
+        'player' - to stop player events
+        'war' - to stop war events
+        'all' - to stop all of the above.
+
+        Parameters
+        -----------
+        event_name : str
+            See above for which string corresponds to events.
+            Defaults to 'all'
+        """
+
         lookup = {
             'clan': self._clan_update_event,
             'player': self._player_update_event,
