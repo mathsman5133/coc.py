@@ -2,36 +2,21 @@
 
 __version__ = '0.2.0a'
 
-from .client import Client, login
-from .dataclasses import (
+from .clans import (
     Clan,
-    BasicClan,
     SearchClan,
+    BasicClan,
     WarClan,
-    Player,
-    BasicPlayer,
-    WarMember,
-    SearchPlayer,
-    BaseWar,
-    WarLog,
-    CurrentWar,
-    Achievement,
-    Troop,
-    Hero,
-    Spell,
-    WarAttack,
-    Location,
-    League,
-    LeagueRankedPlayer,
-    Season,
-    LegendStatistics,
-    Badge,
-    Timestamp,
-    LeaguePlayer,
-    LeagueClan,
-    LeagueGroup,
-    LeagueWar,
-    LeagueWarLogEntry
+    LeagueClan
+)
+from .client import Client, login
+from .enums import (
+    CacheType,
+    HOME_TROOP_ORDER,
+    BUILDER_TROOPS_ORDER,
+    SPELL_ORDER,
+    HERO_ORDER,
+    SIEGE_MACHINE_ORDER
 )
 from .errors import (
     ClashOfClansException,
@@ -40,10 +25,43 @@ from .errors import (
     InvalidArgument,
     InvalidCredentials,
     Forbidden,
-    Maitenance
+    Maitenance,
+    GatewayError
 )
 from .http import HTTPClient
-
-from .enums import (
-    CacheType
+from .iterators import (
+    ClanIterator,
+    PlayerIterator,
+    WarIterator
 )
+from .miscmodels import (
+    Achievement,
+    Badge,
+    EqualityComparable,
+    Hero,
+    League,
+    LegendStatistics,
+    Location,
+    Spell,
+    Troop,
+    Timestamp,
+
+)
+from .players import (
+    Player,
+    BasicPlayer,
+    SearchPlayer,
+    LeaguePlayer,
+    LeagueRankedPlayer,
+)
+from .wars import (
+    BaseWar,
+    WarLog,
+    CurrentWar,
+    WarAttack,
+    LeagueWar,
+    LeagueWarLogEntry
+)
+
+
+
