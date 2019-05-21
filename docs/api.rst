@@ -11,6 +11,13 @@ Client
 .. autoclass:: Client
     :members:
 
+EventsClient
+--------------
+
+.. autoclass:: coc.ext.events.EventsClient
+    :members:
+    :inherited-members:
+
 Event Reference
 ----------------
 
