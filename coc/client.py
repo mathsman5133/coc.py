@@ -152,12 +152,13 @@ class Client:
         self._ready.clear()
         log.debug('HTTP connection created. Client is ready for use.')
 
-    async def close(self):
+    def close(self):
         """
         Closes the HTTP connection
         """
         log.info('Clash of Clans client logging out...')
-        await self.http.close()
+        self.loop.run_until_complete(self.http.close())
+        self.loop.close()
 
     def event(self, fctn):
         """A decorator that registers an event.

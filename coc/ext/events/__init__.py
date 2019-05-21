@@ -68,6 +68,15 @@ class EventsClient(Client):
         self._updater_tasks['war'] = self.loop.create_task(self._war_updater())
         self._updater_tasks['player'] = self.loop.create_task(self._player_updater())
 
+    def close(self):
+        tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
+        if not tasks:
+            return
+        for t in tasks:
+            t.cancel()
+        self.loop.run_until_complete(self.http.close())
+        self.loop.close()
+
     def dispatch(self, event_name: str, *args, **kwargs):
         super().dispatch(event_name, *args, **kwargs)
         ev = 'on_' + event_name
@@ -136,6 +145,30 @@ class EventsClient(Client):
             self.event(f)
         for f, n in function_dicts.items():
             self.event(f, name=n)
+
+    def run_forever(self):
+        """A blocking call which runs the loop and script.
+
+        This is useful if you have no other clients to deal
+        with and just wish to run the script and receive updates indefinately.
+
+        Roughly equivilant to:
+
+        ..code-block:: python3
+
+            try:
+                client.loop.run_forever()
+            except KeyboardInterrupt:
+                client.close()
+            finally:
+                client.loop.close()
+
+        """
+        try:
+            self.loop.run_forever()
+        except KeyboardInterrupt:
+            log.info('Terminating bot and event loop.')
+            self.close()
 
     async def _run_event(self, event_name, coro, *args, **kwargs):
         try:
