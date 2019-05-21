@@ -53,12 +53,14 @@ from .players import (
     SearchPlayer,
     LeaguePlayer,
     LeagueRankedPlayer,
+    WarMember
 )
 from .wars import (
     BaseWar,
     WarLog,
     CurrentWar,
     WarAttack,
+    LeagueGroup,
     LeagueWar,
     LeagueWarLogEntry
 )
