@@ -172,7 +172,7 @@ class Client:
 
         .. code-block:: python3
 
-            @client.event()
+            @client.event
             async def on_key_reset(key):
                 print('My new key is {}'.format(key))
         """

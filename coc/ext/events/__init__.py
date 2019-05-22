@@ -98,7 +98,7 @@ class EventsClient(Client):
 
         .. code-block:: python3
 
-            @client.event()
+            @client.event
             async def on_player_update(old_player, new_player):
                 print('{} has updated their profile!'.format(old_player))
 
@@ -183,14 +183,14 @@ class EventsClient(Client):
         """Event called when an event fails.
 
         By default this will print the traceback
-        This can be overridden by either using @client.event() or through subclassing EventsClient.
+        This can be overridden by either using @client.event or through subclassing EventsClient.
 
         Example
         --------
 
         .. code-block:: python3
 
-            @client.event()
+            @client.event
             async def on_event_error(event_name, *args, **kwargs):
                 print('Ignoring exception in {}'.format(event_name))
 
