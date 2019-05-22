@@ -40,8 +40,6 @@ def login(email, password, **kwargs):
 class EventsClient(Client):
     def __init__(self, **options):
         super().__init__(**options)
-
-        self.loop.set_debug(enabled=True)
         apply(self.loop)
         self._setup()
 
@@ -231,7 +229,7 @@ class EventsClient(Client):
 
         self._clan_retry_interval = retry_interval
 
-    async def add_war_update(self, tags: Iterable, *, retry_interval=600):
+    def add_war_update(self, tags: Iterable, *, retry_interval=600):
         """Subscribe clan tags to war events.
 
         Parameters
@@ -251,7 +249,7 @@ class EventsClient(Client):
 
         self._war_retry_interval = retry_interval
 
-    async def add_player_update(self, tags: Iterable, retry_interval=600):
+    def add_player_update(self, tags: Iterable, retry_interval=600):
         """Subscribe player tags to player update events.
 
         Parameters
@@ -300,7 +298,7 @@ class EventsClient(Client):
             events = [lookup[event_name]]
 
         for e in events:
-            e.clear()
+            e.set()
 
     def stop_updates(self, event_name='all'):
         """Stops an, or all, events.
@@ -332,7 +330,7 @@ class EventsClient(Client):
             events = [lookup[event_name]]
 
         for e in events:
-            e.set()
+            e.clear()
 
     async def _war_updater(self):
         try:
@@ -347,7 +345,7 @@ class EventsClient(Client):
             ClashOfClansException
         ):
 
-            self.dispatch('event_error')
+            await self.on_event_error('on_war_update')
             return await self._war_updater()
 
     async def _clan_updater(self):
@@ -362,7 +360,7 @@ class EventsClient(Client):
             HTTPException,
             ClashOfClansException
         ):
-            self.dispatch('event_error')
+            await self.on_event_error('on_clan_update')
             return await self._clan_updater()
 
     async def _player_updater(self):
@@ -377,7 +375,7 @@ class EventsClient(Client):
             HTTPException,
             ClashOfClansException
         ):
-            self.dispatch('event_error')
+            await self.on_event_error('on_player_update')
             return await self._player_updater()
 
     async def _check_member_count(self, cached_clan, new_clan):
