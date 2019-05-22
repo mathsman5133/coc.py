@@ -1122,7 +1122,7 @@ class EventsClient(Client):
 
         return fctn
 
-    def add_events(self, *fctns, function_dicts: dict):
+    def add_events(self, *fctns, function_dicts: dict=None):
         """Provides an alternative method to adding events.
 
         You can either provide functions as named args or as a dict of {function: name...} values.
@@ -1145,8 +1145,9 @@ class EventsClient(Client):
         """
         for f in fctns:
             self.event(f)
-        for f, n in function_dicts.items():
-            self.event(f, name=n)
+        if function_dicts:
+            for f, n in function_dicts.items():
+                self.event(f, name=n)
 
     def run_forever(self):
         """A blocking call which runs the loop and script.
