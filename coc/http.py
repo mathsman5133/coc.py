@@ -127,6 +127,7 @@ class HTTPClient:
         self.__throttle = Throttler(per_second, loop=self.loop)
 
     async def get_keys(self):
+        self.client._ready.clear()
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
         key_count = self.key_count
