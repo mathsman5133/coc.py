@@ -479,7 +479,7 @@ class Client:
                 wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag))
                 continue
 
-            wars.append(WarLog(data=n, clan_tag=clan_tag))
+            wars.append(WarLog(data=n, clan_tag=clan_tag, http=self.http))
 
         if update_cache:
             cache_war_logs.add(wars[0].clan.tag, wars)
@@ -511,7 +511,7 @@ class Client:
         :class:`CurrentWar`
         """
         r = await self.http.get_clan_current_war(clan_tag)
-        return CurrentWar(data=r, clan_tag=clan_tag)
+        return CurrentWar(data=r, clan_tag=clan_tag, http=self.http)
 
     def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
@@ -574,7 +574,7 @@ class Client:
         :class:`LeagueGroup`
         """
         r = await self.http.get_clan_war_league_group(clan_tag)
-        return LeagueGroup(data=r)
+        return LeagueGroup(data=r, http=self.http)
 
     @cache_league_wars.get_cache()
     async def get_league_war(self, war_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
@@ -601,7 +601,7 @@ class Client:
         :class:`LeagueWar`
         """
         r = await self.http.get_cwl_wars(war_tag)
-        return LeagueWar(data=r)
+        return LeagueWar(data=r, http=self.http)
 
     # locations
     async def _populate_locations(self):

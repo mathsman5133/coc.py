@@ -43,9 +43,10 @@ class BaseWar(EqualityComparable):
         :class:`str` - The clan tag passed for the request.
         This attribute is always present regardless of the war state.
     """
-    __slots__ = ('team_size', '_data', 'clan_tag')
+    __slots__ = ('team_size', '_data', 'clan_tag', '_http')
 
-    def __init__(self, *, data, clan_tag):
+    def __init__(self, *, data, clan_tag, http):
+        self._http = http
         self._data = data
         self.team_size = data.get('teamSize')
         self.clan_tag = clan_tag
@@ -59,7 +60,7 @@ class BaseWar(EqualityComparable):
             # 'clan' and 'opponent' as dicts containing only badge urls of
             # no specific clan. very strange
             from .clans import WarClan  # hack because circular imports
-            return WarClan(data=clan, war=self)
+            return WarClan(data=clan, war=self, http=self._http)
 
     @property
     def opponent(self):
@@ -68,7 +69,7 @@ class BaseWar(EqualityComparable):
         if 'tag' in opponent:
             # same issue as clan
             from .clans import WarClan  # hack because circular imports
-            return WarClan(data=opponent, war=self)
+            return WarClan(data=opponent, war=self, http=self._http)
 
 
 class WarLog(BaseWar):
@@ -86,10 +87,10 @@ class WarLog(BaseWar):
     """
     __slots__ = ('result', 'end_time')
 
-    def __init__(self, *, data, clan_tag):
+    def __init__(self, *, data, clan_tag, http):
         self.result = data.get('result')
         self.end_time = try_enum(Timestamp, data.get('endTime'))
-        super(WarLog, self).__init__(data=data, clan_tag=clan_tag)
+        super(WarLog, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
 
 class CurrentWar(BaseWar):
@@ -112,13 +113,13 @@ class CurrentWar(BaseWar):
     __slots__ = ('state', 'preparation_start_time',
                  'start_time', 'end_time')
 
-    def __init__(self, *, data, clan_tag):
+    def __init__(self, *, data, clan_tag, http):
         self.state = data.get('state')
         self.preparation_start_time = try_enum(Timestamp, data.get('preparationStartTime'))
         self.start_time = try_enum(Timestamp, data.get('startTime'))
         self.end_time = try_enum(Timestamp, data.get('endTime'))
 
-        super(CurrentWar, self).__init__(data=data, clan_tag=clan_tag)
+        super(CurrentWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
     @property
     def _attacks(self):
@@ -217,10 +218,11 @@ class LeagueGroup(EqualityComparable):
     season:
         :class:`str` - The current season of the league group
     """
-    __slots__ = ('state', 'season', '_rounds', '_data')
+    __slots__ = ('state', 'season', '_rounds', '_data', '_http')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, http):
         self._data = data
+        self._http = http
 
         self._rounds = []
         self.state = data.get('state')
@@ -232,7 +234,7 @@ class LeagueGroup(EqualityComparable):
 
         Returns an iterable of class:`LeagueClan`: all participating clans"""
         from .clans import LeagueClan  # hack because circular imports
-        return iter(LeagueClan(data=cdata) for cdata in self._data.get('clans', []))
+        return iter(LeagueClan(data=cdata, http=self._http) for cdata in self._data.get('clans', []))
 
     @property
     def clans(self):
@@ -261,10 +263,10 @@ class LeagueWar(CurrentWar):
     tag:
         :class:`str` - The war tag
     """
-    def __init__(self, *, data):
+    def __init__(self, *, data, http):
         self.tag = data.get('tag')
         clan_tag = ''
-        super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag)
+        super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
         self.clan_tag = getattr(self.clan, 'tag')
 
 
