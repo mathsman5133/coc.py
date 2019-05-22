@@ -1,8 +1,8 @@
 import asyncio
 
-from coc.ext import events
+import coc
 
-client = events.login('email', 'pass')
+client = coc.login('email', 'pass', client=coc.EventsClient)
 
 
 @client.event

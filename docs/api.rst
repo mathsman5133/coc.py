@@ -4,17 +4,21 @@ API Reference
 
 The following section outlines the API Reference of coc.py
 
+Logging in and client creation
+-------------------------------
+.. autofunction:: login
 
-Client
--------
+Clients
+--------
 
+Basic Client
+~~~~~~~~~~~~~~
 .. autoclass:: Client
     :members:
 
-EventsClient
---------------
-
-.. autoclass:: coc.ext.events.EventsClient
+Events Client
+~~~~~~~~~~~~~~
+.. autoclass:: EventsClient
     :members:
     :inherited-members:
 
