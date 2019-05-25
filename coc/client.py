@@ -1167,6 +1167,37 @@ class EventsClient(Client):
         for event in self.extra_events.get(ev, []):
             asyncio.ensure_future(self._run_event(ev, event, *args, **kwargs), loop=self.loop)
 
+    def default_cache(self, client):
+        """The default cache for :class:`EventsClient`.
+
+        Because the whole 'events' notion hinges on comparing old values in cache to new values,
+        **all cache objects have no expiry** and 1024 max size.
+
+        .. note::
+
+            If you choose to alter the cache to include an expiry, you will miss events due to integration of
+            cache and events. The same applies to max size, although potentially missing events to trade for
+            memory control may be important for some.
+
+        """
+        cache_search_clans._is_clan = True
+        cache_war_logs._is_clan = True
+
+        cache_current_wars._is_war = True
+        cache_league_groups._is_war = True
+        cache_league_wars._is_war = True
+        cache_war_clans._is_war = True
+        cache_war_players._is_war = True
+
+        cache_search_players._is_player = True
+
+        cache_locations._is_static = True
+        cache_leagues._is_static = True
+        cache_seasons._is_static = True
+
+        for cache in self._cache_lookup.values():
+            cache.clear(1024, None)
+
     def event(self, fctn, name=None):
         """A decorator or regular function that registers an event.
 
@@ -1308,7 +1339,7 @@ class EventsClient(Client):
 
         if member_updates:
             async for clan in self.get_clans(tags):
-                await self.add_player_update((n.tag for n in clan._members), retry_interval=retry_interval)
+                self.add_player_update((n.tag for n in clan._members), retry_interval=retry_interval)
             self._player_retry_interval = retry_interval
 
         if retry_interval < 0:
