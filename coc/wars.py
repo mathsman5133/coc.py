@@ -300,11 +300,11 @@ class LeagueWarLogEntry(EqualityComparable):
                  'attack_count', 'stars', 'destruction', 'clan_level',
                  'clan_tag')
 
-    def __init__(self, *, data, clan_tag):
+    def __init__(self, *, data, clan_tag, http):
         self.end_time = try_enum(Timestamp, data.get('endTime'))
         self.team_size = data.get('teamSize')
         from .clans import Clan  # hack because circular imports
-        self.clan = try_enum(Clan, data.get('clan'))
+        self.clan = try_enum(Clan, data.get('clan'), http=http)
         self.clan_tag = clan_tag
         try:
             self.enemy_stars = data['opponent']['stars']

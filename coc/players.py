@@ -221,7 +221,7 @@ class SearchPlayer(BasicPlayer):
 
         from .clans import Clan  # hack because circular imports
 
-        self.clan = try_enum(Clan, data.get('clan'))
+        self.clan = try_enum(Clan, data.get('clan'), http=http)
         self.best_trophies = data.get('bestTrophies')
         self.war_stars = data.get('warStars')
         self.town_hall = data.get('townHallLevel')
