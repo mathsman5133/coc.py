@@ -11,6 +11,8 @@ from coc.utils import find
 
 log = logging.getLogger(__name__)
 
+tag_validator re.compile("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
+tag_names = {'location', 'tag'}
 
 def validate_tag(string):
     # Legal clan tags only have these characters:
@@ -19,27 +21,22 @@ def validate_tag(string):
     if not isinstance(string, str):
         return False
 
-    match = re.match("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})", string)
+    match = tag_validator.match(string)
 
-    if not match:
-        return False
-    if match.group('tag'):
-        return True
-    if match.group('location'):
-        return True
+    if match:
+        if tag_names.intersection(match.groups()):
+            return True
 
     return False
 
 
 def find_key(args, kwargs):
     if args:
-        key = find(lambda x: validate_tag(x), args)
-        if key:
+        if find(validate_tag, args):
             return key
 
-    for k, v in kwargs.items():
-        key = validate_tag(v)
-        if key:
+    for v in kwargs.values():
+        if validate_tag(v):
             return v
 
     return None
@@ -92,7 +89,7 @@ class LRU(OrderedDict):
             return
 
         current_time = time.monotonic()
-        to_delete = [k for (k, (t, v)) in self.items() if current_time > (t + self.ttl)]
+        to_delete = (k for (k, (t, v)) in self.items() if current_time > (t + self.ttl))
         for k in to_delete:
             log.debug('Removed item with key %s and TTL %s seconds from cache.', k, self.ttl)
             del self[k]
@@ -176,7 +173,7 @@ class Cache:
 
     def get_all_values(self):
         self.cache.check_expiry()
-        return list(n[1] for n in self.cache.values())
+        return [n[1] for n in self.cache.values()]
 
     def get_limit(self, limit: int=None):
         self.cache.check_expiry()
