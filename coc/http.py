@@ -79,7 +79,7 @@ class Throttler:
             if len(self._task_logs) < self.rate_limit:
                 break
 
-            log.info('Request throttled. Sleeping for %s seconds.', self.retry_interval)
+            log.debug('Request throttled. Sleeping for %s seconds.', self.retry_interval)
             await asyncio.sleep(self.retry_interval)
 
         # Push new task's start time
