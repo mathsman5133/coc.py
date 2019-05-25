@@ -114,6 +114,11 @@ class Cache:
         self.max_size = self.cache.max_size
         self.fully_populated = False
 
+        self._is_clan = False
+        self._is_player = False
+        self._is_war = False
+        self._is_static = False
+
     def __call__(self, *args, **kwargs):
         self.cache.check_expiry()
 

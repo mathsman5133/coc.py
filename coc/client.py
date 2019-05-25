@@ -132,6 +132,25 @@ class Client:
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
         An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
 
+    default_cache : function
+        The :class:`function` to use for default cache initiation.
+        If nothing is passed, this defaults to :func:`Client.default_cache()`.
+        This function must have client as the first and only parameter.
+        It **must not** be a coroutine.
+
+        Example: ::
+
+            def setup(client):
+                client.edit_cache('players', 1024, 300)
+                print('Set cache for players to max size 1024, expiry 30 seconds')
+
+                client.edit_cache(extra_settings={'war': {'max_size': 1024, 'expiry': 300}}
+                print('Set my second cache')
+
+                return
+
+            clash_client = coc.login('email', 'password', default_cache=setup)
+
     Attributes
     -----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -140,7 +159,8 @@ class Client:
     def __init__(self, *, key_count: int=1,
                  key_names: str='Created with coc.py Client',
                  throttle_limit: int=10,
-                 loop: asyncio.AbstractEventLoop=None):
+                 loop: asyncio.AbstractEventLoop=None,
+                 default_cache=None):
 
         self.loop = loop or asyncio.get_event_loop()
         self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
@@ -155,7 +175,30 @@ class Client:
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
 
+        self._cache_lookup = {
+            'cache_search_clans': cache_search_clans,
+            'cache_war_clans': cache_war_clans,
+
+            'cache_search_players': cache_search_players,
+            'cache_war_players': cache_war_players,
+
+            'cache_current_wars': cache_current_wars,
+            'cache_war_logs': cache_war_logs,
+
+            'cache_league_groups': cache_league_groups,
+            'cache_league_wars': cache_league_wars,
+
+            'cache_locations': cache_locations,
+
+            'cache_leagues': cache_leagues,
+            'cache_seasons': cache_seasons
+        }
+
+        self._default_cache = default_cache or self.default_cache
         log.info('Clash of Clans client created')
+
+        self._default_cache(self)
+        log.debug('Cache has been set using %s', 'default cache' if not default_cache else 'custom cache')
 
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -237,57 +280,144 @@ class Client:
         cache_objects = [self._get_cache_from_name(str(n)) for n in cache_names]
         return [n for n in cache_objects if n]
 
-    def set_cache(self, *cache_to_edit, max_size: int=128, expiry: int=None):
-        """Set the max size and expiry time for a cached object.
+    def _get_cache_from_name(self, name):
+        try:
+            return self._cache_lookup[str(name)]
+        except KeyError:
+            return None
 
-        .. note::
+    def default_cache(self, client):
+        """The default cache initiation.
 
-            Calling this method will override and create a new cache instance,
-            removing all previously cached objects
+        This function is called on initiation of the :class:`Client`.
+
+        The grouping and relevant max size and expiry are as follows:
+
+        +-------------------------+------------+------------+-----------+
+        |       Cache Name        | Cache Type |  Max Size  |  Expiry   |
+        +=========================+============+============+===========+
+        |``cache_search_clans``   | ``clan``   |   1024     | 1 hour    |
+        +-------------------------+------------+------------+-----------+
+        |``cache_war_logs``       | ``clan``   |   1024     | 1 hour    |
+        +-------------------------+------------+------------+-----------+
+        |``cache_current_wars``   | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
+        |``cache_league_groups``  | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
+        |``cache_league_wars``    | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
+        |``cache_war_clans``      | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
+        |``cache_war_players``    | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
+        |``cache_search_players`` | ``player`` |   1024     | 1 hour    |
+        +-------------------------+------------+------------+-----------+
+        |``cache_locations``      | ``static`` |   1024     | Never     |
+        +-------------------------+------------+------------+-----------+
+        |``cache_leagues``        | ``static`` |   1024     | Never     |
+        +-------------------------+------------+------------+-----------+
+        |``cache_seasons``        | ``static`` |   1024     | Never     |
+        +-------------------------+------------+------------+-----------+
+
+        """
+        cache_search_clans._is_clan = True
+        cache_war_logs._is_clan = True
+
+        cache_current_wars._is_war = True
+        cache_league_groups._is_war = True
+        cache_league_wars._is_war = True
+        cache_war_clans._is_war = True
+        cache_war_players._is_war = True
+
+        cache_search_players._is_player = True
+
+        cache_locations._is_static = True
+        cache_leagues._is_static = True
+        cache_seasons._is_static = True
+
+        clan_cache = (n for n in self._cache_lookup.values() if n._is_clan)
+        player_cache = (n for n in self._cache_lookup.values() if n._is_player)
+        war_cache = (n for n in self._cache_lookup.values() if n._is_war)
+        static_cache = (n for n in self._cache_lookup.values() if n._is_static)
+
+        for n in clan_cache:
+            n.clear(max_size=1024, ttl=3600)  # ttl = hour
+        for n in player_cache:
+            n.clear(max_size=1024, ttl=3600)  # ttl = hour
+        for n in war_cache:
+            n.clear(1024, ttl=1800)  # ttl = half hour
+        for n in static_cache:
+            n.clear(1024, None)  # ttl = never expire
+
+    def edit_cache(self, cache_group: str=None, max_size: int=None, expiry: int=None, extra_settings: dict=None):
+        """Edit the cache from the default settings.
+
+        Alternatively, this function could be passed into the ``default_cache`` parameter of :class:`Client`,
+        as follows: ::
+
+            def cache(client):
+                return client.edit_cache('players', 1024, 300)
+
+            coc_client = coc.login('email', 'password', default_cache=cache)
+
 
         Parameters
         -----------
-        cache_to_edit : str
-            The name of cache type to change.
+        cache_group : str
+            This could either be a cache name or cache group type.
+            See all names and types in :meth:`Client.default_cache`.
         max_size : int
-            The max size of the created cache. Defaults to 128
-        expiry : int, optional
-            The expiry time in seconds of the cache.
-            Defaults to None (cache does not expire)
+            The max size to set for ``cache_group`` passed.
+        expiry : int
+            The expiry of cache in seconds for ``cache_group`` passed.
+        extra_settings : dict
+            A dictionary of extra settings for advanced usage.
+            Example: ::
+
+                # format:
+                {cache_group: {'max_size': int, 'expiry': int}, ...}
+                # eg:
+                {'clan': {'max_size': 1024, 'expiry': 30}, 'player': {1024, 300}}
+
+            Alternatively, you could call this function multiple times for each type you want to change.
+
         """
-        for cache_type in cache_to_edit:
-            attr = self._get_cache_from_name(str(cache_type))
-            if not attr:
-                raise ValueError('{} is not a valid cached data class type'.format(cache_to_edit))
+        clan_cache = (n for n in self._cache_lookup.values() if n._is_clan)
+        player_cache = (n for n in self._cache_lookup.values() if n._is_player)
+        war_cache = (n for n in self._cache_lookup.values() if n._is_war)
+        static_cache = (n for n in self._cache_lookup.values() if n._is_static)
+        all_cache = (n for n in self._cache_lookup.values())
 
-            attr.clear(max_size, expiry)
-            log.debug('Cache type %s has been set with max size %s and expiry %s seconds',
-                      cache_type, max_size, expiry)
-
-    @staticmethod
-    def _get_cache_from_name(name):
         lookup = {
-            'cache_search_clans': cache_search_clans,
-            'cache_war_clans': cache_war_clans,
-
-            'cache_search_players': cache_search_players,
-            'cache_war_players': cache_war_players,
-
-            'cache_current_wars': cache_current_wars,
-            'cache_war_logs': cache_war_logs,
-
-            'cache_league_groups': cache_league_groups,
-            'cache_league_wars': cache_league_wars,
-
-            'cache_locations': cache_locations,
-
-            'cache_leagues': cache_leagues,
-            'cache_seasons': cache_seasons
+            'clan': clan_cache,
+            'player': player_cache,
+            'war': war_cache,
+            'static': static_cache,
+            'all': all_cache
         }
-        try:
-            return lookup[str(name)]
-        except KeyError:
-            return None
+
+        def f(name):
+            try:
+                c = lookup[str(name)]
+            except KeyError:
+                try:
+                    c = [self._cache_lookup[str(name)]]
+                except KeyError:
+                    return []
+            return c
+
+        for n in f(cache_group):
+            n.clear(max_size=max_size, ttl=expiry)
+
+        if not extra_settings:
+            return
+
+        for k, v in extra_settings.items():
+            for cache in f(k):
+                try:
+                    cache.clear(max_size=v[0], ttl=v[1])
+                except (IndexError, KeyError):
+                    continue
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
@@ -471,12 +601,12 @@ class Client:
         for n in r.get('items', []):
             # lately war log entries for sccwl can be distinguished by a `null` result
             if n.get('result') is None:
-                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag))
+                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag, http=self.http))
                 continue
 
             # for earlier logs this is distinguished by no opponent tag (result called `tie`)
             if n.get('opponent', {}).get('tag', None) is None:
-                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag))
+                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag, http=self.http))
                 continue
 
             wars.append(WarLog(data=n, clan_tag=clan_tag, http=self.http))
@@ -993,54 +1123,6 @@ class Client:
 
 class EventsClient(Client):
     def __init__(self, **options):
-        """The client connection used to interact with the API and manage events.
-
-        This client provides all functionality of :class:`Client`, with an additional
-        events side.
-
-        Events will look for changes in tags supplied by the user, dispatching 'events'
-        when a change is found. Events are created and registered by the user, and
-        the client will automatically dispatch events to these functions, when events
-        have been enabled.
-
-        Parameters
-        -------------
-        key_count : int
-            The amount of keys to use for this client. Maximum of 10.
-            Defaults to 1.
-
-        key_names : str
-            Default name for keys created to use for this client.
-            All keys created or to be used with this client must
-            have this name.
-            Defaults to "Created with coc.py Client".
-
-        throttle_limit : int
-            The number of requests per token per second to send to the API.
-            Once hitting this limit, the library will automatically throttle
-            your requests.
-
-            .. note::
-
-                Setting this value too high may result in the API rate-limiting
-                your requests. This means you cannot request for ~30-60 seconds.
-
-            .. warning::
-
-                Setting this value too high may result in your requests being
-                deemed "API Abuse", potentially resulting in an IP ban.
-
-            Defaults to 10 requests per token, per second.
-
-        loop : :class:`asyncio.AbstractEventLoop`, optional
-            The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
-            An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
-
-        Attributes
-        -----------
-        loop : :class:`asyncio.AbstractEventLoop`
-            The loop that is used for HTTP requests
-        """
         super().__init__(**options)
         apply(self.loop)
         self._setup()
@@ -1562,3 +1644,6 @@ class EventsClient(Client):
                 continue
 
             self.dispatch('player_other_update', cached_player, player)
+
+
+EventsClient.__doc__ = Client.__doc__
