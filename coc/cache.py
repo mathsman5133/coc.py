@@ -51,21 +51,25 @@ def _wrap_coroutine(result):
     return new_coro()
 
 
-def _wrap_store_coro(cache, key, coro):
+def _wrap_store_coro(cache, key, coro, update_cache):
     async def fctn():
         value = await coro
-        cache[key] = value
+        if update_cache:
+            cache[key] = value
+
         return value
     return fctn()
 
 
-def _try_wrap_store_coro(cache, key, data):
+def _try_wrap_store_coro(cache, key, data, update_cache):
     if inspect.isawaitable(data):
-        return _wrap_store_coro(cache, key, data)
+        return _wrap_store_coro(cache, key, data, update_cache)
     if inspect.isasyncgen(data):
         return data
 
-    cache[key] = data
+    if update_cache:
+        cache[key] = data
+
     return data
 
 
@@ -129,6 +133,7 @@ class Cache:
                 key = find_key(args, kwargs)
                 cache = kwargs.pop('cache', False)
                 fetch = kwargs.pop('fetch', True)
+                update_cache = kwargs.pop('update_cache', True)
 
                 if not key:
                     return func(*args, **kwargs)
@@ -138,7 +143,7 @@ class Cache:
                 else:
                     if fetch:
                         data = func(*args, **kwargs)
-                        return _try_wrap_store_coro(self.cache, key, data)
+                        return _try_wrap_store_coro(self.cache, key, data, update_cache)
 
                     else:
                         return None
@@ -149,7 +154,7 @@ class Cache:
                     else:
                         return None
 
-                    return _try_wrap_store_coro(self.cache, key, data)
+                    return _try_wrap_store_coro(self.cache, key, data, update_cache)
 
                 else:
                     log.debug('Using cached object with KEY: %s and VALUE: %s', key, data)

@@ -1559,7 +1559,7 @@ class EventsClient(Client):
         if not self._clan_updates:
             return
 
-        async for clan in self.get_clans(self._clan_updates, update_cache=False):
+        async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
             cached_clan = cache_search_clans.get(clan.tag)
             if not cached_clan:
                 cache_search_clans.add(clan.tag, clan)
@@ -1634,7 +1634,7 @@ class EventsClient(Client):
         if not self._war_updates:
             return
 
-        async for war in self.get_current_wars(self._war_updates, update_cache=False):
+        async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
             cached_war = cache_current_wars.get(war.clan_tag)
             if not cached_war:
                 cache_current_wars.add(war.clan_tag, war)
@@ -1659,7 +1659,7 @@ class EventsClient(Client):
         if not self._player_updates:
             return
 
-        async for player in self.get_players(self._player_updates, update_cache=False):
+        async for player in self.get_players(self._player_updates, cache=False, update_cache=False):
             cached_player = cache_search_players.get(player.tag)
 
             if not cached_player:
