@@ -30,7 +30,6 @@ import logging
 import traceback
 
 from collections import Iterable
-from itertools import chain
 
 from .cache import Cache
 from .clans import Clan, SearchClan
@@ -1333,14 +1332,13 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if not self._clan_updates:
-            self._clan_updates = tags
+            self._clan_updates = [n for n in tags]
         else:
-            self._clan_updates = chain(self._clan_updates, tags)
+            self._clan_updates.extend(n for n in tags)
 
-        if member_updates:
+        if member_updates is True:
             async for clan in self.get_clans(tags):
                 self.add_player_update((n.tag for n in clan._members), retry_interval=retry_interval)
-            self._player_retry_interval = retry_interval
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
@@ -1358,9 +1356,9 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if not self._war_updates:
-            self._war_updates = tags
+            self._war_updates = [n for n in tags]
         else:
-            self._war_updates = chain(self._war_updates, tags)
+            self._war_updates.extend(n for n in tags)
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
@@ -1378,63 +1376,108 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if not self._player_updates:
-            self._player_updates = tags
+            self._player_updates = [n for n in tags]
         else:
-            self._player_updates = chain(self._player_updates, tags)
+            self._player_updates.extend(n for n in tags)
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._player_retry_interval = retry_interval
 
-    def start_updates(self, event_name='all'):
+    def start_updates(self, event_type='all'):
         """Starts an, or all, events.
 
         .. note::
             This method **must** be called before any events are run.
 
         The lookup for event_name is as follows:
-        'clan' - to register clan events
-        'player' - to register player events
-        'war' - to register war events
-        'all' - to register all of the above.
+
+        +-----------------------------------+----------------------+
+        |     Event Name                    | Event Type           |
+        +-----------------------------------+----------------------+
+        | ``on_clan_update``                | ``clan``             |
+        +-----------------------------------+----------------------+
+        | ``on_clan_member_join``           | ``clan``             |
+        +-----------------------------------+----------------------+
+        | ``on_clan_member_leave``          | ``clan``             |
+        +-----------------------------------+----------------------+
+        | ``on_clan_settings_update``       | ``clan``             |
+        +-----------------------------------+----------------------+
+        | ``on_war_update``                 | ``war``              |
+        +-----------------------------------+----------------------+
+        | ``on_war_attack``                 | ``war``              |
+        +-----------------------------------+----------------------+
+        | ``on_war_state_change``           | ``war``              |
+        +-----------------------------------+----------------------+
+        | ``on_player_update``              | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_name_change           | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_townhall_upgrade``    | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_builderhall_upgrade`` | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_achievement_update``  | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_troop_upgrade``       | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_spell_upgrade``       | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_troop_upgrade``       | ``player``           |
+        +-----------------------------------+----------------------+
+        | ``on_player_other_update``        | ``player``           |
+        +-----------------------------------+----------------------+
 
         Parameters
         -----------
-        event_name : str
+        event_type : str
             See above for which string corresponds to events.
             Defaults to 'all'
+
+        Example
+        --------
+        ..code-block:: python3
+
+            client.start_updates('clan')
+            # or, for all events:
+            client.start_updates('all')
+
+
         """
         lookup = {
             'clan': self._clan_update_event,
             'player': self._player_update_event,
             'war': self._war_update_event
         }
-        if event_name == 'all':
+        if event_type == 'all':
             events = lookup.values()
         else:
-            events = [lookup[event_name]]
+            events = [lookup[event_type]]
 
         for e in events:
             e.set()
 
-    def stop_updates(self, event_name='all'):
+    def stop_updates(self, event_type='all'):
         """Stops an, or all, events.
 
         .. note::
             This method **must** be called in order to stop any events.
 
-        The lookup for event_name is as follows:
-        'clan' - to stop clan events
-        'player' - to stop player events
-        'war' - to stop war events
-        'all' - to stop all of the above.
-
         Parameters
         -----------
-        event_name : str
-            See above for which string corresponds to events.
+        event_type : str
+            See :meth:`EventsClient.start_updates` for which string corresponds to events.
             Defaults to 'all'
+
+        Example
+        --------
+        ..code-block:: python3
+
+            client.stop_updates('clan')
+            # or, for all events:
+            client.stop_updates('all')
+
         """
 
         lookup = {
@@ -1442,10 +1485,10 @@ class EventsClient(Client):
             'player': self._player_update_event,
             'war': self._war_update_event
         }
-        if event_name == 'all':
+        if event_type == 'all':
             events = lookup.values()
         else:
-            events = [lookup[event_name]]
+            events = [lookup[event_type]]
 
         for e in events:
             e.clear()
@@ -1471,7 +1514,7 @@ class EventsClient(Client):
             while self.loop.is_running():
                 await self._clan_update_event.wait()
                 await self._update_clans()
-                await asyncio.sleep(self._player_retry_interval)
+                await asyncio.sleep(self._clan_retry_interval)
         except (
                 OSError,
                 asyncio.CancelledError,
@@ -1486,7 +1529,7 @@ class EventsClient(Client):
             while self.loop.is_running():
                 await self._player_update_event.wait()
                 await self._update_players()
-                await asyncio.sleep(self._clan_retry_interval)
+                await asyncio.sleep(self._player_retry_interval)
         except (
                 OSError,
                 asyncio.CancelledError,
