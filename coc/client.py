@@ -33,6 +33,7 @@ from collections import Iterable
 
 from .cache import Cache
 from .clans import Clan, SearchClan
+from .enums import ACHIEVEMENT_ORDER
 from .errors import ClashOfClansException, Forbidden, HTTPException
 from .miscmodels import Location, League
 from .http import HTTPClient
@@ -1646,7 +1647,7 @@ class EventsClient(Client):
 
             self.dispatch('war_update', cached_war, war)
 
-            await self._create_status_tasks(cached_war, war)
+            self._create_status_tasks(cached_war, war)
 
             if len(war._attacks) != len(cached_war._attacks):
                 new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
@@ -1688,30 +1689,42 @@ class EventsClient(Client):
                 cache_search_players.add(player.tag, player)
                 continue
 
-            achievement_updates = [n for n in player._achievements if n not in set(cached_player._achievements)]
-            troop_upgrades = [n for n in player.troops if n not in set(cached_player.troops)]
-            spell_upgrades = [n for n in player.spells if n not in set(cached_player.spells)]
-            hero_upgrades = [n for n in player.heroes if n not in set(cached_player.heroes)]
+            achievement_updates = (n for n in player._achievements if n not in set(cached_player._achievements))
+            troop_upgrades = (n for n in player.troops if n not in set(cached_player.troops))
+            spell_upgrades = (n for n in player.spells if n not in set(cached_player.spells))
+            hero_upgrades = (n for n in player.heroes if n not in set(cached_player.heroes))
 
             for achievement in achievement_updates:
                 old_achievement = get(cached_player._achievements, name=achievement.name)
                 self.dispatch('player_achievement_update', old_achievement, achievement)
-                cached_player._data['achievements'][achievement.name] = achievement._data
+                i = ACHIEVEMENT_ORDER.index(achievement.name)
+                cached_player._data['achievements'][i] = achievement._data
 
             for troop in troop_upgrades:
                 old_troop = get(cached_player.troops, name=troop.name)
                 self.dispatch('player_troop_upgrade', old_troop, troop, player)
-                cached_player._data['troops'][troop.name] = troop._data
+                # this is a bit of a waste of resources, but we can't rely on order
+                # as locked troops won't appear in the troops list from api,
+                # meaning the order will change per-player.
+                troops = [n[0] for n in cached_player._data['troops']]
+                i = troops.index(troop.name)
+                cached_player._data['troops'][i] = troop._data
 
             for spell in spell_upgrades:
                 old_spell = get(cached_player.spells, name=spell.name)
                 self.dispatch('player_spell_upgrade', old_spell, spell, player)
-                cached_player._data['spells'][spell.name] = spell._data
+                # same issue as troops
+                spells = [n[0] for n in cached_player._data['spells']]
+                i = spells.index(spell.name)
+                cached_player._data['spells'][i] = spell._data
 
             for hero in hero_upgrades:
                 old_hero = get(cached_player.heroes, name=hero.name)
                 self.dispatch('player_hero_upgrade', old_hero, hero, player)
-                cached_player._data['heroes'][hero.name] = hero._data
+                # same issue as troops
+                heroes = [n[0] for n in cached_player._data['heroes']]
+                i = heroes.index(hero.name)
+                cached_player._data['heroes'][i] = hero._data
 
             if cached_player == player:
                 cache_search_players.add(player.tag, player)
