@@ -1649,7 +1649,7 @@ class EventsClient(Client):
 
             self._create_status_tasks(cached_war, war)
 
-            if len(war._attacks) != len(cached_war._attacks):
+            if len(war.attacks) != len(cached_war.attacks):
                 new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
                 for attack in new_attacks:
                     self.dispatch('war_attack', attack, war)
