@@ -1710,7 +1710,11 @@ class EventsClient(Client):
                 # as locked troops won't appear in the troops list from api,
                 # meaning the order will change per-player.
                 troops = [n['name'] for n in cached_player._data['troops']]
-                i = troops.index(troop.name)
+                try:
+                    i = troops.index(troop.name)
+                except KeyError:
+                    self.dispatch('player_troop_unlock', troop, player)
+                    continue
                 cached_player._data['troops'][i] = troop._data
 
             for spell in spell_upgrades:
@@ -1718,7 +1722,12 @@ class EventsClient(Client):
                 self.dispatch('player_spell_upgrade', old_spell, spell, player)
                 # same issue as troops
                 spells = [n['name'] for n in cached_player._data['spells']]
-                i = spells.index(spell.name)
+                try:
+                    i = spells.index(spell.name)
+                except KeyError:
+                    self.dispatch('player_spell_unlock', spell, player)
+                    continue
+
                 cached_player._data['spells'][i] = spell._data
 
             for hero in hero_upgrades:
@@ -1726,7 +1735,12 @@ class EventsClient(Client):
                 self.dispatch('player_hero_upgrade', old_hero, hero, player)
                 # same issue as troops
                 heroes = [n['name'] for n in cached_player._data['heroes']]
-                i = heroes.index(hero.name)
+                try:
+                    i = heroes.index(hero.name)
+                except KeyError:
+                    self.dispatch('player_hero_unlock', hero, player)
+                    continue
+
                 cached_player._data['heroes'][i] = hero._data
 
             if cached_player == player:

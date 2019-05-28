@@ -179,6 +179,15 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
+.. py:function:: on_player_troop_unlock(new_troop, player)
+
+    This event is called when a player unlocks a new troop.
+
+    :param new_troop: The player's new troop.
+        :type new_troop: :class:`Troop`
+    :param player: The new player object
+        :type player: :class:`SearchPlayer`
+
 .. py:function:: on_player_troop_upgrade(old_troop, new_troop, player)
 
     This event is called when a player's troop has been upgraded.
@@ -189,6 +198,15 @@ All events the client will dispatch are listed below.
     :type new_troop: :class:`Troop`
     :param player: The new player object
     :type player: :class:`SearchPlayer`
+
+.. py:function:: on_player_spell_unlock(new_spell, player)
+
+    This event is called when a player unlocks a new spell.
+
+    :param new_spell: The player's new spell.
+        :type new_spell: :class:`Spell`
+    :param player: The new player object
+        :type player: :class:`SearchPlayer`
 
 .. py:function:: on_player_spell_upgrade(old_spell, new_spell, player)
 
@@ -201,7 +219,16 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_player_troop_upgrade(old_hero, new_hero, player)
+.. py:function:: on_player_hero_unlock(new_hero, player)
+
+    This event is called when a player unlocks a new hero.
+
+    :param new_hero: The player's new hero.
+    :type new_hero: :class:`Hero`
+    :param player: The new player object
+    :type player: :class:`SearchPlayer`
+
+.. py:function:: on_player_hero_upgrade(old_hero, new_hero, player)
 
     This event is called when a player's hero has been upgraded.
 
