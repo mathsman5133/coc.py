@@ -1650,6 +1650,9 @@ class EventsClient(Client):
             self._create_status_tasks(cached_war, war)
 
             if len(war.attacks) != len(cached_war.attacks):
+                if not war._attacks:
+                    continue  # if there are no attacks next line will raise TypeError.. we're not in war anymore anyway
+
                 new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
                 for attack in new_attacks:
                     self.dispatch('war_attack', attack, war)
@@ -1706,7 +1709,7 @@ class EventsClient(Client):
                 # this is a bit of a waste of resources, but we can't rely on order
                 # as locked troops won't appear in the troops list from api,
                 # meaning the order will change per-player.
-                troops = [n[0] for n in cached_player._data['troops']]
+                troops = [n['name'] for n in cached_player._data['troops']]
                 i = troops.index(troop.name)
                 cached_player._data['troops'][i] = troop._data
 
@@ -1714,7 +1717,7 @@ class EventsClient(Client):
                 old_spell = get(cached_player.spells, name=spell.name)
                 self.dispatch('player_spell_upgrade', old_spell, spell, player)
                 # same issue as troops
-                spells = [n[0] for n in cached_player._data['spells']]
+                spells = [n['name'] for n in cached_player._data['spells']]
                 i = spells.index(spell.name)
                 cached_player._data['spells'][i] = spell._data
 
@@ -1722,7 +1725,7 @@ class EventsClient(Client):
                 old_hero = get(cached_player.heroes, name=hero.name)
                 self.dispatch('player_hero_upgrade', old_hero, hero, player)
                 # same issue as troops
-                heroes = [n[0] for n in cached_player._data['heroes']]
+                heroes = [n['name'] for n in cached_player._data['heroes']]
                 i = heroes.index(hero.name)
                 cached_player._data['heroes'][i] = hero._data
 
