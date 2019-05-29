@@ -147,6 +147,13 @@ class CurrentWar(BaseWar):
         """List[:class:`WarMember`]: A list of all members this war"""
         return list(self._members)
 
+    @property
+    def type(self):
+        """:class:`str`: Either ``friendly`` or ``random`` - the war type."""
+        if (self.start_time.time - self.preparation_start_time.time).hours == 23:
+            return 'random'
+        return 'friendly'
+
     def get_member(self, **attrs):
         """Returns the first :class:`WarMember` that meets the attributes passed
 
@@ -268,6 +275,11 @@ class LeagueWar(CurrentWar):
         clan_tag = ''
         super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
         self.clan_tag = getattr(self.clan, 'tag')
+
+    @property
+    def type(self):
+        """:class:`str`: The war type. For league wars, this is ``cwl``."""
+        return 'cwl'
 
 
 class LeagueWarLogEntry(EqualityComparable):
