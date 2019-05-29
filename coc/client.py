@@ -1652,8 +1652,11 @@ class EventsClient(Client):
             if len(war.attacks) != len(cached_war.attacks):
                 if not war._attacks:
                     continue  # if there are no attacks next line will raise TypeError.. we're not in war anymore anyway
+                if not cached_war._attacks:
+                    new_attacks = [n for n in war._attacks]  # war has just started
+                else:
+                    new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
 
-                new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
                 for attack in new_attacks:
                     self.dispatch('war_attack', attack, war)
 
