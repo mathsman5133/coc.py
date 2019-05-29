@@ -1715,7 +1715,7 @@ class EventsClient(Client):
                 troops = [n['name'] for n in cached_player._data['troops']]
                 try:
                     i = troops.index(troop.name)
-                except KeyError:
+                except ValueError:
                     self.dispatch('player_troop_unlock', troop, player)
                     continue
                 cached_player._data['troops'][i] = troop._data
@@ -1727,7 +1727,7 @@ class EventsClient(Client):
                 spells = [n['name'] for n in cached_player._data['spells']]
                 try:
                     i = spells.index(spell.name)
-                except KeyError:
+                except ValueError:
                     self.dispatch('player_spell_unlock', spell, player)
                     continue
 
@@ -1740,7 +1740,7 @@ class EventsClient(Client):
                 heroes = [n['name'] for n in cached_player._data['heroes']]
                 try:
                     i = heroes.index(hero.name)
-                except KeyError:
+                except ValueError:
                     self.dispatch('player_hero_unlock', hero, player)
                     continue
 
