@@ -34,14 +34,14 @@ from collections import Iterable
 from .cache import Cache
 from .clans import Clan, SearchClan
 from .enums import ACHIEVEMENT_ORDER
-from .errors import ClashOfClansException, Forbidden, HTTPException
+from .errors import ClashOfClansException, Forbidden, HTTPException, NotFound
 from .miscmodels import Location, League
 from .http import HTTPClient
-from .iterators import PlayerIterator, ClanIterator, WarIterator
+from .iterators import PlayerIterator, ClanIterator, ClanWarIterator, LeagueWarIterator, CurrentWarIterator
 from .nest_asyncio import apply
 from .players import Player, LeagueRankedPlayer, SearchPlayer
 from .utils import get
-from .wars import CurrentWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
+from .wars import ClanWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
 
 log = logging.getLogger(__name__)
 
@@ -55,11 +55,13 @@ cache_war_clans = Cache()
 cache_search_players = Cache()
 cache_war_players = Cache()
 
-cache_current_wars = Cache()
+cache_clan_wars = Cache()
 cache_war_logs = Cache()
 
 cache_league_groups = Cache()
 cache_league_wars = Cache()
+
+cache_current_wars = Cache()
 
 cache_locations = Cache()
 
@@ -182,8 +184,9 @@ class Client:
             'cache_search_players': cache_search_players,
             'cache_war_players': cache_war_players,
 
-            'cache_current_wars': cache_current_wars,
+            'cache_clan_wars': cache_clan_wars,
             'cache_war_logs': cache_war_logs,
+            'cache_current_wars': cache_current_wars,
 
             'cache_league_groups': cache_league_groups,
             'cache_league_wars': cache_league_wars,
@@ -302,6 +305,8 @@ class Client:
         +-------------------------+------------+------------+-----------+
         |``cache_current_wars``   | ``war``    |   1024     | 0.5 hours |
         +-------------------------+------------+------------+-----------+
+        |``cache_clan_wars``      | ``war``    |   1024     | 0.5 hours |
+        +-------------------------+------------+------------+-----------+
         |``cache_league_groups``  | ``war``    |   1024     | 0.5 hours |
         +-------------------------+------------+------------+-----------+
         |``cache_league_wars``    | ``war``    |   1024     | 0.5 hours |
@@ -323,6 +328,7 @@ class Client:
         cache_search_clans._is_clan = True
         cache_war_logs._is_clan = True
 
+        cache_clan_wars._is_war = True
         cache_current_wars._is_war = True
         cache_league_groups._is_war = True
         cache_league_wars._is_war = True
@@ -616,8 +622,8 @@ class Client:
 
         return wars
 
-    @cache_current_wars.get_cache()
-    async def get_current_war(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
+    @cache_clan_wars.get_cache()
+    async def get_clan_war(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Retrieve information about clan's current clan war
 
@@ -638,12 +644,12 @@ class Client:
 
         Returns
         --------
-        :class:`CurrentWar`
+        :class:`ClanWar`
         """
         r = await self.http.get_clan_current_war(clan_tag)
-        return CurrentWar(data=r, clan_tag=clan_tag, http=self.http)
+        return ClanWar(data=r, clan_tag=clan_tag, http=self.http)
 
-    def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
+    def get_clan_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """
         Retrieve information multiple clan's current clan wars
 
@@ -653,7 +659,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for clan_war in Client.get_current_wars(tags):
+            async for clan_war in Client.get_clan_wars(tags):
                 print(clan_war.opponent)
 
         Parameters
@@ -673,12 +679,12 @@ class Client:
 
         Returns
         --------
-        :class:`coc.iterators.WarIterator` of :class:`CurrentWar`
+        :class:`coc.iterators.WarIterator` of :class:`ClanWar`
         """
         if not isinstance(clan_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return WarIterator(self, clan_tags, cache, fetch, update_cache)
+        return ClanWarIterator(self, clan_tags, cache, fetch, update_cache)
 
     @cache_league_groups.get_cache()
     async def get_league_group(self, clan_tag: str, cache: bool=False, fetch: bool=True, update_cache: bool=True):
@@ -732,6 +738,135 @@ class Client:
         """
         r = await self.http.get_cwl_wars(war_tag)
         return LeagueWar(data=r, http=self.http)
+
+    def get_league_wars(self, war_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
+        """
+        Retrieve information multiple clan's current league wars
+
+        Example
+        ---------
+
+        .. code-block:: python3
+
+            tags = [...]
+            async for league_war in Client.get_league_wars(tags):
+                print(league_war.opponent)
+
+        Parameters
+        -----------
+        war_tags : :class:`collections.Iterable`
+            An iterable of war tags to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``.
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``.
+
+        Returns
+        --------
+        :class:`coc.iterators.LeagueWarIterator` of :class:`LeagueWar`
+        """
+        if not isinstance(war_tags, Iterable):
+            raise TypeError('Tags are not an iterable.')
+
+        return LeagueWarIterator(self, war_tags, cache, fetch, update_cache)
+
+    async def get_current_war(self, clan_tag: str, *, league_war: bool=True,
+                              cache: bool=False, fetch: bool=True, update_cache: bool=True):
+        """Retrieve a clan's current war.
+
+        Unlike ``Client.get_clan_war`` or ``Client.get_league_war``, this method will search for a regular war,
+        and if the clan is in ``notInWar`` state, search for a current league war.
+
+        This simplifies what would otherwise be 2-3 function calls to find a war.
+
+        Parameters
+        -----------
+        clan_tag : str
+            An iterable of clan tag to search for.
+        league_war : bool
+            Indicates whether the client should search for a league war.
+            If this is ``False``, consider using ``Client.get_clan_war``.
+            Defaults to ``True``.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``.
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``.
+
+        Returns
+        --------
+        Either a :class:`ClanWar` or :class:`LeagueWar`, depending on the type of war in progress.
+        These can be differentiated by through an ``isinstance(..)`` method, or by comparing ``type`` attributes.
+        """
+        get_war = await self.get_clan_war(clan_tag, cache=cache, fetch=fetch, update_cache=update_cache)
+        if not get_war:
+            return None
+        if get_war.state != LEAGUE_WAR_STATE:
+            return get_war
+        if not league_war:
+            return get_war
+
+        try:
+            league_group = await self.get_league_group(clan_tag, cache=cache, fetch=fetch, update_cache=update_cache)
+        except NotFound:
+            return get_war
+
+        round_tags = league_group.rounds[-1]
+
+        async for war in self.get_league_wars(round_tags, cache=cache, fetch=fetch, update_cache=update_cache):
+            if war.clan_tag == clan_tag:
+                return war
+        else:
+            return None
+
+    def get_current_wars(self, clan_tags: Iterable, cache: bool=False, fetch: bool=True, update_cache: bool=True):
+        """Retrieve information multiple clan's current wars.
+
+        These may be :class:`ClanWar` or :class:`LeagueWar`.
+
+        Example
+        ---------
+
+        .. code-block:: python3
+
+            tags = [...]
+            async for war in Client.get_current_wars(tags):
+                print(war.type)
+
+        Parameters
+        -----------
+        clan_tags : :class:`collections.Iterable`
+            An iterable of clan tags to search for.
+        cache : bool
+            Indicates whether to search the cache before making an HTTP request.
+            Defaults to ``True``.
+        fetch : bool
+            Indicates whether an HTTP call should be made if cache is empty.
+            Defaults to ``True``. If this is ``False`` and item in cache was not found,
+            ``None`` will be returned
+        update_cache : bool
+            Indicated whether the cache should be updated if an HTTP call is made.
+            Defaults to ``True``.
+
+        Returns
+        --------
+        :class:`coc.iterators.CurrentWarIterator` of either :class:`LeagueWar` or :class:`ClanWar`, or both.
+        """
+        if not isinstance(clan_tags, Iterable):
+            raise TypeError('Tags are not an iterable.')
+
+        return CurrentWarIterator(client=self, tags=clan_tags, cache=cache, fetch=fetch, update_cache=update_cache)
 
     # locations
     async def _populate_locations(self):
@@ -1184,6 +1319,7 @@ class EventsClient(Client):
         cache_war_logs._is_clan = True
 
         cache_current_wars._is_war = True
+        cache_clan_wars._is_war = True
         cache_league_groups._is_war = True
         cache_league_wars._is_war = True
         cache_war_clans._is_war = True

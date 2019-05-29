@@ -32,7 +32,9 @@ from .http import HTTPClient
 from .iterators import (
     ClanIterator,
     PlayerIterator,
-    WarIterator
+    ClanWarIterator,
+    LeagueWarIterator,
+    CurrentWarIterator
 )
 from .miscmodels import (
     Achievement,
@@ -58,7 +60,7 @@ from .players import (
 from .wars import (
     BaseWar,
     WarLog,
-    CurrentWar,
+    ClanWar,
     WarAttack,
     LeagueGroup,
     LeagueWar,

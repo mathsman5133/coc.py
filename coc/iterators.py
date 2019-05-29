@@ -81,7 +81,19 @@ class PlayerIterator(TaggedIterator):
         self.get_method = client.get_player
 
 
-class WarIterator(TaggedIterator):
+class ClanWarIterator(TaggedIterator):
     def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(WarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+        super(ClanWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+        self.get_method = client.get_clan_war
+
+
+class LeagueWarIterator(TaggedIterator):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+        super(LeagueWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+        self.get_method = client.get_league_war
+
+
+class CurrentWarIterator(TaggedIterator):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+        super(CurrentWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
         self.get_method = client.get_current_war

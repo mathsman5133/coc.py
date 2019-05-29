@@ -93,7 +93,7 @@ class WarLog(BaseWar):
         super(WarLog, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
 
-class CurrentWar(BaseWar):
+class ClanWar(BaseWar):
     """Represents a Current Clash of Clans War
 
     This class inherits :class:`BaseWar`, and thus all attributes
@@ -119,7 +119,7 @@ class CurrentWar(BaseWar):
         self.start_time = try_enum(Timestamp, data.get('startTime'))
         self.end_time = try_enum(Timestamp, data.get('endTime'))
 
-        super(CurrentWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
+        super(ClanWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
     @property
     def _attacks(self):
@@ -150,7 +150,7 @@ class CurrentWar(BaseWar):
     @property
     def type(self):
         """:class:`str`: Either ``friendly`` or ``random`` - the war type."""
-        if (self.start_time.time - self.preparation_start_time.time).hours == 23:
+        if (self.start_time.utc_timestamp - self.preparation_start_time.utc_timestamp).seconds == 82800:  # 23hr prep
             return 'random'
         return 'friendly'
 
@@ -163,7 +163,7 @@ class CurrentWar(BaseWar):
 
         .. code-block:: python3
 
-            member = CurrentWar.get_member(tag='tag')
+            member = ClanWar.get_member(tag='tag')
 
         This search implements the :func:`coc.utils.get` function
         """
@@ -259,10 +259,10 @@ class LeagueGroup(EqualityComparable):
         return rounds
 
 
-class LeagueWar(CurrentWar):
+class LeagueWar(ClanWar):
     """Represents a Clash of Clans LeagueWar
 
-    This class inherits both :class:`BaseWar` and :class:`CurrentWar`,
+    This class inherits both :class:`BaseWar` and :class:`ClanWar`,
     and thus all attributes of these classes can be expected to be present.
 
     Attributes

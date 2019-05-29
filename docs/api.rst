@@ -326,7 +326,7 @@ Wars
     :private-members:
     :inherited-members:
 
-.. autoclass:: CurrentWar()
+.. autoclass:: ClanWar()
     :members:
     :private-members:
     :inherited-members:
