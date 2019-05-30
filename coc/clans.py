@@ -308,9 +308,6 @@ class LeagueClan(BasicClan):
     This class inherits both :class:`Clan` and :class:`BasicClan`,
     and thus all attributes of these classes can be expected to be present.
 
-    Attributes
-    -----------
-
     """
     def __init__(self, *, data, http):
         super(LeagueClan, self).__init__(data=data, http=http)

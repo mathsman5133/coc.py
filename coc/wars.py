@@ -251,12 +251,7 @@ class LeagueGroup(EqualityComparable):
     @property
     def rounds(self):
         """List[List[]]: A list of lists containing all war tags for each round"""
-        # TODO: Find a better method of doing this
-        rounds = []
-        for rdata in self._data.get('rounds', []):
-            rounds.append(rdata['warTags'])
-
-        return rounds
+        return [n['warTags'] for n in self._data.get('rounds', [])]
 
 
 class LeagueWar(ClanWar):
@@ -270,6 +265,8 @@ class LeagueWar(ClanWar):
     tag:
         :class:`str` - The war tag
     """
+    __slots__ = 'tag'
+
     def __init__(self, *, data, http):
         self.tag = data.get('tag')
         clan_tag = ''

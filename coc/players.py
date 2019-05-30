@@ -375,6 +375,8 @@ class LeagueRankedPlayer(BasicPlayer):
     rank:
         :class:`int` - The players rank in their league for this season
     """
+    __slots__ = 'rank'
+
     def __init__(self, *, data, http):
         self.rank = data.get('rank')
         super(LeagueRankedPlayer, self).__init__(data=data, http=http)

@@ -74,6 +74,8 @@ def _try_wrap_store_coro(cache, key, data, update_cache):
 
 
 class LRU(OrderedDict):
+    __slots__ = ('max_size', 'ttl')
+
     def __init__(self, max_size, ttl):
         self.max_size = max_size
         self.ttl = ttl
@@ -112,6 +114,9 @@ class LRU(OrderedDict):
 
 
 class Cache:
+    __slots__ = ('cache', 'ttl', 'max_size', 'fully_populated',
+                 '_is_clan', '_is_player', '_is_war', '_is_static')
+
     def __init__(self, max_size=128, ttl=None):
         self.cache = LRU(max_size, ttl)
         self.ttl = self.cache.ttl

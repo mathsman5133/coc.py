@@ -51,6 +51,8 @@ class HTTPException(ClashOfClansException):
             This could be an empty string if nothing was given
 
     """
+    __slots__ = ('response', 'status', 'message', 'reason')
+
     def __init__(self, response, message):
         self.response = response
         self.status = response.status

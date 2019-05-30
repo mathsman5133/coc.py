@@ -158,6 +158,9 @@ class Client:
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
+    __slots__ = ('loop', 'correct_key_count', 'key_names', 'throttle_limit',
+                 'http', '_ready', '_cache_lookup', '_default_cache')
+
     def __init__(self, *, key_count: int=1,
                  key_names: str='Created with coc.py Client',
                  throttle_limit: int=10,
@@ -776,6 +779,7 @@ class Client:
 
         return LeagueWarIterator(self, war_tags, cache, fetch, update_cache)
 
+    @cache_current_wars.get_cache()
     async def get_current_war(self, clan_tag: str, *, league_war: bool=True,
                               cache: bool=False, fetch: bool=True, update_cache: bool=True):
         """Retrieve a clan's current war.
