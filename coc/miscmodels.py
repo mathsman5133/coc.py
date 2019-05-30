@@ -405,17 +405,16 @@ class Timestamp(EqualityComparable):
 
     Attributes
     -----------
-    time: :class:`str`: The raw timestamp string (ISO8601) as given by the API.
+    raw_time: :class:`str`: The raw timestamp string (ISO8601) as given by the API.
     """
-    __slots__ = ('time', '_data')
+    __slots__ = ('raw_time', '_data')
 
     def __init__(self, *, data):
         self._data = data
-
-        self.time = data
+        self.raw_time = data
 
     @property
-    def utc_timestamp(self):
+    def time(self):
         """:class:`datetime`: The timestamp as a UTC datetime object"""
         return from_timestamp(self.time)
 
@@ -427,5 +426,5 @@ class Timestamp(EqualityComparable):
     @property
     def seconds_until(self):
         """:class:`int`: Number of seconds until the timestamp. This may be negative."""
-        delta = self.utc_timestamp - self.now
+        delta = self.time - self.now
         return delta.total_seconds()
