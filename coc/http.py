@@ -37,7 +37,6 @@ from itertools import cycle
 from datetime import datetime
 from collections import deque
 
-import coc.nest_asyncio
 from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials, GatewayError
 
 log = logging.getLogger(__name__)
@@ -113,7 +112,6 @@ class HTTPClient:
     def __init__(self, client, loop, email, password,
                  key_names, key_count, throttle_limit):
         self.client = client
-        coc.nest_asyncio.apply(loop)
         self.loop = loop
         self.email = email
         self.password = password

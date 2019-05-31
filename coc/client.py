@@ -168,6 +168,8 @@ class Client:
                  default_cache=None):
 
         self.loop = loop or asyncio.get_event_loop()
+        apply(self.loop)
+
         self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
         if not key_count == self.correct_key_count:
@@ -427,6 +429,12 @@ class Client:
                     cache.clear(max_size=v[0], ttl=v[1])
                 except (IndexError, KeyError):
                     continue
+
+    async def reset_keys(self, number_of_keys: int=None):
+        num = number_of_keys or self.correct_key_count
+        keys = self.http._keys
+        for i in range(num):
+            await self.http.reset_key(keys[i])
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
@@ -1638,7 +1646,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._war_update_event.wait()
-                await self._update_wars()
+                updates = await self._update_wars()
+                self.dispatch('on_batch_war_updates', updates)
                 await asyncio.sleep(self._war_retry_interval)
         except (
                 OSError,
@@ -1654,7 +1663,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._clan_update_event.wait()
-                await self._update_clans()
+                updates = await self._update_clans()
+                self.dispatch('on_batch_clan_updates', updates)
                 await asyncio.sleep(self._clan_retry_interval)
         except (
                 OSError,
@@ -1669,7 +1679,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._player_update_event.wait()
-                await self._update_players()
+                updates = await self._update_players()
+                self.dispatch('on_batch_player_updates', updates)
                 await asyncio.sleep(self._player_retry_interval)
         except (
                 OSError,
@@ -1700,6 +1711,8 @@ class EventsClient(Client):
         if not self._clan_updates:
             return
 
+        events = {}
+
         async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
             cached_clan = cache_search_clans.get(clan.tag)
             if not cached_clan:
@@ -1710,9 +1723,13 @@ class EventsClient(Client):
                 continue
 
             self.dispatch('clan_update', cached_clan, clan)
+            events[clan.tag]['clan_update'] = {cached_clan, clan}
 
             if clan.member_count != cached_clan:
                 await self._check_member_count(cached_clan, clan)
+                # events[clan.tag]['on_clan_member_join'] = join
+                # events[clan.tag]['on_clan_member_leave'] = leave
+
                 cached_clan._data['memberCount'] = clan.member_count  # hack for next line
 
             if clan._data == cached_clan._data:
@@ -1794,6 +1811,7 @@ class EventsClient(Client):
                     continue  # if there are no attacks next line will raise TypeError.. we're not in war anymore anyway
                 if not cached_war._attacks:
                     new_attacks = [n for n in war._attacks]  # war has just started
+                    
                 else:
                     new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
 
