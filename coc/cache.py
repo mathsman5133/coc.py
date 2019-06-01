@@ -199,3 +199,24 @@ class Cache:
             return self.get_all_values()
 
         return self.get_all_values()[:limit]
+
+    def events_cache(self):
+        def deco(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                event_name = args[0]
+                if event_name.endswith('batch_updates'):
+                    return func(*args, **kwargs)
+
+                event_args = [n for n in args].extend(kwargs.values())
+
+                key = f'{event_name}.{time.monotonic()}'
+
+                self.add(key, event_args)
+
+                return func(*args, **kwargs)
+            return wrapper
+        return deco
+                
+
+

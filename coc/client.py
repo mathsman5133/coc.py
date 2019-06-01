@@ -68,6 +68,8 @@ cache_locations = Cache()
 cache_leagues = Cache()
 cache_seasons = Cache()
 
+cache_events = Cache()
+
 
 def login(email, password, client=None, **kwargs):
     """Eases logging into the coc.py Client.
@@ -260,10 +262,9 @@ class Client:
 
     def dispatch(self, event_name: str, *args, **kwargs):
         log.debug('Dispatching %s event', event_name)
-        event = 'on_' + event_name
 
         try:
-            fctn = getattr(self, event)
+            fctn = getattr(self, event_name)
         except AttributeError:
             return
         else:
@@ -431,10 +432,21 @@ class Client:
                     continue
 
     async def reset_keys(self, number_of_keys: int=None):
-        num = number_of_keys or self.correct_key_count
+        """Manually reset any number of keys.
+
+        Under normal circumstances, this method should not need to be called.
+
+        Parameters
+        -----------
+        number_of_keys : int
+            The number of keys to reset. Defaults to None - all keys.
+        """
+        self._ready.clear()
+        num = number_of_keys or len(self.http._keys)
         keys = self.http._keys
         for i in range(num):
             await self.http.reset_key(keys[i])
+        self._ready.set()
 
     async def search_clans(self, *, name: str=None, war_frequency: str=None,
                            location_id: int = None, min_members: int=None, max_members: int=None,
@@ -1273,6 +1285,7 @@ class EventsClient(Client):
         super().__init__(**options)
         apply(self.loop)
         self._setup()
+        self._cache_lookup['cache_events'] = cache_events
 
     def _setup(self):
         self._clan_updates = None
@@ -1308,11 +1321,11 @@ class EventsClient(Client):
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
 
+    @cache_events.events_cache()
     def dispatch(self, event_name: str, *args, **kwargs):
         super().dispatch(event_name, *args, **kwargs)
-        ev = 'on_' + event_name
-        for event in self.extra_events.get(ev, []):
-            asyncio.ensure_future(self._run_event(ev, event, *args, **kwargs), loop=self.loop)
+        for event in self.extra_events.get(event_name, []):
+            asyncio.ensure_future(self._run_event(event_name, event, *args, **kwargs), loop=self.loop)
 
     def default_cache(self, client):
         """The default cache for :class:`EventsClient`.
@@ -1642,12 +1655,17 @@ class EventsClient(Client):
         for e in events:
             e.clear()
 
+    def _dispatch_batch_updates(self, key_name):
+        keys = cache_events.cache.keys()
+        events = [n for n in keys if n.startswith(key_name)]
+        self.dispatch(f'on_{key_name}_batch_updates', [cache_events.cache.pop(n) for n in events])
+
     async def _war_updater(self):
         try:
             while self.loop.is_running():
                 await self._war_update_event.wait()
-                updates = await self._update_wars()
-                self.dispatch('on_batch_war_updates', updates)
+                await self._update_wars()
+                self._dispatch_batch_updates('on_war')
                 await asyncio.sleep(self._war_retry_interval)
         except (
                 OSError,
@@ -1663,8 +1681,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._clan_update_event.wait()
-                updates = await self._update_clans()
-                self.dispatch('on_batch_clan_updates', updates)
+                await self._update_clans()
+                self._dispatch_batch_updates('on_clan')
                 await asyncio.sleep(self._clan_retry_interval)
         except (
                 OSError,
@@ -1679,8 +1697,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._player_update_event.wait()
-                updates = await self._update_players()
-                self.dispatch('on_batch_player_updates', updates)
+                await self._update_players()
+                self._dispatch_batch_updates('on_player')
                 await asyncio.sleep(self._player_retry_interval)
         except (
                 OSError,
@@ -1697,12 +1715,12 @@ class EventsClient(Client):
         for tag in differences:
             new_member = get(new_clan._members, tag=tag)
             if new_member:
-                self.dispatch('clan_member_join', new_member, new_clan)
+                self.dispatch('on_clan_member_join', new_member, new_clan)
                 continue
 
             member_left = get(cached_clan._members, tag=tag)
             if member_left:
-                self.dispatch('clan_member_leave', member_left, new_clan)
+                self.dispatch('on_clan_member_leave', member_left, new_clan)
                 continue
 
         return
@@ -1710,8 +1728,6 @@ class EventsClient(Client):
     async def _update_clans(self):
         if not self._clan_updates:
             return
-
-        events = {}
 
         async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
             cached_clan = cache_search_clans.get(clan.tag)
@@ -1722,13 +1738,10 @@ class EventsClient(Client):
             if clan == cached_clan:
                 continue
 
-            self.dispatch('clan_update', cached_clan, clan)
-            events[clan.tag]['clan_update'] = {cached_clan, clan}
+            self.dispatch('on_clan_update', cached_clan, clan)
 
             if clan.member_count != cached_clan:
                 await self._check_member_count(cached_clan, clan)
-                # events[clan.tag]['on_clan_member_join'] = join
-                # events[clan.tag]['on_clan_member_leave'] = leave
 
                 cached_clan._data['memberCount'] = clan.member_count  # hack for next line
 
@@ -1736,7 +1749,7 @@ class EventsClient(Client):
                 cache_search_clans.add(clan.tag, clan)
                 continue
 
-            self.dispatch('clan_settings_update', cached_clan, clan)
+            self.dispatch('on_clan_settings_update', cached_clan, clan)
             cache_search_clans.add(clan.tag, clan)
 
     async def _wait_for_state_change(self, state_to_wait_for, war):
@@ -1755,7 +1768,7 @@ class EventsClient(Client):
             return
 
         if war.state == state_to_wait_for:
-            self.dispatch('war_state_change', state_to_wait_for, war)
+            self.dispatch('on_war_state_change', state_to_wait_for, war)
             return
 
         return await self._wait_for_state_change(state_to_wait_for, war)
@@ -1802,7 +1815,7 @@ class EventsClient(Client):
                 cache_current_wars.add(war.clan_tag, war)
                 continue
 
-            self.dispatch('war_update', cached_war, war)
+            self.dispatch('on_war_update', cached_war, war)
 
             self._create_status_tasks(cached_war, war)
 
@@ -1816,7 +1829,7 @@ class EventsClient(Client):
                     new_attacks = [n for n in war._attacks if n not in set(cached_war._attacks)]
 
                 for attack in new_attacks:
-                    self.dispatch('war_attack', attack, war)
+                    self.dispatch('on_war_attack', attack, war)
 
             cache_current_wars.add(war.clan_tag, war)
 
@@ -1834,18 +1847,18 @@ class EventsClient(Client):
             if player == cached_player:
                 continue
 
-            self.dispatch('player_update', cached_player, player)
+            self.dispatch('on_player_update', cached_player, player)
 
             if player.name != cached_player.name:
-                self.dispatch('player_name_change', cached_player.name, player.name, player)
+                self.dispatch('on_player_name_change', cached_player.name, player.name, player)
                 cached_player._data['name'] = player.name
 
             if player.town_hall != cached_player.town_hall:
-                self.dispatch('player_townhall_upgrade', cached_player.town_hall, player.town_hall, player)
+                self.dispatch('on_player_townhall_upgrade', cached_player.town_hall, player.town_hall, player)
                 cached_player._data['townHallLevel'] = player.town_hall
 
             if player.builder_hall != cached_player.builder_hall:
-                self.dispatch('player_builderhall_upgrade',
+                self.dispatch('on_player_builderhall_upgrade',
                               cached_player.builder_hall, player.builder_hall, player)
                 cached_player._data['builderHallLevel'] = player.town_hall
 
@@ -1860,13 +1873,13 @@ class EventsClient(Client):
 
             for achievement in achievement_updates:
                 old_achievement = get(cached_player._achievements, name=achievement.name)
-                self.dispatch('player_achievement_update', old_achievement, achievement)
+                self.dispatch('on_player_achievement_update', old_achievement, achievement)
                 i = ACHIEVEMENT_ORDER.index(achievement.name)
                 cached_player._data['achievements'][i] = achievement._data
 
             for troop in troop_upgrades:
                 old_troop = get(cached_player.troops, name=troop.name)
-                self.dispatch('player_troop_upgrade', old_troop, troop, player)
+                self.dispatch('on_player_troop_upgrade', old_troop, troop, player)
                 # this is a bit of a waste of resources, but we can't rely on order
                 # as locked troops won't appear in the troops list from api,
                 # meaning the order will change per-player.
@@ -1874,32 +1887,32 @@ class EventsClient(Client):
                 try:
                     i = troops.index(troop.name)
                 except ValueError:
-                    self.dispatch('player_troop_unlock', troop, player)
+                    self.dispatch('on_player_troop_unlock', troop, player)
                     continue
                 cached_player._data['troops'][i] = troop._data
 
             for spell in spell_upgrades:
                 old_spell = get(cached_player.spells, name=spell.name)
-                self.dispatch('player_spell_upgrade', old_spell, spell, player)
+                self.dispatch('on_player_spell_upgrade', old_spell, spell, player)
                 # same issue as troops
                 spells = [n['name'] for n in cached_player._data['spells']]
                 try:
                     i = spells.index(spell.name)
                 except ValueError:
-                    self.dispatch('player_spell_unlock', spell, player)
+                    self.dispatch('on_player_spell_unlock', spell, player)
                     continue
 
                 cached_player._data['spells'][i] = spell._data
 
             for hero in hero_upgrades:
                 old_hero = get(cached_player.heroes, name=hero.name)
-                self.dispatch('player_hero_upgrade', old_hero, hero, player)
+                self.dispatch('on_player_hero_upgrade', old_hero, hero, player)
                 # same issue as troops
                 heroes = [n['name'] for n in cached_player._data['heroes']]
                 try:
                     i = heroes.index(hero.name)
                 except ValueError:
-                    self.dispatch('player_hero_unlock', hero, player)
+                    self.dispatch('on_player_hero_unlock', hero, player)
                     continue
 
                 cached_player._data['heroes'][i] = hero._data
@@ -1908,7 +1921,7 @@ class EventsClient(Client):
                 cache_search_players.add(player.tag, player)
                 continue
 
-            self.dispatch('player_other_update', cached_player, player)
+            self.dispatch('on_player_other_update', cached_player, player)
 
 
 EventsClient.__doc__ = Client.__doc__
