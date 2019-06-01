@@ -160,6 +160,7 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
+        await self.client._ready.wait()
         method = route.method
         url = route.url
         api_request = kwargs.pop('api_request', False)
@@ -235,7 +236,6 @@ class HTTPClient:
 
     async def reset_key(self, key):
         ip = await self.get_ip()
-        # TODO: Distinguish/recognise by key name rather than current ip for running clients on multiple IPs
         # should probably put something else in here
         # to distinguish each key like a date
         key_name = self.key_names
