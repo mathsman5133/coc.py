@@ -56,8 +56,8 @@ class TaggedIterator(_AsyncIterator):
             result = await asyncio.gather(*tasks)
         except KeyError:
             await self.client.reset_keys()
-            await self.client._ready.wait()
-            result = await asyncio.gather(*tasks)
+            return await self.fill_queue()
+
         result = [n for n in result if n]
 
         for n in result:

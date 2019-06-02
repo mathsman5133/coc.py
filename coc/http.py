@@ -160,7 +160,6 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
-        await self.client._ready.wait()
         method = route.method
         url = route.url
         api_request = kwargs.pop('api_request', False)
