@@ -832,6 +832,9 @@ class Client:
         --------
         Either a :class:`ClanWar` or :class:`LeagueWar`, depending on the type of war in progress.
         These can be differentiated by through an ``isinstance(..)`` method, or by comparing ``type`` attributes.
+
+        If no league group is found, or the group is in ``preparation``, this method will return the
+        :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
         """
         get_war = await self.get_clan_war(clan_tag, cache=cache, fetch=fetch, update_cache=update_cache)
         if not get_war:
@@ -844,6 +847,9 @@ class Client:
         try:
             league_group = await self.get_league_group(clan_tag, cache=cache, fetch=fetch, update_cache=update_cache)
         except NotFound:
+            return get_war
+
+        if league_group.state == 'preparation':
             return get_war
 
         round_tags = league_group.rounds[-1]
