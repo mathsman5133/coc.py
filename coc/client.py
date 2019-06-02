@@ -1664,7 +1664,7 @@ class EventsClient(Client):
     def _dispatch_batch_updates(self, key_name):
         keys = cache_events.cache.keys()
         events = [n for n in keys if n.startswith(key_name)]
-        self.dispatch(f'{key_name}_batch_updates', [cache_events.cache.pop(n) for n in events])
+        self.dispatch(f'{key_name}_batch_updates', [cache_events.cache.pop(n, None) for n in events])
 
     async def _war_updater(self):
         try:
