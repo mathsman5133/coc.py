@@ -208,7 +208,8 @@ class Cache:
                 if event_name.endswith('batch_updates'):
                     return func(*args, **kwargs)
 
-                event_args = [n for n in args[1:]].extend(kwargs.values())
+                event_args = [n for n in args[1:]]
+                event_args.extend(kwargs.values())
 
                 key = f'{event_name}.{time.monotonic()}'
 

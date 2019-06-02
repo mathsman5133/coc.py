@@ -1663,6 +1663,8 @@ class EventsClient(Client):
 
     def _dispatch_batch_updates(self, key_name):
         keys = cache_events.cache.keys()
+        if not keys:
+            return
         events = [n for n in keys if n.startswith(key_name)]
         self.dispatch(f'{key_name}_batch_updates', [cache_events.cache.pop(n, None) for n in events])
 
@@ -1879,7 +1881,7 @@ class EventsClient(Client):
 
             for achievement in achievement_updates:
                 old_achievement = get(cached_player._achievements, name=achievement.name)
-                self.dispatch('on_player_achievement_update', old_achievement, achievement)
+                self.dispatch('on_player_achievement_update', old_achievement, achievement, player)
                 i = ACHIEVEMENT_ORDER.index(achievement.name)
                 cached_player._data['achievements'][i] = achievement._data
 
