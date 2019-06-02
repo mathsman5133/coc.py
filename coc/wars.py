@@ -154,6 +154,47 @@ class ClanWar(BaseWar):
             return 'random'
         return 'friendly'
 
+    @property
+    def status(self):
+        """:class:`str`: The war status, based off the home clan.
+
+        Strings returned are determined by result and state and are below:
+
+        +------------+-------------+
+        | ``inWar``  | ``warEnded``|
+        +------------+-------------+
+        | ``winning``| ``won``     |
+        +------------+-------------+
+        | ``tied``   | ``tie``     |
+        +------------+-------------+
+        | ``losing`` | ``lost``    |
+        +------------+-------------+
+        """
+        if self.state == 'inWar':
+            if self.clan.stars > self.opponent.stars:
+                return 'winning'
+            elif self.clan.stars == self.opponent.stars:
+                if self.clan.destruction > self.opponent.destruction:
+                    return 'winning'
+                elif self.clan.destruction == self.opponent.destruction:
+                    return 'tied'
+
+            return 'losing'
+
+        elif self.state == 'warEnded':
+            if self.clan.stars > self.opponent.stars:
+                return 'won'
+            elif self.clan.stars == self.opponent.stars:
+                if self.clan.destruction > self.opponent.destruction:
+                    return 'won'
+                elif self.clan.destruction == self.opponent.destruction:
+                    return 'tie'
+                return 'lost'
+
+            return 'lost'
+
+        return None
+
     def get_member(self, **attrs):
         """Returns the first :class:`WarMember` that meets the attributes passed
 
