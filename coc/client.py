@@ -1399,7 +1399,7 @@ class EventsClient(Client):
     def add_events(self, *fctns, function_dicts: dict=None):
         """Provides an alternative method to adding events.
 
-        You can either provide functions as named args or as a dict of {function: name...} values.
+        You can either provide functions as named args or as a dict of {name: function...} values.
 
         Example
         --------
@@ -1408,19 +1408,19 @@ class EventsClient(Client):
 
             client.add_events(on_member_update, on_clan_update, on_war_attack)
             # or, using a dict:
-            client.add_events(function_dicts={on_update: 'on_member_update', on_update_2: 'on_clan_update'})
+            client.add_events(function_dicts={'on_member_update': on_update, 'on_clan_update': on_update_2})
 
         Parameters
         -----------
         fctns : function
             Named args of functions to register. The name of event is dictated by function name.
         function_dicts : dict
-            Dictionary of ``{function: 'event_name'}`` values.
+            Dictionary of ``{'event_name': function}`` values.
         """
         for f in fctns:
             self.event(f)
         if function_dicts:
-            for f, n in function_dicts.items():
+            for n, f in function_dicts.items():
                 self.event(f, name=n)
 
     def run_forever(self):
