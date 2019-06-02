@@ -248,7 +248,10 @@ class HTTPClient:
         existing_keys = (await self.find_site_keys(cookies))['keys']
         key_id = [t['id'] for t in existing_keys if t['key'] == key]
 
-        await self.delete_key(cookies, key_id)
+        try:
+            await self.delete_key(cookies, key_id)
+        except InvalidArgument:
+            return
 
         new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
 
