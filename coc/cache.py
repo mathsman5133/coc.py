@@ -204,11 +204,11 @@ class Cache:
         def deco(func):
             @wraps(func)
             def wrapper(*args, **kwargs):
-                event_name = args[0]
+                event_name = args[1]
                 if event_name.endswith('batch_updates'):
                     return func(*args, **kwargs)
 
-                event_args = [n for n in args].extend(kwargs.values())
+                event_args = [n for n in args[1:]].extend(kwargs.values())
 
                 key = f'{event_name}.{time.monotonic()}'
 
