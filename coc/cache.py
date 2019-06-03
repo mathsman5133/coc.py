@@ -85,7 +85,12 @@ class LRU(OrderedDict):
         self.check_expiry()
 
         value = super().__getitem__(key)
-        self.move_to_end(key)
+
+        try:
+            self.move_to_end(key)
+        except KeyError:
+            pass
+
         return value[1]
 
     def __setitem__(self, key, value):
