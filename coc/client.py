@@ -1675,13 +1675,7 @@ class EventsClient(Client):
                 await self._update_wars()
                 self._dispatch_batch_updates('on_war')
                 await asyncio.sleep(self._war_retry_interval)
-        except (
-                OSError,
-                asyncio.CancelledError,
-                HTTPException,
-                ClashOfClansException
-        ):
-
+        except Exception:
             await self.on_event_error('on_war_update')
             return await self._war_updater()
 
@@ -1692,12 +1686,7 @@ class EventsClient(Client):
                 await self._update_clans()
                 self._dispatch_batch_updates('on_clan')
                 await asyncio.sleep(self._clan_retry_interval)
-        except (
-                OSError,
-                asyncio.CancelledError,
-                HTTPException,
-                ClashOfClansException
-        ):
+        except Exception:
             await self.on_event_error('on_clan_update')
             return await self._clan_updater()
 
@@ -1708,12 +1697,7 @@ class EventsClient(Client):
                 await self._update_players()
                 self._dispatch_batch_updates('on_player')
                 await asyncio.sleep(self._player_retry_interval)
-        except (
-                OSError,
-                asyncio.CancelledError,
-                HTTPException,
-                ClashOfClansException
-        ):
+        except Exception:
             await self.on_event_error('on_player_update')
             return await self._player_updater()
 
