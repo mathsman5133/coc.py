@@ -416,7 +416,7 @@ class Timestamp(EqualityComparable):
     @property
     def time(self):
         """:class:`datetime`: The timestamp as a UTC datetime object"""
-        return from_timestamp(self.time)
+        return from_timestamp(self.raw_time)
 
     @property
     def now(self):
