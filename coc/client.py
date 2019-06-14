@@ -34,7 +34,7 @@ from collections import Iterable
 from .cache import Cache
 from .clans import Clan, SearchClan
 from .enums import ACHIEVEMENT_ORDER
-from .errors import ClashOfClansException, Forbidden, HTTPException, NotFound
+from .errors import Forbidden, NotFound
 from .miscmodels import Location, League
 from .http import HTTPClient
 from .iterators import PlayerIterator, ClanIterator, ClanWarIterator, LeagueWarIterator, CurrentWarIterator
@@ -1704,10 +1704,23 @@ class EventsClient(Client):
 
             self.dispatch('on_clan_update', cached_clan, clan)
 
-            if clan.member_count != cached_clan:
+            if clan.member_count != cached_clan.member_count:
                 await self._check_member_count(cached_clan, clan)
 
                 cached_clan._data['memberCount'] = clan.member_count  # hack for next line
+
+            if clan._data == cached_clan._data:
+                cache_search_clans.add(clan.tag, clan)
+                continue
+
+            if clan.members != cached_clan.members:  # check for member donations and received
+                for m, c in cached_clan._members, clan._members:
+                    if m.donations != c.donations:
+                        self.dispatch('on_clan_member_donation', m.donations, c.donations, m, clan)
+                        cached_clan._data['members'][cached_clan.members.index(c)]['donations'] = m.donations
+                    if m.received != c.received:
+                        self.dispatch('on_clan_member_donation_received', m.received, c.received, m, clan)
+                        cached_clan._data['members'][cached_clan.members.index(c)]['donationsReceived'] = m.received
 
             if clan._data == cached_clan._data:
                 cache_search_clans.add(clan.tag, clan)
