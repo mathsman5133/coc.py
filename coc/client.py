@@ -1333,38 +1333,6 @@ class EventsClient(Client):
         for event in self.extra_events.get(event_name, []):
             asyncio.ensure_future(self._run_event(event_name, event, *args, **kwargs), loop=self.loop)
 
-    def default_cache(self, client):
-        """The default cache for :class:`EventsClient`.
-
-        Because the whole 'events' notion hinges on comparing old values in cache to new values,
-        **all cache objects have no expiry** and 1024 max size.
-
-        .. note::
-
-            If you choose to alter the cache to include an expiry, you will miss events due to integration of
-            cache and events. The same applies to max size, although potentially missing events to trade for
-            memory control may be important for some.
-
-        """
-        cache_search_clans._is_clan = True
-        cache_war_logs._is_clan = True
-
-        cache_current_wars._is_war = True
-        cache_clan_wars._is_war = True
-        cache_league_groups._is_war = True
-        cache_league_wars._is_war = True
-        cache_war_clans._is_war = True
-        cache_war_players._is_war = True
-
-        cache_search_players._is_player = True
-
-        cache_locations._is_static = True
-        cache_leagues._is_static = True
-        cache_seasons._is_static = True
-
-        for cache in self._cache_lookup.values():
-            cache.clear(1024, None)
-
     def event(self, fctn, name=None):
         """A decorator or regular function that registers an event.
 
@@ -1614,9 +1582,9 @@ class EventsClient(Client):
 
         """
         lookup = {
-            'clan': self._clan_update_event,
-            'player': self._player_update_event,
-            'war': self._war_update_event
+            'clan': [self._clan_update_event, [cache_current_wars]],
+            'player': [self._player_update_event, [cache_search_players]],
+            'war': [self._war_update_event, [cache_current_wars, cache_clan_wars, cache_league_wars]]
         }
         if event_type == 'all':
             events = lookup.values()
@@ -1624,7 +1592,9 @@ class EventsClient(Client):
             events = [lookup[event_type]]
 
         for e in events:
-            e.set()
+            e[0].set()
+            for c in e[1]:
+                c.clear(1024, None)
 
     def stop_updates(self, event_type='all'):
         """Stops an, or all, events.
@@ -1649,9 +1619,9 @@ class EventsClient(Client):
         """
 
         lookup = {
-            'clan': self._clan_update_event,
-            'player': self._player_update_event,
-            'war': self._war_update_event
+            'clan': [self._clan_update_event, [cache_current_wars]],
+            'player': [self._player_update_event, [cache_search_players]],
+            'war': [self._war_update_event, [cache_current_wars, cache_clan_wars, cache_league_wars]]
         }
         if event_type == 'all':
             events = lookup.values()
@@ -1659,7 +1629,9 @@ class EventsClient(Client):
             events = [lookup[event_type]]
 
         for e in events:
-            e.clear()
+            e[0].clear()
+            for c in e[1]:
+                c.clear(1024, None)
 
     def _dispatch_batch_updates(self, key_name):
         keys = cache_events.cache.keys()
