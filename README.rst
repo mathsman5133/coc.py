@@ -36,7 +36,7 @@ Quick Example
     import coc
     import asyncio
 
-    client = coc.Client('email', 'password')
+    client = coc.login('email', 'password')
 
     async def get_some_player(tag):
         player = await client.get_player(tag)

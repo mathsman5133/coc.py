@@ -6,6 +6,73 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.2.0
+--------
+EventsClient
+~~~~~~~~~~~~~~
+- :class:`EventsClient`
+- Provides all functionality of :class:`Client`, as well as an events-like system.
+- It will constantly request to the API every X seconds and detect indifferences between the cached and new results
+  returned by API. It will then send out 'events', basically calling functions that you must register, to tell you that
+  these things have happened
+- Split into 3 categories: player, clan and war
+
+Player
+
+    - All events regarding anything in the API that can change.
+    - E.g, name, troop levels (and unlocking), spells, heroes, donations, trophies etc.
+
+Clans
+
+    - All events regarding anything in the API that can change.
+    - E.g. description, type (invite only etc.), ranks, donations etc. of members, levelups.
+
+Wars
+
+    - All events regarding anything in the API that can change.
+    - E.g. new war attack, war state change
+
+- You must register the funtions events will call with :meth:`EventsClient.add_events`
+- You must 'subscribe' any clans, players or (clans in) wars you want to get with :meth:`EventsClient.add_clan_updates`,
+  :meth:`EventsClient.add_player_update`, :meth:`EventsClient.add_war_update`.
+
+- This can be a script that you run and will continue to run forever, calling your functions as events come through,
+  it doesn't have to be integrated into a bot. To ease this use-case, :meth:`EventsClient.run_forever` is handy.
+
+Other Importants
+~~~~~~~~~~~~~~~~~
+- Cache has had another overhaul about how it works, is called and default operational use.
+
+- From above, ``default_cache`` is a kwarg, and method of :class:`Client`. It defaults to the inbuilt method,
+  however you can pass your own function into this.
+
+- Logging in: the new recommended way of logging in is via ``client = coc.login(email, pass, **kwargs)`` with ``client``
+  being one of these kwargs: pass in either :class:`EventsClient` or :class:`Client` to use respective clients. This
+  makes both Client class creation and HTTP logging in easy through one function. Any additional kwargs passed will become
+  kwargs for the client you are using.
+
+- ``CurrentWar`` has been renamed, revamped and relooked at. A regular clan-war is now a :class:`ClanWar`, with
+  ``WarIterator`` being renamed to ``ClanWarIterator``. ``LeagueWarIterator`` and ``CurrentWarIterator`` now exist,
+  Current wars being a mix of either clan or league wars.
+
+- :meth:`Client.get_clan_war` now retrieves the current :class:`ClanWar`
+
+- :meth:`Client.get_current_war` now attempts to retrieve the current :class:`ClanWar`, and if in the ``notInWar`` state,
+  will attempt to search for a leauge war and return that, if found. This makes getting league wars and
+  clan wars from the API much easier than before.
+- :attr:`ClanWar.type` and :attr:`LeagueWar.type` now return a string of either ``cwl, friendly, random`` - which war type it is.
+- :attr:`Timestamp.time` has been renamed to :attr:`Timestamp.raw_time`, and replaced with :attr:`Timestamp.utc_timestamp` (now called :attr:`Timestamp.time`)
+- Add :attr:`ClanWar.status` returns a string ``winning, losing, tied, won, lost, tie`` depending on stars + destruction.
+
+BugFixes
+~~~~~~~~~
+- Lots of little ones with cache
+- Performance upgrades with use of ``__slots__`` on more classes
+- Trying to iterate over used up iterators
+- Only log requests throttled as debug
+- Trying to pop a cache item failed
+- Few little regex and other bugs in cache.
+
 v0.1.3
 --------
 BugFixes

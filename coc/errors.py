@@ -51,6 +51,8 @@ class HTTPException(ClashOfClansException):
             This could be an empty string if nothing was given
 
     """
+    __slots__ = ('response', 'status', 'message', 'reason')
+
     def __init__(self, response, message):
         self.response = response
         self.status = response.status
@@ -117,3 +119,13 @@ class Maitenance(HTTPException):
     """
     pass
 
+
+class GatewayError(HTTPException):
+    """Thrown when a gateway error occurs. These are either status 502 or 504
+
+    Error code 502: Bad Gateway
+    Error code 504: The Gateway has timed-out.
+
+    Subclass of :exc:`HTTPException`
+    """
+    pass

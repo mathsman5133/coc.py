@@ -30,14 +30,14 @@ import json
 import logging
 import aiohttp
 import asyncio
+import re
 
 from urllib.parse import urlencode
 from itertools import cycle
 from datetime import datetime
 from collections import deque
 
-import coc.nest_asyncio
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials
+from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials, GatewayError
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -78,7 +78,7 @@ class Throttler:
             if len(self._task_logs) < self.rate_limit:
                 break
 
-            log.info('Request throttled. Sleeping for %s seconds.', self.retry_interval)
+            log.debug('Request throttled. Sleeping for %s seconds.', self.retry_interval)
             await asyncio.sleep(self.retry_interval)
 
         # Push new task's start time
@@ -112,7 +112,6 @@ class HTTPClient:
     def __init__(self, client, loop, email, password,
                  key_names, key_count, throttle_limit):
         self.client = client
-        coc.nest_asyncio.apply(loop)
         self.loop = loop
         self.email = email
         self.password = password
@@ -125,9 +124,8 @@ class HTTPClient:
         self.__lock = asyncio.Semaphore(per_second)
         self.__throttle = Throttler(per_second, loop=self.loop)
 
-        loop.run_until_complete(self.get_keys())
-
     async def get_keys(self):
+        self.client._ready.clear()
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
         key_count = self.key_count
@@ -155,6 +153,7 @@ class HTTPClient:
                     self.key_names))
 
         self.keys = cycle(self._keys)
+        self.client._ready.set()
 
     async def close(self):
         if self.__session:
@@ -212,6 +211,10 @@ class HTTPClient:
 
                 if r.status == 503:
                     raise Maitenance(r, data)
+                if r.status in [502, 504]:  # bad gateway, gateway timeout
+                    # gateway errors return html
+                    text = re.compile(r'<[^>]+>').sub(data, '')
+                    raise GatewayError(r, text)
                 else:
                     raise HTTPException(r, data)
 
@@ -232,7 +235,6 @@ class HTTPClient:
 
     async def reset_key(self, key):
         ip = await self.get_ip()
-        # TODO: Distinguish/recognise by key name rather than current ip for running clients on multiple IPs
         # should probably put something else in here
         # to distinguish each key like a date
         key_name = self.key_names
@@ -246,7 +248,10 @@ class HTTPClient:
         existing_keys = (await self.find_site_keys(cookies))['keys']
         key_id = [t['id'] for t in existing_keys if t['key'] == key]
 
-        await self.delete_key(cookies, key_id)
+        try:
+            await self.delete_key(cookies, key_id)
+        except InvalidArgument:
+            return
 
         new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
 

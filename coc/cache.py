@@ -48,25 +48,31 @@ def _wrap_coroutine(result):
     return new_coro()
 
 
-def _wrap_store_coro(cache, key, coro):
+def _wrap_store_coro(cache, key, coro, update_cache):
     async def fctn():
         value = await coro
-        cache[key] = value
+        if update_cache:
+            cache[key] = value
+
         return value
     return fctn()
 
 
-def _try_wrap_store_coro(cache, key, data):
+def _try_wrap_store_coro(cache, key, data, update_cache):
     if inspect.isawaitable(data):
-        return _wrap_store_coro(cache, key, data)
+        return _wrap_store_coro(cache, key, data, update_cache)
     if inspect.isasyncgen(data):
         return data
 
-    cache[key] = data
+    if update_cache:
+        cache[key] = data
+
     return data
 
 
 class LRU(OrderedDict):
+    __slots__ = ('max_size', 'ttl')
+
     def __init__(self, max_size, ttl):
         self.max_size = max_size
         self.ttl = ttl
@@ -76,7 +82,12 @@ class LRU(OrderedDict):
         self.check_expiry()
 
         value = super().__getitem__(key)
-        self.move_to_end(key)
+
+        try:
+            self.move_to_end(key)
+        except KeyError:
+            pass
+
         return value[1]
 
     def __setitem__(self, key, value):
@@ -105,11 +116,19 @@ class LRU(OrderedDict):
 
 
 class Cache:
+    __slots__ = ('cache', 'ttl', 'max_size', 'fully_populated',
+                 '_is_clan', '_is_player', '_is_war', '_is_static')
+
     def __init__(self, max_size=128, ttl=None):
         self.cache = LRU(max_size, ttl)
         self.ttl = self.cache.ttl
         self.max_size = self.cache.max_size
         self.fully_populated = False
+
+        self._is_clan = False
+        self._is_player = False
+        self._is_war = False
+        self._is_static = False
 
     def __call__(self, *args, **kwargs):
         self.cache.check_expiry()
@@ -121,6 +140,7 @@ class Cache:
                 key = find_key(args, kwargs)
                 cache = kwargs.pop('cache', False)
                 fetch = kwargs.pop('fetch', True)
+                update_cache = kwargs.pop('update_cache', True)
 
                 if not key:
                     return func(*args, **kwargs)
@@ -130,7 +150,7 @@ class Cache:
                 else:
                     if fetch:
                         data = func(*args, **kwargs)
-                        return _try_wrap_store_coro(self.cache, key, data)
+                        return _try_wrap_store_coro(self.cache, key, data, update_cache)
 
                     else:
                         return None
@@ -141,7 +161,7 @@ class Cache:
                     else:
                         return None
 
-                    return _try_wrap_store_coro(self.cache, key, data)
+                    return _try_wrap_store_coro(self.cache, key, data, update_cache)
 
                 else:
                     log.debug('Using cached object with KEY: %s and VALUE: %s', key, data)
@@ -181,3 +201,25 @@ class Cache:
             return self.get_all_values()
 
         return self.get_all_values()[:limit]
+
+    def events_cache(self):
+        def deco(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                event_name = args[1]
+                if event_name.endswith('batch_updates'):
+                    return func(*args, **kwargs)
+
+                event_args = [n for n in args[1:]]
+                event_args.extend(kwargs.values())
+
+                key = f'{event_name}.{time.monotonic()}'
+
+                self.add(key, event_args)
+
+                return func(*args, **kwargs)
+            return wrapper
+        return deco
+                
+
+

@@ -60,6 +60,7 @@ def get(iterable, **attrs):
 def from_timestamp(timestamp):
     return datetime.strptime(timestamp, '%Y%m%dT%H%M%S.000Z')
 
+
 def correct_tag(tag, prefix='#'):
     """Attempts to correct malformed Clash of Clans tags
     to match how they are formatted in game
