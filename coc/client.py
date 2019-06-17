@@ -1404,7 +1404,7 @@ class EventsClient(Client):
 
         Roughly equivilant to:
 
-        ..code-block:: python3
+        .. code-block:: python3
 
             try:
                 client.loop.run_forever()
@@ -1515,6 +1515,7 @@ class EventsClient(Client):
         """Starts an, or all, events.
 
         .. note::
+
             This method **must** be called before any events are run.
 
         The lookup for event_name is as follows:
@@ -1563,12 +1564,11 @@ class EventsClient(Client):
 
         Example
         --------
-        ..code-block:: python3
+        .. code-block:: python3
 
             client.start_updates('clan')
             # or, for all events:
             client.start_updates('all')
-
 
         """
         lookup = {
@@ -1600,7 +1600,7 @@ class EventsClient(Client):
 
         Example
         --------
-        ..code-block:: python3
+        .. code-block:: python3
 
             client.stop_updates('clan')
             # or, for all events:
