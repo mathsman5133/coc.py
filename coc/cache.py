@@ -11,8 +11,9 @@ from coc.utils import find
 
 log = logging.getLogger(__name__)
 
-tag_validator re.compile("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
+tag_validator = re.compile("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
 tag_names = {'location', 'tag'}
+
 
 def validate_tag(string):
     # Legal clan tags only have these characters:
@@ -33,7 +34,7 @@ def validate_tag(string):
 def find_key(args, kwargs):
     if args:
         if find(validate_tag, args):
-            return key
+            return args
 
     for v in kwargs.values():
         if validate_tag(v):
@@ -220,6 +221,3 @@ class Cache:
                 return func(*args, **kwargs)
             return wrapper
         return deco
-                
-
-
