@@ -1663,21 +1663,6 @@ class EventsClient(Client):
             await self.on_event_error('on_player_update')
             return await self._player_updater()
 
-    async def _check_member_count(self, cached_clan, new_clan):
-        differences = [n for n in new_clan.members if n not in set(n.tag for n in cached_clan.members)]
-
-        for tag in differences:
-            new_member = get(new_clan.members, tag=tag)
-            if new_member:
-                self.dispatch('on_clan_member_join', new_member, new_clan)
-                continue
-
-            member_left = get(cached_clan.members, tag=tag)
-            if member_left:
-                self.dispatch('on_clan_member_leave', member_left, new_clan)
-
-        return
-
     async def _wait_for_state_change(self, state_to_wait_for, war):
         if state_to_wait_for == 'inWar':
             to_sleep = war.start_time.seconds_until
@@ -1860,7 +1845,14 @@ class EventsClient(Client):
             self.dispatch('on_clan_update', cached_clan, clan)
 
             if clan.member_count != cached_clan.member_count:
-                await self._check_member_count(cached_clan, clan)
+                new_members = [n for n in clan.members if n.tag not in set(n.tag for n in cached_clan.members)]
+                for mem_join in new_members:
+                    self.dispatch('on_clan_member_join', mem_join, clan)
+
+                old_members = [n for n in cached_clan.members if n.tag not in set(n.tag for n in clan.members)]
+                for mem_left in old_members:
+                    self.dispatch('on_clan_member_leave', mem_left, clan)
+
             if clan.members != cached_clan.members:
                 await self._update_clan_members(cached_clan, clan)
 
