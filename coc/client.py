@@ -1819,8 +1819,8 @@ class EventsClient(Client):
                 self.dispatch('on_player_received_change', cached_player.received, player.received, player)
             if player.clan_rank != cached_player.clan_rank:
                 self.dispatch('on_player_clan_rank_change', cached_player.clan_rank, player.clan_rank, player)
-            if player.previous_clan_rank != cached_player.previous_clan_rank:
-                self.dispatch('on_player_previous_clan_rank_change',
+            if player.clan_previous_rank != cached_player.clan_previous_rank:
+                self.dispatch('on_player_clan_previous_rank_change',
                               cached_player.clan_previous_rank, player.clan_previous_rank, player)
 
             achievement_updates = (n for n in player.achievements if n not in set(cached_player.achievements))
