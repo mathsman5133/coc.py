@@ -6,7 +6,7 @@ from .errors import NotFound, Forbidden
 
 
 class _AsyncIterator:
-    async def __aiter__(self):
+    def __aiter__(self):
         return self
 
     async def __anext__(self):
