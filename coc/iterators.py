@@ -52,11 +52,7 @@ class TaggedIterator(_AsyncIterator):
             task = asyncio.ensure_future(self.run_method(tag))
             tasks.append(task)
 
-        try:
-            result = await asyncio.gather(*tasks)
-        except KeyError:
-            await self.client.reset_keys()
-            return await self.fill_queue()
+        result = await asyncio.gather(*tasks)
 
         result = [n for n in result if n]
 
@@ -65,7 +61,12 @@ class TaggedIterator(_AsyncIterator):
 
     async def next(self):
         if self.queue_empty:
-            await self.fill_queue()
+            try:
+                await self.fill_queue()
+            except KeyError:
+                await self.client.reset_keys()
+                return await self.next()
+            
             self.queue_empty = False
 
         try:
