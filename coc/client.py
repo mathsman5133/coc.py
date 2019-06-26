@@ -1311,9 +1311,12 @@ class EventsClient(Client):
 
         self.extra_events = {}
 
-        self._updater_tasks['clan'] = self.loop.create_task(self._clan_updater())
-        self._updater_tasks['war'] = self.loop.create_task(self._war_updater())
-        self._updater_tasks['player'] = self.loop.create_task(self._player_updater())
+        self._updater_tasks['clan'] = \
+            self.loop.create_task(self._clan_updater()).add_done_callback(self._task_callback_check)
+        self._updater_tasks['war'] = \
+            self.loop.create_task(self._war_updater()).add_done_callback(self._task_callback_check)
+        self._updater_tasks['player'] = \
+            self.loop.create_task(self._player_updater()).add_done_callback(self._task_callback_check)
 
     def close(self):
         """Closes the client and all running tasks.
@@ -1629,6 +1632,30 @@ class EventsClient(Client):
             return
         events = [n for n in keys if n.startswith(key_name)]
         self.dispatch(f'{key_name}_batch_updates', [cache_events.cache.pop(n, None) for n in events])
+
+    def _task_callback_check(self, result):
+        if not result.done():
+            return
+        if result.cancelled():
+            log.info('Task %s was cancelled', str(result))
+            return
+
+        exception = result.exception()
+        if not exception:
+            return
+
+        log.warning('Task raised an exception that was unhandled %s. Restarting the task.', exception)
+
+        lookup = {
+            'clan': self._clan_updater,
+            'player': self._player_updater,
+            'war': self._war_updater
+                  }
+
+        for k, v in self._updater_tasks.items():
+            if v != result:
+                continue
+            self._updater_tasks[k] = self.loop.create_task(lookup[k]).add_done_callback(self._task_callback_check)
 
     async def _war_updater(self):
         try:
