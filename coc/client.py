@@ -1311,12 +1311,11 @@ class EventsClient(Client):
 
         self.extra_events = {}
 
-        self._updater_tasks['clan'] = \
-            self.loop.create_task(self._clan_updater()).add_done_callback(self._task_callback_check)
-        self._updater_tasks['war'] = \
-            self.loop.create_task(self._war_updater()).add_done_callback(self._task_callback_check)
-        self._updater_tasks['player'] = \
-            self.loop.create_task(self._player_updater()).add_done_callback(self._task_callback_check)
+        self._updater_tasks['clan'] = self.loop.create_task(self._clan_updater())
+        self._updater_tasks['war'] = self.loop.create_task(self._war_updater())
+        self._updater_tasks['player'] = self.loop.create_task(self._player_updater())
+        for n in self._updater_tasks:
+            n.add_done_callback(self._task_callback_check)
 
     def close(self):
         """Closes the client and all running tasks.
@@ -1655,7 +1654,8 @@ class EventsClient(Client):
         for k, v in self._updater_tasks.items():
             if v != result:
                 continue
-            self._updater_tasks[k] = self.loop.create_task(lookup[k]).add_done_callback(self._task_callback_check)
+            self._updater_tasks[k] = self.loop.create_task(lookup[k])
+            self._updater_tasks[k].add_done_callback(self._task_callback_check)
 
     async def _war_updater(self):
         try:
