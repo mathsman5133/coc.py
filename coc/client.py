@@ -1314,7 +1314,7 @@ class EventsClient(Client):
         self._updater_tasks['clan'] = self.loop.create_task(self._clan_updater())
         self._updater_tasks['war'] = self.loop.create_task(self._war_updater())
         self._updater_tasks['player'] = self.loop.create_task(self._player_updater())
-        for n in self._updater_tasks:
+        for n in self._updater_tasks.values():
             n.add_done_callback(self._task_callback_check)
 
     def close(self):
