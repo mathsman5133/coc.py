@@ -1364,11 +1364,16 @@ class EventsClient(Client):
 
         name = name or fctn.__name__
 
+        if name == 'on_event_error':
+            super().event(fctn)
+            return
+
         if name in self.extra_events:
             self.extra_events[name].append(fctn)
         else:
             self.extra_events[name] = [fctn]
 
+        log.info('Successfully registered %s event', name)
         return fctn
 
     def add_events(self, *fctns, function_dicts: dict=None):
