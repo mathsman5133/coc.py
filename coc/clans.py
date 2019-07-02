@@ -56,6 +56,11 @@ class Clan(EqualityComparable):
         """:class:`Badge` - The clan badges"""
         return try_enum(Badge, self._data.get('badgeUrls'), http=self._http)
 
+    @property
+    def share_link(self):
+        """:class:`str` - A formatted link to open the clan in-game"""
+        return 'https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}'.format(self.tag.strip('#'))
+
     def __str__(self):
         return self.name
 

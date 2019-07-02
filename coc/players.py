@@ -53,6 +53,11 @@ class Player(EqualityComparable):
     def __str__(self):
         return self.name
 
+    @property
+    def share_link(self):
+        """:class:`str` - A formatted link to open the player in-game"""
+        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(self.tag.strip('#'))
+
 
 class BasicPlayer(Player):
     """Represents a Basic Player that the API returns.
@@ -360,6 +365,11 @@ class LeaguePlayer(EqualityComparable):
         self.tag = data.get('tag')
         self.name = data.get('name')
         self.town_hall = data.get('townHallLevel')
+
+    @property
+    def share_link(self):
+        """:class:`str` - A formatted link to open the player in-game"""
+        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(self.tag.strip('#'))
 
 
 class LeagueRankedPlayer(BasicPlayer):
