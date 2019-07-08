@@ -67,5 +67,3 @@ from .wars import (
     LeagueWarLogEntry
 )
 from . import utils
-
-

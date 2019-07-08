@@ -29,6 +29,7 @@ from collections import OrderedDict
 
 from .miscmodels import EqualityComparable, try_enum, Achievement, Troop, Hero, Spell, League
 from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER
+from .utils import maybe_sort
 
 
 class Player(EqualityComparable):
@@ -55,8 +56,11 @@ class Player(EqualityComparable):
 
     @property
     def share_link(self):
-        """:class:`str` - A formatted link to open the player in-game"""
-        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(self.tag.strip('#'))
+        """:class:`str` - A formatted link to open the player in-game
+        """
+        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(
+            self.tag.strip('#')
+        )
 
 
 class BasicPlayer(Player):
@@ -162,32 +166,40 @@ class WarMember(Player):
         self.town_hall = data.get('townHallLevel')
         self.map_position = data.get('mapPosition')
 
-    @property
-    def _attacks(self):
-        """|iter|
-
-        Returns an iterable of :class:`WarAttack`: the member's attacks this war"""
+    def _get_attacks(self):
         from .wars import WarAttack  # hack because circular imports
 
         return iter(WarAttack(data=adata, war=self.war, member=self)
                     for adata in self._data.get('attacks', []))
 
     @property
-    def attacks(self):
-        """List[:class:`WarAttack`]: The member's attacks this war. Could be an empty list"""
-        return list(self._attacks)
-
-    @property
-    def _defenses(self):
+    def iterattacks(self, sort: bool = True):
         """|iter|
 
-        Returns an iterable of :class:`WarAttack`: the member's defenses this war"""
-        return filter(lambda o: o.defender_tag == self.tag, self.war.opponent._attacks)
+        Returns an iterable of :class:`WarAttack`: the member's attacks this war
+        """
+        return maybe_sort(self._get_attacks(), sort, itr=True)
+
+    @property
+    def attacks(self):
+        """List[:class:`WarAttack`]: The member's attacks this war. Could be an empty list
+        """
+        return list(self.iterattacks)
+
+    @property
+    def iterdefenses(self):
+        """|iter|
+
+        Returns an iterable of :class:`WarAttack`: the member's defenses this war
+        """
+        # TODO: efficient way of doing this
+        return filter(lambda o: o.defender_tag == self.tag, self.war.opponent.iterattacks)
 
     @property
     def defenses(self):
-        """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list"""
-        return list(self._defenses)
+        """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list
+        """
+        return list(self.iterattacks)
 
     @property
     def is_opponent(self):
@@ -235,33 +247,38 @@ class SearchPlayer(BasicPlayer):
         self.versus_attacks_wins = data.get('versusBattleWins')
 
     @property
-    def _achievements(self):
+    def iterachievements(self):
         """|iter|
 
-        Returns an iterable of :class:`Achievement`: the player's achievements."""
+        Returns an iterable of :class:`Achievement`: the player's achievements.
+        """
         return iter(Achievement(data=adata, player=self)
                     for adata in self._data.get('achievements', []))
 
     @property
     def achievements(self):
-        """List[:class:`Achievement`]: List of the player's achievements"""
-        return list(self._achievements)
+        """List[:class:`Achievement`]: List of the player's achievements
+        """
+        return list(self.iterachievements)
 
     @property
     def troops(self):
-        """List[:class:`Troop`]: List of the player's troops"""
+        """List[:class:`Troop`]: List of the player's troops
+        """
         return [Troop(data=sdata, player=self)
                 for sdata in self._data.get('troops', [])]
 
     @property
     def heroes(self):
-        """List[:class:`Hero`]: List of the player's heroes"""
+        """List[:class:`Hero`]: List of the player's heroes
+        """
         return [Hero(data=hdata, player=self)
                 for hdata in self._data.get('heroes', [])]
 
     @property
     def spells(self):
-        """List[:class:`Spell`]: List of the player's spells"""
+        """List[:class:`Spell`]: List of the player's spells
+        """
         return [Spell(data=sdata, player=self)
                 for sdata in self._data.get('spells', [])]
 
@@ -271,7 +288,7 @@ class SearchPlayer(BasicPlayer):
 
         Pass in an attribute of :class:`Achievement` to get that attribute as the key
         """
-        return {getattr(m, attr): m for m in self._achievements}
+        return {getattr(m, attr): m for m in self.iterachievements}
 
     @property
     def home_troops_dict(self, attr='name'):
@@ -321,7 +338,8 @@ class SearchPlayer(BasicPlayer):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
-        return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.builder_troops_dict.items(),
+                                  key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_spells(self):
@@ -369,7 +387,9 @@ class LeaguePlayer(EqualityComparable):
     @property
     def share_link(self):
         """:class:`str` - A formatted link to open the player in-game"""
-        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(self.tag.strip('#'))
+        return 'https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}'.format(
+            self.tag.strip('#')
+        )
 
 
 class LeagueRankedPlayer(BasicPlayer):

@@ -26,10 +26,9 @@ SOFTWARE.
 """
 
 from itertools import chain
-from operator import attrgetter
 
 from .miscmodels import EqualityComparable, try_enum, Timestamp
-from .utils import get
+from .utils import get, maybe_sort
 
 
 class BaseWar(EqualityComparable):
@@ -121,35 +120,40 @@ class ClanWar(BaseWar):
 
         super(ClanWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
+    def _get_attacks(self):
+        return chain(self.clan.iterattacks, self.opponent.iterattacks)
+
     @property
-    def _attacks(self):
+    def iterattacks(self, sort=True):
         """|iter|
 
-        Returns an iterable of :class:`WarAttack`: all attacks this war"""
-        return chain(self.clan._attacks, self.opponent._attacks)
+        Returns an iterable of :class:`WarAttack`: all attacks this war
+        """
+        return maybe_sort(self._get_attacks(), sort, itr=True)
 
     @property
-    def attacks(self):
-        """List[:class:`WarAttack`]: A list of all attacks this war"""
-        a = list(self._attacks)
-        a.sort(key=attrgetter('order'))
-        return a
+    def attacks(self, sort=True):
+        """List[:class:`WarAttack`]: A list of all attacks this war
+        """
+        return maybe_sort(self._get_attacks(), sort)
 
     @property
-    def _members(self):
+    def itermembers(self):
         """|iter|
 
-        Returns an iterable of :class:`WarMember`: all members this war"""
-        return chain(self.clan._members, self.opponent._members)
+        Returns an iterable of :class:`WarMember`: all members this war
+        """
+        return chain(self.clan.itermembers, self.opponent.itermembers)
 
     @property
     def members(self):
         """List[:class:`WarMember`]: A list of all members this war"""
-        return list(self._members)
+        return list(self.itermembers)
 
     @property
     def type(self):
-        """:class:`str`: Either ``friendly`` or ``random`` - the war type."""
+        """:class:`str`: Either ``friendly`` or ``random`` - the war type.
+        """
         if (self.start_time.time - self.preparation_start_time.time).seconds == 82800:  # 23hr prep
             return 'random'
         return 'friendly'
@@ -208,7 +212,7 @@ class ClanWar(BaseWar):
 
         This search implements the :func:`coc.utils.get` function
         """
-        return get(self._members, **attrs)
+        return get(self.itermembers, **attrs)
 
 
 class WarAttack(EqualityComparable):
@@ -277,21 +281,24 @@ class LeagueGroup(EqualityComparable):
         self.season = data.get('season')
 
     @property
-    def _clans(self):
+    def iterclans(self):
         """|iter|
 
-        Returns an iterable of class:`LeagueClan`: all participating clans"""
+        Returns an iterable of class:`LeagueClan`: all participating clans
+        """
         from .clans import LeagueClan  # hack because circular imports
         return iter(LeagueClan(data=cdata, http=self._http) for cdata in self._data.get('clans', []))
 
     @property
     def clans(self):
-        """List[class:`LeagueClan`]: A list of participating clans."""
-        return list(self._clans)
+        """List[class:`LeagueClan`]: A list of participating clans.
+        """
+        return list(self.iterclans)
 
     @property
     def rounds(self):
-        """List[List[]]: A list of lists containing all war tags for each round"""
+        """List[List[]]: A list of lists containing all war tags for each round.
+        """
         return [n['warTags'] for n in self._data.get('rounds', [])]
 
 
@@ -316,7 +323,8 @@ class LeagueWar(ClanWar):
 
     @property
     def type(self):
-        """:class:`str`: The war type. For league wars, this is ``cwl``."""
+        """:class:`str`: The war type. For league wars, this is ``cwl``.
+        """
         return 'cwl'
 
 

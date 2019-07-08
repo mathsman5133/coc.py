@@ -29,7 +29,7 @@ from itertools import chain
 
 from .iterators import PlayerIterator
 from .miscmodels import EqualityComparable, try_enum, Location, Badge
-from .utils import get
+from .utils import get, maybe_sort
 
 
 class Clan(EqualityComparable):
@@ -53,13 +53,17 @@ class Clan(EqualityComparable):
 
     @property
     def badge(self):
-        """:class:`Badge` - The clan badges"""
+        """:class:`Badge` - The clan badges
+        """
         return try_enum(Badge, self._data.get('badgeUrls'), http=self._http)
 
     @property
     def share_link(self):
-        """:class:`str` - A formatted link to open the clan in-game"""
-        return 'https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}'.format(self.tag.strip('#'))
+        """:class:`str` - A formatted link to open the clan in-game
+        """
+        return 'https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}'.format(
+            self.tag.strip('#')
+        )
 
     def __str__(self):
         return self.name
@@ -103,7 +107,8 @@ class BasicClan(Clan):
 
     @property
     def location(self):
-        """:class:`Location` - The clan's location"""
+        """:class:`Location` - The clan's location
+        """
         return try_enum(Location, self._data.get('location'))
 
 
@@ -155,18 +160,20 @@ class SearchClan(BasicClan):
         self.description = data.get('description', '')
 
     @property
-    def _members(self):
+    def itermembers(self):
         """|iter|
 
         Returns an iterable of :class:`BasicPlayer`: A list of clan members.
         """
         from .players import BasicPlayer  # hack because circular imports
-        return iter(BasicPlayer(mdata, self._client.http, self) for mdata in self._data.get('memberList', []))
+        return iter(BasicPlayer(mdata, self._client.http, self)
+                    for mdata in self._data.get('memberList', []))
 
     @property
     def members(self):
-        """List[:class:`BasicPlayer`]: A list of clan members"""
-        return list(self._members)
+        """List[:class:`BasicPlayer`]: A list of clan members
+        """
+        return list(self.itermembers)
 
     @property
     def member_dict(self, attr='tag'):
@@ -174,7 +181,7 @@ class SearchClan(BasicClan):
 
         Pass in an attribute of :class:`BasicPlayer` to get that attribute as the key
         """
-        return {getattr(m, attr): m for m in self._members}
+        return {getattr(m, attr): m for m in self.itermembers}
 
     def get_member(self, **attrs):
         """Returns the first :class:`BasicPlayer` that meets the attributes passed
@@ -189,7 +196,7 @@ class SearchClan(BasicClan):
 
         This search implements the :func:`coc.utils.get` function
         """
-        return get(self._members, **attrs)
+        return get(self.itermembers, **attrs)
 
     def get_detailed_members(self, cache=False, fetch=True, update_cache=True):
         """Get detailed player information for every player in the clan.
@@ -205,13 +212,15 @@ class SearchClan(BasicClan):
             async for player in clan.get_detailed_members(cache=True):
                 print(player.name)
 
-        :param cache: Optional[:class:`bool`] Indicates whether to search the cache before making an HTTP request
-        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call should be made if cache is empty.
+        :param cache: Optional[:class:`bool`] Indicates whether to search
+                        the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call
+                        should be made if cache is empty.
                         Defaults to ``True``. If this is ``False`` and item in cache was not found,
                         ``None`` will be returned
         :return: AsyncIterator of :class:`SearchPlayer`
         """
-        tags = iter(n.tag for n in self._members)
+        tags = iter(n.tag for n in self.itermembers)
         return PlayerIterator(self._client, tags, cache, fetch, update_cache)
 
 
@@ -225,8 +234,6 @@ class WarClan(Clan):
 
     Attributes
     -----------
-    attack_count:
-        :class:`int` - Number of attacks by clan this war
     stars:
         :class:`int` - Number of stars by clan this war
     destruction:
@@ -247,8 +254,6 @@ class WarClan(Clan):
 
         self._war = war
         self.level = data.get('clanLevel')
-        self.attack_count = data.get('attacks')
-        self.stars = data.get('stars')
         self.destruction = data.get('destructionPercentage')
         self.exp_earned = data.get('expEarned')
 
@@ -258,7 +263,7 @@ class WarClan(Clan):
         self.max_stars = self._war.team_size * 3
 
     @property
-    def _members(self):
+    def itermembers(self):
         """|iter|
 
         Returns an iterable of :class:`WarMember`: all clan members in war.
@@ -270,7 +275,7 @@ class WarClan(Clan):
     @property
     def members(self):
         """List[:class:`WarMember`]: List of all clan members in war"""
-        return list(self._members)
+        return list(self.itermembers)
 
     @property
     def members_dict(self, attr='tag'):
@@ -278,33 +283,41 @@ class WarClan(Clan):
 
         Pass in an attribute of :class:`WarMember` to get that attribute as the key.
         """
-        return {getattr(m, attr): m for m in self._members}
+        return {getattr(m, attr): m for m in self.itermembers}
+
+    def _get_attacks(self):
+        return chain.from_iterable(m.iterattacks for m in self.itermembers)
 
     @property
-    def _attacks(self):
+    def iterattacks(self, sort=True):
         """|iter|
 
         Returns an iterable of :class:`WarAttack`: all attacks used by the clan this war.
         """
-        return chain.from_iterable(iter(n._attacks for n in self._members))
+        return maybe_sort(self._get_attacks(), sort, itr=True)
 
     @property
-    def attacks(self):
-        """List[:class:`WarAttack`]: List of all attacks used this war."""
-        return list(self._attacks)
+    def attacks(self, sort=True):
+        """List[:class:`WarAttack`]: List of all attacks used this war.
+        """
+        return maybe_sort(self._get_attacks(), sort)
+
+    def _get_defenses(self):
+        return chain.from_iterable(iter(n.iterdefenses for n in self.itermembers))
 
     @property
-    def _defenses(self):
+    def iterdefenses(self, sort=True):
         """|iter|
 
         Returns an iterable of :class:`WarAttack`: all defenses by clan members this war.
         """
-        return chain.from_iterable(iter(n._defenses for n in self._members))
+        return maybe_sort(self._get_defenses(), sort, itr=True)
 
     @property
-    def defenses(self):
-        """List[:class:`WarAttack`]: List of all defenses by clan members this war."""
-        return list(self._defenses)
+    def defenses(self, sort=True):
+        """List[:class:`WarAttack`]: List of all defenses by clan members this war.
+        """
+        return maybe_sort(self._get_defenses(), sort)
 
 
 class LeagueClan(BasicClan):
@@ -318,15 +331,18 @@ class LeagueClan(BasicClan):
         super(LeagueClan, self).__init__(data=data, http=http)
 
     @property
-    def _members(self):
+    def itermembers(self):
         """|iter|
 
-        Returns an iterable of :class:`LeaguePlayer`: all players participating in this league season"""
+        Returns an iterable of :class:`LeaguePlayer`:
+        all players participating in this league season
+        """
         from .players import LeaguePlayer  # hack because circular imports
 
         return iter(LeaguePlayer(data=mdata) for mdata in self._data.get('members', []))
 
     @property
     def members(self):
-        """List[:class:`LeaguePlayer`} A list of players participating in this league season"""
-        return list(self._members)
+        """List[:class:`LeaguePlayer`} A list of players participating in this league season
+        """
+        return list(self.itermembers)

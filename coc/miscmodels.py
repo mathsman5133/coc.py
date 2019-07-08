@@ -90,17 +90,20 @@ class Achievement(EqualityComparable):
 
     @property
     def is_builder_base(self):
-        """:class:`bool`: Helper property to tell you if the achievement belongs to the builder base"""
+        """:class:`bool`: Helper property to tell you if the achievement belongs to the builder base
+        """
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
-        """:class:`bool`: Helper property to tell you if the achievement belongs to the home base"""
+        """:class:`bool`: Helper property to tell you if the achievement belongs to the home base
+        """
         return self.village == 'home'
 
     @property
     def is_completed(self):
-        """:class:`bool`: Indicates whether the achievement is completed (3 stars achieved)"""
+        """:class:`bool`: Indicates whether the achievement is completed (3 stars achieved)
+        i"""
         return self.stars == 3
 
 
@@ -137,17 +140,20 @@ class Troop(EqualityComparable):
 
     @property
     def is_max(self):
-        """:class:`bool`: Helper property to tell you if the troop is the max level"""
+        """:class:`bool`: Helper property to tell you if the troop is the max level
+        """
         return self.max_level == self.level
 
     @property
     def is_builder_base(self):
-        """:class:`bool`: Helper property to tell you if the troop belongs to the builder base"""
+        """:class:`bool`: Helper property to tell you if the troop belongs to the builder base
+        """
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
-        """:class:`bool`: Helper property to tell you if the troop belongs to the home base"""
+        """:class:`bool`: Helper property to tell you if the troop belongs to the home base
+        """
         return self.village == 'home'
 
 
@@ -184,17 +190,20 @@ class Hero(EqualityComparable):
 
     @property
     def is_max(self):
-        """:class:`bool`: Helper property to tell you if the hero is the max level"""
+        """:class:`bool`: Helper property to tell you if the hero is the max level
+        """
         return self.level == self.max_level
 
     @property
     def is_builder_base(self):
-        """:class:`bool`: Helper property to tell you if the hero belongs to the builder base"""
+        """:class:`bool`: Helper property to tell you if the hero belongs to the builder base
+        """
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
-        """:class:`bool`: Helper property to tell you if the hero belongs to the home base"""
+        """:class:`bool`: Helper property to tell you if the hero belongs to the home base
+        """
         return self.village == 'home'
 
 
@@ -231,17 +240,20 @@ class Spell(EqualityComparable):
 
     @property
     def is_max(self):
-        """:class:`bool`: Helper property to tell you if the spell is the max level"""
+        """:class:`bool`: Helper property to tell you if the spell is the max level
+        """
         return self.max_level == self.level
 
     @property
     def is_builder_base(self):
-        """:class:`bool`: Helper property to tell you if the spell belongs to the builder base"""
+        """:class:`bool`: Helper property to tell you if the spell belongs to the builder base
+        """
         return self.village == 'builderBase'
 
     @property
     def is_home_base(self):
-        """:class:`bool`: Helper property to tell you if the spell belongs to the home base"""
+        """:class:`bool`: Helper property to tell you if the spell belongs to the home base
+        """
         return self.village == 'home'
 
 
@@ -293,7 +305,8 @@ class League(EqualityComparable):
 
     @property
     def badge(self):
-        """:class:`Badge`: The league's badge"""
+        """:class:`Badge`: The league's badge
+        """
         return try_enum(Badge, data=self._data.get('iconUrls'))
 
     def __str__(self):
@@ -332,17 +345,20 @@ class LegendStatistics(EqualityComparable):
 
     @property
     def current_season(self):
-        """:class:`int`: Legend trophies for this season."""
+        """:class:`int`: Legend trophies for this season.
+        """
         return try_enum(Season, data=self._data.get('currentSeason'))
 
     @property
     def previous_season(self):
-        """:class:`int`: Legend trophies for the previous season."""
+        """:class:`int`: Legend trophies for the previous season.
+        """
         return try_enum(Season, data=self._data.get('previousSeason'))
 
     @property
     def best_season(self):
-        """:class:`int`: Legend trophies for the player's best season."""
+        """:class:`int`: Legend trophies for the player's best season.
+        """
         return try_enum(Season, data=self._data.get('bestSeason'))
 
 
@@ -415,16 +431,19 @@ class Timestamp(EqualityComparable):
 
     @property
     def time(self):
-        """:class:`datetime`: The timestamp as a UTC datetime object"""
+        """:class:`datetime`: The timestamp as a UTC datetime object
+        """
         return from_timestamp(self.raw_time)
 
     @property
     def now(self):
-        """:class:`datetime`: The time in UTC now as a datetime object"""
+        """:class:`datetime`: The time in UTC now as a datetime object
+        """
         return datetime.utcnow()
 
     @property
     def seconds_until(self):
-        """:class:`int`: Number of seconds until the timestamp. This may be negative."""
+        """:class:`int`: Number of seconds until the timestamp. This may be negative.
+        """
         delta = self.time - self.now
         return delta.total_seconds()
