@@ -2,6 +2,8 @@ import re
 import json
 
 from datetime import datetime
+from functools import partial
+from operator import attrgetter
 
 
 def to_json(model):
@@ -70,3 +72,10 @@ def correct_tag(tag, prefix='#'):
         ' 123aBc O' -> '#123ABC0'
     """
     return prefix + re.sub(r'[^A-Z0-9]+', '', tag.upper()).replace('O', '0')
+
+
+def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
+    """Returns list or iter based on itr if sort is false otherwise sorted
+    with key defaulting to operator.attrgetter('order')
+    """
+    return ((list, iter)[itr], partial(sorted, seq, key=key))[sort]
