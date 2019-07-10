@@ -6,18 +6,8 @@ log = logging.getLogger('coc')
 log.setLevel(logging.DEBUG)
 
 
-class COCClient(coc.Client):
-    def __init__(self, email, password, **kwargs):
-        super().__init__(email, password, **kwargs)
-
-    def on_key_reset(self, new_key):
-        """We want to override how the default on_key_reset is run
-        """
-        log.info('New key {} was created!'.format(new_key))
-
-
 # email and password is your login credentials used at https://developer.clashofclans.com
-coc_client = COCClient(email='email', password='password', key_count=5)
+coc_client = coc.login(email='email', password='password', key_count=5)
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -25,7 +15,7 @@ async def get_warlog_for_clans(clan_tags: list):
     for tag in clan_tags:
         # if we're not allowed to view warlog (private in game), this will raise an exception
         try:
-            warlog = await coc_client.get_warlog(tag, cache=True)
+            warlog = await coc_client.get_warlog(tag)
         except coc.Forbidden:
             warlog = []
 

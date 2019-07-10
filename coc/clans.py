@@ -198,7 +198,9 @@ class SearchClan(BasicClan):
         """
         return get(self.itermembers, **attrs)
 
-    def get_detailed_members(self, cache=False, fetch=True, update_cache=True):
+    def get_detailed_members(self, cache: bool = False, fetch: bool = True,
+                             update_cache: bool = True
+                             ):
         """Get detailed player information for every player in the clan.
         This will return an AsyncIterator of :class:`SearchPlayer`.
 
@@ -218,6 +220,10 @@ class SearchClan(BasicClan):
                         should be made if cache is empty.
                         Defaults to ``True``. If this is ``False`` and item in cache was not found,
                         ``None`` will be returned
+        :param update_cache: Optional[:class:`bool`] Indicates whether the client should update
+                                the cache when requesting members. Defaults to ``True``.
+                                This should only be set to ``False``
+                                if you do not require the cache at all.
         :return: AsyncIterator of :class:`SearchPlayer`
         """
         tags = iter(n.tag for n in self.itermembers)

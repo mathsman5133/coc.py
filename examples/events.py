@@ -15,11 +15,17 @@ async def on_clan_member_leave(member, clan):
 
 
 async def when_someone_attacks(attack, war):
-    print('{} just attacked {} for {} stars!'.format(attack.attacker.name, attack.defedender.name, attack.stars))
+    print('{} just attacked {} for {} stars! It was a {} war.'.format(attack.attacker.name,
+                                                                      attack.defedender.name,
+                                                                      attack.stars,
+                                                                      war.type
+                                                                      )
+          )
 
 client.add_events(on_clan_member_join, function_dicts={'on_war_attack': when_someone_attacks})
-asyncio.ensure_future(client.add_clan_update(['tag', 'another tag'], member_updates=True, retry_interval=30),
-                      loop=client.loop)
+asyncio.ensure_future(client.add_clan_update(['tag', 'another tag'], member_updates=True,
+                                             retry_interval=30), loop=client.loop
+                      )
 client.add_war_update(['clan tag'], retry_interval=60)
 client.start_updates('all')
 

@@ -287,7 +287,8 @@ class LeagueGroup(EqualityComparable):
         Returns an iterable of class:`LeagueClan`: all participating clans
         """
         from .clans import LeagueClan  # hack because circular imports
-        return iter(LeagueClan(data=cdata, http=self._http) for cdata in self._data.get('clans', []))
+        return iter(LeagueClan(data=cdata, http=self._http)
+                    for cdata in self._data.get('clans', []))
 
     @property
     def clans(self):
@@ -338,7 +339,8 @@ class LeagueWarLogEntry(EqualityComparable):
     team_size:
         :class:`int` - The number of players per clan in war
     clan:
-        :class:`Clan` - The offensive clan. Note this is only a :class:`Clan`, unlike that of a :class:`WarLog`
+        :class:`Clan` - The offensive clan. Note this is only a :class:`Clan`,
+        unlike that of a :class:`WarLog`
     enemy_stars:
         :class:`int` - Total enemy stars for all wars
     attack_count:

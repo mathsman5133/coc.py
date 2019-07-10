@@ -393,7 +393,8 @@ class Badge(EqualityComparable):
 
         :param fp: :class:`os.PathLike`
                     The filename to save the badge to
-        :param size: Optional[:class:`str`] Either `small`, `medium` or `large`. The default is `medium`
+        :param size: Optional[:class:`str`] Either `small`, `medium` or `large`.
+                                            The default is `medium`
 
         :raise HTTPException: Saving the badge failed
 

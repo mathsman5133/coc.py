@@ -37,7 +37,8 @@ from itertools import cycle
 from datetime import datetime
 from collections import deque
 
-from .errors import HTTPException, Maitenance, NotFound, InvalidArgument, Forbidden, InvalidCredentials, GatewayError
+from .errors import HTTPException, Maitenance, NotFound, \
+    InvalidArgument, Forbidden, InvalidCredentials, GatewayError
 
 log = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -94,7 +95,7 @@ class Route:
     BASE = 'https://api.clashofclans.com/v1'
     API_PAGE_BASE = 'https://developer.clashofclans.com/api'
 
-    def __init__(self, method, path, kwargs: dict=None, api_page=False):
+    def __init__(self, method, path: str, kwargs: dict = None, api_page: bool = False):
         if '#' in path:
             path = path.replace('#', '%23')
 
@@ -103,7 +104,10 @@ class Route:
         url = (self.API_PAGE_BASE + self.path if api_page else self.BASE + self.path)
 
         if kwargs:
-            self.url = '{}?{}'.format(url, urlencode({k: v for k, v in kwargs.items() if v is not None}))
+            self.url = '{}?{}'.format(url, urlencode({k: v for k, v in kwargs.items()
+                                                      if v is not None}
+                                                     )
+                                      )
         else:
             self.url = url
 
@@ -145,8 +149,9 @@ class HTTPClient:
                         cookies, self.key_names, key_description, [ip]))
             else:
                 await self.close()
-                raise RuntimeError(("There are {} API keys already created and {} match \"{}\" out of a max of "
-                                    "{} please goto {} and delete unused keys or rename to \"{}\".").format(
+                raise RuntimeError(("There are {} API keys already created and "
+                                    "{} match \"{}\" out of a max of {} please goto {} "
+                                    "and delete unused keys or rename to \"{}\".").format(
                     len(current_keys), len(self._keys),
                     self.key_names, KEY_MAXIMUM,
                     'https://developer.clashofclans.com',
@@ -301,16 +306,25 @@ class HTTPClient:
         return self.request(Route('GET', '/locations/{}'.format(location_id), {}))
 
     def get_location_clans(self, location_id, **kwargs):
-        return self.request(Route('GET', '/locations/{}/rankings/clans'.format(location_id), kwargs))
+        return self.request(Route('GET', '/locations/{}/rankings/clans'.format(location_id),
+                                  kwargs)
+                            )
 
     def get_location_players(self, location_id, **kwargs):
-        return self.request(Route('GET', '/locations/{}/rankings/players'.format(location_id), kwargs))
+        return self.request(Route('GET', '/locations/{}/rankings/players'.format(location_id),
+                                  kwargs)
+                            )
 
     def get_location_clans_versus(self, location_id, **kwargs):
-        return self.request(Route('GET', '/locations/{}/rankings/clans-versus'.format(location_id), kwargs))
+        return self.request(Route('GET', '/locations/{}/rankings/clans-versus'.format(location_id),
+                                  kwargs)
+                            )
 
     def get_location_players_versus(self, location_id, **kwargs):
-        return self.request(Route('GET', '/locations/{}/rankings/players-versus'.format(location_id), kwargs))
+        return self.request(Route('GET', '/locations/{}/rankings/players-versus'.format(location_id
+                                                                                        ), kwargs
+                                  )
+                            )
 
     # leagues
 
@@ -324,7 +338,9 @@ class HTTPClient:
         return self.request(Route('GET', '/leagues/{}/seasons'.format(league_id), kwargs))
 
     def get_league_season_info(self, league_id, season_id, **kwargs):
-        return self.request(Route('GET', '/leagues/{}/seasons/{}'.format(league_id, season_id), kwargs))
+        return self.request(Route('GET', '/leagues/{}/seasons/{}'.format(league_id, season_id),
+                                  kwargs)
+                            )
 
     # players
 

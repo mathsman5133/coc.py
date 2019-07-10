@@ -1,12 +1,14 @@
-# this example assumes you have discord.py > v1.0.0 installed via `python -m pip install -U discord.py`
-# for more info on using discord.py, see the docs at: https://discordpy.readthedocs.io/en/latest/api.html#message
+# this example assumes you have discord.py > v1.0.0
+# installed via `python -m pip install -U discord.py`
+# for more info on using discord.py, see the docs at:
+# https://discordpy.readthedocs.io/en/latest
 import discord
 from discord.ext import commands
 
 import coc
 
 bot = commands.Bot(command_prefix='?')
-coc_client = coc.Client('email', 'password', key_count=5, key_names='My funky name!')
+coc_client = coc.login('email', 'password', key_count=5, key_names='My funky name!')
 
 
 @bot.command()
@@ -70,4 +72,3 @@ async def current_war_status(ctx, clan_tag):
     await ctx.send(embed=e)
 
 bot.run('bot token')
-

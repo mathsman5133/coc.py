@@ -112,7 +112,9 @@ class LRU(OrderedDict):
 
         while len(self) > self.max_size:
             oldest = next(iter(self))
-            log.debug('Removed item with key %s from cache due to max size %s reached', oldest, self.max_size)
+            log.debug('Removed item with key %s from cache due to max size %s reached', oldest,
+                      self.max_size
+                      )
             del self[oldest]
 
 
@@ -196,7 +198,7 @@ class Cache:
         self.cache.check_expiry()
         return [n[1] for n in self.cache.values()]
 
-    def get_limit(self, limit: int=None):
+    def get_limit(self, limit: int = None):
         self.cache.check_expiry()
         if not limit:
             return self.get_all_values()

@@ -19,7 +19,8 @@ def to_json(model):
         if isinstance(value, list):
             for i in value:
                 if not isinstance(i, (list, str, bool)):
-                    dct[attr] = [to_json(i)] if attr not in dct.keys() else dct[attr].append(to_json(i))
+                    dct[attr] = [to_json(i)] if attr not in dct.keys()\
+                        else dct[attr].append(to_json(i))
                     continue
 
                 dct[attr] = [to_json(i)] if attr not in dct.keys() else dct[attr].append(to_json(i))
@@ -28,7 +29,8 @@ def to_json(model):
 
         # if it is an object attribute
         if not isinstance(value, (list, str, bool)):
-            dct[attr] = [to_json(value)] if attr not in dct.keys() else dct[attr].append(to_json(value))
+            dct[attr] = [to_json(value)] if attr not in dct.keys() \
+                else dct[attr].append(to_json(value))
             continue
 
         # just a bool, string or int now so can safely add to dict
