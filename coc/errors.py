@@ -56,8 +56,13 @@ class HTTPException(ClashOfClansException):
     def __init__(self, response, message):
         self.response = response
         self.status = response.status
-        self.reason = message.get('reason', 'Unknown')
-        self.message = message.get('message', '')
+
+        if isinstance(message, str):
+            self.reason = 'Unknown'
+            self.message = message
+        else:
+            self.reason = message.get('reason', 'Unknown')
+            self.message = message.get('message', '')
 
         fmt = '{0.reason} (status code: {0.status})'
         if len(self.message):
