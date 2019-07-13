@@ -1739,6 +1739,8 @@ class EventsClient(Client):
                 await asyncio.sleep(self._war_retry_interval)
                 await self._update_wars()
                 self._dispatch_batch_updates('on_war')
+        except asyncio.CancelledError:
+            return
         except (Exception, BaseException):
             await self.on_event_error('on_war_update')
             return await self._war_updater()
@@ -1750,6 +1752,8 @@ class EventsClient(Client):
                 await asyncio.sleep(self._war_retry_interval)
                 await self._update_clans()
                 self._dispatch_batch_updates('on_clan')
+        except asyncio.CancelledError:
+            return
         except (Exception, BaseException):
             await self.on_event_error('on_clan_update')
             return await self._clan_updater()
@@ -1761,6 +1765,8 @@ class EventsClient(Client):
                 await asyncio.sleep(self._player_retry_interval)
                 await self._update_players()
                 self._dispatch_batch_updates('on_player')
+        except asyncio.CancelledError:
+            return
         except (Exception, BaseException):
             await self.on_event_error('on_player_update')
             return await self._player_updater()
