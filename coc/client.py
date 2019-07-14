@@ -1141,7 +1141,7 @@ class Client:
             return cache_leagues.get_limit(limit)
 
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
-        leagues = list(League(data=n) for n in r['items'])
+        leagues = list(League(data=n, http=self.http) for n in r['items'])
 
         for n in leagues:
             cache_leagues.add(n.id, n)
@@ -1175,7 +1175,7 @@ class Client:
         :class:`League`
         """
         r = await self.http.get_league(league_id)
-        return League(data=r)
+        return League(data=r, http=self.http)
 
     async def get_league_named(self, league_name: str):
         """Get a location by name.

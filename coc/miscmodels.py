@@ -295,10 +295,11 @@ class League(EqualityComparable):
     name:
         :class:`str` - The league name
     """
-    __slots__ = ('id', 'name', '_data')
+    __slots__ = ('id', 'name', '_data', '_http')
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, http):
         self._data = data
+        self._http = http
 
         self.id = data.get('id')
         self.name = data.get('name')
@@ -307,7 +308,7 @@ class League(EqualityComparable):
     def badge(self):
         """:class:`Badge`: The league's badge
         """
-        return try_enum(Badge, data=self._data.get('iconUrls'))
+        return try_enum(Badge, data=self._data.get('iconUrls'), http=self._http)
 
     def __str__(self):
         return self.name
