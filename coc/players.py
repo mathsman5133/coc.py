@@ -123,9 +123,12 @@ class BasicPlayer(Player):
                 self.clan = BasicClan(data=cdata, http=http)
 
     @property
-    def league(self):
-        """:class:`League`: The player's current league."""
-        return try_enum(League, self._data.get('league'), http=self._http)
+    def league(self, default=None):
+        """:class:`League`: The player's current league.
+
+        Pass in a default value to return if no league is found (the player is 'Unranked').
+        """
+        return try_enum(League, self._data.get('league'), default=default, http=self._http)
 
     @property
     def role(self):
@@ -243,7 +246,7 @@ class SearchPlayer(BasicPlayer):
         self.best_trophies = data.get('bestTrophies')
         self.war_stars = data.get('warStars')
         self.town_hall = data.get('townHallLevel')
-        self.builder_hall = data.get('builderHallLevel')
+        self.builder_hall = data.get('builderHallLevel', 0)
         self.best_versus_trophies = data.get('bestVersusTrophies')
         self.versus_attacks_wins = data.get('versusBattleWins')
 

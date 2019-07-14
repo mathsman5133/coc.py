@@ -30,9 +30,9 @@ from datetime import datetime
 from .utils import from_timestamp
 
 
-def try_enum(_class, data, **kwargs):
+def try_enum(_class, data, default=None, **kwargs):
     if data is None:
-        return None
+        return default
     return _class(data=data, **kwargs)
 
 
