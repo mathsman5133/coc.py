@@ -75,8 +75,8 @@ class BasicPlayer(Player):
     -----------
     clan:
         :class:`Basic Clan` - The clan the member belongs to. May be ``None``
-    level:
-        :class:`int` - The player level.
+    exp_level:
+        :class:`int` - The player's experience level.
     trophies:
         :class:`int` - The player's trophy count.
     versus_trophies:
@@ -96,15 +96,16 @@ class BasicPlayer(Player):
     defense_wins:
         :class:`int` - The players current defense wins for this season
     """
-    __slots__ = ('clan', 'level', 'trophies', 'versus_trophies',
+    __slots__ = ('_http', 'clan', 'exp_level', 'trophies', 'versus_trophies',
                  'clan_rank', 'clan_previous_rank', 'league_rank', 'donations',
                  'received', 'attack_wins', 'defense_wins')
 
     def __init__(self, data, http, clan=None):
         super(BasicPlayer, self).__init__(data)
+        self._http = http
 
         self.clan = clan
-        self.level = data.get('expLevel')
+        self.exp_level = data.get('expLevel')
         self.trophies = data.get('trophies')
         self.versus_trophies = data.get('versusTrophies')
         self.clan_rank = data.get('clanRank')
@@ -124,7 +125,7 @@ class BasicPlayer(Player):
     @property
     def league(self):
         """:class:`League`: The player's current league."""
-        return try_enum(League, self._data.get('league'))
+        return try_enum(League, self._data.get('league'), http=self._http)
 
     @property
     def role(self):
