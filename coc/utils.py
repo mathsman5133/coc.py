@@ -80,4 +80,4 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
     """Returns list or iter based on itr if sort is false otherwise sorted
     with key defaulting to operator.attrgetter('order')
     """
-    return ((list, iter)[itr], sorted(seq, key=key))[sort]
+    return ((list, iter)[itr](seq), (list, iter)[itr](sorted(seq, key=key)))[sort]
