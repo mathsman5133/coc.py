@@ -1749,7 +1749,7 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._clan_update_event.wait()
-                await asyncio.sleep(self._war_retry_interval)
+                await asyncio.sleep(self._clan_retry_interval)
                 await self._update_clans()
                 self._dispatch_batch_updates('on_clan')
         except asyncio.CancelledError:
