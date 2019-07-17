@@ -8,7 +8,32 @@ from discord.ext import commands
 import coc
 
 bot = commands.Bot(command_prefix='?')
-coc_client = coc.login('email', 'password', key_count=5, key_names='My funky name!')
+coc_client = coc.login('email', 'password',
+                       key_count=5, key_names='My funky name!',
+                       client=coc.EventsClient
+                       )
+INFO_CHANNEL_ID = 123456678  # some discord channel ID
+
+
+@coc_client.event
+async def on_clan_member_join(member, clan):
+    await bot.get_channel(INFO_CHANNEL_ID).send('{0.name} ({0.tag}) just '
+                                                'joined our clan {1.name} '
+                                                '({1.tag})!'.format(member, clan))
+
+
+@coc_client.event
+async def on_player_name_change(old_name, new_name, player):
+    await bot.get_channel(INFO_CHANNEL_ID).send('Name Change! {0} is now called {1} '
+                                                '(his tag is {2.tag})'.format(old_name, new_name,
+                                                                              player))
+
+
+@bot.event
+async def on_ready():
+    # adds the tags to the client to get events for. this also adds all current clan members,
+    # both with a retry interval of 60 (refreshes every 60 seconds)
+    await coc_client.add_clan_updates('clan tag', member_updates=True, retry_interval=60)
 
 
 @bot.command()
@@ -70,5 +95,8 @@ async def current_war_status(ctx, clan_tag):
                     inline=False)
 
     await ctx.send(embed=e)
+
+
+coc_client.start_updates()  # start looking for updates
 
 bot.run('bot token')
