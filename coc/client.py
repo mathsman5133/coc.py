@@ -33,7 +33,7 @@ from collections import Iterable
 
 from .cache import Cache
 from .clans import Clan, SearchClan
-from .errors import Forbidden, NotFound
+from .errors import Forbidden, NotFound, PrivateWarLog
 from .miscmodels import Location, League
 from .http import HTTPClient
 from .iterators import PlayerIterator, ClanIterator, \
@@ -642,7 +642,10 @@ class Client:
             Return type will depend on what kind of war it is.
             These two classes have different attributes.
         """
-        r = await self.http.get_clan_warlog(clan_tag)
+        try:
+            r = await self.http.get_clan_warlog(clan_tag)
+        except Forbidden:
+            raise PrivateWarLog
 
         wars = []
         for n in r.get('items', []):
@@ -689,7 +692,11 @@ class Client:
         --------
         :class:`ClanWar`
         """
-        r = await self.http.get_clan_current_war(clan_tag)
+        try:
+            r = await self.http.get_clan_current_war(clan_tag)
+        except Forbidden:
+            raise PrivateWarLog
+
         return ClanWar(data=r, clan_tag=clan_tag, http=self.http)
 
     def get_clan_wars(self, clan_tags: Iterable, cache: bool = True,
@@ -756,7 +763,11 @@ class Client:
         --------
         :class:`LeagueGroup`
         """
-        r = await self.http.get_clan_war_league_group(clan_tag)
+        try:
+            r = await self.http.get_clan_war_league_group(clan_tag)
+        except Forbidden:
+            raise PrivateWarLog
+
         return LeagueGroup(data=r, http=self.http)
 
     @cache_league_wars.get_cache()
@@ -785,7 +796,11 @@ class Client:
         --------
         :class:`LeagueWar`
         """
-        r = await self.http.get_cwl_wars(war_tag)
+        try:
+            r = await self.http.get_cwl_wars(war_tag)
+        except Forbidden:
+            raise PrivateWarLog
+
         return LeagueWar(data=r, http=self.http)
 
     def get_league_wars(self, war_tags: Iterable, cache: bool = True,

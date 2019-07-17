@@ -51,9 +51,11 @@ class HTTPException(ClashOfClansException):
             This could be an empty string if nothing was given
 
     """
-    __slots__ = ('response', 'status', 'message', 'reason')
+    __slots__ = ('response', 'status', 'message', 'reason', '_data')
 
     def __init__(self, response, message):
+        self._data = message
+
         self.response = response
         self.status = response.status
 
@@ -99,6 +101,15 @@ class Forbidden(HTTPException):
     API token does not grant access to the requested resource.
 
     Subclass of :exc:`HTTPException`"""
+    pass
+
+
+class PrivateWarLog(Forbidden):
+    """Thrown when an error status 403 occurs when trying to get a clan's war info.
+
+    This is a special subclass of :exc:`Forbidden` for when a clan's war log is private.
+    """
+    pass
 
 
 class NotFound(HTTPException):
