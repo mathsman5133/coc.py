@@ -72,7 +72,7 @@ cache_events = Cache()
 
 
 def login(email, password, client=None, **kwargs):
-    """Eases logging into the coc.py Client.
+    r"""Eases logging into the coc.py Client.
 
     This function makes logging into the client easy, returning the created client.
 
@@ -88,7 +88,7 @@ def login(email, password, client=None, **kwargs):
         The type of coc.py client to use. This could either be a
         :class:`Client` or :class:`EventsClient`, depending on which you wish
         to use.
-    \*\*kwargs
+    **kwargs
         Any kwargs you wish to pass into the Client object.
 
     """

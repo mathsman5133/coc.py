@@ -222,7 +222,7 @@ class WarAttack(EqualityComparable):
     Attributes
     -----------
     war:
-        :class:`War` - The war this attack belongs to
+        :class:`ClanWar` - The war this attack belongs to
     stars:
         :class:`int` - The stars achieved
     destruction:
@@ -230,9 +230,9 @@ class WarAttack(EqualityComparable):
     order:
         :class:`int` - The attack order in this war
     attacker_tag:
-        :class:`int` - The attacker tag
+        :class:`str` - The attacker tag
     defender_tag:
-        :class:`int` - The defender tag
+        :class:`str` - The defender tag
     """
     __slots__ = ('war', 'member', 'stars',
                  'destruction', 'order',
