@@ -30,6 +30,7 @@ import logging
 import traceback
 
 from collections import Iterable
+from typing import Union
 
 from .cache import Cache
 from .clans import Clan, SearchClan
@@ -1537,19 +1538,23 @@ class EventsClient(Client):
         print('Ignoring exception in {}'.format(event_name))
         traceback.print_exc()
 
-    async def add_clan_update(self, tags: Iterable, *, member_updates=False, retry_interval=600):
+    async def add_clan_update(self, tags: Union[Iterable, str], *,
+                              member_updates=False, retry_interval=600):
         """Subscribe clan tags to events.
 
         Parameters
         ------------
-        tags : :class:`collections.Iterable`
-            The clan tags to add.
+        tags : Union[:class:`collections.Iterable`, str]
+            The clan tags to add. Could be an Iterable of tags or just a string tag.
         member_updates : bool
             Whether to subscribe to events regarding players in that clan. Defaults to ``False``
         retry_interval : int
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
-        self._clan_updates.extend(n for n in tags)
+        if isinstance(tags, str):
+            self._clan_updates.append(tags)
+        else:
+            self._clan_updates.extend(n for n in tags)
 
         if member_updates is True:
             async for clan in self.get_clans(tags):
@@ -1562,34 +1567,40 @@ class EventsClient(Client):
 
         self._clan_retry_interval = retry_interval
 
-    def add_war_update(self, tags: Iterable, *, retry_interval=600):
+    def add_war_update(self, tags: Union[Iterable, str], *, retry_interval=600):
         """Subscribe clan tags to war events.
 
         Parameters
         ------------
-        tags : :class:`collections.Iterable`
-            The clan tags to add.
+        tags : Union[:class:`collections.Iterable`, str]
+            The clan tags to add. Could be an Iterable of tags or just a string tag.
         retry_interval : int
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
-        self._war_updates.extend(n for n in tags)
+        if isinstance(tags, str):
+            self._war_updates.append(tags)
+        else:
+            self._war_updates.extend(n for n in tags)
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._war_retry_interval = retry_interval
 
-    def add_player_update(self, tags: Iterable, retry_interval=600):
+    def add_player_update(self, tags: Union[Iterable, str], retry_interval=600):
         """Subscribe player tags to player update events.
 
         Parameters
         ------------
         tags : :class:`collections.Iterable`
-            The player tags to add.
+            The player tags to add. Could be an Iterable of tags or just a string tag.
         retry_interval : int
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
-        self._player_updates.extend(n for n in tags)
+        if isinstance(tags, str):
+            self._player_updates.append(tags)
+        else:
+            self._player_updates.extend(n for n in tags)
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
