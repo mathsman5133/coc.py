@@ -167,7 +167,7 @@ class WarMember(Player):
         self.war = war
         self.clan = clan
 
-        self.town_hall = data.get('townHallLevel')
+        self.town_hall = data.get('townhallLevel')
         self.map_position = data.get('mapPosition')
 
     def _get_attacks(self):
