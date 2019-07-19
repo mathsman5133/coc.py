@@ -185,10 +185,10 @@ class WarMember(Player):
         return maybe_sort(self._get_attacks(), sort, itr=True)
 
     @property
-    def attacks(self):
+    def attacks(self, sort: bool = True):
         """List[:class:`WarAttack`]: The member's attacks this war. Could be an empty list
         """
-        return list(self.iterattacks)
+        return maybe_sort(self._get_attacks(), sort)
 
     @property
     def iterdefenses(self):
