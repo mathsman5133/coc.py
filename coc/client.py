@@ -1494,9 +1494,9 @@ class EventsClient(Client):
             client.remove_events(on_member_update, on_clan_update, on_war_attack)
             # or, using a dict:
             client.remove_events(function_dicts={'on_member_update': on_update,
-                                              'on_clan_update': on_update_2
-                                              }
-                             )
+                                                 'on_clan_update': on_update_2
+                                                }
+                                )
 
         Parameters
         -----------
@@ -1506,10 +1506,16 @@ class EventsClient(Client):
             Dictionary of ``{'event_name': function}`` values.
         """
         for f in fctns:
-            self.extra_events.get(f.__name__, []).remove(f)
+            try:
+                self.extra_events.get(f.__name__, []).remove(f)
+            except ValueError:
+                continue
         if function_dicts:
             for n, f in function_dicts.items():
-                self.extra_events.get(n, []).remove(f)
+                try:
+                    self.extra_events.get(n, []).remove(f)
+                except ValueError:
+                    continue
 
     def run_forever(self):
         """A blocking call which runs the loop and script.
