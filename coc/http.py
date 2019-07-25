@@ -224,10 +224,11 @@ class HTTPClient:
                     raise HTTPException(r, data)
 
     async def get_ip(self):
-        async with self.__session.request('GET', 'http://ip.42.pl/short') as r:
-            log.debug('%s (%s) has returned %s', 'http://ip.42.pl/short', 'GET', r.status)
+        url = 'https://api.ipify.org/'
+        async with self.__session.request('GET', url) as r:
+            log.debug('%s (%s) has returned %s', url, 'GET', r.status)
             ip = await r.text()
-            log.debug('%s has received %s', 'http://ip.42.pl/short', ip)
+            log.debug('%s has received %s', url, ip)
         return ip
 
     @staticmethod
