@@ -1480,6 +1480,37 @@ class EventsClient(Client):
             for n, f in function_dicts.items():
                 self.event(f, name=n)
 
+    def remove_events(self, *fctns, function_dicts: dict = None):
+        """Removes registered events from the client.
+
+        Similar to :meth:`coc.add_events`, you can pass in functions as named args,
+        or a list of {name: function...} values.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            client.remove_events(on_member_update, on_clan_update, on_war_attack)
+            # or, using a dict:
+            client.remove_events(function_dicts={'on_member_update': on_update,
+                                              'on_clan_update': on_update_2
+                                              }
+                             )
+
+        Parameters
+        -----------
+        fctns : function
+            Named args of functions to register. The name of event is dictated by function name.
+        function_dicts : dict
+            Dictionary of ``{'event_name': function}`` values.
+        """
+        for f in fctns:
+            self.extra_events.get(f.__name__, []).remove(f)
+        if function_dicts:
+            for n, f in function_dicts.items():
+                self.extra_events.get(n, []).remove(f)
+
     def run_forever(self):
         """A blocking call which runs the loop and script.
 
@@ -1552,9 +1583,10 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if isinstance(tags, str):
-            self._clan_updates.append(tags)
+            if tags not in self._clan_updates:
+                self._clan_updates.append(tags)
         else:
-            self._clan_updates.extend(n for n in tags)
+            self._clan_updates.extend(n for n in tags if n not in set(self._clan_updates))
 
         if member_updates is True:
             async for clan in self.get_clans(tags):
@@ -1578,9 +1610,10 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if isinstance(tags, str):
-            self._war_updates.append(tags)
+            if tags not in self._war_updates:
+                self._war_updates.append(tags)
         else:
-            self._war_updates.extend(n for n in tags)
+            self._war_updates.extend(n for n in tags if n not in set(self._war_updates))
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
@@ -1598,9 +1631,10 @@ class EventsClient(Client):
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
         if isinstance(tags, str):
-            self._player_updates.append(tags)
+            if tags not in self._player_updates:
+                self._player_updates.append(tags)
         else:
-            self._player_updates.extend(n for n in tags)
+            self._player_updates.extend(n for n in tags if n not in set(self._player_updates))
 
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
