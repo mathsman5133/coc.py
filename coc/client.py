@@ -645,8 +645,8 @@ class Client:
         """
         try:
             r = await self.http.get_clan_warlog(clan_tag)
-        except Forbidden:
-            raise PrivateWarLog
+        except Forbidden as e:
+            raise PrivateWarLog(e.response, e._data)
 
         wars = []
         for n in r.get('items', []):
@@ -695,8 +695,8 @@ class Client:
         """
         try:
             r = await self.http.get_clan_current_war(clan_tag)
-        except Forbidden:
-            raise PrivateWarLog
+        except Forbidden as e:
+            raise PrivateWarLog(e.response, e._data)
 
         return ClanWar(data=r, clan_tag=clan_tag, http=self.http)
 
@@ -766,8 +766,8 @@ class Client:
         """
         try:
             r = await self.http.get_clan_war_league_group(clan_tag)
-        except Forbidden:
-            raise PrivateWarLog
+        except Forbidden as e:
+            raise PrivateWarLog(e.response, e._data)
 
         return LeagueGroup(data=r, http=self.http)
 
@@ -799,8 +799,8 @@ class Client:
         """
         try:
             r = await self.http.get_cwl_wars(war_tag)
-        except Forbidden:
-            raise PrivateWarLog
+        except Forbidden as e:
+            raise PrivateWarLog(e.response, e._data)
 
         return LeagueWar(data=r, http=self.http)
 

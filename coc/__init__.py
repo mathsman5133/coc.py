@@ -26,7 +26,8 @@ from .errors import (
     InvalidCredentials,
     Forbidden,
     Maitenance,
-    GatewayError
+    GatewayError,
+    PrivateWarLog
 )
 from .http import HTTPClient
 from .iterators import (
