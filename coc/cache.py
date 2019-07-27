@@ -101,7 +101,7 @@ class LRU(OrderedDict):
             return
 
         current_time = time.monotonic()
-        to_delete = (k for (k, (t, v)) in self.items() if current_time > (t + self.ttl))
+        to_delete = (k for k, (t, v) in tuple(self.items()) if current_time > t + self.ttl)
         for k in to_delete:
             log.debug('Removed item with key %s and TTL %s seconds from cache.', k, self.ttl)
             del self[k]
