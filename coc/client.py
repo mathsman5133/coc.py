@@ -171,7 +171,7 @@ class Client:
                  default_cache=None):
 
         self.loop = loop or asyncio.get_event_loop()
-        apply(self.loop)
+        # apply(self.loop)
 
         self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
@@ -1360,7 +1360,7 @@ class Client:
 class EventsClient(Client):
     def __init__(self, **options):
         super().__init__(**options)
-        apply(self.loop)
+        # apply(self.loop)
         self._setup()
         self._cache_lookup['cache_events'] = cache_events
 
