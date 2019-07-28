@@ -153,7 +153,10 @@ class ClanWar(BaseWar):
     @property
     def type(self):
         """:class:`str`: Either ``friendly`` or ``random`` - the war type.
+        Returns ``None`` if the clan is not in war.
         """
+        if not self.start_time:
+            return None
         if (self.start_time.time - self.preparation_start_time.time).seconds == 82800:  # 23hr prep
             return 'random'
         return 'friendly'
