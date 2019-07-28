@@ -39,7 +39,6 @@ from .miscmodels import Location, League
 from .http import HTTPClient
 from .iterators import PlayerIterator, ClanIterator, \
     ClanWarIterator, LeagueWarIterator, CurrentWarIterator
-from .nest_asyncio import apply
 from .players import Player, LeagueRankedPlayer, SearchPlayer
 from .utils import get
 from .wars import ClanWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
