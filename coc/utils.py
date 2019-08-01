@@ -1,42 +1,7 @@
 import re
-import json
 
 from datetime import datetime
-from functools import partial
 from operator import attrgetter
-
-
-def to_json(model):
-    dct = {}
-    for attr in dir(model):
-        # ignore private methods
-        if attr.startswith('_'):
-            continue
-
-        value = getattr(model, attr)
-
-        # iterate through lists - may be a list of objects eg. members in war
-        if isinstance(value, list):
-            for i in value:
-                if not isinstance(i, (list, str, bool)):
-                    dct[attr] = [to_json(i)] if attr not in dct.keys()\
-                        else dct[attr].append(to_json(i))
-                    continue
-
-                dct[attr] = [to_json(i)] if attr not in dct.keys() else dct[attr].append(to_json(i))
-
-            continue
-
-        # if it is an object attribute
-        if not isinstance(value, (list, str, bool)):
-            dct[attr] = [to_json(value)] if attr not in dct.keys() \
-                else dct[attr].append(to_json(value))
-            continue
-
-        # just a bool, string or int now so can safely add to dict
-        dct[attr] = [to_json(value)] if attr not in dct.keys() else dct[attr].append(to_json(value))
-
-    return json.loads(dct, separators=(',', ':'), ensure_ascii=True)
 
 
 def find(predicate, seq):
@@ -47,18 +12,27 @@ def find(predicate, seq):
 
 
 def get(iterable, **attrs):
-    def predicate(elem):
-        for attr, val in attrs.items():
-            nested = attr.split('__')
-            obj = elem
-            for attribute in nested:
-                obj = getattr(obj, attribute)
+    _all = all
+    attrget = attrgetter
 
-            if obj != val:
-                return False
-        return True
+    # Special case the single element call
+    if len(attrs) == 1:
+        k, v = attrs.popitem()
+        pred = attrget(k.replace('__', '.'))
+        for elem in iterable:
+            if pred(elem) == v:
+                return elem
+        return None
 
-    return find(predicate, iterable)
+    converted = [
+        (attrget(attr.replace('__', '.')), value)
+        for attr, value in attrs.items()
+    ]
+
+    for elem in iterable:
+        if _all(pred(elem) == value for pred, value in converted):
+            return elem
+    return None
 
 
 def from_timestamp(timestamp):
