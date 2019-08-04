@@ -564,16 +564,50 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_player_other_update(old_player, new_player)
+.. py:function:: on_player_clan_join(player, clan)
 
-    This event is called when there is another change not called in an above event.
-    .. note:: Please do not rely upon `old_player._data` for events fired above;
-              they may be incorrect.
+    This event is called when a player joins a clan.
 
-    :param old_player: The player object prior to change.
-    :type old_player: :class:`SearchPlayer`
-    :param new_player: The player object after the change.
-    :type new_player: :class:`SearchPlayer`
+    :param member: The player who joined.
+    :type member: :class:`SearchPlayer`
+    :param clan: The clan the player joined.
+    :type clan: :class:`Clan`
+
+.. py:function:: on_player_clan_leave(player, clan)
+
+    This event is called when a player leaves a clan.
+
+    :param member: The member who left.
+    :type member: :class:`SearchPlayer`
+    :param clan: The clan the member left.
+    :type clan: :class:`Clan`
+
+
+.. py:function:: on_player_clan_level_change(old_level, new_level, clan, player)
+
+    This event is called when a player's clan's level changes.
+
+    :param old_level: The old clan level
+    :type old_level: int
+    :param new_level: The new clan level
+    :type new_level: int
+    :param clan: The clan who's level changed
+    :type clan: :class:`Clan`
+    :param player: The player who's clan's level changed.
+    :type player: :class:`SearchPlayer`
+
+.. py:function:: on_clan_badge_change(old_badge, new_badge, clan, player)
+
+    This event is called when the clan's badge changes.
+
+    :param old_badge: The old clan badge
+    :type old_badge: :class:`Badge`
+    :param new_badge: The new clan badge
+    :type new_badge: :class:`Badge`
+    :param clan: The clan who's badge changed
+    :type clan: :class:`Clan`
+    :param player: The player who's clan's badge changed.
+    :type player: :class:`SearchPlayer`
 
 
 Data Models

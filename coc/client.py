@@ -2004,6 +2004,32 @@ class EventsClient(Client):
                 self.dispatch('on_player_clan_previous_rank_change',
                               cached_player.clan_previous_rank, player.clan_previous_rank, player)
 
+            # more clan stuff
+            clan = player.clan
+            cached_clan = cached_player.clan
+
+            if not clan and not cached_clan:
+                continue
+            elif not clan and cached_clan:
+                self.dispatch('on_player_clan_leave', cached_clan, player)
+            elif not cached_clan and clan:
+                self.dispatch('on_player_clan_join', clan, player)
+            elif clan.tag != cached_clan.tag:
+                self.dispatch('on_player_clan_leave', cached_clan, player)
+                self.dispatch('on_player_clan_join', clan, player)
+
+            if clan and cached_clan:
+                if clan.tag != cached_clan.tag:
+                    continue
+
+                if clan.level != cached_clan.level:
+                    self.dispatch('on_player_clan_level_change',
+                                  cached_clan.level, clan.level, clan, player)
+                
+                if clan.badge != cached_clan.badge:
+                    self.dispatch('on_player_clan_badge_change',
+                                  cached_clan.badge, clan.badge, clan, player)
+
             achievement_updates = (n for n in player.achievements
                                    if n not in set(cached_player.achievements)
                                    )
