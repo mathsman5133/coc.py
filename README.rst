@@ -83,6 +83,11 @@ Links
 - `coc.py Documentation <https://cocpy.readthedocs.io/en/latest/?>`_
 - `Official Clash of Clans API Page <https://developer.clashofclans.com/>`_
 
+Disclaimer
+-----------
+- This content is not affiliated with, endorsed, sponsored, or specifically
+  approved by Supercell and Supercell is not responsible for it.
+  For more information see `Supercell's Fan Content Policy: <https://www.supercell.com/fan-content-policy.>`_
 
 
 
