@@ -31,33 +31,50 @@ Installing
 
 Quick Example
 --------------
+This is the basic usage of the library.
+This example will get a player with a certain tag, and search for 5 clans with a name.
+
 .. code:: py
 
     import coc
     import asyncio
 
     client = coc.login('email', 'password')
+    loop = asyncio.get_event_loop
 
-    async def get_some_player(tag):
-        player = await client.get_player(tag)
-
-        print(player.name)
-        # alternatively,
-        print(str(player))
+    player = loop.run_until_complete(client.get_player('tag'))
+    print(player.name)
 
     async def get_five_clans(name):
         players = await client.search_clans(name=name, limit=5)
         for n in players:
             print(n, n.tag)
 
-    async def main():
-        await get_some_player('tag')
-        await get_five_clans('name')
-        await client.close()
-
     if __name__ == '__main__':
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(main())
+        loop.run_until_complete(get_five_clans('name'))
+        loop.run_until_complete(client.close())
+
+Basic Events Example
+---------------------
+This script will run forever, printing to the terminal whenever someone joins the clan.
+
+.. code:: py
+
+    import coc
+    import asyncio
+
+    client = coc.login('email', 'password', client=coc.EventsClient)
+    loop = asyncio.get_event_loop()
+
+    @client.event
+    async def on_clan_member_join(player, clan):
+        print('{0.name} ({0.tag}) just joined {1.name} ({1.tag})!')
+
+    loop.run_until_complete(client.add_clan_update('tag'))
+    client.start_events('clan')
+
+    client.run_forever()
+
 
 For more examples see the examples directory
 
