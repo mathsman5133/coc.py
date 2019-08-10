@@ -270,8 +270,10 @@ class Location(EqualityComparable):
         :class:`bool` - Indicates whether the location is a country
     country_code:
         :class:`str` - The shorthand country code, if the location is a country
+    localised_name:
+        :class:`str` - A localised name of the location. The extent of the use of this is unknown at present.
     """
-    __slots__ = ('id', 'name', 'is_country', 'country_code', '_data')
+    __slots__ = ('id', 'name', 'is_country', 'country_code', 'localised_name', '_data')
 
     def __init__(self, *, data):
         self._data = data
@@ -280,6 +282,7 @@ class Location(EqualityComparable):
         self.name = data.get('name')
         self.is_country = data.get('isCountry')
         self.country_code = data.get('countryCode')
+        self.localised_name = data.get('localizedName')
 
     def __str__(self):
         return self.name
@@ -294,8 +297,12 @@ class League(EqualityComparable):
         :class:`str` - The league ID
     name:
         :class:`str` - The league name
+    localised_name:
+        :class:`str` - A localised name of the location. The extent of the use of this is unknown at present.
+    localised_short_name:
+        :class:`str` - A localised short name of the location. The extent of the use of this is unknown at present.
     """
-    __slots__ = ('id', 'name', '_data', '_http')
+    __slots__ = ('id', 'name', 'localised_short_name', 'localised_name', '_data', '_http')
 
     def __init__(self, *, data, http):
         self._data = data
@@ -303,6 +310,8 @@ class League(EqualityComparable):
 
         self.id = data.get('id')
         self.name = data.get('name')
+        self.localised_name = data.get('localizedName')
+        self.localised_short_name = data.get('localizedShortName')
 
     @property
     def badge(self):
