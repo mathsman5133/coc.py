@@ -29,6 +29,7 @@ SOFTWARE.
 class ClashOfClansException(Exception):
     """Base exception for coc.py
     """
+    pass
 
 
 class HTTPException(ClashOfClansException):
@@ -53,18 +54,18 @@ class HTTPException(ClashOfClansException):
     """
     __slots__ = ('response', 'status', 'message', 'reason', '_data')
 
-    def __init__(self, response, message):
-        self._data = message
+    def __init__(self, response, data):
+        self._data = data
 
         self.response = response
         self.status = response.status
 
-        if isinstance(message, str):
+        if isinstance(data, str):
             self.reason = 'Unknown'
-            self.message = message
+            self.message = data
         else:
-            self.reason = message.get('reason', 'Unknown')
-            self.message = message.get('message', '')
+            self.reason = data.get('reason', 'Unknown')
+            self.message = data.get('message', '')
 
         fmt = '{0.reason} (status code: {0.status})'
         if len(self.message):

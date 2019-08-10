@@ -215,6 +215,11 @@ class HTTPClient:
                     raise HTTPException(r, data)
 
                 if r.status == 503:
+                    if isinstance(data, str):
+                        # weird case where a 503 will be raised, but html returned.
+                        text = re.compile(r'<[^>]+>').sub(data, '')
+                        raise Maitenance(r, text)
+
                     raise Maitenance(r, data)
                 if r.status in [502, 504]:  # bad gateway, gateway timeout
                     # gateway errors return html
