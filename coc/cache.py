@@ -186,7 +186,8 @@ class Cache:
             return wrapper
         return deco
 
-    def clear(self, max_size=None, ttl=None, cache_type=LRU):
+    def clear(self, max_size=None, ttl=None, cache_type=None):
+        cache_type = cache_type or LRU
         if not max_size:
             max_size = self.max_size
         if not ttl:
