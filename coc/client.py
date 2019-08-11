@@ -161,16 +161,17 @@ class Client:
         The loop that is used for HTTP requests
     """
     __slots__ = ('loop', 'correct_key_count', 'key_names', 'throttle_limit',
-                 'http', '_ready', '_cache_lookup', '_default_cache')
+                 'http', '_ready', '_cache_lookup', '_default_cache', '_default_cache_class')
 
     def __init__(self, *, key_count: int = 1,
                  key_names: str = 'Created with coc.py Client',
                  throttle_limit: int = 10,
                  loop: asyncio.AbstractEventLoop = None,
-                 default_cache=None):
+                 default_cache=None,
+                 default_cache_class=None
+                 ):
 
         self.loop = loop or asyncio.get_event_loop()
-        # apply(self.loop)
 
         self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
@@ -203,7 +204,7 @@ class Client:
             'cache_leagues': cache_leagues,
             'cache_seasons': cache_seasons
         }
-
+        self._default_cache_class = default_cache_class
         self._default_cache = default_cache or self.default_cache
         log.info('Clash of Clans client created')
 
@@ -332,6 +333,7 @@ class Client:
         +-------------------------+------------+------------+-----------+
 
         """
+        cache_class = self._default_cache_class
         cache_search_clans._is_clan = True
         cache_war_logs._is_clan = True
 
@@ -354,15 +356,15 @@ class Client:
         static_cache = (n for n in self._cache_lookup.values() if n._is_static)
 
         for n in clan_cache:
-            n.clear(max_size=1024, ttl=3600)  # ttl = hour
+            n.clear(max_size=1024, ttl=3600, cache_type=cache_class)  # ttl = hour
         for n in player_cache:
-            n.clear(max_size=1024, ttl=3600)  # ttl = hour
+            n.clear(max_size=1024, ttl=3600, cache_type=cache_class)  # ttl = hour
         for n in war_cache:
-            n.clear(1024, ttl=1800)  # ttl = half hour
+            n.clear(1024, ttl=1800, cache_type=cache_class)  # ttl = half hour
         for n in static_cache:
-            n.clear(1024, None)  # ttl = never expire
+            n.clear(1024, None, cache_type=cache_class)  # ttl = never expire
 
-    def edit_cache(self, cache_group: str = None, max_size: int = None, 
+    def edit_cache(self, cache_group: str = None, max_size: int = None, *, cache_type = None,
                    expiry: int = None, extra_settings: dict = None):
         """Edit the cache from the default settings.
 
@@ -385,6 +387,8 @@ class Client:
             The max size to set for ``cache_group`` passed.
         expiry : int
             The expiry of cache in seconds for ``cache_group`` passed.
+        cache_type : Custom Class
+            An optional custom cache class. This defaults to an OrderedDict with an inbuilt TTL.
         extra_settings : dict
             A dictionary of extra settings for advanced usage.
             Example: ::
@@ -423,7 +427,7 @@ class Client:
             return c
 
         for n in f(cache_group):
-            n.clear(max_size=max_size, ttl=expiry)
+            n.clear(max_size=max_size, ttl=expiry, cache_type=cache_type)
 
         if not extra_settings:
             return
@@ -431,7 +435,7 @@ class Client:
         for k, v in extra_settings.items():
             for cache in f(k):
                 try:
-                    cache.clear(max_size=v[0], ttl=v[1])
+                    cache.clear(max_size=v[0], ttl=v[1], cache_type=cache_type)
                 except (IndexError, KeyError):
                     continue
 
@@ -963,7 +967,7 @@ class Client:
         all_locations = await self.search_locations(limit=None)
 
         for n in all_locations:
-            cache_locations.add(n.id, n)
+            cache_locations[n.id] = n
 
         cache_locations.fully_populated = True
         return all_locations
@@ -1133,7 +1137,7 @@ class Client:
         all_leagues = await self.search_leagues(limit=None)
 
         for n in all_leagues:
-            cache_leagues.add(n.id, n)
+            cache_leagues[n.id] = n
 
         cache_leagues.fully_populated = True
         return all_leagues
@@ -1721,7 +1725,7 @@ class EventsClient(Client):
         for e in events:
             e[0].set()
             for c in e[1]:
-                c.clear(1024, None)
+                c.clear(1024, None, self._default_cache_class)
 
     def stop_updates(self, event_type='all'):
         """Stops an, or all, events.
@@ -1760,7 +1764,7 @@ class EventsClient(Client):
         for e in events:
             e[0].clear()
             for c in e[1]:
-                c.clear(1024, None)
+                c.clear(1024, None, self._default_cache_class)
 
     def _dispatch_batch_updates(self, key_name):
         keys = cache_events.cache.keys()

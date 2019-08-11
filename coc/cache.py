@@ -96,6 +96,9 @@ class LRU(OrderedDict):
         self.check_expiry()
         self.check_max_size()
 
+    def values(self):
+        return [n[1] for n in super().values()]
+
     def check_expiry(self):
         if not self.ttl:
             return
@@ -122,8 +125,8 @@ class Cache:
     __slots__ = ('cache', 'ttl', 'max_size', 'fully_populated',
                  '_is_clan', '_is_player', '_is_war', '_is_static')
 
-    def __init__(self, max_size=128, ttl=None):
-        self.cache = LRU(max_size, ttl)
+    def __init__(self, max_size=128, ttl=None, cache_type=LRU):
+        self.cache = cache_type(max_size, ttl)
         self.ttl = self.cache.ttl
         self.max_size = self.cache.max_size
         self.fully_populated = False
@@ -133,8 +136,11 @@ class Cache:
         self._is_war = False
         self._is_static = False
 
-    def __call__(self, *args, **kwargs):
-        self.cache.check_expiry()
+    def __getitem__(self, item):
+        self.cache.__getitem__(item)
+
+    def __setitem__(self, key, value):
+        self.cache.__setitem__(key, value)
 
     def get_cache(self):
         def deco(func):
@@ -149,7 +155,10 @@ class Cache:
                     return func(*args, **kwargs)
 
                 if cache:
-                    data = self.get(key)
+                    try:
+                        data = self.cache[key]
+                    except KeyError:
+                        data = None
                 else:
                     if fetch:
                         data = func(*args, **kwargs)
@@ -176,34 +185,19 @@ class Cache:
             return wrapper
         return deco
 
-    def get(self, key):
-        self.cache.check_expiry()
-        try:
-            return self.cache[key]
-        except KeyError:
-            return None
-
-    def add(self, key, value):
-        self.cache[key] = value
-
-    def clear(self, max_size=None, ttl=None):
+    def clear(self, max_size=None, ttl=None, cache_type=LRU):
         if not max_size:
             max_size = self.max_size
         if not ttl:
             ttl = self.ttl
 
-        self.cache = LRU(max_size, ttl)
-
-    def get_all_values(self):
-        self.cache.check_expiry()
-        return [n[1] for n in self.cache.values()]
+        self.cache = cache_type(max_size, ttl)
 
     def get_limit(self, limit: int = None):
-        self.cache.check_expiry()
         if not limit:
-            return self.get_all_values()
+            return self.cache.values()
 
-        return self.get_all_values()[:limit]
+        return self.cache.values()[:limit]
 
     def events_cache(self):
         def deco(func):
@@ -218,7 +212,7 @@ class Cache:
 
                 key = f'{event_name}.{time.monotonic()}'
 
-                self.add(key, event_args)
+                self.cache[key] = event_args
 
                 return func(*args, **kwargs)
             return wrapper
