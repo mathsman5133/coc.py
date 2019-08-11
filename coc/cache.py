@@ -143,8 +143,13 @@ class Cache:
     def __setitem__(self, key, value):
         self.cache.__setitem__(key, value)
 
-    def get(self, k):
-        return self.cache.get(k)
+    def get(self, key, default_value=None):
+        try:
+            value = self.cache[key]
+        except KeyError:
+            return default_value
+        else:
+            return value
 
     def get_cache(self):
         def deco(func):
