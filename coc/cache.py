@@ -235,8 +235,8 @@ class Cache:
         return {
             'clan': self.clan_config,
             'player': self.player_config,
-            'war_config': self.war_config,
-            'static_config': self.static_config
+            'war': self.war_config,
+            'static': self.static_config
         }
 
     @staticmethod
