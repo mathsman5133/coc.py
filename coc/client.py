@@ -32,7 +32,7 @@ import traceback
 from collections import Iterable
 from typing import Union
 
-from .cache import Cache
+from .cache import Cache, cached, events_cache
 from .clans import Clan, SearchClan
 from .errors import Forbidden, NotFound, PrivateWarLog
 from .miscmodels import Location, League
@@ -47,28 +47,6 @@ log = logging.getLogger(__name__)
 
 LEAGUE_WAR_STATE = 'notInWar'
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
-
-
-cache_search_clans = Cache()
-cache_war_clans = Cache()
-
-cache_search_players = Cache()
-cache_war_players = Cache()
-
-cache_clan_wars = Cache()
-cache_war_logs = Cache()
-
-cache_league_groups = Cache()
-cache_league_wars = Cache()
-
-cache_current_wars = Cache()
-
-cache_locations = Cache()
-
-cache_leagues = Cache()
-cache_seasons = Cache()
-
-cache_events = Cache()
 
 
 def login(email, password, client=None, **kwargs):
@@ -96,6 +74,7 @@ def login(email, password, client=None, **kwargs):
         client = Client
 
     c = client(**kwargs)
+    c.create_cache()
     c.loop.run_until_complete(c.login(email, password))
     return c
 
@@ -136,39 +115,19 @@ class Client:
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
         An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
 
-    default_cache : function
-        The :class:`function` to use for default cache initiation.
-        If nothing is passed, this defaults to :func:`Client.default_cache()`.
-        This function must have client as the first and only parameter.
-        It **must not** be a coroutine.
-
-        Example: ::
-
-            def setup(client):
-                client.edit_cache('players', 1024, 300)
-                print('Set cache for players to max size 1024, expiry 30 seconds')
-
-                client.edit_cache(extra_settings={'war': {'max_size': 1024, 'expiry': 300}}
-                print('Set my second cache')
-
-                return
-
-            clash_client = coc.login('email', 'password', default_cache=setup)
-
     Attributes
     -----------
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
     __slots__ = ('loop', 'correct_key_count', 'key_names', 'throttle_limit',
-                 'http', '_ready', '_cache_lookup', '_default_cache', '_default_cache_class')
+                 'http', '_ready', 'cache')
 
     def __init__(self, *, key_count: int = 1,
                  key_names: str = 'Created with coc.py Client',
                  throttle_limit: int = 10,
                  loop: asyncio.AbstractEventLoop = None,
-                 default_cache=None,
-                 default_cache_class=None
+                 cache=None
                  ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -184,33 +143,7 @@ class Client:
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
-
-        self._cache_lookup = {
-            'cache_search_clans': cache_search_clans,
-            'cache_war_clans': cache_war_clans,
-
-            'cache_search_players': cache_search_players,
-            'cache_war_players': cache_war_players,
-
-            'cache_clan_wars': cache_clan_wars,
-            'cache_war_logs': cache_war_logs,
-            'cache_current_wars': cache_current_wars,
-
-            'cache_league_groups': cache_league_groups,
-            'cache_league_wars': cache_league_wars,
-
-            'cache_locations': cache_locations,
-
-            'cache_leagues': cache_leagues,
-            'cache_seasons': cache_seasons
-        }
-        self._default_cache_class = default_cache_class
-        self._default_cache = default_cache or self.default_cache
-        log.info('Clash of Clans client created')
-
-        self._default_cache(self)
-        log.debug('Cache has been set using %s', 
-                  'default cache' if not default_cache else 'custom cache')
+        self.cache = cache(self) or Cache(self)
 
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -241,6 +174,9 @@ class Client:
         log.info('Clash of Clans client logging out...')
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
+
+    def create_cache(self):
+        self.cache.register_cache_types()
 
     def event(self, fctn):
         """A decorator that registers an event.
@@ -274,170 +210,6 @@ class Client:
                 asyncio.ensure_future(fctn(*args, **kwargs), loop=self.loop)
             else:
                 fctn(*args, **kwargs)
-
-    def get_cache(self, *cache_names):
-        """Get a cache object by name.
-        Cache objects are otherwise not accessible by the client except through this method.
-
-        Parameters
-        -----------
-        cache_names : str
-            The cache names to search for.
-
-        Returns
-        --------
-        :class:`list` of cache objects found. If a name is not found, it will not be present in this list.
-        """
-        cache_objects = [self._get_cache_from_name(str(n)) for n in cache_names]
-        return [n for n in cache_objects if n]
-
-    def _get_cache_from_name(self, name):
-        try:
-            return self._cache_lookup[str(name)]
-        except KeyError:
-            return None
-
-    def default_cache(self, client):
-        """The default cache initiation.
-
-        This function is called on initiation of the :class:`Client`.
-
-        The grouping and relevant max size and expiry are as follows:
-
-        +-------------------------+------------+------------+-----------+
-        |       Cache Name        | Cache Type |  Max Size  |  Expiry   |
-        +=========================+============+============+===========+
-        |``cache_search_clans``   | ``clan``   |   1024     | 1 hour    |
-        +-------------------------+------------+------------+-----------+
-        |``cache_war_logs``       | ``clan``   |   1024     | 1 hour    |
-        +-------------------------+------------+------------+-----------+
-        |``cache_current_wars``   | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_clan_wars``      | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_league_groups``  | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_league_wars``    | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_war_clans``      | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_war_players``    | ``war``    |   1024     | 0.5 hours |
-        +-------------------------+------------+------------+-----------+
-        |``cache_search_players`` | ``player`` |   1024     | 1 hour    |
-        +-------------------------+------------+------------+-----------+
-        |``cache_locations``      | ``static`` |   1024     | Never     |
-        +-------------------------+------------+------------+-----------+
-        |``cache_leagues``        | ``static`` |   1024     | Never     |
-        +-------------------------+------------+------------+-----------+
-        |``cache_seasons``        | ``static`` |   1024     | Never     |
-        +-------------------------+------------+------------+-----------+
-
-        """
-        cache_class = self._default_cache_class
-        cache_search_clans._is_clan = True
-        cache_war_logs._is_clan = True
-
-        cache_clan_wars._is_war = True
-        cache_current_wars._is_war = True
-        cache_league_groups._is_war = True
-        cache_league_wars._is_war = True
-        cache_war_clans._is_war = True
-        cache_war_players._is_war = True
-
-        cache_search_players._is_player = True
-
-        cache_locations._is_static = True
-        cache_leagues._is_static = True
-        cache_seasons._is_static = True
-
-        clan_cache = (n for n in self._cache_lookup.values() if n._is_clan)
-        player_cache = (n for n in self._cache_lookup.values() if n._is_player)
-        war_cache = (n for n in self._cache_lookup.values() if n._is_war)
-        static_cache = (n for n in self._cache_lookup.values() if n._is_static)
-
-        for n in clan_cache:
-            n.clear(max_size=1024, ttl=3600, cache_type=cache_class)  # ttl = hour
-        for n in player_cache:
-            n.clear(max_size=1024, ttl=3600, cache_type=cache_class)  # ttl = hour
-        for n in war_cache:
-            n.clear(1024, ttl=1800, cache_type=cache_class)  # ttl = half hour
-        for n in static_cache:
-            n.clear(1024, None, cache_type=cache_class)  # ttl = never expire
-
-    def edit_cache(self, cache_group: str = None, max_size: int = None, *, cache_type = None,
-                   expiry: int = None, extra_settings: dict = None):
-        """Edit the cache from the default settings.
-
-        Alternatively, this function could be passed into the ``default_cache``
-        parameter of :class:`Client`,
-        as follows: ::
-
-            def cache(client):
-                return client.edit_cache('players', 1024, 300)
-
-            coc_client = coc.login('email', 'password', default_cache=cache)
-
-
-        Parameters
-        -----------
-        cache_group : str
-            This could either be a cache name or cache group type.
-            See all names and types in :meth:`Client.default_cache`.
-        max_size : int
-            The max size to set for ``cache_group`` passed.
-        expiry : int
-            The expiry of cache in seconds for ``cache_group`` passed.
-        cache_type : Custom Class
-            An optional custom cache class. This defaults to an OrderedDict with an inbuilt TTL.
-        extra_settings : dict
-            A dictionary of extra settings for advanced usage.
-            Example: ::
-
-                # format:
-                {cache_group: {'max_size': int, 'expiry': int}, ...}
-                # eg:
-                {'clan': {'max_size': 1024, 'expiry': 30}, 'player': {1024, 300}}
-
-            Alternatively, you could call this function multiple
-            times for each type you want to change.
-
-        """
-        clan_cache = (n for n in self._cache_lookup.values() if n._is_clan)
-        player_cache = (n for n in self._cache_lookup.values() if n._is_player)
-        war_cache = (n for n in self._cache_lookup.values() if n._is_war)
-        static_cache = (n for n in self._cache_lookup.values() if n._is_static)
-        all_cache = (n for n in self._cache_lookup.values())
-
-        lookup = {
-            'clan': clan_cache,
-            'player': player_cache,
-            'war': war_cache,
-            'static': static_cache,
-            'all': all_cache
-        }
-
-        def f(name):
-            try:
-                c = lookup[str(name)]
-            except KeyError:
-                try:
-                    c = [self._cache_lookup[str(name)]]
-                except KeyError:
-                    return []
-            return c
-
-        for n in f(cache_group):
-            n.clear(max_size=max_size, ttl=expiry, cache_type=cache_type)
-
-        if not extra_settings:
-            return
-
-        for k, v in extra_settings.items():
-            for cache in f(k):
-                try:
-                    cache.clear(max_size=v[0], ttl=v[1], cache_type=cache_type)
-                except (IndexError, KeyError):
-                    continue
 
     async def reset_keys(self, number_of_keys: int = None):
         """Manually reset any number of keys.
@@ -508,7 +280,7 @@ class Client:
 
         return clans
 
-    @cache_search_clans.get_cache()
+    @cached('search_clans')
     async def get_clan(self, tag: str, cache: bool = True, fetch: bool = True, 
                        update_cache: bool = True
                        ):
@@ -604,22 +376,23 @@ class Client:
         :class:`list` of :class:`BasicPlayer`
         """
         if cache:
-            c = cache_search_clans.get(clan_tag)
-            if c:
+            try:
+                c = self.cache.search_clans[clan_tag]
+            except KeyError:
+                if fetch is False:
+                    return
+            else:
                 return c.members
-
-            if fetch is False:
-                return None
 
         r = await self.http.get_clan(clan_tag)
         clan = SearchClan(data=r, client=self)
 
         if update_cache:
-            cache_search_clans.add(clan.tag, clan)
+            self.cache.search_clans[clan.tag] = clan
 
         return clan.members
 
-    @cache_war_logs.get_cache()
+    @cached('war_logs')
     async def get_warlog(self, clan_tag: str, cache: bool = False,
                          fetch: bool = True, update_cache: bool = True
                          ):
@@ -666,11 +439,11 @@ class Client:
             wars.append(WarLog(data=n, clan_tag=clan_tag, http=self.http))
 
         if update_cache:
-            cache_war_logs.add(wars[0].clan.tag, wars)
+            self.cache.war_logs[wars[0].clan.tag] = wars
 
         return wars
 
-    @cache_clan_wars.get_cache()
+    @cached('clan_wars')
     async def get_clan_war(self, clan_tag: str, cache: bool = True,
                            fetch: bool = True, update_cache: bool = True
                            ):
@@ -742,7 +515,7 @@ class Client:
 
         return ClanWarIterator(self, clan_tags, cache, fetch, update_cache)
 
-    @cache_league_groups.get_cache()
+    @cached('league_groups')
     async def get_league_group(self, clan_tag: str, cache: bool = True,
                                fetch: bool = True, update_cache: bool = True
                                ):
@@ -774,7 +547,7 @@ class Client:
 
         return LeagueGroup(data=r, http=self.http)
 
-    @cache_league_wars.get_cache()
+    @cached('league_wars')
     async def get_league_war(self, war_tag: str, cache: bool = True,
                              fetch: bool = True, update_cache: bool = True
                              ):
@@ -846,7 +619,7 @@ class Client:
 
         return LeagueWarIterator(self, war_tags, cache, fetch, update_cache)
 
-    @cache_current_wars.get_cache()
+    @cached('current_wars')
     async def get_current_war(self, clan_tag: str, *, league_war: bool = True,
                               cache: bool = True, fetch: bool = True, update_cache: bool = True):
         """Retrieve a clan's current war.
@@ -960,16 +733,16 @@ class Client:
 
     # locations
     async def _populate_locations(self):
-        if cache_locations.fully_populated is True:
-            return cache_locations.get_limit()
+        if self.cache.self.cache.locations.fully_populated is True:
+            return self.cache.locations.get_limit()
 
-        cache_locations.clear()
+        self.cache.locations.clear()
         all_locations = await self.search_locations(limit=None)
 
         for n in all_locations:
-            cache_locations[n.id] = n
+            self.cache.locations[n.id] = n
 
-        cache_locations.fully_populated = True
+        self.cache.locations.fully_populated = True
         return all_locations
 
     async def search_locations(self, *, limit: int = None,
@@ -985,19 +758,19 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        if cache_locations.fully_populated is True:
-            return cache_locations.get_limit(limit)
+        if self.cache.locations.fully_populated is True:
+            return self.cache.locations.get_limit(limit)
 
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data['items'])
 
         for n in locations:
-            cache_locations[n.id] = n
+            self.cache.locations[n.id] = n
 
         return locations
 
-    @cache_locations.get_cache()
+    @cached('locations')
     async def get_location(self, location_id: int, cache: bool = False,
                            fetch: bool = True, update_cache: bool = True
                            ):
@@ -1130,16 +903,16 @@ class Client:
     # leagues
 
     async def _populate_leagues(self):
-        if cache_leagues.fully_populated is True:
-            return cache_leagues.get_limit()
+        if self.cache.leagues.fully_populated is True:
+            return self.cache.leagues.get_limit()
 
-        cache_leagues.clear()
+        self.cache.leagues.clear()
         all_leagues = await self.search_leagues(limit=None)
 
         for n in all_leagues:
-            cache_leagues[n.id] = n
+            self.cache.leagues[n.id] = n
 
-        cache_leagues.fully_populated = True
+        self.cache.leagues.fully_populated = True
         return all_leagues
 
     async def search_leagues(self, *, limit: int = None, before: int = None, after: int = None):
@@ -1156,18 +929,18 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        if cache_leagues.fully_populated is True:
-            return cache_leagues.get_limit(limit)
+        if self.cache.leagues.fully_populated is True:
+            return self.cache.leagues.get_limit(limit)
 
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n, http=self.http) for n in r['items'])
 
         for n in leagues:
-            cache_leagues[n.id] = n
+            self.cache.leagues[n.id] = n
 
         return leagues
 
-    @cache_leagues.get_cache()
+    @cached('leagues')
     async def get_league(self, league_id: int, cache: bool = False,
                          fetch: bool = True, update_cache: bool = True
                          ):
@@ -1271,7 +1044,7 @@ class Client:
         """
         if cache:
             try:
-                data = cache_seasons.get(league_id)[season_id]
+                data = self.cache.seasons[league_id][season_id]
                 if data:
                     return data
 
@@ -1285,13 +1058,13 @@ class Client:
         players = list(LeagueRankedPlayer(data=n, http=self.http) for n in r.get('items', []))
 
         if update_cache:
-            cache_seasons[league_id] = {season_id: players}
+            self.cache.seasons[league_id] = {season_id: players}
 
         return players
 
     # players
 
-    @cache_search_players.get_cache()
+    @cached('search_players')
     async def get_player(self, player_tag: str, cache: bool = False,
                          fetch: bool = True, update_cache: bool = True
                          ):
@@ -1363,9 +1136,7 @@ class Client:
 class EventsClient(Client):
     def __init__(self, **options):
         super().__init__(**options)
-        # apply(self.loop)
         self._setup()
-        self._cache_lookup['cache_events'] = cache_events
 
     def _setup(self):
         self._clan_updates = []
@@ -1403,7 +1174,7 @@ class EventsClient(Client):
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
 
-    @cache_events.events_cache()
+    @events_cache()
     def dispatch(self, event_name: str, *args, **kwargs):
         super().dispatch(event_name, *args, **kwargs)
         for event in self.extra_events.get(event_name, []):
@@ -1711,10 +1482,10 @@ class EventsClient(Client):
 
         """
         lookup = {
-            'clan': [self._clan_update_event, [cache_current_wars]],
-            'player': [self._player_update_event, [cache_search_players]],
-            'war': [self._war_update_event, [cache_current_wars, cache_clan_wars,
-                                             cache_league_wars]
+            'clan': [self._clan_update_event, ['search_clans']],
+            'player': [self._player_update_event, ['search_players']],
+            'war': [self._war_update_event, ['current_wars', 'clan_wars',
+                                             'league_wars']
                     ]
         }
         if event_type == 'all':
@@ -1725,7 +1496,7 @@ class EventsClient(Client):
         for e in events:
             e[0].set()
             for c in e[1]:
-                c.clear(1024, None, self._default_cache_class)
+                self.cache.reset_event_cache(c)
 
     def stop_updates(self, event_type='all'):
         """Stops an, or all, events.
@@ -1750,10 +1521,10 @@ class EventsClient(Client):
         """
 
         lookup = {
-            'clan': [self._clan_update_event, [cache_current_wars]],
-            'player': [self._player_update_event, [cache_search_players]],
-            'war': [self._war_update_event, [cache_current_wars, cache_clan_wars,
-                                             cache_league_wars]
+            'clan': [self._clan_update_event, ['search_clans']],
+            'player': [self._player_update_event, ['search_players']],
+            'war': [self._war_update_event, ['current_wars', 'clan_wars',
+                                             'league_wars']
                     ]
         }
         if event_type == 'all':
@@ -1764,15 +1535,16 @@ class EventsClient(Client):
         for e in events:
             e[0].clear()
             for c in e[1]:
-                c.clear(1024, None, self._default_cache_class)
+                self.cache.reset_event_cache(c)
 
     def _dispatch_batch_updates(self, key_name):
-        keys = cache_events.cache.keys()
+        keys = self.cache.events.keys()
         if not keys:
             return
         events = [n for n in keys if n.startswith(key_name)]
+
         self.dispatch(f'{key_name}_batch_updates',
-                      [cache_events.cache.pop(n, None) for n in events]
+                      [self.cache.events.cache.pop(n, None) for n in events]
                       )
 
     def _task_callback_check(self, result):
@@ -1894,10 +1666,10 @@ class EventsClient(Client):
             return
 
         async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
-            cached_war = cache_current_wars.get(war.clan_tag)
-
-            if not cached_war:
-                cache_current_wars[war.clan_tag] = war
+            try:
+                cached_war = self.cache.current_wars[war.clan_tag]
+            except KeyError:
+                self.cache.current_wars[war.clan_tag] = war
                 continue
 
             if war == cached_war:
@@ -1921,17 +1693,17 @@ class EventsClient(Client):
                 for attack in new_attacks:
                     self.dispatch('on_war_attack', attack, war)
 
-            cache_current_wars[war.clan_tag] = war
+            self.cache.current_wars[war.clan_tag] = war
 
     async def _update_players(self):
         if not self._player_updates:
             return
 
         async for player in self.get_players(self._player_updates, cache=False, update_cache=False):
-            cached_player = cache_search_players.get(player.tag)
-
-            if not cached_player:
-                cache_search_players[player.tag] = player
+            try:
+                cached_player = self.cache.search_players[player.tag]
+            except KeyError:
+                self.cache.search_players[player.tag] = player
                 continue
 
             if player == cached_player:
@@ -2062,9 +1834,10 @@ class EventsClient(Client):
             return
 
         async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
-            cached_clan = cache_search_clans.get(clan.tag)
-            if not cached_clan:
-                cache_search_clans[clan.tag] = clan
+            try:
+                cached_clan = self.cache.search_clans[clan.tag]
+            except KeyError:
+                self.cache.search_clans[clan.tag] = clan
                 continue
 
             if clan == cached_clan:
@@ -2124,7 +1897,7 @@ class EventsClient(Client):
                               clan.war_losses, clan
                               )
 
-            cache_search_clans[clan.tag] = clan
+            self.cache.search_clans[clan.tag] = clan
 
     async def _update_clan_members(self, cached_clan, clan):
         members = [n for n in clan.members if n != cached_clan.get_member(tag=n.tag)]
