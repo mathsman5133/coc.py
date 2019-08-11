@@ -961,7 +961,7 @@ class Client:
     # locations
     async def _populate_locations(self):
         if cache_locations.fully_populated is True:
-            return cache_locations.get_all_values()
+            return cache_locations.get_limit()
 
         cache_locations.clear()
         all_locations = await self.search_locations(limit=None)
@@ -993,7 +993,7 @@ class Client:
         locations = list(Location(data=n) for n in data['items'])
 
         for n in locations:
-            cache_locations.add(n.id, n)
+            cache_locations[n.id] = n
 
         return locations
 
@@ -1131,7 +1131,7 @@ class Client:
 
     async def _populate_leagues(self):
         if cache_leagues.fully_populated is True:
-            return cache_leagues.get_all_values()
+            return cache_leagues.get_limit()
 
         cache_leagues.clear()
         all_leagues = await self.search_leagues(limit=None)
@@ -1163,7 +1163,7 @@ class Client:
         leagues = list(League(data=n, http=self.http) for n in r['items'])
 
         for n in leagues:
-            cache_leagues.add(n.id, n)
+            cache_leagues[n.id] = n
 
         return leagues
 
@@ -1285,7 +1285,7 @@ class Client:
         players = list(LeagueRankedPlayer(data=n, http=self.http) for n in r.get('items', []))
 
         if update_cache:
-            cache_seasons.add(league_id, {season_id: players})
+            cache_seasons[league_id] = {season_id: players}
 
         return players
 
@@ -1897,7 +1897,7 @@ class EventsClient(Client):
             cached_war = cache_current_wars.get(war.clan_tag)
 
             if not cached_war:
-                cache_current_wars.add(war.clan_tag, war)
+                cache_current_wars[war.clan_tag] = war
                 continue
 
             if war == cached_war:
@@ -1921,7 +1921,7 @@ class EventsClient(Client):
                 for attack in new_attacks:
                     self.dispatch('on_war_attack', attack, war)
 
-            cache_current_wars.add(war.clan_tag, war)
+            cache_current_wars[war.clan_tag] = war
 
     async def _update_players(self):
         if not self._player_updates:
@@ -1931,7 +1931,7 @@ class EventsClient(Client):
             cached_player = cache_search_players.get(player.tag)
 
             if not cached_player:
-                cache_search_players.add(player.tag, player)
+                cache_search_players[player.tag] = player
                 continue
 
             if player == cached_player:
@@ -2064,7 +2064,7 @@ class EventsClient(Client):
         async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
             cached_clan = cache_search_clans.get(clan.tag)
             if not cached_clan:
-                cache_search_clans.add(clan.tag, clan)
+                cache_search_clans[clan.tag] = clan
                 continue
 
             if clan == cached_clan:
@@ -2124,7 +2124,7 @@ class EventsClient(Client):
                               clan.war_losses, clan
                               )
 
-            cache_search_clans.add(clan.tag, clan)
+            cache_search_clans[clan.tag] = clan
 
     async def _update_clan_members(self, cached_clan, clan):
         members = [n for n in clan.members if n != cached_clan.get_member(tag=n.tag)]
