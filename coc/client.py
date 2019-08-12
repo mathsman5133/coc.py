@@ -168,14 +168,17 @@ class Client:
         log.debug('HTTP connection created. Client is ready for use.')
 
     def close(self):
-        """
-        Closes the HTTP connection
+        """Closes the HTTP connection
         """
         log.info('Clash of Clans client logging out...')
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
 
     def create_cache(self):
+        """Creates all cache instances and registers settings.
+
+        This is called automatically in :meth:`coc.login()`
+        """
         self.cache.register_cache_types()
 
     def event(self, fctn):
@@ -377,7 +380,7 @@ class Client:
         """
         if cache:
             try:
-                c = self.cache.search_clans[clan_tag]
+                c = await self.cache.get('search_clans', clan_tag)
             except KeyError:
                 if fetch is False:
                     return
@@ -388,7 +391,7 @@ class Client:
         clan = SearchClan(data=r, client=self)
 
         if update_cache:
-            self.cache.search_clans[clan.tag] = clan
+            await self.cache.set('search_clans', clan.tag, clan)
 
         return clan.members
 
@@ -439,7 +442,7 @@ class Client:
             wars.append(WarLog(data=n, clan_tag=clan_tag, http=self.http))
 
         if update_cache:
-            self.cache.war_logs[wars[0].clan.tag] = wars
+            await self.cache.set('war_logs', wars[0].clan_tag, wars)
 
         return wars
 
@@ -733,16 +736,16 @@ class Client:
 
     # locations
     async def _populate_locations(self):
-        if self.cache.self.cache.locations.fully_populated is True:
-            return self.cache.locations.get_limit()
+        if await self.cache.get('locations', 'fully_populated') is True:
+            return await self.cache.get_limit('locations')
 
-        self.cache.locations.clear()
+        await self.cache.clear('locations')
         all_locations = await self.search_locations(limit=None)
 
         for n in all_locations:
-            self.cache.locations[n.id] = n
+            await self.cache.set('locations', n.id,  n)
 
-        self.cache.locations.fully_populated = True
+        await self.cache.set('locations', 'fully_populated', True)
         return all_locations
 
     async def search_locations(self, *, limit: int = None,
@@ -758,15 +761,15 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        if self.cache.locations.fully_populated is True:
-            return self.cache.locations.get_limit(limit)
+        if await self.cache.get('locations', 'fully_populated') is True:
+            return await self.cache.get_limit('locations', limit)
 
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data['items'])
 
         for n in locations:
-            self.cache.locations[n.id] = n
+            await self.cache.set('locations', n.id,  n)
 
         return locations
 
@@ -903,16 +906,16 @@ class Client:
     # leagues
 
     async def _populate_leagues(self):
-        if self.cache.leagues.fully_populated is True:
-            return self.cache.leagues.get_limit()
+        if await self.cache.get('leagues', 'fully_populated') is True:
+            return await self.cache.get_limit('leagues')
 
-        self.cache.leagues.clear()
+        await self.cache.clear('leagues')
         all_leagues = await self.search_leagues(limit=None)
 
         for n in all_leagues:
-            self.cache.leagues[n.id] = n
+            await self.cache.set('leagues', n.id, n)
 
-        self.cache.leagues.fully_populated = True
+        await self.cache.set('leagues', 'fully_populated', True)
         return all_leagues
 
     async def search_leagues(self, *, limit: int = None, before: int = None, after: int = None):
@@ -929,14 +932,14 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        if self.cache.leagues.fully_populated is True:
-            return self.cache.leagues.get_limit(limit)
+        if await self.cache.get('leagues', 'fully_populated') is True:
+            return await self.cache.get_limit('leagues', limit)
 
         r = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n, http=self.http) for n in r['items'])
 
         for n in leagues:
-            self.cache.leagues[n.id] = n
+            await self.cache.set('leagues', n.id, n)
 
         return leagues
 
@@ -1044,8 +1047,8 @@ class Client:
         """
         if cache:
             try:
-                data = self.cache.seasons[league_id][season_id]
-                if data:
+                data = await self.cache.get('seasons', 'league_id')
+                if data[season_id]:
                     return data
 
             except KeyError:
@@ -1058,7 +1061,7 @@ class Client:
         players = list(LeagueRankedPlayer(data=n, http=self.http) for n in r.get('items', []))
 
         if update_cache:
-            self.cache.seasons[league_id] = {season_id: players}
+            await self.cache.set('seasons', 'league_id', {season_id: players})
 
         return players
 
@@ -1538,13 +1541,13 @@ class EventsClient(Client):
                 self.cache.reset_event_cache(c)
 
     def _dispatch_batch_updates(self, key_name):
-        keys = self.cache.events.keys()
+        keys = await self.cache.keys('events')
         if not keys:
             return
         events = [n for n in keys if n.startswith(key_name)]
 
         self.dispatch(f'{key_name}_batch_updates',
-                      [self.cache.events.cache.pop(n, None) for n in events]
+                      [await self.cache.pop('events', n) for n in events]
                       )
 
     def _task_callback_check(self, result):
@@ -1666,10 +1669,9 @@ class EventsClient(Client):
             return
 
         async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
-            try:
-                cached_war = self.cache.current_wars[war.clan_tag]
-            except KeyError:
-                self.cache.current_wars[war.clan_tag] = war
+            cached_war = await self.cache.get('current_wars', war.clan_tag)
+            if not cached_war:
+                await self.cache.set('current_wars', war.clan_tag, war)
                 continue
 
             if war == cached_war:
@@ -1693,17 +1695,16 @@ class EventsClient(Client):
                 for attack in new_attacks:
                     self.dispatch('on_war_attack', attack, war)
 
-            self.cache.current_wars[war.clan_tag] = war
+            await self.cache.set('current_wars', war.clan_tag, war)
 
     async def _update_players(self):
         if not self._player_updates:
             return
 
         async for player in self.get_players(self._player_updates, cache=False, update_cache=False):
-            try:
-                cached_player = self.cache.search_players[player.tag]
-            except KeyError:
-                self.cache.search_players[player.tag] = player
+            cached_player = await self.cache.get('search_players', player.tag)
+            if not cached_player:
+                await self.cache.set('search_players', player.tag, player)
                 continue
 
             if player == cached_player:
@@ -1834,10 +1835,9 @@ class EventsClient(Client):
             return
 
         async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
-            try:
-                cached_clan = self.cache.search_clans[clan.tag]
-            except KeyError:
-                self.cache.search_clans[clan.tag] = clan
+            cached_clan = await self.cache.get('search_clans', clan.tag)
+            if not cached_clan:
+                await self.cache.set('search_clans', clan.tag, clan)
                 continue
 
             if clan == cached_clan:
@@ -1897,7 +1897,7 @@ class EventsClient(Client):
                               clan.war_losses, clan
                               )
 
-            self.cache.search_clans[clan.tag] = clan
+            await self.cache.set('search_clans', clan.tag, clan)
 
     async def _update_clan_members(self, cached_clan, clan):
         members = [n for n in clan.members if n != cached_clan.get_member(tag=n.tag)]
