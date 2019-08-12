@@ -45,34 +45,6 @@ def find_key(args, kwargs):
     return None
 
 
-def _wrap_coroutine(result):
-    async def new_coro():
-        return result
-    return new_coro()
-
-
-def _wrap_store_coro(cache, key, coro, update_cache):
-    async def fctn():
-        value = await coro
-        if update_cache:
-            cache[key] = value
-
-        return value
-    return fctn()
-
-
-def _try_wrap_store_coro(cache, key, data, update_cache):
-    if inspect.isawaitable(data):
-        return _wrap_store_coro(cache, key, data, update_cache)
-    if inspect.isasyncgen(data):
-        return data
-
-    if update_cache:
-        cache[key] = data
-
-    return data
-
-
 class MaxSizeCache(OrderedDict):
     __slots__ = 'max_size'
 
@@ -271,13 +243,69 @@ class Cache:
         )
         setattr(self, cache_name, cache)
 
+    async def get(self, cache_type, key):
+        cache = self.get_cache(cache_type)
+        try:
+            value = cache[key]
+        except (KeyError, IndexError):
+            get = cache.get
+            if inspect.isawaitable(get):
+                value = await get(key)
+            else:
+                value = get(key)
+
+        return value
+
+    async def set(self, cache_type, key, value):
+        cache = self.get_cache(cache_type)
+        try:
+            cache[key] = value
+        except (KeyError, IndexError):
+            add = cache.add
+            if inspect.isawaitable(add):
+                await add(key, value)
+            else:
+                add(key, value)
+
+    async def pop(self, cache_type, key):
+        cache = self.get_cache(cache_type)
+        try:
+            value = cache[key]
+            del cache[key]
+        except (KeyError, IndexError):
+            pop = cache.pop
+            if inspect.isawaitable(pop):
+                value = await pop(key)
+            else:
+                value = pop(key)
+        return value
+
+    async def keys(self, cache_type):
+        cache = self.get_cache(cache_type)
+        return cache.keys()
+
+    async def values(self, cache_type):
+        return self.get_cache(cache_type).values()
+
+    async def items(self, cache_type):
+        return self.get_cache(cache_type).items()
+
+    async def clear(self, cache_type):
+        return self.get_cache(cache_type).clear()
+
+    async def get_limit(self, cache_type, limit: int = None):
+        call = await self.values(cache_type)
+        if not limit:
+            return call
+        return call[:limit]
+
 
 def events_cache():
     def deco(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             class_instance = args[0]  # self will always be first arg
-            cache = class_instance.cache.get_cache('events')
+            cache = class_instance.cache
 
             event_name = args[1]
             if event_name.endswith('batch_updates'):
@@ -287,8 +315,7 @@ def events_cache():
             event_args.extend(kwargs.values())
 
             key = f'{event_name}.{time.monotonic()}'
-
-            cache[key] = event_args
+            cache.add('events', key, event_args)
 
             return func(*args, **kwargs)
         return wrapper
@@ -298,9 +325,9 @@ def events_cache():
 def cached(cache_name):
     def decorator(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        async def wrapper(*args, **kwargs):
             class_instance = args[0]  # self will always be first arg
-            cache = class_instance.cache.get_cache(cache_name)
+            cache = class_instance.cache
 
             key = find_key(args, kwargs)
             use_cache = kwargs.pop('cache', False)
@@ -308,36 +335,35 @@ def cached(cache_name):
             update_cache = kwargs.pop('update_cache', True)
 
             if not key:
-                return func(*args, **kwargs)
+                return await func(*args, **kwargs)
 
             if use_cache:
                 try:
-                    data = cache[key]
+                    data = await cache.get(cache_name, key)
                 except KeyError:
                     data = None
             else:
                 if fetch:
-                    data = func(*args, **kwargs)
-                    return _try_wrap_store_coro(cache, key, data, update_cache)
+                    data = await func(*args, **kwargs)
+                    if update_cache:
+                        cache.add(cache_name, key, data)
 
+                    return data
                 else:
                     return None
 
             if not data:
                 if fetch:
-                    data = func(*args, **kwargs)
+                    data = await func(*args, **kwargs)
                 else:
                     return None
-
-                return _try_wrap_store_coro(cache, key, data, update_cache)
+                if update_cache:
+                    cache.add(cache_name, key, data)
+                return data
 
             else:
                 log.debug('Using cached object with KEY: %s and VALUE: %s', key, data)
-                if inspect.iscoroutinefunction(func):
-                    return _wrap_coroutine(data)
-
                 return data
 
         return wrapper
     return decorator
-
