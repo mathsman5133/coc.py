@@ -115,6 +115,10 @@ class Client:
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
         An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
 
+    cache : :class:`Cache`, optional
+        The :class:`Cache` used for interaction with the clients cache.
+        If passed, this must inherit from :class:`Cache`. The default cache will be used if nothing is passed.
+
     Attributes
     -----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -284,7 +288,7 @@ class Client:
         return clans
 
     @cached('search_clans')
-    async def get_clan(self, tag: str, cache: bool = True, fetch: bool = True, 
+    async def get_clan(self, tag: str, cache: bool = True, fetch: bool = True,
                        update_cache: bool = True
                        ):
         """Get information about a single clan by clan tag. 
@@ -1323,13 +1327,13 @@ class EventsClient(Client):
             await coro(*args, **kwargs)
         except asyncio.CancelledError:
             pass
-        except (Exception, BaseException):
+        except (Exception, BaseException) as e:
             try:
-                await self.on_event_error(event_name, *args, **kwargs)
+                await self.on_event_error(event_name, e, *args, **kwargs)
             except asyncio.CancelledError:
                 pass
 
-    async def on_event_error(self, event_name, *args, **kwargs):
+    async def on_event_error(self, event_name, exception, *args, **kwargs):
         """Event called when an event fails.
 
         By default this will print the traceback
@@ -1341,27 +1345,24 @@ class EventsClient(Client):
         .. code-block:: python3
 
             @client.event
-            async def on_event_error(event_name, *args, **kwargs):
+            async def on_event_error(event_name, exception, *args, **kwargs):
                 print('Ignoring exception in {}'.format(event_name))
 
             class Client(events.EventClient):
-                async def on_event_error(event_name, *args, **kwargs):
+                async def on_event_error(event_name, exception, *args, **kwargs):
                     print('Ignoring exception in {}'.format(event_name))
 
         """
         print('Ignoring exception in {}'.format(event_name))
         traceback.print_exc()
 
-    async def add_clan_update(self, tags: Union[Iterable, str], *,
-                              member_updates=False, retry_interval=600):
+    def add_clan_update(self, tags: Union[Iterable, str], retry_interval=600):
         """Subscribe clan tags to events.
 
         Parameters
         ------------
         tags : Union[:class:`collections.Iterable`, str]
             The clan tags to add. Could be an Iterable of tags or just a string tag.
-        member_updates : bool
-            Whether to subscribe to events regarding players in that clan. Defaults to ``False``
         retry_interval : int
             In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
         """
@@ -1371,18 +1372,12 @@ class EventsClient(Client):
         else:
             self._clan_updates.extend(n for n in tags if n not in set(self._clan_updates))
 
-        if member_updates is True:
-            async for clan in self.get_clans(tags):
-                self.add_player_update((n.tag for n in clan.itermembers),
-                                       retry_interval=retry_interval
-                                       )
-
         if retry_interval < 0:
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._clan_retry_interval = retry_interval
 
-    def add_war_update(self, tags: Union[Iterable, str], *, retry_interval=600):
+    def add_war_update(self, tags: Union[Iterable, str], retry_interval=600):
         """Subscribe clan tags to war events.
 
         Parameters
@@ -1540,7 +1535,7 @@ class EventsClient(Client):
             for c in e[1]:
                 self.cache.reset_event_cache(c)
 
-    def _dispatch_batch_updates(self, key_name):
+    async def _dispatch_batch_updates(self, key_name):
         keys = await self.cache.keys('events')
         if not keys:
             return
@@ -1582,11 +1577,11 @@ class EventsClient(Client):
                 await self._war_update_event.wait()
                 await asyncio.sleep(self._war_retry_interval)
                 await self._update_wars()
-                self._dispatch_batch_updates('on_war')
+                await self._dispatch_batch_updates('on_war')
         except asyncio.CancelledError:
             return
-        except (Exception, BaseException):
-            await self.on_event_error('on_war_update')
+        except (Exception, BaseException) as e:
+            await self.on_event_error('on_war_update', e)
             return await self._war_updater()
 
     async def _clan_updater(self):
@@ -1595,11 +1590,11 @@ class EventsClient(Client):
                 await self._clan_update_event.wait()
                 await asyncio.sleep(self._clan_retry_interval)
                 await self._update_clans()
-                self._dispatch_batch_updates('on_clan')
+                await self._dispatch_batch_updates('on_clan')
         except asyncio.CancelledError:
             return
-        except (Exception, BaseException):
-            await self.on_event_error('on_clan_update')
+        except (Exception, BaseException) as e:
+            await self.on_event_error('on_clan_update', e)
             return await self._clan_updater()
 
     async def _player_updater(self):
@@ -1608,11 +1603,11 @@ class EventsClient(Client):
                 await self._player_update_event.wait()
                 await asyncio.sleep(self._player_retry_interval)
                 await self._update_players()
-                self._dispatch_batch_updates('on_player')
+                await self._dispatch_batch_updates('on_player')
         except asyncio.CancelledError:
             return
-        except (Exception, BaseException):
-            await self.on_event_error('on_player_update')
+        except (Exception, BaseException) as e:
+            await self.on_event_error('on_player_update', e)
             return await self._player_updater()
 
     async def _wait_for_state_change(self, state_to_wait_for, war):
