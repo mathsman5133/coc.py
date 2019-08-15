@@ -52,9 +52,12 @@ extensions = [
 # templates_path = ['_templates']
 
 rst_prolog = """
+.. |coro| replace:: This function is a |coroutine_link|_.
 .. |iter| replace:: This returns an |iterator|_.
 .. |iterator| replace:: *iterator*
 .. _iterator: https://docs.python.org/3/glossary.html#term-iterator
+.. |coroutine_link| replace:: *coroutine*
+.. _coroutine_link: https://docs.python.org/3/library/asyncio-task.html#coroutine
 """
 
 # The suffix(es) of source filenames.

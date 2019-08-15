@@ -198,7 +198,7 @@ class Cache:
     By default, the cache-type implemented mixes a LRU (least-recently used) and TTL (time to live) cache.
     This is a custom class, :class:`DefaultCache`, that checks both these properties before returning an object.
 
-    Other classes, :class:`MaxLifeCache` and :class:`TimeToLiveCache` are
+    Other classes, :class:`MaxSizeCache` and :class:`TimeToLiveCache` are
     provided for easy of use with :meth:`Cache.create_default_cache`.
     """
     def __init__(self, client):
