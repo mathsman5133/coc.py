@@ -301,7 +301,7 @@ class HTTPClient:
         return self.request(Route('GET', '/clans/{}/currentwar/leaguegroup'.format(tag), {}))
 
     def get_cwl_wars(self, war_tag):
-        return self.request(Route('GET', '/clanwarleagues/wars/'.format(war_tag), {}))
+        return self.request(Route('GET', '/clanwarleagues/wars/{}'.format(war_tag), {}))
 
     # locations
 
