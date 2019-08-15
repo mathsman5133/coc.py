@@ -187,8 +187,8 @@ class Cache:
 
     Some examples of implementation of this cache are:
 
-        1. Compatability with an async-cache, for example aioredis
-        2. Compatability with a C-binding or other cache which has performance improvements
+        1. Compatibility with an async-cache, for example aioredis
+        2. Compatibility with a C-binding or other cache which has performance improvements
         3. Additional logging, debugging and other things you wish to do when creating, getting and setting items to the cache
         4. Using a database for the cache (not recommended for regular use)
 
@@ -366,11 +366,11 @@ class Cache:
         try:
             cache[key] = value
         except (KeyError, IndexError):
-            set = cache.set
+            setter = cache.set
             if inspect.isawaitable(set):
-                await set(key, value)
+                await setter(key, value)
             else:
-                set(key, value)
+                setter(key, value)
 
     async def pop(self, cache_type, key):
         """|coro|
@@ -479,7 +479,7 @@ def events_cache():
             event_args.extend(kwargs.values())
 
             key = f'{event_name}.{time.monotonic()}'
-            cache.add('events', key, event_args)
+            cache.set('events', key, event_args)
 
             return func(*args, **kwargs)
         return wrapper
@@ -510,7 +510,7 @@ def cached(cache_name):
                 if fetch:
                     data = await func(*args, **kwargs)
                     if update_cache:
-                        cache.add(cache_name, key, data)
+                        cache.set(cache_name, key, data)
 
                     return data
                 else:
@@ -522,7 +522,7 @@ def cached(cache_name):
                 else:
                     return None
                 if update_cache:
-                    cache.add(cache_name, key, data)
+                    cache.set(cache_name, key, data)
                 return data
 
             else:
