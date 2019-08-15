@@ -839,3 +839,7 @@ The following exceptions are thrown by the library.
 .. autoexception:: NotFound
 
 .. autoexception:: Maitenance
+
+.. autoexception:: GatewayError
+
+.. autoexception:: PrivateWarLog
