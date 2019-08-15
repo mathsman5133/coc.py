@@ -45,6 +45,16 @@ class Clan(EqualityComparable):
     """
     __slots__ = ('tag', 'name', '_data', '_http')
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('tag', self.tag),
+            ('name', self.name),
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, http):
         self._http = http
         self._data = data
@@ -64,9 +74,6 @@ class Clan(EqualityComparable):
         return 'https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}'.format(
             self.tag.strip('#')
         )
-
-    def __str__(self):
-        return self.name
 
 
 class BasicClan(Clan):

@@ -76,6 +76,15 @@ class Achievement(EqualityComparable):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        attrs = [
+            ('player', repr(self.player)),
+            ('name', self.name),
+            ('stars', self.stars),
+            ('value', self.value)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, player):
         self._data = data
 
@@ -129,6 +138,14 @@ class Troop(EqualityComparable):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        attrs = [
+            ('player', repr(self.player)),
+            ('name', self.name),
+            ('level', self.level)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, player):
         self._data = data
 
@@ -178,6 +195,14 @@ class Hero(EqualityComparable):
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('player', repr(self.player)),
+            ('name', self.name),
+            ('level', self.level)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data, player):
         self._data = data
@@ -229,6 +254,14 @@ class Spell(EqualityComparable):
     def __str__(self):
         return self.name
 
+    def __repr__(self):
+        attrs = [
+            ('player', repr(self.player)),
+            ('name', self.name),
+            ('level', self.level)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, player):
         self._data = data
 
@@ -275,6 +308,16 @@ class Location(EqualityComparable):
     """
     __slots__ = ('id', 'name', 'is_country', 'country_code', 'localised_name', '_data')
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('id', self.id),
+            ('name', self.name),
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data):
         self._data = data
 
@@ -283,9 +326,6 @@ class Location(EqualityComparable):
         self.is_country = data.get('isCountry')
         self.country_code = data.get('countryCode')
         self.localised_name = data.get('localizedName')
-
-    def __str__(self):
-        return self.name
 
 
 class League(EqualityComparable):
@@ -304,6 +344,16 @@ class League(EqualityComparable):
     """
     __slots__ = ('id', 'name', 'localised_short_name', 'localised_name', '_data', '_http')
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('id', self.id),
+            ('name', self.name)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, http):
         self._data = data
         self._http = http
@@ -318,9 +368,6 @@ class League(EqualityComparable):
         """:class:`Badge`: The league's badge
         """
         return try_enum(Badge, data=self._data.get('iconUrls'), http=self._http)
-
-    def __str__(self):
-        return self.name
 
 
 class Season(EqualityComparable):
@@ -346,6 +393,13 @@ class LegendStatistics(EqualityComparable):
         :class:`int` - The player's legend trophies
     """
     __slots__ = ('player', 'legend_trophies', '_data')
+
+    def __repr__(self):
+        attrs = [
+            ('player', repr(self.player)),
+            ('legend_trophies', self.legend_trophies)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data, player):
         self._data = data
@@ -387,6 +441,12 @@ class Badge(EqualityComparable):
         :class:`str` - Medium, the default URL badge size
     """
     __slots__ = ('small', 'medium', 'large', 'url', '_data', '_http')
+
+    def __repr__(self):
+        attrs = [
+            ('url', self.url),
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data, http):
         self._http = http
@@ -435,6 +495,13 @@ class Timestamp(EqualityComparable):
     raw_time: :class:`str`: The raw timestamp string (ISO8601) as given by the API.
     """
     __slots__ = ('raw_time', '_data')
+
+    def __repr__(self):
+        attrs = [
+            ('time', self.raw_time),
+            ('seconds_until', self.seconds_until)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data):
         self._data = data

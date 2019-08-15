@@ -44,6 +44,15 @@ class BaseWar(EqualityComparable):
     """
     __slots__ = ('team_size', '_data', 'clan_tag', '_http')
 
+    def __repr__(self):
+        attrs = [
+            ('clan_tag', self.clan_tag),
+            ('clan', self.clan),
+            ('opponent', self.opponent),
+            ('size', self.team_size)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, clan_tag, http):
         self._http = http
         self._data = data
@@ -241,6 +250,16 @@ class WarAttack(EqualityComparable):
                  'destruction', 'order',
                  'attacker_tag', 'defender_tag', '_data')
 
+    def __repr__(self):
+        attrs = [
+            ('war', repr(self.war)),
+            ('member', repr(self.member)),
+            ('stars', self.stars),
+            ('destruction', self.destruction),
+            ('order', self.order)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, war, member):
         self._data = data
 
@@ -274,6 +293,14 @@ class LeagueGroup(EqualityComparable):
         :class:`str` - The current season of the league group
     """
     __slots__ = ('state', 'season', '_rounds', '_data', '_http')
+
+    def __repr__(self):
+        attrs = [
+            ('state', self.state),
+            ('season', self.season),
+            ('clans', ', '.join(repr(n) for n in self.iterclans))
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data, http):
         self._data = data
@@ -363,12 +390,22 @@ class LeagueWarLogEntry(EqualityComparable):
                  'attack_count', 'stars', 'destruction', 'clan_level',
                  'clan_tag')
 
+    def __repr__(self):
+        attrs = [
+            ('clan_tag', self.clan_tag),
+            ('clan', repr(self.clan)),
+            ('size', self.team_size)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
     def __init__(self, *, data, clan_tag, http):
         self.end_time = try_enum(Timestamp, data.get('endTime'))
         self.team_size = data.get('teamSize')
+
         from .clans import Clan  # hack because circular imports
         self.clan = try_enum(Clan, data.get('clan'), http=http)
         self.clan_tag = clan_tag
+
         try:
             self.enemy_stars = data['opponent']['stars']
         except KeyError:

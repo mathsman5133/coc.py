@@ -49,10 +49,17 @@ class Player(EqualityComparable):
     def __init__(self, data):
         self._data = data
         self.name = data['name']
-        self.tag = data.get('tag')
+        self.tag = data['tag']
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('tag', self.tag),
+            ('name', self.name)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     @property
     def share_link(self):
@@ -380,6 +387,14 @@ class LeaguePlayer(EqualityComparable):
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        attrs = [
+            ('tag', self.tag),
+            ('name', self.name),
+            ('town_hall', self.town_hall)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
     def __init__(self, *, data):
         self._data = data
