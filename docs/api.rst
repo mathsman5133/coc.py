@@ -22,6 +22,27 @@ Events Client
     :members:
     :inherited-members:
 
+Custom Cache
+------
+
+Cache Class
+~~~~~~~~~~~~~
+.. autoclass:: Cache
+    :members:
+    :inherited-members:
+
+Max Size Cache
+~~~~~~~~~~~~~~
+.. autoclass:: MaxSizeCache
+
+Time To Live Cache
+~~~~~~~~~~~~~~~~~
+.. autoclass:: TimeToLiveCache
+
+Default Cache
+~~~~~~~~~~~~~~~
+.. autoclass:: DefaultCache
+
 Event Reference
 ----------------
 

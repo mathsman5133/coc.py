@@ -2,6 +2,14 @@
 
 __version__ = '0.2.1'
 
+from .cache import (
+    Cache,
+    CacheConfig,
+    DefaultCache,
+    MaxSizeCache,
+    TimeToLiveCache
+)
+
 from .clans import (
     Clan,
     SearchClan,
@@ -68,3 +76,4 @@ from .wars import (
     LeagueWarLogEntry
 )
 from . import utils
+
