@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
 tag_validator = re.compile("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
 tag_names = {'location', 'tag'}
 
-CacheConfig = namedtuple('CacheConfig', ('max_size', 'ttl'))
+CacheConfig = namedtuple('CacheConfig', ('max_size', 'ttl'))  # a named tuple used with cache config.
 
 
 def validate_tag(string):
@@ -46,6 +46,12 @@ def find_key(args, kwargs):
 
 
 class MaxSizeCache(OrderedDict):
+    """Implements a basic Cache type which has a defined max size.
+
+    This can be used with :class:`Cache` and should be created in the :meth`Cache.create_default_cache`.
+
+    Once the cache has reached a set max size, it will eject the least recently used object.
+    """
     __slots__ = 'max_size'
 
     def __init__(self, max_size):
@@ -69,6 +75,14 @@ class MaxSizeCache(OrderedDict):
 
 
 class TimeToLiveCache(OrderedDict):
+    """Implements a basic Cache type which has a defined expiry/time to live.
+
+    This can be used with :class:`Cache` and should be created in the :meth`Cache.create_default_cache`.
+
+    Each object will be set with a timestamp, and upon retrieval,
+    the cache will check to ensure the object has not surpassed the given expiry.
+    If it has, it will eject the item from the cache and return ``None``.
+    """
     __slots__ = 'ttl'
 
     def __init__(self, ttl):
@@ -105,6 +119,16 @@ class TimeToLiveCache(OrderedDict):
 
 
 class DefaultCache(OrderedDict):
+    """Implements the default Cache Type used within the library.
+
+    This class inherits from `collections.OrderedDict` and
+    implements a mix of a max-size LRU and expiry TTL cache.
+
+    When the cache exceeds a given maximum size, it will eject objects least recently used.
+
+    All items have a timestamp attached to them upon setting,
+    and upon retrieval this is compared to ensure it does not exceed the expiry limit.
+    If it does, the object will be disgarded and ``None`` returned."""
     __slots__ = ('max_size', 'ttl')
 
     def __init__(self, max_size, ttl):
@@ -153,14 +177,30 @@ class DefaultCache(OrderedDict):
                       )
             del self[oldest]
 
-    def get_limit(self, limit: int = None):
-        if not limit:
-            return self.values()
-
-        return self.values()[:limit]
-
 
 class Cache:
+    """The base Cache class for the library.
+
+    The library's cache system works perfectly fine out-of-the box,
+    and this class is purely for the purposes of creating a custom cache,
+    if the library does not provide the functionality you require.
+
+    Some examples of implementation of this cache are:
+
+        1. Compatability with an async-cache, for example aioredis
+        2. Compatability with a C-binding or other cache which has performance improvements
+        3. Additional logging, debugging and other things you wish to do when creating, getting and setting items to the cache
+        4. Using a database for the cache (not recommended for regular use)
+
+    While all methods can be overridden, only the documented ones will be supported.
+    What this means is that if something breaks because you override other methods, you're on your own.
+
+    By default, the cache-type implemented mixes a LRU (least-recently used) and TTL (time to live) cache.
+    This is a custom class, :class:`DefaultCache`, that checks both these properties before returning an object.
+
+    Other classes, :class:`MaxLifeCache` and :class:`TimeToLiveCache` are
+    provided for easy of use with :meth:`Cache.create_default_cache`.
+    """
     def __init__(self, client):
         self.client = client
 
@@ -188,18 +228,45 @@ class Cache:
 
     @property
     def clan_config(self):
+        """Override the default max size and expiry of the clan caches.
+
+        This must return a named tuple, `coc.ClashConfig` with `max_size` and `ttl` attributes.
+
+        By default, the cache uses a max size of 1024 and TTL of 3600 (1 hour).
+        """
         return CacheConfig(1024, 3600)
 
     @property
     def player_config(self):
+        """Override the default max size and expiry of the player caches.
+
+        This must return a named tuple, `coc.ClashConfig` with `max_size` and `ttl` attributes.
+
+        By default, the cache uses a max size of 1024 and TTL of 3600 (1 hour).
+        """
+
         return CacheConfig(1024, 3600)
 
     @property
     def war_config(self):
+        """Override the default max size and expiry of the war group of caches.
+
+        This must return a named tuple, `coc.ClashConfig` with `max_size` and `ttl` attributes.
+
+        By default, the cache uses a max size of 1024 and TTL of 3600 (1 hour).
+        """
+
         return CacheConfig(1024, 1800)
 
     @property
     def static_config(self):
+        """Override the default max size and expiry of the static group of caches.
+
+        This must return a named tuple, `coc.ClashConfig` with `max_size` and `ttl` attributes.
+
+        By default, the cache uses a max size of 1024 and TTL of 3600 (1 hour).
+        """
+
         return CacheConfig(1024, None)
 
     @property
@@ -213,6 +280,13 @@ class Cache:
 
     @staticmethod
     def create_default_cache(max_size, ttl):
+        """This method creates and returns a cache instance.
+
+        It takes the parameters `max_size` and `ttl`,
+        and should return an appropriate instance of a cache object that reflects these parameters.
+
+        This should be where you reference your "other" cache type, instance, object etc.
+        """
         return DefaultCache(max_size=max_size, ttl=ttl)
 
     def get_max_size(self, cache_name):
@@ -244,6 +318,21 @@ class Cache:
         setattr(self, cache_name, cache)
 
     async def get(self, cache_type, key):
+        """|coro|
+
+        This method is used to get an item from a cache instance.
+
+        By default, it gets the cache instance, set as an attribute of :class:`Cache` with the same name,
+        then tries to use `__getitem__` on the cache instance. If that fails, it will try and
+        get the object via the `cache.get` call.
+
+        If your cache **does not** either implement `__getitem__` or the `.get(key)` methods,
+        you **must** override this with the alternate approach to getting items from your cache.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** return the object in the cache with the given key.
+        """
         cache = self.get_cache(cache_type)
         try:
             value = cache[key]
@@ -257,17 +346,48 @@ class Cache:
         return value
 
     async def set(self, cache_type, key, value):
+        """|coro|
+
+        This method is used to add a key/value pair to a cache instance.
+
+        By default, it gets the cache instance, set as an attribute of :class:`Cache` with the same name,
+        then tries to use `__setitem__` on the cache instance. If that fails, it will try and
+        set the object via the `cache.set` call.
+
+        If your cache **does not** either implement `__setitem__` or the `.set(key)` methods,
+        you **must** override this with the alternate approach to setting items to your cache.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** set the key/value pair in the cache.
+        Nothing is required to be returned.
+        """
         cache = self.get_cache(cache_type)
         try:
             cache[key] = value
         except (KeyError, IndexError):
-            add = cache.add
-            if inspect.isawaitable(add):
-                await add(key, value)
+            set = cache.set
+            if inspect.isawaitable(set):
+                await set(key, value)
             else:
-                add(key, value)
+                set(key, value)
 
     async def pop(self, cache_type, key):
+        """|coro|
+
+        This method is used to get an item from a cache instance, deleting it at the same time.
+
+        By default, it gets the cache instance, set as an attribute of :class:`Cache` with the same name,
+        then tries to use `__getitem__` on the cache instance to get the item, then `del` call to remove it.
+        If that fails, it will try and get the object and delete it at the same time via the `cache.pop` call.
+
+        If your cache **does not** either implement `__getitem__` and `del`, or the `.pop(key)` methods,
+        you **must** override this with the alternate approach to popping items from your cache.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** return a value with the given key.
+        """
         cache = self.get_cache(cache_type)
         try:
             value = cache[key]
@@ -281,16 +401,60 @@ class Cache:
         return value
 
     async def keys(self, cache_type):
+        """|coro|
+
+        This method is used to get all keys from a cache instance.
+
+        By default, this implements the `cache.keys()` function.
+        If your cache instance does not implement this method, you **must** override this method.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** return a list of strings; the keys of the cache.
+        """
         cache = self.get_cache(cache_type)
         return cache.keys()
 
     async def values(self, cache_type):
+        """|coro|
+
+        This method is used to get all values from a cache instance.
+
+        By default, this implements the `cache.values()` function.
+        If your cache instance does not implement this method, you **must** override this method.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** return a list of objects; the values of the cache.
+        """
         return self.get_cache(cache_type).values()
 
     async def items(self, cache_type):
+        """|coro|
+
+        This method is used to get all items from a cache instance.
+
+        By default, this implements the `cache.items()` function.
+        If your cache instance does not implement this method, you **must** override this method.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function **must** return a list of {k, v} values: the items of the cache.
+        """
         return self.get_cache(cache_type).items()
 
     async def clear(self, cache_type):
+        """|coro|
+
+        This method is used to remove all items from the cache instance.
+
+        By default, this implements the `cache.clear()` function.
+        If your cache instance does not implement this method, you **must** override this method.
+
+        As this function is a coroutine, you **can** `await` calls.
+
+        This function does not need to return anything.
+        """
         return self.get_cache(cache_type).clear()
 
     async def get_limit(self, cache_type, limit: int = None):
