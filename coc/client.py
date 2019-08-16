@@ -147,7 +147,7 @@ class Client:
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
-        self.cache = cache(self) or Cache(self)
+        self.cache = cache or Cache
 
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -183,6 +183,7 @@ class Client:
 
         This is called automatically in :meth:`coc.login()`
         """
+        self.cache(self)
         self.cache.register_cache_types()
 
     def event(self, fctn):
