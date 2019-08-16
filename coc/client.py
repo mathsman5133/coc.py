@@ -1635,7 +1635,7 @@ class EventsClient(Client):
         try:
             states = self._active_state_tasks[clan_tag]
         except KeyError:
-            return
+            return None, None
 
         return states.get('inWar'), states.get('warEnded')
 
