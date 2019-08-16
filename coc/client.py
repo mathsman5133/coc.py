@@ -183,7 +183,7 @@ class Client:
 
         This is called automatically in :meth:`coc.login()`
         """
-        self.cache(self)
+        self.cache = self.cache()
         self.cache.register_cache_types()
 
     def event(self, fctn):
