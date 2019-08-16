@@ -200,6 +200,11 @@ class Cache:
 
     Other classes, :class:`MaxSizeCache` and :class:`TimeToLiveCache` are
     provided for easy of use with :meth:`Cache.create_default_cache`.
+
+    Attributes
+    -------------
+    client : coc.Client
+        The coc.py client that created this cache instance.
     """
     def __init__(self, client):
         self.client = client
