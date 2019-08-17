@@ -1641,7 +1641,10 @@ class EventsClient(Client):
         return states.get('inWar'), states.get('warEnded')
 
     def _add_state_task(self, clan_tag, state, task):
-        self._active_state_tasks[clan_tag][state] = task
+        try:
+            self._active_state_tasks[clan_tag][state] = task
+        except KeyError:
+            self._active_state_tasks[clan_tag] = {state: task}
 
     def _create_status_tasks(self, cached_war, war):
         if war.state == cached_war.state:
@@ -1677,19 +1680,21 @@ class EventsClient(Client):
 
             self._create_status_tasks(cached_war, war)
 
-            if len(war.attacks) != len(cached_war.attacks):
-                if not war.iterattacks:
-                    continue  # if there are no attacks next line will raise TypeError..
-                    # we're not in war anymore anyway
-                if not cached_war.iterattacks:
-                    new_attacks = war.attacks
-                else:
-                    new_attacks = [n for n in war.iterattacks
-                                   if n not in set(cached_war.iterattacks)
-                                   ]
+            if not war.iterattacks:
+                await self.cache.set('current_wars', war.clan_tag, war)
+                # if there are no attacks next line will raise Attribute error..
+                # we're not in war anymore anyway
+                continue
 
-                for attack in new_attacks:
-                    self.dispatch('on_war_attack', attack, war)
+            if not cached_war.iterattacks:
+                new_attacks = war.attacks
+            else:
+                new_attacks = [n for n in war.iterattacks
+                               if n not in set(cached_war.iterattacks)
+                               ]
+
+            for attack in new_attacks:
+                self.dispatch('on_war_attack', attack, war)
 
             await self.cache.set('current_wars', war.clan_tag, war)
 
