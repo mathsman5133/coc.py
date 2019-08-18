@@ -153,9 +153,6 @@ A few examples:
     import aioredis
     from coc import Cache, EventsClient, login
 
-    con = sqlite3.connect(':memory:')
-    cur = con.cursor()
-
     class CustomCache(Cache):
         def create_default_cache(self, name, max_size, ttl):
             return
