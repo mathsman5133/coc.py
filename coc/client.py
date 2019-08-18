@@ -175,6 +175,7 @@ class Client:
         log.info('Clash of Clans client logging out...')
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
+        self.dispatch('on_client_close')
 
     def create_cache(self):
         """Creates all cache instances and registers settings.

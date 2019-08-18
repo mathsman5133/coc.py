@@ -78,8 +78,7 @@ class EventsClient(Client):
             return
         for t in tasks:
             t.cancel()
-        self.loop.run_until_complete(self.http.close())
-        self.loop.close()
+        super().close()
 
     @events_cache()
     def dispatch(self, event_name: str, *args, **kwargs):
