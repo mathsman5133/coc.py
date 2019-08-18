@@ -203,4 +203,4 @@ A few examples:
             await self.redis.wait_closed()
 
 
-    client = coc.login(client=CustomClient, cache=CustomCache)
+    client = coc.login('email', 'password', client=CustomClient, cache=CustomCache)
