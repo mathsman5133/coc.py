@@ -23,10 +23,8 @@ async def when_someone_attacks(attack, war):
           )
 
 client.add_events(on_clan_member_join, function_dicts={'on_war_attack': when_someone_attacks})
-asyncio.ensure_future(client.add_clan_update(['tag', 'another tag'], member_updates=True,
-                                             retry_interval=30), loop=client.loop
-                      )
-client.add_war_update(['clan tag'], retry_interval=60)
+client.add_clan_update('tag', 'another tag', retry_interval=30)
+client.add_war_update('clan tag', retry_interval=60)
 client.start_updates('all')
 
 client.run_forever()

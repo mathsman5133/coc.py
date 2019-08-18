@@ -6,6 +6,7 @@ import discord
 from discord.ext import commands
 
 import coc
+import traceback
 
 bot = commands.Bot(command_prefix='?')
 coc_client = coc.login('email', 'password',
@@ -29,11 +30,12 @@ async def on_player_name_change(old_name, new_name, player):
                                                                               player))
 
 
-@bot.event
-async def on_ready():
-    # adds the tags to the client to get events for. this also adds all current clan members,
-    # both with a retry interval of 60 (refreshes every 60 seconds)
-    await coc_client.add_clan_updates('clan tag', member_updates=True, retry_interval=60)
+@coc_client.event
+async def on_event_error(event_name, exception, *args, **kwargs):
+    if isinstance(exception, coc.PrivateWarLog):
+        return  # lets ignore private war log errors
+    print('Uh oh! Something went wrong in %s event... printing traceback for you.', event_name)
+    traceback.print_exc()
 
 
 @bot.command()
@@ -71,7 +73,7 @@ async def current_war_status(ctx, clan_tag):
 
     try:
         war = await coc_client.get_current_war(clan_tag)
-    except coc.Forbidden:
+    except coc.PrivateWarLog:
         return await ctx.send('Clan has a private war log!')
 
     e.add_field(name=war.clan.name,
@@ -97,6 +99,7 @@ async def current_war_status(ctx, clan_tag):
     await ctx.send(embed=e)
 
 
+coc_client.add_clan_update('clan_tag', retry_interval=600)  # add clan updates for that clan tag, searching for changes every 10min
 coc_client.start_updates()  # start looking for updates
 
 bot.run('bot token')

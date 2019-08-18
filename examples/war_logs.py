@@ -16,7 +16,7 @@ async def get_warlog_for_clans(clan_tags: list):
         # if we're not allowed to view warlog (private in game), this will raise an exception
         try:
             warlog = await coc_client.get_warlog(tag)
-        except coc.Forbidden:
+        except coc.PrivateWarLog:
             warlog = []
 
         war_logs[tag] = warlog
