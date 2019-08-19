@@ -21,6 +21,13 @@ Custom Cache
 
    cache
 
+Events
+-------
+.. toctree::
+   :maxdepth: 2
+
+   events
+
 Changelog
 ----------
 .. toctree::

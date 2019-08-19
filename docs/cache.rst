@@ -99,7 +99,7 @@ You would then pass this custom cache class into your ``coc.login`` function.
 Where ``CustomCache`` is your custom cache class.
 
 Modifying the Default Cache Instance Type
------------------------------------------
+------------------------------------------
 Sometimes you may wish to change the type of cache instance completely.
 The default cache instance/class is an OrderedDict - an inbuilt dict from the `collections` module.
 

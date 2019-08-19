@@ -23,7 +23,7 @@ Events Client
     :inherited-members:
 
 Custom Cache
-------
+-------------
 
 Cache Class
 ~~~~~~~~~~~~~
@@ -32,11 +32,11 @@ Cache Class
     :inherited-members:
 
 Max Size Cache
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 .. autoclass:: MaxSizeCache
 
 Time To Live Cache
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 .. autoclass:: TimeToLiveCache
 
 Default Cache
@@ -54,6 +54,10 @@ using either :meth:`EventsClient.event`, or :meth:`EventsClient.add_events`.
 
 All events the client will dispatch are listed below.
 
+.. _on_event_error:
+
+Event Error
+~~~~~~~~~~~~~~~
 .. py:function:: on_event_error(event_name, \*args, \*\*kwargs)
 
     This event is called when another event raises an exception and fails.
@@ -67,6 +71,13 @@ All events the client will dispatch are listed below.
     :param args: The positional args for the event which raised the error
     :param kwargs: The keyword-args for the event which raised the error
 
+Clan Events
+~~~~~~~~~~~~~
+
+.. _on_clan_update:
+
+Clan Update
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. py:function:: on_clan_update(old_clan, new_clan)
 
     This event is called when a clan has been updated.
@@ -79,6 +90,10 @@ All events the client will dispatch are listed below.
     :param new_clan: The clan object after the change
     :type new_clan: :class:`SearchClan`
 
+.. _on_clan_level_change:
+
+Clan Level Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. py:function:: on_clan_level_change(old_level, new_level, clan)
 
     This event is called when the clan level changes.
@@ -89,6 +104,11 @@ All events the client will dispatch are listed below.
     :type new_level: int
     :param clan: The clan who's level changed
     :type clan: :class:`SearchClan`
+
+.. _on_clan_description_change:
+
+Clan Description Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_description_change(old_description, new_description, clan)
 
@@ -101,6 +121,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's description changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_public_war_log_change:
+
+Clan Public WarLog Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_public_war_log_change(old_toggle, new_toggle, clan)
 
     This event is called when the clan's toggle changes.
@@ -111,6 +136,11 @@ All events the client will dispatch are listed below.
     :type new_toggle: bool
     :param clan: The clan who's toggle changed
     :type clan: :class:`SearchClan`
+
+.. _on_clan_type_change:
+
+Clan Type Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_type_change(old_type, new_type, clan)
 
@@ -123,6 +153,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's type changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_badge_change:
+
+Clan Badge Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_badge_change(old_badge, new_badge, clan)
 
     This event is called when the clan's badge changes.
@@ -133,6 +168,11 @@ All events the client will dispatch are listed below.
     :type new_badge: :class:`Badge`
     :param clan: The clan who's badge changed
     :type clan: :class:`SearchClan`
+
+.. _on_clan_required_trophies_change:
+
+Clan Required Trophies Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_required_trophies_change(old_requirement, new_requirement, clan)
 
@@ -145,6 +185,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's requirement changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_war_frequency_change:
+
+Clan War Frequency Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_war_frequency_change(old_frequency, new_frequency, clan)
 
     This event is called when the clan's war frequency changes.
@@ -155,6 +200,11 @@ All events the client will dispatch are listed below.
     :type new_frequency: str
     :param clan: The clan who's war frequency changed
     :type clan: :class:`SearchClan`
+
+.. _on_clan_war_win_streak_change:
+
+Clan War Win Streak Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_war_win_streak_change(old_streak, new_streak, clan)
 
@@ -167,6 +217,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's streak changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_war_win_change:
+
+Clan War Wins Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_war_win_change(old_wins, new_wins, clan)
 
     This event is called when the clan's war wins change.
@@ -177,6 +232,11 @@ All events the client will dispatch are listed below.
     :type new_wins: int
     :param clan: The clan who's wins changed
     :type clan: :class:`SearchClan`
+
+.. _on_clan_war_tie_change:
+
+Clan War Ties Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_war_tie_change(old_ties, new_ties, clan)
 
@@ -189,6 +249,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's ties changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_war_loss_change:
+
+Clan War Losses Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_war_loss_change(old_losses, new_losses, clan)
 
     This event is called when the clan's war losses change.
@@ -200,6 +265,11 @@ All events the client will dispatch are listed below.
     :param clan: The clan who's losses changed
     :type clan: :class:`SearchClan`
 
+.. _on_clan_member_join:
+
+Clan Member Join
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_join(member, clan)
 
     This event is called when a member joins a clan.
@@ -208,6 +278,11 @@ All events the client will dispatch are listed below.
     :type member: :class:`BasicPlayer`
     :param clan: The clan the member joined.
     :type clan: :class:`SearchClan`
+
+.. _on_clan_member_leave:
+
+Clan Member Leave
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_member_leave(member, clan)
 
@@ -218,10 +293,15 @@ All events the client will dispatch are listed below.
     :param clan: The clan the member left.
     :type clan: :class:`SearchClan`
 
+.. _on_clan_member_name_change:
+
+Clan Member Name Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_name_change(old_name, new_name, player)
 
     This event is called when a clan member's name changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_name: The player's old name
     :type old_name: str
@@ -230,10 +310,15 @@ All events the client will dispatch are listed below.
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_donation:
+
+Clan Member Donations Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_donation(old_donations, new_donations, player)
 
     This event is called when a clan member's donations changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_donations: The player's old donations
     :type old_donations: int
@@ -242,10 +327,15 @@ All events the client will dispatch are listed below.
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_received:
+
+Clan Member Received Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_received(old_received, new_received, player)
 
     This event is called when a clan member's donations received changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_received: The player's old received
     :type old_received: int
@@ -254,10 +344,15 @@ All events the client will dispatch are listed below.
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_role_change:
+
+Clan Member Role Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_role_change(old_role, new_role, player)
 
     This event is called when a clan member's role changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_role: The player's old role
     :type old_role: str
@@ -266,10 +361,15 @@ All events the client will dispatch are listed below.
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_rank_change:
+
+Clan Member Rank Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_rank_change(old_rank, new_rank, player)
 
     This event is called when a clan member's rank changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_rank: The player's old rank
     :type old_rank: int
@@ -278,10 +378,15 @@ All events the client will dispatch are listed below.
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_level_change:
+
+Clan Member Level Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_clan_member_level_change(old_level, new_level, player)
 
     This event is called when a clan member's level changes.
-    The player's clan can be acessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
 
     :param old_level: The player's old level
     :type old_level: str
@@ -289,6 +394,15 @@ All events the client will dispatch are listed below.
     :type new_level: str
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
+
+
+War Events
+~~~~~~~~~~~~
+
+.. _on_war_update:
+
+War Update
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_war_update(old_war, new_war)
 
@@ -299,6 +413,11 @@ All events the client will dispatch are listed below.
     :type old_war: :class:`War`
     :param new_war: The war object after the change
     :type new_war: :class:`War`
+
+.. _on_war_attack:
+
+New War Attack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_war_attack(attack, war)
 
@@ -312,6 +431,11 @@ All events the client will dispatch are listed below.
     :param war: The war this attack belongs to.
     :type war: :class:`War`
 
+.. _on_war_state_change:
+
+War State Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_war_state_change(current_state, war)
 
     This event is called when a change of war state occurs.
@@ -324,6 +448,14 @@ All events the client will dispatch are listed below.
     :param war: The war that has changed state
     :type war: :class:`War`
 
+Player Events
+~~~~~~~~~~~~~~~
+
+.. _on_player_update:
+
+Player Update
+^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_update(old_player, new_player)
 
     This event is called when a player changes.
@@ -334,6 +466,11 @@ All events the client will dispatch are listed below.
     :type old_war: :class:`SearchPlayer`
     :param new_war: The player object after the change
     :type new_war: :class:`SearchPlayer`
+
+.. _on_player_name_change:
+
+Player Name Change
+^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_name_change(old_name, new_name, player)
 
@@ -346,6 +483,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
+.. _on_player_townhall_upgrade:
+
+Player Town Hall Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_townhall_upgrade(old_townhall, new_townhall, player)
 
     This event is called when a player's townhall has been upgraded.
@@ -356,6 +498,11 @@ All events the client will dispatch are listed below.
     :type new_townhall: :class:`int`
     :param player: The new player object
     :type player: :class:`SearchPlayer`
+
+.. _on_player_builderhall_upgrade:
+
+Player Builder Hall Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_builderhall_upgrade(old_builderhall, new_builderhall, player)
 
@@ -368,6 +515,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
+.. _on_player_best_trophies_change:
+
+Player Best Trophies Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_best_trophies_change(old_best, new_best, player)
 
     This event is called when a player's best trophy count changes.
@@ -378,6 +530,11 @@ All events the client will dispatch are listed below.
     :type new_best: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+.. _on_player_best_versus_trophies_change:
+
+Player Best Versus Trophies Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_best_versus_trophies_change(old_best, new_best, player)
 
@@ -390,6 +547,11 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+.. _on_player_war_stars_change:
+
+Player War Stars Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_war_stars_change(old_stars, new_stars, player)
 
     This event is called when a player's war stars changes.
@@ -400,6 +562,11 @@ All events the client will dispatch are listed below.
     :type new_stars: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+.. _on_player_attack_wins_change:
+
+Player Attack Wins Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_attack_wins_change(old_attacks, new_attacks, player)
 
@@ -412,6 +579,11 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+.. _on_player_defense_wins_change:
+
+Player Defense Wins Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_defense_wins_change(old_defenses, new_defenses, player)
 
     This event is called when a player's defenses trophy count changes.
@@ -422,6 +594,11 @@ All events the client will dispatch are listed below.
     :type new_defenses: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+.. _on_player_versus_attacks_change:
+
+Player Versus Attacks Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_versus_attacks_change(old_attacks, new_attacks, player)
 
@@ -434,6 +611,11 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+.. _on_player_trophies_change:
+
+Player Trophies Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_trophies_change(old_trophies, new_trophies, player)
 
     This event is called when a player's trophy count changes.
@@ -444,6 +626,11 @@ All events the client will dispatch are listed below.
     :type new_trophies: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+.. _on_player_league_change:
+
+Player League Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_league_change(old_league, new_league, player)
 
@@ -456,6 +643,11 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+.. _on_player_role_change:
+
+Player Role Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_role_change(old_role, new_role, player)
 
     This event is called when a player's clan role.
@@ -466,6 +658,12 @@ All events the client will dispatch are listed below.
     :type new_role: str
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+
+.. _on_player_donations_change:
+
+Player Donations Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_donations_change(old_donations, new_donations, player)
 
@@ -478,6 +676,12 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+
+.. _on_player_received_change:
+
+Player Received Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_received_change(old_received, new_received, player)
 
     This event is called when a player's donations received count changes.
@@ -489,6 +693,12 @@ All events the client will dispatch are listed below.
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
+
+.. _on_player_clan_rank_change:
+
+Player's Clan Rank Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_clan_rank_change(old_rank, new_rank, player)
 
     This event is called when a player's clan rank changes.
@@ -499,6 +709,12 @@ All events the client will dispatch are listed below.
     :type new_rank: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`
+
+
+.. _on_player_previous_clan_rank_change:
+
+Player's Previous Clan Rank Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_previous_clan_rank_change(old_rank, new_rank, player)
 
@@ -513,8 +729,12 @@ All events the client will dispatch are listed below.
     :type player: :class:`SearchPlayer`
 
 
+.. _on_player_achievement_change:
 
-.. py:function:: on_player_achievement_update(old_achievement, new_achievement, player)
+Player Achievement Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. py:function:: on_player_achievement_change(old_achievement, new_achievement, player)
 
     This event is called when a player's achievement has changed.
 
@@ -525,14 +745,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_player_troop_unlock(new_troop, player)
 
-    This event is called when a player unlocks a new troop.
+.. _on_player_troop_upgrade:
 
-    :param new_troop: The player's new troop.
-        :type new_troop: :class:`Troop`
-    :param player: The new player object
-        :type player: :class:`SearchPlayer`
+Player Troop Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_troop_upgrade(old_troop, new_troop, player)
 
@@ -545,14 +762,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_player_spell_unlock(new_spell, player)
 
-    This event is called when a player unlocks a new spell.
+.. _on_player_spell_upgrade:
 
-    :param new_spell: The player's new spell.
-        :type new_spell: :class:`Spell`
-    :param player: The new player object
-        :type player: :class:`SearchPlayer`
+Player Spell Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_spell_upgrade(old_spell, new_spell, player)
 
@@ -565,14 +779,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_player_hero_unlock(new_hero, player)
 
-    This event is called when a player unlocks a new hero.
+.. _on_player_hero_upgrade:
 
-    :param new_hero: The player's new hero.
-    :type new_hero: :class:`Hero`
-    :param player: The new player object
-    :type player: :class:`SearchPlayer`
+Player Hero Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_hero_upgrade(old_hero, new_hero, player)
 
@@ -585,6 +796,11 @@ All events the client will dispatch are listed below.
     :param player: The new player object
     :type player: :class:`SearchPlayer`
 
+.. _on_player_clan_join:
+
+Player Clan Join
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. py:function:: on_player_clan_join(player, clan)
 
     This event is called when a player joins a clan.
@@ -593,6 +809,12 @@ All events the client will dispatch are listed below.
     :type member: :class:`SearchPlayer`
     :param clan: The clan the player joined.
     :type clan: :class:`Clan`
+
+
+.. _on_player_clan_leave:
+
+Player Clan Leave
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_clan_leave(player, clan)
 
@@ -603,6 +825,12 @@ All events the client will dispatch are listed below.
     :param clan: The clan the member left.
     :type clan: :class:`Clan`
 
+
+
+.. _on_player_clan_level_change:
+
+Player's Clan Level Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_player_clan_level_change(old_level, new_level, clan, player)
 
@@ -617,7 +845,13 @@ All events the client will dispatch are listed below.
     :param player: The player who's clan's level changed.
     :type player: :class:`SearchPlayer`
 
-.. py:function:: on_clan_badge_change(old_badge, new_badge, clan, player)
+
+.. _on_player_clan_badge_change:
+
+Player's Clan Badge Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. py:function:: on_player_clan_badge_change(old_badge, new_badge, clan, player)
 
     This event is called when the clan's badge changes.
 
