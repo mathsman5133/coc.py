@@ -275,6 +275,7 @@ class EventsClient(Client):
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._clan_retry_interval = retry_interval
+        self.start_updates('clan')
 
     def add_war_update(self, tags: Union[Iterable, str], retry_interval=600):
         """Subscribe clan tags to war events.
@@ -296,6 +297,7 @@ class EventsClient(Client):
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._war_retry_interval = retry_interval
+        self.start_updates('war')
 
     def add_player_update(self, tags: Union[Iterable, str], retry_interval=600):
         """Subscribe player tags to player update events.
@@ -317,56 +319,19 @@ class EventsClient(Client):
             raise ValueError('retry_interval must be greater than 0 seconds')
 
         self._player_retry_interval = retry_interval
+        self.start_updates('player')
 
-    def start_updates(self, event_type='all'):
+    def start_updates(self, event_group='all'):
         """Starts an, or all, events.
 
         .. note::
 
             This method **must** be called before any events are run.
 
-        The lookup for event_name is as follows:
-
-        +-----------------------------------+----------------------+
-        |     Event Name                    | Event Type           |
-        +-----------------------------------+----------------------+
-        | ``on_clan_update``                | ``clan``             |
-        +-----------------------------------+----------------------+
-        | ``on_clan_member_join``           | ``clan``             |
-        +-----------------------------------+----------------------+
-        | ``on_clan_member_leave``          | ``clan``             |
-        +-----------------------------------+----------------------+
-        | ``on_clan_settings_update``       | ``clan``             |
-        +-----------------------------------+----------------------+
-        | ``on_war_update``                 | ``war``              |
-        +-----------------------------------+----------------------+
-        | ``on_war_attack``                 | ``war``              |
-        +-----------------------------------+----------------------+
-        | ``on_war_state_change``           | ``war``              |
-        +-----------------------------------+----------------------+
-        | ``on_player_update``              | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_name_change           | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_townhall_upgrade``    | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_builderhall_upgrade`` | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_achievement_update``  | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_troop_upgrade``       | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_spell_upgrade``       | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_troop_upgrade``       | ``player``           |
-        +-----------------------------------+----------------------+
-        | ``on_player_other_update``        | ``player``           |
-        +-----------------------------------+----------------------+
-
         Parameters
         -----------
-        event_type : str
-            See above for which string corresponds to events.
+        event_group : str
+            The event group to start updates for. Could be ``player``, ``clan``, ``war`` or ``all``.
             Defaults to 'all'
 
         Example
@@ -385,10 +350,10 @@ class EventsClient(Client):
                                              'league_wars']
                     ]
         }
-        if event_type == 'all':
+        if event_group == 'all':
             events = lookup.values()
         else:
-            events = [lookup[event_type]]
+            events = [lookup[event_group]]
 
         for e in events:
             e[0].set()
@@ -715,7 +680,7 @@ class EventsClient(Client):
 
             for achievement in achievement_updates:
                 old_achievement = get(cached_player.achievements, name=achievement.name)
-                self.dispatch('on_player_achievement_update', old_achievement, achievement, player)
+                self.dispatch('on_player_achievement_change', old_achievement, achievement, player)
 
             for troop in troop_upgrades:
                 old_troop = get(cached_player.troops, name=troop.name)
