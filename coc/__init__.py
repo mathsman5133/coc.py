@@ -17,7 +17,8 @@ from .clans import (
     WarClan,
     LeagueClan
 )
-from .client import Client, EventsClient, login
+from .client import Client, login
+from .events import EventsClient
 from .enums import (
     CacheType,
     HOME_TROOP_ORDER,
