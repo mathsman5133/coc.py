@@ -1,3 +1,4 @@
+import asyncio
 import time
 import inspect
 import logging
@@ -484,7 +485,7 @@ def events_cache():
             event_args.extend(kwargs.values())
 
             key = f'{event_name}.{time.monotonic()}'
-            await cache.set('events', key, event_args)
+            asyncio.ensure_future(cache.set('events', key, event_args))
 
             return func(*args, **kwargs)
         return wrapper
