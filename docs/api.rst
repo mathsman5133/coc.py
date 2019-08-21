@@ -71,8 +71,13 @@ Event Error
     :param args: The positional args for the event which raised the error
     :param kwargs: The keyword-args for the event which raised the error
 
+.. _clan_event_group:
+
 Clan Events
 ~~~~~~~~~~~~~
+
+These events are all related to clan changes and changes to players within the clan. Clans can be added by
+registering clan tags and relevant events.
 
 .. _on_clan_update:
 
@@ -395,9 +400,13 @@ Clan Member Level Change
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _war_event_group:
 
 War Events
 ~~~~~~~~~~~~
+
+These events are all related to war changes, such as war attacks and state changes. Clans can be added by
+registering clan tags and relevant events.
 
 .. _on_war_update:
 
@@ -448,8 +457,13 @@ War State Change
     :param war: The war that has changed state
     :type war: :class:`War`
 
+.. _player_event_group:
+
 Player Events
 ~~~~~~~~~~~~~~~
+
+These events are all related to player changes and changes to clans within the player. Clans can be added by
+registering clan tags and relevant events.
 
 .. _on_player_update:
 
