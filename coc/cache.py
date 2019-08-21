@@ -515,7 +515,7 @@ def cached(cache_name):
                 if fetch:
                     data = await func(*args, **kwargs)
                     if update_cache:
-                        cache.set(cache_name, key, data)
+                        await cache.set(cache_name, key, data)
 
                     return data
                 else:
@@ -527,7 +527,7 @@ def cached(cache_name):
                 else:
                     return None
                 if update_cache:
-                    cache.set(cache_name, key, data)
+                    await cache.set(cache_name, key, data)
                 return data
 
             else:
