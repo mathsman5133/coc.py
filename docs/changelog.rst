@@ -6,6 +6,72 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.3.0
+-------
+Bug Fixes
+~~~~~~~~~~~
+- All iterators have been fixed in python 3.7
+- :ref:`on_clan_member_join` will now fire events correctly
+- Properly parse HTML errors thrown by CloudFlare
+- Accessing the ``League.badge`` attribute has been fixed
+- Clan events now sleep for the correct interval
+- ``WarMember.town_hall`` has been fixed
+- The API used to fetch IP has been changed (##19) to https://api.ipify.org/
+- Ensure the clan is in war before trying to find prep time (##21)
+
+New Things
+~~~~~~~~~~~~~
+- Check out the `Cache` tab in sidebar for a how-to work with the new cache. It still works out of the box!
+- You can now call utils with ``coc.utils.X``
+- All events now have callbacks as an extra layer of security to stop them from failing.
+- New Properties: ``Clan.share_link`` and ``Player.share_link``.
+- Add ``utils.maybe_sort()`` as an easy tool to sort clan war attacks.
+- All attributes that were prefaced with a ``_`` to dictate being iterables have been changed to be prefixed
+  with ``iter``, ie. ``_attacks`` becomes ``iterattacks``.
+- Rename ``SearchPlayer.level`` to ``SearchPlayer.exp_level`` - keep in line with API naming.
+- Default value can be passed to ``BasicPlayer.league``; defaults to `None`
+- Default value for ``SearchPlayer.builder_hall`` is 0.
+- New Error: `PrivateWarLog`:
+
+  - Subclass of `Forbidden` and a special case for when a 403 is thrown from trying to access war info for a clan with a private war log.
+  - Redirect all `Forbidden` thrown errors in get_WARS methods to throw `PrivateWarLog`
+
+  - A valid operation is to do either:
+
+.. code-block:: python3
+
+    try:
+        await coc.get_current_war(...)
+    except coc.Forbidden:
+        pass
+
+    # or:
+
+    try:
+        await coc.get_current_war(...)
+    except coc.PrivateWarLog:
+        pass
+
+- ``EventsClient.add_X_update`` now accepts either a string or iterable.
+- New Method: ``client.remove_events()`` which works in the same way as ``client.add_events()``
+- Speed up `utils.get`
+- New Events:
+    - :ref:`on_player_clan_join` - when a player joins a clan
+    - :ref:`on_player_clan_leave` - when a player leaves a clan
+    - :ref:`on_player_clan_level_change` - when a player's clan's level changes
+    - :ref:`on_player_clan_badge_change` - when a player's clan's badges change.
+    - `on_client_close` which is dispatched upon closing the client
+
+- Rename `x_achievement_update` --> `x_achievement_change` for consistency
+- Add ``localised_name`` and ``localised_short_name`` attributes to :class:`League` and :class:`Location`
+    - These have no effect at present.
+
+Documentation
+~~~~~~~~~~~~~~~
+- Lots of the docs have had tidy-ups, with 2 new how-to's dedicated to Cache and the Events Client.
+
+
+
 v0.2.0
 --------
 EventsClient
