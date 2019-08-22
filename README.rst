@@ -9,6 +9,7 @@ Key Features
 - Entire coverage of the official Clash of Clans API
 - Email/password login removes the stress of managing tokens
 - Optimised for speed and performance
+- Completely customisable cache
 
 Getting Started
 ================
@@ -40,7 +41,7 @@ This example will get a player with a certain tag, and search for 5 clans with a
     import asyncio
 
     client = coc.login('email', 'password')
-    loop = asyncio.get_event_loop
+    loop = asyncio.get_event_loop()
 
     player = loop.run_until_complete(client.get_player('tag'))
     print(player.name)
@@ -64,14 +65,12 @@ This script will run forever, printing to the terminal whenever someone joins th
     import asyncio
 
     client = coc.login('email', 'password', client=coc.EventsClient)
-    loop = asyncio.get_event_loop()
 
     @client.event
     async def on_clan_member_join(player, clan):
         print('{0.name} ({0.tag}) just joined {1.name} ({1.tag})!')
 
-    loop.run_until_complete(client.add_clan_update('tag'))
-    client.start_events('clan')
+    client.add_clan_update('tag')
 
     client.run_forever()
 
