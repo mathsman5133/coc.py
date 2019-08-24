@@ -317,7 +317,7 @@ Clan Member Name Change
 
 .. _on_clan_member_donation:
 
-Clan Member Donations Change
+Clan Member Donations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_member_donation(old_donations, new_donations, player)
@@ -334,7 +334,7 @@ Clan Member Donations Change
 
 .. _on_clan_member_received:
 
-Clan Member Received Change
+Clan Member Received
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. py:function:: on_clan_member_received(old_received, new_received, player)
@@ -348,6 +348,41 @@ Clan Member Received Change
     :type new_received: int
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
+
+.. _on_clan_member_trophy_change
+
+Clan Member Trophy Count Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. py:function:: on_clan_member_trophy_change(old_trophies, new_trophies, player)
+
+    This event is called when a clan member's trophy count has changed.
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+
+    :param old_received: The player's old trophy count
+    :type old_received: int
+    :param new_received: The player's new trophy count
+    :type new_received: int
+    :param player: The player object which changed
+    :type player: :class:`BasicPlayer`
+
+.. _on_clan_member_versus_trophy_change
+
+Clan Member Versus Trophy Count Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. py:function:: on_clan_member_versus_trophy_change(old_trophies, new_trophies, player)
+
+    This event is called when a clan member's versus trophy count has changed.
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+
+    :param old_received: The player's old versus trophy count
+    :type old_received: int
+    :param new_received: The player's new versus trophy count
+    :type new_received: int
+    :param player: The player object which changed
+    :type player: :class:`BasicPlayer`
+
 
 .. _on_clan_member_role_change:
 

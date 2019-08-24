@@ -58,6 +58,10 @@ These are enumerated below, with their appropriate group:
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_received`               | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
+| :ref:`on_clan_member_trophy_change`          | :ref:`clan_event_group`             |
++----------------------------------------------+-------------------------------------+
+| :ref:`on_clan_member_versus_trophy_change`   | :ref:`clan_event_group`             |
++----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_role_change`            | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_rank_change`            | :ref:`clan_event_group`             |
@@ -118,7 +122,7 @@ These are enumerated below, with their appropriate group:
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_player_clan_level_change`           | :ref:`player_event_group`           |
 +----------------------------------------------+-------------------------------------+
-| :ref:`on_clan_badge_change`                  | :ref:`player_event_group`           |
+| :ref:`on_player_clan_badge_change`           | :ref:`player_event_group`           |
 +----------------------------------------------+-------------------------------------+
 
 Adding Tags and Refresh Intervals
