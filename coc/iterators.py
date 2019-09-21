@@ -39,7 +39,7 @@ class TaggedIterator(_AsyncIterator):
         self.queue = asyncio.Queue(loop=client.loop)
         self.queue_empty = True
 
-    async def run_method(self, tag):
+    async def run_method(self, tag: str):
         try:
             return await self.get_method(tag, cache=self.cache, fetch=self.fetch, update_cache=self.update_cache)
         except (NotFound, Forbidden):
@@ -54,7 +54,7 @@ class TaggedIterator(_AsyncIterator):
 
         result = await asyncio.gather(*tasks)
 
-        result = [n for n in result if n]
+        result = (n for n in result if n)
 
         for n in result:
             await self.queue.put(n)
