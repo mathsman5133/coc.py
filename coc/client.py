@@ -828,14 +828,14 @@ class Client:
         locations = await self._populate_locations()
         return get(locations, name=location_name)
 
-    async def get_location_clan(self, location_id: int, *, limit: int = None,
+    async def get_location_clan(self, location_id: int = 'global', *, limit: int = None,
                                 before: int = None, after: int = None):
         """Get clan rankings for a specific location
 
         Parameters
         -----------
         location_id : int
-            The Location ID to search for.
+            The Location ID to search for. Defaults to all locations (global).
         limit : int
             The number of results to fetch.
 
@@ -847,14 +847,14 @@ class Client:
         r = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
         return list(Clan(data=n, http=self.http) for n in r['items'])
 
-    async def get_location_players(self, location_id: int, *, limit: int = None,
+    async def get_location_players(self, location_id: int = 'global', *, limit: int = None,
                                    before: int = None, after: int = None):
         """Get player rankings for a specific location
 
         Parameters
         -----------
         location_id : int
-            The Location ID to search for.
+            The Location ID to search for. Defaults to all locations (global).
         limit : int
             The number of results to fetch.
 
@@ -867,14 +867,14 @@ class Client:
                                                  )
         return list(Player(data=n) for n in r['items'])
 
-    async def get_location_clans_versus(self, location_id: int, *, limit: int = None,
+    async def get_location_clans_versus(self, location_id: int = 'global', *, limit: int = None,
                                         before: int = None, after: int = None):
         """Get clan versus rankings for a specific location
 
         Parameters
         -----------
         location_id : int
-            The Location ID to search for.
+            The Location ID to search for. Defaults to all locations (global).
         limit : int
             The number of results to fetch.
 
@@ -887,14 +887,14 @@ class Client:
                                                       )
         return list(Clan(data=n, http=self.http) for n in r['items'])
 
-    async def get_location_players_versus(self, location_id: int, *, limit: int = None,
+    async def get_location_players_versus(self, location_id: int = 'global', *, limit: int = None,
                                           before: int = None, after: int = None):
         """Get player versus rankings for a specific location
 
         Parameters
         -----------
         location_id : int
-            The Location ID to search for.
+            The Location ID to search for. Defaults to all locations (global).
         limit : int
             The number of results to fetch.
 
