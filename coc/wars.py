@@ -350,7 +350,7 @@ class LeagueWar(ClanWar):
         self.tag = data.get('tag')
         clan_tag = ''
         super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
-        self.clan_tag = getattr(self.clan, 'tag')
+        self.clan_tag = getattr(self.clan, 'tag', clan_tag)
 
     @property
     def type(self):
