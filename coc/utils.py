@@ -60,7 +60,7 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
 
 
 def item(_object, index, index_no, attribute, index_before_attribute):
-    if not (index and attribute):
+    if not (index or attribute):
         return _object
     if index and not attribute:
         return _object[index_no]
