@@ -59,18 +59,18 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
         if sort else (list, iter)[itr](n for n in seq)
 
 
-def item(_object, index, index_no, attribute, index_before_attribute):
+def item(_object, index, index_type, attribute, index_before_attribute):
     """Returns an object, an index, and/or an attribute of the object."""
     attr_get = attrgetter(attribute)
-    if not (index or attribute):
+    if not (index or index_type or attribute):
         return _object
-    if index and not attribute:
-        return _object[index_no]
-    if attribute and not index:
+    if (index or index_type) and not attribute:
+        return _object[index_type]
+    if attribute and not (index or index_type):
         return attr_get(_object)
     if index_before_attribute:
-        return attr_get(_object[index_no])
-    return attr_get(_object)[index_no]
+        return attr_get(_object[index_type])
+    return attr_get(_object)[index_type]
 
 
 async def get_iter(_iterable, index=False, index_type=0, attribute=None, index_before_attribute=True):
