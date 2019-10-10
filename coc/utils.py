@@ -1,3 +1,4 @@
+import inspect
 import re
 
 from datetime import datetime
@@ -56,3 +57,24 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
     """
     return (list, iter)[itr](n for n in sorted(seq, key=key)) \
         if sort else (list, iter)[itr](n for n in seq)
+
+
+def item(_object, index, index_no, attribute, index_before_attribute):
+    """Returns an object, an index, and/or an attribute of the object."""
+    attr_get = attrgetter(attribute)
+    if not (index or attribute):
+        return _object
+    if index and not attribute:
+        return _object[index_no]
+    if attribute and not index:
+        return attr_get(_object)
+    if index_before_attribute:
+        return attr_get(_object[index_no])
+    return attr_get(_object)[index_no]
+
+
+async def get_iter(_iterable, index=False, index_type=0, attribute=None, index_before_attribute=True):
+    """Retrieves a normal generator object from an unknown iterator with optional attributes."""
+    if inspect.isasyncgen(_iterable):
+        return (item(n, index, index_type, attribute, index_before_attribute) async for n in _iterable)
+    return (item(n, index, index_type, attribute, index_before_attribute) for n in _iterable)

@@ -318,7 +318,8 @@ class Client:
         return SearchClan(data=r, client=self)
 
     def get_clans(self, tags: Iterable, cache: bool = True,
-                  fetch: bool = True, update_cache: bool = True
+                  fetch: bool = True, update_cache: bool = True,
+                  **extra_options
                   ):
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
@@ -346,6 +347,16 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``
+        **extra_options
+            Extra options to use when passing in iterables other than normal lists.
+            These kwargs could be any of the following:
+
+            - index: bool - whether to index the values contained inside the iterable. Defaults to ``False``
+            - index_type: Union[str, int] - the string or integer slice to index each value inside the iterable with.
+            - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
+            - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
+
+            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
 
         Returns
         --------
@@ -354,7 +365,7 @@ class Client:
         if not isinstance(tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return ClanIterator(self, tags, cache, fetch, update_cache)
+        return ClanIterator(self, tags, cache, fetch, update_cache, **extra_options)
 
     async def get_members(self, clan_tag: str, cache: bool = True,
                           fetch: bool = True, update_cache: bool = True
@@ -484,7 +495,8 @@ class Client:
         return ClanWar(data=r, clan_tag=clan_tag, http=self.http)
 
     def get_clan_wars(self, clan_tags: Iterable, cache: bool = True,
-                      fetch: bool = True, update_cache: bool = True
+                      fetch: bool = True, update_cache: bool = True,
+                      **extra_options
                       ):
         """
         Retrieve information multiple clan's current clan wars
@@ -512,6 +524,16 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``.
+        **extra_options
+            Extra options to use when passing in iterables other than normal lists.
+            These kwargs could be any of the following:
+
+            - index: bool - whether to index the values contained inside the iterable. Defaults to ``False``
+            - index_type: Union[str, int] - the string or integer slice to index each value inside the iterable with.
+            - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
+            - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
+
+            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
 
         Returns
         --------
@@ -520,7 +542,7 @@ class Client:
         if not isinstance(clan_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return ClanWarIterator(self, clan_tags, cache, fetch, update_cache)
+        return ClanWarIterator(self, clan_tags, cache, fetch, update_cache, extra_options)
 
     @cached('league_groups')
     async def get_league_group(self, clan_tag: str, cache: bool = True,
@@ -588,7 +610,8 @@ class Client:
         return LeagueWar(data=r, http=self.http)
 
     def get_league_wars(self, war_tags: Iterable, cache: bool = True,
-                        fetch: bool = True, update_cache: bool = True
+                        fetch: bool = True, update_cache: bool = True,
+                        **extra_options
                         ):
         """
         Retrieve information multiple clan's current league wars
@@ -616,6 +639,16 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``.
+        **extra_options
+            Extra options to use when passing in iterables other than normal lists.
+            These kwargs could be any of the following:
+
+            - index: bool - whether to index the values contained inside the iterable. Defaults to ``False``
+            - index_type: Union[str, int] - the string or integer slice to index each value inside the iterable with.
+            - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
+            - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
+
+            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
 
         Returns
         --------
@@ -624,7 +657,7 @@ class Client:
         if not isinstance(war_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return LeagueWarIterator(self, war_tags, cache, fetch, update_cache)
+        return LeagueWarIterator(self, war_tags, cache, fetch, update_cache, **extra_options)
 
     @cached('current_wars')
     async def get_current_war(self, clan_tag: str, *, league_war: bool = True,
@@ -696,7 +729,8 @@ class Client:
             return None
 
     def get_current_wars(self, clan_tags: Iterable, cache: bool = False,
-                         fetch: bool = True, update_cache: bool = True
+                         fetch: bool = True, update_cache: bool = True,
+                         **extra_options
                          ):
         """Retrieve information multiple clan's current wars.
 
@@ -725,6 +759,17 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``.
+        **extra_options
+            Extra options to use when passing in iterables other than normal lists.
+            These kwargs could be any of the following:
+
+            - index: bool - whether to index the values contained inside the iterable. Defaults to ``False``
+            - index_type: Union[str, int] - the string or integer slice to index each value inside the iterable with.
+            - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
+            - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
+
+            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+
 
         Returns
         --------
@@ -735,7 +780,7 @@ class Client:
             raise TypeError('Tags are not an iterable.')
 
         return CurrentWarIterator(client=self, tags=clan_tags, cache=cache,
-                                  fetch=fetch, update_cache=update_cache
+                                  fetch=fetch, update_cache=update_cache, **extra_options
                                   )
 
     # locations
@@ -1101,7 +1146,8 @@ class Client:
         return SearchPlayer(data=r, http=self.http)
 
     def get_players(self, player_tags: Iterable, cache: bool = False,
-                    fetch: bool = True, update_cache: bool = True
+                    fetch: bool = True, update_cache: bool = True,
+                    **extra_options
                     ):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
@@ -1129,6 +1175,16 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``
+        **extra_options
+            Extra options to use when passing in iterables other than normal lists.
+            These kwargs could be any of the following:
+
+            - index: bool - whether to index the values contained inside the iterable. Defaults to ``False``
+            - index_type: Union[str, int] - the string or integer slice to index each value inside the iterable with.
+            - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
+            - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
+
+            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
 
         Returns
         --------
@@ -1137,4 +1193,4 @@ class Client:
         if not isinstance(player_tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return PlayerIterator(self, player_tags, cache, fetch, update_cache)
+        return PlayerIterator(self, player_tags, cache, fetch, update_cache, **extra_options)
