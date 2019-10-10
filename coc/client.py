@@ -318,7 +318,8 @@ class Client:
         return SearchClan(data=r, client=self)
 
     def get_clans(self, tags: Iterable, cache: bool = True,
-                  fetch: bool = True, update_cache: bool = True
+                  fetch: bool = True, update_cache: bool = True,
+                  **extra_options
                   ):
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
@@ -354,7 +355,7 @@ class Client:
         if not isinstance(tags, Iterable):
             raise TypeError('Tags are not an iterable.')
 
-        return ClanIterator(self, tags, cache, fetch, update_cache)
+        return ClanIterator(self, tags, cache, fetch, update_cache, **extra_options)
 
     async def get_members(self, clan_tag: str, cache: bool = True,
                           fetch: bool = True, update_cache: bool = True

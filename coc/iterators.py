@@ -3,6 +3,7 @@ import asyncio
 from collections import Iterable
 
 from .errors import NotFound, Forbidden
+from .utils import get_iter
 
 
 class _AsyncIterator:
@@ -29,7 +30,7 @@ class _AsyncIterator:
 
 
 class TaggedIterator(_AsyncIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **kwargs):
         self.client = client
         self.tags = tags
 
@@ -38,6 +39,8 @@ class TaggedIterator(_AsyncIterator):
         self.update_cache = update_cache
         self.queue = asyncio.Queue(loop=client.loop)
         self.queue_empty = True
+
+        self.iter_options = kwargs
 
     async def run_method(self, tag: str):
         try:
@@ -48,7 +51,9 @@ class TaggedIterator(_AsyncIterator):
     async def fill_queue(self):
         tasks = []
 
-        for tag in self.tags:
+        iterable = await get_iter(self.tags, **self.iter_options)
+
+        for tag in iterable:
             task = asyncio.ensure_future(self.run_method(tag))
             tasks.append(task)
 
@@ -76,30 +81,30 @@ class TaggedIterator(_AsyncIterator):
 
 
 class ClanIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(ClanIterator, self).__init__(client, tags, cache, fetch, update_cache)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
+        super(ClanIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_clan
 
 
 class PlayerIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(PlayerIterator, self).__init__(client, tags, cache, fetch, update_cache)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
+        super(PlayerIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_player
 
 
 class ClanWarIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(ClanWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
+        super(ClanWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_clan_war
 
 
 class LeagueWarIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(LeagueWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
+        super(LeagueWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_league_war
 
 
 class CurrentWarIterator(TaggedIterator):
-    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool):
-        super(CurrentWarIterator, self).__init__(client, tags, cache, fetch, update_cache)
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
+        super(CurrentWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_current_war
