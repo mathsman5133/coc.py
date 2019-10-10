@@ -60,18 +60,21 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
 
 
 def item(_object, index, index_no, attribute, index_before_attribute):
+    """Returns an object, an index, and/or an attribute of the object."""
+    attr_get = attrgetter(attribute)
     if not (index or attribute):
         return _object
     if index and not attribute:
         return _object[index_no]
     if attribute and not index:
-        return getattr(_object, attribute, _object)
+        return attr_get(_object)
     if index_before_attribute:
-        return getattr(_object[index_no], attribute, _object[index_no])
-    return getattr(_object, attribute, _object)[index_no]
+        return attr_get(_object[index_no])
+    return attr_get(_object)[index_no]
 
 
-async def get_iter(_iterable, index=False, index_no=0, attribute=None, index_before_attribute=True):
+async def get_iter(_iterable, index=False, index_type=0, attribute=None, index_before_attribute=True):
+    """Retrieves a normal generator object from an unknown iterator with optional attributes."""
     if inspect.isasyncgen(_iterable):
-        return (item(n, index, index_no, attribute, index_before_attribute) async for n in _iterable)
-    return (item(n, index, index_no, attribute, index_before_attribute) for n in _iterable)
+        return (item(n, index, index_type, attribute, index_before_attribute) async for n in _iterable)
+    return (item(n, index, index_type, attribute, index_before_attribute) for n in _iterable)
