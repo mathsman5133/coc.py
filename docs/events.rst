@@ -68,6 +68,8 @@ These are enumerated below, with their appropriate group:
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_level_change`           | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
+| :ref:`on_clan_member_league_change`          | :ref:`clan_event_group`             |
++----------------------------------------------+-------------------------------------+
 | :ref:`on_war_update`                         | :ref:`war_event_group`              |
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_war_attack`                         | :ref:`war_event_group`              |

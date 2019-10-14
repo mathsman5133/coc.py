@@ -794,6 +794,8 @@ class EventsClient(Client):
             if m.exp_level != cached_member.exp_level:
                 self.dispatch('on_clan_member_level_change',
                               cached_member.exp_level, m.exp_level, m, clan)
+            if m.league != cached_member.league:
+                self.dispatch('on_clan_member_league_change', cached_member.league, m.league, m, clan)
 
 
 EventsClient.__doc__ = Client.__doc__

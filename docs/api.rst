@@ -435,6 +435,25 @@ Clan Member Level Change
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
+.. _on_clan_member_league_change:
+
+Clan Member League Change
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. py:function:: on_clan_member_league_change(old_league, new_league, player, clan)
+
+    This event is called when a clan member's league changes.
+    The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
+
+    :param old_level: The player's old league
+    :type old_level: :class:`League`
+    :param new_level: The player's new league
+    :type new_level: :class:`League`
+    :param player: The player object which changed
+    :type player: :class:`BasicPlayer`
+    :param clan: The player's clan
+    :type clan: :class:`SearchClan`
+
 .. _war_event_group:
 
 War Events
