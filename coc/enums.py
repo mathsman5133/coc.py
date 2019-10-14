@@ -59,7 +59,8 @@ BUILDER_TROOPS_ORDER = [
     'Cannon Cart',
     'Night Witch',
     'Drop Ship',
-    'Super P.E.K.K.A'
+    'Super P.E.K.K.A',
+    'Hog Glider'
 ]
 
 SPELL_ORDER = [
