@@ -57,6 +57,7 @@ from .miscmodels import (
     Spell,
     Troop,
     Timestamp,
+    Label
 
 )
 from .players import (

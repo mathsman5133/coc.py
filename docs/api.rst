@@ -1095,6 +1095,12 @@ Timestamp
     :members:
     :private-members:
 
+Label
+~~~~~~~
+
+.. autoclass:: Label()
+    :members:
+    :private-members:
 
 League War Objects
 ~~~~~~~~~~~~~~~~~~~

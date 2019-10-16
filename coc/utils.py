@@ -74,7 +74,7 @@ def item(_object, index, index_type, attribute, index_before_attribute):
 
 
 async def get_iter(_iterable, index=False, index_type=0, attribute=None, index_before_attribute=True):
-    """Retrieves a normal generator object from an unknown iterator with optional attributes."""
+    """Retrieves a generator object from an unknown iterable with optional attributes."""
     if inspect.isasyncgen(_iterable):
         return (item(n, index, index_type, attribute, index_before_attribute) async for n in _iterable)
     return (item(n, index, index_type, attribute, index_before_attribute) for n in _iterable)
