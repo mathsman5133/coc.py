@@ -61,7 +61,7 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
 
 def item(_object, index, index_type, attribute, index_before_attribute):
     """Returns an object, an index, and/or an attribute of the object."""
-    attr_get = attrgetter(attribute)
+    attr_get = attrgetter(attribute or '')
     if not (index or index_type or attribute):
         return _object
     if (index or index_type) and not attribute:
