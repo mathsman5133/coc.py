@@ -528,6 +528,13 @@ class Timestamp(EqualityComparable):
 
 
 class Label(EqualityComparable):
+    """Represents a clan or player label.
+
+    Attributes
+    -----------
+    id: :class:`int`: The label's unique ID as given by the API.
+    name: :class:`str`: The label's name.
+    """
     __slots__ = ('_data', 'id', 'name', '_http')
 
     def __repr__(self):
