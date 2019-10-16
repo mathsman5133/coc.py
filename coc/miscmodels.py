@@ -525,3 +525,26 @@ class Timestamp(EqualityComparable):
         """
         delta = self.time - self.now
         return delta.total_seconds()
+
+
+class Label(EqualityComparable):
+    __slots__ = ('_data', 'id', 'name', '_http')
+
+    def __repr__(self):
+        attrs = [
+            ('id', self.id),
+            ('name', self.name)
+        ]
+        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+
+    def __init__(self, *, data, http):
+        self._http = http
+        self._data = data
+
+        self.id = data.get('id')
+        self.name = data.get('name')
+    
+    @property
+    def badge(self):
+        """:class:`Badge` - The label's badge."""
+        return try_enum(Badge, self._data.get('iconUrls'), http=self._http)
