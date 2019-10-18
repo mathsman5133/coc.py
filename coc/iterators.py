@@ -49,21 +49,23 @@ class TaggedIterator(_AsyncIterator):
             return None
 
     async def fill_queue(self):
-        tasks = (
+        tasks = [
             asyncio.ensure_future(
                 self.run_method(
-                    item(tag, **self.iter_options)
+                    item(n, **self.iter_options)
                 )
-                for tag in self.tags
             )
-        )
+            for n in self.tags
+        ]
+
         result = await asyncio.gather(*tasks)
 
         for n in result:
             if n:
                 await self.queue.put(n)
 
-    async def next(self):
+
+async def next(self):
         if self.queue_empty:
             try:
                 await self.fill_queue()
