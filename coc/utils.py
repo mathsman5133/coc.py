@@ -2,6 +2,7 @@ import inspect
 import re
 
 from datetime import datetime
+from functools import wraps
 from operator import attrgetter
 
 
@@ -49,6 +50,28 @@ def correct_tag(tag, prefix='#'):
         ' 123aBc O' -> '#123ABC0'
     """
     return prefix + re.sub(r'[^A-Z0-9]+', '', tag.upper()).replace('O', '0')
+
+
+def corrected_tag(arg_offset=1, prefix='#', arg_name='tag'):
+    def deco(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+
+            if not args[0].correct_tags:
+                return func(*args, **kwargs)
+
+            try:
+                args = list(args)
+                args[arg_offset] = correct_tag(args[arg_offset], prefix=prefix)
+                return func(*tuple(args), **kwargs)
+            except KeyError:
+                arg = kwargs.get(arg_name)
+                if not arg:
+                    return func(*args, **kwargs)
+                kwargs[arg_name] = correct_tag(arg, prefix)
+                return func(*args, **kwargs)
+        return wrapper
+    return deco
 
 
 def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):

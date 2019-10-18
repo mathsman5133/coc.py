@@ -38,7 +38,7 @@ from .http import HTTPClient
 from .iterators import PlayerIterator, ClanIterator, \
     ClanWarIterator, LeagueWarIterator, CurrentWarIterator
 from .players import Player, LeagueRankedPlayer, SearchPlayer
-from .utils import get
+from .utils import get, corrected_tag
 from .wars import ClanWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
 
 log = logging.getLogger(__name__)
@@ -117,19 +117,25 @@ class Client:
         The :class:`Cache` used for interaction with the clients cache.
         If passed, this must inherit from :class:`Cache`. The default cache will be used if nothing is passed.
 
+    correct_tags : :class:`bool`
+        Whether the client should correct tags before requesting them from the API.
+        This process involves stripping tags of whitespace and adding a `#` prefix if not present.
+        Defaults to ``False``.
+
     Attributes
     -----------
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
     __slots__ = ('loop', 'correct_key_count', 'key_names', 'throttle_limit',
-                 'http', '_ready', 'cache')
+                 'http', '_ready', 'cache', 'correct_tags')
 
     def __init__(self, *, key_count: int = 1,
                  key_names: str = 'Created with coc.py Client',
                  throttle_limit: int = 10,
                  loop: asyncio.AbstractEventLoop = None,
-                 cache=None
+                 cache=None,
+                 correct_tags: bool = False
                  ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -146,6 +152,7 @@ class Client:
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
         self.cache = cache or Cache
+        self.correct_tags = correct_tags
 
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -287,6 +294,7 @@ class Client:
 
         return clans
 
+    @corrected_tag()
     @cached('search_clans')
     async def get_clan(self, tag: str, cache: bool = True, fetch: bool = True,
                        update_cache: bool = True
@@ -367,6 +375,7 @@ class Client:
 
         return ClanIterator(self, tags, cache, fetch, update_cache, **extra_options)
 
+    @corrected_tag(arg_name='clan_tag')
     async def get_members(self, clan_tag: str, cache: bool = True,
                           fetch: bool = True, update_cache: bool = True
                           ):
@@ -410,6 +419,7 @@ class Client:
 
         return clan.members
 
+    @corrected_tag(arg_name='clan_tag')
     @cached('war_logs')
     async def get_warlog(self, clan_tag: str, cache: bool = False,
                          fetch: bool = True, update_cache: bool = True
@@ -461,6 +471,7 @@ class Client:
 
         return wars
 
+    @corrected_tag(arg_name='clan_tag')
     @cached('clan_wars')
     async def get_clan_war(self, clan_tag: str, cache: bool = True,
                            fetch: bool = True, update_cache: bool = True
@@ -544,6 +555,7 @@ class Client:
 
         return ClanWarIterator(self, clan_tags, cache, fetch, update_cache, extra_options)
 
+    @corrected_tag(arg_name='clan_tag')
     @cached('league_groups')
     async def get_league_group(self, clan_tag: str, cache: bool = True,
                                fetch: bool = True, update_cache: bool = True
@@ -576,6 +588,7 @@ class Client:
 
         return LeagueGroup(data=r, http=self.http)
 
+    @corrected_tag(arg_name='war_tag')
     @cached('league_wars')
     async def get_league_war(self, war_tag: str, cache: bool = True,
                              fetch: bool = True, update_cache: bool = True
@@ -659,6 +672,7 @@ class Client:
 
         return LeagueWarIterator(self, war_tags, cache, fetch, update_cache, **extra_options)
 
+    @corrected_tag(arg_name='clan_tag')
     @cached('current_wars')
     async def get_current_war(self, clan_tag: str, *, league_war: bool = True,
                               cache: bool = True, fetch: bool = True, update_cache: bool = True):
@@ -1116,6 +1130,7 @@ class Client:
 
     # players
 
+    @corrected_tag(arg_name='player_tag')
     @cached('search_players')
     async def get_player(self, player_tag: str, cache: bool = False,
                          fetch: bool = True, update_cache: bool = True
