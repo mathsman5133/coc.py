@@ -28,7 +28,7 @@ SOFTWARE.
 from collections import OrderedDict
 
 from .miscmodels import EqualityComparable, try_enum, Achievement, Troop, Hero, Spell, League, Label
-from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER
+from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER, LabelType
 from .utils import maybe_sort
 
 
@@ -263,7 +263,9 @@ class SearchPlayer(BasicPlayer):
 
         Returns an iterable of :class:`Label`: the player's labels.
         """
-        return iter(Label(data=ldata, http=self._http) for ldata in self._data.get('labels', []))
+        return iter(
+            Label(data=ldata, http=self._http, label_type=LabelType.player) for ldata in self._data.get('labels', [])
+        )
 
     @property
     def labels(self):

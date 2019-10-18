@@ -27,6 +27,7 @@ SOFTWARE.
 
 from datetime import datetime
 
+from .enums import LabelType
 from .utils import from_timestamp
 
 
@@ -535,7 +536,7 @@ class Label(EqualityComparable):
     id: :class:`int`: The label's unique ID as given by the API.
     name: :class:`str`: The label's name.
     """
-    __slots__ = ('_data', 'id', 'name', '_http')
+    __slots__ = ('_data', 'id', 'name', '_http', 'label_type')
 
     def __repr__(self):
         attrs = [
@@ -544,14 +545,16 @@ class Label(EqualityComparable):
         ]
         return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
 
-    def __init__(self, *, data, http):
+    def __init__(self, *, data, http, label_type: LabelType):
         self._http = http
         self._data = data
 
         self.id = data.get('id')
         self.name = data.get('name')
-    
+        self._data["iconUrls"] = label_type.value[self.id]
+
     @property
     def badge(self):
         """:class:`Badge` - The label's badge."""
+
         return try_enum(Badge, self._data.get('iconUrls'), http=self._http)
