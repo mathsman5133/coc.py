@@ -64,8 +64,7 @@ class TaggedIterator(_AsyncIterator):
             if n:
                 await self.queue.put(n)
 
-
-async def next(self):
+    async def next(self):
         if self.queue_empty:
             try:
                 await self.fill_queue()
