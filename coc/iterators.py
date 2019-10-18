@@ -3,7 +3,7 @@ import asyncio
 from collections import Iterable
 
 from .errors import NotFound, Forbidden
-from .utils import get_iter
+from .utils import item
 
 
 class _AsyncIterator:
@@ -49,20 +49,19 @@ class TaggedIterator(_AsyncIterator):
             return None
 
     async def fill_queue(self):
-        tasks = []
-
-        iterable = await get_iter(self.tags, **self.iter_options)
-
-        for tag in iterable:
-            task = asyncio.ensure_future(self.run_method(tag))
-            tasks.append(task)
-
+        tasks = (
+            asyncio.ensure_future(
+                self.run_method(
+                    item(tag, **self.iter_options)
+                )
+                for tag in self.tags
+            )
+        )
         result = await asyncio.gather(*tasks)
 
-        result = (n for n in result if n)
-
         for n in result:
-            await self.queue.put(n)
+            if n:
+                await self.queue.put(n)
 
     async def next(self):
         if self.queue_empty:
