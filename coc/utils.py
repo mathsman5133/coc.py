@@ -4,6 +4,7 @@ import re
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
+from typing import Union
 
 
 def find(predicate, seq):
@@ -82,7 +83,10 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
         if sort else (list, iter)[itr](n for n in seq)
 
 
-def item(_object, index, index_type, attribute, index_before_attribute):
+def item(
+        _object, *, index: bool = False, index_type: Union[int, str] = 0,
+        attribute: str = None, index_before_attribute: bool = True
+):
     """Returns an object, an index, and/or an attribute of the object."""
     attr_get = attrgetter(attribute or '')
     if not (index or index_type or attribute):
