@@ -98,10 +98,3 @@ def item(
     if index_before_attribute:
         return attr_get(_object[index_type])
     return attr_get(_object)[index_type]
-
-
-async def get_iter(_iterable, index=False, index_type=0, attribute=None, index_before_attribute=True):
-    """Retrieves a generator object from an unknown iterable with optional attributes."""
-    if inspect.isasyncgen(_iterable):
-        return (item(n, index, index_type, attribute, index_before_attribute) async for n in _iterable)
-    return (item(n, index, index_type, attribute, index_before_attribute) for n in _iterable)
