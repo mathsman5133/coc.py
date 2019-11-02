@@ -7,12 +7,13 @@ import re
 from functools import wraps
 from collections import OrderedDict, namedtuple
 
+from coc.events import EventsClient
 from coc.utils import find
 
 
 log = logging.getLogger(__name__)
 
-tag_validator = re.compile("(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
+tag_validator = re.compile(r"(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
 tag_names = {'location', 'tag'}
 
 CacheConfig = namedtuple('CacheConfig', ('max_size', 'ttl'))  # a named tuple used with cache config.
@@ -500,9 +501,12 @@ def cached(cache_name):
             cache = class_instance.cache
 
             key = find_key(args, kwargs)
-            use_cache = kwargs.pop('cache', False)
+            use_cache = kwargs.pop('cache', True)
             fetch = kwargs.pop('fetch', True)
             update_cache = kwargs.pop('update_cache', True)
+
+            if isinstance(class_instance, EventsClient):
+                update_cache = False  # we never want to automatically update cache for EventsClient.
 
             if not key:
                 return await func(*args, **kwargs)
