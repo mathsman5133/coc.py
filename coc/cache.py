@@ -7,8 +7,7 @@ import re
 from functools import wraps
 from collections import OrderedDict, namedtuple
 
-from coc.events import EventsClient
-from coc.utils import find
+from coc.utils import custom_isinstance, find
 
 
 log = logging.getLogger(__name__)
@@ -505,7 +504,7 @@ def cached(cache_name):
             fetch = kwargs.pop('fetch', True)
             update_cache = kwargs.pop('update_cache', True)
 
-            if isinstance(class_instance, EventsClient):
+            if custom_isinstance(class_instance, __name__, 'EventsClient'):  # workaround to stop recursion imports.
                 update_cache = False  # we never want to automatically update cache for EventsClient.
 
             if not key:

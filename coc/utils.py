@@ -98,3 +98,13 @@ def item(
     if index_before_attribute:
         return attr_get(_object[index_type])
     return attr_get(_object)[index_type]
+
+
+def custom_isinstance(obj, module, name):
+    for cls in inspect.getmro(type(obj)):
+        try:
+            if cls.__module__ == module and cls.__name__ == name:
+                return True
+        except:
+            pass
+    return False
