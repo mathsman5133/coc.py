@@ -151,12 +151,11 @@ class SearchClan(BasicClan):
     """
     __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
                  'war_wins', 'war_ties', 'war_losses', 'public_war_log',
-                 'description', '_client')
+                 'description')
 
-    def __init__(self, *, data, client):
-        super().__init__(data=data, http=client.http)
+    def __init__(self, *, data, http):
+        super().__init__(data=data, http=http)
 
-        self._client = client
         self.type = data.get('type')
         self.required_trophies = data.get('requiredTrophies')
         self.war_frequency = data.get('warFrequency')
@@ -250,7 +249,7 @@ class SearchClan(BasicClan):
         :return: AsyncIterator of :class:`SearchPlayer`
         """
         tags = iter(n.tag for n in self.itermembers)
-        return PlayerIterator(self._client, tags, cache, fetch, update_cache)
+        return PlayerIterator(self._http.client, tags, cache, fetch, update_cache)
 
 
 class WarClan(Clan):

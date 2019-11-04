@@ -292,7 +292,7 @@ class Client:
                                          before=before, after=after
                                          )
 
-        clans = list(SearchClan(data=n, client=self) for n in r.get('items', []))
+        clans = list(SearchClan(data=n, http=self.http) for n in r.get('items', []))
 
         return clans
 
@@ -329,7 +329,7 @@ class Client:
             The clan with provided tag.
         """
         r = await self.http.get_clan(tag)
-        return SearchClan(data=r, client=self)
+        return SearchClan(data=r, http=self.http)
 
     def get_clans(
             self,
@@ -426,7 +426,7 @@ class Client:
                 return c.members
 
         r = await self.http.get_clan(clan_tag)
-        clan = SearchClan(data=r, client=self)
+        clan = SearchClan(data=r, http=self.http)
 
         if update_cache:
             await self.cache.set('search_clans', clan.tag, clan)
