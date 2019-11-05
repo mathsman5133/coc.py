@@ -188,7 +188,7 @@ class SearchClan(BasicClan):
         Returns an iterable of :class:`BasicPlayer`: A list of clan members.
         """
         from .players import BasicPlayer  # hack because circular imports
-        return iter(BasicPlayer(mdata, self._client.http, self)
+        return iter(BasicPlayer(mdata, self._http, self)
                     for mdata in self._data.get('memberList', []))
 
     @property
