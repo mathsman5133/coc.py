@@ -778,13 +778,11 @@ class Client:
 
         round_tags = league_group.rounds[-1]
 
-        async for war in self.get_league_wars(round_tags, cache=cache,
-                                              fetch=fetch, update_cache=update_cache
-                                              ):
+        async for war in self.get_league_wars(round_tags, cache=cache, fetch=fetch, update_cache=update_cache):
             if war.clan_tag == clan_tag:
                 return war
         else:
-            return None
+            return get_war
 
     def get_current_wars(
             self,
