@@ -547,6 +547,12 @@ class EventsClient(Client):
 
             self._create_status_tasks(cached_war, war)
 
+            if not war.opponent:
+                await self.cache.set('current_wars', war.clan_tag, war)
+                # if there are no opponent next line will raise Attribute error..
+                # we've just entered prep - this probably needs a rewrite.
+                continue
+
             if not war.iterattacks:
                 await self.cache.set('current_wars', war.clan_tag, war)
                 # if there are no attacks next line will raise Attribute error..
@@ -556,9 +562,9 @@ class EventsClient(Client):
             if not cached_war.iterattacks:
                 new_attacks = war.attacks
             else:
-                new_attacks = [n for n in war.iterattacks
-                               if n not in set(cached_war.iterattacks)
-                               ]
+                new_attacks = [
+                    n for n in war.iterattacks if n not in set(cached_war.iterattacks)
+                ]
 
             for attack in new_attacks:
                 self.dispatch('on_war_attack', attack, war)
