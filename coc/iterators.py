@@ -104,11 +104,7 @@ class TaggedIterator(_AsyncIterator):
 
     async def _fill_queue(self):
         tasks = [
-            asyncio.ensure_future(
-                self._run_method(
-                    item(n, **self.iter_options)
-                )
-            )
+            asyncio.ensure_future(self._run_method(item(n, **self.iter_options)))
             for n in self.tags
         ]
 

@@ -192,7 +192,7 @@ class SearchClan(BasicClan):
         Returns an iterable of :class:`Label`: the player's labels.
         """
         return iter(
-            Label(data=ldata, http=self._http) for ldata in self._data.get('labels', [])
+            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
         )
 
     @property

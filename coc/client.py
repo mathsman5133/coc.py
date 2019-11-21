@@ -146,13 +146,14 @@ class Client:
     )
 
     def __init__(
-            self, *,
-            key_count: int = 1,
-            key_names: str = "Created with coc.py Client",
-            throttle_limit: int = 10,
-            loop: asyncio.AbstractEventLoop = None,
-            cache=None,
-            correct_tags: bool = False
+        self,
+        *,
+        key_count: int = 1,
+        key_names: str = "Created with coc.py Client",
+        throttle_limit: int = 10,
+        loop: asyncio.AbstractEventLoop = None,
+        cache=None,
+        correct_tags: bool = False
     ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -402,7 +403,7 @@ class Client:
 
         return ClanIterator(self, tags, cache, fetch, update_cache, **extra_options)
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     async def get_members(
         self,
         clan_tag: str,
@@ -450,7 +451,7 @@ class Client:
 
         return clan.members
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     @cached("war_logs")
     async def get_warlog(
         self,
@@ -511,7 +512,7 @@ class Client:
 
         return wars
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     @cached("clan_wars")
     async def get_clan_war(
         self,
@@ -606,7 +607,7 @@ class Client:
             self, clan_tags, cache, fetch, update_cache, **extra_options
         )
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     @cached("league_groups")
     async def get_league_group(
         self,
@@ -644,7 +645,7 @@ class Client:
 
         return LeagueGroup(data=data, http=self.http)
 
-    @corrected_tag(arg_name='war_tag')
+    @corrected_tag(arg_name="war_tag")
     @cached("league_wars")
     async def get_league_war(
         self,
@@ -739,7 +740,7 @@ class Client:
             self, war_tags, cache, fetch, update_cache, **extra_options
         )
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     @cached("current_wars")
     async def get_current_war(
         self,
@@ -1284,7 +1285,7 @@ class Client:
 
     # players
 
-    @corrected_tag(arg_name='player_tag')
+    @corrected_tag(arg_name="player_tag")
     @cached("search_players")
     async def get_player(
         self,

@@ -578,7 +578,9 @@ def cached(cache_name):
             fetch = kwargs.pop("fetch", True)
             update_cache = kwargs.pop("update_cache", True)
 
-            if custom_isinstance(class_instance, __name__, 'EventsClient'):  # workaround to stop recursion imports.
+            if custom_isinstance(
+                class_instance, __name__, "EventsClient"
+            ):  # workaround to stop recursion imports.
                 update_cache = False  # we never want to automatically update cache for EventsClient.
 
             # todo: clean this up

@@ -132,8 +132,9 @@ def correct_tag(tag, prefix="#"):
     return prefix + re.sub(r"[^A-Z0-9]+", "", tag.upper()).replace("O", "0")
 
 
-def corrected_tag(arg_offset=1, prefix='#', arg_name='tag'):
+def corrected_tag(arg_offset=1, prefix="#", arg_name="tag"):
     """Helper decorator to fix tags passed into client calls."""
+
     def deco(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -151,11 +152,13 @@ def corrected_tag(arg_offset=1, prefix='#', arg_name='tag'):
                     return func(*args, **kwargs)
                 kwargs[arg_name] = correct_tag(arg, prefix)
                 return func(*args, **kwargs)
+
         return wrapper
+
     return deco
 
 
-def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
+def maybe_sort(seq, sort, itr=False, key=attrgetter("order")):
     """Returns list or iter based on itr if sort is false otherwise sorted
     with key defaulting to operator.attrgetter('order')
     """
