@@ -549,7 +549,7 @@ def events_cache():
             if event_name.endswith("batch_updates"):
                 return func(*args, **kwargs)
 
-            event_args = [n for n in args[1:]]
+            event_args = list(args[1:])
             event_args.extend(kwargs.values())
 
             key = f"{event_name}.{time.monotonic()}"
@@ -578,6 +578,7 @@ def cached(cache_name):
             fetch = kwargs.pop("fetch", True)
             update_cache = kwargs.pop("update_cache", True)
 
+            # todo: clean this up
             if not key:
                 return await func(*args, **kwargs)
 
@@ -597,8 +598,6 @@ def cached(cache_name):
             if not data:
                 if fetch:
                     data = await func(*args, **kwargs)
-                else:
-                    return None
                 if update_cache:
                     await cache.set(cache_name, key, data)
                 return data

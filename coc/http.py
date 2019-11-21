@@ -262,8 +262,8 @@ class HTTPClient:
                     # gateway errors return html
                     text = re.compile(r"<[^>]+>").sub(data, "")
                     raise GatewayError(response, text)
-                else:
-                    raise HTTPException(response, data)
+
+                raise HTTPException(response, data)
 
     async def get_ip(self):
         url = "https://api.ipify.org/"

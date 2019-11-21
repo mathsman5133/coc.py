@@ -130,7 +130,7 @@ class BasicPlayer(Player):
     )
 
     def __init__(self, data, http, clan=None):
-        # pylint: disable=cyclic-import
+        # pylint: disable=cyclic-import, import-outside-toplevel
         super(BasicPlayer, self).__init__(data)
         self._http = http
 
@@ -205,6 +205,7 @@ class WarMember(Player):
         self.map_position = data.get("mapPosition")
 
     def _get_attacks(self):
+        # pylint: disable=import-outside-toplevel
         from .wars import WarAttack  # hack because circular imports
 
         return iter(
@@ -283,6 +284,7 @@ class SearchPlayer(BasicPlayer):
     )
 
     def __init__(self, *, data, http):
+        # pylint: disable=import-outside-toplevel
         super(SearchPlayer, self).__init__(data=data, http=http)
 
         from .clans import Clan  # hack because circular imports

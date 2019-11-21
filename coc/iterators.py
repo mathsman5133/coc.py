@@ -25,7 +25,7 @@ SOFTWARE.
 
 import asyncio
 
-from collections import Iterable
+from collections.abc import Iterable
 
 from .errors import NotFound, Forbidden
 from .utils import get_iter

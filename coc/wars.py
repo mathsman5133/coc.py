@@ -66,6 +66,7 @@ class BaseWar(EqualityComparable):
     @property
     def clan(self):
         """:class:`WarClan`: The offensive clan"""
+        # pylint: disable=import-outside-toplevel
         clan = self._data.get("clan", {})
         if "tag" in clan:
             # at the moment, if the clan is in notInWar, the API returns
@@ -79,6 +80,7 @@ class BaseWar(EqualityComparable):
     @property
     def opponent(self):
         """:class:`WarClan`: The opposition clan"""
+        # pylint: disable=import-outside-toplevel
         opponent = self._data.get("opponent", {})
         if "tag" in opponent:
             # same issue as clan
@@ -345,6 +347,7 @@ class LeagueGroup(EqualityComparable):
 
         Returns an iterable of class:`LeagueClan`: all participating clans
         """
+        # pylint: disable=import-outside-toplevel
         from .clans import LeagueClan  # hack because circular imports
 
         return iter(
@@ -443,7 +446,7 @@ class LeagueWarLogEntry(EqualityComparable):
         )
 
     def __init__(self, *, data, clan_tag, http):
-        # pylint: disable=protected-access
+        # pylint: disable=protected-access, import-outside-toplevel
         self.end_time = try_enum(Timestamp, data.get("endTime"))
         self.team_size = data.get("teamSize")
 

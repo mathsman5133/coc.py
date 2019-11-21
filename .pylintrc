@@ -5,7 +5,8 @@ disable=
     too-many-lines,
     too-few-public-methods,
     duplicate-code,
-    bad-continuation
+    bad-continuation,
+    property-with-parameters
 
 max-line-length=120
 notes=fixme

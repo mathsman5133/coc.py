@@ -29,7 +29,7 @@ import asyncio
 import logging
 import traceback
 
-from collections import Iterable
+from collections.abc import Iterable
 from typing import Union
 
 from .cache import events_cache
@@ -728,7 +728,7 @@ class EventsClient(Client):
 
             if not clan and not cached_clan:
                 continue
-            elif not clan and cached_clan:
+            if not clan and cached_clan:
                 self.dispatch("on_player_clan_leave", cached_clan, player)
             elif not cached_clan and clan:
                 self.dispatch("on_player_clan_join", clan, player)
