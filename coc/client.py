@@ -28,7 +28,7 @@ SOFTWARE.
 import asyncio
 import logging
 
-from collections import Iterable
+from collections.abc import Iterable
 
 from .cache import Cache, cached
 from .clans import Clan, SearchClan

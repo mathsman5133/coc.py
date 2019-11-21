@@ -208,6 +208,7 @@ class SearchClan(BasicClan):
 
         Returns an iterable of :class:`BasicPlayer`: A list of clan members.
         """
+        # pylint: disable=import-outside-toplevel
         from .players import BasicPlayer  # hack because circular imports
 
         return iter(
@@ -329,6 +330,7 @@ class WarClan(Clan):
 
         Returns an iterable of :class:`WarMember`: all clan members in war.
         """
+        # pylint: disable=import-outside-toplevel
         from .players import WarMember  # hack because circular imports
 
         return iter(
@@ -399,7 +401,7 @@ class LeagueClan(BasicClan):
         Returns an iterable of :class:`LeaguePlayer`:
         all players participating in this league season
         """
-        # pylint: disable=cyclic-import
+        # pylint: disable=cyclic-import, import-outside-toplevel
         from .players import LeaguePlayer  # hack because circular imports
 
         return iter(LeaguePlayer(data=mdata) for mdata in self._data.get("members", []))

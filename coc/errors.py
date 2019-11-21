@@ -30,8 +30,6 @@ class ClashOfClansException(Exception):
     """Base exception for coc.py
     """
 
-    pass
-
 
 class HTTPException(ClashOfClansException):
     """Base exception for when a HTTP request fails
@@ -85,8 +83,6 @@ class InvalidArgument(ClashOfClansException):
     Subclass of :exc:`HTTPException`
     """
 
-    pass
-
 
 class InvalidCredentials(HTTPException):
     """Thrown when an error status 403 occurs and the reason is invalid credentials.
@@ -96,8 +92,6 @@ class InvalidCredentials(HTTPException):
     Subclass of :exc:`HTTPException`
     """
 
-    pass
-
 
 class Forbidden(HTTPException):
     """Thrown when an error status 403 occurs.
@@ -106,16 +100,12 @@ class Forbidden(HTTPException):
 
     Subclass of :exc:`HTTPException`"""
 
-    pass
-
 
 class PrivateWarLog(Forbidden):
     """Thrown when an error status 403 occurs when trying to get a clan's war info.
 
     This is a special subclass of :exc:`Forbidden` for when a clan's war log is private.
     """
-
-    pass
 
 
 class NotFound(HTTPException):
@@ -126,8 +116,6 @@ class NotFound(HTTPException):
     Subclass of :exc:`HTTPException`
     """
 
-    pass
-
 
 class Maitenance(HTTPException):
     """Thrown when an error status 503 occurs.
@@ -136,8 +124,6 @@ class Maitenance(HTTPException):
 
     Subclass of :exc:`HTTPException`
     """
-
-    pass
 
 
 class GatewayError(HTTPException):
@@ -148,5 +134,3 @@ class GatewayError(HTTPException):
 
     Subclass of :exc:`HTTPException`
     """
-
-    pass

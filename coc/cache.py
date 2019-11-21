@@ -602,9 +602,8 @@ def cached(cache_name):
                     await cache.set(cache_name, key, data)
                 return data
 
-            else:
-                LOG.debug("Using cached object with KEY: %s and VALUE: %s", key, data)
-                return data
+            LOG.debug("Using cached object with KEY: %s and VALUE: %s", key, data)
+            return data
 
         return wrapper
 
