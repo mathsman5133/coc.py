@@ -27,7 +27,6 @@ SOFTWARE.
 
 from datetime import datetime
 
-from .enums import LabelType
 from .utils import from_timestamp
 
 
@@ -596,7 +595,7 @@ class Label(EqualityComparable):
             " ".join("%s=%r" % t for t in attrs),
         )
 
-    def __init__(self, *, data, http, label_type: LabelType):
+    def __init__(self, *, data, http):
         # pylint: disable=invalid-name
         self._http = http
         self._data = data

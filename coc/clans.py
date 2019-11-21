@@ -27,7 +27,6 @@ SOFTWARE.
 
 from itertools import chain
 
-from .enums import LabelType
 from .iterators import PlayerIterator
 from .miscmodels import EqualityComparable, try_enum, Location, Badge, Label
 from .utils import get, maybe_sort
@@ -193,7 +192,7 @@ class SearchClan(BasicClan):
         Returns an iterable of :class:`Label`: the player's labels.
         """
         return iter(
-            Label(data=ldata, http=self._http, label_type=LabelType.clan) for ldata in self._data.get('labels', [])
+            Label(data=ldata, http=self._http) for ldata in self._data.get('labels', [])
         )
 
     @property

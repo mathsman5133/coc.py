@@ -189,10 +189,11 @@ def item(
 
 def custom_isinstance(obj, module, name):
     """Helper utility to do an `isinstance` check without importing the module (circular imports)"""
+    # pylint: disable=broad-except
     for cls in inspect.getmro(type(obj)):
         try:
             if cls.__module__ == module and cls.__name__ == name:
                 return True
-        except:
+        except Exception:
             pass
     return False
