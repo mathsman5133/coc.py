@@ -43,36 +43,40 @@ class Clan(EqualityComparable):
     name : str
         The clan name.
     """
-    __slots__ = ('tag', 'name', '_data', '_http')
+
+    __slots__ = ("tag", "name", "_data", "_http")
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('tag', self.tag),
-            ('name', self.name),
+            ("tag", self.tag),
+            ("name", self.name),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, http):
         self._http = http
         self._data = data
-        self.tag = data.get('tag')
-        self.name = data.get('name')
+        self.tag = data.get("tag")
+        self.name = data.get("name")
 
     @property
     def badge(self):
         """:class:`Badge` - The clan badges
         """
-        return try_enum(Badge, self._data.get('badgeUrls'), http=self._http)
+        return try_enum(Badge, self._data.get("badgeUrls"), http=self._http)
 
     @property
     def share_link(self):
         """:class:`str` - A formatted link to open the clan in-game
         """
-        return 'https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}'.format(
-            self.tag.strip('#')
+        return "https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}".format(
+            self.tag.strip("#")
         )
 
 
@@ -99,24 +103,31 @@ class BasicClan(Clan):
     previous_rank:
         :class:`int` - The clan rank for it's location in the previous season
     """
-    __slots__ = ('level', 'points', 'versus_points',
-                 'member_count', 'rank', 'previous_rank')
+
+    __slots__ = (
+        "level",
+        "points",
+        "versus_points",
+        "member_count",
+        "rank",
+        "previous_rank",
+    )
 
     def __init__(self, *, data, http):
         super().__init__(data=data, http=http)
 
-        self.level = data.get('clanLevel')
-        self.points = data.get('clanPoints')
-        self.versus_points = data.get('clanVersusPoints')
-        self.member_count = data.get('members')
-        self.rank = data.get('rank')
-        self.previous_rank = data.get('previous_rank')
+        self.level = data.get("clanLevel")
+        self.points = data.get("clanPoints")
+        self.versus_points = data.get("clanVersusPoints")
+        self.member_count = data.get("members")
+        self.rank = data.get("rank")
+        self.previous_rank = data.get("previous_rank")
 
     @property
     def location(self):
         """:class:`Location` - The clan's location
         """
-        return try_enum(Location, self._data.get('location'))
+        return try_enum(Location, self._data.get("location"))
 
 
 class SearchClan(BasicClan):
@@ -148,23 +159,33 @@ class SearchClan(BasicClan):
     description:
         :class:`str` - The clan description
     """
-    __slots__ = ('type', 'required_trophies', 'war_frequency', 'war_win_streak',
-                 'war_wins', 'war_ties', 'war_losses', 'public_war_log',
-                 'description', '_client')
+
+    __slots__ = (
+        "type",
+        "required_trophies",
+        "war_frequency",
+        "war_win_streak",
+        "war_wins",
+        "war_ties",
+        "war_losses",
+        "public_war_log",
+        "description",
+        "_client",
+    )
 
     def __init__(self, *, data, client):
         super().__init__(data=data, http=client.http)
 
         self._client = client
-        self.type = data.get('type')
-        self.required_trophies = data.get('requiredTrophies')
-        self.war_frequency = data.get('warFrequency')
-        self.war_win_streak = data.get('warWinStreak')
-        self.war_wins = data.get('warWins')
-        self.war_ties = data.get('warTies')
-        self.war_losses = data.get('warLosses')
-        self.public_war_log = data.get('isWarLogPublic')
-        self.description = data.get('description', '')
+        self.type = data.get("type")
+        self.required_trophies = data.get("requiredTrophies")
+        self.war_frequency = data.get("warFrequency")
+        self.war_win_streak = data.get("warWinStreak")
+        self.war_wins = data.get("warWins")
+        self.war_ties = data.get("warTies")
+        self.war_losses = data.get("warLosses")
+        self.public_war_log = data.get("isWarLogPublic")
+        self.description = data.get("description", "")
 
     @property
     def iterlabels(self):
@@ -172,7 +193,9 @@ class SearchClan(BasicClan):
 
         Returns an iterable of :class:`Label`: the player's labels.
         """
-        return iter(Label(data=ldata, http=self._http) for ldata in self._data.get('labels', []))
+        return iter(
+            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
+        )
 
     @property
     def labels(self):
@@ -186,8 +209,11 @@ class SearchClan(BasicClan):
         Returns an iterable of :class:`BasicPlayer`: A list of clan members.
         """
         from .players import BasicPlayer  # hack because circular imports
-        return iter(BasicPlayer(mdata, self._client.http, self)
-                    for mdata in self._data.get('memberList', []))
+
+        return iter(
+            BasicPlayer(mdata, self._client.http, self)
+            for mdata in self._data.get("memberList", [])
+        )
 
     @property
     def members(self):
@@ -196,7 +222,7 @@ class SearchClan(BasicClan):
         return list(self.itermembers)
 
     @property
-    def member_dict(self, attr='tag'):
+    def member_dict(self, attr="tag"):
         """Dict: {attr: :class:`BasicPlayer`}: A dict of clan members by tag.
 
         Pass in an attribute of :class:`BasicPlayer` to get that attribute as the key
@@ -218,9 +244,9 @@ class SearchClan(BasicClan):
         """
         return get(self.itermembers, **attrs)
 
-    def get_detailed_members(self, cache: bool = False, fetch: bool = True,
-                             update_cache: bool = True
-                             ):
+    def get_detailed_members(
+        self, cache: bool = False, fetch: bool = True, update_cache: bool = True
+    ):
         """Get detailed player information for every player in the clan.
         This will return an AsyncIterator of :class:`SearchPlayer`.
 
@@ -271,21 +297,30 @@ class WarClan(Clan):
     max_stars:
         :class:`int` - Total possible stars achievable
     """
-    __slots__ = ('_war', 'level',
-                 'attack_count', 'stars', 'destruction', 'exp_earned',
-                 'attacks_used', 'total_attacks', 'max_stars')
+
+    __slots__ = (
+        "_war",
+        "level",
+        "attack_count",
+        "stars",
+        "destruction",
+        "exp_earned",
+        "attacks_used",
+        "total_attacks",
+        "max_stars",
+    )
 
     def __init__(self, *, data, war, http):
         super(WarClan, self).__init__(data=data, http=http)
 
         self._war = war
-        self.level = data.get('clanLevel')
-        self.destruction = data.get('destructionPercentage')
-        self.exp_earned = data.get('expEarned')
+        self.level = data.get("clanLevel")
+        self.destruction = data.get("destructionPercentage")
+        self.exp_earned = data.get("expEarned")
 
-        self.attacks_used = data.get('attacks')
+        self.attacks_used = data.get("attacks")
         self.total_attacks = self._war.team_size * 2
-        self.stars = data.get('stars')
+        self.stars = data.get("stars")
         self.max_stars = self._war.team_size * 3
 
     @property
@@ -295,8 +330,11 @@ class WarClan(Clan):
         Returns an iterable of :class:`WarMember`: all clan members in war.
         """
         from .players import WarMember  # hack because circular imports
-        return iter(WarMember(data=mdata, war=self._war, clan=self)
-                    for mdata in self._data.get('members', []))
+
+        return iter(
+            WarMember(data=mdata, war=self._war, clan=self)
+            for mdata in self._data.get("members", [])
+        )
 
     @property
     def members(self):
@@ -304,7 +342,7 @@ class WarClan(Clan):
         return list(self.itermembers)
 
     @property
-    def members_dict(self, attr='tag'):
+    def members_dict(self, attr="tag"):
         """Dict: {attr: :class:`WarMember`} - A dict of clan members in war by tag.
 
         Pass in an attribute of :class:`WarMember` to get that attribute as the key.
@@ -353,8 +391,6 @@ class LeagueClan(BasicClan):
     and thus all attributes of these classes can be expected to be present.
 
     """
-    def __init__(self, *, data, http):
-        super(LeagueClan, self).__init__(data=data, http=http)
 
     @property
     def itermembers(self):
@@ -363,9 +399,10 @@ class LeagueClan(BasicClan):
         Returns an iterable of :class:`LeaguePlayer`:
         all players participating in this league season
         """
+        # pylint: disable=cyclic-import
         from .players import LeaguePlayer  # hack because circular imports
 
-        return iter(LeaguePlayer(data=mdata) for mdata in self._data.get('members', []))
+        return iter(LeaguePlayer(data=mdata) for mdata in self._data.get("members", []))
 
     @property
     def members(self):

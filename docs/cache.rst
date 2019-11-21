@@ -1,4 +1,5 @@
 .. currentmodule:: coc
+
 Custom Cache
 ==============
 The following section outlines the custom cache capabilities of the library,

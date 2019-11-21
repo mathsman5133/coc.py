@@ -29,6 +29,7 @@ SOFTWARE.
 class ClashOfClansException(Exception):
     """Base exception for coc.py
     """
+
     pass
 
 
@@ -52,7 +53,8 @@ class HTTPException(ClashOfClansException):
             This could be an empty string if nothing was given
 
     """
-    __slots__ = ('response', 'status', 'message', 'reason', '_data')
+
+    __slots__ = ("response", "status", "message", "reason", "_data")
 
     def __init__(self, response, data):
         self._data = data
@@ -61,15 +63,15 @@ class HTTPException(ClashOfClansException):
         self.status = response.status
 
         if isinstance(data, str):
-            self.reason = 'Unknown'
+            self.reason = "Unknown"
             self.message = data
         else:
-            self.reason = data.get('reason', 'Unknown')
-            self.message = data.get('message', '')
+            self.reason = data.get("reason", "Unknown")
+            self.message = data.get("message", "")
 
-        fmt = '{0.reason} (status code: {0.status})'
-        if len(self.message):
-            fmt = fmt + ' :{1}'
+        fmt = "{0.reason} (status code: {0.status})"
+        if self.message:
+            fmt = fmt + " :{1}"
 
         super().__init__(fmt.format(self.response, self.message))
 
@@ -82,6 +84,7 @@ class InvalidArgument(ClashOfClansException):
 
     Subclass of :exc:`HTTPException`
     """
+
     pass
 
 
@@ -102,6 +105,7 @@ class Forbidden(HTTPException):
     API token does not grant access to the requested resource.
 
     Subclass of :exc:`HTTPException`"""
+
     pass
 
 
@@ -110,6 +114,7 @@ class PrivateWarLog(Forbidden):
 
     This is a special subclass of :exc:`Forbidden` for when a clan's war log is private.
     """
+
     pass
 
 
@@ -120,6 +125,7 @@ class NotFound(HTTPException):
 
     Subclass of :exc:`HTTPException`
     """
+
     pass
 
 
@@ -130,6 +136,7 @@ class Maitenance(HTTPException):
 
     Subclass of :exc:`HTTPException`
     """
+
     pass
 
 
@@ -141,4 +148,5 @@ class GatewayError(HTTPException):
 
     Subclass of :exc:`HTTPException`
     """
+
     pass

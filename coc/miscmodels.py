@@ -31,12 +31,16 @@ from .utils import from_timestamp
 
 
 def try_enum(_class, data, default=None, **kwargs):
+    """Helper function to create a class from the given data."""
     if data is None:
         return default
     return _class(data=data, **kwargs)
 
 
 class EqualityComparable:
+    """Allows comparison of 2 objects through identical data."""
+
+    # pylint: disable=no-member, protected-access
     __slots__ = ()
 
     def __eq__(self, other):
@@ -70,44 +74,56 @@ class Achievement(EqualityComparable):
         :class:`str` - Either `home` or `builderBase`
     """
 
-    __slots__ = ('player', 'name', 'stars', 'value', 'target',
-                 'info', 'completion_info', 'village', '_data')
+    __slots__ = (
+        "player",
+        "name",
+        "stars",
+        "value",
+        "target",
+        "info",
+        "completion_info",
+        "village",
+        "_data",
+    )
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('player', repr(self.player)),
-            ('name', self.name),
-            ('stars', self.stars),
-            ('value', self.value)
+            ("player", repr(self.player)),
+            ("name", self.name),
+            ("stars", self.stars),
+            ("value", self.value),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, player):
         self._data = data
 
         self.player = player
-        self.name = data['name']
-        self.stars = data.get('stars')
-        self.value = data['value']
-        self.target = data['target']
-        self.info = data['info']
-        self.completion_info = data.get('completionInfo')
-        self.village = data['village']
+        self.name = data["name"]
+        self.stars = data.get("stars")
+        self.value = data["value"]
+        self.target = data["target"]
+        self.info = data["info"]
+        self.completion_info = data.get("completionInfo")
+        self.village = data["village"]
 
     @property
     def is_builder_base(self):
         """:class:`bool`: Helper property to tell you if the achievement belongs to the builder base
         """
-        return self.village == 'builderBase'
+        return self.village == "builderBase"
 
     @property
     def is_home_base(self):
         """:class:`bool`: Helper property to tell you if the achievement belongs to the home base
         """
-        return self.village == 'home'
+        return self.village == "home"
 
     @property
     def is_completed(self):
@@ -132,28 +148,31 @@ class Troop(EqualityComparable):
     village:
         :class:`str` - Either `home` or `builderBase`
     """
-    __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village', '_data')
+
+    __slots__ = ("player", "name", "level", "max_level", "village", "_data")
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('player', repr(self.player)),
-            ('name', self.name),
-            ('level', self.level)
+            ("player", repr(self.player)),
+            ("name", self.name),
+            ("level", self.level),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, player):
         self._data = data
 
         self.player = player
-        self.name = data['name']
-        self.level = data['level']
-        self.max_level = data['maxLevel']
-        self.village = data['village']
+        self.name = data["name"]
+        self.level = data["level"]
+        self.max_level = data["maxLevel"]
+        self.village = data["village"]
 
     @property
     def is_max(self):
@@ -165,13 +184,13 @@ class Troop(EqualityComparable):
     def is_builder_base(self):
         """:class:`bool`: Helper property to tell you if the troop belongs to the builder base
         """
-        return self.village == 'builderBase'
+        return self.village == "builderBase"
 
     @property
     def is_home_base(self):
         """:class:`bool`: Helper property to tell you if the troop belongs to the home base
         """
-        return self.village == 'home'
+        return self.village == "home"
 
 
 class Hero(EqualityComparable):
@@ -190,28 +209,31 @@ class Hero(EqualityComparable):
     village:
         :class:`str` - Either `home` or `builderBase`
     """
-    __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village', '_data')
+
+    __slots__ = ("player", "name", "level", "max_level", "village", "_data")
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('player', repr(self.player)),
-            ('name', self.name),
-            ('level', self.level)
+            ("player", repr(self.player)),
+            ("name", self.name),
+            ("level", self.level),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, player):
         self._data = data
 
         self.player = player
-        self.name = data['name']
-        self.level = data['level']
-        self.max_level = data['maxLevel']
-        self.village = data['village']
+        self.name = data["name"]
+        self.level = data["level"]
+        self.max_level = data["maxLevel"]
+        self.village = data["village"]
 
     @property
     def is_max(self):
@@ -223,13 +245,13 @@ class Hero(EqualityComparable):
     def is_builder_base(self):
         """:class:`bool`: Helper property to tell you if the hero belongs to the builder base
         """
-        return self.village == 'builderBase'
+        return self.village == "builderBase"
 
     @property
     def is_home_base(self):
         """:class:`bool`: Helper property to tell you if the hero belongs to the home base
         """
-        return self.village == 'home'
+        return self.village == "home"
 
 
 class Spell(EqualityComparable):
@@ -248,28 +270,31 @@ class Spell(EqualityComparable):
     village:
         :class:`str` - Either `home` or `builderBase`
     """
-    __slots__ = ('player', 'name', 'level',
-                 'max_level', 'village', '_data')
+
+    __slots__ = ("player", "name", "level", "max_level", "village", "_data")
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('player', repr(self.player)),
-            ('name', self.name),
-            ('level', self.level)
+            ("player", repr(self.player)),
+            ("name", self.name),
+            ("level", self.level),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, player):
         self._data = data
 
         self.player = player
-        self.name = data['name']
-        self.level = data['level']
-        self.max_level = data['maxLevel']
-        self.village = data['village']
+        self.name = data["name"]
+        self.level = data["level"]
+        self.max_level = data["maxLevel"]
+        self.village = data["village"]
 
     @property
     def is_max(self):
@@ -281,13 +306,13 @@ class Spell(EqualityComparable):
     def is_builder_base(self):
         """:class:`bool`: Helper property to tell you if the spell belongs to the builder base
         """
-        return self.village == 'builderBase'
+        return self.village == "builderBase"
 
     @property
     def is_home_base(self):
         """:class:`bool`: Helper property to tell you if the spell belongs to the home base
         """
-        return self.village == 'home'
+        return self.village == "home"
 
 
 class Location(EqualityComparable):
@@ -306,26 +331,31 @@ class Location(EqualityComparable):
     localised_name:
         :class:`str` - A localised name of the location. The extent of the use of this is unknown at present.
     """
-    __slots__ = ('id', 'name', 'is_country', 'country_code', 'localised_name', '_data')
+
+    __slots__ = ("id", "name", "is_country", "country_code", "localised_name", "_data")
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         attrs = [
-            ('id', self.id),
-            ('name', self.name),
+            ("id", self.id),
+            ("name", self.name),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data):
+        # pylint: disable=invalid-name
         self._data = data
 
-        self.id = data.get('id')
-        self.name = data.get('name')
-        self.is_country = data.get('isCountry')
-        self.country_code = data.get('countryCode')
-        self.localised_name = data.get('localizedName')
+        self.id = data.get("id")
+        self.name = data.get("name")
+        self.is_country = data.get("isCountry")
+        self.country_code = data.get("countryCode")
+        self.localised_name = data.get("localizedName")
 
 
 class League(EqualityComparable):
@@ -342,44 +372,54 @@ class League(EqualityComparable):
     localised_short_name:
         :class:`str` - A localised short name of the location. The extent of the use of this is unknown at present.
     """
-    __slots__ = ('id', 'name', 'localised_short_name', 'localised_name', '_data', '_http')
+
+    __slots__ = (
+        "id",
+        "name",
+        "localised_short_name",
+        "localised_name",
+        "_data",
+        "_http",
+    )
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
-        attrs = [
-            ('id', self.id),
-            ('name', self.name)
-        ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        attrs = [("id", self.id), ("name", self.name)]
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, http):
+        # pylint: disable=invalid-name
         self._data = data
         self._http = http
 
-        self.id = data.get('id')
-        self.name = data.get('name')
-        self.localised_name = data.get('localizedName')
-        self.localised_short_name = data.get('localizedShortName')
+        self.id = data.get("id")
+        self.name = data.get("name")
+        self.localised_name = data.get("localizedName")
+        self.localised_short_name = data.get("localizedShortName")
 
     @property
     def badge(self):
         """:class:`Badge`: The league's badge
         """
-        return try_enum(Badge, data=self._data.get('iconUrls'), http=self._http)
+        return try_enum(Badge, data=self._data.get("iconUrls"), http=self._http)
 
 
 class Season(EqualityComparable):
-    """Represents a Clash of Clans Player's Season.
+    """Represents a Clash of Clans Player's Season."""
 
-    rank: """
-    __slots__ = ('rank', 'trophies', 'id')
+    # pylint: disable=invalid-name
+
+    __slots__ = ("rank", "trophies", "id")
 
     def __init__(self, *, data):
-        self.rank = data.get('rank')
-        self.trophies = data.get('trophies')
-        self.id = data.get('id')
+        self.rank = data.get("rank")
+        self.trophies = data.get("trophies")
+        self.id = data.get("id")
 
 
 class LegendStatistics(EqualityComparable):
@@ -392,38 +432,42 @@ class LegendStatistics(EqualityComparable):
     legend_trophies:
         :class:`int` - The player's legend trophies
     """
-    __slots__ = ('player', 'legend_trophies', '_data')
+
+    __slots__ = ("player", "legend_trophies", "_data")
 
     def __repr__(self):
         attrs = [
-            ('player', repr(self.player)),
-            ('legend_trophies', self.legend_trophies)
+            ("player", repr(self.player)),
+            ("legend_trophies", self.legend_trophies),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, player):
         self._data = data
 
         self.player = player
-        self.legend_trophies = data['legendTrophies']
+        self.legend_trophies = data["legendTrophies"]
 
     @property
     def current_season(self):
         """:class:`int`: Legend trophies for this season.
         """
-        return try_enum(Season, data=self._data.get('currentSeason'))
+        return try_enum(Season, data=self._data.get("currentSeason"))
 
     @property
     def previous_season(self):
         """:class:`int`: Legend trophies for the previous season.
         """
-        return try_enum(Season, data=self._data.get('previousSeason'))
+        return try_enum(Season, data=self._data.get("previousSeason"))
 
     @property
     def best_season(self):
         """:class:`int`: Legend trophies for the player's best season.
         """
-        return try_enum(Season, data=self._data.get('bestSeason'))
+        return try_enum(Season, data=self._data.get("bestSeason"))
 
 
 class Badge(EqualityComparable):
@@ -440,28 +484,35 @@ class Badge(EqualityComparable):
     url:
         :class:`str` - Medium, the default URL badge size
     """
-    __slots__ = ('small', 'medium', 'large', 'url', '_data', '_http')
+
+    __slots__ = ("small", "medium", "large", "url", "_data", "_http")
 
     def __repr__(self):
         attrs = [
-            ('url', self.url),
+            ("url", self.url),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, http):
         self._http = http
         self._data = data
 
-        self.small = data.get('small')
-        self.medium = data.get('medium')
-        self.large = data.get('large')
+        self.small = data.get("small")
+        self.medium = data.get("medium")
+        self.large = data.get("large")
 
         self.url = self.medium
 
-    async def save(self, fp, size=None):
-        """This function is a coroutine. Save this badge as a file-like object.
+    async def save(self, filepath, size=None):
+        """
+        |coro|
 
-        :param fp: :class:`os.PathLike`
+        Save this badge as a file-like object.
+
+        :param filepath: :class:`os.PathLike`
                     The filename to save the badge to
         :param size: Optional[:class:`str`] Either `small`, `medium` or `large`.
                                             The default is `medium`
@@ -472,9 +523,7 @@ class Badge(EqualityComparable):
 
         :return: :class:`int` The number of bytes written
         """
-        sizes = {'small': self.small,
-                 'medium': self.medium,
-                 'large': self.large}
+        sizes = {"small": self.small, "medium": self.medium, "large": self.large}
 
         if size and size in sizes.keys():
             url = sizes[size]
@@ -483,8 +532,8 @@ class Badge(EqualityComparable):
 
         data = self._http.get_data_from_url(url)
 
-        with open(fp, 'wb') as f:
-            return f.write(data)
+        with open(filepath, "wb") as file:
+            return file.write(data)
 
 
 class Timestamp(EqualityComparable):
@@ -494,14 +543,15 @@ class Timestamp(EqualityComparable):
     -----------
     raw_time: :class:`str`: The raw timestamp string (ISO8601) as given by the API.
     """
-    __slots__ = ('raw_time', '_data')
+
+    __slots__ = ("raw_time", "_data")
 
     def __repr__(self):
-        attrs = [
-            ('time', self.raw_time),
-            ('seconds_until', self.seconds_until)
-        ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        attrs = [("time", self.raw_time), ("seconds_until", self.seconds_until)]
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data):
         self._data = data
@@ -535,23 +585,25 @@ class Label(EqualityComparable):
     id: :class:`int`: The label's unique ID as given by the API.
     name: :class:`str`: The label's name.
     """
-    __slots__ = ('_data', 'id', 'name', '_http')
+
+    __slots__ = ("_data", "id", "name", "_http")
 
     def __repr__(self):
-        attrs = [
-            ('id', self.id),
-            ('name', self.name)
-        ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        attrs = [("id", self.id), ("name", self.name)]
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, http):
+        # pylint: disable=invalid-name
         self._http = http
         self._data = data
 
-        self.id = data.get('id')
-        self.name = data.get('name')
-    
+        self.id = data.get("id")
+        self.name = data.get("name")
+
     @property
     def badge(self):
         """:class:`Badge` - The label's badge."""
-        return try_enum(Badge, self._data.get('iconUrls'), http=self._http)
+        return try_enum(Badge, self._data.get("iconUrls"), http=self._http)
