@@ -536,7 +536,11 @@ class EventsClient(Client):
         if war.state == cached_war.state:
             return
 
-        if war.state not in ["preparation", "inWar", "warEnded"]:
+        if war.state == "preparation":
+            self.dispatch("on_war_state_change", "preparation", war)
+            return
+
+        if war.state not in ["inWar", "warEnded"]:
             return
 
         in_war_task, war_ended_task = self._check_state_task_status(war.clan_tag)
@@ -546,7 +550,7 @@ class EventsClient(Client):
             self._add_state_task(war.clan_tag, "inWar", task)
 
         if not war_ended_task or (war.end_time.time != cached_war.end_time.time):
-            task = self.loop.create_task(self._wait_for_state_change("inWar", war))
+            task = self.loop.create_task(self._wait_for_state_change("warEnded", war))
             self._add_state_task(war.clan_tag, "warEnded", task)
 
     async def _update_wars(self):
@@ -567,6 +571,12 @@ class EventsClient(Client):
             self.dispatch("on_war_update", cached_war, war)
 
             self._create_status_tasks(cached_war, war)
+
+            if not war.opponent:
+                await self.cache.set("current_wars", war.clan_tag, war)
+                # if there are no opponent next line will raise Attribute error..
+                # we've just entered prep - this probably needs a rewrite.
+                continue
 
             if not war.iterattacks:
                 await self.cache.set("current_wars", war.clan_tag, war)

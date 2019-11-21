@@ -36,6 +36,7 @@ from .miscmodels import (
     Spell,
     League,
     Label,
+    LabelType,
 )
 from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER
 from .utils import maybe_sort
@@ -304,7 +305,7 @@ class SearchPlayer(BasicPlayer):
         Returns an iterable of :class:`Label`: the player's labels.
         """
         return iter(
-            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
+            Label(data=ldata, http=self._http, label_type=LabelType.player) for ldata in self._data.get("labels", [])
         )
 
     @property

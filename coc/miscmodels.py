@@ -27,6 +27,7 @@ SOFTWARE.
 
 from datetime import datetime
 
+from .enums import LabelType
 from .utils import from_timestamp
 
 
@@ -586,7 +587,7 @@ class Label(EqualityComparable):
     name: :class:`str`: The label's name.
     """
 
-    __slots__ = ("_data", "id", "name", "_http")
+    __slots__ = ("_data", "id", "name", "_http", "label_type")
 
     def __repr__(self):
         attrs = [("id", self.id), ("name", self.name)]
@@ -595,7 +596,7 @@ class Label(EqualityComparable):
             " ".join("%s=%r" % t for t in attrs),
         )
 
-    def __init__(self, *, data, http):
+    def __init__(self, *, data, http, label_type: LabelType):
         # pylint: disable=invalid-name
         self._http = http
         self._data = data
@@ -606,4 +607,5 @@ class Label(EqualityComparable):
     @property
     def badge(self):
         """:class:`Badge` - The label's badge."""
+
         return try_enum(Badge, self._data.get("iconUrls"), http=self._http)

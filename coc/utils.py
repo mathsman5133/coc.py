@@ -27,7 +27,9 @@ import inspect
 import re
 
 from datetime import datetime
+from functools import wraps
 from operator import attrgetter
+from typing import Union
 
 
 def find(predicate, seq):
@@ -130,7 +132,30 @@ def correct_tag(tag, prefix="#"):
     return prefix + re.sub(r"[^A-Z0-9]+", "", tag.upper()).replace("O", "0")
 
 
-def maybe_sort(seq, sort, itr=False, key=attrgetter("order")):
+def corrected_tag(arg_offset=1, prefix='#', arg_name='tag'):
+    """Helper decorator to fix tags passed into client calls."""
+    def deco(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+
+            if not args[0].correct_tags:
+                return func(*args, **kwargs)
+
+            try:
+                args = list(args)
+                args[arg_offset] = correct_tag(args[arg_offset], prefix=prefix)
+                return func(*tuple(args), **kwargs)
+            except KeyError:
+                arg = kwargs.get(arg_name)
+                if not arg:
+                    return func(*args, **kwargs)
+                kwargs[arg_name] = correct_tag(arg, prefix)
+                return func(*args, **kwargs)
+        return wrapper
+    return deco
+
+
+def maybe_sort(seq, sort, itr=False, key=attrgetter('order')):
     """Returns list or iter based on itr if sort is false otherwise sorted
     with key defaulting to operator.attrgetter('order')
     """
@@ -141,7 +166,14 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter("order")):
     )
 
 
-def item(_object, index, index_type, attribute, index_before_attribute):
+def item(
+    _object,
+    *,
+    index: bool = False,
+    index_type: Union[int, str] = 0,
+    attribute: str = None,
+    index_before_attribute: bool = True
+):
     """Returns an object, an index, and/or an attribute of the object."""
     attr_get = attrgetter(attribute or "")
     if not (index or index_type or attribute):
@@ -155,15 +187,12 @@ def item(_object, index, index_type, attribute, index_before_attribute):
     return attr_get(_object)[index_type]
 
 
-async def get_iter(
-    _iterable, index=False, index_type=0, attribute=None, index_before_attribute=True
-):
-    """Retrieves a generator object from an unknown iterable with optional attributes."""
-    if inspect.isasyncgen(_iterable):
-        return (
-            item(n, index, index_type, attribute, index_before_attribute)
-            async for n in _iterable
-        )
-    return (
-        item(n, index, index_type, attribute, index_before_attribute) for n in _iterable
-    )
+def custom_isinstance(obj, module, name):
+    """Helper utility to do an `isinstance` check without importing the module (circular imports)"""
+    for cls in inspect.getmro(type(obj)):
+        try:
+            if cls.__module__ == module and cls.__name__ == name:
+                return True
+        except:
+            pass
+    return False

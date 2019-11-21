@@ -27,6 +27,7 @@ SOFTWARE.
 
 from itertools import chain
 
+from .enums import LabelType
 from .iterators import PlayerIterator
 from .miscmodels import EqualityComparable, try_enum, Location, Badge, Label
 from .utils import get, maybe_sort
@@ -170,13 +171,11 @@ class SearchClan(BasicClan):
         "war_losses",
         "public_war_log",
         "description",
-        "_client",
     )
 
-    def __init__(self, *, data, client):
-        super().__init__(data=data, http=client.http)
+    def __init__(self, *, data, http):
+        super().__init__(data=data, http=http)
 
-        self._client = client
         self.type = data.get("type")
         self.required_trophies = data.get("requiredTrophies")
         self.war_frequency = data.get("warFrequency")
@@ -194,7 +193,7 @@ class SearchClan(BasicClan):
         Returns an iterable of :class:`Label`: the player's labels.
         """
         return iter(
-            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
+            Label(data=ldata, http=self._http, label_type=LabelType.clan) for ldata in self._data.get('labels', [])
         )
 
     @property
@@ -212,7 +211,7 @@ class SearchClan(BasicClan):
         from .players import BasicPlayer  # hack because circular imports
 
         return iter(
-            BasicPlayer(mdata, self._client.http, self)
+            BasicPlayer(mdata, self._http, self)
             for mdata in self._data.get("memberList", [])
         )
 
@@ -274,7 +273,7 @@ class SearchClan(BasicClan):
         :return: AsyncIterator of :class:`SearchPlayer`
         """
         tags = iter(n.tag for n in self.itermembers)
-        return PlayerIterator(self._client, tags, cache, fetch, update_cache)
+        return PlayerIterator(self._http.client, tags, cache, fetch, update_cache)
 
 
 class WarClan(Clan):
