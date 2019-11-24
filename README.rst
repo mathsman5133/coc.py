@@ -34,14 +34,14 @@ Installing
 
 .. code:: sh
 
-    # Linux/OS X
+    # Linux/macOS
     python3 -m pip install -U coc.py
 
     # Windows
     py -3 -m pip install -U coc.py
 
     # to install the development version:
-    python3 -m pip install -U git+https://github.com/mathsman5133/coc.py --upgrade
+    python3 -m pip install -U git+https://github.com/mathsman5133/coc.py
 
 
 Quick Example
@@ -82,7 +82,7 @@ This script will run forever, printing to the terminal whenever someone joins th
 
     @client.event
     async def on_clan_member_join(player, clan):
-        print('{0.name} ({0.tag}) just joined {1.name} ({1.tag})!')
+        print('{0.name} ({0.tag}) just joined {1.name} ({1.tag})!'.format(player, clan))
 
     client.add_clan_update('tag')
 
