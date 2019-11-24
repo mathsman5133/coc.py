@@ -13,7 +13,7 @@ __version__ = "0.3.0"
 from .cache import Cache, CacheConfig, DefaultCache, MaxSizeCache, TimeToLiveCache
 
 from .clans import Clan, SearchClan, BasicClan, WarClan, LeagueClan
-from .client import Client, login
+from .client import Client
 from .events import EventsClient
 from .enums import (
     CacheType,
@@ -34,6 +34,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
+from .login import login
 from .http import HTTPClient
 from .iterators import (
     ClanIterator,

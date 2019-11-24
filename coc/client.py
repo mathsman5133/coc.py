@@ -52,35 +52,6 @@ LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 
-def login(email, password, client=None, **kwargs):
-    r"""Eases logging into the coc.py Client.
-
-    This function makes logging into the client easy, returning the created client.
-
-    Parameters
-    -----------
-    email : str
-        Your password email from https://developer.clashofclans.com
-        This is used when updating keys automatically if your IP changes
-    password : str
-        Your password login from https://developer.clashofclans.com
-        This is used when updating keys automatically if your IP changes
-    client
-        The type of coc.py client to use. This could either be a
-        :class:`Client` or :class:`EventsClient`, depending on which you wish
-        to use.
-    **kwargs
-        Any kwargs you wish to pass into the Client object.
-    """
-    if not client:
-        client = Client
-
-    client_instance = client(**kwargs)
-    client_instance.create_cache()
-    client_instance.loop.run_until_complete(client_instance.login(email, password))
-    return client_instance
-
-
 class Client:
     """This is the client connection used to interact with the Clash of Clans API.
 
