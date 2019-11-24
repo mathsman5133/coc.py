@@ -1,4 +1,5 @@
 .. currentmodule:: coc
+
 API Reference
 ==============
 
@@ -349,7 +350,7 @@ Clan Member Received
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
-.. _on_clan_member_trophy_change
+.. _on_clan_member_trophy_change:
 
 Clan Member Trophy Count Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -366,7 +367,7 @@ Clan Member Trophy Count Change
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
-.. _on_clan_member_versus_trophy_change
+.. _on_clan_member_versus_trophy_change:
 
 Clan Member Versus Trophy Count Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

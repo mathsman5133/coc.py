@@ -42,42 +42,52 @@ class BaseWar(EqualityComparable):
         :class:`str` - The clan tag passed for the request.
         This attribute is always present regardless of the war state.
     """
-    __slots__ = ('team_size', '_data', 'clan_tag', '_http')
+
+    __slots__ = ("team_size", "_data", "clan_tag", "_http")
 
     def __repr__(self):
         attrs = [
-            ('clan_tag', self.clan_tag),
-            ('clan', self.clan),
-            ('opponent', self.opponent),
-            ('size', self.team_size)
+            ("clan_tag", self.clan_tag),
+            ("clan", self.clan),
+            ("opponent", self.opponent),
+            ("size", self.team_size),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, clan_tag, http):
         self._http = http
         self._data = data
-        self.team_size = data.get('teamSize')
+        self.team_size = data.get("teamSize")
         self.clan_tag = clan_tag
 
     @property
     def clan(self):
         """:class:`WarClan`: The offensive clan"""
-        clan = self._data.get('clan', {})
-        if 'tag' in clan:
+        # pylint: disable=import-outside-toplevel
+        clan = self._data.get("clan", {})
+        if "tag" in clan:
             # at the moment, if the clan is in notInWar, the API returns
             # 'clan' and 'opponent' as dicts containing only badge urls of
             # no specific clan. very strange
             from .clans import WarClan  # hack because circular imports
+
             return WarClan(data=clan, war=self, http=self._http)
+        return None
 
     @property
     def opponent(self):
         """:class:`WarClan`: The opposition clan"""
-        opponent = self._data.get('opponent', {})
-        if 'tag' in opponent:
+        # pylint: disable=import-outside-toplevel
+        opponent = self._data.get("opponent", {})
+        if "tag" in opponent:
             # same issue as clan
             from .clans import WarClan  # hack because circular imports
+
             return WarClan(data=opponent, war=self, http=self._http)
+        return None
 
 
 class WarLog(BaseWar):
@@ -93,11 +103,12 @@ class WarLog(BaseWar):
     end_time:
         :class:`Timestamp` - The end time of the war as a Timestamp object
     """
-    __slots__ = ('result', 'end_time')
+
+    __slots__ = ("result", "end_time")
 
     def __init__(self, *, data, clan_tag, http):
-        self.result = data.get('result')
-        self.end_time = try_enum(Timestamp, data.get('endTime'))
+        self.result = data.get("result")
+        self.end_time = try_enum(Timestamp, data.get("endTime"))
         super(WarLog, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
 
@@ -118,14 +129,16 @@ class ClanWar(BaseWar):
     end_time:
         :class:`Timestamp` - The end time of battle day as a Timestamp object
     """
-    __slots__ = ('state', 'preparation_start_time',
-                 'start_time', 'end_time')
+
+    __slots__ = ("state", "preparation_start_time", "start_time", "end_time")
 
     def __init__(self, *, data, clan_tag, http):
-        self.state = data.get('state')
-        self.preparation_start_time = try_enum(Timestamp, data.get('preparationStartTime'))
-        self.start_time = try_enum(Timestamp, data.get('startTime'))
-        self.end_time = try_enum(Timestamp, data.get('endTime'))
+        self.state = data.get("state")
+        self.preparation_start_time = try_enum(
+            Timestamp, data.get("preparationStartTime")
+        )
+        self.start_time = try_enum(Timestamp, data.get("startTime"))
+        self.end_time = try_enum(Timestamp, data.get("endTime"))
 
         super(ClanWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
 
@@ -166,9 +179,11 @@ class ClanWar(BaseWar):
         """
         if not self.start_time:
             return None
-        if (self.start_time.time - self.preparation_start_time.time).seconds == 82800:  # 23hr prep
-            return 'random'
-        return 'friendly'
+        if (
+            self.start_time.time - self.preparation_start_time.time
+        ).seconds == 82800:  # 23hr prep
+            return "random"
+        return "friendly"
 
     @property
     def status(self):
@@ -186,30 +201,31 @@ class ClanWar(BaseWar):
         | ``losing`` | ``lost``    |
         +------------+-------------+
         """
-        if self.state == 'inWar':
+        # pylint: disable=too-many-return-statements
+        if self.state == "inWar":
             if self.clan.stars > self.opponent.stars:
-                return 'winning'
-            elif self.clan.stars == self.opponent.stars:
+                return "winning"
+            if self.clan.stars == self.opponent.stars:
                 if self.clan.destruction > self.opponent.destruction:
-                    return 'winning'
-                elif self.clan.destruction == self.opponent.destruction:
-                    return 'tied'
+                    return "winning"
+                if self.clan.destruction == self.opponent.destruction:
+                    return "tied"
 
-            return 'losing'
+            return "losing"
 
-        elif self.state == 'warEnded':
+        if self.state == "warEnded":
             if self.clan.stars > self.opponent.stars:
-                return 'won'
-            elif self.clan.stars == self.opponent.stars:
+                return "won"
+            if self.clan.stars == self.opponent.stars:
                 if self.clan.destruction > self.opponent.destruction:
-                    return 'won'
-                elif self.clan.destruction == self.opponent.destruction:
-                    return 'tie'
-                return 'lost'
+                    return "won"
+                if self.clan.destruction == self.opponent.destruction:
+                    return "tie"
+                return "lost"
 
-            return 'lost'
+            return "lost"
 
-        return None
+        return ""
 
     def get_member(self, **attrs):
         """Returns the first :class:`WarMember` that meets the attributes passed
@@ -246,30 +262,41 @@ class WarAttack(EqualityComparable):
     defender_tag:
         :class:`str` - The defender tag
     """
-    __slots__ = ('war', 'member', 'stars',
-                 'destruction', 'order',
-                 'attacker_tag', 'defender_tag', '_data')
+
+    __slots__ = (
+        "war",
+        "member",
+        "stars",
+        "destruction",
+        "order",
+        "attacker_tag",
+        "defender_tag",
+        "_data",
+    )
 
     def __repr__(self):
         attrs = [
-            ('war', repr(self.war)),
-            ('member', repr(self.member)),
-            ('stars', self.stars),
-            ('destruction', self.destruction),
-            ('order', self.order)
+            ("war", repr(self.war)),
+            ("member", repr(self.member)),
+            ("stars", self.stars),
+            ("destruction", self.destruction),
+            ("order", self.order),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, war, member):
         self._data = data
 
         self.war = war
         self.member = member
-        self.stars = data['stars']
-        self.destruction = data['destructionPercentage']
-        self.order = data['order']
-        self.attacker_tag = data['attackerTag']
-        self.defender_tag = data['defenderTag']
+        self.stars = data["stars"]
+        self.destruction = data["destructionPercentage"]
+        self.order = data["order"]
+        self.attacker_tag = data["attackerTag"]
+        self.defender_tag = data["defenderTag"]
 
     @property
     def attacker(self):
@@ -292,23 +319,27 @@ class LeagueGroup(EqualityComparable):
     season:
         :class:`str` - The current season of the league group
     """
-    __slots__ = ('state', 'season', '_rounds', '_data', '_http')
+
+    __slots__ = ("state", "season", "_rounds", "_data", "_http")
 
     def __repr__(self):
         attrs = [
-            ('state', self.state),
-            ('season', self.season),
-            ('clans', ', '.join(repr(n) for n in self.iterclans))
+            ("state", self.state),
+            ("season", self.season),
+            ("clans", ", ".join(repr(n) for n in self.iterclans)),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, http):
         self._data = data
         self._http = http
 
         self._rounds = []
-        self.state = data.get('state')
-        self.season = data.get('season')
+        self.state = data.get("state")
+        self.season = data.get("season")
 
     @property
     def iterclans(self):
@@ -316,9 +347,13 @@ class LeagueGroup(EqualityComparable):
 
         Returns an iterable of class:`LeagueClan`: all participating clans
         """
+        # pylint: disable=import-outside-toplevel
         from .clans import LeagueClan  # hack because circular imports
-        return iter(LeagueClan(data=cdata, http=self._http)
-                    for cdata in self._data.get('clans', []))
+
+        return iter(
+            LeagueClan(data=cdata, http=self._http)
+            for cdata in self._data.get("clans", [])
+        )
 
     @property
     def clans(self):
@@ -330,7 +365,7 @@ class LeagueGroup(EqualityComparable):
     def rounds(self):
         """List[List[]]: A list of lists containing all war tags for each round.
         """
-        return [n['warTags'] for n in self._data.get('rounds', [])]
+        return [n["warTags"] for n in self._data.get("rounds", [])]
 
 
 class LeagueWar(ClanWar):
@@ -344,19 +379,20 @@ class LeagueWar(ClanWar):
     tag:
         :class:`str` - The war tag
     """
-    __slots__ = 'tag'
+
+    __slots__ = ("tag",)
 
     def __init__(self, *, data, http):
-        self.tag = data.get('tag')
-        clan_tag = ''
+        self.tag = data.get("tag")
+        clan_tag = ""
         super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
-        self.clan_tag = getattr(self.clan, 'tag', clan_tag)
+        self.clan_tag = getattr(self.clan, "tag", clan_tag)
 
     @property
     def type(self):
         """:class:`str`: The war type. For league wars, this is ``cwl``.
         """
-        return 'cwl'
+        return "cwl"
 
 
 class LeagueWarLogEntry(EqualityComparable):
@@ -386,33 +422,46 @@ class LeagueWarLogEntry(EqualityComparable):
         This attribute is always present regardless of the state of war.
     """
 
-    __slots__ = ('end_time', 'team_size', 'clan', 'enemy_stars',
-                 'attack_count', 'stars', 'destruction', 'clan_level',
-                 'clan_tag')
+    __slots__ = (
+        "end_time",
+        "team_size",
+        "clan",
+        "enemy_stars",
+        "attack_count",
+        "stars",
+        "destruction",
+        "clan_level",
+        "clan_tag",
+    )
 
     def __repr__(self):
         attrs = [
-            ('clan_tag', self.clan_tag),
-            ('clan', repr(self.clan)),
-            ('size', self.team_size)
+            ("clan_tag", self.clan_tag),
+            ("clan", repr(self.clan)),
+            ("size", self.team_size),
         ]
-        return '<%s %s>' % (self.__class__.__name__, ' '.join('%s=%r' % t for t in attrs))
+        return "<%s %s>" % (
+            self.__class__.__name__,
+            " ".join("%s=%r" % t for t in attrs),
+        )
 
     def __init__(self, *, data, clan_tag, http):
-        self.end_time = try_enum(Timestamp, data.get('endTime'))
-        self.team_size = data.get('teamSize')
+        # pylint: disable=protected-access, import-outside-toplevel
+        self.end_time = try_enum(Timestamp, data.get("endTime"))
+        self.team_size = data.get("teamSize")
 
         from .clans import Clan  # hack because circular imports
-        self.clan = try_enum(Clan, data.get('clan'), http=http)
+
+        self.clan = try_enum(Clan, data.get("clan"), http=http)
         self.clan_tag = clan_tag
 
         try:
-            self.enemy_stars = data['opponent']['stars']
+            self.enemy_stars = data["opponent"]["stars"]
         except KeyError:
             self.enemy_stars = None
 
         if self.clan:
-            self.attack_count = self.clan._data.get('attacks')
-            self.stars = self.clan._data.get('stars')
-            self.destruction = self.clan._data.get('destructionPercentage')
-            self.clan_level = self.clan._data.get('clanLevel')
+            self.attack_count = self.clan._data.get("attacks")
+            self.stars = self.clan._data.get("stars")
+            self.destruction = self.clan._data.get("destructionPercentage")
+            self.clan_level = self.clan._data.get("clanLevel")

@@ -1,0 +1,20 @@
+jobs:
+  include:
+    - install: pip install aiohttp pylint black flake8 sphinx sphinx_rtd_theme
+      python: 3.7
+      script:
+        - black --check --verbose coc docs
+        - flake8 coc
+        - pylint coc
+        - sphinx-build -W docs/ /tmp/foo
+      stage: lint
+language: python
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+script:
+  - echo "skipping tests"
+stages:
+  - lint
+  - test

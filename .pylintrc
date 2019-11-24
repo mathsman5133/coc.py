@@ -1,0 +1,12 @@
+[Messages Control]
+disable=
+    too-many-instance-attributes,
+    too-many-public-methods,
+    too-many-lines,
+    too-few-public-methods,
+    duplicate-code,
+    bad-continuation,
+    property-with-parameters
+
+max-line-length=120
+notes=fixme

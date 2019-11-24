@@ -1,22 +1,18 @@
-# -*- coding: utf-8 -*-
+"""
+Clash of Clans API Wrapper
+~~~~~~~~~~~~~~~~~~~
 
-__version__ = '0.3.0'
+A basic wrapper for the Clash of Clans API.
 
-from .cache import (
-    Cache,
-    CacheConfig,
-    DefaultCache,
-    MaxSizeCache,
-    TimeToLiveCache
-)
+:copyright: (c) 2015-2019 mathsman5133
+:license: MIT, see LICENSE for more details.
 
-from .clans import (
-    Clan,
-    SearchClan,
-    BasicClan,
-    WarClan,
-    LeagueClan
-)
+"""
+__version__ = "0.3.0"
+
+from .cache import Cache, CacheConfig, DefaultCache, MaxSizeCache, TimeToLiveCache
+
+from .clans import Clan, SearchClan, BasicClan, WarClan, LeagueClan
 from .client import Client, login
 from .events import EventsClient
 from .enums import (
@@ -25,7 +21,7 @@ from .enums import (
     BUILDER_TROOPS_ORDER,
     SPELL_ORDER,
     HERO_ORDER,
-    SIEGE_MACHINE_ORDER
+    SIEGE_MACHINE_ORDER,
 )
 from .errors import (
     ClashOfClansException,
@@ -36,7 +32,7 @@ from .errors import (
     Forbidden,
     Maitenance,
     GatewayError,
-    PrivateWarLog
+    PrivateWarLog,
 )
 from .http import HTTPClient
 from .iterators import (
@@ -44,7 +40,7 @@ from .iterators import (
     PlayerIterator,
     ClanWarIterator,
     LeagueWarIterator,
-    CurrentWarIterator
+    CurrentWarIterator,
 )
 from .miscmodels import (
     Achievement,
@@ -57,8 +53,7 @@ from .miscmodels import (
     Spell,
     Troop,
     Timestamp,
-    Label
-
+    Label,
 )
 from .players import (
     Player,
@@ -66,7 +61,7 @@ from .players import (
     SearchPlayer,
     LeaguePlayer,
     LeagueRankedPlayer,
-    WarMember
+    WarMember,
 )
 from .wars import (
     BaseWar,
@@ -75,7 +70,6 @@ from .wars import (
     WarAttack,
     LeagueGroup,
     LeagueWar,
-    LeagueWarLogEntry
+    LeagueWarLogEntry,
 )
 from . import utils
-

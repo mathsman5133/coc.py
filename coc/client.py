@@ -28,22 +28,27 @@ SOFTWARE.
 import asyncio
 import logging
 
-from collections import Iterable
+from collections.abc import Iterable
 
 from .cache import Cache, cached
 from .clans import Clan, SearchClan
 from .errors import Forbidden, NotFound, PrivateWarLog
 from .miscmodels import Location, League
 from .http import HTTPClient
-from .iterators import PlayerIterator, ClanIterator, \
-    ClanWarIterator, LeagueWarIterator, CurrentWarIterator
+from .iterators import (
+    PlayerIterator,
+    ClanIterator,
+    ClanWarIterator,
+    LeagueWarIterator,
+    CurrentWarIterator,
+)
 from .players import Player, LeagueRankedPlayer, SearchPlayer
 from .utils import get, corrected_tag
 from .wars import ClanWar, WarLog, LeagueWar, LeagueWarLogEntry, LeagueGroup
 
-log = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
-LEAGUE_WAR_STATE = 'notInWar'
+LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 
@@ -66,15 +71,14 @@ def login(email, password, client=None, **kwargs):
         to use.
     **kwargs
         Any kwargs you wish to pass into the Client object.
-
     """
     if not client:
         client = Client
 
-    c = client(**kwargs)
-    c.create_cache()
-    c.loop.run_until_complete(c.login(email, password))
-    return c
+    client_instance = client(**kwargs)
+    client_instance.create_cache()
+    client_instance.loop.run_until_complete(client_instance.login(email, password))
+    return client_instance
 
 
 class Client:
@@ -127,17 +131,29 @@ class Client:
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
-    __slots__ = ('loop', 'correct_key_count', 'key_names', 'throttle_limit',
-                 'http', '_ready', 'cache', 'correct_tags')
+
+    # pylint: disable=unused-argument
+    # We do use them but through the `cache()` decorator.
+    __slots__ = (
+        "loop",
+        "correct_key_count",
+        "key_names",
+        "throttle_limit",
+        "http",
+        "_ready",
+        "cache",
+        "correct_tags",
+    )
 
     def __init__(
-            self, *,
-            key_count: int = 1,
-            key_names: str = 'Created with coc.py Client',
-            throttle_limit: int = 10,
-            loop: asyncio.AbstractEventLoop = None,
-            cache=None,
-            correct_tags: bool = False
+        self,
+        *,
+        key_count: int = 1,
+        key_names: str = "Created with coc.py Client",
+        throttle_limit: int = 10,
+        loop: asyncio.AbstractEventLoop = None,
+        cache=None,
+        correct_tags: bool = False
     ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -145,8 +161,9 @@ class Client:
         self.correct_key_count = max(min(KEY_MAXIMUM, key_count), KEY_MINIMUM)
 
         if not key_count == self.correct_key_count:
-            raise RuntimeError("Key count must be within {}-{}".format(
-                KEY_MINIMUM, KEY_MAXIMUM))
+            raise RuntimeError(
+                "Key count must be within {}-{}".format(KEY_MINIMUM, KEY_MAXIMUM)
+            )
 
         self.key_names = key_names
         self.throttle_limit = throttle_limit
@@ -169,22 +186,27 @@ class Client:
             Your password login from https://developer.clashofclans.com
             This is used when updating keys automatically if your IP changes
         """
-        self.http = HTTPClient(client=self, email=email, password=password,
-                               key_names=self.key_names, loop=self.loop,
-                               key_count=self.correct_key_count,
-                               throttle_limit=self.throttle_limit)
+        self.http = HTTPClient(
+            client=self,
+            email=email,
+            password=password,
+            key_names=self.key_names,
+            loop=self.loop,
+            key_count=self.correct_key_count,
+            throttle_limit=self.throttle_limit,
+        )
         await self.http.get_keys()
         await self._ready.wait()
         self._ready.clear()
-        log.debug('HTTP connection created. Client is ready for use.')
+        LOG.debug("HTTP connection created. Client is ready for use.")
 
     def close(self):
         """Closes the HTTP connection
         """
-        log.info('Clash of Clans client logging out...')
+        LOG.info("Clash of Clans client logging out...")
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
-        self.dispatch('on_client_close')
+        self.dispatch("on_client_close")
 
     def create_cache(self):
         """Creates all cache instances and registers settings.
@@ -194,28 +216,9 @@ class Client:
         self.cache = self.cache(self)
         self.cache.register_cache_types()
 
-    def event(self, fctn):
-        """A decorator that registers an event.
-
-        The only event at present is :func:`on_key_reset`.
-
-        This could be a coro or regular function.
-
-        Example
-        --------
-
-        .. code-block:: python3
-
-            @client.event
-            async def on_key_reset(key):
-                print('My new key is {}'.format(key))
-        """
-        setattr(self, fctn.__name__, fctn)
-        log.info('Successfully registered %s event', fctn.__name__)
-        return fctn
-
     def dispatch(self, event_name: str, *args, **kwargs):
-        log.debug('Dispatching %s event', event_name)
+        """Dispatches an event listener matching the `event_name` parameter."""
+        LOG.debug("Dispatching %s event", event_name)
 
         try:
             fctn = getattr(self, event_name)
@@ -237,6 +240,7 @@ class Client:
         number_of_keys : int
             The number of keys to reset. Defaults to None - all keys.
         """
+        # pylint: disable=protected-access
         self._ready.clear()
         num = number_of_keys or len(self.http._keys)
         keys = self.http._keys
@@ -244,12 +248,20 @@ class Client:
             await self.http.reset_key(keys[i])
         self._ready.set()
 
-    async def search_clans(self, *, name: str = None, war_frequency: str = None,
-                           location_id: int = None, min_members: int = None,
-                           max_members: int = None, min_clan_points: int = None,
-                           min_clan_level: int = None, limit: int = None,
-                           before: int = None, after: int = None
-                           ):
+    async def search_clans(
+        self,
+        *,
+        name: str = None,
+        war_frequency: str = None,
+        location_id: int = None,
+        min_members: int = None,
+        max_members: int = None,
+        min_clan_points: int = None,
+        min_clan_level: int = None,
+        limit: int = None,
+        before: str = None,
+        after: str = None
+    ):
         """Search all clans by name and/or filtering the results using various criteria.
 
         At least one filtering criteria must be defined and if name is used as part
@@ -284,28 +296,34 @@ class Client:
         HTTPException
             No options were passed.
         """
+        data = await self.http.search_clans(
+            name=name,
+            warFrequency=war_frequency,
+            locationId=location_id,
+            minMembers=min_members,
+            maxMembers=max_members,
+            minClanPoints=min_clan_points,
+            minClanLevel=min_clan_level,
+            limit=limit,
+            before=before,
+            after=after,
+        )
 
-        r = await self.http.search_clans(name=name, warFrequency=war_frequency, 
-                                         locationId=location_id, minMembers=min_members,
-                                         maxMembers=max_members, minClanPoints=min_clan_points,
-                                         minClanLevel=min_clan_level, limit=limit, 
-                                         before=before, after=after
-                                         )
-
-        clans = list(SearchClan(data=n, http=self.http) for n in r.get('items', []))
+        clans = list(SearchClan(data=n, http=self.http) for n in data.get("items", []))
 
         return clans
 
     @corrected_tag()
-    @cached('search_clans')
+    @cached("search_clans")
     async def get_clan(
-            self,
-            tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
-        """Get information about a single clan by clan tag. 
+        """Get information about a single clan by clan tag.
+
         Clan tags can be found using clan search operation.
 
         Parameters
@@ -328,16 +346,16 @@ class Client:
         :class:`SearchClan`
             The clan with provided tag.
         """
-        r = await self.http.get_clan(tag)
-        return SearchClan(data=r, http=self.http)
+        data = await self.http.get_clan(tag)
+        return SearchClan(data=data, http=self.http)
 
     def get_clans(
-            self,
-            tags: Iterable,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True,
-            **extra_options
+        self,
+        tags: Iterable,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
+        **extra_options
     ):
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
@@ -374,24 +392,24 @@ class Client:
             - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
             - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
 
-            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+            If none of these options are passed, the iterable passed in should be an instance of `collections.Iterable`.
 
         Returns
         --------
         :class:`ClanIterator` of :class:`SearchClan`
         """
         if not isinstance(tags, Iterable):
-            raise TypeError('Tags are not an iterable.')
+            raise TypeError("Tags are not an iterable.")
 
         return ClanIterator(self, tags, cache, fetch, update_cache, **extra_options)
 
-    @corrected_tag(arg_name='clan_tag')
+    @corrected_tag(arg_name="clan_tag")
     async def get_members(
-            self,
-            clan_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        clan_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """List clan members.
 
@@ -418,29 +436,29 @@ class Client:
         """
         if cache:
             try:
-                c = await self.cache.get('search_clans', clan_tag)
+                clan = await self.cache.get("search_clans", clan_tag)
             except KeyError:
                 if fetch is False:
                     return
             else:
-                return c.members
+                return clan.members
 
-        r = await self.http.get_clan(clan_tag)
-        clan = SearchClan(data=r, http=self.http)
+        data = await self.http.get_clan(clan_tag)
+        clan = SearchClan(data=data, http=self.http)
 
         if update_cache:
-            await self.cache.set('search_clans', clan.tag, clan)
+            await self.cache.set("search_clans", clan.tag, clan)
 
         return clan.members
 
-    @corrected_tag(arg_name='clan_tag')
-    @cached('war_logs')
+    @corrected_tag(arg_name="clan_tag")
+    @cached("war_logs")
     async def get_warlog(
-            self,
-            clan_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        clan_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """Retrieve clan's clan war log
 
@@ -465,38 +483,43 @@ class Client:
             Return type will depend on what kind of war it is.
             These two classes have different attributes.
         """
+        # pylint: disable=protected-access
         try:
-            r = await self.http.get_clan_warlog(clan_tag)
-        except Forbidden as e:
-            raise PrivateWarLog(e.response, e._data)
+            data = await self.http.get_clan_warlog(clan_tag)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response, exception._data)
 
         wars = []
-        for n in r.get('items', []):
+        for war in data.get("items", []):
             # lately war log entries for sccwl can be distinguished by a `null` result
-            if n.get('result') is None:
-                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag, http=self.http))
+            if war.get("result") is None:
+                wars.append(
+                    LeagueWarLogEntry(data=war, clan_tag=clan_tag, http=self.http)
+                )
                 continue
 
             # for earlier logs this is distinguished by no opponent tag (result called `tie`)
-            if n.get('opponent', {}).get('tag', None) is None:
-                wars.append(LeagueWarLogEntry(data=n, clan_tag=clan_tag, http=self.http))
+            if war.get("opponent", {}).get("tag", None) is None:
+                wars.append(
+                    LeagueWarLogEntry(data=war, clan_tag=clan_tag, http=self.http)
+                )
                 continue
 
-            wars.append(WarLog(data=n, clan_tag=clan_tag, http=self.http))
+            wars.append(WarLog(data=data, clan_tag=clan_tag, http=self.http))
 
         if update_cache:
-            await self.cache.set('war_logs', wars[0].clan_tag, wars)
+            await self.cache.set("war_logs", wars[0].clan_tag, wars)
 
         return wars
 
-    @corrected_tag(arg_name='clan_tag')
-    @cached('clan_wars')
+    @corrected_tag(arg_name="clan_tag")
+    @cached("clan_wars")
     async def get_clan_war(
-            self,
-            clan_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        clan_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """
         Retrieve information about clan's current clan war
@@ -520,20 +543,21 @@ class Client:
         --------
         :class:`ClanWar`
         """
+        # pylint: disable=protected-access
         try:
-            r = await self.http.get_clan_current_war(clan_tag)
-        except Forbidden as e:
-            raise PrivateWarLog(e.response, e._data)
+            data = await self.http.get_clan_current_war(clan_tag)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response, exception._data)
 
-        return ClanWar(data=r, clan_tag=clan_tag, http=self.http)
+        return ClanWar(data=data, clan_tag=clan_tag, http=self.http)
 
     def get_clan_wars(
-            self,
-            clan_tags: Iterable,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True,
-            **extra_options
+        self,
+        clan_tags: Iterable,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
+        **extra_options
     ):
         """
         Retrieve information multiple clan's current clan wars
@@ -570,25 +594,27 @@ class Client:
             - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
             - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
 
-            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+            If none of these options are passed, the iterable passed in should be an instance of `collections.Iterable`.
 
         Returns
         --------
         :class:`coc.iterators.WarIterator` of :class:`ClanWar`
         """
         if not isinstance(clan_tags, Iterable):
-            raise TypeError('Tags are not an iterable.')
+            raise TypeError("Tags are not an iterable.")
 
-        return ClanWarIterator(self, clan_tags, cache, fetch, update_cache, **extra_options)
+        return ClanWarIterator(
+            self, clan_tags, cache, fetch, update_cache, **extra_options
+        )
 
-    @corrected_tag(arg_name='clan_tag')
-    @cached('league_groups')
+    @corrected_tag(arg_name="clan_tag")
+    @cached("league_groups")
     async def get_league_group(
-            self,
-            clan_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        clan_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """Retrieve information about clan's current clan war league group
 
@@ -611,21 +637,22 @@ class Client:
         --------
         :class:`LeagueGroup`
         """
+        # pylint: disable=protected-access
         try:
-            r = await self.http.get_clan_war_league_group(clan_tag)
-        except Forbidden as e:
-            raise PrivateWarLog(e.response, e._data)
+            data = await self.http.get_clan_war_league_group(clan_tag)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response, exception._data)
 
-        return LeagueGroup(data=r, http=self.http)
+        return LeagueGroup(data=data, http=self.http)
 
-    @corrected_tag(arg_name='war_tag')
-    @cached('league_wars')
+    @corrected_tag(arg_name="war_tag")
+    @cached("league_wars")
     async def get_league_war(
-            self,
-            war_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        war_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """
         Retrieve information about a clan war league war
@@ -649,20 +676,21 @@ class Client:
         --------
         :class:`LeagueWar`
         """
+        # pylint: disable=protected-access
         try:
-            r = await self.http.get_cwl_wars(war_tag)
-        except Forbidden as e:
-            raise PrivateWarLog(e.response, e._data)
+            data = await self.http.get_cwl_wars(war_tag)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response, exception._data)
 
-        return LeagueWar(data=r, http=self.http)
+        return LeagueWar(data=data, http=self.http)
 
     def get_league_wars(
-            self,
-            war_tags: Iterable,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True,
-            **extra_options
+        self,
+        war_tags: Iterable,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
+        **extra_options
     ):
         """
         Retrieve information multiple clan's current league wars
@@ -699,26 +727,29 @@ class Client:
             - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
             - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
 
-            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+            If none of these options are passed, the iterable passed in should be an instance of `collections.Iterable`.
 
         Returns
         --------
         :class:`coc.iterators.LeagueWarIterator` of :class:`LeagueWar`
         """
         if not isinstance(war_tags, Iterable):
-            raise TypeError('Tags are not an iterable.')
+            raise TypeError("Tags are not an iterable.")
 
-        return LeagueWarIterator(self, war_tags, cache, fetch, update_cache, **extra_options)
+        return LeagueWarIterator(
+            self, war_tags, cache, fetch, update_cache, **extra_options
+        )
 
-    @corrected_tag(arg_name='clan_tag')
-    @cached('current_wars')
+    @corrected_tag(arg_name="clan_tag")
+    @cached("current_wars")
     async def get_current_war(
-            self,
-            clan_tag: str,
-            league_war: bool = True,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        clan_tag: str,
+        *,
+        league_war: bool = True,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True
     ):
         """Retrieve a clan's current war.
 
@@ -756,9 +787,9 @@ class Client:
         If no league group is found, or the group is in ``preparation``, this method will return the
         :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
         """
-        get_war = await self.get_clan_war(clan_tag, cache=cache,
-                                          fetch=fetch, update_cache=update_cache
-                                          )
+        get_war = await self.get_clan_war(
+            clan_tag, cache=cache, fetch=fetch, update_cache=update_cache
+        )
         if not get_war:
             return None
         if get_war.state != LEAGUE_WAR_STATE:
@@ -767,30 +798,30 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag, cache=cache,
-                                                       fetch=fetch, update_cache=update_cache
-                                                       )
+            league_group = await self.get_league_group(
+                clan_tag, cache=cache, fetch=fetch, update_cache=update_cache
+            )
         except NotFound:
             return get_war
 
-        if league_group.state == 'preparation':
+        if league_group.state == "preparation":
             return get_war
 
         round_tags = league_group.rounds[-1]
 
-        async for war in self.get_league_wars(round_tags, cache=cache, fetch=fetch, update_cache=update_cache):
+        async for war in self.get_league_wars(
+            round_tags, cache=cache, fetch=fetch, update_cache=update_cache
+        ):
             if war.clan_tag == clan_tag:
                 return war
-        else:
-            return get_war
 
     def get_current_wars(
-            self,
-            clan_tags: Iterable,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True,
-            **extra_options
+        self,
+        clan_tags: Iterable,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
+        **extra_options
     ):
         """Retrieve information multiple clan's current wars.
 
@@ -828,7 +859,7 @@ class Client:
             - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
             - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
 
-            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+            If none of these options are passed, the iterable passed in should be an instance of `collections.Iterable`.
 
 
         Returns
@@ -837,27 +868,34 @@ class Client:
         :class:`LeagueWar` or :class:`ClanWar`, or both.
         """
         if not isinstance(clan_tags, Iterable):
-            raise TypeError('Tags are not an iterable.')
+            raise TypeError("Tags are not an iterable.")
 
-        return CurrentWarIterator(client=self, tags=clan_tags, cache=cache,
-                                  fetch=fetch, update_cache=update_cache, **extra_options
-                                  )
+        return CurrentWarIterator(
+            client=self,
+            tags=clan_tags,
+            cache=cache,
+            fetch=fetch,
+            update_cache=update_cache,
+            **extra_options
+        )
 
     # locations
     async def _populate_locations(self):
-        if await self.cache.get('locations', 'fully_populated') is True:
-            return await self.cache.get_limit('locations')
+        if await self.cache.get("locations", "fully_populated") is True:
+            return await self.cache.get_limit("locations")
 
-        await self.cache.clear('locations')
+        await self.cache.clear("locations")
         all_locations = await self.search_locations(limit=None)
 
-        for n in all_locations:
-            await self.cache.set('locations', n.id,  n)
+        for location in all_locations:
+            await self.cache.set("locations", location.id, location)
 
-        await self.cache.set('locations', 'fully_populated', True)
+        await self.cache.set("locations", "fully_populated", True)
         return all_locations
 
-    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
+    async def search_locations(
+        self, *, limit: int = None, before: str = None, after: str = None
+    ):
         """List all available locations
 
         Parameters
@@ -873,25 +911,25 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        if await self.cache.get('locations', 'fully_populated') is True:
-            return await self.cache.get_limit('locations', limit)
+        if await self.cache.get("locations", "fully_populated") is True:
+            return await self.cache.get_limit("locations", limit)
 
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
-        locations = list(Location(data=n) for n in data['items'])
+        locations = list(Location(data=n) for n in data["items"])
 
-        for n in locations:
-            await self.cache.set('locations', n.id,  n)
+        for location in locations:
+            await self.cache.set("locations", location.id, location)
 
         return locations
 
-    @cached('locations')
+    @cached("locations")
     async def get_location(
-            self,
-            location_id: int,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        location_id: int,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """Get information about specific location
 
@@ -914,8 +952,8 @@ class Client:
         --------
         :class:`Location`
         """
-        r = await self.http.get_location(location_id)
-        return Location(data=r)
+        data = await self.http.get_location(location_id)
+        return Location(data=data)
 
     async def get_location_named(self, location_name: str):
         """Get a location by name.
@@ -941,12 +979,12 @@ class Client:
         return get(locations, name=location_name)
 
     async def get_location_clan(
-            self,
-            location_id: int = 'global',
-            *,
-            limit: int = None,
-            before: int = None,
-            after: int = None
+        self,
+        location_id: int = "global",
+        *,
+        limit: int = None,
+        before: str = None,
+        after: str = None
     ):
         """Get clan rankings for a specific location
 
@@ -967,16 +1005,18 @@ class Client:
         :class:`list` of :class:`Clan`
         """
 
-        r = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-        return list(Clan(data=n, http=self.http) for n in r['items'])
+        data = await self.http.get_location_clans(
+            location_id, limit=limit, before=before, after=after
+        )
+        return list(Clan(data=n, http=self.http) for n in data["items"])
 
     async def get_location_players(
-            self,
-            location_id: int = 'global',
-            *,
-            limit: int = None,
-            before: int = None,
-            after: int = None
+        self,
+        location_id: int = "global",
+        *,
+        limit: int = None,
+        before: str = None,
+        after: str = None
     ):
         """Get player rankings for a specific location
 
@@ -995,18 +1035,18 @@ class Client:
         --------
         :class:`list` of :class:`Player`
         """
-        r = await self.http.get_location_players(location_id, limit=limit,
-                                                 before=before, after=after
-                                                 )
-        return list(Player(data=n) for n in r['items'])
+        data = await self.http.get_location_players(
+            location_id, limit=limit, before=before, after=after
+        )
+        return list(Player(data=n) for n in data["items"])
 
     async def get_location_clans_versus(
-            self,
-            location_id: int = 'global',
-            *,
-            limit: int = None,
-            before: int = None,
-            after: int = None
+        self,
+        location_id: int = "global",
+        *,
+        limit: int = None,
+        before: str = None,
+        after: str = None
     ):
         """Get clan versus rankings for a specific location
 
@@ -1025,18 +1065,19 @@ class Client:
         --------
         :class:`list` of :class:`Clan`
         """
-        r = await self.http.get_location_clans_versus(location_id, limit=limit,
-                                                      before=before, after=after
-                                                      )
-        return list(Clan(data=n, http=self.http) for n in r['items'])
+        data = await self.http.get_location_clans_versus(
+            location_id, limit=limit, before=before, after=after
+        )
+
+        return list(Clan(data=n, http=self.http) for n in data["items"])
 
     async def get_location_players_versus(
-            self,
-            location_id: int = 'global',
-            *,
-            limit: int = None,
-            before: int = None,
-            after: int = None
+        self,
+        location_id: int = "global",
+        *,
+        limit: int = None,
+        before: str = None,
+        after: str = None
     ):
         """Get player versus rankings for a specific location
 
@@ -1055,27 +1096,30 @@ class Client:
         --------
         :class:`list` of :class:`Player`
         """
-        r = await self.http.get_location_players_versus(location_id, limit=limit,
-                                                        before=before, after=after
-                                                        )
-        return list(Player(data=n) for n in r['items'])
+        data = await self.http.get_location_players_versus(
+            location_id, limit=limit, before=before, after=after
+        )
+
+        return list(Player(data=n) for n in data["items"])
 
     # leagues
 
     async def _populate_leagues(self):
-        if await self.cache.get('leagues', 'fully_populated') is True:
-            return await self.cache.get_limit('leagues')
+        if await self.cache.get("leagues", "fully_populated") is True:
+            return await self.cache.get_limit("leagues")
 
-        await self.cache.clear('leagues')
+        await self.cache.clear("leagues")
         all_leagues = await self.search_leagues(limit=None)
 
-        for n in all_leagues:
-            await self.cache.set('leagues', n.id, n)
+        for league in all_leagues:
+            await self.cache.set("leagues", league.id, league)
 
-        await self.cache.set('leagues', 'fully_populated', True)
+        await self.cache.set("leagues", "fully_populated", True)
         return all_leagues
 
-    async def search_leagues(self, *, limit: int = None, before: int = None, after: int = None):
+    async def search_leagues(
+        self, *, limit: int = None, before: str = None, after: str = None
+    ):
         """Get list of leagues.
 
         Parameters
@@ -1093,24 +1137,24 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        if await self.cache.get('leagues', 'fully_populated') is True:
-            return await self.cache.get_limit('leagues', limit)
+        if await self.cache.get("leagues", "fully_populated") is True:
+            return await self.cache.get_limit("leagues", limit)
 
-        r = await self.http.search_leagues(limit=limit, before=before, after=after)
-        leagues = list(League(data=n, http=self.http) for n in r['items'])
+        data = await self.http.search_leagues(limit=limit, before=before, after=after)
+        leagues = list(League(data=n, http=self.http) for n in data["items"])
 
-        for n in leagues:
-            await self.cache.set('leagues', n.id, n)
+        for league in leagues:
+            await self.cache.set("leagues", league.id, league)
 
         return leagues
 
-    @cached('leagues')
+    @cached("leagues")
     async def get_league(
-            self,
-            league_id: int,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        league_id: int,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """
         Get league information
@@ -1134,8 +1178,8 @@ class Client:
         --------
         :class:`League`
         """
-        r = await self.http.get_league(league_id)
-        return League(data=r, http=self.http)
+        data = await self.http.get_league(league_id)
+        return League(data=data, http=self.http)
 
     async def get_league_named(self, league_name: str):
         """Get a location by name.
@@ -1181,16 +1225,16 @@ class Client:
 
             where ``id`` is the Season ID
         """
-        r = await self.http.get_league_seasons(league_id)
-        return r['items']
+        data = await self.http.get_league_seasons(league_id)
+        return data["items"]
 
     async def get_season_rankings(
-            self,
-            league_id: int,
-            season_id: int,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        league_id: int,
+        season_id: int,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """Get league season rankings.
         Note that league season information is available only for Legend League.
@@ -1216,9 +1260,10 @@ class Client:
         --------
         :class:`list` of :class:`LeagueRankedPlayer`
         """
+        # pylint: disable=too-many-arguments
         if cache:
             try:
-                data = await self.cache.get('seasons', 'league_id')
+                data = await self.cache.get("seasons", "league_id")
                 if data[season_id]:
                     return data
 
@@ -1228,24 +1273,26 @@ class Client:
             if fetch is False:
                 return None
 
-        r = await self.http.get_league_season_info(league_id, season_id)
-        players = list(LeagueRankedPlayer(data=n, http=self.http) for n in r.get('items', []))
+        data = await self.http.get_league_season_info(league_id, season_id)
+        players = list(
+            LeagueRankedPlayer(data=n, http=self.http) for n in data.get("items", [])
+        )
 
         if update_cache:
-            await self.cache.set('seasons', 'league_id', {season_id: players})
+            await self.cache.set("seasons", "league_id", {season_id: players})
 
         return players
 
     # players
 
-    @corrected_tag(arg_name='player_tag')
-    @cached('search_players')
+    @corrected_tag(arg_name="player_tag")
+    @cached("search_players")
     async def get_player(
-            self,
-            player_tag: str,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True
+        self,
+        player_tag: str,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
     ):
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
@@ -1269,16 +1316,16 @@ class Client:
         --------
         :class:`SearchPlayer`
         """
-        r = await self.http.get_player(player_tag)
-        return SearchPlayer(data=r, http=self.http)
+        data = await self.http.get_player(player_tag)
+        return SearchPlayer(data=data, http=self.http)
 
     def get_players(
-            self,
-            player_tags: Iterable,
-            cache: bool = True,
-            fetch: bool = True,
-            update_cache: bool = True,
-            **extra_options
+        self,
+        player_tags: Iterable,
+        cache: bool = True,
+        fetch: bool = True,
+        update_cache: bool = True,
+        **extra_options
     ):
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
@@ -1315,13 +1362,15 @@ class Client:
             - attribute: str - the attribute to get for each item in the iterable. Defaults to ``None``.
             - index_before_attribute: bool - whether to index the item before getting an attribute (defaults to True)
 
-            If none of these options are passed, it will treat the iterable passed in as an instance of `collections.Iterable`.
+            If none of these options are passed, the iterable passed in should be an instance of `collections.Iterable`.
 
         Returns
         --------
         :class:`PlayerIterator` of :class:`SearchPlayer`
         """
         if not isinstance(player_tags, Iterable):
-            raise TypeError('Tags are not an iterable.')
+            raise TypeError("Tags are not an iterable.")
 
-        return PlayerIterator(self, player_tags, cache, fetch, update_cache, **extra_options)
+        return PlayerIterator(
+            self, player_tags, cache, fetch, update_cache, **extra_options
+        )

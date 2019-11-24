@@ -1,4 +1,5 @@
 .. currentmodule:: coc
+
 Events
 =======
 The following section provides an overview of the Events Client, providing
@@ -272,6 +273,8 @@ This works in the exact same fashion as ``client.add_events``.
                            }
                          )
 
+.. _working_with_batch_updates:
+
 Working With Batch Updates
 ---------------------------
 The library provides lower-level events called "batch updates", for when doing something for every donation
@@ -280,7 +283,7 @@ all events and args dispatched that cycle.
 
 The function ``on_clan_batch_updates(events)`` will have 1 parameter, the events, which contains data as follows:
 
-.. code-block:: json
+.. code-block::
 
     [
         [
@@ -384,7 +387,7 @@ The following is an example of printing whenever a player upgrades a hero, troop
 
 Please note that in the example above, when registering multiple events to 1 function, care must be taken
 that the number of parameters for all functions is the same, otherwise some weird errors may be experienced.
-Alternatively, you could create the function with *args parameter, like follows:
+Alternatively, you could create the function with \*args parameter, like follows.
 
 .. code-block:: python3
 
