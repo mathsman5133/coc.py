@@ -1,6 +1,20 @@
 coc.py
 ======
 
+.. image:: https://discordapp.com/api/guilds/566451504332931073/embed.png
+    :target: https://discord.gg/Eaja7gJ
+    :alt: Discord Server Invite
+.. image:: https://img.shields.io/pypi/v/coc.py.svg
+   :target: https://pypi.python.org/pypi/coc.py
+   :alt: PyPI version info
+.. image:: https://img.shields.io/pypi/pyversions/discord.py.svg
+   :target: https://pypi.python.org/pypi/coc.py
+   :alt: PyPI supported Python versions
+.. image:: https://travis-ci.org/mathsman5133/coc.py.svg?branch=master
+    :target: https://travis-ci.org/mathsman5133/coc.py
+    :alt: Travis CI info
+
+
 Easy to use asynchronous Clash of Clans API wrapper in Python.
 
 Key Features
@@ -81,6 +95,7 @@ Links
 ------
 - `coc.py Documentation <https://cocpy.readthedocs.io/en/latest/?>`_
 - `Official Clash of Clans API Page <https://developer.clashofclans.com/>`_
+- `Clash of Clans API Discord Server <https://discord.gg/Eaja7gJ/>`_
 
 Disclaimer
 -----------

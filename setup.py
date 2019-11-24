@@ -24,4 +24,9 @@ setup(
     python_requires=">=3.5.3",
     install_requires=REQUIREMENTS,
     extra_requires={"docs": ["sphinx==1.7.4", "sphinx_rtd_theme"], "lint": ["pylint"]},
+    classifiers={
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+    },
 )
