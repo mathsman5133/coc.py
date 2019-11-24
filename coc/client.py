@@ -33,7 +33,7 @@ from collections.abc import Iterable
 from .cache import Cache, cached
 from .clans import Clan, SearchClan
 from .errors import Forbidden, NotFound, PrivateWarLog
-from .miscmodels import Location, League
+from .miscmodels import Label, League, Location
 from .http import HTTPClient
 from .iterators import (
     PlayerIterator,
@@ -1253,6 +1253,50 @@ class Client:
             await self.cache.set("seasons", "league_id", {season_id: players})
 
         return players
+
+    async def get_clan_labels(
+        self, *, limit: int = None, before: str = None, after: str = None
+    ):
+        """List clan labels.
+
+        Parameters
+        -----------
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Label`
+        """
+        data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
+        return list(Label(data=n, http=self.http) for n in data["items"])
+
+    async def get_player_labels(
+        self, *, limit: int = None, before: str = None, after: str = None
+    ):
+        """List player labels.
+
+        Parameters
+        -----------
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Label`
+        """
+        data = await self.http.get_player_labels(
+            limit=limit, before=before, after=after
+        )
+        return list(Label(data=n, http=self.http) for n in data["items"])
 
     # players
 

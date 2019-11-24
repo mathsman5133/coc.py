@@ -399,6 +399,14 @@ class HTTPClient:
     def get_player(self, player_tag):
         return self.request(Route("GET", "/players/{}".format(player_tag), {}))
 
+    # labels
+
+    def get_clan_labels(self, **kwargs):
+        return self.request(Route("GET", "/labels/clan", kwargs))
+
+    def get_player_labels(self, **kwargs):
+        return self.request(Route("GET", "/labels/players", kwargs))
+
     # key updating management
 
     async def login_to_site(self, email, password):
