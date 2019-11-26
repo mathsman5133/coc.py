@@ -7,6 +7,25 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.3.1
+--------
+New Features.
+~~~~~~~~~~~~~~
+- :ref:`on_clan_member_trophy_change`, :ref:`on_clan_member_versus_trophy_change` and
+  :ref:`on_clan_member_league_change` were added as new events.
+- Add ability to pass async and other iterables into methods that return iterators.
+- Add the `HogGlider` to list of builder base troops.
+- Added support for `SearchClan.labels` and `SearchPlayer.labels`. They will return a :class:`~coc.Label` object.
+- Add a special parameter to `Client` to automatically "fix" or call `utils.correct_tag` on any tags passed in to calls.
+- `Client.get_clan_labels()` and `Client.get_player_labels()` are now valid client calls.
+
+BugFixes
+~~~~~~~~~~~~
+- Getting clans and players for a location will now default to getting for the global leaderboard.
+- `LeagueWar` will no longer throw an `AttributeError` when no clan is found.
+- Never update the cache automatically when the `EventsClient` is used.
+- Fixed :ref:`on_war_state_change` not firing properly when a clan entered `preparation` or `warEnded`.
+
 v0.3.0
 -------
 Bug Fixes
