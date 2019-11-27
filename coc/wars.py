@@ -179,11 +179,12 @@ class ClanWar(BaseWar):
         """
         if not self.start_time:
             return None
+        prep_list = [900, 1800, 3600, 7200, 14400, 21600, 28800, 43200, 57600, 72000, 86400]
         if (
             self.start_time.time - self.preparation_start_time.time
-        ).seconds == 82800:  # 23hr prep
-            return "random"
-        return "friendly"
+        ).seconds in prep_list:
+            return "friendly"
+        return "random"
 
     @property
     def status(self):
