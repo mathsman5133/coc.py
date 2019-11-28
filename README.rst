@@ -98,7 +98,7 @@ A few things to bear in mind:
 
 Installing the dev requirements:
 
-.. code::sh
+.. code:: sh
 
     pip install -r dev-requirements.txt
 
@@ -113,7 +113,7 @@ clean, a pre-commit hook will automatically lint your code according to the repo
 
 You can install this pre-commit hook with:
 
-.. code: sh
+.. code:: sh
 
     pre-commit install
 
@@ -122,7 +122,7 @@ if you installed the dev-requirements
 
 You can run all linting that will be run in CI with:
 
-.. code: sh
+.. code:: sh
 
     python setup.py lint
     // or
