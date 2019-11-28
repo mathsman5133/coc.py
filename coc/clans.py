@@ -211,8 +211,20 @@ class SearchClan(BasicClan):
         return list(self.itermembers)
 
     @property
-    def member_dict(self, attr="tag"):
-        """Dict: {attr: :class:`BasicPlayer`}: A dict of clan members by tag.
+    def members_dict(self, attr="tag"):
+        r"""A dict of clan members by tag.
+
+        For Example:
+
+        .. code-block:: python3
+
+            members_dict = {attr_value: member for member in clan_members}
+
+            # calling SearchClan.members_dict would give:
+            members_dict = {member.tag: member for member in clan.members}
+
+            # calling SearchClan.members_dict(attr="name") would give:
+            members_dict = {member.name: member for member in clan.members}
 
         Pass in an attribute of :class:`BasicPlayer` to get that attribute as the key
         """
@@ -328,7 +340,9 @@ class WarClan(Clan):
 
     @property
     def members_dict(self, attr="tag"):
-        """Dict: {attr: :class:`WarMember`} - A dict of clan members in war by tag.
+        """A dict of clan members in war by tag.
+
+        See :attr:`SearchClan.member_dict` for more info on what this returns.
 
         Pass in an attribute of :class:`WarMember` to get that attribute as the key.
         """

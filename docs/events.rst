@@ -283,7 +283,7 @@ all events and args dispatched that cycle.
 
 The function ``on_clan_batch_updates(events)`` will have 1 parameter, the events, which contains data as follows:
 
-.. code-block::
+.. code-block:: python3
 
     [
         [
