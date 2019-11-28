@@ -193,7 +193,7 @@ class ClanWar(BaseWar):
             24 * 60 * 60,
         ]
         if (self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
-             return "friendly"
+            return "friendly"
         return "random"
 
     @property
