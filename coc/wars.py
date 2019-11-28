@@ -171,12 +171,30 @@ class ClanWar(BaseWar):
     def type(self):
         """:class:`str`: Either ``friendly`` or ``random`` - the war type.
         Returns ``None`` if the clan is not in war.
+
+        Possibilities for the length of preparation time for a friendly war include:
+        15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 8 hours, 12 hours,
+        16 hours, 20 hours or 24 hours.
         """
         if not self.start_time:
             return None
-        if (self.start_time.time - self.preparation_start_time.time).seconds == 82800:  # 23hr prep
-            return "random"
-        return "friendly"
+
+        prep_list = [
+            15 * 60,
+            30 * 60,
+            60 * 60,
+            2 * 60 * 60,
+            4 * 60 * 60,
+            6 * 60 * 60,
+            8 * 60 * 60,
+            12 * 60 * 60,
+            16 * 60 * 60,
+            20 * 60 * 60,
+            24 * 60 * 60,
+        ]
+        if (self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
+            return "friendly"
+        return "random"
 
     @property
     def status(self):
