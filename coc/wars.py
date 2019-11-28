@@ -179,11 +179,21 @@ class ClanWar(BaseWar):
         if not self.start_time:
             return None
 
-        prep_list = [15*60, 30*60, 60*60, 2*60*60, 4*60*60, 6*60*60, 8*60*60, 12*60*60, 16*60*60, 20*60*60, 24*60*60]
-        if (
-            self.start_time.time - self.preparation_start_time.time
-        ).seconds in prep_list:
-            return "friendly"
+        prep_list = [
++            15 * 60,
++            30 * 60,
++            60 * 60,
++            2 * 60 * 60,
++            4 * 60 * 60,
++            6 * 60 * 60,
++            8 * 60 * 60,
++            12 * 60 * 60,
++            16 * 60 * 60,
++            20 * 60 * 60,
++            24 * 60 * 60,
++        ]
++        if (self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
+             return "friendly"
         return "random"
 
     @property
