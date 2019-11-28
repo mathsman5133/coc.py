@@ -37,14 +37,10 @@ from coc.utils import custom_isinstance, find
 
 LOG = logging.getLogger(__name__)
 
-TAG_VALIDATOR = re.compile(
-    r"(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})"
-)
+TAG_VALIDATOR = re.compile(r"(?P<tag>^\s*#?[PYLQGRJCUV0289]+\s*$)|(?P<location>\d{1,10})")
 TAG_NAMES = {"location", "tag"}
 
-CacheConfig = namedtuple(
-    "CacheConfig", ("max_size", "ttl")
-)  # a named tuple used with cache config.
+CacheConfig = namedtuple("CacheConfig", ("max_size", "ttl"))  # a named tuple used with cache config.
 
 
 def validate_tag(string):
@@ -105,9 +101,7 @@ class MaxSizeCache(OrderedDict):
         while len(self) > self.max_size:
             oldest = next(iter(self))
             LOG.debug(
-                "Removed item with key %s from cache due to max size %s reached",
-                oldest,
-                self.max_size,
+                "Removed item with key %s from cache due to max size %s reached", oldest, self.max_size,
             )
             del self[oldest]
 
@@ -153,13 +147,9 @@ class TimeToLiveCache(OrderedDict):
             return
 
         current_time = time.monotonic()
-        to_delete = (
-            k for k, (t, v) in tuple(self.items()) if current_time > t + self.ttl
-        )
+        to_delete = (k for k, (t, v) in tuple(self.items()) if current_time > t + self.ttl)
         for k in to_delete:
-            LOG.debug(
-                "Removed item with key %s and TTL %s seconds from cache.", k, self.ttl
-            )
+            LOG.debug("Removed item with key %s and TTL %s seconds from cache.", k, self.ttl)
             del self[k]
 
 
@@ -209,13 +199,9 @@ class DefaultCache(OrderedDict):
             return
 
         current_time = time.monotonic()
-        to_delete = (
-            k for k, (t, v) in tuple(self.items()) if current_time > t + self.ttl
-        )
+        to_delete = (k for k, (t, v) in tuple(self.items()) if current_time > t + self.ttl)
         for k in to_delete:
-            LOG.debug(
-                "Removed item with key %s and TTL %s seconds from cache.", k, self.ttl
-            )
+            LOG.debug("Removed item with key %s and TTL %s seconds from cache.", k, self.ttl)
             del self[k]
 
     def check_max_size(self):
@@ -226,9 +212,7 @@ class DefaultCache(OrderedDict):
         while len(self) > self.max_size:
             oldest = next(iter(self))
             LOG.debug(
-                "Removed item with key %s from cache due to max size %s reached",
-                oldest,
-                self.max_size,
+                "Removed item with key %s from cache due to max size %s reached", oldest, self.max_size,
             )
             del self[oldest]
 
@@ -368,9 +352,7 @@ class Cache:
         :attr:`Cache.static_config`.
         """
         for name in self._cache_categories:
-            cache = self.create_default_cache(
-                max_size=self.get_max_size(name), ttl=self.get_ttl(name)
-            )
+            cache = self.create_default_cache(max_size=self.get_max_size(name), ttl=self.get_ttl(name))
             setattr(self, name, cache)
 
     def get_cache(self, cache_name):
@@ -383,9 +365,7 @@ class Cache:
         They cannot have a TTL otherwise events may be missed.
         Ideally the :func:`Cache.get_max_size` should return ``None``, however this may cause memory bloats.
         """
-        cache = self.create_default_cache(
-            max_size=self.get_max_size(cache_name), ttl=None
-        )
+        cache = self.create_default_cache(max_size=self.get_max_size(cache_name), ttl=None)
         setattr(self, cache_name, cache)
 
     async def get(self, cache_type, key):
@@ -578,9 +558,7 @@ def cached(cache_name):
             fetch = kwargs.pop("fetch", True)
             update_cache = kwargs.pop("update_cache", True)
 
-            if custom_isinstance(
-                class_instance, __name__, "EventsClient"
-            ):  # workaround to stop recursion imports.
+            if custom_isinstance(class_instance, __name__, "EventsClient"):  # workaround to stop recursion imports.
                 update_cache = False  # we never want to automatically update cache for EventsClient.
 
             # todo: clean this up

@@ -96,10 +96,7 @@ class Achievement(EqualityComparable):
             ("stars", self.stars),
             ("value", self.value),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, player):
         self._data = data
@@ -160,10 +157,7 @@ class Troop(EqualityComparable):
             ("name", self.name),
             ("level", self.level),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, player):
         self._data = data
@@ -221,10 +215,7 @@ class Hero(EqualityComparable):
             ("name", self.name),
             ("level", self.level),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, player):
         self._data = data
@@ -282,10 +273,7 @@ class Spell(EqualityComparable):
             ("name", self.name),
             ("level", self.level),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, player):
         self._data = data
@@ -342,10 +330,7 @@ class Location(EqualityComparable):
             ("id", self.id),
             ("name", self.name),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data):
         # pylint: disable=invalid-name
@@ -387,10 +372,7 @@ class League(EqualityComparable):
 
     def __repr__(self):
         attrs = [("id", self.id), ("name", self.name)]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, http):
         # pylint: disable=invalid-name
@@ -440,10 +422,7 @@ class LegendStatistics(EqualityComparable):
             ("player", repr(self.player)),
             ("legend_trophies", self.legend_trophies),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, player):
         self._data = data
@@ -491,10 +470,7 @@ class Badge(EqualityComparable):
         attrs = [
             ("url", self.url),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, http):
         self._http = http
@@ -548,10 +524,7 @@ class Timestamp(EqualityComparable):
 
     def __repr__(self):
         attrs = [("time", self.raw_time), ("seconds_until", self.seconds_until)]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data):
         self._data = data
@@ -590,10 +563,7 @@ class Label(EqualityComparable):
 
     def __repr__(self):
         attrs = [("id", self.id), ("name", self.name)]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, http):
         # pylint: disable=invalid-name

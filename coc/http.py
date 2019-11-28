@@ -88,9 +88,7 @@ class Throttler:
             if len(self._task_logs) < self.rate_limit:
                 break
 
-            LOG.debug(
-                "Request throttled. Sleeping for %s seconds.", self.retry_interval
-            )
+            LOG.debug("Request throttled. Sleeping for %s seconds.", self.retry_interval)
             await asyncio.sleep(self.retry_interval)
 
         # Push new task's start time
@@ -117,9 +115,7 @@ class Route:
         url = self.API_PAGE_BASE + self.path if api_page else self.BASE + self.path
 
         if kwargs:
-            self.url = "{}?{}".format(
-                url, urlencode({k: v for k, v in kwargs.items() if v is not None})
-            )
+            self.url = "{}?{}".format(url, urlencode({k: v for k, v in kwargs.items() if v is not None}))
         else:
             self.url = url
 
@@ -128,9 +124,7 @@ class HTTPClient:
     """HTTP Client for the library. All low-level requests and key-management occurs here."""
 
     # pylint: disable=too-many-arguments, missing-docstring, protected-access, too-many-branches
-    def __init__(
-        self, client, loop, email, password, key_names, key_count, throttle_limit
-    ):
+    def __init__(self, client, loop, email, password, key_names, key_count, throttle_limit):
         self.client = client
         self.loop = loop
         self.email = email
@@ -155,9 +149,7 @@ class HTTPClient:
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
         current_keys = (await self.find_site_keys(cookies))["keys"]
-        self._keys = [
-            key["key"] for key in current_keys if key["name"] == self.key_names
-        ]
+        self._keys = [key["key"] for key in current_keys if key["name"] == self.key_names]
         available_keys = KEY_MAXIMUM - len(current_keys)
 
         if len(self._keys) <= key_count:
@@ -165,14 +157,8 @@ class HTTPClient:
             if available_keys >= keys_needed:
                 ip_ = await self.get_ip()
                 for _ in range(keys_needed):
-                    key_description = "Created on {}".format(
-                        datetime.now().strftime("%c")
-                    )
-                    self._keys.append(
-                        await self.create_key(
-                            cookies, self.key_names, key_description, [ip_]
-                        )
-                    )
+                    key_description = "Created on {}".format(datetime.now().strftime("%c"))
+                    self._keys.append(await self.create_key(cookies, self.key_names, key_description, [ip_]))
             else:
                 await self.close()
                 raise RuntimeError(
@@ -219,9 +205,7 @@ class HTTPClient:
             kwargs["headers"]["Content-Type"] = "application/json"
 
         async with self.__lock:
-            async with self.__throttle, self.__session.request(
-                method, url, **kwargs
-            ) as response:
+            async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
                 LOG.debug("%s (%s) has returned %s", url, method, response.status)
                 data = await json_or_text(response)
                 LOG.debug(data)
@@ -299,9 +283,7 @@ class HTTPClient:
         except InvalidArgument:
             return
 
-        new_key = await self.create_key(
-            cookies, key_name, key_description, whitelisted_ips
-        )
+        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
 
         # this is to prevent reusing an already used keys.
         # All it does is move the current key to the front,
@@ -335,9 +317,7 @@ class HTTPClient:
         return self.request(Route("GET", "/clans/{}/currentwar".format(tag), {}))
 
     def get_clan_war_league_group(self, tag):
-        return self.request(
-            Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag), {})
-        )
+        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag), {}))
 
     def get_cwl_wars(self, war_tag):
         return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag), {}))
@@ -351,30 +331,16 @@ class HTTPClient:
         return self.request(Route("GET", "/locations/{}".format(location_id), {}))
 
     def get_location_clans(self, location_id, **kwargs):
-        return self.request(
-            Route("GET", "/locations/{}/rankings/clans".format(location_id), kwargs)
-        )
+        return self.request(Route("GET", "/locations/{}/rankings/clans".format(location_id), kwargs))
 
     def get_location_players(self, location_id, **kwargs):
-        return self.request(
-            Route("GET", "/locations/{}/rankings/players".format(location_id), kwargs)
-        )
+        return self.request(Route("GET", "/locations/{}/rankings/players".format(location_id), kwargs))
 
     def get_location_clans_versus(self, location_id, **kwargs):
-        return self.request(
-            Route(
-                "GET", "/locations/{}/rankings/clans-versus".format(location_id), kwargs
-            )
-        )
+        return self.request(Route("GET", "/locations/{}/rankings/clans-versus".format(location_id), kwargs))
 
     def get_location_players_versus(self, location_id, **kwargs):
-        return self.request(
-            Route(
-                "GET",
-                "/locations/{}/rankings/players-versus".format(location_id),
-                kwargs,
-            )
-        )
+        return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), kwargs,))
 
     # leagues
 
@@ -385,14 +351,10 @@ class HTTPClient:
         return self.request(Route("GET", "/leagues/{}".format(league_id), {}))
 
     def get_league_seasons(self, league_id, **kwargs):
-        return self.request(
-            Route("GET", "/leagues/{}/seasons".format(league_id), kwargs)
-        )
+        return self.request(Route("GET", "/leagues/{}/seasons".format(league_id), kwargs))
 
     def get_league_season_info(self, league_id, season_id, **kwargs):
-        return self.request(
-            Route("GET", "/leagues/{}/seasons/{}".format(league_id, season_id), kwargs)
-        )
+        return self.request(Route("GET", "/leagues/{}/seasons/{}".format(league_id, season_id), kwargs))
 
     # players
 
@@ -413,15 +375,11 @@ class HTTPClient:
         login_data = {"email": email, "password": password}
         headers = {"content-type": "application/json"}
         async with self.__session.post(
-            "https://developer.clashofclans.com/api/login",
-            json=login_data,
-            headers=headers,
+            "https://developer.clashofclans.com/api/login", json=login_data, headers=headers,
         ) as sess:
             response_dict = await sess.json()
             LOG.debug(
-                "%s has received %s",
-                "https://developer.clashofclans.com/api/login",
-                response_dict,
+                "%s has received %s", "https://developer.clashofclans.com/api/login", response_dict,
             )
             if sess.status == 403:
                 raise InvalidCredentials(sess, response_dict)
@@ -433,15 +391,11 @@ class HTTPClient:
     async def find_site_keys(self, cookies):
         headers = {"cookie": cookies, "content-type": "application/json"}
         async with self.__session.post(
-            "https://developer.clashofclans.com/api/apikey/list",
-            data=json.dumps({}),
-            headers=headers,
+            "https://developer.clashofclans.com/api/apikey/list", data=json.dumps({}), headers=headers,
         ) as sess:
             existing_keys_dict = await sess.json()
             LOG.debug(
-                "%s has received %s",
-                "https://developer.clashofclans.com/api/apikey/list",
-                existing_keys_dict,
+                "%s has received %s", "https://developer.clashofclans.com/api/apikey/list", existing_keys_dict,
             )
 
         return existing_keys_dict
@@ -456,10 +410,7 @@ class HTTPClient:
         }
 
         response = await self.request(
-            Route("POST", "/apikey/create", api_page=True),
-            json=data,
-            headers=headers,
-            api_request=True,
+            Route("POST", "/apikey/create", api_page=True), json=data, headers=headers, api_request=True,
         )
         return response["key"]["key"]
 
@@ -469,10 +420,7 @@ class HTTPClient:
         data = {"id": key_id}
 
         return self.request(
-            Route("POST", "/apikey/revoke", api_page=True),
-            json=data,
-            headers=headers,
-            api_request=True,
+            Route("POST", "/apikey/revoke", api_page=True), json=data, headers=headers, api_request=True,
         )
 
     async def get_data_from_url(self, url):

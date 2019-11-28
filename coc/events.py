@@ -90,9 +90,7 @@ class EventsClient(Client):
     def dispatch(self, event_name: str, *args, **kwargs):
         super().dispatch(event_name, *args, **kwargs)
         for event in self.extra_events.get(event_name, []):
-            asyncio.ensure_future(
-                self._run_event(event_name, event, *args, **kwargs), loop=self.loop
-            )
+            asyncio.ensure_future(self._run_event(event_name, event, *args, **kwargs), loop=self.loop)
 
     def event(self, function_, name=None):
         """A decorator or regular function that registers an event.
@@ -120,9 +118,7 @@ class EventsClient(Client):
         function : The function registered
         """
         if not asyncio.iscoroutinefunction(function_):
-            raise TypeError(
-                "event {} must be a coroutine function".format(function_.__name__)
-            )
+            raise TypeError("event {} must be a coroutine function".format(function_.__name__))
 
         name = name or function_.__name__
 
@@ -280,9 +276,7 @@ class EventsClient(Client):
             if tags not in self._clan_updates:
                 self._clan_updates.append(tags)
         else:
-            self._clan_updates.extend(
-                n for n in tags if n not in set(self._clan_updates)
-            )
+            self._clan_updates.extend(n for n in tags if n not in set(self._clan_updates))
 
         if retry_interval < 0:
             raise ValueError("retry_interval must be greater than 0 seconds")
@@ -326,9 +320,7 @@ class EventsClient(Client):
             if tags not in self._player_updates:
                 self._player_updates.append(tags)
         else:
-            self._player_updates.extend(
-                n for n in tags if n not in set(self._player_updates)
-            )
+            self._player_updates.extend(n for n in tags if n not in set(self._player_updates))
 
         if retry_interval < 0:
             raise ValueError("retry_interval must be greater than 0 seconds")
@@ -361,10 +353,7 @@ class EventsClient(Client):
         lookup = {
             "clan": [self._clan_update_event, ["search_clans"]],
             "player": [self._player_update_event, ["search_players"]],
-            "war": [
-                self._war_update_event,
-                ["current_wars", "clan_wars", "league_wars"],
-            ],
+            "war": [self._war_update_event, ["current_wars", "clan_wars", "league_wars"],],  # noqa
         }
         if event_group == "all":
             events = lookup.values()
@@ -401,10 +390,7 @@ class EventsClient(Client):
         lookup = {
             "clan": [self._clan_update_event, ["search_clans"]],
             "player": [self._player_update_event, ["search_players"]],
-            "war": [
-                self._war_update_event,
-                ["current_wars", "clan_wars", "league_wars"],
-            ],
+            "war": [self._war_update_event, ["current_wars", "clan_wars", "league_wars"],],  # noqa
         }
         if event_type == "all":
             events = lookup.values()
@@ -423,8 +409,7 @@ class EventsClient(Client):
         events = [n for n in keys if n.startswith(key_name)]
 
         self.dispatch(
-            "{}_batch_updates".format(key_name),
-            [await self.cache.pop("events", n) for n in events],
+            "{}_batch_updates".format(key_name), [await self.cache.pop("events", n) for n in events],
         )
 
     def _task_callback_check(self, result):
@@ -439,8 +424,7 @@ class EventsClient(Client):
             return
 
         LOG.warning(
-            "Task raised an exception that was unhandled %s. Restarting the task.",
-            exception,
+            "Task raised an exception that was unhandled %s. Restarting the task.", exception,
         )
 
         lookup = {
@@ -557,9 +541,7 @@ class EventsClient(Client):
         if not self._war_updates:
             return
 
-        async for war in self.get_current_wars(
-            self._war_updates, cache=False, update_cache=False
-        ):
+        async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
             cached_war = await self.cache.get("current_wars", war.clan_tag)
             if not cached_war:
                 await self.cache.set("current_wars", war.clan_tag, war)
@@ -587,9 +569,7 @@ class EventsClient(Client):
             if not cached_war.iterattacks:
                 new_attacks = war.attacks
             else:
-                new_attacks = [
-                    n for n in war.iterattacks if n not in set(cached_war.iterattacks)
-                ]
+                new_attacks = [n for n in war.iterattacks if n not in set(cached_war.iterattacks)]
 
             for attack in new_attacks:
                 self.dispatch("on_war_attack", attack, war)
@@ -601,9 +581,7 @@ class EventsClient(Client):
         if not self._player_updates:
             return
 
-        async for player in self.get_players(
-            self._player_updates, cache=False, update_cache=False
-        ):
+        async for player in self.get_players(self._player_updates, cache=False, update_cache=False):
             cached_player = await self.cache.get("search_players", player.tag)
             if not cached_player:
                 await self.cache.set("search_players", player.tag, player)
@@ -616,33 +594,22 @@ class EventsClient(Client):
 
             # name
             if player.name != cached_player.name:
-                self.dispatch(
-                    "on_player_name_change", cached_player.name, player.name, player
-                )
+                self.dispatch("on_player_name_change", cached_player.name, player.name, player)
 
             # town/builder halls
             if player.town_hall != cached_player.town_hall:
                 self.dispatch(
-                    "on_player_townhall_upgrade",
-                    cached_player.town_hall,
-                    player.town_hall,
-                    player,
+                    "on_player_townhall_upgrade", cached_player.town_hall, player.town_hall, player,
                 )
             if player.builder_hall != cached_player.builder_hall:
                 self.dispatch(
-                    "on_player_builderhall_upgrade",
-                    cached_player.builder_hall,
-                    player.builder_hall,
-                    player,
+                    "on_player_builderhall_upgrade", cached_player.builder_hall, player.builder_hall, player,
                 )
 
             # best trophies/versus/war stars
             if player.best_trophies != cached_player.best_trophies:
                 self.dispatch(
-                    "on_player_best_trophies_change",
-                    cached_player.best_trophies,
-                    player.best_trophies,
-                    player,
+                    "on_player_best_trophies_change", cached_player.best_trophies, player.best_trophies, player,
                 )
             if player.best_versus_trophies != cached_player.best_versus_trophies:
                 self.dispatch(
@@ -653,26 +620,17 @@ class EventsClient(Client):
                 )
             if player.war_stars != cached_player.war_stars:
                 self.dispatch(
-                    "on_player_war_stars_change",
-                    cached_player.war_stars,
-                    player.war_stars,
-                    player,
+                    "on_player_war_stars_change", cached_player.war_stars, player.war_stars, player,
                 )
 
             # attacks win/defense/versus
             if player.attack_wins != cached_player.attack_wins:
                 self.dispatch(
-                    "on_player_attack_wins_change",
-                    cached_player.attack_wins,
-                    player.attack_wins,
-                    player,
+                    "on_player_attack_wins_change", cached_player.attack_wins, player.attack_wins, player,
                 )
             if player.defense_wins != cached_player.defense_wins:
                 self.dispatch(
-                    "on_player_defense_wins_change",
-                    cached_player.defense_wins,
-                    player.defense_wins,
-                    player,
+                    "on_player_defense_wins_change", cached_player.defense_wins, player.defense_wins, player,
                 )
             if player.versus_attacks_wins != cached_player.versus_attacks_wins:
                 self.dispatch(
@@ -685,44 +643,27 @@ class EventsClient(Client):
             # trophies + league
             if player.trophies != cached_player.trophies:
                 self.dispatch(
-                    "on_player_trophies_change",
-                    cached_player.trophies,
-                    player.trophies,
-                    player,
+                    "on_player_trophies_change", cached_player.trophies, player.trophies, player,
                 )
             if player.league != cached_player.league:
                 self.dispatch(
-                    "on_player_league_change",
-                    cached_player.league,
-                    player.league,
-                    player,
+                    "on_player_league_change", cached_player.league, player.league, player,
                 )
 
             # clan stuff: role, donations, received, rank and prev. rank
             if player.role != cached_player.role:
-                self.dispatch(
-                    "on_player_role_change", cached_player.role, player.role, player
-                )
+                self.dispatch("on_player_role_change", cached_player.role, player.role, player)
             if player.donations != cached_player.donations:
                 self.dispatch(
-                    "on_player_donations_change",
-                    cached_player.donations,
-                    player.donations,
-                    player,
+                    "on_player_donations_change", cached_player.donations, player.donations, player,
                 )
             if player.received != cached_player.received:
                 self.dispatch(
-                    "on_player_received_change",
-                    cached_player.received,
-                    player.received,
-                    player,
+                    "on_player_received_change", cached_player.received, player.received, player,
                 )
             if player.clan_rank != cached_player.clan_rank:
                 self.dispatch(
-                    "on_player_clan_rank_change",
-                    cached_player.clan_rank,
-                    player.clan_rank,
-                    player,
+                    "on_player_clan_rank_change", cached_player.clan_rank, player.clan_rank, player,
                 )
             if player.clan_previous_rank != cached_player.clan_previous_rank:
                 self.dispatch(
@@ -752,42 +693,22 @@ class EventsClient(Client):
 
                 if clan.level != cached_clan.level:
                     self.dispatch(
-                        "on_player_clan_level_change",
-                        cached_clan.level,
-                        clan.level,
-                        clan,
-                        player,
+                        "on_player_clan_level_change", cached_clan.level, clan.level, clan, player,
                     )
 
                 if clan.badge != cached_clan.badge:
                     self.dispatch(
-                        "on_player_clan_badge_change",
-                        cached_clan.badge,
-                        clan.badge,
-                        clan,
-                        player,
+                        "on_player_clan_badge_change", cached_clan.badge, clan.badge, clan, player,
                     )
 
-            achievement_updates = (
-                n
-                for n in player.achievements
-                if n not in set(cached_player.achievements)
-            )
-            troop_upgrades = (
-                n for n in player.troops if n not in set(cached_player.troops)
-            )
-            spell_upgrades = (
-                n for n in player.spells if n not in set(cached_player.spells)
-            )
-            hero_upgrades = (
-                n for n in player.heroes if n not in set(cached_player.heroes)
-            )
+            achievement_updates = (n for n in player.achievements if n not in set(cached_player.achievements))
+            troop_upgrades = (n for n in player.troops if n not in set(cached_player.troops))
+            spell_upgrades = (n for n in player.spells if n not in set(cached_player.spells))
+            hero_upgrades = (n for n in player.heroes if n not in set(cached_player.heroes))
 
             for achievement in achievement_updates:
                 old_achievement = get(cached_player.achievements, name=achievement.name)
-                self.dispatch(
-                    "on_player_achievement_change", old_achievement, achievement, player
-                )
+                self.dispatch("on_player_achievement_change", old_achievement, achievement, player)
 
             for troop in troop_upgrades:
                 old_troop = get(cached_player.troops, name=troop.name)
@@ -806,9 +727,7 @@ class EventsClient(Client):
         if not self._clan_updates:
             return
 
-        async for clan in self.get_clans(
-            self._clan_updates, cache=False, update_cache=False
-        ):
+        async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
             cached_clan = await self.cache.get("search_clans", clan.tag)
             if not cached_clan:
                 await self.cache.set("search_clans", clan.tag, clan)
@@ -820,19 +739,11 @@ class EventsClient(Client):
             self.dispatch("on_clan_update", cached_clan, clan)
 
             if clan.member_count != cached_clan.member_count:
-                new_members = [
-                    n
-                    for n in clan.members
-                    if n.tag not in set(n.tag for n in cached_clan.members)
-                ]
+                new_members = [n for n in clan.members if n.tag not in set(n.tag for n in cached_clan.members)]
                 for mem_join in new_members:
                     self.dispatch("on_clan_member_join", mem_join, clan)
 
-                old_members = [
-                    n
-                    for n in cached_clan.members
-                    if n.tag not in set(n.tag for n in clan.members)
-                ]
+                old_members = [n for n in cached_clan.members if n.tag not in set(n.tag for n in clan.members)]
                 for mem_left in old_members:
                     self.dispatch("on_clan_member_leave", mem_left, clan)
 
@@ -841,66 +752,40 @@ class EventsClient(Client):
 
             # settings
             if clan.level != cached_clan.level:
-                self.dispatch(
-                    "on_clan_level_change", cached_clan.level, clan.level, clan
-                )
+                self.dispatch("on_clan_level_change", cached_clan.level, clan.level, clan)
             if clan.description != cached_clan.description:
                 self.dispatch(
-                    "on_clan_description_change",
-                    cached_clan.description,
-                    clan.description,
-                    clan,
+                    "on_clan_description_change", cached_clan.description, clan.description, clan,
                 )
             if clan.public_war_log != cached_clan.public_war_log:
                 self.dispatch(
-                    "on_clan_public_war_log_change",
-                    cached_clan.public_war_log,
-                    clan.public_war_log,
-                    clan,
+                    "on_clan_public_war_log_change", cached_clan.public_war_log, clan.public_war_log, clan,
                 )
             if clan.type != cached_clan.type:
                 self.dispatch("on_clan_type_change", cached_clan.type, clan.type, clan)
             if clan.badge != cached_clan.badge:
-                self.dispatch(
-                    "on_clan_badge_change", cached_clan.badge, clan.badge, clan
-                )
+                self.dispatch("on_clan_badge_change", cached_clan.badge, clan.badge, clan)
             if clan.required_trophies != cached_clan.required_trophies:
                 self.dispatch(
-                    "on_clan_required_trophies_change",
-                    cached_clan.required_trophies,
-                    clan.required_trophies,
-                    clan,
+                    "on_clan_required_trophies_change", cached_clan.required_trophies, clan.required_trophies, clan,
                 )
             if clan.war_frequency != cached_clan.war_frequency:
                 self.dispatch(
-                    "on_clan_war_frequency_change",
-                    cached_clan.war_frequency,
-                    clan.war_frequency,
-                    clan,
+                    "on_clan_war_frequency_change", cached_clan.war_frequency, clan.war_frequency, clan,
                 )
 
             # war win/loss/tie/streak
             if clan.war_win_streak != cached_clan.war_win_streak:
                 self.dispatch(
-                    "on_clan_war_win_streak_change",
-                    cached_clan.war_win_streak,
-                    clan.war_win_streak,
-                    clan,
+                    "on_clan_war_win_streak_change", cached_clan.war_win_streak, clan.war_win_streak, clan,
                 )
             if clan.war_wins != cached_clan.war_wins:
-                self.dispatch(
-                    "on_clan_war_win_change", cached_clan.war_wins, clan.war_wins, clan
-                )
+                self.dispatch("on_clan_war_win_change", cached_clan.war_wins, clan.war_wins, clan)
             if clan.war_ties != cached_clan.war_ties:
-                self.dispatch(
-                    "on_clan_war_tie_change", cached_clan.war_ties, clan.war_ties, clan
-                )
+                self.dispatch("on_clan_war_tie_change", cached_clan.war_ties, clan.war_ties, clan)
             if clan.war_losses != cached_clan.war_losses:
                 self.dispatch(
-                    "on_clan_war_loss_change",
-                    cached_clan.war_losses,
-                    clan.war_losses,
-                    clan,
+                    "on_clan_war_loss_change", cached_clan.war_losses, clan.war_losses, clan,
                 )
 
             await self.cache.set("search_clans", clan.tag, clan)
@@ -914,35 +799,19 @@ class EventsClient(Client):
 
             if member.name != cached_member.name:
                 self.dispatch(
-                    "on_clan_member_name_change",
-                    cached_member.name,
-                    member.name,
-                    member,
-                    clan,
+                    "on_clan_member_name_change", cached_member.name, member.name, member, clan,
                 )
             if member.donations != cached_member.donations:
                 self.dispatch(
-                    "on_clan_member_donation",
-                    cached_member.donations,
-                    member.donations,
-                    member,
-                    clan,
+                    "on_clan_member_donation", cached_member.donations, member.donations, member, clan,
                 )
             if member.received != cached_member.received:
                 self.dispatch(
-                    "on_clan_member_received",
-                    cached_member.received,
-                    member.received,
-                    member,
-                    clan,
+                    "on_clan_member_received", cached_member.received, member.received, member, clan,
                 )
             if member.trophies != cached_member.trophies:
                 self.dispatch(
-                    "on_clan_member_trophies_change",
-                    cached_member.trophies,
-                    member.trophies,
-                    member,
-                    clan,
+                    "on_clan_member_trophies_change", cached_member.trophies, member.trophies, member, clan,
                 )
             if member.versus_trophies != cached_member.versus_trophies:
                 self.dispatch(
@@ -954,33 +823,17 @@ class EventsClient(Client):
                 )
             if member.role != cached_member.role:
                 self.dispatch(
-                    "on_clan_member_role_change",
-                    cached_member.role,
-                    member.role,
-                    member,
-                    clan,
+                    "on_clan_member_role_change", cached_member.role, member.role, member, clan,
                 )
             if member.clan_rank != cached_member.clan_rank:
                 self.dispatch(
-                    "on_clan_member_rank_change",
-                    cached_member.clan_rank,
-                    member.clan_rank,
-                    member,
-                    clan,
+                    "on_clan_member_rank_change", cached_member.clan_rank, member.clan_rank, member, clan,
                 )
             if member.exp_level != cached_member.exp_level:
                 self.dispatch(
-                    "on_clan_member_level_change",
-                    cached_member.exp_level,
-                    member.exp_level,
-                    member,
-                    clan,
+                    "on_clan_member_level_change", cached_member.exp_level, member.exp_level, member, clan,
                 )
             if member.league != cached_member.league:
                 self.dispatch(
-                    "on_clan_member_league_change",
-                    cached_member.league,
-                    member.league,
-                    member,
-                    clan,
+                    "on_clan_member_league_change", cached_member.league, member.league, member, clan,
                 )

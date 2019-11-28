@@ -52,10 +52,7 @@ class BaseWar(EqualityComparable):
             ("opponent", self.opponent),
             ("size", self.team_size),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, clan_tag, http):
         self._http = http
@@ -134,9 +131,7 @@ class ClanWar(BaseWar):
 
     def __init__(self, *, data, clan_tag, http):
         self.state = data.get("state")
-        self.preparation_start_time = try_enum(
-            Timestamp, data.get("preparationStartTime")
-        )
+        self.preparation_start_time = try_enum(Timestamp, data.get("preparationStartTime"))
         self.start_time = try_enum(Timestamp, data.get("startTime"))
         self.end_time = try_enum(Timestamp, data.get("endTime"))
 
@@ -183,6 +178,7 @@ class ClanWar(BaseWar):
         """
         if not self.start_time:
             return None
+
         prep_list = [15*60, 30*60, 60*60, 2*60*60, 4*60*60, 6*60*60, 8*60*60, 12*60*60, 16*60*60, 20*60*60, 24*60*60]
         if (
             self.start_time.time - self.preparation_start_time.time
@@ -287,10 +283,7 @@ class WarAttack(EqualityComparable):
             ("destruction", self.destruction),
             ("order", self.order),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, war, member):
         self._data = data
@@ -333,10 +326,7 @@ class LeagueGroup(EqualityComparable):
             ("season", self.season),
             ("clans", ", ".join(repr(n) for n in self.iterclans)),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, http):
         self._data = data
@@ -355,10 +345,7 @@ class LeagueGroup(EqualityComparable):
         # pylint: disable=import-outside-toplevel
         from .clans import LeagueClan  # hack because circular imports
 
-        return iter(
-            LeagueClan(data=cdata, http=self._http)
-            for cdata in self._data.get("clans", [])
-        )
+        return iter(LeagueClan(data=cdata, http=self._http) for cdata in self._data.get("clans", []))
 
     @property
     def clans(self):
@@ -445,10 +432,7 @@ class LeagueWarLogEntry(EqualityComparable):
             ("clan", repr(self.clan)),
             ("size", self.team_size),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, clan_tag, http):
         # pylint: disable=protected-access, import-outside-toplevel

@@ -2,12 +2,12 @@ import coc
 import asyncio
 import logging
 
-log = logging.getLogger('coc')
+log = logging.getLogger("coc")
 log.setLevel(logging.DEBUG)
 
 
 # email and password is your login credentials used at https://developer.clashofclans.com
-coc_client = coc.login(email='email', password='password', key_count=5)
+coc_client = coc.login(email="email", password="password", key_count=5)
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -43,17 +43,14 @@ async def get_warlog_opponents_from_clan_name(name: str, no_of_clans: int):
             # if it is a league war we will error below because it does not return a WarLog object,
             # and thus no opponent
             if isinstance(war, coc.LeagueWarLogEntry):
-                print('League War Season - No opponent info available')
+                print("League War Season - No opponent info available")
                 continue
 
-            print('War: {} vs {}'.format(name, war.opponent.name))
+            print("War: {} vs {}".format(name, war.opponent.name))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     loop = asyncio.get_event_loop()
 
-    loop.run_until_complete(get_warlog_opponents_from_clan_name('name', 5))
+    loop.run_until_complete(get_warlog_opponents_from_clan_name("name", 5))
     loop.run_until_complete(coc_client.close())
-
-
-
-

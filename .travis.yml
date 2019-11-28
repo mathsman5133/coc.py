@@ -1,12 +1,9 @@
 jobs:
   include:
-    - install: pip install aiohttp pylint black flake8 sphinx sphinx_rtd_theme
+    - install: pip install -r dev-requirements.txt
       python: 3.7
       script:
-        - black --check --verbose coc docs
-        - flake8 coc
-        - pylint coc
-        - sphinx-build -W docs/ /tmp/foo
+        - python setup.py lint
       stage: lint
 language: python
 python:
