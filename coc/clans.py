@@ -54,10 +54,7 @@ class Clan(EqualityComparable):
             ("tag", self.tag),
             ("name", self.name),
         ]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, http):
         self._http = http
@@ -75,9 +72,7 @@ class Clan(EqualityComparable):
     def share_link(self):
         """:class:`str` - A formatted link to open the clan in-game
         """
-        return "https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}".format(
-            self.tag.strip("#")
-        )
+        return "https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}".format(self.tag.strip("#"))
 
 
 class BasicClan(Clan):
@@ -191,9 +186,7 @@ class SearchClan(BasicClan):
 
         Returns an iterable of :class:`Label`: the player's labels.
         """
-        return iter(
-            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
-        )
+        return iter(Label(data=ldata, http=self._http) for ldata in self._data.get("labels", []))
 
     @property
     def labels(self):
@@ -209,10 +202,7 @@ class SearchClan(BasicClan):
         # pylint: disable=import-outside-toplevel
         from .players import BasicPlayer  # hack because circular imports
 
-        return iter(
-            BasicPlayer(mdata, self._http, self)
-            for mdata in self._data.get("memberList", [])
-        )
+        return iter(BasicPlayer(mdata, self._http, self) for mdata in self._data.get("memberList", []))
 
     @property
     def members(self):
@@ -243,9 +233,7 @@ class SearchClan(BasicClan):
         """
         return get(self.itermembers, **attrs)
 
-    def get_detailed_members(
-        self, cache: bool = False, fetch: bool = True, update_cache: bool = True
-    ):
+    def get_detailed_members(self, cache: bool = False, fetch: bool = True, update_cache: bool = True):
         """Get detailed player information for every player in the clan.
         This will return an AsyncIterator of :class:`SearchPlayer`.
 
@@ -331,10 +319,7 @@ class WarClan(Clan):
         # pylint: disable=import-outside-toplevel
         from .players import WarMember  # hack because circular imports
 
-        return iter(
-            WarMember(data=mdata, war=self._war, clan=self)
-            for mdata in self._data.get("members", [])
-        )
+        return iter(WarMember(data=mdata, war=self._war, clan=self) for mdata in self._data.get("members", []))
 
     @property
     def members(self):

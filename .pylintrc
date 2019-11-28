@@ -10,3 +10,12 @@ disable=
 
 max-line-length=120
 notes=fixme
+
+[REPORTS]
+output-format=colorized
+
+[MASTER]
+ignore=examples,docs
+
+[IMPORTS]
+ignored-modules=aiohttp

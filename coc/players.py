@@ -66,18 +66,13 @@ class Player(EqualityComparable):
 
     def __repr__(self):
         attrs = [("tag", self.tag), ("name", self.name)]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @property
     def share_link(self):
         """:class:`str` - A formatted link to open the player in-game
         """
-        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(
-            self.tag.strip("#")
-        )
+        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(self.tag.strip("#"))
 
 
 class BasicPlayer(Player):
@@ -159,9 +154,7 @@ class BasicPlayer(Player):
 
         Pass in a default value to return if no league is found (the player is 'Unranked').
         """
-        return try_enum(
-            League, self._data.get("league"), default=default, http=self._http
-        )
+        return try_enum(League, self._data.get("league"), default=default, http=self._http)
 
     @property
     def role(self):
@@ -208,10 +201,7 @@ class WarMember(Player):
         # pylint: disable=import-outside-toplevel
         from .wars import WarAttack  # hack because circular imports
 
-        return iter(
-            WarAttack(data=adata, war=self.war, member=self)
-            for adata in self._data.get("attacks", [])
-        )
+        return iter(WarAttack(data=adata, war=self.war, member=self) for adata in self._data.get("attacks", []))
 
     @property
     def iterattacks(self, sort: bool = True):
@@ -234,9 +224,7 @@ class WarMember(Player):
         Returns an iterable of :class:`WarAttack`: the member's defenses this war
         """
         # TODO: efficient way of doing this
-        return filter(
-            lambda o: o.defender_tag == self.tag, self.war.opponent.iterattacks
-        )
+        return filter(lambda o: o.defender_tag == self.tag, self.war.opponent.iterattacks)
 
     @property
     def defenses(self):
@@ -303,9 +291,7 @@ class SearchPlayer(BasicPlayer):
 
         Returns an iterable of :class:`Label`: the player's labels.
         """
-        return iter(
-            Label(data=ldata, http=self._http) for ldata in self._data.get("labels", [])
-        )
+        return iter(Label(data=ldata, http=self._http) for ldata in self._data.get("labels", []))
 
     @property
     def labels(self):
@@ -318,10 +304,7 @@ class SearchPlayer(BasicPlayer):
 
         Returns an iterable of :class:`Achievement`: the player's achievements.
         """
-        return iter(
-            Achievement(data=adata, player=self)
-            for adata in self._data.get("achievements", [])
-        )
+        return iter(Achievement(data=adata, player=self) for adata in self._data.get("achievements", []))
 
     @property
     def achievements(self):
@@ -333,9 +316,7 @@ class SearchPlayer(BasicPlayer):
     def troops(self):
         """List[:class:`Troop`]: List of the player's troops
         """
-        return [
-            Troop(data=sdata, player=self) for sdata in self._data.get("troops", [])
-        ]
+        return [Troop(data=sdata, player=self) for sdata in self._data.get("troops", [])]
 
     @property
     def heroes(self):
@@ -347,9 +328,7 @@ class SearchPlayer(BasicPlayer):
     def spells(self):
         """List[:class:`Spell`]: List of the player's spells
         """
-        return [
-            Spell(data=sdata, player=self) for sdata in self._data.get("spells", [])
-        ]
+        return [Spell(data=sdata, player=self) for sdata in self._data.get("spells", [])]
 
     @property
     def achievements_dict(self, attr="name"):
@@ -398,9 +377,7 @@ class SearchPlayer(BasicPlayer):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
-        return OrderedDict(
-            sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0]))
-        )
+        return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_builder_troops(self):
@@ -409,9 +386,7 @@ class SearchPlayer(BasicPlayer):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
-        return OrderedDict(
-            sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0]))
-        )
+        return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_spells(self):
@@ -420,9 +395,7 @@ class SearchPlayer(BasicPlayer):
         This will return spells in the order found in both spell factory and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(SPELL_ORDER)}
-        return OrderedDict(
-            sorted(self.spells_dict.items(), key=lambda i: key_order.get(i[0]))
-        )
+        return OrderedDict(sorted(self.spells_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_heroes(self):
@@ -431,9 +404,7 @@ class SearchPlayer(BasicPlayer):
         This will return heroes in the order found in the labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(HERO_ORDER)}
-        return OrderedDict(
-            sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0]))
-        )
+        return OrderedDict(sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0])))
 
 
 class LeaguePlayer(EqualityComparable):
@@ -455,10 +426,7 @@ class LeaguePlayer(EqualityComparable):
 
     def __repr__(self):
         attrs = [("tag", self.tag), ("name", self.name), ("town_hall", self.town_hall)]
-        return "<%s %s>" % (
-            self.__class__.__name__,
-            " ".join("%s=%r" % t for t in attrs),
-        )
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data):
         self._data = data
@@ -470,9 +438,7 @@ class LeaguePlayer(EqualityComparable):
     @property
     def share_link(self):
         """:class:`str` - A formatted link to open the player in-game"""
-        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(
-            self.tag.strip("#")
-        )
+        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(self.tag.strip("#"))
 
 
 class LeagueRankedPlayer(BasicPlayer):

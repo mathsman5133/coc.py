@@ -71,15 +71,7 @@ class _AsyncIterator:
 class TaggedIterator(_AsyncIterator):
     """Implements filling of the queue and fetching results."""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **kwargs
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **kwargs):
         # pylint: disable=too-many-arguments
         self.client = client
         self.tags = tags
@@ -96,17 +88,12 @@ class TaggedIterator(_AsyncIterator):
     async def _run_method(self, tag: str):
         # pylint: disable=not-callable
         try:
-            return await self.get_method(
-                tag, cache=self.cache, fetch=self.fetch, update_cache=self.update_cache
-            )
+            return await self.get_method(tag, cache=self.cache, fetch=self.fetch, update_cache=self.update_cache)
         except (NotFound, Forbidden):
             return None
 
     async def _fill_queue(self):
-        tasks = [
-            asyncio.ensure_future(self._run_method(item(n, **self.iter_options)))
-            for n in self.tags
-        ]
+        tasks = [asyncio.ensure_future(self._run_method(item(n, **self.iter_options))) for n in self.tags]
 
         results = await asyncio.gather(*tasks)
 
@@ -134,93 +121,43 @@ class TaggedIterator(_AsyncIterator):
 class ClanIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_clans`"""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **iter_options
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
         # pylint: disable=too-many-arguments
-        super(ClanIterator, self).__init__(
-            client, tags, cache, fetch, update_cache, **iter_options
-        )
+        super(ClanIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_clan
 
 
 class PlayerIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_players`"""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **iter_options
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
         # pylint: disable=too-many-arguments
-        super(PlayerIterator, self).__init__(
-            client, tags, cache, fetch, update_cache, **iter_options
-        )
+        super(PlayerIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_player
 
 
 class ClanWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_clan_wars`"""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **iter_options
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
         # pylint: disable=too-many-arguments
-        super(ClanWarIterator, self).__init__(
-            client, tags, cache, fetch, update_cache, **iter_options
-        )
+        super(ClanWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_clan_war
 
 
 class LeagueWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_league_wars`"""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **iter_options
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
         # pylint: disable=too-many-arguments
-        super(LeagueWarIterator, self).__init__(
-            client, tags, cache, fetch, update_cache, **iter_options
-        )
+        super(LeagueWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_league_war
 
 
 class CurrentWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_current_wars`"""
 
-    def __init__(
-        self,
-        client,
-        tags: Iterable,
-        cache: bool,
-        fetch: bool,
-        update_cache: bool,
-        **iter_options
-    ):
+    def __init__(self, client, tags: Iterable, cache: bool, fetch: bool, update_cache: bool, **iter_options):
         # pylint: disable=too-many-arguments
-        super(CurrentWarIterator, self).__init__(
-            client, tags, cache, fetch, update_cache, **iter_options
-        )
+        super(CurrentWarIterator, self).__init__(client, tags, cache, fetch, update_cache, **iter_options)
         self.get_method = client.get_current_war

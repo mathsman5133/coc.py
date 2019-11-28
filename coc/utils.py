@@ -106,9 +106,7 @@ def get(iterable, **attrs):
                 return elem
         return None
 
-    converted = [
-        (attrget(attr.replace("__", ".")), value) for attr, value in attrs.items()
-    ]
+    converted = [(attrget(attr.replace("__", ".")), value) for attr, value in attrs.items()]
 
     for elem in iterable:
         if _all(pred(elem) == value for pred, value in converted):
@@ -162,11 +160,7 @@ def maybe_sort(seq, sort, itr=False, key=attrgetter("order")):
     """Returns list or iter based on itr if sort is false otherwise sorted
     with key defaulting to operator.attrgetter('order')
     """
-    return (
-        (list, iter)[itr](n for n in sorted(seq, key=key))
-        if sort
-        else (list, iter)[itr](n for n in seq)
-    )
+    return (list, iter)[itr](n for n in sorted(seq, key=key)) if sort else (list, iter)[itr](n for n in seq)
 
 
 def item(
