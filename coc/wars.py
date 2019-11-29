@@ -27,6 +27,7 @@ SOFTWARE.
 
 from itertools import chain
 
+from .iterators import LeagueWarIterator
 from .miscmodels import EqualityComparable, try_enum, Timestamp
 from .utils import get, maybe_sort
 
@@ -142,7 +143,7 @@ class ClanWar(BaseWar):
 
     @property
     def iterattacks(self, sort=True):
-        """|iter|
+        """|iter|L
 
         Returns an iterable of :class:`WarAttack`: all attacks this war
         """
@@ -368,6 +369,45 @@ class LeagueGroup(EqualityComparable):
         """List[List[]]: A list of lists containing all war tags for each round.
         """
         return [n["warTags"] for n in self._data.get("rounds", [])]
+
+    def get_wars(self, round_index: int = -1, cache: bool = True, fetch: bool = True, update_cache: bool = True):
+        """Get war information for every war in a league round.
+        This will return an AsyncIterator of :class:`LeagueWar`.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            group = await client.get_league_group('clan_tag')
+
+            async for war in group.get_wars():
+                print(war.clan_tag)
+
+        Parameters
+        ------------
+        round_index: Optional[:class:`int`] - Indicates the round number to get wars from.
+                     These rounds can be found with :attr:`LeagueGroup.rounds` and defaults
+                     to the most recent round (index of -1).
+        cache: Optional[:class:`bool`] Indicates whether to search
+               the cache before making an HTTP request
+        fetch: Optional[:class:`bool`] Indicates whether an HTTP call
+               should be made if cache is empty.
+               Defaults to ``True``. If this is ``False`` and item in cache was not found,
+               ``None`` will be returned
+        update_cache: Optional[:class:`bool`] Indicates whether the client should update
+                      the cache when requesting members. Defaults to ``True``.
+                      This should only be set to ``False``
+                      if you do not require the cache at all.
+
+        Returns
+        ---------
+        AsyncIterator of :class:`LeagueWar`
+        """
+        tags = iter(n for n in self.rounds[round_index])
+        return LeagueWarIterator(
+            client=self._http.client, tags=tags, cache=cache, fetch=fetch, update_cache=update_cache
+        )
 
 
 class LeagueWar(ClanWar):
