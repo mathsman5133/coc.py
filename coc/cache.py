@@ -418,7 +418,7 @@ class Cache:
             cache[key] = value
         except (KeyError, IndexError):
             setter = cache.set
-            if inspect.isawaitable(set):
+            if inspect.isawaitable(setter):
                 await setter(key, value)
             else:
                 setter(key, value)

@@ -543,8 +543,9 @@ class EventsClient(Client):
 
         async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
             cached_war = await self.cache.get("current_wars", war.clan_tag)
+            await self.cache.set("current_wars", war.clan_tag, war)
+
             if not cached_war:
-                await self.cache.set("current_wars", war.clan_tag, war)
                 continue
 
             if war == cached_war:
@@ -555,26 +556,22 @@ class EventsClient(Client):
             self._create_status_tasks(cached_war, war)
 
             if not war.opponent:
-                await self.cache.set("current_wars", war.clan_tag, war)
                 # if there are no opponent next line will raise Attribute error..
                 # we've just entered prep - this probably needs a rewrite.
                 continue
 
             if not war.iterattacks:
-                await self.cache.set("current_wars", war.clan_tag, war)
                 # if there are no attacks next line will raise Attribute error..
                 # we're not in war anymore anyway
                 continue
 
             if not cached_war.iterattacks:
-                new_attacks = war.attacks
+                new_attacks = war.iterattacks
             else:
-                new_attacks = [n for n in war.iterattacks if n not in set(cached_war.iterattacks)]
+                new_attacks = (n for n in war.iterattacks if n not in set(cached_war.iterattacks))
 
             for attack in new_attacks:
                 self.dispatch("on_war_attack", attack, war)
-
-            await self.cache.set("current_wars", war.clan_tag, war)
 
     async def _update_players(self):
         # pylint: disable=too-many-locals, too-many-branches, too-many-statements
