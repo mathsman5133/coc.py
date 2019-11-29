@@ -254,7 +254,7 @@ class SearchClan(BasicClan):
 
         .. code-block:: python3
 
-            clan = client.get_clan('tag')
+            clan = await client.get_clan('tag')
 
             async for player in clan.get_detailed_members(cache=True):
                 print(player.name)
