@@ -143,7 +143,7 @@ class ClanWar(BaseWar):
 
     @property
     def iterattacks(self, sort=True):
-        """|iter|L
+        """|iter|
 
         Returns an iterable of :class:`WarAttack`: all attacks this war
         """
