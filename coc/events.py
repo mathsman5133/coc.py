@@ -793,7 +793,7 @@ class EventsClient(Client):
                 "on_clan_war_loss_change", cached_clan.war_losses, clan.war_losses, clan,
             )
 
-    async def _dispatch_clan_member_differences(self, cached_clan, clan):
+    def _dispatch_clan_member_differences(self, cached_clan, clan):
         members = (n for n in clan.members if n != cached_clan.get_member(tag=n.tag))
         for member in members:
             cached_member = cached_clan.get_member(tag=member.tag)
