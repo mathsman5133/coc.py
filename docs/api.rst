@@ -664,18 +664,18 @@ Player Defense Wins Change
     :param player: The player in question
     :type player: :class:`SearchPlayer`
 
-.. _on_player_versus_attacks_change:
+.. _on_player_versus_attack_change:
 
-Player Versus Attacks Change
+Player Versus Attack Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. py:function:: on_player_versus_attacks_change(old_attacks, new_attacks, player)
+.. py:function:: on_player_versus_attack_change(old_attacks, new_attacks, player)
 
-    This event is called when a player's versus attacks count changes.
+    This event is called when a player's versus attack count changes.
 
-    :param old_attacks: The player's old versus attacks count
+    :param old_attacks: The player's old versus attack count
     :type old_attacks: int
-    :param new_attacks: The player's new versus attacks count
+    :param new_attacks: The player's new versus attack count
     :type new_attacks: int
     :param player: The player in question
     :type player: :class:`SearchPlayer`

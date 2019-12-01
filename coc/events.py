@@ -633,12 +633,9 @@ class EventsClient(Client):
             self.dispatch(
                 "on_player_defense_wins_change", cached_player.defense_wins, player.defense_wins, player,
             )
-        if player.versus_attacks_wins != cached_player.versus_attacks_wins:
+        if player.versus_attack_wins != cached_player.versus_attack_wins:
             self.dispatch(
-                "on_player_versus_attacks_change",
-                cached_player.versus_attacks_wins,
-                player.versus_attacks_wins,
-                player,
+                "on_player_versus_attack_change", cached_player.versus_attack_wins, player.versus_attack_wins, player,
             )
 
         # trophies + league

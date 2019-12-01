@@ -95,7 +95,7 @@ These are enumerated below, with their appropriate group:
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_player_defense_wins_change`         | :ref:`player_event_group`           |
 +----------------------------------------------+-------------------------------------+
-| :ref:`on_player_versus_attacks_change`       | :ref:`player_event_group`           |
+| :ref:`on_player_versus_attack_change`        | :ref:`player_event_group`           |
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_player_trophies_change`             | :ref:`player_event_group`           |
 +----------------------------------------------+-------------------------------------+

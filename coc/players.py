@@ -258,7 +258,7 @@ class SearchPlayer(BasicPlayer):
         :class:`int` - The players TH level
     builder_hall:
         :class:`int` - The players BH level
-    versus_attacks_wins:
+    versus_attack_wins:
         :class:`int` - The players total BH wins
     """
 
@@ -268,7 +268,7 @@ class SearchPlayer(BasicPlayer):
         "town_hall",
         "builder_hall",
         "best_versus_trophies",
-        "versus_attacks_wins",
+        "versus_attack_wins",
     )
 
     def __init__(self, *, data, http):
@@ -283,7 +283,7 @@ class SearchPlayer(BasicPlayer):
         self.town_hall = data.get("townHallLevel")
         self.builder_hall = data.get("builderHallLevel", 0)
         self.best_versus_trophies = data.get("bestVersusTrophies")
-        self.versus_attacks_wins = data.get("versusBattleWins")
+        self.versus_attack_wins = data.get("versusBattleWins")
 
     @property
     def iterlabels(self):
