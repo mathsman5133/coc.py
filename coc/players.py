@@ -37,7 +37,7 @@ from .miscmodels import (
     League,
     Label,
 )
-from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER
+from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER, UNRANKED_LEAGUE_DATA
 from .utils import maybe_sort
 
 
@@ -149,12 +149,10 @@ class BasicPlayer(Player):
                 self.clan = BasicClan(data=cdata, http=http)
 
     @property
-    def league(self, default=None):
-        """:class:`League`: The player's current league.
-
-        Pass in a default value to return if no league is found (the player is 'Unranked').
-        """
-        return try_enum(League, self._data.get("league"), default=default, http=self._http)
+    def league(self):
+        """:class:`League`: The player's current league."""
+        data = self._data.get("league") or UNRANKED_LEAGUE_DATA
+        return try_enum(League, data, http=self._http)
 
     @property
     def role(self):

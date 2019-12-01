@@ -145,3 +145,12 @@ ACHIEVEMENT_ORDER = [
     "War League Legend",
     "Keep your village safe",
 ]
+
+UNRANKED_LEAGUE_DATA = {
+    "id": 29000000,
+    "name": "Unranked",
+    "iconUrls": {
+        "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+        "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
+    },
+}
