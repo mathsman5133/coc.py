@@ -101,14 +101,14 @@ class TaggedIterator(_AsyncIterator):
             if result:
                 await self.queue.put(result)
 
-    async def next(self):
+    async def _next(self):
         """Retrieves the next item from the queue. If empty, fill the queue first."""
         if self.queue_empty:
             try:
                 await self._fill_queue()
             except KeyError:
                 await self.client.reset_keys()
-                return await self.next()
+                return await self._next()
 
             self.queue_empty = False
 
