@@ -7,6 +7,21 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.3.2
+-------
+New Features.
+~~~~~~~~~~~~~~~
+- Rename :attr:`~SearchClan.member_dict` --> :attr:`~SearchClan.members_dict` for consistency.
+- New helper function: :func:`LeagueGroup.get_wars(round_number)` which will return a
+  `LeagueWarIterator` of all SCCWL wars in that round.
+
+Bug Fixes
+~~~~~~~~~~~
+- BugFix for cache not updating properly on clans going into prep.
+- Add list of possible friendly war prep times (in seconds).
+  If prep time is not in that list, assume random war.
+  This helps when the API reports weird prep times that aren't exactly 23 hours for a random war.
+
 v0.3.1
 --------
 New Features.
