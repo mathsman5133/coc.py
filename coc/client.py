@@ -453,7 +453,7 @@ class Client:
                 wars.append(LeagueWarLogEntry(data=war, clan_tag=clan_tag, http=self.http))
                 continue
 
-            wars.append(WarLog(data=data, clan_tag=clan_tag, http=self.http))
+            wars.append(WarLog(data=war, clan_tag=clan_tag, http=self.http))
 
         if update_cache:
             await self.cache.set("war_logs", wars[0].clan_tag, wars)

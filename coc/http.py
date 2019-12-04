@@ -40,7 +40,7 @@ import aiohttp
 
 from .errors import (
     HTTPException,
-    Maitenance,
+    Maintenance,
     NotFound,
     InvalidArgument,
     Forbidden,
@@ -239,9 +239,9 @@ class HTTPClient:
                     if isinstance(data, str):
                         # weird case where a 503 will be raised, but html returned.
                         text = re.compile(r"<[^>]+>").sub(data, "")
-                        raise Maitenance(response, text)
+                        raise Maintenance(response, text)
 
-                    raise Maitenance(response, data)
+                    raise Maintenance(response, data)
                 if response.status in [502, 504]:  # bad gateway, gateway timeout
                     # gateway errors return html
                     text = re.compile(r"<[^>]+>").sub(data, "")

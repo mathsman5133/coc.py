@@ -117,7 +117,7 @@ class NotFound(HTTPException):
     """
 
 
-class Maitenance(HTTPException):
+class Maintenance(HTTPException):
     """Thrown when an error status 503 occurs.
 
     Service is temporarily unavailable because of maintenance.

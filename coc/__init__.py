@@ -30,7 +30,7 @@ from .errors import (
     InvalidArgument,
     InvalidCredentials,
     Forbidden,
-    Maitenance,
+    Maintenance,
     GatewayError,
     PrivateWarLog,
 )
