@@ -63,6 +63,7 @@ HOME_TROOP_ORDER = [
     "Baby Dragon",
     "Miner",
     "Electro Dragon",
+    "Yeti",
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -104,9 +105,9 @@ SPELL_ORDER = [
     "Bat Spell",
 ]
 
-HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Battle Machine"]
+HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
-SIEGE_MACHINE_ORDER = ["Wall Wrecker", "Battle Blimp", "Stone Slammer"]
+SIEGE_MACHINE_ORDER = ["Wall Wrecker", "Battle Blimp", "Stone Slammer", "Siege Barracks"]
 
 ACHIEVEMENT_ORDER = [
     "Bigger Coffers",
