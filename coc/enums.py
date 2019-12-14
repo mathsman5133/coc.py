@@ -75,6 +75,7 @@ HOME_TROOP_ORDER = [
     "Wall Wrecker",
     "Battle Blimp",
     "Stone Slammer",
+    "Siege Barracks",
 ]
 
 BUILDER_TROOPS_ORDER = [
