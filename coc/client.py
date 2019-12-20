@@ -397,7 +397,8 @@ class Client:
                 if fetch is False:
                     return
             else:
-                return clan.members
+                if clan:
+                    return clan.members
 
         data = await self.http.get_clan(clan_tag)
         clan = SearchClan(data=data, http=self.http)
