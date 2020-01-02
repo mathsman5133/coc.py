@@ -7,6 +7,25 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.3.3
+-------
+Breaking Changes
+~~~~~~~~~~~~~~~~~~
+- ``SearchPlayer.versus_attacks_wins`` has been renamed to ``SearchPlayer.versus_attack_wins``.
+- The ``on_player_versus_attacks_change`` event has been renamed to ``on_player_versus_attack_change`` to match the above change.
+- There was a typo with the spelling of the ``coc.Maintenance`` exception. It has been renamed from ``coc.Maitenance`` to ``coc.Maintenance``.
+
+New Things
+~~~~~~~~~~~
+- Add a default `Unranked` league to ``BasicPlayer.league``.
+- Added TH13 content.
+
+BugFixes
+~~~~~~~~~
+- Fixed ``client.get_members`` raising ``AttributeError`` if no clan is found in the cache.
+- ``client.get_warlog`` was only returning league wars. This has been fixed.
+
+
 v0.3.2
 -------
 New Features.
