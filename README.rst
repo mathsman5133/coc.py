@@ -132,7 +132,7 @@ Links
 ------
 - `coc.py Documentation <https://cocpy.readthedocs.io/en/latest/?>`_
 - `Official Clash of Clans API Page <https://developer.clashofclans.com/>`_
-- `Clash of Clans API Discord Server <https://discord.gg/Eaja7gJ/>`_
+- `Clash of Clans API Discord Server <https://discord.gg/Eaja7gJ>`_
 
 Disclaimer
 -----------
