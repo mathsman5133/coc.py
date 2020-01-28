@@ -559,9 +559,8 @@ class EventsClient(Client):
     def _create_status_tasks(self, cached_war, war):
         if war.state == "preparation":
             self.dispatch("on_war_state_change", "preparation", war)
-            return
 
-        if war.state not in ["inWar", "warEnded"]:
+        if war.state not in ["preparation", "inWar", "warEnded"]:
             return
 
         in_war_task, war_ended_task = self._check_state_task_status(war.clan_tag)
