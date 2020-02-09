@@ -42,9 +42,11 @@ class Clan(EqualityComparable):
         The clan tag.
     name : str
         The clan name.
+    level:
+        :class:`int` - The clan level.
     """
 
-    __slots__ = ("tag", "name", "_data", "_http")
+    __slots__ = ("tag", "name", "level", "_data", "_http")
 
     def __str__(self):
         return self.name
@@ -61,6 +63,7 @@ class Clan(EqualityComparable):
         self._data = data
         self.tag = data.get("tag")
         self.name = data.get("name")
+        self.level = data.get("clanLevel")
 
     @property
     def badge(self):
@@ -85,8 +88,6 @@ class BasicClan(Clan):
 
     Attributes
     -----------
-    level:
-        :class:`int` - The clan level.
     points:
         :class:`int` - The clan trophy points.
     versus_points:
@@ -100,7 +101,6 @@ class BasicClan(Clan):
     """
 
     __slots__ = (
-        "level",
         "points",
         "versus_points",
         "member_count",
@@ -111,7 +111,6 @@ class BasicClan(Clan):
     def __init__(self, *, data, http):
         super().__init__(data=data, http=http)
 
-        self.level = data.get("clanLevel")
         self.points = data.get("clanPoints")
         self.versus_points = data.get("clanVersusPoints")
         self.member_count = data.get("members")
