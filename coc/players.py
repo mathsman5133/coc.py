@@ -228,7 +228,7 @@ class WarMember(Player):
     def defenses(self):
         """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list
         """
-        return list(self.iterattacks)
+        return list(self.iterdefenses)
 
     @property
     def is_opponent(self):
