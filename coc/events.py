@@ -788,9 +788,7 @@ class EventsClient(Client):
         if clan.war_ties != cached_clan.war_ties:
             self.dispatch("on_clan_war_tie_change", cached_clan.war_ties, clan.war_ties, clan)
         if clan.war_losses != cached_clan.war_losses:
-            self.dispatch(
-                "on_clan_war_loss_change", cached_clan.war_losses, clan.war_losses, clan,
-            )
+            self.dispatch("on_clan_war_loss_change", cached_clan.war_losses, clan.war_losses, clan)
 
     def _dispatch_clan_member_differences(self, cached_clan, clan):
         members = (n for n in clan.members if n != cached_clan.get_member(tag=n.tag))
@@ -801,19 +799,19 @@ class EventsClient(Client):
 
             if member.name != cached_member.name:
                 self.dispatch(
-                    "on_clan_member_name_change", cached_member.name, member.name, member, clan,
+                    "on_clan_member_name_change", cached_member.name, member.name, member,
                 )
             if member.donations != cached_member.donations:
                 self.dispatch(
-                    "on_clan_member_donation", cached_member.donations, member.donations, member, clan,
+                    "on_clan_member_donation", cached_member.donations, member.donations, member,
                 )
             if member.received != cached_member.received:
                 self.dispatch(
-                    "on_clan_member_received", cached_member.received, member.received, member, clan,
+                    "on_clan_member_received", cached_member.received, member.received, member,
                 )
             if member.trophies != cached_member.trophies:
                 self.dispatch(
-                    "on_clan_member_trophies_change", cached_member.trophies, member.trophies, member, clan,
+                    "on_clan_member_trophies_change", cached_member.trophies, member.trophies, member,
                 )
             if member.versus_trophies != cached_member.versus_trophies:
                 self.dispatch(
@@ -821,21 +819,20 @@ class EventsClient(Client):
                     cached_member.versus_trophies,
                     member.versus_trophies,
                     member,
-                    clan,
                 )
             if member.role != cached_member.role:
                 self.dispatch(
-                    "on_clan_member_role_change", cached_member.role, member.role, member, clan,
+                    "on_clan_member_role_change", cached_member.role, member.role, member,
                 )
             if member.clan_rank != cached_member.clan_rank:
                 self.dispatch(
-                    "on_clan_member_rank_change", cached_member.clan_rank, member.clan_rank, member, clan,
+                    "on_clan_member_rank_change", cached_member.clan_rank, member.clan_rank, member,
                 )
             if member.exp_level != cached_member.exp_level:
                 self.dispatch(
-                    "on_clan_member_level_change", cached_member.exp_level, member.exp_level, member, clan,
+                    "on_clan_member_level_change", cached_member.exp_level, member.exp_level, member,
                 )
             if member.league != cached_member.league:
                 self.dispatch(
-                    "on_clan_member_league_change", cached_member.league, member.league, member, clan,
+                    "on_clan_member_league_change", cached_member.league, member.league, member,
                 )
