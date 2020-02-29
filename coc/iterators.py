@@ -27,7 +27,7 @@ import asyncio
 
 from collections.abc import Iterable
 
-from .errors import NotFound, Forbidden
+from .errors import Maintenance, NotFound, Forbidden
 from .utils import item
 
 
@@ -89,7 +89,7 @@ class TaggedIterator(_AsyncIterator):
         # pylint: disable=not-callable
         try:
             return await self.get_method(tag, cache=self.cache, fetch=self.fetch, update_cache=self.update_cache)
-        except (NotFound, Forbidden):
+        except (NotFound, Forbidden, Maintenance):
             return None
 
     async def _fill_queue(self):
