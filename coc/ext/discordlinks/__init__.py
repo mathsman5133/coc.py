@@ -177,7 +177,7 @@ class DiscordLinkClient:
 
         return data.get("playerTag", None)
 
-    def get_batch_discord_linked_players(self, discord_ids: abc.Iterable):
+    async def get_batch_discord_linked_players(self, discord_ids: abc.Iterable):
         """Get a linked discord ID of a player tag.
 
         This is the recommended method to use when fetching links for multiple IDs as it uses a different endpoint.
@@ -204,7 +204,8 @@ class DiscordLinkClient:
                 print(discord_id, ', '.join(player_tags))
 
         """
-        return self._request("POST", "/links/batch", json=list(discord_ids))
+        data = await self._request("POST", "/links/batch", json=list(str(n) for n in discord_ids))
+        return {n["discordId"]: n["playerTags"] for n in data}
 
     def add_discord_link(self, player_tag, discord_id):
         """Creates a link between a player tag and a discord ID for the shared junkies database.
