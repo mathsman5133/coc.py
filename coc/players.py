@@ -37,7 +37,14 @@ from .miscmodels import (
     League,
     Label,
 )
-from .enums import HERO_ORDER, BUILDER_TROOPS_ORDER, HOME_TROOP_ORDER, SPELL_ORDER, UNRANKED_LEAGUE_DATA
+from .enums import (
+    HERO_ORDER,
+    BUILDER_TROOPS_ORDER,
+    HOME_TROOP_ORDER,
+    SPELL_ORDER,
+    SIEGE_MACHINE_ORDER,
+    UNRANKED_LEAGUE_DATA,
+)
 from .utils import maybe_sort
 
 
@@ -346,15 +353,23 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def builder_troops_dict(self, attr="name"):
-        """:class:`dict` - {name: :class:`Troop`}: A dict of builder base troops by name.
+        """:class:`dict` - ``{name: :class:`Troop`}``: A dict of builder base troops by name.
 
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.troops if m.is_builder_base}
 
     @property
+    def siege_machines_dict(self, attr="name"):
+        """:class:`dict` - ``{name: :class:`Troop`}``: A dict of siege machines by name.
+
+        Pass in an attribute of :class:`Troop` to get that attribute as the key
+        """
+        return {getattr(m, attr): m for m in self.troops if m.name in SIEGE_MACHINE_ORDER}
+
+    @property
     def heroes_dict(self, attr="name"):
-        """:class:`dict` - {name: :class:`Hero`}: A dict of heroes by name.
+        """:class:`dict` - ``{name: :class:`Hero`}``: A dict of heroes by name.
 
         Pass in an attribute of :class:`Hero` to get that attribute as the key
         """
@@ -362,7 +377,7 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def spells_dict(self, attr="name"):
-        """:class:`dict` - {name: :class:`Spell`}: A dict of spells by name.
+        """:class:`dict` - ``{name: :class:`Spell`}``: A dict of spells by name.
 
         Pass in an attribute of :class:`Spell` to get that attribute as the key
         """
@@ -379,12 +394,21 @@ class SearchPlayer(BasicPlayer):
 
     @property
     def ordered_builder_troops(self):
-        """:class:`collections.OrderedDict` - An ordered dict of home base troops by name.
+        """:class:`collections.OrderedDict` - An ordered dict of builder base troops by name.
 
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
         return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+
+    @property
+    def ordered_siege_machines(self):
+        """:class:`collections.OrderedDict` - An ordered dict of siege machines by name.
+
+        This will return siege machines in the order found in both barracks and labatory in-game.
+        """
+        key_order = {k: v for v, k in enumerate(SIEGE_MACHINE_ORDER)}
+        return OrderedDict(sorted(self.siege_machines_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_spells(self):
