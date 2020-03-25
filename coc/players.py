@@ -387,11 +387,18 @@ class SearchPlayer(BasicPlayer):
         """Get an ordered dict of a player's troops against a predefined list of troops.
 
         The most common use of this will be passing in one of the following:
+
+
         - ``coc.ELIXIR_TROOP_ORDER``
+
         - ``coc.DARK_ELIXIR_TROOP_ORDER``
+
         - ``coc.SIEGE_MACHINE_ORDER``
+
         - ``coc.HOME_TROOP_ORDER``
+
         - ``coc.BUILDER_TROOPS_ORDER``
+
 
         Which will yield an ordered dict of the player's troops, ordered as found in both barracks and labatory in-game.
 
