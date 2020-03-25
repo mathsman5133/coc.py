@@ -49,7 +49,7 @@ class CacheType(Enum):
         return self.value
 
 
-HOME_TROOP_ORDER = [
+ELIXIR_TROOP_ORDER = [
     "Barbarian",
     "Archer",
     "Giant",
@@ -64,6 +64,9 @@ HOME_TROOP_ORDER = [
     "Miner",
     "Electro Dragon",
     "Yeti",
+]
+
+DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -72,11 +75,16 @@ HOME_TROOP_ORDER = [
     "Lava Hound",
     "Bowler",
     "Ice Golem",
+]
+
+SIEGE_MACHINE_ORDER = [
     "Wall Wrecker",
     "Battle Blimp",
     "Stone Slammer",
     "Siege Barracks",
 ]
+
+HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",
@@ -92,13 +100,16 @@ BUILDER_TROOPS_ORDER = [
     "Hog Glider",
 ]
 
-SPELL_ORDER = [
+ELIXIR_SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
     "Rage Spell",
     "Jump Spell",
     "Freeze Spell",
     "Clone Spell",
+]
+
+DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
@@ -106,9 +117,9 @@ SPELL_ORDER = [
     "Bat Spell",
 ]
 
-HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
+SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-SIEGE_MACHINE_ORDER = ["Wall Wrecker", "Battle Blimp", "Stone Slammer", "Siege Barracks"]
+HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
 ACHIEVEMENT_ORDER = [
     "Bigger Coffers",

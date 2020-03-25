@@ -383,6 +383,40 @@ class SearchPlayer(BasicPlayer):
         """
         return {getattr(m, attr): m for m in self.spells}
 
+    def get_ordered_troops(self, valid_troops):
+        """Get an ordered dict of a player's troops against a predefined list of troops.
+
+        The most common use of this will be passing in one of the following:
+        - ``coc.ELIXIR_TROOP_ORDER``
+        - ``coc.DARK_ELIXIR_TROOP_ORDER``
+        - ``coc.SIEGE_MACHINE_ORDER``
+        - ``coc.HOME_TROOP_ORDER``
+        - ``coc.BUILDER_TROOPS_ORDER``
+
+        Which will yield an ordered dict of the player's troops, ordered as found in both barracks and labatory in-game.
+
+        Example
+        ---------
+
+        .. code-block:: python3
+
+            # to get an ordered dict of a player's elixir troops.
+            import coc
+
+            player = client.get_player(...)
+            elixir_troops = player.get_ordered_troops(coc.ELIXIR_TROOP_ORDER)
+
+            for troop_name, troop in elixir_troops.items():
+               ...
+
+        Returns
+        --------
+        :class:`collections.OrderedDict` - An ordered dict of troops by name.
+        """
+        troops_dict = {t.name: t for t in self.troops}
+        key_order = {k: v for v, k in enumerate(valid_troops)}
+        return OrderedDict(sorted(troops_dict, key=lambda i: key_order.get(i.name)))
+
     @property
     def ordered_home_troops(self):
         """:class:`collections.OrderedDict` - An ordered dict of troops by name.
