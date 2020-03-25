@@ -17,11 +17,17 @@ from .client import Client
 from .events import EventsClient
 from .enums import (
     CacheType,
-    HOME_TROOP_ORDER,
+    ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
-    SPELL_ORDER,
+    DARK_ELIXIR_SPELL_ORDER,
+    DARK_ELIXIR_TROOP_ORDER,
+    ELIXIR_SPELL_ORDER,
+    ELIXIR_TROOP_ORDER,
     HERO_ORDER,
+    HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
+    SPELL_ORDER,
+    UNRANKED_LEAGUE_DATA,
 )
 from .errors import (
     ClashOfClansException,
