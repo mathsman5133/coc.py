@@ -17,6 +17,7 @@ from .client import Client
 from .events import EventsClient
 from .enums import (
     CacheType,
+    Role,
     ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
     DARK_ELIXIR_SPELL_ORDER,
