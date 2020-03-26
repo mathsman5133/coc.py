@@ -422,7 +422,7 @@ class SearchPlayer(BasicPlayer):
         """
         troops_dict = {t.name: t for t in self.troops}
         key_order = {k: v for v, k in enumerate(valid_troops)}
-        return OrderedDict(sorted(troops_dict, key=lambda i: key_order.get(i.name)))
+        return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_home_troops(self):
