@@ -420,7 +420,7 @@ class SearchPlayer(BasicPlayer):
         --------
         :class:`collections.OrderedDict` - An ordered dict of troops by name.
         """
-        troops_dict = {t.name: t for t in self.troops}
+        troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
         key_order = {k: v for v, k in enumerate(valid_troops)}
         return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
