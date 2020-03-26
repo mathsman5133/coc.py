@@ -49,6 +49,24 @@ class CacheType(Enum):
         return self.value
 
 
+class Role(Enum):
+    """Enum to map a player's role in the clan."""
+
+    member = "member"
+    elder = "admin"
+    co_leader = "coLeader"
+    leader = "leader"
+
+    def __str__(self):
+        return self.in_game_name
+
+    @property
+    def in_game_name(self):
+        """Get a neat client-facing string value for the role."""
+        lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
+        return lookup[self]
+
+
 ELIXIR_TROOP_ORDER = [
     "Barbarian",
     "Archer",

@@ -38,6 +38,7 @@ from .miscmodels import (
     Label,
 )
 from .enums import (
+    Role,
     HERO_ORDER,
     BUILDER_TROOPS_ORDER,
     HOME_TROOP_ORDER,
@@ -164,10 +165,7 @@ class BasicPlayer(Player):
     @property
     def role(self):
         """:class:`str`: The members role in the clan - member, elder, etc."""
-        role = self._data.get("role")
-        if role == "admin":
-            return "elder"
-        return role
+        return Role(self._data.get("role"))
 
 
 class WarMember(Player):
