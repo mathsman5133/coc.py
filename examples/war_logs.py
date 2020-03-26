@@ -2,12 +2,11 @@ import coc
 import asyncio
 import logging
 
-log = logging.getLogger("coc")
-log.setLevel(logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
 
 
 # email and password is your login credentials used at https://developer.clashofclans.com
-coc_client = coc.login(email="email", password="password", key_count=5)
+coc_client = coc.login(email="mathsman5132@gmail.com", password="creepy_crawley", key_names="windows")
 
 
 async def get_warlog_for_clans(clan_tags: list):

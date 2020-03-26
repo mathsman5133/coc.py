@@ -123,7 +123,7 @@ class Client:
         key_names: str = "Created with coc.py Client",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
-        cache=None,
+        cache=Cache,
         correct_tags: bool = False
     ):
 
@@ -139,7 +139,7 @@ class Client:
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
-        self.cache = cache or Cache
+        self.cache = cache
         self.correct_tags = correct_tags
 
     async def login(self, email: str, password: str):
@@ -182,6 +182,9 @@ class Client:
 
         This is called automatically in :meth:`coc.login()`
         """
+        if not self.cache:
+            return
+
         self.cache = self.cache(self)
         self.cache.register_cache_types()
 
@@ -403,7 +406,7 @@ class Client:
         data = await self.http.get_clan(clan_tag)
         clan = SearchClan(data=data, http=self.http)
 
-        if update_cache:
+        if update_cache and self.cache:
             await self.cache.set("search_clans", clan.tag, clan)
 
         return clan.members
@@ -456,7 +459,7 @@ class Client:
 
             wars.append(WarLog(data=war, clan_tag=clan_tag, http=self.http))
 
-        if update_cache:
+        if update_cache and self.cache:
             await self.cache.set("war_logs", wars[0].clan_tag, wars)
 
         return wars
@@ -788,7 +791,7 @@ class Client:
 
     # locations
     async def _populate_locations(self):
-        if await self.cache.get("locations", "fully_populated") is True:
+        if self.cache.get("locations", "fully_populated") is True:
             return await self.cache.get_limit("locations")
 
         await self.cache.clear("locations")
@@ -816,15 +819,16 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        if await self.cache.get("locations", "fully_populated") is True:
+        if self.cache and await self.cache.get("locations", "fully_populated") is True:
             return await self.cache.get_limit("locations", limit)
 
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         locations = list(Location(data=n) for n in data["items"])
 
-        for location in locations:
-            await self.cache.set("locations", location.id, location)
+        if self.cache:
+            for location in locations:
+                await self.cache.set("locations", location.id, location)
 
         return locations
 
@@ -876,7 +880,12 @@ class Client:
         --------
         :class:`Location`
             The first location matching the location name"""
-        locations = await self._populate_locations()
+        if self.cache:
+            locations = await self._populate_locations()
+        else:
+            data = await self.http.search_locations(limit=None, before=None, after=None)
+            locations = list(Location(data=n) for n in data["items"])
+
         return get(locations, name=location_name)
 
     async def get_location_clan(
@@ -948,7 +957,6 @@ class Client:
         :class:`list` of :class:`Clan`
         """
         data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-
         return list(Clan(data=n, http=self.http) for n in data["items"])
 
     async def get_location_players_versus(
@@ -972,7 +980,6 @@ class Client:
         :class:`list` of :class:`Player`
         """
         data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
-
         return list(Player(data=n) for n in data["items"])
 
     # leagues
@@ -1008,14 +1015,15 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        if await self.cache.get("leagues", "fully_populated") is True:
+        if self.cache and await self.cache.get("leagues", "fully_populated") is True:
             return await self.cache.get_limit("leagues", limit)
 
         data = await self.http.search_leagues(limit=limit, before=before, after=after)
         leagues = list(League(data=n, http=self.http) for n in data["items"])
 
-        for league in leagues:
-            await self.cache.set("leagues", league.id, league)
+        if self.cache:
+            for league in leagues:
+                await self.cache.set("leagues", league.id, league)
 
         return leagues
 
@@ -1068,7 +1076,12 @@ class Client:
         --------
         :class:`League`
             The first location matching the location name"""
-        leagues = await self._populate_leagues()
+        if self.cache:
+            leagues = await self._populate_leagues()
+        else:
+            data = await self.http.search_leagues(limit=None, before=None, after=None)
+            leagues = list(League(data=n, http=self.http) for n in data["items"])
+
         return get(leagues, name=league_name)
 
     async def get_seasons(self, league_id: int):
@@ -1123,7 +1136,7 @@ class Client:
         :class:`list` of :class:`LeagueRankedPlayer`
         """
         # pylint: disable=too-many-arguments
-        if cache:
+        if cache and self.cache:
             try:
                 data = await self.cache.get("seasons", "league_id")
                 if data[season_id]:
@@ -1138,7 +1151,7 @@ class Client:
         data = await self.http.get_league_season_info(league_id, season_id)
         players = list(LeagueRankedPlayer(data=n, http=self.http) for n in data.get("items", []))
 
-        if update_cache:
+        if self.cache and update_cache:
             await self.cache.set("seasons", "league_id", {season_id: players})
 
         return players

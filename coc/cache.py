@@ -524,6 +524,8 @@ def events_cache():
         def wrapper(*args, **kwargs):
             class_instance = args[0]  # self will always be first arg
             cache = class_instance.cache
+            if not cache:
+                return func(*args, **kwargs)
 
             event_name = args[1]
             if event_name.endswith("batch_updates"):
@@ -552,6 +554,8 @@ def cached(cache_name):
         async def wrapper(*args, **kwargs):
             class_instance = args[0]  # self will always be first arg
             cache = class_instance.cache
+            if not cache:
+                return await func(*args, **kwargs)  # the client doesn't have a cache registered. ignore.
 
             key = find_key(args, kwargs)
             use_cache = kwargs.pop("cache", False)
