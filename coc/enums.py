@@ -103,6 +103,7 @@ SIEGE_MACHINE_ORDER = [
 ]
 
 SUPER_TROOP_ORDER = [
+    "Sneaky Goblin",
     "Super Barbarian",
     "Super Wall Breaker",
     "Super Giant",
