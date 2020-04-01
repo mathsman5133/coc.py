@@ -452,7 +452,7 @@ class SearchPlayer(BasicPlayer):
         This will return super troops in the order found in game.
         """
         key_order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
-        return OrderedDict(sorted(self.super_troops_dict.items(). key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.super_troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_builder_troops(self):
