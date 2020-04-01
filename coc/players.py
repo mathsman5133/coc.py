@@ -259,6 +259,8 @@ class SearchPlayer(BasicPlayer):
         :class:`int` - The players war star count
     town_hall:
         :class:`int` - The players TH level
+    town_hall_weapon:
+        :class:`int` - The weapon level of the TH
     builder_hall:
         :class:`int` - The players BH level
     versus_attack_wins:
@@ -269,6 +271,7 @@ class SearchPlayer(BasicPlayer):
         "best_trophies",
         "war_stars",
         "town_hall",
+        "town_hall_weapon",
         "builder_hall",
         "best_versus_trophies",
         "versus_attack_wins",
@@ -284,6 +287,7 @@ class SearchPlayer(BasicPlayer):
         self.best_trophies = data.get("bestTrophies")
         self.war_stars = data.get("warStars")
         self.town_hall = data.get("townHallLevel")
+        self.town_hall_weapon = data.get("townHallWeaponLevel", 0)
         self.builder_hall = data.get("builderHallLevel", 0)
         self.best_versus_trophies = data.get("bestVersusTrophies")
         self.versus_attack_wins = data.get("versusBattleWins")
@@ -348,6 +352,14 @@ class SearchPlayer(BasicPlayer):
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.troops if m.is_home_base}
+    
+    @property
+    def super_troops_dict(self, attr="name"):
+        """:class:`dict` - {name: :class:`Troop`}: A dict of super troops by name.
+        
+        Pass in an attribute of :class:`Troop` to get that attribute as the key
+        """
+        return {getattr(m, attr): m for m in self.troops if m.name in SUPER_TROOP_ORDER}
 
     @property
     def builder_troops_dict(self, attr="name"):
@@ -392,6 +404,8 @@ class SearchPlayer(BasicPlayer):
         - ``coc.DARK_ELIXIR_TROOP_ORDER``
 
         - ``coc.SIEGE_MACHINE_ORDER``
+        
+        - ``coc.SUPER_TROOP_ORDER``
 
         - ``coc.HOME_TROOP_ORDER``
 
@@ -430,6 +444,15 @@ class SearchPlayer(BasicPlayer):
         """
         key_order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
         return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+    
+    @property
+    def ordered_super_troops(self):
+        """:class:`collections.OrderedDict` - An ordered dict of super troops by name.
+        
+        This will return super troops in the order found in game.
+        """
+        key_order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
+        return OrderedDict(sorted(self.super_troops_dict.items(). key=lambda i: key_order.get(i[0])))
 
     @property
     def ordered_builder_troops(self):
