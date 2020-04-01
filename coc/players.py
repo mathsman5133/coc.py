@@ -353,11 +353,11 @@ class SearchPlayer(BasicPlayer):
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.troops if m.is_home_base}
-    
+
     @property
     def super_troops_dict(self, attr="name"):
         """:class:`dict` - {name: :class:`Troop`}: A dict of super troops by name.
-        
+
         Pass in an attribute of :class:`Troop` to get that attribute as the key
         """
         return {getattr(m, attr): m for m in self.troops if m.name in SUPER_TROOP_ORDER}
@@ -405,7 +405,7 @@ class SearchPlayer(BasicPlayer):
         - ``coc.DARK_ELIXIR_TROOP_ORDER``
 
         - ``coc.SIEGE_MACHINE_ORDER``
-        
+
         - ``coc.SUPER_TROOP_ORDER``
 
         - ``coc.HOME_TROOP_ORDER``
@@ -445,11 +445,11 @@ class SearchPlayer(BasicPlayer):
         """
         key_order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
         return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0])))
-    
+
     @property
     def ordered_super_troops(self):
         """:class:`collections.OrderedDict` - An ordered dict of super troops by name.
-        
+
         This will return super troops in the order found in game.
         """
         key_order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
