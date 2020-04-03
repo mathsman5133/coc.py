@@ -365,10 +365,24 @@ class LeagueGroup(EqualityComparable):
         return list(self.iterclans)
 
     @property
+    def number_of_rounds(self):
+        """:class:`int` The number of rounds this league group contains."""
+        return len(self._data["rounds"])
+
+    @property
     def rounds(self):
         """List[List[]]: A list of lists containing all war tags for each round.
+
+        .. note:
+
+            This only returns the current or past rounds. Any future rounds filled with #0 war tags will not appear.
+
+            To find the number of rounds in this season, use :attr:`LeagueGroup.number_of_rounds`.
+
         """
-        return [n["warTags"] for n in self._data.get("rounds", [])]
+        # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
+        # we want to get only the valid rounds
+        return [n["warTags"] for n in self._data["rounds"] if n["warTags"][0] != "#0"]
 
     def get_wars(self, round_index: int = -1, cache: bool = True, fetch: bool = True, update_cache: bool = True):
         """Get war information for every war in a league round.
