@@ -261,7 +261,7 @@ class SearchPlayer(BasicPlayer):
     town_hall:
         :class:`int` - The players TH level
     town_hall_weapon:
-        :class:`int` - The weapon level of the TH (will be 0 for TH11 and below) 
+        :class:`int` - The weapon level of the TH (will be 0 for TH11 and below)
     builder_hall:
         :class:`int` - The players BH level (will be 0 if player does not have a builder hall)
     versus_attack_wins:
