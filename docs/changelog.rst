@@ -45,7 +45,7 @@ v0.3.1
 --------
 New Features.
 ~~~~~~~~~~~~~~
-- :ref:`on_clan_member_trophy_change`, :ref:`on_clan_member_versus_trophy_change` and
+- :ref:`on_clan_member_trophies_change`, :ref:`on_clan_member_versus_trophies_change` and
   :ref:`on_clan_member_league_change` were added as new events.
 - Add ability to pass async and other iterables into methods that return iterators.
 - Add the `HogGlider` to list of builder base troops.
