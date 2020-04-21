@@ -59,9 +59,9 @@ These are enumerated below, with their appropriate group:
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_received`               | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
-| :ref:`on_clan_member_trophy_change`          | :ref:`clan_event_group`             |
+| :ref:`on_clan_member_trophies_change`        | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
-| :ref:`on_clan_member_versus_trophy_change`   | :ref:`clan_event_group`             |
+| :ref:`on_clan_member_versus_trophies_change` | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
 | :ref:`on_clan_member_role_change`            | :ref:`clan_event_group`             |
 +----------------------------------------------+-------------------------------------+
