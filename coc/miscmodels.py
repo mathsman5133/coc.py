@@ -603,3 +603,6 @@ class WarLeague:
 
     def __str__(self):
         return self.name
+
+    def __eq__(self, other):
+        return isinstance(other, WarLeague) and other.id == self.id
