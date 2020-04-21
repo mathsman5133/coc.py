@@ -62,6 +62,7 @@ from .miscmodels import (
     Troop,
     Timestamp,
     Label,
+    WarLeague,
 )
 from .players import (
     Player,

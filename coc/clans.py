@@ -28,7 +28,7 @@ SOFTWARE.
 from itertools import chain
 
 from .iterators import PlayerIterator
-from .miscmodels import EqualityComparable, try_enum, Location, Badge, Label
+from .miscmodels import EqualityComparable, try_enum, Location, Badge, Label, WarLeague
 from .utils import get, maybe_sort
 
 
@@ -152,6 +152,8 @@ class SearchClan(BasicClan):
         :class:`bool` - Indicates whether the war log is public
     description:
         :class:`str` - The clan description
+    war_league:
+        :class:`WarLeague` - the clan's CWL league name and ID.
     """
 
     __slots__ = (
@@ -164,6 +166,7 @@ class SearchClan(BasicClan):
         "war_losses",
         "public_war_log",
         "description",
+        "war_league",
     )
 
     def __init__(self, *, data, http):
@@ -178,6 +181,7 @@ class SearchClan(BasicClan):
         self.war_losses = data.get("warLosses")
         self.public_war_log = data.get("isWarLogPublic")
         self.description = data.get("description", "")
+        self.war_league = try_enum(WarLeague, data.get("warLeague"))
 
     @property
     def iterlabels(self):

@@ -578,3 +578,28 @@ class Label(EqualityComparable):
         """:class:`Badge` - The label's badge."""
 
         return try_enum(Badge, self._data.get("iconUrls"), http=self._http)
+
+
+class WarLeague:
+    """Represents a clan's CWL league.
+
+    Attributes
+    -----------
+    id: :class:`int`: The league's unique ID
+    name: :class:`str`: The league's name, as it appears in-game."""
+
+    __slots__ = (
+        "id",
+        "name",
+    )
+
+    def __init__(self, *, data):
+        # pylint: disable=invalid-name
+        self.id = data["id"]
+        self.name = data["name"]
+
+    def __repr__(self):
+        return "<%s id=%s name=%s>" % self.__class__.__name__, self.id, self.name
+
+    def __str__(self):
+        return self.name
