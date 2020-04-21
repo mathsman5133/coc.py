@@ -534,9 +534,7 @@ class EventsClient(Client):
 
     def _dispatch_war_differences(self, cached_war, war):
         self.dispatch("on_war_update", cached_war, war)
-
-        if not war.state == cached_war.state:
-            self._create_status_tasks(cached_war, war)
+        self._create_status_tasks(cached_war, war)
 
         if not war.opponent:
             # if there are no opponent next line will raise Attribute error..
@@ -557,7 +555,7 @@ class EventsClient(Client):
             self.dispatch("on_war_attack", attack, war)
 
     def _create_status_tasks(self, cached_war, war):
-        if war.state == "preparation":
+        if cached_war.state != war.state and war.state == "preparation":
             self.dispatch("on_war_state_change", "preparation", war)
 
         if war.state not in ["preparation", "inWar", "warEnded"]:
