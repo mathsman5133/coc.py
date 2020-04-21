@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
@@ -25,11 +23,144 @@ SOFTWARE.
 
 """
 
+import copy
+
 from itertools import chain
 
 from .iterators import PlayerIterator
 from .miscmodels import EqualityComparable, try_enum, Location, Badge, Label
 from .utils import get, maybe_sort
+
+
+class Clan:
+    __slots__ = (
+        "tag",
+        "name",
+        "type",
+        "description",
+        "location",
+        "badge",
+        "level",
+        "points",
+        "versus_points",
+        "required_trophies",
+        "war_frequency",
+        "war_win_streak",
+        "war_wins",
+        "war_ties",
+        "war_losses",
+        "public_war_log",
+        "member_count",
+        "labels",
+        "_member_tags",
+        "_client",
+    )
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = [
+            ("tag", self.tag),
+            ("name", self.name),
+        ]
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+    def __eq__(self, other):
+        return isinstance(other, Clan) and self.tag == other.tag
+
+    def __init__(self, *, data, client):
+        self._client = client
+        self._from_data(data)
+
+    def _from_data(self, data):
+        data_get = data.get
+        # always available
+        self.tag = data_get("tag")
+        self.name = data_get("name")
+        self.level = data_get("clanLevel")
+        self.badge = try_enum(Badge, data_get("badgeUrls"), http=self._client)
+
+        # only available via `Player.clan`
+        self.points = data_get("clanPoints")
+        self.versus_points = data_get("clanVersusPoints")
+        self.member_count = data_get("members")
+        self.location = try_enum(Location, data_get("location"))
+
+        # only available via /clans/{clanTag} or /clans endpoint
+        self.type = data_get("type")
+        self.required_trophies = data_get("requiredTrophies")
+        self.war_frequency = data_get("warFrequency")
+        self.war_win_streak = data_get("warWinStreak")
+        self.war_wins = data_get("warWins")
+        self.war_ties = data_get("warTies")
+        self.war_losses = data_get("warLosses")
+        self.public_war_log = data_get("isWarLogPublic")
+        self.description = data_get("description", "")
+        self.labels = [Label(data=ldata, client=self._client) for ldata in data_get("labels", [])]
+
+        # update members globally. only available via /clans/{clanTag}
+        tags = []
+        for mdata in data_get("members", []):
+            self._client._update_player(mdata)
+            tags.append(mdata["player_tag"])
+        self._member_tags = tags
+
+        #  what are these??
+        self.rank = data.get("rank")
+        self.previous_rank = data.get("previous_rank")
+
+    def _update(self, data):
+        pass
+
+    @property
+    def share_link(self):
+        """:class:`str` - A formatted link to open the clan in-game"""
+        return "https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}".format(self.tag.strip("#"))
+
+    @property
+    def members(self):
+        return [self._client.get_player(tag) for tag in self._member_tags]
+
+    def get_member(self, **attrs):
+        """Returns the first :class:`BasicPlayer` that meets the attributes passed
+
+        This will return the first member matching the attributes passed.
+
+        An example of this looks like:
+
+        .. code-block:: python3
+
+            clan = client.get_clan('clan tag')
+            member = clan.get_member(name='Bob the Builder')
+
+        This search implements the :func:`coc.utils.get` function
+        """
+        return get(self.members, **attrs)
+
+    def get_detailed_members(self, cache: bool = False):
+        """Get detailed player information for every player in the clan.
+        This will return an AsyncIterator of :class:`SearchPlayer`.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            clan = await client.get_clan('tag')
+
+            async for player in clan.get_detailed_members(cache=True):
+                print(player.name)
+
+        :param cache: Optional[:class:`bool`] Indicates whether to search
+                        the cache before making an HTTP request
+        :param fetch: Optional[:class:`bool`] Indicates whether an HTTP call
+                        should be made if cache is empty.
+                        Defaults to ``True``. If this is ``False`` and item in cache was not found,
+                        ``None`` will be returned
+        :return: AsyncIterator of :class:`SearchPlayer`
+        """
+        return PlayerIterator(self._client, self._member_tags, cache)
 
 
 class Clan(EqualityComparable):

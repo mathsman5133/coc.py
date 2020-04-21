@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
@@ -30,7 +28,6 @@ import logging
 
 from collections.abc import Iterable
 
-from .cache import Cache, cached
 from .clans import Clan, SearchClan
 from .errors import Forbidden, NotFound, PrivateWarLog
 from .miscmodels import Label, League, Location
@@ -88,10 +85,6 @@ class Client:
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
         An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
 
-    cache : :class:`Cache`, optional
-        The :class:`Cache` used for interaction with the clients cache.
-        If passed, this must inherit from :class:`Cache`. The default cache will be used if nothing is passed.
-
     correct_tags : :class:`bool`
         Whether the client should correct tags before requesting them from the API.
         This process involves stripping tags of whitespace and adding a `#` prefix if not present.
@@ -112,7 +105,6 @@ class Client:
         "throttle_limit",
         "http",
         "_ready",
-        "cache",
         "correct_tags",
     )
 
@@ -123,7 +115,6 @@ class Client:
         key_names: str = "Created with coc.py Client",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
-        cache=Cache,
         correct_tags: bool = False
     ):
 
@@ -139,8 +130,12 @@ class Client:
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
-        self.cache = cache
         self.correct_tags = correct_tags
+
+        # cache
+        self._players = {}
+        self._clans = {}
+        self._wars = {}
 
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -177,17 +172,6 @@ class Client:
         self.loop.close()
         self.dispatch("on_client_close")
 
-    def create_cache(self):
-        """Creates all cache instances and registers settings.
-
-        This is called automatically in :meth:`coc.login()`
-        """
-        if not self.cache:
-            return
-
-        self.cache = self.cache(self)
-        self.cache.register_cache_types()
-
     def dispatch(self, event_name: str, *args, **kwargs):
         """Dispatches an event listener matching the `event_name` parameter."""
         LOG.debug("Dispatching %s event", event_name)
@@ -196,11 +180,11 @@ class Client:
             fctn = getattr(self, event_name)
         except AttributeError:
             return
+
+        if asyncio.iscoroutinefunction(fctn):
+            asyncio.ensure_future(fctn(*args, **kwargs), loop=self.loop)
         else:
-            if asyncio.iscoroutinefunction(fctn):
-                asyncio.ensure_future(fctn(*args, **kwargs), loop=self.loop)
-            else:
-                fctn(*args, **kwargs)
+            fctn(*args, **kwargs)
 
     async def reset_keys(self, number_of_keys: int = None):
         """Manually reset any number of keys.
@@ -268,6 +252,11 @@ class Client:
         HTTPException
             No options were passed.
         """
+        if not (
+            name or war_frequency or location_id or min_members or max_members or min_clan_points or min_clan_level
+        ):
+            raise TypeError("At least one filtering parameter must be passed.")
+
         data = await self.http.search_clans(
             name=name,
             warFrequency=war_frequency,
@@ -283,10 +272,13 @@ class Client:
 
         clans = list(SearchClan(data=n, http=self.http) for n in data.get("items", []))
 
+        if self.cache:
+            for clan in clans:
+                self._update_clan(clan)
+
         return clans
 
     @corrected_tag()
-    @cached("search_clans")
     async def get_clan(
         self, tag: str, cache: bool = True, fetch: bool = True, update_cache: bool = True,
     ):
@@ -315,7 +307,12 @@ class Client:
             The clan with provided tag.
         """
         data = await self.http.get_clan(tag)
-        return SearchClan(data=data, http=self.http)
+        clan = SearchClan(data=data, http=self.http)
+
+        if cache and self.cache:
+            self._update_clan(clan)
+
+        return clan
 
     def get_clans(
         self, tags: Iterable, cache: bool = True, fetch: bool = True, update_cache: bool = True, **extra_options

@@ -27,16 +27,7 @@ SOFTWARE.
 
 from collections import OrderedDict
 
-from .miscmodels import (
-    EqualityComparable,
-    try_enum,
-    Achievement,
-    Troop,
-    Hero,
-    Spell,
-    League,
-    Label,
-)
+from .miscmodels import EqualityComparable, try_enum, Achievement, Troop, Hero, Spell, Label, League, LegendStatistics
 from .enums import (
     Role,
     HERO_ORDER,
@@ -46,7 +37,250 @@ from .enums import (
     SIEGE_MACHINE_ORDER,
     UNRANKED_LEAGUE_DATA,
 )
-from .utils import maybe_sort
+from .utils import maybe_sort, peek_at_generator
+
+
+class ClanMember:
+    __slots__ = (
+        "_client",
+        "_clan_tag",
+        "name",
+        "tag",
+        "role",
+        "exp_level",
+        "league",
+        "trophies",
+        "versus_trophies",
+        "clan_rank",
+        "clan_previous_rank",
+        "donations",
+        "received",
+    )
+
+    def __init__(self, *, data, client):
+        self._client = client
+
+    def _from_data(self, data):
+        data_get = data.get
+        # always available
+        self.name = data_get("name")
+        self.tag = data_get("tag")
+
+        self.exp_level = data_get("expLevel")
+        self.trophies = data_get("trophies")
+        self.versus_trophies = data_get("versusTrophies")
+        self.clan_rank = data_get("clanRank")
+        self.clan_previous_rank = data_get("clanRank")
+        self.donations = data_get("donations")
+        self.received = data_get("donationsReceived")
+
+        clan_data = data_get("clan")
+        if clan_data:
+            self._client._update_clan(clan_data)
+            self._clan_tag = clan_data["tag"]
+
+        self.league = try_enum(League, data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.role = Role(data_get("role"))
+
+
+class Player(ClanMember):
+    __slots__ = ClanMember.__slots__ + (
+        "attack_wins",
+        "defense_wins",
+        "best_trophies",
+        "war_stars",
+        "town_hall",
+        "town_hall_weapon" "builder_hall",
+        "best_versus_trophies",
+        "versus_attack_wins",
+        "legend_statistics",
+        "_achievements",
+        "_heroes",
+        "_labels",
+        "_spells",
+        "_troops",
+        "__iter_achievements",
+        "__iter_heroes",
+        "__iter_labels",
+        "__iter_spells",
+        "__iter_troops",
+    )
+
+    def __init__(self, *, data, client):
+        super().__init__(data=data, client=client)
+        self._client = client
+
+        self._achievements = {}
+        self._heroes = {}
+        self._labels = []
+        self._spells = []
+        self._troops = []
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = (("tag", self.tag), ("name", self.name))
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+    def _from_data(cls, data):
+        data_get = data.get
+
+        # always available
+        self.name = data_get("name")
+        self.tag = data_get("tag")
+
+        clan_data = data_get("clan")
+        if clan_data:
+            self._client._update_clan(clan_data)
+            self._clan_tag = clan_data["tag"]
+
+        self.league = try_enum(League, data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.role = Role(data_get("role"))
+        self.best_trophies = data_get("bestTrophies")
+        self.war_stars = data_get("warStars")
+        self.town_hall = data_get("townHallLevel")
+        self.builder_hall = data_get("builderHallLevel", 0)
+        self.best_versus_trophies = data_get("bestVersusTrophies")
+        self.versus_attack_wins = data_get("versusBattleWins")
+        self.legend_statistics = try_enum(LegendStatistics, data_get("legendStatistics"), player_tag=self.tag)
+
+        self.__iter_labels = (Label(data=ldata, client=self._client) for ldata in data_get("labels", []))
+        self.__iter_achievements = (Achievement(data=adata, player=self) for adata in data_get("achievements", []))
+        self.__iter_troops = (Troop(data=sdata, player=self) for sdata in data_get.get("troops", []))
+        self.__iter_heroes = (Hero(data=hdata, player=self) for hdata in data_get("heroes", []))
+        self.__iter_spells = (Spell(data=sdata, player=self) for sdata in data_get("spells", []))
+
+    @property
+    def share_link(self):
+        """:class:`str` - A formatted link to open the player in-game"""
+        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(self.tag.strip("#"))
+
+    @property
+    def clan(self):
+        """Optional[:class:`Clan`]: The player's clan. If the player is clanless, this will be ``None``."""
+        return self._clan_tag and self._client.get_clan(self._clan_tag)
+
+    @property
+    def labels(self):
+        """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
+        iter_labels = peek_at_generator(self.__iter_labels)
+        if iter_labels:
+            self._labels = list(iter_labels)
+
+        return self._labels
+
+    @property
+    def achievements(self):
+        """List[:class:`Achievement`]: A :class:`List` of the player's :class:`Achievement`s."""
+        iter_achievements = peek_at_generator(self.__iter_achievements)
+        if iter_achievements:
+            self._achievements = {a.name: a for a in iter_achievements}
+
+        return list(self._achievements.values())
+
+    def get_achievement(self, name):
+        """Returns an achievement with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of an achievement as found in-game.
+
+        Returns
+        --------
+        Optional[:class:`Achievement`]
+            The returned achievement or ``None`` if not found.
+        """
+        try:
+            return self._achievements[name]
+        except KeyError:
+            return None
+
+    @property
+    def troops(self):
+        """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`s.
+
+        This will return troops in the order found in both barracks and labatory in-game.
+        """
+        iter_troops = peek_at_generator(self.__iter_troops)
+        if iter_troops:
+            self._troops = list(iter_troops)
+        return self._troops
+
+    @property
+    def home_troops(self):
+        """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`s.
+
+        This will return troops in the order found in both barracks and labatory in-game.
+        """
+        order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
+        troops = (t for t in self.troops if t.is_home_base)
+        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+    @property
+    def builder_troops(self):
+        """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`s.
+
+        This will return troops in the order found in both barracks and labatory in-game.
+        """
+        order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
+        troops = (t for t in self.troops if t.is_home_base)
+        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+    @property
+    def siege_machines(self):
+        """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`s.
+
+        This will return siege machines in the order found in both barracks and labatory in-game.
+        """
+        order = {k: v for v, k in enumerate(SIEGE_MACHINE_ORDER)}
+        troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
+        return list(sorted(troops, key=lambda t: order.get(t.name)))
+
+    @property
+    def heroes(self):
+        """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`es.
+
+        This will return heroes in the order found in the store and labatory in-game.
+        """
+        iter_heroes = peek_at_generator(self.__iter_heroes)
+        if iter_heroes:
+            self._heroes = {h.name: h for h in iter_heroes}
+
+        order = {k: v for v, k in enumerate(HERO_ORDER)}
+        return list(sorted(self._heroes.values(), key=lambda h: order.get(h.name, 0)))
+
+    def get_hero(self, name):
+        """Returns a hero with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a hero as found in-game.
+
+        Returns
+        --------
+        Optional[:class:`Hero`]
+            The returned hero or ``None`` if not found.
+        """
+        try:
+            return self._heroes[name]
+        except KeyError:
+            return None
+
+    @property
+    def spells(self):
+        """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell`s ordered as they appear in-game.
+
+        This will return spells in the order found in both spell factory and labatory in-game.
+        """
+        iter_spells = peek_at_generator(self.__iter_spells)
+        if iter_spells:
+            self._spells = list(iter_spells)
+
+        order = {k: v for v, k in enumerate(SPELL_ORDER)}
+        return list(sorted(self._spells, key=lambda s: order.get(s.name)))
 
 
 class Player(EqualityComparable):
@@ -263,6 +497,8 @@ class SearchPlayer(BasicPlayer):
         :class:`int` - The players BH level
     versus_attack_wins:
         :class:`int` - The players total BH wins
+    legend_statistics:
+        Optional[:class:`LegendStatistics`] - the player's legend statistics, if applicable.
     """
 
     __slots__ = (
@@ -272,6 +508,7 @@ class SearchPlayer(BasicPlayer):
         "builder_hall",
         "best_versus_trophies",
         "versus_attack_wins",
+        "legend_statistics",
     )
 
     def __init__(self, *, data, http):
@@ -287,6 +524,7 @@ class SearchPlayer(BasicPlayer):
         self.builder_hall = data.get("builderHallLevel", 0)
         self.best_versus_trophies = data.get("bestVersusTrophies")
         self.versus_attack_wins = data.get("versusBattleWins")
+        self.legend_statistics = try_enum(LegendStatistics, data.get("legendStatistics"), player=self)
 
     @property
     def iterlabels(self):

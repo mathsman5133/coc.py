@@ -194,3 +194,12 @@ def custom_isinstance(obj, module, name):
         except Exception:
             pass
     return False
+
+
+def peek_at_generator(generator_):
+    try:
+        first = next(generator_)
+    except StopIteration:
+        return None
+    else:
+        return itertools.chain([first], generator_)

@@ -373,7 +373,7 @@ class LeagueGroup(EqualityComparable):
     def rounds(self):
         """List[List[]]: A list of lists containing all war tags for each round.
 
-        .. note:
+        .. note::
 
             This only returns the current or past rounds. Any future rounds filled with #0 war tags will not appear.
 
@@ -384,7 +384,7 @@ class LeagueGroup(EqualityComparable):
         # we want to get only the valid rounds
         return [n["warTags"] for n in self._data["rounds"] if n["warTags"][0] != "#0"]
 
-    def get_wars(self, round_index: int = -1, cache: bool = True, fetch: bool = True, update_cache: bool = True):
+    def get_wars(self, round_index: int = -2, cache: bool = True, fetch: bool = True, update_cache: bool = True):
         """Get war information for every war in a league round.
         This will return an AsyncIterator of :class:`LeagueWar`.
 
@@ -402,7 +402,8 @@ class LeagueGroup(EqualityComparable):
         ------------
         round_index: Optional[:class:`int`] - Indicates the round number to get wars from.
                      These rounds can be found with :attr:`LeagueGroup.rounds` and defaults
-                     to the most recent round (index of -1).
+                     to the current round in-war (index of -2). For leagues on day 1, this will be
+                     an index of -1.
         cache: Optional[:class:`bool`] Indicates whether to search
                the cache before making an HTTP request
         fetch: Optional[:class:`bool`] Indicates whether an HTTP call
@@ -418,6 +419,10 @@ class LeagueGroup(EqualityComparable):
         ---------
         AsyncIterator of :class:`LeagueWar`
         """
+        if len(self.rounds) == 1 and abs(round_index) > 1:
+            # account for day 1 where there is only 1 round - prep day 1.
+            round_index = -1
+
         tags = iter(n for n in self.rounds[round_index])
         return LeagueWarIterator(
             client=self._http.client, tags=tags, cache=cache, fetch=fetch, update_cache=update_cache
