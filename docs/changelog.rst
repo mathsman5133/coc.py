@@ -7,6 +7,77 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v0.3.4
+-------
+Breaking Changes
+~~~~~~~~~~~~~~~~~~
+- Clan member events no longer have the `clan` argument. Clan can be accessed through `player.clan`.
+
+    This effects the following events:
+
+    - :ref:`on_clan_member_name_change`
+
+    - :ref:`on_clan_member_donation`
+
+    - :ref:`on_clan_member_received`
+
+    - :ref:`on_clan_member_trophies_change`
+
+    - :ref:`on_clan_member_role_change`
+
+    - :ref:`on_clan_member_rank_change`
+
+    - :ref:`on_clan_member_level_change`
+
+    - :ref:`on_clan_member_league_change`
+
+
+New Things
+~~~~~~~~~~~
+- :meth:`Player.get_ordered_troops` was added. From the doc-string,
+
+    Get an ordered dict of a player's troops against a predefined list of troops.
+
+    The most common use of this will be passing in one of the following:
+    - ``coc.ELIXIR_TROOP_ORDER``
+    - ``coc.DARK_ELIXIR_TROOP_ORDER``
+    - ``coc.SIEGE_MACHINE_ORDER``
+    - ``coc.HOME_TROOP_ORDER``
+    - ``coc.BUILDER_TROOPS_ORDER``
+
+    Which will yield an ordered dict of the player's troops, ordered as found in both barracks and labatory in-game.
+
+    Example:
+
+    .. code-block:: python3
+
+        # to get an ordered dict of a player's elixir troops.
+        import coc
+
+        player = client.get_player(...)
+        elixir_troops = player.get_ordered_troops(coc.ELIXIR_TROOP_ORDER)
+
+        for troop_name, troop in elixir_troops.items():
+           ...
+
+    Returns:
+    :class:`collections.OrderedDict` - An ordered dict of troops by name.
+
+
+- Setting ``cache=None`` when logging in will remove any caching from the client.
+- :attr:`BasicPlayer.role` is now an enum, with str(x) giving the string as shown in-game.
+- Super troops support was added.
+- :attr:`SearchPlayer.town_hall_weapon` now returns the town hall weapon level for TH12+. This is 0 for lower THs.
+- :attr:`SearchClan.war_league` now gives the war league the clan has been placed in.
+
+BugFixes
+~~~~~~~~~
+- Player updates weren't firing correctly. This has been fixed.
+- :attr:`WarPlayer.defenses` now returns the player's defenses (rather than attacks...)
+- Maintenance errors are now ignored in iterators.
+- Future rounds are now no longer included in :attr:`LeagueGroup.rounds`
+
+
 v0.3.3
 -------
 Breaking Changes

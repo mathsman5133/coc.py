@@ -367,12 +367,12 @@ Clan Member Trophy Count Change
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
-.. _on_clan_member_versus_trophy_change:
+.. _on_clan_member_versus_trophies_change:
 
 Clan Member Versus Trophy Count Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. py:function:: on_clan_member_versus_trophy_change(old_trophies, new_trophies, player)
+.. py:function:: on_clan_member_versus_trophies_change(old_trophies, new_trophies, player)
 
     This event is called when a clan member's versus trophy count has changed.
     The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`

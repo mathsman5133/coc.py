@@ -8,7 +8,7 @@ A basic wrapper for the Clash of Clans API.
 :license: MIT, see LICENSE for more details.
 
 """
-__version__ = "0.3.3"
+__version__ = "0.3.4"
 
 from .cache import Cache, CacheConfig, DefaultCache, MaxSizeCache, TimeToLiveCache
 
