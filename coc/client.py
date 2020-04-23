@@ -467,7 +467,7 @@ class Client:
     @corrected_tag(arg_name="clan_tag")
     @cached("clan_wars")
     async def get_clan_war(
-        self, clan_tag: str, cache: bool = True, fetch: bool = True, update_cache: bool = True,
+        self, clan_tag: str, cache: bool = True, fetch: bool = True, update_cache: bool = True, cls=ClanWar
     ):
         """
         Retrieve information about clan's current clan war
@@ -486,18 +486,22 @@ class Client:
         update_cache : bool
             Indicated whether the cache should be updated if an HTTP call is made.
             Defaults to ``True``
+        cls
+            The factory class that will be used to create the war.
+            By default, this is :class:`ClanWar`, however if a custom class is provided,
+            this must inherit :class:`ClanWar`.
 
         Returns
         --------
-        :class:`ClanWar`
+        :class:`ClanWar` or the custom class provided to the ``cls`` parameter.
         """
-        # pylint: disable=protected-access
+        # pylint: disable=protected-access, too-many-arguments
         try:
             data = await self.http.get_clan_current_war(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception._data)
 
-        return ClanWar(data=data, clan_tag=clan_tag, http=self.http)
+        return cls(data=data, clan_tag=clan_tag, http=self.http)
 
     def get_clan_wars(
         self, clan_tags: Iterable, cache: bool = True, fetch: bool = True, update_cache: bool = True, **extra_options
