@@ -523,10 +523,11 @@ class EventsClient(Client):
         async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
             cached_war = await self.cache.get("current_wars", war.clan_tag)
             await self.cache.set("current_wars", war.clan_tag, war)
-            self._create_status_tasks(cached_war, war)
 
-            if not cached_war:
+            if not cached_war or not war:
                 continue
+
+            self._create_status_tasks(cached_war, war)
 
             if war == cached_war:
                 continue
