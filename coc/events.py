@@ -523,6 +523,7 @@ class EventsClient(Client):
         async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
             cached_war = await self.cache.get("current_wars", war.clan_tag)
             await self.cache.set("current_wars", war.clan_tag, war)
+            self._create_status_tasks(cached_war, war)
 
             if not cached_war:
                 continue
@@ -534,7 +535,6 @@ class EventsClient(Client):
 
     def _dispatch_war_differences(self, cached_war, war):
         self.dispatch("on_war_update", cached_war, war)
-        self._create_status_tasks(cached_war, war)
 
         if not war.opponent:
             # if there are no opponent next line will raise Attribute error..
