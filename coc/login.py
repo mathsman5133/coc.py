@@ -29,7 +29,9 @@ from .client import Client
 from .events import EventsClient
 
 
-def login(email: str, password: str, client: Client = Client, **kwargs) -> typing.Union[Client, EventsClient]:
+def login(
+    email: str, password: str, client: typing.Type[Client] = Client, **kwargs
+) -> typing.Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 
     This function makes logging into the client easy, returning the created client.
