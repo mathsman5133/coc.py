@@ -228,7 +228,8 @@ class WarMember(Player):
         Returns an iterable of :class:`WarAttack`: the member's defenses this war
         """
         # TODO: efficient way of doing this
-        return filter(lambda o: o.defender_tag == self.tag, self.war.opponent.iterattacks)
+        other = self.war.clan if self.is_opponent else self.war.opponent
+        return filter(lambda o: o.defender_tag == self.tag, other.iterattacks)
 
     @property
     def defenses(self):
