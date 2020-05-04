@@ -46,7 +46,7 @@ class CacheType(Enum):
     seasons = "cache_seasons"
 
     def __str__(self):
-        return self.value
+        return str(self.value)
 
 
 class Role(Enum):

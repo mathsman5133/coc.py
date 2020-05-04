@@ -599,7 +599,7 @@ class WarLeague:
         self.name = data["name"]
 
     def __repr__(self):
-        return "<%s id=%s name=%s>" % self.__class__.__name__, self.id, self.name
+        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
 
     def __str__(self):
         return self.name
