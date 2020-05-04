@@ -47,7 +47,7 @@ from .enums import (
     SIEGE_MACHINE_ORDER,
     UNRANKED_LEAGUE_DATA,
 )
-from .utils import maybe_sort
+from .utils import get, maybe_sort
 
 
 class Player(EqualityComparable):
@@ -190,7 +190,7 @@ class WarMember(Player):
         :class:`WarClan` - The war clan this member belongs to.
     """
 
-    __slots__ = ("town_hall", "map_position", "war", "clan")
+    __slots__ = ("town_hall", "map_position", "war", "clan", "_best_opponent_attack")
 
     def __init__(self, data, war, clan):
         super(WarMember, self).__init__(data)
@@ -200,6 +200,7 @@ class WarMember(Player):
 
         self.town_hall = data.get("townhallLevel")
         self.map_position = data.get("mapPosition")
+        self._best_opponent_attack = data.get("bestOpponentAttack")
 
     def _get_attacks(self):
         # pylint: disable=import-outside-toplevel
@@ -236,6 +237,13 @@ class WarMember(Player):
         """List[:class:`WarAttack`]: The member's defenses this war. Could be an empty list
         """
         return list(self.iterdefenses)
+
+    @property
+    def best_opponent_attack(self):
+        """:class:`WarAttack`: The best opponent attack on this member."""
+        # pylint: disable=protected-access
+        other = self.war.clan if self.is_opponent else self.war.opponent
+        return get(other._get_attacks(), attacker_tag=self._best_opponent_attack, defender_tag=self.tag)
 
     @property
     def is_opponent(self):
