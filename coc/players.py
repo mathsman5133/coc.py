@@ -240,8 +240,11 @@ class WarMember(Player):
 
     @property
     def best_opponent_attack(self):
-        """:class:`WarAttack`: The best opponent attack on this member."""
+        """:class:`WarAttack`: The best opponent attack on this member. ``None`` if the member hasn't been attacked."""
         # pylint: disable=protected-access
+        if not self._best_opponent_attack:
+            return None
+
         other = self.war.clan if self.is_opponent else self.war.opponent
         return get(other._get_attacks(), attacker_tag=self._best_opponent_attack, defender_tag=self.tag)
 
