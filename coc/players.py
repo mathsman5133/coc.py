@@ -200,7 +200,7 @@ class WarMember(Player):
 
         self.town_hall = data.get("townhallLevel")
         self.map_position = data.get("mapPosition")
-        self._best_opponent_attack = data.get("bestOpponentAttack")
+        self._best_opponent_attack = data.get("bestOpponentAttack", {}).get("attackerTag")
 
     def _get_attacks(self):
         # pylint: disable=import-outside-toplevel
