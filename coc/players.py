@@ -41,6 +41,7 @@ from .enums import (
     Role,
     HERO_ORDER,
     BUILDER_TROOPS_ORDER,
+    ELIXIR_TROOPS_ORDER,
     HOME_TROOP_ORDER,
     SUPER_TROOP_ORDER,
     SPELL_ORDER,
@@ -445,7 +446,12 @@ class SearchPlayer(BasicPlayer):
         --------
         :class:`collections.OrderedDict` - An ordered dict of troops by name.
         """
-        troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
+        if valid_troops == ELIXIR_TROOP_ORDER:
+            troops_dict = {t.name: t for t in self.troops if t.is_home_base}
+        elif valid_troops == BUILDER_TROOPS_ORDER:
+            troops_dict = {t.name: t for t in self.troops if t.is_builder_base}
+        else:
+            troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
         key_order = {k: v for v, k in enumerate(valid_troops)}
         return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0])))
 
