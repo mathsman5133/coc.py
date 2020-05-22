@@ -447,9 +447,9 @@ class SearchPlayer(BasicPlayer):
         :class:`collections.OrderedDict` - An ordered dict of troops by name.
         """
         if valid_troops == ELIXIR_TROOP_ORDER:
-            troops_dict = {t.name: t for t in self.troops if t.is_home_base}
+            troops_dict = {t.name: t for t in self.troops if t.is_home_base and t.name in set(valid_troops)}
         elif valid_troops == BUILDER_TROOPS_ORDER:
-            troops_dict = {t.name: t for t in self.troops if t.is_builder_base}
+            troops_dict = {t.name: t for t in self.troops if t.is_builder_base and t.name in set(valid_troops)}
         else:
             troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
         key_order = {k: v for v, k in enumerate(valid_troops)}
