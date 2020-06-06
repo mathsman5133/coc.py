@@ -208,10 +208,16 @@ class HTTPClient:
             async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
                 LOG.debug("%s (%s) has returned %s", url, method, response.status)
                 data = await json_or_text(response)
+                response_headers = response.headers
                 LOG.debug(data)
 
                 if 200 <= response.status < 300:
                     LOG.debug("%s has received %s", url, data)
+                    try:
+                        retry = response_headers["Cache-Control"].strip("max-age=")
+                    except (KeyError, AttributeError):
+                        retry = 0
+                    data["_response_retry"] = retry
                     return data
 
                 if response.status == 400:

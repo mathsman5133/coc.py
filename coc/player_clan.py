@@ -23,34 +23,8 @@ SOFTWARE.
 
 """
 
-import typing
-
-from .client import Client
-from .events import EventsClient
+from coc.abc import BaseClan
 
 
-def login(
-    email: str, password: str, client: typing.Type[Client] = Client, **kwargs
-) -> typing.Union[Client, EventsClient]:
-    r"""Eases logging into the coc.py Client.
-
-    This function makes logging into the client easy, returning the created client.
-
-    Parameters
-    -----------
-    email : str
-        Your password email from https://developer.clashofclans.com
-        This is used when updating keys automatically if your IP changes
-    password : str
-        Your password login from https://developer.clashofclans.com
-        This is used when updating keys automatically if your IP changes
-    client
-        The type of coc.py client to use. This could either be a
-        :class:`Client` or :class:`EventsClient`, depending on which you wish
-        to use.
-    **kwargs
-        Any kwargs you wish to pass into the Client object.
-    """
-    instance = client(**kwargs)
-    instance.loop.run_until_complete(instance.login(email, password))
-    return instance
+class PlayerClan(BaseClan):
+    pass

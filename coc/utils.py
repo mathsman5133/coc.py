@@ -23,6 +23,7 @@ SOFTWARE.
 
 """
 
+import itertools
 import inspect
 import re
 
@@ -203,3 +204,11 @@ def peek_at_generator(generator_):
         return None
     else:
         return itertools.chain([first], generator_)
+
+
+async def maybe_coroutine(f, *args, **kwargs):
+    value = f(*args, **kwargs)
+    if inspect.isawaitable(value):
+        return await value
+    else:
+        return value

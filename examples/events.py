@@ -1,28 +1,30 @@
 import coc
+import logging
+import asyncio
+import objgraph
+import psutil
 
-client = coc.login("email", "pass", client=coc.EventsClient)
+
+client = coc.login("mathsman5132@gmail.com", "creepy_crawley", client=coc.EventsClient, key_names="windows")
+log = logging.getLogger()
 
 
 @client.event
-async def on_clan_member_join(member, clan):
-    print("{} just joined our clan {}!".format(member.name, clan.name))
+@coc.ClanEvents.member_donations_change(["#8QR8VRP8", "#PRUJU08V", "#CQ29CCU", "#LLRJJP02"], retry_interval=5)
+async def on_player_trophies_change(member, clan):
+    print("player trophies change ran properly!")
 
 
-async def on_clan_member_leave(member, clan):
-    print("Oh no! {} just left our clan {}!".format(member.name, clan.name))
+async def task():
+    process = psutil.Process()
+    for i in range(500):
+        memory = process.memory_full_info().uss / 1024 ** 2
+        print(f"Memory At {i} round: {memory:.2f} MiB")
+        objgraph.show_growth()
+
+        # Wait a few seconds
+        await asyncio.sleep(60)
 
 
-async def when_someone_attacks(attack, war):
-    print(
-        "{} just attacked {} for {} stars! It was a {} war.".format(
-            attack.attacker.name, attack.defedender.name, attack.stars, war.type
-        )
-    )
-
-
-client.add_events(on_clan_member_join, function_dicts={"on_war_attack": when_someone_attacks})
-client.add_clan_update("tag", "another tag", retry_interval=30)
-client.add_war_update("clan tag", retry_interval=60)
-client.start_updates("all")
-
+client.loop.create_task(task())
 client.run_forever()

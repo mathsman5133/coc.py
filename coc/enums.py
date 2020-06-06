@@ -22,31 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """
-
 from enum import Enum
-
-
-class CacheType(Enum):
-    """Enum to map cache types to strings."""
-
-    search_clans = "cache_search_clans"
-    war_clans = "cache_war_clans"
-
-    search_players = "cache_search_players"
-    war_players = "cache_war_players"
-
-    current_wars = "cache_current_wars"
-    war_logs = "cache_war_logs"
-
-    league_groups = "cache_league_groups"
-    league_wars = "cache_league_wars"
-
-    locations = "cache_locations"
-    leagues = "cache_leagues"
-    seasons = "cache_seasons"
-
-    def __str__(self):
-        return self.value
 
 
 class Role(Enum):
@@ -102,6 +78,9 @@ SIEGE_MACHINE_ORDER = [
     "Siege Barracks",
 ]
 
+SUPER_TROOP_ORDER = ["Sneaky Goblin", "Super Barbarian", "Super Wall Breaker", "Super Giant"]
+
+# TODO: when SC fixes Super Troops in API add them here
 HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 BUILDER_TROOPS_ORDER = [
@@ -164,17 +143,18 @@ ACHIEVEMENT_ORDER = [
     "Treasurer",
     "Anti-Artillery",
     "Sharing is caring",
+    "Games Champion",
+    "Get those other Goblins!",
+    "Dragon Slayer",
+    "War League Legend",
     "Keep your village safe",
-    "Master Engineering",
+    "Well Seasoned",
+    "Shattered and Scattered" "Master Engineering",
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
     "High Gear",
     "Hidden Treasures",
-    "Games Champion",
-    "Dragon Slayer",
-    "War League Legend",
-    "Keep your village safe",
 ]
 
 UNRANKED_LEAGUE_DATA = {
