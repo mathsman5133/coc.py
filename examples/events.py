@@ -3,16 +3,154 @@ import logging
 import asyncio
 import objgraph
 import psutil
+import tracemalloc
+import random
 
+tracemalloc.start()
 
-client = coc.login("mathsman5132@gmail.com", "creepy_crawley", client=coc.EventsClient, key_names="windows")
+client = coc.login("user@email.com", "password", client=coc.EventsClient, key_names="windows", cwl_active=False)
 log = logging.getLogger()
+logging.basicConfig(level=logging.INFO)
+
+c_tags = [
+    "#20090C9PR",
+    "#202GG92Q",
+    "#20C8G0RPL",
+    "#20CG8UURL",
+    "#20L2GVUCQ",
+    "#20PJQQP0G",
+    "#20RP90PLL",
+    "#20VCVGVCG",
+    "#20YRUQRLJ",
+    "#2229Y88R9",
+    "#228VP82GY",
+    "#22GLCR9Q",
+    "#22J8ULLL",
+    "#22JYYGVUC",
+    "#22LR9QY98",
+    "#22PQL2L0R",
+    "#22QCGYV2Q",
+    "#22RGGJVP",
+    "#22RU00UC9",
+    "#22YCYL89",
+    "#22YRJLVU8",
+    "#280V0VYL",
+    "#282L8GLJ",
+    "#28CJ8RRYJ",
+    "#28GCGPVL2",
+    "#28GQ08L29",
+    "#28Q0R2QV9",
+    "#28QJ2LP8Q",
+    "#28QLCPCLG",
+    "#28QRV0Y0G",
+    "#28ULR99VL",
+    "#28V2RC0C9",
+    "#28VPCGV2G",
+    "#28VQUV9J8",
+    "#28YC02QYC",
+    "#290UJUQVQ",
+    "#2922CY2R",
+    "#292GVY28P",
+    "#2982PCG09",
+    "#298CJ9JPC",
+    "#2998PGPY9",
+    "#29998R8L0",
+    "#299C8QR9L",
+    "#299P28QRL",
+    "#29CV8VLL2",
+    "#29G2JU888",
+    "#29G9QJVLR",
+    "#29GC8JQG0",
+    "#29GLJCLQQ",
+    "#29GLLLURV",
+    "#29GQCC29C",
+    "#29GQQ9GVL",
+    "#29GVQV9Q9",
+    "#29GVYYJ8",
+    "#29L00JCVG",
+    "#29L2U9U9J",
+    "#29LPUGR9L",
+    "#29LPVL99P",
+    "#29LUPU9QV",
+    "#29PJYUCV2",
+    "#29RY29LL2",
+    "#29U9UYUG",
+    "#29VC9GR0Y",
+    "#29Y2QVGL",
+    "#29Y2R0CJQ",
+    "#2C8JV0PG",
+    "#2CR80PVR",
+    "#2CVLP0P0",
+    "#2G2LR0",
+    "#2G9C9CVC",
+    "#2GU2Y0JL",
+    "#2JU0P82U",
+    "#2JUJ2G22",
+    "#2LP2PUUP",
+    "#2P0C9LY8Y",
+    "#2P0QL9C9G",
+    "#2P2JR088R",
+    "#2P2LJJPUY",
+    "#2P2Q9PPJJ",
+    "#2P2UVPRVC",
+    "#2P80Q9LR8",
+    "#2P89GGLYY",
+    "#2P9CGUUR8",
+    "#2P9PC0JC9",
+    "#2PCUQJYGJ",
+    "#2PG8R9GU8",
+    "#2PGJUL98L",
+    "#2PGQY2YPV",
+    "#2PGV2GUUJ",
+    "#2PJJPGJ9U",
+    "#2PLGGYGLV",
+    "#2PLLQRQPP",
+    "#2PLR9VPYP",
+    "#2PPR9VUGC",
+    "#2PQ08LCGR",
+    "#2PQY9GQU9",
+    "#2PRPJU8RY",
+    "#2PUGC20UC",
+    "#2PUL8RU82",
+    "#2PUPY9022",
+]
 
 
 @client.event
-@coc.ClanEvents.member_donations_change(["#8QR8VRP8", "#PRUJU08V", "#CQ29CCU", "#LLRJJP02"], retry_interval=5)
-async def on_player_trophies_change(member, clan):
-    print("player trophies change ran properly!")
+@coc.ClanEvents.member_donations_change(c_tags, retry_interval=0)
+async def on_member_dono_change(old, new):
+    print(old.donations, new.donations)
+
+
+@client.event
+@coc.WarEvents.war_attack(c_tags, retry_interval=30)
+async def change2(attack, new):
+    print(attack.attacker, attack.order, max(a.order for a in new.attacks))
+    log.info("ran war")
+
+
+@client.event
+@coc.PlayerEvents.trophies_change(retry_interval=0)
+async def on_player_trophy_change(old, new):
+    print(old.trophies, new.trophies)
+
+
+async def get_lots_of_playertags():
+    new_tags = []
+    for _ in range(3):
+        try:
+            await client.get_clan("#abc123")
+        except:
+            pass
+    async for clan in client.get_clans(c_tags):
+        print(clan)
+        new_tags.extend(n.tag for n in clan.members)
+    return new_tags
+
+
+tags = client.loop.run_until_complete(get_lots_of_playertags())
+log.info(str(tags) + ",,")
+client.add_player_updates(tags)
 
 
 async def task():
@@ -21,10 +159,28 @@ async def task():
         memory = process.memory_full_info().uss / 1024 ** 2
         print(f"Memory At {i} round: {memory:.2f} MiB")
         objgraph.show_growth()
+        objgraph.show_most_common_types()
+        # roots = objgraph.get_leaking_objects()
+        # objgraph.show_refs(roots[:3], refcounts=True, filename=f"~graphs/chain{i}.png")
+        # objgraph.show_most_common_types(objects=roots)
+        # chain = objgraph.find_backref_chain(objgraph.by_type('cell')[-1], inspect.ismodule)
+        # in_chain = lambda x, ids=set(map(id, chain)): id(x) in ids
+        # objgraph.show_backrefs(chain[-1], len(chain), filter=in_chain, filename=f"~graphs/chain{i}.png")
+        # objgraph.show_backrefs(
+        #     random.choice(objgraph.by_type("cell")),
+        #     filename=f"~graphs/chain{i}.png"
+        # )
+        # objgraph.show_chain(objgraph.find_backref_chain(
+        #     random.choice(objgraph.by_type("cell")),
+        #     objgraph.is_proper_module
+        # ),
+        #     filename=f"~graphs/chain{i}.png"
+        # )
 
         # Wait a few seconds
-        await asyncio.sleep(60)
+        await asyncio.sleep(120)
 
 
-client.loop.create_task(task())
-client.run_forever()
+loop = asyncio.get_event_loop()
+loop.create_task(task())
+client.loop.run_forever()

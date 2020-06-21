@@ -61,9 +61,11 @@ class ClanWar:
         "clan_tag",
         "clan",
         "opponent",
+        "_response_retry",
     )
 
     def __init__(self, *, data, clan_tag, client, **kwargs):
+        self._response_retry = data.get("_response_retry")
         self._client = client
         self._from_data(data)
         self.clan_tag = getattr(self.clan, "tag", clan_tag)
@@ -72,14 +74,14 @@ class ClanWar:
         data_get = data.get
 
         self.state = data_get("state")
-        self.team_size = data_get("teamSize")
+        self.team_size = data_get("teamSize", 0)
         self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag = data_get("tag")
 
-        self.clan = try_enum(WarClan, data=data_get("clan"), client=self._client)
-        self.opponent = try_enum(WarClan, data=data_get("opponent"))
+        self.clan = try_enum(WarClan, data=data_get("clan"), client=self._client, war=self)
+        self.opponent = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
 
     @property
     def attacks(self):
@@ -172,7 +174,14 @@ class ClanWar:
         """:class:`bool`: Returns a boolean indicating if the war is a Clan War League (CWL) war."""
         return self.type == "cwl"
 
-    def get_member(self, **attrs):
+    def get_member(self, tag):
+        home_member = self.clan.get_member(tag)
+        if home_member:
+            return home_member
+        away_member = self.opponent.get_member(tag)
+        return away_member
+
+    def get_member_by(self, **attrs):
         """Returns the first :class:`WarMember` that meets the attributes passed
 
         This will return the first member matching the attributes passed.

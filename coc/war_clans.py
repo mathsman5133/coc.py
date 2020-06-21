@@ -41,13 +41,16 @@ class WarClan(BaseClan):
         "total_attacks",
         "_war",
         "_client",
+        "_members",
+        "__iter_members",
     )
 
     def __init__(self, *, data, client, war):
-        super().__init__(data=data, client=client)
-
         self._war = war
         self._members = []
+
+        super().__init__(data=data, client=client)
+        self._from_data(data)
 
     def _from_data(self, data):
         data_get = data.get
@@ -72,12 +75,12 @@ class WarClan(BaseClan):
 
     @property
     def members(self):
-        list_members = self._members
-        if list_members:
-            return list_members
+        dict_members = self._members
+        if dict_members:
+            return list(dict_members.values())
 
-        list_members = self._members = list(self.__iter_members)
-        return list_members
+        dict_members = self._members = {member.tag: member for member in self.__iter_members}
+        return list(dict_members.values())
 
     @property
     def is_opponent(self):
@@ -93,7 +96,7 @@ class WarClan(BaseClan):
         for member in self.members:
             attacks.extend(member.attacks)
 
-        return attacks.sort(key=lambda a: a.order, reverse=True)
+        return list(sorted(attacks, key=lambda a: a.order, reverse=True))
 
     @property
     def defenses(self):
@@ -103,6 +106,16 @@ class WarClan(BaseClan):
         """
         other = self._war and self._war.clan if self.is_opponent else self._war.opponent
         return other and other.attacks or []
+
+    def get_member(self, player_tag):
+        dict_member = self._members
+        if not dict_member:
+            dict_member = self._members = {m.name: m for m in self.__iter_members}
+
+        try:
+            return dict_member[player_tag]
+        except KeyError:
+            return None
 
 
 class ClanWarLeagueClan(BaseClan):

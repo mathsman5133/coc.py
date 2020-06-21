@@ -30,10 +30,12 @@ import asyncio
 import json
 import logging
 import re
+import weakref
 
 from collections import deque
 from datetime import datetime
 from itertools import cycle
+from time import monotonic
 from urllib.parse import urlencode
 
 import aiohttp
@@ -62,19 +64,50 @@ async def json_or_text(response):
     return ret
 
 
-class Throttler:
-    """Simple throttler for asyncio"""
+class BasicThrottler:
+    """Basic throttler that sleeps for `sleep_time` seconds between each request."""
+
+    __slots__ = (
+        "sleep_time",
+        "last_run",
+    )
+
+    def __init__(self, sleep_time):
+        self.sleep_time = sleep_time
+        self.last_run = None
+
+    async def __aenter__(self):
+        if self.last_run:
+            difference = monotonic() - self.last_run
+            if self.sleep_time > difference:
+                LOG.debug("Request throttled. Sleeping for %s", self.sleep_time)
+                await asyncio.sleep(difference)
+
+        self.last_run = monotonic()
+        return self
+
+    async def __aexit__(self, exception_type, exception, traceback):
+        pass
+
+
+class BatchThrottler:
+    """Simple throttler that allows `rate_limit` requests (per second) before sleeping until the next second."""
+
+    __slots__ = (
+        "rate_limit",
+        "retry_interval",
+        "_task_logs",
+    )
 
     def __init__(self, rate_limit, retry_interval=0.001, loop=None):
         self.rate_limit = rate_limit
         self.retry_interval = retry_interval
-        self.loop = loop or asyncio.get_event_loop()
 
         self._task_logs = deque()
 
     async def __aenter__(self):
         while True:
-            now = self.loop.time()
+            now = monotonic()
 
             # Pop items(which are start times) that are no longer in the
             # time window
@@ -92,7 +125,7 @@ class Throttler:
             await asyncio.sleep(self.retry_interval)
 
         # Push new task's start time
-        self._task_logs.append(self.loop.time())
+        self._task_logs.append(monotonic())
 
         return self
 
@@ -119,12 +152,28 @@ class Route:
         else:
             self.url = url
 
+    @property
+    def cache_control_key(self):
+        return self.path
+
+
+class WaitForKeys:
+    def __init__(self, event):
+        self.event = event
+
+    async def __aenter__(self):
+        await self.event.wait()
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        pass
+
 
 class HTTPClient:
     """HTTP Client for the library. All low-level requests and key-management occurs here."""
 
     # pylint: disable=too-many-arguments, missing-docstring, protected-access, too-many-branches
-    def __init__(self, client, loop, email, password, key_names, key_count, throttle_limit):
+    def __init__(self, client, loop, email, password, key_names, key_count, throttle_limit, throttler=BasicThrottler):
         self.client = client
         self.loop = loop
         self.email = email
@@ -136,11 +185,25 @@ class HTTPClient:
         per_second = key_count * throttle_limit
 
         self.__lock = asyncio.Semaphore(per_second)
-        self.__throttle = Throttler(per_second, loop=self.loop)
+        self.cache = {}
+
+        if issubclass(throttler, BasicThrottler):
+            self.__throttle = throttler(1 / per_second)
+        elif issubclass(throttler, BatchThrottler):
+            self.__throttle = throttler(per_second)
+        else:
+            raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
+
         self.__session = aiohttp.ClientSession(loop=self.loop)
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
+
+    def _cache_remove(self, key):
+        try:
+            del self.cache[key]
+        except KeyError:
+            pass
 
     async def get_keys(self):
         self.client._ready.clear()
@@ -204,20 +267,32 @@ class HTTPClient:
         if "json" in kwargs:
             kwargs["headers"]["Content-Type"] = "application/json"
 
+        cache_control_key = route.cache_control_key
+        # the cache will be cleaned once it becomes stale / a new object is available from the api.
+        try:
+            return self.cache[cache_control_key]
+        except KeyError:
+            pass
+
         async with self.__lock:
             async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
                 LOG.debug("%s (%s) has returned %s", url, method, response.status)
                 data = await json_or_text(response)
-                response_headers = response.headers
-                LOG.debug(data)
+
+                try:
+                    # set a callback to remove the item from cache once it's stale.
+                    delta = int(response.headers["Cache-Control"].strip("max-age="))
+                    data["_response_retry"] = delta
+                    self.cache[cache_control_key] = data
+                    LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
+                    self.loop.call_later(delta, self._cache_remove, cache_control_key)
+
+                except (KeyError, AttributeError, ValueError):
+                    # the request didn't contain cache control headers so skip any cache handling.
+                    data["_response_retry"] = 0
 
                 if 200 <= response.status < 300:
                     LOG.debug("%s has received %s", url, data)
-                    try:
-                        retry = response_headers["Cache-Control"].strip("max-age=")
-                    except (KeyError, AttributeError):
-                        retry = 0
-                    data["_response_retry"] = retry
                     return data
 
                 if response.status == 400:
@@ -245,6 +320,7 @@ class HTTPClient:
                     if isinstance(data, str):
                         # weird case where a 503 will be raised, but html returned.
                         text = re.compile(r"<[^>]+>").sub(data, "")
+                        self.client._in_maintenance_event.set()
                         raise Maintenance(response, text)
 
                     raise Maintenance(response, data)

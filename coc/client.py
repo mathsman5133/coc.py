@@ -28,10 +28,10 @@ import logging
 
 from collections.abc import Iterable
 
-from .clans import Clan
+from .clans import Clan, RankedClan
 from .errors import Forbidden, NotFound, PrivateWarLog
 from .miscmodels import Label, League, Location
-from .http import HTTPClient
+from .http import HTTPClient, BasicThrottler
 from .iterators import (
     PlayerIterator,
     ClanIterator,
@@ -103,6 +103,7 @@ class Client:
         "correct_key_count",
         "key_names",
         "throttle_limit",
+        "throttler",
         "http",
         "_ready",
         "correct_tags",
@@ -118,7 +119,9 @@ class Client:
         key_names: str = "Created with coc.py Client",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
-        correct_tags: bool = False
+        correct_tags: bool = False,
+        throttler=BasicThrottler,
+        **kwargs,
     ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -130,6 +133,7 @@ class Client:
 
         self.key_names = key_names
         self.throttle_limit = throttle_limit
+        self.throttler = throttler
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
@@ -161,6 +165,7 @@ class Client:
             loop=self.loop,
             key_count=self.correct_key_count,
             throttle_limit=self.throttle_limit,
+            throttler=self.throttler,
         )
         await self.http.get_keys()
         await self._ready.wait()
@@ -221,7 +226,7 @@ class Client:
         before: str = None,
         after: str = None,
         cls=Clan,
-        **kwargs
+        **kwargs,
     ):
         """Search all clans by name and/or filtering the results using various criteria.
 
@@ -277,13 +282,7 @@ class Client:
             after=after,
         )
 
-        clans = [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
-
-        if self.UPDATE_CACHE:
-            for clan in clans:
-                self._update_clan(clan)
-
-        return clans
+        return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
     @corrected_tag()
     async def get_clan(self, tag: str, cls=Clan, **kwargs):
@@ -532,7 +531,7 @@ class Client:
         --------
         :class:`coc.iterators.LeagueWarIterator` of :class:`ClanWar`
         """
-        if not issubclass(war_tags, Iterable):
+        if not isinstance(war_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
@@ -585,6 +584,8 @@ class Client:
         try:
             league_group = await self.get_league_group(clan_tag)
         except NotFound:
+            if not get_war:
+                raise PrivateWarLog
             return get_war
 
         if league_group.state == "preparation":
@@ -627,408 +628,301 @@ class Client:
 
         return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
 
-    # # locations
-    # async def _populate_locations(self):
-    #     if self.cache.get("locations", "fully_populated") is True:
-    #         return await self.cache.get_limit("locations")
-    #
-    #     await self.cache.clear("locations")
-    #     all_locations = await self.search_locations(limit=None)
-    #
-    #     for location in all_locations:
-    #         await self.cache.set("locations", location.id, location)
-    #
-    #     await self.cache.set("locations", "fully_populated", True)
-    #     return all_locations
-    #
-    # async def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
-    #     """List all available locations
-    #
-    #     Parameters
-    #     -----------
-    #     limit : int, optional
-    #         Number of items to fetch. Default is None, which returns all available locations
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Location`
-    #     """
-    #     if self.cache and await self.cache.get("locations", "fully_populated") is True:
-    #         return await self.cache.get_limit("locations", limit)
-    #
-    #     data = await self.http.search_locations(limit=limit, before=before, after=after)
-    #
-    #     locations = list(Location(data=n) for n in data["items"])
-    #
-    #     if self.cache:
-    #         for location in locations:
-    #             await self.cache.set("locations", location.id, location)
-    #
-    #     return locations
-    #
-    # async def get_location(
-    #     self, location_id: int, cache: bool = True, fetch: bool = True, update_cache: bool = True,
-    # ):
-    #     """Get information about specific location
-    #
-    #     Parameters
-    #     -----------
-    #     location_id : int
-    #         The Location ID to search for.
-    #     cache : bool
-    #         Indicates whether to search the cache before making an HTTP request.
-    #         Defaults to ``True``
-    #     fetch : bool
-    #         Indicates whether an HTTP call should be made if cache is empty.
-    #         Defaults to ``True``. If this is ``False`` and item in cache was not found,
-    #         ``None`` will be returned
-    #     update_cache : bool
-    #         Indicated whether the cache should be updated if an HTTP call is made.
-    #         Defaults to ``True``
-    #
-    #     Returns
-    #     --------
-    #     :class:`Location`
-    #     """
-    #     data = await self.http.get_location(location_id)
-    #     return Location(data=data)
-    #
-    # async def get_location_named(self, location_name: str):
-    #     """Get a location by name.
-    #
-    #     This is somewhat equivilant to:
-    #
-    #     .. code-block:: python3
-    #
-    #         locations = await client.search_locations(limit=None)
-    #         return utils.get(locations, name=location_name)
-    #
-    #
-    #     Parameters
-    #     -----------
-    #     location_name : str
-    #         The location name to search for
-    #
-    #     Returns
-    #     --------
-    #     :class:`Location`
-    #         The first location matching the location name"""
-    #     if self.cache:
-    #         locations = await self._populate_locations()
-    #     else:
-    #         data = await self.http.search_locations(limit=None, before=None, after=None)
-    #         locations = list(Location(data=n) for n in data["items"])
-    #
-    #     return get(locations, name=location_name)
-    #
-    # async def get_location_clan(
-    #     self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    # ):
-    #     """Get clan rankings for a specific location
-    #
-    #     Parameters
-    #     -----------
-    #     location_id : int
-    #         The Location ID to search for. Defaults to all locations (global).
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Clan`
-    #     """
-    #
-    #     data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-    #     return list(Clan(data=n, http=self.http) for n in data["items"])
-    #
-    # async def get_location_players(
-    #     self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    # ):
-    #     """Get player rankings for a specific location
-    #
-    #     Parameters
-    #     -----------
-    #     location_id : int
-    #         The Location ID to search for. Defaults to all locations (global).
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Player`
-    #     """
-    #     data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
-    #     return list(Player(data=n) for n in data["items"])
-    #
-    # async def get_location_clans_versus(
-    #     self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    # ):
-    #     """Get clan versus rankings for a specific location
-    #
-    #     Parameters
-    #     -----------
-    #     location_id : int
-    #         The Location ID to search for. Defaults to all locations (global).
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Clan`
-    #     """
-    #     data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-    #     return list(Clan(data=n, http=self.http) for n in data["items"])
-    #
-    # async def get_location_players_versus(
-    #     self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    # ):
-    #     """Get player versus rankings for a specific location
-    #
-    #     Parameters
-    #     -----------
-    #     location_id : int
-    #         The Location ID to search for. Defaults to all locations (global).
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Player`
-    #     """
-    #     data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
-    #     return list(Player(data=n) for n in data["items"])
-    #
-    # # leagues
-    #
-    # async def _populate_leagues(self):
-    #     if await self.cache.get("leagues", "fully_populated") is True:
-    #         return await self.cache.get_limit("leagues")
-    #
-    #     await self.cache.clear("leagues")
-    #     all_leagues = await self.search_leagues(limit=None)
-    #
-    #     for league in all_leagues:
-    #         await self.cache.set("leagues", league.id, league)
-    #
-    #     await self.cache.set("leagues", "fully_populated", True)
-    #     return all_leagues
-    #
-    # async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None):
-    #     """Get list of leagues.
-    #
-    #     Parameters
-    #     -----------
-    #     limit : int
-    #         Number of items to fetch. Defaults to ``None`` (all leagues).
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`League`
-    #         Returns a list of all leagues found. Could be ``None``
-    #
-    #     """
-    #     if self.cache and await self.cache.get("leagues", "fully_populated") is True:
-    #         return await self.cache.get_limit("leagues", limit)
-    #
-    #     data = await self.http.search_leagues(limit=limit, before=before, after=after)
-    #     leagues = list(League(data=n, http=self.http) for n in data["items"])
-    #
-    #     if self.cache:
-    #         for league in leagues:
-    #             await self.cache.set("leagues", league.id, league)
-    #
-    #     return leagues
-    #
-    # async def get_league(
-    #     self, league_id: int, cache: bool = True, fetch: bool = True, update_cache: bool = True,
-    # ):
-    #     """
-    #     Get league information
-    #
-    #     Parameters
-    #     -----------
-    #     league_id : str
-    #         The League ID to search for.
-    #     cache : bool
-    #         Indicates whether to search the cache before making an HTTP request.
-    #         Defaults to ``True``
-    #     fetch : bool
-    #         Indicates whether an HTTP call should be made if cache is empty.
-    #         Defaults to ``True``. If this is ``False`` and item in cache was not found,
-    #         ``None`` will be returned
-    #     update_cache : bool
-    #         Indicated whether the cache should be updated if an HTTP call is made.
-    #         Defaults to ``True``
-    #
-    #     Returns
-    #     --------
-    #     :class:`League`
-    #     """
-    #     data = await self.http.get_league(league_id)
-    #     return League(data=data, http=self.http)
-    #
-    # async def get_league_named(self, league_name: str):
-    #     """Get a location by name.
-    #
-    #     This is somewhat equivilant to
-    #
-    #     .. code-block:: python3
-    #
-    #         leagues = await client.search_leagues(limit=None)
-    #         return utils.get(leagues, name=league_name)
-    #
-    #
-    #     Parameters
-    #     -----------
-    #     league_name : str
-    #         The league name to search for
-    #
-    #     Returns
-    #     --------
-    #     :class:`League`
-    #         The first location matching the location name"""
-    #     if self.cache:
-    #         leagues = await self._populate_leagues()
-    #     else:
-    #         data = await self.http.search_leagues(limit=None, before=None, after=None)
-    #         leagues = list(League(data=n, http=self.http) for n in data["items"])
-    #
-    #     return get(leagues, name=league_name)
-    #
-    # async def get_seasons(self, league_id: int):
-    #     """Get league seasons. Note that league season information is available only for Legend League.
-    #
-    #     Parameters
-    #     -----------
-    #     league_id : str
-    #         The League ID to search for.
-    #
-    #     Returns
-    #     --------
-    #     :class:`dict`
-    #         In the form
-    #
-    #         .. code-block:: json
-    #
-    #             {
-    #                 "id": "string"
-    #             }
-    #
-    #         where ``id`` is the Season ID
-    #     """
-    #     data = await self.http.get_league_seasons(league_id)
-    #     return data["items"]
-    #
-    # async def get_season_rankings(
-    #     self, league_id: int, season_id: int, cache: bool = True, fetch: bool = True, update_cache: bool = True,
-    # ):
-    #     """Get league season rankings.
-    #     Note that league season information is available only for Legend League.
-    #
-    #     Parameters
-    #     -----------
-    #     league_id : str
-    #         The League ID to search for.
-    #     season_id : str
-    #         The Season ID to search for.
-    #     cache : bool
-    #         Indicates whether to search the cache before making an HTTP request.
-    #         Defaults to ``True``
-    #     fetch : bool
-    #         Indicates whether an HTTP call should be made if cache is empty.
-    #         Defaults to ``True``. If this is ``False`` and item in cache was not found,
-    #         ``None`` will be returned
-    #     update_cache : bool
-    #         Indicated whether the cache should be updated if an HTTP call is made.
-    #         Defaults to ``True``
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`LeagueRankedPlayer`
-    #     """
-    #     # pylint: disable=too-many-arguments
-    #     if cache and self.cache:
-    #         try:
-    #             data = await self.cache.get("seasons", "league_id")
-    #             if data[season_id]:
-    #                 return data
-    #
-    #         except KeyError:
-    #             pass
-    #
-    #         if fetch is False:
-    #             return None
-    #
-    #     data = await self.http.get_league_season_info(league_id, season_id)
-    #     players = list(LeagueRankedPlayer(data=n, http=self.http) for n in data.get("items", []))
-    #
-    #     if self.cache and update_cache:
-    #         await self.cache.set("seasons", "league_id", {season_id: players})
-    #
-    #     return players
-    #
-    # async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None):
-    #     """List clan labels.
-    #
-    #     Parameters
-    #     -----------
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Label`
-    #     """
-    #     data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
-    #     return list(Label(data=n, http=self.http) for n in data["items"])
-    #
-    # async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None):
-    #     """List player labels.
-    #
-    #     Parameters
-    #     -----------
-    #     limit : int
-    #         The number of results to fetch.
-    #     before : str, optional
-    #         For use with paging. Not implemented yet.
-    #     after: str, optional
-    #         For use with paging. Not implemented yet.
-    #
-    #     Returns
-    #     --------
-    #     :class:`list` of :class:`Label`
-    #     """
-    #     data = await self.http.get_player_labels(limit=limit, before=before, after=after)
-    #     return list(Label(data=n, http=self.http) for n in data["items"])
+    # locations
+    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
+        """List all available locations
+
+        Parameters
+        -----------
+        limit : int, optional
+            Number of items to fetch. Default is None, which returns all available locations
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Location`
+        """
+        data = await self.http.search_locations(limit=limit, before=before, after=after)
+
+        return [Location(data=n) for n in data["items"]]
+
+    async def get_location(self, location_id: int):
+        """Get information about specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for.
+
+        Returns
+        --------
+        :class:`Location`
+        """
+        data = await self.http.get_location(location_id)
+        return Location(data=data)
+
+    async def get_location_named(self, location_name: str):
+        """Get a location by name.
+
+        This is somewhat equivilant to:
+
+        .. code-block:: python3
+
+            locations = await client.search_locations(limit=None)
+            return utils.get(locations, name=location_name)
+
+
+        Parameters
+        -----------
+        location_name : str
+            The location name to search for
+
+        Returns
+        --------
+        :class:`Location`
+            The first location matching the location name"""
+        data = await self.http.search_locations(limit=None, before=None, after=None)
+        locations = [Location(data=n) for n in data["items"]]
+
+        return get(locations, name=location_name)
+
+    async def get_location_clans(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ):
+        """Get clan rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (global).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+
+        Returns
+        --------
+        :class:`list` of :class:`Clan`
+        """
+
+        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
+        return [RankedClan(data=n, client=self) for n in data["items"]]
+
+    async def get_location_players(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ):
+        """Get player rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (global).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Player`
+        """
+        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
+        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+
+    async def get_location_clans_versus(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ):
+        """Get clan versus rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (global).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Clan`
+        """
+        data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
+        return [RankedClan(data=n, client=self) for n in data["items"]]
+
+    async def get_location_players_versus(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ):
+        """Get player versus rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (global).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Player`
+        """
+        data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
+        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+
+    # leagues
+
+    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None):
+        """Get list of leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`League`
+            Returns a list of all leagues found. Could be ``None``
+
+        """
+        data = await self.http.search_leagues(limit=limit, before=before, after=after)
+        return [League(data=n, client=self) for n in data["items"]]
+
+    async def get_league(self, league_id: int):
+        """
+        Get league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Returns
+        --------
+        :class:`League`
+        """
+        data = await self.http.get_league(league_id)
+        return League(data=data, client=self)
+
+    async def get_league_named(self, league_name: str):
+        """Get a location by name.
+
+        This is somewhat equivilant to
+
+        .. code-block:: python3
+
+            leagues = await client.search_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The league name to search for
+
+        Returns
+        --------
+        :class:`League`
+            The first location matching the location name"""
+        return get(await self.search_leagues(), name=league_name)
+
+    async def get_seasons(self, league_id: int):
+        """Get league seasons. Note that league season information is available only for Legend League.
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Returns
+        --------
+        :class:`dict`
+            In the form
+
+            .. code-block:: json
+
+                {
+                    "id": "string"
+                }
+
+            where ``id`` is the Season ID
+        """
+        data = await self.http.get_league_seasons(league_id)
+        return data["items"]
+
+    async def get_season_rankings(self, league_id: int, season_id: int):
+        """Get league season rankings.
+        Note that league season information is available only for Legend League.
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        season_id : str
+            The Season ID to search for.
+
+        Returns
+        --------
+        :class:`list` of :class:`LeagueRankedPlayer`
+        """
+        data = await self.http.get_league_season_info(league_id, season_id)
+        return [RankedPlayer(data=n, client=self) for n in data.get("items", [])]
+
+    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None):
+        """List clan labels.
+
+        Parameters
+        -----------
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Label`
+        """
+        data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
+        return [Label(data=n, client=self) for n in data["items"]]
+
+    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None):
+        """List player labels.
+
+        Parameters
+        -----------
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Returns
+        --------
+        :class:`list` of :class:`Label`
+        """
+        data = await self.http.get_player_labels(limit=limit, before=before, after=after)
+        return [Label(data=n, client=self) for n in data["items"]]
 
     # players
 

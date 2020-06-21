@@ -28,7 +28,95 @@ from .utils import get
 from .abc import BaseClan
 
 
+class RankedClan(BaseClan):
+    """Represents the clan object returned by leader-board rankings.
+
+    Attributes
+    -----------
+    location: :class:`Location`
+        The clan's location.
+    member_count: :class:`int`
+        The number of members in the clan.
+    points: :class:`int`
+        The clan's trophy-count. If retrieving info for versus leader-boards, this will be ``None``.
+    versus_points: :class:`int`
+        The clan's versus trophy count. If retrieving info for regular leader boards, this will be ``None``.
+    rank: :class:`int`
+        The clan's rank in the leader board.
+    previous_rank: :class:`int`
+        The clan's rank in the previous season's leaderboard.
+    """
+
+    __slots__ = (
+        "location",
+        "member_count",
+        "points",
+        "versus_points",
+        "rank",
+        "previous_rank",
+    )
+
+    def __init__(self, *, data, client, **kwargs):
+        super().__init__(data=data, client=client)
+        self._from_data(data)
+
+    def _from_data(self, data):
+        data_get = data.get
+
+        self.points = data_get("clanPoints")
+        self.versus_points = data_get("clanVersusPoints")
+        self.member_count = data_get("members")
+        self.location = try_enum(Location, data=data_get("location"))
+        self.rank = data_get("rank")
+        self.previous_rank = data_get("previousRank")
+
+
 class Clan(BaseClan):
+    """Represents a Clash of Clans clan.
+
+    Attributes
+    -----------
+    type: :class:`str`
+        The clan's type for accepting members.
+        This could be ``open``, ``inviteOnly`` or ``closed``.
+    description: :class:`str`
+        The clan's public description.
+    location: :class:`Location`
+        The clan's location.
+    level: :class:`int`
+        The clan's level.
+    points: :class:`int`
+        The clan's trophy count. This is calculated according to members' trophy counts.
+    versus_points: :class:`int`
+        The clan's versus trophy count. This is calculated according to members' versus trophy counts.
+    required_trophies: :class:`int`
+        The minimum trophies required to apply to this clan.
+    war_frequency: :class:`str`
+        The frequency for when this clan goes to war.
+        For example, this could be ``always``.
+    war_win_streak: :class:`int`
+        The clan's current war winning streak.
+    war_wins: :class:`int`
+        The number of wars the clan has won.
+    war_ties: :class:`int`
+        The number of wars the clan has tied.
+    war_losses: :class:`int`
+        The number of wars the clan has lost.
+    public_war_log: :class:`bool`
+        Indicates if the clan has a public war log.
+        If this is ``False``, operations to find the clan's current war may raise :exc:`PrivateWarLog`.
+    member_count: :class:`int`
+        The number of members in the clan.
+    label_cls: :class:`coc.Label`
+        The type which the labels found in :attr:`Clan.labels` will be of.
+        Ensure any overriding of this inherits from :class:`coc.Label`.
+    member_cls: :class:`coc.ClanMember`
+        The type which the members found in :attr:`Clan.members` will be of.
+        Ensure any overriding of this inherits from :class:`coc.ClanMember`.
+    war_league: :class:`WarLeague`
+        The clan's CWL league.
+    """
+
     __slots__ = (
         "type",
         "description",
@@ -103,6 +191,7 @@ class Clan(BaseClan):
 
     @property
     def members(self):
+        """List[:class:`ClanMember`]: A :class:`List` of :class:`Member`s that belong to the clan."""
         dict_members = self._members
         if dict_members:
             return list(dict_members.values())

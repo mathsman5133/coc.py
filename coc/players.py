@@ -85,6 +85,36 @@ class ClanMember(BasePlayer):
         self.role = try_enum(Role, value=data_get("role"))
 
 
+class RankedPlayer(ClanMember):
+    """Represents a leaderboard-ranked player.
+
+    Attributes
+    ------------
+    attack_wins: int
+        The player's number of attack wins. If retrieving info for versus leader-boards, this will be ``None``.
+    defense_wins: int
+        The player's number of defense wins. If retrieving info for versus leader-boards, this will be ``None``.
+    versus_trophies: int
+        The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
+    rank: :class:`int`
+        The player's rank in the leader board.
+    previous_rank: :class:`int`
+        The player's rank in the previous season's leaderboard.
+    """
+
+    __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
+
+    def _from_data(self, data):
+        super()._from_data(data)
+
+        data_get = data.get
+        self.attack_wins = data_get("attackWins")
+        self.defense_wins = data_get("defenseWins")
+        self.versus_trophies = data_get("versusTrophies")
+        self.rank = data_get("rank")
+        self.previous_rank = data_get("previousRank")
+
+
 class Player(ClanMember):
     __slots__ = (
         "clan",

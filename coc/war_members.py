@@ -33,6 +33,7 @@ class ClanWarMember(BasePlayer):
         "war",
         "clan",
         "_client",
+        "_attacks",
     )
 
     def __init__(self, *, data, client, war, clan):

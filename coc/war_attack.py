@@ -44,12 +44,12 @@ class WarAttack:
     @property
     def attacker(self):
         """:class:`WarMember`: Returns the attacking player."""
-        return self.war.get_player(self.attacker_tag)
+        return self.war.get_member(self.attacker_tag)
 
     @property
     def defender(self):
         """:class:`WarMember`: Returns the defending player."""
-        return self.war.get_player(self.defender_tag)
+        return self.war.get_member(self.defender_tag)
 
     @property
     def is_fresh_attack(self):
