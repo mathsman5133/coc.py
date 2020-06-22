@@ -93,6 +93,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Lava Hound",
     "Bowler",
     "Ice Golem",
+    "Headhunter",
 ]
 
 SIEGE_MACHINE_ORDER = [
