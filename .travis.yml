@@ -9,10 +9,10 @@ language: python
 stages:
   - lint
 after_success:
-  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/ecafb5008d7079ea89de59009387e52cb30f0043/send.sh
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh success $WEBHOOK_URL
 after_failure:
-  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/ecafb5008d7079ea89de59009387e52cb30f0043/send.sh
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
