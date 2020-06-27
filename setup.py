@@ -27,7 +27,7 @@ class LintCommand(Command):
     def run(self):
         self.spawn(["python", "-m", "pylint", "coc"])
         self.spawn(
-            ["python", "-m", "black", "--check", "--verbose", "--diff", "-l", "120", "coc", "docs",]  # noqa
+            ["python", "-m", "black", "--check", "--v", "--diff", "-l=120", "--exclude=.pyi", "coc", "docs"]  # noqa
         )
         self.spawn(["python", "-m", "flake8", "coc"])
         self.spawn(["sphinx-build", "-W", "docs/", "/tmp/foo"])
