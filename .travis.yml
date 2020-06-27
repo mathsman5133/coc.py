@@ -9,10 +9,10 @@ language: python
 stages:
   - lint
 after_success:
-  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw
+  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/send.sh
   - chmod +x send.sh
   - ./send.sh success $WEBHOOK_URL
 after_failure:
-  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw
+  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
