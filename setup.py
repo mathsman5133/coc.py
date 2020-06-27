@@ -5,7 +5,7 @@ REQUIREMENTS = []
 with open(os.path.join(os.getcwd(), "requirements.txt")) as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = "0.3.3"
+VERSION = "1.0.0a"
 
 README = ""
 with open("README.rst") as f:
