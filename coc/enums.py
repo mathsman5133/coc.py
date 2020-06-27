@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
 from enum import Enum
 
@@ -37,7 +36,7 @@ class Role(Enum):
         return self.in_game_name
 
     @property
-    def in_game_name(self):
+    def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
         lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
         return lookup[self]
@@ -149,7 +148,8 @@ ACHIEVEMENT_ORDER = [
     "War League Legend",
     "Keep your village safe",
     "Well Seasoned",
-    "Shattered and Scattered" "Master Engineering",
+    "Shattered and Scattered",
+    "Master Engineering",
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",

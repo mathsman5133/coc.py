@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,10 +20,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
 
-import itertools
 import inspect
 import re
 
@@ -197,18 +195,10 @@ def custom_isinstance(obj, module, name):
     return False
 
 
-def peek_at_generator(generator_):
-    try:
-        first = next(generator_)
-    except StopIteration:
-        return None
-    else:
-        return itertools.chain([first], generator_)
-
-
-async def maybe_coroutine(f, *args, **kwargs):
-    value = f(*args, **kwargs)
+async def maybe_coroutine(function_, *args, **kwargs):
+    """Returns the result of a function which may or may not be a coroutine."""
+    value = function_(*args, **kwargs)
     if inspect.isawaitable(value):
         return await value
-    else:
-        return value
+
+    return value

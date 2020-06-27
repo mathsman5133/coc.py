@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
-
 from datetime import datetime
 
 from .utils import from_timestamp
@@ -81,7 +79,7 @@ class Achievement:
     def __init__(self, *, data):
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         self.name = data["name"]
         self.stars = data["stars"]
         self.value = data["value"]
@@ -91,17 +89,17 @@ class Achievement:
         self.village = data["village"]
 
     @property
-    def is_builder_base(self):
+    def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the builder base"""
         return self.village == "builderBase"
 
     @property
-    def is_home_base(self):
+    def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the home base"""
         return self.village == "home"
 
     @property
-    def is_completed(self):
+    def is_completed(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates whether the achievement is completed (3 stars achieved)"""
         return self.stars == 3
 
@@ -148,17 +146,17 @@ class Troop:
         self.village = data["village"]
 
     @property
-    def is_max(self):
+    def is_max(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the troop is the max level"""
         return self.max_level == self.level
 
     @property
-    def is_builder_base(self):
+    def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the troop belongs to the builder base."""
         return self.village == "builderBase"
 
     @property
-    def is_home_base(self):
+    def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the troop belongs to the home base."""
         return self.village == "home"
 
@@ -198,24 +196,24 @@ class Hero:
     def __init__(self, *, data):
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         self.name = data["name"]
         self.level = data["level"]
         self.max_level = data["maxLevel"]
         self.village = data["village"]
 
     @property
-    def is_max(self):
+    def is_max(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the hero is the max level."""
         return self.level == self.max_level
 
     @property
-    def is_builder_base(self):
+    def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the hero belongs to the builder base."""
         return self.village == "builderBase"
 
     @property
-    def is_home_base(self):
+    def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the hero belongs to the home base."""
         return self.village == "home"
 
@@ -250,24 +248,24 @@ class Spell:
     def __init__(self, *, data):
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         self.name = data["name"]
         self.level = data["level"]
         self.max_level = data["maxLevel"]
         self.village = data["village"]
 
     @property
-    def is_max(self):
+    def is_max(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the spell is the max level."""
         return self.level == self.max_level
 
     @property
-    def is_builder_base(self):
+    def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the spell belongs to the builder base."""
         return self.village == "builderBase"
 
     @property
-    def is_home_base(self):
+    def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean that indicates whether the spell belongs to the home base."""
         return self.village == "home"
 
@@ -307,7 +305,8 @@ class Location:
     def __init__(self, *, data):
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
+        # pylint: disable=invalid-name
         data_get = data.get
 
         self.id = data_get("id")
@@ -357,7 +356,8 @@ class League:
         self._client = client
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
+        # pylint: disable=invalid-name
         data_get = data.get
 
         self.id = data_get("id")
@@ -457,7 +457,7 @@ class Badge:
 
         self.url = self.medium
 
-    async def save(self, filepath, size=None):
+    async def save(self, filepath, size=None) -> int:
         """
         |coro|
 
@@ -526,7 +526,7 @@ class Icon:
 
         self.url = self.medium
 
-    async def save(self, filepath, size=None):
+    async def save(self, filepath, size=None) -> int:
         """
         |coro|
 
@@ -588,26 +588,26 @@ class Timestamp:
         return self.time < other.time
 
     def __le__(self, other):
-        r = Timestamp.__lt__(other, self)
-        if r is NotImplemented:
+        less_than = Timestamp.__lt__(other, self)
+        if less_than is NotImplemented:
             return NotImplemented
-        return not r
+        return not less_than
 
     def __init__(self, *, data):
         self.raw_time = data
 
     @property
-    def time(self):
+    def time(self) -> datetime:
         """:class:`datetime`: Returns the timestamp as a UTC datetime object."""
         return from_timestamp(self.raw_time)
 
     @property
-    def now(self):
+    def now(self) -> datetime:
         """:class:`datetime`: Returns the time in UTC now as a datetime object."""
         return datetime.utcnow()
 
     @property
-    def seconds_until(self):
+    def seconds_until(self) -> int:
         """:class:`int`: Returns the number of seconds until the timestamp. This may be negative."""
         delta = self.time - self.now
         return delta.total_seconds()

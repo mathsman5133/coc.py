@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +20,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
+import typing
+
+
 from .miscmodels import try_enum, Achievement, Troop, Hero, Spell, Label, League, LegendStatistics
 from .enums import (
     Role,
@@ -36,9 +36,12 @@ from .enums import (
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
 )
-from .utils import peek_at_generator
-from .abc import BaseClan, BasePlayer
+from .abc import BasePlayer
 from .player_clan import PlayerClan
+
+if typing.TYPE_CHECKING:
+    # pylint: disable=cyclic-import
+    from .clans import Clan  # cyclic imports
 
 
 class ClanMember(BasePlayer):
@@ -62,14 +65,14 @@ class ClanMember(BasePlayer):
         "league_cls",
     )
 
-    def __init__(self, *, data, client, **kwargs):
+    def __init__(self, *, data, client, **_):
         super().__init__(data=data, client=client)
         self._client = client
         self.clan_cls = PlayerClan
         self.league_cls = League
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         data_get = data.get
 
         self.exp_level = data_get("expLevel")
@@ -83,6 +86,19 @@ class ClanMember(BasePlayer):
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
         self.role = try_enum(Role, value=data_get("role"))
+
+    async def get_detailed_clan(self) -> typing.Optional["Clan"]:
+        """Get detailed clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
+
+        Example
+        ---------
+
+        .. code-block:: python3
+
+            player = await client.get_player('tag')
+            clan = await player.get_detailed_clan()
+        """
+        return self.clan and await self._client.get_clan(self.clan.tag)
 
 
 class RankedPlayer(ClanMember):
@@ -104,7 +120,7 @@ class RankedPlayer(ClanMember):
 
     __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         super()._from_data(data)
 
         data_get = data.get
@@ -116,6 +132,38 @@ class RankedPlayer(ClanMember):
 
 
 class Player(ClanMember):
+    """Represents a Clash of Clans Player.
+
+    Attributes
+    -----------
+    achievement_cls: :class:`Achievement`
+        The constructor used to create the :attr:`Player.achievements` list. This must inherit :class:`Achievement`.
+    hero_cls: :class:`Hero`
+        The constructor used to create the :attr:`Player.heroes` list. This must inherit from :class:`Hero`.
+    label_cls: :class:`Label`
+        The constructor used to create the :attr:`Player.labels` list. This must inherit from :class:`Label`.
+    spell_cls: :class:`Spell`
+        The constructor used to create the :attr:`Player.spells` list. This must inherit from :class:`Spell`.
+    troop_cls: :class:`Troop`
+        The constructor used to create the :attr:`Player.troops` list. This must inherit from :class:`Troop`.
+    best_trophies: int
+        The player's best recorded trophies for the home base.
+    war_stars: int
+        The player's total war stars.
+    town_hall: int
+        The player's town hall level.
+    town_hall_weapon: Optional[int]
+        The player's town hall weapon level, or ``None`` if it doesn't exist.
+    builder_hall: int
+        The player's builder hall level, or 0 if it hasn't been unlocked.
+    best_versus_trophies: int
+        The player's best versus trophy count.
+    versus_attack_wins: int
+        The number of versus attacks the player has won
+    legend_statistics: Optional[:class:`LegendStatistics`]
+        The player's legend statistics, or ``None`` if they have never been in the legend league.
+    """
+
     __slots__ = (
         "clan",
         "attack_wins",
@@ -145,7 +193,7 @@ class Player(ClanMember):
         "troop_cls",
     )
 
-    def __init__(self, *, data, client, **kwargs):
+    def __init__(self, *, data, client, **_):
         self._client = client
 
         self._achievements = {}
@@ -162,7 +210,7 @@ class Player(ClanMember):
 
         super().__init__(data=data, client=client)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         super()._from_data(data)
         data_get = data.get
 
@@ -188,16 +236,17 @@ class Player(ClanMember):
         self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
 
     @property
-    def labels(self):
+    def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
-        iter_labels = peek_at_generator(self.__iter_labels)
-        if iter_labels:
-            self._labels = list(iter_labels)
+        labels = self._labels
+        if labels:
+            return labels
 
-        return self._labels
+        labels = self._labels = list(self.__iter_labels)
+        return labels
 
     @property
-    def achievements(self):
+    def achievements(self) -> typing.List[Achievement]:
         """List[:class:`Achievement`]: A :class:`List` of the player's :class:`Achievement`s."""
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
@@ -216,7 +265,7 @@ class Player(ClanMember):
         self._achievements = sorted_achievements
         return list(sorted_achievements.values())
 
-    def get_achievement(self, name):
+    def get_achievement(self, name: str) -> typing.Optional[Achievement]:
         """Returns an achievement with the given name.
 
         Parameters
@@ -240,7 +289,7 @@ class Player(ClanMember):
             return None
 
     @property
-    def troops(self):
+    def troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`s.
 
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
@@ -254,7 +303,7 @@ class Player(ClanMember):
         return list_troops
 
     @property
-    def home_troops(self):
+    def home_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`s.
 
         This will return troops in the order found in both barracks and labatory in-game.
@@ -264,7 +313,7 @@ class Player(ClanMember):
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @property
-    def builder_troops(self):
+    def builder_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`s.
 
         This will return troops in the order found in both barracks and labatory in-game.
@@ -274,7 +323,7 @@ class Player(ClanMember):
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @property
-    def siege_machines(self):
+    def siege_machines(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`s.
 
         This will return siege machines in the order found in both barracks and labatory in-game.
@@ -284,7 +333,7 @@ class Player(ClanMember):
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @property
-    def heroes(self):
+    def heroes(self) -> typing.List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`es.
 
         This will return heroes in the order found in the store and labatory in-game.
@@ -305,7 +354,7 @@ class Player(ClanMember):
         self._heroes = sorted_heroes
         return list(sorted_heroes.values())
 
-    def get_hero(self, name):
+    def get_hero(self, name: str) -> typing.Optional[Hero]:
         """Returns a hero with the given name.
 
         Parameters
@@ -328,7 +377,7 @@ class Player(ClanMember):
             return None
 
     @property
-    def spells(self):
+    def spells(self) -> typing.List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell`s ordered as they appear in-game.
 
         This will return spells in the order found in both spell factory and labatory in-game.
@@ -339,25 +388,3 @@ class Player(ClanMember):
 
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
         return list(sorted(list_spells, key=lambda s: order.get(s.name)))
-
-
-#
-# class LeagueRankedPlayer(BasicPlayer):
-#     """Represents a Clash of Clans League Ranked Player.
-#     Note that league season information is available only for Legend League.
-#
-#     This class inherits both :class:`Player` and :class:`BasicPlayer`,
-#     and thus all attributes of these classes can be expected to be present.
-#
-#
-#     Attributes
-#     -----------
-#     rank:
-#         :class:`int` - The players rank in their league for this season
-#     """
-#
-#     __slots__ = ("rank",)
-#
-#     def __init__(self, *, data, http):
-#         self.rank = data.get("rank")
-#         super(LeagueRankedPlayer, self).__init__(data=data, http=http)

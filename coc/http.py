@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +20,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
-
-
 import asyncio
 import json
 import logging
 import re
-import weakref
 
 from collections import deque
 from datetime import datetime
@@ -99,7 +93,7 @@ class BatchThrottler:
         "_task_logs",
     )
 
-    def __init__(self, rate_limit, retry_interval=0.001, loop=None):
+    def __init__(self, rate_limit, retry_interval=0.001):
         self.rate_limit = rate_limit
         self.retry_interval = retry_interval
 
@@ -154,19 +148,8 @@ class Route:
 
     @property
     def cache_control_key(self):
+        """Returns a cache lookup key that is unique to this query."""
         return self.path
-
-
-class WaitForKeys:
-    def __init__(self, event):
-        self.event = event
-
-    async def __aenter__(self):
-        await self.event.wait()
-        return self
-
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
-        pass
 
 
 class HTTPClient:
@@ -247,6 +230,7 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
+        # pylint: disable=too-many-statements
         method = route.method
         url = route.url
         api_request = kwargs.pop("api_request", False)
@@ -317,10 +301,11 @@ class HTTPClient:
                     raise HTTPException(response, data)
 
                 if response.status == 503:
+                    self.client._in_maintenance_event.set()
+
                     if isinstance(data, str):
                         # weird case where a 503 will be raised, but html returned.
                         text = re.compile(r"<[^>]+>").sub(data, "")
-                        self.client._in_maintenance_event.set()
                         raise Maintenance(response, text)
 
                     raise Maintenance(response, data)

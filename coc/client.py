@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
 
 import asyncio
@@ -39,7 +38,7 @@ from .iterators import (
     LeagueWarIterator,
     CurrentWarIterator,
 )
-from .players import Player, ClanMember
+from .players import Player, ClanMember, RankedPlayer
 from .utils import get, corrected_tag
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 
@@ -96,8 +95,6 @@ class Client:
         The loop that is used for HTTP requests
     """
 
-    # pylint: disable=unused-argument
-    # We do use them but through the `cache()` decorator.
     __slots__ = (
         "loop",
         "correct_key_count",

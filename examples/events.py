@@ -5,12 +5,13 @@ import objgraph
 import psutil
 import tracemalloc
 import random
+from examples import creds
 
 tracemalloc.start()
 
-client = coc.login("user@email.com", "password", client=coc.EventsClient, key_names="windows", cwl_active=False)
+client = coc.login(creds.email, creds.password, client=coc.EventsClient, key_names="windows", cwl_active=False)
 log = logging.getLogger()
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.CRITICAL)
 
 c_tags = [
     "#20090C9PR",
@@ -119,20 +120,50 @@ c_tags = [
 @client.event
 @coc.ClanEvents.member_donations_change(c_tags, retry_interval=0)
 async def on_member_dono_change(old, new):
-    print(old.donations, new.donations)
+    # print(old.donations, new.donations)
+    ...
+
+
+@coc.WarEvents.war_attack()
+async def test():
+    pass
+
+
+@coc.WarEvents.war_attack()
+async def test():
+    pass
+
+
+@coc.WarEvents.war_attack()
+async def callable():
+    pass
 
 
 @client.event
 @coc.WarEvents.war_attack(c_tags, retry_interval=30)
 async def change2(attack, new):
-    print(attack.attacker, attack.order, max(a.order for a in new.attacks))
-    log.info("ran war")
+    # print(attack.attacker, attack.order, max(a.order for a in new.attacks))
+    # log.info("ran war")
+    ...
 
 
 @client.event
 @coc.PlayerEvents.trophies_change(retry_interval=0)
 async def on_player_trophy_change(old, new):
-    print(old.trophies, new.trophies)
+    # print(old.trophies, new.trophies)
+    ...
+
+
+async def on_maintenance():
+    log.critical("maintenance start")
+
+
+async def on_maintenance_completion(start_time):
+    log.critical("maintenance finished")
+
+
+client.on_maintenance = on_maintenance
+client.on_maintenance_completion = on_maintenance_completion
 
 
 async def get_lots_of_playertags():
@@ -182,5 +213,5 @@ async def task():
 
 
 loop = asyncio.get_event_loop()
-loop.create_task(task())
+# loop.create_task(task())
 client.loop.run_forever()

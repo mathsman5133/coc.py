@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
 
 import asyncio
@@ -159,18 +158,3 @@ class CurrentWarIterator(TaggedIterator):
         # pylint: disable=too-many-arguments
         super(CurrentWarIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_current_war
-
-
-class EventIterator(TaggedIterator):
-    """Iterator for internal use of EventsClient."""
-
-    def __init__(self, client, tag_metadatas, get_method):
-        super().__init__(client, tag_metadatas, cls=None)
-        self.get_method = get_method
-
-    async def _run_method(self, tag_metadata):
-        # pylint: disable=not-callable
-        try:
-            return await self.get_method(tag_metadata.tag, cls=tag_metadata.obj_cls)
-        except (NotFound, Forbidden, Maintenance):
-            return None

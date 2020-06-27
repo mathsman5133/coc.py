@@ -1,5 +1,33 @@
+"""
+MIT License
+
+Copyright (c) 2019-2020 mathsman5133
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+import typing
+
 from .abc import BaseClan
 from .war_members import ClanWarMember, ClanWarLeagueClanMember
+
+if typing.TYPE_CHECKING:
+    from .war_attack import WarAttack
 
 
 class WarClan(BaseClan):
@@ -52,7 +80,7 @@ class WarClan(BaseClan):
         super().__init__(data=data, client=client)
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         data_get = data.get
 
         self.level = data_get("clanLevel")
@@ -74,7 +102,8 @@ class WarClan(BaseClan):
         )
 
     @property
-    def members(self):
+    def members(self) -> typing.List[ClanWarMember]:
+        """List[:class:`ClanWarMember`]: A :class:`List` of :class:`ClanWarMembers`s that are in the war."""
         dict_members = self._members
         if dict_members:
             return list(dict_members.values())
@@ -83,11 +112,12 @@ class WarClan(BaseClan):
         return list(dict_members.values())
 
     @property
-    def is_opponent(self):
+    def is_opponent(self) -> bool:
+        """:class:`bool`: Indicates whether the clan is the opponent."""
         return self.tag == self._war.opponent.tag
 
     @property
-    def attacks(self):
+    def attacks(self) -> typing.List["WarAttack"]:
         """List[:class:`WarAttack`]: Returns all clan member's attacks this war. This is sorted by attack order."""
         if not self._war:
             return []
@@ -99,28 +129,32 @@ class WarClan(BaseClan):
         return list(sorted(attacks, key=lambda a: a.order, reverse=True))
 
     @property
-    def defenses(self):
+    def defenses(self) -> typing.List["WarAttack"]:
         """List[:class:`WarAttack`]: Returns all clan member's defenses this war. This is sorted by attack order.
 
         Equivalent to the other team's ``.attacks`` property.
         """
         other = self._war and self._war.clan if self.is_opponent else self._war.opponent
-        return other and other.attacks or []
+        return other.attacks if other else []
 
-    def get_member(self, player_tag):
+    def get_member(self, tag: str) -> typing.Optional[ClanWarMember]:
+        """Get a member of the clan for the given tag, or ``None`` if not found.
+
+        Returns
+        --------
+        Optional[:class:`ClanWarMember`]: The clan member who matches the tag."""
         dict_member = self._members
         if not dict_member:
             dict_member = self._members = {m.name: m for m in self.__iter_members}
 
         try:
-            return dict_member[player_tag]
+            return dict_member[tag]
         except KeyError:
             return None
 
 
 class ClanWarLeagueClan(BaseClan):
-    """Represents a Clan War League Clan.
-    """
+    """Represents a Clan War League Clan."""
 
     def __init__(self, *, data, client):
         super().__init__(data=data, client=client)
@@ -131,7 +165,7 @@ class ClanWarLeagueClan(BaseClan):
         )
 
     @property
-    def members(self):
+    def members(self) -> typing.List[ClanWarLeagueClanMember]:
         """List[:class:`ClanWarLeagueClanMember`]: A list of players participating in this clan war league season.
 
         This list is selected when the clan chooses to participate in CWL, and will not change throughout the season.

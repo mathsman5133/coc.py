@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
+import typing
+
+
 from .players import ClanMember
 from .miscmodels import try_enum, Location, Label, WarLeague
 from .utils import get
@@ -56,11 +58,11 @@ class RankedClan(BaseClan):
         "previous_rank",
     )
 
-    def __init__(self, *, data, client, **kwargs):
+    def __init__(self, *, data, client, **_):
         super().__init__(data=data, client=client)
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         data_get = data.get
 
         self.points = data_get("clanPoints")
@@ -142,7 +144,7 @@ class Clan(BaseClan):
         "war_league",
     )
 
-    def __init__(self, *, data, client, **kwargs):
+    def __init__(self, *, data, client, **_):
         super().__init__(data=data, client=client)
         self.label_cls = Label
         self.member_cls = ClanMember
@@ -152,7 +154,7 @@ class Clan(BaseClan):
 
         self._from_data(data)
 
-    def _from_data(self, data):
+    def _from_data(self, data: dict) -> None:
         data_get = data.get
 
         self.points = data_get("clanPoints")
@@ -180,7 +182,7 @@ class Clan(BaseClan):
         self.__iter_members = (member_cls(data=mdata, client=self._client) for mdata in data_get("memberList", []))
 
     @property
-    def labels(self):
+    def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
         list_labels = self._labels
         if list_labels:
@@ -190,7 +192,7 @@ class Clan(BaseClan):
         return list_labels
 
     @property
-    def members(self):
+    def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A :class:`List` of :class:`Member`s that belong to the clan."""
         dict_members = self._members
         if dict_members:
@@ -199,8 +201,20 @@ class Clan(BaseClan):
         dict_members = self._members = {m.tag: m for m in self.__iter_members}
         return list(dict_members.values())
 
-    def get_member(self, tag):
-        """Return a :class:`ClanMember` with the tag provided."""
+    def get_member(self, tag: str) -> typing.Optional[ClanMember]:
+        """Return a :class:`ClanMember` with the tag provided. Returns ``None`` if not found.
+
+        Example
+        --------
+        .. code-block:: python3
+
+            clan = await client.get_clan('clan_tag')
+            member = clan.get_member('player_tag')
+
+        Returns
+        --------
+        Optional[:class:`ClanMember`]: The member who matches the tag provided.
+        """
         dict_members = self._members
         if not dict_members:
             dict_members = self._members = {m.name: m for m in self.__iter_members}
@@ -210,7 +224,7 @@ class Clan(BaseClan):
         except KeyError:
             return None
 
-    def get_member_by(self, **attrs):
+    def get_member_by(self, **attrs) -> typing.Optional[ClanMember]:
         """Returns the first :class:`BasicPlayer` that meets the attributes passed
 
         This will return the first member matching the attributes passed.
