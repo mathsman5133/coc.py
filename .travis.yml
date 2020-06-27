@@ -6,20 +6,13 @@ jobs:
         - python setup.py lint
       stage: lint
 language: python
-python:
-  - 3.5
-  - 3.6
-  - 3.7
-script:
-  - echo "skipping tests"
 stages:
   - lint
-  - test
 after_success:
-  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/c1c45d9a0872201562ab912e5ee7c6fa3a32f9c4/send.sh
   - chmod +x send.sh
   - ./send.sh success $WEBHOOK_URL
 after_failure:
-  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - wget https://gist.githubusercontent.com/mathsman5133/2cec13674e08b71d772c40463c1a3673/raw/c1c45d9a0872201562ab912e5ee7c6fa3a32f9c4/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
