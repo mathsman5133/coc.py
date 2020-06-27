@@ -118,7 +118,7 @@ class Client:
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = False,
         throttler=BasicThrottler,
-        **kwargs,
+        **_,
     ):
 
         self.loop = loop or asyncio.get_event_loop()
