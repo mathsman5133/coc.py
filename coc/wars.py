@@ -31,7 +31,7 @@ from .war_attack import WarAttack
 
 if typing.TYPE_CHECKING:
     # pylint: disable=cyclic-import
-    from .war_members import ClanWarMember
+    from .war_members import ClanWarMember  # noqa
 
 
 class ClanWar:
@@ -93,7 +93,7 @@ class ClanWar:
 
     @property
     def members(self) -> typing.List["ClanWarMember"]:
-        """List[:class:`ClanWarMember`]: A :class:`List` of :class:`ClanWarMembers`s that are in the war."""
+        """List[:class:`ClanWarMember`]: A list of members that are in the war."""
         return sorted([*self.clan.members, *self.opponent.members], key=lambda x: (not x.is_opponent, x.map_position))
 
     @property

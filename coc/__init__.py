@@ -24,10 +24,10 @@ SOFTWARE.
 
 __version__ = "0.3.3"
 
-
-from .clans import *
+from .abc import BasePlayer, BaseClan
+from .clans import RankedClan, Clan
 from .client import Client
-from .events import *
+from .events import Event, PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Role,
     ACHIEVEMENT_ORDER,
@@ -66,6 +66,7 @@ from .miscmodels import (
     Achievement,
     Badge,
     Hero,
+    Icon,
     League,
     LegendStatistics,
     Location,
@@ -74,9 +75,10 @@ from .miscmodels import (
     Timestamp,
     Label,
 )
-from .players import Player
+from .players import Player, ClanMember, RankedPlayer
+from .player_clan import PlayerClan
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
 from .war_members import ClanWarLeagueClanMember, ClanWarMember
-from .wars import *
+from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from . import utils

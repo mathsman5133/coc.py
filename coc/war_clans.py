@@ -27,7 +27,7 @@ from .abc import BaseClan
 from .war_members import ClanWarMember, ClanWarLeagueClanMember
 
 if typing.TYPE_CHECKING:
-    from .war_attack import WarAttack
+    from .war_attack import WarAttack  # noqa
 
 
 class WarClan(BaseClan):
@@ -103,7 +103,7 @@ class WarClan(BaseClan):
 
     @property
     def members(self) -> typing.List[ClanWarMember]:
-        """List[:class:`ClanWarMember`]: A :class:`List` of :class:`ClanWarMembers`s that are in the war."""
+        """List[:class:`ClanWarMember`]: A list of members that are in the war."""
         dict_members = self._members
         if dict_members:
             return list(dict_members.values())

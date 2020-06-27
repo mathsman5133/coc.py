@@ -26,4 +26,4 @@ from coc.abc import BaseClan
 
 
 class PlayerClan(BaseClan):
-    """Represents a player who is a member of a clan."""
+    """Represents a clan that belongs to a player."""

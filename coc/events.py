@@ -46,7 +46,7 @@ _EventCallbackType = typing.Callable[[_EventPredicateClasses, _EventPredicateCla
 _EventCallbackCustomArgumentsType = typing.Callable[..., typing.Coroutine]
 _EventPredicateType = typing.Callable[[_EventPredicateClasses, _EventPredicateClasses], bool]
 _EventWrappedPredicateType = typing.Callable[
-    [_EventPredicateClasses, _EventPredicateClasses, _EventCallbackType], typing.Coroutine[None]
+    [_EventPredicateClasses, _EventPredicateClasses, _EventCallbackType], typing.Coroutine
 ]
 _EventDecoratorReturn = typing.Callable[[_EventCallbackType], _EventCallbackType]
 

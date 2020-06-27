@@ -41,7 +41,7 @@ from .player_clan import PlayerClan
 
 if typing.TYPE_CHECKING:
     # pylint: disable=cyclic-import
-    from .clans import Clan  # cyclic imports
+    from .clans import Clan  # noqa
 
 
 class ClanMember(BasePlayer):
@@ -247,7 +247,7 @@ class Player(ClanMember):
 
     @property
     def achievements(self) -> typing.List[Achievement]:
-        """List[:class:`Achievement`]: A :class:`List` of the player's :class:`Achievement`s."""
+        """List[:class:`Achievement`]: A list of the player's achievements."""
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
         dict_achievements = self._achievements
@@ -290,7 +290,7 @@ class Player(ClanMember):
 
     @property
     def troops(self) -> typing.List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`s.
+        """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`.
 
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
@@ -304,7 +304,7 @@ class Player(ClanMember):
 
     @property
     def home_troops(self) -> typing.List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`s.
+        """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
         """
@@ -314,7 +314,7 @@ class Player(ClanMember):
 
     @property
     def builder_troops(self) -> typing.List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`s.
+        """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
         """
@@ -324,7 +324,7 @@ class Player(ClanMember):
 
     @property
     def siege_machines(self) -> typing.List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`s.
+        """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
         This will return siege machines in the order found in both barracks and labatory in-game.
         """
@@ -334,7 +334,7 @@ class Player(ClanMember):
 
     @property
     def heroes(self) -> typing.List[Hero]:
-        """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`es.
+        """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
         This will return heroes in the order found in the store and labatory in-game.
         """
@@ -378,7 +378,7 @@ class Player(ClanMember):
 
     @property
     def spells(self) -> typing.List[Spell]:
-        """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell`s ordered as they appear in-game.
+        """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
         This will return spells in the order found in both spell factory and labatory in-game.
         """

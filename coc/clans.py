@@ -193,7 +193,7 @@ class Clan(BaseClan):
 
     @property
     def members(self) -> typing.List[ClanMember]:
-        """List[:class:`ClanMember`]: A :class:`List` of :class:`Member`s that belong to the clan."""
+        """List[:class:`ClanMember`]: A list of members that belong to the clan."""
         dict_members = self._members
         if dict_members:
             return list(dict_members.values())

@@ -14,13 +14,6 @@ API Reference
 
    api
 
-Custom Cache
--------------
-.. toctree::
-   :maxdepth: 2
-
-   cache
-
 Events
 -------
 .. toctree::
