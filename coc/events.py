@@ -91,12 +91,12 @@ class _ValidateEvent:
 
         # handle member_x events:
         if "member_" in item:
-            item = item.strip("member_")
+            item = item.replace("member_", "")
             nested = True
         else:
             nested = False
 
-        return self._create_event(item.strip("_change"), nested)
+        return self._create_event(item.replace("_change", ""), nested)
 
     def _create_event(self, item: str, nested: bool = False) -> _EventDecoratorType:
         def pred(cached, live) -> bool:
