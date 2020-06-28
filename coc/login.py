@@ -29,7 +29,7 @@ from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[Client] = Client, **kwargs
+    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
 ) -> typing.Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 

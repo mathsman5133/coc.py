@@ -68,9 +68,9 @@ class Event:
         return self.runner(cached, current, self.callback)
 
     @classmethod
-    def from_decorator(cls, func):
+    def from_decorator(cls, func, runner):
         """Helper classmethod to create an event from a function"""
-        return cls(func.event_runner, func, func.event_tags, func.event_type)
+        return cls(runner, func, func.event_tags, func.event_type)
 
 
 class _ValidateEvent:
@@ -86,8 +86,8 @@ class _ValidateEvent:
             pass
 
         # this is only called if the attr/func is not found the normal way.
-        if "change" not in item:
-            raise ValueError("expected an event with `change` suffix.")
+        # if "change" not in item:
+        #     raise ValueError("expected an event with `change` suffix.")
 
         # handle member_x events:
         if "member_" in item:
@@ -174,8 +174,8 @@ class _ValidateEvent:
     ) -> _EventCallbackType:
         """Validates the types of all arguments and adds these as attributes to the function."""
         # pylint: disable=too-many-arguments
-        if getattr(func, "is_event_listener", False):
-            raise RuntimeError("maximum of one event per callback function.")
+        if getattr(func, "is_event_listener", False) and func.event_type != event_type:
+            raise RuntimeError("maximum of one event type per callback function.")
 
         if not asyncio.iscoroutinefunction(func):
             raise TypeError("callback function must be of type coroutine.")
@@ -200,7 +200,11 @@ class _ValidateEvent:
         func.is_event_listener = True
         func.event_cls = cls
         func.event_retry_interval = retry_interval
-        func.event_runner = runner
+        try:
+            func.event_runners.append(runner)
+        except AttributeError:
+            func.event_runners = [runner]
+
         return func
 
 
@@ -222,7 +226,7 @@ class ClanEvents:
             # we can't check the member_count first incase 1 person left and joined within the 60sec.
             members_joined = (n for n in clan.members if n.tag not in set(n.tag for n in cached_clan.members))
             for member in members_joined:
-                await callback(member)
+                await callback(member, clan)
 
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, ClanEvents.event_type)
 
@@ -234,7 +238,7 @@ class ClanEvents:
             # we can't check the member_count first incase 1 person left and joined within the 60sec.
             members_left = (n for n in cached_clan.members if n.tag not in set(n.tag for n in clan.members))
             for member in members_left:
-                await callback(member)
+                await callback(member, clan)
 
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, ClanEvents.event_type)
 
@@ -434,7 +438,7 @@ class EventsClient(Client):
             "clan": self.loop.create_task(self._clan_updater()),
             "player": self.loop.create_task(self._player_updater()),
             "war": self.loop.create_task(self._war_updater()),
-            "maintenance": self.loop.create_task(self.maintenance_poller()),
+            "maintenance": self.loop.create_task(self._maintenance_poller()),
         }
 
         for task in self._updater_tasks.values():
@@ -449,9 +453,6 @@ class EventsClient(Client):
         self._clans = {}
         self._players = {}
         self._wars = {}
-
-    async def login(self, email: str, password: str):
-        await super().login(email, password)
 
     def add_clan_updates(self, value):
         if isinstance(value, str):
@@ -528,7 +529,7 @@ class EventsClient(Client):
     def _update_war(self, key, war):
         self._wars[key] = war
 
-    def event(self, function: typing.Callable) -> typing.Callable:
+    def event(self, function):
         """A decorator or regular function that registers an event.
 
         The function **may be** be a coroutine.
@@ -578,14 +579,14 @@ class EventsClient(Client):
         if not getattr(function, "is_event_listener", None):
             raise ValueError("no events found to register to this callback")
 
-        event = Event.from_decorator(function)
+        events = [Event.from_decorator(function, runner) for runner in function.event_runners]
 
         retry_interval = getattr(function, "event_retry_interval")
         cls = getattr(function, "event_cls")
         tags = getattr(function, "event_tags")
-        event_type = event.type
+        event_type = events[0].type
 
-        self._listeners[event_type].append(event)
+        self._listeners[event_type].extend(events)
 
         if event_type == "clan":
             self.clan_cls = cls or self.clan_cls
@@ -624,9 +625,10 @@ class EventsClient(Client):
         \*\events: :class:`function`
             The event listener functions to remove.
         """
-        for event in events:
-            event = Event.from_decorator(event)
-            self._listeners[event.type].remove(event)
+        for function in events:
+            for runner in function.event_runners:
+                event = Event.from_decorator(function, runner)
+                self._listeners[event.type].remove(event)
 
     def run_forever(self):
         """A blocking call which runs the loop and script.
@@ -701,7 +703,7 @@ class EventsClient(Client):
             "clan": self._clan_updater,
             "player": self._player_updater,
             "war": self._war_updater,
-            "maintenance": self.maintenance_poller,
+            "maintenance": self._maintenance_poller,
         }
 
         for name, value in self._updater_tasks.items():
@@ -710,7 +712,7 @@ class EventsClient(Client):
             self._updater_tasks[name] = self.loop.create_task(lookup[name]())
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
 
-    async def maintenance_poller(self):
+    async def _maintenance_poller(self):
         # pylint: disable=broad-except
         maintenance_start = None
         try:
@@ -732,7 +734,7 @@ class EventsClient(Client):
             pass
         except (Exception, BaseException) as exception:
             await self.event_error(exception)
-            return await self.maintenance_poller()
+            return await self._maintenance_poller()
 
     async def _war_updater(self):
         # pylint: disable=broad-except
