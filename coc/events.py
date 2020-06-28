@@ -788,6 +788,13 @@ class EventsClient(Client):
             await self.event_error(exception)
             return await self._player_updater()
 
+    @staticmethod
+    def _safe_unlock(lock):
+        try:
+            lock.release()
+        except RuntimeError:
+            pass
+
     async def _run_player_update(self, player_tag):
         # pylint: disable=protected-access
         key = "player:{}".format(player_tag)
@@ -798,13 +805,13 @@ class EventsClient(Client):
         await lock.acquire()
         player = await self.get_player(player_tag, cls=self.player_cls)
         # sleep for either
-        self.loop.call_later(max(player._response_retry, self.player_retry_interval), lock.release)
+        self.loop.call_later(max(player._response_retry, self.player_retry_interval), self._safe_unlock, lock)
 
         cached_player = self._get_cached_player(player_tag)
         self._update_player(player)
 
         if cached_player is None:
-            lock.release()
+            self._safe_unlock(lock)
             return
 
         for listener in self._listeners["player"]:
@@ -822,13 +829,13 @@ class EventsClient(Client):
         await lock.acquire()
         clan = await self.get_clan(clan_tag, cls=self.clan_cls)
         # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(clan._response_retry, self.player_retry_interval), lock.release)
+        self.loop.call_later(max(clan._response_retry, self.player_retry_interval), self._safe_unlock, lock)
 
         cached_clan = self._get_cached_clan(clan_tag)
         self._update_clan(clan)
 
         if not cached_clan:
-            lock.release()
+            self._safe_unlock(lock)
             return
 
         for listener in self._listeners["clan"]:
@@ -853,17 +860,17 @@ class EventsClient(Client):
         try:
             war = await meth(clan_tag, cls=self.war_cls)
         except PrivateWarLog:
-            lock.release()
+            self._safe_unlock(lock)
             return
 
         # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(war._response_retry, self.player_retry_interval), lock.release)
+        self.loop.call_later(max(war._response_retry, self.player_retry_interval), self._safe_unlock, lock)
 
         cached_war = self._get_cached_war(clan_tag)
         self._update_war(clan_tag, war)
 
         if not cached_war:
-            lock.release()
+            self._safe_unlock(lock)
             return
 
         for listener in self._listeners["war"]:
