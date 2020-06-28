@@ -37,6 +37,7 @@ setup(
     name="coc.py",
     author="mathsman5133",
     url="https://github.com/mathsman5133/coc.py",
+    package_data={"coc": ["events.pyi"]},
     packages=["coc", "coc.ext.discordlinks"],
     version=VERSION,
     license="MIT",
