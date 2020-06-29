@@ -159,6 +159,8 @@ class _ValidateEvent:
             for member in clan.members:
                 cached_member = cached_clan.get_member(member.tag)
                 if cached_member is not None and pred(cached_member, member) is True:
+                    cached_member.clan = cached_clan
+                    member.clan = clan
                     await callback(cached_member, member)
 
         return wrapped
