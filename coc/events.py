@@ -225,8 +225,11 @@ class ClanEvents:
             clan: _EventPredicateClasses,
             callback: _EventCallbackCustomArgumentsType,
         ) -> None:
+            current_tags = set(n.tag for n in cached_clan.members)
+            if not current_tags:
+                return
             # we can't check the member_count first incase 1 person left and joined within the 60sec.
-            members_joined = (n for n in clan.members if n.tag not in set(n.tag for n in cached_clan.members))
+            members_joined = (n for n in clan.members if n.tag not in current_tags)
             for member in members_joined:
                 await callback(member, clan)
 
@@ -238,7 +241,10 @@ class ClanEvents:
 
         async def wrapped(cached_clan, clan, callback):
             # we can't check the member_count first incase 1 person left and joined within the 60sec.
-            members_left = (n for n in cached_clan.members if n.tag not in set(n.tag for n in clan.members))
+            current_tags = set(n.tag for n in clan.members)
+            if not current_tags:
+                return
+            members_left = (n for n in cached_clan.members if n.tag not in current_tags)
             for member in members_left:
                 await callback(member, clan)
 
