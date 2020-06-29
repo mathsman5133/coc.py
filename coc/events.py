@@ -779,7 +779,6 @@ class EventsClient(Client):
                 await asyncio.sleep(DEFAULT_SLEEP)
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
-                LOG.info(self._players)
 
                 tasks = [self.loop.create_task(self._run_player_update(tag)) for tag in self._player_updates]
                 await asyncio.gather(*tasks)
@@ -877,6 +876,5 @@ class EventsClient(Client):
 
         for listener in self._listeners["war"]:
             if listener.tags and clan_tag not in listener.tags:
-                LOG.info("no listener")
                 continue
             await listener(cached_war, war)
