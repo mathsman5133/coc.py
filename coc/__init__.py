@@ -54,7 +54,7 @@ from .errors import (
     PrivateWarLog,
 )
 from .login import login
-from .http import HTTPClient
+from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
     PlayerIterator,
