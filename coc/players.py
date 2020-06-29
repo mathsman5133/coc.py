@@ -214,6 +214,7 @@ class Player(ClanMember):
         super()._from_data(data)
         data_get = data.get
 
+        self.attack_wins = data_get("attackWins")
         self.best_trophies = data_get("bestTrophies")
         self.war_stars = data_get("warStars")
         self.town_hall = data_get("townHallLevel")
