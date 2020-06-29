@@ -146,6 +146,10 @@ class Player(ClanMember):
         The constructor used to create the :attr:`Player.spells` list. This must inherit from :class:`Spell`.
     troop_cls: :class:`Troop`
         The constructor used to create the :attr:`Player.troops` list. This must inherit from :class:`Troop`.
+    attack_wins: :class:`int`
+        The number of attacks the player has won this season.
+    defense_wins: :class:`int`
+        The number of defenses the player has won this season.
     best_trophies: int
         The player's best recorded trophies for the home base.
     war_stars: int
@@ -215,6 +219,7 @@ class Player(ClanMember):
         data_get = data.get
 
         self.attack_wins = data_get("attackWins")
+        self.defense_wins = data_get("defenseWins")
         self.best_trophies = data_get("bestTrophies")
         self.war_stars = data_get("warStars")
         self.town_hall = data_get("townHallLevel")
