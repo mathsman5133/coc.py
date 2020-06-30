@@ -73,9 +73,10 @@ class BasicThrottler:
     async def __aenter__(self):
         if self.last_run:
             difference = monotonic() - self.last_run
-            if self.sleep_time > difference:
-                LOG.debug("Request throttled. Sleeping for %s", self.sleep_time)
-                await asyncio.sleep(difference)
+            need_to_sleep = self.sleep_time - difference
+            if need_to_sleep > 0:
+                LOG.debug("Request throttled. Sleeping for %s", need_to_sleep)
+                await asyncio.sleep(need_to_sleep)
 
         self.last_run = monotonic()
         return self

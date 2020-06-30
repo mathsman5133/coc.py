@@ -429,9 +429,9 @@ class EventsClient(Client):
         self._in_maintenance_event = asyncio.Event()
         self._keys_ready = asyncio.Event()
 
-        self.clan_retry_interval = 10
-        self.player_retry_interval = 10
-        self.war_retry_interval = 10
+        self.clan_retry_interval = 0
+        self.player_retry_interval = 0
+        self.war_retry_interval = 0
 
         self.clan_cls = Clan
         self.player_cls = Player
@@ -836,7 +836,7 @@ class EventsClient(Client):
         await lock.acquire()
         clan = await self.get_clan(clan_tag, cls=self.clan_cls)
         # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(clan._response_retry, self.player_retry_interval), self._safe_unlock, lock)
+        self.loop.call_later(max(clan._response_retry, self.clan_retry_interval), self._safe_unlock, lock)
 
         cached_clan = self._get_cached_clan(clan_tag)
         self._update_clan(clan)

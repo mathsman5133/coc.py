@@ -1,5 +1,6 @@
 from typing import Iterable, Callable, Union, Coroutine, Type
 
+from coc.client import Client
 from coc.players import Player, ClanMember
 from coc.clans import Clan
 from coc.wars import ClanWar
@@ -133,7 +134,7 @@ class WarEvents:
 
 class Event: ...
 class ClientEvents: ...
-class EventsClient:
+class EventsClient(Client):
     clan_retry_interval: int
     player_retry_interval: int
     war_retry_interval: int
