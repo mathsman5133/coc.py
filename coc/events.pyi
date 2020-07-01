@@ -1,4 +1,4 @@
-from typing import Iterable, Callable, Union, Coroutine, Type
+from typing import Iterable, Callable, Union, Coroutine, Type, Dict
 
 from coc.client import Client
 from coc.players import Player, ClanMember
@@ -132,7 +132,10 @@ class WarEvents:
     def state(cls, tags: Iterable = None, custom_class: Type[ClanWar] = ClanWar, retry_interval: int = None) -> _EventDecoratorReturn: ...
 
 
-class Event: ...
+class Event:
+    @classmethod
+    def from_decorator(cls, func, runner): ...
+
 class ClientEvents: ...
 class EventsClient(Client):
     clan_retry_interval: int
@@ -142,6 +145,13 @@ class EventsClient(Client):
     clan_cls: Type[Clan]
     player_cls: Type[Player]
     war_cls: Type[ClanWar]
+
+    _player_updates: set
+    _clan_updates: set
+    _war_updates: set
+
+    _listeners: Dict
+
 
     is_cwl_active: bool
 

@@ -85,10 +85,6 @@ class _ValidateEvent:
         except AttributeError:
             pass
 
-        # this is only called if the attr/func is not found the normal way.
-        # if "change" not in item:
-        #     raise ValueError("expected an event with `change` suffix.")
-
         # handle member_x events:
         if "member_" in item:
             item = item.replace("member_", "")
@@ -217,7 +213,7 @@ class ClanEvents:
     event_type = "clan"
 
     @classmethod
-    def member_join(cls, tags=None, custom_class=Clan, retry_interval=None):
+    def member_join(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a member has joined the clan."""
 
         async def wrapped(
@@ -236,7 +232,7 @@ class ClanEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, ClanEvents.event_type)
 
     @classmethod
-    def member_leave(cls, tags=None, custom_class=Clan, retry_interval=None):
+    def member_leave(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a member has left the clan."""
 
         async def wrapped(cached_clan, clan, callback):
@@ -258,7 +254,7 @@ class PlayerEvents:
     event_type = "player"
 
     @classmethod
-    def achievement_change(cls, tags=None, custom_class=Player, retry_interval=None):
+    def achievement_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has increased the value of an achievement."""
 
         async def wrapped(
@@ -273,7 +269,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def troop_change(cls, tags=None, custom_class=Player, retry_interval=None):
+    def troop_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a troop."""
 
         async def wrapped(
@@ -288,7 +284,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def spell_change(cls, tags=None, custom_class=Player, retry_interval=None):
+    def spell_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a spell."""
 
         async def wrapped(
@@ -303,7 +299,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def hero_change(cls, tags=None, custom_class=Player, retry_interval=None):
+    def hero_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a hero."""
 
         async def wrapped(
@@ -318,7 +314,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def joined_clan(cls, tags=None, custom_class=Player, retry_interval=None):
+    def joined_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
         async def wrapped(
@@ -332,7 +328,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def left_clan(cls, tags=None, custom_class=Player, retry_interval=None):
+    def left_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
         async def wrapped(
@@ -346,7 +342,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def clan_name(cls, tags=None, custom_class=Player, retry_interval=None):
+    def clan_name(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's name has changed."""
 
         async def wrapped(
@@ -358,7 +354,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def clan_badge(cls, tags=None, custom_class=Player, retry_interval=None):
+    def clan_badge(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's badge has changed."""
 
         async def wrapped(
@@ -370,7 +366,7 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def clan_level(cls, tags=None, custom_class=Player, retry_interval=None):
+    def clan_level(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's level has changed."""
 
         async def wrapped(
@@ -389,7 +385,7 @@ class WarEvents:
     event_type = "war"
 
     @classmethod
-    def war_attack(cls, tags=None, custom_class=ClanWar, retry_interval=None):
+    def war_attack(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a war player has made an attack."""
 
         async def wrapped(
