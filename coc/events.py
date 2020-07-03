@@ -85,6 +85,9 @@ class _ValidateEvent:
         except AttributeError:
             pass
 
+        if self.cls.event_type == "client":
+            return self.cls.__getattr__(self.cls, item)
+
         # handle member_x events:
         if "member_" in item:
             item = item.replace("member_", "")
@@ -402,14 +405,20 @@ class WarEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, WarEvents.event_type)
 
 
+@_ValidateEvent
 class ClientEvents:
     """Class that defines all valid client/misc events."""
 
+    event_type = "client"
+
     def __getattr__(self, item):
-        def wrapped(function):
-            function.is_client_event = True
-            function.event_name = item
-            return function
+        def wrapped():
+            def deco(function):
+                function.is_client_event = True
+                function.event_name = item
+                return function
+
+            return deco
 
         return wrapped
 
@@ -452,7 +461,7 @@ class EventsClient(Client):
         self._player_updates = set()
         self._war_updates = set()
 
-        self._listeners = {"clan": [], "player": [], "war": []}
+        self._listeners = {"clan": [], "player": [], "war": [], "client": {}}
 
         self._clans = {}
         self._players = {}
@@ -577,7 +586,10 @@ class EventsClient(Client):
         function : The function registered
         """
         if getattr(function, "is_client_event", False):
-            setattr(self, function.event_name, function)
+            try:
+                self._listeners["client"][function.event_name].append(function)
+            except KeyError:
+                self._listeners["client"][function.event_name] = [function]
             return function
 
         if not getattr(function, "is_event_listener", None):
@@ -665,30 +677,19 @@ class EventsClient(Client):
             task.cancel()
         super().close()
 
-    async def event_error(self, exception, *args, **kwargs):
-        """Event called when an event fails.
-
-        By default this will print the traceback
-        This can be overridden by either using @client.event or through subclassing EventsClient.
-
-        Example
-        --------
-
-        .. code-block:: python3
-
-            @client.event
-            async def on_event_error(event_name, exception, *args, **kwargs):
-                print('Ignoring exception in {}'.format(event_name))
-
-            class Client(events.EventClient):
-                async def on_event_error(event_name, exception, *args, **kwargs):
-                    print('Ignoring exception in {}'.format(event_name))
-
-        """
-        # pylint: disable=unused-argument
-        LOG.exception("Ignoring exception in event task.")
-        print("Ignoring exception in event task.")
-        traceback.print_exc()
+    def _send_event_error(self, exception):
+        # pylint: disable=broad-except
+        registered = self._listeners["client"].get("event_error")
+        if registered is None:
+            LOG.exception("Ignoring exception in event task.")
+            print("Ignoring exception in event task.")
+            traceback.print_exc()
+        else:
+            for event in registered:
+                try:
+                    asyncio.ensure_future(event(exception))
+                except (BaseException, Exception):
+                    LOG.exception("Ignoring exception in event task. Registered event_error event failed.")
 
     def _task_callback_check(self, result):
         if not result.done():
@@ -724,20 +725,28 @@ class EventsClient(Client):
                 await self._in_maintenance_event.wait()
                 if maintenance_start is None:
                     maintenance_start = datetime.utcnow()
-                    self.dispatch("maintenance_start")
+                    for event in self._listeners["client"].get("maintenance_start", []):
+                        try:
+                            asyncio.ensure_future(event())
+                        except (BaseException, Exception) as exc:
+                            self._send_event_error(exc)
                 try:
                     await self.get_clan("#G88CYQP")  # my clan
                 except Maintenance:
                     await asyncio.sleep(5)
                 else:
                     self._in_maintenance_event.clear()
-                    self.dispatch("maintenance_completion", maintenance_start)
+                    for event in self._listeners["client"].get("maintenance_completion", []):
+                        try:
+                            asyncio.ensure_future(event(maintenance_start))
+                        except (BaseException, Exception) as exc:
+                            self._send_event_error(exc)
                     maintenance_start = None
 
         except asyncio.CancelledError:
             pass
         except (Exception, BaseException) as exception:
-            await self.event_error(exception)
+            self._send_event_error(exception)
             return await self._maintenance_poller()
 
     async def _war_updater(self):
@@ -754,7 +763,7 @@ class EventsClient(Client):
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.event_error(exception)
+            self._send_event_error(exception)
             return await self._war_updater()
 
     async def _clan_updater(self):
@@ -771,7 +780,7 @@ class EventsClient(Client):
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.event_error(exception)
+            self._send_event_error(exception)
             return await self._clan_updater()
 
     async def _player_updater(self):
@@ -788,7 +797,7 @@ class EventsClient(Client):
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.event_error(exception)
+            self._send_event_error(exception)
             return await self._player_updater()
 
     @staticmethod
@@ -806,7 +815,13 @@ class EventsClient(Client):
             self._locks[key] = lock = asyncio.Lock()
 
         await lock.acquire()
-        player = await self.get_player(player_tag, cls=self.player_cls)
+
+        try:
+            player = await self.get_player(player_tag, cls=self.player_cls)
+        except Maintenance:
+            self._safe_unlock(lock)
+            return
+
         # sleep for either
         self.loop.call_later(max(player._response_retry, self.player_retry_interval), self._safe_unlock, lock)
 
@@ -830,7 +845,13 @@ class EventsClient(Client):
             self._locks[key] = lock = asyncio.Lock()
 
         await lock.acquire()
-        clan = await self.get_clan(clan_tag, cls=self.clan_cls)
+
+        try:
+            clan = await self.get_clan(clan_tag, cls=self.clan_cls)
+        except Maintenance:
+            self._safe_unlock(lock)
+            return
+
         # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
         self.loop.call_later(max(clan._response_retry, self.clan_retry_interval), self._safe_unlock, lock)
 
@@ -862,7 +883,7 @@ class EventsClient(Client):
 
         try:
             war = await meth(clan_tag, cls=self.war_cls)
-        except PrivateWarLog:
+        except (Maintenance, PrivateWarLog):
             self._safe_unlock(lock)
             return
 
