@@ -200,11 +200,11 @@ class Player(ClanMember):
     def __init__(self, *, data, client, **_):
         self._client = client
 
-        self._achievements = {}
-        self._heroes = {}
-        self._labels = []
-        self._spells = []
-        self._troops = []
+        self._achievements = None  # type: typing.Optional[dict]
+        self._heroes = None  # type: typing.Optional[dict]
+        self._labels = None  # type: typing.Optional[list]
+        self._spells = None  # type: typing.Optional[list]
+        self._troops = None  # type: typing.Optional[list]
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -245,7 +245,7 @@ class Player(ClanMember):
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
         labels = self._labels
-        if labels:
+        if labels is not None:
             return labels
 
         labels = self._labels = list(self.__iter_labels)
@@ -257,7 +257,7 @@ class Player(ClanMember):
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
         dict_achievements = self._achievements
-        if dict_achievements:
+        if dict_achievements is not None:
             return list(dict_achievements.values())
 
         achievement_dict = {a.name: a for a in self.__iter_achievements}
@@ -285,7 +285,7 @@ class Player(ClanMember):
             The returned achievement or ``None`` if not found.
         """
         dict_achievements = self._achievements
-        if not dict_achievements:
+        if dict_achievements is None:
             _ = self.achievements
             dict_achievements = self._achievements
 
@@ -302,7 +302,7 @@ class Player(ClanMember):
         or :attr:`Player.builder_troops` if you want an ordered list.
         """
         list_troops = self._troops
-        if list_troops:
+        if list_troops is not None:
             return list_troops
 
         list_troops = self._troops = list(t for t in self.__iter_troops if t.name not in SUPER_TROOP_ORDER)
@@ -345,7 +345,7 @@ class Player(ClanMember):
         This will return heroes in the order found in the store and labatory in-game.
         """
         dict_heroes = self._heroes
-        if dict_heroes:
+        if dict_heroes is not None:
             return list(dict_heroes.values())
 
         heroes_dict = {h.name: h for h in self.__iter_heroes}
@@ -374,7 +374,7 @@ class Player(ClanMember):
             The returned hero or ``None`` if not found.
         """
         dict_heroes = self._heroes
-        if not dict_heroes:
+        if dict_heroes is None:
             dict_heroes = self._heroes = {h.name: h for h in self.__iter_heroes}
 
         try:
@@ -389,7 +389,7 @@ class Player(ClanMember):
         This will return spells in the order found in both spell factory and labatory in-game.
         """
         list_spells = self._spells
-        if not list_spells:
+        if list_spells is None:
             list_spells = self._spells = list(self.__iter_spells)
 
         order = {k: v for v, k in enumerate(SPELL_ORDER)}

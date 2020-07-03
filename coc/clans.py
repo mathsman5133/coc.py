@@ -149,8 +149,8 @@ class Clan(BaseClan):
         self.label_cls = Label
         self.member_cls = ClanMember
 
-        self._labels = []
-        self._members = {}
+        self._labels = None  # type: typing.Optional[list]
+        self._members = None  # type: typing.Optional[dict]
 
         self._from_data(data)
 
@@ -185,7 +185,7 @@ class Clan(BaseClan):
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
         list_labels = self._labels
-        if list_labels:
+        if list_labels is not None:
             return list_labels
 
         list_labels = self._labels = list(self.__iter_labels)
@@ -195,7 +195,7 @@ class Clan(BaseClan):
     def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A list of members that belong to the clan."""
         dict_members = self._members
-        if dict_members:
+        if dict_members is not None:
             return list(dict_members.values())
 
         dict_members = self._members = {m.tag: m for m in self.__iter_members}
