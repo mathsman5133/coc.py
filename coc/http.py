@@ -26,7 +26,7 @@ import json
 import logging
 import re
 
-from collections import deque
+from collections import deque, Counter
 from datetime import datetime
 from itertools import cycle
 from time import monotonic
@@ -182,6 +182,8 @@ class HTTPClient:
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
+        self.requests_made = Counter()
+        self.successful_requests = 0
 
     def _cache_remove(self, key):
         try:
@@ -261,6 +263,7 @@ class HTTPClient:
 
         async with self.__lock:
             async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
+                self.requests_made[response.status] += 1
                 LOG.debug("%s (%s) has returned %s", url, method, response.status)
                 data = await json_or_text(response)
 
@@ -277,6 +280,7 @@ class HTTPClient:
                     data["_response_retry"] = 0
 
                 if 200 <= response.status < 300:
+                    self.successful_requests += 1
                     LOG.debug("%s has received %s", url, data)
                     return data
 
