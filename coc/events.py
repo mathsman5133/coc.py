@@ -802,10 +802,12 @@ class EventsClient(Client):
 
     @staticmethod
     def _safe_unlock(lock):
+        LOG.info("unlocking lock %s", lock)
         try:
             lock.release()
+            LOG.info("successful unlock %s", lock)
         except RuntimeError:
-            pass
+            LOG.info("failed to unlock %s", lock)
 
     async def _run_player_update(self, player_tag):
         # pylint: disable=protected-access
@@ -823,7 +825,9 @@ class EventsClient(Client):
             return
 
         # sleep for either
-        self.loop.call_later(max(player._response_retry, self.player_retry_interval), self._safe_unlock, lock)
+        seconds = max(player._response_retry, self.player_retry_interval)
+        LOG.info("setting lock to unlock in %s", seconds)
+        self.loop.call_later(seconds, self._safe_unlock, lock)
 
         cached_player = self._get_cached_player(player_tag)
         self._update_player(player)
