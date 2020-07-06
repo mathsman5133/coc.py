@@ -774,7 +774,10 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                tasks = [self.loop.create_task(self._run_clan_update(tag)) for tag in self._clan_updates]
+                tasks = [
+                    self.loop.create_task(self._run_clan_update(index, tag))
+                    for index, tag in enumerate(self._clan_updates)
+                ]
                 await asyncio.gather(*tasks)
 
         except asyncio.CancelledError:
@@ -802,12 +805,10 @@ class EventsClient(Client):
 
     @staticmethod
     def _safe_unlock(lock):
-        LOG.info("unlocking lock %s", lock)
         try:
             lock.release()
-            LOG.info("successful unlock %s", lock)
         except RuntimeError:
-            LOG.info("failed to unlock %s", lock)
+            pass
 
     async def _run_player_update(self, player_tag):
         # pylint: disable=protected-access
@@ -841,8 +842,10 @@ class EventsClient(Client):
                 continue
             await listener(cached_player, player)
 
-    async def _run_clan_update(self, clan_tag):
+    async def _run_clan_update(self, index, clan_tag):
         # pylint: disable=protected-access
+        await asyncio.sleep(0.005 * index)
+
         key = "clan:{}".format(clan_tag)
         lock = self._locks.get(key)
         if lock is None:
