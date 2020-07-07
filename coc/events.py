@@ -757,7 +757,10 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                tasks = [asyncio.ensure_future(self._run_war_update(tag)) for tag in self._war_updates]
+                tasks = [
+                    self.loop.create_task(self._run_war_update(index, tag))
+                    for index, tag in enumerate(self._clan_updates)
+                ]
                 await asyncio.gather(*tasks)
 
         except asyncio.CancelledError:
@@ -794,7 +797,10 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                tasks = [self.loop.create_task(self._run_player_update(tag)) for tag in self._player_updates]
+                tasks = [
+                    self.loop.create_task(self._run_player_update(index, tag))
+                    for index, tag in enumerate(self._clan_updates)
+                ]
                 await asyncio.gather(*tasks)
 
         except asyncio.CancelledError:
@@ -810,8 +816,10 @@ class EventsClient(Client):
         except RuntimeError:
             pass
 
-    async def _run_player_update(self, player_tag):
+    async def _run_player_update(self, index, player_tag):
         # pylint: disable=protected-access
+        await asyncio.sleep(0.005 * index)
+
         key = "player:{}".format(player_tag)
         lock = self._locks.get(key)
         if lock is None:
@@ -874,8 +882,10 @@ class EventsClient(Client):
                 continue
             await listener(cached_clan, clan)
 
-    async def _run_war_update(self, clan_tag):
+    async def _run_war_update(self, index, clan_tag):
         # pylint: disable=protected-access
+        await asyncio.sleep(0.005 * index)
+
         key = "war:{}".format(clan_tag)
         lock = self._locks.get(key)
         if lock is None:
