@@ -277,7 +277,9 @@ class HTTPClient:
 
                 except (KeyError, AttributeError, ValueError):
                     # the request didn't contain cache control headers so skip any cache handling.
-                    data["_response_retry"] = 0
+                    # if the API returns a timeout error (504) it will return a string of HTML.
+                    if isinstance(data, dict):
+                        data["_response_retry"] = 0
 
                 if 200 <= response.status < 300:
                     self.successful_requests += 1
