@@ -442,6 +442,10 @@ class EventsClient(Client):
         self.player_cls = Player
         self.war_cls = ClanWar
 
+        self.clan_loops_run = 0
+        self.player_loops_run = 0
+        self.war_loops_run = 0
+
         self.is_cwl_active = options.pop("cwl_active", True)
 
         self._locks = {}
@@ -677,19 +681,21 @@ class EventsClient(Client):
             task.cancel()
         super().close()
 
-    def _send_event_error(self, exception):
+    def dispatch(self, event_name: str, *args, **kwargs):
         # pylint: disable=broad-except
-        registered = self._listeners["client"].get("event_error")
+        registered = self._listeners["client"].get(event_name)
         if registered is None:
-            LOG.exception("Ignoring exception in event task.")
-            print("Ignoring exception in event task.")
-            traceback.print_exc()
+            if event_name == "event_error":
+                LOG.exception("Ignoring exception in event task.")
+                print("Ignoring exception in event task.")
+                traceback.print_exc()
+
         else:
             for event in registered:
                 try:
-                    asyncio.ensure_future(event(exception))
+                    asyncio.ensure_future(event(*args, **kwargs))
                 except (BaseException, Exception):
-                    LOG.exception("Ignoring exception in event task. Registered event_error event failed.")
+                    LOG.exception("Ignoring exception in %s.", event_name)
 
     def _task_callback_check(self, result):
         if not result.done():
@@ -729,7 +735,7 @@ class EventsClient(Client):
                         try:
                             asyncio.ensure_future(event())
                         except (BaseException, Exception) as exc:
-                            self._send_event_error(exc)
+                            self.dispatch("event_error", exc)
                 try:
                     await self.get_clan("#G88CYQP")  # my clan
                 except Maintenance:
@@ -740,13 +746,13 @@ class EventsClient(Client):
                         try:
                             asyncio.ensure_future(event(maintenance_start))
                         except (BaseException, Exception) as exc:
-                            self._send_event_error(exc)
+                            self.dispatch("event_error", exc)
                     maintenance_start = None
 
         except asyncio.CancelledError:
             pass
         except (Exception, BaseException) as exception:
-            self._send_event_error(exception)
+            self.dispatch("event_error", exception)
             return await self._maintenance_poller()
 
     async def _war_updater(self):
@@ -757,16 +763,23 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
+                self.dispatch("war_loop_start", self.war_loops_run)
                 tasks = [
                     self.loop.create_task(self._run_war_update(index, tag))
                     for index, tag in enumerate(self._war_updates)
                 ]
                 await asyncio.gather(*tasks)
+                self.dispatch("war_loop_finish", self.war_loops_run)
+                self.war_loops_run += 1
 
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            self._send_event_error(exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks if "war" in k):
+                self._safe_unlock(lock)
+
             return await self._war_updater()
 
     async def _clan_updater(self):
@@ -777,16 +790,23 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
+                self.dispatch("clan_loop_start", self.clan_loops_run)
                 tasks = [
                     self.loop.create_task(self._run_clan_update(index, tag))
                     for index, tag in enumerate(self._clan_updates)
                 ]
                 await asyncio.gather(*tasks)
+                self.dispatch("clan_loop_finish", self.clan_loops_run)
+                self.clan_loops_run += 1
 
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            self._send_event_error(exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks if "clan" in k):
+                self._safe_unlock(lock)
+
             return await self._clan_updater()
 
     async def _player_updater(self):
@@ -797,16 +817,23 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
+                self.dispatch("player_loop_start", self.player_loops_run)
                 tasks = [
                     self.loop.create_task(self._run_player_update(index, tag))
                     for index, tag in enumerate(self._player_updates)
                 ]
                 await asyncio.gather(*tasks)
+                self.dispatch("player_loop_finish", self.player_loops_run)
+                self.player_loops_run += 1
 
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            self._send_event_error(exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks if "player" in k):
+                self._safe_unlock(lock)
+
             return await self._player_updater()
 
     @staticmethod
@@ -817,12 +844,13 @@ class EventsClient(Client):
             pass
 
     async def _run_player_update(self, index, player_tag):
-        # pylint: disable=protected-access
+        # pylint: disable=protected-access, broad-except
         await asyncio.sleep(0.005 * index)
 
         key = "player:{}".format(player_tag)
-        lock = self._locks.get(key)
-        if lock is None:
+        try:
+            lock = self._locks[key]
+        except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
         await lock.acquire()
@@ -830,6 +858,10 @@ class EventsClient(Client):
         try:
             player = await self.get_player(player_tag, cls=self.player_cls)
         except Maintenance:
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
             self._safe_unlock(lock)
             return
 
@@ -850,12 +882,13 @@ class EventsClient(Client):
             await listener(cached_player, player)
 
     async def _run_clan_update(self, index, clan_tag):
-        # pylint: disable=protected-access
+        # pylint: disable=protected-access, broad-except
         await asyncio.sleep(0.005 * index)
 
         key = "clan:{}".format(clan_tag)
-        lock = self._locks.get(key)
-        if lock is None:
+        try:
+            lock = self._locks[key]
+        except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
         await lock.acquire()
@@ -863,6 +896,10 @@ class EventsClient(Client):
         try:
             clan = await self.get_clan(clan_tag, cls=self.clan_cls)
         except Maintenance:
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
             self._safe_unlock(lock)
             return
 
@@ -882,12 +919,13 @@ class EventsClient(Client):
             await listener(cached_clan, clan)
 
     async def _run_war_update(self, index, clan_tag):
-        # pylint: disable=protected-access
+        # pylint: disable=protected-access, broad-except
         await asyncio.sleep(0.005 * index)
 
         key = "war:{}".format(clan_tag)
-        lock = self._locks.get(key)
-        if lock is None:
+        try:
+            lock = self._locks[key]
+        except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
         await lock.acquire()
@@ -900,6 +938,10 @@ class EventsClient(Client):
         try:
             war = await meth(clan_tag, cls=self.war_cls)
         except (Maintenance, PrivateWarLog):
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
             self._safe_unlock(lock)
             return
 

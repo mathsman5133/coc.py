@@ -567,6 +567,7 @@ class Client:
         If no league group is found, or the group is in ``preparation``, this method will return the
         :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
         """
+        # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
@@ -580,9 +581,9 @@ class Client:
 
         try:
             league_group = await self.get_league_group(clan_tag)
-        except NotFound:
+        except NotFound as exception:
             if not get_war:
-                raise PrivateWarLog
+                raise PrivateWarLog(exception.response, exception._data)
             return get_war
 
         if league_group.state == "preparation":
