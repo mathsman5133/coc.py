@@ -43,7 +43,7 @@ class BaseClan(ABC):
         The clan's level.
     """
 
-    __slots__ = ("tag", "name", "_client", "badge", "_member_tags", "level", "_response_retry")
+    __slots__ = ("tag", "name", "_client", "badge", "level", "_response_retry")
 
     def __str__(self):
         return self.name
@@ -62,16 +62,20 @@ class BaseClan(ABC):
         self.name = data.get("name")
         self.badge = try_enum(Badge, data=data.get("badgeUrls"), client=self._client)
         self.level = data.get("clanLevel")
-        self._member_tags = None
 
     @property
     def share_link(self) -> str:
         """:class:`str` - A formatted link to open the clan in-game"""
         return "https://link.clashofclans.com/en?action=OpenClanProfile&tag=%23{}".format(self.tag.strip("#"))
 
-    def get_detailed_members(self, cache: bool = False) -> PlayerIterator:
+    @property
+    def members(self):
+        # pylint: disable=missing-function-docstring
+        return NotImplemented
+
+    def get_detailed_members(self) -> PlayerIterator:
         """Get detailed player information for every player in the clan.
-        This will return an AsyncIterator of :class:`SearchPlayer`.
+        This will return an AsyncIterator of :class:`Player`.
 
         Example
         --------
@@ -80,24 +84,17 @@ class BaseClan(ABC):
 
             clan = await client.get_clan('tag')
 
-            async for player in clan.get_detailed_members(cache=True):
+            async for player in clan.get_detailed_members():
                 print(player.name)
-
-        Parameters
-        -----------
-        cache: Optional[:class:`bool`]: Whether to use the bot's cache before making a HTTP request.
-                                        If a player is not found, only then make a request.
-                                        If using the events client, it is suggested that this be ``True``.
-                                        Defaults to ``False``.
 
         Returns
         -------
-        AsyncIterator of :class:`SearchPlayer`: the clan members.
+        AsyncIterator of :class:`Player`: the clan members.
         """
-        if not self._member_tags:
+        if self.members is NotImplemented:
             return NotImplemented
 
-        return PlayerIterator(self._client, self._member_tags, cache)
+        return PlayerIterator(self._client, (p.tag for p in self.members))
 
 
 class BasePlayer(ABC):

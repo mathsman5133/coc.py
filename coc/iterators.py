@@ -85,12 +85,15 @@ class TaggedIterator(_AsyncIterator):
     async def _run_method(self, tag: str):
         # pylint: disable=not-callable
         try:
-            return await self.get_method(tag, cls=self.cls, **self.kwargs)
+            # I'm yet to find a way to only pass an arg/kwarg if it's not None, so lets just do this in interim
+            if self.cls:
+                return await self.get_method(tag, cls=self.cls, **self.kwargs)
+            return await self.get_method(tag, **self.kwargs)
         except (NotFound, Forbidden, Maintenance):
             return None
 
     async def _fill_queue(self):
-        tasks = [asyncio.ensure_future(self._run_method(n)) for n in self.tags]
+        tasks = [self.client.loop.create_task(self._run_method(n)) for n in self.tags]
 
         results = await asyncio.gather(*tasks)
 
@@ -118,7 +121,7 @@ class TaggedIterator(_AsyncIterator):
 class ClanIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_clans`"""
 
-    def __init__(self, client, tags: Iterable, cls, **kwargs):
+    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super(ClanIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan
@@ -127,7 +130,7 @@ class ClanIterator(TaggedIterator):
 class PlayerIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_players`"""
 
-    def __init__(self, client, tags: Iterable, cls, **kwargs):
+    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super(PlayerIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_player
@@ -136,7 +139,7 @@ class PlayerIterator(TaggedIterator):
 class ClanWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_clan_wars`"""
 
-    def __init__(self, client, tags: Iterable, cls, **kwargs):
+    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super(ClanWarIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan_war
@@ -145,7 +148,7 @@ class ClanWarIterator(TaggedIterator):
 class LeagueWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_league_wars`"""
 
-    def __init__(self, client, tags: Iterable, cls, **kwargs):
+    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super(LeagueWarIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_league_war
@@ -154,7 +157,7 @@ class LeagueWarIterator(TaggedIterator):
 class CurrentWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_current_wars`"""
 
-    def __init__(self, client, tags: Iterable, cls, **kwargs):
+    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super(CurrentWarIterator, self).__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_current_war

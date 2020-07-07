@@ -24,33 +24,19 @@ SOFTWARE.
 import asyncio
 import logging
 import traceback
-import typing
 
 from collections.abc import Iterable
 from datetime import datetime
 
 from .client import Client
 from .clans import Clan
-from .players import Player, ClanMember
+from .players import Player
 from .wars import ClanWar
-from .war_attack import WarAttack
 from .errors import Maintenance, PrivateWarLog
 from .utils import correct_tag
 
 LOG = logging.getLogger(__name__)
 DEFAULT_SLEEP = 10
-
-_CustomClassType = typing.Union[typing.Type[Clan], typing.Type[Player], typing.Type[ClanWar]]
-_EventPredicateClasses = typing.Union[Clan, Player, ClanWar, ClanMember, WarAttack]
-_EventCallbackType = typing.Callable[[_EventPredicateClasses, _EventPredicateClasses], typing.Coroutine]
-_EventCallbackCustomArgumentsType = typing.Callable[..., typing.Coroutine]
-_EventPredicateType = typing.Callable[[_EventPredicateClasses, _EventPredicateClasses], bool]
-_EventWrappedPredicateType = typing.Callable[
-    [_EventPredicateClasses, _EventPredicateClasses, _EventCallbackType], typing.Coroutine
-]
-_EventDecoratorReturn = typing.Callable[[_EventCallbackType], _EventCallbackType]
-
-_EventDecoratorType = typing.Callable[[typing.Iterable, _CustomClassType, int], _EventDecoratorReturn]
 
 
 class Event:
@@ -58,7 +44,7 @@ class Event:
 
     __slots__ = ("runner", "callback", "tags", "type")
 
-    def __init__(self, runner, callback: _EventCallbackType, tags: Iterable, type_: str):
+    def __init__(self, runner, callback, tags, type_):
         self.runner = runner
         self.callback = callback
         self.tags = tags
@@ -79,7 +65,7 @@ class _ValidateEvent:
     def __init__(self, cls):
         self.cls = cls
 
-    def __getattr__(self, item: str) -> _EventDecoratorType:
+    def __getattr__(self, item: str):
         try:
             return getattr(self.cls, item)
         except AttributeError:
@@ -97,22 +83,18 @@ class _ValidateEvent:
 
         return self._create_event(item.replace("_change", ""), nested)
 
-    def _create_event(self, item: str, nested: bool = False) -> _EventDecoratorType:
+    def _create_event(self, item, nested=False):
         def pred(cached, live) -> bool:
             return getattr(cached, item) != getattr(live, item)
 
-        def actual(
-            tags: Iterable = None, custom_class: _CustomClassType = None, retry_interval: int = None
-        ) -> _EventDecoratorReturn:
-            # custom_class = custom_class or lookup.get(self.cls.event_type)
+        def actual(tags=None, custom_class=None, retry_interval=None):
             try:
-                custom_class and not nested and getattr(
-                    custom_class, item
-                )  # don't type check if it's nested... not worth the bother
+                # don't type check if it's nested... not worth the bother
+                custom_class and not nested and getattr(custom_class, item)
             except AttributeError:
                 raise RuntimeError("custom_class does not have expected attribute {}".format(item))
 
-            def decorator(func: _EventCallbackType) -> _EventCallbackType:
+            def decorator(func):
                 if nested:
                     wrap = _ValidateEvent.wrap_clan_member_pred
                 else:
@@ -126,35 +108,29 @@ class _ValidateEvent:
         return actual
 
     @staticmethod
-    def shortcut_register(
-        wrapped: _EventWrappedPredicateType,
-        tags: Iterable,
-        custom_class: _CustomClassType,
-        retry_interval: int,
-        event_type: str,
-    ) -> _EventDecoratorReturn:
+    def shortcut_register(wrapped, tags, custom_class, retry_interval, event_type):
         """Fast route of registering an event for custom events that are manually defined."""
 
-        def decorator(func: _EventCallbackType) -> _EventCallbackType:
+        def decorator(func):
             return _ValidateEvent.register_event(func, wrapped, tags, custom_class, retry_interval, event_type)
 
         return decorator
 
     @staticmethod
-    def wrap_pred(pred: _EventPredicateType) -> _EventWrappedPredicateType:
+    def wrap_pred(pred):
         """Wraps a predicate in a coroutine that awaits the callback if the predicate is True."""
 
-        async def wrapped(cached: _EventPredicateClasses, live: _EventPredicateClasses, callback: _EventCallbackType):
+        async def wrapped(cached, live, callback):
             if pred(cached, live):
                 await callback(cached, live)
 
         return wrapped
 
     @staticmethod
-    def wrap_clan_member_pred(pred: _EventPredicateType) -> _EventWrappedPredicateType:
+    def wrap_clan_member_pred(pred):
         """Wraps a predicate for a clan member (ie nested) attribute from clan objects, and calls the callback."""
 
-        async def wrapped(cached_clan: Clan, clan: Clan, callback: _EventCallbackType) -> None:
+        async def wrapped(cached_clan: Clan, clan: Clan, callback):
             for member in clan.members:
                 cached_member = cached_clan.get_member(member.tag)
                 if cached_member is not None and pred(cached_member, member) is True:
@@ -165,14 +141,7 @@ class _ValidateEvent:
         return wrapped
 
     @staticmethod
-    def register_event(
-        func: _EventCallbackType,
-        runner: _EventWrappedPredicateType,
-        tags: Iterable = None,
-        cls: _CustomClassType = None,
-        retry_interval: int = None,
-        event_type: str = "",
-    ) -> _EventCallbackType:
+    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type=""):
         """Validates the types of all arguments and adds these as attributes to the function."""
         # pylint: disable=too-many-arguments
         if getattr(func, "is_event_listener", False) and func.event_type != event_type:
@@ -219,11 +188,7 @@ class ClanEvents:
     def member_join(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a member has joined the clan."""
 
-        async def wrapped(
-            cached_clan: _EventPredicateClasses,
-            clan: _EventPredicateClasses,
-            callback: _EventCallbackCustomArgumentsType,
-        ) -> None:
+        async def wrapped(cached_clan, clan, callback):
             current_tags = set(n.tag for n in cached_clan.members)
             if not current_tags:
                 return
@@ -260,11 +225,7 @@ class PlayerEvents:
     def achievement_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has increased the value of an achievement."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses,
-            player: _EventPredicateClasses,
-            callback: _EventCallbackCustomArgumentsType,
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             achievement_updates = (n for n in player.achievements if n not in set(cached_player.achievements))
             for achievement in achievement_updates:
                 await callback(cached_player, player, achievement)
@@ -275,11 +236,7 @@ class PlayerEvents:
     def troop_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a troop."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses,
-            player: _EventPredicateClasses,
-            callback: _EventCallbackCustomArgumentsType,
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             troop_upgrades = (n for n in player.troops if n not in set(cached_player.troops))
             for troop in troop_upgrades:
                 await callback(cached_player, player, troop)
@@ -290,11 +247,7 @@ class PlayerEvents:
     def spell_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a spell."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses,
-            player: _EventPredicateClasses,
-            callback: _EventCallbackCustomArgumentsType,
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             spell_upgrades = (n for n in player.spells if n not in set(cached_player.spells))
             for spell in spell_upgrades:
                 await callback(cached_player, player, spell)
@@ -305,11 +258,7 @@ class PlayerEvents:
     def hero_change(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has upgraded or unlocked a hero."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses,
-            player: _EventPredicateClasses,
-            callback: _EventCallbackCustomArgumentsType,
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             hero_upgrades = (n for n in player.heroes if n not in set(cached_player.heroes))
             for hero in hero_upgrades:
                 await callback(cached_player, player, hero)
@@ -320,9 +269,7 @@ class PlayerEvents:
     def joined_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses, player: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             if cached_player.clan is None and player.clan is not None:
                 await callback(cached_player, player)
             elif cached_player.clan is not None and player.clan is not None and cached_player.clan != player.clan:
@@ -334,9 +281,7 @@ class PlayerEvents:
     def left_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses, player: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             if cached_player.clan is not None and player.clan is None:
                 await callback(cached_player, player)
             elif cached_player.clan and player.clan and cached_player.clan.tag != player.clan.tag:
@@ -348,9 +293,7 @@ class PlayerEvents:
     def clan_name(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's name has changed."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses, player: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             if cached_player.clan and player.clan and cached_player.clan.name != player.clan.name:
                 await callback(cached_player, player)
 
@@ -360,9 +303,7 @@ class PlayerEvents:
     def clan_badge(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's badge has changed."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses, player: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             if cached_player.clan and player.clan and cached_player.clan.badge != player.clan.badge:
                 await callback(cached_player, player)
 
@@ -372,9 +313,7 @@ class PlayerEvents:
     def clan_level(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player's clan's level has changed."""
 
-        async def wrapped(
-            cached_player: _EventPredicateClasses, player: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_player, player, callback):
             if cached_player.clan and player.clan and cached_player.clan.level != player.clan.level:
                 await callback(cached_player, player)
 
@@ -391,9 +330,7 @@ class WarEvents:
     def war_attack(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a war player has made an attack."""
 
-        async def wrapped(
-            cached_war: _EventPredicateClasses, war: _EventPredicateClasses, callback: _EventCallbackType
-        ) -> None:
+        async def wrapped(cached_war, war, callback):
             if cached_war.attacks:
                 new_attacks = (a for a in war.attacks if a not in set(cached_war.attacks))
             else:
@@ -471,53 +408,50 @@ class EventsClient(Client):
         self._players = {}
         self._wars = {}
 
-    def add_clan_updates(self, value):
-        if isinstance(value, str):
-            if self.correct_tags:
-                self._clan_updates.add(correct_tag(value))
-            else:
-                self._clan_updates.add(value)
+    def add_clan_updates(self, tags):
+        """Add clan tags to receive events for.
 
-        elif isinstance(value, Iterable):
-            if self.correct_tags:
-                self._clan_updates.update(correct_tag(tag) for tag in value)
-            else:
-                self._clan_updates.update(value)
-
+        Parameters
+        ------------
+        tags: Union[:class:`collections.Iterable`, str]
+            The clan tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
+        """
+        if isinstance(tags, str):
+            self._clan_updates.add(correct_tag(tags))
+        elif isinstance(tags, Iterable):
+            self._clan_updates.update(correct_tag(tag) for tag in tags)
         else:
-            raise TypeError("clan tags must be of type str or Iterable not {0!r}".format(value))
+            raise TypeError("clan tags must be of type str or Iterable not {0!r}".format(tags))
 
-    def add_player_updates(self, value):
-        if isinstance(value, str):
-            if self.correct_tags:
-                self._player_updates.add(correct_tag(value))
-            else:
-                self._player_updates.add(value)
+    def add_player_updates(self, tags):
+        """Add player tags to receive events for.
 
-        elif isinstance(value, Iterable):
-            if self.correct_tags:
-                self._player_updates.update(correct_tag(tag) for tag in value)
-            else:
-                self._player_updates.update(value)
-
+        Parameters
+        ------------
+        tags : Union[:class:`collections.Iterable`, str]
+            The player tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
+        """
+        if isinstance(tags, str):
+            self._player_updates.add(correct_tag(tags))
+        elif isinstance(tags, Iterable):
+            self._player_updates.update(correct_tag(tag) for tag in tags)
         else:
-            raise TypeError("player tags must be of type str or Iterable not {0!r}".format(value))
+            raise TypeError("player tags must be of type str or Iterable not {0!r}".format(tags))
 
-    def add_war_updates(self, value):
-        if isinstance(value, str):
-            if self.correct_tags:
-                self._war_updates.add(correct_tag(value))
-            else:
-                self._war_updates.add(value)
+    def add_war_updates(self, tags):
+        """Add clan tags to receive war events for.
 
-        elif isinstance(value, Iterable):
-            if self.correct_tags:
-                self._war_updates.update(correct_tag(tag) for tag in value)
-            else:
-                self._war_updates.update(value)
-
+        Parameters
+        ------------
+        tags : Union[:class:`collections.Iterable`, str]
+            The clan tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
+        """
+        if isinstance(tags, str):
+            self._war_updates.add(correct_tag(tags))
+        elif isinstance(tags, Iterable):
+            self._war_updates.update(correct_tag(tag) for tag in tags)
         else:
-            raise TypeError("clan war tags must be of type str or Iterable not {0!r}".format(value))
+            raise TypeError("clan war tags must be of type str or Iterable not {0!r}".format(tags))
 
     def _get_cached_clan(self, clan_tag):
         try:
@@ -674,8 +608,7 @@ class EventsClient(Client):
             self.close()
 
     def close(self):
-        """Closes the client and all running tasks.
-        """
+        """Closes the client and all running tasks."""
         tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
         for task in tasks:
             task.cancel()

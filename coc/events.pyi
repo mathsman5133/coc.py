@@ -131,11 +131,6 @@ class WarEvents:
     @classmethod
     def state(cls, tags: Iterable = None, custom_class: Type[ClanWar] = ClanWar, retry_interval: int = None) -> _EventDecoratorReturn: ...
 
-
-class Event:
-    @classmethod
-    def from_decorator(cls, func, runner): ...
-
 class ClientEvents:
     @classmethod
     def maintenance_start(cls): ...

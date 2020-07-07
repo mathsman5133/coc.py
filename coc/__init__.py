@@ -27,7 +27,7 @@ __version__ = "1.0.0a"
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
-from .events import Event, PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
+from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Role,
     ACHIEVEMENT_ORDER,
