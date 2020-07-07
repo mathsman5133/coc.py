@@ -759,7 +759,7 @@ class EventsClient(Client):
 
                 tasks = [
                     self.loop.create_task(self._run_war_update(index, tag))
-                    for index, tag in enumerate(self._clan_updates)
+                    for index, tag in enumerate(self._war_updates)
                 ]
                 await asyncio.gather(*tasks)
 
@@ -799,7 +799,7 @@ class EventsClient(Client):
 
                 tasks = [
                     self.loop.create_task(self._run_player_update(index, tag))
-                    for index, tag in enumerate(self._clan_updates)
+                    for index, tag in enumerate(self._player_updates)
                 ]
                 await asyncio.gather(*tasks)
 
@@ -835,7 +835,6 @@ class EventsClient(Client):
 
         # sleep for either
         seconds = max(player._response_retry, self.player_retry_interval)
-        LOG.info("setting lock to unlock in %s", seconds)
         self.loop.call_later(seconds, self._safe_unlock, lock)
 
         cached_player = self._get_cached_player(player_tag)
