@@ -1,8 +1,8 @@
 .. currentmodule:: coc
 .. _migrating_to_v1_0:
 
-Migrating to coc.py v1.0.0
-==========================
+Migrating to coc.py v1.0
+========================
 v1.0 is a complete rewrite of the library, from top to bottom, and no effort was made to maintain backwards compatibility.
 
 Most notably, all models have been rewritten and the :class:`EventsClient` has undergone a significant refactor.
@@ -12,8 +12,9 @@ All exceptions and iterators remain the same, and :class:`Client` methods remain
 Clans
 -----
 The naming of clan objects has been changed to align with the API naming, and to improve understand of what each model represents and where it may come from.
+
 For example, previously, ``coc.BasicClan`` was an abstract name to describe a clan with limit information, belonging to a player, as returned in the :meth:`Client.get_player` method.
- It has been renamed to :class:`coc.PlayerClan`.
+It has been renamed to :class:`coc.PlayerClan`.
 
 +--------------------+-------------------------+
 |      Before        |        After            |
@@ -25,29 +26,30 @@ For example, previously, ``coc.BasicClan`` was an abstract name to describe a cl
 | ``coc.SearchClan`` | :class:`coc.Clan`       |
 +--------------------+-------------------------+
 
-Additionally, :class:`RankedClan` was added. This is returned when the :meth:`Client.get_location_clans` or :meth:`Client.get_location_clans_versus` are called.
- Also, :class:`ClanWarLeagueClan` was added, which represents a CWL clan retrieved in the :meth:`Client.get_league_group` method.
+Additionally, :class:`RankedClan` was added.
+This is returned when the :meth:`Client.get_location_clans` or :meth:`Client.get_location_clans_versus` are called.
+Also, :class:`ClanWarLeagueClan` was added, which represents a CWL clan retrieved in the :meth:`Client.get_league_group` method.
 
 Properties and Methods
 ~~~~~~~~~~~~~~~~~~~~~~
 
-+-------------------------+----------------------------+
-|        Before           |         After              |
-+-------------------------+----------------------------+
-| ``Clan.iterlabels`      | :attr:`Clan.labels`        |
-+-------------------------+----------------------------+
-| ``Clan.itermembers`     | :attr:`Clan.members`       |
-+-------------------------+----------------------------+
-| ``Clan.members_dict``   | Removed                    |
-+-------------------------+----------------------------+
-| ``Clan.get_member``     | :meth:`Clan.get_member_by` |
-+-------------------------+----------------------------+
-| ``WarClan.itermembers`  | :attr:`Clan.members`       |
-+-------------------------+----------------------------+
-| ``WarClan.iterattacks`  | :attr:`WarClan.attacks`    |
-+-------------------------+----------------------------+
-| ``WarClan.iterdefenses` | :attr:`WarClan.defenses`   |
-+-------------------------+----------------------------+
++--------------------------+----------------------------+
+|        Before            |         After              |
++--------------------------+----------------------------+
+| ``Clan.iterlabels``      | :attr:`Clan.labels`        |
++--------------------------+----------------------------+
+| ``Clan.itermembers``     | :attr:`Clan.members`       |
++--------------------------+----------------------------+
+| ``Clan.members_dict``    | Removed                    |
++--------------------------+----------------------------+
+| ``Clan.get_member``      | :meth:`Clan.get_member_by` |
++--------------------------+----------------------------+
+| ``WarClan.itermembers``  | :attr:`Clan.members`       |
++--------------------------+----------------------------+
+| ``WarClan.iterattacks``  | :attr:`WarClan.attacks`    |
++--------------------------+----------------------------+
+| ``WarClan.iterdefenses`` | :attr:`WarClan.defenses`   |
++--------------------------+----------------------------+
 
 A quick example about the use of :meth:`Clan.get_member` and :meth:`Clan.get_member_by`:
 
@@ -443,3 +445,6 @@ For example:
     client.add_player_updates(*tags)
 
 
+Custom Classes
+--------------
+For more information on custom class support, please see :ref:`custom_classes`.
