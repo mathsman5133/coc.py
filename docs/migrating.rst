@@ -104,9 +104,9 @@ Properties and Methods
 +-------------------------------------------+----------------------------------+
 |        Before                             |         After                    |
 +-------------------------------------------+----------------------------------+
-| ``WarMember.iterattacks`                  | :attr:`ClanWarMember.attacks`    |
+| ``WarMember.iterattacks``                 | :attr:`ClanWarMember.attacks`    |
 +-------------------------------------------+----------------------------------+
-| ``WarMember.iterdefenses`                 | :attr:`ClanWarMember.defenses`   |
+| ``WarMember.iterdefenses``                | :attr:`ClanWarMember.defenses`   |
 +-------------------------------------------+----------------------------------+
 | ``SearchPlayer.iterachievements``         | :attr:`Player.achievements`      |
 +-------------------------------------------+----------------------------------+
