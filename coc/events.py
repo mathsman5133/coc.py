@@ -409,49 +409,72 @@ class EventsClient(Client):
         self._wars = {}
 
     def add_clan_updates(self, tags):
-        """Add clan tags to receive events for.
+        """Add clan tags to receive updates for.
 
         Parameters
         ------------
-        tags: Union[:class:`collections.Iterable`, str]
-            The clan tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
-        """
-        if isinstance(tags, str):
-            self._clan_updates.add(correct_tag(tags))
-        elif isinstance(tags, Iterable):
-            self._clan_updates.update(correct_tag(tag) for tag in tags)
-        else:
-            raise TypeError("clan tags must be of type str or Iterable not {0!r}".format(tags))
+        \\*tags : str
+            The clan tags to add. If you wish to pass in an iterable, you must unpack it with \\*.
 
-    def add_player_updates(self, tags):
-        """Add player tags to receive events for.
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_clan_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_clan_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan tag must be of type str not {0!r}".format(tag))
+            self._player_updates.add(correct_tag(tag))
+
+    def add_player_updates(self, *tags):
+        r"""Add player tags to receive events for.
 
         Parameters
         ------------
-        tags : Union[:class:`collections.Iterable`, str]
-            The player tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
+        \\*tags : str
+            The player tags to add. If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_player_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_player_updates(*tags)
+
         """
-        if isinstance(tags, str):
-            self._player_updates.add(correct_tag(tags))
-        elif isinstance(tags, Iterable):
-            self._player_updates.update(correct_tag(tag) for tag in tags)
-        else:
-            raise TypeError("player tags must be of type str or Iterable not {0!r}".format(tags))
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("player tag must be of type str not {0!r}".format(tag))
+            self._player_updates.add(correct_tag(tag))
 
     def add_war_updates(self, tags):
-        """Add clan tags to receive war events for.
+        r"""Add clan tags to receive war events for.
 
         Parameters
         ------------
-        tags : Union[:class:`collections.Iterable`, str]
-            The clan tags to add. Could be an Iterable (list, tuple, etc.) of tags or just a single string tag.
+        \\*tags : str
+            The clan tags to add that will receive war events.
+            If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_war_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_war_updates(*tags)
         """
-        if isinstance(tags, str):
-            self._war_updates.add(correct_tag(tags))
-        elif isinstance(tags, Iterable):
-            self._war_updates.update(correct_tag(tag) for tag in tags)
-        else:
-            raise TypeError("clan war tags must be of type str or Iterable not {0!r}".format(tags))
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
+            self._player_updates.add(correct_tag(tag))
 
     def _get_cached_clan(self, clan_tag):
         try:

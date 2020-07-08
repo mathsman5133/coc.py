@@ -21,12 +21,26 @@ Events
 
    events
 
+Custom Classes
+--------------
+.. toctree::
+   :maxdepth: 3
+
+   customclasses
+
 Changelog
 ----------
 .. toctree::
    :maxdepth: 2
 
    changelog
+
+Migrating to v1.0
+-----------------
+.. toctree::
+   :maxdepth: 2
+
+   migrating
 
 If you still can't find what you're looking for, try in one of the following pages:
 

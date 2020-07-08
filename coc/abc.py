@@ -52,7 +52,7 @@ class BaseClan(ABC):
         return "<%s tag=%s name=%s>" % (self.__class__.__name__, self.tag, self.name)
 
     def __eq__(self, other):
-        return isinstance(self, other.__class__) and self.tag == other.tag
+        return isinstance(other, BaseClan) and self.tag == other.tag
 
     def __init__(self, *, data, client, **_):
         self._client = client
@@ -115,6 +115,9 @@ class BasePlayer(ABC):
 
     def __repr__(self):
         return "<%s tag=%s name=%s>" % (self.__class__.__name__, self.tag, self.name,)
+
+    def __eq__(self, other):
+        return isinstance(other, BasePlayer) and self.tag == other.tag
 
     def __init__(self, *, data, client, **_):
         self._client = client
