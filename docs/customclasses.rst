@@ -165,8 +165,10 @@ However, this can lead to hard-to-trace bugs and the like.
 
 
 .. _events_custom_class:
+
 Custom Classes in Events
 ------------------------
+
 In a similar way to tags and retry intervals, custom classes can be set via the decorator,
 or by assigning the attribute.
 
