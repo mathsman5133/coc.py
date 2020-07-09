@@ -472,7 +472,7 @@ class Badge:
 
         Returns
         --------
-        :class:`int`: The number of bytes written.
+        The number of bytes written: :class:`int`
 
         Raises
         ------

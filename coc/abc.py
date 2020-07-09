@@ -89,7 +89,7 @@ class BaseClan(ABC):
 
         Returns
         -------
-        AsyncIterator of :class:`Player`: the clan members.
+        AsyncIterator of :class:`Player` - the clan members.
         """
         if self.members is NotImplemented:
             return NotImplemented
