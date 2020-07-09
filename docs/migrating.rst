@@ -44,12 +44,39 @@ Properties and Methods
 +--------------------------+----------------------------+
 | ``Clan.get_member``      | :meth:`Clan.get_member_by` |
 +--------------------------+----------------------------+
+| Didn't exist             | :meth:`Clan.get_member`    |
++--------------------------+----------------------------+
 | ``WarClan.itermembers``  | :attr:`Clan.members`       |
 +--------------------------+----------------------------+
 | ``WarClan.iterattacks``  | :attr:`WarClan.attacks`    |
 +--------------------------+----------------------------+
 | ``WarClan.iterdefenses`` | :attr:`WarClan.defenses`   |
 +--------------------------+----------------------------+
+
+A quick explanation and example of the uses of :meth:`Clan.get_member` and :meth:`Clan.get_member_by`:
+
+The previous :meth:`Clan.get_member` has been *renamed* to :meth:`Clan.get_member_by`.
+
+A *new* method, :meth:`Clan.get_member` has been introduced. It provides a way to get a member (by tag) that is
+*significantly* faster than :meth:`Clan.get_member`.
+
+The below is a slimmed down version of how each function work. This **is not** a working example, however it highlights
+the use and efficiency of :meth:`Clan.get_member` vs :meth:`Clan.get_member_by`
+
+.. code-block:: python3
+
+    def get_member(self, tag):
+        try:
+            return self._members[tag]  # fast dict lookup
+        except KeyError:
+            return None
+
+    def get_member_by(self, **attrs):
+        for member in self.members:
+            # slow because it potentially has to iterate over every member before finding the correct one
+            if all(getattr(member, k) == v for k, v in attrs):
+                return member
+
 
 A quick example about the use of :meth:`Clan.get_member` and :meth:`Clan.get_member_by`:
 
@@ -443,6 +470,22 @@ For example:
 
     tags = ["#tag1", "#tag2", "#tag3"]
     client.add_player_updates(*tags)
+
+
+Removing Clan and Player Tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v1.0 provides added functionality of removing player and clan tags from the list of tags being updated:
+:meth:`EventsClient.remove_player_updates`, :meth:`EventsClient.remove_clan_updates` and :meth:`EventsClient.remove_war_updates`.
+
+The usage is intuitive, and identical to adding the tags:
+
+.. code-block:: python3
+
+    client.remove_player_updates("#tag1", "#tag2", "#tag3")
+
+    tags = ["#tag1", "#tag2", "#tag3"]
+    client.remove_player_updates(*tags)
 
 
 Custom Classes
