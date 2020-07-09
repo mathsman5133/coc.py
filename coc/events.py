@@ -408,7 +408,7 @@ class EventsClient(Client):
         self._players = {}
         self._wars = {}
 
-    def add_clan_updates(self, tags):
+    def add_clan_updates(self, *tags):
         """Add clan tags to receive updates for.
 
         Parameters
@@ -428,7 +428,29 @@ class EventsClient(Client):
         for tag in tags:
             if not isinstance(tag, str):
                 raise TypeError("clan tag must be of type str not {0!r}".format(tag))
-            self._player_updates.add(correct_tag(tag))
+            self._clan_updates.add(correct_tag(tag))
+
+    def remove_clan_updates(self, *tags):
+        """Remove clan tags that you receive events updates for.
+
+        Parameters
+        ------------
+        \\*tags : str
+            The clan tags to remove. If you wish to pass in an iterable, you must unpack it with \\*.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_clan_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_clan_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan tag must be of type str not {0!r}".format(tag))
+            self._clan_updates.remove(correct_tag(tag))
 
     def add_player_updates(self, *tags):
         r"""Add player tags to receive events for.
@@ -453,7 +475,30 @@ class EventsClient(Client):
                 raise TypeError("player tag must be of type str not {0!r}".format(tag))
             self._player_updates.add(correct_tag(tag))
 
-    def add_war_updates(self, tags):
+    def remove_player_updates(self, *tags):
+        r"""Remove player tags that you receive events updates for.
+
+        Parameters
+        ------------
+        \\*tags : str
+            The player tags to remove. If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_player_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_player_updates(*tags)
+
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("player tag must be of type str not {0!r}".format(tag))
+            self._player_updates.remove(correct_tag(tag))
+
+    def add_war_updates(self, *tags):
         r"""Add clan tags to receive war events for.
 
         Parameters
@@ -474,7 +519,30 @@ class EventsClient(Client):
         for tag in tags:
             if not isinstance(tag, str):
                 raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
-            self._player_updates.add(correct_tag(tag))
+            self._war_updates.add(correct_tag(tag))
+
+    def remove_war_updates(self, *tags):
+        r"""Remove player tags that you receive events updates for.
+
+        Parameters
+        ------------
+        \\*tags : str
+            The clan tags to remove that will receive war events.
+            If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_war_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_war_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
+            self._war_updates.remove(correct_tag(tag))
 
     def _get_cached_clan(self, clan_tag):
         try:
