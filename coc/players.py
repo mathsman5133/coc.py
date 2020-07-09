@@ -237,7 +237,9 @@ class Player(ClanMember):
 
         self.__iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self.__iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
-        self.__iter_troops = (troop_cls(data=sdata) for sdata in data_get("troops", []))
+        self.__iter_troops = (
+            troop_cls(data=tdata) for tdata in data_get("troops", []) if tdata.get("name") not in SUPER_TROOP_ORDER
+        )
         self.__iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
         self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
 
@@ -305,7 +307,7 @@ class Player(ClanMember):
         if list_troops is not None:
             return list_troops
 
-        list_troops = self._troops = list(t for t in self.__iter_troops if t.name not in SUPER_TROOP_ORDER)
+        list_troops = self._troops = list(t for t in self.__iter_troops)
         return list_troops
 
     @property

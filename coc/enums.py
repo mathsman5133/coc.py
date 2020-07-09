@@ -68,6 +68,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Lava Hound",
     "Bowler",
     "Ice Golem",
+    "Headhunter",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -77,7 +78,16 @@ SIEGE_MACHINE_ORDER = [
     "Siege Barracks",
 ]
 
-SUPER_TROOP_ORDER = ["Sneaky Goblin", "Super Barbarian", "Super Wall Breaker", "Super Giant"]
+SUPER_TROOP_ORDER = [
+    "Super Barbarian",
+    "Super Giant",
+    "Sneaky Goblin",
+    "Super Wall Breaker",
+    "Inferno Dragon",
+    "Super Witch",
+    "Super Archer",  # not added yet but they're in the API payload for some reason
+    "Super Valkyrie",  # not added yet but they're in the API payload for some reason
+]
 
 # TODO: when SC fixes Super Troops in API add them here
 HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
