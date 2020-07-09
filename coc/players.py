@@ -65,12 +65,14 @@ class ClanMember(BasePlayer):
         "league_cls",
     )
 
-    def __init__(self, *, data, client, **_):
+    def __init__(self, *, data, client, clan=None, **_):
         super().__init__(data=data, client=client)
         self._client = client
         self.clan_cls = PlayerClan
         self.league_cls = League
         self._from_data(data)
+        if clan:
+            self.clan = clan
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get

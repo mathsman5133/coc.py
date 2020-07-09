@@ -179,7 +179,9 @@ class Clan(BaseClan):
 
         # update members globally. only available via /clans/{clanTag}
         member_cls = self.member_cls
-        self.__iter_members = (member_cls(data=mdata, client=self._client) for mdata in data_get("memberList", []))
+        self.__iter_members = (
+            member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
+        )
 
     @property
     def labels(self) -> typing.List[Label]:
