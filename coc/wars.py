@@ -221,7 +221,7 @@ class ClanWar:
 
         Returns
         --------
-        :class:`WarAttack`: The attack with the correct attacker and defender tags."""
+        The attack with the correct attacker and defender tags: :class:`WarAttack`: """
         attacker = self.get_member(attacker_tag)
         if not attacker:
             return None
@@ -230,6 +230,22 @@ class ClanWar:
         if len(attacks) == 0:
             return None
         return get(attacks, defender_tag=defender_tag)
+
+    def get_defenses(self, defender_tag: str) -> typing.List[WarAttack]:
+        """Return a :class:`list` of :class:`WarAttack` for the defender tag provided.
+
+        If the player has no defenses, this will return an empty list.
+
+        Returns
+        --------
+        The player's defenses: :class:`list`[:class:`WarAttack`]"""
+        defender = self.get_member(defender_tag)
+        # we could do a global lookup on all attacks in the war but this is faster as we have to lookup half the attacks
+        if defender.is_opponent:
+            # we need to get home clan's attacks on this base
+            return list(filter(lambda x: x.defender_tag == defender_tag, self.clan.attacks))
+
+        return list(filter(lambda x: x.defender_tag == defender_tag, self.opponent.attacks))
 
 
 class ClanWarLogEntry:
