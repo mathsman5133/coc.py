@@ -46,7 +46,7 @@ class WarClan(BaseClan):
         :attr:`WarClan.exp_earned` will be ``None``.
 
     Attributes
-    -----------
+    ----------
     stars:
         :class:`int`: Number of stars by clan this war.
     destruction:

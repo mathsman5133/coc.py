@@ -33,7 +33,7 @@ class ClanWarMember(BasePlayer):
     be ``None``.
 
     Attributes
-    -----------
+    ----------
     town_hall:
         :class:`int`: The member's townhall level.
     map_position:
@@ -114,9 +114,10 @@ class ClanWarLeagueClanMember(BasePlayer):
     """Represents a clan member who is a part of the Clan War League master roster.
 
     Attributes
-    -----------
+    ----------
     town_hall: :class:`int`
-        The player's town hall level."""
+        The player's town hall level.
+    """
 
     __slots__ = ("town_hall",)
 

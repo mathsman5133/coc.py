@@ -34,7 +34,7 @@ class RankedClan(BaseClan):
     """Represents the clan object returned by leader-board rankings.
 
     Attributes
-    -----------
+    ----------
     location: :class:`Location`
         The clan's location.
     member_count: :class:`int`
@@ -77,7 +77,7 @@ class Clan(BaseClan):
     """Represents a Clash of Clans clan.
 
     Attributes
-    -----------
+    ----------
     type: :class:`str`
         The clan's type for accepting members.
         This could be ``open``, ``inviteOnly`` or ``closed``.

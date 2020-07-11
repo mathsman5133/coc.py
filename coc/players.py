@@ -107,7 +107,7 @@ class RankedPlayer(ClanMember):
     """Represents a leaderboard-ranked player.
 
     Attributes
-    ------------
+    ----------
     attack_wins: :class:`int`
         The player's number of attack wins. If retrieving info for versus leader-boards, this will be ``None``.
     defense_wins: :class:`int`
@@ -137,7 +137,7 @@ class Player(ClanMember):
     """Represents a Clash of Clans Player.
 
     Attributes
-    -----------
+    ----------
     achievement_cls: :class:`Achievement`
         The constructor used to create the :attr:`Player.achievements` list. This must inherit :class:`Achievement`.
     hero_cls: :class:`Hero`
