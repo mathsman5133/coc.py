@@ -22,8 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from abc import ABC
-
 from .miscmodels import try_enum, Badge
 from .iterators import PlayerIterator
 
@@ -64,7 +62,7 @@ class OverrideDoc(type):
         return new_cls
 
 
-class BaseClan(ABC, metaclass=OverrideDoc):
+class BaseClan(metaclass=OverrideDoc):
     """An ABC that implements some common operations on clans, regardless of type.
 
     Attributes
@@ -133,7 +131,7 @@ class BaseClan(ABC, metaclass=OverrideDoc):
         return PlayerIterator(self._client, (p.tag for p in self.members))
 
 
-class BasePlayer(ABC, metaclass=OverrideDoc):
+class BasePlayer(metaclass=OverrideDoc):
     """An ABC that implements some common operations on players, regardless of type.
 
     Attributes
