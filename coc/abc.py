@@ -56,7 +56,8 @@ class BaseClan(ABC):
         self._client = client
 
         self._response_retry = data.get("_response_retry")
-        self.tag = data.get("tag")  #: tag: str The clan's tag
+        self.tag = data.get("tag")
+        """str: The clan's tag"""
         self.name = data.get("name")
         self.badge = try_enum(Badge, data=data.get("badgeUrls"), client=self._client)
         self.level = data.get("clanLevel")
