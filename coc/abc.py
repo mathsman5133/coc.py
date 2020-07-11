@@ -31,7 +31,6 @@ from .iterators import PlayerIterator
 class BaseClan(ABC):
     """An ABC that implements some common operations on clans, regardless of type.
 
-    :ivar tag: str The clan's tag
     Attributes
     -----------
     name: :class:`str`
@@ -57,7 +56,7 @@ class BaseClan(ABC):
         self._client = client
 
         self._response_retry = data.get("_response_retry")
-        self.tag = data.get("tag")
+        self.tag = data.get("tag")  #: tag: str The clan's tag
         self.name = data.get("name")
         self.badge = try_enum(Badge, data=data.get("badgeUrls"), client=self._client)
         self.level = data.get("clanLevel")
