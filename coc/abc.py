@@ -33,6 +33,8 @@ class BaseClan(ABC):
 
     Attributes
     -----------
+    tag: :class:`str`
+        The clan's tag
     name: :class:`str`
         The clan's name
     badge: :class:`Badge`
@@ -57,7 +59,6 @@ class BaseClan(ABC):
 
         self._response_retry = data.get("_response_retry")
         self.tag = data.get("tag")
-        """str: The clan's tag"""
         self.name = data.get("name")
         self.badge = try_enum(Badge, data=data.get("badgeUrls"), client=self._client)
         self.level = data.get("clanLevel")
