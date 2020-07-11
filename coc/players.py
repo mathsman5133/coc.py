@@ -108,11 +108,11 @@ class RankedPlayer(ClanMember):
 
     Attributes
     ------------
-    attack_wins: int
+    attack_wins: :class:`int`
         The player's number of attack wins. If retrieving info for versus leader-boards, this will be ``None``.
-    defense_wins: int
+    defense_wins: :class:`int`
         The player's number of defense wins. If retrieving info for versus leader-boards, this will be ``None``.
-    versus_trophies: int
+    versus_trophies: :class:`int`
         The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
     rank: :class:`int`
         The player's rank in the leader board.
@@ -152,19 +152,19 @@ class Player(ClanMember):
         The number of attacks the player has won this season.
     defense_wins: :class:`int`
         The number of defenses the player has won this season.
-    best_trophies: int
+    best_trophies: :class:`int`
         The player's best recorded trophies for the home base.
-    war_stars: int
+    war_stars: :class:`int`
         The player's total war stars.
-    town_hall: int
+    town_hall: :class:`int`
         The player's town hall level.
-    town_hall_weapon: Optional[int]
+    town_hall_weapon: Optional[:class:`int`]
         The player's town hall weapon level, or ``None`` if it doesn't exist.
-    builder_hall: int
+    builder_hall: :class:`int`
         The player's builder hall level, or 0 if it hasn't been unlocked.
-    best_versus_trophies: int
+    best_versus_trophies: :class:`int`
         The player's best versus trophy count.
-    versus_attack_wins: int
+    versus_attack_wins: :class:`int`
         The number of versus attacks the player has won
     legend_statistics: Optional[:class:`LegendStatistics`]
         The player's legend statistics, or ``None`` if they have never been in the legend league.

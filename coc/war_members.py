@@ -115,7 +115,7 @@ class ClanWarLeagueClanMember(BasePlayer):
 
     Attributes
     -----------
-    town_hall: int
+    town_hall: :class:`int`
         The player's town hall level."""
 
     __slots__ = ("town_hall",)

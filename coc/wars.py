@@ -251,6 +251,17 @@ class ClanWar:
 class ClanWarLogEntry:
     """Represents a Clash of Clans War Log Entry
 
+    .. note::
+
+        Please see the :class:`WarClan` documention for a full list of missing attributes,
+        as the clan and opponent attributes are only partially filled by the API.
+
+        If the :attr:`ClanWarLogEntry.type` is ``cwl``, the :attr:`WarClan.attack_count`, :attr:`WarClan.stars`
+        and :attr:`WarClan.destruction` are all a total which over the period of that CWL season.
+
+        In addition, if it is a CWL entry, ``opponent`` and ``result`` will be ``None``.
+
+
     Attributes
     -----------
     result:
@@ -263,17 +274,6 @@ class ClanWarLogEntry:
         :class:`WarClan`: The home clan.
     opponent:
         :class:`WarClan`: The opposition clan.
-
-    .. note::
-
-        Please see the :class:`WarClan` documention for a full list of missing attributes,
-        as the clan and opponent attributes are only partially filled by the API.
-
-        If the :attr:`ClanWarLogEntry.type` is ``cwl``, the :attr:`WarClan.attack_count`, :attr:`WarClan.stars`
-        and :attr:`WarClan.destruction` are all a total which over the period of that CWL season.
-
-        In addition, if it is a CWL entry, ``opponent`` and ``result`` will be ``None``.
-
     """
 
     __slots__ = ("result", "end_time", "team_size", "clan", "opponent", "_client")

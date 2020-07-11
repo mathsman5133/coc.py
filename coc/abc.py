@@ -31,10 +31,9 @@ from .iterators import PlayerIterator
 class BaseClan(ABC):
     """An ABC that implements some common operations on clans, regardless of type.
 
+    :ivar tag: str The clan's tag
     Attributes
     -----------
-    tag: :class:`str`
-        The clan's tag
     name: :class:`str`
         The clan's name
     badge: :class:`Badge`

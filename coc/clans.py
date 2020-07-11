@@ -115,7 +115,7 @@ class Clan(BaseClan):
     member_cls: :class:`coc.ClanMember`
         The type which the members found in :attr:`Clan.members` will be of.
         Ensure any overriding of this inherits from :class:`coc.ClanMember`.
-    war_league: :class:`WarLeague`
+    war_league: :class:`coc.WarLeague`
         The clan's CWL league.
     """
 
@@ -215,7 +215,7 @@ class Clan(BaseClan):
 
         Returns
         --------
-        Optional[:class:`ClanMember`]: The member who matches the tag provided.
+        The member who matches the tag provided: Optional[:class:`ClanMember`]
         """
         dict_members = self._members
         if not dict_members:

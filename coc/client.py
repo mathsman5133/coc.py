@@ -552,7 +552,7 @@ class Client:
         .. note::
 
             You can differentiate between a regular clan war and a clan war league (CWL) war
-            by using the helper property, :attr:`ClanWar.is_cwl_war`.
+            by using the helper property, :attr:`ClanWar.is_cwl`.
 
 
         Parameters
@@ -879,7 +879,7 @@ class Client:
 
         Returns
         --------
-        :class:`list` of :class:`LeagueRankedPlayer`
+        :class:`list` of :class:`RankedPlayer`
         """
         data = await self.http.get_league_season_info(league_id, season_id)
         return [RankedPlayer(data=n, client=self) for n in data.get("items", [])]
