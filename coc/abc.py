@@ -46,7 +46,7 @@ class OverrideDoc(type):
                 continue
 
             if "Attributes" not in new_cls.__doc__:
-                new_cls.__doc__ += "Attributes" + doc
+                new_cls.__doc__ += "Attributes\n--------------------\n" + doc
             else:
                 try:
                     insert = new_cls.__doc__.index("Attributes")
