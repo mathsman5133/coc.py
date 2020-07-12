@@ -17,31 +17,37 @@ Clans
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: PlayerClan()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: RankedClan()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: WarClan()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanWarLeagueClan()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: Clan()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 
 Players
@@ -51,31 +57,37 @@ Players
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanMember()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: RankedPlayer()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanWarLeagueClanMember()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanWarMember()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: Player()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 
 Wars
@@ -85,16 +97,19 @@ Wars
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanWarLogEntry()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 .. autoclass:: ClanWarLeagueGroup()
     :members:
     :private-members:
     :inherited-members:
+    :noindex:
 
 
 WarAttack
