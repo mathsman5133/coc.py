@@ -45,8 +45,34 @@ if typing.TYPE_CHECKING:
 
 
 class ClanMember(BasePlayer):
-    """
-    Optional[:class:`Clan`]: The player's clan. If the player is clanless, this will be ``None``.
+    """Represents a Clash of Clans Clan Member.
+
+    Attributes
+    ----------
+    clan: Optional[:class:`Clan`]
+        The player's clan. If the player is clanless, this will be ``None``.
+    role: :class:`Role`
+        The member's role in a clan. To get a string as rendered in-game, do ``str(member.role)``.
+    exp_level: :class:`int`
+        The member's experience level.
+    league: :class:`League`
+        The member's current league.
+    versus_trophies: :class:`int`
+        The member's versus trophy count.
+    clan_rank: :class:`int`
+        The member's rank in the clan.
+    clan_previous_rank: :class:`int`
+        The member's rank in the clan at the end of the last season.
+    donations: :class:`int`
+        The member's donation count for this season.
+    received: :class:`int`
+        The member's donations received count for this season.
+    clan_cls: :class:`coc.Clan`
+        The class to use to create the :attr:`ClanMember.clan` attribute.
+        Ensure any overriding of this inherits from :class:`coc.Clan` or :class:`coc.PlayerClan`.
+    league_cls: :class:`coc.League`
+        The class to use to create the :attr:`Clanmember.league` attribute.
+        Ensure any overriding of this inherits from :class:`coc.League`.
     """
 
     __slots__ = (
