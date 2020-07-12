@@ -3,8 +3,38 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to coc.py's documentation!
-==================================
+coc.py: A Clash of Clans API Wrapper
+====================================
+
+.. _getting_started:
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
+
+.. _code_overview:
+.. toctree::
+   :maxdepth: 1
+   :caption: Code Overview
+
+   code_overview/client
+   code_overview/models
+   code_overview/event
+   code_overview/customclasses
+   code_overview/exceptions
+
+.. _examples:
+.. toctree::
+   :maxdepth: 1
+   :caption: Examples
+
+.. _miscellaneous:
+.. toctree::
+   :maxdepth: 1
+   :caption: Miscellaneous
+
+   miscellaneous/migrating
+   miscellaneous/changelog
+   miscellaneous/acknowledgements
 
 
 API Reference

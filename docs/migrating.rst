@@ -316,23 +316,28 @@ For example:
 
     @client.event
     @coc.PlayerEvents.trophies()  # an event that is run for every player, when their `.trophies` attribute changes.
-    async def foo(...): ...
+    async def foo(old_player, new_player):
+        assert old_player.trophies != new_player.trophies
 
     @client.event
     @coc.WarEvents.state()  # an event that is run when a war `.state` has changed
-    async def foo(...): ...
+    async def foo(old_war, new_war):
+        assert old_war.state != new_war.state
 
     @client.event
     @coc.ClanEvents.public_war_log()  # an event that is run when a clan's `.public_war_log` attribute has changed.
-    async def foo(...): ...
+    async def foo(old_clan, new_clan):
+        assert old_clan.public_war_log != new_clan.public_war_log
 
     @client.event
     @coc.ClanEvents.member_donations()  # an event that is run for every clan member when their `.donations` have changed.
-    async def foo(...): ...
+    async def foo(old_member, new_member):
+        assert old_member.donations != new_member.donations
 
     @client.event
     @coc.PlayerEvents.clan_level()  # an event that is called when a player's clan's level has changed.
-    async def foo(...): ...
+    async def foo(old_player, new_player):
+        assert old_player.clan.level != new_player.clan.level
 
 You can also stack decorators to get multiple events reported to one callback:
 
