@@ -575,7 +575,7 @@ class Timestamp:
     __slots__ = ("raw_time", "_data")
 
     def __repr__(self):
-        attrs = [("time", self.raw_time), ("seconds_until", self.seconds_until)]
+        attrs = [("time", self.time), ("seconds_until", self.seconds_until)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
@@ -610,7 +610,7 @@ class Timestamp:
     def seconds_until(self) -> int:
         """:class:`int`: Returns the number of seconds until the timestamp. This may be negative."""
         delta = self.time - self.now
-        return delta.total_seconds()
+        return int(delta.total_seconds())
 
 
 class Label:
