@@ -74,6 +74,7 @@ from .miscmodels import (
     Troop,
     Timestamp,
     Label,
+    WarLeague,
 )
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan

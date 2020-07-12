@@ -36,42 +36,6 @@ coc.py: A Clash of Clans API Wrapper
    miscellaneous/changelog
    miscellaneous/acknowledgements
 
-
-API Reference
---------------
-.. toctree::
-   :maxdepth: 2
-
-   api
-
-Events
--------
-.. toctree::
-   :maxdepth: 2
-
-   events
-
-Custom Classes
---------------
-.. toctree::
-   :maxdepth: 3
-
-   customclasses
-
-Changelog
-----------
-.. toctree::
-   :maxdepth: 2
-
-   changelog
-
-Migrating to v1.0
------------------
-.. toctree::
-   :maxdepth: 2
-
-   migrating
-
 If you still can't find what you're looking for, try in one of the following pages:
 
 * :ref:`genindex`
