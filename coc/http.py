@@ -349,7 +349,14 @@ class HTTPClient:
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
 
-        existing_keys = (await self.find_site_keys(cookies))["keys"]
+        existing_keys_dict = await self.find_site_keys(cookies)
+        existing_keys = existing_keys_dict and existing_keys_dict.get("keys")
+        if existing_keys is None:
+            # long standing bug where the dev site doesn't give a proper return dict when
+            # multiple concurrent logins are made. this is just a safety net, hopefully one of
+            # the requests will work.
+            return
+
         key_id = [t["id"] for t in existing_keys if t["key"] == key]
 
         try:
