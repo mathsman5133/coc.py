@@ -636,15 +636,15 @@ class EventsClient(Client):
         if event_type == "clan":
             self.clan_cls = cls or self.clan_cls
             self.clan_retry_interval = retry_interval or self.clan_retry_interval
-            self.add_clan_updates(tags)
+            self.add_clan_updates(*tags)
         elif event_type == "player":
             self.player_cls = cls or self.player_cls
             self.player_retry_interval = retry_interval or self.player_retry_interval
-            self.add_player_updates(tags)
+            self.add_player_updates(*tags)
         elif event_type == "war":
             self.war_cls = cls or self.war_cls
             self.war_retry_interval = retry_interval or self.war_retry_interval
-            self.add_war_updates(tags)
+            self.add_war_updates(*tags)
 
         LOG.info("Successfully registered %s event", function)
         return function
@@ -801,7 +801,7 @@ class EventsClient(Client):
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
 
-            for lock in (v for k, v in self._locks if "war" in k):
+            for lock in (v for k, v in self._locks.items() if "war" in k):
                 self._safe_unlock(lock)
 
             return await self._war_updater()
@@ -828,7 +828,7 @@ class EventsClient(Client):
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
 
-            for lock in (v for k, v in self._locks if "clan" in k):
+            for lock in (v for k, v in self._locks.items() if "clan" in k):
                 self._safe_unlock(lock)
 
             return await self._clan_updater()
@@ -855,7 +855,7 @@ class EventsClient(Client):
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
 
-            for lock in (v for k, v in self._locks if "player" in k):
+            for lock in (v for k, v in self._locks.items() if "player" in k):
                 self._safe_unlock(lock)
 
             return await self._player_updater()
@@ -966,6 +966,10 @@ class EventsClient(Client):
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
+            self._safe_unlock(lock)
+            return
+
+        if war is None:
             self._safe_unlock(lock)
             return
 

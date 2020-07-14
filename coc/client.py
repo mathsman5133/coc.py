@@ -421,7 +421,7 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception._data)
 
-        return ClanWar(data=data, clan_tag=clan_tag, client=self, **kwargs)
+        return cls(data=data, clan_tag=clan_tag, client=self, **kwargs)
 
     def get_clan_wars(self, clan_tags: Iterable, cls=ClanWar, **kwargs):
         """
@@ -591,6 +591,7 @@ class Client:
         else:
             round_tags = league_group.rounds[-2]
 
+        kwargs["clan_tag"] = clan_tag
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war
