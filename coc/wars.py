@@ -303,7 +303,7 @@ class ClanWarLogEntry:
     @property
     def is_league_entry(self) -> bool:
         """:class:`bool`: Boolean indicating if the entry is a Clan War League (CWL) entry."""
-        return self.result is None
+        return self.result is None or self.opponent is None
 
 
 class ClanWarLeagueGroup:
