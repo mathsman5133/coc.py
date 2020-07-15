@@ -87,7 +87,7 @@ class ClanWarMember(BasePlayer):
     @property
     def best_opponent_attack(self) -> WarAttack:
         """:class:`WarAttack`: Returns the best opponent attack on this base."""
-        return self.war.get_attack((self._best_opponent_attacker, self.tag))
+        return self.war.get_attack(self._best_opponent_attacker, self.tag)
 
     @property
     def attacks(self) -> typing.List[WarAttack]:
