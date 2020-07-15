@@ -30,7 +30,7 @@ class LintCommand(Command):
             ["python", "-m", "black", "--check", "-v", "--diff", "-l", "120", "--exclude=.pyi", "coc", "docs"]  # noqa
         )
         self.spawn(["python", "-m", "flake8", "coc"])
-        self.spawn(["sphinx-build", "-W", "docs/", "/tmp/foo", "--keep-going", "-T"])
+        # self.spawn(["sphinx-build", "-W", "docs/", "/tmp/foo", "--keep-going", "-T"])
 
 
 setup(
