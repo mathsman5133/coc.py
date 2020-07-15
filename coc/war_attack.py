@@ -60,6 +60,21 @@ class WarAttack:
         ]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
+    def __eq__(self, other):
+        # potential future bug: because I'm comparing attacker tag, defender tag and order,
+        # if the same 2 clans go into war again in the future,
+        # and the same people attack each other at the same order in war and
+        # you're trying to compare attacks from the first war (stored in db) and the future war (live)
+        # then it's gonna think they're equal.
+        # I can't use war.start_time in case prep or something changes
+        # and then it will muck up on war attack for a lot of attacks
+        return (
+            isinstance(other, self.__class__)
+            and self.attacker_tag == other.attacker_tag
+            and self.defender_tag == other.defender_tag
+            and self.order == other.order
+        )
+
     def __init__(self, *, data, client, war):
         self.war = war
         self._client = client
