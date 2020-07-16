@@ -60,6 +60,9 @@ class WarAttack:
         ]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
+    def __hash__(self):
+        return hash(self.attacker_tag) << self.order
+
     def __eq__(self, other):
         # potential future bug: because I'm comparing attacker tag, defender tag and order,
         # if the same 2 clans go into war again in the future,
