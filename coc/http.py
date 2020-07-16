@@ -333,9 +333,12 @@ class HTTPClient:
 
     @staticmethod
     def create_cookies(response_dict, session):
-        return "session={};game-api-url={};game-api-token={}".format(
-            session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
-        )
+        try:
+            return "session={};game-api-url={};game-api-token={}".format(
+                session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
+            )
+        except KeyError:
+            return None
 
     async def reset_key(self, key):
         ip_ = await self.get_ip()
@@ -348,6 +351,9 @@ class HTTPClient:
 
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
+
+        if cookies is None:
+            return  # same issue as few lines down explains apparently.
 
         existing_keys_dict = await self.find_site_keys(cookies)
         existing_keys = existing_keys_dict and existing_keys_dict.get("keys")
