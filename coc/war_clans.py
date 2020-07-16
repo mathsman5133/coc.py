@@ -145,7 +145,7 @@ class WarClan(BaseClan):
         Optional[:class:`ClanWarMember`]: The clan member who matches the tag."""
         dict_member = self._members
         if not dict_member:
-            dict_member = self._members = {m.name: m for m in self.__iter_members}
+            dict_member = self._members = {m.tag: m for m in self.__iter_members}
 
         try:
             return dict_member[tag]

@@ -196,6 +196,7 @@ class ClanWar:
         home_member = self.clan.get_member(tag)
         if home_member:
             return home_member
+
         away_member = self.opponent.get_member(tag)
         return away_member
 
