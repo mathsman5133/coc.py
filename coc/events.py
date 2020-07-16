@@ -53,6 +53,9 @@ class Event:
     def __call__(self, cached, current):
         return self.runner(cached, current, self.callback)
 
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and self.runner == other.runner and self.callback == other.callback
+
     @classmethod
     def from_decorator(cls, func, runner):
         """Helper classmethod to create an event from a function"""
@@ -450,7 +453,10 @@ class EventsClient(Client):
         for tag in tags:
             if not isinstance(tag, str):
                 raise TypeError("clan tag must be of type str not {0!r}".format(tag))
-            self._clan_updates.remove(correct_tag(tag))
+            try:
+                self._clan_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # tag didn't exist to start with
 
     def add_player_updates(self, *tags):
         r"""Add player tags to receive events for.
@@ -496,7 +502,10 @@ class EventsClient(Client):
         for tag in tags:
             if not isinstance(tag, str):
                 raise TypeError("player tag must be of type str not {0!r}".format(tag))
-            self._player_updates.remove(correct_tag(tag))
+            try:
+                self._player_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # the tag was never added
 
     def add_war_updates(self, *tags):
         r"""Add clan tags to receive war events for.
@@ -542,7 +551,10 @@ class EventsClient(Client):
         for tag in tags:
             if not isinstance(tag, str):
                 raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
-            self._war_updates.remove(correct_tag(tag))
+            try:
+                self._war_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # tag didn't exist to start with
 
     def _get_cached_clan(self, clan_tag):
         try:
