@@ -109,6 +109,11 @@ class ClanWarMember(BasePlayer):
         """:class:`bool`: Indicates whether the member is from the opponent clan or not."""
         return self.clan and self.war.opponent and self.clan.tag == self.war.opponent.tag or False
 
+    @property
+    def star_count(self):
+        """:class:`int`: Get the total number of stars the member has gained this war."""
+        return sum(attack.stars for attack in self.attacks)
+
 
 class ClanWarLeagueClanMember(BasePlayer):
     """Represents a clan member who is a part of the Clan War League master roster.
