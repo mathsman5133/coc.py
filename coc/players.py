@@ -231,8 +231,8 @@ class Player(ClanMember):
         self._achievements = None  # type: typing.Optional[dict]
         self._heroes = None  # type: typing.Optional[dict]
         self._labels = None  # type: typing.Optional[list]
-        self._spells = None  # type: typing.Optional[list]
-        self._troops = None  # type: typing.Optional[list]
+        self._spells = None  # type: typing.Optional[dict]
+        self._troops = None  # type: typing.Optional[dict]
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -301,18 +301,20 @@ class Player(ClanMember):
         self._achievements = sorted_achievements
         return list(sorted_achievements.values())
 
-    def get_achievement(self, name: str) -> typing.Optional[Achievement]:
+    def get_achievement(self, name: str, default_value=None) -> typing.Optional[Achievement]:
         """Returns an achievement with the given name.
 
         Parameters
         -----------
         name: :class:`str`
             The name of an achievement as found in-game.
+        default_value
+            The value to return if the ``name`` is not found. Defaults to ``None``.
 
         Returns
         --------
         Optional[:class:`Achievement`]
-            The returned achievement or ``None`` if not found.
+            The returned achievement or the ``default_value`` if not found, which defaults to ``None``..
         """
         dict_achievements = self._achievements
         if dict_achievements is None:
@@ -322,7 +324,7 @@ class Player(ClanMember):
         try:
             return dict_achievements[name]
         except KeyError:
-            return None
+            return default_value
 
     @property
     def troops(self) -> typing.List[Troop]:
@@ -331,12 +333,12 @@ class Player(ClanMember):
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
         """
-        list_troops = self._troops
-        if list_troops is not None:
-            return list_troops
+        dict_troops = self._troops
+        if dict_troops is not None:
+            return list(dict_troops.values())
 
-        list_troops = self._troops = list(t for t in self.__iter_troops)
-        return list_troops
+        dict_troops = self._troops = {t.name: t for t in self.__iter_troops}
+        return list(dict_troops.values())
 
     @property
     def home_troops(self) -> typing.List[Troop]:
@@ -368,6 +370,30 @@ class Player(ClanMember):
         troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
+    def get_troop(self, name: str, default_value=None) -> typing.Optional[Troop]:
+        """Returns an achievement with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a troop as found in-game.
+        default_value
+            The value to return if the ``name`` is not found. Defaults to ``None``.
+
+        Returns
+        --------
+        Optional[:class:`Troop`]
+            The returned troop or the ``default_value`` if not found, which defaults to ``None``..
+        """
+        dict_troops = self._heroes
+        if dict_troops is None:
+            dict_troops = self._troops = {h.name: h for h in self.__iter_troops}
+
+        try:
+            return dict_troops[name]
+        except KeyError:
+            return default_value
+
     @property
     def heroes(self) -> typing.List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
@@ -390,18 +416,20 @@ class Player(ClanMember):
         self._heroes = sorted_heroes
         return list(sorted_heroes.values())
 
-    def get_hero(self, name: str) -> typing.Optional[Hero]:
+    def get_hero(self, name: str, default_value=None) -> typing.Optional[Hero]:
         """Returns a hero with the given name.
 
         Parameters
         -----------
         name: :class:`str`
             The name of a hero as found in-game.
+        default_value:
+            The default value to return if a hero with ``name`` is not found. Defaults to ``None``.
 
         Returns
         --------
         Optional[:class:`Hero`]
-            The returned hero or ``None`` if not found.
+            The returned hero or the ``default_value`` if not found, which defaults to ``None``..
         """
         dict_heroes = self._heroes
         if dict_heroes is None:
@@ -410,7 +438,7 @@ class Player(ClanMember):
         try:
             return dict_heroes[name]
         except KeyError:
-            return None
+            return default_value
 
     @property
     def spells(self) -> typing.List[Spell]:
@@ -418,9 +446,33 @@ class Player(ClanMember):
 
         This will return spells in the order found in both spell factory and labatory in-game.
         """
-        list_spells = self._spells
-        if list_spells is None:
-            list_spells = self._spells = list(self.__iter_spells)
+        dict_spells = self._spells
+        if dict_spells is None:
+            dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
 
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
-        return list(sorted(list_spells, key=lambda s: order.get(s.name)))
+        return list(sorted(dict_spells.values(), key=lambda s: order.get(s.name)))
+
+    def get_spell(self, name: str, default_value=None) -> typing.Optional[Spell]:
+        """Returns a spell with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a spell as found in-game.
+        default_value:
+            The default value to return if a spell with ``name`` is not found. Defaults to ``None``.
+
+        Returns
+        --------
+        Optional[:class:`Spell`]
+            The returned spell or the ``default_value`` if not found, which defaults to ``None``..
+        """
+        dict_spells = self._spells
+        if dict_spells is None:
+            dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
+
+        try:
+            return dict_spells[name]
+        except KeyError:
+            return default_value
