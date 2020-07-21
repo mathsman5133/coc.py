@@ -25,6 +25,7 @@ import typing
 
 from .abc import BaseClan
 from .war_members import ClanWarMember, ClanWarLeagueClanMember
+from .utils import correct_tag
 
 if typing.TYPE_CHECKING:
     from .war_attack import WarAttack  # noqa
@@ -143,6 +144,7 @@ class WarClan(BaseClan):
         Returns
         --------
         Optional[:class:`ClanWarMember`]: The clan member who matches the tag."""
+        tag = correct_tag(tag)
         dict_member = self._members
         if not dict_member:
             dict_member = self._members = {m.tag: m for m in self.__iter_members}

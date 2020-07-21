@@ -26,7 +26,7 @@ import typing
 
 from .players import ClanMember
 from .miscmodels import try_enum, Location, Label, WarLeague
-from .utils import get
+from .utils import get, correct_tag
 from .abc import BaseClan
 
 
@@ -217,6 +217,7 @@ class Clan(BaseClan):
         --------
         The member who matches the tag provided: Optional[:class:`ClanMember`]
         """
+        tag = correct_tag(tag)
         dict_members = self._members
         if not dict_members:
             dict_members = self._members = {m.name: m for m in self.__iter_members}
