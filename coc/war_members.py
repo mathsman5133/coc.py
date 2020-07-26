@@ -90,6 +90,20 @@ class ClanWarMember(BasePlayer):
         return self.war.get_attack(self._best_opponent_attacker, self.tag)
 
     @property
+    def previous_best_opponent_attack(self):
+        """:class:`WarAttack`: Returns the previous best opponent attack on this base.
+
+        This is useful for calculating the new stars and/or destruction for new attacks.
+        """
+
+        def key(item):
+            # 100^3 > 99^2 > 50^2 > 99^1. Smallest/largest values possible.
+            return item != self.best_opponent_attack and item.destruction ** item.stars
+
+        # Potential caveat: how does order effect this?
+        return max(self.defenses, key=key)
+
+    @property
     def attacks(self) -> typing.List[WarAttack]:
         """List[:class:`WarAttack`]: The member's attacks this war. Could be an empty list."""
         list_attacks = self._attacks
