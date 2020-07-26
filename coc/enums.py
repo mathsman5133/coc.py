@@ -93,6 +93,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Lava Hound",
     "Bowler",
     "Ice Golem",
+    "Headhunter",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -103,10 +104,14 @@ SIEGE_MACHINE_ORDER = [
 ]
 
 SUPER_TROOP_ORDER = [
-    "Sneaky Goblin",
     "Super Barbarian",
-    "Super Wall Breaker",
     "Super Giant",
+    "Sneaky Goblin",
+    "Super Wall Breaker",
+    "Inferno Dragon",
+    "Super Witch",
+    "Super Archer",  # not added yet but they're in the API payload for some reason
+    "Super Valkyrie",  # not added yet but they're in the API payload for some reason
 ]
 
 HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + SUPER_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
@@ -171,17 +176,19 @@ ACHIEVEMENT_ORDER = [
     "Treasurer",
     "Anti-Artillery",
     "Sharing is caring",
+    "Games Champion",
+    "Get those other Goblins!",
+    "Dragon Slayer",
+    "War League Legend",
     "Keep your village safe",
+    "Well Seasoned",
+    "Shattered and Scattered",
     "Master Engineering",
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
     "High Gear",
     "Hidden Treasures",
-    "Games Champion",
-    "Dragon Slayer",
-    "War League Legend",
-    "Keep your village safe",
 ]
 
 UNRANKED_LEAGUE_DATA = {

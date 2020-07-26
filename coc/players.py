@@ -447,7 +447,7 @@ class SearchPlayer(BasicPlayer):
         """
         troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
         key_order = {k: v for v, k in enumerate(valid_troops)}
-        return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_home_troops(self):
@@ -456,7 +456,7 @@ class SearchPlayer(BasicPlayer):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
-        return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.home_troops_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_super_troops(self):
@@ -465,7 +465,7 @@ class SearchPlayer(BasicPlayer):
         This will return super troops in the order found in game.
         """
         key_order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
-        return OrderedDict(sorted(self.super_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.super_troops_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_builder_troops(self):
@@ -474,7 +474,7 @@ class SearchPlayer(BasicPlayer):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
-        return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.builder_troops_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_siege_machines(self):
@@ -483,7 +483,7 @@ class SearchPlayer(BasicPlayer):
         This will return siege machines in the order found in both barracks and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(SIEGE_MACHINE_ORDER)}
-        return OrderedDict(sorted(self.siege_machines_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.siege_machines_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_spells(self):
@@ -492,7 +492,7 @@ class SearchPlayer(BasicPlayer):
         This will return spells in the order found in both spell factory and labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(SPELL_ORDER)}
-        return OrderedDict(sorted(self.spells_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.spells_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
     @property
     def ordered_heroes(self):
@@ -501,7 +501,7 @@ class SearchPlayer(BasicPlayer):
         This will return heroes in the order found in the labatory in-game.
         """
         key_order = {k: v for v, k in enumerate(HERO_ORDER)}
-        return OrderedDict(sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0])))
+        return OrderedDict(sorted(self.heroes_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
 
 class LeaguePlayer(EqualityComparable):
