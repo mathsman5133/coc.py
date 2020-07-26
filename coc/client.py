@@ -720,9 +720,7 @@ class Client:
         get_war = await self.get_clan_war(clan_tag, cache=cache, fetch=fetch, update_cache=update_cache)
         if not get_war:
             return None
-        if get_war.state != LEAGUE_WAR_STATE:
-            return get_war
-        if not league_war:
+        if get_war.state != LEAGUE_WAR_STATE or not league_war:
             return get_war
 
         try:
