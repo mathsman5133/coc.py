@@ -41,6 +41,7 @@ from .enums import (
     Role,
     HERO_ORDER,
     BUILDER_TROOPS_ORDER,
+    ELIXIR_TROOP_ORDER,
     HOME_TROOP_ORDER,
     SUPER_TROOP_ORDER,
     SPELL_ORDER,
@@ -200,7 +201,7 @@ class WarMember(Player):
 
         self.town_hall = data.get("townhallLevel")
         self.map_position = data.get("mapPosition")
-        self._best_opponent_attack = data.get("bestOpponentAttack")
+        self._best_opponent_attack = data.get("bestOpponentAttack", {}).get("attackerTag")
 
     def _get_attacks(self):
         # pylint: disable=import-outside-toplevel
@@ -445,7 +446,12 @@ class SearchPlayer(BasicPlayer):
         --------
         :class:`collections.OrderedDict` - An ordered dict of troops by name.
         """
-        troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
+        if valid_troops == ELIXIR_TROOP_ORDER:
+            troops_dict = {t.name: t for t in self.troops if t.is_home_base and t.name in set(valid_troops)}
+        elif valid_troops == BUILDER_TROOPS_ORDER:
+            troops_dict = {t.name: t for t in self.troops if t.is_builder_base and t.name in set(valid_troops)}
+        else:
+            troops_dict = {t.name: t for t in self.troops if t.name in set(valid_troops)}
         key_order = {k: v for v, k in enumerate(valid_troops)}
         return OrderedDict(sorted(troops_dict.items(), key=lambda i: key_order.get(i[0], 0)))
 
