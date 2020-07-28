@@ -29,7 +29,7 @@ import re
 from collections import deque, Counter
 from datetime import datetime
 from itertools import cycle
-from time import monotonic
+from time import process_time
 from urllib.parse import urlencode
 
 import aiohttp
@@ -64,22 +64,26 @@ class BasicThrottler:
     __slots__ = (
         "sleep_time",
         "last_run",
+        "lock",
     )
 
     def __init__(self, sleep_time):
         self.sleep_time = sleep_time
         self.last_run = None
+        self.lock = asyncio.Lock()
 
     async def __aenter__(self):
-        if self.last_run:
-            difference = monotonic() - self.last_run
-            need_to_sleep = self.sleep_time - difference
-            if need_to_sleep > 0:
-                LOG.debug("Request throttled. Sleeping for %s", need_to_sleep)
-                await asyncio.sleep(need_to_sleep)
+        async with self.lock:
+            last_run = self.last_run
+            if last_run:
+                difference = process_time() - last_run
+                need_to_sleep = self.sleep_time - difference
+                if need_to_sleep > 0:
+                    LOG.debug("Request throttled. Sleeping for %s", need_to_sleep)
+                    await asyncio.sleep(need_to_sleep)
 
-        self.last_run = monotonic()
-        return self
+            self.last_run = process_time()
+            return self
 
     async def __aexit__(self, exception_type, exception, traceback):
         pass
@@ -102,7 +106,7 @@ class BatchThrottler:
 
     async def __aenter__(self):
         while True:
-            now = monotonic()
+            now = process_time()
 
             # Pop items(which are start times) that are no longer in the
             # time window
@@ -116,11 +120,12 @@ class BatchThrottler:
             if len(self._task_logs) < self.rate_limit:
                 break
 
-            LOG.debug("Request throttled. Sleeping for %s seconds.", self.retry_interval)
-            await asyncio.sleep(self.retry_interval)
+            retry_interval = self.retry_interval
+            LOG.debug("Request throttled. Sleeping for %s seconds.", retry_interval)
+            await asyncio.sleep(retry_interval)
 
         # Push new task's start time
-        self._task_logs.append(monotonic())
+        self._task_logs.append(process_time())
 
         return self
 
