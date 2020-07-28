@@ -39,6 +39,8 @@ class OverrideDoc(type):
         for obj in bases:
             if obj.__doc__ is None:
                 continue
+            if new_cls.__doc__ is None:
+                continue
             if "Attributes" not in obj.__doc__:
                 continue
 
