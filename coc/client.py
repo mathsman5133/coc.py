@@ -251,7 +251,7 @@ class Client:
 
         Returns
         --------
-        :class:`list` of :class:`SearchClan`:
+        :class:`list` of :class:`SearchClan`
             A list of all clans found matching criteria provided.
 
         Raises
@@ -294,7 +294,8 @@ class Client:
 
         Returns
         --------
-        The clan with provided tag: :class:`SearchClan`
+        :class:`SearchClan`
+            The clan with provided tag.
         """
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
@@ -328,7 +329,8 @@ class Client:
 
         Returns
         --------
-        :class:`ClanIterator` of :class:`SearchClan`
+        :class:`ClanIterator` of :class:`Clan`
+            An iterable of the requested clans.
         """
         if not isinstance(tags, Iterable):
             raise TypeError("Tags are not an iterable.")
@@ -350,7 +352,8 @@ class Client:
 
         Returns
         --------
-        A list of :class:`ClanMember` in the clan: List[:class:`ClanMember`]
+        List[:class:`ClanMember`]
+            A list of :class:`ClanMember`s in the clan.
         """
         if not issubclass(cls, ClanMember):
             raise TypeError("cls must be a subclass of ClanMember.")
@@ -376,7 +379,8 @@ class Client:
 
         Returns
         --------
-        A list of the :class:`ClanWarLogEntry` in the warlog: List[:class:`ClanWarLogEntry`]
+        List[:class:`ClanWarLogEntry`]
+            A list of the :class:`ClanWarLogEntry` in the warlog.
 
         Raises
         ------
@@ -405,7 +409,8 @@ class Client:
 
         Returns
         --------
-        The clan's current war: :class:`ClanWar`
+        :class:`ClanWar`
+            The clan's current war.
 
         Raises
         ------
@@ -420,7 +425,7 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception._data)
 
-        return cls(data=data, clan_tag=clan_tag, client=self, **kwargs)
+        return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
     def get_clan_wars(self, clan_tags: Iterable, cls=ClanWar, **kwargs):
         """
@@ -464,7 +469,8 @@ class Client:
 
         Returns
         --------
-        The clan's war league group: :class:`ClanWarLeagueGroup`
+        :class:`ClanWarLeagueGroup`
+            The clan's war league group.
 
         Raises
         ------
@@ -493,7 +499,8 @@ class Client:
 
         Returns
         --------
-        The league war assosiated with the war tag: :class:`ClanWar`
+        :class:`ClanWar`
+            The league war assosiated with the war tag
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
@@ -527,6 +534,7 @@ class Client:
         Returns
         --------
         :class:`coc.iterators.LeagueWarIterator` of :class:`ClanWar`
+            An iterator of wars.
         """
         if not isinstance(war_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
@@ -567,6 +575,8 @@ class Client:
 
             If no league group is found, or the group is in ``preparation``, this method will return the
             :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
+
+            If the clan is in CWL, the league group can be accessed via :attr:`ClanWar.league_group`.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
@@ -593,6 +603,7 @@ class Client:
             round_tags = league_group.rounds[-2]
 
         kwargs["clan_tag"] = clan_tag
+        kwargs["league_group"] = league_group
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war
@@ -618,7 +629,8 @@ class Client:
 
         Returns
         --------
-        Current wars for the clans: :class:`coc.iterators.CurrentWarIterator` of :class:`ClanWar`
+        :class:`coc.iterators.CurrentWarIterator` of :class:`ClanWar`
+            Current wars for the clans.
         """
         if not isinstance(clan_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
@@ -681,7 +693,8 @@ class Client:
 
         Returns
         --------
-        The first location matching the location name: :class:`Location`
+        :class:`Location`
+            The first location matching the location name.
         """
         data = await self.http.search_locations(limit=None, before=None, after=None)
         locations = [Location(data=n) for n in data["items"]]
@@ -839,7 +852,9 @@ class Client:
 
         Returns
         --------
-        The first location matching the location name: :class:`League`"""
+        :class:`League`
+            The first location matching the location name.
+        """
         return get(await self.search_leagues(), name=league_name)
 
     async def get_seasons(self, league_id: int):
@@ -936,7 +951,8 @@ class Client:
 
         Returns
         --------
-        The player with the tag: :class:`Player`
+        :class:`Player`
+            The player with the tag.
         """
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")

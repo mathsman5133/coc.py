@@ -51,6 +51,8 @@ class ClanWar:
         :class:`int`: The number of players on each side of the war.
     war_tag:
         :class:`str`: The war's unique tag. This is ``None`` unless this is a Clan League War (CWL).
+    league_group:
+        :class:`ClanWarLeagueGroup`: The war's league group. This is ``None`` unless this is a Clan League War.
     """
 
     __slots__ = (
@@ -64,14 +66,16 @@ class ClanWar:
         "clan_tag",
         "clan",
         "opponent",
+        "league_group",
         "_response_retry",
     )
 
-    def __init__(self, *, data, clan_tag, client, **_):
+    def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
         self._from_data(data)
-        self.clan_tag = getattr(self.clan, "tag", clan_tag)
+        self.clan_tag = kwargs.pop("clan_tag", self.clan and self.clan.tag)
+        self.league_group = kwargs.pop("league_group", None)
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
