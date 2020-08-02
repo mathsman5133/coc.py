@@ -294,8 +294,7 @@ class Client:
 
         Returns
         --------
-        :class:`SearchClan`
-            The clan with provided tag.
+        The clan with provided tag: :class:`SearchClan`
         """
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
@@ -351,7 +350,7 @@ class Client:
 
         Returns
         --------
-        List[:class:`ClanMember`]: A list of :class:`ClanMember` in the clan.
+        A list of :class:`ClanMember` in the clan: List[:class:`ClanMember`]
         """
         if not issubclass(cls, ClanMember):
             raise TypeError("cls must be a subclass of ClanMember.")
@@ -377,7 +376,7 @@ class Client:
 
         Returns
         --------
-        List[:class:`ClanWarLogEntry`]: A list of the :class:`ClanWarLogEntry` in the warlog.
+        A list of the :class:`ClanWarLogEntry` in the warlog: List[:class:`ClanWarLogEntry`]
 
         Raises
         ------
@@ -406,7 +405,7 @@ class Client:
 
         Returns
         --------
-        :class:`ClanWar`: The clan's current war.
+        The clan's current war: :class:`ClanWar`
 
         Raises
         ------
@@ -443,7 +442,8 @@ class Client:
 
         Returns
         --------
-        :class:`coc.iterators.WarIterator` of :class:`ClanWar`: An iterator of all clan wars.
+        :class:`coc.iterators.WarIterator` of :class:`ClanWar`
+            An iterator of all clan wars.
             This will skip clans who have a private war-log.
         """
         if not isinstance(clan_tags, Iterable):
@@ -464,7 +464,7 @@ class Client:
 
         Returns
         --------
-        :class:`ClanWarLeagueGroup`: The clan's war league group.
+        The clan's war league group: :class:`ClanWarLeagueGroup`
 
         Raises
         ------
@@ -493,7 +493,7 @@ class Client:
 
         Returns
         --------
-        :class:`ClanWar`: The league war assosiated with the war tag.
+        The league war assosiated with the war tag: :class:`ClanWar`
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
@@ -562,10 +562,11 @@ class Client:
 
         Returns
         --------
-        :class:`ClanWar`: The clan's current war.
+        :class:`ClanWar`
+            The clan's current war.
 
-        If no league group is found, or the group is in ``preparation``, this method will return the
-        :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
+            If no league group is found, or the group is in ``preparation``, this method will return the
+            :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
@@ -617,8 +618,7 @@ class Client:
 
         Returns
         --------
-        :class:`coc.iterators.CurrentWarIterator` of :class:`ClanWar`:
-            Current wars for the clans
+        Current wars for the clans: :class:`coc.iterators.CurrentWarIterator` of :class:`ClanWar`
         """
         if not isinstance(clan_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
@@ -681,8 +681,8 @@ class Client:
 
         Returns
         --------
-        :class:`Location`
-            The first location matching the location name"""
+        The first location matching the location name: :class:`Location`
+        """
         data = await self.http.search_locations(limit=None, before=None, after=None)
         locations = [Location(data=n) for n in data["items"]]
 
@@ -839,8 +839,7 @@ class Client:
 
         Returns
         --------
-        :class:`League`
-            The first location matching the location name"""
+        The first location matching the location name: :class:`League`"""
         return get(await self.search_leagues(), name=league_name)
 
     async def get_seasons(self, league_id: int):
@@ -937,7 +936,7 @@ class Client:
 
         Returns
         --------
-        :class:`Player`: The player with the tag.
+        The player with the tag: :class:`Player`
         """
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
