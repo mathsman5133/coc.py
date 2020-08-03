@@ -773,6 +773,11 @@ class EventsClient(Client):
                         except (BaseException, Exception) as exc:
                             self.dispatch("event_error", exc)
                 try:
+                    # just need to remove the cache layer
+                    try:
+                        del self.http.cache["https://api.clashofclans.com/v1/clans/%23G88CYQP"]
+                    except KeyError:
+                        pass
                     await self.get_clan("#G88CYQP")  # my clan
                 except Maintenance:
                     await asyncio.sleep(5)
