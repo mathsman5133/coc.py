@@ -779,7 +779,7 @@ class EventsClient(Client):
                     except KeyError:
                         pass
                     await self.get_clan("#G88CYQP")  # my clan
-                except Maintenance:
+                except (Maintenance, Exception):
                     await asyncio.sleep(5)
                 else:
                     self._in_maintenance_event.clear()
