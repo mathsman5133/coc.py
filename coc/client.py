@@ -511,6 +511,7 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception._data)
 
+        data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
 
     def get_league_wars(self, war_tags: Iterable, cls=ClanWar, **kwargs):
