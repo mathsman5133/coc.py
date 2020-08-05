@@ -208,14 +208,18 @@ async def maybe_coroutine(function_, *args, **kwargs):
 class LRU(dict):
     """Implements a LRU (least-recently-used) dict with a settable max size."""
 
-    __slots__ = ("__keys",)
+    __slots__ = (
+        "__keys",
+        "max_size",
+    )
 
     def __init__(self, max_size):
-        self.__keys = deque(maxlen=max_size)
+        self.max_size = max_size
+        self.__keys = deque()
         super().__init__()
 
     def __verify_max_size(self):
-        while len(self) > len(self.__keys):
+        while len(self) > self.max_size:
             del self[self.__keys.popleft()]
 
     def __setitem__(self, key, value):
