@@ -89,6 +89,15 @@ class Client:
         This process involves stripping tags of whitespace and adding a `#` prefix if not present.
         Defaults to ``False``.
 
+    connector : :class:`aiohttp.BaseConnector`
+        The aiohttp connector to use. By default this is ``None``.
+
+    timeout: :class:`float`
+        The number of seconds before timing out with an API query. Defaults to 30.
+
+    cache_max_size: :class:`int`
+        The max size of the internal cache layer. Defaults to 10 000. Set this to ``None`` to remove any cache layer.
+
     Attributes
     -----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -101,6 +110,9 @@ class Client:
         "key_names",
         "throttle_limit",
         "throttler",
+        "timeout",
+        "connector",
+        "cache_max_size",
         "http",
         "_ready",
         "correct_tags",
@@ -118,6 +130,9 @@ class Client:
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = False,
         throttler=BasicThrottler,
+        connector=None,
+        timeout: float = 30.0,
+        cache_max_size: int = 10000,
         **_,
     ):
 
@@ -131,6 +146,9 @@ class Client:
         self.key_names = key_names
         self.throttle_limit = throttle_limit
         self.throttler = throttler
+        self.connector = connector
+        self.timeout = timeout
+        self.cache_max_size = cache_max_size
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event(loop=loop)
@@ -163,6 +181,9 @@ class Client:
             key_count=self.correct_key_count,
             throttle_limit=self.throttle_limit,
             throttler=self.throttler,
+            connector=self.connector,
+            timeout=self.timeout,
+            cache_max_size=self.cache_max_size,
         )
         await self.http.get_keys()
         await self._ready.wait()

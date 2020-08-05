@@ -25,6 +25,7 @@ SOFTWARE.
 import inspect
 import re
 
+from collections import deque
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
@@ -202,3 +203,30 @@ async def maybe_coroutine(function_, *args, **kwargs):
         return await value
 
     return value
+
+
+class LRU(dict):
+    """Implements a LRU (least-recently-used) dict with a settable max size."""
+
+    __slots__ = ("__keys",)
+
+    def __init__(self, max_size):
+        self.__keys = deque(max_size)
+        super().__init__()
+
+    def __verify_max_size(self):
+        while len(self) > len(self.__keys):
+            del self[self.__keys.popleft()]
+
+    def __setitem__(self, key, value):
+        self.__keys.append(key)
+        super().__setitem__(key, value)
+        self.__verify_max_size()
+
+    def __getitem__(self, key):
+        self.__verify_max_size()
+        return super().__getitem__(key)
+
+    def __contains__(self, key):
+        self.__verify_max_size()
+        return super().__contains__(key)

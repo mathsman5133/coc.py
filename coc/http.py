@@ -43,6 +43,7 @@ from .errors import (
     InvalidCredentials,
     GatewayError,
 )
+from .utils import LRU
 
 LOG = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -162,7 +163,20 @@ class HTTPClient:
     """HTTP Client for the library. All low-level requests and key-management occurs here."""
 
     # pylint: disable=too-many-arguments, missing-docstring, protected-access, too-many-branches
-    def __init__(self, client, loop, email, password, key_names, key_count, throttle_limit, throttler=BasicThrottler):
+    def __init__(
+        self,
+        client,
+        loop,
+        email,
+        password,
+        key_names,
+        key_count,
+        throttle_limit,
+        throttler=BasicThrottler,
+        connector=None,
+        timeout=30.0,
+        cache_max_size=10000,
+    ):
         self.client = client
         self.loop = loop
         self.email = email
@@ -174,7 +188,7 @@ class HTTPClient:
         per_second = key_count * throttle_limit
 
         self.__lock = asyncio.Semaphore(per_second)
-        self.cache = {}
+        self.cache = cache_max_size and LRU(cache_max_size)
 
         if issubclass(throttler, BasicThrottler):
             self.__throttle = throttler(1 / per_second)
@@ -183,7 +197,9 @@ class HTTPClient:
         else:
             raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
 
-        self.__session = aiohttp.ClientSession(loop=self.loop)
+        self.__session = aiohttp.ClientSession(
+            loop=self.loop, connector=connector, timeout=aiohttp.ClientTimeout(total=timeout)
+        )
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
@@ -260,11 +276,13 @@ class HTTPClient:
             kwargs["headers"]["Content-Type"] = "application/json"
 
         cache_control_key = route.cache_control_key
+        cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        try:
-            return self.cache[cache_control_key]
-        except KeyError:
-            pass
+        if cache:
+            try:
+                return cache[cache_control_key]
+            except KeyError:
+                pass
 
         async with self.__lock:
             async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
@@ -276,9 +294,10 @@ class HTTPClient:
                     # set a callback to remove the item from cache once it's stale.
                     delta = int(response.headers["Cache-Control"].strip("max-age="))
                     data["_response_retry"] = delta
-                    self.cache[cache_control_key] = data
-                    LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
-                    self.loop.call_later(delta, self._cache_remove, cache_control_key)
+                    if cache:
+                        self.cache[cache_control_key] = data
+                        LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
+                        self.loop.call_later(delta, self._cache_remove, cache_control_key)
 
                 except (KeyError, AttributeError, ValueError):
                     # the request didn't contain cache control headers so skip any cache handling.
