@@ -211,7 +211,7 @@ class LRU(dict):
     __slots__ = ("__keys",)
 
     def __init__(self, max_size):
-        self.__keys = deque(max_size)
+        self.__keys = deque(maxlen=max_size)
         super().__init__()
 
     def __verify_max_size(self):
