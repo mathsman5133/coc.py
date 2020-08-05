@@ -26,10 +26,10 @@ import json
 import logging
 import re
 
-from collections import deque, Counter
+from collections import deque
 from datetime import datetime
 from itertools import cycle
-from time import process_time
+from time import process_time, perf_counter
 from urllib.parse import urlencode
 
 import aiohttp
@@ -203,8 +203,6 @@ class HTTPClient:
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
-        self.requests_made = Counter()
-        self.successful_requests = 0
 
     def _cache_remove(self, key):
         try:
@@ -254,7 +252,7 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
-        # pylint: disable=too-many-statements
+        # pylint: disable=too-many-statements, too-many-locals
         method = route.method
         url = route.url
         api_request = kwargs.pop("api_request", False)
@@ -284,10 +282,12 @@ class HTTPClient:
             except KeyError:
                 pass
 
-        async with self.__lock:
-            async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
-                self.requests_made[response.status] += 1
-                LOG.debug("%s (%s) has returned %s", url, method, response.status)
+        async with self.__lock, self.__throttle:
+            start = perf_counter()
+            async with self.__session.request(method, url, **kwargs) as response:
+                perfcounter = (perf_counter() - start) * 1000
+                log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
+                LOG.debug("API HTTP Request", extra=log_info)
                 data = await json_or_text(response)
 
                 try:
@@ -306,7 +306,6 @@ class HTTPClient:
                         data["_response_retry"] = 0
 
                 if 200 <= response.status < 300:
-                    self.successful_requests += 1
                     LOG.debug("%s has received %s", url, data)
                     return data
 
