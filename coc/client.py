@@ -108,6 +108,7 @@ class Client:
         "loop",
         "correct_key_count",
         "key_names",
+        "key_scopes",
         "throttle_limit",
         "throttler",
         "timeout",
@@ -126,6 +127,7 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
+        key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = False,
@@ -144,6 +146,7 @@ class Client:
             raise RuntimeError("Key count must be within {}-{}".format(KEY_MINIMUM, KEY_MAXIMUM))
 
         self.key_names = key_names
+        self.key_scopes = key_scopes
         self.throttle_limit = throttle_limit
         self.throttler = throttler
         self.connector = connector
@@ -177,6 +180,7 @@ class Client:
             email=email,
             password=password,
             key_names=self.key_names,
+            key_scopes=self.key_scopes,
             loop=self.loop,
             key_count=self.correct_key_count,
             throttle_limit=self.throttle_limit,

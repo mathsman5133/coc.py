@@ -171,6 +171,7 @@ class HTTPClient:
         password,
         key_names,
         key_count,
+        key_scopes,
         throttle_limit,
         throttler=BasicThrottler,
         connector=None,
@@ -183,6 +184,7 @@ class HTTPClient:
         self.password = password
         self.key_names = key_names
         self.key_count = key_count
+        self.key_scopes = key_scopes
         self.throttle_limit = throttle_limit
 
         per_second = key_count * throttle_limit
@@ -226,7 +228,9 @@ class HTTPClient:
                 ip_ = await self.get_ip()
                 for _ in range(keys_needed):
                     key_description = "Created on {}".format(datetime.now().strftime("%c"))
-                    self._keys.append(await self.create_key(cookies, self.key_names, key_description, [ip_]))
+                    self._keys.append(
+                        await self.create_key(cookies, self.key_names, key_description, [ip_], [self.key_scopes])
+                    )
             else:
                 await self.close()
                 raise RuntimeError(
@@ -287,7 +291,7 @@ class HTTPClient:
             async with self.__session.request(method, url, **kwargs) as response:
                 perfcounter = (perf_counter() - start) * 1000
                 log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
-                LOG.debug("API HTTP Request", extra=log_info)
+                LOG.debug("API HTTP Request: %s", str(log_info))
                 data = await json_or_text(response)
 
                 try:
@@ -393,7 +397,7 @@ class HTTPClient:
         except InvalidArgument:
             return
 
-        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
+        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips, [self.key_scopes])
 
         # this is to prevent reusing an already used keys.
         # All it does is move the current key to the front,
@@ -510,13 +514,14 @@ class HTTPClient:
 
         return existing_keys_dict
 
-    async def create_key(self, cookies, key_name, key_description, cidr_ranges):
+    async def create_key(self, cookies, key_name, key_description, cidr_ranges, scopes):
         headers = {"cookie": cookies, "content-type": "application/json"}
 
         data = {
             "name": key_name,
             "description": key_description,
             "cidrRanges": cidr_ranges,
+            "scopes": scopes,
         }
 
         response = await self.request(
