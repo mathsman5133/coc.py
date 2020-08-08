@@ -73,8 +73,8 @@ class ClanWar:
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
+        self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
-        self.clan_tag = kwargs.pop("clan_tag", self.clan and self.clan.tag)
         self.league_group = kwargs.pop("league_group", None)
 
     def _from_data(self, data: dict) -> None:
@@ -87,8 +87,16 @@ class ClanWar:
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag = data_get("tag")
 
-        self.clan = try_enum(WarClan, data=data_get("clan"), client=self._client, war=self)
-        self.opponent = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+        clan_data = data_get("clan")
+        # annoying bug where if you request a war with a clan tag that clan could be the opponent or clan,
+        # depending on the way the game stores it internally. This isn't very helpful as we always want it
+        # from the perspective of the tag we provided, so switch them around if it isn't correct.
+        if clan_data and clan_data.get("tag", self.clan_tag) == self.clan_tag:
+            self.clan = try_enum(WarClan, data=clan_data, client=self._client, war=self)
+            self.opponent = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+        else:
+            self.clan = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+            self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
 
     @property
     def attacks(self) -> typing.List[WarAttack]:
