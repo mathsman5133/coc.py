@@ -623,7 +623,7 @@ class Client:
                 raise PrivateWarLog(exception.response, exception._data)
             return get_war
 
-        if league_group.state == "preparation":
+        if len(league_group.rounds) == 1:
             round_tags = league_group.rounds[-1]
         else:
             round_tags = league_group.rounds[-2]
