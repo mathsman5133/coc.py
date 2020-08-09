@@ -75,6 +75,7 @@ class ClanWar:
         self._client = client
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
+        self.clan_tag = self.clan_tag or self.clan and self.clan.tag
         self.league_group = kwargs.pop("league_group", None)
 
     def _from_data(self, data: dict) -> None:

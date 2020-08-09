@@ -628,7 +628,6 @@ class Client:
         else:
             round_tags = league_group.rounds[-2]
 
-        kwargs["clan_tag"] = clan_tag
         kwargs["league_group"] = league_group
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
