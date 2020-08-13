@@ -127,7 +127,7 @@ def correct_tag(tag, prefix="#"):
     ---------
         ' 123aBc O' -> '#123ABC0'
     """
-    return prefix + re.sub(r"[^A-Z0-9]+", "", tag.upper()).replace("O", "0")
+    return tag and prefix + re.sub(r"[^A-Z0-9]+", "", tag.upper()).replace("O", "0")
 
 
 def corrected_tag(arg_offset=1, prefix="#", arg_name="tag"):
