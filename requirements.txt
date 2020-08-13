@@ -1,1 +1,2 @@
 aiohttp>=3.6.0,<3.7.0
+git+https://github.com/mathsman5133/asqlite

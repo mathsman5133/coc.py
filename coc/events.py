@@ -24,15 +24,18 @@ SOFTWARE.
 import asyncio
 import logging
 import traceback
+import json
 
 from collections.abc import Iterable
 from datetime import datetime
+
+import asqlite
 
 from .client import Client
 from .clans import Clan
 from .players import Player
 from .wars import ClanWar
-from .errors import Maintenance, PrivateWarLog
+from .errors import Forbidden, Maintenance, PrivateWarLog
 from .utils import correct_tag
 
 LOG = logging.getLogger(__name__)
@@ -387,8 +390,9 @@ class EventsClient(Client):
         self.war_loops_run = 0
 
         self.is_cwl_active = options.pop("cwl_active", True)
-
-        self._locks = {}
+        self.sqlite_path = options.pop("sqlite_path", "coc-events.db")
+        self.events_batch_limit = options.pop("events_batch_limit", None)
+        self._conn = None  # set in create_schema
 
     def _setup(self):
         self._updater_tasks = {
@@ -410,6 +414,10 @@ class EventsClient(Client):
         self._clans = {}
         self._players = {}
         self._wars = {}
+
+    async def login(self, email: str, password: str):
+        await super().login(email, password)
+        await self._create_schema()
 
     def add_clan_updates(self, *tags):
         """Add clan tags to receive updates for.
@@ -796,6 +804,48 @@ class EventsClient(Client):
             self.dispatch("event_error", exception)
             return await self._maintenance_poller()
 
+    async def _create_schema(self):
+        self._conn = await asqlite.connect(self.sqlite_path, loop=self.loop)
+
+        queries = (
+            "CREATE TABLE IF NOT EXISTS war (tag text PRIMARY KEY, data text NOT NULL, cache_expires integer);",
+            "CREATE INDEX war_cache_expires_idx ON war(cache_expires);",
+            "CREATE TABLE IF NOT EXISTS clan (tag text PRIMARY KEY, data text, cache_expires integer);",
+            "CREATE INDEX clan_cache_expires_idx ON clan(cache_expires);",
+            "CREATE TABLE IF NOT EXISTS player (tag text PRIMARY KEY, data text, cache_expires integer);",
+            "CREATE INDEX player_cache_expires_idx ON player(cache_expires);",
+        )
+        for query in queries:
+            await self._conn.execute(query)
+
+    async def _load_from_db(self, loop_type):
+        lookup = {"player": self._player_updates, "war": self._war_updates, "clan": self._clan_updates}
+        updates = lookup[loop_type]
+
+        # loop_type can only be war, clan or player.
+        results = await self._conn.fetchall(f"SELECT tag FROM {loop_type}")
+        if len(results) != len(updates):
+            new_tags = set(n for n in updates if n not in results)
+            old_tags = set(n for n in results if n not in updates)
+            query = f"INSERT INTO {loop_type} (tag, cache_expires) VALUES (%s, strftime('%s', 'now'))"
+            async with self._conn.transaction():
+                for tag in new_tags:
+                    await self._conn.execute(query, tag)
+                for tag in old_tags:
+                    await self._conn.execute(f"DELETE FROM {loop_type} WHERE tag = %s", tag)
+
+        query = f"SELECT tag, data FROM {loop_type} WHERE strftime('%s', 'now') > cache_expires LIMIT %s"
+        results = await self._conn.fetchall(query, self.events_batch_limit)
+        return {tag: json.loads(data) for tag, data in results}
+
+    async def _update_db(self, loop_type, cache):
+        # loop_type can only be war, clan or player.
+        query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (%s, %s, strftime('%s','now') + %s)"
+        async with self._conn.transaction():
+            for tag, data in cache.items():
+                cache_expires = data.pop("_response_retry")
+                await self._conn.execute(query, tag, json.dumps(data), cache_expires)
+
     async def _war_updater(self):
         # pylint: disable=broad-except
         try:
@@ -804,23 +854,20 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                self.dispatch("war_loop_start", self.war_loops_run)
+                self._wars = await self._load_from_db("war")
+
+                self.dispatch("war_loop_start", list(self._wars.keys()))
                 tasks = [
-                    self.loop.create_task(self._run_war_update(index, tag))
-                    for index, tag in enumerate(self._war_updates)
+                    self.loop.create_task(self._run_war_update(tag)) for index, tag in enumerate(self._wars.keys())
                 ]
                 await asyncio.gather(*tasks)
-                self.dispatch("war_loop_finish", self.war_loops_run)
-                self.war_loops_run += 1
+                await self._update_db("war", self._wars)
+                self.dispatch("war_loop_finish", list(self._wars.keys()))
 
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-
-            for lock in (v for k, v in self._locks.items() if "war" in k):
-                self._safe_unlock(lock)
-
             return await self._war_updater()
 
     async def _clan_updater(self):
@@ -831,23 +878,22 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                self.dispatch("clan_loop_start", self.clan_loops_run)
+                self._clans = await self._load_from_db("clan")
+
+                self.dispatch("clan_loop_start", list(self._clans.keys()))
                 tasks = [
-                    self.loop.create_task(self._run_clan_update(index, tag))
-                    for index, tag in enumerate(self._clan_updates)
+                    self.loop.create_task(self._run_clan_update(tag)) for index, tag in enumerate(self._clans.keys())
                 ]
                 await asyncio.gather(*tasks)
+                await self._update_db("clan", self._clans)
                 self.dispatch("clan_loop_finish", self.clan_loops_run)
+
                 self.clan_loops_run += 1
 
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-
-            for lock in (v for k, v in self._locks.items() if "clan" in k):
-                self._safe_unlock(lock)
-
             return await self._clan_updater()
 
     async def _player_updater(self):
@@ -858,12 +904,15 @@ class EventsClient(Client):
                 if self._in_maintenance_event.is_set():
                     continue  # don't run if we're hitting maintenance errors.
 
-                self.dispatch("player_loop_start", self.player_loops_run)
+                self._players = await self._load_from_db("player")
+
+                self.dispatch("player_loop_start", list(self._players.keys()))
                 tasks = [
-                    self.loop.create_task(self._run_player_update(index, tag))
-                    for index, tag in enumerate(self._player_updates)
+                    self.loop.create_task(self._run_player_update(tag))
+                    for index, tag in enumerate(self._players.keys())
                 ]
                 await asyncio.gather(*tasks)
+                await self._update_db("player", self._players)
                 self.dispatch("player_loop_finish", self.player_loops_run)
                 self.player_loops_run += 1
 
@@ -871,134 +920,87 @@ class EventsClient(Client):
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-
-            for lock in (v for k, v in self._locks.items() if "player" in k):
-                self._safe_unlock(lock)
-
             return await self._player_updater()
 
-    @staticmethod
-    def _safe_unlock(lock):
-        try:
-            lock.release()
-        except RuntimeError:
-            pass
-
-    async def _run_player_update(self, index, player_tag):
+    async def _run_player_update(self, player_tag):
         # pylint: disable=protected-access, broad-except
-        await asyncio.sleep(0.005 * index)
-
-        key = "player:{}".format(player_tag)
         try:
-            lock = self._locks[key]
-        except KeyError:
-            self._locks[key] = lock = asyncio.Lock()
-
-        await lock.acquire()
-
-        try:
-            player = await self.get_player(player_tag, cls=self.player_cls)
+            data = await self.http.get_player(player_tag)
         except Maintenance:
-            self._safe_unlock(lock)
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-            self._safe_unlock(lock)
             return
 
-        # sleep for either
-        seconds = max(player._response_retry, self.player_retry_interval)
-        self.loop.call_later(seconds, self._safe_unlock, lock)
+        cached_data = self._get_cached_player(player_tag)
+        self._update_player(data)
 
-        cached_player = self._get_cached_player(player_tag)
-        self._update_player(player)
+        data.pop("_response_retry")  # need to remove to properly __eq__
 
-        if cached_player is None:
-            self._safe_unlock(lock)
+        if data is None or cached_data is None or cached_data == data:
             return
 
+        cached_player = self.player_cls(data=cached_data, client=self)
+        player = self.player_cls(data=data, client=self)
         for listener in self._listeners["player"]:
             if listener.tags and player_tag not in listener.tags:
                 continue
             await listener(cached_player, player)
 
-    async def _run_clan_update(self, index, clan_tag):
+    async def _run_clan_update(self, clan_tag):
         # pylint: disable=protected-access, broad-except
-        await asyncio.sleep(0.005 * index)
-
-        key = "clan:{}".format(clan_tag)
         try:
-            lock = self._locks[key]
-        except KeyError:
-            self._locks[key] = lock = asyncio.Lock()
-
-        await lock.acquire()
-
-        try:
-            clan = await self.get_clan(clan_tag, cls=self.clan_cls)
+            data = await self.http.get_clan(clan_tag)
         except Maintenance:
-            self._safe_unlock(lock)
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-            self._safe_unlock(lock)
             return
 
-        # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(clan._response_retry, self.clan_retry_interval), self._safe_unlock, lock)
+        cached_data = self._get_cached_clan(clan_tag)
+        self._update_clan(data)
 
-        cached_clan = self._get_cached_clan(clan_tag)
-        self._update_clan(clan)
+        data.pop("_response_retry")  # need to remove to properly __eq__
 
-        if not cached_clan:
-            self._safe_unlock(lock)
+        if data is None or cached_data is None or cached_data == data:
             return
+
+        cached_clan = self.clan_cls(data=cached_data, client=self)
+        clan = self.clan_cls(data=data, client=self)
 
         for listener in self._listeners["clan"]:
             if listener.tags and clan_tag not in listener.tags:
                 continue
             await listener(cached_clan, clan)
 
-    async def _run_war_update(self, index, clan_tag):
+    async def _run_war_update(self, clan_tag):
         # pylint: disable=protected-access, broad-except
-        await asyncio.sleep(0.005 * index)
-
-        key = "war:{}".format(clan_tag)
         try:
-            lock = self._locks[key]
-        except KeyError:
-            self._locks[key] = lock = asyncio.Lock()
-
-        await lock.acquire()
-
-        if self.is_cwl_active:
-            meth = self.get_current_war
-        else:
-            meth = self.get_clan_war
-
-        try:
-            war = await meth(clan_tag, cls=self.war_cls)
-        except (Maintenance, PrivateWarLog):
-            self._safe_unlock(lock)
+            # to-do: make this more efficient
+            if self.is_cwl_active:
+                war = await self.get_current_war(clan_tag, cls=self.war_cls)
+                if war.is_cwl:
+                    data = await self.http.get_cwl_wars(war.war_tag)
+                else:
+                    data = await self.http.get_clan_current_war(clan_tag)
+            else:
+                data = await self.http.get_clan_current_war(clan_tag)
+                war = self.war_cls(data=data, client=self, clan_tag=clan_tag)
+        except (Maintenance, PrivateWarLog, Forbidden):
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-            self._safe_unlock(lock)
             return
 
-        if war is None:
-            self._safe_unlock(lock)
+        cached_data = self._get_cached_war(clan_tag)
+        self._update_war(clan_tag, data)
+
+        data.pop("_response_retry")  # need to remove to properly __eq__
+
+        if data is None or cached_data is None or cached_data == data:
             return
 
-        # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(war._response_retry, self.player_retry_interval), self._safe_unlock, lock)
-
-        cached_war = self._get_cached_war(clan_tag)
-        self._update_war(clan_tag, war)
-
-        if not cached_war:
-            self._safe_unlock(lock)
-            return
+        cached_war = self.war_cls(data=cached_data, client=self)
 
         for listener in self._listeners["war"]:
             if listener.tags and clan_tag not in listener.tags:

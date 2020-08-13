@@ -18,4 +18,4 @@ output-format=colorized
 ignore=examples,docs
 
 [IMPORTS]
-ignored-modules=aiohttp
+ignored-modules=aiohttp,asqlite
