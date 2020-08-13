@@ -809,11 +809,11 @@ class EventsClient(Client):
 
         queries = (
             "CREATE TABLE IF NOT EXISTS war (tag text PRIMARY KEY, data text NOT NULL, cache_expires integer);",
-            "CREATE INDEX war_cache_expires_idx ON war(cache_expires);",
-            "CREATE TABLE IF NOT EXISTS clan (tag text PRIMARY KEY, data text, cache_expires integer);",
-            "CREATE INDEX clan_cache_expires_idx ON clan(cache_expires);",
-            "CREATE TABLE IF NOT EXISTS player (tag text PRIMARY KEY, data text, cache_expires integer);",
-            "CREATE INDEX player_cache_expires_idx ON player(cache_expires);",
+            "CREATE INDEX IF NOT EXISTS war_cache_expires_idx ON war(cache_expires);",
+            "CREATE TABLE IF NOT EXISTS clan (tag text PRIMARY KEY, data text, cache_expires integer default 0);",
+            "CREATE INDEX IF NOT EXISTS clan_cache_expires_idx ON clan(cache_expires);",
+            "CREATE TABLE IF NOT EXISTS player (tag text PRIMARY KEY, data text, cache_expires integer default 0);",
+            "CREATE INDEX IF NOT EXISTS player_cache_expires_idx ON player(cache_expires);",
         )
         for query in queries:
             await self._conn.execute(query)
@@ -835,7 +835,7 @@ class EventsClient(Client):
                     await self._conn.execute(f"DELETE FROM {loop_type} WHERE tag = ?", tag)
 
         query = f"SELECT tag, data FROM {loop_type} WHERE strftime('%s', 'now') > cache_expires LIMIT ?"
-        results = await self._conn.fetchall(query, self.events_batch_limit)
+        results = await self._conn.fetchall(query, self.events_batch_limit or len(updates))
         return {tag: json.loads(data) for tag, data in results}
 
     async def _update_db(self, loop_type, cache):
