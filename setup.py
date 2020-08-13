@@ -45,10 +45,10 @@ setup(
     long_description=README,
     python_requires=">=3.5.3",
     install_requires=REQUIREMENTS,
-    classifiers={
+    classifiers=[
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-    },
+    ],
     cmdclass={"lint": LintCommand},
 )
