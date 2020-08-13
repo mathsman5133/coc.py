@@ -571,26 +571,17 @@ class EventsClient(Client):
         except KeyError:
             return None
 
-    def _update_clan(self, clan):
-        self._clans[clan.tag] = clan
-
     def _get_cached_player(self, player_tag):
         try:
             return self._players[player_tag]
         except KeyError:
             return None
 
-    def _update_player(self, player):
-        self._players[player.tag] = player
-
     def _get_cached_war(self, key):
         try:
             return self._wars[key]
         except KeyError:
             return None
-
-    def _update_war(self, key, war):
-        self._wars[key] = war
 
     def event(self, function):
         """A decorator or regular function that registers an event.
@@ -934,7 +925,7 @@ class EventsClient(Client):
             return
 
         cached_data = self._get_cached_player(player_tag)
-        self._update_player(data)
+        self._players[data["tag"]] = data
 
         data.pop("_response_retry")  # need to remove to properly __eq__
 
@@ -959,7 +950,7 @@ class EventsClient(Client):
             return
 
         cached_data = self._get_cached_clan(clan_tag)
-        self._update_clan(data)
+        self._clans[data["tag"]] = data
 
         data.pop("_response_retry")  # need to remove to properly __eq__
 
@@ -994,7 +985,7 @@ class EventsClient(Client):
             return
 
         cached_data = self._get_cached_war(clan_tag)
-        self._update_war(clan_tag, data)
+        self._wars[clan_tag] = data
 
         data.pop("_response_retry")  # need to remove to properly __eq__
 
