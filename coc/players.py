@@ -212,7 +212,8 @@ class Player(ClanMember):
         "_heroes",
         "_labels",
         "_spells",
-        "_troops",
+        "_home_troops",
+        "_builder_troops",
         "__iter_achievements",
         "__iter_heroes",
         "__iter_labels",
@@ -232,7 +233,8 @@ class Player(ClanMember):
         self._heroes = None  # type: typing.Optional[dict]
         self._labels = None  # type: typing.Optional[list]
         self._spells = None  # type: typing.Optional[dict]
-        self._troops = None  # type: typing.Optional[dict]
+        self._home_troops = None  # type: typing.Optional[dict]
+        self._builder_troops = None  # type: typing.Optional[dict]
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -333,12 +335,14 @@ class Player(ClanMember):
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
         """
-        dict_troops = self._troops
+        dict_troops = self._home_troops
         if dict_troops is not None:
-            return list(dict_troops.values())
+            return list(dict_troops.values()) + list(self._builder_troops.values())
 
-        dict_troops = self._troops = {t.name: t for t in self.__iter_troops}
-        return list(dict_troops.values())
+        troops = list(self.__iter_troops)
+        self._home_troops = {t.name: t for t in troops if t.is_home_base}
+        self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+        return troops
 
     @property
     def home_troops(self) -> typing.List[Troop]:
@@ -347,8 +351,13 @@ class Player(ClanMember):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
-        troops = (t for t in self.troops if t.is_home_base)
-        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+        if not self._home_troops:
+            troops = list(self.__iter_troops)
+            self._home_troops = {t.name: t for t in troops if t.is_home_base}
+            self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+
+        return list(sorted(self._home_troops, key=lambda t: order.get(t.name, 0)))
 
     @property
     def builder_troops(self) -> typing.List[Troop]:
@@ -357,8 +366,13 @@ class Player(ClanMember):
         This will return troops in the order found in both barracks and labatory in-game.
         """
         order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
-        troops = (t for t in self.troops if t.is_builder_base)
-        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+        if not self._builder_troops:
+            troops = list(self.__iter_troops)
+            self._home_troops = {t.name: t for t in troops if t.is_home_base}
+            self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+
+        return list(sorted(self._builder_troops, key=lambda t: order.get(t.name, 0)))
 
     @property
     def siege_machines(self) -> typing.List[Troop]:
@@ -370,13 +384,17 @@ class Player(ClanMember):
         troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
-    def get_troop(self, name: str, default_value=None) -> typing.Optional[Troop]:
-        """Returns an achievement with the given name.
+    def get_troop(self, name: str, is_home_troop=None, default_value=None) -> typing.Optional[Troop]:
+        """Returns a troop with the given name.
 
         Parameters
         -----------
         name: :class:`str`
             The name of a troop as found in-game.
+        is_home_troop: :class:`bool`
+            Whether the troop you're trying to find is a home troop. This changes how the lookup is done,
+            in order to facilitate searching for a ``Baby Dragon``. By default, this will search from both
+            builder and home troops.
         default_value
             The value to return if the ``name`` is not found. Defaults to ``None``.
 
@@ -385,12 +403,19 @@ class Player(ClanMember):
         Optional[:class:`Troop`]
             The returned troop or the ``default_value`` if not found, which defaults to ``None``..
         """
-        dict_troops = self._heroes
-        if dict_troops is None:
-            dict_troops = self._troops = {h.name: h for h in self.__iter_troops}
+        _ = self.troops
+
+        if is_home_troop is None:
+            lookup = {**self._builder_troops, **self._home_troops}
+        elif is_home_troop is True:
+            lookup = self._home_troops
+        elif is_home_troop is False:
+            lookup = self._builder_troops
+        else:
+            raise TypeError("is_home_troop must be of type bool not {0!r}".format(is_home_troop))
 
         try:
-            return dict_troops[name]
+            return lookup[name]
         except KeyError:
             return default_value
 
