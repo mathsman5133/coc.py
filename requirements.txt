@@ -1,2 +1,2 @@
 aiohttp>=3.6.0,<3.7.0
--e git+https://github.com/mathsman5133/asqlite#egg=asqlite
+asqlite

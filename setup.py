@@ -45,6 +45,7 @@ setup(
     long_description=README,
     python_requires=">=3.5.3",
     install_requires=REQUIREMENTS,
+    dependency_links=["https://github.com/mathsman5133/asqlite#egg=asqlite"],
     classifiers=[
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
