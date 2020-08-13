@@ -835,7 +835,10 @@ class EventsClient(Client):
         query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (?, ?, strftime('%s','now') + ?)"
         async with self._transaction_lock, self._conn.transaction():
             for tag, data in cache.items():
-                cache_expires = data.pop("_response_retry")
+                if data is None:
+                    cache_expires = 0
+                else:
+                    cache_expires = data.pop("_response_retry")
                 await self._conn.execute(query, tag, json.dumps(data), cache_expires)
 
     async def _war_updater(self):
@@ -849,9 +852,7 @@ class EventsClient(Client):
                 self._wars = await self._load_from_db("war")
 
                 self.dispatch("war_loop_start", list(self._wars.keys()))
-                tasks = [
-                    self.loop.create_task(self._run_war_update(tag)) for index, tag in enumerate(self._wars.keys())
-                ]
+                tasks = [self.loop.create_task(self._run_war_update(tag)) for tag in self._wars]
                 await asyncio.gather(*tasks)
                 await self._update_db("war", self._wars)
                 self.dispatch("war_loop_finish", list(self._wars.keys()))
@@ -873,9 +874,7 @@ class EventsClient(Client):
                 self._clans = await self._load_from_db("clan")
 
                 self.dispatch("clan_loop_start", list(self._clans.keys()))
-                tasks = [
-                    self.loop.create_task(self._run_clan_update(tag)) for index, tag in enumerate(self._clans.keys())
-                ]
+                tasks = [self.loop.create_task(self._run_clan_update(tag)) for tag in self._clans]
                 await asyncio.gather(*tasks)
                 await self._update_db("clan", self._clans)
                 self.dispatch("clan_loop_finish", self.clan_loops_run)
@@ -899,10 +898,7 @@ class EventsClient(Client):
                 self._players = await self._load_from_db("player")
 
                 self.dispatch("player_loop_start", list(self._players.keys()))
-                tasks = [
-                    self.loop.create_task(self._run_player_update(tag))
-                    for index, tag in enumerate(self._players.keys())
-                ]
+                tasks = [self.loop.create_task(self._run_player_update(tag)) for tag in self._players]
                 await asyncio.gather(*tasks)
                 await self._update_db("player", self._players)
                 self.dispatch("player_loop_finish", self.player_loops_run)
@@ -927,9 +923,12 @@ class EventsClient(Client):
         cached_data = self._get_cached_player(player_tag)
         self._players[data["tag"]] = data
 
-        data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry")  # need to remove to properly __eq__
 
-        if data is None or cached_data is None or cached_data == data:
+        if data is None:
+            return
+        if cached_data is None or cached_data == data:
+            data["_response_retry"] = retry  # add it back in
             return
 
         cached_player = self.player_cls(data=cached_data, client=self)
@@ -938,6 +937,8 @@ class EventsClient(Client):
             if listener.tags and player_tag not in listener.tags:
                 continue
             await listener(cached_player, player)
+
+        data["_response_retry"] = retry  # add it back in
 
     async def _run_clan_update(self, clan_tag):
         # pylint: disable=protected-access, broad-except
@@ -952,9 +953,12 @@ class EventsClient(Client):
         cached_data = self._get_cached_clan(clan_tag)
         self._clans[data["tag"]] = data
 
-        data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry")  # need to remove to properly __eq__
 
-        if data is None or cached_data is None or cached_data == data:
+        if data is None:
+            return
+        if cached_data is None or cached_data == data:
+            data["_response_retry"] = retry  # add it back in
             return
 
         cached_clan = self.clan_cls(data=cached_data, client=self)
@@ -964,6 +968,8 @@ class EventsClient(Client):
             if listener.tags and clan_tag not in listener.tags:
                 continue
             await listener(cached_clan, clan)
+
+        data["_response_retry"] = retry  # add it back in
 
     async def _run_war_update(self, clan_tag):
         # pylint: disable=protected-access, broad-except
@@ -987,9 +993,12 @@ class EventsClient(Client):
         cached_data = self._get_cached_war(clan_tag)
         self._wars[clan_tag] = data
 
-        data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry")  # need to remove to properly __eq__
 
-        if data is None or cached_data is None or cached_data == data:
+        if data is None:
+            return
+        if cached_data is None or cached_data == data:
+            data["_response_retry"] = retry  # add it back in
             return
 
         cached_war = self.war_cls(data=cached_data, client=self)
@@ -998,3 +1007,5 @@ class EventsClient(Client):
             if listener.tags and clan_tag not in listener.tags:
                 continue
             await listener(cached_war, war)
+
+        data["_response_retry"] = retry  # add it back in
