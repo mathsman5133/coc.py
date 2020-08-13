@@ -827,20 +827,20 @@ class EventsClient(Client):
         if len(results) != len(updates):
             new_tags = set(n for n in updates if n not in results)
             old_tags = set(n for n in results if n not in updates)
-            query = f"INSERT INTO {loop_type} (tag, cache_expires) VALUES (%s, strftime('%s', 'now'))"
+            query = f"INSERT INTO {loop_type} (tag, cache_expires) VALUES (?, strftime('%s', 'now'))"
             async with self._conn.transaction():
                 for tag in new_tags:
                     await self._conn.execute(query, tag)
                 for tag in old_tags:
-                    await self._conn.execute(f"DELETE FROM {loop_type} WHERE tag = %s", tag)
+                    await self._conn.execute(f"DELETE FROM {loop_type} WHERE tag = ?", tag)
 
-        query = f"SELECT tag, data FROM {loop_type} WHERE strftime('%s', 'now') > cache_expires LIMIT %s"
+        query = f"SELECT tag, data FROM {loop_type} WHERE strftime('%s', 'now') > cache_expires LIMIT ?"
         results = await self._conn.fetchall(query, self.events_batch_limit)
         return {tag: json.loads(data) for tag, data in results}
 
     async def _update_db(self, loop_type, cache):
         # loop_type can only be war, clan or player.
-        query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (%s, %s, strftime('%s','now') + %s)"
+        query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (?, ?, strftime('%s','now') + ?)"
         async with self._conn.transaction():
             for tag, data in cache.items():
                 cache_expires = data.pop("_response_retry")
