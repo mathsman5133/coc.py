@@ -158,6 +158,11 @@ class Route:
         """Returns a cache lookup key that is unique to this query."""
         return self.path
 
+    @property
+    def stats_key(self):
+        """Returns a stats key that is unique to the endpoint used."""
+        return self.BASE + self.path.split("%23")[0]
+
 
 class HTTPClient:
     """HTTP Client for the library. All low-level requests and key-management occurs here."""
@@ -292,7 +297,7 @@ class HTTPClient:
             async with self.__session.request(method, url, **kwargs) as response:
                 perfcounter = (perf_counter() - start) * 1000
                 log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
-                self.stats[cache_control_key] = perfcounter
+                self.stats[route.stats_key] = perfcounter
                 LOG.debug("API HTTP Request: %s", str(log_info))
                 data = await json_or_text(response)
 
