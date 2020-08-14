@@ -234,3 +234,37 @@ class LRU(dict):
     def __contains__(self, key):
         self.__verify_max_size()
         return super().__contains__(key)
+
+
+class HTTPStats(dict):
+    """Implements a basic key: deque value to aid with HTTP performance stats."""
+
+    __slots__ = ("max_size",)
+
+    def __init__(self, max_size):
+        self.max_size = max_size
+        super().__init__()
+
+    def __setitem__(self, key, value):
+        try:
+            super().__getitem__(key).append(value)
+        except (KeyError, AttributeError):
+            super().__setitem__(key, deque((value,), maxlen=self.max_size))
+
+    def get_average(self, key):
+        """Get the average latency / performance counter for an API endpoint"""
+        try:
+            stats = self[key]
+        except KeyError:
+            return None
+
+        return sum(stats) / len(stats)
+
+    def get_mixed_average(self):
+        """Get the average latency / performance counter for all API endpoints"""
+        stats = [*self.values()]
+        return sum(stats) / len(stats)
+
+    def get_all_average(self):
+        """Get the average latency / performance counter for each API endpoint."""
+        return {k: sum(v) / len(v) for k, v in self.items()}
