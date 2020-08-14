@@ -191,7 +191,7 @@ class HTTPClient:
 
         self.__lock = asyncio.Semaphore(per_second)
         self.cache = cache_max_size and LRU(cache_max_size)
-        self.stats = HTTPStats(max_size=10)
+        self.stats = HTTPStats(max_size=20)
 
         if issubclass(throttler, BasicThrottler):
             self.__throttle = throttler(1 / per_second)
@@ -292,7 +292,7 @@ class HTTPClient:
             async with self.__session.request(method, url, **kwargs) as response:
                 perfcounter = (perf_counter() - start) * 1000
                 log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
-                self.stats[url] = perfcounter
+                self.stats[cache_control_key] = perfcounter
                 LOG.debug("API HTTP Request: %s", str(log_info))
                 data = await json_or_text(response)
 
