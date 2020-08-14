@@ -879,9 +879,7 @@ class EventsClient(Client):
                 tasks = [self.loop.create_task(self._run_clan_update(tag)) for tag in self._clans]
                 await asyncio.gather(*tasks)
                 await self._update_db("clan", self._clans)
-                self.dispatch("clan_loop_finish", self.clan_loops_run)
-
-                self.clan_loops_run += 1
+                self.dispatch("clan_loop_finish", list(self._clans.keys()))
 
         except asyncio.CancelledError:
             return
@@ -904,7 +902,7 @@ class EventsClient(Client):
                 tasks = [self.loop.create_task(self._run_player_update(tag)) for tag in self._players]
                 await asyncio.gather(*tasks)
                 await self._update_db("player", self._players)
-                self.dispatch("player_loop_finish", self.player_loops_run)
+                self.dispatch("player_loop_finish", list(self._players.keys()))
                 self.player_loops_run += 1
 
         except asyncio.CancelledError:
