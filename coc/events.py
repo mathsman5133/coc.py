@@ -842,7 +842,6 @@ class EventsClient(Client):
         query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (?, ?, strftime('%s','now') + ?)"
         async with self._conn.transaction(), self._transaction_lock:
             for tag, data in cache.items():
-                LOG.info(data)
                 if data is None:
                     cache_expires = 0
                 else:
@@ -884,7 +883,6 @@ class EventsClient(Client):
                     await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
-                LOG.info("running")
                 self._clans = await self._load_from_db("clan")
                 if not self._clans:
                     await asyncio.sleep(DEFAULT_SLEEP)
