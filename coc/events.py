@@ -35,7 +35,7 @@ from .client import Client
 from .clans import Clan
 from .players import Player
 from .wars import ClanWar
-from .errors import Forbidden, Maintenance, PrivateWarLog
+from .errors import Forbidden, Maintenance, PrivateWarLog, HTTPException
 from .utils import correct_tag
 
 LOG = logging.getLogger(__name__)
@@ -372,7 +372,6 @@ class EventsClient(Client):
 
     def __init__(self, **options):
         super().__init__(**options)
-        self._setup()
 
         self._in_maintenance_event = asyncio.Event()
         self._keys_ready = asyncio.Event()
@@ -392,8 +391,13 @@ class EventsClient(Client):
         self.is_cwl_active = options.pop("cwl_active", True)
         self.sqlite_path = options.pop("sqlite_path", "coc-events.db")
         self.events_batch_limit = options.pop("events_batch_limit", None)
+
         self._conn = None  # set in create_schema
+        self._conn_ready = asyncio.Event()
+        self._conn_ready.clear()
         self._transaction_lock = asyncio.Lock()
+
+        self._setup()
 
     def _setup(self):
         self._updater_tasks = {
@@ -797,7 +801,7 @@ class EventsClient(Client):
             return await self._maintenance_poller()
 
     async def _create_schema(self):
-        self._ready.clear()
+        self._conn_ready.clear()
         self._conn = await asqlite.connect(self.sqlite_path, loop=self.loop)
 
         queries = (
@@ -810,7 +814,7 @@ class EventsClient(Client):
         )
         for query in queries:
             await self._conn.execute(query)
-        self._ready.set()
+        self._conn_ready.set()
 
     async def _load_from_db(self, loop_type):
         lookup = {"player": self._player_updates, "war": self._war_updates, "clan": self._clan_updates}
@@ -819,9 +823,10 @@ class EventsClient(Client):
         # loop_type can only be war, clan or player.
         results = await self._conn.fetchall(f"SELECT tag FROM {loop_type}")
         if len(results) != len(updates):
+            results = [n["tag"] for n in results]
             new_tags = set(n for n in updates if n not in results)
             old_tags = set(n for n in results if n not in updates)
-            query = f"INSERT OR IGNORE INTO {loop_type} (tag, cache_expires) VALUES (?, strftime('%s', 'now')"
+            query = f"INSERT OR IGNORE INTO {loop_type} (tag, cache_expires) VALUES (?, strftime('%s', 'now'))"
             for tag in new_tags:
                 await self._conn.execute(query, tag)
             for tag in old_tags:
@@ -829,28 +834,34 @@ class EventsClient(Client):
 
         query = f"SELECT tag, data FROM {loop_type} WHERE strftime('%s', 'now') > cache_expires LIMIT ?"
         results = await self._conn.fetchall(query, self.events_batch_limit or len(updates))
-        return {tag: data and json.loads(data) for tag, data in results}
+        data = {row["tag"]: row["data"] and json.loads(row["data"]) for row in results}
+        return data
 
     async def _update_db(self, loop_type, cache):
         # loop_type can only be war, clan or player.
         query = f"REPLACE INTO {loop_type} (tag, data, cache_expires) VALUES (?, ?, strftime('%s','now') + ?)"
-        for tag, data in cache.items():
-            if data is None:
-                cache_expires = 0
-            else:
-                cache_expires = data.pop("_response_retry")
-            await self._conn.execute(query, tag, json.dumps(data), cache_expires)
+        async with self._conn.transaction(), self._transaction_lock:
+            for tag, data in cache.items():
+                LOG.info(data)
+                if data is None:
+                    cache_expires = 0
+                else:
+                    cache_expires = data.pop("_response_retry", 0)
+                await self._conn.execute(query, tag, json.dumps(data), cache_expires)
 
     async def _war_updater(self):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._ready.wait()
-                if self._in_maintenance_event.is_set():
+                await self._conn_ready.wait()
+                if self._in_maintenance_event.is_set() or len(self._war_updates) == 0:
                     await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
                 self._wars = await self._load_from_db("war")
+                if not self._wars:
+                    await asyncio.sleep(DEFAULT_SLEEP)
+                    continue
 
                 self.dispatch("war_loop_start", list(self._wars.keys()))
                 tasks = [self.loop.create_task(self._run_war_update(tag)) for tag in self._wars]
@@ -868,12 +879,16 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._ready.wait()
-                if self._in_maintenance_event.is_set():
+                await self._conn_ready.wait()
+                if self._in_maintenance_event.is_set() or len(self._clan_updates) == 0:
                     await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
+                LOG.info("running")
                 self._clans = await self._load_from_db("clan")
+                if not self._clans:
+                    await asyncio.sleep(DEFAULT_SLEEP)
+                    continue
 
                 self.dispatch("clan_loop_start", list(self._clans.keys()))
                 tasks = [self.loop.create_task(self._run_clan_update(tag)) for tag in self._clans]
@@ -891,12 +906,15 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._ready.wait()
-                if self._in_maintenance_event.is_set():
+                await self._conn_ready.wait()
+                if self._in_maintenance_event.is_set() or len(self._player_updates) == 0:
                     await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
                 self._players = await self._load_from_db("player")
+                if not self._players:
+                    await asyncio.sleep(DEFAULT_SLEEP)
+                    continue
 
                 self.dispatch("player_loop_start", list(self._players.keys()))
                 tasks = [self.loop.create_task(self._run_player_update(tag)) for tag in self._players]
@@ -945,7 +963,7 @@ class EventsClient(Client):
         # pylint: disable=protected-access, broad-except
         try:
             data = await self.http.get_clan(clan_tag)
-        except Maintenance:
+        except (Maintenance, asyncio.TimeoutError, HTTPException):
             return
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
