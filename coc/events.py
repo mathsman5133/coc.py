@@ -797,6 +797,7 @@ class EventsClient(Client):
             return await self._maintenance_poller()
 
     async def _create_schema(self):
+        self._ready.clear()
         self._conn = await asqlite.connect(self.sqlite_path, loop=self.loop)
 
         queries = (
@@ -809,6 +810,7 @@ class EventsClient(Client):
         )
         for query in queries:
             await self._conn.execute(query)
+        self._ready.set()
 
     async def _load_from_db(self, loop_type):
         lookup = {"player": self._player_updates, "war": self._war_updates, "clan": self._clan_updates}
@@ -819,7 +821,7 @@ class EventsClient(Client):
         if len(results) != len(updates):
             new_tags = set(n for n in updates if n not in results)
             old_tags = set(n for n in results if n not in updates)
-            query = f"INSERT INTO {loop_type} (tag, cache_expires) VALUES (?, strftime('%s', 'now'))"
+            query = f"INSERT OR IGNORE INTO {loop_type} (tag, cache_expires) VALUES (?, strftime('%s', 'now')"
             for tag in new_tags:
                 await self._conn.execute(query, tag)
             for tag in old_tags:
@@ -843,8 +845,9 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._ready.wait()
                 if self._in_maintenance_event.is_set():
+                    await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
                 self._wars = await self._load_from_db("war")
@@ -865,8 +868,9 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._ready.wait()
                 if self._in_maintenance_event.is_set():
+                    await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
                 self._clans = await self._load_from_db("clan")
@@ -889,8 +893,9 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._ready.wait()
                 if self._in_maintenance_event.is_set():
+                    await asyncio.sleep(DEFAULT_SLEEP)
                     continue  # don't run if we're hitting maintenance errors.
 
                 self._players = await self._load_from_db("player")
