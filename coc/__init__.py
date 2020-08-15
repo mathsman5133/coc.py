@@ -24,6 +24,8 @@ SOFTWARE.
 
 __version__ = "1.0.0a0"
 
+import subprocess
+
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
@@ -83,3 +85,6 @@ from .war_attack import WarAttack
 from .war_members import ClanWarLeagueClanMember, ClanWarMember
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from . import utils
+
+if "a" in __version__:
+    __version__ += "+" + subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).decode("utf-8").strip()
