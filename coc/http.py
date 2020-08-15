@@ -161,7 +161,7 @@ class Route:
     @property
     def stats_key(self):
         """Returns a stats key that is unique to the endpoint used."""
-        return self.BASE + self.path.split("%23")[0]
+        return self.path.split("%23")[0]
 
 
 class HTTPClient:
