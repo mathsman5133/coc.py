@@ -357,7 +357,7 @@ class Player(ClanMember):
             self._home_troops = {t.name: t for t in troops if t.is_home_base}
             self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
 
-        return list(sorted(self._home_troops, key=lambda t: order.get(t.name, 0)))
+        return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
 
     @property
     def builder_troops(self) -> typing.List[Troop]:
@@ -372,7 +372,7 @@ class Player(ClanMember):
             self._home_troops = {t.name: t for t in troops if t.is_home_base}
             self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
 
-        return list(sorted(self._builder_troops, key=lambda t: order.get(t.name, 0)))
+        return list(sorted(self._builder_troops.values(), key=lambda t: order.get(t.name, 0)))
 
     @property
     def siege_machines(self) -> typing.List[Troop]:
