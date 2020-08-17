@@ -32,84 +32,66 @@ from operator import attrgetter
 from typing import Union
 
 
-def find(predicate, seq):
+def find(predicate, iterable):
     """A helper to return the first element found in the sequence
-    that meets the predicate. For example: ::
+    that meets the predicate.
 
-        member = find(lambda m: m.name == 'Mighty', clan.members)
+    For example: ::
 
-    would find the first :class:`~coc.BasicPlayer` whose name is 'Mighty' and return it.
-    If an entry is not found, then ``None`` is returned.
+        leader = coc.utils.find(lambda m: m.trophies > 5000, clan.members)
 
-    This is different from :func:`py:filter` due to the fact it stops the moment it finds
-    a valid entry.
+    would find the first :class:`~coc.ClanMember` who has more than 5000 trophies and return it.
+    If no members have more than 5000 trophies, then ``None`` is returned.
 
     Parameters
     -----------
     predicate
         A function that returns a boolean-like result.
-    seq: iterable
+    iterable: iterable
         The iterable to search through.
+
+    Returns
+    -------
+    The first item in the iterable which matches the predicate passed.
     """
-    for element in seq:
+    for element in iterable:
         if predicate(element):
             return element
     return None
 
 
 def get(iterable, **attrs):
-    r"""A helper that returns the first element in the iterable that meets
-    all the traits passed in ``attrs``. This is an alternative for
-    :func:`~coc.utils.find`.
+    r"""A helper that returns the first item in an iterable that matches the attributes passed.
 
-    When multiple attributes are specified, they are checked using
-    logical AND, not logical OR. Meaning they have to meet every
-    attribute passed in and not one of them.
+    If no match is found, ``None`` is returned.
 
-    To have a nested attribute search (i.e. search by ``x.y``) then
-    pass in ``x__y`` as the keyword argument.
-
-    If nothing is found that matches the attributes passed, then
-    ``None`` is returned.
-
-    Examples
-    ---------
-
-    Basic usage:
-
+    Example
+    -------
     .. code-block:: python3
 
-        member = discord.utils.get(clan.members, name='Foo')
+        member = utils.get(clan.members, level=100, name="Mathsman")
+        # returns the first member who has the name "Mathsman" and is level 100
 
-    Multiple attribute matching:
+        member = utils.get(clan.members, role=coc.Role.leader)
+        # returns the clan leader
 
-    .. code-block:: python3
-
-        channel = discord.utils.get(guild.voice_channels, name='Foo', exp_level=100)
+        label = utils.get(player.labels, name="Competitive")
+        # returns the player's label if they have Competitive.
 
     Parameters
-    -----------
-    iterable
-        An iterable to search through.
+    ----------
+    iterable: iterable
+        The list of items to match the attributes from
     \*\*attrs
-        Keyword arguments that denote attributes to search with.
+        A series of kwargs that specify which attributes to match.
+
+    Returns
+    -------
+    The object from the iterable that matches the attributes passed, or ``None`` if not found.
     """
-    _all = all
-    attrget = attrgetter
-
-    # Special case the single element call
-    if len(attrs) == 1:
-        key, value = attrs.popitem()
-        pred = attrget(key.replace("__", "."))
-        for elem in iterable:
-            if pred(elem) == value:
-                return elem
-        return None
-
-    converted = [(attrget(attr.replace("__", ".")), value) for attr, value in attrs.items()]
-
+    converted = [(attrgetter(attr), value) for attr, value in attrs.items()]
     for elem in iterable:
-        if _all(pred(elem) == value for pred, value in converted):
+        if all(pred(elem) == value for pred, value in converted):
             return elem
     return None
 
