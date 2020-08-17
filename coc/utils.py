@@ -32,6 +32,9 @@ from operator import attrgetter
 from typing import Union
 
 
+TAG_VALIDATOR = re.compile("^#?[PYLQGRJCUV0289]+$")
+
+
 def find(predicate, iterable):
     """A helper to return the first element found in the sequence
     that meets the predicate.
@@ -99,6 +102,35 @@ def get(iterable, **attrs):
 def from_timestamp(timestamp):
     """Parses the raw timestamp given by the API into a :class:`datetime.datetime` object."""
     return datetime.strptime(timestamp, "%Y%m%dT%H%M%S.000Z")
+
+
+def is_valid_tag(tag):
+    """Validates that a string is a valid Clash of Clans tag.
+
+    This uses the assumption that tags can only consist of the characters PYLQGRJCUV0289.
+
+    Example
+    -------
+
+    .. code-block:: python3
+
+        from coc import utils
+
+        user_input = input("Please enter a tag")
+
+        if utils.is_valid_tag(user_input) is True:
+            print("{} is a valid tag".format(user_input))
+        else:
+            print("{} is not a valid tag".format(user_input))
+
+    Returns
+    -------
+    :class:`bool`
+        Whether the tag is a valid tag.
+    """
+    if TAG_VALIDATOR.match(correct_tag(tag)):
+        return True
+    return False
 
 
 def correct_tag(tag, prefix="#"):
