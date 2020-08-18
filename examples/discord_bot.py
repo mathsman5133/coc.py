@@ -43,8 +43,12 @@ async def player_heroes(ctx, player_tag):
         await ctx.send("You didn't give me a proper tag!")
         return
 
-    player = await coc_client.get_player(player_tag)
-
+    try:
+        player = await coc_client.get_player(player_tag)
+    except coc.NotFound:
+        await ctx.send("This player doesn't exist!")
+        return
+        
     to_send = ""
     for hero in player.heroes:
         to_send += "{}: Lv{}/{}".format(str(hero), hero.level, hero.max_level)
@@ -58,8 +62,12 @@ async def clan_info(ctx, clan_tag):
         await ctx.send("You didn't give me a proper tag!")
         return
 
-    clan = await coc_client.get_clan(clan_tag)
-
+    try:
+        clan = await coc_client.get_clan(clan_tag)
+    except coc.NotFoud:
+        await ctx.send("This clan doesn't exist!")
+        return
+        
     if clan.public_war_log is False:
         log = "Private"
     else:
@@ -91,8 +99,12 @@ async def clan_member(ctx, clan_tag):
         await ctx.send("You didn't give me a proper tag!")
         return
 
-    clan = await coc_client.get_clan(clan_tag)
-
+    try:
+        clan = await coc_client.get_clan(clan_tag)
+    except coc.NotFound:
+        await ctx.send("This clan does not exist!")
+        return
+        
     member = ""
     for i, a in enumerate(clan.members, start=1):
         member += f"`{i}.` {a.name}\n"
