@@ -5,11 +5,11 @@ import objgraph
 import psutil
 import tracemalloc
 import random
-from examples import creds
+
 
 tracemalloc.start()
 
-client = coc.login(creds.email, creds.password, client=coc.EventsClient, key_names="windows", cwl_active=False)
+client = coc.login('emailOfdevsite', 'passwordOfDevsite', client=coc.EventsClient, key_names="windows", cwl_active=False)
 log = logging.getLogger()
 logging.basicConfig(level=logging.CRITICAL)
 
@@ -114,17 +114,23 @@ c_tags = [
     "#2PUGC20UC",
     "#2PUL8RU82",
     "#2PUPY9022",
+    "#P99CRYU2",
 ]
 
+@client.event #Pro Tip : client event is mandatory then only any event will work so dont leave :)
+@coc.ClanEvents.member_donations(tags=c_tags)
+async def on_clan_member_donation(old_player, new_player):
+    new_donations = new_player.donations - old_player.donations
+    print(f"{new_player} of {new_player.clan} just donated {new_donations} troops.")
 
-@client.event
-@coc.ClanEvents.member_donations_change(c_tags, retry_interval=0)
-async def on_member_dono_change(old, new):
-    # print(old.donations, new.donations)
-    ...
+@client.event 
+@coc.ClanEvents.member_received(tags=c_tags)
+async def on_clan_member_receive(old_player, new_player):
+    new_received = new_player.received - old_player.received
+    print(f"{new_player} of {new_player.clan} just received {new_received} troops.")
 
 
-@coc.WarEvents.war_attack()
+@coc.WarEvents.war_attack(tags=c_tags)
 async def test():
     pass
 
@@ -142,16 +148,13 @@ async def callable():
 @client.event
 @coc.WarEvents.war_attack(c_tags, retry_interval=30)
 async def change2(attack, new):
-    # print(attack.attacker, attack.order, max(a.order for a in new.attacks))
-    # log.info("ran war")
-    ...
+    print(f'Attack number {max(a.order for a in new.attacks)}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}')
 
 
 @client.event
-@coc.PlayerEvents.trophies_change(retry_interval=0)
-async def on_player_trophy_change(old, new):
-    # print(old.trophies, new.trophies)
-    ...
+@coc.ClanEvents.points(c_tags, retry_interval=0)
+async def on_clan_trophy_change(old, new):
+    print(f'{new.name} total trophies changed from {old.points} to {new.points}')
 
 
 async def on_maintenance():
@@ -166,22 +169,22 @@ client.on_maintenance = on_maintenance
 client.on_maintenance_completion = on_maintenance_completion
 
 
-async def get_lots_of_playertags():
-    new_tags = []
-    for _ in range(3):
-        try:
-            await client.get_clan("#abc123")
-        except:
-            pass
-    async for clan in client.get_clans(c_tags):
-        print(clan)
-        new_tags.extend(n.tag for n in clan.members)
-    return new_tags
+# async def get_lots_of_playertags():
+#     new_tags = []
+#     for _ in range(3):
+#         try:
+#             await client.get_clan("#abc123")
+#         except:
+#             pass
+#     async for clan in client.get_clans(c_tags):
+#         print(clan)
+#         new_tags.extend(n.tag for n in clan.members)
+#     return new_tags
 
 
-tags = client.loop.run_until_complete(get_lots_of_playertags())
-log.info(str(tags) + ",,")
-client.add_player_updates(tags)
+# tags = client.loop.run_until_complete(get_lots_of_playertags())
+# log.info(str(tags) + ",,")
+# client.add_player_updates(tags)
 
 
 async def task():
@@ -213,5 +216,5 @@ async def task():
 
 
 loop = asyncio.get_event_loop()
-# loop.create_task(task())
+loop.create_task(task())
 client.loop.run_forever()
