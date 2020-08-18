@@ -95,10 +95,10 @@ async def clan_member(ctx, clan_tag):
 
     member = ""
     for i, a in enumerate(clan.members, start=1):
-        member += f'`{i}.` {a.name}\n'
-    embed = discord.Embed(colour=discord.Colour.red(), title=f'Members of {clan.name}', description=member)
+        member += f"`{i}.` {a.name}\n"
+    embed = discord.Embed(colour=discord.Colour.red(), title=f"Members of {clan.name}", description=member)
     embed.set_thumbnail(url=clan.badge.url)
-    embed.set_footer(text=f'Total Members - {clan.member_count)}/50')
+    embed.set_footer(text=f"Total Members - {clan.member_count)}/50")
     await ctx.send(embed=embed)
 
 
