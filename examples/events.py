@@ -8,15 +8,28 @@ log = logging.getLogger()
 
 
 c_tags = [
-    "#2PUGC20UC",
-    "#2PUL8RU82",
-    "#2PUPY9022",
-    "#P99CRYU2",
-    "#8P2QG08P",
+    "#20090C9PR",
+    "#202GG92Q",
+    "#20C8G0RPL",
+    "#20CG8UURL",
+    "#20L2GVUCQ",
+]
+
+p_tags = [
+    "#YQ2QYLGJ",
+    "#QYJCVGL",
+    "#2LURLC9V",
+    "#QCQR298V",
+    "#82CVC2V8",
+    "#29U09V8J",
+    "#8GYGL22P",
 ]
 
 
-@client.event #Pro Tip : client event is mandatory then only any event will work so dont leave :)
+'''Clan Events'''
+
+
+@client.event  # Pro Tip : client event is mandatory then only any event will work so dont leave :)
 @coc.ClanEvents.member_donations(tags=c_tags)
 async def on_clan_member_donation(old_donation, new_donation):
     final_donated_troop = new_donation.donations - old_donation.donations
@@ -43,12 +56,6 @@ async def on_clan_member_leave(member, clan):
 
 
 @client.event
-@coc.WarEvents.war_attack(c_tags, retry_interval=30)
-async def current_war_stats(attack, new):
-    print(f"Attack number {max(a.order for a in new.attacks)}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
-
-
-@client.event
 @coc.ClanEvents.points(c_tags, retry_interval=10)
 async def on_clan_trophy_change(old, new):
     print(f"{new.name} total trophies changed from {old.points} to {new.points}")
@@ -58,6 +65,44 @@ async def on_clan_trophy_change(old, new):
 @coc.ClanEvents.member_versus_trophies(c_tags, retry_interval=10)
 async def on_clan_versus_change(old, new):
     print(f"{new.name} total versus trophies changed from {old.versus_trophies} to {new.versus_trophies}")
+
+
+'''War Events'''
+
+
+@client.event
+@coc.WarEvents.war_attack(c_tags, retry_interval=30)
+async def current_war_stats(attack, new):
+    print(f"Attack number {max(a.order for a in new.attacks)}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
+
+
+'''Player Events'''
+
+
+@client.event
+@coc.PlayerEvents.donations(tags=p_tags, retry_interval=0)
+async def on_player_donation(old_donation, new_donation):
+    final_donated_troop = new_donation.donations - old_donation.donations
+    print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troop} troops.")
+
+
+@client.event
+@coc.PlayerEvents.received(tags=p_tags, retry_interval=0)
+async def on_player_donation_receive(new_received, old_received):
+    final_received_troop = old_received.received - new_received.received
+    print(f"{new_received} of {new_received.clan} just received {final_received_troop} troops.")
+
+
+@client.event
+@coc.PlayerEvents.trophies(tags=p_tags, retry_interval=0)
+async def on_player_trophy_change(old, new):
+    print(f"{new} trophies changed from {old.trophies} to {new.trophies}")
+
+
+@client.event
+@coc.PlayerEvents.versus_trophies(tags=p_tags, retry_interval=0)
+async def on_player_versus_trophy_change(old, new):
+    print(f"{new} versus trophies changed from {old.trophies} to {new.trophies}")
 
 
 async def on_maintenance():
