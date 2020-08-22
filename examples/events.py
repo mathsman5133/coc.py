@@ -15,7 +15,7 @@ c_tags = [
     "#20L2GVUCQ",
 ]
 
-p_tags = [
+player_tags = [
     "#YQ2QYLGJ",
     "#QYJCVGL",
     "#2LURLC9V",
