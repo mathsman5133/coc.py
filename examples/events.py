@@ -39,7 +39,7 @@ async def on_clan_member_donation(old_donation, new_donation):
 @client.event
 @coc.ClanEvents.member_received(tags=c_tags)
 async def on_clan_member_donation_receive(new_received, old_received):
-    final_received_troop = old_received.received - new_received.received
+    final_received_troops = old_received.received - new_received.received
     print(f"{new_received} of {new_received.clan} just received {final_received_troop} troops.")
 
 
