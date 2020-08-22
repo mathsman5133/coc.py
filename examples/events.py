@@ -1,5 +1,4 @@
 import coc
-import asyncio
 import logging
 
 
@@ -33,15 +32,15 @@ player_tags = [
 @client.event  # Pro Tip : client event is mandatory then only any event will work so dont leave :)
 @coc.ClanEvents.member_donations(tags=clan_tags)
 async def on_clan_member_donation(old_donation, new_donation):
-    final_donated_troop = new_donation.donations - old_donation.donations
-    print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troop} troops.")
+    final_donated_troops = new_donation.donations - old_donation.donations
+    print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troops} troops.")
 
 
 @client.event
 @coc.ClanEvents.member_received(tags=clan_tags)
 async def on_clan_member_donation_receive(new_received, old_received):
-    final_received_troop = old_received.received - new_received.received
-    print(f"{new_received} of {new_received.clan} just received {final_received_troop} troops.")
+    final_received_troops = old_received.received - new_received.received
+    print(f"{new_received} of {new_received.clan} just received {final_received_troops} troops.")
 
 
 @client.event
@@ -73,48 +72,52 @@ async def on_clan_versus_change(old, new):
 
 @client.event
 @coc.WarEvents.war_attack(clan_tags, retry_interval=30)
-async def current_war_stats(attack, new):
-    print(f"Attack number {max(a.order for a in new.attacks)}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
+async def current_war_stats(attack, war):
+    print(f"Attack number {attack.order}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
 
 
 """Player Events"""
 
 
 @client.event
-@coc.PlayerEvents.donations(tags=player_tags, retry_interval=0)
+@coc.PlayerEvents.donations(tags=player_tags)
 async def on_player_donation(old_donation, new_donation):
-    final_donated_troop = new_donation.donations - old_donation.donations
-    print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troop} troops.")
+    final_donated_troops = new_donation.donations - old_donation.donations
+    print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troops} troops.")
 
 
 @client.event
-@coc.PlayerEvents.received(tags=player_tags, retry_interval=0)
+@coc.PlayerEvents.received(tags=player_tags)
 async def on_player_donation_receive(new_received, old_received):
-    final_received_troop = old_received.received - new_received.received
-    print(f"{new_received} of {new_received.clan} just received {final_received_troop} troops.")
+    final_received_troops = old_received.received - new_received.received
+    print(f"{new_received} of {new_received.clan} just received {final_received_troops} troops.")
 
 
 @client.event
-@coc.PlayerEvents.trophies(tags=player_tags, retry_interval=0)
+@coc.PlayerEvents.trophies(tags=player_tags)
 async def on_player_trophy_change(old, new):
     print(f"{new} trophies changed from {old.trophies} to {new.trophies}")
 
 
 @client.event
-@coc.PlayerEvents.versus_trophies(tags=player_tags, retry_interval=0)
+@coc.PlayerEvents.versus_trophies(tags=player_tags)
 async def on_player_versus_trophy_change(old, new):
     print(f"{new} versus trophies changed from {old.trophies} to {new.trophies}")
 
 
+"""Client Events"""
+
+
+@client.event
+@coc.ClientEvents.maintenance_start()
 async def on_maintenance():
-    log.critical("maintenance start")
+    log.info("Maintenace Started")
 
 
-async def on_maintenance_completion(start_time):
-    log.critical("maintenance finished")
+@client.event
+@coc.ClientEvents.maintenance_completion()
+async def on_maintenance_completion():
+    log.info("Maintenace Ended")
 
-
-client.on_maintenance = on_maintenance
-client.on_maintenance_completion = on_maintenance_completion
 
 client.loop.run_forever()
