@@ -72,7 +72,7 @@ async def on_clan_versus_change(old, new):
 
 @client.event
 @coc.WarEvents.war_attack(c_tags, retry_interval=30)
-async def current_war_stats(attack, new):
+async def current_war_stats(attack, war):
     print(f"Attack number {max(a.order for a in new.attacks)}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
 
 
