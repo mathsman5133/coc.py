@@ -6,7 +6,7 @@ disable=
     too-few-public-methods,
     duplicate-code,
     bad-continuation,
-    property-with-parameters
+    raise-missing-from
 
 max-line-length=120
 notes=fixme

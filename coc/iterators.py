@@ -123,7 +123,7 @@ class ClanIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(ClanIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan
 
 
@@ -132,7 +132,7 @@ class PlayerIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(PlayerIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_player
 
 
@@ -141,7 +141,7 @@ class ClanWarIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(ClanWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan_war
 
 
@@ -150,7 +150,7 @@ class LeagueWarIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(LeagueWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_league_war
 
 
@@ -159,5 +159,5 @@ class CurrentWarIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(CurrentWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_current_war
