@@ -95,12 +95,14 @@ class BatchThrottler:
 
     __slots__ = (
         "rate_limit",
+        "per",
         "retry_interval",
         "_task_logs",
     )
 
-    def __init__(self, rate_limit, retry_interval=0.001):
+    def __init__(self, rate_limit, per=1.0, retry_interval=0.001):
         self.rate_limit = rate_limit
+        self.per = per
         self.retry_interval = retry_interval
 
         self._task_logs = deque()
@@ -112,7 +114,7 @@ class BatchThrottler:
             # Pop items(which are start times) that are no longer in the
             # time window
             while self._task_logs:
-                if now - self._task_logs[0] > 1.0:
+                if now - self._task_logs[0] > self.per:
                     self._task_logs.popleft()
                 else:
                     break
