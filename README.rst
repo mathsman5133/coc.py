@@ -10,9 +10,6 @@ coc.py
 .. image:: https://img.shields.io/pypi/pyversions/discord.py.svg
    :target: https://pypi.python.org/pypi/coc.py
    :alt: PyPI supported Python versions
-.. image:: https://travis-ci.org/mathsman5133/coc.py.svg?branch=master
-    :target: https://travis-ci.org/mathsman5133/coc.py
-    :alt: Travis CI info
 
 
 Easy to use asynchronous Clash of Clans API wrapper in Python.
