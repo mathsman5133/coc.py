@@ -96,7 +96,196 @@ To get an event for when a war's state, ie :attr:`ClanWar.state` changes, you wo
 
 The pattern is simple, and holds true for all attributes.
 
+Some more examples:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.PlayerEvents.trophies()  # an event that is run for every player, when their `.trophies` attribute changes.
+    async def foo(old_player, new_player):
+        assert old_player.trophies != new_player.trophies
+
+    @client.event
+    @coc.WarEvents.state()  # an event that is run when a war `.state` has changed
+    async def foo(old_war, new_war):
+        assert old_war.state != new_war.state
+
+    @client.event
+    @coc.ClanEvents.public_war_log()  # an event that is run when a clan's `.public_war_log` attribute has changed.
+    async def foo(old_clan, new_clan):
+        assert old_clan.public_war_log != new_clan.public_war_log
+
+    @client.event
+    @coc.ClanEvents.member_donations()  # an event that is run for every clan member when their `.donations` have changed.
+    async def foo(old_member, new_member):
+        assert old_member.donations != new_member.donations
+
+    @client.event
+    @coc.PlayerEvents.clan_level()  # an event that is called when a player's clan's level has changed.
+    async def foo(old_player, new_player):
+        assert old_player.clan.level != new_player.clan.level
+
+You can also stack decorators to get multiple events reported to one callback:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.ClanEvents.public_war_log()
+    @coc.ClanEvents.description()
+    @coc.ClanEvents.level()
+    async def foo(old_clan, new_clan):
+        if old_clan.level != new_clan.level:
+            ...
+        elif old_clan.description != new_clan.description:
+            ...
 
 
+Callbacks
+~~~~~~~~~
+
+Callbacks are the functions that are called when your event "happens".
+
+For Example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.PlayerEvents.name()
+    async def my_function(old_player, new_player):  # <-- this is the line I'm talking about
+        ...
+
+A few points when dealing with callbacks:
 
 
+1. They must be an async function, in other words they must start with ``async def``.
+
+2. They must have 2, **and only 2** parameters: the old object, and the new object.
+
+3. There is **no naming convention**, that is, you can call it whatever you want.
+
+
+Elaborating on point 2, the "old" object is the one *before* the event/change, and the
+"new" object is the one *after* the event/change. It's often helpful to name them like so.
+
+If your event is ``@coc.PlayerEvents.name()``, you can expect the names of the old and new players to be *different*,
+for example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.PlayerEvents.name()
+    async def foo(old_player, new_player):
+        assert old_player.name != new_player.name  # True
+
+
+For ``@coc.ClanEvents.member_x`` events, the first parameter should be the old member, and the second parameter the new member.
+You can access the member's clan object via ``member.clan``.
+
+For Example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.ClanEvents.member_donations()
+    async def foo(old_member, new_member):
+        assert old_member.donations != new_member.donations
+        print("The clan is {}".format(new_member.clan.name))
+
+
+Retry / Refresh Intervals
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Unless you wish to only check for new events once every hour or 6 hours, or any time greater than the refresh time
+for objects in the API, **it is suggested to omit the ``retry_interval`` parameter.** The library will automatically
+determine when the next fresh object is available, and instead of sleeping for a predefined 60seconds between every loop,
+it will instead sleep until a fresh object is available from the API. This means some events could see an up to 50% reduction in
+latency between when the event happens in game and when coc.py reports it.
+
+For example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.ClanEvents.level()
+    async def foo(...): ...  # check as often as API updates the clan for an event
+
+    @client.event
+    @coc.ClanEvents.level(retry_interval=1800)  # check every 30 minutes for a new event.
+    async def foo(...): ...
+
+
+Adding Clan and Player Tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tags can be added via the :meth:`EventsClient.add_player_updates`, :meth:`EventsClient.add_clan_updates` or
+:meth:`EventsClient.add_war_updates`. Alternatively, they can be passed to the decorator function.
+
+
+For example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.PlayerEvents.name(tags=['#tag', '#tag2', '#tag3'])
+    async def foo(old_player, new_player): ...
+
+    # alternatively:
+
+    @client.event
+    @coc.PlayerEvents.name()
+    async def foo(old_player, new_player): ...
+
+    client.add_player_updates('#tag', '#tag2', '#tag3')
+
+
+A few points to note:
+
+- Tags will be automatically corrected via the :meth:`coc.correct_tag` function.
+
+- **Every tag** that is added to the client will be sent to **every callback for that event group**.
+This makes for a much simpler internal design.
+
+
+For Example:
+
+.. code-block:: python3
+
+    @client.event
+    @coc.PlayerEvents.exp_level("#tag1")
+    async def foo(...):
+        # events will be received for #tag1, #tag2, #tag3 and #tag4.
+
+    @client.event
+    @coc.PlayerEvents.name("#tag2")
+    async def foo(...):
+        # events will be received for #tag1, #tag2, #tag3 and #tag4.
+
+    @client.event
+    @coc.PlayerEvents.donations()
+    async def foo(...):
+        # events will be received for #tag1, #tag2, #tag3 and #tag4.
+
+    client.add_player_updates("#tag3", "#tag4")
+
+
+The inverse applies; you only need to register a tag with 1 decorator for it to apply to all events.
+
+
+Removing Clan and Player Tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v1.0 provides added functionality of removing player and clan tags from the list of tags being updated:
+:meth:`EventsClient.remove_player_updates`, :meth:`EventsClient.remove_clan_updates` and :meth:`EventsClient.remove_war_updates`.
+
+The usage is intuitive, and identical to adding the tags:
+
+.. code-block:: python3
+
+    client.remove_player_updates("#tag1", "#tag2", "#tag3")
+
+    tags = ["#tag1", "#tag2", "#tag3"]
+    client.remove_player_updates(*tags)
+
+
+Custom Classes
+--------------
+For more information on custom class support, please see :ref:`custom_classes`.

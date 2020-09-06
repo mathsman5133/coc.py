@@ -8,12 +8,12 @@ coc.py: A Clash of Clans API Wrapper
 
 .. _getting_started:
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Getting Started
 
 .. _code_overview:
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Code Overview
 
    code_overview/client
@@ -24,12 +24,12 @@ coc.py: A Clash of Clans API Wrapper
 
 .. _examples:
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Examples
 
 .. _miscellaneous:
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
    :caption: Miscellaneous
 
    miscellaneous/migrating
