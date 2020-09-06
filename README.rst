@@ -49,9 +49,6 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
     client = coc.login('email', 'password')
 
-    player = loop.run_until_complete(client.get_player('tag'))
-    print(player.name)
-
     async def main():
         player = await client.get_player("tag")
         print("{0.name} has {0.trophies} trophies!".format(player))
@@ -61,13 +58,12 @@ This example will get a player with a certain tag, and search for 5 clans with a
             print("{0.name} ({0.tag}) has {0.member_count} members".format(clan))
 
         try:
-            war = await client.get_current_war("clan tag")
+            war = await client.get_current_war("#clantag")
             print(f"{0.clan_tag} is currently in {0.state} state.".format(war))
         except coc.PrivateWarLog:
             print("Uh oh, they have a private war log!")
 
-    if __name__ == '__main__':
-        asyncio.get_event_loop().run_until_complete(main())
+    client.loop.run_until_complete(main())
 
 Basic Events Example
 ---------------------
@@ -99,7 +95,6 @@ For more examples see the examples directory
 Contributing
 --------------
 Contributing is fantastic and much welcomed! If you have an issue, feel free to open an issue and start working on it.
-A few things to bear in mind:
 
 If you wish to run, setup or work on documentation, you will need to install `sphinx` and `sphinx-rtd-theme`.
 These can be installed with:
@@ -123,9 +118,9 @@ Links
 
 Disclaimer
 -----------
-- This content is not affiliated with, endorsed, sponsored, or specifically
-  approved by Supercell and Supercell is not responsible for it.
-  For more information see `Supercell's Fan Content Policy: <https://www.supercell.com/fan-content-policy.>`_
+This content is not affiliated with, endorsed, sponsored, or specifically
+approved by Supercell and Supercell is not responsible for it.
+For more information see `Supercell's Fan Content Policy. <https://www.supercell.com/fan-content-policy.>`_
 
 
 
