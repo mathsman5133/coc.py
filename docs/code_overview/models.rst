@@ -13,36 +13,48 @@ Due to this, there are many objects for what may seem like similar things.
 Clans
 ~~~~~~
 
+Base Clan
+^^^^^^^^^
 .. autoclass:: BaseClan()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Player Clan
+^^^^^^^^^^^
 .. autoclass:: PlayerClan()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Ranked Clan
+^^^^^^^^^^^
 .. autoclass:: RankedClan()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+War Clan
+^^^^^^^^
 .. autoclass:: WarClan()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan War League Clan
+^^^^^^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarLeagueClan()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan
+^^^^
 .. autoclass:: Clan()
     :members:
     :private-members:
@@ -53,36 +65,48 @@ Clans
 Players
 ~~~~~~~~
 
+Base Player
+^^^^^^^^^^^
 .. autoclass:: BasePlayer()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan Member
+^^^^^^^^^^^
 .. autoclass:: ClanMember()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Ranked Player
+^^^^^^^^^^^
 .. autoclass:: RankedPlayer()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan War League Clan Member
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarLeagueClanMember()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan War Member
+^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarMember()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Player
+^^^^^^
 .. autoclass:: Player()
     :members:
     :private-members:
@@ -93,18 +117,24 @@ Players
 Wars
 ~~~~~
 
+Clan War
+^^^^^^^^
 .. autoclass:: ClanWar()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan War Log Entry
+^^^^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarLogEntry()
     :members:
     :private-members:
     :inherited-members:
     :noindex:
 
+Clan War League Group
+^^^^^^^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarLeagueGroup()
     :members:
     :private-members:
