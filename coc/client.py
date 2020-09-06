@@ -619,7 +619,7 @@ class Client:
         try:
             league_group = await self.get_league_group(clan_tag)
         except NotFound as exception:
-            if not get_war:
+            if get_war is None:
                 raise PrivateWarLog(exception.response, exception._data)
             return get_war
 
@@ -629,6 +629,7 @@ class Client:
             round_tags = league_group.rounds[-2]
 
         kwargs["league_group"] = league_group
+        kwargs["clan_tag"] = clan_tag
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war

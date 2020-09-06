@@ -73,8 +73,10 @@ class ClanWar:
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
+
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
+
         self.clan_tag = self.clan_tag or self.clan and self.clan.tag
         self.league_group = kwargs.pop("league_group", None)
 
