@@ -760,34 +760,26 @@ class EventsClient(Client):
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
 
     async def _maintenance_poller(self):
-        # pylint: disable=broad-except
+        # pylint: disable=broad-except, protected-access
         maintenance_start = None
         try:
             while self.loop.is_running():
                 await self._in_maintenance_event.wait()
+
                 if maintenance_start is None:
                     maintenance_start = datetime.utcnow()
-                    for event in self._listeners["client"].get("maintenance_start", []):
-                        try:
-                            asyncio.ensure_future(event())
-                        except (BaseException, Exception) as exc:
-                            self.dispatch("event_error", exc)
+                    self.dispatch("maintenance_start")
+
                 try:
-                    # just need to remove the cache layer
-                    try:
-                        del self.http.cache["https://api.clashofclans.com/v1/clans/%23G88CYQP"]
-                    except KeyError:
-                        pass
-                    await self.get_clan("#G88CYQP")  # my clan
+                    player = await self.get_player("#JY9J2Y99")  # this will raise if API is in maintenance
+                    await asyncio.sleep(player._response_retry)  # wait until fresh object available
+                    # re-run again, this should raise Maintenance because API cache layer has expired
+                    await self.get_player("#JY9J2Y99")
                 except (Maintenance, Exception):
                     await asyncio.sleep(5)
                 else:
                     self._in_maintenance_event.clear()
-                    for event in self._listeners["client"].get("maintenance_completion", []):
-                        try:
-                            asyncio.ensure_future(event(maintenance_start))
-                        except (BaseException, Exception) as exc:
-                            self.dispatch("event_error", exc)
+                    self.dispatch("maintenance_completion", maintenance_start)
                     maintenance_start = None
 
         except asyncio.CancelledError:
