@@ -1,7 +1,0 @@
--r requirements.txt
-sphinx
-sphinx_rtd_theme
-pylint
-black
-flake8
-pre-commit
