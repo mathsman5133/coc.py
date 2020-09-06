@@ -53,7 +53,7 @@ setup(
     long_description=README,
     python_requires=">=3.5.3",
     install_requires=REQUIREMENTS,
-    extras_require={"docs": ["sphinx", "sphinx_rtd_theme"]},
+    extras_require={"docs": ["sphinx", "sphinx_rtd_theme", "sphinxcontrib_trio"]},
     classifiers={
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
