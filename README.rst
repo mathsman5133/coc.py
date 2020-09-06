@@ -104,37 +104,19 @@ Contributing
 Contributing is fantastic and much welcomed! If you have an issue, feel free to open an issue and start working on it.
 A few things to bear in mind:
 
-Installing the dev requirements:
+If you wish to run, setup or work on documentation, you will need to install `sphinx` and `sphinx-rtd-theme`.
+These can be installed with:
 
 .. code:: sh
 
-    pip install -r dev-requirements.txt
+    pip install sphinx
+    pip install sphinx-rtd-theme
 
-This will install all the dev requirements, such as pylint, sphinx and pre-commit. These are handy!
-
-**Setting up a git pre-commit hook**
-
-Code quality is important - the repo has automatic linting and CI implemented.
-
-In order to keep the git history
-clean, a pre-commit hook will automatically lint your code according to the repo's standard before you push.
-
-You can install this pre-commit hook with:
-
-.. code:: sh
-
-    pre-commit install
-
-In your local terminal. The ``pre-commit`` module should have already been installed
-if you installed the dev-requirements
-
-You can run all linting that will be run in CI with:
+If you wish to run linting, pylint, black and flake8 have been setup and can be run with:
 
 .. code:: sh
 
     python setup.py lint
-    // or
-    pre-commit run --all-files
 
 Links
 ------
