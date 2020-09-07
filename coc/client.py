@@ -29,6 +29,7 @@ from collections.abc import Iterable
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, NotFound, PrivateWarLog
+from .enums import WarRound
 from .miscmodels import Label, League, Location
 from .http import HTTPClient, BasicThrottler
 from .iterators import (
@@ -539,7 +540,7 @@ class Client:
         data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
 
-    def get_league_wars(self, war_tags: Iterable, cls=ClanWar, **kwargs):
+    def get_league_wars(self, war_tags: Iterable, clan_tag: str = None, cls=ClanWar, **kwargs):
         """
         Retrieve information about multiple league wars
 
@@ -556,6 +557,8 @@ class Client:
         -----------
         war_tags : :class:`collections.Iterable`
             An iterable of war tags to search for.
+        clan_tag: Optional[:class:`str`]
+            An optional clan tag. If present, this will only return wars which belong to this clan.
 
         Returns
         --------
@@ -567,10 +570,10 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return LeagueWarIterator(self, war_tags, cls, **kwargs)
+        return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_current_war(self, clan_tag: str, cls=ClanWar, **kwargs):
+    async def get_current_war(self, clan_tag: str, cwl_round=WarRound.current_war, cls=ClanWar, **kwargs):
         """Retrieve a clan's current war.
 
         Unlike ``Client.get_clan_war`` or ``Client.get_league_war``,
@@ -593,6 +596,10 @@ class Client:
         -----------
         clan_tag : str
             An iterable of clan tag to search for.
+        cwl_round: :class:`WarRound`
+            An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
+            ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
+            This defaults to ``coc.WarRound.current_war``.
 
         Returns
         --------
@@ -623,10 +630,24 @@ class Client:
                 raise PrivateWarLog(exception.response, exception._data)
             return get_war
 
-        if len(league_group.rounds) == 1:
+        is_prep = league_group.state == "preparation"
+
+        if cwl_round is WarRound.current_war and league_group.state == "preparation":
+            return None  # for round 1 and 15min prep between rounds this is a shortcut.
+        elif cwl_round is WarRound.current_preparation and league_group.state == "warEnded":
+            return None  # for the end of CWL there's no next prep day.
+        elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
+            return None  # no previous war for first rounds.
+        elif cwl_round is WarRound.previous_war and is_prep:
+            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.previous_war:
+            round_tags = league_group.rounds[-3]
+        elif cwl_round is WarRound.current_war:
+            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.current_preparation:
             round_tags = league_group.rounds[-1]
         else:
-            round_tags = league_group.rounds[-2]
+            return None
 
         kwargs["league_group"] = league_group
         kwargs["clan_tag"] = clan_tag

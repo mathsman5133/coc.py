@@ -30,6 +30,7 @@ from datetime import datetime
 
 from .client import Client
 from .clans import Clan
+from .enums import WarRound
 from .players import Player
 from .wars import ClanWar
 from .errors import Maintenance, PrivateWarLog
@@ -103,7 +104,7 @@ class _ValidateEvent:
                 else:
                     wrap = _ValidateEvent.wrap_pred
                 return _ValidateEvent.register_event(
-                    func, wrap(pred), tags, custom_class, retry_interval, self.cls.event_type
+                    func, wrap(pred), tags, custom_class, retry_interval, self.cls.event_type, item
                 )
 
             return decorator
@@ -144,7 +145,7 @@ class _ValidateEvent:
         return wrapped
 
     @staticmethod
-    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type=""):
+    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type="", event_name=""):
         """Validates the types of all arguments and adds these as attributes to the function."""
         # pylint: disable=too-many-arguments
         if getattr(func, "is_event_listener", False) and func.event_type != event_type:
@@ -173,6 +174,7 @@ class _ValidateEvent:
         func.is_event_listener = True
         func.event_cls = cls
         func.event_retry_interval = retry_interval
+        func.event_name = event_name
         try:
             func.event_runners.append(runner)
         except AttributeError:
@@ -387,6 +389,7 @@ class EventsClient(Client):
         self.war_loops_run = 0
 
         self.is_cwl_active = options.pop("cwl_active", True)
+        self.check_cwl_prep = options.pop("check_cwl_prep", False)
 
         self._locks = {}
 
@@ -654,6 +657,9 @@ class EventsClient(Client):
             self.player_retry_interval = retry_interval or self.player_retry_interval
             self.add_player_updates(*tags)
         elif event_type == "war":
+            if function.event_name == "members":
+                self.check_cwl_prep = True  # we need to check cwl clans in prep for this one.
+
             self.war_cls = cls or self.war_cls
             self.war_retry_interval = retry_interval or self.war_retry_interval
             self.add_war_updates(*tags)
@@ -797,9 +803,15 @@ class EventsClient(Client):
                     continue  # don't run if we're hitting maintenance errors.
 
                 self.dispatch("war_loop_start", self.war_loops_run)
+
+                if self.is_cwl_active and self.check_cwl_prep:
+                    options = (WarRound.current_war, WarRound.current_preparation)
+                else:
+                    options = (WarRound.current_war, )
+
                 tasks = [
-                    self.loop.create_task(self._run_war_update(index, tag))
-                    for index, tag in enumerate(self._war_updates)
+                    self.loop.create_task(self._run_war_update(tag, option))
+                    for tag in self._war_updates for option in options
                 ]
                 await asyncio.gather(*tasks)
                 self.dispatch("war_loop_finish", self.war_loops_run)
@@ -951,11 +963,9 @@ class EventsClient(Client):
                 continue
             await listener(cached_clan, clan)
 
-    async def _run_war_update(self, index, clan_tag):
+    async def _run_war_update(self, clan_tag, cwl_round=None):
         # pylint: disable=protected-access, broad-except
-        await asyncio.sleep(0.005 * index)
-
-        key = "war:{}".format(clan_tag)
+        key = "war:{}:{}".format(cwl_round, clan_tag)
         try:
             lock = self._locks[key]
         except KeyError:
@@ -969,7 +979,7 @@ class EventsClient(Client):
             meth = self.get_clan_war
 
         try:
-            war = await meth(clan_tag, cls=self.war_cls)
+            war = await meth(clan_tag, cls=self.war_cls, round=cwl_round)
         except (Maintenance, PrivateWarLog):
             self._safe_unlock(lock)
             return
@@ -982,8 +992,8 @@ class EventsClient(Client):
             self._safe_unlock(lock)
             return
 
-        # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
-        self.loop.call_later(max(war._response_retry, self.player_retry_interval), self._safe_unlock, lock)
+        # sleep for either the global retry or whenever a new war object is available, whichever is smaller.
+        self.loop.call_later(max(war._response_retry, self.war_retry_interval), self._safe_unlock, lock)
 
         cached_war = self._get_cached_war(clan_tag)
         self._update_war(clan_tag, war)

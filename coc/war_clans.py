@@ -104,12 +104,16 @@ class WarClan(BaseClan):
 
     @property
     def members(self) -> typing.List[ClanWarMember]:
-        """List[:class:`ClanWarMember`]: A list of members that are in the war."""
+        """List[:class:`ClanWarMember`]: A list of members that are in the war.
+        This is sorted by :attr:`ClanWarMember.map_position`
+        """
         dict_members = self._members
         if dict_members:
             return list(dict_members.values())
 
-        dict_members = self._members = {member.tag: member for member in self.__iter_members}
+        dict_members = self._members = {
+            member.tag: member for member in sorted(self.__iter_members, key=lambda m: m.map_position)
+        }
         return list(dict_members.values())
 
     @property

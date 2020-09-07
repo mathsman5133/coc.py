@@ -42,6 +42,15 @@ class Role(Enum):
         return lookup[self]
 
 
+class WarRound(Enum):
+    previous_war = 0
+    current_war = 1
+    current_preparation = 2
+
+    def __str__(self):
+        return self.name
+
+
 ELIXIR_TROOP_ORDER = [
     "Barbarian",
     "Archer",

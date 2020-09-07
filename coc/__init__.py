@@ -24,14 +24,13 @@ SOFTWARE.
 
 __version__ = "1.0.0a0"
 
-import subprocess
-
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Role,
+    WarRound,
     ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
     DARK_ELIXIR_SPELL_ORDER,

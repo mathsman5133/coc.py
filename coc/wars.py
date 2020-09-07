@@ -22,7 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import typing
+import itertools
 
+from .enums import WarRound
 from .iterators import LeagueWarIterator
 from .miscmodels import try_enum, Timestamp
 from .utils import get
@@ -382,8 +384,36 @@ class ClanWarLeagueGroup:
         self._clans = clans = list(self.__iter_clans)
         return clans
 
+    def get_wars_for_clan(self, clan_tag: str, cls: typing.Type[ClanWar] = ClanWar):
+        """Returns every war the clan has participated in this current CWL.
+
+        This will return an AsyncIterator of :class:`ClanWar`.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            group = await client.get_league_group('#clan_tag')
+
+            async for war in group.get_wars_for_clan('#clantag'):
+                print(war.start_time)
+
+        Parameters
+        ------------
+        clan_tag: str
+            The clan tag to get wars for. This method will only return wars which belong to this clan.
+        cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
+                                     This should inherit from :class:`ClanWar`.
+
+        Returns
+        ---------
+        AsyncIterator of :class:`ClanWar`: All wars in the given round.
+        """
+        return LeagueWarIterator(client=self._client, tags=itertools.chain(*self.rounds), clan_tag=clan_tag, cls=cls)
+
     def get_wars(
-        self, round_index: int = -2, cache: bool = True, cls: typing.Type[ClanWar] = ClanWar
+        self, cwl_round=WarRound.current_war, cls: typing.Type[ClanWar] = ClanWar
     ) -> LeagueWarIterator:
         """Returns war information for every war in a league round.
 
@@ -401,22 +431,36 @@ class ClanWarLeagueGroup:
 
         Parameters
         ------------
-        round_index: Optional[:class:`int`] - Indicates the round number to get wars from.
-                     These rounds can be found with :attr:`LeagueGroup.rounds` and defaults
-                     to the current round in-war (index of -2). For leagues on day 1, this will be
-                     an index of -1.
-        cache: Optional[:class:`bool`] Indicates whether to search
-               the cache before making an HTTP request
+
         cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
                                      This should inherit from :class:`ClanWar`.
+        cwl_round: :class:`WarRound`
+            An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
+            ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
+            This defaults to ``coc.WarRound.current_war``.
+
 
         Returns
         ---------
         AsyncIterator of :class:`ClanWar`: All wars in the given round.
         """
-        if len(self.rounds) == 1 and abs(round_index) > 1:
-            # account for day 1 where there is only 1 round - prep day 1.
-            round_index = -1
+        is_prep = self.state == "preparation"
+        num_rounds = len(self.rounds)
+        if cwl_round is WarRound.current_war and is_prep:
+            round_tags = ()  # for round 1 and 15min prep between rounds this is a shortcut.
+        elif cwl_round is WarRound.current_preparation and self.state == "warEnded":
+            round_tags = ()  # for the end of CWL there's no next prep day.
+        elif cwl_round is WarRound.previous_war and num_rounds == 1:
+            round_tags = ()  # no previous war for first rounds.
+        elif cwl_round is WarRound.previous_war and is_prep:
+            round_tags = self.rounds[-2]
+        elif cwl_round is WarRound.previous_war:
+            round_tags = self.rounds[-3]
+        elif cwl_round is WarRound.current_war:
+            round_tags = self.rounds[-2]
+        elif cwl_round is WarRound.current_preparation:
+            round_tags = self.rounds[-1]
+        else:
+            round_tags = ()
 
-        tags = (n for n in self.rounds[round_index])
-        return LeagueWarIterator(client=self._client, tags=tags, cache=cache, cls=cls)
+        return LeagueWarIterator(client=self._client, tags=round_tags, cls=cls)
