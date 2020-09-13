@@ -19,7 +19,6 @@ Base Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Player Clan
 ^^^^^^^^^^^
@@ -27,7 +26,6 @@ Player Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Ranked Clan
 ^^^^^^^^^^^
@@ -35,7 +33,6 @@ Ranked Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 War Clan
 ^^^^^^^^
@@ -43,7 +40,6 @@ War Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan War League Clan
 ^^^^^^^^^^^^^^^^^^^^
@@ -51,7 +47,6 @@ Clan War League Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan
 ^^^^
@@ -59,7 +54,6 @@ Clan
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 
 Players
@@ -71,7 +65,6 @@ Base Player
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan Member
 ^^^^^^^^^^^
@@ -79,7 +72,6 @@ Clan Member
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Ranked Player
 ^^^^^^^^^^^
@@ -87,7 +79,6 @@ Ranked Player
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan War League Clan Member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,7 +86,6 @@ Clan War League Clan Member
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan War Member
 ^^^^^^^^^^^^^^^
@@ -103,7 +93,6 @@ Clan War Member
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Player
 ^^^^^^
@@ -111,7 +100,6 @@ Player
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 
 Wars
@@ -123,7 +111,6 @@ Clan War
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan War Log Entry
 ^^^^^^^^^^^^^^^^^^
@@ -131,7 +118,6 @@ Clan War Log Entry
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 Clan War League Group
 ^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +125,6 @@ Clan War League Group
     :members:
     :private-members:
     :inherited-members:
-    :noindex:
 
 
 WarAttack
