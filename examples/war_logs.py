@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 # email and password is your login credentials used at https://developer.clashofclans.com
-coc_client = coc.login(email="mathsman5132@gmail.com", password="creepy_crawley", key_names="windows")
+coc_client = coc.login(email="email", password="password")
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -41,7 +41,7 @@ async def get_warlog_opponents_from_clan_name(name: str, no_of_clans: int):
         for war in war_logs[tag]:
             # if it is a league war we will error below because it does not return a WarLog object,
             # and thus no opponent
-            if isinstance(war, coc.LeagueWarLogEntry):
+            if war.is_league_entry:
                 print("League War Season - No opponent info available")
                 continue
 
