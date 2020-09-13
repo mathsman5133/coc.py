@@ -206,7 +206,7 @@ class DiscordLinkClient:
             A list containing (discord_id, (tuple of tags)) matches.
 
         Example
-        -------------------
+        -------
 
         .. code-block:: python3
 

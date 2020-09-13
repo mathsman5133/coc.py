@@ -160,7 +160,8 @@ class WarClan(BaseClan):
 
 
 class ClanWarLeagueClan(BaseClan):
-    """Represents a Clan War League Clan."""
+    """Represents a Clan War League Clan.
+    """
 
     def __init__(self, *, data, client):
         super().__init__(data=data, client=client)

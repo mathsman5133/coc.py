@@ -53,7 +53,7 @@ class Client:
     """This is the client connection used to interact with the Clash of Clans API.
 
     Parameters
-    -------------
+    ----------
     key_count : int
         The amount of keys to use for this client. Maximum of 10.
         Defaults to 1.
@@ -167,7 +167,7 @@ class Client:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters
-        ------------
+        ----------
         email : str
             Your password email from https://developer.clashofclans.com
             This is used when updating keys automatically if your IP changes

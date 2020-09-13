@@ -400,7 +400,7 @@ class ClanWarLeagueGroup:
                 print(war.start_time)
 
         Parameters
-        ------------
+        ----------
         clan_tag: str
             The clan tag to get wars for. This method will only return wars which belong to this clan.
         cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
@@ -430,7 +430,7 @@ class ClanWarLeagueGroup:
                 print(war.clan_tag)
 
         Parameters
-        ------------
+        ----------
 
         cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
                                      This should inherit from :class:`ClanWar`.

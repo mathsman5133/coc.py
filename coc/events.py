@@ -418,7 +418,7 @@ class EventsClient(Client):
         """Add clan tags to receive updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to add. If you wish to pass in an iterable, you must unpack it with \\*.
 
@@ -440,7 +440,7 @@ class EventsClient(Client):
         """Remove clan tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to remove. If you wish to pass in an iterable, you must unpack it with \\*.
 
@@ -465,7 +465,7 @@ class EventsClient(Client):
         r"""Add player tags to receive events for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The player tags to add. If you wish to pass in an iterable, you must unpack it with \*\.
 
@@ -488,7 +488,7 @@ class EventsClient(Client):
         r"""Remove player tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The player tags to remove. If you wish to pass in an iterable, you must unpack it with \*\.
 
@@ -514,7 +514,7 @@ class EventsClient(Client):
         r"""Add clan tags to receive war events for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to add that will receive war events.
             If you wish to pass in an iterable, you must unpack it with \*\.
@@ -537,7 +537,7 @@ class EventsClient(Client):
         r"""Remove player tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to remove that will receive war events.
             If you wish to pass in an iterable, you must unpack it with \*\.
@@ -592,7 +592,7 @@ class EventsClient(Client):
         The function **may be** be a coroutine.
 
         Parameters
-        ------------
+        ----------
         function : function
             The function to be registered (not needed if used with a decorator)
 
