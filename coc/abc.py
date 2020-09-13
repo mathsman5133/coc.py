@@ -59,7 +59,7 @@ class OverrideDoc(type):
 
                 # fmt: off
                 new_cls.__doc__ = (
-                    new_cls.__doc__[:insert + 11] + doc.replace("----------", "") + new_cls.__doc__[insert + 11:]
+                    new_cls.__doc__[:insert + 25] + doc.strip("\n-") + new_cls.__doc__[insert + 25:]
                 )
                 # fmt: on
 
