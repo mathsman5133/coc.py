@@ -24,8 +24,13 @@ coc.py: A Clash of Clans API Wrapper
 
 .. _examples:
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Examples
+
+   examples/discord_bot
+   examples/discord_links
+   examples/events_example
+   examples/war_logs
 
 .. _miscellaneous:
 .. toctree::
