@@ -1,7 +1,7 @@
 .. current-module:: coc
 
-War Log Handling Example
-========================
+War Logs
+========
 This is an example of how to handle war logs.
 
 .. literalinclude:: ../../examples/war_logs.py

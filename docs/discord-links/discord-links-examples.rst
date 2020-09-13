@@ -1,7 +1,7 @@
 .. current-module:: coc
 
-Discord Links Example
-====================
+Examples
+========
 This is an example of using the discord links extension.
 
 .. literalinclude:: ../../examples/discord_links.py

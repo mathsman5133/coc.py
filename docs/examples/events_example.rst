@@ -1,7 +1,7 @@
 .. current-module:: coc
 
-Basic Events Example
-====================
+Event
+=====
 This is an example of a basic events setup.
 
 .. literalinclude:: ../../examples/events.py
