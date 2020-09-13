@@ -70,7 +70,7 @@ class BaseClan(metaclass=OverrideDoc):
     """An ABC that implements some common operations on clans, regardless of type.
 
     Attributes
-    -----------
+    ----------
     tag: :class:`str`
         The clan's tag
     name: :class:`str`
@@ -139,7 +139,7 @@ class BasePlayer(metaclass=OverrideDoc):
     """An ABC that implements some common operations on players, regardless of type.
 
     Attributes
-    -----------
+    ----------
     tag: :class:`str`
         The player's tag
     name: :class:`str`

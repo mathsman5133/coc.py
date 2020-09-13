@@ -32,7 +32,7 @@ class HTTPException(ClashOfClansException):
     """Base exception for when a HTTP request fails
 
     Attributes
-    -----------
+    ----------
     response:
         :class:`aiohttp.ClientResponse` - The response of the failed HTTP request.
 

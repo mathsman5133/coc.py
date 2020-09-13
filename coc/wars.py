@@ -40,7 +40,7 @@ class ClanWar:
     """Represents a Current Clash of Clans War
 
     Attributes
-    -----------
+    ----------
     state:
         :class:`str`: The clan's current war state.
     preparation_start_time:
@@ -281,7 +281,7 @@ class ClanWarLogEntry:
 
 
     Attributes
-    -----------
+    ----------
     result:
         :class:`str`: The result of the war - ``win`` or ``loss``
     end_time:
@@ -328,7 +328,7 @@ class ClanWarLeagueGroup:
     """Represents a Clan War League (CWL) Group
 
     Attributes
-    -----------
+    ----------
     state:
         :class:`str`: The current state of the league group (`inWar`, `preparation` etc.)
     season:

@@ -128,7 +128,8 @@ class DiscordLinkClient:
 
         Returns
         --------
-        Optional[:class:`int`]: The discord ID linked to the player, or ``None`` if no link found.
+        Optional[:class:`int`]
+            The discord ID linked to the player, or ``None`` if no link found.
         """
         data = await self._request("GET", "/links/{}".format(correct_tag(player_tag)))
         return data.get("discordId", None)
@@ -143,13 +144,13 @@ class DiscordLinkClient:
 
         Parameters
         ----------
-        player_tags : :class:`collections.abc.Iterable` of :class:`str`
+        player_tags : :class:`typing.Iterable` of :class:`str`
             The player tags to search for.
 
         Returns
         --------
-        :class:`list`[:class:`str`:, Optional[:class:`int`]] - A list of player_tag, discord_id tuple matches.
-            Discord ID will be ``None`` if not found.
+        List[:class:`str`:, Optional[:class:`int`]]
+            A list of player_tag, discord_id tuple matches. Discord ID will be ``None`` if not found.
 
         Example
         --------
@@ -178,7 +179,8 @@ class DiscordLinkClient:
 
         Returns
         --------
-        List[:class:`str`] a list of player tags attached to the discord ID. If none found, this will be an empty list.
+        List[:class:`str`]
+         A list of player tags attached to the discord ID. If no links found, this will be an empty list.
         """
         data = await self._request("GET", "/links/{}".format(discord_id))
         if not data:
@@ -195,13 +197,13 @@ class DiscordLinkClient:
 
         Parameters
         -----------
-        discord_ids: :class:`collections.abc.Iterable` of :class:`int`
+        discord_ids: :class:`typing.Iterable` of :class:`int`
             The discord IDs to search for.
 
         Returns
         --------
-        :class:`list`[:class:`tuple`[:class:`int`:, :class:`tuple`[:class:`str`]]]
-        A list containing (discord_id, (tuple of tags)) matches.
+        List[Tuple[:class:`int`, Tuple[:class:`str`]]]
+            A list containing (discord_id, (tuple of tags)) matches.
 
         Example
         -------------------
@@ -218,7 +220,7 @@ class DiscordLinkClient:
         data = await self._request("POST", "/links/batch", json=[str(n) for n in discord_ids])
         return [(n["discordId"], tuple(n["playerTags"])) for n in data]
 
-    def add_discord_link(self, player_tag: str, discord_id: int):
+    async def add_discord_link(self, player_tag: str, discord_id: int):
         """Creates a link between a player tag and a discord ID for the shared junkies database.
         Player tags can be found either in game or by from clan member lists.
 
@@ -230,9 +232,9 @@ class DiscordLinkClient:
             The discord ID to add the link to.
         """
         data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
-        return self._request("POST", "/links", json=data)
+        return await self._request("POST", "/links", json=data)
 
-    def update_discord_link(self, player_tag: str, discord_id: int):
+    async def update_discord_link(self, player_tag: str, discord_id: int):
         """Updates the discord ID for a link between a player tag and a discord ID for the shared junkies database.
 
         Player tags can be found either in game or by from clan member lists.
@@ -245,9 +247,9 @@ class DiscordLinkClient:
             The discord ID to add the link to.
         """
         data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
-        return self._request("PUT", "/links", json=data)
+        return await self._request("PUT", "/links", json=data)
 
-    def delete_discord_link(self, player_tag: str):
+    async def delete_discord_link(self, player_tag: str):
         """Deletes a link between a player tag and a discord ID for the shared junkies database.
 
        Player tags can be found either in game or by from clan member lists.
@@ -257,4 +259,4 @@ class DiscordLinkClient:
        player_tag : str
            The player tag to add the link to.
        """
-        return self._request("POST", "/links/{}".format(correct_tag(player_tag, prefix="")))
+        return await self._request("POST", "/links/{}".format(correct_tag(player_tag, prefix="")))

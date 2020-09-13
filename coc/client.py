@@ -100,7 +100,7 @@ class Client:
         The max size of the internal cache layer. Defaults to 10 000. Set this to ``None`` to remove any cache layer.
 
     Attributes
-    -----------
+    ----------
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """

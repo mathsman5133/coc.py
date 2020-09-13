@@ -22,10 +22,10 @@ coc.py: A Clash of Clans API Wrapper
    code_overview/customclasses
    code_overview/exceptions
 
-.. _discord_links
+.. _discord_links:
 .. toctree::
    :maxdepth: 3
-   :caption: Discord Links API
+   :caption: Discord Links Extension
 
    discord-links/overview
    discord-links/api-reference
