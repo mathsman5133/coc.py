@@ -132,11 +132,12 @@ class DiscordLinkClient:
             The discord ID linked to the player, or ``None`` if no link found.
         """
         data = await self._request("GET", "/links/{}".format(correct_tag(player_tag)))
-        return data and data.get("discordId", None)
+        try:
+            return int(data[0]["discordId"])
+        except (IndexError, KeyError, TypeError):
+            return None
 
-    async def get_discord_links(
-        self, player_tags: typing.Iterable
-    ) -> typing.List[typing.Tuple[str, typing.Optional[str]]]:
+    async def get_discord_links(self, player_tags: typing.Iterable) -> typing.List[typing.Tuple[str, int]]:
         """Get linked discord IDs for an iterable of player tags.
         Player tags can be found either in game or by from clan member lists.
 
@@ -164,12 +165,12 @@ class DiscordLinkClient:
                 print(player_tag, discord_id)
 
         """
-        tags = list(player_tags)
+        tags = [correct_tag(tag) for tag in player_tags]
         data = await self._request("POST", "/links/batch", json=tags)
         if not data:
             return []
 
-        return [(n.get("playerTags", [""])[0], n.get("discordId", None)) for n in data]
+        return [(n["playerTags"].pop(), int(n["discordId"])) for n in data]
 
     async def get_discord_linked_players(self, discord_id: int) -> typing.List[str]:
         """Get a list of player tags linked to a discord ID.
@@ -223,7 +224,7 @@ class DiscordLinkClient:
         if not data:
             return []
 
-        return [(n["discordId"], tuple(n["playerTags"])) for n in data]
+        return [(int(n["discordId"]), tuple(n["playerTags"])) for n in data]
 
     async def add_discord_link(self, player_tag: str, discord_id: int):
         """Creates a link between a player tag and a discord ID for the shared junkies database.
@@ -247,9 +248,9 @@ class DiscordLinkClient:
         Parameters
         ----------
         player_tag : str
-            The player tag to add the link to.
+            The player tag to update the link for.
         discord_id: int
-            The discord ID to add the link to.
+            The discord ID to update the link for.
         """
         data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
         return await self._request("PUT", "/links", json=data)
@@ -262,6 +263,6 @@ class DiscordLinkClient:
        Parameters
        ----------
        player_tag : str
-           The player tag to add the link to.
+           The player tag to remove the link from.
        """
         return await self._request("POST", "/links/{}".format(correct_tag(player_tag, prefix="")))
