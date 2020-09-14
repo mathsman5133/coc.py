@@ -132,7 +132,7 @@ class DiscordLinkClient:
             The discord ID linked to the player, or ``None`` if no link found.
         """
         data = await self._request("GET", "/links/{}".format(correct_tag(player_tag)))
-        return data.get("discordId", None)
+        return data and data.get("discordId", None)
 
     async def get_discord_links(
         self, player_tags: typing.Iterable
@@ -166,6 +166,8 @@ class DiscordLinkClient:
         """
         tags = list(player_tags)
         data = await self._request("POST", "/links/batch", json=tags)
+        if not data:
+            return []
 
         return [(n.get("playerTags", [""])[0], n.get("discordId", None)) for n in data]
 
@@ -186,7 +188,7 @@ class DiscordLinkClient:
         if not data:
             return []
 
-        return data.get("playerTag", [])
+        return [item["playerTag"] for item in data]
 
     async def get_batch_discord_linked_players(
         self, discord_ids: typing.Iterable
@@ -218,6 +220,9 @@ class DiscordLinkClient:
                 print(discord_id, ', '.join(player_tags))
         """
         data = await self._request("POST", "/links/batch", json=[str(n) for n in discord_ids])
+        if not data:
+            return []
+
         return [(n["discordId"], tuple(n["playerTags"])) for n in data]
 
     async def add_discord_link(self, player_tag: str, discord_id: int):
