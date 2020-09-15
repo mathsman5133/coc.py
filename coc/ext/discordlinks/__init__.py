@@ -262,21 +262,6 @@ class DiscordLinkClient:
         data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
         return await self._request("POST", "/links", json=data)
 
-    async def update_link(self, player_tag: str, discord_id: int):
-        """Updates the discord ID for a link between a player tag and a discord ID for the shared junkies database.
-
-        Player tags can be found either in game or by from clan member lists.
-
-        Parameters
-        ----------
-        player_tag : str
-            The player tag to update the link for.
-        discord_id: int
-            The discord ID to update the link for.
-        """
-        data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
-        return await self._request("PUT", "/links", json=data)
-
     async def delete_link(self, player_tag: str):
         """Deletes a link between a player tag and a discord ID for the shared junkies database.
 
