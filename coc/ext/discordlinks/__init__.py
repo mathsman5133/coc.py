@@ -7,12 +7,12 @@ import typing
 import json
 
 from collections import namedtuple
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import aiohttp
 
 from coc.http import json_or_text
-from coc.utils import correct_tag, is_valid_tag
+from coc.utils import correct_tag
 
 LOG = logging.getLogger(__name__)
 
@@ -31,7 +31,10 @@ def extract_expiry_from_jwt_token(token):
         _, payload = signing.split(b".", 1)
     except ValueError:
         return None  # not enough segments
-    
+
+    if len(payload) % 4 > 0:
+        payload += b"=" * (4 - len(payload) % 4)
+
     bytes_payload = base64.urlsafe_b64decode(payload)
     dict_payload = json.loads(bytes_payload)
     try:
