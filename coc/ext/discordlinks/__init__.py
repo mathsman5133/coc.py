@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 import aiohttp
 
 from coc.http import json_or_text
-from coc.utils import correct_tag
+from coc.utils import correct_tag, is_valid_tag
 
 LOG = logging.getLogger(__name__)
 
@@ -137,9 +137,9 @@ class DiscordLinkClient:
             "password": self.password,
         }
 
-        key = await self._request("POST", "/login", token_request=True, json=data)
+        payload = await self._request("POST", "/login", token_request=True, json=data)
 
-        self.key = AccessToken(key["token"], extract_expiry_from_jwt_token(key))
+        self.key = AccessToken(payload["token"], extract_expiry_from_jwt_token(payload["token"]))
 
     async def get_discord_link(self, player_tag: str) -> typing.Optional[int]:
         """Get a linked discord ID of a player tag.
@@ -155,7 +155,7 @@ class DiscordLinkClient:
         Optional[:class:`int`]
             The discord ID linked to the player, or ``None`` if no link found.
         """
-        data = await self._request("GET", "/links/{}".format(correct_tag(player_tag)))
+        data = await self._request("GET", "/links/{}".format(correct_tag(player_tag, prefix="")))
         try:
             return int(data[0]["discordId"])
         except (IndexError, KeyError, TypeError):
@@ -189,7 +189,7 @@ class DiscordLinkClient:
                 print(player_tag, discord_id)
 
         """
-        tags = [correct_tag(tag) for tag in player_tags]
+        tags = [correct_tag(tag, prefix="") for tag in player_tags]
         data = await self._request("POST", "/links/batch", json=tags)
         if not data:
             return []
@@ -258,7 +258,7 @@ class DiscordLinkClient:
         discord_id: int
             The discord ID to add the link to.
         """
-        data = {"playerTag": correct_tag(player_tag), "discordId": str(discord_id)}
+        data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
         return await self._request("POST", "/links", json=data)
 
     async def update_discord_link(self, player_tag: str, discord_id: int):
@@ -273,7 +273,7 @@ class DiscordLinkClient:
         discord_id: int
             The discord ID to update the link for.
         """
-        data = {"playerTag": correct_tag(player_tag), "discordId": str(discord_id)}
+        data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
         return await self._request("PUT", "/links", json=data)
 
     async def delete_discord_link(self, player_tag: str):
@@ -286,4 +286,4 @@ class DiscordLinkClient:
        player_tag : str
            The player tag to remove the link from.
        """
-        return await self._request("DELETE", "/links/{}".format(correct_tag(player_tag)))
+        return await self._request("DELETE", "/links/{}".format(correct_tag(player_tag, prefix="")))
