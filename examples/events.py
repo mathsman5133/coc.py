@@ -31,7 +31,7 @@ player_tags = [
 
 @client.event  # Pro Tip : client event is mandatory then only any event will work so dont leave :)
 @coc.ClanEvents.member_donations(tags=clan_tags)
-async def on_clan_member_donation(old_donation, new_donation):
+async def on_clan_member_donation(old_member, new_member):
     final_donated_troops = new_donation.donations - old_donation.donations
     print(f"{new_donation} of {new_donation.clan} just donated {final_donated_troops} troops.")
 
