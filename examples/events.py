@@ -63,7 +63,7 @@ async def on_clan_trophy_change(old, new):
 
 @client.event
 @coc.ClanEvents.member_versus_trophies(clan_tags, retry_interval=10)
-async def on_clan_versus_change(old, new):
+async def clan_member_versus_trophies_changed(old_member, new_member):
     print(f"{new.name} total versus trophies changed from {old.versus_trophies} to {new.versus_trophies}")
 
 
