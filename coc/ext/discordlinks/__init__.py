@@ -144,7 +144,7 @@ class DiscordLinkClient:
 
         self.key = AccessToken(payload["token"], extract_expiry_from_jwt_token(payload["token"]))
 
-    async def get_discord_link(self, player_tag: str) -> typing.Optional[int]:
+    async def get_link(self, player_tag: str) -> typing.Optional[int]:
         """Get a linked discord ID of a player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -193,10 +193,12 @@ class DiscordLinkClient:
         """
         tags = [correct_tag(tag, prefix="") for tag in player_tag]
         data = await self._request("POST", "/links/batch", json=tags)
-        if not data:
-            return []
+        data = data or []
 
-        return [(n["playerTag"], int(n["discordId"])) for n in data]
+        def maybe_int(item):
+            return int(item) if item else None
+
+        return [("#" + tag["playerTag"], maybe_int(data.get(tag, {}).get("discordId"))) for tag in data]
 
     async def get_linked_players(self, discord_id: int) -> typing.List[str]:
         """Get a list of player tags linked to a discord ID.
