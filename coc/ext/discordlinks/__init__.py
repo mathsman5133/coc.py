@@ -164,7 +164,7 @@ class DiscordLinkClient:
         except (IndexError, KeyError, TypeError):
             return None
 
-    async def get_links(self, *player_tag: str) -> typing.List[typing.Tuple[str, int]]:
+    async def get_links(self, *player_tag: str) -> typing.List[typing.Tuple[str, typing.Optional[int]]]:
         r"""Get linked discord IDs for an iterable of player tags.
         Player tags can be found either in game or by from clan member lists.
 
@@ -195,10 +195,9 @@ class DiscordLinkClient:
         data = await self._request("POST", "/links/batch", json=tags)
         data = data or []
 
-        def maybe_int(item):
-            return int(item) if item else None
+        unclaimed_tags = set("#" + tag for tag in tags) - set(p["playerTag"] for p in data)
 
-        return [("#" + tag["playerTag"], maybe_int(data.get(tag, {}).get("discordId"))) for tag in data]
+        return [(p["playerTag"], int(p["discordId"])) for p in data] + [(tag, None) for tag in unclaimed_tags]
 
     async def get_linked_players(self, discord_id: int) -> typing.List[str]:
         """Get a list of player tags linked to a discord ID.
