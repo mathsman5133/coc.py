@@ -28,7 +28,7 @@ import logging
 from collections.abc import Iterable
 
 from .clans import Clan, RankedClan
-from .errors import Forbidden, NotFound, PrivateWarLog
+from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import Label, League, Location
 from .http import HTTPClient, BasicThrottler
@@ -510,6 +510,11 @@ class Client:
             data = await self.http.get_clan_war_league_group(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception._data)
+        except asyncio.TimeoutError:
+            raise GatewayTimeout(
+                "Client timed out waiting for %s clan tag. This may be the result of an API bug which times out "
+                "when requesting the league group of a clan searching for a Clan War League match."
+            )
 
         return cls(data=data, client=self, **kwargs)
 
@@ -628,6 +633,9 @@ class Client:
         except NotFound as exception:
             if get_war is None:
                 raise PrivateWarLog(exception.response, exception._data)
+            return get_war
+        except (asyncio.TimeoutError, GatewayTimeout):
+            # API bug where league group endpoint will timeout when the clan is searching
             return get_war
 
         is_prep = league_group.state == "preparation"
