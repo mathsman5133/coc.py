@@ -123,7 +123,7 @@ class ClanIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(ClanIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan
 
 
@@ -132,7 +132,7 @@ class PlayerIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(PlayerIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_player
 
 
@@ -141,17 +141,29 @@ class ClanWarIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(ClanWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_clan_war
 
 
 class LeagueWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_league_wars`"""
 
-    def __init__(self, client, tags: Iterable, cls=None, **kwargs):
+    def __init__(self, client, tags: Iterable, clan_tag=None, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(LeagueWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, clan_tag=clan_tag, **kwargs)
         self.get_method = client.get_league_war
+        self.clan_tag = clan_tag
+
+    async def _next(self):
+        war = await super()._next()
+        if war is None:
+            return None
+        elif self.clan_tag is None:
+            return war
+        elif war.clan_tag != self.clan_tag:
+            return await self._next()
+        else:
+            return war
 
 
 class CurrentWarIterator(TaggedIterator):
@@ -159,5 +171,5 @@ class CurrentWarIterator(TaggedIterator):
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
-        super(CurrentWarIterator, self).__init__(client, tags, cls, **kwargs)
+        super().__init__(client, tags, cls, **kwargs)
         self.get_method = client.get_current_war

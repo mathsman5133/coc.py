@@ -45,7 +45,8 @@ extensions = [
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    # 'details',
+    "sphinxcontrib_trio",
+    "autodocsumm"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -199,3 +200,4 @@ intersphinx_mapping = {"https://docs.python.org/": None}
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+autodoc_default_options = {'autosummary': True}

@@ -24,14 +24,13 @@ SOFTWARE.
 
 __version__ = "1.0.0a0"
 
-import subprocess
-
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Role,
+    WarRound,
     ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
     DARK_ELIXIR_SPELL_ORDER,
@@ -85,6 +84,3 @@ from .war_attack import WarAttack
 from .war_members import ClanWarLeagueClanMember, ClanWarMember
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from . import utils
-
-if "a" in __version__:
-    __version__ += "+" + subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).decode("utf-8").strip()

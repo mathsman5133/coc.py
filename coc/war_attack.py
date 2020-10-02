@@ -32,7 +32,7 @@ class WarAttack:
     """Represents a Clash of Clans War Attack
 
     Attributes
-    -----------
+    ----------
     war:
         :class:`ClanWar` - The war this attack belongs to
     stars:

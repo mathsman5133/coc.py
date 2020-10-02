@@ -18,9 +18,7 @@ with open("README.rst") as f:
 
 class LintCommand(Command):
     description = "Lint's the project code."
-    user_options = [
-        ("subcommands=", None, "input directory"),
-    ]
+    user_options = [("subcommands=", None, "input directory")]
 
     def initialize_options(self):
         pass
@@ -29,12 +27,18 @@ class LintCommand(Command):
         pass
 
     def run(self):
-        self.spawn(["python", "-m", "pylint", "coc"])
-        self.spawn(
-            ["python", "-m", "black", "--check", "-v", "--diff", "-l", "120", "--exclude=.pyi", "coc", "docs"]  # noqa
-        )
-        self.spawn(["python", "-m", "flake8", "coc"])
-        # self.spawn(["sphinx-build", "-W", "docs/", "/tmp/foo", "--keep-going", "-T"])
+        pylint = """python -m pylint coc 
+                        --disable=too-many-instance-attributes,too-many-public-methods,too-many-lines,too-few-public-methods,duplicate-code,bad-continuation,raise-missing-from
+                        --max-line-length=120
+                        --notes=fixme
+                        --output-format=colorized
+                        --ignore=examples,docs
+                        --ignored-modules=aiohttp
+                """
+        self.spawn(pylint.split())
+        self.spawn("python -m black --check --verbose --diff --line-length=120 --exclude=.pyi coc docs".split())
+        self.spawn("python -m flake8 coc --max-line-length=120 --exclude=coc/__init__.py".split())
+        self.spawn("sphinx-build -W docs/ /tmp/foo --keep-going -T".split())
 
 
 setup(
@@ -49,6 +53,7 @@ setup(
     long_description=README,
     python_requires=">=3.5.3",
     install_requires=REQUIREMENTS,
+    extras_require={"docs": ["sphinx", "sphinx_rtd_theme", "sphinxcontrib_trio", "autodocsumm"]},
     classifiers={
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
