@@ -419,7 +419,7 @@ class Client:
         try:
             data = await self.http.get_clan_warlog(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
@@ -449,7 +449,7 @@ class Client:
         try:
             data = await self.http.get_clan_current_war(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
@@ -509,9 +509,9 @@ class Client:
         try:
             data = await self.http.get_clan_war_league_group(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
-            raise GatewayTimeout(
+            raise GatewayError(
                 "Client timed out waiting for %s clan tag. This may be the result of an API bug which times out "
                 "when requesting the league group of a clan searching for a Clan War League match."
             )
@@ -540,7 +540,7 @@ class Client:
         try:
             data = await self.http.get_cwl_wars(war_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
@@ -632,9 +632,9 @@ class Client:
             league_group = await self.get_league_group(clan_tag)
         except NotFound as exception:
             if get_war is None:
-                raise PrivateWarLog(exception.response, exception._data)
+                raise PrivateWarLog(exception.response, exception.reason) from exception
             return get_war
-        except (asyncio.TimeoutError, GatewayTimeout):
+        except (asyncio.TimeoutError, GatewayError):
             # API bug where league group endpoint will timeout when the clan is searching
             return get_war
 

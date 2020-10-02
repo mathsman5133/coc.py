@@ -59,6 +59,9 @@ class HTTPException(ClashOfClansException):
         if isinstance(data, dict):
             self.reason = data.get("reason", "Unknown")
             self.message = data.get("message")
+        elif isinstance(data, str):
+            self.reason = data
+            self.message = None
         else:
             self.reason = "Unknown"
             self.message = None
