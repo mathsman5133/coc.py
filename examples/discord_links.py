@@ -1,8 +1,6 @@
 import asyncio
 import os
 
-import coc
-
 from coc.ext import discordlinks
 
 client = discordlinks.login(os.environ["LINKS_API_USERNAME"], os.environ["LINKS_API_PASSWORD"])
