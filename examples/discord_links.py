@@ -1,10 +1,7 @@
 import asyncio
 import os
 
-try:
-    import coc
-except ModuleNotFoundError:
-    from .. import coc
+import coc
 
 from coc.ext import discordlinks
 

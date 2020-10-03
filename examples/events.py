@@ -1,10 +1,7 @@
 import logging
 import os
 
-try:
-    import coc
-except ModuleNotFoundError:
-    from .. import coc
+import coc
 
 client = coc.login(
     os.environ["DEV_SITE_EMAIL"],

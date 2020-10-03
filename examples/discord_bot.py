@@ -7,11 +7,7 @@ import logging
 import os
 import traceback
 
-try:
-    import coc
-except ModuleNotFoundError:
-    from .. import coc
-
+import coc
 import discord
 
 from coc import utils
