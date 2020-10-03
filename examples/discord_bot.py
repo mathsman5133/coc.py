@@ -14,7 +14,7 @@ from coc import utils
 from discord.ext import commands
 
 
-INFO_CHANNEL_ID = 594286547449282587  # some discord channel ID
+INFO_CHANNEL_ID = 761848043242127370  # some discord channel ID
 clan_tags = ["#20090C9PR", "#202GG92Q", "#20C8G0RPL"]
 
 bot = commands.Bot(command_prefix="?", intents=discord.Intents.all())

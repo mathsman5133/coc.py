@@ -775,6 +775,7 @@ class EventsClient(Client):
                 if maintenance_start is None:
                     maintenance_start = datetime.utcnow()
                     self.dispatch("maintenance_start")
+                    await asyncio.sleep(60)
 
                 try:
                     player = await self.get_player("#JY9J2Y99")  # this will raise if API is in maintenance
