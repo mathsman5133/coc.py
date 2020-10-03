@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
 
 
-clan_tags = ["#20090C9PR", "#202GG92Q", "#20C8G0RPL", "#20CG8UURL", "#20L2GVUCQ"]
+clan_tags = ["#P222C9Y", "#9VPR98RG", "#9G2QU8YG", "#80Y8L0QY", "#9UJ8JRUP"]
 player_tags = ["#YQ2QYLGJ", "#QYJCVGL", "#2LURLC9V", "#QCQR298V", "#82CVC2V8", "#29U09V8J", "#8GYGL22P"]
 
 
@@ -62,10 +62,10 @@ async def clan_member_versus_trophies_changed(old_member, new_member):
 
 
 @client.event
-@coc.WarEvents.war_attack(clan_tags, retry_interval=30)
+@coc.WarEvents.war_attack(tags=clan_tags)
 async def current_war_stats(attack, war):
     log.info(f"Attack number {attack.order}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} "
-          f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
+             f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
 
 
 """Player Events"""
@@ -112,6 +112,10 @@ async def on_maintenance_completion(time_started):
     log.info("Maintenace Ended; started at %s", time_started)
 
 
+async def add_clan_players():
+    async for clan in client.get_clans(clan_tags):
+        client.add_player_updates(*[member.tag for member in clan.members])
+
 if os.environ.get("RUNNING_TESTS"):
     # ignore this; it's just for running github action tests.
     import sys
@@ -121,4 +125,5 @@ if os.environ.get("RUNNING_TESTS"):
             sys.exit(0)
     log.addHandler(Handler())
 
+client.loop.run_until_complete(add_clan_players())
 client.loop.run_forever()
