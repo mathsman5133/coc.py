@@ -1,6 +1,11 @@
 import asyncio
 import os
 
+try:
+    import coc
+except ModuleNotFoundError:
+    from .. import coc
+
 from coc.ext import discordlinks
 
 client = discordlinks.login(os.environ["LINKS_API_USERNAME"], os.environ["LINKS_API_PASSWORD"])

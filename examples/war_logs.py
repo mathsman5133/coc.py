@@ -1,7 +1,10 @@
 import asyncio
 import os
 
-import coc
+try:
+    import coc
+except ModuleNotFoundError:
+    from .. import coc
 
 # email and password is your login credentials used at https://developer.clashofclans.com
 client = coc.login(os.environ["DEV_SITE_EMAIL"], os.environ["DEV_SITE_PASSWORD"], key_names="coc.py tests")
