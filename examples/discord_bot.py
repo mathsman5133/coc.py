@@ -1,21 +1,30 @@
-# this example assumes you have discord.py > v1.0.0
+# this example assumes you have discord.py > v1.5
 # installed via `python -m pip install -U discord.py`
 # for more info on using discord.py, see the docs at:
 # https://discordpy.readthedocs.io/en/latest
 
+import logging
+import os
+import traceback
+
 import coc
 import discord
-import traceback
 
 from coc import utils
 from discord.ext import commands
 
 
-INFO_CHANNEL_ID = 123456678  # some discord channel ID
+INFO_CHANNEL_ID = 594286547449282587  # some discord channel ID
 clan_tags = ["#20090C9PR", "#202GG92Q", "#20C8G0RPL"]
 
-bot = commands.Bot(command_prefix="?")
-coc_client = coc.login("email", "password", key_count=5, key_names="My funky name!", client=coc.EventsClient,)
+bot = commands.Bot(command_prefix="?", intents=discord.Intents.all())
+coc_client = coc.login(
+    os.environ["DEV_SITE_EMAIL"],
+    os.environ["DEV_SITE_PASSWORD"],
+    key_names="coc.py tests",
+    client=coc.EventsClient,
+)
+logging.basicConfig(level=logging.ERROR)
 
 
 @coc_client.event
@@ -57,7 +66,7 @@ async def player_heroes(ctx, player_tag):
         
     to_send = ""
     for hero in player.heroes:
-        to_send += "{}: Lv{}/{}".format(str(hero), hero.level, hero.max_level)
+        to_send += "{}: Lv{}/{}\n".format(str(hero), hero.level, hero.max_level)
 
     await ctx.send(to_send)
 
@@ -138,7 +147,8 @@ async def current_war_status(ctx, clan_tag):
     except coc.PrivateWarLog:
         return await ctx.send("Clan has a private war log!")
 
-    e.add_field(name=war.clan.name, value=war.clan.tag)
+    if war is None:
+        return await ctx.send("Clan is in a strange CWL state!")
 
     e.add_field(name="War State:", value=war.state, inline=False)
 
@@ -147,10 +157,34 @@ async def current_war_status(ctx, clan_tag):
         hours, remainder = divmod(int(war.end_time.seconds_until), 3600)
         minutes, seconds = divmod(remainder, 60)
 
+        e.add_field(name=war.clan.name, value=war.clan.tag)
         e.add_field(name="Opponent:", value=f"{war.opponent.name}\n" f"{war.opponent.tag}", inline=False)
         e.add_field(name="War End Time:", value=f"{hours} hours {minutes} minutes {seconds} seconds", inline=False)
 
     await ctx.send(embed=e)
 
 
-bot.run("bot token")
+async def run_tests_and_quit():
+    # ignore this; it is purely for the benefit of being able to run the examples as tests.
+    import sys
+
+    class Msg:
+        _state = bot._connection
+
+    await bot.wait_until_ready()
+    ctx = commands.Context(prefix=None, message=Msg, bot=bot)
+
+    async def _mock_get_channel():
+        return bot.get_channel(INFO_CHANNEL_ID)
+    ctx._get_channel = _mock_get_channel
+
+    await ctx.invoke(player_heroes, "#JY9J2Y99")
+    for command in (clan_info, clan_member, current_war_status):
+        await ctx.invoke(command, clan_tags[0])
+
+    sys.exit(0)
+
+if os.environ.get("RUNNING_TESTS"):
+    bot.loop.create_task(run_tests_and_quit())
+
+bot.run(os.environ["DISCORD_BOT_TOKEN"])

@@ -289,7 +289,7 @@ class Client:
             name or war_frequency or location_id or min_members or max_members or min_clan_points or min_clan_level
         ):
             raise TypeError("At least one filtering parameter must be passed.")
-        if not isinstance(cls.__class__, Clan):
+        if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
         data = await self.http.search_clans(
@@ -630,12 +630,11 @@ class Client:
 
         try:
             league_group = await self.get_league_group(clan_tag)
-        except NotFound as exception:
+        except (NotFound, GatewayError) as exception:
+            # either they're not in cwl (NotFound)
+            # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
             if get_war is None:
                 raise PrivateWarLog(exception.response, exception.reason) from exception
-            return get_war
-        except (asyncio.TimeoutError, GatewayError):
-            # API bug where league group endpoint will timeout when the clan is searching
             return get_war
 
         is_prep = league_group.state == "preparation"

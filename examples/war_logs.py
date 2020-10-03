@@ -1,12 +1,10 @@
-import coc
 import asyncio
-import logging
+import os
 
-logging.basicConfig(level=logging.DEBUG)
-
+import coc
 
 # email and password is your login credentials used at https://developer.clashofclans.com
-coc_client = coc.login(email="email", password="password")
+client = coc.login(os.environ["DEV_SITE_EMAIL"], os.environ["DEV_SITE_PASSWORD"], key_names="coc.py tests")
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -14,7 +12,7 @@ async def get_warlog_for_clans(clan_tags: list):
     for tag in clan_tags:
         # if we're not allowed to view warlog (private in game), this will raise an exception
         try:
-            warlog = await coc_client.get_warlog(tag)
+            warlog = await client.get_warlog(tag)
         except coc.PrivateWarLog:
             warlog = []
 
@@ -25,7 +23,7 @@ async def get_warlog_for_clans(clan_tags: list):
 
 
 async def get_clan_tags_names(name: str, limit: int):
-    clans = await coc_client.search_clans(name=name, limit=limit)
+    clans = await client.search_clans(name=name, limit=limit)
     # return a list of tuples of name/tag pair ie. [(name, tag), (another name, another tag)]
     return [(n.name, n.tag) for n in clans]
 
@@ -43,13 +41,10 @@ async def get_warlog_opponents_from_clan_name(name: str, no_of_clans: int):
             # and thus no opponent
             if war.is_league_entry:
                 print("League War Season - No opponent info available")
-                continue
-
-            print("War: {} vs {}".format(name, war.opponent.name))
+            else:
+                print("War: {} vs {}".format(war.clan.name, war.opponent.name))
 
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-
     loop.run_until_complete(get_warlog_opponents_from_clan_name("name", 5))
-    loop.run_until_complete(coc_client.close())

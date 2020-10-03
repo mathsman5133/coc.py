@@ -1,0 +1,36 @@
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      # You can use PyPy versions in python-version.
+      # For example, pypy2 and pypy3
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    # You can test your matrix by printing the current Python version
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Running examples as tests
+      env:
+        DEV_SITE_EMAIL: ${{ secrets.DEV_SITE_EMAIL }}
+        DEV_SITE_PASSWORD: ${{ secrets.DEV_SITE_PASSWORD }}
+        DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        LINKS_API_USERNAME: ${{ secrets.LINKS_API_USERNAME }}
+        LINKS_API_PASSWORD: ${{ secrets.LINKS_API_PASSWORD }}
+        RUNNING_TESTS: true
+      run: |
+        python examples/discord_bot.py
+        python examples/discord_links.py
+        python examples/events.py
+        python examples/war_logs.py

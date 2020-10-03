@@ -1,13 +1,14 @@
 import asyncio
+import os
 
 from coc.ext import discordlinks
 
-client = discordlinks.login("username", "password")
+client = discordlinks.login(os.environ["LINKS_API_USERNAME"], os.environ["LINKS_API_PASSWORD"])
 
 
 async def main():
-    player_tag = "#ABC123"
-    discord_id = 123456789
+    player_tag = "#JY9J2Y99"
+    discord_id = 230214242618441728
 
     # add a link
     await client.add_link(player_tag, discord_id)
@@ -18,7 +19,7 @@ async def main():
     print("Player Tag {} is linked to discord id {}".format(player_tag, discord_id))
 
     # update a link
-    new_discord_id = 12345678987654321
+    new_discord_id = 230214242618441728
     await client.delete_link(player_tag)
     await client.add_link(player_tag, new_discord_id)
     print("Link for player tag {} has been updated to have discord id {}".format(player_tag, new_discord_id))
@@ -28,7 +29,7 @@ async def main():
     print("Link for player tag {} has been removed from the database.".format(player_tag))
 
     # batch get links by tag
-    player_tags = ["#ABC123", "#123ABC", "#DEF456", "456DEF"]
+    player_tags = ["#JY9J2Y99", "#2GV0QY8G8", "#PP9L22C8", "#2LPC9J8L"]
     links = await client.get_links(*player_tags)
     for tag, discord_id in links:
         if discord_id is None:
@@ -37,12 +38,11 @@ async def main():
             print("Player tag {} is linked to discord id {}".format(tag, discord_id))
 
     # batch get links by id
-    discord_ids = [12345, 67890, 24680, 13579]
+    discord_ids = [246286410946969610, 230214242618441728, 267057699856842753]
     links = await client.get_many_linked_players(*discord_ids)
     for tag, discord_id in links:
         print("Discord ID {} is linked to {}".format(tag, discord_id))
 
 
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
