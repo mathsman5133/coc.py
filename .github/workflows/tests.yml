@@ -1,3 +1,7 @@
+name: coc.py Workflows
+
+on: [push]
+
 jobs:
   build:
 
