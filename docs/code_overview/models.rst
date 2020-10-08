@@ -233,18 +233,22 @@ Corresponds to a member's in-game role in the clan.
 
     Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
     ``str(member.role)`` will also return this.
+
     .. py:attribute:: in_game_name
 
 
 .. class:: WarRound
 
     Corresponds to the previous war day in Clan-War League (ie the war most recently finished)
+
     .. py:attribute:: previous_war
 
     Corresponds to the current war day in Clan-War Leagues.
+
     .. py:attribute:: current_war
 
     Corresponds to the current preparation day in Clan-War Leagues.
+
     .. py:attribute:: current_preparation
 
 
