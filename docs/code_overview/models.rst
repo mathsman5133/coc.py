@@ -228,11 +228,13 @@ The library provides some enumerations for certain types of strings, as well as 
 achievements that are used internally.
 
 Corresponds to a member's in-game role in the clan.
+
 .. class:: Role
 
     Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
     ``str(member.role)`` will also return this.
     .. py:attribute:: in_game_name
+
 
 .. class:: WarRound
 
@@ -247,39 +249,59 @@ Corresponds to a member's in-game role in the clan.
 
 
 All elixir troops, ordered as they appear in-game.
-.. py:data:: coc.ELIXIR_TROOP_ORDER
+
+.. data:: coc.ELIXIR_TROOP_ORDER
 
 
 All dark elixir troops, ordered as they appear in-game.
-.. py:data:: coc.DARK_ELIXIR_TROOP_ORDER
+
+.. data:: coc.DARK_ELIXIR_TROOP_ORDER
+
 
 All siege machines, ordered as they appear in-game.
-.. py:data:: coc.SIEGE_MACHINE_ORDER
+
+.. data:: coc.SIEGE_MACHINE_ORDER
+
 
 All super troops, ordered as they appear in-game.
-.. py:data:: coc.SUPER_TROOP_ORDER
+
+.. data:: coc.SUPER_TROOP_ORDER
+
 
 All home troops, ordered as they appear in-game. This is a combination of elixir, dark elixir and siege machine troops.
 This does not contain super troops.
-.. py:data:: coc.HOME_TROOP_ORDER
+
+.. data:: coc.HOME_TROOP_ORDER
+
 
 All builder troops, ordered as they appear in-game.
-.. py:data:: coc.BUILDER_TROOPS_ORDER
+
+.. data:: coc.BUILDER_TROOPS_ORDER
+
 
 All elixir spells, ordered as they appear in-game.
-.. py:data:: coc.ELIXIR_SPELL_ORDER
+
+.. data:: coc.ELIXIR_SPELL_ORDER
+
 
 All dark elixir spells, ordered as they appear in-game.
-.. py:data:: coc.DARK_ELIXIR_SPELL_ORDER
+
+.. data:: coc.DARK_ELIXIR_SPELL_ORDER
+
 
 All spells, ordered as they appear in-game.
-.. py:data:: coc.SPELL_ORDER
+
+.. data:: coc.SPELL_ORDER
+
 
 All heroes, ordered as they appear in-game.
-.. py:data:: coc.HERO_ORDER
+
+.. data:: coc.HERO_ORDER
+
 
 All achievements, ordered as they appear in-game.
-.. py:data:: coc.ACHIEVEMENT_ORDER
+
+.. data:: coc.ACHIEVEMENT_ORDER
 
 
 All of the above contain a list of strings, corresponding to the name given in-game and in the API.
