@@ -7,6 +7,10 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.0
+-----
+Please see :ref:`migrating_to_v1_0` for more info, as the change-set is too large to describe here.
+
 v0.3.3
 -------
 Breaking Changes
