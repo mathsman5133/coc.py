@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,161 +20,112 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
+import typing
+import itertools
 
-from itertools import chain
-
+from .enums import WarRound
 from .iterators import LeagueWarIterator
-from .miscmodels import EqualityComparable, try_enum, Timestamp
-from .utils import get, maybe_sort
+from .miscmodels import try_enum, Timestamp
+from .utils import get
+from .war_clans import WarClan, ClanWarLeagueClan
+from .war_attack import WarAttack
+
+if typing.TYPE_CHECKING:
+    # pylint: disable=cyclic-import
+    from .war_members import ClanWarMember  # noqa
 
 
-class BaseWar(EqualityComparable):
-    """Represents the most basic Clash of Clans War
-
-    Attributes
-    -----------
-    team_size:
-        :class:`int` - The number of players per clan in war
-    clan_tag:
-        :class:`str` - The clan tag passed for the request.
-        This attribute is always present regardless of the war state.
-    """
-
-    __slots__ = ("team_size", "_data", "clan_tag", "_http")
-
-    def __repr__(self):
-        attrs = [
-            ("clan_tag", self.clan_tag),
-            ("clan", self.clan),
-            ("opponent", self.opponent),
-            ("size", self.team_size),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
-    def __init__(self, *, data, clan_tag, http):
-        self._http = http
-        self._data = data
-        self.team_size = data.get("teamSize")
-        self.clan_tag = clan_tag
-
-    @property
-    def clan(self):
-        """:class:`WarClan`: The offensive clan"""
-        # pylint: disable=import-outside-toplevel
-        clan = self._data.get("clan", {})
-        if "tag" in clan:
-            # at the moment, if the clan is in notInWar, the API returns
-            # 'clan' and 'opponent' as dicts containing only badge urls of
-            # no specific clan. very strange
-            from .clans import WarClan  # hack because circular imports
-
-            return WarClan(data=clan, war=self, http=self._http)
-        return None
-
-    @property
-    def opponent(self):
-        """:class:`WarClan`: The opposition clan"""
-        # pylint: disable=import-outside-toplevel
-        opponent = self._data.get("opponent", {})
-        if "tag" in opponent:
-            # same issue as clan
-            from .clans import WarClan  # hack because circular imports
-
-            return WarClan(data=opponent, war=self, http=self._http)
-        return None
-
-
-class WarLog(BaseWar):
-    """Represents a Clash of Clans War Log Entry
-
-    This class inherits :class:`BaseWar`, and thus all attributes
-    of :class:`BaseWar` can be expected to be present.
-
-    Attributes
-    -----------
-    result:
-        :class:`str` - The result of the war - `win` or `loss`
-    end_time:
-        :class:`Timestamp` - The end time of the war as a Timestamp object
-    """
-
-    __slots__ = ("result", "end_time")
-
-    def __init__(self, *, data, clan_tag, http):
-        self.result = data.get("result")
-        self.end_time = try_enum(Timestamp, data.get("endTime"))
-        super(WarLog, self).__init__(data=data, clan_tag=clan_tag, http=http)
-
-
-class ClanWar(BaseWar):
+class ClanWar:
     """Represents a Current Clash of Clans War
 
-    This class inherits :class:`BaseWar`, and thus all attributes
-    of :class:`BaseWar` can be expected to be present.
-
     Attributes
-    -----------
+    ----------
     state:
-        :class:`str` - The clan's current war state
+        :class:`str`: The clan's current war state.
     preparation_start_time:
-        :class:`Timestamp` - The start time of preparation day as a Timestamp object
+        :class:`Timestamp`: The :class:`Timestamp` that preparation day started at.
     start_time:
-        :class:`Timestamp` - The start time of battle day as a Timestamp object
+        :class:`Timestamp`: The :class:`Timestamp` that battle day starts at.
     end_time:
-        :class:`Timestamp` - The end time of battle day as a Timestamp object
+        :class:`Timestamp`: The :class:`Timestamp` that battle day ends at.
+    team_size:
+        :class:`int`: The number of players on each side of the war.
+    war_tag:
+        :class:`str`: The war's unique tag. This is ``None`` unless this is a Clan League War (CWL).
+    league_group:
+        :class:`ClanWarLeagueGroup`: The war's league group. This is ``None`` unless this is a Clan League War.
     """
 
-    __slots__ = ("state", "preparation_start_time", "start_time", "end_time")
+    __slots__ = (
+        "state",
+        "preparation_start_time",
+        "start_time",
+        "end_time",
+        "team_size",
+        "war_tag",
+        "_client",
+        "clan_tag",
+        "clan",
+        "opponent",
+        "league_group",
+        "_response_retry",
+    )
 
-    def __init__(self, *, data, clan_tag, http):
-        self.state = data.get("state")
-        self.preparation_start_time = try_enum(Timestamp, data.get("preparationStartTime"))
-        self.start_time = try_enum(Timestamp, data.get("startTime"))
-        self.end_time = try_enum(Timestamp, data.get("endTime"))
+    def __init__(self, *, data, client, **kwargs):
+        self._response_retry = data.get("_response_retry")
+        self._client = client
 
-        super(ClanWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
+        self.clan_tag = kwargs.pop("clan_tag", None)
+        self._from_data(data)
 
-    def _get_attacks(self):
-        return chain(self.clan.iterattacks, self.opponent.iterattacks)
+        self.clan_tag = self.clan and self.clan.tag or self.clan_tag
+        self.league_group = kwargs.pop("league_group", None)
+
+    def _from_data(self, data: dict) -> None:
+        data_get = data.get
+
+        self.state = data_get("state")
+        self.team_size = data_get("teamSize", 0)
+        self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
+        self.start_time = try_enum(Timestamp, data=data_get("startTime"))
+        self.end_time = try_enum(Timestamp, data=data_get("endTime"))
+        self.war_tag = data_get("tag")
+
+        clan_data = data_get("clan")
+        # annoying bug where if you request a war with a clan tag that clan could be the opponent or clan,
+        # depending on the way the game stores it internally. This isn't very helpful as we always want it
+        # from the perspective of the tag we provided, so switch them around if it isn't correct.
+        if clan_data and clan_data.get("tag", self.clan_tag) == self.clan_tag:
+            self.clan = try_enum(WarClan, data=clan_data, client=self._client, war=self)
+            self.opponent = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+        else:
+            self.clan = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+            self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
 
     @property
-    def iterattacks(self, sort=True):
-        """|iter|
-
-        Returns an iterable of :class:`WarAttack`: all attacks this war
-        """
-        return maybe_sort(self._get_attacks(), sort, itr=True)
+    def attacks(self) -> typing.List[WarAttack]:
+        """List[:class:`WarAttack`]: Returns all attacks this war, sorted by attack order."""
+        return sorted([*self.clan.attacks, *self.opponent.attacks], key=lambda x: x.order, reverse=True)
 
     @property
-    def attacks(self, sort=True):
-        """List[:class:`WarAttack`]: A list of all attacks this war
-        """
-        return maybe_sort(self._get_attacks(), sort)
+    def members(self) -> typing.List["ClanWarMember"]:
+        """List[:class:`ClanWarMember`]: A list of members that are in the war."""
+        return sorted([*self.clan.members, *self.opponent.members], key=lambda x: (not x.is_opponent, x.map_position))
 
     @property
-    def itermembers(self):
-        """|iter|
+    def type(self) -> typing.Optional[str]:
+        """:class:`str`: Returns either ``friendly``, ``random`` or ``cwl``.
 
-        Returns an iterable of :class:`WarMember`: all members this war
-        """
-        return chain(self.clan.itermembers, self.opponent.itermembers)
-
-    @property
-    def members(self):
-        """List[:class:`WarMember`]: A list of all members this war"""
-        return list(self.itermembers)
-
-    @property
-    def type(self):
-        """:class:`str`: Either ``friendly`` or ``random`` - the war type.
-        Returns ``None`` if the clan is not in war.
+        This will returns ``None`` if the clan is not in war, or ``cwl`` if the clan is in a league war.
 
         Possibilities for the length of preparation time for a friendly war include:
         15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 8 hours, 12 hours,
         16 hours, 20 hours or 24 hours.
         """
+        if self.war_tag:
+            return "cwl"
+
         if not self.start_time:
             return None
 
@@ -195,13 +144,14 @@ class ClanWar(BaseWar):
         ]
         if (self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
             return "friendly"
+
         return "random"
 
     @property
-    def status(self):
-        """:class:`str`: The war status, based off the home clan.
+    def status(self) -> str:
+        """:class:`str`: Returns the war status, based off the home clan.
 
-        Strings returned are determined by result and state and are below:
+        Strings returned are determined by result and state, as listed below:
 
         +------------+-------------+
         | ``inWar``  | ``warEnded``|
@@ -217,6 +167,7 @@ class ClanWar(BaseWar):
         if self.state == "inWar":
             if self.clan.stars > self.opponent.stars:
                 return "winning"
+
             if self.clan.stars == self.opponent.stars:
                 if self.clan.destruction > self.opponent.destruction:
                     return "winning"
@@ -228,18 +179,45 @@ class ClanWar(BaseWar):
         if self.state == "warEnded":
             if self.clan.stars > self.opponent.stars:
                 return "won"
+
             if self.clan.stars == self.opponent.stars:
                 if self.clan.destruction > self.opponent.destruction:
                     return "won"
                 if self.clan.destruction == self.opponent.destruction:
                     return "tie"
-                return "lost"
 
             return "lost"
 
         return ""
 
-    def get_member(self, **attrs):
+    @property
+    def is_cwl(self) -> bool:
+        """:class:`bool`: Returns a boolean indicating if the war is a Clan War League (CWL) war."""
+        return self.type == "cwl"
+
+    def get_member(self, tag: str) -> typing.Optional["ClanWarMember"]:
+        """Return a :class:`ClanWarMember` with the tag provided. Returns ``None`` if not found.
+
+        Example
+        --------
+        .. code-block:: python3
+
+            war = await client.get_current_war('clan_tag')
+            member = war.get_member('player_tag')
+
+        Returns
+        --------
+        Optional[:class:`ClanWarMember`]: The member who matches the tag provided.
+        """
+
+        home_member = self.clan.get_member(tag)
+        if home_member:
+            return home_member
+
+        away_member = self.opponent.get_member(tag)
+        return away_member
+
+    def get_member_by(self, **attrs):
         """Returns the first :class:`WarMember` that meets the attributes passed
 
         This will return the first member matching the attributes passed.
@@ -252,141 +230,194 @@ class ClanWar(BaseWar):
 
         This search implements the :func:`coc.utils.get` function
         """
-        return get(self.itermembers, **attrs)
+        return get(self.members, **attrs)
+
+    def get_attack(self, attacker_tag: str, defender_tag: str) -> typing.Optional[WarAttack]:
+        """Return the :class:`WarAttack` with the attacker tag and defender tag provided.
+
+        If the attack was not found, this will return ``None``.
+
+        Returns
+        --------
+        The attack with the correct attacker and defender tags: :class:`WarAttack`: """
+        attacker = self.get_member(attacker_tag)
+        if not attacker:
+            return None
+
+        attacks = attacker.attacks
+        if len(attacks) == 0:
+            return None
+        return get(attacks, defender_tag=defender_tag)
+
+    def get_defenses(self, defender_tag: str) -> typing.List[WarAttack]:
+        """Return a :class:`list` of :class:`WarAttack` for the defender tag provided.
+
+        If the player has no defenses, this will return an empty list.
+
+        Returns
+        --------
+        The player's defenses: :class:`list`[:class:`WarAttack`]"""
+        defender = self.get_member(defender_tag)
+        # we could do a global lookup on all attacks in the war but this is faster as we have to lookup half the attacks
+        if defender.is_opponent:
+            # we need to get home clan's attacks on this base
+            return list(filter(lambda x: x.defender_tag == defender_tag, self.clan.attacks))
+
+        return list(filter(lambda x: x.defender_tag == defender_tag, self.opponent.attacks))
 
 
-class WarAttack(EqualityComparable):
-    """
-    Represents a Clash of Clans War Attack
+class ClanWarLogEntry:
+    """Represents a Clash of Clans War Log Entry
+
+    .. note::
+
+        Please see the :class:`WarClan` documention for a full list of missing attributes,
+        as the clan and opponent attributes are only partially filled by the API.
+
+        If the :attr:`ClanWarLogEntry.type` is ``cwl``, the :attr:`WarClan.attack_count`, :attr:`WarClan.stars`
+        and :attr:`WarClan.destruction` are all a total which over the period of that CWL season.
+
+        In addition, if it is a CWL entry, ``opponent`` and ``result`` will be ``None``.
+
 
     Attributes
-    -----------
-    war:
-        :class:`ClanWar` - The war this attack belongs to
-    stars:
-        :class:`int` - The stars achieved
-    destruction:
-        :class:`float` - The destruction achieved as a percentage (of 100)
-    order:
-        :class:`int` - The attack order in this war
-    attacker_tag:
-        :class:`str` - The attacker tag
-    defender_tag:
-        :class:`str` - The defender tag
+    ----------
+    result:
+        :class:`str`: The result of the war - ``win`` or ``loss``
+    end_time:
+        :class:`Timestamp`: The :class:`Timestamp` that the war ended at.
+    team_size:
+        :class:`int`: The number of players on each side of the war.
+    clan:
+        :class:`WarClan`: The home clan.
+    opponent:
+        :class:`WarClan`: The opposition clan.
     """
 
-    __slots__ = (
-        "war",
-        "member",
-        "stars",
-        "destruction",
-        "order",
-        "attacker_tag",
-        "defender_tag",
-        "_data",
-    )
+    __slots__ = ("result", "end_time", "team_size", "clan", "opponent", "_client")
 
-    def __repr__(self):
-        attrs = [
-            ("war", repr(self.war)),
-            ("member", repr(self.member)),
-            ("stars", self.stars),
-            ("destruction", self.destruction),
-            ("order", self.order),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+    def __init__(self, *, data, client, **_):
+        self._client = client
 
-    def __init__(self, *, data, war, member):
-        self._data = data
+        self._from_data(data)
 
-        self.war = war
-        self.member = member
-        self.stars = data["stars"]
-        self.destruction = data["destructionPercentage"]
-        self.order = data["order"]
-        self.attacker_tag = data["attackerTag"]
-        self.defender_tag = data["defenderTag"]
+    def _from_data(self, data: dict) -> None:
+        data_get = data.get
+
+        self.result = data_get("result")
+        self.end_time = try_enum(Timestamp, data=data_get("endTime"))
+        self.team_size = data_get("teamSize")
+
+        self.clan = self._fake_load_clan(data_get("clan"))
+        self.opponent = self._fake_load_clan(data_get("opponent"))
+
+    def _fake_load_clan(self, data):
+        if not (data and data.get("tag")):  # CWL seasons have an opposition with only badges and no tag/name.
+            return None
+
+        data["teamSize"] = self.team_size
+        return try_enum(WarClan, data=data, client=self._client, war=None)
 
     @property
-    def attacker(self):
-        """:class:`WarMember`: The attacker."""
-        return self.war.get_member(tag=self.attacker_tag)
-
-    @property
-    def defender(self):
-        """:class:`WarMember`: The defender."""
-        return self.war.get_member(tag=self.defender_tag)
+    def is_league_entry(self) -> bool:
+        """:class:`bool`: Boolean indicating if the entry is a Clan War League (CWL) entry."""
+        return self.result is None or self.opponent is None
 
 
-class LeagueGroup(EqualityComparable):
-    """Represents a Clash of Clans League Group
+class ClanWarLeagueGroup:
+    """Represents a Clan War League (CWL) Group
 
     Attributes
-    -----------
+    ----------
     state:
-        :class:`str` - The current state of the league group (`inWar`, `preparation` etc.)
+        :class:`str`: The current state of the league group (`inWar`, `preparation` etc.)
     season:
-        :class:`str` - The current season of the league group
-    """
+        :class:`str`: The current season of the league group
+    number_of_rounds:
+        :class:`int`: The number of rounds this league group contains.
+    rounds:
+        List[List[:class:`str`]]: A list of lists containing all war tags for each round.
 
-    __slots__ = ("state", "season", "_rounds", "_data", "_http")
-
-    def __repr__(self):
-        attrs = [
-            ("state", self.state),
-            ("season", self.season),
-            ("clans", ", ".join(repr(n) for n in self.iterclans)),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
-    def __init__(self, *, data, http):
-        self._data = data
-        self._http = http
-
-        self._rounds = []
-        self.state = data.get("state")
-        self.season = data.get("season")
-
-    @property
-    def iterclans(self):
-        """|iter|
-
-        Returns an iterable of class:`LeagueClan`: all participating clans
-        """
-        # pylint: disable=import-outside-toplevel
-        from .clans import LeagueClan  # hack because circular imports
-
-        return iter(LeagueClan(data=cdata, http=self._http) for cdata in self._data.get("clans", []))
-
-    @property
-    def clans(self):
-        """List[class:`LeagueClan`]: A list of participating clans.
-        """
-        return list(self.iterclans)
-
-    @property
-    def number_of_rounds(self):
-        """:class:`int` The number of rounds this league group contains."""
-        return len(self._data["rounds"])
-
-    @property
-    def rounds(self):
-        """List[List[]]: A list of lists containing all war tags for each round.
-
-        .. note:
+        .. note::
 
             This only returns the current or past rounds. Any future rounds filled with #0 war tags will not appear.
 
             To find the number of rounds in this season, use :attr:`LeagueGroup.number_of_rounds`.
 
-        """
+    """
+
+    __slots__ = ("state", "season", "rounds", "number_of_rounds", "_client", "__iter_clans", "_clans")
+
+    def __repr__(self):
+        attrs = [
+            ("state", self.state),
+            ("season", self.season),
+        ]
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+    def __init__(self, *, data, client, **_):
+        self._client = client
+        self._clans = []
+        self._from_data(data)
+
+    def _from_data(self, data: dict) -> None:
+        data_get = data.get
+
+        self.state = data_get("state")
+        self.season = data_get("season")
+
+        rounds = data_get("rounds")
+        self.number_of_rounds = len(rounds)
         # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
         # we want to get only the valid rounds
-        return [n["warTags"] for n in self._data["rounds"] if n["warTags"][0] != "#0"]
+        self.rounds = [n["warTags"] for n in rounds if n["warTags"][0] != "#0"]
 
-    def get_wars(self, round_index: int = -1, cache: bool = True, fetch: bool = True, update_cache: bool = True):
-        """Get war information for every war in a league round.
-        This will return an AsyncIterator of :class:`LeagueWar`.
+        self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client) for data in data_get("clans", []))
+
+    @property
+    def clans(self) -> typing.List[ClanWarLeagueClan]:
+        """List[class:`LeagueClan`]: Returns all participating clans."""
+        clans = self._clans
+        if clans:
+            return clans
+
+        self._clans = clans = list(self.__iter_clans)
+        return clans
+
+    def get_wars_for_clan(self, clan_tag: str, cls: typing.Type[ClanWar] = ClanWar):
+        """Returns every war the clan has participated in this current CWL.
+
+        This will return an AsyncIterator of :class:`ClanWar`.
+
+        Example
+        --------
+
+        .. code-block:: python3
+
+            group = await client.get_league_group('#clan_tag')
+
+            async for war in group.get_wars_for_clan('#clantag'):
+                print(war.start_time)
+
+        Parameters
+        ----------
+        clan_tag: str
+            The clan tag to get wars for. This method will only return wars which belong to this clan.
+        cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
+                                     This should inherit from :class:`ClanWar`.
+
+        Returns
+        ---------
+        AsyncIterator of :class:`ClanWar`: All wars in the given round.
+        """
+        return LeagueWarIterator(client=self._client, tags=itertools.chain(*self.rounds), clan_tag=clan_tag, cls=cls)
+
+    def get_wars(
+        self, cwl_round=WarRound.current_war, cls: typing.Type[ClanWar] = ClanWar
+    ) -> LeagueWarIterator:
+        """Returns war information for every war in a league round.
+
+        This will return an AsyncIterator of :class:`ClanWar`.
 
         Example
         --------
@@ -399,122 +430,37 @@ class LeagueGroup(EqualityComparable):
                 print(war.clan_tag)
 
         Parameters
-        ------------
-        round_index: Optional[:class:`int`] - Indicates the round number to get wars from.
-                     These rounds can be found with :attr:`LeagueGroup.rounds` and defaults
-                     to the most recent round (index of -1).
-        cache: Optional[:class:`bool`] Indicates whether to search
-               the cache before making an HTTP request
-        fetch: Optional[:class:`bool`] Indicates whether an HTTP call
-               should be made if cache is empty.
-               Defaults to ``True``. If this is ``False`` and item in cache was not found,
-               ``None`` will be returned
-        update_cache: Optional[:class:`bool`] Indicates whether the client should update
-                      the cache when requesting members. Defaults to ``True``.
-                      This should only be set to ``False``
-                      if you do not require the cache at all.
+        ----------
+
+        cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
+                                     This should inherit from :class:`ClanWar`.
+        cwl_round: :class:`WarRound`
+            An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
+            ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
+            This defaults to ``coc.WarRound.current_war``.
+
 
         Returns
         ---------
-        AsyncIterator of :class:`LeagueWar`
+        AsyncIterator of :class:`ClanWar`: All wars in the given round.
         """
-        tags = iter(n for n in self.rounds[round_index])
-        return LeagueWarIterator(
-            client=self._http.client, tags=tags, cache=cache, fetch=fetch, update_cache=update_cache
-        )
+        is_prep = self.state == "preparation"
+        num_rounds = len(self.rounds)
+        if cwl_round is WarRound.current_war and is_prep:
+            round_tags = ()  # for round 1 and 15min prep between rounds this is a shortcut.
+        elif cwl_round is WarRound.current_preparation and self.state == "warEnded":
+            round_tags = ()  # for the end of CWL there's no next prep day.
+        elif cwl_round is WarRound.previous_war and num_rounds == 1:
+            round_tags = ()  # no previous war for first rounds.
+        elif cwl_round is WarRound.previous_war and is_prep:
+            round_tags = self.rounds[-2]
+        elif cwl_round is WarRound.previous_war:
+            round_tags = self.rounds[-3]
+        elif cwl_round is WarRound.current_war:
+            round_tags = self.rounds[-2]
+        elif cwl_round is WarRound.current_preparation:
+            round_tags = self.rounds[-1]
+        else:
+            round_tags = ()
 
-
-class LeagueWar(ClanWar):
-    """Represents a Clash of Clans LeagueWar
-
-    This class inherits both :class:`BaseWar` and :class:`ClanWar`,
-    and thus all attributes of these classes can be expected to be present.
-
-    Attributes
-    -----------
-    tag:
-        :class:`str` - The war tag
-    """
-
-    __slots__ = ("tag",)
-
-    def __init__(self, *, data, http):
-        self.tag = data.get("tag")
-        clan_tag = ""
-        super(LeagueWar, self).__init__(data=data, clan_tag=clan_tag, http=http)
-        self.clan_tag = getattr(self.clan, "tag", clan_tag)
-
-    @property
-    def type(self):
-        """:class:`str`: The war type. For league wars, this is ``cwl``.
-        """
-        return "cwl"
-
-
-class LeagueWarLogEntry(EqualityComparable):
-    """Represents a Clash of Clans War Log entry for a League Season
-
-    Attributes
-    -----------
-    end_time:
-        :class:`Timestamp` - The end time of the war as a Timestamp object
-    team_size:
-        :class:`int` - The number of players per clan in war
-    clan:
-        :class:`Clan` - The offensive clan. Note this is only a :class:`Clan`,
-        unlike that of a :class:`WarLog`
-    enemy_stars:
-        :class:`int` - Total enemy stars for all wars
-    attack_count:
-        :class:`int` - The total attacks completed by your clan over all wars
-    stars:
-        :class:`int` The total stars by your clan over all wars
-    destruction:
-        :class:`float` - The total destruction by your clan over all wars
-    clan_level:
-        :class:`int` - Your clan level.
-    clan_tag:
-        :class:`str` - The clan tag searched for.
-        This attribute is always present regardless of the state of war.
-    """
-
-    __slots__ = (
-        "end_time",
-        "team_size",
-        "clan",
-        "enemy_stars",
-        "attack_count",
-        "stars",
-        "destruction",
-        "clan_level",
-        "clan_tag",
-    )
-
-    def __repr__(self):
-        attrs = [
-            ("clan_tag", self.clan_tag),
-            ("clan", repr(self.clan)),
-            ("size", self.team_size),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
-    def __init__(self, *, data, clan_tag, http):
-        # pylint: disable=protected-access, import-outside-toplevel
-        self.end_time = try_enum(Timestamp, data.get("endTime"))
-        self.team_size = data.get("teamSize")
-
-        from .clans import Clan  # hack because circular imports
-
-        self.clan = try_enum(Clan, data.get("clan"), http=http)
-        self.clan_tag = clan_tag
-
-        try:
-            self.enemy_stars = data["opponent"]["stars"]
-        except KeyError:
-            self.enemy_stars = None
-
-        if self.clan:
-            self.attack_count = self.clan._data.get("attacks")
-            self.stars = self.clan._data.get("stars")
-            self.destruction = self.clan._data.get("destructionPercentage")
-            self.clan_level = self.clan._data.get("clanLevel")
+        return LeagueWarIterator(client=self._client, tags=round_tags, cls=cls)

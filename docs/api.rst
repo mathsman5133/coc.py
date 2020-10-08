@@ -23,26 +23,6 @@ Events Client
     :members:
     :inherited-members:
 
-Custom Cache
--------------
-
-Cache Class
-~~~~~~~~~~~~~
-.. autoclass:: Cache
-    :members:
-    :inherited-members:
-
-Max Size Cache
-~~~~~~~~~~~~~~~
-.. autoclass:: MaxSizeCache
-
-Time To Live Cache
-~~~~~~~~~~~~~~~~~~~
-.. autoclass:: TimeToLiveCache
-
-Default Cache
-~~~~~~~~~~~~~~~
-.. autoclass:: DefaultCache
 
 Event Reference
 ----------------
@@ -79,22 +59,6 @@ Clan Events
 
 These events are all related to clan changes and changes to players within the clan. Clans can be added by
 registering clan tags and relevant events.
-
-.. _on_clan_update:
-
-Clan Update
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. py:function:: on_clan_update(old_clan, new_clan)
-
-    This event is called when a clan has been updated.
-    This could be a member join/leave, settings or other update.
-    This is called before, and regardless whether, any other events are called,
-    ie. :func:`on_clan_member_join`
-
-    :param old_clan: The clan object before the change
-    :type old_clan: :class:`SearchClan`
-    :param new_clan: The clan object after the change
-    :type new_clan: :class:`SearchClan`
 
 .. _on_clan_level_change:
 
@@ -951,17 +915,17 @@ inherit :class:`WarMember`
 Clans
 ~~~~~~
 
-.. autoclass:: Clan()
+.. autoclass:: BaseClan()
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: BasicClan()
+.. autoclass:: PlayerClan()
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: SearchClan()
+.. autoclass:: RankedClan()
     :members:
     :private-members:
     :inherited-members:
@@ -971,26 +935,46 @@ Clans
     :private-members:
     :inherited-members:
 
+.. autoclass:: ClanWarLeagueClan()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: Clan()
+    :members:
+    :private-members:
+    :inherited-members:
+
 
 Players
 ~~~~~~~~
 
+.. autoclass:: BasePlayer()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: ClanMember()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: RankedPlayer()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: ClanWarLeagueClanMember()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: ClanWarMember()
+    :members:
+    :private-members:
+    :inherited-members:
+
 .. autoclass:: Player()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: BasicPlayer()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: WarMember()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: SearchPlayer()
     :members:
     :private-members:
     :inherited-members:
@@ -999,17 +983,17 @@ Players
 Wars
 ~~~~~
 
-.. autoclass:: BaseWar()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: WarLog()
-    :members:
-    :private-members:
-    :inherited-members:
-
 .. autoclass:: ClanWar()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: ClanWarLogEntry()
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: ClanWarLeagueGroup()
     :members:
     :private-members:
     :inherited-members:
@@ -1070,21 +1054,20 @@ League Objects
     :private-members:
     :inherited-members:
 
-.. autoclass:: LeagueRankedPlayer()
-    :members:
-    :private-members:
-    :inherited-members:
-
 .. autoclass:: LegendStatistics()
     :members:
     :private-members:
     :inherited-members:
 
 
-Badge
-~~~~~~
+Badge and Icons
+~~~~~~~~~~~~~~~~
 
 .. autoclass:: Badge()
+    :members:
+    :private-members:
+
+.. autoclass:: Icon()
     :members:
     :private-members:
 
@@ -1102,34 +1085,6 @@ Label
 .. autoclass:: Label()
     :members:
     :private-members:
-
-League War Objects
-~~~~~~~~~~~~~~~~~~~
-
-.. autoclass:: LeaguePlayer()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: LeagueClan()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: LeagueGroup()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: LeagueWar()
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: LeagueWarLogEntry()
-    :members:
-    :private-members:
-
 
 Exceptions
 --------------------

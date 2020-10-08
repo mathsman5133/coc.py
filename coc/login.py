@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
 
 import typing
@@ -30,7 +29,7 @@ from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[Client] = Client, **kwargs
+    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
 ) -> typing.Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 
@@ -52,6 +51,5 @@ def login(
         Any kwargs you wish to pass into the Client object.
     """
     instance = client(**kwargs)
-    instance.create_cache()
     instance.loop.run_until_complete(instance.login(email, password))
     return instance

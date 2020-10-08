@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,33 +20,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
-
 from enum import Enum
-
-
-class CacheType(Enum):
-    """Enum to map cache types to strings."""
-
-    search_clans = "cache_search_clans"
-    war_clans = "cache_war_clans"
-
-    search_players = "cache_search_players"
-    war_players = "cache_war_players"
-
-    current_wars = "cache_current_wars"
-    war_logs = "cache_war_logs"
-
-    league_groups = "cache_league_groups"
-    league_wars = "cache_league_wars"
-
-    locations = "cache_locations"
-    leagues = "cache_leagues"
-    seasons = "cache_seasons"
-
-    def __str__(self):
-        return str(self.value)
 
 
 class Role(Enum):
@@ -61,10 +36,19 @@ class Role(Enum):
         return self.in_game_name
 
     @property
-    def in_game_name(self):
+    def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
         lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
         return lookup[self]
+
+
+class WarRound(Enum):
+    previous_war = 0
+    current_war = 1
+    current_preparation = 2
+
+    def __str__(self):
+        return self.name
 
 
 ELIXIR_TROOP_ORDER = [
@@ -114,7 +98,8 @@ SUPER_TROOP_ORDER = [
     "Super Valkyrie",  # not added yet but they're in the API payload for some reason
 ]
 
-HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + SUPER_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
+# TODO: when SC fixes Super Troops in API add them here
+HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",

@@ -1,23 +1,36 @@
 """
-Clash of Clans API Wrapper
-~~~~~~~~~~~~~~~~~~~
+MIT License
 
-A basic wrapper for the Clash of Clans API.
+Copyright (c) 2019-2020 mathsman5133
 
-:copyright: (c) 2015-2019 mathsman5133
-:license: MIT, see LICENSE for more details.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
-__version__ = "0.3.4"
 
-from .cache import Cache, CacheConfig, DefaultCache, MaxSizeCache, TimeToLiveCache
+__version__ = "1.0.0"
 
-from .clans import Clan, SearchClan, BasicClan, WarClan, LeagueClan
+from .abc import BasePlayer, BaseClan
+from .clans import RankedClan, Clan
 from .client import Client
-from .events import EventsClient
+from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
-    CacheType,
     Role,
+    WarRound,
     ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
     DARK_ELIXIR_SPELL_ORDER,
@@ -42,7 +55,7 @@ from .errors import (
     PrivateWarLog,
 )
 from .login import login
-from .http import HTTPClient
+from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
     PlayerIterator,
@@ -53,8 +66,8 @@ from .iterators import (
 from .miscmodels import (
     Achievement,
     Badge,
-    EqualityComparable,
     Hero,
+    Icon,
     League,
     LegendStatistics,
     Location,
@@ -64,21 +77,10 @@ from .miscmodels import (
     Label,
     WarLeague,
 )
-from .players import (
-    Player,
-    BasicPlayer,
-    SearchPlayer,
-    LeaguePlayer,
-    LeagueRankedPlayer,
-    WarMember,
-)
-from .wars import (
-    BaseWar,
-    WarLog,
-    ClanWar,
-    WarAttack,
-    LeagueGroup,
-    LeagueWar,
-    LeagueWarLogEntry,
-)
+from .players import Player, ClanMember, RankedPlayer
+from .player_clan import PlayerClan
+from .war_clans import WarClan, ClanWarLeagueClan
+from .war_attack import WarAttack
+from .war_members import ClanWarLeagueClanMember, ClanWarMember
+from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from . import utils

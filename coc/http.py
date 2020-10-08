@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
-
-
 import asyncio
 import json
 import logging
@@ -34,6 +29,7 @@ import re
 from collections import deque
 from datetime import datetime
 from itertools import cycle
+from time import process_time, perf_counter
 from urllib.parse import urlencode
 
 import aiohttp
@@ -47,6 +43,7 @@ from .errors import (
     InvalidCredentials,
     GatewayError,
 )
+from .utils import LRU, HTTPStats
 
 LOG = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -62,24 +59,62 @@ async def json_or_text(response):
     return ret
 
 
-class Throttler:
-    """Simple throttler for asyncio"""
+class BasicThrottler:
+    """Basic throttler that sleeps for `sleep_time` seconds between each request."""
 
-    def __init__(self, rate_limit, retry_interval=0.001, loop=None):
+    __slots__ = (
+        "sleep_time",
+        "last_run",
+        "lock",
+    )
+
+    def __init__(self, sleep_time):
+        self.sleep_time = sleep_time
+        self.last_run = None
+        self.lock = asyncio.Lock()
+
+    async def __aenter__(self):
+        async with self.lock:
+            last_run = self.last_run
+            if last_run:
+                difference = process_time() - last_run
+                need_to_sleep = self.sleep_time - difference
+                if need_to_sleep > 0:
+                    LOG.debug("Request throttled. Sleeping for %s", need_to_sleep)
+                    await asyncio.sleep(need_to_sleep)
+
+            self.last_run = process_time()
+            return self
+
+    async def __aexit__(self, exception_type, exception, traceback):
+        pass
+
+
+class BatchThrottler:
+    """Simple throttler that allows `rate_limit` requests (per second) before sleeping until the next second."""
+
+    __slots__ = (
+        "rate_limit",
+        "per",
+        "retry_interval",
+        "_task_logs",
+    )
+
+    def __init__(self, rate_limit, per=1.0, retry_interval=0.001):
         self.rate_limit = rate_limit
+        self.per = per
         self.retry_interval = retry_interval
-        self.loop = loop or asyncio.get_event_loop()
 
         self._task_logs = deque()
 
     async def __aenter__(self):
         while True:
-            now = self.loop.time()
+            now = process_time()
 
             # Pop items(which are start times) that are no longer in the
             # time window
             while self._task_logs:
-                if now - self._task_logs[0] > 1.0:
+                if now - self._task_logs[0] > self.per:
                     self._task_logs.popleft()
                 else:
                     break
@@ -88,11 +123,12 @@ class Throttler:
             if len(self._task_logs) < self.rate_limit:
                 break
 
-            LOG.debug("Request throttled. Sleeping for %s seconds.", self.retry_interval)
-            await asyncio.sleep(self.retry_interval)
+            retry_interval = self.retry_interval
+            LOG.debug("Request throttled. Sleeping for %s seconds.", retry_interval)
+            await asyncio.sleep(retry_interval)
 
         # Push new task's start time
-        self._task_logs.append(self.loop.time())
+        self._task_logs.append(process_time())
 
         return self
 
@@ -119,28 +155,65 @@ class Route:
         else:
             self.url = url
 
+    @property
+    def cache_control_key(self):
+        """Returns a cache lookup key that is unique to this query."""
+        return self.path
+
 
 class HTTPClient:
     """HTTP Client for the library. All low-level requests and key-management occurs here."""
 
     # pylint: disable=too-many-arguments, missing-docstring, protected-access, too-many-branches
-    def __init__(self, client, loop, email, password, key_names, key_count, throttle_limit):
+    def __init__(
+        self,
+        client,
+        loop,
+        email,
+        password,
+        key_names,
+        key_count,
+        key_scopes,
+        throttle_limit,
+        throttler=BasicThrottler,
+        connector=None,
+        timeout=30.0,
+        cache_max_size=10000,
+    ):
         self.client = client
         self.loop = loop
         self.email = email
         self.password = password
         self.key_names = key_names
         self.key_count = key_count
+        self.key_scopes = key_scopes
         self.throttle_limit = throttle_limit
 
         per_second = key_count * throttle_limit
 
         self.__lock = asyncio.Semaphore(per_second)
-        self.__throttle = Throttler(per_second, loop=self.loop)
-        self.__session = aiohttp.ClientSession(loop=self.loop)
+        self.cache = cache_max_size and LRU(cache_max_size)
+        self.stats = HTTPStats(max_size=10)
+
+        if issubclass(throttler, BasicThrottler):
+            self.__throttle = throttler(1 / per_second)
+        elif issubclass(throttler, BatchThrottler):
+            self.__throttle = throttler(per_second)
+        else:
+            raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
+
+        self.__session = aiohttp.ClientSession(
+            loop=self.loop, connector=connector, timeout=aiohttp.ClientTimeout(total=timeout)
+        )
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
+
+    def _cache_remove(self, key):
+        try:
+            del self.cache[key]
+        except KeyError:
+            pass
 
     async def get_keys(self):
         self.client._ready.clear()
@@ -158,7 +231,9 @@ class HTTPClient:
                 ip_ = await self.get_ip()
                 for _ in range(keys_needed):
                     key_description = "Created on {}".format(datetime.now().strftime("%c"))
-                    self._keys.append(await self.create_key(cookies, self.key_names, key_description, [ip_]))
+                    self._keys.append(
+                        await self.create_key(cookies, self.key_names, key_description, [ip_], [self.key_scopes])
+                    )
             else:
                 await self.close()
                 raise RuntimeError(
@@ -184,6 +259,7 @@ class HTTPClient:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
+        # pylint: disable=too-many-statements, too-many-locals
         method = route.method
         url = route.url
         api_request = kwargs.pop("api_request", False)
@@ -204,11 +280,38 @@ class HTTPClient:
         if "json" in kwargs:
             kwargs["headers"]["Content-Type"] = "application/json"
 
-        async with self.__lock:
-            async with self.__throttle, self.__session.request(method, url, **kwargs) as response:
-                LOG.debug("%s (%s) has returned %s", url, method, response.status)
+        cache_control_key = route.cache_control_key
+        cache = self.cache
+        # the cache will be cleaned once it becomes stale / a new object is available from the api.
+        if cache:
+            try:
+                return cache[cache_control_key]
+            except KeyError:
+                pass
+
+        async with self.__lock, self.__throttle:
+            start = perf_counter()
+            async with self.__session.request(method, url, **kwargs) as response:
+                perfcounter = (perf_counter() - start) * 1000
+                log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
+                self.stats[url] = perfcounter
+                LOG.debug("API HTTP Request: %s", str(log_info))
                 data = await json_or_text(response)
-                LOG.debug(data)
+
+                try:
+                    # set a callback to remove the item from cache once it's stale.
+                    delta = int(response.headers["Cache-Control"].strip("max-age="))
+                    data["_response_retry"] = delta
+                    if cache:
+                        self.cache[cache_control_key] = data
+                        LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
+                        self.loop.call_later(delta, self._cache_remove, cache_control_key)
+
+                except (KeyError, AttributeError, ValueError):
+                    # the request didn't contain cache control headers so skip any cache handling.
+                    # if the API returns a timeout error (504) it will return a string of HTML.
+                    if isinstance(data, dict):
+                        data["_response_retry"] = 0
 
                 if 200 <= response.status < 300:
                     LOG.debug("%s has received %s", url, data)
@@ -236,6 +339,8 @@ class HTTPClient:
                     raise HTTPException(response, data)
 
                 if response.status == 503:
+                    self.client._in_maintenance_event.set()
+
                     if isinstance(data, str):
                         # weird case where a 503 will be raised, but html returned.
                         text = re.compile(r"<[^>]+>").sub(data, "")
@@ -259,9 +364,12 @@ class HTTPClient:
 
     @staticmethod
     def create_cookies(response_dict, session):
-        return "session={};game-api-url={};game-api-token={}".format(
-            session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
-        )
+        try:
+            return "session={};game-api-url={};game-api-token={}".format(
+                session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
+            )
+        except KeyError:
+            return None
 
     async def reset_key(self, key):
         ip_ = await self.get_ip()
@@ -275,7 +383,17 @@ class HTTPClient:
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
 
-        existing_keys = (await self.find_site_keys(cookies))["keys"]
+        if cookies is None:
+            return  # same issue as few lines down explains apparently.
+
+        existing_keys_dict = await self.find_site_keys(cookies)
+        existing_keys = existing_keys_dict and existing_keys_dict.get("keys")
+        if existing_keys is None:
+            # long standing bug where the dev site doesn't give a proper return dict when
+            # multiple concurrent logins are made. this is just a safety net, hopefully one of
+            # the requests will work.
+            return
+
         key_id = [t["id"] for t in existing_keys if t["key"] == key]
 
         try:
@@ -283,7 +401,7 @@ class HTTPClient:
         except InvalidArgument:
             return
 
-        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips)
+        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips, [self.key_scopes])
 
         # this is to prevent reusing an already used keys.
         # All it does is move the current key to the front,
@@ -400,13 +518,14 @@ class HTTPClient:
 
         return existing_keys_dict
 
-    async def create_key(self, cookies, key_name, key_description, cidr_ranges):
+    async def create_key(self, cookies, key_name, key_description, cidr_ranges, scopes):
         headers = {"cookie": cookies, "content-type": "application/json"}
 
         data = {
             "name": key_name,
             "description": key_description,
             "cidrRanges": cidr_ranges,
+            "scopes": scopes,
         }
 
         response = await self.request(

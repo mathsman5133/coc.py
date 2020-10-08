@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 """
 MIT License
 
-Copyright (c) 2019 mathsman5133
+Copyright (c) 2019-2020 mathsman5133
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +20,349 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 """
-
 import asyncio
 import logging
 import traceback
 
 from collections.abc import Iterable
-from typing import Union
+from datetime import datetime
 
-from .cache import events_cache
 from .client import Client
-from .errors import Forbidden
-from .utils import get
+from .clans import Clan
+from .enums import WarRound
+from .players import Player
+from .wars import ClanWar
+from .errors import Maintenance, PrivateWarLog
+from .utils import correct_tag, get_season_end
 
 LOG = logging.getLogger(__name__)
+DEFAULT_SLEEP = 10
+
+
+class Event:
+    """Object that is created for an event. This contains runner functions, tags and type."""
+
+    __slots__ = ("runner", "callback", "tags", "type")
+
+    def __init__(self, runner, callback, tags, type_):
+        self.runner = runner
+        self.callback = callback
+        self.tags = tags
+        self.type = type_
+
+    def __call__(self, cached, current):
+        return self.runner(cached, current, self.callback)
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and self.runner == other.runner and self.callback == other.callback
+
+    @classmethod
+    def from_decorator(cls, func, runner):
+        """Helper classmethod to create an event from a function"""
+        return cls(runner, func, func.event_tags, func.event_type)
+
+
+class _ValidateEvent:
+    """Helper class to validate and register a function as an event."""
+
+    def __init__(self, cls):
+        self.cls = cls
+
+    def __getattr__(self, item: str):
+        try:
+            return getattr(self.cls, item)
+        except AttributeError:
+            pass
+
+        if self.cls.event_type == "client":
+            return self.cls.__getattr__(self.cls, item)
+
+        # handle member_x events:
+        if "member_" in item:
+            item = item.replace("member_", "")
+            nested = True
+        else:
+            nested = False
+
+        return self._create_event(item.replace("_change", ""), nested)
+
+    def _create_event(self, item, nested=False):
+        def pred(cached, live) -> bool:
+            return getattr(cached, item) != getattr(live, item)
+
+        def actual(tags=None, custom_class=None, retry_interval=None):
+            try:
+                # don't type check if it's nested... not worth the bother
+                custom_class and not nested and getattr(custom_class, item)
+            except AttributeError:
+                raise RuntimeError("custom_class does not have expected attribute {}".format(item))
+
+            def decorator(func):
+                if nested:
+                    wrap = _ValidateEvent.wrap_clan_member_pred
+                else:
+                    wrap = _ValidateEvent.wrap_pred
+                return _ValidateEvent.register_event(
+                    func, wrap(pred), tags, custom_class, retry_interval, self.cls.event_type, item
+                )
+
+            return decorator
+
+        return actual
+
+    @staticmethod
+    def shortcut_register(wrapped, tags, custom_class, retry_interval, event_type):
+        """Fast route of registering an event for custom events that are manually defined."""
+
+        def decorator(func):
+            return _ValidateEvent.register_event(func, wrapped, tags, custom_class, retry_interval, event_type)
+
+        return decorator
+
+    @staticmethod
+    def wrap_pred(pred):
+        """Wraps a predicate in a coroutine that awaits the callback if the predicate is True."""
+
+        async def wrapped(cached, live, callback):
+            if pred(cached, live):
+                await callback(cached, live)
+
+        return wrapped
+
+    @staticmethod
+    def wrap_clan_member_pred(pred):
+        """Wraps a predicate for a clan member (ie nested) attribute from clan objects, and calls the callback."""
+
+        async def wrapped(cached_clan: Clan, clan: Clan, callback):
+            for member in clan.members:
+                cached_member = cached_clan.get_member(member.tag)
+                if cached_member is not None and pred(cached_member, member) is True:
+                    cached_member.clan = cached_clan
+                    member.clan = clan
+                    await callback(cached_member, member)
+
+        return wrapped
+
+    @staticmethod
+    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type="", event_name=""):
+        """Validates the types of all arguments and adds these as attributes to the function."""
+        # pylint: disable=too-many-arguments
+        if getattr(func, "is_event_listener", False) and func.event_type != event_type:
+            raise RuntimeError("maximum of one event type per callback function.")
+
+        if not asyncio.iscoroutinefunction(func):
+            raise TypeError("callback function must be of type coroutine.")
+
+        if not tags:
+            tags = ()
+        elif isinstance(tags, str):
+            tags = (tags,)
+        elif isinstance(tags, Iterable):
+            tags = tuple(tags)
+        else:
+            raise TypeError("tags must be of type str, or iterable not {0!r}".format(tags))
+
+        if retry_interval is not None and not isinstance(retry_interval, int):
+            raise TypeError("retry_interval must be of type int not {0!r}".format(retry_interval))
+
+        if not asyncio.iscoroutinefunction(runner):
+            raise TypeError("runner function must be of type coroutine")
+
+        func.event_type = event_type
+        func.event_tags = tags
+        func.is_event_listener = True
+        func.event_cls = cls
+        func.event_retry_interval = retry_interval
+        func.event_name = event_name
+        try:
+            func.event_runners.append(runner)
+        except AttributeError:
+            func.event_runners = [runner]
+
+        return func
+
+
+@_ValidateEvent
+class ClanEvents:
+    """Predefined clan events, or you can create your own with `@coc.ClanEvents.clan_attr_change`."""
+
+    event_type = "clan"
+
+    @classmethod
+    def member_join(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a member has joined the clan."""
+
+        async def wrapped(cached_clan, clan, callback):
+            current_tags = set(n.tag for n in cached_clan.members)
+            if not current_tags:
+                return
+            # we can't check the member_count first incase 1 person left and joined within the 60sec.
+            members_joined = (n for n in clan.members if n.tag not in current_tags)
+            for member in members_joined:
+                await callback(member, clan)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, ClanEvents.event_type)
+
+    @classmethod
+    def member_leave(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a member has left the clan."""
+
+        async def wrapped(cached_clan, clan, callback):
+            # we can't check the member_count first incase 1 person left and joined within the 60sec.
+            current_tags = set(n.tag for n in clan.members)
+            if not current_tags:
+                return
+            members_left = (n for n in cached_clan.members if n.tag not in current_tags)
+            for member in members_left:
+                await callback(member, clan)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, ClanEvents.event_type)
+
+
+@_ValidateEvent
+class PlayerEvents:
+    """Class that defines all valid player events."""
+
+    event_type = "player"
+
+    @classmethod
+    def achievement_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has increased the value of an achievement."""
+
+        async def wrapped(cached_player, player, callback):
+            achievement_updates = (n for n in player.achievements if n not in set(cached_player.achievements))
+            for achievement in achievement_updates:
+                await callback(cached_player, player, achievement)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def troop_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has upgraded or unlocked a troop."""
+
+        async def wrapped(cached_player, player, callback):
+            troop_upgrades = (n for n in player.troops if n not in set(cached_player.troops))
+            for troop in troop_upgrades:
+                await callback(cached_player, player, troop)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def spell_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has upgraded or unlocked a spell."""
+
+        async def wrapped(cached_player, player, callback):
+            spell_upgrades = (n for n in player.spells if n not in set(cached_player.spells))
+            for spell in spell_upgrades:
+                await callback(cached_player, player, spell)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def hero_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has upgraded or unlocked a hero."""
+
+        async def wrapped(cached_player, player, callback):
+            hero_upgrades = (n for n in player.heroes if n not in set(cached_player.heroes))
+            for hero in hero_upgrades:
+                await callback(cached_player, player, hero)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def joined_clan(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has joined a new clan."""
+
+        async def wrapped(cached_player, player, callback):
+            if cached_player.clan is None and player.clan is not None:
+                await callback(cached_player, player)
+            elif cached_player.clan is not None and player.clan is not None and cached_player.clan != player.clan:
+                await callback(cached_player, player)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def left_clan(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has joined a new clan."""
+
+        async def wrapped(cached_player, player, callback):
+            if cached_player.clan is not None and player.clan is None:
+                await callback(cached_player, player)
+            elif cached_player.clan and player.clan and cached_player.clan.tag != player.clan.tag:
+                await callback(cached_player, player)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def clan_name(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player's clan's name has changed."""
+
+        async def wrapped(cached_player, player, callback):
+            if cached_player.clan and player.clan and cached_player.clan.name != player.clan.name:
+                await callback(cached_player, player)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def clan_badge(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player's clan's badge has changed."""
+
+        async def wrapped(cached_player, player, callback):
+            if cached_player.clan and player.clan and cached_player.clan.badge != player.clan.badge:
+                await callback(cached_player, player)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def clan_level(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player's clan's level has changed."""
+
+        async def wrapped(cached_player, player, callback):
+            if cached_player.clan and player.clan and cached_player.clan.level != player.clan.level:
+                await callback(cached_player, player)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+
+@_ValidateEvent
+class WarEvents:
+    """Class that defines all valid war events."""
+
+    event_type = "war"
+
+    @classmethod
+    def war_attack(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a war player has made an attack."""
+
+        async def wrapped(cached_war, war, callback):
+            if cached_war.attacks:
+                new_attacks = (a for a in war.attacks if a not in set(cached_war.attacks))
+            else:
+                new_attacks = war.attacks
+
+            for attack in new_attacks:
+                await callback(attack, war)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, WarEvents.event_type)
+
+
+@_ValidateEvent
+class ClientEvents:
+    """Class that defines all valid client/misc events."""
+
+    event_type = "client"
+
+    def __getattr__(self, item):
+        def wrapped():
+            def deco(function):
+                function.is_client_event = True
+                function.event_name = item
+                return function
+
+            return deco
+
+        return wrapped
 
 
 class EventsClient(Client):
@@ -46,160 +371,328 @@ class EventsClient(Client):
 
     def __init__(self, **options):
         super().__init__(**options)
-        self._war_retry_interval = None  # set in _setup()
-        self._player_retry_interval = None  # set in _setup()
-        self._clan_retry_interval = None  # set in _setup()
         self._setup()
 
+        self._in_maintenance_event = asyncio.Event()
+        self._keys_ready = asyncio.Event()
+
+        self.clan_retry_interval = 0
+        self.player_retry_interval = 0
+        self.war_retry_interval = 0
+
+        self.clan_cls = Clan
+        self.player_cls = Player
+        self.war_cls = ClanWar
+
+        self.clan_loops_run = 0
+        self.player_loops_run = 0
+        self.war_loops_run = 0
+
+        self.is_cwl_active = options.pop("cwl_active", True)
+        self.check_cwl_prep = options.pop("check_cwl_prep", False)
+
+        self._locks = {}
+
     def _setup(self):
-        self._clan_updates = []
-        self._player_updates = []
-        self._war_updates = []
+        self._updater_tasks = {
+            "clan": self.loop.create_task(self._clan_updater()),
+            "player": self.loop.create_task(self._player_updater()),
+            "war": self.loop.create_task(self._war_updater()),
+            "maintenance": self.loop.create_task(self._maintenance_poller()),
+            "season": self.loop.create_task(self._end_of_season_poller())
+        }
 
-        self._active_state_tasks = {}
-
-        self._clan_retry_interval = 600
-        self._player_retry_interval = 600
-        self._war_retry_interval = 600
-
-        self._clan_update_event = asyncio.Event(loop=self.loop)
-        self._war_update_event = asyncio.Event(loop=self.loop)
-        self._player_update_event = asyncio.Event(loop=self.loop)
-
-        self._updater_tasks = {}
-
-        self.extra_events = {}
-
-        self._updater_tasks["clan"] = self.loop.create_task(self._clan_updater())
-        self._updater_tasks["war"] = self.loop.create_task(self._war_updater())
-        self._updater_tasks["player"] = self.loop.create_task(self._player_updater())
         for task in self._updater_tasks.values():
             task.add_done_callback(self._task_callback_check)
 
-    def close(self):
-        """Closes the client and all running tasks.
-        """
-        tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
-        if not tasks:
-            return
-        for task in tasks:
-            task.cancel()
-        super().close()
+        self._clan_updates = set()
+        self._player_updates = set()
+        self._war_updates = set()
 
-    @events_cache()
-    def dispatch(self, event_name: str, *args, **kwargs):
-        super().dispatch(event_name, *args, **kwargs)
-        for event in self.extra_events.get(event_name, []):
-            asyncio.ensure_future(self._run_event(event_name, event, *args, **kwargs), loop=self.loop)
+        self._listeners = {"clan": [], "player": [], "war": [], "client": {}}
 
-    def event(self, function_, name=None):
-        """A decorator or regular function that registers an event.
+        self._clans = {}
+        self._players = {}
+        self._wars = {}
 
-        The function **must** be a coroutine.
+    def add_clan_updates(self, *tags):
+        """Add clan tags to receive updates for.
 
         Parameters
-        ------------
-        function_ : function
+        ----------
+        \\*tags : str
+            The clan tags to add. If you wish to pass in an iterable, you must unpack it with \\*.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_clan_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_clan_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan tag must be of type str not {0!r}".format(tag))
+            self._clan_updates.add(correct_tag(tag))
+
+    def remove_clan_updates(self, *tags):
+        """Remove clan tags that you receive events updates for.
+
+        Parameters
+        ----------
+        \\*tags : str
+            The clan tags to remove. If you wish to pass in an iterable, you must unpack it with \\*.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_clan_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_clan_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan tag must be of type str not {0!r}".format(tag))
+            try:
+                self._clan_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # tag didn't exist to start with
+
+    def add_player_updates(self, *tags):
+        r"""Add player tags to receive events for.
+
+        Parameters
+        ----------
+        \\*tags : str
+            The player tags to add. If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_player_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_player_updates(*tags)
+
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("player tag must be of type str not {0!r}".format(tag))
+            self._player_updates.add(correct_tag(tag))
+
+    def remove_player_updates(self, *tags):
+        r"""Remove player tags that you receive events updates for.
+
+        Parameters
+        ----------
+        \\*tags : str
+            The player tags to remove. If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_player_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_player_updates(*tags)
+
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("player tag must be of type str not {0!r}".format(tag))
+            try:
+                self._player_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # the tag was never added
+
+    def add_war_updates(self, *tags):
+        r"""Add clan tags to receive war events for.
+
+        Parameters
+        ----------
+        \\*tags : str
+            The clan tags to add that will receive war events.
+            If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.add_war_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.add_war_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
+            self._war_updates.add(correct_tag(tag))
+
+    def remove_war_updates(self, *tags):
+        r"""Remove player tags that you receive events updates for.
+
+        Parameters
+        ----------
+        \\*tags : str
+            The clan tags to remove that will receive war events.
+            If you wish to pass in an iterable, you must unpack it with \*\.
+
+        Example
+        -------
+        .. code-block:: python3
+
+            client.remove_war_updates("#tag1", "#tag2", "#tag3")
+
+            tags = ["#tag4", "#tag5", "#tag6"]
+            client.remove_war_updates(*tags)
+        """
+        for tag in tags:
+            if not isinstance(tag, str):
+                raise TypeError("clan war tags must be of type str not {0!r}".format(tag))
+            try:
+                self._war_updates.remove(correct_tag(tag))
+            except KeyError:
+                pass  # tag didn't exist to start with
+
+    def _get_cached_clan(self, clan_tag):
+        try:
+            return self._clans[clan_tag]
+        except KeyError:
+            return None
+
+    def _update_clan(self, clan):
+        self._clans[clan.tag] = clan
+
+    def _get_cached_player(self, player_tag):
+        try:
+            return self._players[player_tag]
+        except KeyError:
+            return None
+
+    def _update_player(self, player):
+        self._players[player.tag] = player
+
+    def _get_cached_war(self, key):
+        try:
+            return self._wars[key]
+        except KeyError:
+            return None
+
+    def _update_war(self, key, war):
+        self._wars[key] = war
+
+    def event(self, function):
+        """A decorator or regular function that registers an event.
+
+        The function **may be** be a coroutine.
+
+        Parameters
+        ----------
+        function : function
             The function to be registered (not needed if used with a decorator)
-        name : str
-            The name of the function to be registered. Defaults to the function name.
 
         Example
         --------
 
         .. code-block:: python3
 
+            import coc
+
+            client = coc.login(...)
+
             @client.event
-            async def on_player_update(old_player, new_player):
-                print('{} has updated their profile!'.format(old_player))
+            @coc.ClanEvents.description_change()
+            async def player_donated_troops(old_player, new_player):
+                print('{} has donated troops!'.format(new_player))
+
+        .. code-block:: python3
+
+            import coc
+
+            client = coc.login(...)
+
+            @client.event
+            @coc.ClientEvents.maintenance_start()
+            async def maintenance_has_started():
+                print('maintenance has started!')
+
+        .. note::
+
+            The order of decorators is important - the ``@client.event`` one must lay **above**
 
         Returns
         --------
         function : The function registered
         """
-        if not asyncio.iscoroutinefunction(function_):
-            raise TypeError("event {} must be a coroutine function".format(function_.__name__))
-
-        name = name or function_.__name__
-
-        if name == "on_event_error":
-            setattr(self, name, function_)
-            return function_
-
-        if name in self.extra_events:
-            self.extra_events[name].append(function_)
-        else:
-            self.extra_events[name] = [function_]
-
-        LOG.info("Successfully registered %s event", name)
-        return function_
-
-    def add_events(self, *functions, function_dicts: dict = None):
-        """Provides an alternative method to adding events.
-
-        You can either provide functions as named args or as a dict of {name: function...} values.
-
-        Example
-        --------
-
-        .. code-block:: python3
-
-            client.add_events(on_member_update, on_clan_update, on_war_attack)
-            # or, using a dict:
-            client.add_events(function_dicts={'on_member_update': on_update,
-                                              'on_clan_update': on_update_2
-                                              }
-                             )
-
-        Parameters
-        -----------
-        functions : function
-            Named args of functions to register. The name of event is dictated by function name.
-        function_dicts : dict
-            Dictionary of ``{'event_name': function}`` values.
-        """
-        for function_ in functions:
-            self.event(function_)
-        if function_dicts:
-            for name, function_ in function_dicts.items():
-                self.event(function_, name=name)
-
-    def remove_events(self, *functions, function_dicts: dict = None):
-        """Removes registered events from the client.
-
-        Similar to :meth:`coc.add_events`, you can pass in functions as named args,
-        or a list of {name: function...} values.
-
-        Example
-        --------
-
-        .. code-block:: python3
-
-            client.remove_events(on_member_update, on_clan_update, on_war_attack)
-            # or, using a dict:
-            client.remove_events(function_dicts={'on_member_update': on_update,
-                                                 'on_clan_update': on_update_2
-                                                }
-                                )
-
-        Parameters
-        -----------
-        functions : function
-            Named args of functions to register. The name of event is dictated by function name.
-        function_dicts : dict
-            Dictionary of ``{'event_name': function}`` values.
-        """
-        for function_ in functions:
+        if getattr(function, "is_client_event", False):
             try:
-                self.extra_events.get(function_.__name__, []).remove(function_)
-            except ValueError:
-                continue
-        if function_dicts:
-            for name, function_ in function_dicts.items():
-                try:
-                    self.extra_events.get(name, []).remove(function_)
-                except ValueError:
-                    continue
+                self._listeners["client"][function.event_name].append(function)
+            except KeyError:
+                self._listeners["client"][function.event_name] = [function]
+            return function
+
+        if not getattr(function, "is_event_listener", None):
+            raise ValueError("no events found to register to this callback")
+
+        events = [Event.from_decorator(function, runner) for runner in function.event_runners]
+
+        retry_interval = getattr(function, "event_retry_interval")
+        cls = getattr(function, "event_cls")
+        tags = getattr(function, "event_tags")
+        event_type = events[0].type
+
+        self._listeners[event_type].extend(events)
+
+        if event_type == "clan":
+            self.clan_cls = cls or self.clan_cls
+            self.clan_retry_interval = retry_interval or self.clan_retry_interval
+            self.add_clan_updates(*tags)
+        elif event_type == "player":
+            self.player_cls = cls or self.player_cls
+            self.player_retry_interval = retry_interval or self.player_retry_interval
+            self.add_player_updates(*tags)
+        elif event_type == "war":
+            if function.event_name == "members":
+                self.check_cwl_prep = True  # we need to check cwl clans in prep for this one.
+
+            self.war_cls = cls or self.war_cls
+            self.war_retry_interval = retry_interval or self.war_retry_interval
+            self.add_war_updates(*tags)
+
+        LOG.info("Successfully registered %s event", function)
+        return function
+
+    def add_events(self, *events):
+        r"""Shortcut to add many events at once.
+
+        This method just iterates over :meth:`EventsClient.listener`.
+
+        Parameters
+        -----------
+        \*\events: :class:`function`
+            The event listener functions to add.
+        """
+        for event in events:
+            self.event(event)
+
+    def remove_events(self, *events):
+        r"""Shortcut to remove many events at once.
+
+        Parameters
+        -----------
+        \*\events: :class:`function`
+            The event listener functions to remove.
+        """
+        for function in events:
+            for runner in function.event_runners:
+                event = Event.from_decorator(function, runner)
+                self._listeners[event.type].remove(event)
 
     def run_forever(self):
         """A blocking call which runs the loop and script.
@@ -222,195 +715,30 @@ class EventsClient(Client):
         try:
             self.loop.run_forever()
         except KeyboardInterrupt:
-            LOG.info("Terminating bot and event loop.")
             self.close()
 
-    async def _run_event(self, event_name, coro, *args, **kwargs):
+    def close(self):
+        """Closes the client and all running tasks."""
+        tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
+        for task in tasks:
+            task.cancel()
+        super().close()
+
+    def dispatch(self, event_name: str, *args, **kwargs):
         # pylint: disable=broad-except
-        try:
-            await coro(*args, **kwargs)
-        except asyncio.CancelledError:
-            pass
-        except (Exception, BaseException) as exception:
-            try:
-                await self.on_event_error(event_name, exception, *args, **kwargs)
-            except asyncio.CancelledError:
-                pass
+        registered = self._listeners["client"].get(event_name)
+        if registered is None:
+            if event_name == "event_error":
+                LOG.exception("Ignoring exception in event task.")
+                print("Ignoring exception in event task.")
+                traceback.print_exc()
 
-    async def on_event_error(self, event_name, exception, *args, **kwargs):
-        """Event called when an event fails.
-
-        By default this will print the traceback
-        This can be overridden by either using @client.event or through subclassing EventsClient.
-
-        Example
-        --------
-
-        .. code-block:: python3
-
-            @client.event
-            async def on_event_error(event_name, exception, *args, **kwargs):
-                print('Ignoring exception in {}'.format(event_name))
-
-            class Client(events.EventClient):
-                async def on_event_error(event_name, exception, *args, **kwargs):
-                    print('Ignoring exception in {}'.format(event_name))
-
-        """
-        # pylint: disable=unused-argument
-        print("Ignoring exception in {}".format(event_name))
-        traceback.print_exc()
-
-    def add_clan_update(self, tags: Union[Iterable, str], retry_interval=600):
-        """Subscribe clan tags to events.
-
-        Parameters
-        ------------
-        tags : Union[:class:`collections.Iterable`, str]
-            The clan tags to add. Could be an Iterable of tags or just a string tag.
-        retry_interval : int
-            In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
-        """
-        # pylint: disable=protected-access
-        if isinstance(tags, str):
-            if tags not in self._clan_updates:
-                self._clan_updates.append(tags)
         else:
-            self._clan_updates.extend(n for n in tags if n not in set(self._clan_updates))
-
-        if retry_interval < 0:
-            raise ValueError("retry_interval must be greater than 0 seconds")
-
-        self._clan_retry_interval = retry_interval
-        self.start_updates("clan")
-
-    def add_war_update(self, tags: Union[Iterable, str], retry_interval=600):
-        """Subscribe clan tags to war events.
-
-        Parameters
-        ------------
-        tags : Union[:class:`collections.Iterable`, str]
-            The clan tags to add. Could be an Iterable of tags or just a string tag.
-        retry_interval : int
-            In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
-        """
-        if isinstance(tags, str):
-            if tags not in self._war_updates:
-                self._war_updates.append(tags)
-        else:
-            self._war_updates.extend(n for n in tags if n not in set(self._war_updates))
-
-        if retry_interval < 0:
-            raise ValueError("retry_interval must be greater than 0 seconds")
-
-        self._war_retry_interval = retry_interval
-        self.start_updates("war")
-
-    def add_player_update(self, tags: Union[Iterable, str], retry_interval=600):
-        """Subscribe player tags to player update events.
-
-        Parameters
-        ------------
-        tags : :class:`collections.Iterable`
-            The player tags to add. Could be an Iterable of tags or just a string tag.
-        retry_interval : int
-            In seconds, how often the client 'checks' for updates. Defaults to 600 (10min)
-        """
-        if isinstance(tags, str):
-            if tags not in self._player_updates:
-                self._player_updates.append(tags)
-        else:
-            self._player_updates.extend(n for n in tags if n not in set(self._player_updates))
-
-        if retry_interval < 0:
-            raise ValueError("retry_interval must be greater than 0 seconds")
-
-        self._player_retry_interval = retry_interval
-        self.start_updates("player")
-
-    def start_updates(self, event_group="all"):
-        """Starts an, or all, events.
-
-        .. note::
-
-            This method **must** be called before any events are run.
-
-        Parameters
-        -----------
-        event_group : str
-            The event group to start updates for. Could be ``player``, ``clan``, ``war`` or ``all``.
-            Defaults to 'all'
-
-        Example
-        --------
-        .. code-block:: python3
-
-            client.start_updates('clan')
-            # or, for all events:
-            client.start_updates('all')
-
-        """
-        lookup = {
-            "clan": [self._clan_update_event, ["search_clans"]],
-            "player": [self._player_update_event, ["search_players"]],
-            "war": [self._war_update_event, ["current_wars", "clan_wars", "league_wars"],],  # noqa
-        }
-        if event_group == "all":
-            events = lookup.values()
-        else:
-            events = [lookup[event_group]]
-
-        for event in events:
-            event[0].set()
-            for cache_type in event[1]:
-                self.cache.reset_event_cache(cache_type)
-
-    def stop_updates(self, event_type="all"):
-        """Stops an, or all, events.
-
-        .. note::
-            This method **must** be called in order to stop any events.
-
-        Parameters
-        -----------
-        event_type : str
-            See :meth:`EventsClient.start_updates` for which string corresponds to events.
-            Defaults to 'all'
-
-        Example
-        --------
-        .. code-block:: python3
-
-            client.stop_updates('clan')
-            # or, for all events:
-            client.stop_updates('all')
-
-        """
-
-        lookup = {
-            "clan": [self._clan_update_event, ["search_clans"]],
-            "player": [self._player_update_event, ["search_players"]],
-            "war": [self._war_update_event, ["current_wars", "clan_wars", "league_wars"],],  # noqa
-        }
-        if event_type == "all":
-            events = lookup.values()
-        else:
-            events = [lookup[event_type]]
-
-        for event in events:
-            event[0].clear()
-            for cache_type in event[1]:
-                self.cache.reset_event_cache(cache_type)
-
-    async def _dispatch_batch_updates(self, key_name):
-        keys = await self.cache.keys("events")
-        if not keys:
-            return
-        events = [n for n in keys if n.startswith(key_name)]
-
-        self.dispatch(
-            "{}_batch_updates".format(key_name), [await self.cache.pop("events", n) for n in events],
-        )
+            for event in registered:
+                try:
+                    asyncio.ensure_future(event(*args, **kwargs))
+                except (BaseException, Exception):
+                    LOG.exception("Ignoring exception in %s.", event_name)
 
     def _task_callback_check(self, result):
         if not result.done():
@@ -423,14 +751,14 @@ class EventsClient(Client):
         if not exception:
             return
 
-        LOG.warning(
-            "Task raised an exception that was unhandled %s. Restarting the task.", exception,
-        )
+        LOG.exception("Task raised an exception that was unhandled. Restarting the task.", exc_info=exception)
 
         lookup = {
             "clan": self._clan_updater,
             "player": self._player_updater,
             "war": self._war_updater,
+            "maintenance": self._maintenance_poller,
+            "season": self._end_of_season_poller
         }
 
         for name, value in self._updater_tasks.items():
@@ -439,399 +767,258 @@ class EventsClient(Client):
             self._updater_tasks[name] = self.loop.create_task(lookup[name]())
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
 
+    async def _end_of_season_poller(self):
+        try:
+            while self.loop.is_running():
+                end_of_season = get_season_end()
+                now = datetime.utcnow()
+                await asyncio.sleep((end_of_season - now).total_seconds() + 1)
+                self.dispatch("new_season_start")
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._maintenance_poller()
+
+    async def _maintenance_poller(self):
+        # pylint: disable=broad-except, protected-access
+        maintenance_start = None
+        try:
+            while self.loop.is_running():
+                await self._in_maintenance_event.wait()
+
+                if maintenance_start is None:
+                    maintenance_start = datetime.utcnow()
+                    self.dispatch("maintenance_start")
+                    await asyncio.sleep(60)
+
+                try:
+                    player = await self.get_player("#JY9J2Y99")  # this will raise if API is in maintenance
+                    await asyncio.sleep(player._response_retry)  # wait until fresh object available
+                    # re-run again, this should raise Maintenance because API cache layer has expired
+                    await self.get_player("#JY9J2Y99")
+                except (Maintenance, Exception):
+                    await asyncio.sleep(5)
+                else:
+                    self._in_maintenance_event.clear()
+                    self.dispatch("maintenance_completion", maintenance_start)
+                    maintenance_start = None
+
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._maintenance_poller()
+
     async def _war_updater(self):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._war_update_event.wait()
-                await asyncio.sleep(self._war_retry_interval)
-                await self._update_wars()
-                await self._dispatch_batch_updates("on_war")
+                await asyncio.sleep(DEFAULT_SLEEP)
+                if self._in_maintenance_event.is_set():
+                    continue  # don't run if we're hitting maintenance errors.
+
+                self.dispatch("war_loop_start", self.war_loops_run)
+
+                if self.is_cwl_active and self.check_cwl_prep:
+                    options = (WarRound.current_war, WarRound.current_preparation)
+                else:
+                    options = (WarRound.current_war, )
+
+                tasks = [
+                    self.loop.create_task(self._run_war_update(tag, option))
+                    for tag in self._war_updates for option in options
+                ]
+                await asyncio.gather(*tasks)
+                self.dispatch("war_loop_finish", self.war_loops_run)
+                self.war_loops_run += 1
+
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.on_event_error("on_war_update", exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks.items() if "war" in k):
+                self._safe_unlock(lock)
+
             return await self._war_updater()
 
     async def _clan_updater(self):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._clan_update_event.wait()
-                await asyncio.sleep(self._clan_retry_interval)
-                await self._update_clans()
-                await self._dispatch_batch_updates("on_clan")
+                await asyncio.sleep(DEFAULT_SLEEP)
+                if self._in_maintenance_event.is_set():
+                    continue  # don't run if we're hitting maintenance errors.
+
+                self.dispatch("clan_loop_start", self.clan_loops_run)
+                tasks = [
+                    self.loop.create_task(self._run_clan_update(index, tag))
+                    for index, tag in enumerate(self._clan_updates)
+                ]
+                await asyncio.gather(*tasks)
+                self.dispatch("clan_loop_finish", self.clan_loops_run)
+                self.clan_loops_run += 1
+
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.on_event_error("on_clan_update", exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks.items() if "clan" in k):
+                self._safe_unlock(lock)
+
             return await self._clan_updater()
 
     async def _player_updater(self):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
-                await self._player_update_event.wait()
-                await asyncio.sleep(self._player_retry_interval)
-                await self._update_players()
-                await self._dispatch_batch_updates("on_player")
+                await asyncio.sleep(DEFAULT_SLEEP)
+                if self._in_maintenance_event.is_set():
+                    continue  # don't run if we're hitting maintenance errors.
+
+                self.dispatch("player_loop_start", self.player_loops_run)
+                tasks = [
+                    self.loop.create_task(self._run_player_update(index, tag))
+                    for index, tag in enumerate(self._player_updates)
+                ]
+                await asyncio.gather(*tasks)
+                self.dispatch("player_loop_finish", self.player_loops_run)
+                self.player_loops_run += 1
+
         except asyncio.CancelledError:
             return
         except (Exception, BaseException) as exception:
-            await self.on_event_error("on_player_update", exception)
+            self.dispatch("event_error", exception)
+
+            for lock in (v for k, v in self._locks.items() if "player" in k):
+                self._safe_unlock(lock)
+
             return await self._player_updater()
 
-    async def _wait_for_state_change(self, state_to_wait_for, war):
-        if state_to_wait_for == "inWar":
-            to_sleep = war.start_time.seconds_until
-        elif state_to_wait_for == "warEnded":
-            to_sleep = war.end_time.seconds_until
-        else:
-            return
-
-        await asyncio.sleep(to_sleep)
-
+    @staticmethod
+    def _safe_unlock(lock):
         try:
-            war = await self.get_current_war(war.clan_tag)
-        except Forbidden:
-            return
+            lock.release()
+        except RuntimeError:
+            pass
 
-        if war.state == state_to_wait_for:
-            self.dispatch("on_war_state_change", state_to_wait_for, war)
-            return
+    async def _run_player_update(self, index, player_tag):
+        # pylint: disable=protected-access, broad-except
+        await asyncio.sleep(0.005 * index)
 
-        return await self._wait_for_state_change(state_to_wait_for, war)
-
-    def _check_state_task_status(self, clan_tag):
+        key = "player:{}".format(player_tag)
         try:
-            states = self._active_state_tasks[clan_tag]
+            lock = self._locks[key]
         except KeyError:
-            return None, None
+            self._locks[key] = lock = asyncio.Lock()
 
-        return states.get("inWar"), states.get("warEnded")
+        await lock.acquire()
 
-    def _add_state_task(self, clan_tag, state, task):
         try:
-            self._active_state_tasks[clan_tag][state] = task
+            player = await self.get_player(player_tag, cls=self.player_cls)
+        except Maintenance:
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            self._safe_unlock(lock)
+            return
+
+        # sleep for either
+        seconds = max(player._response_retry, self.player_retry_interval)
+        self.loop.call_later(seconds, self._safe_unlock, lock)
+
+        cached_player = self._get_cached_player(player_tag)
+        self._update_player(player)
+
+        if cached_player is None:
+            self._safe_unlock(lock)
+            return
+
+        for listener in self._listeners["player"]:
+            if listener.tags and player_tag not in listener.tags:
+                continue
+            await listener(cached_player, player)
+
+    async def _run_clan_update(self, index, clan_tag):
+        # pylint: disable=protected-access, broad-except
+        await asyncio.sleep(0.005 * index)
+
+        key = "clan:{}".format(clan_tag)
+        try:
+            lock = self._locks[key]
         except KeyError:
-            self._active_state_tasks[clan_tag] = {state: task}
+            self._locks[key] = lock = asyncio.Lock()
 
-    async def _update_wars(self):
-        if not self._war_updates:
+        await lock.acquire()
+
+        try:
+            clan = await self.get_clan(clan_tag, cls=self.clan_cls)
+        except Maintenance:
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            self._safe_unlock(lock)
             return
 
-        async for war in self.get_current_wars(self._war_updates, cache=False, update_cache=False):
-            cached_war = await self.cache.get("current_wars", war.clan_tag)
-            await self.cache.set("current_wars", war.clan_tag, war)
+        # sleep for either the global retry or whenever a new player object is available, whichever is smaller.
+        self.loop.call_later(max(clan._response_retry, self.clan_retry_interval), self._safe_unlock, lock)
 
-            if not cached_war or not war:
+        cached_clan = self._get_cached_clan(clan_tag)
+        self._update_clan(clan)
+
+        if not cached_clan:
+            self._safe_unlock(lock)
+            return
+
+        for listener in self._listeners["clan"]:
+            if listener.tags and clan_tag not in listener.tags:
                 continue
+            await listener(cached_clan, clan)
 
-            self._create_status_tasks(cached_war, war)
+    async def _run_war_update(self, clan_tag, cwl_round=None):
+        # pylint: disable=protected-access, broad-except
+        key = "war:{}:{}".format(cwl_round, clan_tag)
+        try:
+            lock = self._locks[key]
+        except KeyError:
+            self._locks[key] = lock = asyncio.Lock()
 
-            if war == cached_war:
-                continue
+        await lock.acquire()
 
-            self._dispatch_war_differences(cached_war, war)
-
-    def _dispatch_war_differences(self, cached_war, war):
-        self.dispatch("on_war_update", cached_war, war)
-
-        if not war.opponent:
-            # if there are no opponent next line will raise Attribute error..
-            # we've just entered prep - this probably needs a rewrite.
-            return
-
-        if not war.iterattacks:
-            # if there are no attacks next line will raise Attribute error..
-            # we're not in war anymore anyway
-            return
-
-        if not cached_war.iterattacks:
-            new_attacks = war.iterattacks
+        if self.is_cwl_active:
+            meth = self.get_current_war
         else:
-            new_attacks = (n for n in war.iterattacks if n not in set(cached_war.iterattacks))
+            meth = self.get_clan_war
 
-        for attack in new_attacks:
-            self.dispatch("on_war_attack", attack, war)
-
-    def _create_status_tasks(self, cached_war, war):
-        if cached_war.state != war.state and war.state == "preparation":
-            self.dispatch("on_war_state_change", "preparation", war)
-
-        if war.state not in ["preparation", "inWar", "warEnded"]:
+        try:
+            war = await meth(clan_tag, cls=self.war_cls, round=cwl_round)
+        except (Maintenance, PrivateWarLog):
+            self._safe_unlock(lock)
+            return
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            self._safe_unlock(lock)
             return
 
-        in_war_task, war_ended_task = self._check_state_task_status(war.clan_tag)
-
-        if not in_war_task or (war.start_time.time != cached_war.start_time.time):
-            task = self.loop.create_task(self._wait_for_state_change("inWar", war))
-            self._add_state_task(war.clan_tag, "inWar", task)
-
-        if not war_ended_task or (war.end_time.time != cached_war.end_time.time):
-            task = self.loop.create_task(self._wait_for_state_change("warEnded", war))
-            self._add_state_task(war.clan_tag, "warEnded", task)
-
-    async def _update_players(self):
-        if not self._player_updates:
+        if war is None:
+            self._safe_unlock(lock)
             return
 
-        async for player in self.get_players(self._player_updates, cache=False, update_cache=False):
-            cached_player = await self.cache.get("search_players", player.tag)
-            await self.cache.set("search_players", player.tag, player)
+        # sleep for either the global retry or whenever a new war object is available, whichever is smaller.
+        self.loop.call_later(max(war._response_retry, self.war_retry_interval), self._safe_unlock, lock)
 
-            if not cached_player:
-                continue
+        cached_war = self._get_cached_war(clan_tag)
+        self._update_war(clan_tag, war)
 
-            if player == cached_player:
-                continue
-
-            self.dispatch("on_player_update", cached_player, player)
-            self._dispatch_player_differences(cached_player, player)
-
-    def _dispatch_player_differences(self, cached_player, player):
-        # pylint: disable=too-many-branches
-        # name
-        if player.name != cached_player.name:
-            self.dispatch("on_player_name_change", cached_player.name, player.name, player)
-
-        # town/builder halls
-        if player.town_hall != cached_player.town_hall:
-            self.dispatch(
-                "on_player_townhall_upgrade", cached_player.town_hall, player.town_hall, player,
-            )
-        if player.builder_hall != cached_player.builder_hall:
-            self.dispatch(
-                "on_player_builderhall_upgrade", cached_player.builder_hall, player.builder_hall, player,
-            )
-
-        # best trophies/versus/war stars
-        if player.best_trophies != cached_player.best_trophies:
-            self.dispatch(
-                "on_player_best_trophies_change", cached_player.best_trophies, player.best_trophies, player,
-            )
-        if player.best_versus_trophies != cached_player.best_versus_trophies:
-            self.dispatch(
-                "on_player_best_versus_trophies_change",
-                cached_player.best_versus_trophies,
-                player.best_versus_trophies,
-                player,
-            )
-        if player.war_stars != cached_player.war_stars:
-            self.dispatch(
-                "on_player_war_stars_change", cached_player.war_stars, player.war_stars, player,
-            )
-
-        # attacks win/defense/versus
-        if player.attack_wins != cached_player.attack_wins:
-            self.dispatch(
-                "on_player_attack_wins_change", cached_player.attack_wins, player.attack_wins, player,
-            )
-        if player.defense_wins != cached_player.defense_wins:
-            self.dispatch(
-                "on_player_defense_wins_change", cached_player.defense_wins, player.defense_wins, player,
-            )
-        if player.versus_attack_wins != cached_player.versus_attack_wins:
-            self.dispatch(
-                "on_player_versus_attack_change", cached_player.versus_attack_wins, player.versus_attack_wins, player,
-            )
-
-        # trophies + league
-        if player.trophies != cached_player.trophies:
-            self.dispatch(
-                "on_player_trophies_change", cached_player.trophies, player.trophies, player,
-            )
-        if player.league != cached_player.league:
-            self.dispatch(
-                "on_player_league_change", cached_player.league, player.league, player,
-            )
-
-        # clan stuff: role, donations, received, rank and prev. rank
-        if player.role != cached_player.role:
-            self.dispatch("on_player_role_change", cached_player.role, player.role, player)
-        if player.donations != cached_player.donations:
-            self.dispatch(
-                "on_player_donations_change", cached_player.donations, player.donations, player,
-            )
-        if player.received != cached_player.received:
-            self.dispatch(
-                "on_player_received_change", cached_player.received, player.received, player,
-            )
-
-        self._dispatch_player_clan_differences(cached_player, player)
-
-        achievement_updates = (n for n in player.achievements if n not in set(cached_player.achievements))
-        troop_upgrades = (n for n in player.troops if n not in set(cached_player.troops))
-        spell_upgrades = (n for n in player.spells if n not in set(cached_player.spells))
-        hero_upgrades = (n for n in player.heroes if n not in set(cached_player.heroes))
-
-        for achievement in achievement_updates:
-            old_achievement = get(cached_player.achievements, name=achievement.name)
-            self.dispatch("on_player_achievement_change", old_achievement, achievement, player)
-
-        for troop in troop_upgrades:
-            old_troop = get(cached_player.troops, name=troop.name)
-            self.dispatch("on_player_troop_upgrade", old_troop, troop, player)
-
-        for spell in spell_upgrades:
-            old_spell = get(cached_player.spells, name=spell.name)
-            self.dispatch("on_player_spell_upgrade", old_spell, spell, player)
-
-        for hero in hero_upgrades:
-            old_hero = get(cached_player.heroes, name=hero.name)
-            self.dispatch("on_player_hero_upgrade", old_hero, hero, player)
-
-    def _dispatch_player_clan_differences(self, cached_player, player):
-        if player.clan_rank != cached_player.clan_rank:
-            self.dispatch(
-                "on_player_clan_rank_change", cached_player.clan_rank, player.clan_rank, player,
-            )
-        if player.clan_previous_rank != cached_player.clan_previous_rank:
-            self.dispatch(
-                "on_player_clan_previous_rank_change",
-                cached_player.clan_previous_rank,
-                player.clan_previous_rank,
-                player,
-            )
-
-        # more clan stuff
-        clan = player.clan
-        cached_clan = cached_player.clan
-
-        if not clan and not cached_clan:
-            return
-        if not clan and cached_clan:
-            self.dispatch("on_player_clan_leave", cached_clan, player)
-        elif not cached_clan and clan:
-            self.dispatch("on_player_clan_join", clan, player)
-        elif clan.tag != cached_clan.tag:
-            self.dispatch("on_player_clan_leave", cached_clan, player)
-            self.dispatch("on_player_clan_join", clan, player)
-
-        if clan and cached_clan:
-            if clan.tag != cached_clan.tag:
-                return
-
-            if clan.level != cached_clan.level:
-                self.dispatch(
-                    "on_player_clan_level_change", cached_clan.level, clan.level, clan, player,
-                )
-
-            if clan.badge != cached_clan.badge:
-                self.dispatch(
-                    "on_player_clan_badge_change", cached_clan.badge, clan.badge, clan, player,
-                )
-
-    async def _update_clans(self):
-        if not self._clan_updates:
+        if not cached_war:
+            self._safe_unlock(lock)
             return
 
-        async for clan in self.get_clans(self._clan_updates, cache=False, update_cache=False):
-            cached_clan = await self.cache.get("search_clans", clan.tag)
-            await self.cache.set("search_clans", clan.tag, clan)
-
-            if not cached_clan:
+        for listener in self._listeners["war"]:
+            if listener.tags and clan_tag not in listener.tags:
                 continue
-
-            if clan == cached_clan:
-                continue
-
-            self.dispatch("on_clan_update", cached_clan, clan)
-            self._dispatch_clan_differences(cached_clan, clan)
-
-    def _dispatch_clan_differences(self, cached_clan, clan):
-        # pylint: disable=too-many-branches
-        if clan.member_count != cached_clan.member_count:
-            new_members = (n for n in clan.members if n.tag not in set(n.tag for n in cached_clan.members))
-            for mem_join in new_members:
-                self.dispatch("on_clan_member_join", mem_join, clan)
-
-            old_members = (n for n in cached_clan.members if n.tag not in set(n.tag for n in clan.members))
-            for mem_left in old_members:
-                self.dispatch("on_clan_member_leave", mem_left, clan)
-
-        if clan.members != cached_clan.members:
-            self._dispatch_clan_member_differences(cached_clan, clan)
-
-        # settings
-        if clan.level != cached_clan.level:
-            self.dispatch("on_clan_level_change", cached_clan.level, clan.level, clan)
-        if clan.description != cached_clan.description:
-            self.dispatch(
-                "on_clan_description_change", cached_clan.description, clan.description, clan,
-            )
-        if clan.public_war_log != cached_clan.public_war_log:
-            self.dispatch(
-                "on_clan_public_war_log_change", cached_clan.public_war_log, clan.public_war_log, clan,
-            )
-        if clan.type != cached_clan.type:
-            self.dispatch("on_clan_type_change", cached_clan.type, clan.type, clan)
-        if clan.badge != cached_clan.badge:
-            self.dispatch("on_clan_badge_change", cached_clan.badge, clan.badge, clan)
-        if clan.required_trophies != cached_clan.required_trophies:
-            self.dispatch(
-                "on_clan_required_trophies_change", cached_clan.required_trophies, clan.required_trophies, clan,
-            )
-        if clan.war_frequency != cached_clan.war_frequency:
-            self.dispatch(
-                "on_clan_war_frequency_change", cached_clan.war_frequency, clan.war_frequency, clan,
-            )
-
-        # war win/loss/tie/streak
-        if clan.war_win_streak != cached_clan.war_win_streak:
-            self.dispatch(
-                "on_clan_war_win_streak_change", cached_clan.war_win_streak, clan.war_win_streak, clan,
-            )
-        if clan.war_wins != cached_clan.war_wins:
-            self.dispatch("on_clan_war_win_change", cached_clan.war_wins, clan.war_wins, clan)
-        if clan.war_ties != cached_clan.war_ties:
-            self.dispatch("on_clan_war_tie_change", cached_clan.war_ties, clan.war_ties, clan)
-        if clan.war_losses != cached_clan.war_losses:
-            self.dispatch("on_clan_war_loss_change", cached_clan.war_losses, clan.war_losses, clan)
-
-    def _dispatch_clan_member_differences(self, cached_clan, clan):
-        members = (n for n in clan.members if n != cached_clan.get_member(tag=n.tag))
-        for member in members:
-            cached_member = cached_clan.get_member(tag=member.tag)
-            if not cached_member:
-                continue
-
-            if member.name != cached_member.name:
-                self.dispatch(
-                    "on_clan_member_name_change", cached_member.name, member.name, member,
-                )
-            if member.donations != cached_member.donations:
-                self.dispatch(
-                    "on_clan_member_donation", cached_member.donations, member.donations, member,
-                )
-            if member.received != cached_member.received:
-                self.dispatch(
-                    "on_clan_member_received", cached_member.received, member.received, member,
-                )
-            if member.trophies != cached_member.trophies:
-                self.dispatch(
-                    "on_clan_member_trophies_change", cached_member.trophies, member.trophies, member,
-                )
-            if member.versus_trophies != cached_member.versus_trophies:
-                self.dispatch(
-                    "on_clan_member_versus_trophies_change",
-                    cached_member.versus_trophies,
-                    member.versus_trophies,
-                    member,
-                )
-            if member.role != cached_member.role:
-                self.dispatch(
-                    "on_clan_member_role_change", cached_member.role, member.role, member,
-                )
-            if member.clan_rank != cached_member.clan_rank:
-                self.dispatch(
-                    "on_clan_member_rank_change", cached_member.clan_rank, member.clan_rank, member,
-                )
-            if member.exp_level != cached_member.exp_level:
-                self.dispatch(
-                    "on_clan_member_level_change", cached_member.exp_level, member.exp_level, member,
-                )
-            if member.league != cached_member.league:
-                self.dispatch(
-                    "on_clan_member_league_change", cached_member.league, member.league, member,
-                )
+            await listener(cached_war, war)
