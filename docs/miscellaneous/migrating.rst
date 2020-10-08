@@ -493,6 +493,31 @@ The usage is intuitive, and identical to adding the tags:
     client.remove_player_updates(*tags)
 
 
+End of Season Helpers
+---------------------
+A common use for users of the API is to do something when the season change occurs, at 5pm UTC on the last monday of each month.
+This has been integrated into coc.py, and available with the new utility commands, :meth:`utils.get_season_start` and :meth:`utils.get_season_end`.
+
+In addition, there has been a new event added, ``@coc.ClientEvents.season_started()`` which will get fired upon season restart.
+
+For Example:
+
+.. code-block:: python3
+
+    from coc import utils
+
+    season_start = utils.get_season_start()
+    print("The current season started at " + str(season_start))
+
+    @coc.ClientEvents.new_season_start()
+    async def season_started():
+        print("A new season has started, and it will finish at " + utils.get_season_end())
+
+
 Custom Classes
 --------------
 For more information on custom class support, please see :ref:`custom_classes`.
+
+Discord Links Extension
+-----------------------
+For more information on the new discord links extension, please see :ref:`links_extension`.

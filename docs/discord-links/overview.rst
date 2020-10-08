@@ -1,5 +1,7 @@
 .. current-module:: coc
 
+.. _links_extension:
+
 Overview
 ========
 

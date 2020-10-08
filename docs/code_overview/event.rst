@@ -289,3 +289,59 @@ The usage is intuitive, and identical to adding the tags:
 Custom Classes
 --------------
 For more information on custom class support, please see :ref:`custom_classes`.
+
+Client (coc.py) Events
+----------------------
+coc.py has a few events that are unique to the library, and which provide some useful information. They are:
+
++------------------------------------------------+-------------------------+--------------------------------------------------+
+|      Event                                     |        Parameter(s)     |    Description                                   |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.maintenance_start()``      | None                    | Fired when API (and in-game) maintenance starts. |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.maintenance_completion()`` |  start_datetime         | Fired when API (and in-game) maintenance ends.   |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts.                      |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.event_error()``            | exception               | Fired when an event hits an unhandled exception  |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.clan_loop_start()``        | iteration_number        | Fired when the clan loop starts an iteration     |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.clan_loop_finish()``       | iteration_number        | Fired when the clan loop finishes an iteration   |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.player_loop_start()``      | iteration_number        | Fired when the player loop starts an iteration   |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.player_loop_finish()``     | iteration_number        | Fired when the player loop finishes an iteration |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.war_loop_start()``         | iteration_number        | Fired when the war loop starts an iteration      |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.war_loop_finish()``        | iteration_number        | Fired when the war loop finishes an iteration    |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+
+Parameters refer to the parameters of the callback function, for example:
+
+.. code-block:: python3
+
+    @coc.ClientEvents.maintenance_start()
+    async def my_callback():
+        print('Maintenance has started!')
+
+    @coc.ClientEvents.maintenance_completion()
+    async def second_callback(time_started):
+        print('Maintenance has finished, started at' + str(time_started))
+
+
+For maintenance_completion, the parameter is of type :class:`datetime.datetime`.
+Iteration_number is an integer indicating how many times the client has run update loops so far.
+Exception is an exception class that can be passed into an exception log, for example
+
+.. code-block:: python3
+
+    import logging
+
+    log = logging.getLogger()
+
+    @coc.ClientEvents.event_error()
+    async def callback(exception):
+        log.error("events had an error!", exc_info=exception)
+

@@ -220,3 +220,66 @@ War League
 .. autoclass:: WarLeague()
     :members:
     :private-members:
+
+Enumerations
+~~~~~~~~~~~~
+
+The library provides some enumerations for certain types of strings, as well as orders for troops, spells and
+achievements that are used internally.
+
+Corresponds to a member's in-game role in the clan.
+.. class:: Role
+
+    Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
+    ``str(member.role)`` will also return this.
+    .. py:attribute:: in_game_name
+
+.. class:: WarRound
+
+    Corresponds to the previous war day in Clan-War League (ie the war most recently finished)
+    .. py:attribute:: previous_war
+
+    Corresponds to the current war day in Clan-War Leagues.
+    .. py:attribute:: current_war
+
+    Corresponds to the current preparation day in Clan-War Leagues.
+    .. py:attribute:: current_preparation
+
+
+All elixir troops, ordered as they appear in-game.
+.. py:data:: coc.ELIXIR_TROOP_ORDER
+
+
+All dark elixir troops, ordered as they appear in-game.
+.. py:data:: coc.DARK_ELIXIR_TROOP_ORDER
+
+All siege machines, ordered as they appear in-game.
+.. py:data:: coc.SIEGE_MACHINE_ORDER
+
+All super troops, ordered as they appear in-game.
+.. py:data:: coc.SUPER_TROOP_ORDER
+
+All home troops, ordered as they appear in-game. This is a combination of elixir, dark elixir and siege machine troops.
+This does not contain super troops.
+.. py:data:: coc.HOME_TROOP_ORDER
+
+All builder troops, ordered as they appear in-game.
+.. py:data:: coc.BUILDER_TROOPS_ORDER
+
+All elixir spells, ordered as they appear in-game.
+.. py:data:: coc.ELIXIR_SPELL_ORDER
+
+All dark elixir spells, ordered as they appear in-game.
+.. py:data:: coc.DARK_ELIXIR_SPELL_ORDER
+
+All spells, ordered as they appear in-game.
+.. py:data:: coc.SPELL_ORDER
+
+All heroes, ordered as they appear in-game.
+.. py:data:: coc.HERO_ORDER
+
+All achievements, ordered as they appear in-game.
+.. py:data:: coc.ACHIEVEMENT_ORDER
+
+
+All of the above contain a list of strings, corresponding to the name given in-game and in the API.

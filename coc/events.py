@@ -34,7 +34,7 @@ from .enums import WarRound
 from .players import Player
 from .wars import ClanWar
 from .errors import Maintenance, PrivateWarLog
-from .utils import correct_tag
+from .utils import correct_tag, get_season_end
 
 LOG = logging.getLogger(__name__)
 DEFAULT_SLEEP = 10
@@ -399,6 +399,7 @@ class EventsClient(Client):
             "player": self.loop.create_task(self._player_updater()),
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
+            "season": self.loop.create_task(self._end_of_season_poller())
         }
 
         for task in self._updater_tasks.values():
@@ -757,6 +758,7 @@ class EventsClient(Client):
             "player": self._player_updater,
             "war": self._war_updater,
             "maintenance": self._maintenance_poller,
+            "season": self._end_of_season_poller
         }
 
         for name, value in self._updater_tasks.items():
@@ -764,6 +766,19 @@ class EventsClient(Client):
                 continue
             self._updater_tasks[name] = self.loop.create_task(lookup[name]())
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
+
+    async def _end_of_season_poller(self):
+        try:
+            while self.loop.is_running():
+                end_of_season = get_season_end()
+                now = datetime.utcnow()
+                await asyncio.sleep((end_of_season - now).total_seconds() + 1)
+                self.dispatch("new_season_start")
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._maintenance_poller()
 
     async def _maintenance_poller(self):
         # pylint: disable=broad-except, protected-access

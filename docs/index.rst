@@ -18,6 +18,7 @@ coc.py: A Clash of Clans API Wrapper
 
    code_overview/client
    code_overview/models
+   code_overview/utils
    code_overview/event
    code_overview/customclasses
    code_overview/exceptions

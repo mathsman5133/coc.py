@@ -23,6 +23,7 @@ SOFTWARE.
 """
 
 import inspect
+import calendar
 import re
 
 from collections import deque
@@ -217,6 +218,94 @@ async def maybe_coroutine(function_, *args, **kwargs):
         return await value
 
     return value
+
+
+def get_season_start(month=None, year=None):
+    """Get the datetime that the season ends.
+
+    This goes by the assumption that SC resets the season on the last monday of every month at 5am UTC.
+
+    .. note::
+
+        If you want the start of the current season, do not pass any parameters in,
+        as doing so won't check to ensure the season start is in the past.
+
+    Parameters
+    ----------
+    month: Optional[int]
+        The month to get the season start for. Defaults to the current month/season.
+    year: Optional[int]
+        The year to get the season start for. Defaults to the current year/season.
+
+    Returns
+    -------
+    season_start: :class:`datetime.datetime`
+        The start of the season.
+    """
+    # Start date is the last Monday of the month. That's when SC resets the season values
+    def get_start_for_month_year(m, y):
+        (weekday_of_first_day, days_in_month) = calendar.monthrange(y, m)
+        season_start_day = days_in_month - datetime(year=y, month=m, day=days_in_month).weekday()
+        return datetime(year=y, month=m, day=season_start_day, hour=5)
+
+    if month and year:
+        # they want a specific month/year combo
+        return get_start_for_month_year(month, year)
+
+    now = datetime.now()
+    start = get_start_for_month_year(now.month, now.year)
+    if now > start:
+        # we got the right one, season started this month
+        return start
+
+    # season started last month, so let's try it again.
+    if now.month == 1:
+        month = 12
+        year = now.year - 1
+    else:
+        month = now.month - 1
+        year = now.year
+    return get_start_for_month_year(month, year)
+
+
+def get_season_end(month=None, year=None):
+    """Get the datetime that the season ends.
+
+    This goes by the assumption that SC resets the season on the last monday of every month at 5am UTC.
+
+    .. note::
+
+        If you want the end of the current season, do not pass any parameters in,
+        as doing so won't check to ensure the season end is in the future.
+
+    Parameters
+    ----------
+    month: Optional[int]
+        The month to get the season end for. Defaults to the current month/season.
+    year: Optional[int]
+        The year to get the season end for. Defaults to the current year/season.
+
+    Returns
+    -------
+    season_end: :class:`datetime.datetime`
+        The end of the season.
+    """
+    if month and year:
+        return get_season_start(month + 1, year)
+
+    now = datetime.now()
+    end = get_season_start(now.month, now.year)
+    if end > now:
+        return end
+
+    # season ends next month, let's try again
+    if now.month == 12:
+        month = 1
+        year = now.year + 1
+    else:
+        month = now.month + 1
+        year = now.year
+    return get_season_start(month, year)
 
 
 class LRU(dict):

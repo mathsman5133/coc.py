@@ -3,6 +3,8 @@ import os
 
 import coc
 
+from coc import utils
+
 client = coc.login(
     os.environ["DEV_SITE_EMAIL"],
     os.environ["DEV_SITE_PASSWORD"],
@@ -110,6 +112,12 @@ async def on_maintenance():
 @coc.ClientEvents.maintenance_completion()
 async def on_maintenance_completion(time_started):
     log.info("Maintenace Ended; started at %s", time_started)
+
+
+@client.event
+@coc.ClientEvents.new_season_start()
+async def season_started():
+    log.info("New season started, and will finish at %s", str(utils.get_season_end()))
 
 
 async def add_clan_players():
