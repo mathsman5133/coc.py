@@ -31,10 +31,13 @@ Installing
 .. code:: sh
 
     # Linux/macOS
-    python3 -m pip install -U git+https://github.com/mathsman5133/coc.py@rewrite
+    python3 -m pip install -U coc.py
 
     # Windows
-    py -3 -m pip install -U git+https://github.com/mathsman5133/coc.py@rewrite
+    py -3 -m pip install -U coc.py
+
+    # to install the development version:
+    python3 -m pip install -U git+https://github.com/mathsman5133/coc.py
 
 
 Quick Example
@@ -77,14 +80,14 @@ whenever someone joins the clan or a member of the clan donates troops.
     client = coc.login('email', 'password', client=coc.EventsClient)
 
     @client.event
-    @coc.ClanEvents.member_join("clan tag")
+    @coc.ClanEvents.member_join(tags=["#clantag", "#clantag2"])
     async def foo(player, clan):
         print("{0.name} ({0.tag}) just joined {1.name} ({1.tag})!".format(player, clan))
 
     @client.event
-    @coc.ClanEvents.member_donations("clan tag")
+    @coc.ClanEvents.member_donations(tags=["#clantag", "#clantag2"])
     async def bar(old_member, member):
-        troops_donated = old_member.donations - member.donations
+        troops_donated = member.donations - old_member.donations
         print("{0} just donated {1} troops!".format(member.name, troops_donated))
 
     client.run_forever()
@@ -96,13 +99,12 @@ Contributing
 --------------
 Contributing is fantastic and much welcomed! If you have an issue, feel free to open an issue and start working on it.
 
-If you wish to run, setup or work on documentation, you will need to install `sphinx` and `sphinx-rtd-theme`.
+If you wish to run, setup or work on documentation, you will need to install ``sphinx`` and a few related dependencies.
 These can be installed with:
 
 .. code:: sh
 
-    pip install sphinx
-    pip install sphinx-rtd-theme
+    pip install .[docs]
 
 If you wish to run linting, pylint, black and flake8 have been setup and can be run with:
 
