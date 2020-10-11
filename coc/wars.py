@@ -120,7 +120,7 @@ class ClanWar:
         This will returns ``None`` if the clan is not in war, or ``cwl`` if the clan is in a league war.
 
         Possibilities for the length of preparation time for a friendly war include:
-        15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 8 hours, 12 hours,
+        5 minutes, 15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 8 hours, 12 hours,
         16 hours, 20 hours or 24 hours.
         """
         if self.war_tag:
@@ -130,6 +130,7 @@ class ClanWar:
             return None
 
         prep_list = [
+            5 * 60,
             15 * 60,
             30 * 60,
             60 * 60,
