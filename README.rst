@@ -48,7 +48,6 @@ This example will get a player with a certain tag, and search for 5 clans with a
 .. code:: py
 
     import coc
-    import asyncio
 
     client = coc.login('email', 'password')
 
@@ -62,11 +61,12 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
         try:
             war = await client.get_current_war("#clantag")
-            print(f"{0.clan_tag} is currently in {0.state} state.".format(war))
+            print("{0.clan_tag} is currently in {0.state} state.".format(war))
         except coc.PrivateWarLog:
             print("Uh oh, they have a private war log!")
 
     client.loop.run_until_complete(main())
+    client.close()
 
 Basic Events Example
 ---------------------
