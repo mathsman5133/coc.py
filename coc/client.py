@@ -88,7 +88,7 @@ class Client:
     correct_tags : :class:`bool`
         Whether the client should correct tags before requesting them from the API.
         This process involves stripping tags of whitespace and adding a `#` prefix if not present.
-        Defaults to ``False``.
+        Defaults to ``True``.
 
     connector : :class:`aiohttp.BaseConnector`
         The aiohttp connector to use. By default this is ``None``.
@@ -131,7 +131,7 @@ class Client:
         key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
-        correct_tags: bool = False,
+        correct_tags: bool = True,
         throttler=BasicThrottler,
         connector=None,
         timeout: float = 30.0,
