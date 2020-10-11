@@ -778,31 +778,28 @@ class EventsClient(Client):
             pass
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
-            return await self._maintenance_poller()
+            return await self._end_of_season_poller()
 
     async def _maintenance_poller(self):
         # pylint: disable=broad-except, protected-access
         maintenance_start = None
         try:
             while self.loop.is_running():
-                await self._in_maintenance_event.wait()
-
-                if maintenance_start is None:
-                    maintenance_start = datetime.utcnow()
-                    self.dispatch("maintenance_start")
-                    await asyncio.sleep(60)
-
                 try:
-                    player = await self.get_player("#JY9J2Y99")  # this will raise if API is in maintenance
-                    await asyncio.sleep(player._response_retry)  # wait until fresh object available
-                    # re-run again, this should raise Maintenance because API cache layer has expired
-                    await self.get_player("#JY9J2Y99")
+                    player = await self.get_player("#JY9J2Y99")
+                    await asyncio.sleep(player._response_retry + 1)
                 except (Maintenance, Exception):
-                    await asyncio.sleep(5)
+                    if maintenance_start is None:
+                        self._in_maintenance_event.clear()
+                        maintenance_start = datetime.utcnow()
+                        self.dispatch("maintenance_start")
+
+                    await asyncio.sleep(15)
                 else:
-                    self._in_maintenance_event.clear()
-                    self.dispatch("maintenance_completion", maintenance_start)
-                    maintenance_start = None
+                    if maintenance_start is not None:
+                        self._in_maintenance_event.set()
+                        self.dispatch("maintenance_completion", maintenance_start)
+                        maintenance_start = None
 
         except asyncio.CancelledError:
             pass
@@ -815,8 +812,7 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await asyncio.sleep(DEFAULT_SLEEP)
-                if self._in_maintenance_event.is_set():
-                    continue  # don't run if we're hitting maintenance errors.
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
 
                 self.dispatch("war_loop_start", self.war_loops_run)
 
@@ -848,8 +844,7 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await asyncio.sleep(DEFAULT_SLEEP)
-                if self._in_maintenance_event.is_set():
-                    continue  # don't run if we're hitting maintenance errors.
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
 
                 self.dispatch("clan_loop_start", self.clan_loops_run)
                 tasks = [
@@ -875,8 +870,7 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await asyncio.sleep(DEFAULT_SLEEP)
-                if self._in_maintenance_event.is_set():
-                    continue  # don't run if we're hitting maintenance errors.
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
 
                 self.dispatch("player_loop_start", self.player_loops_run)
                 tasks = [
