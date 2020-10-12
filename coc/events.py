@@ -788,13 +788,15 @@ class EventsClient(Client):
                 try:
                     player = await self.get_player("#JY9J2Y99")
                     await asyncio.sleep(player._response_retry + 1)
-                except (Maintenance, Exception):
+                except Maintenance:
                     if maintenance_start is None:
                         self._in_maintenance_event.clear()
                         maintenance_start = datetime.utcnow()
                         self.dispatch("maintenance_start")
 
                     await asyncio.sleep(15)
+                except Exception:
+                    await asyncio.sleep(DEFAULT_SLEEP)
                 else:
                     if maintenance_start is not None:
                         self._in_maintenance_event.set()
