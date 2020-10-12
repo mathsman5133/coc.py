@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+from aiohttp import ClientResponse
 
 
 class ClashOfClansException(Exception):
@@ -32,7 +33,7 @@ class HTTPException(ClashOfClansException):
     """Base exception for when a HTTP request fails
 
     Attributes
-    -----------
+    ----------
     response:
         :class:`aiohttp.ClientResponse` - The response of the failed HTTP request.
 
@@ -51,24 +52,37 @@ class HTTPException(ClashOfClansException):
 
     __slots__ = ("response", "status", "message", "reason", "_data")
 
-    def __init__(self, response, data):
-        self._data = data
-
+    def _from_response(self, response, data):
         self.response = response
         self.status = response.status
 
-        if isinstance(data, str):
-            self.reason = "Unknown"
-            self.message = data
-        else:
+        if isinstance(data, dict):
             self.reason = data.get("reason", "Unknown")
-            self.message = data.get("message", "")
+            self.message = data.get("message")
+        elif isinstance(data, str):
+            self.reason = data
+            self.message = None
+        else:
+            self.reason = "Unknown"
+            self.message = None
 
         fmt = "{0.reason} (status code: {0.status})"
         if self.message:
-            fmt = fmt + " :{1}"
+            fmt += ": {0.message}"
 
-        super().__init__(fmt.format(self.response, self.message))
+        super().__init__(fmt.format(self))
+
+    def __init__(self, response=None, data=None):
+        if isinstance(response, ClientResponse):
+            self._from_response(response, data)
+        else:
+            self.response = None
+            self.status = 0
+            self.reason = None
+            self.message = response
+
+            fmt = "Unknown Error Occured: {0}"
+            super().__init__(fmt.format(self.message))
 
 
 class InvalidArgument(ClashOfClansException):

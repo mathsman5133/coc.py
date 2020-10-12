@@ -33,10 +33,13 @@ import asqlite
 
 from .client import Client
 from .clans import Clan
+from .enums import WarRound
 from .players import Player
 from .wars import ClanWar
 from .errors import Forbidden, Maintenance, PrivateWarLog, HTTPException
 from .utils import correct_tag
+from .errors import Maintenance, PrivateWarLog
+from .utils import correct_tag, get_season_end
 
 LOG = logging.getLogger(__name__)
 DEFAULT_SLEEP = 10
@@ -106,7 +109,7 @@ class _ValidateEvent:
                 else:
                     wrap = _ValidateEvent.wrap_pred
                 return _ValidateEvent.register_event(
-                    func, wrap(pred), tags, custom_class, retry_interval, self.cls.event_type
+                    func, wrap(pred), tags, custom_class, retry_interval, self.cls.event_type, item
                 )
 
             return decorator
@@ -147,7 +150,7 @@ class _ValidateEvent:
         return wrapped
 
     @staticmethod
-    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type=""):
+    def register_event(func, runner, tags=None, cls=None, retry_interval=None, event_type="", event_name=""):
         """Validates the types of all arguments and adds these as attributes to the function."""
         # pylint: disable=too-many-arguments
         if getattr(func, "is_event_listener", False) and func.event_type != event_type:
@@ -176,6 +179,7 @@ class _ValidateEvent:
         func.is_event_listener = True
         func.event_cls = cls
         func.event_retry_interval = retry_interval
+        func.event_name = event_name
         try:
             func.event_runners.append(runner)
         except AttributeError:
@@ -391,6 +395,7 @@ class EventsClient(Client):
         self.is_cwl_active = options.pop("cwl_active", True)
         self.sqlite_path = options.pop("sqlite_path", "coc-events.db")
         self.events_batch_limit = options.pop("events_batch_limit", None)
+        self.check_cwl_prep = options.pop("check_cwl_prep", False)
 
         self._conn = None  # set in create_schema
         self._conn_ready = asyncio.Event()
@@ -405,6 +410,7 @@ class EventsClient(Client):
             "player": self.loop.create_task(self._player_updater()),
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
+            "season": self.loop.create_task(self._end_of_season_poller())
         }
 
         for task in self._updater_tasks.values():
@@ -428,7 +434,7 @@ class EventsClient(Client):
         """Add clan tags to receive updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to add. If you wish to pass in an iterable, you must unpack it with \\*.
 
@@ -450,7 +456,7 @@ class EventsClient(Client):
         """Remove clan tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to remove. If you wish to pass in an iterable, you must unpack it with \\*.
 
@@ -475,7 +481,7 @@ class EventsClient(Client):
         r"""Add player tags to receive events for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The player tags to add. If you wish to pass in an iterable, you must unpack it with \*\.
 
@@ -498,7 +504,7 @@ class EventsClient(Client):
         r"""Remove player tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The player tags to remove. If you wish to pass in an iterable, you must unpack it with \*\.
 
@@ -524,7 +530,7 @@ class EventsClient(Client):
         r"""Add clan tags to receive war events for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to add that will receive war events.
             If you wish to pass in an iterable, you must unpack it with \*\.
@@ -547,7 +553,7 @@ class EventsClient(Client):
         r"""Remove player tags that you receive events updates for.
 
         Parameters
-        ------------
+        ----------
         \\*tags : str
             The clan tags to remove that will receive war events.
             If you wish to pass in an iterable, you must unpack it with \*\.
@@ -593,7 +599,7 @@ class EventsClient(Client):
         The function **may be** be a coroutine.
 
         Parameters
-        ------------
+        ----------
         function : function
             The function to be registered (not needed if used with a decorator)
 
@@ -658,6 +664,9 @@ class EventsClient(Client):
             self.player_retry_interval = retry_interval or self.player_retry_interval
             self.add_player_updates(*tags)
         elif event_type == "war":
+            if function.event_name == "members":
+                self.check_cwl_prep = True  # we need to check cwl clans in prep for this one.
+
             self.war_cls = cls or self.war_cls
             self.war_retry_interval = retry_interval or self.war_retry_interval
             self.add_war_updates(*tags)
@@ -755,6 +764,7 @@ class EventsClient(Client):
             "player": self._player_updater,
             "war": self._war_updater,
             "maintenance": self._maintenance_poller,
+            "season": self._end_of_season_poller
         }
 
         for name, value in self._updater_tasks.items():
@@ -763,36 +773,39 @@ class EventsClient(Client):
             self._updater_tasks[name] = self.loop.create_task(lookup[name]())
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
 
+    async def _end_of_season_poller(self):
+        try:
+            while self.loop.is_running():
+                end_of_season = get_season_end()
+                now = datetime.utcnow()
+                await asyncio.sleep((end_of_season - now).total_seconds() + 1)
+                self.dispatch("new_season_start")
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._end_of_season_poller()
+
     async def _maintenance_poller(self):
-        # pylint: disable=broad-except
+        # pylint: disable=broad-except, protected-access
         maintenance_start = None
         try:
             while self.loop.is_running():
-                await self._in_maintenance_event.wait()
-                if maintenance_start is None:
-                    maintenance_start = datetime.utcnow()
-                    for event in self._listeners["client"].get("maintenance_start", []):
-                        try:
-                            asyncio.ensure_future(event())
-                        except (BaseException, Exception) as exc:
-                            self.dispatch("event_error", exc)
                 try:
-                    # just need to remove the cache layer
-                    try:
-                        del self.http.cache["https://api.clashofclans.com/v1/clans/%23G88CYQP"]
-                    except KeyError:
-                        pass
-                    await self.get_clan("#G88CYQP")  # my clan
+                    player = await self.get_player("#JY9J2Y99")
+                    await asyncio.sleep(player._response_retry + 1)
                 except (Maintenance, Exception):
-                    await asyncio.sleep(5)
+                    if maintenance_start is None:
+                        self._in_maintenance_event.clear()
+                        maintenance_start = datetime.utcnow()
+                        self.dispatch("maintenance_start")
+
+                    await asyncio.sleep(15)
                 else:
-                    self._in_maintenance_event.clear()
-                    for event in self._listeners["client"].get("maintenance_completion", []):
-                        try:
-                            asyncio.ensure_future(event(maintenance_start))
-                        except (BaseException, Exception) as exc:
-                            self.dispatch("event_error", exc)
-                    maintenance_start = None
+                    if maintenance_start is not None:
+                        self._in_maintenance_event.set()
+                        self.dispatch("maintenance_completion", maintenance_start)
+                        maintenance_start = None
 
         except asyncio.CancelledError:
             pass
@@ -852,10 +865,16 @@ class EventsClient(Client):
         # pylint: disable=broad-except
         try:
             while self.loop.is_running():
+                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
                 await self._conn_ready.wait()
-                if self._in_maintenance_event.is_set() or len(self._war_updates) == 0:
-                    await asyncio.sleep(DEFAULT_SLEEP)
-                    continue  # don't run if we're hitting maintenance errors.
+
+                self.dispatch("war_loop_start", self.war_loops_run)
+
+                if self.is_cwl_active and self.check_cwl_prep:
+                    options = (WarRound.current_war, WarRound.current_preparation)
+                else:
+                    options = (WarRound.current_war, )
 
                 self._wars = await self._load_from_db("war")
                 if not self._wars:
@@ -879,9 +898,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._conn_ready.wait()
-                if self._in_maintenance_event.is_set() or len(self._clan_updates) == 0:
-                    await asyncio.sleep(DEFAULT_SLEEP)
-                    continue  # don't run if we're hitting maintenance errors.
+                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
 
                 self._clans = await self._load_from_db("clan")
                 if not self._clans:
@@ -905,9 +923,8 @@ class EventsClient(Client):
         try:
             while self.loop.is_running():
                 await self._conn_ready.wait()
-                if self._in_maintenance_event.is_set() or len(self._player_updates) == 0:
-                    await asyncio.sleep(DEFAULT_SLEEP)
-                    continue  # don't run if we're hitting maintenance errors.
+                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._in_maintenance_event.wait()  # don't run if we're hitting maintenance errors.
 
                 self._players = await self._load_from_db("player")
                 if not self._players:
@@ -988,7 +1005,7 @@ class EventsClient(Client):
 
         data["_response_retry"] = retry  # add it back in
 
-    async def _run_war_update(self, clan_tag):
+    async def _run_war_update(self, clan_tag, cwl_round=None):
         # pylint: disable=protected-access, broad-except
         try:
             # to-do: make this more efficient

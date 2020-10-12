@@ -314,12 +314,12 @@ Clan Member Received
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
-.. _on_clan_member_trophy_change:
+.. _on_clan_member_trophies_change:
 
 Clan Member Trophy Count Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. py:function:: on_clan_member_trophy_change(old_trophies, new_trophies, player)
+.. py:function:: on_clan_member_trophies_change(old_trophies, new_trophies, player)
 
     This event is called when a clan member's trophy count has changed.
     The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
@@ -331,12 +331,12 @@ Clan Member Trophy Count Change
     :param player: The player object which changed
     :type player: :class:`BasicPlayer`
 
-.. _on_clan_member_versus_trophy_change:
+.. _on_clan_member_versus_trophies_change:
 
 Clan Member Versus Trophy Count Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. py:function:: on_clan_member_versus_trophy_change(old_trophies, new_trophies, player)
+.. py:function:: on_clan_member_versus_trophies_change(old_trophies, new_trophies, player)
 
     This event is called when a clan member's versus trophy count has changed.
     The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`
@@ -405,7 +405,7 @@ Clan Member Level Change
 Clan Member League Change
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. py:function:: on_clan_member_league_change(old_league, new_league, player, clan)
+.. py:function:: on_clan_member_league_change(old_league, new_league, player)
 
     This event is called when a clan member's league changes.
     The player's clan can be accessed through :attr:`BasicPlayer.clan` and is of type :class:`SearchClan`

@@ -228,17 +228,18 @@ class Clan(BaseClan):
             return None
 
     def get_member_by(self, **attrs) -> typing.Optional[ClanMember]:
-        """Returns the first :class:`BasicPlayer` that meets the attributes passed
-
-        This will return the first member matching the attributes passed.
-
-        An example of this looks like:
-
-        .. code-block:: python3
-
-            clan = client.get_clan('clan tag')
-            member = clan.get_member(name='Bob the Builder')
+        """Returns the first :class:`ClanMember` that meets the attributes passed
 
         This search implements the :func:`coc.utils.get` function
+
+        Example
+        -------
+        .. code-block:: python3
+            clan = await client.get_clan("#clantag")
+
+            member = clan.get_member_by(name="Joe")
+            member = clan.get_member_by(level=125)
+            member = clan.get_member_by(role=coc.Role.elder)
+
         """
         return get(self.members, **attrs)

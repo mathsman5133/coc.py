@@ -28,7 +28,8 @@ import logging
 from collections.abc import Iterable
 
 from .clans import Clan, RankedClan
-from .errors import Forbidden, NotFound, PrivateWarLog
+from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
+from .enums import WarRound
 from .miscmodels import Label, League, Location
 from .http import HTTPClient, BasicThrottler
 from .iterators import (
@@ -52,7 +53,7 @@ class Client:
     """This is the client connection used to interact with the Clash of Clans API.
 
     Parameters
-    -------------
+    ----------
     key_count : int
         The amount of keys to use for this client. Maximum of 10.
         Defaults to 1.
@@ -87,7 +88,7 @@ class Client:
     correct_tags : :class:`bool`
         Whether the client should correct tags before requesting them from the API.
         This process involves stripping tags of whitespace and adding a `#` prefix if not present.
-        Defaults to ``False``.
+        Defaults to ``True``.
 
     connector : :class:`aiohttp.BaseConnector`
         The aiohttp connector to use. By default this is ``None``.
@@ -99,7 +100,7 @@ class Client:
         The max size of the internal cache layer. Defaults to 10 000. Set this to ``None`` to remove any cache layer.
 
     Attributes
-    -----------
+    ----------
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
     """
@@ -130,7 +131,7 @@ class Client:
         key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
-        correct_tags: bool = False,
+        correct_tags: bool = True,
         throttler=BasicThrottler,
         connector=None,
         timeout: float = 30.0,
@@ -166,7 +167,7 @@ class Client:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters
-        ------------
+        ----------
         email : str
             Your password email from https://developer.clashofclans.com
             This is used when updating keys automatically if your IP changes
@@ -288,7 +289,7 @@ class Client:
             name or war_frequency or location_id or min_members or max_members or min_clan_points or min_clan_level
         ):
             raise TypeError("At least one filtering parameter must be passed.")
-        if not isinstance(cls.__class__, Clan):
+        if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
         data = await self.http.search_clans(
@@ -418,7 +419,7 @@ class Client:
         try:
             data = await self.http.get_clan_warlog(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
@@ -448,7 +449,7 @@ class Client:
         try:
             data = await self.http.get_clan_current_war(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
@@ -508,7 +509,12 @@ class Client:
         try:
             data = await self.http.get_clan_war_league_group(clan_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
+        except asyncio.TimeoutError:
+            raise GatewayError(
+                "Client timed out waiting for %s clan tag. This may be the result of an API bug which times out "
+                "when requesting the league group of a clan searching for a Clan War League match."
+            )
 
         return cls(data=data, client=self, **kwargs)
 
@@ -534,12 +540,12 @@ class Client:
         try:
             data = await self.http.get_cwl_wars(war_tag)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception._data)
+            raise PrivateWarLog(exception.response, exception.reason) from exception
 
         data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
 
-    def get_league_wars(self, war_tags: Iterable, cls=ClanWar, **kwargs):
+    def get_league_wars(self, war_tags: Iterable, clan_tag: str = None, cls=ClanWar, **kwargs):
         """
         Retrieve information about multiple league wars
 
@@ -556,6 +562,8 @@ class Client:
         -----------
         war_tags : :class:`collections.Iterable`
             An iterable of war tags to search for.
+        clan_tag: Optional[:class:`str`]
+            An optional clan tag. If present, this will only return wars which belong to this clan.
 
         Returns
         --------
@@ -567,10 +575,10 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return LeagueWarIterator(self, war_tags, cls, **kwargs)
+        return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_current_war(self, clan_tag: str, cls=ClanWar, **kwargs):
+    async def get_current_war(self, clan_tag: str, cwl_round=WarRound.current_war, cls=ClanWar, **kwargs):
         """Retrieve a clan's current war.
 
         Unlike ``Client.get_clan_war`` or ``Client.get_league_war``,
@@ -593,6 +601,10 @@ class Client:
         -----------
         clan_tag : str
             An iterable of clan tag to search for.
+        cwl_round: :class:`WarRound`
+            An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
+            ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
+            This defaults to ``coc.WarRound.current_war``.
 
         Returns
         --------
@@ -618,17 +630,34 @@ class Client:
 
         try:
             league_group = await self.get_league_group(clan_tag)
-        except NotFound as exception:
-            if not get_war:
-                raise PrivateWarLog(exception.response, exception._data)
+        except (NotFound, GatewayError) as exception:
+            # either they're not in cwl (NotFound)
+            # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
+            if get_war is None:
+                raise PrivateWarLog(exception.response, exception.reason) from exception
             return get_war
 
-        if len(league_group.rounds) == 1:
+        is_prep = league_group.state == "preparation"
+
+        if cwl_round is WarRound.current_war and league_group.state == "preparation":
+            return None  # for round 1 and 15min prep between rounds this is a shortcut.
+        elif cwl_round is WarRound.current_preparation and league_group.state == "warEnded":
+            return None  # for the end of CWL there's no next prep day.
+        elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
+            return None  # no previous war for first rounds.
+        elif cwl_round is WarRound.previous_war and is_prep:
+            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.previous_war:
+            round_tags = league_group.rounds[-3]
+        elif cwl_round is WarRound.current_war:
+            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.current_preparation:
             round_tags = league_group.rounds[-1]
         else:
-            round_tags = league_group.rounds[-2]
+            return None
 
         kwargs["league_group"] = league_group
+        kwargs["clan_tag"] = clan_tag
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war

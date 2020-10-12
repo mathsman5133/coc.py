@@ -50,7 +50,7 @@ class OverrideDoc(type):
                 continue
 
             if "Attributes" not in new_cls.__doc__:
-                new_cls.__doc__ += "\nAttributes\n--------------------\n" + doc
+                new_cls.__doc__ += "\nAttributes\n----------\n" + doc.replace("----------", "")
             else:
                 try:
                     insert = new_cls.__doc__.index("Attributes")
@@ -59,7 +59,7 @@ class OverrideDoc(type):
 
                 # fmt: off
                 new_cls.__doc__ = (
-                    new_cls.__doc__[:insert + 23] + doc.replace("----------", "") + new_cls.__doc__[insert + 23:]
+                    new_cls.__doc__[:insert + 25] + doc.replace("----------", "") + new_cls.__doc__[insert + 25:]
                 )
                 # fmt: on
 
@@ -70,7 +70,7 @@ class BaseClan(metaclass=OverrideDoc):
     """An ABC that implements some common operations on clans, regardless of type.
 
     Attributes
-    -----------
+    ----------
     tag: :class:`str`
         The clan's tag
     name: :class:`str`
@@ -139,7 +139,7 @@ class BasePlayer(metaclass=OverrideDoc):
     """An ABC that implements some common operations on players, regardless of type.
 
     Attributes
-    -----------
+    ----------
     tag: :class:`str`
         The player's tag
     name: :class:`str`

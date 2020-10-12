@@ -1,11 +1,13 @@
 """An extension that helps interact with the Clash of Clans Discord Junkies' Discord Links API."""
 
 import asyncio
+import base64
 import logging
 import typing
+import json
 
 from collections import namedtuple
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import aiohttp
 
@@ -15,6 +17,31 @@ from coc.utils import correct_tag
 LOG = logging.getLogger(__name__)
 
 AccessToken = namedtuple("AccessToken", ["token", "expires_at"])
+
+
+def extract_expiry_from_jwt_token(token):
+    if isinstance(token, str):
+        token = token.encode("utf-8")
+    elif not isinstance(token, bytes):
+        # token was wrong somehow
+        return None
+
+    try:
+        signing, _ = token.rsplit(b".", 1)
+        _, payload = signing.split(b".", 1)
+    except ValueError:
+        return None  # not enough segments
+
+    if len(payload) % 4 > 0:
+        payload += b"=" * (4 - len(payload) % 4)
+
+    bytes_payload = base64.urlsafe_b64decode(payload)
+    dict_payload = json.loads(bytes_payload)
+    try:
+        expiry = dict_payload["exp"]
+        return datetime.fromtimestamp(expiry)
+    except KeyError:
+        return None
 
 
 def login(username: str, password: str, loop: asyncio.AbstractEventLoop = None) -> "DiscordLinkClient":
@@ -66,7 +93,7 @@ class DiscordLinkClient:
 
     """
 
-    BASE_URL = "https://api.amazingspinach.com"
+    BASE_URL = "https://cocdiscordlink.azurewebsites.net/api"
 
     __slots__ = ("username", "password", "loop", "key", "http_session")
 
@@ -113,11 +140,11 @@ class DiscordLinkClient:
             "password": self.password,
         }
 
-        key = await self._request("POST", "/login", token_request=True, json=data)
+        payload = await self._request("POST", "/login", token_request=True, json=data)
 
-        self.key = AccessToken(key["token"], datetime.utcnow() + timedelta(hours=1, minutes=59))
+        self.key = AccessToken(payload["token"], extract_expiry_from_jwt_token(payload["token"]))
 
-    async def get_discord_link(self, player_tag: str) -> typing.Optional[int]:
+    async def get_link(self, player_tag: str) -> typing.Optional[int]:
         """Get a linked discord ID of a player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -128,47 +155,51 @@ class DiscordLinkClient:
 
         Returns
         --------
-        Optional[:class:`int`]: The discord ID linked to the player, or ``None`` if no link found.
+        Optional[:class:`int`]
+            The discord ID linked to the player, or ``None`` if no link found.
         """
-        data = await self._request("GET", "/links/{}".format(correct_tag(player_tag)))
-        return data.get("discordId", None)
+        data = await self._request("GET", "/links/{}".format(correct_tag(player_tag, prefix="")))
+        try:
+            return int(data[0]["discordId"])
+        except (IndexError, KeyError, TypeError):
+            return None
 
-    async def get_discord_links(
-        self, player_tags: typing.Iterable
-    ) -> typing.List[typing.Tuple[str, typing.Optional[str]]]:
-        """Get linked discord IDs for an iterable of player tags.
+    async def get_links(self, *player_tag: str) -> typing.List[typing.Tuple[str, typing.Optional[int]]]:
+        r"""Get linked discord IDs for an iterable of player tags.
         Player tags can be found either in game or by from clan member lists.
 
         This is the recommended method to use when fetching links for multiple tags as it uses a different endpoint.
 
         Parameters
         ----------
-        player_tags : :class:`collections.abc.Iterable` of :class:`str`
+        \*player_tag: :class:`str`
             The player tags to search for.
 
         Returns
         --------
-        :class:`list`[:class:`str`:, Optional[:class:`int`]] - A list of player_tag, discord_id tuple matches.
-            Discord ID will be ``None`` if not found.
+        List[:class:`str`:, Optional[:class:`int`]]
+            A list of player_tag, discord_id tuple matches. Discord ID will be ``None`` if not found.
 
         Example
         --------
 
         .. code-block:: python3
 
-            tags = [...]
-            links = await client.get_discord_links(tags)
+            links = await client.get_links("#tag1", "#tag2", "#tag3")
 
             for player_tag, discord_id in links:
                 print(player_tag, discord_id)
 
         """
-        tags = list(player_tags)
+        tags = [correct_tag(tag, prefix="") for tag in player_tag]
         data = await self._request("POST", "/links/batch", json=tags)
+        data = data or []
 
-        return [(n.get("playerTags", [""])[0], n.get("discordId", None)) for n in data]
+        unclaimed_tags = set("#" + tag for tag in tags) - set(p["playerTag"] for p in data)
 
-    async def get_discord_linked_players(self, discord_id: int) -> typing.List[str]:
+        return [(p["playerTag"], int(p["discordId"])) for p in data] + [(tag, None) for tag in unclaimed_tags]
+
+    async def get_linked_players(self, discord_id: int) -> typing.List[str]:
         """Get a list of player tags linked to a discord ID.
 
         Parameters
@@ -178,47 +209,47 @@ class DiscordLinkClient:
 
         Returns
         --------
-        List[:class:`str`] a list of player tags attached to the discord ID. If none found, this will be an empty list.
+        List[:class:`str`]
+         A list of player tags attached to the discord ID. If no links found, this will be an empty list.
         """
         data = await self._request("GET", "/links/{}".format(discord_id))
         if not data:
             return []
 
-        return data.get("playerTag", [])
+        return [item["playerTag"] for item in data]
 
-    async def get_batch_discord_linked_players(
-        self, discord_ids: typing.Iterable
-    ) -> typing.List[typing.Tuple[int, typing.Tuple[str]]]:
-        """Get a linked discord ID of a player tag.
+    async def get_many_linked_players(self, *discord_id: int) -> typing.List[typing.Tuple[str, int]]:
+        r"""Get a linked discord ID of a player tag.
 
         This is the recommended method to use when fetching links for multiple IDs as it uses a different endpoint.
 
         Parameters
         -----------
-        discord_ids: :class:`collections.abc.Iterable` of :class:`int`
+        \*discord_id: :class:`str`
             The discord IDs to search for.
 
         Returns
         --------
-        :class:`list`[:class:`tuple`[:class:`int`:, :class:`tuple`[:class:`str`]]]
-        A list containing (discord_id, (tuple of tags)) matches.
+        List[Tuple[:class:`int`, :class:`str`]]
+            A list containing (discord_id, tag) matches.
 
         Example
-        -------------------
+        -------
 
         .. code-block:: python3
 
-            discord_ids = [...]
-            links = await client.get_batch_discord_linked_players(discord_ids)
+            links = await client.get_many_linked_players(123456789, 234567890, 345678901)
 
-            for discord_id, player_tags in links:
-                # discord_id is an int, player_tags is a tuple of tags. Will be empty if no matches found.
-                print(discord_id, ', '.join(player_tags))
+            for player_tag, discord_id in links:
+                print("{} is linked to {}".format(discord_id, player_tag))
         """
-        data = await self._request("POST", "/links/batch", json=[str(n) for n in discord_ids])
-        return [(n["discordId"], tuple(n["playerTags"])) for n in data]
+        data = await self._request("POST", "/links/batch", json=[str(n) for n in discord_id])
+        if not data:
+            return []
 
-    def add_discord_link(self, player_tag: str, discord_id: int):
+        return [(n["playerTag"], int(n["discordId"])) for n in data]
+
+    async def add_link(self, player_tag: str, discord_id: int):
         """Creates a link between a player tag and a discord ID for the shared junkies database.
         Player tags can be found either in game or by from clan member lists.
 
@@ -230,24 +261,9 @@ class DiscordLinkClient:
             The discord ID to add the link to.
         """
         data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
-        return self._request("POST", "/links", json=data)
+        return await self._request("POST", "/links", json=data)
 
-    def update_discord_link(self, player_tag: str, discord_id: int):
-        """Updates the discord ID for a link between a player tag and a discord ID for the shared junkies database.
-
-        Player tags can be found either in game or by from clan member lists.
-
-        Parameters
-        ----------
-        player_tag : str
-            The player tag to add the link to.
-        discord_id: int
-            The discord ID to add the link to.
-        """
-        data = {"playerTag": correct_tag(player_tag, prefix=""), "discordId": str(discord_id)}
-        return self._request("PUT", "/links", json=data)
-
-    def delete_discord_link(self, player_tag: str):
+    async def delete_link(self, player_tag: str):
         """Deletes a link between a player tag and a discord ID for the shared junkies database.
 
        Player tags can be found either in game or by from clan member lists.
@@ -255,6 +271,6 @@ class DiscordLinkClient:
        Parameters
        ----------
        player_tag : str
-           The player tag to add the link to.
+           The player tag to remove the link from.
        """
-        return self._request("POST", "/links/{}".format(correct_tag(player_tag, prefix="")))
+        return await self._request("DELETE", "/links/{}".format(correct_tag(player_tag, prefix="")))

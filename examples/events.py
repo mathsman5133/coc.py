@@ -1,217 +1,137 @@
-import coc
 import logging
-import asyncio
-import objgraph
-import psutil
-import tracemalloc
-import random
-from examples import creds
+import os
 
-tracemalloc.start()
+import coc
 
-client = coc.login(creds.email, creds.password, client=coc.EventsClient, key_names="windows", cwl_active=False)
+from coc import utils
+
+client = coc.login(
+    os.environ["DEV_SITE_EMAIL"],
+    os.environ["DEV_SITE_PASSWORD"],
+    key_names="coc.py tests",
+    client=coc.EventsClient,
+)
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger()
-logging.basicConfig(level=logging.CRITICAL)
 
-c_tags = [
-    "#20090C9PR",
-    "#202GG92Q",
-    "#20C8G0RPL",
-    "#20CG8UURL",
-    "#20L2GVUCQ",
-    "#20PJQQP0G",
-    "#20RP90PLL",
-    "#20VCVGVCG",
-    "#20YRUQRLJ",
-    "#2229Y88R9",
-    "#228VP82GY",
-    "#22GLCR9Q",
-    "#22J8ULLL",
-    "#22JYYGVUC",
-    "#22LR9QY98",
-    "#22PQL2L0R",
-    "#22QCGYV2Q",
-    "#22RGGJVP",
-    "#22RU00UC9",
-    "#22YCYL89",
-    "#22YRJLVU8",
-    "#280V0VYL",
-    "#282L8GLJ",
-    "#28CJ8RRYJ",
-    "#28GCGPVL2",
-    "#28GQ08L29",
-    "#28Q0R2QV9",
-    "#28QJ2LP8Q",
-    "#28QLCPCLG",
-    "#28QRV0Y0G",
-    "#28ULR99VL",
-    "#28V2RC0C9",
-    "#28VPCGV2G",
-    "#28VQUV9J8",
-    "#28YC02QYC",
-    "#290UJUQVQ",
-    "#2922CY2R",
-    "#292GVY28P",
-    "#2982PCG09",
-    "#298CJ9JPC",
-    "#2998PGPY9",
-    "#29998R8L0",
-    "#299C8QR9L",
-    "#299P28QRL",
-    "#29CV8VLL2",
-    "#29G2JU888",
-    "#29G9QJVLR",
-    "#29GC8JQG0",
-    "#29GLJCLQQ",
-    "#29GLLLURV",
-    "#29GQCC29C",
-    "#29GQQ9GVL",
-    "#29GVQV9Q9",
-    "#29GVYYJ8",
-    "#29L00JCVG",
-    "#29L2U9U9J",
-    "#29LPUGR9L",
-    "#29LPVL99P",
-    "#29LUPU9QV",
-    "#29PJYUCV2",
-    "#29RY29LL2",
-    "#29U9UYUG",
-    "#29VC9GR0Y",
-    "#29Y2QVGL",
-    "#29Y2R0CJQ",
-    "#2C8JV0PG",
-    "#2CR80PVR",
-    "#2CVLP0P0",
-    "#2G2LR0",
-    "#2G9C9CVC",
-    "#2GU2Y0JL",
-    "#2JU0P82U",
-    "#2JUJ2G22",
-    "#2LP2PUUP",
-    "#2P0C9LY8Y",
-    "#2P0QL9C9G",
-    "#2P2JR088R",
-    "#2P2LJJPUY",
-    "#2P2Q9PPJJ",
-    "#2P2UVPRVC",
-    "#2P80Q9LR8",
-    "#2P89GGLYY",
-    "#2P9CGUUR8",
-    "#2P9PC0JC9",
-    "#2PCUQJYGJ",
-    "#2PG8R9GU8",
-    "#2PGJUL98L",
-    "#2PGQY2YPV",
-    "#2PGV2GUUJ",
-    "#2PJJPGJ9U",
-    "#2PLGGYGLV",
-    "#2PLLQRQPP",
-    "#2PLR9VPYP",
-    "#2PPR9VUGC",
-    "#2PQ08LCGR",
-    "#2PQY9GQU9",
-    "#2PRPJU8RY",
-    "#2PUGC20UC",
-    "#2PUL8RU82",
-    "#2PUPY9022",
-]
+
+clan_tags = ["#P222C9Y", "#9VPR98RG", "#9G2QU8YG", "#80Y8L0QY", "#9UJ8JRUP"]
+player_tags = ["#YQ2QYLGJ", "#QYJCVGL", "#2LURLC9V", "#QCQR298V", "#82CVC2V8", "#29U09V8J", "#8GYGL22P"]
+
+
+"""Clan Events"""
+
+
+@client.event  # Pro Tip : if you don't have @client.event then your events won't run! Don't forget it!
+@coc.ClanEvents.member_donations(tags=clan_tags)
+async def on_clan_member_donation(old_member, new_member):
+    final_donated_troops = new_member.donations - old_member.donations
+    log.info(f"{new_member} of {new_member.clan} just donated {final_donated_troops} troops.")
 
 
 @client.event
-@coc.ClanEvents.member_donations_change(c_tags, retry_interval=0)
-async def on_member_dono_change(old, new):
-    # print(old.donations, new.donations)
-    ...
-
-
-@coc.WarEvents.war_attack()
-async def test():
-    pass
-
-
-@coc.WarEvents.war_attack()
-async def test():
-    pass
-
-
-@coc.WarEvents.war_attack()
-async def callable():
-    pass
+@coc.ClanEvents.member_received(tags=clan_tags)
+async def on_clan_member_donation_receive(old_member, new_member):
+    final_received_troops = old_member.received - new_member.received
+    log.info(f"{new_member} of {new_member.clan} just received {final_received_troops} troops.")
 
 
 @client.event
-@coc.WarEvents.war_attack(c_tags, retry_interval=30)
-async def change2(attack, new):
-    # print(attack.attacker, attack.order, max(a.order for a in new.attacks))
-    # log.info("ran war")
-    ...
+@coc.ClanEvents.member_join(tags=clan_tags)
+async def on_clan_member_join(member, clan):
+    log.info(f"{member.name} has joined {clan.name}")
 
 
 @client.event
-@coc.PlayerEvents.trophies_change(retry_interval=0)
-async def on_player_trophy_change(old, new):
-    # print(old.trophies, new.trophies)
-    ...
+@coc.ClanEvents.member_leave(tags=clan_tags)
+async def on_clan_member_leave(member, clan):
+    log.info(f"{member.name} has left {clan.name}")
 
 
+@client.event
+@coc.ClanEvents.points(tags=clan_tags)
+async def on_clan_trophy_change(old_clan, new_clan):
+    log.info(f"{new_clan.name} total trophies changed from {old_clan.points} to {new_clan.points}")
+
+
+@client.event
+@coc.ClanEvents.member_versus_trophies(tags=clan_tags)
+async def clan_member_versus_trophies_changed(old_member, new_member):
+    log.info(f"{new_member} versus trophies changed from {old_member.versus_trophies} to {new_member.versus_trophies}")
+
+
+"""War Events"""
+
+
+@client.event
+@coc.WarEvents.war_attack(tags=clan_tags)
+async def current_war_stats(attack, war):
+    log.info(f"Attack number {attack.order}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} "
+             f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
+
+
+"""Player Events"""
+
+
+@client.event
+@coc.PlayerEvents.donations(tags=player_tags)
+async def on_player_donation(old_player, new_player):
+    final_donated_troops = new_player.donations - old_player.donations
+    log.info(f"{new_player} of {new_player.clan} just donated {final_donated_troops} troops.")
+
+
+@client.event
+@coc.PlayerEvents.received(tags=player_tags)
+async def on_player_donation_receive(old_player, new_player):
+    final_received_troops = new_player.received - old_player.received
+    log.info(f"{new_player} of {new_player.clan} just received {final_received_troops} troops.")
+
+
+@client.event
+@coc.PlayerEvents.trophies(tags=player_tags)
+async def on_player_trophy_change(old_player, new_player):
+    log.info(f"{new_player} trophies changed from {old_player.trophies} to {new_player.trophies}")
+
+
+@client.event
+@coc.PlayerEvents.versus_trophies(tags=player_tags)
+async def on_player_versus_trophy_change(old_player, new_player):
+    log.info(f"{new_player} versus trophies changed from {old_player.trophies} to {new_player.trophies}")
+
+
+"""Client Events"""
+
+
+@client.event
+@coc.ClientEvents.maintenance_start()
 async def on_maintenance():
-    log.critical("maintenance start")
+    log.info("Maintenace Started")
 
 
-async def on_maintenance_completion(start_time):
-    log.critical("maintenance finished")
+@client.event
+@coc.ClientEvents.maintenance_completion()
+async def on_maintenance_completion(time_started):
+    log.info("Maintenace Ended; started at %s", time_started)
 
 
-client.on_maintenance = on_maintenance
-client.on_maintenance_completion = on_maintenance_completion
+@client.event
+@coc.ClientEvents.new_season_start()
+async def season_started():
+    log.info("New season started, and will finish at %s", str(utils.get_season_end()))
 
 
-async def get_lots_of_playertags():
-    new_tags = []
-    for _ in range(3):
-        try:
-            await client.get_clan("#abc123")
-        except:
-            pass
-    async for clan in client.get_clans(c_tags):
-        print(clan)
-        new_tags.extend(n.tag for n in clan.members)
-    return new_tags
+async def add_clan_players():
+    async for clan in client.get_clans(clan_tags):
+        client.add_player_updates(*[member.tag for member in clan.members])
 
+if os.environ.get("RUNNING_TESTS"):
+    # ignore this; it's just for running github action tests.
+    import sys
 
-tags = client.loop.run_until_complete(get_lots_of_playertags())
-log.info(str(tags) + ",,")
-client.add_player_updates(tags)
+    class Handler(logging.Handler):
+        def emit(self, record) -> None:
+            sys.exit(0)
+    log.addHandler(Handler())
 
-
-async def task():
-    process = psutil.Process()
-    for i in range(500):
-        memory = process.memory_full_info().uss / 1024 ** 2
-        print(f"Memory At {i} round: {memory:.2f} MiB")
-        objgraph.show_growth()
-        objgraph.show_most_common_types()
-        # roots = objgraph.get_leaking_objects()
-        # objgraph.show_refs(roots[:3], refcounts=True, filename=f"~graphs/chain{i}.png")
-        # objgraph.show_most_common_types(objects=roots)
-        # chain = objgraph.find_backref_chain(objgraph.by_type('cell')[-1], inspect.ismodule)
-        # in_chain = lambda x, ids=set(map(id, chain)): id(x) in ids
-        # objgraph.show_backrefs(chain[-1], len(chain), filter=in_chain, filename=f"~graphs/chain{i}.png")
-        # objgraph.show_backrefs(
-        #     random.choice(objgraph.by_type("cell")),
-        #     filename=f"~graphs/chain{i}.png"
-        # )
-        # objgraph.show_chain(objgraph.find_backref_chain(
-        #     random.choice(objgraph.by_type("cell")),
-        #     objgraph.is_proper_module
-        # ),
-        #     filename=f"~graphs/chain{i}.png"
-        # )
-
-        # Wait a few seconds
-        await asyncio.sleep(120)
-
-
-loop = asyncio.get_event_loop()
-# loop.create_task(task())
+client.loop.run_until_complete(add_clan_players())
 client.loop.run_forever()
