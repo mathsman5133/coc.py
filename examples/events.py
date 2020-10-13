@@ -132,6 +132,8 @@ if os.environ.get("RUNNING_TESTS"):
         def emit(self, record) -> None:
             sys.exit(0)
     log.addHandler(Handler())
+    # we don't wanna wait forever for an event, so if it sets up OK lets call it quits.
+    client.loop.call_later(20.0, sys.exit, 0)
 
 client.loop.run_until_complete(add_clan_players())
 client.loop.run_forever()
