@@ -7,6 +7,18 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.0.1
+------
+
+- Maintenance event poller logic has been reworked to enable the use of :class:`EventsClient` without any player/clan/war
+updates.
+
+- 5min preparation time has been included in the list of valid prep times for friendly wars.
+
+- The warlog example has been updated to properly close the client, and a typo fixed in the README example.
+
+- The ``correct_tags`` parameter has been changed to default to ``True``. There is no side-effects of having this enabled.
+
 v1.0
 -----
 Please see :ref:`migrating_to_v1_0` for more info, as the change-set is too large to describe here.
