@@ -1,10 +1,13 @@
-import asyncio
 import os
 
 import coc
 
 # email and password is your login credentials used at https://developer.clashofclans.com
-client = coc.login(os.environ["DEV_SITE_EMAIL"], os.environ["DEV_SITE_PASSWORD"], key_names="coc.py tests")
+client = coc.login(
+    os.environ.get("DEV_SITE_EMAIL"),
+    os.environ.get("DEV_SITE_PASSWORD"),
+    key_names="coc.py tests"
+)
 
 
 async def get_warlog_for_clans(clan_tags: list):
@@ -42,7 +45,7 @@ async def get_warlog_opponents_from_clan_name(name: str, no_of_clans: int):
             if war.is_league_entry:
                 print("League War Season - No opponent info available")
             else:
-                print("War: {} vs {}".format(war.clan.name, war.opponent.name))
+                print(f"War: {war.clan.name} vs {war.opponent.name}")
 
 
 if __name__ == "__main__":

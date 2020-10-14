@@ -19,8 +19,8 @@ clan_tags = ["#20090C9PR", "#202GG92Q", "#20C8G0RPL"]
 
 bot = commands.Bot(command_prefix="?", intents=discord.Intents.all())
 coc_client = coc.login(
-    os.environ["DEV_SITE_EMAIL"],
-    os.environ["DEV_SITE_PASSWORD"],
+    os.environ.get("DEV_SITE_EMAIL"),
+    os.environ.get("DEV_SITE_PASSWORD"),
     key_names="coc.py tests",
     client=coc.EventsClient,
 )
@@ -31,7 +31,7 @@ logging.basicConfig(level=logging.ERROR)
 @coc.ClanEvents.member_join(tags=clan_tags)
 async def on_clan_member_join(member, clan):
     await bot.get_channel(INFO_CHANNEL_ID).send(
-        "{0.name} ({0.tag}) just " "joined our clan {1.name} ({1.tag})!".format(member, clan)
+        f"{member.name} ({member.tag}) just " "joined our clan {clan.name} ({clan.tag})!"
     )
 
 
@@ -39,7 +39,7 @@ async def on_clan_member_join(member, clan):
 @coc.ClanEvents.member_name(tags=clan_tags)
 async def member_name_change(old_player, new_player):
     await bot.get_channel(INFO_CHANNEL_ID).send(
-        "Name Change! {0.name} is now called {1.name} (his tag is {1.tag})".format(old_player, new_player)
+        f"Name Change! {old_player.name} is now called {new_player.name} (his tag is {new_player.tag})"
     )
 
 
@@ -63,10 +63,10 @@ async def player_heroes(ctx, player_tag):
     except coc.NotFound:
         await ctx.send("This player doesn't exist!")
         return
-        
+
     to_send = ""
     for hero in player.heroes:
-        to_send += "{}: Lv{}/{}\n".format(str(hero), hero.level, hero.max_level)
+        to_send += f"{str(hero)}: Lv{hero.level}/{hero.max_level}\n"
 
     await ctx.send(to_send)
 
@@ -82,7 +82,7 @@ async def clan_info(ctx, clan_tag):
     except coc.NotFound:
         await ctx.send("This clan doesn't exist!")
         return
-        
+
     if clan.public_war_log is False:
         log = "Private"
     else:
@@ -124,7 +124,7 @@ async def clan_member(ctx, clan_tag):
     except coc.NotFound:
         await ctx.send("This clan does not exist!")
         return
-        
+
     member = ""
     for i, a in enumerate(clan.members, start=1):
         member += f"`{i}.` {a.name}\n"
@@ -140,7 +140,7 @@ async def current_war_status(ctx, clan_tag):
         await ctx.send("You didn't give me a proper tag!")
         return
 
-    e = discord.Embed(colour=discord.Colour.blue())
+    e = discord.Embed(colour=discord.Color.blue())
 
     try:
         war = await coc_client.get_current_war(clan_tag)

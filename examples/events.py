@@ -6,8 +6,8 @@ import coc
 from coc import utils
 
 client = coc.login(
-    os.environ["DEV_SITE_EMAIL"],
-    os.environ["DEV_SITE_PASSWORD"],
+    os.environ.get("DEV_SITE_EMAIL"),
+    os.environ.get("DEV_SITE_PASSWORD"),
     key_names="coc.py tests",
     client=coc.EventsClient,
 )
@@ -66,8 +66,10 @@ async def clan_member_versus_trophies_changed(old_member, new_member):
 @client.event
 @coc.WarEvents.war_attack(tags=clan_tags)
 async def current_war_stats(attack, war):
-    log.info(f"Attack number {attack.order}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} "
-             f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
+    log.info(
+        f"Attack number {attack.order}\n({attack.attacker.map_position}).{attack.attacker} of {attack.attacker.clan} "
+        f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}"
+    )
 
 
 """Player Events"""

@@ -53,15 +53,15 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
     async def main():
         player = await client.get_player("tag")
-        print("{0.name} has {0.trophies} trophies!".format(player))
+        print(f"{player.name} has {player.trophies} trophies!")
 
         clans = await client.search_clans(name="Best Clan Ever", limit=5)
         for clan in clans:
-            print("{0.name} ({0.tag}) has {0.member_count} members".format(clan))
+            print(f"{clan.name} ({clan.tag}) has {clan.member_count} memberswar)
 
         try:
             war = await client.get_current_war("#clantag")
-            print("{0.clan_tag} is currently in {0.state} state.".format(war))
+            print(f"{war.clan_tag} is currently in {war.state} state.")
         except coc.PrivateWarLog:
             print("Uh oh, they have a private war log!")
 
@@ -82,7 +82,7 @@ whenever someone joins the clan or a member of the clan donates troops.
     @client.event
     @coc.ClanEvents.member_join(tags=["#clantag", "#clantag2"])
     async def foo(player, clan):
-        print("{0.name} ({0.tag}) just joined {1.name} ({1.tag})!".format(player, clan))
+        print(f"{player.name} ({player.tag}) just joined {clan.name} ({clan.tag})!")
 
     @client.event
     @coc.ClanEvents.member_donations(tags=["#clantag", "#clantag2"])
