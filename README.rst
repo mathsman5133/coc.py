@@ -88,7 +88,7 @@ whenever someone joins the clan or a member of the clan donates troops.
     @coc.ClanEvents.member_donations(tags=["#clantag", "#clantag2"])
     async def bar(old_member, member):
         troops_donated = member.donations - old_member.donations
-        print("{0} just donated {1} troops!".format(member.name, troops_donated))
+        print(f"{member.name} just donated {troops_donated} troops!")
 
     client.run_forever()
 
@@ -100,6 +100,7 @@ Contributing
 Contributing is fantastic and much welcomed! If you have an issue, feel free to open an issue and start working on it.
 
 If you wish to run, setup or work on documentation, you will need to install ``sphinx`` and a few related dependencies.
+
 These can be installed with:
 
 .. code:: sh
