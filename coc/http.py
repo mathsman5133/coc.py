@@ -344,8 +344,6 @@ class HTTPClient:
                     raise HTTPException(response, data)
 
                 if response.status == 503:
-                    self.client._in_maintenance_event.set()
-
                     if isinstance(data, str):
                         # weird case where a 503 will be raised, but html returned.
                         text = re.compile(r"<[^>]+>").sub(data, "")
