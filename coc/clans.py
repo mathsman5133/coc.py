@@ -220,7 +220,7 @@ class Clan(BaseClan):
         tag = correct_tag(tag)
         dict_members = self._members
         if not dict_members:
-            dict_members = self._members = {m.name: m for m in self.__iter_members}
+            dict_members = self._members = {m.tag: m for m in self.__iter_members}
 
         try:
             return dict_members[tag]
