@@ -374,6 +374,8 @@ class EventsClient(Client):
         self._setup()
 
         self._in_maintenance_event = asyncio.Event()
+        self._in_maintenance_event.set()  # only block when maintenance is on
+
         self._keys_ready = asyncio.Event()
 
         self.clan_retry_interval = 0
