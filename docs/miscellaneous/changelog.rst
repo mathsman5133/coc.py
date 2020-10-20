@@ -7,6 +7,16 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.0.2
+------
+
+- Fixed an issue where hitting Maintenance errors when using the normal Client would raise an Attribute Error.
+
+- Fixed an issue where using `Clan.get_member` without calling `Clan.members` would build an incorrect player lookup dict.
+
+- Fixed an issue where events wouldn't start because the maintenance event wasn't set properly.
+
+
 v1.0.1
 ------
 
