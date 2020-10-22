@@ -378,6 +378,8 @@ class EventsClient(Client):
         super().__init__(**options)
 
         self._in_maintenance_event = asyncio.Event()
+        self._in_maintenance_event.set()
+
         self._keys_ready = asyncio.Event()
 
         self.clan_retry_interval = 0
