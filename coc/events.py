@@ -962,7 +962,7 @@ class EventsClient(Client):
         cached_data = self._get_cached_player(player_tag)
         self._players[data["tag"]] = data
 
-        retry = data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry", 0)  # need to remove to properly __eq__
 
         if data is None:
             return
@@ -992,7 +992,7 @@ class EventsClient(Client):
         cached_data = self._get_cached_clan(clan_tag)
         self._clans[data["tag"]] = data
 
-        retry = data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry", 0)  # need to remove to properly __eq__
 
         if data is None:
             return
@@ -1032,7 +1032,7 @@ class EventsClient(Client):
         cached_data = self._get_cached_war(clan_tag)
         self._wars[clan_tag] = data
 
-        retry = data.pop("_response_retry")  # need to remove to properly __eq__
+        retry = data.pop("_response_retry", 0)  # need to remove to properly __eq__
 
         if data is None:
             return
