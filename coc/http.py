@@ -288,7 +288,7 @@ class HTTPClient:
         cache_control_key = route.cache_control_key
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if cache:
+        if cache is not None:
             try:
                 return cache[cache_control_key]
             except KeyError:
@@ -307,7 +307,7 @@ class HTTPClient:
                     # set a callback to remove the item from cache once it's stale.
                     delta = int(response.headers["Cache-Control"].strip("max-age="))
                     data["_response_retry"] = delta
-                    if cache:
+                    if cache is not None:
                         self.cache[cache_control_key] = data
                         LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                         self.loop.call_later(delta, self._cache_remove, cache_control_key)
