@@ -41,6 +41,10 @@ class ClanWar:
 
     Attributes
     ----------
+    clan:
+        :class:`WarClan`: The home clan.
+    opponent:
+        :class:`WarClan`: The opposition clan.
     state:
         :class:`str`: The clan's current war state.
     preparation_start_time:
