@@ -246,13 +246,13 @@ def get_season_start(month=None, year=None):
     def get_start_for_month_year(m, y):
         (weekday_of_first_day, days_in_month) = calendar.monthrange(y, m)
         season_start_day = days_in_month - datetime(year=y, month=m, day=days_in_month).weekday()
-        return datetime(year=y, month=m, day=season_start_day, hour=5)
+        return datetime(year=y, month=m, day=season_start_day, hour=5, minute=0, second=0, microsecond=0)
 
     if month and year:
         # they want a specific month/year combo
         return get_start_for_month_year(month, year)
 
-    now = datetime.now()
+    now = datetime.utcnow()
     start = get_start_for_month_year(now.month, now.year)
     if now > start:
         # we got the right one, season started this month
@@ -293,7 +293,7 @@ def get_season_end(month=None, year=None):
     if month and year:
         return get_season_start(month + 1, year)
 
-    now = datetime.now()
+    now = datetime.utcnow()
     end = get_season_start(now.month, now.year)
     if end > now:
         return end

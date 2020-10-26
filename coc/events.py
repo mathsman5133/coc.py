@@ -774,7 +774,7 @@ class EventsClient(Client):
             while self.loop.is_running():
                 end_of_season = get_season_end()
                 now = datetime.utcnow()
-                await asyncio.sleep((end_of_season - now).total_seconds() + 1)
+                await asyncio.sleep((end_of_season - now).total_seconds())
                 self.dispatch("new_season_start")
         except asyncio.CancelledError:
             pass
