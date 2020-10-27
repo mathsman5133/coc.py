@@ -221,7 +221,7 @@ async def maybe_coroutine(function_, *args, **kwargs):
 
 
 def get_season_start(month=None, year=None):
-    """Get the datetime that the season ends.
+    """Get the datetime that the season started.
 
     This goes by the assumption that SC resets the season on the last monday of every month at 5am UTC.
 
