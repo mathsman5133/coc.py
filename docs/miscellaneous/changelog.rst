@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.0.3
+------
+
+- Fixed an issue where the HTTP cache layer was not being utilised.
+
+- Fixed an issue where :meth:`utils.get_season_start` and :meth:`utils.get_season_end` got the previous season information
+if the system time had not yet passed 5am UTC.
+
+
 v1.0.2
 ------
 
