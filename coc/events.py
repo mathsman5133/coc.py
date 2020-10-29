@@ -912,6 +912,9 @@ class EventsClient(Client):
         except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
+        if lock.locked():
+            # fast return to speed up events
+            return
         await lock.acquire()
 
         try:
@@ -950,6 +953,9 @@ class EventsClient(Client):
         except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
+        if lock.locked():
+            # fast return to speed up events
+            return
         await lock.acquire()
 
         try:
@@ -985,6 +991,9 @@ class EventsClient(Client):
         except KeyError:
             self._locks[key] = lock = asyncio.Lock()
 
+        if lock.locked():
+            # fast return to speed up events
+            return
         await lock.acquire()
 
         if self.is_cwl_active:
