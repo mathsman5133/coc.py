@@ -57,6 +57,8 @@ class ClanMember(BasePlayer):
         The member's experience level.
     league: :class:`League`
         The member's current league.
+    trophies: :class:`int`
+        The member's trophy count.
     versus_trophies: :class:`int`
         The member's versus trophy count.
     clan_rank: :class:`int`
