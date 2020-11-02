@@ -221,19 +221,21 @@ class HTTPClient:
         key_count = self.key_count
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
-        current_keys = (await self.find_site_keys(cookies))["keys"]
+
+        headers = {
+            "cookies": cookies,
+            "content-type": "application/json",
+        }
+
+        current_keys = (await self.find_site_keys(headers))["keys"]
         self._keys = [key["key"] for key in current_keys if key["name"] == self.key_names]
         available_keys = KEY_MAXIMUM - len(current_keys)
 
         if len(self._keys) <= key_count:
             keys_needed = key_count - len(self._keys)
             if available_keys >= keys_needed:
-                ip_ = await self.get_ip()
                 for _ in range(keys_needed):
-                    key_description = "Created on {}".format(datetime.now().strftime("%c"))
-                    self._keys.append(
-                        await self.create_key(cookies, self.key_names, key_description, [ip_], [self.key_scopes])
-                    )
+                    self._keys.append(await self.create_key(headers))
             else:
                 await self.close()
                 raise RuntimeError(
@@ -352,69 +354,6 @@ class HTTPClient:
 
                 raise HTTPException(response, data)
 
-    async def get_ip(self):
-        url = "https://api.ipify.org/"
-        async with self.__session.request("GET", url) as response:
-            LOG.debug("%s (%s) has returned %s", url, "GET", response.status)
-            ip_ = await response.text()
-            LOG.debug("%s has received %s", url, ip_)
-        return ip_
-
-    @staticmethod
-    def create_cookies(response_dict, session):
-        try:
-            return "session={};game-api-url={};game-api-token={}".format(
-                session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
-            )
-        except KeyError:
-            return None
-
-    async def reset_key(self, key):
-        ip_ = await self.get_ip()
-        # should probably put something else in here
-        # to distinguish each key like a date
-        key_name = self.key_names
-        # Also, probably fix this as well
-        key_description = "Created on {}".format(datetime.now().strftime("%c"))
-        whitelisted_ips = [ip_]
-
-        response_dict, session = await self.login_to_site(self.email, self.password)
-        cookies = self.create_cookies(response_dict, session)
-
-        if cookies is None:
-            return  # same issue as few lines down explains apparently.
-
-        existing_keys_dict = await self.find_site_keys(cookies)
-        existing_keys = existing_keys_dict and existing_keys_dict.get("keys")
-        if existing_keys is None:
-            # long standing bug where the dev site doesn't give a proper return dict when
-            # multiple concurrent logins are made. this is just a safety net, hopefully one of
-            # the requests will work.
-            return
-
-        key_id = [t["id"] for t in existing_keys if t["key"] == key]
-
-        try:
-            await self.delete_key(cookies, key_id)
-        except InvalidArgument:
-            return
-
-        new_key = await self.create_key(cookies, key_name, key_description, whitelisted_ips, [self.key_scopes])
-
-        # this is to prevent reusing an already used keys.
-        # All it does is move the current key to the front,
-        # by moving any already used ones to the end so
-        # we keep the original key order moving forward.
-        keys = self._keys
-        key_index = keys.index(key)
-        self._keys = keys[key_index:] + keys[:key_index]
-
-        # now we can set the new key which is the first
-        # one in self._keys, then start the cycle over.
-        self._keys[0] = new_key
-        self.keys = cycle(self._keys)
-        self.client.dispatch("key_reset", new_key)
-
     # clans
 
     def search_clans(self, **kwargs):
@@ -487,6 +426,67 @@ class HTTPClient:
 
     # key updating management
 
+    async def get_ip(self):
+        url = "https://api.ipify.org/"
+        async with self.__session.request("GET", url) as response:
+            LOG.debug("%s (%s) has returned %s", url, "GET", response.status)
+            ip_ = await response.text()
+            LOG.debug("%s has received %s", url, ip_)
+        return ip_
+
+    @staticmethod
+    def create_cookies(response_dict, session):
+        try:
+            return "session={};game-api-url={};game-api-token={}".format(
+                session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
+            )
+        except KeyError:
+            return None
+
+    async def reset_key(self, key):
+        response_dict, session = await self.login_to_site(self.email, self.password)
+        cookies = self.create_cookies(response_dict, session)
+
+        if cookies is None:
+            return  # same issue as few lines down explains apparently.
+
+        headers = {
+            "cookies": cookies,
+            "content-type": "application/json",
+        }
+
+        existing_keys_dict = await self.find_site_keys(headers)
+        try:
+            existing_keys = existing_keys_dict["keys"]
+        except (TypeError, KeyError):
+            # long standing bug where the dev site doesn't give a proper return dict when
+            # multiple concurrent logins are made. this is just a safety net, hopefully one of
+            # the requests will work.
+            return
+
+        key_id = [t["id"] for t in existing_keys if t["key"] == key]
+
+        try:
+            await self.delete_key(cookies, key_id)
+        except InvalidArgument:
+            return
+
+        new_key = await self.create_key(cookies)
+
+        # this is to prevent reusing an already used keys.
+        # All it does is move the current key to the front,
+        # by moving any already used ones to the end so
+        # we keep the original key order moving forward.
+        keys = self._keys
+        key_index = keys.index(key)
+        self._keys = keys[key_index:] + keys[:key_index]
+
+        # now we can set the new key which is the first
+        # one in self._keys, then start the cycle over.
+        self._keys[0] = new_key
+        self.keys = cycle(self._keys)
+        self.client.dispatch("key_reset", new_key)
+
     async def login_to_site(self, email, password):
         login_data = {"email": email, "password": password}
         headers = {"content-type": "application/json"}
@@ -504,26 +504,25 @@ class HTTPClient:
 
         return response_dict, session
 
-    async def find_site_keys(self, cookies):
-        headers = {"cookie": cookies, "content-type": "application/json"}
-        async with self.__session.post(
-            "https://developer.clashofclans.com/api/apikey/list", data=json.dumps({}), headers=headers,
-        ) as sess:
+    async def find_site_keys(self, headers):
+        url = "https://developer.clashofclans.com/api/apikey/list"
+        async with self.__session.post(url, json={}, headers=headers) as sess:
             existing_keys_dict = await sess.json()
-            LOG.debug(
-                "%s has received %s", "https://developer.clashofclans.com/api/apikey/list", existing_keys_dict,
-            )
+            LOG.debug("%s has received %s", url, existing_keys_dict)
 
         return existing_keys_dict
 
-    async def create_key(self, cookies, key_name, key_description, cidr_ranges, scopes):
-        headers = {"cookie": cookies, "content-type": "application/json"}
+    async def create_key(self, cookies):
+        headers = {
+            "cookie": cookies,
+            "content-type": "application/json"
+        }
 
         data = {
-            "name": key_name,
-            "description": key_description,
-            "cidrRanges": cidr_ranges,
-            "scopes": scopes,
+            "name": self.key_names,
+            "description": "Created on {}".format(datetime.now().strftime("%c")),
+            "cidrRanges": [await self.get_ip()],
+            "scopes": [self.key_scopes],
         }
 
         response = await self.request(
