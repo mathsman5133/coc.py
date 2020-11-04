@@ -215,47 +215,6 @@ class HTTPClient:
         except KeyError:
             pass
 
-    async def get_keys(self):
-        self.client._ready.clear()
-
-        key_count = self.key_count
-        response_dict, session = await self.login_to_site(self.email, self.password)
-        cookies = self.create_cookies(response_dict, session)
-
-        headers = {
-            "cookies": cookies,
-            "content-type": "application/json",
-        }
-
-        current_keys = (await self.find_site_keys(headers))["keys"]
-        self._keys = [key["key"] for key in current_keys if key["name"] == self.key_names]
-        available_keys = KEY_MAXIMUM - len(current_keys)
-
-        if len(self._keys) <= key_count:
-            keys_needed = key_count - len(self._keys)
-            if available_keys >= keys_needed:
-                for _ in range(keys_needed):
-                    self._keys.append(await self.create_key(headers))
-            else:
-                await self.close()
-                raise RuntimeError(
-                    (
-                        "There are {} API keys already created and "
-                        '{} match "{}" out of a max of {} please goto {} '
-                        'and delete unused keys or rename to "{}".'
-                    ).format(
-                        len(current_keys),
-                        len(self._keys),
-                        self.key_names,
-                        KEY_MAXIMUM,
-                        "https://developer.clashofclans.com",
-                        self.key_names,
-                    )
-                )
-
-        self.keys = cycle(self._keys)
-        self.client._ready.set()
-
     async def close(self):
         if self.__session:
             await self.__session.close()
@@ -443,6 +402,64 @@ class HTTPClient:
         except KeyError:
             return None
 
+    async def get_keys(self):
+        self.client._ready.clear()
+
+        response_dict, session = await self.login_to_site(self.email, self.password)
+        cookies = self.create_cookies(response_dict, session)
+
+        headers = {
+            "cookies": cookies,
+            "content-type": "application/json",
+        }
+
+        ip = await self.get_ip()
+        current_keys = (await self.find_site_keys(headers))["keys"]
+
+        self._keys = [key["key"] for key in current_keys if key["name"] == self.key_names and ip in key["cidrRanges"]]
+
+        required_key_count = self.key_count
+        current_key_count = len(current_keys)
+
+        if required_key_count > len(self._keys):
+            for key in (k for k in current_keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                try:
+                    await self.delete_key(cookies, key["id"])
+                except (InvalidArgument, NotFound):
+                    continue
+                else:
+                    new = await self.create_key(cookies)
+                    self._keys.append(new)
+                    self.client.dispatch("on_key_reset", new)
+
+            make_keys = required_key_count - len(self._keys)
+            for _ in range(make_keys):
+                if current_key_count >= KEY_MAXIMUM:
+                    break
+
+                new = await self.create_key(cookies)
+                self._keys.append(new)
+                self.client.dispatch("on_key_reset", new)
+                current_key_count += 1
+
+            if current_key_count == KEY_MAXIMUM and len(self._keys) < required_key_count:
+                LOG.critical("%s keys were requested to be used, but a maximum of %s could be "
+                             "found/made on the developer site, as it has a maximum of 10 keys per account. "
+                             "Please delete some keys or lower your `key_count` level."
+                             "I will use %s keys for the life of this client.",
+                             required_key_count, current_key_count, current_key_count)
+
+        if len(self._keys) == 0:
+            await self.close()
+            raise RuntimeError(
+                "There are {} API keys already created and none match a key_name of '{}'."
+                "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
+                "unused keys.".format(current_key_count, self.key_names)
+            )
+
+        self.keys = cycle(self._keys)
+        self.client._ready.set()
+
     async def reset_key(self, key):
         response_dict, session = await self.login_to_site(self.email, self.password)
         cookies = self.create_cookies(response_dict, session)
@@ -468,7 +485,7 @@ class HTTPClient:
 
         try:
             await self.delete_key(cookies, key_id)
-        except InvalidArgument:
+        except (InvalidArgument, NotFound):
             return
 
         new_key = await self.create_key(cookies)
