@@ -199,9 +199,9 @@ class Client:
         """Closes the HTTP connection
         """
         LOG.info("Clash of Clans client logging out...")
+        self.dispatch("on_client_close")
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
-        self.dispatch("on_client_close")
 
     def dispatch(self, event_name: str, *args, **kwargs):
         """Dispatches an event listener matching the `event_name` parameter."""
