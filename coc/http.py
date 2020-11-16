@@ -202,9 +202,7 @@ class HTTPClient:
         else:
             raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
 
-        self.__session = aiohttp.ClientSession(
-            loop=self.loop, connector=connector, timeout=aiohttp.ClientTimeout(total=timeout)
-        )
+        self.__session = aiohttp.ClientSession(connector=connector, timeout=aiohttp.ClientTimeout(total=timeout))
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()

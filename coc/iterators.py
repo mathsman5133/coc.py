@@ -77,7 +77,7 @@ class TaggedIterator(_AsyncIterator):
         self.cls = cls
         self.kwargs = kwargs
 
-        self.queue = asyncio.Queue(loop=client.loop)
+        self.queue = asyncio.Queue()
         self.queue_empty = True
 
         self.get_method = None  # set in subclass

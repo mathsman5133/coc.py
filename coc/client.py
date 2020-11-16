@@ -155,7 +155,7 @@ class Client:
         self.cache_max_size = cache_max_size
 
         self.http = None  # set in method login()
-        self._ready = asyncio.Event(loop=loop)
+        self._ready = asyncio.Event()
         self.correct_tags = correct_tags
 
         # cache
@@ -213,7 +213,7 @@ class Client:
             return
 
         if asyncio.iscoroutinefunction(fctn):
-            asyncio.ensure_future(fctn(*args, **kwargs), loop=self.loop)
+            self.loop.create_task(fctn(*args, **kwargs))
         else:
             fctn(*args, **kwargs)
 
