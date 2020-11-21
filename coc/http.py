@@ -248,68 +248,83 @@ class HTTPClient:
             except KeyError:
                 pass
 
-        async with self.__lock, self.__throttle:
-            start = perf_counter()
-            async with self.__session.request(method, url, **kwargs) as response:
-                perfcounter = (perf_counter() - start) * 1000
-                log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
-                self.stats[url] = perfcounter
-                LOG.debug("API HTTP Request: %s", str(log_info))
-                data = await json_or_text(response)
+        for tries in range(5):
+            try:
+                async with self.__lock, self.__throttle:
+                    start = perf_counter()
+                    async with self.__session.request(method, url, **kwargs) as response:
+                        perfcounter = (perf_counter() - start) * 1000
+                        log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
+                        self.stats[url] = perfcounter
+                        LOG.debug("API HTTP Request: %s", str(log_info))
+                        data = await json_or_text(response)
 
-                try:
-                    # set a callback to remove the item from cache once it's stale.
-                    delta = int(response.headers["Cache-Control"].strip("max-age="))
-                    data["_response_retry"] = delta
-                    if cache is not None:
-                        self.cache[cache_control_key] = data
-                        LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
-                        self.loop.call_later(delta, self._cache_remove, cache_control_key)
+                        try:
+                            # set a callback to remove the item from cache once it's stale.
+                            delta = int(response.headers["Cache-Control"].strip("max-age="))
+                            data["_response_retry"] = delta
+                            if cache is not None:
+                                self.cache[cache_control_key] = data
+                                LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
+                                self.loop.call_later(delta, self._cache_remove, cache_control_key)
 
-                except (KeyError, AttributeError, ValueError):
-                    # the request didn't contain cache control headers so skip any cache handling.
-                    # if the API returns a timeout error (504) it will return a string of HTML.
-                    if isinstance(data, dict):
-                        data["_response_retry"] = 0
+                        except (KeyError, AttributeError, ValueError):
+                            # the request didn't contain cache control headers so skip any cache handling.
+                            # if the API returns a timeout error (504) it will return a string of HTML.
+                            if isinstance(data, dict):
+                                data["_response_retry"] = 0
 
-                if 200 <= response.status < 300:
-                    LOG.debug("%s has received %s", url, data)
-                    return data
+                        if 200 <= response.status < 300:
+                            LOG.debug("%s has received %s", url, data)
+                            return data
 
-                if response.status == 400:
-                    raise InvalidArgument(response, data)
+                        if response.status == 400:
+                            raise InvalidArgument(response, data)
 
-                if response.status == 403:
-                    if data.get("reason") in ["accessDenied.invalidIp"]:
-                        if not api_request:
-                            await self.reset_key(key)
-                            LOG.info("Reset Clash of Clans key")
-                            return await self.request(route, **kwargs)
+                        if response.status == 403:
+                            if data.get("reason") in ["accessDenied.invalidIp"]:
+                                if not api_request:
+                                    await self.reset_key(key)
+                                    LOG.info("Reset Clash of Clans key")
+                                    return await self.request(route, **kwargs)
 
-                    raise Forbidden(response, data)
+                            raise Forbidden(response, data)
 
-                if response.status == 404:
-                    raise NotFound(response, data)
-                if response.status == 429:
-                    LOG.error(
-                        "We have been rate-limited by the API. "
-                        "Reconsider the number of requests you are allowing per second."
-                    )
-                    raise HTTPException(response, data)
+                        if response.status == 404:
+                            raise NotFound(response, data)
+                        if response.status == 429:
+                            LOG.error(
+                                "We have been rate-limited by the API. "
+                                "Reconsider the number of requests you are allowing per second."
+                            )
+                            raise HTTPException(response, data)
 
-                if response.status == 503:
-                    if isinstance(data, str):
-                        # weird case where a 503 will be raised, but html returned.
-                        text = re.compile(r"<[^>]+>").sub(data, "")
-                        raise Maintenance(response, text)
+                        if response.status == 503:
+                            if isinstance(data, str):
+                                # weird case where a 503 will be raised, but html returned.
+                                text = re.compile(r"<[^>]+>").sub(data, "")
+                                raise Maintenance(response, text)
 
-                    raise Maintenance(response, data)
-                if response.status in [502, 504]:  # bad gateway, gateway timeout
-                    # gateway errors return html
-                    text = re.compile(r"<[^>]+>").sub(data, "")
-                    raise GatewayError(response, text)
+                            raise Maintenance(response, data)
 
-                raise HTTPException(response, data)
+                        if response.status in (500, 502, 504):
+                            # gateway error, retry again
+                            await asyncio.sleep(tries * 2 + 1)
+                            continue
+
+            except asyncio.TimeoutError:
+                # api timed out, retry again
+                await asyncio.sleep(tries * 2 + 1)
+                continue
+            raise
+
+        else:
+            if response.status in (500, 502, 504):
+                # gateway errors return HTML
+                text = re.compile(r"<[^>]+>").sub(data, "")
+                raise GatewayError(response, text)
+
+            raise HTTPException(response, data)
 
     # clans
 
