@@ -85,8 +85,6 @@ class Clan(BaseClan):
         The clan's public description.
     location: :class:`Location`
         The clan's location.
-    level: :class:`int`
-        The clan's level.
     points: :class:`int`
         The clan's trophy count. This is calculated according to members' trophy counts.
     versus_points: :class:`int`
@@ -123,7 +121,6 @@ class Clan(BaseClan):
         "type",
         "description",
         "location",
-        "level",
         "points",
         "versus_points",
         "required_trophies",

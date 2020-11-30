@@ -89,13 +89,14 @@ SIEGE_MACHINE_ORDER = [
 
 SUPER_TROOP_ORDER = [
     "Super Barbarian",
+    "Super Archer",
     "Super Giant",
     "Sneaky Goblin",
     "Super Wall Breaker",
     "Inferno Dragon",
+    "Super Minion",
+    "Super Valkyrie",
     "Super Witch",
-    "Super Archer",  # not added yet but they're in the API payload for some reason
-    "Super Valkyrie",  # not added yet but they're in the API payload for some reason
 ]
 
 # TODO: when SC fixes Super Troops in API add them here
