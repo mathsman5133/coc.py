@@ -497,10 +497,6 @@ class Client:
         --------
         :class:`ClanWarLeagueGroup`
             The clan's war league group.
-
-        Raises
-        ------
-        :exc:`PrivateWarLog`: The clan's war log is private.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWarLeagueGroup):
