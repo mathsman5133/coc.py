@@ -314,6 +314,9 @@ class HTTPClient:
 
             except asyncio.TimeoutError:
                 # api timed out, retry again
+                if tries > 3:
+                    raise GatewayError("The API timed out waiting for the request.")
+
                 await asyncio.sleep(tries * 2 + 1)
                 continue
             raise
