@@ -85,6 +85,7 @@ SIEGE_MACHINE_ORDER = [
     "Battle Blimp",
     "Stone Slammer",
     "Siege Barracks",
+    "Log Launcher",
 ]
 
 SUPER_TROOP_ORDER = [
@@ -123,6 +124,7 @@ ELIXIR_SPELL_ORDER = [
     "Jump Spell",
     "Freeze Spell",
     "Clone Spell",
+    "Invisibility Spell",
 ]
 
 DARK_ELIXIR_SPELL_ORDER = [
