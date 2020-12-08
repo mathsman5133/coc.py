@@ -94,10 +94,12 @@ SUPER_TROOP_ORDER = [
     "Super Giant",
     "Sneaky Goblin",
     "Super Wall Breaker",
+    "Super Wizard",
     "Inferno Dragon",
     "Super Minion",
     "Super Valkyrie",
     "Super Witch",
+    "Ice Hound",
 ]
 
 # TODO: when SC fixes Super Troops in API add them here
