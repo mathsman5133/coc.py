@@ -49,7 +49,7 @@ LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
 
-class Client:
+class SyncClient:
     """This is the client connection used to interact with the Clash of Clans API.
 
     Parameters
@@ -163,7 +163,7 @@ class Client:
         self._clans = {}
         self._wars = {}
 
-    async def login(self, email: str, password: str):
+    def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters
@@ -190,9 +190,35 @@ class Client:
             timeout=self.timeout,
             cache_max_size=self.cache_max_size,
         )
-        await self.http.get_keys()
-        await self._ready.wait()
+        self.http.get_keys()
+        self._ready.wait()
         self._ready.clear()
+        LOG.debug("HTTP connection created. Client is ready for use.")
+
+    def login_with_keys(self, *keys: str):
+        r"""Uses keys passed in to create a HTTP connection ready for use.
+
+        Parameters
+        ----------
+        \*keys : str
+            The keys to use when making requests to the API.
+            These are created via the Developer Portal at https://developer.clashofclans.com.
+        """
+        self.http = HTTPClient(
+            client=self,
+            email="",
+            password="",
+            key_names=self.key_names,
+            key_scopes=self.key_scopes,
+            loop=self.loop,
+            key_count=self.correct_key_count,
+            throttle_limit=self.throttle_limit,
+            throttler=self.throttler,
+            connector=self.connector,
+            timeout=self.timeout,
+            cache_max_size=self.cache_max_size,
+        )
+        self.http.add_keys(keys)
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def close(self):
@@ -217,7 +243,7 @@ class Client:
         else:
             fctn(*args, **kwargs)
 
-    async def reset_keys(self, number_of_keys: int = None):
+    def reset_keys(self, number_of_keys: int = None):
         """Manually reset any number of keys.
 
         Under normal circumstances, this method should not need to be called.
@@ -232,10 +258,10 @@ class Client:
         num = number_of_keys or len(self.http._keys)
         keys = self.http._keys
         for i in range(num):
-            await self.http.reset_key(keys[i])
+            self.http.reset_key(keys[i])
         self._ready.set()
 
-    async def search_clans(
+    def search_clans(
         self,
         *,
         name: str = None,
@@ -292,7 +318,7 @@ class Client:
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
-        data = await self.http.search_clans(
+        data = self.http.search_clans(
             name=name,
             warFrequency=war_frequency,
             locationId=location_id,
@@ -308,7 +334,7 @@ class Client:
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
     @corrected_tag()
-    async def get_clan(self, tag: str, cls=Clan, **kwargs):
+    def get_clan(self, tag: str, cls=Clan, **kwargs):
         """Get information about a single clan by clan tag.
 
         Clan tags can be found using clan search operation.
@@ -326,7 +352,7 @@ class Client:
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
-        data = await self.http.get_clan(tag)
+        data = self.http.get_clan(tag)
         clan = cls(data=data, client=self, **kwargs)
 
         # if self.UPDATE_CACHE:
@@ -344,7 +370,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for clan in Client.get_clans(tags):
+            for clan in Client.get_clans(tags):
                 print(clan.name)
 
         Parameters
@@ -366,10 +392,10 @@ class Client:
         return ClanIterator(self, tags, cls, **kwargs)
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_members(self, clan_tag: str, cls=ClanMember, **kwargs):
+    def get_members(self, clan_tag: str, cls=ClanMember, **kwargs):
         """List clan members.
 
-        This is equivilant to ``(await Client.get_clan('tag')).members``.
+        This is equivilant to ``(Client.get_clan('tag')).members``.
 
         Parameters
         -----------
@@ -384,11 +410,11 @@ class Client:
         if not issubclass(cls, ClanMember):
             raise TypeError("cls must be a subclass of ClanMember.")
 
-        data = await self.http.get_clan(clan_tag)
+        data = self.http.get_clan(clan_tag)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_warlog(self, clan_tag: str, cls=ClanWarLogEntry, **kwargs):
+    def get_warlog(self, clan_tag: str, cls=ClanWarLogEntry, **kwargs):
         """Retrieve a clan's clan war log.
 
         .. note::
@@ -417,14 +443,14 @@ class Client:
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
         try:
-            data = await self.http.get_clan_warlog(clan_tag)
+            data = self.http.get_clan_warlog(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_clan_war(self, clan_tag: str, cls=ClanWar, **kwargs):
+    def get_clan_war(self, clan_tag: str, cls=ClanWar, **kwargs):
         """
         Retrieve information about clan's current clan war
 
@@ -447,7 +473,7 @@ class Client:
             raise TypeError("cls must be a subclass of ClanWar.")
 
         try:
-            data = await self.http.get_clan_current_war(clan_tag)
+            data = self.http.get_clan_current_war(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -463,7 +489,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for clan_war in Client.get_clan_wars(tags):
+            for clan_war in Client.get_clan_wars(tags):
                 print(clan_war.opponent)
 
         Parameters
@@ -485,7 +511,7 @@ class Client:
         return ClanWarIterator(self, clan_tags, cls=cls, **kwargs)
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_league_group(self, clan_tag: str, cls=ClanWarLeagueGroup, **kwargs):
+    def get_league_group(self, clan_tag: str, cls=ClanWarLeagueGroup, **kwargs):
         """Retrieve information about clan's current clan war league group.
 
         Parameters
@@ -503,7 +529,7 @@ class Client:
             raise TypeError("cls must be a subclass of ClanWarLeagueGroup.")
 
         try:
-            data = await self.http.get_clan_war_league_group(clan_tag)
+            data = self.http.get_clan_war_league_group(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -515,7 +541,7 @@ class Client:
         return cls(data=data, client=self, **kwargs)
 
     @corrected_tag(arg_name="war_tag")
-    async def get_league_war(self, war_tag: str, cls=ClanWar, **kwargs):
+    def get_league_war(self, war_tag: str, cls=ClanWar, **kwargs):
         """
         Retrieve information about a clan war league war.
 
@@ -534,7 +560,7 @@ class Client:
             raise TypeError("cls must be a subclass of LeagueWar.")
 
         try:
-            data = await self.http.get_cwl_wars(war_tag)
+            data = self.http.get_cwl_wars(war_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -551,7 +577,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for league_war in Client.get_league_wars(tags):
+            for league_war in Client.get_league_wars(tags):
                 print(league_war.opponent)
 
         Parameters
@@ -574,7 +600,7 @@ class Client:
         return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
 
     @corrected_tag(arg_name="clan_tag")
-    async def get_current_war(self, clan_tag: str, cwl_round=WarRound.current_war, cls=ClanWar, **kwargs):
+    def get_current_war(self, clan_tag: str, cwl_round=WarRound.current_war, cls=ClanWar, **kwargs):
         """Retrieve a clan's current war.
 
         Unlike ``Client.get_clan_war`` or ``Client.get_league_war``,
@@ -617,7 +643,7 @@ class Client:
             raise TypeError("cls must be a subclass of ClanWar.")
 
         try:
-            get_war = await self.get_clan_war(clan_tag, cls=cls, **kwargs)
+            get_war = self.get_clan_war(clan_tag, cls=cls, **kwargs)
         except PrivateWarLog:
             get_war = None
 
@@ -625,7 +651,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag)
+            league_group = self.get_league_group(clan_tag)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
@@ -654,7 +680,7 @@ class Client:
 
         kwargs["league_group"] = league_group
         kwargs["clan_tag"] = clan_tag
-        async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
+        for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war
 
@@ -669,7 +695,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for war in Client.get_current_wars(tags):
+            for war in Client.get_current_wars(tags):
                 print(war.type)
 
         Parameters
@@ -690,7 +716,7 @@ class Client:
         return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
 
     # locations
-    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
+    def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
         """List all available locations
 
         Parameters
@@ -706,11 +732,11 @@ class Client:
         --------
         :class:`list` of :class:`Location`
         """
-        data = await self.http.search_locations(limit=limit, before=before, after=after)
+        data = self.http.search_locations(limit=limit, before=before, after=after)
 
         return [Location(data=n) for n in data["items"]]
 
-    async def get_location(self, location_id: int):
+    def get_location(self, location_id: int):
         """Get information about specific location
 
         Parameters
@@ -722,17 +748,17 @@ class Client:
         --------
         :class:`Location`
         """
-        data = await self.http.get_location(location_id)
+        data = self.http.get_location(location_id)
         return Location(data=data)
 
-    async def get_location_named(self, location_name: str):
+    def get_location_named(self, location_name: str):
         """Get a location by name.
 
         This is somewhat equivilant to:
 
         .. code-block:: python3
 
-            locations = await client.search_locations(limit=None)
+            locations = client.search_locations(limit=None)
             return utils.get(locations, name=location_name)
 
 
@@ -746,12 +772,12 @@ class Client:
         :class:`Location`
             The first location matching the location name.
         """
-        data = await self.http.search_locations(limit=None, before=None, after=None)
+        data = self.http.search_locations(limit=None, before=None, after=None)
         locations = [Location(data=n) for n in data["items"]]
 
         return get(locations, name=location_name)
 
-    async def get_location_clans(
+    def get_location_clans(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
     ):
         """Get clan rankings for a specific location
@@ -773,10 +799,10 @@ class Client:
         :class:`list` of :class:`Clan`
         """
 
-        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
+        data = self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
         return [RankedClan(data=n, client=self) for n in data["items"]]
 
-    async def get_location_players(
+    def get_location_players(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
     ):
         """Get player rankings for a specific location
@@ -796,10 +822,10 @@ class Client:
         --------
         :class:`list` of :class:`Player`
         """
-        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
+        data = self.http.get_location_players(location_id, limit=limit, before=before, after=after)
         return [RankedPlayer(data=n, client=self) for n in data["items"]]
 
-    async def get_location_clans_versus(
+    def get_location_clans_versus(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
     ):
         """Get clan versus rankings for a specific location
@@ -819,10 +845,10 @@ class Client:
         --------
         :class:`list` of :class:`Clan`
         """
-        data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
+        data = self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
         return [RankedClan(data=n, client=self) for n in data["items"]]
 
-    async def get_location_players_versus(
+    def get_location_players_versus(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
     ):
         """Get player versus rankings for a specific location
@@ -842,12 +868,12 @@ class Client:
         --------
         :class:`list` of :class:`Player`
         """
-        data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
+        data = self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
         return [RankedPlayer(data=n, client=self) for n in data["items"]]
 
     # leagues
 
-    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None):
+    def search_leagues(self, *, limit: int = None, before: str = None, after: str = None):
         """Get list of leagues.
 
         Parameters
@@ -865,10 +891,10 @@ class Client:
             Returns a list of all leagues found. Could be ``None``
 
         """
-        data = await self.http.search_leagues(limit=limit, before=before, after=after)
+        data = self.http.search_leagues(limit=limit, before=before, after=after)
         return [League(data=n, client=self) for n in data["items"]]
 
-    async def get_league(self, league_id: int):
+    def get_league(self, league_id: int):
         """
         Get league information
 
@@ -881,17 +907,17 @@ class Client:
         --------
         :class:`League`
         """
-        data = await self.http.get_league(league_id)
+        data = self.http.get_league(league_id)
         return League(data=data, client=self)
 
-    async def get_league_named(self, league_name: str):
+    def get_league_named(self, league_name: str):
         """Get a location by name.
 
         This is somewhat equivilant to
 
         .. code-block:: python3
 
-            leagues = await client.search_leagues(limit=None)
+            leagues = client.search_leagues(limit=None)
             return utils.get(leagues, name=league_name)
 
 
@@ -905,9 +931,9 @@ class Client:
         :class:`League`
             The first location matching the location name.
         """
-        return get(await self.search_leagues(), name=league_name)
+        return get(self.search_leagues(), name=league_name)
 
-    async def get_seasons(self, league_id: int):
+    def get_seasons(self, league_id: int):
         """Get league seasons. Note that league season information is available only for Legend League.
 
         Parameters
@@ -928,10 +954,10 @@ class Client:
 
             where ``id`` is the Season ID
         """
-        data = await self.http.get_league_seasons(league_id)
+        data = self.http.get_league_seasons(league_id)
         return data["items"]
 
-    async def get_season_rankings(self, league_id: int, season_id: int):
+    def get_season_rankings(self, league_id: int, season_id: int):
         """Get league season rankings.
         Note that league season information is available only for Legend League.
 
@@ -946,10 +972,10 @@ class Client:
         --------
         :class:`list` of :class:`RankedPlayer`
         """
-        data = await self.http.get_league_season_info(league_id, season_id)
+        data = self.http.get_league_season_info(league_id, season_id)
         return [RankedPlayer(data=n, client=self) for n in data.get("items", [])]
 
-    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None):
+    def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None):
         """List clan labels.
 
         Parameters
@@ -965,10 +991,10 @@ class Client:
         --------
         :class:`list` of :class:`Label`
         """
-        data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
+        data = self.http.get_clan_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
 
-    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None):
+    def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None):
         """List player labels.
 
         Parameters
@@ -984,13 +1010,13 @@ class Client:
         --------
         :class:`list` of :class:`Label`
         """
-        data = await self.http.get_player_labels(limit=limit, before=before, after=after)
+        data = self.http.get_player_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
 
     # players
 
     @corrected_tag(arg_name="player_tag")
-    async def get_player(self, player_tag: str, cls=Player, **kwargs):
+    def get_player(self, player_tag: str, cls=Player, **kwargs):
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1007,7 +1033,7 @@ class Client:
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
 
-        data = await self.http.get_player(player_tag)
+        data = self.http.get_player(player_tag)
         return cls(data=data, client=self, **kwargs)
 
     def get_players(self, player_tags: Iterable, cls=Player, **kwargs):
@@ -1020,7 +1046,7 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for player in Client.get_players(tags):
+            for player in Client.get_players(tags):
                 print(player)
 
         Parameters

@@ -23,50 +23,15 @@ SOFTWARE.
 """
 
 import asyncio
+import concurrent.futures
+import queue
 
 from collections.abc import Iterable
 
 from .errors import Maintenance, NotFound, Forbidden
 
 
-class _AsyncIterator:
-    """Base class for all async iterators."""
-
-    def __aiter__(self):
-        return self
-
-    async def __anext__(self):
-        try:
-            msg = await self._next()
-        except StopAsyncIteration:
-            raise StopAsyncIteration()
-        else:
-            return msg
-
-    async def flatten(self):
-        """
-        |coro|
-
-        Flattens the async iterator into a :class:`list` with all the elements.
-
-        Returns
-        --------
-        :class:`list` - A list of every element in the async iterator.
-        """
-        ret = []
-        while True:
-            try:
-                msg = await self._next()
-            except StopAsyncIteration:
-                return ret
-            else:
-                ret.append(msg)
-
-    async def _next(self):
-        return
-
-
-class TaggedIterator(_AsyncIterator):
+class _Iterator:
     """Implements filling of the queue and fetching results."""
 
     def __init__(self, client, tags: Iterable, cls, **kwargs):
@@ -77,12 +42,98 @@ class TaggedIterator(_AsyncIterator):
         self.cls = cls
         self.kwargs = kwargs
 
-        self.queue = asyncio.Queue()
+        self.queue = asyncio.Queue() if client.is_async() else queue.Queue()
         self.queue_empty = True
 
         self.get_method = None  # set in subclass
 
-    async def _run_method(self, tag: str):
+    def __aiter__(self):
+        if not self.client.is_async():
+            raise RuntimeError("You cannot use an async-for with the sync client.")
+
+        return self
+
+    async def __anext__(self):
+        try:
+            result = await self.async_next()
+        except StopAsyncIteration:
+            raise StopAsyncIteration()
+        else:
+            return result
+
+    def __iter__(self):
+        if self.client.is_async():
+            raise RuntimeError("You cannot use an regular for with the async client.")
+
+        return self
+
+    def __next__(self):
+        try:
+            result = await self.next()
+        except StopIteration:
+            raise StopIteration()
+        else:
+            return result
+
+    def sync_flatten(self):
+        ret = []
+        while True:
+            try:
+                result = self.next()
+            except StopIteration:
+                return ret
+            else:
+                ret.append(result)
+
+    async def async_flatten(self):
+        ret = []
+        while True:
+            try:
+                result = await self.async_next()
+            except StopAsyncIteration:
+                return ret
+            else:
+                ret.append(result)
+
+    flatten = async_flatten
+
+    def run_method(self, tag: str):
+        try:
+            if self.cls:
+                return self.get_method(tag, cls=self.cls, **self.kwargs)
+            return self.get_method(tag, cls=self.cls, **self.kwargs)
+        except (NotFound, Forbidden, Maintenance):
+            return None
+
+    def fill_queue(self):
+        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+            futures = [executor.submit(self.run_method, tag) for tag in self.tags]
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    result = future.result()
+                except:
+                    continue
+                else:
+                    if result:
+                        self.queue.put(result)
+
+    def next(self):
+        """Retrieves the next item from the queue. If empty, fill the queue first."""
+        if self.queue_empty:
+            try:
+                self.fill_queue()
+            except KeyError:
+                self.client.reset_keys()
+                return self.next()
+
+            self.queue_empty = False
+
+        try:
+            return self.queue.get_nowait()
+        except asyncio.QueueEmpty:
+            raise StopIteration
+
+    async def async_run_method(self, tag: str):
         # pylint: disable=not-callable
         try:
             # I'm yet to find a way to only pass an arg/kwarg if it's not None, so lets just do this in interim
@@ -92,8 +143,8 @@ class TaggedIterator(_AsyncIterator):
         except (NotFound, Forbidden, Maintenance):
             return None
 
-    async def _fill_queue(self):
-        tasks = [self.client.loop.create_task(self._run_method(n)) for n in self.tags]
+    async def async_fill_queue(self):
+        tasks = [self.client.loop.create_task(self.async_run_method(n)) for n in self.tags]
 
         results = await asyncio.gather(*tasks)
 
@@ -101,14 +152,14 @@ class TaggedIterator(_AsyncIterator):
             if result:
                 await self.queue.put(result)
 
-    async def _next(self):
+    async def async_next(self):
         """Retrieves the next item from the queue. If empty, fill the queue first."""
         if self.queue_empty:
             try:
-                await self._fill_queue()
+                await self.async_fill_queue()
             except KeyError:
                 await self.client.reset_keys()
-                return await self._next()
+                return await self.async_next()
 
             self.queue_empty = False
 
@@ -118,7 +169,7 @@ class TaggedIterator(_AsyncIterator):
             raise StopAsyncIteration
 
 
-class ClanIterator(TaggedIterator):
+class ClanIterator(_Iterator):
     """Iterator for use with :meth:`~coc.Client.get_clans`"""
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
@@ -127,7 +178,7 @@ class ClanIterator(TaggedIterator):
         self.get_method = client.get_clan
 
 
-class PlayerIterator(TaggedIterator):
+class PlayerIterator(_Iterator):
     """Iterator for use with :meth:`~coc.Client.get_players`"""
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
@@ -136,7 +187,7 @@ class PlayerIterator(TaggedIterator):
         self.get_method = client.get_player
 
 
-class ClanWarIterator(TaggedIterator):
+class ClanWarIterator(_Iterator):
     """Iterator for use with :meth:`~coc.Client.get_clan_wars`"""
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
@@ -145,7 +196,7 @@ class ClanWarIterator(TaggedIterator):
         self.get_method = client.get_clan_war
 
 
-class LeagueWarIterator(TaggedIterator):
+class LeagueWarIterator(_Iterator):
     """Iterator for use with :meth:`~coc.Client.get_league_wars`"""
 
     def __init__(self, client, tags: Iterable, clan_tag=None, cls=None, **kwargs):
@@ -154,19 +205,30 @@ class LeagueWarIterator(TaggedIterator):
         self.get_method = client.get_league_war
         self.clan_tag = clan_tag
 
-    async def _next(self):
-        war = await super()._next()
+    async def async_next(self):
+        war = await self.async_next()
         if war is None:
             return None
         elif self.clan_tag is None:
             return war
         elif war.clan_tag != self.clan_tag:
-            return await self._next()
+            return await self.async_next()
+        else:
+            return war
+
+    def next(self):
+        war = self.next()
+        if war is None:
+            return None
+        elif self.clan_tag is None:
+            return war
+        elif war.clan_tag != self.clan_tag:
+            return self.next()
         else:
             return war
 
 
-class CurrentWarIterator(TaggedIterator):
+class CurrentWarIterator(_Iterator):
     """Iterator for use with :meth:`~coc.Client.get_current_wars`"""
 
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):

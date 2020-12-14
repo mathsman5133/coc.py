@@ -24,13 +24,14 @@ SOFTWARE.
 
 import typing
 
-from .client import Client
+from .async_client import AsyncClient
+from .sync_client import SyncClient
 from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
-) -> typing.Union[Client, EventsClient]:
+    email: str, password: str, client: typing.Type[typing.Union[AsyncClient, EventsClient, SyncClient]] = AsyncClient, **kwargs
+) -> typing.Union[AsyncClient, EventsClient, SyncClient]:
     r"""Eases logging into the coc.py Client.
 
     This function makes logging into the client easy, returning the created client.
@@ -52,4 +53,15 @@ def login(
     """
     instance = client(**kwargs)
     instance.loop.run_until_complete(instance.login(email, password))
+    return instance
+
+
+login_with_email = login
+
+
+def login_with_keys(
+        *keys: typing.List[str], client: typing.Type[typing.Union[AsyncClient, EventsClient, SyncClient]] = AsyncClient, **kwargs
+) -> typing.Union[AsyncClient, EventsClient, SyncClient]:
+    instance = client(**kwargs)
+    instance.login_with_keys(keys)
     return instance

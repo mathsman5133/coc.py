@@ -22,11 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "1.0.3"
+__version__ = "1.1.0a"
 
 from .abc import BasePlayer, BaseClan
+from .async_client import Client, AsyncClient
 from .clans import RankedClan, Clan
-from .client import Client
+from .sync_client import SyncClient
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Role,
@@ -54,7 +55,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .login import login
+from .login import login, login_with_email, login_with_keys
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
