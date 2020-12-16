@@ -28,7 +28,7 @@ import traceback
 from collections.abc import Iterable
 from datetime import datetime
 
-from .client import Client
+from .async_client import AsyncClient
 from .clans import Clan
 from .enums import WarRound
 from .players import Player
@@ -365,9 +365,9 @@ class ClientEvents:
         return wrapped
 
 
-class EventsClient(Client):
+class EventsClient(AsyncClient):
     # pylint: disable=missing-docstring
-    __doc__ = Client.__doc__
+    __doc__ = AsyncClient.__doc__
 
     def __init__(self, **options):
         super().__init__(**options)

@@ -56,7 +56,11 @@ API_PAGE_BASE_URL = "https://developer.clashofclans.com/api"
 
 
 def urlify(url, *args, base=BASE_URL, **kwargs):
-    return base + "{}?{}".format(url.format(*args), urlencode({k: v for k, v in kwargs.items() if v is not None}))
+    parameters = urlencode({k: v for k, v in kwargs.items() if v is not None})
+    if parameters:
+        return base + url.format(*args).replace("#", "%23") + "?{}".format(parameters)
+    else:
+        return base + url.format(*args).replace("#", "%23")
 
 
 async def json_or_text(response):
@@ -107,7 +111,9 @@ class DevPageSession:
 
     @property
     def cookies(self):
-        return "session={};game-api-url={};game-api-token={}".format(self.session_id, self.api_url, self.game_api_token)
+        return {
+            "cookies": "session={};game-api-url={};game-api-token={}".format(self.session_id, self.api_url, self.game_api_token)
+        }
 
 
 class BasicThrottler:
@@ -382,7 +388,7 @@ class HTTPClientBase:
 
     def login_to_site(self, email, password):
         data = {"email": email, "password": password}
-        return self.session.post(API_PAGE_BASE_URL + "login", json=data)
+        return self.session.post(API_PAGE_BASE_URL + "/login", json=data)
 
     def find_keys(self, cookies):
         return self.session.post(API_PAGE_BASE_URL + "/apikey/list", cookies=cookies)
@@ -618,6 +624,9 @@ class AsyncHTTPClient(HTTPClientBase):
         self.get_session_lock = asyncio.Lock()
         self.lock = asyncio.Semaphore(self.key_count * self.throttle_limit)
         self.session = aiohttp.ClientSession(connector=kwargs.pop('connector', None), timeout=aiohttp.ClientTimeout(total=kwargs.pop('timeout', 30.0)))
+
+    async def close(self):
+        await self.session.close()
 
     async def request(self, method, url, *args, **kwargs):
         stats_url = url

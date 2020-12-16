@@ -69,7 +69,7 @@ class _Iterator:
 
     def __next__(self):
         try:
-            result = await self.next()
+            result = self.next()
         except StopIteration:
             raise StopIteration()
         else:
