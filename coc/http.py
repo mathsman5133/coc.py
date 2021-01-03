@@ -531,8 +531,6 @@ class HTTPClient(HTTPClientBase):
             return self.api_session
 
     def get_keys(self):
-        self.client._ready.clear()
-
         session = self.get_or_set_session()
         ip = self.get_ip().text
         data = self.find_keys(session.cookies).json()
@@ -580,7 +578,6 @@ class HTTPClient(HTTPClientBase):
             )
 
         self.keys = cycle(self._keys)
-        self.client._ready.set()
 
     def reset_key(self, key):
         session = self.get_or_set_session()

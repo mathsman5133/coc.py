@@ -116,7 +116,6 @@ class SyncClient:
         "connector",
         "cache_max_size",
         "http",
-        "_ready",
         "correct_tags",
         "_players",
         "_clans",
@@ -155,13 +154,16 @@ class SyncClient:
         self.cache_max_size = cache_max_size
 
         self.http = None  # set in method login()
-        self._ready = asyncio.Event()
         self.correct_tags = correct_tags
 
         # cache
         self._players = {}
         self._clans = {}
         self._wars = {}
+
+    @staticmethod
+    def is_async():
+        return False
 
     def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -191,8 +193,6 @@ class SyncClient:
             cache_max_size=self.cache_max_size,
         )
         self.http.get_keys()
-        self._ready.wait()
-        self._ready.clear()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str):
@@ -254,12 +254,10 @@ class SyncClient:
             The number of keys to reset. Defaults to None - all keys.
         """
         # pylint: disable=protected-access
-        self._ready.clear()
         num = number_of_keys or len(self.http._keys)
         keys = self.http._keys
         for i in range(num):
             self.http.reset_key(keys[i])
-        self._ready.set()
 
     def search_clans(
         self,

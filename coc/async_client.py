@@ -163,6 +163,10 @@ class AsyncClient:
         self._clans = {}
         self._wars = {}
 
+    @staticmethod
+    def is_async():
+        return True
+
     async def login(self, email: str, password: str):
         """Retrieves all keys and creates an HTTP connection ready for use.
 

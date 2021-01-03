@@ -52,7 +52,11 @@ def login(
         Any kwargs you wish to pass into the Client object.
     """
     instance = client(**kwargs)
-    instance.loop.run_until_complete(instance.login(email, password))
+    if isinstance(instance, AsyncClient):
+        instance.loop.run_until_complete(instance.login(email, password))
+    else:
+        instance.login(email, password)
+
     return instance
 
 

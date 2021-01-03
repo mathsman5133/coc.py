@@ -130,7 +130,7 @@ class _Iterator:
 
         try:
             return self.queue.get_nowait()
-        except asyncio.QueueEmpty:
+        except queue.Empty:
             raise StopIteration
 
     async def async_run_method(self, tag: str):
