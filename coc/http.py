@@ -401,10 +401,10 @@ class HTTPClientBase:
             "scopes": [scopes],
         }
 
-        return self.session.post(API_PAGE_BASE_URL + "/apikey/create", cookies={"cookies": cookies}, json=data)
+        return self.session.post(API_PAGE_BASE_URL + "/apikey/create", cookies=cookies, json=data)
 
     def delete_key(self, cookies, key_id):
-        return self.session.post(API_PAGE_BASE_URL + "/apikey/revoke", json={"id": key_id}, cookies={"cookie": cookies})
+        return self.session.post(API_PAGE_BASE_URL + "/apikey/revoke", json={"id": key_id}, cookies=cookies)
 
 
 class HTTPClient(HTTPClientBase):
