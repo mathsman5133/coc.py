@@ -127,7 +127,7 @@ class BaseClan(metaclass=OverrideDoc):
 
         Returns
         -------
-        AsyncIterator of :class:`Player` - the clan members.
+        The clan members. : AsyncIterator of :class:`Player`
         """
         if self.members is NotImplemented:
             return NotImplemented

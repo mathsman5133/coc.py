@@ -381,7 +381,7 @@ class ClanWarLeagueGroup:
 
     @property
     def clans(self) -> typing.List[ClanWarLeagueClan]:
-        """List[class:`LeagueClan`]: Returns all participating clans."""
+        """List[:class:`LeagueClan`]: Returns all participating clans."""
         clans = self._clans
         if clans:
             return clans
@@ -413,7 +413,7 @@ class ClanWarLeagueGroup:
 
         Returns
         ---------
-        AsyncIterator of :class:`ClanWar`: All wars in the given round.
+        All wars in the given round. : AsyncIterator of :class:`ClanWar`
         """
         return LeagueWarIterator(client=self._client, tags=itertools.chain(*self.rounds), clan_tag=clan_tag, cls=cls)
 
@@ -446,8 +446,9 @@ class ClanWarLeagueGroup:
 
 
         Returns
-        ---------
-        AsyncIterator of :class:`ClanWar`: All wars in the given round.
+        ----------
+
+        All wars in the given round. : AsyncIterator of :class:`ClanWar`
         """
         is_prep = self.state == "preparation"
         num_rounds = len(self.rounds)

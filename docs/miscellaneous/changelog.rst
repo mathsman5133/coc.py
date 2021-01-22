@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.0.4
+------
+
+- Support aiohttp v3.7
+
+- Add retry handling to the HTTPClient - if a request fails with a GatewayError (or TimeoutError), it will sleep and then retry for a maximum of 5 times.
+
+- Super Minion, Super Wizard, Ice Hound, Log Launcher and Invisibility Spells were added.
+
 v1.0.3
 ------
 
