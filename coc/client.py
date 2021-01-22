@@ -1038,3 +1038,25 @@ class Client:
             raise TypeError("cls must be a subclass of Player.")
 
         return PlayerIterator(self, player_tags, cls=cls, **kwargs)
+
+    @corrected_tag(arg_name="player_tag")
+    async def verify_player_token(self, player_tag: str, token: str):
+        """Verify player API token that can be found from the game settings.
+
+        This can be used to check that players own the game accounts they claim to own
+        as they need to provide the one-time use API token that exists inside the game.
+
+        Parameters
+        ----------
+        player_tag : str
+            The player tag to verify.
+        token : str
+            The player's API token to verify.
+
+        Returns
+        --------
+        :class:`bool`
+            Whether the player tag and API token were a valid match.
+        """
+        data = await self.http.verify_player_token(player_tag, token)
+        return data and data["status"] == "ok" or False
