@@ -275,6 +275,11 @@ class Player(ClanMember):
         self.__iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
         self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
 
+    def _inject_clan_member(self, member):
+        if member:
+            self.clan_rank = getattr(member, "clan_rank", None)
+            self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
+
     @property
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
