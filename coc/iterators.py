@@ -137,7 +137,7 @@ class PlayerIterator(TaggedIterator):
 
         self.members = kwargs.pop("members", {})
 
-    def get_player(self, tag, cls=None, **kwargs):
+    async def get_player(self, tag, cls=None, **kwargs):
         if cls:
             player = await self.client.get_player(tag, cls=cls, **kwargs)
         else:
