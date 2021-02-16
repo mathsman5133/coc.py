@@ -144,6 +144,7 @@ class PlayerIterator(TaggedIterator):
             player = await self.client.get_player(tag, **kwargs)
 
         player._inject_clan_member(self.members.get(tag))
+        return player
 
 
 class ClanWarIterator(TaggedIterator):
