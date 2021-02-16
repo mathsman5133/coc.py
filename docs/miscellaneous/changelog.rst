@@ -7,6 +7,26 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.1.0
+------
+
+- Adds support for the new Player API verification endpoint - see :meth:`Client.verify_player_token`
+
+- Fixes a bug where members in `clan.get_detailed_members()` wouldn't have the `clan_rank` attribute, for example::
+
+    # before
+    async for member in clan.get_detailed_members():
+        print(member.clan_rank)  # prints "None"
+
+    # after
+    async for member in clan.get_detailed_members():
+        print(member.clan_rank)  # prints "1" or "10" or their clan rank.
+
+
+- Fixes a bug where getting the warlog failed for clans with (>3yr) old war logs. See <https://github.com/mathsman5133/coc.py/issues/72>
+
+- Fixed docs for :attr:`Player.clan_previous_rank` since it was misleading before.
+
 v1.0.4
 ------
 

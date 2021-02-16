@@ -64,7 +64,9 @@ class ClanMember(BasePlayer):
     clan_rank: :class:`int`
         The member's rank in the clan.
     clan_previous_rank: :class:`int`
-        The member's rank in the clan at the end of the last season.
+        The member's rank before the last leaderboard change
+        (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
+        and you want to find out their previous rankings, this will help.).
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
