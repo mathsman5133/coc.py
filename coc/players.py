@@ -145,9 +145,11 @@ class RankedPlayer(ClanMember):
     versus_trophies: :class:`int`
         The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
     rank: :class:`int`
-        The player's rank in the leader board.
+        The player's rank in the clan leaderboard.
     previous_rank: :class:`int`
-        The player's rank in the previous season's leaderboard.
+        The member's rank before the last clan leaderboard change
+        (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
+        and you want to find out their previous rankings, this will help.).
     """
 
     __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
