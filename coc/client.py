@@ -984,6 +984,7 @@ class Client:
         Returns
         --------
         :class:`list` of :class:`Label`
+            The player current labels.
         """
         data = await self.http.get_player_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
