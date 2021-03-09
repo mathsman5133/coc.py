@@ -64,7 +64,9 @@ class ClanMember(BasePlayer):
     clan_rank: :class:`int`
         The member's rank in the clan.
     clan_previous_rank: :class:`int`
-        The member's rank in the clan at the end of the last season.
+        The member's rank before the last leaderboard change
+        (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
+        and you want to find out their previous rankings, this will help.).
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
@@ -143,9 +145,11 @@ class RankedPlayer(ClanMember):
     versus_trophies: :class:`int`
         The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
     rank: :class:`int`
-        The player's rank in the leader board.
+        The player's rank in the clan leaderboard.
     previous_rank: :class:`int`
-        The player's rank in the previous season's leaderboard.
+        The member's rank before the last clan leaderboard change
+        (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
+        and you want to find out their previous rankings, this will help.).
     """
 
     __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
@@ -274,6 +278,11 @@ class Player(ClanMember):
         )
         self.__iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
         self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
+
+    def _inject_clan_member(self, member):
+        if member:
+            self.clan_rank = getattr(member, "clan_rank", None)
+            self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
 
     @property
     def labels(self) -> typing.List[Label]:

@@ -391,6 +391,9 @@ class HTTPClient:
     def get_player(self, player_tag):
         return self.request(Route("GET", "/players/{}".format(player_tag), {}))
 
+    def verify_player_token(self, player_tag, token):
+        return self.request(Route("POST", "/players/{}/verifytoken".format(player_tag), {}), json={"token": token})
+
     # labels
 
     def get_clan_labels(self, **kwargs):

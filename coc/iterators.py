@@ -133,7 +133,18 @@ class PlayerIterator(TaggedIterator):
     def __init__(self, client, tags: Iterable, cls=None, **kwargs):
         # pylint: disable=too-many-arguments
         super().__init__(client, tags, cls, **kwargs)
-        self.get_method = client.get_player
+        self.get_method = self.get_player
+
+        self.members = kwargs.pop("members", {})
+
+    async def get_player(self, tag, cls=None, **kwargs):
+        if cls:
+            player = await self.client.get_player(tag, cls=cls, **kwargs)
+        else:
+            player = await self.client.get_player(tag, **kwargs)
+
+        player._inject_clan_member(self.members.get(tag))
+        return player
 
 
 class ClanWarIterator(TaggedIterator):

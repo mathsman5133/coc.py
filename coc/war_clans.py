@@ -94,8 +94,8 @@ class WarClan(BaseClan):
             self.max_stars = self._war.team_size * 3
             self.total_attacks = self._war.team_size * 2
         else:
-            self.max_stars = data_get("teamSize", 0) * 3
-            self.total_attacks = data_get("teamSize", 0) * 3
+            self.max_stars = (data_get("teamSize") or 0) * 3
+            self.total_attacks = (data_get("teamSize") or 0) * 3
 
         self.__iter_members = (
             ClanWarMember(data=mdata, client=self._client, war=self._war, clan=self)

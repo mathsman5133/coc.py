@@ -90,7 +90,7 @@ class ClanWar:
         data_get = data.get
 
         self.state = data_get("state")
-        self.team_size = data_get("teamSize", 0)
+        self.team_size = data_get("teamSize") or 0
         self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
