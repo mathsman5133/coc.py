@@ -964,6 +964,7 @@ class Client:
         Returns
         --------
         :class:`list` of :class:`Label`
+            The clan's current labels.
         """
         data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
