@@ -409,8 +409,9 @@ class Client:
             A list of the :class:`ClanWarLogEntry` in the warlog.
 
         Raises
-        ------
-        :exc:`PrivateWarLog`: The clan's warlog is private.
+        -------
+        PrivateWarLog
+            The clan's warlog is private.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWarLogEntry):
@@ -439,8 +440,9 @@ class Client:
             The clan's current war.
 
         Raises
-        ------
-        :exc:`PrivateWarLog`: The clan's war log is private.
+        -------
+        PrivateWarLog
+            The clan's warlog is private.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
