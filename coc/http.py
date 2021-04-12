@@ -323,9 +323,12 @@ class HTTPClient:
 
         else:
             if response.status in (500, 502, 504):
-                # gateway errors return HTML
-                text = re.compile(r"<[^>]+>").sub(data, "")
-                raise GatewayError(response, text)
+                if isinstance(data, str):
+                    # gateway errors return HTML
+                    text = re.compile(r"<[^>]+>").sub(data, "")
+                    raise GatewayError(response, text)
+
+                raise GatewayError(response, data)
 
             raise HTTPException(response, data)
 
