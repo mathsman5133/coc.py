@@ -117,6 +117,8 @@ class Troop:
         :class:`int`: The overall max level of the troop; excluding townhall limitations.
     village:
         :class:`str`: Either ``home`` or ``builderBase``.
+    is_active:
+        :class:`bool`: Returns a boolean which indicates whether a super troop is active.
     """
 
     __slots__ = (
@@ -124,6 +126,7 @@ class Troop:
         "level",
         "max_level",
         "village",
+        "is_active",
     )
 
     def __str__(self):
@@ -144,6 +147,7 @@ class Troop:
         self.level = data["level"]
         self.max_level = data["maxLevel"]
         self.village = data["village"]
+        self.is_active = data["superTroopIsActive"]
 
     @property
     def is_max(self) -> bool:
