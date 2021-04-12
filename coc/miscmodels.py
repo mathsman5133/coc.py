@@ -136,6 +136,7 @@ class Troop:
         attrs = [
             ("name", self.name),
             ("level", self.level),
+            ("is_active", self.is_active),
         ]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
@@ -147,7 +148,7 @@ class Troop:
         self.level = data["level"]
         self.max_level = data["maxLevel"]
         self.village = data["village"]
-        self.is_active = data["superTroopIsActive"]
+        self.is_active = data.get("superTroopIsActive")
 
     @property
     def is_max(self) -> bool:
