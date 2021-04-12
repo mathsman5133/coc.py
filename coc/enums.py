@@ -141,6 +141,8 @@ SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
 HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
+HERO_PETS_ORDER = ["L.A.S.S.I", "Electro Owl", "Mighty Yak", "Unicorn"]
+
 ACHIEVEMENT_ORDER = [
     "Bigger Coffers",
     "Get those Goblins!",
