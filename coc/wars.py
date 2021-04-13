@@ -90,7 +90,6 @@ class ClanWar:
         data_get = data.get
 
         self.state = data_get("state")
-        self.team_size = data_get("teamSize") or 0
         self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
@@ -106,6 +105,8 @@ class ClanWar:
         else:
             self.clan = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
             self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
+
+        self.team_size = data_get("teamSize") or (self.clan and len(self.clan.members) or 0)
 
     @property
     def attacks(self) -> typing.List[WarAttack]:
