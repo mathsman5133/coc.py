@@ -140,6 +140,9 @@ class Clan(BaseClan):
         "member_cls",
         "war_league",
         "chat_language",
+
+        "_cs_labels",
+        "_cs_members",
     )
 
     def __init__(self, *, data, client, **_):
@@ -181,12 +184,12 @@ class Clan(BaseClan):
             member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
         )
 
-    @cached_property
+    @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
         return list(self.__iter_labels)
 
-    @cached_property
+    @cached_property("_cs_members")
     def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A list of members that belong to the clan."""
         dict_members = self._members = {m.tag: m for m in self.__iter_members}

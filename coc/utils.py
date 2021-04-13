@@ -318,7 +318,7 @@ class _CachedProperty:
             return getattr(instance, self.name)
         except AttributeError:
             result = self.function(instance)
-            setattr(instance, self.name, self.function)
+            setattr(instance, self.name, result)
             return result
 
 

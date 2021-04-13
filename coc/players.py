@@ -233,6 +233,18 @@ class Player(ClanMember):
         "label_cls",
         "spell_cls",
         "troop_cls",
+
+        "_cs_labels",
+        "_cs_achievements",
+        "_cs_troops",
+        "_cs_home_troops",
+        "_cs_builder_troops",
+        "_cs_siege_machines",
+        "_cs_hero_pets",
+        "_cs_super_troops",
+        "_cs_heroes",
+        "_cs_spells",
+
     )
 
     def __init__(self, *, data, client, **_):
@@ -284,12 +296,12 @@ class Player(ClanMember):
             self.clan_rank = getattr(member, "clan_rank", None)
             self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
 
-    @cached_property
+    @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
         return list(self.__iter_labels)
 
-    @cached_property
+    @cached_property("_cs_achievements")
     def achievements(self) -> typing.List[Achievement]:
         """List[:class:`Achievement`]: A list of the player's achievements."""
         # at the time of writing, the API presents achievements in the order
@@ -330,7 +342,7 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @cached_property
+    @cached_property("_cs_troops")
     def troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`.
 
@@ -342,7 +354,7 @@ class Player(ClanMember):
         self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
         return troops
 
-    @cached_property
+    @cached_property("_cs_home_troops")
     def home_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
@@ -355,7 +367,7 @@ class Player(ClanMember):
 
         return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
 
-    @cached_property
+    @cached_property("_cs_builder_troops")
     def builder_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
@@ -368,7 +380,7 @@ class Player(ClanMember):
 
         return list(sorted(self._builder_troops.values(), key=lambda t: order.get(t.name, 0)))
 
-    @cached_property
+    @cached_property("_cs_siege_machines")
     def siege_machines(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
@@ -378,7 +390,7 @@ class Player(ClanMember):
         troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
-    @cached_property
+    @cached_property("_cs_hero_pets")
     def hero_pets(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's hero pets.
 
@@ -388,7 +400,7 @@ class Player(ClanMember):
         troops = (t for t in self.troops if t.name in HERO_PETS_ORDER)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
-    @cached_property
+    @cached_property("_cs_super_troops")
     def super_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's super troops.
 
@@ -433,7 +445,7 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @cached_property
+    @cached_property("_cs_heroes")
     def heroes(self) -> typing.List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
@@ -475,7 +487,7 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @cached_property
+    @cached_property("_cs_spells")
     def spells(self) -> typing.List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
