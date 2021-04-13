@@ -677,3 +677,35 @@ class WarLeague:
 
     def __eq__(self, other):
         return isinstance(self, other.__class__) and other.id == self.id
+
+
+class ChatLanguage:
+    """Represents a clan's chat language.
+
+    Attributes
+    ----------
+    id: :class:`int`: The language's unique ID
+    name: :class:`str`: The language's full name, for example ``English``.
+    language_code: :class:`str` The language's abbreviated code, for example ``EN``.
+    """
+    __slots__ = (
+        "id",
+        "name",
+        "language_code"
+    )
+
+    def __init__(self, *, data):
+        # pylint: disable=invalid-name
+        self.id = data["id"]
+        self.name = data["name"]
+        self.language_code = data["language_code"]
+
+    def __repr__(self):
+        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
+
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and other.id == self.id
+

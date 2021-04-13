@@ -102,8 +102,8 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
 ]
 
-# TODO: when SC fixes Super Troops in API add them here
-HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER + SUPER_TROOP_ORDER
+# TODO: When v2 comes around, remove siege machines from here
+HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + SUPER_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",
@@ -144,43 +144,50 @@ HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"
 HERO_PETS_ORDER = ["L.A.S.S.I", "Electro Owl", "Mighty Yak", "Unicorn"]
 
 ACHIEVEMENT_ORDER = [
-    "Bigger Coffers",
-    "Get those Goblins!",
+    # Home Base
+    "Keep Your Account Safe!",
     "Bigger & Better",
-    "Nice and Tidy",
-    "Release the Beasts",
+    "Discover New Troops",
+    "Bigger Coffers",
     "Gold Grab",
     "Elixir Escapade",
-    "Sweet Victory!",
-    "Empire Builder",
-    "Wall Buster",
-    "Humiliator",
-    "Union Buster",
-    "Conqueror",
-    "Unbreakable",
-    "Friend in Need",
-    "Mortar Mauler",
     "Heroic Heist",
+    "Well Seasoned",
+    "Nice and Tidy",
+    "Empire Builder",
+    "Clan War Wealth",
+    "Friend in Need",
+    "Sharing is caring",
+    "Siege sharer",
+    "War Hero",
+    "War League Legend",
+    "Games Champion",
+    "Unbreakable",
+    "Sweet Victory!",
+    "Conqueror",
     "League All-Star",
+    "Humiliator",
+    "Not So Easy This Time",
+    "Union Buster",
+    "Bust This!",
+    "Wall Buster",
+    "Mortar Mauler",
     "X-Bow Exterminator",
     "Firefighter",
-    "War Hero",
-    "Treasurer",
     "Anti-Artillery",
-    "Sharing is caring",
-    "Games Champion",
+    "Shattered and Scattered",
+    "Get those Goblins!",
     "Get those other Goblins!",
     "Dragon Slayer",
-    "War League Legend",
-    "Keep your village safe",
-    "Well Seasoned",
-    "Shattered and Scattered",
+    "Superb Work",
+
+    # Builder Base
     "Master Engineering",
+    "Hidden Treasures",
+    "High Gear",
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    "High Gear",
-    "Hidden Treasures",
 ]
 
 UNRANKED_LEAGUE_DATA = {

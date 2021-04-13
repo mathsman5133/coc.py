@@ -35,9 +35,12 @@ from .enums import (
     UNRANKED_LEAGUE_DATA,
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
+    HERO_PETS_ORDER,
 )
 from .abc import BasePlayer
 from .player_clan import PlayerClan
+from .utils import cached_property
+
 
 if typing.TYPE_CHECKING:
     # pylint: disable=cyclic-import
@@ -237,7 +240,6 @@ class Player(ClanMember):
 
         self._achievements = None  # type: typing.Optional[dict]
         self._heroes = None  # type: typing.Optional[dict]
-        self._labels = None  # type: typing.Optional[list]
         self._spells = None  # type: typing.Optional[dict]
         self._home_troops = None  # type: typing.Optional[dict]
         self._builder_troops = None  # type: typing.Optional[dict]
@@ -273,9 +275,7 @@ class Player(ClanMember):
 
         self.__iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self.__iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
-        self.__iter_troops = (
-            troop_cls(data=tdata) for tdata in data_get("troops", []) if tdata.get("name") not in SUPER_TROOP_ORDER
-        )
+        self.__iter_troops = (troop_cls(data=tdata) for tdata in data_get("troops", []))
         self.__iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
         self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
 
@@ -284,25 +284,16 @@ class Player(ClanMember):
             self.clan_rank = getattr(member, "clan_rank", None)
             self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
 
-    @property
+    @cached_property
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
-        labels = self._labels
-        if labels is not None:
-            return labels
+        return list(self.__iter_labels)
 
-        labels = self._labels = list(self.__iter_labels)
-        return labels
-
-    @property
+    @cached_property
     def achievements(self) -> typing.List[Achievement]:
         """List[:class:`Achievement`]: A list of the player's achievements."""
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
-        dict_achievements = self._achievements
-        if dict_achievements is not None:
-            return list(dict_achievements.values())
-
         achievement_dict = {a.name: a for a in self.__iter_achievements}
         sorted_achievements = {}
         for name in ACHIEVEMENT_ORDER:
@@ -339,23 +330,19 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @property
+    @cached_property
     def troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`.
 
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
         """
-        dict_troops = self._home_troops
-        if dict_troops is not None:
-            return list(dict_troops.values()) + list(self._builder_troops.values())
-
         troops = list(self.__iter_troops)
         self._home_troops = {t.name: t for t in troops if t.is_home_base}
         self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
         return troops
 
-    @property
+    @cached_property
     def home_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
@@ -364,13 +351,11 @@ class Player(ClanMember):
         order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
 
         if not self._home_troops:
-            troops = list(self.__iter_troops)
-            self._home_troops = {t.name: t for t in troops if t.is_home_base}
-            self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+            _ = self.troops
 
         return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
 
-    @property
+    @cached_property
     def builder_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
@@ -379,13 +364,11 @@ class Player(ClanMember):
         order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
 
         if not self._builder_troops:
-            troops = list(self.__iter_troops)
-            self._home_troops = {t.name: t for t in troops if t.is_home_base}
-            self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+            _ = self.troops
 
         return list(sorted(self._builder_troops.values(), key=lambda t: order.get(t.name, 0)))
 
-    @property
+    @cached_property
     def siege_machines(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
@@ -393,6 +376,26 @@ class Player(ClanMember):
         """
         order = {k: v for v, k in enumerate(SIEGE_MACHINE_ORDER)}
         troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
+        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+    @cached_property
+    def hero_pets(self) -> typing.List[Troop]:
+        """List[:class:`Troop`]: A :class:`List` of the player's hero pets.
+
+        This will return hero pets in the order found in the Pet House in-game.
+        """
+        order = {k: v for v, k in enumerate(HERO_PETS_ORDER)}
+        troops = (t for t in self.troops if t.name in HERO_PETS_ORDER)
+        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+    @cached_property
+    def super_troops(self) -> typing.List[Troop]:
+        """List[:class:`Troop`]: A :class:`List` of the player's super troops.
+
+        This will return super troops in the order found in the super troop boosting building, in game.
+        """
+        order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
+        troops = (t for t in self.troops if t.name in SUPER_TROOP_ORDER)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     def get_troop(self, name: str, is_home_troop=None, default_value=None) -> typing.Optional[Troop]:
@@ -430,16 +433,12 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @property
+    @cached_property
     def heroes(self) -> typing.List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
         This will return heroes in the order found in the store and labatory in-game.
         """
-        dict_heroes = self._heroes
-        if dict_heroes is not None:
-            return list(dict_heroes.values())
-
         heroes_dict = {h.name: h for h in self.__iter_heroes}
         sorted_heroes = {}
         for name in HERO_ORDER:
@@ -476,16 +475,13 @@ class Player(ClanMember):
         except KeyError:
             return default_value
 
-    @property
+    @cached_property
     def spells(self) -> typing.List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
         This will return spells in the order found in both spell factory and labatory in-game.
         """
-        dict_spells = self._spells
-        if dict_spells is None:
-            dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
-
+        dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
         return list(sorted(dict_spells.values(), key=lambda s: order.get(s.name)))
 

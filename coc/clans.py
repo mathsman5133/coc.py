@@ -25,8 +25,8 @@ import typing
 
 
 from .players import ClanMember
-from .miscmodels import try_enum, Location, Label, WarLeague
-from .utils import get, correct_tag
+from .miscmodels import try_enum, ChatLanguage, Location, Label, WarLeague
+from .utils import get, cached_property, correct_tag
 from .abc import BaseClan
 
 
@@ -139,6 +139,7 @@ class Clan(BaseClan):
         "label_cls",
         "member_cls",
         "war_league",
+        "chat_language",
     )
 
     def __init__(self, *, data, client, **_):
@@ -146,7 +147,6 @@ class Clan(BaseClan):
         self.label_cls = Label
         self.member_cls = ClanMember
 
-        self._labels = None  # type: typing.Optional[list]
         self._members = None  # type: typing.Optional[dict]
 
         self._from_data(data)
@@ -170,6 +170,7 @@ class Clan(BaseClan):
         self.public_war_log = data_get("isWarLogPublic")
         self.description = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
+        self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
 
         label_cls = self.label_cls
         self.__iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
@@ -180,23 +181,14 @@ class Clan(BaseClan):
             member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
         )
 
-    @property
+    @cached_property
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
-        list_labels = self._labels
-        if list_labels is not None:
-            return list_labels
+        return list(self.__iter_labels)
 
-        list_labels = self._labels = list(self.__iter_labels)
-        return list_labels
-
-    @property
+    @cached_property
     def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A list of members that belong to the clan."""
-        dict_members = self._members
-        if dict_members is not None:
-            return list(dict_members.values())
-
         dict_members = self._members = {m.tag: m for m in self.__iter_members}
         return list(dict_members.values())
 

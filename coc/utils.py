@@ -308,6 +308,16 @@ def get_season_end(month=None, year=None):
     return get_season_start(month, year)
 
 
+class cached_property:
+    def __init__(self, function):
+        self.function = function
+
+    def __get__(self, instance, owner):
+        value = self.function(instance)
+        setattr(instance, self.function.__name__, value)
+        return value
+
+
 class LRU(dict):
     """Implements a LRU (least-recently-used) dict with a settable max size."""
 
