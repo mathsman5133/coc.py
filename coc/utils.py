@@ -308,14 +308,24 @@ def get_season_end(month=None, year=None):
     return get_season_start(month, year)
 
 
-class cached_property:
-    def __init__(self, function):
+class _CachedProperty:
+    def __init__(self, name, function):
+        self.name = name
         self.function = function
 
     def __get__(self, instance, owner):
-        value = self.function(instance)
-        setattr(instance, self.function.__name__, value)
-        return value
+        try:
+            return getattr(instance, self.name)
+        except AttributeError:
+            result = self.function(instance)
+            setattr(instance, self.name, self.function)
+            return result
+
+
+def cached_property(name):
+    def deco(func):
+        return _CachedProperty(name, func)
+    return deco
 
 
 class LRU(dict):

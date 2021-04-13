@@ -95,6 +95,8 @@ class ClanWar:
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag = data_get("tag")
 
+        self.team_size = data_get("teamSize") or len(data_get("clan", {}).get("members", []))
+
         clan_data = data_get("clan")
         # annoying bug where if you request a war with a clan tag that clan could be the opponent or clan,
         # depending on the way the game stores it internally. This isn't very helpful as we always want it
@@ -105,8 +107,6 @@ class ClanWar:
         else:
             self.clan = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
             self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
-
-        self.team_size = data_get("teamSize") or (self.clan and len(self.clan.members) or 0)
 
     @property
     def attacks(self) -> typing.List[WarAttack]:
