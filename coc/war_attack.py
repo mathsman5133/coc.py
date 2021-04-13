@@ -45,9 +45,19 @@ class WarAttack:
         :class:`str` - The attacker tag
     defender_tag:
         :class:`str` - The defender tag
+    duration:
+        :class:`int` - Duration of attack in seconds
     """
 
-    __slots__ = ("war", "member", "stars", "destruction", "order", "attacker_tag", "defender_tag", "_client")
+    __slots__ = ("war",
+                 "member",
+                 "stars",
+                 "destruction",
+                 "order",
+                 "attacker_tag",
+                 "defender_tag",
+                 "duration",
+                 "_client")
 
     def __repr__(self):
         attrs = [
@@ -57,6 +67,7 @@ class WarAttack:
             ("stars", self.stars),
             ("destruction", self.destruction),
             ("order", self.order),
+            ("duration", self.duration),
         ]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
@@ -89,6 +100,7 @@ class WarAttack:
         self.order = data["order"]
         self.attacker_tag = data["attackerTag"]
         self.defender_tag = data["defenderTag"]
+        self.duration = data["duration"]
 
     @property
     def attacker(self) -> "ClanWarMember":
