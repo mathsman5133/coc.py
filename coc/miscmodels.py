@@ -698,7 +698,7 @@ class ChatLanguage:
         # pylint: disable=invalid-name
         self.id = data["id"]
         self.name = data["name"]
-        self.language_code = data["language_code"]
+        self.language_code = data["languageCode"]
 
     def __repr__(self):
         return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
