@@ -7,6 +7,24 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.2.0
+------
+
+- Adds new achievements and updated the order of existing ones.
+
+- Added :attr:`Player.super_troops` and :attr:`Player.pets`.
+
+- Added :attr:`Troop.is_active` to check whether a super troop is active.
+
+- Added :attr:`WarAttack.duration`
+
+- Added :attr:`Clan.chat_language` which is a :class:`ChatLanguage` object.
+
+- Fixed errors when coc.py tried to parse 5xx (e.g. 502) errors as HTML when they were dicts.
+
+- Improved docs for :attr:`RankedPlayer.previous_rank`.
+
+
 v1.1.0
 ------
 
