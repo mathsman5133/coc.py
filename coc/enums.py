@@ -158,7 +158,7 @@ ACHIEVEMENT_ORDER = [
     "Clan War Wealth",
     "Friend in Need",
     "Sharing is caring",
-    "Siege sharer",
+    "Siege Sharer",
     "War Hero",
     "War League Legend",
     "Games Champion",
