@@ -223,16 +223,17 @@ class Player(ClanMember):
         "_spells",
         "_home_troops",
         "_builder_troops",
-        "__iter_achievements",
-        "__iter_heroes",
-        "__iter_labels",
-        "__iter_spells",
-        "__iter_troops",
         "achievement_cls",
         "hero_cls",
         "label_cls",
         "spell_cls",
         "troop_cls",
+
+        "_iter_achievements",
+        "_iter_heroes",
+        "_iter_labels",
+        "_iter_spells",
+        "_iter_troops",
 
         "_cs_labels",
         "_cs_achievements",
@@ -285,11 +286,11 @@ class Player(ClanMember):
         hero_cls = self.hero_cls
         spell_cls = self.spell_cls
 
-        self.__iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
-        self.__iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
-        self.__iter_troops = (troop_cls(data=tdata) for tdata in data_get("troops", []))
-        self.__iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
-        self.__iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
+        self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
+        self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
+        self._iter_troops = (troop_cls(data=tdata) for tdata in data_get("troops", []))
+        self._iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
+        self._iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
 
     def _inject_clan_member(self, member):
         if member:
@@ -299,14 +300,14 @@ class Player(ClanMember):
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
-        return list(self.__iter_labels)
+        return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
     def achievements(self) -> typing.List[Achievement]:
         """List[:class:`Achievement`]: A list of the player's achievements."""
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
-        achievement_dict = {a.name: a for a in self.__iter_achievements}
+        achievement_dict = {a.name: a for a in self._iter_achievements}
         sorted_achievements = {}
         for name in ACHIEVEMENT_ORDER:
             try:
@@ -349,7 +350,7 @@ class Player(ClanMember):
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
         """
-        troops = list(self.__iter_troops)
+        troops = list(self._iter_troops)
         self._home_troops = {t.name: t for t in troops if t.is_home_base}
         self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
         return troops
@@ -451,7 +452,7 @@ class Player(ClanMember):
 
         This will return heroes in the order found in the store and labatory in-game.
         """
-        heroes_dict = {h.name: h for h in self.__iter_heroes}
+        heroes_dict = {h.name: h for h in self._iter_heroes}
         sorted_heroes = {}
         for name in HERO_ORDER:
             # have to do it this way because it's less expensive than removing None's if they don't have a troop.
@@ -480,7 +481,7 @@ class Player(ClanMember):
         """
         dict_heroes = self._heroes
         if dict_heroes is None:
-            dict_heroes = self._heroes = {h.name: h for h in self.__iter_heroes}
+            dict_heroes = self._heroes = {h.name: h for h in self._iter_heroes}
 
         try:
             return dict_heroes[name]
@@ -493,7 +494,7 @@ class Player(ClanMember):
 
         This will return spells in the order found in both spell factory and labatory in-game.
         """
-        dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
+        dict_spells = self._spells = {s.name: s for s in self._iter_spells}
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
         return list(sorted(dict_spells.values(), key=lambda s: order.get(s.name)))
 
@@ -514,7 +515,7 @@ class Player(ClanMember):
         """
         dict_spells = self._spells
         if dict_spells is None:
-            dict_spells = self._spells = {s.name: s for s in self.__iter_spells}
+            dict_spells = self._spells = {s.name: s for s in self._iter_spells}
 
         try:
             return dict_spells[name]

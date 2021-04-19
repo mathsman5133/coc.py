@@ -132,8 +132,6 @@ class Clan(BaseClan):
         "public_war_log",
         "member_count",
         "_labels",
-        "__iter_labels",
-        "__iter_members",
         "_members",
         "_client",
         "label_cls",
@@ -143,6 +141,8 @@ class Clan(BaseClan):
 
         "_cs_labels",
         "_cs_members",
+        "_iter_labels",
+        "_iter_members",
     )
 
     def __init__(self, *, data, client, **_):
@@ -176,23 +176,23 @@ class Clan(BaseClan):
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
 
         label_cls = self.label_cls
-        self.__iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
+        self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
 
         # update members globally. only available via /clans/{clanTag}
         member_cls = self.member_cls
-        self.__iter_members = (
+        self._iter_members = (
             member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
         )
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
-        return list(self.__iter_labels)
+        return list(self._iter_labels)
 
     @cached_property("_cs_members")
     def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A list of members that belong to the clan."""
-        dict_members = self._members = {m.tag: m for m in self.__iter_members}
+        dict_members = self._members = {m.tag: m for m in self._iter_members}
         return list(dict_members.values())
 
     def get_member(self, tag: str) -> typing.Optional[ClanMember]:
@@ -212,7 +212,7 @@ class Clan(BaseClan):
         tag = correct_tag(tag)
         dict_members = self._members
         if not dict_members:
-            dict_members = self._members = {m.tag: m for m in self.__iter_members}
+            dict_members = self._members = {m.tag: m for m in self._iter_members}
 
         try:
             return dict_members[tag]
