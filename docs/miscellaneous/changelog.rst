@@ -7,6 +7,11 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.2.1
+------
+- Fixes an issue where `Clan.members` was empty if `Clan.get_member` was called before `Clan.members`.
+    There was a similar issue with `Player.heroes` and `Player.spells`.
+
 v1.2.0
 ------
 
