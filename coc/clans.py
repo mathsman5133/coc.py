@@ -210,12 +210,11 @@ class Clan(BaseClan):
         The member who matches the tag provided: Optional[:class:`ClanMember`]
         """
         tag = correct_tag(tag)
-        dict_members = self._members
-        if not dict_members:
-            dict_members = self._members = {m.tag: m for m in self._iter_members}
+        if not self._members:
+            _ = self.members
 
         try:
-            return dict_members[tag]
+            return self._members[tag]
         except KeyError:
             return None
 

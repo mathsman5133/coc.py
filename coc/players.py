@@ -333,13 +333,11 @@ class Player(ClanMember):
         Optional[:class:`Achievement`]
             The returned achievement or the ``default_value`` if not found, which defaults to ``None``..
         """
-        dict_achievements = self._achievements
-        if dict_achievements is None:
+        if not self._achievements:
             _ = self.achievements
-            dict_achievements = self._achievements
 
         try:
-            return dict_achievements[name]
+            return self._achievements[name]
         except KeyError:
             return default_value
 
@@ -479,12 +477,11 @@ class Player(ClanMember):
         Optional[:class:`Hero`]
             The returned hero or the ``default_value`` if not found, which defaults to ``None``..
         """
-        dict_heroes = self._heroes
-        if dict_heroes is None:
-            dict_heroes = self._heroes = {h.name: h for h in self._iter_heroes}
+        if not self._heroes:
+            _ = self.heroes
 
         try:
-            return dict_heroes[name]
+            return self._heroes[name]
         except KeyError:
             return default_value
 
@@ -513,11 +510,10 @@ class Player(ClanMember):
         Optional[:class:`Spell`]
             The returned spell or the ``default_value`` if not found, which defaults to ``None``..
         """
-        dict_spells = self._spells
-        if dict_spells is None:
-            dict_spells = self._spells = {s.name: s for s in self._iter_spells}
+        if not self._spells:
+            _ = self.spells
 
         try:
-            return dict_spells[name]
+            return self._spells[name]
         except KeyError:
             return default_value
