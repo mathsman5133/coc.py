@@ -21,8 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import typing
 import itertools
+
+from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING
 
 from .enums import WarRound
 from .iterators import LeagueWarIterator
@@ -31,7 +32,7 @@ from .utils import get
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
 
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .war_members import ClanWarMember  # noqa
 
@@ -109,17 +110,17 @@ class ClanWar:
             self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
 
     @property
-    def attacks(self) -> typing.List[WarAttack]:
+    def attacks(self) -> List[WarAttack]:
         """List[:class:`WarAttack`]: Returns all attacks this war, sorted by attack order."""
         return sorted([*self.clan.attacks, *self.opponent.attacks], key=lambda x: x.order, reverse=True)
 
     @property
-    def members(self) -> typing.List["ClanWarMember"]:
+    def members(self) -> List["ClanWarMember"]:
         """List[:class:`ClanWarMember`]: A list of members that are in the war."""
         return sorted([*self.clan.members, *self.opponent.members], key=lambda x: (not x.is_opponent, x.map_position))
 
     @property
-    def type(self) -> typing.Optional[str]:
+    def type(self) -> Optional[str]:
         """:class:`str`: Returns either ``friendly``, ``random`` or ``cwl``.
 
         This will returns ``None`` if the clan is not in war, or ``cwl`` if the clan is in a league war.
@@ -201,7 +202,7 @@ class ClanWar:
         """:class:`bool`: Returns a boolean indicating if the war is a Clan War League (CWL) war."""
         return self.type == "cwl"
 
-    def get_member(self, tag: str) -> typing.Optional["ClanWarMember"]:
+    def get_member(self, tag: str) -> Optional["ClanWarMember"]:
         """Return a :class:`ClanWarMember` with the tag provided. Returns ``None`` if not found.
 
         Example
@@ -238,7 +239,7 @@ class ClanWar:
         """
         return get(self.members, **attrs)
 
-    def get_attack(self, attacker_tag: str, defender_tag: str) -> typing.Optional[WarAttack]:
+    def get_attack(self, attacker_tag: str, defender_tag: str) -> Optional[WarAttack]:
         """Return the :class:`WarAttack` with the attacker tag and defender tag provided.
 
         If the attack was not found, this will return ``None``.
@@ -255,7 +256,7 @@ class ClanWar:
             return None
         return get(attacks, defender_tag=defender_tag)
 
-    def get_defenses(self, defender_tag: str) -> typing.List[WarAttack]:
+    def get_defenses(self, defender_tag: str) -> List[WarAttack]:
         """Return a :class:`list` of :class:`WarAttack` for the defender tag provided.
 
         If the player has no defenses, this will return an empty list.
@@ -381,7 +382,7 @@ class ClanWarLeagueGroup:
         self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client) for data in data_get("clans", []))
 
     @property
-    def clans(self) -> typing.List[ClanWarLeagueClan]:
+    def clans(self) -> List[ClanWarLeagueClan]:
         """List[:class:`LeagueClan`]: Returns all participating clans."""
         clans = self._clans
         if clans:
@@ -390,10 +391,10 @@ class ClanWarLeagueGroup:
         self._clans = clans = list(self.__iter_clans)
         return clans
 
-    def get_wars_for_clan(self, clan_tag: str, cls: typing.Type[ClanWar] = ClanWar):
+    def get_wars_for_clan(self, clan_tag: str, cls: Type[ClanWar] = ClanWar) -> AsyncIterator[ClanWar]:
         """Returns every war the clan has participated in this current CWL.
 
-        This will return an AsyncIterator of :class:`ClanWar`.
+        This returns a :class:`LeagueWarIterator` which fetches all wars in parallel.
 
         Example
         --------
@@ -412,18 +413,19 @@ class ClanWarLeagueGroup:
         cls: Type[:class:`ClanWar`]: The constructor used to create the league war.
                                      This should inherit from :class:`ClanWar`.
 
-        Returns
-        ---------
-        All wars in the given round. : AsyncIterator of :class:`ClanWar`
+        Yields
+        ------
+        :class:`ClanWar`
+            A war in the current CWL season with the clan in it..
         """
         return LeagueWarIterator(client=self._client, tags=itertools.chain(*self.rounds), clan_tag=clan_tag, cls=cls)
 
     def get_wars(
-        self, cwl_round=WarRound.current_war, cls: typing.Type[ClanWar] = ClanWar
-    ) -> LeagueWarIterator:
+        self, cwl_round: WarRound = WarRound.current_war, cls: Type[ClanWar] = ClanWar
+    ) -> AsyncIterator[ClanWar]:
         """Returns war information for every war in a league round.
 
-        This will return an AsyncIterator of :class:`ClanWar`.
+        This returns a :class:`LeagueWarIterator` which fetches all wars in parallel.
 
         Example
         --------
@@ -446,10 +448,10 @@ class ClanWarLeagueGroup:
             This defaults to ``coc.WarRound.current_war``.
 
 
-        Returns
-        ----------
-
-        All wars in the given round. : AsyncIterator of :class:`ClanWar`
+        Yields
+        ------
+        :class:`ClanWar`
+            A war in the requested round.
         """
         is_prep = self.state == "preparation"
         num_rounds = len(self.rounds)

@@ -21,9 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+from typing import AsyncIterator, TYPE_CHECKING
 
 from .miscmodels import try_enum, Badge
 from .iterators import PlayerIterator
+
+if TYPE_CHECKING:
+    from .players import Player
 
 
 class OverrideDoc(type):
@@ -111,12 +115,13 @@ class BaseClan(metaclass=OverrideDoc):
         # pylint: disable=missing-function-docstring
         return NotImplemented
 
-    def get_detailed_members(self) -> PlayerIterator:
+    def get_detailed_members(self) -> AsyncIterator["Player"]:
         """Get detailed player information for every player in the clan.
-        This will return an AsyncIterator of :class:`Player`.
+
+        This returns a :class:`PlayerIterator` which fetches all player tags in the clan in parallel.
 
         Example
-        --------
+        ---------
 
         .. code-block:: python3
 
@@ -125,9 +130,11 @@ class BaseClan(metaclass=OverrideDoc):
             async for player in clan.get_detailed_members():
                 print(player.name)
 
-        Returns
-        -------
-        The clan members. : AsyncIterator of :class:`Player`
+
+        Yields
+        ------
+        :class:`Player`
+            A full player object of a clan member.
         """
         if self.members is NotImplemented:
             return NotImplemented
