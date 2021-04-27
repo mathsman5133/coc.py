@@ -25,7 +25,7 @@ SOFTWARE.
 import asyncio
 import logging
 
-from collections.abc import Iterable
+from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
@@ -40,8 +40,12 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .utils import get, corrected_tag
+from .utils import correct_tag, get
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+
+if TYPE_CHECKING:
+    from .http import BatchThrottler
+
 
 LOG = logging.getLogger(__name__)
 
@@ -132,7 +136,7 @@ class Client:
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
-        throttler=BasicThrottler,
+        throttler: Type[Union[BasicThrottler, BatchThrottler]] = BasicThrottler,
         connector=None,
         timeout: float = 30.0,
         cache_max_size: int = 10000,
@@ -163,7 +167,7 @@ class Client:
         self._clans = {}
         self._wars = {}
 
-    async def login(self, email: str, password: str):
+    async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters
@@ -195,7 +199,7 @@ class Client:
         self._ready.clear()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
-    def close(self):
+    def close(self) -> None:
         """Closes the HTTP connection
         """
         LOG.info("Clash of Clans client logging out...")
@@ -203,7 +207,7 @@ class Client:
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
 
-    def dispatch(self, event_name: str, *args, **kwargs):
+    def dispatch(self, event_name: str, *args, **kwargs) -> None:
         """Dispatches an event listener matching the `event_name` parameter."""
         LOG.debug("Dispatching %s event", event_name)
 
@@ -217,7 +221,7 @@ class Client:
         else:
             fctn(*args, **kwargs)
 
-    async def reset_keys(self, number_of_keys: int = None):
+    async def reset_keys(self, number_of_keys: int = None) -> None:
         """Manually reset any number of keys.
 
         Under normal circumstances, this method should not need to be called.
@@ -248,9 +252,9 @@ class Client:
         limit: int = None,
         before: str = None,
         after: str = None,
-        cls=Clan,
+        cls: Type[Clan] = Clan,
         **kwargs,
-    ):
+    ) -> List[Clan]:
         """Search all clans by name and/or filtering the results using various criteria.
 
         At least one filtering criteria must be defined and if name is used as part
@@ -275,20 +279,27 @@ class Client:
         limit : int
             The number of clans to search for.
 
-        Returns
-        --------
-        :class:`list` of :class:`SearchClan`
-            A list of all clans found matching criteria provided.
-
         Raises
         -------
-        HTTPException
-            No options were passed.
+        RuntimeError
+            At least one filtering parameter must be passed.
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`Clan`.
+        Maintenance
+            The API is currently in maintenance.
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        List[:class:`Clan`]
+            A list of all clans found matching criteria provided.
+
         """
         if not (
             name or war_frequency or location_id or min_members or max_members or min_clan_points or min_clan_level
         ):
-            raise TypeError("At least one filtering parameter must be passed.")
+            raise RuntimeError("At least one filtering parameter must be passed.")
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
@@ -307,8 +318,7 @@ class Client:
 
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
-    @corrected_tag()
-    async def get_clan(self, tag: str, cls=Clan, **kwargs):
+    async def get_clan(self, tag: str, cls: Type[Clan] = Clan, **kwargs) -> Clan:
         """Get information about a single clan by clan tag.
 
         Clan tags can be found using clan search operation.
@@ -318,25 +328,40 @@ class Client:
         tag : str
             The clan tag to search for.
 
+        Raises
+        -------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`Clan`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`SearchClan`
+        :class:`Clan`
             The clan with provided tag.
         """
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
+        if self.correct_tags:
+            tag = correct_tag(tag)
+
         data = await self.http.get_clan(tag)
-        clan = cls(data=data, client=self, **kwargs)
+        return cls(data=data, client=self, **kwargs)
 
-        # if self.UPDATE_CACHE:
-        #     self._update_clan(clan)
-
-        return clan
-
-    def get_clans(self, tags: Iterable, cls=Clan, **kwargs):
+    def get_clans(self, tags: Iterable[str], cls: Type[Clan] = Clan, **kwargs) -> AsyncIterator[Clan]:
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
+
+        This returns a :class:`ClanIterator` which fetches the requested clan tags in parallel.
 
         Example
         ---------
@@ -344,29 +369,31 @@ class Client:
         .. code-block:: python3
 
             tags = [...]
-            async for clan in Client.get_clans(tags):
+            async for clan in client.get_clans(tags):
                 print(clan.name)
 
         Parameters
         -----------
-        tags : :class:`collections.Iterable`
+        tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`Clan`.
 
-        Returns
-        --------
-        :class:`ClanIterator` of :class:`Clan`
-            An iterable of the requested clans.
+
+        Yields
+        ------
+        :class:`Clan`
+            A clan matching one of the tags requested.
         """
-        if not isinstance(tags, Iterable):
-            raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
         return ClanIterator(self, tags, cls, **kwargs)
 
-    @corrected_tag(arg_name="clan_tag")
-    async def get_members(self, clan_tag: str, cls=ClanMember, **kwargs):
+    async def get_members(self, clan_tag: str, cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
         """List clan members.
 
         This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -376,19 +403,41 @@ class Client:
         clan_tag : str
             The clan tag to search for.
 
+        Raises
+        -------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanMember`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         List[:class:`ClanMember`]
-            A list of :class:`ClanMember`s in the clan.
+            A list of members in the clan.
         """
         if not issubclass(cls, ClanMember):
             raise TypeError("cls must be a subclass of ClanMember.")
 
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
+
         data = await self.http.get_clan(clan_tag)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
-    @corrected_tag(arg_name="clan_tag")
-    async def get_warlog(self, clan_tag: str, cls=ClanWarLogEntry, **kwargs):
+    async def get_warlog(
+        self,
+        clan_tag: str,
+        cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
+        **kwargs
+    ) -> List[ClanWarLogEntry]:
         """Retrieve a clan's clan war log.
 
         .. note::
@@ -403,18 +452,34 @@ class Client:
         clan_tag : str
             The clan tag to search for.
 
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWarLogEntry`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        PrivateWarLog
+            The clan's warlog is private.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         List[:class:`ClanWarLogEntry`]
-            A list of the :class:`ClanWarLogEntry` in the warlog.
-
-        Raises
-        ------
-        :exc:`PrivateWarLog`: The clan's warlog is private.
+            Entries in the warlog of the requested clan.
         """
-        # pylint: disable=protected-access
         if not issubclass(cls, ClanWarLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
 
         try:
             data = await self.http.get_clan_warlog(clan_tag)
@@ -423,8 +488,7 @@ class Client:
 
         return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
-    @corrected_tag(arg_name="clan_tag")
-    async def get_clan_war(self, clan_tag: str, cls=ClanWar, **kwargs):
+    async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
         Retrieve information about clan's current clan war
 
@@ -433,18 +497,35 @@ class Client:
         clan_tag : str
             The clan tag to search for.
 
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        PrivateWarLog
+            The clan's warlog is private.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         :class:`ClanWar`
             The clan's current war.
 
-        Raises
-        ------
-        :exc:`PrivateWarLog`: The clan's war log is private.
         """
-        # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
 
         try:
             data = await self.http.get_clan_current_war(clan_tag)
@@ -453,9 +534,21 @@ class Client:
 
         return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
-    def get_clan_wars(self, clan_tags: Iterable, cls=ClanWar, **kwargs):
+    def get_clan_wars(self, clan_tags: Iterable[str], cls: Type[ClanWar] = ClanWar, **kwargs) -> AsyncIterator[ClanWar]:
         """
         Retrieve information multiple clan's current clan wars
+
+        This returns a :class:`coc.WarIterator` which fetches the requested wars in parallel.
+
+        .. note ::
+
+            This will skip any clans who have a private war-log.
+
+
+        .. note ::
+
+            This will not fetch any CWL wars. Use :meth:`Client.get_current_wars` for that.
+
 
         Example
         ---------
@@ -468,30 +561,66 @@ class Client:
 
         Parameters
         -----------
-        clan_tags : :class:`collections.Iterable`
+        clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
-        Returns
-        --------
-        :class:`coc.iterators.WarIterator` of :class:`ClanWar`
-            An iterator of all clan wars.
-            This will skip clans who have a private war-log.
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        PrivateWarLog
+            The clan's warlog is private.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Yields
+        ------
+        :class:`ClanWar`
+            A war matching one of the tags requested.
         """
-        if not isinstance(clan_tags, Iterable):
-            raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
         return ClanWarIterator(self, clan_tags, cls=cls, **kwargs)
 
-    @corrected_tag(arg_name="clan_tag")
-    async def get_league_group(self, clan_tag: str, cls=ClanWarLeagueGroup, **kwargs):
+    async def get_league_group(
+        self,
+        clan_tag: str,
+        cls: Type[ClanWarLeagueGroup] = ClanWarLeagueGroup,
+        **kwargs
+    ) -> ClanWarLeagueGroup:
         """Retrieve information about clan's current clan war league group.
 
         Parameters
         -----------
         clan_tag : str
             The clan tag to search for.
+
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWarLeagueGroup`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+            This may be due to an API bug whereby requesting
+            the league group of a clan searching for a CWL match will time out.
+
 
         Returns
         --------
@@ -501,6 +630,9 @@ class Client:
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWarLeagueGroup):
             raise TypeError("cls must be a subclass of ClanWarLeagueGroup.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
 
         try:
             data = await self.http.get_clan_war_league_group(clan_tag)
@@ -514,8 +646,7 @@ class Client:
 
         return cls(data=data, client=self, **kwargs)
 
-    @corrected_tag(arg_name="war_tag")
-    async def get_league_war(self, war_tag: str, cls=ClanWar, **kwargs):
+    async def get_league_war(self, war_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
         Retrieve information about a clan war league war.
 
@@ -523,6 +654,21 @@ class Client:
         -----------
         war_tag : str
             The league war tag to search for.
+
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
 
         Returns
         --------
@@ -533,6 +679,9 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of LeagueWar.")
 
+        if self.correct_tags:
+            war_tag = correct_tag(war_tag)
+
         try:
             data = await self.http.get_cwl_wars(war_tag)
         except Forbidden as exception:
@@ -541,9 +690,17 @@ class Client:
         data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
 
-    def get_league_wars(self, war_tags: Iterable, clan_tag: str = None, cls=ClanWar, **kwargs):
+    def get_league_wars(
+        self,
+        war_tags: Iterable[str],
+        clan_tag: str = None,
+        cls: Type[ClanWar] = ClanWar,
+        **kwargs
+    ) -> AsyncIterator[ClanWar]:
         """
         Retrieve information about multiple league wars
+
+        This returns a :class:`LeagueWarIterator` which fetches the requested clan tags in parallel.
 
         Example
         ---------
@@ -556,25 +713,33 @@ class Client:
 
         Parameters
         -----------
-        war_tags : :class:`collections.Iterable`
+        war_tags : Iterable[:class:`str`]
             An iterable of war tags to search for.
-        clan_tag: Optional[:class:`str`]
+        clan_tag: :class:`str`
             An optional clan tag. If present, this will only return wars which belong to this clan.
 
-        Returns
-        --------
-        :class:`coc.iterators.LeagueWarIterator` of :class:`ClanWar`
-            An iterator of wars.
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        Yields
+        ------
+        :class:`ClanWar`
+            A war matching one of the tags requested.
         """
-        if not isinstance(war_tags, Iterable):
-            raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
         return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
 
-    @corrected_tag(arg_name="clan_tag")
-    async def get_current_war(self, clan_tag: str, cwl_round=WarRound.current_war, cls=ClanWar, **kwargs):
+    async def get_current_war(
+        self,
+        clan_tag: str,
+        cwl_round: WarRound = WarRound.current_war,
+        cls: Type[ClanWar] = ClanWar,
+        **kwargs
+    ) -> Optional[ClanWar]:
         """Retrieve a clan's current war.
 
         Unlike ``Client.get_clan_war`` or ``Client.get_league_war``,
@@ -597,24 +762,45 @@ class Client:
         -----------
         clan_tag : str
             An iterable of clan tag to search for.
+
         cwl_round: :class:`WarRound`
             An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
             ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
             This defaults to ``coc.WarRound.current_war``.
 
+        Raises
+        -------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        PrivateWarLog
+            The clan's warlog is private.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         :class:`ClanWar`
-            The clan's current war.
-
-            If no league group is found, or the group is in ``preparation``, this method will return the
-            :class:`ClanWar`, which appears ``notInWar``, rather than returning ``None``.
+            The clan's current war. Could be ``None``.
 
             If the clan is in CWL, the league group can be accessed via :attr:`ClanWar.league_group`.
+
+            If you pass in a :class:`WarRound` and that round doesn't exist (yet), this will return ``None``.
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
 
         try:
             get_war = await self.get_clan_war(clan_tag, cls=cls, **kwargs)
@@ -658,10 +844,28 @@ class Client:
             if war.clan_tag == clan_tag:
                 return war
 
-    def get_current_wars(self, clan_tags: Iterable, cls=ClanWar, **kwargs):
+    def get_current_wars(
+        self,
+        clan_tags: Iterable[str],
+        cls: Type[ClanWar] = ClanWar,
+        **kwargs
+    ) -> AsyncIterator[ClanWar]:
         """Retrieve information multiple clan's current wars.
 
         See :meth:`Client.get_current_war` for more information.
+
+        This returns a :class:`CurrentWarIterator` which fetches the requested clan tags in parallel.
+
+        .. note ::
+
+            This will skip any clans who have a private war-log.
+
+
+        .. note ::
+
+            This will fetch CWL wars, which may result in a slower operation due to multiple API calls.
+            If you only wish to get regular wars, consider :meth:`Client.get_clan_wars`.
+
 
         Example
         ---------
@@ -674,13 +878,18 @@ class Client:
 
         Parameters
         -----------
-        clan_tags : :class:`collections.Iterable`
+        clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
-        Returns
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`ClanWar`.
+
+        Yields
         --------
-        :class:`coc.iterators.CurrentWarIterator` of :class:`ClanWar`
-            Current wars for the clans.
+        :class:`ClanWar`
+            The clan war of a requested tag.
         """
         if not isinstance(clan_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
@@ -690,7 +899,7 @@ class Client:
         return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
 
     # locations
-    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None):
+    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None) -> List[Location]:
         """List all available locations
 
         Parameters
@@ -702,15 +911,25 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Location`
+        List[:class:`Location`]
+            The requested locations.
         """
         data = await self.http.search_locations(limit=limit, before=before, after=after)
 
         return [Location(data=n) for n in data["items"]]
 
-    async def get_location(self, location_id: int):
+    async def get_location(self, location_id: int) -> Location:
         """Get information about specific location
 
         Parameters
@@ -718,17 +937,30 @@ class Client:
         location_id : int
             The Location ID to search for.
 
+        Raises
+        ------
+        NotFound
+            No location was found with the supplied ID.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         :class:`Location`
+            The requested location.
         """
         data = await self.http.get_location(location_id)
         return Location(data=data)
 
-    async def get_location_named(self, location_name: str):
+    async def get_location_named(self, location_name: str) -> Optional[Location]:
         """Get a location by name.
 
-        This is somewhat equivilant to:
+        This is equivalent to:
 
         .. code-block:: python3
 
@@ -753,13 +985,13 @@ class Client:
 
     async def get_location_clans(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    ):
+    ) -> List[RankedClan]:
         """Get clan rankings for a specific location
 
         Parameters
         -----------
         location_id : int
-            The Location ID to search for. Defaults to all locations (global).
+            The Location ID to search for. Defaults to all locations (``global``).
         limit : int
             The number of results to fetch.
         before : str, optional
@@ -767,10 +999,19 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
 
         Returns
         --------
-        :class:`list` of :class:`Clan`
+        List[:class:`RankedClan`]
+            The top clans for the requested location.
         """
 
         data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
@@ -778,7 +1019,7 @@ class Client:
 
     async def get_location_players(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    ):
+    ) -> List[RankedPlayer]:
         """Get player rankings for a specific location
 
         Parameters
@@ -792,16 +1033,26 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Player`
+        List[:class:`RankedPlayer`]
+            The top players for the requested location.
         """
         data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
         return [RankedPlayer(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_versus(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    ):
+    ) -> List[RankedClan]:
         """Get clan versus rankings for a specific location
 
         Parameters
@@ -815,16 +1066,26 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Clan`
+        List[:class:`RankedClan`]
+            The top versus-clans for the requested location.
         """
         data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
         return [RankedClan(data=n, client=self) for n in data["items"]]
 
     async def get_location_players_versus(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
-    ):
+    ) -> List[RankedPlayer]:
         """Get player versus rankings for a specific location
 
         Parameters
@@ -838,16 +1099,26 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Player`
+        List[:class:`RankedPlayer`]
+            The top versus players for the requested location.
         """
         data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
         return [RankedPlayer(data=n, client=self) for n in data["items"]]
 
     # leagues
 
-    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None):
+    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
         """Get list of leagues.
 
         Parameters
@@ -859,16 +1130,25 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`League`
-            Returns a list of all leagues found. Could be ``None``
-
+        List[:class:`League`]
+            The requested leagues.
         """
         data = await self.http.search_leagues(limit=limit, before=before, after=after)
         return [League(data=n, client=self) for n in data["items"]]
 
-    async def get_league(self, league_id: int):
+    async def get_league(self, league_id: int) -> League:
         """
         Get league information
 
@@ -877,14 +1157,27 @@ class Client:
         league_id : str
             The League ID to search for.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
         Returns
         --------
         :class:`League`
+            The league with the requested ID
         """
         data = await self.http.get_league(league_id)
         return League(data=data, client=self)
 
-    async def get_league_named(self, league_name: str):
+    async def get_league_named(self, league_name: str) -> Optional[League]:
         """Get a location by name.
 
         This is somewhat equivilant to
@@ -900,40 +1193,60 @@ class Client:
         league_name : str
             The league name to search for
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
         Returns
         --------
         :class:`League`
-            The first location matching the location name.
+            The first location matching the location name. Could be ``None`` if not found.
         """
         return get(await self.search_leagues(), name=league_name)
 
-    async def get_seasons(self, league_id: int):
-        """Get league seasons. Note that league season information is available only for Legend League.
+    async def get_seasons(self, league_id: int = 29000021) -> List[str]:
+        """Get league seasons.
+
+        .. note::
+
+            League season information is available only for Legend League, with a league ID 29000021.
+
 
         Parameters
         -----------
         league_id : str
-            The League ID to search for.
+            The League ID to search for. Defaults to the only league you can get season information for, legends.
+
+        Raises
+        ------
+        InvalidArgument
+            An invalid league_id was supplied. Currently the only league supported is legends.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
 
         Returns
-        --------
-        :class:`dict`
-            In the form
-
-            .. code-block:: json
-
-                {
-                    "id": "string"
-                }
-
-            where ``id`` is the Season ID
+        -------
+        List[str]
+            The legend season IDs, in the form ``YYYY-MM``, ie. ``2020-04``.
         """
         data = await self.http.get_league_seasons(league_id)
-        return data["items"]
+        return [entry["id"] for entry in data["items"]]
 
-    async def get_season_rankings(self, league_id: int, season_id: int):
+    async def get_season_rankings(self, league_id: int, season_id: int) -> List[RankedPlayer]:
         """Get league season rankings.
-        Note that league season information is available only for Legend League.
+
+        .. note::
+
+            League season information is available only for Legend League, with a league ID 29000021.
+
 
         Parameters
         -----------
@@ -942,15 +1255,28 @@ class Client:
         season_id : str
             The Season ID to search for.
 
+        Raises
+        ------
+        InvalidArgument
+            An invalid league_id or season_id was supplied. Currently the only league supported is legends.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`RankedPlayer`
+        List[:class:`RankedPlayer`]
+            Top players for the requested season and league.
         """
         data = await self.http.get_league_season_info(league_id, season_id)
         return [RankedPlayer(data=n, client=self) for n in data.get("items", [])]
 
-    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None):
-        """List clan labels.
+    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None) -> List[Label]:
+        """Fetch all possible clan labels.
 
         Parameters
         -----------
@@ -961,15 +1287,25 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Label`
+        List[:class:`Label`]
+            A list of all possible clan labels.
         """
         data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
 
-    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None):
-        """List player labels.
+    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None) -> List[Label]:
+        """Fetch all possible player labels.
 
         Parameters
         -----------
@@ -980,17 +1316,26 @@ class Client:
         after: str, optional
             For use with paging. Not implemented yet.
 
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
-        :class:`list` of :class:`Label`
+        List[:class:`Label`]
+            A list of all possible player labels.
         """
         data = await self.http.get_player_labels(limit=limit, before=before, after=after)
         return [Label(data=n, client=self) for n in data["items"]]
 
     # players
 
-    @corrected_tag(arg_name="player_tag")
-    async def get_player(self, player_tag: str, cls=Player, **kwargs):
+    async def get_player(self, player_tag: str, cls: Type[Player] = Player, **kwargs) -> Player:
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -998,6 +1343,21 @@ class Client:
         ----------
         player_tag : str
             The player tag to search for.
+
+        Raises
+        -------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`Player`.
+
+        NotFound
+            No player was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
 
         Returns
         --------
@@ -1007,12 +1367,17 @@ class Client:
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
 
+        if self.correct_tags:
+            player_tag = correct_tag(player_tag)
+
         data = await self.http.get_player(player_tag)
         return cls(data=data, client=self, **kwargs)
 
-    def get_players(self, player_tags: Iterable, cls=Player, **kwargs):
+    def get_players(self, player_tags: Iterable[str], cls: Type[Player] = Player, **kwargs) -> AsyncIterator[Player]:
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
+
+        This returns a :class:`PlayerIterator` which fetches the requested player tags in parallel.
 
         Example
         ---------
@@ -1025,22 +1390,25 @@ class Client:
 
         Parameters
         ----------
-        player_tags : :class:`collections.Iterable`
+        player_tags : Iterable[:class:`str`]
             An iterable of player tags to search for.
 
-        Returns
-        --------
-        :class:`PlayerIterator` of :class:`SearchPlayer`
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`Player`.
+
+        Yields
+        ------
+        :class:`Player`
+            A player matching one of the tags requested.
         """
-        if not isinstance(player_tags, Iterable):
-            raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
 
         return PlayerIterator(self, player_tags, cls=cls, **kwargs)
 
-    @corrected_tag(arg_name="player_tag")
-    async def verify_player_token(self, player_tag: str, token: str):
+    async def verify_player_token(self, player_tag: str, token: str) -> bool:
         """Verify player API token that can be found from the game settings.
 
         This can be used to check that players own the game accounts they claim to own
@@ -1053,10 +1421,25 @@ class Client:
         token : str
             The player's API token to verify.
 
+        Raises
+        ------
+        NotFound
+            No player was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
         Returns
         --------
         :class:`bool`
             Whether the player tag and API token were a valid match.
         """
+        if self.correct_tags:
+            player_tag = correct_tag(player_tag)
+
         data = await self.http.verify_player_token(player_tag, token)
         return data and data["status"] == "ok" or False

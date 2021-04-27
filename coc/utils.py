@@ -30,13 +30,16 @@ from collections import deque
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
-from typing import Union
+from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Union
 
 
 TAG_VALIDATOR = re.compile("^#?[PYLQGRJCUV0289]+$")
 
+T = TypeVar('T')
+T_co = TypeVar('T_co', covariant=True)
 
-def find(predicate, iterable):
+
+def find(predicate: Callable[[T], Any], iterable: Iterable[T]) -> Optional[T]:
     """A helper to return the first element found in the sequence
     that meets the predicate.
 
@@ -64,7 +67,7 @@ def find(predicate, iterable):
     return None
 
 
-def get(iterable, **attrs):
+def get(iterable: Iterable[T], **attrs: Any) -> Optional[T]:
     r"""A helper that returns the first item in an iterable that matches the attributes passed.
 
     If no match is found, ``None`` is returned.
@@ -100,12 +103,12 @@ def get(iterable, **attrs):
     return None
 
 
-def from_timestamp(timestamp):
+def from_timestamp(timestamp: str) -> datetime:
     """Parses the raw timestamp given by the API into a :class:`datetime.datetime` object."""
     return datetime.strptime(timestamp, "%Y%m%dT%H%M%S.000Z")
 
 
-def is_valid_tag(tag):
+def is_valid_tag(tag: str) -> bool:
     """Validates that a string is a valid Clash of Clans tag.
 
     This uses the assumption that tags can only consist of the characters PYLQGRJCUV0289.
@@ -134,44 +137,57 @@ def is_valid_tag(tag):
     return False
 
 
-def correct_tag(tag, prefix="#"):
+def correct_tag(tag: str, prefix: str = "#") -> str:
     """Attempts to correct malformed Clash of Clans tags
     to match how they are formatted in game
 
     Example
-    ---------
-        ' 123aBc O' -> '#123ABC0'
+    -------
+
+    .. code-block:: python3
+
+            new_tag = utils.correct_tag(" 123aBc O")
+            # new_tag is "#123ABC0".
+
+
+    Parameters
+    ----------
+    tag: str
+        The tag to correct.
+    prefix: str
+        The prefix to insert at the start of the tag. Defaults to ``#``.
+
+    Returns
+    -------
+    str
+        The corrected tag.
     """
     return tag and prefix + re.sub(r"[^A-Z0-9]+", "", tag.upper()).replace("O", "0")
 
 
-def corrected_tag(arg_offset=1, prefix="#", arg_name="tag"):
-    """Helper decorator to fix tags passed into client calls."""
+def corrected_tag() -> Callable[[Callable[..., T]], Callable[..., T]]:
+    """Helper decorator to fix tags passed into client calls. The tag must be the first parameter."""
 
-    def deco(func):
+    def deco(func: Callable[..., T]) -> Callable[..., T]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> T:
+            self = args[0]
 
-            if not args[0].correct_tags:
+            if not self.correct_tags:
                 return func(*args, **kwargs)
 
-            try:
-                args = list(args)
-                args[arg_offset] = correct_tag(args[arg_offset], prefix=prefix)
-                return func(*tuple(args), **kwargs)
-            except KeyError:
-                arg = kwargs.get(arg_name)
-                if not arg:
-                    return func(*args, **kwargs)
-                kwargs[arg_name] = correct_tag(arg, prefix)
-                return func(*args, **kwargs)
+            args = list(args)
+            args[1] = correct_tag(args[1])
+            return func(*tuple(args), **kwargs)
 
         return wrapper
 
     return deco
 
 
-def maybe_sort(seq, sort, itr=False, key=attrgetter("order")):
+def maybe_sort(
+        seq: Iterable[T], sort: bool, itr: bool = False, key: Callable[[str], Any] = attrgetter("order")
+) -> Union[List[T], Iterable[T]]:
     """Returns list or iter based on itr if sort is false otherwise sorted
     with key defaulting to operator.attrgetter('order')
     """
@@ -220,7 +236,7 @@ async def maybe_coroutine(function_, *args, **kwargs):
     return value
 
 
-def get_season_start(month=None, year=None):
+def get_season_start(month: Optional[int] = None, year: Optional[int] = None) -> datetime:
     """Get the datetime that the season started.
 
     This goes by the assumption that SC resets the season on the last monday of every month at 5am UTC.
@@ -268,7 +284,7 @@ def get_season_start(month=None, year=None):
     return get_start_for_month_year(month, year)
 
 
-def get_season_end(month=None, year=None):
+def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> datetime:
     """Get the datetime that the season ends.
 
     This goes by the assumption that SC resets the season on the last monday of every month at 5am UTC.
@@ -308,12 +324,12 @@ def get_season_end(month=None, year=None):
     return get_season_start(month, year)
 
 
-class _CachedProperty:
-    def __init__(self, name, function):
+class _CachedProperty(Generic[T, T_co]):
+    def __init__(self, name: str, function: Callable[[T], T_co]) -> None:
         self.name = name
         self.function = function
 
-    def __get__(self, instance, owner):
+    def __get__(self, instance: T, owner: Type[T]) -> T_co:
         try:
             return getattr(instance, self.name)
         except AttributeError:
@@ -322,8 +338,8 @@ class _CachedProperty:
             return result
 
 
-def cached_property(name):
-    def deco(func):
+def cached_property(name: str) -> Callable[[Callable[[T], T_co]], _CachedProperty[T, T_co]]:
+    def deco(func: Callable[[T], T_co]) -> _CachedProperty[T, T_co]:
         return _CachedProperty(name, func)
     return deco
 
