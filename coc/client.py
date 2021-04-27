@@ -25,13 +25,13 @@ SOFTWARE.
 import asyncio
 import logging
 
-from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
+from typing import AsyncIterator, Iterable, List, Optional, Type, Union
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import Label, League, Location
-from .http import HTTPClient, BasicThrottler
+from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
     ClanIterator,
@@ -42,9 +42,6 @@ from .iterators import (
 from .players import Player, ClanMember, RankedPlayer
 from .utils import correct_tag, get
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
-
-if TYPE_CHECKING:
-    from .http import BatchThrottler
 
 
 LOG = logging.getLogger(__name__)
