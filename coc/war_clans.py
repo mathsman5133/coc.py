@@ -25,7 +25,7 @@ import typing
 
 from .abc import BaseClan
 from .war_members import ClanWarMember, ClanWarLeagueClanMember
-from .utils import correct_tag
+from .utils import cached_property, correct_tag
 
 if typing.TYPE_CHECKING:
     from .war_attack import WarAttack  # noqa
@@ -70,13 +70,17 @@ class WarClan(BaseClan):
         "total_attacks",
         "_war",
         "_client",
+
         "_members",
-        "__iter_members",
+        "_iter_members",
+        "_cs_attacks",
+        "_cs_defenses",
+        "_cs_members",
     )
 
     def __init__(self, *, data, client, war):
         self._war = war
-        self._members = []
+        self._members = {}
 
         super().__init__(data=data, client=client)
         self._from_data(data)
@@ -84,36 +88,30 @@ class WarClan(BaseClan):
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.level = data_get("clanLevel")
-        self.destruction = data_get("destructionPercentage")
-        self.exp_earned = data_get("expEarned")
-        self.attacks_used = data_get("attacks")
-        self.stars = data_get("stars")
+        self.level: int = data_get("clanLevel")
+        self.destruction: float = data_get("destructionPercentage")
+        self.exp_earned: int = data_get("expEarned")
+        self.attacks_used: int = data_get("attacks")
+        self.stars: int = data_get("stars")
 
         if self._war:
-            self.max_stars = self._war.team_size * 3
-            self.total_attacks = self._war.team_size * 2
+            self.max_stars: int = self._war.team_size * 3
+            self.total_attacks: int = self._war.team_size * 2
         else:
-            self.max_stars = (data_get("teamSize") or 0) * 3
-            self.total_attacks = (data_get("teamSize") or 0) * 3
+            self.max_stars: int = (data_get("teamSize") or 0) * 3
+            self.total_attacks: int = (data_get("teamSize") or 0) * 3
 
-        self.__iter_members = (
+        self._iter_members = (
             ClanWarMember(data=mdata, client=self._client, war=self._war, clan=self)
             for mdata in data_get("members", [])
         )
 
-    @property
+    @cached_property("_cs_members")
     def members(self) -> typing.List[ClanWarMember]:
         """List[:class:`ClanWarMember`]: A list of members that are in the war.
         This is sorted by :attr:`ClanWarMember.map_position`
         """
-        dict_members = self._members
-        if dict_members:
-            return list(dict_members.values())
-
-        dict_members = self._members = {
-            member.tag: member for member in sorted(self.__iter_members, key=lambda m: m.map_position)
-        }
+        dict_members = self._members = {m.tag: m for m in sorted(self._iter_members, key=lambda m: m.map_position)}
         return list(dict_members.values())
 
     @property
@@ -121,7 +119,7 @@ class WarClan(BaseClan):
         """:class:`bool`: Indicates whether the clan is the opponent."""
         return self.tag == self._war.opponent.tag
 
-    @property
+    @cached_property("_cs_attacks")
     def attacks(self) -> typing.List["WarAttack"]:
         """List[:class:`WarAttack`]: Returns all clan member's attacks this war. This is sorted by attack order."""
         if not self._war:
@@ -133,7 +131,7 @@ class WarClan(BaseClan):
 
         return list(sorted(attacks, key=lambda a: a.order, reverse=True))
 
-    @property
+    @cached_property("_cs_defenses")
     def defenses(self) -> typing.List["WarAttack"]:
         """List[:class:`WarAttack`]: Returns all clan member's defenses this war. This is sorted by attack order.
 
@@ -149,38 +147,32 @@ class WarClan(BaseClan):
         --------
         The clan member who matches the tag.: Optional[:class:`ClanWarMember`]"""
         tag = correct_tag(tag)
-        dict_member = self._members
-        if not dict_member:
-            dict_member = self._members = {m.tag: m for m in self.__iter_members}
+        if not self._members:
+            _ = self.members
 
         try:
-            return dict_member[tag]
+            return self._members[tag]
         except KeyError:
             return None
 
 
 class ClanWarLeagueClan(BaseClan):
-    """Represents a Clan War League Clan.
-    """
+    """Represents a Clan War League Clan."""
+
+    __slots__ = BaseClan.__slots__ + ("_cs_members", "_iter_members")
 
     def __init__(self, *, data, client):
         super().__init__(data=data, client=client)
-        self._members = []
 
-        self.__iter_members = (
+        self._iter_members = (
             ClanWarLeagueClanMember(data=mdata, client=self._client) for mdata in data.get("members", [])
         )
 
-    @property
+    @cached_property("_cs_members")
     def members(self) -> typing.List[ClanWarLeagueClanMember]:
         """List[:class:`ClanWarLeagueClanMember`]: A list of players participating in this clan war league season.
 
         This list is selected when the clan chooses to participate in CWL, and will not change throughout the season.
         It is sometimes referred to as the `master roster`.
         """
-        list_members = self._members
-        if list_members:
-            return list_members
-
-        list_members = self._members = list(self.__iter_members)
-        return list_members
+        return list(self._iter_members)

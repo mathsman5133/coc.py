@@ -22,16 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from datetime import datetime
+from typing import Any, Type, TypeVar, Optional
 
 from .utils import from_timestamp
 
+T = TypeVar("T")
 
-def try_enum(_class, **kwargs):
+
+def try_enum(_class: Type[T], data: Any, **kwargs) -> Optional[T]:
     """Helper function to create a class from the given data."""
-    if list(kwargs.values())[0] is None:
-        return None
-
-    return _class(**kwargs)
+    return data and _class(data=data, **kwargs)
 
 
 class Achievement:
@@ -80,13 +80,13 @@ class Achievement:
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
-        self.name = data["name"]
-        self.stars = data["stars"]
-        self.value = data["value"]
-        self.target = data["target"]
-        self.info = data["info"]
-        self.completion_info = data["completionInfo"]
-        self.village = data["village"]
+        self.name: str = data["name"]
+        self.stars: int = data["stars"]
+        self.value: int = data["value"]
+        self.target: int = data["target"]
+        self.info: str = data["info"]
+        self.completion_info: str = data["completionInfo"]
+        self.village: str = data["village"]
 
     @property
     def is_builder_base(self) -> bool:
@@ -144,11 +144,11 @@ class Troop:
         self._from_data(data)
 
     def _from_data(self, data):
-        self.name = data["name"]
-        self.level = data["level"]
-        self.max_level = data["maxLevel"]
-        self.village = data["village"]
-        self.is_active = data.get("superTroopIsActive")
+        self.name: str = data["name"]
+        self.level: int = data["level"]
+        self.max_level: int = data["maxLevel"]
+        self.village: str = data["village"]
+        self.is_active: bool = data.get("superTroopIsActive")
 
     @property
     def is_max(self) -> bool:
@@ -202,10 +202,10 @@ class Hero:
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
-        self.name = data["name"]
-        self.level = data["level"]
-        self.max_level = data["maxLevel"]
-        self.village = data["village"]
+        self.name: str = data["name"]
+        self.level: int = data["level"]
+        self.max_level: int = data["maxLevel"]
+        self.village: str = data["village"]
 
     @property
     def is_max(self) -> bool:
@@ -254,10 +254,10 @@ class Spell:
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
-        self.name = data["name"]
-        self.level = data["level"]
-        self.max_level = data["maxLevel"]
-        self.village = data["village"]
+        self.name: str = data["name"]
+        self.level: int = data["level"]
+        self.max_level: int = data["maxLevel"]
+        self.village: str = data["village"]
 
     @property
     def is_max(self) -> bool:
@@ -281,7 +281,7 @@ class Location:
     Attributes
     -----------
     id:
-        :class:`str` - The location ID
+        :class:`int` - The location ID
     name:
         :class:`str` - The location name
     is_country:
@@ -314,11 +314,11 @@ class Location:
         # pylint: disable=invalid-name
         data_get = data.get
 
-        self.id = data_get("id")
-        self.name = data_get("name")
-        self.is_country = data_get("isCountry")
-        self.country_code = data_get("countryCode")
-        self.localised_name = data_get("localizedName")
+        self.id: int = data_get("id")
+        self.name: str = data_get("name")
+        self.is_country: bool = data_get("isCountry")
+        self.country_code: str = data_get("countryCode")
+        self.localised_name: str = data_get("localizedName")
 
 
 class League:
@@ -327,7 +327,7 @@ class League:
     Attributes
     -----------
     id:
-        :class:`str`: The league ID.
+        :class:`int`: The league ID.
     name:
         :class:`str`: The league name.
     localised_name:
@@ -365,10 +365,10 @@ class League:
         # pylint: disable=invalid-name
         data_get = data.get
 
-        self.id = data_get("id")
-        self.name = data_get("name")
-        self.localised_name = data_get("localizedName")
-        self.localised_short_name = data_get("localizedShortName")
+        self.id: int = data_get("id")
+        self.name: str = data_get("name")
+        self.localised_name: str = data_get("localizedName")
+        self.localised_short_name: str = data_get("localizedShortName")
         self.icon = try_enum(Icon, data=data_get("iconUrls"), client=self._client)
 
 
@@ -388,9 +388,9 @@ class Season:
         )
 
     def __init__(self, *, data):
-        self.rank = data.get("rank")
-        self.trophies = data.get("trophies")
-        self.id = data.get("id")
+        self.rank: int = data.get("rank")
+        self.trophies: int = data.get("trophies")
+        self.id: int = data.get("id")
 
 
 class LegendStatistics:
@@ -424,7 +424,7 @@ class LegendStatistics:
         )
 
     def __init__(self, *, data):
-        self.legend_trophies = data["legendTrophies"]
+        self.legend_trophies: int = data["legendTrophies"]
         self.current_season = try_enum(Season, data=data.get("currentSeason"))
         self.previous_season = try_enum(Season, data=data.get("previousSeason"))
         self.best_season = try_enum(Season, data=data.get("bestSeason"))
@@ -456,11 +456,11 @@ class Badge:
     def __init__(self, *, data, client):
         self._client = client
 
-        self.small = data.get("small")
-        self.medium = data.get("medium")
-        self.large = data.get("large")
+        self.small: str = data.get("small")
+        self.medium: str = data.get("medium")
+        self.large: str = data.get("large")
 
-        self.url = self.medium
+        self.url: str = self.medium
 
     async def save(self, filepath, size=None) -> int:
         """
@@ -525,13 +525,13 @@ class Icon:
     def __init__(self, *, data, client):
         self._client = client
 
-        self.tiny = data.get("tiny")
-        self.small = data.get("small")
-        self.medium = data.get("medium")
+        self.tiny: str = data.get("tiny")
+        self.small: str = data.get("small")
+        self.medium: str = data.get("medium")
 
-        self.url = self.medium
+        self.url: str = self.medium
 
-    async def save(self, filepath, size=None) -> int:
+    async def save(self, filepath: str, size: Optional[str] = None) -> int:
         """
         |coro|
 
@@ -647,8 +647,8 @@ class Label:
         # pylint: disable=invalid-name
         self._client = client
 
-        self.id = data.get("id")
-        self.name = data.get("name")
+        self.id: int = data.get("id")
+        self.name: str = data.get("name")
         self.badge = try_enum(Icon, data=data.get("iconUrls"), client=self._client)
 
 
@@ -666,8 +666,8 @@ class WarLeague:
 
     def __init__(self, *, data):
         # pylint: disable=invalid-name
-        self.id = data["id"]
-        self.name = data["name"]
+        self.id: int = data["id"]
+        self.name: str = data["name"]
 
     def __repr__(self):
         return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
@@ -696,9 +696,9 @@ class ChatLanguage:
 
     def __init__(self, *, data):
         # pylint: disable=invalid-name
-        self.id = data["id"]
-        self.name = data["name"]
-        self.language_code = data["languageCode"]
+        self.id: int = data["id"]
+        self.name: str = data["name"]
+        self.language_code: str = data["languageCode"]
 
     def __repr__(self):
         return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)

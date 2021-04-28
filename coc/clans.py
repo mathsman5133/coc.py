@@ -65,12 +65,12 @@ class RankedClan(BaseClan):
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.points = data_get("clanPoints")
-        self.versus_points = data_get("clanVersusPoints")
-        self.member_count = data_get("members")
+        self.points: int = data_get("clanPoints")
+        self.versus_points: int = data_get("clanVersusPoints")
+        self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
-        self.rank = data_get("rank")
-        self.previous_rank = data_get("previousRank")
+        self.rank: int = data_get("rank")
+        self.previous_rank: int = data_get("previousRank")
 
 
 class Clan(BaseClan):
@@ -150,28 +150,28 @@ class Clan(BaseClan):
         self.label_cls = Label
         self.member_cls = ClanMember
 
-        self._members = None  # type: typing.Optional[dict]
+        self._members = None  # type: typing.Optional[typing.Dict[str, ClanMember]]
 
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.points = data_get("clanPoints")
-        self.versus_points = data_get("clanVersusPoints")
-        self.member_count = data_get("members")
+        self.points: int = data_get("clanPoints")
+        self.versus_points: int = data_get("clanVersusPoints")
+        self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
 
         # only available via /clans/{clanTag} or /clans endpoint
-        self.type = data_get("type")
-        self.required_trophies = data_get("requiredTrophies")
-        self.war_frequency = data_get("warFrequency")
-        self.war_win_streak = data_get("warWinStreak")
-        self.war_wins = data_get("warWins")
-        self.war_ties = data_get("warTies")
-        self.war_losses = data_get("warLosses")
-        self.public_war_log = data_get("isWarLogPublic")
-        self.description = data_get("description")
+        self.type: str = data_get("type")
+        self.required_trophies: int = data_get("requiredTrophies")
+        self.war_frequency: str = data_get("warFrequency")
+        self.war_win_streak: int = data_get("warWinStreak")
+        self.war_wins: int = data_get("warWins")
+        self.war_ties: int = data_get("warTies")
+        self.war_losses: int = data_get("warLosses")
+        self.public_war_log: bool = data_get("isWarLogPublic")
+        self.description: str = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
 

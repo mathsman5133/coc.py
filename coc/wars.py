@@ -28,7 +28,7 @@ from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING
 from .enums import WarRound
 from .iterators import LeagueWarIterator
 from .miscmodels import try_enum, Timestamp
-from .utils import get
+from .utils import cached_property, get
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
 
@@ -90,13 +90,13 @@ class ClanWar:
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.state = data_get("state")
+        self.state: str = data_get("state")
         self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
-        self.war_tag = data_get("tag")
+        self.war_tag: str = data_get("tag")
 
-        self.team_size = data_get("teamSize") or len(data_get("clan", {}).get("members", []))
+        self.team_size: int = data_get("teamSize") or len(data_get("clan", {}).get("members", []))
 
         clan_data = data_get("clan")
         # annoying bug where if you request a war with a clan tag that clan could be the opponent or clan,
@@ -224,7 +224,7 @@ class ClanWar:
         away_member = self.opponent.get_member(tag)
         return away_member
 
-    def get_member_by(self, **attrs):
+    def get_member_by(self, **attrs) -> Optional["ClanWarMember"]:
         """Returns the first :class:`WarMember` that meets the attributes passed
 
         This will return the first member matching the attributes passed.
@@ -311,9 +311,9 @@ class ClanWarLogEntry:
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.result = data_get("result")
+        self.result: str = data_get("result")
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
-        self.team_size = data_get("teamSize")
+        self.team_size: int = data_get("teamSize")
 
         self.clan = self._fake_load_clan(data_get("clan"))
         self.opponent = self._fake_load_clan(data_get("opponent"))
@@ -353,7 +353,7 @@ class ClanWarLeagueGroup:
 
     """
 
-    __slots__ = ("state", "season", "rounds", "number_of_rounds", "_client", "__iter_clans", "_clans")
+    __slots__ = ("state", "season", "rounds", "number_of_rounds", "_client", "__iter_clans", "_cs_clans")
 
     def __repr__(self):
         attrs = [
@@ -364,32 +364,26 @@ class ClanWarLeagueGroup:
 
     def __init__(self, *, data, client, **_):
         self._client = client
-        self._clans = []
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.state = data_get("state")
-        self.season = data_get("season")
+        self.state: str = data_get("state")
+        self.season: str = data_get("season")
 
         rounds = data_get("rounds")
-        self.number_of_rounds = len(rounds)
+        self.number_of_rounds: int = len(rounds)
         # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
         # we want to get only the valid rounds
-        self.rounds = [n["warTags"] for n in rounds if n["warTags"][0] != "#0"]
+        self.rounds: List[List[str]] = [n["warTags"] for n in rounds if n["warTags"][0] != "#0"]
 
         self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client) for data in data_get("clans", []))
 
-    @property
+    @cached_property("_cs_clans")
     def clans(self) -> List[ClanWarLeagueClan]:
         """List[:class:`LeagueClan`]: Returns all participating clans."""
-        clans = self._clans
-        if clans:
-            return clans
-
-        self._clans = clans = list(self.__iter_clans)
-        return clans
+        return list(self.__iter_clans)
 
     def get_wars_for_clan(self, clan_tag: str, cls: Type[ClanWar] = ClanWar) -> AsyncIterator[ClanWar]:
         """Returns every war the clan has participated in this current CWL.

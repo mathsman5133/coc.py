@@ -95,12 +95,12 @@ class WarAttack:
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
-        self.stars = data["stars"]
-        self.destruction = data["destructionPercentage"]
-        self.order = data["order"]
-        self.attacker_tag = data["attackerTag"]
-        self.defender_tag = data["defenderTag"]
-        self.duration = data["duration"]
+        self.stars: int = data["stars"]
+        self.destruction: float = data["destructionPercentage"]
+        self.order: int = data["order"]
+        self.attacker_tag: str = data["attackerTag"]
+        self.defender_tag: str = data["defenderTag"]
+        self.duration: float = data["duration"]
 
     @property
     def attacker(self) -> "ClanWarMember":

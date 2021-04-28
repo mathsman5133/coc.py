@@ -26,6 +26,10 @@ import typing
 from .abc import BasePlayer
 from .war_attack import WarAttack
 
+if typing.TYPE_CHECKING:
+    from .wars import ClanWar
+    from .war_clans import WarClan
+
 
 class ClanWarMember(BasePlayer):
     """Represents a War Member that the API returns.
@@ -41,7 +45,7 @@ class ClanWarMember(BasePlayer):
     defense_count:
         :class:`int`: The number of times this member has been attacked.
     war:
-        :class:`War`: The current war this member is in.
+        :class:`ClanWar`: The current war this member is in.
     clan:
         :class:`WarClan`: The member's clan.
     """
@@ -65,24 +69,24 @@ class ClanWarMember(BasePlayer):
         super().__init__(data=data, client=client)
         self._client = client
         self._attacks = []
-        self.war = war
-        self.clan = clan
+        self.war = war  # type: ClanWar
+        self.clan = clan  # type: WarClan
         self._from_data(data)
 
     def _from_data(self, data):
         data_get = data.get
 
-        self.name = data_get("name")
-        self.tag = data_get("tag")
-        self.town_hall = data_get("townhallLevel")
-        self.map_position = data_get("mapPosition")
-        self.defense_count = data_get("opponentAttacks")
+        self.name: str = data_get("name")
+        self.tag: str = data_get("tag")
+        self.town_hall: int = data_get("townhallLevel")
+        self.map_position: int = data_get("mapPosition")
+        self.defense_count: int = data_get("opponentAttacks")
 
         self.__iter_attacks = (
             WarAttack(data=adata, client=self._client, war=self.war) for adata in data_get("attacks", [])
         )
 
-        self._best_opponent_attacker = data_get("bestOpponentAttack", {}).get("attackerTag")
+        self._best_opponent_attacker: str = data_get("bestOpponentAttack", {}).get("attackerTag")
 
     @property
     def best_opponent_attack(self) -> WarAttack:

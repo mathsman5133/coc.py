@@ -110,17 +110,17 @@ class ClanMember(BasePlayer):
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.exp_level = data_get("expLevel")
-        self.trophies = data_get("trophies")
-        self.versus_trophies = data_get("versusTrophies")
-        self.clan_rank = data_get("clanRank")
-        self.clan_previous_rank = data_get("clanPreviousRank")
-        self.donations = data_get("donations")
-        self.received = data_get("donationsReceived")
+        self.exp_level: int = data_get("expLevel")
+        self.trophies: int = data_get("trophies")
+        self.versus_trophies: int = data_get("versusTrophies")
+        self.clan_rank: int = data_get("clanRank")
+        self.clan_previous_rank: int = data_get("clanPreviousRank")
+        self.donations: int = data_get("donations")
+        self.received: int = data_get("donationsReceived")
 
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
-        self.role = try_enum(Role, value=data_get("role"))
+        self.role = data_get("role") and Role(value=data["role"])
 
     async def get_detailed_clan(self) -> typing.Optional["Clan"]:
         """Get detailed clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
@@ -161,11 +161,11 @@ class RankedPlayer(ClanMember):
         super()._from_data(data)
 
         data_get = data.get
-        self.attack_wins = data_get("attackWins")
-        self.defense_wins = data_get("defenseWins")
-        self.versus_trophies = data_get("versusTrophies")
-        self.rank = data_get("rank")
-        self.previous_rank = data_get("previousRank")
+        self.attack_wins: int = data_get("attackWins")
+        self.defense_wins: int = data_get("defenseWins")
+        self.versus_trophies: int = data_get("versusTrophies")
+        self.rank: int = data_get("rank")
+        self.previous_rank: int = data_get("previousRank")
 
 
 class Player(ClanMember):
@@ -269,15 +269,15 @@ class Player(ClanMember):
         super()._from_data(data)
         data_get = data.get
 
-        self.attack_wins = data_get("attackWins")
-        self.defense_wins = data_get("defenseWins")
-        self.best_trophies = data_get("bestTrophies")
-        self.war_stars = data_get("warStars")
-        self.town_hall = data_get("townHallLevel")
-        self.town_hall_weapon = data_get("townHallWeaponLevel")
-        self.builder_hall = data_get("builderHallLevel", 0)
-        self.best_versus_trophies = data_get("bestVersusTrophies")
-        self.versus_attack_wins = data_get("versusBattleWins")
+        self.attack_wins: int = data_get("attackWins")
+        self.defense_wins: int = data_get("defenseWins")
+        self.best_trophies: int = data_get("bestTrophies")
+        self.war_stars: int = data_get("warStars")
+        self.town_hall: int = data_get("townHallLevel")
+        self.town_hall_weapon: int = data_get("townHallWeaponLevel")
+        self.builder_hall: int = data_get("builderHallLevel", 0)
+        self.best_versus_trophies: int = data_get("bestVersusTrophies")
+        self.versus_attack_wins: int = data_get("versusBattleWins")
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
 
         label_cls = self.label_cls
