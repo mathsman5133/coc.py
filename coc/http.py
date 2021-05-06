@@ -155,7 +155,9 @@ class Route:
         else:
             self.url = url
 
-        self.stats_key = stats_url_matcher.sub("{}", path)
+    @property
+    def stats_key(self):
+        return stats_url_matcher.sub("{}", self.path)
 
 
 class HTTPClient:
@@ -176,6 +178,7 @@ class HTTPClient:
         connector=None,
         timeout=30.0,
         cache_max_size=10000,
+        stats_max_size=1000,
     ):
         self.client = client
         self.loop = loop
@@ -190,7 +193,7 @@ class HTTPClient:
 
         self.__lock = asyncio.Semaphore(per_second)
         self.cache = cache_max_size and LRU(cache_max_size)
-        self.stats = HTTPStats(max_size=10)
+        self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
 
         if issubclass(throttler, BasicThrottler):
             self.__throttle = throttler(1 / per_second)
@@ -250,9 +253,12 @@ class HTTPClient:
                 async with self.__lock, self.__throttle:
                     start = perf_counter()
                     async with self.__session.request(method, url, **kwargs) as response:
+
                         perfcounter = (perf_counter() - start) * 1000
                         log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
-                        self.stats[route.stats_key] = perfcounter
+                        if self.stats:
+                            self.stats[route.stats_key] = perfcounter
+
                         LOG.debug("API HTTP Request: %s", str(log_info))
                         data = await json_or_text(response)
 

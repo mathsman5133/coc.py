@@ -116,6 +116,7 @@ class Client:
         "timeout",
         "connector",
         "cache_max_size",
+        "stats_max_size",
         "http",
         "_ready",
         "correct_tags",
@@ -137,6 +138,7 @@ class Client:
         connector=None,
         timeout: float = 30.0,
         cache_max_size: int = 10000,
+        stats_max_size: int = 1000,
         **_,
     ):
 
@@ -154,6 +156,7 @@ class Client:
         self.connector = connector
         self.timeout = timeout
         self.cache_max_size = cache_max_size
+        self.stats_max_size = stats_max_size
 
         self.http = None  # set in method login()
         self._ready = asyncio.Event()
@@ -190,6 +193,7 @@ class Client:
             connector=self.connector,
             timeout=self.timeout,
             cache_max_size=self.cache_max_size,
+            stats_max_size=self.stats_max_size,
         )
         await self.http.get_keys()
         await self._ready.wait()
