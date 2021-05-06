@@ -85,7 +85,7 @@ class HTTPException(ClashOfClansException):
             super().__init__(fmt.format(self.message))
 
 
-class InvalidArgument(ClashOfClansException):
+class InvalidArgument(HTTPException):
     """
     Thrown when an error status 400 occurs.
 
