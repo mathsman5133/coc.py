@@ -17,7 +17,7 @@ v1.2.0
 
 - Adds new achievements and updated the order of existing ones.
 
-- Added :attr:`Player.super_troops` and :attr:`Player.pets`.
+- Added :attr:`Player.super_troops` and :attr:`Player.hero_pets`.
 
 - Added :attr:`Troop.is_active` to check whether a super troop is active.
 
