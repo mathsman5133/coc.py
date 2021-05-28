@@ -364,7 +364,10 @@ class Player(ClanMember):
         if not self._home_troops:
             _ = self.troops
 
-        return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
+        return list(sorted(
+            filter(lambda t: t.name in HOME_TROOP_ORDER, self._home_troops.values()),
+            key=lambda t: order[t.name]
+        ))
 
     @cached_property("_cs_builder_troops")
     def builder_troops(self) -> typing.List[Troop]:
