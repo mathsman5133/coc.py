@@ -38,6 +38,10 @@ class ClanWarMember(BasePlayer):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The player's tag
+    name: :class:`str`
+        The player's name
     town_hall:
         :class:`int`: The member's townhall level.
     map_position:
@@ -138,6 +142,10 @@ class ClanWarLeagueClanMember(BasePlayer):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The player's tag
+    name: :class:`str`
+        The player's name
     town_hall: :class:`int`
         The player's town hall level.
     """

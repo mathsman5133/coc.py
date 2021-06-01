@@ -328,6 +328,7 @@ class _CachedProperty(Generic[T, T_co]):
     def __init__(self, name: str, function: Callable[[T], T_co]) -> None:
         self.name = name
         self.function = function
+        self.__doc__ = getattr(function, '__doc__')
 
     def __get__(self, instance: T, owner: Type[T]) -> T_co:
         try:

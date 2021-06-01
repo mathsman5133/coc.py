@@ -35,6 +35,14 @@ class RankedClan(BaseClan):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The clan's tag
+    name: :class:`str`
+        The clan's name
+    badge: :class:`Badge`
+        The clan's badge
+    level: :class:`int`
+        The clan's level.
     location: :class:`Location`
         The clan's location.
     member_count: :class:`int`
@@ -78,6 +86,14 @@ class Clan(BaseClan):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The clan's tag
+    name: :class:`str`
+        The clan's name
+    badge: :class:`Badge`
+        The clan's badge
+    level: :class:`int`
+        The clan's level.
     type: :class:`str`
         The clan's type for accepting members.
         This could be ``open``, ``inviteOnly`` or ``closed``.

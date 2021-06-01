@@ -52,6 +52,10 @@ class ClanMember(BasePlayer):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The player's tag
+    name: :class:`str`
+        The player's name
     clan: Optional[:class:`Clan`]
         The player's clan. If the player is clanless, this will be ``None``.
     role: :class:`Role`

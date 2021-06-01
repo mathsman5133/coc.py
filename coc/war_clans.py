@@ -48,6 +48,14 @@ class WarClan(BaseClan):
 
     Attributes
     ----------
+    tag: :class:`str`
+        The clan's tag
+    name: :class:`str`
+        The clan's name
+    badge: :class:`Badge`
+        The clan's badge
+    level: :class:`int`
+        The clan's level.
     stars:
         :class:`int`: Number of stars by clan this war.
     destruction:
@@ -157,7 +165,19 @@ class WarClan(BaseClan):
 
 
 class ClanWarLeagueClan(BaseClan):
-    """Represents a Clan War League Clan."""
+    """Represents a Clan War League Clan.
+
+    Attributes
+    ----------
+    tag: :class:`str`
+        The clan's tag
+    name: :class:`str`
+        The clan's name
+    badge: :class:`Badge`
+        The clan's badge
+    level: :class:`int`
+        The clan's level.
+    """
 
     __slots__ = BaseClan.__slots__ + ("_cs_members", "_iter_members")
 

@@ -30,47 +30,7 @@ if TYPE_CHECKING:
     from .players import Player
 
 
-class OverrideDoc(type):
-    """Helper metaclass to make Sphinx recognise attributes from base classes.
-
-    This just overrides the object's docstring and injects any documented attributes from the base classes.
-    """
-
-    def __new__(cls, *args, **kwargs):
-        _, bases, _ = args
-        new_cls = super().__new__(cls, *args, **kwargs)
-
-        for obj in bases:
-            if obj.__doc__ is None:
-                continue
-            if new_cls.__doc__ is None:
-                continue
-            if "Attributes" not in obj.__doc__:
-                continue
-
-            try:
-                doc = obj.__doc__.split("Attributes")[1].split("\n\n")[0]
-            except (KeyError, AttributeError):
-                continue
-
-            if "Attributes" not in new_cls.__doc__:
-                new_cls.__doc__ += "\nAttributes\n----------\n" + doc.replace("----------", "")
-            else:
-                try:
-                    insert = new_cls.__doc__.index("Attributes")
-                except ValueError:
-                    return new_cls
-
-                # fmt: off
-                new_cls.__doc__ = (
-                    new_cls.__doc__[:insert + 25] + doc.replace("----------", "") + new_cls.__doc__[insert + 25:]
-                )
-                # fmt: on
-
-        return new_cls
-
-
-class BaseClan(metaclass=OverrideDoc):
+class BaseClan:
     """An ABC that implements some common operations on clans, regardless of type.
 
     Attributes
@@ -142,7 +102,7 @@ class BaseClan(metaclass=OverrideDoc):
         return PlayerIterator(self._client, (p.tag for p in self.members), cls=cls)
 
 
-class BasePlayer(metaclass=OverrideDoc):
+class BasePlayer:
     """An ABC that implements some common operations on players, regardless of type.
 
     Attributes
