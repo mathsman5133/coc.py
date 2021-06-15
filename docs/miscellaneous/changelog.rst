@@ -7,6 +7,21 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v1.3.0
+------
+- Added Dragon Rider and Rocket Balloon
+
+- Added `cls` parameter for :meth:`Clan.get_detailed_members()`
+
+- Troops no longer included in `Player.home_troops`
+
+- :exc:`InvalidArgument` will now return a more helpful message.
+
+- ``limit`` parameter is now correctly cached when using ``search_x`` endpoints.
+
+- Added more typings and documentation improvements
+
+
 v1.2.1
 ------
 - Fixes an issue where `Clan.members` was empty if `Clan.get_member` was called before `Clan.members`.
