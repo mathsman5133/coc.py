@@ -66,6 +66,7 @@ ELIXIR_TROOP_ORDER = [
     "Miner",
     "Electro Dragon",
     "Yeti",
+    "Dragon Rider",
 ]
 
 DARK_ELIXIR_TROOP_ORDER = [
@@ -94,6 +95,7 @@ SUPER_TROOP_ORDER = [
     "Super Giant",
     "Sneaky Goblin",
     "Super Wall Breaker",
+    "Rocket Balloon",
     "Super Wizard",
     "Inferno Dragon",
     "Super Minion",
