@@ -42,6 +42,7 @@ from .enums import (
     HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
     SPELL_ORDER,
+    SUPER_TROOP_ORDER,
     UNRANKED_LEAGUE_DATA,
 )
 from .errors import (
