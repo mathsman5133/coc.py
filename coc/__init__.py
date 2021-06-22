@@ -38,9 +38,11 @@ from .enums import (
     ELIXIR_SPELL_ORDER,
     ELIXIR_TROOP_ORDER,
     HERO_ORDER,
+    HERO_PETS_ORDER,
     HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
     SPELL_ORDER,
+    SUPER_TROOP_ORDER,
     UNRANKED_LEAGUE_DATA,
 )
 from .errors import (
