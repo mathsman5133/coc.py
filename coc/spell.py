@@ -1,7 +1,5 @@
-from typing import Type, Optional
+from typing import Type, Dict, List
 from pathlib import Path
-
-import ujson
 
 from .abc import DataContainer, DataContainerHolder
 from .miscmodels import Time, Resource
@@ -111,8 +109,8 @@ class Spell(DataContainer):
 
 
 class SpellHolder(DataContainerHolder):
-    items: list[Type[Spell]] = []
-    item_lookup: dict[str, Type[Spell]]
+    items: List[Type[Spell]] = []
+    item_lookup: Dict[str, Type[Spell]]
 
     FILE_PATH = SPELLS_FILE_PATH
     data_object = Spell

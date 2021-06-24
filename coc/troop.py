@@ -1,12 +1,10 @@
-import copy
-from typing import Type, Optional
+from typing import Type, Optional, Dict, List
 from pathlib import Path
 
 import ujson
 
 from .abc import DataContainer, DataContainerHolder
 from .miscmodels import Time, Resource, UnitStat, try_enum
-from .utils import find
 
 
 TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
@@ -153,8 +151,8 @@ class Troop(DataContainer):
 
 
 class TroopHolder(DataContainerHolder):
-    items: list[Type[Troop]] = []
-    item_lookup: dict[tuple[str, bool], Type[Troop]]
+    items: List[Type[Troop]] = []
+    item_lookup: Dict[tuple[str, bool], Type[Troop]]
 
     def _load_json(self, object_ids, english_aliases, lab_to_townhall):
         with open(TROOPS_FILE_PATH) as fp:

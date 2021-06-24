@@ -23,7 +23,7 @@ SOFTWARE.
 """
 import ujson
 
-from typing import AsyncIterator, Any, Type, Optional, TYPE_CHECKING
+from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
 from .miscmodels import try_enum, Badge, UnitStat, Resource, Time
 from .iterators import PlayerIterator
@@ -152,7 +152,7 @@ class DataContainerMetaClass(type):
 
 
 class DataContainer(metaclass=DataContainerMetaClass):
-    lab_to_townhall: dict[int, int]
+    lab_to_townhall: Dict[int, int]
 
     def __init__(self, data, townhall):
         self.name: str = data["name"]
@@ -233,7 +233,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         """:class:`bool`: Returns a boolean that indicates whether the troop belongs to the home base."""
         return self.village == "home"
 
-    def _to_dict(self) -> dict[str, Any]:
+    def _to_dict(self) -> Dict[str, Any]:
         return {
             "name": self.name,
             "level": self.level,

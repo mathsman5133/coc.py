@@ -1,10 +1,10 @@
-from typing import TYPE_CHECKING, Type
+from typing import TYPE_CHECKING, Dict, List, Type
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
 
 if TYPE_CHECKING:
-    from .miscmodels import Time, Resource, UnitStat, try_enum
+    from .miscmodels import Time, Resource
 
 
 HERO_FILE_PATH = Path(__file__).parent.joinpath(Path("static/heroes.json"))
@@ -98,8 +98,8 @@ class Hero(DataContainer):
 
 
 class HeroHolder(DataContainerHolder):
-    items: list[Type[Hero]] = []
-    item_lookup: dict[str, Type[Hero]]
+    items: List[Type[Hero]] = []
+    item_lookup: Dict[str, Type[Hero]]
 
     FILE_PATH = HERO_FILE_PATH
     data_object = Hero
@@ -158,8 +158,8 @@ class Pet(DataContainer):
 
 
 class PetHolder(DataContainerHolder):
-    items: list[Type[Pet]] = []
-    item_lookup: dict[str, Type[Pet]]
+    items: List[Type[Pet]] = []
+    item_lookup: Dict[str, Type[Pet]]
 
     FILE_PATH = PET_FILE_PATH
     data_object = Pet
