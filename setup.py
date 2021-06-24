@@ -46,7 +46,7 @@ setup(
     author="mathsman5133",
     url="https://github.com/mathsman5133/coc.py",
     package_data={"coc": ["events.pyi"]},
-    packages=["coc", "coc.ext.discordlinks"],
+    packages=["coc", "coc.static", "coc.ext.discordlinks"],
     version=VERSION,
     license="MIT",
     description="A python wrapper for the Clash of Clans API",
