@@ -286,7 +286,7 @@ class HTTPClient:
 
                         if response.status == 403:
                             if data.get("reason") in ["accessDenied.invalidIp"]:
-                                if not api_request:
+                                if not api_request and self.email and self.password:
                                     await self.reset_key(key)
                                     LOG.info("Reset Clash of Clans key")
                                     return await self.request(route, **kwargs)

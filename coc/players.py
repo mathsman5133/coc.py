@@ -24,7 +24,7 @@ SOFTWARE.
 import typing
 
 
-from .miscmodels import try_enum, Achievement, Troop, Hero, Spell, Label, League, LegendStatistics
+from .miscmodels import try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
     HERO_ORDER,
@@ -38,7 +38,10 @@ from .enums import (
     HERO_PETS_ORDER,
 )
 from .abc import BasePlayer
+from .hero import Hero, Pet
 from .player_clan import PlayerClan
+from .spell import Spell
+from .troop import Troop
 from .utils import cached_property
 
 
@@ -227,17 +230,20 @@ class Player(ClanMember):
         "_spells",
         "_home_troops",
         "_builder_troops",
+        "_super_troops",
         "achievement_cls",
         "hero_cls",
         "label_cls",
         "spell_cls",
         "troop_cls",
+        "pet_cls",
 
         "_iter_achievements",
         "_iter_heroes",
         "_iter_labels",
         "_iter_spells",
         "_iter_troops",
+        "_iter_pets",
 
         "_cs_labels",
         "_cs_achievements",
@@ -250,22 +256,39 @@ class Player(ClanMember):
         "_cs_heroes",
         "_cs_spells",
 
+        "_game_files_loaded",
+        "_load_game_data",
+
     )
 
-    def __init__(self, *, data, client, **_):
+    def __init__(self, *, data, client, load_game_data=None, **_):
         self._client = client
 
         self._achievements = None  # type: typing.Optional[dict]
         self._heroes = None  # type: typing.Optional[dict]
         self._spells = None  # type: typing.Optional[dict]
-        self._home_troops = None  # type: typing.Optional[dict]
-        self._builder_troops = None  # type: typing.Optional[dict]
+        self._home_troops = {}  # type: typing.Optional[dict]
+        self._builder_troops = {}  # type: typing.Optional[dict]
+        self._super_troops = {}
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
         self.label_cls = Label
         self.spell_cls = Spell
         self.troop_cls = Troop
+        self.pet_cls = Pet
+
+        if self._client._troop_holder.loaded:
+            self._game_files_loaded = True
+        else:
+            self._game_files_loaded = False
+
+        if load_game_data is not None:
+            self._load_game_data = load_game_data
+        elif self._client.load_game_data.never:
+            self._load_game_data = False
+        else:
+            self._load_game_data = True
 
         super().__init__(data=data, client=client)
 
@@ -286,20 +309,87 @@ class Player(ClanMember):
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
-        troop_cls = self.troop_cls
-        hero_cls = self.hero_cls
-        spell_cls = self.spell_cls
+        troop_loader = self._client._troop_holder.load
+        hero_loader =  self._client._hero_holder.load
+        spell_loader = self._client._spell_holder.load
+        pet_loader = self._client._pet_holder.load
+
+        if self._game_files_loaded:
+            pet_lookup = [p.name for p in self._client._pet_holder.items]
+        else:
+            pet_lookup = HERO_PETS_ORDER
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
-        self._iter_troops = (troop_cls(data=tdata) for tdata in data_get("troops", []))
-        self._iter_heroes = (hero_cls(data=hdata) for hdata in data_get("heroes", []))
-        self._iter_spells = (spell_cls(data=sdata) for sdata in data_get("spells", []))
+        self._iter_troops = (
+            troop_loader(
+                data=tdata,
+                townhall=self.town_hall,
+                default=self.troop_cls,
+                load_game_data=self._load_game_data,
+            ) for tdata in data_get("troops", []) if tdata["name"] not in pet_lookup
+        )
+
+        self._iter_heroes = (
+            hero_loader(
+                data=hdata,
+                townhall=self.town_hall,
+                default=self.hero_cls,
+                load_game_data=self._load_game_data,
+            ) for hdata in data_get("heroes", [])
+        )
+
+        self._iter_spells = (
+            spell_loader(
+                data=sdata,
+                townhall=self.town_hall,
+                default=self.spell_cls,
+                load_game_data=self._load_game_data,
+            ) for sdata in data_get("spells", [])
+        )
+
+        self._iter_pets = (
+            pet_loader(
+                data=tdata,
+                townhall=self.town_hall,
+                default=self.pet_cls,
+                load_game_data=self._load_game_data,
+            ) for tdata in data_get("troops", []) if tdata["name"] in pet_lookup
+        )
 
     def _inject_clan_member(self, member):
         if member:
             self.clan_rank = getattr(member, "clan_rank", None)
             self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
+
+    def load_game_data(self):
+        """Load game data for this player's troops and spells.
+
+        .. note::
+
+            This is not the preferred way to load game data.
+            The best way to load game data is to pass ``load_game_data=True`` into your ``get_player`` call,
+            or to have ``load_game_data=LoadGameData(default=True)`` in your client initiation.
+
+            This method is provided as a utility for events where loading game data is not desirable unless a
+            change has been observed.
+
+        .. note::
+
+            This operation may be slow if you have not loaded the game files during the current session yet.
+
+        """
+        if self._game_files_loaded:
+            return True
+
+        holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder)
+        if not all(holder.loaded for holder in holders):
+            self._client._load_holders()
+
+        for items, holder in zip((self.troops, self.heroes, self.spells), holders):
+            for item in items:
+                if not item.is_loaded:
+                    holder.load(item._to_dict(), self.town_hall)
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
@@ -351,10 +441,37 @@ class Player(ClanMember):
 
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
         or :attr:`Player.builder_troops` if you want an ordered list.
+
+        This includes:
+        - Elixir Troops (Barbarian, Balloon, etc.)
+        - Dark Elixir Troops (Minion, Hog Rider, etc.)
+        - Siege Machines (Log Launcher, etc.)
+        - **Boosted** Super Troops
+        - Builder Troops (Raged Barbarian, etc.)
+
+        This **does not** include:
+        - Heroes
+        - Hero Pets
+        - Spells
+        - Un-boosted Super Troops
         """
-        troops = list(self._iter_troops)
-        self._home_troops = {t.name: t for t in troops if t.is_home_base}
-        self._builder_troops = {t.name: t for t in troops if t.is_builder_base}
+        loaded = self._game_files_loaded
+        troops = []
+
+        for troop in self._iter_troops:
+            if (loaded and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
+                self._super_troops[troop.name] = troop
+                if troop.is_active:
+                    self._home_troops[troop.name] = troop
+                    troops.append(troop)
+
+            elif troop.is_home_base:
+                self._home_troops[troop.name] = troop
+                troops.append(troop)
+            elif troop.is_builder_base:
+                self._builder_troops[troop.name] = troop
+                troops.append(troop)
+
         return troops
 
     @cached_property("_cs_home_troops")
@@ -362,22 +479,28 @@ class Player(ClanMember):
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
+
+        This includes:
+        - Elixir Troops (Barbarian, Balloon, etc.)
+        - Dark Elixir Troops (Minion, Hog Rider, etc.)
+        - Siege Machines (Log Launcher, etc.)
+        - **Boosted** Super Troops
         """
         order = {k: v for v, k in enumerate(HOME_TROOP_ORDER)}
 
         if not self._home_troops:
             _ = self.troops
 
-        return list(sorted(
-            filter(lambda t: t.name in HOME_TROOP_ORDER, self._home_troops.values()),
-            key=lambda t: order[t.name]
-        ))
+        return list(sorted(self._home_troops, key=lambda t: order[t.name]))
 
     @cached_property("_cs_builder_troops")
     def builder_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
+
+        This includes:
+        - Builder troops
         """
         order = {k: v for v, k in enumerate(BUILDER_TROOPS_ORDER)}
 
@@ -391,9 +514,12 @@ class Player(ClanMember):
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
         This will return siege machines in the order found in both barracks and labatory in-game.
+
+        This includes:
+        - Siege machines only.
         """
         order = {k: v for v, k in enumerate(SIEGE_MACHINE_ORDER)}
-        troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER)
+        troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER or t.is_siege_machine)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_hero_pets")
@@ -401,20 +527,28 @@ class Player(ClanMember):
         """List[:class:`Troop`]: A :class:`List` of the player's hero pets.
 
         This will return hero pets in the order found in the Pet House in-game.
+
+        This includes:
+        - Hero pets only.
         """
         order = {k: v for v, k in enumerate(HERO_PETS_ORDER)}
-        troops = (t for t in self.troops if t.name in HERO_PETS_ORDER)
-        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+        return list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_super_troops")
     def super_troops(self) -> typing.List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's super troops.
 
         This will return super troops in the order found in the super troop boosting building, in game.
+
+        This includes:
+        - All super troops, boosted or not.
         """
         order = {k: v for v, k in enumerate(SUPER_TROOP_ORDER)}
-        troops = (t for t in self.troops if t.name in SUPER_TROOP_ORDER)
-        return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
+
+        if not self._super_troops:
+            _ = self.troops
+
+        return list(sorted(self._super_troops, key=lambda t: order.get(t.name, 0)))
 
     def get_troop(self, name: str, is_home_troop=None, default_value=None) -> typing.Optional[Troop]:
         """Returns a troop with the given name.

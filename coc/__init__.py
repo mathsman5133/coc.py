@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "1.3.0"
+__version__ = "2.0.0a"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
@@ -33,10 +33,6 @@ from .enums import (
     WarRound,
     ACHIEVEMENT_ORDER,
     BUILDER_TROOPS_ORDER,
-    DARK_ELIXIR_SPELL_ORDER,
-    DARK_ELIXIR_TROOP_ORDER,
-    ELIXIR_SPELL_ORDER,
-    ELIXIR_TROOP_ORDER,
     HERO_ORDER,
     HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
@@ -54,7 +50,8 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .login import login
+from .login import login, login_with_keys
+from .hero import Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
@@ -66,19 +63,18 @@ from .iterators import (
 from .miscmodels import (
     Achievement,
     Badge,
-    Hero,
     Icon,
     League,
     LegendStatistics,
     Location,
-    Spell,
-    Troop,
     Timestamp,
     Label,
     WarLeague,
 )
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan
+from .spell import Spell
+from .troop import Troop
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
 from .war_members import ClanWarLeagueClanMember, ClanWarMember

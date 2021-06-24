@@ -51,7 +51,7 @@ class WarRound(Enum):
         return self.name
 
 
-ELIXIR_TROOP_ORDER = [
+HOME_TROOP_ORDER = [
     "Barbarian",
     "Archer",
     "Giant",
@@ -67,9 +67,6 @@ ELIXIR_TROOP_ORDER = [
     "Electro Dragon",
     "Yeti",
     "Dragon Rider",
-]
-
-DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -104,9 +101,7 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
 ]
 
-# TODO: When v2 comes around, remove siege machines from here
-HOME_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER + \
-                   SIEGE_MACHINE_ORDER + SUPER_TROOP_ORDER
+HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 
 BUILDER_TROOPS_ORDER = [
@@ -123,7 +118,7 @@ BUILDER_TROOPS_ORDER = [
     "Hog Glider",
 ]
 
-ELIXIR_SPELL_ORDER = [
+SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
     "Rage Spell",
@@ -131,17 +126,12 @@ ELIXIR_SPELL_ORDER = [
     "Freeze Spell",
     "Clone Spell",
     "Invisibility Spell",
-]
-
-DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
     "Skeleton Spell",
     "Bat Spell",
 ]
-
-SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
 HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 

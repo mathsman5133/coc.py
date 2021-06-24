@@ -30,10 +30,11 @@ from collections import deque
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
-from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Union
+from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Tuple, Union
 
 
-TAG_VALIDATOR = re.compile("^#?[PYLQGRJCUV0289]+$")
+TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
+ARMY_LINK_SEPERATOR = re.compile(r"u([\d+x-]+)s([\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -183,6 +184,37 @@ def corrected_tag() -> Callable[[Callable[..., T]], Callable[..., T]]:
         return wrapper
 
     return deco
+
+
+def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
+    """Parse an army link into (Troop ID, Quantity) pairs for troops and spells.
+
+    .. note::
+
+        For general usage, consider :meth:`Client.parse_army_link` instead, as it will return Troop and Spell objects.
+
+    Parameters
+    ----------
+    link: str
+        The army link to parse, from in-game.
+
+    Returns
+    -------
+    List[Tuple[int, int]], List[Tuple[int, int]]
+        2 lists containing (troop_id, quantity) pairs. See :meth:`Client.parse_army_link` for a detailed example.
+
+    """
+    match = ARMY_LINK_SEPERATOR.findall(link)
+    if not match:
+        return [], []
+
+    return [
+        (4_000_000 + int(split[1]), int(split[0]))
+        for split in (troop.split('x') for troop in match[0][0].split('-'))
+    ], [
+        (26_000_000 + int(split[1]), int(split[0]))
+        for split in (spell.split('x') for spell in match[0][1].split('-'))
+    ]
 
 
 def maybe_sort(
@@ -408,3 +440,29 @@ class HTTPStats(dict):
     def get_all_average(self):
         """Get the average latency / performance counter for each API endpoint."""
         return {k: sum(v) / len(v) for k, v in self.items()}
+
+
+class CaseInsensitiveDict(dict):
+    def __getitem__(self, key):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        return super().__getitem__(key)
+
+    def get(self, key, default=None):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        return super().get(key, default)
+
+    def __setitem__(self, key, v):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        super().__setitem__(key, v)

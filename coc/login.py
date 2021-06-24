@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import typing
+from typing import Type, Union
 
 from .client import Client
 from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
-) -> typing.Union[Client, EventsClient]:
+    email: str, password: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs
+) -> Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 
     This function makes logging into the client easy, returning the created client.
@@ -52,4 +52,10 @@ def login(
     """
     instance = client(**kwargs)
     instance.loop.run_until_complete(instance.login(email, password))
+    return instance
+
+
+def login_with_keys(*keys: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs) -> Union[Client, EventsClient]:
+    instance = client(**kwargs)
+    instance.login_with_keys(*keys)
     return instance
