@@ -14,6 +14,36 @@ SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json
 class Troop(DataContainer):
     """Represents a Troop object as returned by the API, optionally filled with game data.
 
++--------------------+-------------------+----------------------------------------------------------------------------------------------------+
+|        Name        |       Type        |                                         Short Description                                          |
++--------------------+-------------------+----------------------------------------------------------------------------------------------------+
+|         id         |        int        |                                       The troop's unique ID.                                       |
+|        name        |        str        |                                         The troop's name.                                          |
+|       range        |        int        |                                     The troop's attack range.                                      |
+|        dps         |        int        |                                The troop's Damage Per Second (DPS).                                |
+|     hitpoints      |        int        |                        The number of hitpoints the troop has at this level.                        |
+|   ground_target    |       bool        |                              Whether the troop is ground-targetting.                               |
+|       speed        |        int        |                                         The troop's speed.                                         |
+|    upgrade_cost    |        int        |              The amount of resources required to upgrade the troop to the next level.              |
+|  upgrade_resource  | :class:`Resource` |                          The type of resource used to upgrade this troop.                          |
+|    upgrade_time    |   :class:`Time`   |                      The time taken to upgrade this troop to the next level.                       |
+|   training_cost    |        int        |                       The amount of resources required to train this troop.                        |
+| training_resource  | :class:`Resource` |                           The type of resource used to train this troop.                           |
+|   training_time    |   :class:`Time`   |                          The amount of time required to train this troop.                          |
+|  is_elixir_troop   |   :class:`bool`   |                      Whether this troop is a regular troop from the Barracks                       |
+|   is_dark_troop    |   :class:`bool`   |                 Whether this troop is a dark-troop, trained in the Dark Barracks.                  |
+|  is_siege_machine  |   :class:`bool`   |                               Whether this troop is a Siege Machine.                               |
+|   is_super_troop   |   :class:`bool`   |                                Whether this troop is a Super Troop.                                |
+|      cooldown      |   :class:`Time`   |     The cooldown on this super troop before being able to be reactivated [Super Troops Only].      |
+|      duration      |   :class:`Time`   |               The length of time this super troop is active for [Super Troops Only].               |
+| min_original_level |        int        | The minimum level required of the original troop in order to boost this troop [Super Troops Only]. |
+|   original_troop   |  :class:`Troop`   |             The "original" counterpart troop to this super troop [Super Troops Only].              |
+|     is_loaded      |       bool        |                        Whether the API data has been loaded for this troop.                        |
+|       level        |        int        |                                         The troop's level                                          |
+|     max_level      |        int        |                                   The max level for this troop.                                    |
+|      village       |        str        |        Either ``home`` or ``builderBase``, indicating which village this troop belongs to.         |
++--------------------+-------------------+----------------------------------------------------------------------------------------------------+
+
     Attributes
     ----------
     id: int
