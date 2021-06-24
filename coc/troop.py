@@ -1,4 +1,4 @@
-from typing import Type, Optional, Dict, List
+from typing import Dict, List, Optional, Tuple, Type
 from pathlib import Path
 
 import ujson
@@ -152,7 +152,7 @@ class Troop(DataContainer):
 
 class TroopHolder(DataContainerHolder):
     items: List[Type[Troop]] = []
-    item_lookup: Dict[tuple[str, bool], Type[Troop]]
+    item_lookup: Dict[Tuple[str, bool], Type[Troop]]
 
     def _load_json(self, object_ids, english_aliases, lab_to_townhall):
         with open(TROOPS_FILE_PATH) as fp:
