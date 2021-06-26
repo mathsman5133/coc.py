@@ -471,7 +471,7 @@ class CaseInsensitiveDict(dict):
 def _get_maybe_first(dict_items, lookup, default=None):
     try:
         items = dict_items[lookup]
-    except IndexError:
+    except KeyError:
         return default
     else:
         try:
