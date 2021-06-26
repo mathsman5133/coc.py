@@ -207,6 +207,15 @@ Timestamp
     :members:
     :private-members:
 
+
+TimeDelta
+~~~~~~~~~
+
+.. autoclass:: TimeDelta()
+    :members:
+    :private-members:
+
+
 Label
 ~~~~~~~
 
@@ -250,6 +259,16 @@ Corresponds to a member's in-game role in the clan.
     Corresponds to the current preparation day in Clan-War Leagues.
 
     .. py:attribute:: current_preparation
+
+
+.. class:: Resource
+
+    Corresponds to resources found in-game
+
+    .. py:attribute:: gold
+    .. py:attribute:: elixir
+    .. py:attribute:: dark_elixir
+    .. py:attribute:: builder_elixir
 
 
 All elixir troops, ordered as they appear in-game.

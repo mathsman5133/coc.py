@@ -468,6 +468,25 @@ class CaseInsensitiveDict(dict):
         super().__setitem__(key, v)
 
 
+class UnitStat:
+    __slots__ = ("all_levels", )
+
+    def __init__(self, data):
+        self.all_levels = data
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self.all_levels
+
+        return self[instance.level]
+
+    def __getitem__(self, item):
+        if item == 0:
+            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
+
+        return self.all_levels[item - 1]
+
+
 def _get_maybe_first(dict_items, lookup, default=None):
     try:
         items = dict_items[lookup]

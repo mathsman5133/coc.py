@@ -1,8 +1,9 @@
-from typing import Type, Dict, List, Optional
+from typing import Type, Dict, List
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
-from .miscmodels import Time, Resource
+from .enums import Resource
+from .miscmodels import TimeDelta
 
 
 SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
@@ -23,13 +24,13 @@ class Spell(DataContainer):
         The amount of resources required to upgrade the spell to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this spell.
-    upgrade_time: :class:`Time`
+    upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this spell to the next level.
     training_cost: int
         The amount of resources required to train this spell.
     training_resource: :class:`Resource`
         The type of resource used to train this spell.
-    training_time: :class:`Time`
+    training_time: :class:`TimeDelta`
         The amount of time required to train this spell.
     is_elixir_spell: :class:`bool`
         Whether this spell is a regular spell from the Barracks
@@ -59,10 +60,10 @@ class Spell(DataContainer):
     speed: int
     upgrade_cost: int
     upgrade_resource: "Resource"
-    upgrade_time: "Time"
+    upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "Time"
+    training_time: "TimeDelta"
 
     is_elixir_spell: bool = False
     is_dark_spell: bool = False
@@ -115,6 +116,3 @@ class SpellHolder(DataContainerHolder):
 
     FILE_PATH = SPELLS_FILE_PATH
     data_object = Spell
-
-    def get(self, name: str) -> Optional[Type["Spell"]]: ...
-    def load(self, data, townhall: int, default: Type[Spell] = None, load_game_data: bool = True) -> Spell: ...

@@ -25,9 +25,10 @@ import ujson
 
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
-from .miscmodels import try_enum, Badge, UnitStat, Resource, Time
+from .enums import Resource
+from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
-from .utils import CaseInsensitiveDict, _get_maybe_first
+from .utils import CaseInsensitiveDict, UnitStat, _get_maybe_first
 
 if TYPE_CHECKING:
     from .players import Player
@@ -189,7 +190,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         # all 3
         cls.upgrade_cost = try_enum(UnitStat, troop_meta.get("UpgradeCost"))
         cls.upgrade_resource = Resource(value=troop_meta["UpgradeResource"][0])
-        cls.upgrade_time = try_enum(UnitStat, [Time(hours=hours) for hours in troop_meta.get("UpgradeTimeH", [])])
+        cls.upgrade_time = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("UpgradeTimeH", [])])
         cls._is_home_village = False if troop_meta.get("VillageType") else True
 
         # spells and troops
@@ -201,7 +202,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
         cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
         cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel"))
-        cls.regeneration_time = try_enum(UnitStat, [Time(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])])
+        cls.regeneration_time = try_enum(UnitStat, [TimeDelta(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])])
 
         production_building = troop_meta.get("ProductionBuilding", [None])[0]
         if production_building == "Barrack":
@@ -302,7 +303,7 @@ class DataContainerHolder:
 
         return item(data=data, townhall=townhall)
 
-    def get(self, name: str) -> Optional[DataContainer]:
+    def get(self, name: str) -> Optional[Type[DataContainer]]:
         try:
             return self.item_lookup[name]
         except KeyError:

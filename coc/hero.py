@@ -1,10 +1,11 @@
-from typing import TYPE_CHECKING, Dict, List, Type, Optional
+from typing import TYPE_CHECKING, Dict, List, Type
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
 
 if TYPE_CHECKING:
-    from .miscmodels import Time, Resource
+    from .enums import Resource
+    from .miscmodels import TimeDelta
 
 
 HERO_FILE_PATH = Path(__file__).parent.joinpath(Path("static/heroes.json"))
@@ -34,13 +35,13 @@ class Hero(DataContainer):
         The amount of resources required to upgrade the hero to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this hero.
-    upgrade_time: :class:`Time`
+    upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this hero to the next level.
     ability_time: int
         The number of milliseconds the hero's ability lasts for.
     required_th_level: int
         The minimum required townhall to unlock this level of the hero.
-    regeneration_time: :class:`Time`
+    regeneration_time: :class:`TimeDelta`
         The time required for this hero to regenerate after being "knocked out".
     is_loaded: bool
         Whether the API data has been loaded for this hero.
@@ -65,10 +66,10 @@ class Hero(DataContainer):
     speed: int
     upgrade_cost: int
     upgrade_resource: "Resource"
-    upgrade_time: "Time"
+    upgrade_time: "TimeDelta"
     ability_time: int
     required_th_level: int
-    regeneration_time: "Time"
+    regeneration_time: "TimeDelta"
     is_loaded: bool = False
 
     @property
@@ -104,8 +105,6 @@ class HeroHolder(DataContainerHolder):
     FILE_PATH = HERO_FILE_PATH
     data_object = Hero
 
-    def get(self, name: str) -> Optional[Type["Hero"]]: ...
-    def load(self, data, townhall: int, default: Type[Hero] = None, load_game_data: bool = True) -> Hero: ...
 
 class Pet(DataContainer):
     """Represents a Pet object as returned by the API, optionally filled with game data.
@@ -130,7 +129,7 @@ class Pet(DataContainer):
         The amount of resources required to upgrade the pet to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this pet.
-    upgrade_time: :class:`Time`
+    upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this pet to the next level.
     is_loaded: bool
         Whether the API data has been loaded for this pet.
@@ -155,7 +154,7 @@ class Pet(DataContainer):
     speed: int
     upgrade_cost: int
     upgrade_resource: "Resource"
-    upgrade_time: "Time"
+    upgrade_time: "TimeDelta"
     is_loaded: bool = False
 
 
@@ -165,6 +164,3 @@ class PetHolder(DataContainerHolder):
 
     FILE_PATH = PET_FILE_PATH
     data_object = Pet
-
-    def get(self, name: str) -> Optional[Type["Pet"]]: ...
-    def load(self, data, townhall: int, default: Type[Pet] = None, load_game_data: bool = True) -> Pet: ...

@@ -4,7 +4,9 @@ from pathlib import Path
 import ujson
 
 from .abc import DataContainer, DataContainerHolder
-from .miscmodels import Time, Resource, UnitStat, try_enum
+from .enums import Resource
+from .miscmodels import TimeDelta, try_enum
+from .utils import UnitStat
 
 
 TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
@@ -35,13 +37,13 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |  :attr:`Troop.upgrade_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |    :attr:`Troop.upgrade_time`    |   :class:`Time`   |
+    |    :attr:`Troop.upgrade_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |   :attr:`Troop.training_cost`    |        int        |
     +----------------------------------+-------------------+
     | :attr:`Troop.training_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |   :attr:`Troop.training_time`    |   :class:`Time`   |
+    |   :attr:`Troop.training_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |  :attr:`Troop.is_elixir_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
@@ -51,9 +53,9 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |   :attr:`Troop.is_super_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.cooldown`      |   :class:`Time`   |
+    |      :attr:`Troop.cooldown`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.duration`      |   :class:`Time`   |
+    |      :attr:`Troop.duration`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     | :attr:`Troop.min_original_level` |        int        |
     +----------------------------------+-------------------+
@@ -88,13 +90,13 @@ class Troop(DataContainer):
         The amount of resources required to upgrade the troop to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this troop.
-    upgrade_time: :class:`Time`
+    upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this troop to the next level.
     training_cost: int
         The amount of resources required to train this troop.
     training_resource: :class:`Resource`
         The type of resource used to train this troop.
-    training_time: :class:`Time`
+    training_time: :class:`TimeDelta`
         The amount of time required to train this troop.
     is_elixir_troop: :class:`bool`
         Whether this troop is a regular troop from the Barracks
@@ -105,9 +107,9 @@ class Troop(DataContainer):
     is_super_troop: :class:`bool`
         Whether this troop is a Super Troop.
 
-    cooldown: :class:`Time`
+    cooldown: :class:`TimeDelta`
         The cooldown on this super troop before being able to be reactivated [Super Troops Only].
-    duration: :class:`Time`
+    duration: :class:`TimeDelta`
         The length of time this super troop is active for [Super Troops Only].
     min_original_level: int
         The minimum level required of the original troop in order to boost this troop [Super Troops Only].
@@ -136,13 +138,13 @@ class Troop(DataContainer):
     speed: int
     upgrade_cost: int
     upgrade_resource: "Resource"
-    upgrade_time: "Time"
+    upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "Time"
+    training_time: "TimeDelta"
 
-    cooldown: "Time"
-    duration: "Time"
+    cooldown: "TimeDelta"
+    duration: "TimeDelta"
     min_original_level: int
     original_troop: "Troop"
 
@@ -156,8 +158,8 @@ class Troop(DataContainer):
     def _inject_super_meta(cls, troop_meta):
         cls.is_super_troop = True
 
-        cls.cooldown = try_enum(UnitStat, [Time(hours=hours) for hours in troop_meta.get("CooldownH", [])])
-        cls.duration = try_enum(UnitStat, [Time(hours=hours) for hours in troop_meta.get("DurationH", [])])
+        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("CooldownH", [])])
+        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("DurationH", [])])
         cls.min_original_level = troop_meta["MinOriginalLevel"][0]
         cls._original = troop_meta["Original"][0]
 

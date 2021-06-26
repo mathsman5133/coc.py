@@ -29,6 +29,7 @@ from .clans import RankedClan, Clan
 from .client import Client
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
+    Resource,
     Role,
     WarRound,
     ACHIEVEMENT_ORDER,
@@ -68,6 +69,7 @@ from .miscmodels import (
     LegendStatistics,
     Location,
     Timestamp,
+    TimeDelta,
     Label,
     WarLeague,
 )

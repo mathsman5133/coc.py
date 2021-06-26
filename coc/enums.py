@@ -51,6 +51,13 @@ class WarRound(Enum):
         return self.name
 
 
+class Resource(Enum):
+    elixir = "Elixir"
+    builder_elixir = "Elixir2"
+    dark_elixir = "DarkElixir"
+    gold = "Gold"
+
+
 HOME_TROOP_ORDER = [
     "Barbarian",
     "Archer",

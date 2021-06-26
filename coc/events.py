@@ -918,7 +918,9 @@ class EventsClient(Client):
         await lock.acquire()
 
         try:
-            player = await self.get_player(player_tag, cls=self.player_cls)
+            player = await self.get_player(
+                player_tag, cls=self.player_cls, load_game_data=True if self.load_game_data.always else False
+            )
         except Maintenance:
             self._safe_unlock(lock)
             return

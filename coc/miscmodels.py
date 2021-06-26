@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from datetime import datetime
-from enum import Enum
 from typing import Any, Type, TypeVar, Optional
 
 from .utils import from_timestamp
@@ -33,22 +32,6 @@ T = TypeVar("T")
 def try_enum(_class: Type[T], data: Any, **kwargs) -> Optional[T]:
     """Helper function to create a class from the given data."""
     return data and _class(data=data, **kwargs)
-
-
-class LoadGameData:
-    always = False
-    default = False
-    startup_only = False
-    never = False
-
-    def __init__(self, **kwargs):
-        for key, value in kwargs.items():
-            try:
-                getattr(self.__class__, key)
-            except AttributeError:
-                raise RuntimeError("%s was not a valid LoadGameData option.", key)
-            else:
-                setattr(self.__class__, key, value)
 
 
 class Achievement:
@@ -121,33 +104,72 @@ class Achievement:
         return self.stars == 3
 
 
-class UnitStat:
-    __slots__ = ("all_levels", )
+class LoadGameData:
+    """Pass this into the ``load_game_data`` parameter of :class:`Client`.
 
-    def __init__(self, data):
-        self.all_levels = data
+    See :ref:`game_data` for more information.
 
-    def __get__(self, instance, owner):
-        if instance is None:
-            return self.all_levels
+    Parameters
+    ----------
+    always: bool
+        Whether to always inject game metadata into objects.
 
-        return self[instance.level]
+    default: bool
+        Always inject game metadata into objects, except when running events tasks.
 
-    def __getitem__(self, item):
-        if item == 0:
-            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
+    startup_only: bool
+        Never automatically inject game metadata into objects, but load it up on startup regardless for use with
+        the ``load_game_data`` parameter of :meth:`Client.get_player` or :meth:`Client.parse_army_link`.
 
-        return self.all_levels[item - 1]
+    never: bool
+        Never inject game metadata, and don't load it on startup.
+
+    """
+    always = False
+    default = False
+    startup_only = False
+    never = False
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            try:
+                getattr(self.__class__, key)
+            except AttributeError:
+                raise RuntimeError("%s was not a valid LoadGameData option.", key)
+            else:
+                setattr(self.__class__, key, value)
 
 
-class Resource(Enum):
-    elixir = "Elixir"
-    builder_elixir = "Elixir2"
-    dark_elixir = "DarkElixir"
-    gold = "Gold"
+class TimeDelta:
+    """Represents a Timedelta object corresponding to things that take time to do in the API.
+
+    Some examples include:
+
+    * Upgrade times
+    * Training times
+    * Cooldown times
+
+    This object works in a very similar fashion to datetime's `timedelta <https://docs.python.org/3/library/datetime.html#timedelta-objects>`_
+    object, but with a few more helpful attributes.
+
+    .. note::
+
+        You should not construct this yourself, instead use it from the attribute of an e.g. :class:`Troop` model.
 
 
-class Time:
+    Attributes
+    ----------
+    days: int
+        The number of days in the timedelta.
+    hours: int
+        The number of hours in the timedelta. This does not include days.
+        For example, if an upgrade took 36 hours, the ``.days`` attribute would be 1, and ``.hours`` would be 12.
+    minutes: int
+        The number of minutes in the timedelta. The same logic applies as with hours.
+    seconds: int
+        The number of seconds in the timedelta. The same logic applies as with hours.
+
+    """
     def __init__(self, days=0, hours=0, minutes=0, seconds=0):
         _days, _hours = divmod(hours, 24)
         _hours_left, _mins = divmod(minutes, 60)
@@ -158,6 +180,14 @@ class Time:
         self.seconds = seconds
 
     def total_seconds(self):
+        """Returns the total number of seconds in the time object.
+
+        This is the addition of all days, hours, minutes, seconds.
+
+        Returns
+        -------
+        int
+            The number of seconds"""
         return self.days * 24 * 60 * 60 + \
                self.hours * 60 * 60 + \
                self.minutes * 60 + \
