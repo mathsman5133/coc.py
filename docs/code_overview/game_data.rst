@@ -217,20 +217,21 @@ You can get these with :meth:`Client.get_troop`, but they function a little diff
 
 This includes (and note, where applicable, these attributes apply to :class:`Spell`, :class:`Hero` and :class:`Pet` too:
 
-*:attr:`Troop.range`
-*:attr:`Troop.dps`
-*:attr:`Troop.hitpoints`
-*:attr:`Troop.lab_level`
-*:attr:`Troop.speed`
-*:attr:`Troop.upgrade_cost`
-*:attr:`Troop.upgrade_time`
-*:attr:`Troop.training_cost`
-*:attr:`Troop.cooldown` (Super Troops Only)
-*:attr:`Troop.duration` (Super Troops Only)
-*:attr:`Hero.ability_time`
-*:attr:`Hero.ability_troop_count`
-*:attr:`Hero.required_th_level`
-*:attr:`Hero.regeneration_time`
+
+* :attr:`Troop.range`
+* :attr:`Troop.dps`
+* :attr:`Troop.hitpoints`
+* :attr:`Troop.lab_level`
+* :attr:`Troop.speed`
+* :attr:`Troop.upgrade_cost`
+* :attr:`Troop.upgrade_time`
+* :attr:`Troop.training_cost`
+* :attr:`Troop.cooldown` (Super Troops Only)
+* :attr:`Troop.duration` (Super Troops Only)
+* :attr:`Hero.ability_time`
+* :attr:`Hero.ability_troop_count`
+* :attr:`Hero.required_th_level`
+* :attr:`Hero.regeneration_time`
 
 
 A few more examples:
