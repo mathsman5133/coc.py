@@ -27,7 +27,7 @@ from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
 from .miscmodels import try_enum, Badge, UnitStat, Resource, Time
 from .iterators import PlayerIterator
-from .utils import CaseInsensitiveDict
+from .utils import CaseInsensitiveDict, _get_maybe_first
 
 if TYPE_CHECKING:
     from .players import Player
@@ -179,10 +179,10 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         cls.range = try_enum(UnitStat, troop_meta.get("AttackRange"))
         cls.dps = try_enum(UnitStat, troop_meta.get("DPS"))
-        cls.ground_target = try_enum(UnitStat, troop_meta.get("GroundTargets"))
+        cls.ground_target = _get_maybe_first(troop_meta, "GroundTargets", default=True)
         cls.hitpoints = try_enum(UnitStat, troop_meta.get("Hitpoints"))
 
-        cls.housing_space = try_enum(UnitStat, troop_meta.get("HousingSpace"))
+        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
         cls.lab_level = try_enum(UnitStat, troop_meta.get("LaboratoryLevel"))
         cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
 
@@ -241,6 +241,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
             "village": self.village,
             "is_active": self.is_active,
         }
+
+    def _load_from_parent(self, parent: Type["DataContainer"]):
+        for k, v in parent.__dict__.items():
+            if "__" not in k:
+                setattr(self.__class__, k, v)
 
 
 class DataContainerHolder:

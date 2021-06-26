@@ -379,8 +379,8 @@ class Player(ClanMember):
             This operation may be slow if you have not loaded the game files during the current session yet.
 
         """
-        if self._game_files_loaded:
-            return True
+        # if self._game_files_loaded:
+        #     return True
 
         holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder)
         if not all(holder.loaded for holder in holders):
@@ -389,7 +389,11 @@ class Player(ClanMember):
         for items, holder in zip((self.troops, self.heroes, self.spells), holders):
             for item in items:
                 if not item.is_loaded:
-                    holder.load(item._to_dict(), self.town_hall)
+                    if isinstance(item, Troop):
+                        base = holder.get(item.name, item.is_home_base)
+                        item._load_from_parent(base)
+                    else:
+                        item._load_from_parent(holder.get(item.name))
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:

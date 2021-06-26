@@ -21,6 +21,7 @@ coc.py: A Clash of Clans API Wrapper
    code_overview/utils
    code_overview/event
    code_overview/customclasses
+   code_overview/game_data
    code_overview/exceptions
 
 .. _discord_links:

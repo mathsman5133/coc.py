@@ -38,8 +38,8 @@ def try_enum(_class: Type[T], data: Any, **kwargs) -> Optional[T]:
 class LoadGameData:
     always = False
     default = False
+    startup_only = False
     never = False
-    events = False
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():
@@ -131,9 +131,12 @@ class UnitStat:
         if instance is None:
             return self.all_levels
 
-        return self.all_levels[instance.level - 1]
+        return self[instance.level]
 
     def __getitem__(self, item):
+        if item == 0:
+            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
+
         return self.all_levels[item - 1]
 
 

@@ -466,3 +466,15 @@ class CaseInsensitiveDict(dict):
             key = key.lower()
 
         super().__setitem__(key, v)
+
+
+def _get_maybe_first(dict_items, lookup, default=None):
+    try:
+        items = dict_items[lookup]
+    except IndexError:
+        return default
+    else:
+        try:
+            return items[0]
+        except (IndexError, KeyError):
+            return default

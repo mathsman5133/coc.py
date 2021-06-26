@@ -171,13 +171,13 @@ class Troop(DataContainer):
         if self.is_max:
             return True
 
-        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 0-indexed
+        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 1-indexed
         # 2. TH-lab levels in-game and here are 1-indexed
         # 3. We then want to check that for the level less than this troop the req'd
         #    TH is less than or equal to current TH,
         #    and for troop level above, it requires a higher TH than we currently have.
         #    Maybe there's a better way to go about doing this.
-        return self.lab_to_townhall[self.__class__.lab_level[self.level - 1]] <= self._townhall \
+        return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
                     < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
 
     @classmethod

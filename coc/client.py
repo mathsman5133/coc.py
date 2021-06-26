@@ -27,7 +27,7 @@ import logging
 
 from itertools import cycle
 from pathlib import Path
-from typing import AsyncIterator, Iterable, List, Optional, Type, Union
+from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
 import ujson
 
@@ -49,6 +49,11 @@ from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+
+if TYPE_CHECKING:
+    from .hero import Hero, Pet
+    from .spell import Spell
+    from .troop import Troop
 
 
 LOG = logging.getLogger(__name__)
@@ -110,6 +115,10 @@ class Client:
 
     cache_max_size: :class:`int`
         The max size of the internal cache layer. Defaults to 10 000. Set this to ``None`` to remove any cache layer.
+
+    load_game_data: :class:`LoadGameData`
+        The option for how coc.py will load game data. See :ref:`initialising_game_data` for more info.
+
 
     Attributes
     ----------
@@ -1642,7 +1651,9 @@ class Client:
 
         return base
 
-    def get_troop(self, name, is_home_village=True):
+    def get_troop(
+        self, name: str, is_home_village: bool, level: int = None, townhall: int = None
+    ) -> Optional[Union[Type["Troop"], "Troop"]]:
         """Get an uninitiated Troop object with the given name.
 
         .. note::
@@ -1652,7 +1663,7 @@ class Client:
 
         .. note::
 
-            Please see :ref:`using_models` for more info on how to use initiated vs uninitiated models.
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
 
 
         Example
@@ -1674,6 +1685,14 @@ class Client:
         is_home_village: bool
             Whether the troop belongs to the home village or not. Defaults to True.
 
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Troop` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Troop` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
         Raises
         ------
         RuntimeError
@@ -1682,15 +1701,31 @@ class Client:
         Returns
         --------
         :class:`Troop`
-            The uninitiated Troop object, or ``None`` if not found.
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the troop is not found, this will return ``None``.
 
         """
         if not self._troop_holder.loaded:
             raise RuntimeError("Troop metadata must be loaded to use this feature.")
 
-        return self._troop_holder.get(name, is_home_village)
+        troop = self._troop_holder.get(name, is_home_village)
+        if troop is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": troop.name,
+                "level": level,
+                "maxLevel": len(troop.lab_level) + 1,
+                "village": "builderBase" if not troop._is_home_village else "home"
+            }
+            townhall = townhall or troop.lab_to_townhall[troop.lab_level[level]]
+            return troop(data, townhall=townhall)
+        else:
+            return troop
 
-    def get_spell(self, name):
+    def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
         """Get an uninitiated Spell object with the given name.
 
         .. note::
@@ -1700,7 +1735,7 @@ class Client:
 
         .. note::
 
-            Please see :ref:`using_models` for more info on how to use initiated vs uninitiated models.
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
 
 
         Example
@@ -1719,6 +1754,15 @@ class Client:
         name: str
             The troop name, which must match in-game **exactly**, but is case-insensitive.
 
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Spell` object. If this is present this will return an
+            :ref:`initiated_objects`. This can be ``None``, and you will get an uninitiated object.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Spell` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+
         Raises
         ------
         RuntimeError
@@ -1727,15 +1771,32 @@ class Client:
         Returns
         --------
         :class:`Spell`
-            The uninitiated Spell object, or ``None`` if not found.
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the spell is not found, this will return ``None``.
+
 
         """
         if not self._spell_holder.loaded:
             raise RuntimeError("Spell metadata must be loaded to use this feature.")
 
-        return self._spell_holder.get(name)
+        spell = self._spell_holder.get(name)
+        if spell is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": spell.name,
+                "level": level,
+                "maxLevel": len(spell.lab_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or spell.lab_to_townhall[spell.lab_level[level]]
+            return spell(data, townhall=townhall)
+        else:
+            return spell
 
-    def get_hero(self, name):
+    def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
         """Get an uninitiated Hero object with the given name.
 
         .. note::
@@ -1745,7 +1806,7 @@ class Client:
 
         .. note::
 
-            Please see :ref:`using_models` for more info on how to use initiated vs uninitiated models.
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
 
 
         Example
@@ -1764,6 +1825,15 @@ class Client:
         name: str
             The hero name, which must match in-game **exactly**, but is case-insensitive.
 
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Hero` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Hero` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+
         Raises
         ------
         RuntimeError
@@ -1772,15 +1842,32 @@ class Client:
         Returns
         --------
         :class:`Hero`
-            The uninitiated Hero object, or ``None`` if not found.
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the hero is not found, this will return ``None``.
+
 
         """
         if not self._hero_holder.loaded:
             raise RuntimeError("Hero metadata must be loaded to use this feature.")
 
-        return self._hero_holder.get(name)
+        hero = self._hero_holder.get(name)
+        if hero is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": hero.name,
+                "level": level,
+                "maxLevel": len(hero.required_th_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or hero.required_th_level[level]
+            return hero(data, townhall=townhall)
+        else:
+            return hero
 
-    def get_pet(self, name):
+    def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
         """Get an uninitiated Pet object with the given name.
 
         .. note::
@@ -1790,7 +1877,7 @@ class Client:
 
         .. note::
 
-            Please see :ref:`using_models` for more info on how to use initiated vs uninitiated models.
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
 
 
         Example
@@ -1809,6 +1896,14 @@ class Client:
         name: str
             The pet name, which must match in-game **exactly**, but is case-insensitive.
 
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Pet` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Pet` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
         Raises
         ------
         RuntimeError
@@ -1817,11 +1912,27 @@ class Client:
         Returns
         --------
         :class:`Pet`
-            The uninitiated Pet object, or ``None`` if not found.
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the pet is not found, this will return ``None``.
+
 
         """
         if not self._pet_holder.loaded:
             raise RuntimeError("Pet metadata must be loaded to use this feature.")
 
-        return self._pet_holder.get(name)
-
+        pet = self._pet_holder.get(name)
+        if pet is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": pet.name,
+                "level": level,
+                "maxLevel": len(pet.required_th_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or pet.required_th_level[level]
+            return pet(data, townhall=townhall)
+        else:
+            return pet

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Dict, List, Type
+from typing import TYPE_CHECKING, Dict, List, Type, Optional
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
@@ -104,6 +104,8 @@ class HeroHolder(DataContainerHolder):
     FILE_PATH = HERO_FILE_PATH
     data_object = Hero
 
+    def get(self, name: str) -> Optional[Type["Hero"]]: ...
+    def load(self, data, townhall: int, default: Type[Hero] = None, load_game_data: bool = True) -> Hero: ...
 
 class Pet(DataContainer):
     """Represents a Pet object as returned by the API, optionally filled with game data.
@@ -164,3 +166,5 @@ class PetHolder(DataContainerHolder):
     FILE_PATH = PET_FILE_PATH
     data_object = Pet
 
+    def get(self, name: str) -> Optional[Type["Pet"]]: ...
+    def load(self, data, townhall: int, default: Type[Pet] = None, load_game_data: bool = True) -> Pet: ...

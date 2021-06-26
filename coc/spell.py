@@ -1,4 +1,4 @@
-from typing import Type, Dict, List
+from typing import Type, Dict, List, Optional
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
@@ -66,6 +66,7 @@ class Spell(DataContainer):
 
     is_elixir_spell: bool = False
     is_dark_spell: bool = False
+    is_loaded: bool = False
 
     @property
     def is_max_for_townhall(self):
@@ -75,14 +76,14 @@ class Spell(DataContainer):
         if self.is_max:
             return True
 
-        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 0-indexed
+        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 1-indexed
         # 2. TH-lab levels in-game and here are 1-indexed
         # 3. We then want to check that for the level less than this troop the req'd
         #    TH is less than or equal to current TH,
         #    and for troop level above, it requires a higher TH than we currently have.
         #    Maybe there's a better way to go about doing this.
-        return self.lab_to_townhall[self.__class__.lab_level[self.level - 1]] <= self._townhall \
-                    < self.lab_to_townhall[self.__class__.lab_level[self.level - 1]]
+        return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
+                    < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
 
     @classmethod
     def get_max_level_for_townhall(cls, townhall):
@@ -114,3 +115,6 @@ class SpellHolder(DataContainerHolder):
 
     FILE_PATH = SPELLS_FILE_PATH
     data_object = Spell
+
+    def get(self, name: str) -> Optional[Type["Spell"]]: ...
+    def load(self, data, townhall: int, default: Type[Spell] = None, load_game_data: bool = True) -> Spell: ...
