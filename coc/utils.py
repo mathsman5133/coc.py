@@ -468,23 +468,32 @@ class CaseInsensitiveDict(dict):
         super().__setitem__(key, v)
 
 
+class UnitStatList(list):
+    def __repr__(self):
+        return "<UnitStatList {}>".format(super().__repr__())
+
+    def __getitem__(self, i):
+        if i == 0:
+            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
+
+        return super().__getitem__(i-1)
+
+
 class UnitStat:
     __slots__ = ("all_levels", )
 
     def __init__(self, data):
-        self.all_levels = data
+        self.all_levels = UnitStatList(data)
 
     def __get__(self, instance, owner):
         if instance is None:
+            print('returning all levels')
             return self.all_levels
 
         return self[instance.level]
 
-    def __getitem__(self, item):
-        if item == 0:
-            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
-
-        return self.all_levels[item - 1]
+    def __getitem__(self, i):
+        return self.all_levels[i]
 
 
 def _get_maybe_first(dict_items, lookup, default=None):

@@ -1652,7 +1652,7 @@ class Client:
         return base
 
     def get_troop(
-        self, name: str, is_home_village: bool, level: int = None, townhall: int = None
+        self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
     ) -> Optional[Union[Type["Troop"], "Troop"]]:
         """Get an uninitiated Troop object with the given name.
 

@@ -250,34 +250,29 @@ A few more examples:
 
 
 One interesting thing to note it that ``barb.hitpoints`` will return a list of ``[34, 43, 54, 65, 76, ...]`` which
-is 0-indexed, and required ``enumerate(..., start=1)`` to get the index, however, to ease accidental mistakes, since
-the API has troop levels has 1-indexed (ie. they start counting from 1), ``barb.hitpoints`` will also be 1-indexed,
-that means ``barb.hitpoints[1]`` will return stats for barb level 1, and ``barb.hitpoints[0]`` will raise an error.
+may look like a normal list, but if you index it, i.e. ``hitpoints[4]``, you'll get stats for level 4, rather than
+the 5th item in the list, or level 5 if it were to be 0-indexed.
+If you use ``enumerate``, you still need to specify that you're starting from 1, however: ``enumerate(barb.hitpoints, start=1)``.
+
+Put simply, this means ``barb.hitpoints[1]`` will return stats for barb level 1, and ``barb.hitpoints[0]`` will raise an error.
 
 
 .. code-block:: python3
 
     barb = client.get_troop("Barbarian")
 
-    # Good example, do this:
     lv_1_stats = barb.hitpoints[1]  # returns 96
     lv_14_stats = barb.hitpoints[14]  # returns 234
 
-
-    # Don't do this...
+    # or, assigning hitpoints as a variable
     hitpoints = barb.hitpoints  # returns [96, 123, 145, 167, ..., 234]
-    hitpoints_lv_1 = hitpoints[0]  # because barb.hitpoints is a regular list, hitpoints now become 0-indexed.
-    hitpoints_lv_14 = hitpoints[13]  # you need to use 13 to get stats for lv14 barb now.
+    hitpoints_lv_1 = hitpoints[1]  # hitpoints is still 1-indexed
+    hitpoints_lv_14 = hitpoints[14]
+
+    print(hitpoints)  # will print <UnitStatList [96, 123, 145, 167, ..., 234]>, to show it's not a normal list.
 
 
-.. note::
-
-    The second example was there to show you what not to do - that could lead to strange and unintended bugs.
-    Instead, if you're looking for a statistic for a particular level, index `barb.hitpoints` straight away instead of
-    assigning it to a variable.
-
-
-To avoid confusion, I'll end with a good example:
+Here's a simple example, if that was all very confusing:
 
 .. code-block::
 
