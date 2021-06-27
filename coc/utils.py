@@ -487,7 +487,6 @@ class UnitStat:
 
     def __get__(self, instance, owner):
         if instance is None:
-            print('returning all levels')
             return self.all_levels
 
         return self[instance.level]
