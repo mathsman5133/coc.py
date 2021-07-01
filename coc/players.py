@@ -267,9 +267,9 @@ class Player(ClanMember):
         self._achievements = None  # type: typing.Optional[dict]
         self._heroes = None  # type: typing.Optional[dict]
         self._spells = None  # type: typing.Optional[dict]
-        self._home_troops = {}  # type: typing.Optional[dict]
-        self._builder_troops = {}  # type: typing.Optional[dict]
-        self._super_troops = {}
+        self._home_troops: dict = {}
+        self._builder_troops: dict = {}
+        self._super_troops: list = []
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -464,7 +464,7 @@ class Player(ClanMember):
 
         for troop in self._iter_troops:
             if (loaded and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
-                self._super_troops[troop.name] = troop
+                self._super_troops.append(troop)
                 if troop.is_active:
                     self._home_troops[troop.name] = troop
                     troops.append(troop)
@@ -495,7 +495,7 @@ class Player(ClanMember):
         if not self._home_troops:
             _ = self.troops
 
-        return list(sorted(self._home_troops, key=lambda t: order[t.name]))
+        return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_builder_troops")
     def builder_troops(self) -> typing.List[Troop]:
