@@ -34,7 +34,7 @@ from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeV
 
 
 TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
-ARMY_LINK_SEPERATOR = re.compile(r"u([\d+x-]+)s([\d+x-]+)")
+ARMY_LINK_SEPERATOR = re.compile(r"u([\d+x-]+)|s([\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -208,13 +208,24 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
     if not match:
         return [], []
 
-    return [
-        (4_000_000 + int(split[1]), int(split[0]))
-        for split in (troop.split('x') for troop in match[0][0].split('-'))
-    ], [
-        (26_000_000 + int(split[1]), int(split[0]))
-        for split in (spell.split('x') for spell in match[0][1].split('-'))
-    ]
+    _troop,_spell = [], [] #return empty list in case either troop or spell is not present in link
+    try:
+        for _match in match:
+            if _match[0]:
+                _troop = [
+                (4_000_000 + int(split[1]), int(split[0]))
+                for split in (troop.split('x') for troop in _match[0].split('-'))
+            ]
+
+            if _match[1]:
+                _spell = [
+                (26_000_000 + int(split[1]), int(split[0]))
+                for split in (spell.split('x') for spell in _match[1].split('-'))
+            ]
+
+    except IndexError: #passing index error
+        pass
+    return _troop, _spell 
 
 
 def maybe_sort(
