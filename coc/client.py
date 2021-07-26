@@ -1645,9 +1645,10 @@ class Client:
                     raise ValueError("I couldn't find the troop or spell called '{}'.".format(key))
 
         if troops:
-            base += "u" + "-".join("{id}x{qty}".format(id=troop.id - 4_000_000, qty=qty) for troop, qty in troops)
+            base += "u" + "-".join("{qty}x{id}".format(qty=qty, id=troop.id - 4_000_000) for troop, qty in troops)
+            
         if spells:
-            base += "s" + "-".join("{id}x{qty}".format(id=spell.id - 26_000_000, qty=qty) for spell, qty in spells)
+            base += "s" + "-".join("{qty}x{id}".format(qty=qty, id=spell.id - 26_000_000) for spell, qty in spells)
 
         return base
 
