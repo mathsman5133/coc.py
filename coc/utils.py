@@ -34,7 +34,7 @@ from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeV
 
 
 TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
-ARMY_LINK_SEPERATOR = re.compile(r"u([\d+x-]+)|s([\d+x-]+)")
+ARMY_LINK_SEPERATOR = re.compile(r"u(?P<units>[\d+x-]+)|s(?P<spells>[\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -204,28 +204,22 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
         2 lists containing (troop_id, quantity) pairs. See :meth:`Client.parse_army_link` for a detailed example.
 
     """
-    match = ARMY_LINK_SEPERATOR.findall(link)
-    if not match:
-        return [], []
+    matches = ARMY_LINK_SEPERATOR.finditer(link)
 
-    _troop,_spell = [], [] #return empty list in case either troop or spell is not present in link
-    try:
-        for _match in match:
-            if _match[0]:
-                _troop = [
+    units, spells = [], []
+    for match in matches:
+        if match.group("units"):
+            units = [
                 (4_000_000 + int(split[1]), int(split[0]))
-                for split in (troop.split('x') for troop in _match[0].split('-'))
+                for split in (troop.split('x') for troop in match.group("units").split('-'))
             ]
-
-            if _match[1]:
-                _spell = [
+        elif match.group("spells"):
+            spells = [
                 (26_000_000 + int(split[1]), int(split[0]))
-                for split in (spell.split('x') for spell in _match[1].split('-'))
+                for split in (spell.split('x') for spell in match.group("spells").split('-'))
             ]
 
-    except IndexError: #passing index error
-        pass
-    return _troop, _spell 
+    return units, spells
 
 
 def maybe_sort(
