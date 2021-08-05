@@ -202,7 +202,8 @@ class HTTPClient:
         else:
             raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
 
-        self.__session = aiohttp.ClientSession(connector=connector, timeout=aiohttp.ClientTimeout(total=timeout))
+        # get rid of depreciation warnings from aiohttp
+        loop.run_until_complete(self.create_session(connector, timeout))
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
@@ -212,6 +213,9 @@ class HTTPClient:
             del self.cache[key]
         except KeyError:
             pass
+
+    async def create_session(self, connector, timeout):
+        self.__session = aiohttp.ClientSession(connector=connector, timeout=aiohttp.ClientTimeout(total=timeout))
 
     async def close(self):
         if self.__session:
