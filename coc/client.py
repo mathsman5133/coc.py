@@ -206,8 +206,6 @@ class Client:
             key_count=self.correct_key_count,
             throttle_limit=self.throttle_limit,
             throttler=self.throttler,
-            connector=self.connector,
-            timeout=self.timeout,
             cache_max_size=self.cache_max_size,
             stats_max_size=self.stats_max_size,
         )
@@ -256,6 +254,7 @@ class Client:
             This is used when updating keys automatically if your IP changes
         """
         self.http = http = self._create_client(email, password)
+        await http.create_session(self.connector, self.timeout)
         await http.get_keys()
         await self._ready.wait()
         self._create_holders()
@@ -273,6 +272,7 @@ class Client:
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
+        self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
         LOG.debug("HTTP connection created. Client is ready for use.")

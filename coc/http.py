@@ -175,8 +175,6 @@ class HTTPClient:
         key_scopes,
         throttle_limit,
         throttler=BasicThrottler,
-        connector=None,
-        timeout=30.0,
         cache_max_size=10000,
         stats_max_size=1000,
     ):
@@ -201,9 +199,6 @@ class HTTPClient:
             self.__throttle = throttler(per_second)
         else:
             raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
-
-        # get rid of depreciation warnings from aiohttp
-        loop.run_until_complete(self.create_session(connector, timeout))
 
         self._keys = None  # defined in get_keys()
         self.keys = None  # defined in get_keys()
