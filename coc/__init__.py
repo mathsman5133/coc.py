@@ -67,6 +67,7 @@ from .miscmodels import (
     Icon,
     League,
     LegendStatistics,
+    LoadGameData,
     Location,
     Timestamp,
     TimeDelta,
