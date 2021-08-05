@@ -95,7 +95,7 @@ class Hero(DataContainer):
             The maximum spell level.
 
         """
-        return max(i for i, th in enumerate(cls.required_th_level, start=1) if th == townhall)
+        return max(i for i, th in enumerate(cls.required_th_level, start=1) if th <= townhall)
 
 
 class HeroHolder(DataContainerHolder):

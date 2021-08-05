@@ -98,14 +98,15 @@ class Spell(DataContainer):
         Returns
         --------
         :class:`int`
-            The maximum spell level.
+            The maximum spell level, or ``None`` if the spell hasn't been unlocked at that level.
 
         """
         for lab_level, th_level in cls.lab_to_townhall.items():
             if th_level != townhall:
                 continue
 
-            return max(spell_level for spell_level, lab in enumerate(cls.lab_level, start=1) if lab == lab_level)
+            levels = [spell_level for spell_level, lab in enumerate(cls.lab_level, start=1) if lab <= lab_level]
+            return levels and max(levels) or None
 
         raise ValueError("The townhall level was not valid.")
 

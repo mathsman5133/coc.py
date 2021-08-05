@@ -186,6 +186,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
         cls.lab_level = try_enum(UnitStat, troop_meta.get("LaboratoryLevel"))
         cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
+        cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
 
         # all 3
         cls.upgrade_cost = try_enum(UnitStat, troop_meta.get("UpgradeCost"))

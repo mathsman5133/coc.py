@@ -78,6 +78,8 @@ class Troop(DataContainer):
         The troop's name.
     range: int
         The troop's attack range.
+    lab_level: int
+        The required labatory level to upgrade the troop to this level.
     dps: int
         The troop's Damage Per Second (DPS).
     hitpoints: int
@@ -194,14 +196,15 @@ class Troop(DataContainer):
         Returns
         --------
         :class:`int`
-            The maximum troop level.
+            The maximum troop level, or ``None`` if the troop hasn't been unlocked at that level.
 
         """
         for lab_level, th_level in cls.lab_to_townhall.items():
             if th_level != townhall:
                 continue
 
-            return max(troop_level for troop_level, lab in enumerate(cls.lab_level, start=1) if lab == lab_level)
+            levels = [troop_level for troop_level, lab in enumerate(cls.lab_level, start=1) if lab <= lab_level]
+            return levels and max(levels) or None
 
         raise ValueError("The townhall level was not valid.")
 
