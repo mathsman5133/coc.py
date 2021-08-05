@@ -29,7 +29,7 @@ from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
+    email: str, password: str, API key: str= None, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
 ) -> typing.Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 
@@ -50,6 +50,9 @@ def login(
     **kwargs
         Any kwargs you wish to pass into the Client object.
     """
-    instance = client(**kwargs)
-    instance.loop.run_until_complete(instance.login(email, password))
-    return instance
+    if API key is None:
+        # Add code to access instance with key, not login.
+    else:
+        instance = client(**kwargs)
+        instance.loop.run_until_complete(instance.login(email, password))
+        return instance
