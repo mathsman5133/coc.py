@@ -9,6 +9,9 @@ A coc.py client instance can be created through the utility function, :meth:`coc
 
 .. autofunction:: login
 
+.. autofunction:: login_with_keys
+
+
 Example
 ~~~~~~~
 .. code-block:: python3

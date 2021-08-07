@@ -272,6 +272,7 @@ class Client:
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
+        http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
