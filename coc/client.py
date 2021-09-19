@@ -186,7 +186,6 @@ class Client:
         self.stats_max_size = stats_max_size
 
         self.http = None  # set in method login()
-        self._ready = asyncio.Event()
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -255,11 +254,9 @@ class Client:
         """
         self.http = http = self._create_client(email, password)
         await http.create_session(self.connector, self.timeout)
-        await http.get_keys()
-        await self._ready.wait()
+        await http.initialise_keys()
         self._create_holders()
 
-        self._ready.clear()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
@@ -299,24 +296,6 @@ class Client:
             self.loop.create_task(fctn(*args, **kwargs))
         else:
             fctn(*args, **kwargs)
-
-    async def reset_keys(self, number_of_keys: int = None) -> None:
-        """Manually reset any number of keys.
-
-        Under normal circumstances, this method should not need to be called.
-
-        Parameters
-        -----------
-        number_of_keys : int
-            The number of keys to reset. Defaults to None - all keys.
-        """
-        # pylint: disable=protected-access
-        self._ready.clear()
-        num = number_of_keys or len(self.http._keys)
-        keys = self.http._keys
-        for i in range(num):
-            await self.http.reset_key(keys[i])
-        self._ready.set()
 
     async def search_clans(
         self,
