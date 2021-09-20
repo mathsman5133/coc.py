@@ -278,7 +278,8 @@ class HTTPClient:
                             raise InvalidArgument(response, data)
 
                         if response.status == 403:
-                            if data.get("reason") in ["accessDenied.invalidIp"] and self.email and self.password:
+                            LOG.info("forbidden! resp: %s, msg: %s", str(response), str(data))
+                            if data.get("reason") == "accessDenied.invalidIp" and self.email and self.password:
                                 if self.initialising_keys.is_set():
                                     await self.initialise_keys()
 
