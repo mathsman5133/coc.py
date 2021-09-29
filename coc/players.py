@@ -207,6 +207,9 @@ class Player(ClanMember):
         The number of versus attacks the player has won
     legend_statistics: Optional[:class:`LegendStatistics`]
         The player's legend statistics, or ``None`` if they have never been in the legend league.
+    war_opted_in: Optional[:class:`bool`]
+        Whether the player has selected that they are opted "in" (True) for wars, or opted "out" (False).
+        This will be ``None`` if the player is not in a clan.
     """
 
     __slots__ = (
@@ -221,6 +224,7 @@ class Player(ClanMember):
         "best_versus_trophies",
         "versus_attack_wins",
         "legend_statistics",
+        "war_opted_in",
         "_achievements",
         "_heroes",
         "_labels",
@@ -283,6 +287,12 @@ class Player(ClanMember):
         self.best_versus_trophies: int = data_get("bestVersusTrophies")
         self.versus_attack_wins: int = data_get("versusBattleWins")
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
+
+        try:
+            self.war_opted_in: typing.Optional[bool] = True if data["warPreference"] == "in" else False
+        except KeyError:
+            # not in a clan / war preference not there
+            self.war_opted_in: typing.Optional[bool] = None
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
