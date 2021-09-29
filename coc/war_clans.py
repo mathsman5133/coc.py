@@ -147,6 +147,13 @@ class WarClan(BaseClan):
         """
         other = self._war and self._war.clan if self.is_opponent else self._war.opponent
         return other.attacks if other else []
+    
+    @property
+    def average_attack_duration(self) -> int:
+        """:class:`int`: Returns the average duration of all clan member's attacks this war."""
+        count = len(self.attacks)
+        total_duration = sum(attack.duration for attack in self.attacks)
+        return int(total_duration/count) if count > 0 else 0
 
     def get_member(self, tag: str) -> typing.Optional[ClanWarMember]:
         """Get a member of the clan for the given tag, or ``None`` if not found.
