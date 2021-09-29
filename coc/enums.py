@@ -102,6 +102,7 @@ SUPER_TROOP_ORDER = [
     "Super Valkyrie",
     "Super Witch",
     "Ice Hound",
+    "Super Bowler"
 ]
 
 # TODO: When v2 comes around, remove siege machines from here
