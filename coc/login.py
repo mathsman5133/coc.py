@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import typing
+from typing import Type, Union
 
 from .client import Client
 from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: typing.Type[typing.Union[Client, EventsClient]] = Client, **kwargs
-) -> typing.Union[Client, EventsClient]:
+    email: str, password: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs
+) -> Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
 
     This function makes logging into the client easy, returning the created client.
@@ -52,4 +52,31 @@ def login(
     """
     instance = client(**kwargs)
     instance.loop.run_until_complete(instance.login(email, password))
+    return instance
+
+
+def login_with_keys(*keys: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs) -> Union[Client, EventsClient]:
+    r"""Logs into the coc.py Client using premade keys from the developer site.
+
+    Unlike :meth:`coc.login`, this login method **will not** automatically update and manage your keys, including when
+    your IP address changes. It is recommended that you use the :meth:`coc.login` method.
+
+    .. code-block:: python3
+
+        client = coc.login_with_keys("eabfcd.adk.token1", "eacjuth.haetg.token2", throttle_limit=20)
+
+
+    Parameters
+    -----------
+    *keys: str
+        Keys or tokens as found from https://developer.clashofclans.com.
+    client
+        The type of coc.py client to use. This could either be a
+        :class:`Client` or :class:`EventsClient`, depending on which you wish
+        to use.
+    **kwargs
+        Any kwargs you wish to pass into the Client object.
+    """
+    instance = client(**kwargs)
+    instance.login_with_keys(*keys)
     return instance

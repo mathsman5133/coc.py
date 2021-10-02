@@ -104,175 +104,94 @@ class Achievement:
         return self.stars == 3
 
 
-class Troop:
-    """Represents a Clash of Clans Troop.
+class LoadGameData:
+    """Pass this into the ``load_game_data`` parameter of :class:`Client`.
+
+    See :ref:`game_data` for more information.
+
+    Parameters
+    ----------
+    always: bool
+        Whether to always inject game metadata into objects.
+
+    default: bool
+        Always inject game metadata into objects, except when running events tasks.
+
+    startup_only: bool
+        Never automatically inject game metadata into objects, but load it up on startup regardless for use with
+        the ``load_game_data`` parameter of :meth:`Client.get_player` or :meth:`Client.parse_army_link`.
+
+    never: bool
+        Never inject game metadata, and don't load it on startup.
+
+    """
+    always = False
+    default = False
+    startup_only = False
+    never = False
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            try:
+                getattr(self.__class__, key)
+            except AttributeError:
+                raise RuntimeError("%s was not a valid LoadGameData option.", key)
+            else:
+                setattr(self.__class__, key, value)
+
+
+class TimeDelta:
+    """Represents a Timedelta object corresponding to things that take time to do in the API.
+
+    Some examples include:
+
+    * Upgrade times
+    * Training times
+    * Cooldown times
+
+    This object works in a very similar fashion to datetime's `timedelta <https://docs.python.org/3/library/datetime.html#timedelta-objects>`_
+    object, but with a few more helpful attributes.
+
+    .. note::
+
+        You should not construct this yourself, instead use it from the attribute of an e.g. :class:`Troop` model.
+
 
     Attributes
-    -----------
-    name:
-        :class:`str`: The name of the troop.
-    level:
-        :class:`int`: The level of the troop.
-    max_level:
-        :class:`int`: The overall max level of the troop; excluding townhall limitations.
-    village:
-        :class:`str`: Either ``home`` or ``builderBase``.
-    is_active:
-        :class:`bool`: Returns a boolean which indicates whether a super troop is active.
+    ----------
+    days: int
+        The number of days in the timedelta.
+    hours: int
+        The number of hours in the timedelta. This does not include days.
+        For example, if an upgrade took 36 hours, the ``.days`` attribute would be 1, and ``.hours`` would be 12.
+    minutes: int
+        The number of minutes in the timedelta. The same logic applies as with hours.
+    seconds: int
+        The number of seconds in the timedelta. The same logic applies as with hours.
+
     """
+    def __init__(self, days=0, hours=0, minutes=0, seconds=0):
+        _days, _hours = divmod(hours, 24)
+        _hours_left, _mins = divmod(minutes, 60)
 
-    __slots__ = (
-        "name",
-        "level",
-        "max_level",
-        "village",
-        "is_active",
-    )
+        self.days = days + _days
+        self.hours = hours + _hours + _hours_left
+        self.minutes = minutes + _mins
+        self.seconds = seconds
 
-    def __str__(self):
-        return self.name
+    def total_seconds(self):
+        """Returns the total number of seconds in the time object.
 
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("level", self.level),
-            ("is_active", self.is_active),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+        This is the addition of all days, hours, minutes, seconds.
 
-    def __init__(self, *, data):
-        self._from_data(data)
-
-    def _from_data(self, data):
-        self.name: str = data["name"]
-        self.level: int = data["level"]
-        self.max_level: int = data["maxLevel"]
-        self.village: str = data["village"]
-        self.is_active: bool = data.get("superTroopIsActive")
-
-    @property
-    def is_max(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the troop is the max level"""
-        return self.max_level == self.level
-
-    @property
-    def is_builder_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the troop belongs to the builder base."""
-        return self.village == "builderBase"
-
-    @property
-    def is_home_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the troop belongs to the home base."""
-        return self.village == "home"
-
-
-class Hero:
-    """Represents a Clash of Clans Hero.
-
-    Attributes
-    -----------
-    name:
-        :class:`str`: The name of the hero.
-    level:
-        :class:`int`: The level of the hero.
-    max_level:
-        :class:`int`: The overall max level of the hero, excluding townhall limitations.
-    village:
-        :class:`str`: Either ``home`` or ``builderBase``.
-    """
-
-    __slots__ = (
-        "name",
-        "level",
-        "max_level",
-        "village",
-    )
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("level", self.level),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
-    def __init__(self, *, data):
-        self._from_data(data)
-
-    def _from_data(self, data: dict) -> None:
-        self.name: str = data["name"]
-        self.level: int = data["level"]
-        self.max_level: int = data["maxLevel"]
-        self.village: str = data["village"]
-
-    @property
-    def is_max(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the hero is the max level."""
-        return self.level == self.max_level
-
-    @property
-    def is_builder_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the hero belongs to the builder base."""
-        return self.village == "builderBase"
-
-    @property
-    def is_home_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the hero belongs to the home base."""
-        return self.village == "home"
-
-
-class Spell:
-    """Represents a Clash of Clans Spell.
-
-    Attributes
-    -----------
-    name:
-        :class:`str`: The name of the spell.
-    level:
-        :class:`int`: The level of the spell.
-    max_level:
-        :class:`int`: The overall max level of the spell, excluding townhall limitations.
-    village:
-        :class:`str`: Either ``home`` or ``builderBase``.
-    """
-
-    __slots__ = ("name", "level", "max_level", "village")
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("level", self.level),
-        ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
-    def __init__(self, *, data):
-        self._from_data(data)
-
-    def _from_data(self, data: dict) -> None:
-        self.name: str = data["name"]
-        self.level: int = data["level"]
-        self.max_level: int = data["maxLevel"]
-        self.village: str = data["village"]
-
-    @property
-    def is_max(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the spell is the max level."""
-        return self.level == self.max_level
-
-    @property
-    def is_builder_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the spell belongs to the builder base."""
-        return self.village == "builderBase"
-
-    @property
-    def is_home_base(self) -> bool:
-        """:class:`bool`: Returns a boolean that indicates whether the spell belongs to the home base."""
-        return self.village == "home"
+        Returns
+        -------
+        int
+            The number of seconds"""
+        return self.days * 24 * 60 * 60 + \
+               self.hours * 60 * 60 + \
+               self.minutes * 60 + \
+               self.seconds
 
 
 class Location:

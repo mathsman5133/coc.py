@@ -140,15 +140,14 @@ class Route:
     """Helper class to create endpoint URLs."""
 
     BASE = "https://api.clashofclans.com/v1"
-    API_PAGE_BASE = "https://developer.clashofclans.com/api"
 
-    def __init__(self, method, path: str, api_page: bool = False, **kwargs):
+    def __init__(self, method, path: str, **kwargs):
         if "#" in path:
             path = path.replace("#", "%23")
 
         self.method = method
         self.path = path
-        url = self.API_PAGE_BASE + self.path if api_page else self.BASE + self.path
+        url = self.BASE + self.path
 
         if kwargs:
             self.url = "{}?{}".format(url, urlencode({k: v for k, v in kwargs.items() if v is not None}))
@@ -175,8 +174,6 @@ class HTTPClient:
         key_scopes,
         throttle_limit,
         throttler=BasicThrottler,
-        connector=None,
-        timeout=30.0,
         cache_max_size=10000,
         stats_max_size=1000,
     ):
@@ -191,6 +188,7 @@ class HTTPClient:
 
         per_second = key_count * throttle_limit
 
+        self.__session = None
         self.__lock = asyncio.Semaphore(per_second)
         self.cache = cache_max_size and LRU(cache_max_size)
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
@@ -202,10 +200,11 @@ class HTTPClient:
         else:
             raise TypeError("throttler must be either BasicThrottler or BatchThrottler.")
 
-        self.__session = aiohttp.ClientSession(connector=connector, timeout=aiohttp.ClientTimeout(total=timeout))
+        self._keys = []
+        self.keys = None
 
-        self._keys = None  # defined in get_keys()
-        self.keys = None  # defined in get_keys()
+        self.initialising_keys = asyncio.Event()
+        self.initialising_keys.set()
 
     def _cache_remove(self, key):
         try:
@@ -213,28 +212,22 @@ class HTTPClient:
         except KeyError:
             pass
 
+    async def create_session(self, connector, timeout):
+        self.__session = aiohttp.ClientSession(connector=connector, timeout=aiohttp.ClientTimeout(total=timeout))
+
     async def close(self):
         if self.__session:
             await self.__session.close()
 
     async def request(self, route, **kwargs):
-        # pylint: disable=too-many-statements, too-many-locals
         method = route.method
         url = route.url
-        api_request = kwargs.pop("api_request", False)
 
-        # if it is not an api request we need to set auth headers.
-        # if it is a re-request after a token reset we need to reset
-        # these headers rather than using the old ones (prev. prob)
-
-        if not api_request:
-            key = next(self.keys)
-
-            headers = {
-                "Accept": "application/json",
-                "authorization": "Bearer {}".format(key),
-            }
-            kwargs["headers"] = headers
+        headers = {
+            "Accept": "application/json",
+            "authorization": "Bearer {}".format(next(self.keys)),
+        }
+        kwargs["headers"] = headers
 
         if "json" in kwargs:
             kwargs["headers"]["Content-Type"] = "application/json"
@@ -254,10 +247,10 @@ class HTTPClient:
                     start = perf_counter()
                     async with self.__session.request(method, url, **kwargs) as response:
 
-                        perfcounter = (perf_counter() - start) * 1000
-                        log_info = {"method": method, "url": url, "perf_counter": perfcounter, "status": response.status}
+                        perf = (perf_counter() - start) * 1000
+                        log_info = {"method": method, "url": url, "perf_counter": perf, "status": response.status}
                         if self.stats:
-                            self.stats[route.stats_key] = perfcounter
+                            self.stats[route.stats_key] = perf
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
                         data = await json_or_text(response)
@@ -285,11 +278,13 @@ class HTTPClient:
                             raise InvalidArgument(response, data)
 
                         if response.status == 403:
-                            if data.get("reason") in ["accessDenied.invalidIp"]:
-                                if not api_request:
-                                    await self.reset_key(key)
-                                    LOG.info("Reset Clash of Clans key")
-                                    return await self.request(route, **kwargs)
+                            LOG.info("forbidden! resp: %s, msg: %s", str(response), str(data))
+                            if data.get("reason") == "accessDenied.invalidIp" and self.email and self.password:
+                                if self.initialising_keys.is_set():
+                                    await self.initialise_keys()
+
+                                await self.initialising_keys.wait()
+                                return await self.request(route, **kwargs)
 
                             raise Forbidden(response, data)
 
@@ -410,176 +405,70 @@ class HTTPClient:
 
     # key updating management
 
-    async def get_ip(self):
-        url = "https://api.ipify.org/"
-        async with self.__session.request("GET", url) as response:
-            LOG.debug("%s (%s) has returned %s", url, "GET", response.status)
-            ip_ = await response.text()
-            LOG.debug("%s has received %s", url, ip_)
-        return ip_
+    async def initialise_keys(self):
+        LOG.debug("Initialising keys from the developer site.")
+        self.initialising_keys.clear()
+        session = aiohttp.ClientSession()
 
-    @staticmethod
-    def create_cookies(response_dict, session):
-        try:
-            return "session={};game-api-url={};game-api-token={}".format(
-                session, response_dict["swaggerUrl"], response_dict["temporaryAPIToken"]
-            )
-        except KeyError:
-            return None
+        body = {"email": self.email, "password": self.password}
+        resp = await session.post("https://developer.clashofclans.com/api/login", json=body)
+        if resp.status == 403:
+            raise InvalidCredentials(resp)
 
-    async def get_keys(self):
-        self.client._ready.clear()
+        LOG.info("Successfully logged into the developer site.")
 
-        response_dict, session = await self.login_to_site(self.email, self.password)
-        cookies = self.create_cookies(response_dict, session)
+        resp = await session.get("https://api.ipify.org/")
+        ip = await resp.text()
 
-        headers = {
-            "cookies": cookies,
-            "content-type": "application/json",
-        }
+        LOG.info("Found IP address to be %s", ip)
 
-        ip = await self.get_ip()
-        current_keys = (await self.find_site_keys(headers))["keys"]
+        resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
+        keys = (await resp.json())["keys"]
+        self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
 
-        self._keys = [key["key"] for key in current_keys if key["name"] == self.key_names and ip in key["cidrRanges"]]
+        LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
-        required_key_count = self.key_count
-        current_key_count = len(current_keys)
+        if len(self._keys) < self.key_count:
+            for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                LOG.info(
+                    "Deleting key with the name %s and IP %s (not matching our current IP address).",
+                    self.key_names, key["cidrRanges"],
+                )
+                await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
 
-        if required_key_count > len(self._keys):
-            for key in (k for k in current_keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
-                try:
-                    await self.delete_key(cookies, key["id"])
-                except (InvalidArgument, NotFound):
-                    continue
-                else:
-                    new = await self.create_key(cookies)
-                    self._keys.append(new)
-                    self.client.dispatch("on_key_reset", new)
+            while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
+                data = {
+                    "name": self.key_names,
+                    "description": "Created on {}".format(datetime.now().strftime("%c")),
+                    "cidrRanges": [ip],
+                    "scopes": [self.key_scopes],
+                }
 
-            make_keys = required_key_count - len(self._keys)
-            for _ in range(make_keys):
-                if current_key_count >= KEY_MAXIMUM:
-                    break
+                LOG.info("Creating key with data %s.", str(data))
 
-                new = await self.create_key(cookies)
-                self._keys.append(new)
-                self.client.dispatch("on_key_reset", new)
-                current_key_count += 1
+                resp = await session.post("https://developer.clashofclans.com/api/apikey/create", json=data)
+                key = await resp.json()
+                self._keys.append(key["key"]["key"])
 
-            if current_key_count == KEY_MAXIMUM and len(self._keys) < required_key_count:
-                LOG.critical("%s keys were requested to be used, but a maximum of %s could be "
-                             "found/made on the developer site, as it has a maximum of 10 keys per account. "
-                             "Please delete some keys or lower your `key_count` level."
-                             "I will use %s keys for the life of this client.",
-                             required_key_count, current_key_count, current_key_count)
+        if len(keys) == 10 and len(self._keys) < self.key_count:
+            LOG.critical("%s keys were requested to be used, but a maximum of %s could be "
+                         "found/made on the developer site, as it has a maximum of 10 keys per account. "
+                         "Please delete some keys or lower your `key_count` level."
+                         "I will use %s keys for the life of this client.",
+                         self.key_count, len(self._keys), len(self._keys))
 
         if len(self._keys) == 0:
             await self.close()
             raise RuntimeError(
                 "There are {} API keys already created and none match a key_name of '{}'."
                 "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
-                "unused keys.".format(current_key_count, self.key_names)
+                "unused keys.".format(len(keys), self.key_names)
             )
 
+        await session.close()
         self.keys = cycle(self._keys)
-        self.client._ready.set()
-
-    async def reset_key(self, key):
-        response_dict, session = await self.login_to_site(self.email, self.password)
-        cookies = self.create_cookies(response_dict, session)
-
-        if cookies is None:
-            return  # same issue as few lines down explains apparently.
-
-        headers = {
-            "cookies": cookies,
-            "content-type": "application/json",
-        }
-
-        existing_keys_dict = await self.find_site_keys(headers)
-        try:
-            existing_keys = existing_keys_dict["keys"]
-        except (TypeError, KeyError):
-            # long standing bug where the dev site doesn't give a proper return dict when
-            # multiple concurrent logins are made. this is just a safety net, hopefully one of
-            # the requests will work.
-            return
-
-        key_id = [t["id"] for t in existing_keys if t["key"] == key]
-
-        try:
-            await self.delete_key(cookies, key_id)
-        except (InvalidArgument, NotFound):
-            return
-
-        new_key = await self.create_key(cookies)
-
-        # this is to prevent reusing an already used keys.
-        # All it does is move the current key to the front,
-        # by moving any already used ones to the end so
-        # we keep the original key order moving forward.
-        keys = self._keys
-        key_index = keys.index(key)
-        self._keys = keys[key_index:] + keys[:key_index]
-
-        # now we can set the new key which is the first
-        # one in self._keys, then start the cycle over.
-        self._keys[0] = new_key
-        self.keys = cycle(self._keys)
-        self.client.dispatch("key_reset", new_key)
-
-    async def login_to_site(self, email, password):
-        login_data = {"email": email, "password": password}
-        headers = {"content-type": "application/json"}
-        async with self.__session.post(
-            "https://developer.clashofclans.com/api/login", json=login_data, headers=headers,
-        ) as sess:
-            response_dict = await sess.json()
-            LOG.debug(
-                "%s has received %s", "https://developer.clashofclans.com/api/login", response_dict,
-            )
-            if sess.status == 403:
-                raise InvalidCredentials(sess, response_dict)
-
-            session = sess.cookies.get("session").value
-
-        return response_dict, session
-
-    async def find_site_keys(self, headers):
-        url = "https://developer.clashofclans.com/api/apikey/list"
-        async with self.__session.post(url, json={}, headers=headers) as sess:
-            existing_keys_dict = await sess.json()
-            LOG.debug("%s has received %s", url, existing_keys_dict)
-
-        return existing_keys_dict
-
-    async def create_key(self, cookies):
-        headers = {
-            "cookie": cookies,
-            "content-type": "application/json"
-        }
-
-        data = {
-            "name": self.key_names,
-            "description": "Created on {}".format(datetime.now().strftime("%c")),
-            "cidrRanges": [await self.get_ip()],
-            "scopes": [self.key_scopes],
-        }
-
-        response = await self.request(
-            Route("POST", "/apikey/create", api_page=True), json=data, headers=headers, api_request=True,
-        )
-        return response["key"]["key"]
-
-    def delete_key(self, cookies, key_id):
-        headers = {"cookie": cookies, "content-type": "application/json"}
-
-        data = {"id": key_id}
-
-        return self.request(
-            Route("POST", "/apikey/revoke", api_page=True), json=data, headers=headers, api_request=True,
-        )
+        self.initialising_keys.set()
+        LOG.info("Successfully initialised keys for use.")
 
     async def get_data_from_url(self, url):
         async with self.__session.get(url) as response:

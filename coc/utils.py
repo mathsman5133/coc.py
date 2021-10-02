@@ -30,10 +30,11 @@ from collections import deque
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
-from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Union
+from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Tuple, Union
 
 
-TAG_VALIDATOR = re.compile("^#?[PYLQGRJCUV0289]+$")
+TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
+ARMY_LINK_SEPERATOR = re.compile(r"u(?P<units>[\d+x-]+)|s(?P<spells>[\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -183,6 +184,42 @@ def corrected_tag() -> Callable[[Callable[..., T]], Callable[..., T]]:
         return wrapper
 
     return deco
+
+
+def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
+    """Parse an army link into (Troop ID, Quantity) pairs for troops and spells.
+
+    .. note::
+
+        For general usage, consider :meth:`Client.parse_army_link` instead, as it will return Troop and Spell objects.
+
+    Parameters
+    ----------
+    link: str
+        The army link to parse, from in-game.
+
+    Returns
+    -------
+    List[Tuple[int, int]], List[Tuple[int, int]]
+        2 lists containing (troop_id, quantity) pairs. See :meth:`Client.parse_army_link` for a detailed example.
+
+    """
+    matches = ARMY_LINK_SEPERATOR.finditer(link)
+
+    units, spells = [], []
+    for match in matches:
+        if match.group("units"):
+            units = [
+                (4_000_000 + int(split[1]), int(split[0]))
+                for split in (troop.split('x') for troop in match.group("units").split('-'))
+            ]
+        elif match.group("spells"):
+            spells = [
+                (26_000_000 + int(split[1]), int(split[0]))
+                for split in (spell.split('x') for spell in match.group("spells").split('-'))
+            ]
+
+    return units, spells
 
 
 def maybe_sort(
@@ -408,3 +445,68 @@ class HTTPStats(dict):
     def get_all_average(self):
         """Get the average latency / performance counter for each API endpoint."""
         return {k: sum(v) / len(v) for k, v in self.items()}
+
+
+class CaseInsensitiveDict(dict):
+    def __getitem__(self, key):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        return super().__getitem__(key)
+
+    def get(self, key, default=None):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        return super().get(key, default)
+
+    def __setitem__(self, key, v):
+        if isinstance(key, tuple):
+            key = tuple(x.lower() if isinstance(x, str) else x for x in key)
+        else:
+            key = key.lower()
+
+        super().__setitem__(key, v)
+
+
+class UnitStatList(list):
+    def __repr__(self):
+        return "<UnitStatList {}>".format(super().__repr__())
+
+    def __getitem__(self, i):
+        if i == 0:
+            raise IndexError("The minimum level is 1, but you tried to get statistics for level 0.")
+
+        return super().__getitem__(i-1)
+
+
+class UnitStat:
+    __slots__ = ("all_levels", )
+
+    def __init__(self, data):
+        self.all_levels = UnitStatList(data)
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self.all_levels
+
+        return self[instance.level]
+
+    def __getitem__(self, i):
+        return self.all_levels[i]
+
+
+def _get_maybe_first(dict_items, lookup, default=None):
+    try:
+        items = dict_items[lookup]
+    except KeyError:
+        return default
+    else:
+        try:
+            return items[0]
+        except (IndexError, KeyError):
+            return default

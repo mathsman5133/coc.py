@@ -25,12 +25,17 @@ SOFTWARE.
 import asyncio
 import logging
 
-from typing import AsyncIterator, Iterable, List, Optional, Type, Union
+from itertools import cycle
+from pathlib import Path
+from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
+
+import ujson
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import Label, League, Location
+from .miscmodels import Label, League, Location, LoadGameData
+from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
@@ -40,14 +45,25 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .utils import correct_tag, get
+from .spell import SpellHolder
+from .troop import TroopHolder
+from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+
+if TYPE_CHECKING:
+    from .hero import Hero, Pet
+    from .spell import Spell
+    from .troop import Troop
 
 
 LOG = logging.getLogger(__name__)
 
 LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
+
+OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
+ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
+BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
 
 
 class Client:
@@ -100,6 +116,10 @@ class Client:
     cache_max_size: :class:`int`
         The max size of the internal cache layer. Defaults to 10 000. Set this to ``None`` to remove any cache layer.
 
+    load_game_data: :class:`LoadGameData`
+        The option for how coc.py will load game data. See :ref:`initialising_game_data` for more info.
+
+
     Attributes
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -120,9 +140,15 @@ class Client:
         "http",
         "_ready",
         "correct_tags",
+        "load_game_data",
         "_players",
         "_clans",
         "_wars",
+
+        "_troop_holder",
+        "_spell_holder",
+        "_hero_holder",
+        "_pet_holder",
     )
 
     def __init__(
@@ -139,6 +165,7 @@ class Client:
         timeout: float = 30.0,
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
+        load_game_data: LoadGameData = LoadGameData(default=True),
         **_,
     ):
 
@@ -159,13 +186,58 @@ class Client:
         self.stats_max_size = stats_max_size
 
         self.http = None  # set in method login()
-        self._ready = asyncio.Event()
         self.correct_tags = correct_tags
+        self.load_game_data = load_game_data
 
         # cache
         self._players = {}
         self._clans = {}
         self._wars = {}
+
+    def _create_client(self, email, password):
+        return HTTPClient(
+            client=self,
+            email=email,
+            password=password,
+            key_names=self.key_names,
+            key_scopes=self.key_scopes,
+            loop=self.loop,
+            key_count=self.correct_key_count,
+            throttle_limit=self.throttle_limit,
+            throttler=self.throttler,
+            cache_max_size=self.cache_max_size,
+            stats_max_size=self.stats_max_size,
+        )
+
+    def _load_holders(self):
+        with open(OBJECT_IDS_PATH) as fp:
+            object_ids = {v: k for k, v in ujson.load(fp).items()}
+
+        with open(ENGLISH_ALIAS_PATH) as fp:
+            english_aliases = ujson.load(fp)
+
+        with open(BUILDING_FILE_PATH) as fp:
+            buildings = ujson.load(fp)
+
+        for supercell_name, data in buildings.items():
+            if supercell_name == "Laboratory":
+                lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                break
+        else:
+            # if the files failed to load, fallback to the old formula of lab level = TH level - 2
+            lab_to_townhall = {i: i + 2 for i in range(1, 15)}
+
+        for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
+            holder._load_json(object_ids, english_aliases, lab_to_townhall)
+
+    def _create_holders(self):
+        self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder = TroopHolder(), \
+                                                                                      SpellHolder(), \
+                                                                                      HeroHolder(), \
+                                                                                      PetHolder()
+
+        if not self.load_game_data.never:
+            self._load_holders()
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -180,24 +252,27 @@ class Client:
             Your password login from https://developer.clashofclans.com
             This is used when updating keys automatically if your IP changes
         """
-        self.http = HTTPClient(
-            client=self,
-            email=email,
-            password=password,
-            key_names=self.key_names,
-            key_scopes=self.key_scopes,
-            loop=self.loop,
-            key_count=self.correct_key_count,
-            throttle_limit=self.throttle_limit,
-            throttler=self.throttler,
-            connector=self.connector,
-            timeout=self.timeout,
-            cache_max_size=self.cache_max_size,
-            stats_max_size=self.stats_max_size,
-        )
-        await self.http.get_keys()
-        await self._ready.wait()
-        self._ready.clear()
+        self.http = http = self._create_client(email, password)
+        await http.create_session(self.connector, self.timeout)
+        await http.initialise_keys()
+        self._create_holders()
+
+        LOG.debug("HTTP connection created. Client is ready for use.")
+
+    def login_with_keys(self, *keys: str) -> None:
+        """Retrieves all keys and creates an HTTP connection ready for use.
+
+        Parameters
+        ----------
+        keys
+        """
+        self.http = http = self._create_client(None, None)
+        http._keys = keys
+        http.keys = cycle(http._keys)
+        http.key_count = len(keys)
+        self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
+        self._create_holders()
+
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def close(self) -> None:
@@ -221,24 +296,6 @@ class Client:
             self.loop.create_task(fctn(*args, **kwargs))
         else:
             fctn(*args, **kwargs)
-
-    async def reset_keys(self, number_of_keys: int = None) -> None:
-        """Manually reset any number of keys.
-
-        Under normal circumstances, this method should not need to be called.
-
-        Parameters
-        -----------
-        number_of_keys : int
-            The number of keys to reset. Defaults to None - all keys.
-        """
-        # pylint: disable=protected-access
-        self._ready.clear()
-        num = number_of_keys or len(self.http._keys)
-        keys = self.http._keys
-        for i in range(num):
-            await self.http.reset_key(keys[i])
-        self._ready.set()
 
     async def search_clans(
         self,
@@ -1336,7 +1393,7 @@ class Client:
 
     # players
 
-    async def get_player(self, player_tag: str, cls: Type[Player] = Player, **kwargs) -> Player:
+    async def get_player(self, player_tag: str, cls: Type[Player] = Player, load_game_data: bool = None, **kwargs) -> Player:
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1367,14 +1424,16 @@ class Client:
         """
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
+        if load_game_data and not isinstance(load_game_data, bool):
+            raise TypeError("load_game_data must be either True or False.")
 
         if self.correct_tags:
             player_tag = correct_tag(player_tag)
 
         data = await self.http.get_player(player_tag)
-        return cls(data=data, client=self, **kwargs)
+        return cls(data=data, client=self, load_game_data=load_game_data, **kwargs)
 
-    def get_players(self, player_tags: Iterable[str], cls: Type[Player] = Player, **kwargs) -> AsyncIterator[Player]:
+    def get_players(self, player_tags: Iterable[str], cls: Type[Player] = Player, load_game_data: bool = None, **kwargs) -> AsyncIterator[Player]:
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1406,8 +1465,10 @@ class Client:
         """
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
+        if load_game_data and not isinstance(load_game_data, bool):
+            raise TypeError("load_game_data must be either True or False.")
 
-        return PlayerIterator(self, player_tags, cls=cls, **kwargs)
+        return PlayerIterator(self, player_tags, cls=cls, load_game_data=load_game_data, **kwargs)
 
     async def verify_player_token(self, player_tag: str, token: str) -> bool:
         """Verify player API token that can be found from the game settings.
@@ -1444,3 +1505,415 @@ class Client:
 
         data = await self.http.verify_player_token(player_tag, token)
         return data and data["status"] == "ok" or False
+
+    def parse_army_link(self, link: str):
+        """Transform an army link from in-game into a list of troops and spells.
+
+        .. note::
+
+            You must have Troop and Spell game metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            troops, spells = client.parse_army_link("https://link.clashofclans.com/en?action=CopyArmy&army=u10x0-2x3s1x9-3x2")
+
+            for troop, quantity in troops:
+                print("The user wants {} {}s. They each have {} DPS.".format(quantity, troop.name, troops.dps))
+
+            for spell, quantity in spells:
+                print("The user wants {} {}s.".format(quantity, troop.name))
+
+
+        Parameters
+        ----------
+        link: str
+            The army share link, as copied from in-game.
+            It should look something like: https://link.clashofclans.com/en?action=CopyArmy&army=u10x0-2x3s1x9-3x2
+
+        Raises
+        ------
+        RuntimeError
+            Troop and Spell game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        List[Tuple[:class:`Troop`, :class:`int`]], List[Tuple[:class:`Spell`, :class:`int`]]
+            A list of tuples containing the Troop or Spell object, and a quantity (1, 2, 3, 12 etc.)
+            If none is found, this will still return 2 empty lists.
+            If a troop isn't found, it will default to a Barbarian, as this is how the game parses the links.
+
+        """
+        if not (self._troop_holder.loaded and self._spell_holder.loaded):
+            raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
+
+        troops, spells = parse_army_link(link)
+
+        lookup_troops = {t.id: t for t in self._troop_holder.items}
+        lookup_spells = {s.id: s for s in self._spell_holder.items}
+
+        return [(lookup_troops.get(t_id, self._troop_holder.get('Barbarian')), qty) for t_id, qty in troops], \
+               [(lookup_spells.get(s_id, s_id), qty) for s_id, qty in spells]
+
+    def create_army_link(self, **kwargs):
+        r"""Transform troops and spells into an in-game army share link.
+
+        .. note::
+
+            You must have Troop and Spell game metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            link = client.create_army_link(
+                        barbarian=10,
+                        archer=20,
+                        hog_rider=30,
+                        healing_spell=3,
+                        poison_spell=2,
+                        rage_spell=2
+                    )
+            print(link)  # prints https://link.clashofclans.com/en?action=CopyArmy&army=u0x10-1x20-11x30s1x3-9x2-2x2
+
+
+        Parameters
+        ----------
+        \*\*kwargs
+            Troop name to quantity mapping. See the example for more info.
+            The troop name must match in-game **exactly**, and is case-insensitive.
+            Replace spaces (" ") with an underscore.
+            The quantity must be an integer.
+
+        Raises
+        ------
+        RuntimeError
+            Troop and Spell game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`str`
+            The army share link.
+
+        """
+
+        base = "https://link.clashofclans.com/en?action=CopyArmy&army="
+
+        if not (self._troop_holder.loaded and self._spell_holder.loaded):
+            raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
+
+        troops, spells = [], []
+        for key, value in kwargs.items():
+            if not isinstance(value, int):
+                raise TypeError("Expected value to be of type integer.")
+
+            key = key.replace("_", " ")
+
+            troop = self._troop_holder.get(key)
+            if troop:
+                troops.append((troop, value))
+            else:
+                spell = self._spell_holder.get(key)
+                if spell:
+                    spells.append((spell, value))
+                else:
+                    raise ValueError("I couldn't find the troop or spell called '{}'.".format(key))
+
+        if troops:
+            base += "u" + "-".join("{qty}x{id}".format(qty=qty, id=troop.id - 4_000_000) for troop, qty in troops)
+            
+        if spells:
+            base += "s" + "-".join("{qty}x{id}".format(qty=qty, id=spell.id - 26_000_000) for spell, qty in spells)
+
+        return base
+
+    def get_troop(
+        self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
+    ) -> Optional[Union[Type["Troop"], "Troop"]]:
+        """Get an uninitiated Troop object with the given name.
+
+        .. note::
+
+            You must have Troop metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            troop = client.get_troop("Barbarian")
+
+            for level, dps in enumerate(troop.dps, start=1):
+                print(f"{troop.name} has {dps} DPS at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The troop name, which must match in-game **exactly**, but is case-insensitive.
+
+        is_home_village: bool
+            Whether the troop belongs to the home village or not. Defaults to True.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Troop` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Troop` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+        Raises
+        ------
+        RuntimeError
+            Troop and Spell game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Troop`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the troop is not found, this will return ``None``.
+
+        """
+        if not self._troop_holder.loaded:
+            raise RuntimeError("Troop metadata must be loaded to use this feature.")
+
+        troop = self._troop_holder.get(name, is_home_village)
+        if troop is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": troop.name,
+                "level": level,
+                "maxLevel": len(troop.lab_level) + 1,
+                "village": "builderBase" if not troop._is_home_village else "home"
+            }
+            townhall = townhall or troop.lab_to_townhall[troop.lab_level[level]]
+            return troop(data, townhall=townhall)
+        else:
+            return troop
+
+    def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
+        """Get an uninitiated Spell object with the given name.
+
+        .. note::
+
+            You must have Spell metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            troop = client.get_spell("Healing Spell")
+
+            for level, cost in enumerate(spell.upgrade_cost, start=1):
+                print(f"{spell.name} has an upgrade cost of {cost} at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The troop name, which must match in-game **exactly**, but is case-insensitive.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Spell` object. If this is present this will return an
+            :ref:`initiated_objects`. This can be ``None``, and you will get an uninitiated object.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Spell` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+
+        Raises
+        ------
+        RuntimeError
+            Troop and Spell game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Spell`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the spell is not found, this will return ``None``.
+
+
+        """
+        if not self._spell_holder.loaded:
+            raise RuntimeError("Spell metadata must be loaded to use this feature.")
+
+        spell = self._spell_holder.get(name)
+        if spell is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": spell.name,
+                "level": level,
+                "maxLevel": len(spell.lab_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or spell.lab_to_townhall[spell.lab_level[level]]
+            return spell(data, townhall=townhall)
+        else:
+            return spell
+
+    def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
+        """Get an uninitiated Hero object with the given name.
+
+        .. note::
+
+            You must have Hero metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            hero = client.get_hero("Archer Queen")
+
+            for level, cost in enumerate(hero.upgrade_cost, start=1):
+                print(f"{hero.name} has an upgrade cost of {cost} at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The hero name, which must match in-game **exactly**, but is case-insensitive.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Hero` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Hero` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+
+        Raises
+        ------
+        RuntimeError
+            Hero game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Hero`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the hero is not found, this will return ``None``.
+
+
+        """
+        if not self._hero_holder.loaded:
+            raise RuntimeError("Hero metadata must be loaded to use this feature.")
+
+        hero = self._hero_holder.get(name)
+        if hero is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": hero.name,
+                "level": level,
+                "maxLevel": len(hero.required_th_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or hero.required_th_level[level]
+            return hero(data, townhall=townhall)
+        else:
+            return hero
+
+    def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
+        """Get an uninitiated Pet object with the given name.
+
+        .. note::
+
+            You must have Pet metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            troop = client.get_pet("Electro Owl")
+
+            for level, cost in enumerate(pet.upgrade_cost, start=1):
+                print(f"{pet.name} has an upgrade cost of {cost} at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The pet name, which must match in-game **exactly**, but is case-insensitive.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Pet` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Pet` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+        Raises
+        ------
+        RuntimeError
+            Pet game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Pet`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the pet is not found, this will return ``None``.
+
+
+        """
+        if not self._pet_holder.loaded:
+            raise RuntimeError("Pet metadata must be loaded to use this feature.")
+
+        pet = self._pet_holder.get(name)
+        if pet is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": pet.name,
+                "level": level,
+                "maxLevel": len(pet.required_th_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or pet.required_th_level[level]
+            return pet(data, townhall=townhall)
+        else:
+            return pet
