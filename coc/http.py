@@ -30,6 +30,8 @@ from datetime import datetime
 from itertools import cycle
 from time import process_time, perf_counter
 from urllib.parse import urlencode
+from base64 import b64decode as base64_b64decode
+from json import loads as json_loads
 
 import aiohttp
 
@@ -417,8 +419,7 @@ class HTTPClient:
 
         LOG.info("Successfully logged into the developer site.")
 
-        resp = await session.get("https://api.ipify.org/")
-        ip = await resp.text()
+        ip = json_loads(base64_b64decode(resp.json()["temporaryAPIToken"].split(".")[1]+"====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
 
         LOG.info("Found IP address to be %s", ip)
 
