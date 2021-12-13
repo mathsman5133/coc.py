@@ -121,7 +121,7 @@ class ClanMember(BasePlayer):
         self.trophies: int = data_get("trophies")
         self.versus_trophies: int = data_get("versusTrophies")
         self.clan_rank: int = data_get("clanRank")
-        self.clan_previous_rank: int = data_get("clanPreviousRank")
+        self.clan_previous_rank: int = data_get("previousClanRank")
         self.donations: int = data_get("donations")
         self.received: int = data_get("donationsReceived")
 
