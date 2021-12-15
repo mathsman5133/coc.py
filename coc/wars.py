@@ -60,6 +60,8 @@ class ClanWar:
         :class:`str`: The war's unique tag. This is ``None`` unless this is a Clan League War (CWL).
     league_group:
         :class:`ClanWarLeagueGroup`: The war's league group. This is ``None`` unless this is a Clan League War.
+    attacks_per_member:
+        :class:`int`: The number of attacks each member has this war.
     """
 
     __slots__ = (
@@ -74,6 +76,7 @@ class ClanWar:
         "clan",
         "opponent",
         "league_group",
+        "attacks_per_member",
         "_response_retry",
     )
 
@@ -95,6 +98,10 @@ class ClanWar:
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag: str = data_get("tag")
+        if data_get("attacksPerMember") is None and self.is_cwl:
+            self.attacks_per_member: int = 1
+        else:
+            self.attacks_per_member: int = data_get("attacksPerMember")
 
         self.team_size: int = data_get("teamSize") or len(data_get("clan", {}).get("members", []))
 
@@ -278,7 +285,7 @@ class ClanWarLogEntry:
 
     .. note::
 
-        Please see the :class:`WarClan` documention for a full list of missing attributes,
+        Please see the :class:`WarClan` documentation for a full list of missing attributes,
         as the clan and opponent attributes are only partially filled by the API.
 
         If the :attr:`ClanWarLogEntry.type` is ``cwl``, the :attr:`WarClan.attack_count`, :attr:`WarClan.stars`
@@ -299,9 +306,11 @@ class ClanWarLogEntry:
         :class:`WarClan`: The home clan.
     opponent:
         :class:`WarClan`: The opposition clan.
+    attacks_per_member:
+        :class:`int`: The number of attacks each member had this war.
     """
 
-    __slots__ = ("result", "end_time", "team_size", "clan", "opponent", "_client")
+    __slots__ = ("result", "end_time", "team_size", "clan", "opponent", "_client", "attacks_per_member")
 
     def __init__(self, *, data, client, **_):
         self._client = client
@@ -314,6 +323,10 @@ class ClanWarLogEntry:
         self.result: str = data_get("result")
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.team_size: int = data_get("teamSize")
+        if data_get("attacksPerMember") is None and self.is_cwl:
+            self.attacks_per_member: int = 1
+        else:
+            self.attacks_per_member: int = data_get("attacksPerMember")
 
         self.clan = self._fake_load_clan(data_get("clan"))
         self.opponent = self._fake_load_clan(data_get("opponent"))
