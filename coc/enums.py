@@ -91,6 +91,7 @@ SIEGE_MACHINE_ORDER = [
     "Stone Slammer",
     "Siege Barracks",
     "Log Launcher",
+    "Flame Flinger"
 ]
 
 SUPER_TROOP_ORDER = [
@@ -101,6 +102,7 @@ SUPER_TROOP_ORDER = [
     "Super Wall Breaker",
     "Rocket Balloon",
     "Super Wizard",
+    "Super Dragon",
     "Inferno Dragon",
     "Super Minion",
     "Super Valkyrie",
