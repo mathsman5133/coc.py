@@ -7,6 +7,10 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.0
+-----
+Please see :ref:`migrating_to_v2_0` for more info, as changes are described more in-depth there.
+
 v1.3.0
 ------
 - Added Dragon Rider and Rocket Balloon

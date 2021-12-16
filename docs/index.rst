@@ -48,7 +48,8 @@ coc.py: A Clash of Clans API Wrapper
    :maxdepth: 3
    :caption: Miscellaneous
 
-   miscellaneous/migrating
+   miscellaneous/migrating_to_v1
+   miscellaneous/migrating_to_v2
    miscellaneous/changelog
    miscellaneous/acknowledgements
 
