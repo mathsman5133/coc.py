@@ -323,7 +323,7 @@ class ClanWarLogEntry:
         self.result: str = data_get("result")
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.team_size: int = data_get("teamSize")
-        if data_get("attacksPerMember") is None and self.is_cwl:
+        if data_get("attacksPerMember") is None and self.is_league_entry:
             self.attacks_per_member: int = 1
         else:
             self.attacks_per_member: int = data_get("attacksPerMember")
