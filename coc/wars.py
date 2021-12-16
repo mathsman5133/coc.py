@@ -323,13 +323,14 @@ class ClanWarLogEntry:
         self.result: str = data_get("result")
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.team_size: int = data_get("teamSize")
+
+        self.clan = self._fake_load_clan(data_get("clan"))
+        self.opponent = self._fake_load_clan(data_get("opponent"))
+
         if data_get("attacksPerMember") is None and self.is_league_entry:
             self.attacks_per_member: int = 1
         else:
             self.attacks_per_member: int = data_get("attacksPerMember")
-
-        self.clan = self._fake_load_clan(data_get("clan"))
-        self.opponent = self._fake_load_clan(data_get("opponent"))
 
     def _fake_load_clan(self, data):
         if not (data and data.get("tag")):  # CWL seasons have an opposition with only badges and no tag/name.
