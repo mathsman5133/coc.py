@@ -880,7 +880,7 @@ class Client:
         is_prep = league_group.state == "preparation"
 
         if cwl_round is WarRound.current_war and is_prep:
-            round_tags = league_group.rounds[-1]  # for round 1 and 15min prep between rounds this is a shortcut.
+            round_tags = league_group.rounds[-2]  # for round 1 and 15min prep between rounds this is a shortcut.
         elif cwl_round is WarRound.current_preparation and league_group.state == "warEnded":
             return None  # for the end of CWL there's no next prep day.
         elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
