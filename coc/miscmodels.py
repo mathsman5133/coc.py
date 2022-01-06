@@ -325,9 +325,13 @@ class LegendStatistics:
         :class:`Season`: Legend statistics for the previous season.
     best_season:
         :class:`Season`: Legend statistics for the player's best season.
+    previous_versus_season:
+        :class:`Season`: Legend statistics for the previous versus season.
+    best_versus_season:
+        :class:`Season`: Legend statistics for the player's best versus season.
     """
 
-    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season")
+    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season", "previous_versus_season", "best_versus_season")
 
     def __repr__(self):
         attrs = [
@@ -340,6 +344,8 @@ class LegendStatistics:
             isinstance(other, self.__class__)
             and self.best_season == other.best_season
             and self.current_season == other.current_season
+            and self.best_versus_season == other.best_versus_season
+            and self.current_versus_season == other.current_versus_season
         )
 
     def __init__(self, *, data):
@@ -347,6 +353,8 @@ class LegendStatistics:
         self.current_season = try_enum(Season, data=data.get("currentSeason"))
         self.previous_season = try_enum(Season, data=data.get("previousSeason"))
         self.best_season = try_enum(Season, data=data.get("bestSeason"))
+        self.previous_versus_season = try_enum(Season, data=data.get("previousVersusSeason"))
+        self.best_versus_season = try_enum(Season, data=data.get("bestVersusSeason"))
 
 
 class Badge:
