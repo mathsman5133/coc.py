@@ -885,6 +885,8 @@ class Client:
             return None  # for the end of CWL there's no next prep day.
         elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
             return None  # no previous war for first rounds.
+        elif cwl_round is WarRound.current_war and len(league_group.rounds) == 7:
+            round_tags = league_group.rounds[-1] # for the end of CWL there's no next war.
         elif cwl_round is WarRound.previous_war and is_prep:
             round_tags = league_group.rounds[-2]
         elif cwl_round is WarRound.previous_war:
