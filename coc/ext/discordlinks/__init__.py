@@ -93,7 +93,7 @@ class DiscordLinkClient:
 
     """
 
-    BASE_URL = "https://cocdiscordlink.azurewebsites.net/api"
+    BASE_URL = "http://cocdiscord.link"
 
     __slots__ = ("username", "password", "loop", "key", "http_session")
 
@@ -192,7 +192,7 @@ class DiscordLinkClient:
 
         """
         tags = [correct_tag(tag, prefix="") for tag in player_tag]
-        data = await self._request("POST", "/links/batch", json=tags)
+        data = await self._request("POST", "/batch", json=tags)
         data = data or []
 
         unclaimed_tags = set("#" + tag for tag in tags) - set(p["playerTag"] for p in data)
@@ -243,7 +243,7 @@ class DiscordLinkClient:
             for player_tag, discord_id in links:
                 print("{} is linked to {}".format(discord_id, player_tag))
         """
-        data = await self._request("POST", "/links/batch", json=[str(n) for n in discord_id])
+        data = await self._request("POST", "/batch", json=[str(n) for n in discord_id])
         if not data:
             return []
 
