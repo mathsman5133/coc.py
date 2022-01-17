@@ -419,7 +419,8 @@ class HTTPClient:
 
         LOG.info("Successfully logged into the developer site.")
 
-        ip = json_loads(base64_b64decode(resp.json()["temporaryAPIToken"].split(".")[1]+"====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+        resp_paylaod = await resp.json()
+        ip = json_loads(base64_b64decode(resp_paylaod["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
 
         LOG.info("Found IP address to be %s", ip)
 
