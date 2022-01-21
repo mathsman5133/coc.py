@@ -93,7 +93,7 @@ class DiscordLinkClient:
 
     """
 
-    BASE_URL = "http://cocdiscord.link"
+    BASE_URL = "https://cocdiscord.link"
 
     __slots__ = ("username", "password", "loop", "key", "http_session")
 
