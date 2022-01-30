@@ -345,7 +345,7 @@ class LegendStatistics:
             and self.best_season == other.best_season
             and self.current_season == other.current_season
             and self.best_versus_season == other.best_versus_season
-            and self.current_versus_season == other.current_versus_season
+            and self.previous_versus_season == other.previous_versus_season
         )
 
     def __init__(self, *, data):
