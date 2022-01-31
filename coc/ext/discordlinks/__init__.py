@@ -161,7 +161,7 @@ class DiscordLinkClient:
         data = await self._request("GET", "/links/{}".format(correct_tag(player_tag, prefix="")))
         try:
             return int(data[0]["discordId"])
-        except (IndexError, KeyError, TypeError):
+        except (IndexError, KeyError, TypeError, ValueError):
             return None
 
     async def get_links(self, *player_tag: str) -> typing.List[typing.Tuple[str, typing.Optional[int]]]:
