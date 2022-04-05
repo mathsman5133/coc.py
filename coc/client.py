@@ -138,6 +138,7 @@ class Client:
         "cache_max_size",
         "stats_max_size",
         "http",
+        "realtime",
         "_ready",
         "correct_tags",
         "load_game_data",
@@ -166,6 +167,7 @@ class Client:
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
+        realtime = False,
         **_,
     ):
 
@@ -186,6 +188,7 @@ class Client:
         self.stats_max_size = stats_max_size
 
         self.http = None  # set in method login()
+        self.realtime = realtime
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
