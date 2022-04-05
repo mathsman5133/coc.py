@@ -589,7 +589,12 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            data = await self.http.get_clan_current_war(clan_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_clan_current_war(clan_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -696,7 +701,12 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            data = await self.http.get_clan_war_league_group(clan_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -744,7 +754,12 @@ class Client:
             war_tag = correct_tag(war_tag)
 
         try:
-            data = await self.http.get_cwl_wars(war_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_cwl_wars(war_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -872,7 +887,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag)
+            league_group = await self.get_league_group(clan_tag,**kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)

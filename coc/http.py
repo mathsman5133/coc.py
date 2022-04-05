@@ -345,17 +345,20 @@ class HTTPClient:
     def get_clan_warlog(self, tag):
         return self.request(Route("GET", "/clans/{}/warlog".format(tag)))
 
-    def get_clan_current_war(self, tag):
-        return self.request(Route("GET", "/clans/{}/currentwar".format(tag) +
-                                         '?realtime=true' if self.client.realtime else ''))
+    def get_clan_current_war(self, tag, realtime = None):
+        return self.request(Route("GET", "/clans/{}/currentwar".format(tag) + (
+                                         '?realtime=true' if realtime or (not realtime and self.client.realtime)
+                                         else '')))
 
-    def get_clan_war_league_group(self, tag):
-        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) +
-                                         '?realtime=true' if self.client.realtime else ''))
+    def get_clan_war_league_group(self, tag, realtime = None):
+        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) + (
+                                         '?realtime=true' if realtime or (not realtime and self.client.realtime)
+                                         else '')))
 
-    def get_cwl_wars(self, war_tag):
-        return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) +
-                                         '?realtime=true' if self.client.realtime else ''))
+    def get_cwl_wars(self, war_tag, realtime = None):
+        return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) + (
+                                         '?realtime=true' if realtime or (not realtime and self.client.realtime)
+                                         else '')))
 
     # locations
 
