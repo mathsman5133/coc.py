@@ -184,6 +184,8 @@ ACHIEVEMENT_ORDER = [
     "Get those other Goblins!",
     "Dragon Slayer",
     "Superb Work",
+    "Aggressive Capitalism",
+    "Most Valuable Clanmate"
 
     # Builder Base
     "Master Engineering",
