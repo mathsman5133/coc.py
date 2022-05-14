@@ -44,10 +44,10 @@ class TestClanMember(unittest.TestCase):
             self.assertEqual(member.clan_rank, case.get("clanRank"))
 
     def test_clan_previous_rank(self):
-        data = [{"clanPreviousRank": 14}, {"clanPreviousRank": 4}, {}]
+        data = [{"previousClanRank": 14}, {"previousClanRank": 4}, {}]
         for case in data:
             member = ClanMember(data=case, client=None)
-            self.assertEqual(member.clan_previous_rank, case.get("clanPreviousRank"))
+            self.assertEqual(member.clan_previous_rank, case.get("previousClanRank"))
 
     def test_donations(self):
         data = [{"donations": 55}, {"donations": 0}, {}]
