@@ -282,14 +282,14 @@ class Player(ClanMember):
         self.troop_cls = Troop
         self.pet_cls = Pet
 
-        if self._client._troop_holder.loaded:
+        if self._client and self._client._troop_holder.loaded:
             self._game_files_loaded = True
         else:
             self._game_files_loaded = False
 
         if load_game_data is not None:
             self._load_game_data = load_game_data
-        elif self._client.load_game_data.never:
+        elif self._client and self._client.load_game_data.never:
             self._load_game_data = False
         else:
             self._load_game_data = True
@@ -319,10 +319,10 @@ class Player(ClanMember):
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
-        troop_loader = self._client._troop_holder.load
-        hero_loader =  self._client._hero_holder.load
-        spell_loader = self._client._spell_holder.load
-        pet_loader = self._client._pet_holder.load
+        troop_loader = self._client._troop_holder.load if self._client else None
+        hero_loader =  self._client._hero_holder.load if self._client else None
+        spell_loader = self._client._spell_holder.load if self._client else None
+        pet_loader = self._client._pet_holder.load if self._client else None
 
         if self._game_files_loaded:
             pet_lookup = [p.name for p in self._client._pet_holder.items]
