@@ -138,6 +138,7 @@ class Client:
         "cache_max_size",
         "stats_max_size",
         "http",
+        "realtime",
         "_ready",
         "correct_tags",
         "load_game_data",
@@ -166,6 +167,7 @@ class Client:
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
+        realtime = False,
         **_,
     ):
 
@@ -186,6 +188,7 @@ class Client:
         self.stats_max_size = stats_max_size
 
         self.http = None  # set in method login()
+        self.realtime = realtime
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -586,7 +589,12 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            data = await self.http.get_clan_current_war(clan_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_clan_current_war(clan_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -693,7 +701,12 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            data = await self.http.get_clan_war_league_group(clan_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -741,7 +754,12 @@ class Client:
             war_tag = correct_tag(war_tag)
 
         try:
-            data = await self.http.get_cwl_wars(war_tag)
+            realtime = kwargs.get("realtime")
+        except KeyError:
+            realtime = None
+
+        try:
+            data = await self.http.get_cwl_wars(war_tag, realtime=realtime)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -869,7 +887,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag)
+            league_group = await self.get_league_group(clan_tag,**kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)

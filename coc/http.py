@@ -166,18 +166,18 @@ class HTTPClient:
 
     # pylint: disable=too-many-arguments, missing-docstring, protected-access, too-many-branches
     def __init__(
-        self,
-        client,
-        loop,
-        email,
-        password,
-        key_names,
-        key_count,
-        key_scopes,
-        throttle_limit,
-        throttler=BasicThrottler,
-        cache_max_size=10000,
-        stats_max_size=1000,
+            self,
+            client,
+            loop,
+            email,
+            password,
+            key_names,
+            key_count,
+            key_scopes,
+            throttle_limit,
+            throttler=BasicThrottler,
+            cache_max_size=10000,
+            stats_max_size=1000
     ):
         self.client = client
         self.loop = loop
@@ -187,7 +187,6 @@ class HTTPClient:
         self.key_count = key_count
         self.key_scopes = key_scopes
         self.throttle_limit = throttle_limit
-
         per_second = key_count * throttle_limit
 
         self.__session = None
@@ -226,7 +225,7 @@ class HTTPClient:
         url = route.url
 
         headers = {
-            "Accept": "application/json",
+            "Accept"       : "application/json",
             "authorization": "Bearer {}".format(next(self.keys)),
         }
         kwargs["headers"] = headers
@@ -237,7 +236,7 @@ class HTTPClient:
         cache_control_key = route.url
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if cache is not None:
+        if cache is not None and not self.client.realtime:
             try:
                 return cache[cache_control_key]
             except KeyError:
@@ -261,7 +260,7 @@ class HTTPClient:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age="))
                             data["_response_retry"] = delta
-                            if cache is not None:
+                            if cache is not None and not self.client.realtime:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
@@ -294,8 +293,8 @@ class HTTPClient:
                             raise NotFound(response, data)
                         if response.status == 429:
                             LOG.error(
-                                "We have been rate-limited by the API. "
-                                "Reconsider the number of requests you are allowing per second."
+                                    "We have been rate-limited by the API. "
+                                    "Reconsider the number of requests you are allowing per second."
                             )
                             raise HTTPException(response, data)
 
@@ -346,14 +345,20 @@ class HTTPClient:
     def get_clan_warlog(self, tag):
         return self.request(Route("GET", "/clans/{}/warlog".format(tag)))
 
-    def get_clan_current_war(self, tag):
-        return self.request(Route("GET", "/clans/{}/currentwar".format(tag)))
+    def get_clan_current_war(self, tag, realtime = None):
+        return self.request(Route("GET", "/clans/{}/currentwar".format(tag) + (
+                                         '?realtime=true' if realtime or (realtime is None and self.client.realtime)
+                                         else '')))
 
-    def get_clan_war_league_group(self, tag):
-        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag)))
+    def get_clan_war_league_group(self, tag, realtime = None):
+        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) + (
+                                         '?realtime=true' if realtime or (realtime is None and self.client.realtime)
+                                         else '')))
 
-    def get_cwl_wars(self, war_tag):
-        return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag)))
+    def get_cwl_wars(self, war_tag, realtime = None):
+        return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) + (
+                                         '?realtime=true' if realtime or (realtime is None and self.client.realtime)
+                                         else '')))
 
     # locations
 
@@ -433,17 +438,17 @@ class HTTPClient:
         if len(self._keys) < self.key_count:
             for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
                 LOG.info(
-                    "Deleting key with the name %s and IP %s (not matching our current IP address).",
-                    self.key_names, key["cidrRanges"],
+                        "Deleting key with the name %s and IP %s (not matching our current IP address).",
+                        self.key_names, key["cidrRanges"],
                 )
                 await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
 
             while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
                 data = {
-                    "name": self.key_names,
+                    "name"       : self.key_names,
                     "description": "Created on {}".format(datetime.now().strftime("%c")),
-                    "cidrRanges": [ip],
-                    "scopes": [self.key_scopes],
+                    "cidrRanges" : [ip],
+                    "scopes"     : [self.key_scopes],
                 }
 
                 LOG.info("Creating key with data %s.", str(data))
@@ -462,9 +467,9 @@ class HTTPClient:
         if len(self._keys) == 0:
             await self.close()
             raise RuntimeError(
-                "There are {} API keys already created and none match a key_name of '{}'."
-                "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
-                "unused keys.".format(len(keys), self.key_names)
+                    "There are {} API keys already created and none match a key_name of '{}'."
+                    "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
+                    "unused keys.".format(len(keys), self.key_names)
             )
 
         await session.close()
