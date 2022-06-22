@@ -192,6 +192,10 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
+    
+    # Clan Capital
+    "Aggressive Capitalism",
+    "Most Valuable Clanmate",
 ]
 
 UNRANKED_LEAGUE_DATA = {
