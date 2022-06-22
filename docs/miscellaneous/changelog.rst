@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.0.1
+------
+- New achievements for clan capital
+
+- Switched to using Tuba's new links API (Thanks, Tuba)
+
+- Get the IP Address from logging into the developer site to save an API call (Thanks, Roshan)
+
+
 v2.0
 -----
 Please see :ref:`migrating_to_v2_0` for more info, as changes are described more in-depth there.
