@@ -278,13 +278,18 @@ class Client:
 
         LOG.debug("HTTP connection created. Client is ready for use.")
 
-    def close(self) -> None:
+    def close_loops(self) -> None:
         """Closes the HTTP connection
         """
         LOG.info("Clash of Clans client logging out...")
         self.dispatch("on_client_close")
         self.loop.run_until_complete(self.http.close())
         self.loop.close()
+
+    async def close_client(self) -> None:
+        """Closes the HTTP connection from within a loop function such as
+        async def main()"""
+        await self.http.close()
 
     def dispatch(self, event_name: str, *args, **kwargs) -> None:
         """Dispatches an event listener matching the `event_name` parameter."""

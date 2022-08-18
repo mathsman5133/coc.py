@@ -47,11 +47,14 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
 .. code:: py
 
+    import asyncio
     import coc
 
-    client = coc.login('email', 'password')
-
     async def main():
+        # Create a login session
+        client = coc.Client()
+        await client.login("email", "password")
+
         player = await client.get_player("tag")
         print("{0.name} has {0.trophies} trophies!".format(player))
 
@@ -65,8 +68,14 @@ This example will get a player with a certain tag, and search for 5 clans with a
         except coc.PrivateWarLog:
             print("Uh oh, they have a private war log!")
 
-    client.loop.run_until_complete(main())
-    client.close()
+        # Make sure to close the session
+        await client.close_client()
+
+    if __name__ == '__main__':
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass
 
 Basic Events Example
 ---------------------
