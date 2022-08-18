@@ -105,7 +105,7 @@ class BaseClan:
         if load_game_data and not isinstance(load_game_data, bool):
             raise TypeError("load_game_data must be either True or False.")
 
-        return PlayerIterator(self._client, (p.tag for p in self.members), cls=cls, load_game_data=load_game_data)
+        return PlayerIterator(self._client, (p.tag for p in self.members), cls=cls, load_game_data=load_game_data, members=self.members_dict)
 
 
 class BasePlayer:
