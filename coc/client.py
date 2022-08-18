@@ -289,6 +289,7 @@ class Client:
     async def close_client(self) -> None:
         """Closes the HTTP connection from within a loop function such as
         async def main()"""
+        LOG.info("Clash of Clans client logging out...")
         await self.http.close()
 
     def dispatch(self, event_name: str, *args, **kwargs) -> None:
