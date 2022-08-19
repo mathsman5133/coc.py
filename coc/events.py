@@ -724,7 +724,7 @@ class EventsClient(Client):
         tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
         for task in tasks:
             task.cancel()
-        super().close()
+        super().close_loops()
 
     def dispatch(self, event_name: str, *args, **kwargs):
         # pylint: disable=broad-except
