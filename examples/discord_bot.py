@@ -5,6 +5,7 @@
 
 import logging
 import os
+import time
 import traceback
 
 import coc
@@ -210,6 +211,13 @@ async def current_war_status(ctx, clan_tag):
 
     await ctx.send(embed=e)
 
+
+@bot.command()
+async def shutdown(ctx):
+    # shutdown the bot properly by first closing the coc client and then closing the bot client
+    await coc_client.close_client()
+    await ctx.bot.close()
+    time.sleep(0.25)
 
 async def run_tests_and_quit():
     # ignore this; it is purely for the benefit of being able to run the examples as tests.
