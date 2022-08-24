@@ -5,7 +5,6 @@
 
 import logging
 import os
-import time
 import traceback
 
 import coc
@@ -210,6 +209,7 @@ async def current_war_status(ctx, clan_tag):
                     value=f"{hours} hours {minutes} minutes {seconds} seconds", inline=False)
 
     await ctx.send(embed=e)
+
 
 async def run_tests_and_quit():
     # ignore this; it is purely for the benefit of being able to run the examples as tests.
