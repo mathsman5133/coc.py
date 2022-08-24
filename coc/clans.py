@@ -25,7 +25,7 @@ import typing
 
 
 from .players import ClanMember
-from .miscmodels import CapitalDistrict, try_enum, ChatLanguage, Location, Label, WarLeague
+from .miscmodels import try_enum, ChatLanguage, Location, Label, WarLeague, CapitalDistrict
 from .utils import get, cached_property, correct_tag
 from .abc import BaseClan
 
