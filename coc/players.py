@@ -208,6 +208,8 @@ class Player(ClanMember):
         The player's best versus trophy count.
     versus_attack_wins: :class:`int`
         The number of versus attacks the player has won
+    clan_capital_contributions: :class:`int`
+        The player's total contribution to clan capitals
     legend_statistics: Optional[:class:`LegendStatistics`]
         The player's legend statistics, or ``None`` if they have never been in the legend league.
     war_opted_in: Optional[:class:`bool`]
@@ -226,6 +228,7 @@ class Player(ClanMember):
         "builder_hall",
         "best_versus_trophies",
         "versus_attack_wins",
+        "clan_capital_contributions",
         "legend_statistics",
         "war_opted_in",
         "_achievements",
@@ -309,6 +312,7 @@ class Player(ClanMember):
         self.builder_hall: int = data_get("builderHallLevel", 0)
         self.best_versus_trophies: int = data_get("bestVersusTrophies")
         self.versus_attack_wins: int = data_get("versusBattleWins")
+        self.clan_capital_contributions: int = data_get("clanCapitalContributions")
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
 
         try:
