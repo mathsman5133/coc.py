@@ -264,7 +264,7 @@ class Client:
         except Exception as error:
             LOG.error("Invalid credentials\n%s", error)
             await http.close()
-            return self
+            raise
 
         self._create_holders()
         LOG.debug("HTTP connection created. Client is ready for use.")
