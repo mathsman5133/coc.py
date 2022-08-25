@@ -106,6 +106,10 @@ class DiscordLinkClient:
 
         self.http_session = aiohttp.ClientSession(loop=self.loop)
 
+    async def close(self):
+        """Close the client session established"""
+        await self.http_session.close()
+
     async def _request(self, method, url, *, token_request: bool = False, **kwargs):
         url = self.BASE_URL + url
 
