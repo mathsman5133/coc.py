@@ -21,8 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from __future__ import annotations
-
 import asyncio
 import logging
 
@@ -243,7 +241,7 @@ class Client:
         if not self.load_game_data.never:
             self._load_holders()
 
-    async def login(self, email: str, password: str) -> Client:
+    async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters

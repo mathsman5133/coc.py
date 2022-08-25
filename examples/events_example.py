@@ -104,6 +104,7 @@ async def season_started():
              str(utils.get_season_end()))
 
 
+
 async def main() -> None:
     # Instantiate the coc_client using the Events client
     coc_client = coc.EventsClient(
@@ -154,7 +155,9 @@ async def main() -> None:
         log.addHandler(Handler())
         # we don't wanna wait forever for an event, so if
         # it sets up OK lets call it quits.
-        coc_client.loop.call_later(20.0, sys.exit, 0)
+        await asyncio.sleep(20)
+        _loop = asyncio.get_event_loop()
+        _loop.stop()
 
 
 if __name__ == "__main__":
