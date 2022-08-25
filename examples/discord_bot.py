@@ -1,4 +1,4 @@
-# this example assumes you have discord.py > v1.5
+# this example assumes you have discord.py > v2.0
 # installed via `python -m pip install -U discord.py`
 # for more info on using discord.py, see the docs at:
 # https://discordpy.readthedocs.io/en/latest
@@ -9,7 +9,6 @@ import traceback
 
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
 
 import coc
 from coc import utils
@@ -45,7 +44,8 @@ async def member_name_change(old_player, new_player):
 async def on_event_error(exception):
     if isinstance(exception, coc.PrivateWarLog):
         return  # lets ignore private war log errors
-    print("Uh oh! Something went wrong in coc.py events... printing traceback for you.")
+    print(
+        "Uh oh! Something went wrong in coc.py events... printing traceback for you.")
     traceback.print_exc()
 
 
@@ -100,6 +100,7 @@ async def create_army(ctx):
     )
     await ctx.send(link)
 
+
 @bot.command()
 async def member_stat(ctx, player_tag):
     if not utils.is_valid_tag(player_tag):
@@ -135,7 +136,6 @@ async def member_stat(ctx, player_tag):
     await ctx.send(embed=e)
 
 
-
 @bot.command()
 async def clan_info(ctx, clan_tag):
     if not utils.is_valid_tag(clan_tag):
@@ -153,13 +153,12 @@ async def clan_info(ctx, clan_tag):
     else:
         log = "Public"
 
-
-
     e = discord.Embed(colour=discord.Colour.green())
 
     e.set_thumbnail(url=clan.badge.url)
     e.add_field(name="Clan Name",
-                value=f"{clan.name}({clan.tag})\n[Open in game]({clan.share_link})", inline=False)
+                value=f"{clan.name}({clan.tag})\n[Open in game]({clan.share_link})",
+                inline=False)
     e.add_field(name="Clan Level", value=clan.level, inline=False)
     e.add_field(name="Description", value=clan.description, inline=False)
     e.add_field(name="Leader", value=clan.get_member_by(
@@ -190,7 +189,8 @@ async def clan_info(ctx, clan_tag):
     for district in clan.capital_districts:
         frame += (f"`{f'{district.name}:':<20}` `{district.hall_level:<15}`\n")
 
-    e2 = discord.Embed(colour=discord.Colour.green(), description=frame, title="Capital Distracts")
+    e2 = discord.Embed(colour=discord.Colour.green(), description=frame,
+                       title="Capital Distracts")
 
     await ctx.send(embeds=[e, e2])
 
@@ -243,36 +243,16 @@ async def current_war_status(ctx, clan_tag):
 
         e.add_field(name=war.clan.name, value=war.clan.tag)
         e.add_field(
-            name="Opponent:", value=f"{war.opponent.name}\n" f"{war.opponent.tag}", inline=False)
+            name="Opponent:",
+            value=f"{war.opponent.name}\n" f"{war.opponent.tag}", inline=False)
         e.add_field(name="War End Time:",
-                    value=f"{hours} hours {minutes} minutes {seconds} seconds", inline=False)
+                    value=f"{hours} hours {minutes} minutes {seconds} seconds",
+                    inline=False)
 
     await ctx.send(embed=e)
 
 
-async def run_tests_and_quit():
-    # ignore this; it is purely for the benefit of being able to run the examples as tests.
-    import sys
-
-    class Msg:
-        _state = bot._connection
-
-    await bot.wait_until_ready()
-    ctx = commands.Context(prefix=None, message=Msg, bot=bot)
-
-    async def _mock_get_channel():
-        return bot.get_channel(INFO_CHANNEL_ID)
-    ctx._get_channel = _mock_get_channel
-
-    await ctx.invoke(player_heroes, "#JY9J2Y99")
-    for command in (clan_info, clan_member, current_war_status):
-        await ctx.invoke(command, clan_tags[0])
-
-    sys.exit(0)
-
-
-def main():
-    load_dotenv()
+async def main():
     logging.basicConfig(level=logging.ERROR)
 
     # Instantiate the coc client used to log in
@@ -280,25 +260,26 @@ def main():
         key_names="coc.py bot example"
     )
 
-    # Create an event loop
-    loop = asyncio.get_event_loop()
-
-    # Establish a connection with the coc API
-    loop.run_until_complete(
-        coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                         os.environ.get("DEV_SITE_PASSWORD")))
+    # Attempt to log into CoC API using your credentials.
+    try:
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
+    except coc.InvalidCredentials:
+        exit("[!] Invalid credentials used")
 
     # Add the client session to the bot
     bot.coc_client = coc_client
 
-    loop.run_until_complete(bot.start(os.environ.get("DISCORD_BOT_TOKEN")))
+    try:
+        # Run the bot
+        await bot.start(os.environ.get("DISCORD_BOT_TOKEN"))
+    finally:
+        # When done, do not forget to clean up after yourself!
+        await coc_client.close()
 
 
 if __name__ == "__main__":
-    if os.environ.get("RUNNING_TESTS"):
-        bot.loop.create_task(run_tests_and_quit())
-
     try:
-        main()
+        asyncio.run(main())
     except KeyboardInterrupt:
         pass
