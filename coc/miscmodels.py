@@ -580,6 +580,40 @@ class Label:
         self.badge = try_enum(Icon, data=data.get("iconUrls"), client=self._client)
 
 
+class CapitalDistrict:
+    """Represents a Clan Capital District.
+
+    Attributes
+    -----------
+    id:
+        :class:`int`: The district's unique ID as given by the API.
+    name:
+        :class:`str`: The district's name.
+    hall_level:
+        :class:`int`: The district's hall level
+    """
+
+    __slots__ = ("id", "name", "_client", "hall_level")
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        attrs = [("id", self.id), ("name", self.name)]
+        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.id == other.id
+
+    def __init__(self, *, data, client):
+        # pylint: disable=invalid-name
+        self._client = client
+
+        self.id: int = data.get("id")
+        self.name: str = data.get("name")
+        self.hall_level: int = data.get("districtHallLevel")
+
+
 class WarLeague:
     """Represents a clan's CWL league.
     Attributes
