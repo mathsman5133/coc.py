@@ -719,11 +719,12 @@ class EventsClient(Client):
         except KeyboardInterrupt:
             self.close()
 
-    def close(self):
-        """Closes the client and all running tasks."""
-        tasks = {t for t in asyncio.Task.all_tasks(loop=self.loop) if not t.done()}
-        for task in tasks:
-            task.cancel()
+    # async def close(self):
+    #     """Closes the client and all running tasks."""
+    #     tasks = {t for t in asyncio.all_tasks(loop=self.loop) if not t.done()}
+    #     for task in tasks:
+    #         task.cancel()
+    #     await super().close()
 
     def dispatch(self, event_name: str, *args, **kwargs):
         # pylint: disable=broad-except
