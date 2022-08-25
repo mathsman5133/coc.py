@@ -25,7 +25,7 @@ import typing
 
 
 from .players import ClanMember
-from .miscmodels import try_enum, ChatLanguage, Location, Label, WarLeague
+from .miscmodels import try_enum, ChatLanguage, Location, Label, WarLeague, CapitalDistrict
 from .utils import get, cached_property, correct_tag
 from .abc import BaseClan
 
@@ -129,6 +129,9 @@ class Clan(BaseClan):
     member_cls: :class:`coc.ClanMember`
         The type which the members found in :attr:`Clan.members` will be of.
         Ensure any overriding of this inherits from :class:`coc.ClanMember`.
+    capital_district_cls: :class:`coc.CapitalDistrict`
+        The type which the clan capital districts found in :attr:`Clan.capital_districts` will be of.
+        Ensure any overriding of this inherits from :class:`coc.CapitalDistrict`.
     war_league: :class:`coc.WarLeague`
         The clan's CWL league.
     """
@@ -149,24 +152,28 @@ class Clan(BaseClan):
         "member_count",
         "_labels",
         "_members",
+        "_districts",
         "_client",
         "label_cls",
         "member_cls",
+        "capital_district_cls",
         "war_league",
         "chat_language",
 
         "_cs_labels",
         "_cs_members",
+        "_cs_members_dict",
+        "_cs_capital_districts",
         "_iter_labels",
         "_iter_members",
+        "_iter_capital_districts"
     )
 
     def __init__(self, *, data, client, **_):
         super().__init__(data=data, client=client)
         self.label_cls = Label
         self.member_cls = ClanMember
-
-        self._members = None  # type: typing.Optional[typing.Dict[str, ClanMember]]
+        self.capital_district_cls = CapitalDistrict
 
         self._from_data(data)
 
@@ -200,6 +207,13 @@ class Clan(BaseClan):
             member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
         )
 
+        capital_district_cls = self.capital_district_cls
+        if data_get("clanCapital"):
+            self._iter_capital_districts = (capital_district_cls(data=cddata, client=self._client) for cddata in
+                                            data_get("clanCapital")["districts"])
+        else:
+            self._iter_capital_districts = ()
+
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
@@ -208,8 +222,18 @@ class Clan(BaseClan):
     @cached_property("_cs_members")
     def members(self) -> typing.List[ClanMember]:
         """List[:class:`ClanMember`]: A list of members that belong to the clan."""
-        dict_members = self._members = {m.tag: m for m in self._iter_members}
-        return list(dict_members.values())
+        return list(self.members_dict.values())
+
+    @cached_property("_cs_members_dict")
+    def members_dict(self) -> typing.Dict[str, ClanMember]:
+        """Dict[str, :class:`ClanMember`]: A dict of members that belong to the clan."""
+        return {m.tag: m for m in self._iter_members}
+
+
+    @cached_property("_cs_capital_districts")
+    def capital_districts(self) -> typing.List[CapitalDistrict]:
+        """List[:class:`CapitalDistrict`]: A :class:`List` of :class:`CapitalDistrict` that the clan has."""
+        return list(self._iter_capital_districts)
 
     def get_member(self, tag: str) -> typing.Optional[ClanMember]:
         """Return a :class:`ClanMember` with the tag provided. Returns ``None`` if not found.
@@ -226,11 +250,11 @@ class Clan(BaseClan):
         The member who matches the tag provided: Optional[:class:`ClanMember`]
         """
         tag = correct_tag(tag)
-        if not self._members:
+        if not self.members_dict:
             _ = self.members
 
         try:
-            return self._members[tag]
+            return self.members_dict[tag]
         except KeyError:
             return None
 

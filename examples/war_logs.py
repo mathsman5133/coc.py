@@ -47,4 +47,4 @@ async def get_warlog_opponents_from_clan_name(name: str, no_of_clans: int):
 
 if __name__ == "__main__":
     client.loop.run_until_complete(get_warlog_opponents_from_clan_name("name", 5))
-    client.close()
+    client.close_loops()
