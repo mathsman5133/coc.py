@@ -267,7 +267,6 @@ class Client:
             return self
 
         self._create_holders()
-
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
