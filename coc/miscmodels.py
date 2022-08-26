@@ -603,7 +603,7 @@ class CapitalDistrict:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.id == other.id
+        return isinstance(other, self.__class__) and self.id == other.id and self.hall_level == other.hall_level
 
     def __init__(self, *, data, client):
         # pylint: disable=invalid-name
