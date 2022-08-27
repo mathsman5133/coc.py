@@ -255,17 +255,12 @@ async def current_war_status(ctx, clan_tag):
 async def main():
     logging.basicConfig(level=logging.ERROR)
 
-    # Instantiate the coc client used to log in
-    coc_client = coc.EventsClient(
-        key_names="coc.py bot example"
-    )
-
     # Attempt to log into CoC API using your credentials.
     try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials:
-        exit("[!] Invalid credentials used")
+        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
+                                     os.environ.get("DEV_SITE_PASSWORD"))
+    except coc.InvalidCredentials as error:
+        exit(error)
 
     # Add the client session to the bot
     bot.coc_client = coc_client

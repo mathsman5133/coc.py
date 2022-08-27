@@ -35,22 +35,20 @@ async def get_warlog_opponents_from_clan_name(client: coc.Client, name: str, no_
     for name, tag in clan_tags_names:
         # iterate over the wars
         for war in war_logs[tag]:
-            # if it is a league war we will error below because it does not return a WarLog object,
-            # and thus no opponent
+            # if it is a league war we will error below because it does not
+            # return a WarLog object, and thus no opponent
             if war.is_league_entry:
                 print("League War Season - No opponent info available")
             else:
-                print("War: {} vs {}".format(war.clan.name, war.opponent.name))
+                print(f"War: {war.clan.name} vs {war.opponent.name}")
 
 
 async def main():
-    coc_client = coc.Client()
-
     try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials:
-        exit("[!] Invalid credentials used")
+        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
+                                     os.environ.get("DEV_SITE_PASSWORD"))
+    except coc.InvalidCredentials as error:
+        exit(error)
 
     await get_warlog_opponents_from_clan_name(coc_client, "Reddit Zulu", 5)
     await coc_client.close()

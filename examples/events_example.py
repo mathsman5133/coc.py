@@ -106,17 +106,15 @@ async def season_started():
 
 
 async def main() -> None:
-    # Instantiate the coc_client using the Events client
-    coc_client = coc.EventsClient(
-        key_names="coc.py bot example"
-    )
 
-    # Attempt to log into CoC API using your credentials.
+    # Attempt to log into CoC API using your credentials. You must use the
+    # coc.EventsClient to enable event listening
     try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials:
-        exit("[!] Invalid credentials used")
+        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
+                                     os.environ.get("DEV_SITE_PASSWORD"),
+                                     client=coc.EventsClient)
+    except coc.InvalidCredentials as error:
+        exit(error)
 
     # Register all the clans you want to track
     coc_client.add_clan_updates(*clan_tags)
@@ -164,6 +162,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     log = logging.getLogger()
 
+    # Unlike the other examples that use `asyncio.run()`, in order to run
+    # events forever you must set the event loop to run forever so we will use
+    # the lower level function calls to handle this.
     loop = asyncio.get_event_loop()
 
     try:
