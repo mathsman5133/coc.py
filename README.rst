@@ -50,32 +50,35 @@ This example will get a player with a certain tag, and search for 5 clans with a
     import asyncio
     import coc
 
+
     async def main():
-        # Create a login session
-        client = coc.Client()
-        await client.login("email", "password")
+        try:
+            coc_client = await coc.login("email", "password")
+        except coc.invalidcredentials as error:
+            exit(error)
 
         player = await client.get_player("tag")
-        print("{0.name} has {0.trophies} trophies!".format(player))
+        print(f"{player.name} has {player.trophies} trophies!")
 
-        clans = await client.search_clans(name="Best Clan Ever", limit=5)
+        clans = await client.search_clans(name="best clan ever", limit=5)
         for clan in clans:
-            print("{0.name} ({0.tag}) has {0.member_count} members".format(clan))
+            print(f"{clan.name} ({clan.tag}) has {clan.member_count} members")
 
         try:
             war = await client.get_current_war("#clantag")
-            print("{0.clan_tag} is currently in {0.state} state.".format(war))
-        except coc.PrivateWarLog:
-            print("Uh oh, they have a private war log!")
+            print(f"{war.clan_tag} is currently in {war.state} state.")
+        except coc.privatewarlog:
+            print("uh oh, they have a private war log!")
 
-        # Make sure to close the session
-        await client.close_client()
+        # make sure to close the session or you will get asyncio
+        # task pending errors
+        await client.close()
 
-    if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        pass
+    if __name__ == "__main__":
+        try:
+            asyncio.run(main())
+        except KeyboardInterrupt:
+            pass
 
 Basic Events Example
 ---------------------
@@ -84,23 +87,52 @@ whenever someone joins the clan or a member of the clan donates troops.
 
 .. code:: py
 
+    import asyncio
+    import logging
+
     import coc
 
-    client = coc.login('email', 'password', client=coc.EventsClient)
 
-    @client.event
-    @coc.ClanEvents.member_join(tags=["#clantag", "#clantag2"])
+    @coc.ClanEvents.member_join()
     async def foo(player, clan):
-        print("{0.name} ({0.tag}) just joined {1.name} ({1.tag})!".format(player, clan))
+        print(f"{player.name} ({player.tag}) just joined {clan.name} ({clan.tag})")
 
-    @client.event
-    @coc.ClanEvents.member_donations(tags=["#clantag", "#clantag2"])
+
+    @coc.ClanEvents.member_donations()
     async def bar(old_member, member):
         troops_donated = member.donations - old_member.donations
-        print("{0} just donated {1} troops!".format(member.name, troops_donated))
+        print(f"{member.name} just donated {troops_donated} troops!")
 
-    client.run_forever()
 
+    async def main():
+        try:
+            coc_client = await coc.login("email",
+                                         "password",
+                                         client=coc.EventsClient)
+        except coc.InvalidCredentials as error:
+            exit(error)
+
+        # Register all the clans you want to monitor
+        list_of_clan_tags = ["tag1", "tag2", "tag3"]
+        coc_client.add_clan_updates(*list_of_clan_tags)
+
+        # Register the callbacks for each of the events you are monitoring
+        coc_client.add_events(
+            foo,
+            bar
+        )
+
+
+    if __name__ == "__main__":
+        logging.basicConfig(level=logging.INFO)
+        log = logging.getLogger()
+
+        loop = asyncio.get_event_loop()
+        try:
+            loop.run_until_complete(main())
+            loop.run_forever()
+        except KeyboardInterrupt:
+            pass
 
 For more examples see the examples directory
 
