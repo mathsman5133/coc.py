@@ -81,7 +81,7 @@ class HTTPException(ClashOfClansException):
             self.reason = None
             self.message = response
 
-            fmt = "Unknown Error Occured: {0}"
+            fmt = "Error Occurred: {0}"
             super().__init__(fmt.format(self.message))
 
 
@@ -102,6 +102,8 @@ class InvalidCredentials(HTTPException):
     were passed. This is when your email/password pair is incorrect.
     Subclass of :exc:`HTTPException`
     """
+    def __init__(self, response="Invalid Credentials"):
+        super().__init__(response=response)
 
 
 class Forbidden(HTTPException):

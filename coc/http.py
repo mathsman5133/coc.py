@@ -421,7 +421,7 @@ class HTTPClient:
             body = {"email": self.email, "password": self.password}
             resp = await session.post("https://developer.clashofclans.com/api/login", json=body)
             if resp.status == 403:
-                raise InvalidCredentials(resp.reason)
+                raise InvalidCredentials()
 
             LOG.info("Successfully logged into the developer site.")
 
