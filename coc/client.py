@@ -256,13 +256,7 @@ class Client:
         """
         self.http = http = self._create_client(email, password)
         await http.create_session(self.connector, self.timeout)
-
-        try:
-            await http.initialise_keys()
-        except Exception as error:
-            LOG.error("Invalid credentials\n%s", error)
-            await http.close()
-            raise
+        await http.initialise_keys()
 
         self._create_holders()
         LOG.debug("HTTP connection created. Client is ready for use.")

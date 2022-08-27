@@ -421,6 +421,8 @@ class HTTPClient:
             body = {"email": self.email, "password": self.password}
             resp = await session.post("https://developer.clashofclans.com/api/login", json=body)
             if resp.status == 403:
+                LOG.error("Invalid credentials used when attempting to log in")
+                await self.close()
                 raise InvalidCredentials()
 
             LOG.info("Successfully logged into the developer site.")
