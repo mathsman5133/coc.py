@@ -593,7 +593,7 @@ class CapitalDistrict:
         :class:`int`: The district's hall level
     """
 
-    __slots__ = ("id", "name", "_client", "hall_level")
+    __slots__ = ("id", "name", "hall_level")
 
     def __str__(self):
         return self.name
@@ -603,12 +603,12 @@ class CapitalDistrict:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.id == other.id
+        return isinstance(other, self.__class__) and \
+               self.id == other.id and \
+               self.hall_level == other.hall_level
 
     def __init__(self, *, data, client):
         # pylint: disable=invalid-name
-        self._client = client
-
         self.id: int = data.get("id")
         self.name: str = data.get("name")
         self.hall_level: int = data.get("districtHallLevel")

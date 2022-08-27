@@ -5,8 +5,8 @@ from coc.ext import discordlinks
 
 
 async def main():
-    client = discordlinks.login(os.environ["LINKS_API_USERNAME"],
-                                os.environ["LINKS_API_PASSWORD"])
+    client = await discordlinks.login(os.environ["LINKS_API_USERNAME"],
+                                      os.environ["LINKS_API_PASSWORD"])
 
     player_tag = "#JY9J2Y99"
     discord_id = 230214242618441728
