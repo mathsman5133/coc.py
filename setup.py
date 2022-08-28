@@ -46,7 +46,7 @@ setup(
     author="mathsman5133",
     url="https://github.com/mathsman5133/coc.py",
     package_data={"coc": ["events.pyi"]},
-    packages=["coc", "coc.ext.discordlinks"],
+    packages=["coc", "coc.ext.discordlinks", "coc.static"],
     version=VERSION,
     license="MIT",
     description="A python wrapper for the Clash of Clans API",
@@ -55,11 +55,11 @@ setup(
     install_requires=REQUIREMENTS,
     include_package_data=True,
     extras_require={"docs": ["sphinx", "sphinx_rtd_theme", "sphinxcontrib_trio", "autodocsumm"]},
-    classifiers={
+    classifiers=[
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
-    },
+    ],
     cmdclass={"lint": LintCommand},
 )
