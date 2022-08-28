@@ -415,64 +415,66 @@ class HTTPClient:
     async def initialise_keys(self):
         LOG.debug("Initialising keys from the developer site.")
         self.initialising_keys.clear()
-        session = aiohttp.ClientSession()
 
-        body = {"email": self.email, "password": self.password}
-        resp = await session.post("https://developer.clashofclans.com/api/login", json=body)
-        if resp.status == 403:
-            raise InvalidCredentials(resp)
+        # Use context manager to automatically clean up after ourselves
+        async with aiohttp.ClientSession() as session:
+            body = {"email": self.email, "password": self.password}
+            resp = await session.post("https://developer.clashofclans.com/api/login", json=body)
+            if resp.status == 403:
+                LOG.error("Invalid credentials used when attempting to log in")
+                await self.close()
+                raise InvalidCredentials()
 
-        LOG.info("Successfully logged into the developer site.")
+            LOG.info("Successfully logged into the developer site.")
 
-        resp_paylaod = await resp.json()
-        ip = json_loads(base64_b64decode(resp_paylaod["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+            resp_paylaod = await resp.json()
+            ip = json_loads(base64_b64decode(resp_paylaod["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
 
-        LOG.info("Found IP address to be %s", ip)
+            LOG.info("Found IP address to be %s", ip)
 
-        resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
-        keys = (await resp.json())["keys"]
-        self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
+            resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
+            keys = (await resp.json())["keys"]
+            self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
 
-        LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
+            LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
-        if len(self._keys) < self.key_count:
-            for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
-                LOG.info(
-                        "Deleting key with the name %s and IP %s (not matching our current IP address).",
-                        self.key_names, key["cidrRanges"],
+            if len(self._keys) < self.key_count:
+                for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                    LOG.info(
+                            "Deleting key with the name %s and IP %s (not matching our current IP address).",
+                            self.key_names, key["cidrRanges"],
+                    )
+                    await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+
+                while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
+                    data = {
+                        "name"       : self.key_names,
+                        "description": "Created on {}".format(datetime.now().strftime("%c")),
+                        "cidrRanges" : [ip],
+                        "scopes"     : [self.key_scopes],
+                    }
+
+                    LOG.info("Creating key with data %s.", str(data))
+
+                    resp = await session.post("https://developer.clashofclans.com/api/apikey/create", json=data)
+                    key = await resp.json()
+                    self._keys.append(key["key"]["key"])
+
+            if len(keys) == 10 and len(self._keys) < self.key_count:
+                LOG.critical("%s keys were requested to be used, but a maximum of %s could be "
+                             "found/made on the developer site, as it has a maximum of 10 keys per account. "
+                             "Please delete some keys or lower your `key_count` level."
+                             "I will use %s keys for the life of this client.",
+                             self.key_count, len(self._keys), len(self._keys))
+
+            if len(self._keys) == 0:
+                await self.close()
+                raise RuntimeError(
+                        "There are {} API keys already created and none match a key_name of '{}'."
+                        "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
+                        "unused keys.".format(len(keys), self.key_names)
                 )
-                await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
 
-            while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
-                data = {
-                    "name"       : self.key_names,
-                    "description": "Created on {}".format(datetime.now().strftime("%c")),
-                    "cidrRanges" : [ip],
-                    "scopes"     : [self.key_scopes],
-                }
-
-                LOG.info("Creating key with data %s.", str(data))
-
-                resp = await session.post("https://developer.clashofclans.com/api/apikey/create", json=data)
-                key = await resp.json()
-                self._keys.append(key["key"]["key"])
-
-        if len(keys) == 10 and len(self._keys) < self.key_count:
-            LOG.critical("%s keys were requested to be used, but a maximum of %s could be "
-                         "found/made on the developer site, as it has a maximum of 10 keys per account. "
-                         "Please delete some keys or lower your `key_count` level."
-                         "I will use %s keys for the life of this client.",
-                         self.key_count, len(self._keys), len(self._keys))
-
-        if len(self._keys) == 0:
-            await self.close()
-            raise RuntimeError(
-                    "There are {} API keys already created and none match a key_name of '{}'."
-                    "Please specify a key_name kwarg, or go to 'https://developer.clashofclans.com' to delete "
-                    "unused keys.".format(len(keys), self.key_names)
-            )
-
-        await session.close()
         self.keys = cycle(self._keys)
         self.initialising_keys.set()
         LOG.info("Successfully initialised keys for use.")

@@ -21,7 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
 import asyncio
 import logging
 
@@ -258,8 +257,8 @@ class Client:
         self.http = http = self._create_client(email, password)
         await http.create_session(self.connector, self.timeout)
         await http.initialise_keys()
-        self._create_holders()
 
+        self._create_holders()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
@@ -278,13 +277,10 @@ class Client:
 
         LOG.debug("HTTP connection created. Client is ready for use.")
 
-    def close(self) -> None:
-        """Closes the HTTP connection
-        """
-        LOG.info("Clash of Clans client logging out...")
-        self.dispatch("on_client_close")
-        self.loop.run_until_complete(self.http.close())
-        self.loop.close()
+    async def close(self) -> None:
+        """Closes the HTTP connection from within a loop function such as
+        async def main()"""
+        await self.http.close()
 
     def dispatch(self, event_name: str, *args, **kwargs) -> None:
         """Dispatches an event listener matching the `event_name` parameter."""
