@@ -255,10 +255,12 @@ async def current_war_status(ctx, clan_tag):
 async def main():
     logging.basicConfig(level=logging.ERROR)
 
+    coc_client = coc.Client()
+
     # Attempt to log into CoC API using your credentials.
     try:
-        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
-                                     os.environ.get("DEV_SITE_PASSWORD"))
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
     except coc.InvalidCredentials as error:
         exit(error)
 

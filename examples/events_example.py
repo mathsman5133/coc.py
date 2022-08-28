@@ -104,15 +104,14 @@ async def season_started():
              str(utils.get_season_end()))
 
 
-
 async def main() -> None:
+    coc_client = coc.EventsClient()
 
     # Attempt to log into CoC API using your credentials. You must use the
     # coc.EventsClient to enable event listening
     try:
-        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
-                                     os.environ.get("DEV_SITE_PASSWORD"),
-                                     client=coc.EventsClient)
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
     except coc.InvalidCredentials as error:
         exit(error)
 

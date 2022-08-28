@@ -44,9 +44,10 @@ async def get_warlog_opponents_from_clan_name(client: coc.Client, name: str, no_
 
 
 async def main():
+    coc_client = coc.Client()
     try:
-        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
-                                     os.environ.get("DEV_SITE_PASSWORD"))
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
     except coc.InvalidCredentials as error:
         exit(error)
 

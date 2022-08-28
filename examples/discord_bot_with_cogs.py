@@ -223,12 +223,13 @@ async def on_clan_trophy_change(old_clan, new_clan):
 
 
 async def main():
+    coc_client = coc.EventsClient()
+
     # Attempt to log into CoC API using your credentials. To enable events,
     # you must use the coc.EventsClient class
     try:
-        coc_client = await coc.login(os.environ.get("DEV_SITE_EMAIL"),
-                                     os.environ.get("DEV_SITE_PASSWORD"),
-                                     client=coc.EventsClient)
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
     except coc.InvalidCredentials as error:
         exit(error)
 

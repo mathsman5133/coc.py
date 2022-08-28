@@ -28,7 +28,7 @@ from .client import Client
 from .events import EventsClient
 
 
-async def login(
+def login(
     email: str, password: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs
 ) -> Union[Client, EventsClient]:
     r"""Eases logging into the coc.py Client.
@@ -50,9 +50,9 @@ async def login(
     **kwargs
         Any kwargs you wish to pass into the Client object.
     """
-    coc_client = client(**kwargs)
-    await coc_client.login(email, password)
-    return coc_client
+    instance = client(**kwargs)
+    instance.loop.run_until_complete(instance.login(email, password))
+    return instance
 
 
 def login_with_keys(*keys: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs) -> Union[Client, EventsClient]:

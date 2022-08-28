@@ -52,8 +52,9 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
 
     async def main():
+        coc_client = coc.Client()
         try:
-            coc_client = await coc.login("email", "password")
+            await coc_client.login("email", "password")
         except coc.invalidcredentials as error:
             exit(error)
 
@@ -105,10 +106,9 @@ whenever someone joins the clan or a member of the clan donates troops.
 
 
     async def main():
+        coc_client = coc.EVentsClient()
         try:
-            coc_client = await coc.login("email",
-                                         "password",
-                                         client=coc.EventsClient)
+            await coc.login("email", "password")
         except coc.InvalidCredentials as error:
             exit(error)
 
