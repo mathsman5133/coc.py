@@ -7,7 +7,7 @@ REQUIREMENTS = []
 with open(os.path.join(os.getcwd(), "requirements.txt")) as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = "2.0.2"
+VERSION = "2.1.0"
 if "a" in VERSION:
     VERSION += "+" + subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).decode("utf-8").strip()
 
@@ -51,7 +51,7 @@ setup(
     license="MIT",
     description="A python wrapper for the Clash of Clans API",
     long_description=README,
-    python_requires=">=3.5.3",
+    python_requires=">=3.7.3",
     install_requires=REQUIREMENTS,
     include_package_data=True,
     extras_require={"docs": ["sphinx", "sphinx_rtd_theme", "sphinxcontrib_trio", "autodocsumm"]},
