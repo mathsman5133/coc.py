@@ -446,6 +446,10 @@ class HTTPClient:
                     )
                     await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
 
+                if len(keys) == 10:
+                    resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
+                    keys = (await resp.json())["keys"]
+
                 while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
                     data = {
                         "name"       : self.key_names,
