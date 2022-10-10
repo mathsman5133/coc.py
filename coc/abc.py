@@ -200,7 +200,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         # spells and troops
         cls.training_cost = try_enum(UnitStat, troop_meta.get("TrainingCost"))
-        cls.training_resource = Resource(value=troop_meta["TrainingResource"][0])
         cls.training_time = try_enum(UnitStat, troop_meta.get("TrainingTime"))
 
         # only heroes
