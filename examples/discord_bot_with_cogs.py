@@ -58,6 +58,17 @@ class CocCommands(commands.Cog):
             await ctx("This clan doesn't exist!")
             return
 
+        print("Hello")
+        try:
+            for spell in player.spells:
+                print(spell)
+        except Exception as error:
+            import traceback
+            exc = ''.join(traceback.format_exception(type(error), error,
+                                                     error.__traceback__,
+                                                     chain=True))
+            print(exc)
+
         frame = ""
         if player.town_hall > 11:
             frame += f"`{'TH Weapon LvL:':<15}` `{player.town_hall_weapon:<15}`\n"
