@@ -162,6 +162,7 @@ class Clan(BaseClan):
 
         "_cs_labels",
         "_cs_members",
+        "_cs_members_dict",
         "_cs_capital_districts",
         "_iter_labels",
         "_iter_members",
@@ -173,8 +174,6 @@ class Clan(BaseClan):
         self.label_cls = Label
         self.member_cls = ClanMember
         self.capital_district_cls = CapitalDistrict
-
-        self._members = None  # type: typing.Optional[typing.Dict[str, ClanMember]]
 
         self._from_data(data)
 
@@ -222,9 +221,14 @@ class Clan(BaseClan):
 
     @cached_property("_cs_members")
     def members(self) -> typing.List[ClanMember]:
-        """List[:class:`ClanMember`]: A :class:`List` of :class:`members` that belong to the clan."""
-        dict_members = self._members = {m.tag: m for m in self._iter_members}
-        return list(dict_members.values())
+        """List[:class:`ClanMember`]: A list of members that belong to the clan."""
+        return list(self.members_dict.values())
+
+    @cached_property("_cs_members_dict")
+    def members_dict(self) -> typing.Dict[str, ClanMember]:
+        """Dict[str, :class:`ClanMember`]: A dict of members that belong to the clan."""
+        return {m.tag: m for m in self._iter_members}
+
 
     @cached_property("_cs_capital_districts")
     def capital_districts(self) -> typing.List[CapitalDistrict]:
@@ -246,11 +250,11 @@ class Clan(BaseClan):
         The member who matches the tag provided: Optional[:class:`ClanMember`]
         """
         tag = correct_tag(tag)
-        if not self._members:
+        if not self.members_dict:
             _ = self.members
 
         try:
-            return self._members[tag]
+            return self.members_dict[tag]
         except KeyError:
             return None
 

@@ -650,9 +650,13 @@ class Player(ClanMember):
 
         This will return spells in the order found in both spell factory and labatory in-game.
         """
-        dict_spells = self._spells = {s.name: s for s in self._iter_spells}
+        self._spells = {s.name: s for s in self._iter_spells}
+        dict_spells = self._spells
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
-        return list(sorted(dict_spells.values(), key=lambda s: order.get(s.name)))
+
+        return list(sorted(
+                    dict_spells.values(),
+                    key=lambda s: order.get(s.name, 0)))
 
     def get_spell(self, name: str, default_value=None) -> typing.Optional[Spell]:
         """Returns a spell with the given name.

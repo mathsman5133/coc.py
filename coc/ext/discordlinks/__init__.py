@@ -44,7 +44,7 @@ def extract_expiry_from_jwt_token(token):
         return None
 
 
-def login(username: str, password: str, loop: asyncio.AbstractEventLoop = None) -> "DiscordLinkClient":
+async def login(username: str, password: str) -> "DiscordLinkClient":
     """Eases logging into the API client.
 
     For more information on this project, please join the discord server - <discord.gg/Eaja7gJ>
@@ -66,9 +66,8 @@ def login(username: str, password: str, loop: asyncio.AbstractEventLoop = None) 
         raise TypeError("username and password must both be a string")
     if not username or not password:
         raise ValueError("username or password must not be an empty string.")
-    if loop and not isinstance(loop, asyncio.AbstractEventLoop):
-        raise TypeError("loop must be of type asyncio.AbstractEventLoop, or None.")
 
+    loop = asyncio.get_running_loop()
     return DiscordLinkClient(username, password, loop)
 
 
@@ -105,6 +104,10 @@ class DiscordLinkClient:
         self.key = None  # set in get_key()
 
         self.http_session = aiohttp.ClientSession(loop=self.loop)
+
+    async def close(self):
+        """Close the client session established"""
+        await self.http_session.close()
 
     async def _request(self, method, url, *, token_request: bool = False, **kwargs):
         url = self.BASE_URL + url
