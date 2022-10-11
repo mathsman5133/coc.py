@@ -44,6 +44,7 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
+from .raid import RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
@@ -543,6 +544,50 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
+        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+
+    async def get_raidlog(
+        self,
+        clan_tag: str,
+        cls: Type[RaidLogEntry] = RaidLogEntry,
+        **kwargs
+    ) -> List[RaidLogEntry]:
+        """Retrieve a clan's raid log.
+
+
+        Parameters
+        -----------
+        clan_tag : str
+            The clan tag to search for.
+
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RaidLogEntry`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`RaidLogEntry`]
+            Entries in the raid log of the requested clan.
+        """
+        if not issubclass(cls, RaidLogEntry):
+            raise TypeError("cls must be a subclass of RaidLogEntry.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
+
+
+        data = await self.http.get_clan_raidlog(clan_tag)
         return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:

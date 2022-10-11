@@ -607,6 +607,7 @@ class CapitalDistrict:
                self.id == other.id and \
                self.hall_level == other.hall_level
 
+
     def __init__(self, *, data, client):
         # pylint: disable=invalid-name
         self.id: int = data.get("id")

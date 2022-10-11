@@ -360,6 +360,9 @@ class HTTPClient:
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
 
+    def get_clan_raidlog(self, tag):
+        return self.request(Route("GET", "/clans/{}/capitalraidseasons".format(tag)))
+
     # locations
 
     def search_locations(self, **kwargs):
