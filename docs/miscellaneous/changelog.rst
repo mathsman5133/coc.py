@@ -7,6 +7,21 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.1.1
+------
+- Support for Clan Capitals!
+
+- Updated our examples
+
+- Bug fixes and improvements!
+
+- Fixed bug with iterating over :meth:`Clan.get_detailed_members` where player objects were missing attributes #109
+
+- Cleaned up how the async loop was being managed by library #111
+
+- Please be sure to create issues for any bug fixes or feature requests!
+
+
 v2.0.1
 ------
 - New achievements for clan capital

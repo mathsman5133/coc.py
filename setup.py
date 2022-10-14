@@ -7,7 +7,7 @@ REQUIREMENTS = []
 with open(os.path.join(os.getcwd(), "requirements.txt")) as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = "2.0.1"
+VERSION = "2.1.2"
 if "a" in VERSION:
     VERSION += "+" + subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).decode("utf-8").strip()
 
@@ -46,19 +46,20 @@ setup(
     author="mathsman5133",
     url="https://github.com/mathsman5133/coc.py",
     package_data={"coc": ["events.pyi"]},
-    packages=["coc", "coc.ext.discordlinks"],
+    packages=["coc", "coc.ext.discordlinks", "coc.static"],
     version=VERSION,
     license="MIT",
     description="A python wrapper for the Clash of Clans API",
     long_description=README,
-    python_requires=">=3.5.3",
+    python_requires=">=3.7.3",
     install_requires=REQUIREMENTS,
     include_package_data=True,
     extras_require={"docs": ["sphinx", "sphinx_rtd_theme", "sphinxcontrib_trio", "autodocsumm"]},
-    classifiers={
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
+    classifiers=[
         "Programming Language :: Python :: 3.7",
-    },
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+    ],
     cmdclass={"lint": LintCommand},
 )
