@@ -45,7 +45,7 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .raid import RaidLogEntry
+from .raid import RaidLog, RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
@@ -555,7 +555,7 @@ class Client:
         clan_tag: str,
         cls: Type[RaidLogEntry] = RaidLogEntry,
         **kwargs
-    ) -> List[RaidLogEntry]:
+    ) -> RaidLog:
         """Retrieve a clan's raid log.
 
 
@@ -590,9 +590,8 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-
         data = await self.http.get_clan_raidlog(clan_tag)
-        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+        return RaidLog(data=data, client=self)
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """

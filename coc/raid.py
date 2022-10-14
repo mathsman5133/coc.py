@@ -182,6 +182,8 @@ class RaidDistrict:
         :class:`int`: The district's unique ID as given by the API.
     name:
         :class:`str`: The district's name.
+    hall_level:
+        :class:`str`: The district's hall level.
     destruction:
         :class:`float`: The districts destruction percentage
     attack_count:
@@ -198,6 +200,7 @@ class RaidDistrict:
 
     __slots__ = ("id",
                  "name",
+                 "hall_level",
                  "destruction",
                  "attack_count",
                  "looted",
@@ -213,6 +216,7 @@ class RaidDistrict:
         attrs = [("id", self.id),
                  ("raid_log_entry", repr(self.raid_log_entry)),
                  ("raid_clan", repr(self.raid_clan)),
+                 ("hall_level", self.hall_level),
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
@@ -221,11 +225,13 @@ class RaidDistrict:
                self.id == other.id and \
                self.attack_count == other.attack_count and \
                self.destruction == other.destruction and \
-               self.looted == other.looted
+               self.looted == other.looted and \
+               self.hall_level == other.hall_level
 
     def __init__(self, *, data, client, raid_log_entry, raid_clan):
         self.id: int = data.get("id")
         self.name: str = data.get("name")
+        self.hall_level: int = data.get("districtHallLevel")
         self.destruction: float = data.get("destructionPercent")
         self.attack_count: int = data.get("attackCount")
         self.looted: int = data.get("totalLooted")
@@ -430,6 +436,7 @@ class RaidLogEntry:
                                  for adata in data_get("attackLog", []))
         self._iter_defense_log = (RaidClan(data=adata, raid_log_entry=self, client=self._client)
                                   for adata in data_get("defenseLog", []))
+
         self._iter_members = (RaidMember(data=adata, raid_log_entry=self, client=self._client)
                               for adata in data_get("members", []))
 
@@ -468,3 +475,30 @@ class RaidLogEntry:
             return self._members[tag]
         except KeyError:
             return None
+
+
+class RaidLog:
+    """Represents a Generator for a RaidLog"""
+
+    def __init__(self, data, client):
+        self.data = data.get("items", [])
+        self.client = client
+        self.index = 0
+        self.max_index = len(self.data)
+
+    def __getitem__(self, item: int):
+        if self.max_index < item:
+            raise IndexError()
+        return_value = RaidLogEntry(data=self.data[item], client=self.client)
+        return return_value
+
+    def send(self, arg):
+        if self.max_index < self.index:
+            raise StopIteration()
+        return_value = RaidLogEntry(data=self.data[self.index], client=self.client)
+        self.index += 1
+        return return_value
+
+    def throw(self, typex=None, value=None, traceback=None):
+        raise StopIteration()
+
