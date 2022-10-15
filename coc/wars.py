@@ -345,6 +345,33 @@ class ClanWarLogEntry:
         return self.result is None or self.opponent is None
 
 
+class ClanWarLog:
+    """Represents a Generator for a ClanWarLog"""
+
+    def __init__(self, data, client, cls):
+        self.data = data.get("items", [])
+        self.client = client
+        self.cls = cls
+        self.index = 0
+        self.max_index = len(self.data)
+
+    def __getitem__(self, item: int):
+        if self.max_index < item:
+            raise IndexError()
+        return_value = self.cls(data=self.data[item], client=self.client)
+        return return_value
+
+    def send(self, arg):
+        if self.max_index < self.index:
+            raise StopIteration()
+        return_value = self.cls(data=self.data[self.index], client=self.client)
+        self.index += 1
+        return return_value
+
+    def throw(self, typex=None, value=None, traceback=None):
+        raise StopIteration()
+
+
 class ClanWarLeagueGroup:
     """Represents a Clan War League (CWL) Group
 

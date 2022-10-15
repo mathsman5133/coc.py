@@ -44,11 +44,11 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .raid import RaidLogEntry
+from .raid import RaidLog, RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
-from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+from .wars import ClanWar, ClanWarLog, ClanWarLogEntry, ClanWarLeagueGroup
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
@@ -495,7 +495,7 @@ class Client:
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
         **kwargs
-    ) -> List[ClanWarLogEntry]:
+    ) -> ClanWarLog:
         """Retrieve a clan's clan war log.
 
         .. note::
@@ -544,14 +544,14 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
-        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+        return ClanWarLog(data=data, client=self, cls=cls)
 
     async def get_raidlog(
         self,
         clan_tag: str,
         cls: Type[RaidLogEntry] = RaidLogEntry,
         **kwargs
-    ) -> List[RaidLogEntry]:
+    ) -> RaidLog:
         """Retrieve a clan's raid log.
 
 
@@ -586,9 +586,8 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-
         data = await self.http.get_clan_raidlog(clan_tag)
-        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+        return RaidLog(data=data, client=self)
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
