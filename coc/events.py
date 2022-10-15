@@ -26,7 +26,7 @@ import logging
 import traceback
 
 from collections.abc import Iterable
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .client import Client
 from .clans import Clan
@@ -404,7 +404,8 @@ class EventsClient(Client):
             "player": self.loop.create_task(self._player_updater()),
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
-            "season": self.loop.create_task(self._end_of_season_poller())
+            "season": self.loop.create_task(self._end_of_season_poller()),
+            "goldpass_season": self.loop.create_task(self._end_of_goldpass_season_poller())
         }
 
         for task in self._updater_tasks.values():
@@ -756,7 +757,8 @@ class EventsClient(Client):
             "player": self._player_updater,
             "war": self._war_updater,
             "maintenance": self._maintenance_poller,
-            "season": self._end_of_season_poller
+            "season": self._end_of_season_poller,
+            "goldpass_season": self._end_of_goldpass_season_poller
         }
 
         for name, value in self._updater_tasks.items():
@@ -777,6 +779,27 @@ class EventsClient(Client):
         except (Exception, BaseException) as exception:
             self.dispatch("event_error", exception)
             return await self._end_of_season_poller()
+
+    async def _end_of_goldpass_season_poller(self):
+        try:
+            while self.loop.is_running():
+                await asyncio.sleep(DEFAULT_SLEEP)
+                await self._in_maintenance_event.wait()
+                try:
+                    season = await self.get_current_goldpass_season()
+                except Exception:
+                    await asyncio.sleep(DEFAULT_SLEEP)
+                else:
+                    now = datetime.utcnow()
+                    if now - timedelta(hours=1) <= season.end_time.time:
+                        self.dispatch("new_goldpass_season_start")
+                    else:
+                        await asyncio.sleep(3600)
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._end_of_goldpass_season_poller()
 
     async def _maintenance_poller(self):
         # pylint: disable=broad-except, protected-access
