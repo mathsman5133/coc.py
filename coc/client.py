@@ -48,7 +48,7 @@ from .raid import RaidLog, RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
-from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+from .wars import ClanWar, ClanWarLog, ClanWarLogEntry, ClanWarLeagueGroup
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
@@ -495,7 +495,7 @@ class Client:
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
         **kwargs
-    ) -> List[ClanWarLogEntry]:
+    ) -> ClanWarLog:
         """Retrieve a clan's clan war log.
 
         .. note::
@@ -544,7 +544,7 @@ class Client:
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
-        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+        return ClanWarLog(data=data, client=self, cls=cls)
 
     async def get_raidlog(
         self,
