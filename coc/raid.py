@@ -344,8 +344,7 @@ class RaidClan:
         if list_attacks:
             return list_attacks
 
-        list_attacks = list(attack for district in self.districts for attack in district.attacks
-                            if attack.attacker_tag == self.tag)
+        list_attacks = list(attack for district in self.districts for attack in district.attacks)
         self._attacks = list_attacks
         return list_attacks
 
