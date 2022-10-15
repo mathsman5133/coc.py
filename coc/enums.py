@@ -153,9 +153,9 @@ HERO_PETS_ORDER = [
     "Electro Owl",
     "Mighty Yak",
     "Unicorn",
-    "Poison Lizard",
-    "Diggy",
     "Frosty",
+    "Diggy",
+    "Poison Lizard",
     "Phoenix",
 ]
 
