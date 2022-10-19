@@ -1583,7 +1583,6 @@ class Client:
         GatewayError
             The API hit an unexpected gateway exception.
 
-
         Returns
         --------
         :class:`GoldPassSeason`
