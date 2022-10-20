@@ -494,8 +494,9 @@ class Client:
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
-        paginated=True,
-        **kwargs
+        paginated: bool = True,
+        limit: int = 5,
+        **kwargs: dict
     ) -> ClanWarLog:
         """Retrieve a clan's clan war log.
         Set paginated = False to get the full war log with one API call.
@@ -509,8 +510,16 @@ class Client:
 
         Parameters
         -----------
-        clan_tag : str
-            The clan tag to search for.
+        cls:
+            Target class to use to model that data returned
+        paginated:
+            class:`bool`: Instead of requesting the entire warlog, you are able
+            to receive "slices" of the war log. The amount of "slices"
+            received is limited by `page_limit`.
+        limit:
+            class:`int`: Number of "slices" to receive per call
+        clan_tag:
+            class:`str`: The clan tag to search for.
 
         Raises
         ------
@@ -541,8 +550,11 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        if paginated and not kwargs.get("limit", None):
-            kwargs["limit"] = 5
+        # Set the pagination limit before making the get request
+        # This value is in the CoC API docs
+        if paginated and kwargs.get("limit") is not None:
+            kwargs["limit"] = limit
+
         try:
             data = await self.http.get_clan_warlog(clan_tag, **kwargs)
         except Forbidden as exception:
