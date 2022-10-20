@@ -33,7 +33,7 @@ import ujson
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
+from .miscmodels import Label, League, Location, LoadGameData
 from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -44,11 +44,10 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .raid import RaidLog, RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
-from .wars import ClanWar, ClanWarLog, ClanWarLogEntry, ClanWarLeagueGroup
+from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
@@ -494,11 +493,9 @@ class Client:
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
-        paginated=True,
         **kwargs
-    ) -> ClanWarLog:
+    ) -> List[ClanWarLogEntry]:
         """Retrieve a clan's clan war log.
-        Set paginated = False to get the full war log with one API call.
 
         .. note::
 
@@ -541,60 +538,12 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        if paginated and not kwargs.get("limit", None):
-            kwargs["limit"] = 5
         try:
-            data = await self.http.get_clan_warlog(clan_tag, **kwargs)
+            data = await self.http.get_clan_warlog(clan_tag)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
-        return ClanWarLog(data=data, client=self, cls=cls, clan_tag=clan_tag)
-
-    async def get_raidlog(
-        self,
-        clan_tag: str,
-        cls: Type[RaidLogEntry] = RaidLogEntry,
-        paginated: bool = True,
-        **kwargs
-    ) -> RaidLog:
-        """Retrieve a clan's raid log.
-        Set paginated = False to get the full raid log with one API call.
-
-        Parameters
-        -----------
-        clan_tag : str
-            The clan tag to search for.
-
-        Raises
-        ------
-        TypeError
-            The ``cls`` parameter must be a subclass of :class:`RaidLogEntry`.
-
-        NotFound
-            No clan was found with the supplied tag.
-
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        Returns
-        --------
-        List[:class:`RaidLogEntry`]
-            Entries in the raid log of the requested clan.
-        """
-        if not issubclass(cls, RaidLogEntry):
-            raise TypeError("cls must be a subclass of RaidLogEntry.")
-
-        if self.correct_tags:
-            clan_tag = correct_tag(clan_tag)
-
-        if paginated and not kwargs.get("limit", None):
-            kwargs["limit"] = 5
-
-        data = await self.http.get_clan_raidlog(clan_tag, **kwargs)
-        return RaidLog(data=data, client=self, cls=cls, clan_tag=clan_tag)
+        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
@@ -1570,24 +1519,6 @@ class Client:
 
         data = await self.http.verify_player_token(player_tag, token)
         return data and data["status"] == "ok" or False
-
-    async def get_current_goldpass_season(self) -> GoldPassSeason:
-        """Get the current gold pass season
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        Returns
-        --------
-        :class:`GoldPassSeason`
-            The gold pass season object of the current season"""
-        data = await self.http.get_current_goldpass_season()
-        return GoldPassSeason(data=data)
 
     def parse_army_link(self, link: str):
         """Transform an army link from in-game into a list of troops and spells.
