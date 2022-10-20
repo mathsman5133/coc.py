@@ -607,6 +607,7 @@ class CapitalDistrict:
                self.id == other.id and \
                self.hall_level == other.hall_level
 
+
     def __init__(self, *, data, client):
         # pylint: disable=invalid-name
         self.id: int = data.get("id")
@@ -670,4 +671,29 @@ class ChatLanguage:
 
     def __eq__(self, other):
         return isinstance(self, other.__class__) and other.id == self.id
+
+
+class GoldPassSeason:
+    """Represents a gold pass season.
+
+    Attributes
+    ----------
+    start_time:
+        :class:`Timestamp`: The gold pass season start time
+    end_time:
+        :class:`Timestamp`: The gold pass season end time
+    duration:
+        :class:`datetime.timedelta`: The duration of the gold pass season
+    """
+    __slots__ = ("start_time", "end_time", "duration")
+
+    def __init__(self, *, data):
+        self.start_time = try_enum(Timestamp, data.get("startTime"))
+        self.end_time = try_enum(Timestamp, data.get("endTime"))
+        self.duration = self.end_time.time - self.start_time.time
+
+    def __eq__(self, other):
+        return (isinstance(other, GoldPassSeason)
+                and self.start_time == other.start_time
+                and self.end_time == other.end_time)
 
