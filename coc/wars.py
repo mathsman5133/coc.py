@@ -21,6 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+# Enables circular import for type hinting coc.Client
+from __future__ import annotations
+
+import asyncio
 import itertools
 
 from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING
@@ -35,6 +39,7 @@ from .war_attack import WarAttack
 if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .war_members import ClanWarMember  # noqa
+    from .client import Client
 
 
 class ClanWar:
@@ -348,38 +353,43 @@ class ClanWarLogEntry:
 class ClanWarLog:
     """Represents a Generator for a ClanWarLog"""
 
-    def __init__(self, clan_tag, client, data, cls):
+    def __init__(self, clan_tag: str, client: Client, data: dict, cls):
         self.clan_tag = clan_tag
-        self.data = data.get("items", [])
+        self.war_logs = data.get("items", [])
         self.client = client
         self.cls = cls
         self.global_index = 0
-        self.max_index = len(self.data)
+        self.max_index = len(self.war_logs)
         self.next_page = data.get("paging").get("cursors").get("after", "")
 
     def __getitem__(self, item: int):
         if self.global_index > item:
             data = self.client.loop.run_until_complete(self.client.http.get_clan_raidlog(self.clan_tag, limit=item+1))
-            self.data = data.get("items", [])
-            self.max_index = len(self.data)
+            self.war_logs = data.get("items", [])
+            self.max_index = len(self.war_logs)
             self.next_page = data.get("paging").get("cursors").get("after", "")
             self.global_index = 0
-            return_value = self.cls(data=self.data[item], client=self.client)
+            return_value = self.cls(data=self.war_logs[item], client=self.client)
         elif self.global_index + self.max_index <= item and not self.next_page:
             raise IndexError()
         elif self.next_page and self.global_index + self.max_index <= item:
-            data = self.client.loop.run_until_complete(self.client.http.get_clan_raidlog(self.clan_tag,
-                                                                                         after=self.next_page,
-                                                                                         limit=item-self.global_index))
-            self.data = data.get("items", [])
+
+            data = asyncio.run_coroutine_threadsafe(
+                get_warlog(self.clan_tag, after=self.next_page, limit=item - self.global_index),
+                loop=self.client.loop
+            )
+            print("Printing")
+            print(data.result())
+
+            self.war_logs = data.get("items", [])
             self.global_index += self.max_index
-            self.max_index = len(self.data)
+            self.max_index = len(self.war_logs)
             self.next_page = data.get("paging").get("cursors").get("after", "")
-            return_value = self.cls(data=self.data[item-self.global_index], client=self.client)
+            return_value = self.cls(data=self.war_logs[item - self.global_index], client=self.client)
         elif self.global_index < item:
-            return_value = self.cls(data=self.data[item-self.global_index], client=self.client)
+            return_value = self.cls(data=self.war_logs[item - self.global_index], client=self.client)
         else:
-            return_value = self.cls(data=self.data[item], client=self.client)
+            return_value = self.cls(data=self.war_logs[item], client=self.client)
         return return_value
 
 
