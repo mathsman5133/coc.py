@@ -552,8 +552,8 @@ class Client:
 
         # Set the pagination limit before making the get request
         # This value is in the CoC API docs
-        if paginated and kwargs.get("limit") is not None:
-            kwargs["limit"] = limit
+        if paginated:
+                kwargs["limit"] = limit
 
         try:
             data = await self.http.get_clan_warlog(clan_tag, **kwargs)
