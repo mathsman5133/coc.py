@@ -494,12 +494,18 @@ class Client:
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
-        paginated: bool = True,
-        limit: int = 5,
-        **kwargs: dict
+        paginate: bool = False,
+        limit: int = 0
     ) -> ClanWarLog:
-        """Retrieve a clan's clan war log.
-        Set paginated = False to get the full war log with one API call.
+        """
+        Retrieve a clan's clan war log. By default, this will return
+        all the clan's log available in the API. This will of course consume
+        memory. The option of limiting the amount of log items fetched
+        can be controlled with the `limit` parameter. Additionally, if
+        `paginate` is set to True, and an async for loop is performed
+        on this object, then additional log items will be fetched but only
+        consume the same amount of memory space at all time.
+
 
         .. note::
 
@@ -512,14 +518,18 @@ class Client:
         -----------
         cls:
             Target class to use to model that data returned
-        paginated:
-            class:`bool`: Instead of requesting the entire warlog, you are able
-            to receive "slices" of the war log. The amount of "slices"
-            received is limited by `page_limit`.
-        limit:
-            class:`int`: Number of "slices" to receive per call
+
         clan_tag:
             class:`str`: The clan tag to search for.
+
+        paginate:
+            class:`bool`: Enable fetching logs while only holding the
+            same amount of logs as `limit`. If `paginate` is set to True,
+            and `limit` is set to default of 0, then `limit` will be set to
+            10 automatically.
+
+        limit:
+            class:`int`: Number of logs to retrieve
 
         Raises
         ------
@@ -541,26 +551,33 @@ class Client:
 
         Returns
         --------
-        List[:class:`ClanWarLogEntry`]
+        :class:`ClanWarLog`:
             Entries in the warlog of the requested clan.
         """
+        if limit < 0:
+            raise ValueError("Limit cannot be negative")
+
         if not issubclass(cls, ClanWarLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        # Set the pagination limit before making the get request
-        # This value is in the CoC API docs
-        if paginated:
-                kwargs["limit"] = limit
+        # If paginate is enabled and limit is set to default of 0, then
+        # set limit to a new default of 10
+        if paginate:
+            limit = limit if limit else 10
+
 
         try:
-            data = await self.http.get_clan_warlog(clan_tag, **kwargs)
+            return await ClanWarLog.get_warlogs(client=self,
+                                                clan_tag=clan_tag,
+                                                paginate=paginate,
+                                                limit=limit,
+                                                model=cls)
         except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception.reason) from exception
-
-        return ClanWarLog(data=data, client=self, cls=cls, clan_tag=clan_tag)
+            raise PrivateWarLog(exception.response,
+                                exception.reason) from exception
 
     async def get_raidlog(
         self,

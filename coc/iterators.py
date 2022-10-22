@@ -171,7 +171,7 @@ class LeagueWarIterator(TaggedIterator):
             return None
         elif self.clan_tag is None:
             return war
-        elif war.clan_tag != self.clan_tag:
+        elif war._clan_tag != self.clan_tag:
             return await self._next()
         else:
             return war
