@@ -138,6 +138,11 @@ async def member_stat(ctx, player_tag):
 
 @bot.command()
 async def clan_info(ctx, clan_tag):
+
+    clan = await ctx.bot.coc_client.get_clan(clan_tag)
+    async for i in clan.get_detailed_members():
+        print(i.name)
+
     if not utils.is_valid_tag(clan_tag):
         await ctx.send("You didn't give me a proper tag!")
         return

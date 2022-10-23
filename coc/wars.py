@@ -26,8 +26,9 @@ from __future__ import annotations
 
 import asyncio
 import itertools
+from abc import ABC, abstractmethod
 
-from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING
+from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
 from .enums import WarRound
 from .iterators import LeagueWarIterator
@@ -374,128 +375,6 @@ class ClanWarLogEntry:
         """:class:`bool`: Boolean indicating if the entry is a Clan War League (CWL) entry."""
         return self.result is None or self.opponent is None
 
-
-class ClanWarLog:
-    """Represents a Generator for a ClanWarLog"""
-
-    def __init__(self, client: Client, clan_tag: str, limit: int,
-                 page: bool, json_resp: dict, model: Type[ClanWarLogEntry]):
-        self._clan_tag = clan_tag
-        self._limit = limit
-        self._page = page
-
-        self._init_data = json_resp  # Initial data; this is const
-        self._war_logs = json_resp.get("items", [])
-
-        self._client = client
-        self._model = model
-
-    def __len__(self):
-        return len(self._war_logs)
-
-    def __iter__(self):
-        self._sync_index = 0
-        return self
-
-    def __next__(self) -> ClanWarLogEntry:
-        if self._sync_index == len(self._war_logs):
-            raise StopIteration
-        ret = self._model(data=self._war_logs[self._sync_index],
-                          client=self._client)
-        self._sync_index += 1
-        return ret
-
-    def __getitem__(self, index: int) -> ClanWarLogEntry:
-        try:
-            ret = self._war_logs[index]
-            return self._model(data=ret, client=self._client)
-        except Exception:
-            raise
-
-    def __aiter__(self):
-        # These values are used to simulate the caller having a single list
-        # of items. In reality, the list is populated on demand.
-        self._min_index = 0
-        self._max_index = len(self._war_logs)
-        self._async_index = 0
-
-        self._logs = self._war_logs[:]
-        self._page_data = self._init_data
-        return self
-
-    async def __anext__(self):
-        # If paging is not enabled, do not fetch  any more items only
-        # iterate over the items in the self._war_logs
-        if not self._page:
-            if self._async_index == len(self._logs):
-                raise StopAsyncIteration
-            ret = self._model(data=self._logs[self._async_index],
-                              client=self._client)
-            self._async_index += 1
-            return ret
-
-        # If paging is enabled, update self._war_logs if the end of the
-        # array is reached
-        ret: ClanWarLogEntry
-
-        # If index request is within range of the war_logs, return item
-        if self._min_index <= self._async_index < self._max_index:
-            ret = self._logs[self._async_index % len(self._logs)]
-
-        # Iteration has reached the end of the array
-        elif self._async_index == self._max_index:
-            await self._paginate()
-            self._min_index = self._max_index
-            self._max_index = self._max_index + len(self._logs)
-            ret = self._logs[self._async_index % len(self._logs)]
-
-        self._async_index += 1
-        return self._model(data=ret, client=self._client)
-
-    async def _paginate(self):
-        self._page_data = await self._get_warlogs(self._client,
-                                                  self._clan_tag,
-                                                  **self.options)
-
-        self._logs = self._page_data.get("items", [])
-
-    @property
-    def options(self) -> dict:
-        options = {"limit": self._limit}
-        if self._next_page:
-            options["after"] = self._next_page
-        return options
-
-    @property
-    def _next_page(self) -> Optional[str]:
-        try:
-            return self._page_data.get("paging").get("cursors").get("after")
-        except KeyError:
-            return None
-
-    @classmethod
-    async def get_warlogs(cls,
-                          client: Client,
-                          clan_tag: str,
-                          model: Type[ClanWarLogEntry],
-                          limit: int,
-                          paginate: bool = True,
-                          ) -> ClanWarLog:
-
-        # Add the limit if specified
-        args = {"limit": limit} if limit else {}
-
-        json_resp = await cls._get_warlogs(client, clan_tag, **args)
-        return ClanWarLog(client, clan_tag, limit, paginate, json_resp, model)
-
-    @staticmethod
-    async def _get_warlogs(client: Client, clan_tag: str,
-                           fut: Optional[asyncio.Future] = None,
-                           **options) -> dict:
-        result = await client.http.get_clan_warlog(clan_tag, **options)
-        if fut:
-            fut.set_result(result)
-        return result
 
 
 class ClanWarLeagueGroup:
