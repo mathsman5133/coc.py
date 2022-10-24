@@ -2,6 +2,7 @@ import asyncio
 import os
 
 import coc
+from coc.raid import RaidLogEntry
 
 
 async def get_warlog_for_clans(client: coc.Client, clan_tags: list):
@@ -23,14 +24,16 @@ async def test_raidlog(client: coc.Client, clan_tag: str):
     # Limit is set to None retrieving all values
     raid_no_page = await client.get_raidlog(clan_tag)
     limit = len(raid_no_page)
+    page_limit = 11
 
     # Enable pagination, by default it will only cache 10 logs using limit
     # once you iterate beyond the cached amount, it will fetch the next set
-    raid_with_page = await client.get_raidlog(clan_tag, page=True, limit=11)
+    raid_with_page = await client.get_raidlog(clan_tag, page=True, limit=page_limit)
 
     # Iterate over warlogs like the current version of coc.py
     for i, e in enumerate(raid_no_page):
-        print(f"[{i}]-sync limit: {limit} page: False")
+        e: RaidLogEntry
+        print(f"[{i}]-sync limit: {limit} page: False {e.start_time.time}")
 
     # Option to async for loop a non paginated object
     count = 0
@@ -39,23 +42,19 @@ async def test_raidlog(client: coc.Client, clan_tag: str):
         count += 1
 
     for i, e in enumerate(raid_with_page):
-        print(f"[{i}]-sync limit: 10 page: True")
+        print(f"[{i}]-sync limit: {page_limit} page: True")
 
     # Set `paginate=True` to enable fetching beyond the limit value until
     # there are more values to fetch
     count = 0
     async for i in raid_with_page:
-        print(f"[{count}]-async limit: {limit} page: True")
+        print(f"[{count}]-async limit: {page_limit} page: True {i.start_time.time}")
         count += 1
-        if count == 20:
-            break
+
 
     # Simple test comparing the two data sets
     count = 0
     async for async_log in raid_with_page:
-        if count == limit:
-            break
-
         if async_log != raid_no_page[count]:
             raise AssertionError(f"{id(async_log)} does not match {id(raid_no_page[count])} at index {count}")
         count += 1
@@ -65,10 +64,11 @@ async def test_warlog(client: coc.Client, clan_tag: str):
     # Limit is set to None retrieving all values
     warlogs_no_page = await client.get_warlog(clan_tag)
     limit = len(warlogs_no_page)
+    pagination_limit = 11
 
     # Enable pagination, by default it will only cache 10 logs using limit
     # once you iterate beyond the cached amount, it will fetch the next set
-    warlogs_with_page = await client.get_warlog(clan_tag, page=True, limit=15)
+    warlogs_with_page = await client.get_warlog(clan_tag, page=True, limit=pagination_limit)
 
     # Iterate over warlogs like the current version of coc.py
     for i, e in enumerate(warlogs_no_page):
@@ -81,26 +81,22 @@ async def test_warlog(client: coc.Client, clan_tag: str):
         count += 1
 
     for i, e in enumerate(warlogs_with_page):
-        print(f"[{i}]-sync limit: 10 page: True")
+        print(f"[{i}]-sync limit: {pagination_limit} page: True")
 
     # Set `paginate=True` to enable fetching beyond the limit value until
     # there are more values to fetch
     count = 0
     async for i in warlogs_with_page:
-        print(f"[{count}]-async limit: {limit} page: True")
+        print(f"[{count}]-async limit: {pagination_limit} page: True {i.end_time.time}")
         count += 1
-        if count == 20:
-            break
 
     # Simple test comparing the two data sets
     count = 0
     async for async_log in warlogs_with_page:
-        if count == limit:
-            break
-
         if async_log != warlogs_no_page[count]:
             raise AssertionError(f"{id(async_log)} does not match {id(warlogs_no_page[count])} at index {count}")
         count += 1
+    print(count)
 
 
 
@@ -140,7 +136,7 @@ async def main():
 
     # await get_warlog_opponents_from_clan_name(coc_client, "Reddit Zulu", 5)
     await test_warlog(coc_client, "#2Y28CGP8")
-    # await test_raidlog(coc_client, "#2Y28CGP8")
+    await test_raidlog(coc_client, "#2Y28CGP8")
     await coc_client.close()
 
 
