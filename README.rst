@@ -52,28 +52,24 @@ This example will get a player with a certain tag, and search for 5 clans with a
 
 
     async def main():
-        coc_client = coc.Client()
-        try:
-            await coc_client.login("email", "password")
-        except coc.invalidcredentials as error:
-            exit(error)
+        async with coc.Client() as coc_client:
+            try:
+                await coc_client.login("email", "password")
+            except coc.invalidcredentials as error:
+                exit(error)
 
-        player = await client.get_player("tag")
-        print(f"{player.name} has {player.trophies} trophies!")
+            player = await client.get_player("tag")
+            print(f"{player.name} has {player.trophies} trophies!")
 
-        clans = await client.search_clans(name="best clan ever", limit=5)
-        for clan in clans:
-            print(f"{clan.name} ({clan.tag}) has {clan.member_count} members")
+            clans = await client.search_clans(name="best clan ever", limit=5)
+            for clan in clans:
+                print(f"{clan.name} ({clan.tag}) has {clan.member_count} members")
 
-        try:
-            war = await client.get_current_war("#clantag")
-            print(f"{war.clan_tag} is currently in {war.state} state.")
-        except coc.privatewarlog:
-            print("uh oh, they have a private war log!")
-
-        # make sure to close the session or you will get asyncio
-        # task pending errors
-        await client.close()
+            try:
+                war = await client.get_current_war("#clantag")
+                print(f"{war.clan_tag} is currently in {war.state} state.")
+            except coc.privatewarlog:
+                print("uh oh, they have a private war log!")
 
     if __name__ == "__main__":
         try:
