@@ -105,56 +105,56 @@ async def season_started():
 
 
 async def main() -> None:
-    async with coc.EventsClient() as coc_client:
+    coc_client = coc.EventsClient()
 
-        # Attempt to log into CoC API using your credentials. You must use the
-        # coc.EventsClient to enable event listening
-        try:
-            await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                                   os.environ.get("DEV_SITE_PASSWORD"))
-        except coc.InvalidCredentials as error:
-            exit(error)
+    # Attempt to log into CoC API using your credentials. You must use the
+    # coc.EventsClient to enable event listening
+    try:
+        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                               os.environ.get("DEV_SITE_PASSWORD"))
+    except coc.InvalidCredentials as error:
+        exit(error)
 
-        # Register all the clans you want to track
-        coc_client.add_clan_updates(*clan_tags)
+    # Register all the clans you want to track
+    coc_client.add_clan_updates(*clan_tags)
 
-        # Register all the players you want to track
-        async for clan in coc_client.get_clans(clan_tags):
-            coc_client.add_player_updates(*[member.tag for member in clan.members])
+    # Register all the players you want to track
+    async for clan in coc_client.get_clans(clan_tags):
+        coc_client.add_player_updates(*[member.tag for member in clan.members])
 
-        # Register all the callback functions that are triggered when a
-        # event if fired.
-        coc_client.add_events(
-            on_clan_member_donation,
-            on_clan_member_donation_receive,
-            on_clan_member_join,
-            on_clan_member_leave,
-            on_clan_trophy_change,
-            clan_member_versus_trophies_changed,
-            current_war_stats,
-            on_player_donation,
-            on_player_donation_receive,
-            on_player_trophy_change,
-            on_player_versus_trophy_change,
-            on_maintenance,
-            on_maintenance_completion,
-            season_started
-        )
+    # Register all the callback functions that are triggered when a
+    # event if fired.
+    coc_client.add_events(
+        on_clan_member_donation,
+        on_clan_member_donation_receive,
+        on_clan_member_join,
+        on_clan_member_leave,
+        on_clan_trophy_change,
+        clan_member_versus_trophies_changed,
+        current_war_stats,
+        on_player_donation,
+        on_player_donation_receive,
+        on_player_trophy_change,
+        on_player_versus_trophy_change,
+        on_maintenance,
+        on_maintenance_completion,
+        season_started
+    )
 
-        if os.environ.get("RUNNING_TESTS"):
-            # ignore this; it's just for running github action tests.
-            import sys
+    if os.environ.get("RUNNING_TESTS"):
+        # ignore this; it's just for running github action tests.
+        import sys
 
-            class Handler(logging.Handler):
-                def emit(self, record) -> None:
-                    sys.exit(0)
+        class Handler(logging.Handler):
+            def emit(self, record) -> None:
+                sys.exit(0)
 
-            log.addHandler(Handler())
-            # we don't wanna wait forever for an event, so if
-            # it sets up OK lets call it quits.
-            await asyncio.sleep(20)
-            _loop = asyncio.get_event_loop()
-            _loop.stop()
+        log.addHandler(Handler())
+        # we don't wanna wait forever for an event, so if
+        # it sets up OK lets call it quits.
+        await asyncio.sleep(20)
+        _loop = asyncio.get_event_loop()
+        _loop.stop()
 
 
 if __name__ == "__main__":
