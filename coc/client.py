@@ -199,6 +199,13 @@ class Client:
         self._clans = {}
         self._wars = {}
 
+    async def __aenter__(self):
+        self.__init__()
+        return self
+
+    async def __aexit__(self, *args):
+        await self.close()
+
     def _create_client(self, email, password):
         return HTTPClient(
             client=self,
