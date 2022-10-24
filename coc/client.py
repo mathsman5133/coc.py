@@ -31,7 +31,6 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 import ujson
 
 from .clans import Clan, RankedClan
-from .entry_logs import ClanWarLog
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData

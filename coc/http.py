@@ -355,18 +355,18 @@ class HTTPClient:
     def get_clan(self, tag):
         return self.request(Route("GET", "/clans/{}".format(tag)))
 
-    def get_clan_members(self, tag):
-        return self.request(Route("GET", "/clans/{}/members".format(tag)))
+    def get_clan_members(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/members".format(tag), **kwargs))
 
-    def get_clan_warlog(self, tag):
-        return self.request(Route("GET", "/clans/{}/warlog".format(tag)))
+    def get_clan_warlog(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/warlog".format(tag), **kwargs))
 
-    def get_clan_current_war(self, tag, realtime = None):
+    def get_clan_current_war(self, tag, realtime=None):
         return self.request(Route("GET", "/clans/{}/currentwar".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
 
-    def get_clan_war_league_group(self, tag, realtime = None):
+    def get_clan_war_league_group(self, tag, realtime=None):
         return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
@@ -375,6 +375,9 @@ class HTTPClient:
         return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
+
+    def get_clan_raidlog(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/capitalraidseasons".format(tag), **kwargs))
 
     # locations
 
@@ -425,6 +428,9 @@ class HTTPClient:
 
     def get_player_labels(self, **kwargs):
         return self.request(Route("GET", "/labels/players", **kwargs))
+
+    def get_current_goldpass_season(self):
+        return self.request(Route("GET", "/goldpass/seasons/current"))
 
     # key updating management
 

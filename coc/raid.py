@@ -80,10 +80,15 @@ class RaidMember(BasePlayer):
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, RaidMember)
-                and self.tag == other.tag
-                and self.raid_log_entry == other.raid_log_entry
-                and self.attacks == other.attacks)
+        if isinstance(other, RaidMember):
+            if (self.tag == other.tag
+                    and self.attack_count == other.attack_count
+                    and self.attack_limit == other.attack_limit
+                    and self.bonus_attack_limit == other.bonus_attack_limit
+                    and self.capital_resources_looted == other.capital_resources_looted
+            ):
+                return True
+        return False
 
     def _from_data(self, data):
         data_get = data.get
@@ -148,12 +153,14 @@ class RaidAttack:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, self.__class__)
-                and self.raid_log_entry == other.raid_log_entry
+        if isinstance(other, RaidAttack):
+            if (self.attacker_tag == other.attacker_tag
+                and self.destruction == other.destruction
                 and self.raid_clan == other.raid_clan
                 and self.district == other.district
-                and self.attacker_tag == other.attacker_tag
-                and self.destruction == other.destruction)
+            ):
+                return True
+        return False
 
     def __init__(self, data, client, raid_log_entry, raid_clan, district):
         self.raid_log_entry = raid_log_entry
@@ -198,6 +205,19 @@ class RaidDistrict:
         :class:`RaidClan` - The raid clan this district belongs to
     """
 
+    def __eq__(self, other):
+        if isinstance(other, RaidDistrict):
+            if (self.id == other.id
+                and self.name == other.name
+                and self.hall_level == other.hall_level
+                and self.destruction == other.destruction
+                and self.looted == other.looted
+                and self.raid_clan == other.raid_clan
+                and self.attack_count == other.attack_count
+            ):
+                return True
+        return False
+
     __slots__ = ("id",
                  "name",
                  "hall_level",
@@ -220,13 +240,6 @@ class RaidDistrict:
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
-    def __eq__(self, other):
-        return isinstance(other, self.__class__) and \
-               self.id == other.id and \
-               self.attack_count == other.attack_count and \
-               self.destruction == other.destruction and \
-               self.looted == other.looted and \
-               self.hall_level == other.hall_level
 
     def __init__(self, *, data, client, raid_log_entry, raid_clan):
         self.id: int = data.get("id")
@@ -302,11 +315,11 @@ class RaidClan:
 
     def __eq__(self, other):
         return (isinstance(other, RaidClan)
-                and self.raid_log_entry == other.raid_log_entry
                 and self.tag == other.tag
                 and self.attack_count == other.attack_count
                 and self.district_count == other.district_count
                 and self.destroyed_district_count == other.destroyed_district_count
+                and self.raid_log_entry.start_time == other.raid_log_entry.start_time
                 and self.attacks == other.attacks)
 
     def __repr__(self):
@@ -412,11 +425,18 @@ class RaidLogEntry:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, RaidLogEntry)
-                and self.start_time == other.start_time
-                and self._attack_log == other.attack_log
-                and self._defense_log == other.defense_log
-                and self.members == other.members)
+        if isinstance(other, RaidLogEntry):
+            if (self.start_time == other.start_time
+                    and self.completed_raid_count == other.completed_raid_count
+                    and self.destroyed_district_count == other.destroyed_district_count
+                    and self.attack_count == other.attack_count
+                    and self.attack_log == other.attack_log
+                    and self.defense_log == other.defense_log
+            ):
+                return True
+
+        return False
+
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
@@ -474,42 +494,4 @@ class RaidLogEntry:
             return self._members[tag]
         except KeyError:
             return None
-
-
-class RaidLog:
-    """Represents a Generator for a RaidLog"""
-
-    def __init__(self, clan_tag, client, data, cls):
-        self.clan_tag = clan_tag
-        self.data = data.get("items", [])
-        self.client = client
-        self.cls = cls
-        self.global_index = 0
-        self.max_index = len(self.data)
-        self.next_page = data.get("paging").get("cursors").get("after", "")
-
-    def __getitem__(self, item: int):
-        if self.global_index > item:
-            data = self.client.loop.run_until_complete(self.client.http.get_clan_raidlog(self.clan_tag, limit=item+1))
-            self.data = data.get("items", [])
-            self.max_index = len(self.data)
-            self.next_page = data.get("paging").get("cursors").get("after", "")
-            self.global_index = 0
-            return_value = self.cls(data=self.data[item], client=self.client)
-        elif self.global_index + self.max_index <= item and not self.next_page:
-            raise IndexError()
-        elif self.next_page and self.global_index + self.max_index <= item:
-            data = self.client.loop.run_until_complete(self.client.http.get_clan_raidlog(self.clan_tag,
-                                                                                         after=self.next_page,
-                                                                                         limit=item-self.global_index))
-            self.data = data.get("items", [])
-            self.global_index += self.max_index
-            self.max_index = len(self.data)
-            self.next_page = data.get("paging").get("cursors").get("after", "")
-            return_value = self.cls(data=self.data[item-self.global_index], client=self.client)
-        elif self.global_index < item:
-            return_value = self.cls(data=self.data[item-self.global_index], client=self.client)
-        else:
-            return_value = self.cls(data=self.data[item], client=self.client)
-        return return_value
 

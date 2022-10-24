@@ -24,9 +24,7 @@ SOFTWARE.
 # Enables circular import for type hinting coc.Client
 from __future__ import annotations
 
-import asyncio
 import itertools
-from abc import ABC, abstractmethod
 
 from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
