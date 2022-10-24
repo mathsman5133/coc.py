@@ -80,10 +80,16 @@ class RaidMember(BasePlayer):
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, RaidMember)
-                and self.tag == other.tag
-                and self.raid_log_entry == other.raid_log_entry
-                and self.attacks == other.attacks)
+        if isinstance(other, RaidMember):
+            if (self.tag == other.tag
+                    and self.name == other.name
+                    and self.attack_count == other.attack_count
+                    and self.attack_limit == other.attack_limit
+                    and self.bonus_attack_limit == other.bonus_attack_limit
+                    and self.capital_resources_looted == other.capital_resources_looted
+            ):
+                return True
+        return False
 
     def _from_data(self, data):
         data_get = data.get
@@ -148,12 +154,15 @@ class RaidAttack:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, self.__class__)
-                and self.raid_log_entry == other.raid_log_entry
+        if isinstance(other, RaidAttack):
+            if (self.attacker_tag == other.attacker_tag
+                and self.attacker_name == other.attacker_name
+                and self.destruction == other.destruction
                 and self.raid_clan == other.raid_clan
                 and self.district == other.district
-                and self.attacker_tag == other.attacker_tag
-                and self.destruction == other.destruction)
+            ):
+                return True
+        return False
 
     def __init__(self, data, client, raid_log_entry, raid_clan, district):
         self.raid_log_entry = raid_log_entry
@@ -198,6 +207,19 @@ class RaidDistrict:
         :class:`RaidClan` - The raid clan this district belongs to
     """
 
+    def __eq__(self, other):
+        if isinstance(other, RaidDistrict):
+            if (self.id == other.id
+                and self.name == other.name
+                and self.hall_level == other.hall_level
+                and self.destruction == other.destruction
+                and self.looted == other.looted
+                and self.raid_clan == other.raid_clan
+                and self.attacks == other.attack_count
+            ):
+                return True
+        return False
+
     __slots__ = ("id",
                  "name",
                  "hall_level",
@@ -220,13 +242,6 @@ class RaidDistrict:
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
-    def __eq__(self, other):
-        return isinstance(other, self.__class__) and \
-               self.id == other.id and \
-               self.attack_count == other.attack_count and \
-               self.destruction == other.destruction and \
-               self.looted == other.looted and \
-               self.hall_level == other.hall_level
 
     def __init__(self, *, data, client, raid_log_entry, raid_clan):
         self.id: int = data.get("id")
@@ -302,7 +317,6 @@ class RaidClan:
 
     def __eq__(self, other):
         return (isinstance(other, RaidClan)
-                and self.raid_log_entry == other.raid_log_entry
                 and self.tag == other.tag
                 and self.attack_count == other.attack_count
                 and self.district_count == other.district_count
@@ -412,11 +426,20 @@ class RaidLogEntry:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        return (isinstance(other, RaidLogEntry)
-                and self.start_time == other.start_time
-                and self._attack_log == other.attack_log
-                and self._defense_log == other.defense_log
-                and self.members == other.members)
+        if isinstance(other, RaidLogEntry):
+            if (self.start_time == other.start_time
+                    and self.end_time == other.end_time
+                    and self.completed_raid_count == other.completed_raid_count
+                    and self.destroyed_district_count == other.destroyed_district_count
+                    and self.attack_count == other.attack_count
+                    and self.attack_log == other.attack_log
+                    and self.defense_log == other.defense_log
+                    and self.members == other.members
+            ):
+                return True
+
+        return False
+
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
@@ -474,3 +497,14 @@ class RaidLogEntry:
             return self._members[tag]
         except KeyError:
             return None
+
+# def _logs_same(self_log: List[RaidLogEntry], other_log: List[RaidLogEntry]):
+#     for s_log, o_log in zip(self_log, other_log):
+#         if not (s_log. == o_log.tag
+#                 and s_log.name == o_log.name
+#                 and s_log.raid_log_entry == o_log.raid_log_entry
+#
+#                     ):
+#             return False
+#     return True
+
