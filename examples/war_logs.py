@@ -24,7 +24,7 @@ async def test_raidlog(client: coc.Client, clan_tag: str):
     # Limit is set to None retrieving all values
     raid_no_page = await client.get_raidlog(clan_tag)
     limit = len(raid_no_page)
-    page_limit = 11
+    page_limit = 30
 
     # Enable pagination, by default it will only cache 10 logs using limit
     # once you iterate beyond the cached amount, it will fetch the next set
@@ -109,7 +109,6 @@ async def get_clan_tags_names(client: coc.Client, name: str, limit: int):
 
 async def get_warlog_opponents_from_clan_name(client: coc.Client, name: str, no_of_clans: int):
     clan_tags_names = await get_clan_tags_names(client, name, no_of_clans)
-    print(clan_tags_names)
 
     # search for war logs with clan tags found
     war_logs = await get_warlog_for_clans(client, [n[1] for n in clan_tags_names])
@@ -126,18 +125,16 @@ async def get_warlog_opponents_from_clan_name(client: coc.Client, name: str, no_
 
 
 async def main():
+    async with coc.Client() as coc_client:
+        try:
+            await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                                   os.environ.get("DEV_SITE_PASSWORD"))
+        except coc.InvalidCredentials as error:
+            exit(error)
 
-    coc_client = coc.Client()
-    try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials as error:
-        exit(error)
-
-    # await get_warlog_opponents_from_clan_name(coc_client, "Reddit Zulu", 5)
-    await test_warlog(coc_client, "#2Y28CGP8")
-    await test_raidlog(coc_client, "#2Y28CGP8")
-    await coc_client.close()
+        await get_warlog_opponents_from_clan_name(coc_client, "Reddit Zulu", 5)
+        await test_warlog(coc_client, "#2Y28CGP8")
+        await test_raidlog(coc_client, "#2Y28CGP8")
 
 
 if __name__ == "__main__":
