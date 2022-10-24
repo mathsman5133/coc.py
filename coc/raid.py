@@ -82,7 +82,6 @@ class RaidMember(BasePlayer):
     def __eq__(self, other):
         if isinstance(other, RaidMember):
             if (self.tag == other.tag
-                    and self.name == other.name
                     and self.attack_count == other.attack_count
                     and self.attack_limit == other.attack_limit
                     and self.bonus_attack_limit == other.bonus_attack_limit
@@ -156,7 +155,6 @@ class RaidAttack:
     def __eq__(self, other):
         if isinstance(other, RaidAttack):
             if (self.attacker_tag == other.attacker_tag
-                and self.attacker_name == other.attacker_name
                 and self.destruction == other.destruction
                 and self.raid_clan == other.raid_clan
                 and self.district == other.district
@@ -215,7 +213,7 @@ class RaidDistrict:
                 and self.destruction == other.destruction
                 and self.looted == other.looted
                 and self.raid_clan == other.raid_clan
-                and self.attacks == other.attack_count
+                and self.attack_count == other.attack_count
             ):
                 return True
         return False
@@ -321,6 +319,7 @@ class RaidClan:
                 and self.attack_count == other.attack_count
                 and self.district_count == other.district_count
                 and self.destroyed_district_count == other.destroyed_district_count
+                and self.raid_log_entry.start_time == other.raid_log_entry.start_time
                 and self.attacks == other.attacks)
 
     def __repr__(self):
@@ -428,13 +427,11 @@ class RaidLogEntry:
     def __eq__(self, other):
         if isinstance(other, RaidLogEntry):
             if (self.start_time == other.start_time
-                    and self.end_time == other.end_time
                     and self.completed_raid_count == other.completed_raid_count
                     and self.destroyed_district_count == other.destroyed_district_count
                     and self.attack_count == other.attack_count
                     and self.attack_log == other.attack_log
                     and self.defense_log == other.defense_log
-                    and self.members == other.members
             ):
                 return True
 

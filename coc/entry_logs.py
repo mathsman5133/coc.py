@@ -102,15 +102,17 @@ class LogPaginator(ABC):
 
         # If index request is within range of the war_logs, return item
         if self._min_index <= self._async_index < self._max_index:
-            ret = self._logs[self._async_index % len(self._logs)]
+            ret = self._logs[self._async_index - self._min_index]
 
         # Iteration has reached the end of the array, fetch the next
         # set of logs from the endpoint
-        else:
+        elif self._next_page:
             await self._paginate()
             self._min_index = self._max_index
             self._max_index = self._max_index + len(self._logs)
-            ret = self._logs[self._async_index % len(self._logs)]
+            ret = self._logs[self._async_index - self._min_index]
+        else:
+            raise StopAsyncIteration
 
         self._async_index += 1
         return self._model(data=ret, client=self._client)
