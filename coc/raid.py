@@ -319,6 +319,7 @@ class RaidClan:
                 and self.attack_count == other.attack_count
                 and self.district_count == other.district_count
                 and self.destroyed_district_count == other.destroyed_district_count
+                and self.raid_log_entry.start_time == other.raid_log_entry.start_time
                 and self.attacks == other.attacks)
 
     def __repr__(self):
