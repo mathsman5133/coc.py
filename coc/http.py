@@ -143,7 +143,23 @@ class Route:
 
     BASE = "https://api.clashofclans.com/v1"
 
-    def __init__(self, method, path: str, **kwargs):
+    def __init__(self, method: str, path: str, **kwargs: dict):
+        """
+        The class is used to create the final URL used to fetch the data
+        from the API. The parameters that are passed to the API are all in
+        the GET request packet. This class will parse the `kwargs` dictionary
+        and concatenate any parameters passed in.
+
+        Parameters
+        ----------
+        method:
+            :class:`str`: HTTP method used for the HTTP request
+        path:
+            :class:`str`: URL path used for the HTTP request
+        kwargs:
+            :class:`dict`: Optional options used to concatenate into the final
+            URL
+        """
         if "#" in path:
             path = path.replace("#", "%23")
 

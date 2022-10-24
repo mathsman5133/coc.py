@@ -31,6 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 import ujson
 
 from .clans import Clan, RankedClan
+from .entry_logs import ClanWarLog
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
@@ -44,11 +45,12 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
-from .raid import RaidLog, RaidLogEntry
+from .raid import RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
-from .wars import ClanWar, ClanWarLog, ClanWarLogEntry, ClanWarLeagueGroup
+from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+from.entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
@@ -494,11 +496,18 @@ class Client:
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
-        paginated=True,
-        **kwargs
+        page: bool = False,
+        limit: int = 0
     ) -> ClanWarLog:
-        """Retrieve a clan's clan war log.
-        Set paginated = False to get the full war log with one API call.
+        """
+        Retrieve a clan's clan war log. By default, this will return
+        all the clan's log available in the API. This will of course consume
+        memory. The option of limiting the amount of log items fetched
+        can be controlled with the `limit` parameter. Additionally, if
+        `paginate` is set to True, and an async for loop is performed
+        on this object, then additional log items will be fetched but only
+        consume the same amount of memory space at all time.
+
 
         .. note::
 
@@ -509,8 +518,20 @@ class Client:
 
         Parameters
         -----------
-        clan_tag : str
-            The clan tag to search for.
+        cls:
+            Target class to use to model that data returned
+
+        clan_tag:
+            class:`str`: The clan tag to search for.
+
+        page:
+            class:`bool`: Enable fetching logs while only holding the
+            same amount of logs as `limit`. If `paginate` is set to True,
+            and `limit` is set to default of 0, then `limit` will be set to
+            10 automatically.
+
+        limit:
+            class:`int`: Number of logs to retrieve
 
         Raises
         ------
@@ -532,38 +553,66 @@ class Client:
 
         Returns
         --------
-        List[:class:`ClanWarLogEntry`]
+        :class:`ClanWarLog`:
             Entries in the warlog of the requested clan.
         """
+        if limit < 0:
+            raise ValueError("Limit cannot be negative")
+
         if not issubclass(cls, ClanWarLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        if paginated and not kwargs.get("limit", None):
-            kwargs["limit"] = 5
-        try:
-            data = await self.http.get_clan_warlog(clan_tag, **kwargs)
-        except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception.reason) from exception
+        # If paginate is enabled and limit is set to default of 0, then
+        # set limit to a new default of 10
+        if page:
+            limit = limit if limit else 10
 
-        return ClanWarLog(data=data, client=self, cls=cls, clan_tag=clan_tag)
+        try:
+            return await ClanWarLog.init_cls(client=self,
+                                             clan_tag=clan_tag,
+                                             page=page,
+                                             limit=limit,
+                                             model=cls)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response,
+                                exception.reason) from exception
 
     async def get_raidlog(
-        self,
-        clan_tag: str,
-        cls: Type[RaidLogEntry] = RaidLogEntry,
-        paginated: bool = True,
-        **kwargs
+            self,
+            clan_tag: str,
+            cls: Type[RaidLogEntry] = RaidLogEntry,
+            page: bool = False,
+            limit: int = 0
     ) -> RaidLog:
-        """Retrieve a clan's raid log.
-        Set paginated = False to get the full raid log with one API call.
+        """
+        Retrieve a clan's Capital Raid Log. By default, this will return
+        all the clan's log available in the API. This will of course consume
+        memory. The option of limiting the amount of log items fetched
+        can be controlled with the `limit` parameter. Additionally, if
+        `paginate` is set to True, and an async for loop is performed
+        on this object, then additional log items will be fetched but only
+        consume the same amount of memory space at all time.
+
 
         Parameters
         -----------
-        clan_tag : str
-            The clan tag to search for.
+        cls:
+            Target class to use to model that data returned
+
+        clan_tag:
+            class:`str`: The clan tag to search for.
+
+        page:
+            class:`bool`: Enable fetching logs while only holding the
+            same amount of logs as `limit`. If `paginate` is set to True,
+            and `limit` is set to default of 0, then `limit` will be set to
+            10 automatically.
+
+        limit:
+            class:`int`: Number of logs to retrieve
 
         Raises
         ------
@@ -573,28 +622,45 @@ class Client:
         NotFound
             No clan was found with the supplied tag.
 
+        PrivateWarLog
+            The clan's warlog is private.
+
         Maintenance
             The API is currently in maintenance.
 
         GatewayError
             The API hit an unexpected gateway exception.
 
+
         Returns
         --------
-        List[:class:`RaidLogEntry`]
-            Entries in the raid log of the requested clan.
+        :class:`RaidLog`:
+            Entries in the capital raid seasons of the requested clan.
         """
+
+        if limit < 0:
+            raise ValueError("Limit cannot be negative")
+
         if not issubclass(cls, RaidLogEntry):
-            raise TypeError("cls must be a subclass of RaidLogEntry.")
+            raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        if paginated and not kwargs.get("limit", None):
-            kwargs["limit"] = 5
+        # If paginate is enabled and limit is set to default of 0, then
+        # set limit to a new default of 10
+        if page:
+            limit = limit if limit else 10
 
-        data = await self.http.get_clan_raidlog(clan_tag, **kwargs)
-        return RaidLog(data=data, client=self, cls=cls, clan_tag=clan_tag)
+        try:
+            return await RaidLog.init_cls(client=self,
+                                          clan_tag=clan_tag,
+                                          page=page,
+                                          limit=limit,
+                                          model=cls)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response,
+                                exception.reason) from exception
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
