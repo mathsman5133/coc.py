@@ -138,6 +138,7 @@ async def member_stat(ctx, player_tag):
 
 @bot.command()
 async def clan_info(ctx, clan_tag):
+
     if not utils.is_valid_tag(clan_tag):
         await ctx.send("You didn't give me a proper tag!")
         return
@@ -255,24 +256,17 @@ async def current_war_status(ctx, clan_tag):
 async def main():
     logging.basicConfig(level=logging.ERROR)
 
-    coc_client = coc.Client()
+    async with coc.Client() as coc_client:
+        # Attempt to log into CoC API using your credentials.
+        try:
+            await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                                   os.environ.get("DEV_SITE_PASSWORD"))
+        except coc.InvalidCredentials as error:
+            exit(error)
 
-    # Attempt to log into CoC API using your credentials.
-    try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials as error:
-        exit(error)
-
-    # Add the client session to the bot
-    bot.coc_client = coc_client
-
-    try:
-        # Run the bot
+        # Add the client session to the bot
+        bot.coc_client = coc_client
         await bot.start(os.environ.get("DISCORD_BOT_TOKEN"))
-    finally:
-        # When done, do not forget to clean up after yourself!
-        await coc_client.close()
 
 
 if __name__ == "__main__":

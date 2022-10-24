@@ -223,29 +223,24 @@ async def on_clan_trophy_change(old_clan, new_clan):
 
 
 async def main():
-    coc_client = coc.EventsClient()
+    async with coc.EventsClient() as coc_client:
 
-    # Attempt to log into CoC API using your credentials. To enable events,
-    # you must use the coc.EventsClient class
-    try:
-        await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                               os.environ.get("DEV_SITE_PASSWORD"))
-    except coc.InvalidCredentials as error:
-        exit(error)
+        # Attempt to log into CoC API using your credentials. To enable events,
+        # you must use the coc.EventsClient class
+        try:
+            await coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
+                                   os.environ.get("DEV_SITE_PASSWORD"))
+        except coc.InvalidCredentials as error:
+            exit(error)
 
-    # Instantiate your custom bot class that inherits from the discord bot
-    # notice that we added coc_client into the bot. This will give us access
-    # to coc_client from all our discord bot commands
-    bot = CoCBot(command_prefix="?",
-                 intents=discord.Intents.all(),
-                 coc_client=coc_client)
+        # Instantiate your custom bot class that inherits from the discord bot
+        # notice that we added coc_client into the bot. This will give us access
+        # to coc_client from all our discord bot commands
+        bot = CoCBot(command_prefix="?",
+                     intents=discord.Intents.all(),
+                     coc_client=coc_client)
 
-    try:
-        # Run the bot
         await bot.start(os.environ.get("DISCORD_BOT_TOKEN"))
-    finally:
-        # When done, do not forget to clean up after yourself!
-        await coc_client.close()
 
 
 if __name__ == "__main__":
