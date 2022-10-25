@@ -47,6 +47,9 @@ class Spell(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this spell belongs to.
     """
+    __slots__ = ("id", "name", "range", "upgrade_cost", "upgrade_resource", "upgrade_time",
+                 "training_cost", "training_resource", "training_time", "is_siege_machine", "level", "max_level",
+                 "village")
     name: str
     level: int
     max_level: int

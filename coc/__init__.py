@@ -75,7 +75,10 @@ from .miscmodels import (
     TimeDelta,
     Label,
     WarLeague,
+    GoldPassSeason,
+    ChatLanguage
 )
+from .entry_logs import LogPaginator, ClanWarLog, RaidLog
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan
 from .spell import Spell
@@ -85,3 +88,4 @@ from .war_attack import WarAttack
 from .war_members import ClanWarLeagueClanMember, ClanWarMember
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from . import utils
+from .raid import RaidLogEntry, RaidClan, RaidMember, RaidAttack, RaidDistrict
