@@ -1,4 +1,4 @@
-.. current-module:: coc
+.. currentmodule:: coc
 
 Discord Bot
 ===========

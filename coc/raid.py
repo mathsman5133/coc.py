@@ -28,10 +28,6 @@ from . import BasePlayer
 from .miscmodels import Badge, Timestamp, try_enum
 from .utils import cached_property, correct_tag
 
-if TYPE_CHECKING:
-    # pylint: disable=cyclic-import
-    from .war_members import ClanWarMember  # noqa
-
 
 class RaidMember(BasePlayer):
     """Represents a Raid Member that the API returns.
