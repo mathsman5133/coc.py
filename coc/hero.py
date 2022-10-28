@@ -52,9 +52,6 @@ class Hero(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this hero belongs to.
     """
-    __slots__ = ("id", "name", "range", "dps", "hitpoints", "ground_target", "speed", "upgrade_cost",
-                 "upgrade_time", "ability_time", "required_th_level", "regeneration_time", "level",
-                 "max_level", "village")
     name: str
     level: int
     max_level: int
@@ -143,8 +140,6 @@ class Pet(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this pet belongs to.
     """
-    __slots__ = ("id", "name", "range", "dps", "ground_target", "hitpoints", "speed", "upgrade_cost",
-                 "upgrade_resource", "upgrade_time", "level", "max_level", "village")
     name: str
     level: int
     max_level: int

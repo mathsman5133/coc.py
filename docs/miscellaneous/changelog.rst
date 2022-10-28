@@ -107,8 +107,8 @@ v1.0.3
 
 - Fixed an issue where the HTTP cache layer was not being utilised.
 
-- Fixed an issue where :meth:`utils.get_season_start` and :meth:`utils.get_season_end` got the previous season information if the system time had not yet passed 5am UTC.
-
+- Fixed an issue where :meth:`utils.get_season_start` and :meth:`utils.get_season_end` got the previous season information
+if the system time had not yet passed 5am UTC.
 
 
 v1.0.2
@@ -124,7 +124,8 @@ v1.0.2
 v1.0.1
 ------
 
-- Maintenance event poller logic has been reworked to enable the use of :class:`EventsClient` without any player/clan/war updates.
+- Maintenance event poller logic has been reworked to enable the use of :class:`EventsClient` without any player/clan/war
+updates.
 
 - 5min preparation time has been included in the list of valid prep times for friendly wars.
 
