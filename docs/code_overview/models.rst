@@ -27,13 +27,6 @@ Player Clan
     :private-members:
     :inherited-members:
 
-Raid Clan
-^^^^^^^^^
-.. autoclass:: RaidClan()
-    :members:
-    :private-members:
-    :inherited-members:
-
 Ranked Clan
 ^^^^^^^^^^^
 .. autoclass:: RankedClan()
@@ -81,7 +74,7 @@ Clan Member
     :inherited-members:
 
 Ranked Player
-^^^^^^^^^^^^^
+^^^^^^^^^^^
 .. autoclass:: RankedPlayer()
     :members:
     :private-members:
@@ -97,13 +90,6 @@ Clan War League Clan Member
 Clan War Member
 ^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarMember()
-    :members:
-    :private-members:
-    :inherited-members:
-
-Raid Member
-^^^^^^^^^^^
-.. autoclass:: RaidMember()
     :members:
     :private-members:
     :inherited-members:
@@ -149,30 +135,6 @@ WarAttack
     :private-members:
 
 
-Raids
-~~~~~~
-
-Raid Log Entry
-^^^^^^^^^^^^^^
-.. autoclass:: RaidLogEntry()
-    :members:
-    :private-members:
-    :inherited-members:
-
-Raid District
-^^^^^^^^^^^^^
-.. autoclass:: RaidDistrict()
-    :members:
-    :private-members:
-    :inherited-members:
-
-Raid Attack
-~~~~~~~~~~~~
-.. autoclass:: RaidAttack()
-    :members:
-    :private-members:
-
-
 Achievement
 ~~~~~~~~~~~~
 
@@ -190,20 +152,15 @@ Troop
 
 Hero
 ~~~~~
+
 .. autoclass:: Hero()
-    :members:
-    :private-members:
-
-
-Pet
-~~~~
-.. autoclass:: Pet()
     :members:
     :private-members:
 
 
 Spell
 ~~~~~~
+
 .. autoclass:: Spell()
     :members:
     :private-members:
@@ -211,6 +168,7 @@ Spell
 
 Location
 ~~~~~~~~~
+
 .. autoclass:: Location()
     :members:
     :private-members:
@@ -271,13 +229,6 @@ War League
 .. autoclass:: WarLeague()
     :members:
     :private-members:
-
-Gold pass season
-~~~~~~~~~~~~~~~~~
-.. autoclass:: GoldPassSeason()
-    :members:
-    :private-members:
-    :inherited-members:
 
 Enumerations
 ~~~~~~~~~~~~

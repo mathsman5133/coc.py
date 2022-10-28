@@ -1,4 +1,4 @@
-.. currentmodule:: coc
+.. current-module:: coc
 
 .. _links_extension:
 

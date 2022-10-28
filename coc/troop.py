@@ -37,13 +37,13 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |  :attr:`Troop.upgrade_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |    :attr:`Troop.upgrade_time`    | :class:`TimeDelta`|
+    |    :attr:`Troop.upgrade_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |   :attr:`Troop.training_cost`    |        int        |
     +----------------------------------+-------------------+
     | :attr:`Troop.training_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |   :attr:`Troop.training_time`    |:class:`TimeDelta` |
+    |   :attr:`Troop.training_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |  :attr:`Troop.is_elixir_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
@@ -53,9 +53,9 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |   :attr:`Troop.is_super_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.cooldown`      | :class:`TimeDelta`|
+    |      :attr:`Troop.cooldown`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.duration`      | :class:`TimeDelta`|
+    |      :attr:`Troop.duration`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     | :attr:`Troop.min_original_level` |        int        |
     +----------------------------------+-------------------+
@@ -127,9 +127,6 @@ class Troop(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this troop belongs to.
     """
-    __slots__ = ("id", "name", "range", "lab_level", "dps", "hitpoints", "ground_traget", "speed", "upgrade_cost",
-                 "upgrade_resource", "upgrade_time", "training_cost", "training_resource", "training_time",
-                 "cooldown", "duration", "min_original_level", "original_troop", "level", "max_level", "village")
     name: str
     level: int
     max_level: int

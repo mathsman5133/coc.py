@@ -1,4 +1,4 @@
-.. currentmodule:: coc
+.. current-module:: coc
 
 War Logs
 ========
