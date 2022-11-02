@@ -1,6 +1,5 @@
 .. currentmodule:: coc
 .. _game_data:
-
 Game Data
 =========
 The following provides a detailed how-to for use of static game data that is loaded into coc.py.
@@ -23,7 +22,6 @@ Additionally, speed and memory consumption has been prioritised and optimised wh
 
 
 .. _initialising_game_data:
-
 Initialising the Client
 -----------------------
 
@@ -84,7 +82,6 @@ Although all efforts have been made to minimise overheads, some may prefer to on
 
 
 .. _loading_game_data:
-
 Loading Game Data Manually
 --------------------------
 
@@ -128,7 +125,6 @@ won't have metadata loaded. This is easy to fix, with the :meth:`Player.load_gam
 
 
 .. _initiated_v_uninitiated:
-
 Initiated vs Uninitiated Objects
 --------------------------------
 
@@ -142,7 +138,6 @@ with attributes.
 
 
 .. _initiated_objects:
-
 Initiated Objects
 ~~~~~~~~~~~~~~~~~
 
@@ -202,7 +197,6 @@ Alternatively, you could use :meth:`Client.get_troop` and use the unititiated ob
 
 
 .. _uninitiated_objects:
-
 Uninitiated Objects
 ~~~~~~~~~~~~~~~~~~~
 

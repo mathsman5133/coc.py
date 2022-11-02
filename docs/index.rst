@@ -39,6 +39,7 @@ coc.py: A Clash of Clans API Wrapper
    :caption: Examples
 
    examples/discord_bot
+   examples/discord_links
    examples/events_example
    examples/war_logs
 

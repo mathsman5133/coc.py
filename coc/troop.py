@@ -37,13 +37,13 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |  :attr:`Troop.upgrade_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |    :attr:`Troop.upgrade_time`    | :class:`TimeDelta`|
+    |    :attr:`Troop.upgrade_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |   :attr:`Troop.training_cost`    |        int        |
     +----------------------------------+-------------------+
     | :attr:`Troop.training_resource`  | :class:`Resource` |
     +----------------------------------+-------------------+
-    |   :attr:`Troop.training_time`    |:class:`TimeDelta` |
+    |   :attr:`Troop.training_time`    |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     |  :attr:`Troop.is_elixir_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
@@ -53,9 +53,9 @@ class Troop(DataContainer):
     +----------------------------------+-------------------+
     |   :attr:`Troop.is_super_troop`   |   :class:`bool`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.cooldown`      | :class:`TimeDelta`|
+    |      :attr:`Troop.cooldown`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
-    |      :attr:`Troop.duration`      | :class:`TimeDelta`|
+    |      :attr:`Troop.duration`      |   :class:`TimeDelta`   |
     +----------------------------------+-------------------+
     | :attr:`Troop.min_original_level` |        int        |
     +----------------------------------+-------------------+

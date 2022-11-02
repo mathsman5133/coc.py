@@ -242,7 +242,6 @@ A few points to note:
 - Tags will be automatically corrected via the :meth:`coc.correct_tag` function.
 
 - **Every tag** that is added to the client will be sent to **every callback for that event group**.
-
 This makes for a much simpler internal design.
 
 
