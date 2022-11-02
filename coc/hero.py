@@ -1,6 +1,8 @@
 from typing import TYPE_CHECKING, Dict, List, Type
 from pathlib import Path
 
+from attr import dataclass
+
 from .abc import DataContainer, DataContainerHolder
 
 if TYPE_CHECKING:
@@ -52,9 +54,6 @@ class Hero(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this hero belongs to.
     """
-    __slots__ = ("id", "name", "range", "dps", "hitpoints", "ground_target", "speed", "upgrade_cost",
-                 "upgrade_time", "ability_time", "required_th_level", "regeneration_time", "level",
-                 "max_level", "village")
     name: str
     level: int
     max_level: int
@@ -109,6 +108,7 @@ class HeroHolder(DataContainerHolder):
     data_object = Hero
 
 
+@dataclass
 class Pet(DataContainer):
     """Represents a Pet object as returned by the API, optionally filled with game data.
 
@@ -143,8 +143,6 @@ class Pet(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this pet belongs to.
     """
-    __slots__ = ("id", "name", "range", "dps", "ground_target", "hitpoints", "speed", "upgrade_cost",
-                 "upgrade_resource", "upgrade_time", "level", "max_level", "village")
     name: str
     level: int
     max_level: int

@@ -127,9 +127,6 @@ class Troop(DataContainer):
     village: str
         Either ``home`` or ``builderBase``, indicating which village this troop belongs to.
     """
-    __slots__ = ("id", "name", "range", "lab_level", "dps", "hitpoints", "ground_traget", "speed", "upgrade_cost",
-                 "upgrade_resource", "upgrade_time", "training_cost", "training_resource", "training_time",
-                 "cooldown", "duration", "min_original_level", "original_troop", "level", "max_level", "village")
     name: str
     level: int
     max_level: int
