@@ -150,8 +150,8 @@ class BasePlayer:
 class DataContainerMetaClass(type):
     def __repr__(cls):
         attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
+            ("name", cls.name if 'name' in cls.__dict__ else "not initialized"),
+            ("id", cls.id if 'id' in cls.__dict__ else "not initialized"),
         ]
         return "<%s %s>" % (cls.__name__, " ".join("%s=%r" % t for t in attrs),)
 
