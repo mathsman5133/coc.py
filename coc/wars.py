@@ -420,7 +420,7 @@ class ClanWarLeagueGroup:
         self.state: str = data_get("state")
         self.season: str = data_get("season")
 
-        rounds = data_get("rounds")
+        rounds = data_get("rounds", [])
         self.number_of_rounds: int = len(rounds)
         # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
         # we want to get only the valid rounds
