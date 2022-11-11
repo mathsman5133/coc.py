@@ -78,5 +78,5 @@ def login_with_keys(*keys: str, client: Type[Union[Client, EventsClient]] = Clie
         Any kwargs you wish to pass into the Client object.
     """
     instance = client(**kwargs)
-    instance.login_with_keys(*keys)
+    instance.loop.run_until_complete(instance.login_with_keys(*keys))
     return instance
