@@ -19,10 +19,9 @@ Bugs Fixed:
 
 
 This release includes:
-`#121 <https://github.com/mathsman5133/coc.py/pull/121>`_,
-`#122 <https://github.com/mathsman5133/coc.py/pull/122>`_,
-`#130 <https://github.com/mathsman5133/coc.py/pull/130>`_,
-`#131 <https://github.com/mathsman5133/coc.py/pull/131>`_,
+`#138 <https://github.com/mathsman5133/coc.py/pull/138>`_,
+`#139 <https://github.com/mathsman5133/coc.py/pull/139>`_,
+`#140 <https://github.com/mathsman5133/coc.py/pull/140>`_,
 
 
 
