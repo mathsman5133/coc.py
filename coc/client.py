@@ -1018,10 +1018,12 @@ class Client:
 
         if cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
-        elif cwl_round is WarRound.current_preparation and league_group.state == "warEnded":
+        elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
         elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
             return None  # no previous war for first rounds.
+        elif cwl_round is WarRound.current_war and league_group.state == "ended":
+            round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
         elif cwl_round is WarRound.previous_war and is_prep:
             round_tags = league_group.rounds[-2]
         elif cwl_round is WarRound.previous_war:
@@ -1037,6 +1039,11 @@ class Client:
         kwargs["clan_tag"] = clan_tag
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
+                return war
+            elif war.opponent.tag == clan_tag:
+                tmp = war.clan
+                war.clan = war.opponent
+                war.opponent = tmp
                 return war
 
     def get_current_wars(
