@@ -7,6 +7,57 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.2.1
+------
+Bugs Fixed:
+
+- Moved "Recall Spell" at the end of elixir spells (rather than end of all spells)
+
+- Fixed a bug with CWL where the final war can be retrieved properly on the last day as `current_war`
+
+- Fixed bug with iterators and comparing clan tags to skip wars.
+
+
+This release includes:
+`#138 <https://github.com/mathsman5133/coc.py/pull/138>`_,
+`#139 <https://github.com/mathsman5133/coc.py/pull/139>`_,
+`#140 <https://github.com/mathsman5133/coc.py/pull/140>`_,
+
+
+
+v2.2.0
+------
+This update has quite a bit of change without breaking backward compatibility.
+
+For starters, support for the context manager was added #121 allowing the use of::
+
+    async def main():
+        async with coc.Client() as client:
+            # do stuff...
+
+    if __name__ == "__main__":
+        asyncio.run(main())
+
+Additionally, with the release of CapitalRaidSeasons we needed to improve the performance of fetching warlogs and capital raid logs. Previously, all records available from the API were fetched when in most cases, folks just needed the newest data. A `limit` parameter has been added to both `get_warlog` and `get_raidlog`.
+
+Additionally, support for `async for warlog` has been added with the ability to fetch more data if needed.::
+
+    raid_logs = await client.get_raidlog(clan_tag, page=True, limit=5)
+
+    # Set `paginate=True` to enable fetching beyond the limit value until
+    # there are more values to fetch
+    count = 0
+    async for i in raid_with_page:
+        print(f"[{count}]-async limit: 5 page: True {i.start_time.time}")
+        count += 1
+
+This release includes:
+`#121 <https://github.com/mathsman5133/coc.py/pull/121>`_,
+`#122 <https://github.com/mathsman5133/coc.py/pull/122>`_,
+`#130 <https://github.com/mathsman5133/coc.py/pull/130>`_,
+`#131 <https://github.com/mathsman5133/coc.py/pull/131>`_,
+
+
 v2.1.1
 ------
 - Support for Clan Capitals!

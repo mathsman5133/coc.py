@@ -138,12 +138,12 @@ SPELL_ORDER = [
     "Freeze Spell",
     "Clone Spell",
     "Invisibility Spell",
+    "Recall Spell",
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
     "Skeleton Spell",
     "Bat Spell",
-    "Recall Spell",
 ]
 
 HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
