@@ -1,7 +1,6 @@
 from typing import TYPE_CHECKING, Dict, List, Type
 from pathlib import Path
 
-from attr import dataclass
 
 from .abc import DataContainer, DataContainerHolder
 
@@ -108,7 +107,7 @@ class HeroHolder(DataContainerHolder):
     data_object = Hero
 
 
-@dataclass
+
 class Pet(DataContainer):
     """Represents a Pet object as returned by the API, optionally filled with game data.
 
