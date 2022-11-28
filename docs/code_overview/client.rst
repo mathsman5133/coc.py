@@ -16,9 +16,16 @@ Example
 ~~~~~~~
 .. code-block:: python3
 
+    import asyncio
     import coc
 
-    client = coc.login("email", "password", key_names="keys for my windows pc", key_count=5)
+    async def main():
+        async with coc.Client() as coc_client:
+            await coc_client.login("email", "password")
+
+        # do stuff
+
+    asyncio.run(main())
 
 With the returned instance, you can complete any of the operations detailed below.
 
