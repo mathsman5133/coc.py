@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 import ujson
-
+from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
 from .enums import Resource
@@ -32,6 +32,8 @@ from .utils import CaseInsensitiveDict, UnitStat, _get_maybe_first
 
 if TYPE_CHECKING:
     from .players import Player
+
+BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
 
 
 class BaseClan:
@@ -150,8 +152,8 @@ class BasePlayer:
 class DataContainerMetaClass(type):
     def __repr__(cls):
         attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
+            ("name", cls.name if "name" in cls.__dict__ else "Unknown"),
+            ("id", cls.id if "id" in cls.__dict__ else "Unknown"),
         ]
         return "<%s %s>" % (cls.__name__, " ".join("%s=%r" % t for t in attrs),)
 
@@ -187,27 +189,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.ground_target = _get_maybe_first(troop_meta, "GroundTargets", default=True)
         cls.hitpoints = try_enum(UnitStat, troop_meta.get("Hitpoints"))
 
-        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
-        cls.lab_level = try_enum(UnitStat, troop_meta.get("LaboratoryLevel"))
-        cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
-        cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
-
-        # all 3
-        cls.upgrade_cost = try_enum(UnitStat, troop_meta.get("UpgradeCost"))
-        cls.upgrade_resource = Resource(value=troop_meta["UpgradeResource"][0])
-        cls.upgrade_time = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("UpgradeTimeH", [])])
-        cls._is_home_village = False if troop_meta.get("VillageType") else True
-
-        # spells and troops
-        cls.training_cost = try_enum(UnitStat, troop_meta.get("TrainingCost"))
-        cls.training_time = try_enum(UnitStat, troop_meta.get("TrainingTime"))
-
-        # only heroes
-        cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
-        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
-        cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel"))
-        cls.regeneration_time = try_enum(UnitStat, [TimeDelta(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])])
-
+        # get production building
         production_building = troop_meta.get("ProductionBuilding", [None])[0]
         if production_building == "Barrack":
             cls.is_elixir_troop = True
@@ -219,6 +201,54 @@ class DataContainer(metaclass=DataContainerMetaClass):
             cls.is_elixir_spell = True
         elif production_building == "Mini Spell Factory":
             cls.is_dark_spell = True
+
+        # load buildings
+        with open(BUILDING_FILE_PATH) as fp:
+            buildings = ujson.load(fp)
+
+        # without production_building, it is a hero or pet
+        if not production_building:
+            laboratory_levels = troop_meta.get("LaboratoryLevel")
+        else:
+            # it is a troop or spell
+            prod_unit = buildings.get(production_building)
+            min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
+            # there are some special troops, which have no BarrackLevel attribute
+            if not min_prod_unit_level:
+                laboratory_levels = troop_meta.get("LaboratoryLevel")
+            else:
+                # get the min th level were we can unlock by the required level of the production building
+                min_th_level = [th for i, th in enumerate(prod_unit["TownHallLevel"], start=1)
+                                if i == min_prod_unit_level]
+                # map the min th level to a lab level
+                [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items()
+                                     if th_level in min_th_level]
+                # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
+                # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
+                laboratory_levels = [x if x > first_lab_level else first_lab_level
+                                     for x in troop_meta.get("LaboratoryLevel")]
+
+        cls.lab_level = try_enum(UnitStat, laboratory_levels)
+        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
+        cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
+        cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
+
+        # all 3
+        cls.upgrade_cost = try_enum(UnitStat, troop_meta.get("UpgradeCost"))
+        cls.upgrade_resource = Resource(value=troop_meta["UpgradeResource"][0])
+        cls.upgrade_time = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("UpgradeTimeH", [])])
+        cls._is_home_village = False if troop_meta.get("VillageType") else True
+        cls.village = "home" if cls._is_home_village else "builderBase"
+
+        # spells and troops
+        cls.training_cost = try_enum(UnitStat, troop_meta.get("TrainingCost"))
+        cls.training_time = try_enum(UnitStat, troop_meta.get("TrainingTime"))
+
+        # only heroes
+        cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
+        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
+        cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel"))
+        cls.regeneration_time = try_enum(UnitStat, [TimeDelta(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])])
 
         cls.is_loaded = True
         return cls
