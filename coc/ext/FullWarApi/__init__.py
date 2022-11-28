@@ -11,9 +11,9 @@ from typing import List
 
 import aiohttp
 
-from ..http import json_or_text
-from ..utils import correct_tag
-from ..wars import ClanWar
+from ...http import json_or_text
+from ...utils import correct_tag
+from ...wars import ClanWar
 
 LOG = logging.getLogger(__name__)
 
@@ -142,9 +142,7 @@ class FullWarClient:
         return self.key.token
 
     async def _refresh_key(self):
-        #REMOVE THIS EMAIL WHEN POSSIBLE
         data = {
-            "email" : "test@tester.com",
             "username": self.username,
             "password": self.password,
         }
@@ -170,7 +168,9 @@ class FullWarClient:
         Optional[:class:`ClanWar`]
             War result, or ``None`` if no war found.
         """
-        data = await self._request("GET", f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}&prep_start={str(preparation_start)}")
+        data = await self._request("GET",
+                                   f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
+                                   f"&prep_start={str(preparation_start)}")
         try:
             return ClanWar(data=data["response"], client=self.clash_client)
         except (IndexError, KeyError, TypeError, ValueError):
@@ -194,7 +194,8 @@ class FullWarClient:
         Optional[:class:`ClanWar`]
             List of war results, or ``None`` if no wars found.
         """
-        data = await self._request("GET", f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
+        data = await self._request("GET",
+                                   f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
         try:
             responses = data["log"]
             return [ClanWar(data=response["response"], client=self.clash_client) for response in responses]
@@ -212,5 +213,7 @@ class FullWarClient:
         preparation_start: int
             Preparation time of the war
         """
-        return await self._request("POST", f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}&prep_start={str(preparation_start)}")
+        return await self._request("POST",
+                                   f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
+                                   f"&prep_start={str(preparation_start)}")
 
