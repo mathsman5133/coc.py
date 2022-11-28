@@ -233,10 +233,13 @@ class Client:
         for supercell_name, data in buildings.items():
             if supercell_name == "Laboratory":
                 lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                # there are troops with no lab ...
+                lab_to_townhall[-1] = 1
+                lab_to_townhall[0] = 2
                 break
         else:
             # if the files failed to load, fallback to the old formula of lab level = TH level - 2
-            lab_to_townhall = {i: i + 2 for i in range(1, 15)}
+            lab_to_townhall = {i-2: i for i in range(1, 15)}
 
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
             holder._load_json(object_ids, english_aliases, lab_to_townhall)
