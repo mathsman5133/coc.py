@@ -106,7 +106,6 @@ class HeroHolder(DataContainerHolder):
     data_object = Hero
 
 
-
 class Pet(DataContainer):
     """Represents a Pet object as returned by the API, optionally filled with game data.
 
