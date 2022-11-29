@@ -95,7 +95,7 @@ class FullWarClient:
 
     """
 
-    BASE_URL = "http://teamutils.com:8081"
+    BASE_URL = "https://fw-api.teamutils.com"
 
     __slots__ = ("username", "password", "clash_client", "loop", "key", "http_session")
 
@@ -198,7 +198,9 @@ class FullWarClient:
                                    f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
         try:
             responses = data["log"]
-            return [ClanWar(data=response["response"], client=self.clash_client) for response in responses]
+
+            generator = (ClanWar(data=response["response"], client=self.clash_client) for response in responses)
+            return generator
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
