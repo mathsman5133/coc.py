@@ -273,7 +273,7 @@ class Client:
         self._create_holders()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
-    async def login_with_keys(self, *keys: str) -> None:
+    def login_with_keys(self, *keys: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
         Parameters
@@ -284,7 +284,7 @@ class Client:
         http._keys = keys
         http.keys = cycle(http._keys)
         http.key_count = len(keys)
-        await http.create_session(self.connector, self.timeout)
+        self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
         LOG.debug("HTTP connection created. Client is ready for use.")

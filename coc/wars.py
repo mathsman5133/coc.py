@@ -82,13 +82,12 @@ class ClanWar:
         "league_group",
         "attacks_per_member",
         "_response_retry",
-        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
-        self._raw_data = data
+
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
 
