@@ -190,6 +190,8 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
+        if realtime and self.key_scopes == "clash":
+            self.key_scopes = 'clash:*:verifytoken,realtime' # without that the key creation will fail due to the wrong scopes.
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
