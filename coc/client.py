@@ -120,6 +120,11 @@ class Client:
     load_game_data: :class:`LoadGameData`
         The option for how coc.py will load game data. See :ref:`initialising_game_data` for more info.
 
+    realtime: :class:`bool`
+        Some developers are given special access to an uncached API access by
+        Super Cell. If you are one of those developers, your account will have
+        special flags that will only be interpreted by coc.py if you set this
+        bool to True.
 
     Attributes
     ----------
@@ -168,7 +173,7 @@ class Client:
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
-        realtime = False,
+        realtime=False,
         **_,
     ):
 
@@ -252,6 +257,8 @@ class Client:
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
+
+        @Deprecated
 
         Parameters
         ----------
