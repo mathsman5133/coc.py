@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import asyncio
 import logging
+from enum import Enum
 
 from itertools import cycle
 from pathlib import Path
@@ -65,6 +66,16 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
+
+
+class ClashAccountScopes(Enum):
+    """
+    Values represent the scope required for each type of user. A USER is
+    anyone who has access to the API. A REAL user is a user with special
+    access from SuperCell with realtime scope access.
+    """
+    USER = "clash"
+    REAL = "clash:*:verifytoken,realtime"
 
 
 class Client:
@@ -163,7 +174,6 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
@@ -185,7 +195,7 @@ class Client:
             raise RuntimeError("Key count must be within {}-{}".format(KEY_MINIMUM, KEY_MAXIMUM))
 
         self.key_names = key_names
-        self.key_scopes = key_scopes
+        self.key_scopes = ClashAccountScopes.REAL.value if realtime else ClashAccountScopes.USER.value
         self.throttle_limit = throttle_limit
         self.throttler = throttler
         self.connector = connector
@@ -195,8 +205,7 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
-        if realtime and self.key_scopes == "clash":
-            self.key_scopes = 'clash:*:verifytoken,realtime' # without that the key creation will fail due to the wrong scopes.
+
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
