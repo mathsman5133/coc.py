@@ -111,6 +111,7 @@ SUPER_TROOP_ORDER = [
     "Super Witch",
     "Ice Hound",
     "Super Bowler",
+    "Super Miner",
 ]
 
 HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
