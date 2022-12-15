@@ -344,12 +344,12 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
         The end of the season.
     """
     if month and year:
-        if month==12:
-            next_month=1
-            next_year=year+1
+        if month == 12:
+            next_month = 1
+            next_year = year + 1
         else:
-            next_month=month+1
-            next_year=year
+            next_month = month + 1
+            next_year = year
         return get_season_start(next_month, next_year)
 
     now = datetime.utcnow()
