@@ -104,7 +104,7 @@ class WarClan(BaseClan):
 
         if self._war:
             self.max_stars: int = self._war.team_size * 3
-            self.total_attacks: int = self._war.team_size * 2
+            self.total_attacks: int = self._war.team_size * self._war.attacks_per_member
         else:
             self.max_stars: int = (data_get("teamSize") or 0) * 3
             self.total_attacks: int = (data_get("teamSize") or 0) * 3
