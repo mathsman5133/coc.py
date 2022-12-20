@@ -208,6 +208,7 @@ class HTTPClient:
         self.__session = None
         self.__lock = asyncio.Semaphore(per_second)
         self.cache = cache_max_size and LRU(cache_max_size)
+        self._cache_remove_count = 0
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
 
         if issubclass(throttler, BasicThrottler):
@@ -226,6 +227,11 @@ class HTTPClient:
     def _cache_remove(self, key):
         try:
             del self.cache[key]
+            #  The following fixes a memory leak that is caused by python dicts not properly freeing disk space
+            self._cache_remove_count += 1
+            if self._cache_remove_count >= self.cache.max_size:
+                self.cache = self.cache.copy()
+                self._cache_remove_count = 0
         except KeyError:
             pass
 
