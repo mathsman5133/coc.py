@@ -216,6 +216,6 @@ class FullWarClient:
             Preparation time of the war
         """
         return await self._request("POST",
-                                   f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
+                                   f"/register_war?clan_tag={correct_tag(clan_tag, '%23')}"
                                    f"&prep_start={str(preparation_start)}")
 
