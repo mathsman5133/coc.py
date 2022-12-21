@@ -232,6 +232,7 @@ class HTTPClient:
             if self._cache_remove_count >= self.cache.max_size:
                 self.cache = self.cache.copy()
                 self._cache_remove_count = 0
+                LOG.debug("Cache copied to prevent a memory leak")
         except KeyError:
             pass
 
