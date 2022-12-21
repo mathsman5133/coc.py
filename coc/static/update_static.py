@@ -16,6 +16,7 @@ TARGETS = [
     ("pets.json", None),
     ("spells.json", None),
     ("supers.json", None),
+    ("townhall_levels.json", None),
     ("lang/texts_EN.json", "texts_EN.json"),
 ]
 

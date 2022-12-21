@@ -480,6 +480,11 @@ class HTTPClient:
 
                     resp = await session.post("https://developer.clashofclans.com/api/apikey/create", json=data)
                     key = await resp.json()
+
+                    if resp.status != 200:
+                        LOG.error(key.get("description"))
+                        raise ValueError(key.get("description"))
+
                     self._keys.append(key["key"]["key"])
 
             if len(keys) == 10 and len(self._keys) < self.key_count:

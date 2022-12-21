@@ -103,7 +103,7 @@ class ClanWar:
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag: str = data_get("tag")
-        if data_get("attacksPerMember") is None and self.is_cwl:
+        if data_get("attacksPerMember") is None or self.is_cwl:
             self.attacks_per_member: int = 1
         else:
             self.attacks_per_member: int = data_get("attacksPerMember")
