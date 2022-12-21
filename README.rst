@@ -141,7 +141,9 @@ These can be installed with:
 
 .. code:: sh
 
-    pip install .[docs]
+    pip install -r doc_requirements.txt
+    cd docs
+    make html
 
 If you wish to run linting, pylint, black and flake8 have been setup and can be run with:
 
