@@ -16,7 +16,6 @@ MACHINES = {
                 }
             ]
         },
-
     "Wall Wrecker":
         {
             "release": 12,
