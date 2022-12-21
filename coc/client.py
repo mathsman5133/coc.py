@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import asyncio
 import logging
+from enum import Enum
 
 from itertools import cycle
 from pathlib import Path
@@ -65,6 +66,16 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
+
+
+class ClashAccountScopes(Enum):
+    """
+    Values represent the scope required for each type of user. A USER is
+    anyone who has access to the API. A REAL user is a user with special
+    access from SuperCell with realtime scope access.
+    """
+    USER = "clash"
+    REAL = "clash:*:verifytoken,realtime"
 
 
 class Client:
@@ -120,6 +131,11 @@ class Client:
     load_game_data: :class:`LoadGameData`
         The option for how coc.py will load game data. See :ref:`initialising_game_data` for more info.
 
+    realtime: :class:`bool`
+        Some developers are given special access to an uncached API access by
+        Super Cell. If you are one of those developers, your account will have
+        special flags that will only be interpreted by coc.py if you set this
+        bool to True.
 
     Attributes
     ----------
@@ -158,7 +174,6 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
@@ -168,7 +183,7 @@ class Client:
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
-        realtime = False,
+        realtime=False,
         **_,
     ):
 
@@ -180,7 +195,7 @@ class Client:
             raise RuntimeError("Key count must be within {}-{}".format(KEY_MINIMUM, KEY_MAXIMUM))
 
         self.key_names = key_names
-        self.key_scopes = key_scopes
+        self.key_scopes = ClashAccountScopes.REAL.value if realtime else ClashAccountScopes.USER.value
         self.throttle_limit = throttle_limit
         self.throttler = throttler
         self.connector = connector
@@ -190,6 +205,7 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
+
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -252,6 +268,8 @@ class Client:
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
+
+        @Deprecated
 
         Parameters
         ----------

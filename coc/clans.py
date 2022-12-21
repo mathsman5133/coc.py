@@ -107,6 +107,8 @@ class Clan(BaseClan):
         The clan's versus trophy count. This is calculated according to members' versus trophy counts.
     required_trophies: :class:`int`
         The minimum trophies required to apply to this clan.
+    required_townhall: :class:`int`
+        The minimum townhall level required to apply to this clan.
     war_frequency: :class:`str`
         The frequency for when this clan goes to war.
         For example, this could be ``always``.
@@ -159,6 +161,7 @@ class Clan(BaseClan):
         "capital_district_cls",
         "war_league",
         "chat_language",
+        "required_townhall",
 
         "_cs_labels",
         "_cs_members",
@@ -197,6 +200,7 @@ class Clan(BaseClan):
         self.description: str = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
+        self.required_townhall = data_get("requiredTownhallLevel")
 
         label_cls = self.label_cls
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
