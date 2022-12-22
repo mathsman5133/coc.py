@@ -74,7 +74,7 @@ Clan Member
     :inherited-members:
 
 Ranked Player
-^^^^^^^^^^^
+^^^^^^^^^^^^^
 .. autoclass:: RankedPlayer()
     :members:
     :private-members:
