@@ -74,6 +74,7 @@ HOME_TROOP_ORDER = [
     "Electro Dragon",
     "Yeti",
     "Dragon Rider",
+    "Electro Titan",
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -83,7 +84,6 @@ HOME_TROOP_ORDER = [
     "Bowler",
     "Ice Golem",
     "Headhunter",
-    "Electro Titan",
 ]
 
 SIEGE_MACHINE_ORDER = [
