@@ -48,7 +48,7 @@ Although all efforts have been made to minimise overheads, some may prefer to on
 2. Default
 
     In this option, coc.py will always inject game metadata when using :meth:`Client.get_player`, however will not
-    load game metadata for any events dispatched. Instead see :ref:`_loading_game_data` for how to load it
+    load game metadata for any events dispatched. Instead see :ref:`loading_game_data` for how to load it
     when using events.
 
     Game metadata will be loaded on startup using this option, which means you can use :meth:`Client.parse_army_link` etc.

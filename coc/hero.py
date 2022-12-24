@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, Dict, List, Type
 from pathlib import Path
 
@@ -13,7 +14,9 @@ PET_FILE_PATH = Path(__file__).parent.joinpath(Path("static/pets.json"))
 
 
 class Hero(DataContainer):
-    """Represents a Hero object as returned by the API, optionally filled with game data.
+    """
+    Represents a Hero object as returned by the API, optionally
+    filled with game data.
 
     Attributes
     ----------
