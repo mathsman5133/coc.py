@@ -252,7 +252,7 @@ class HTTPClient:
         cache_control_key = route.url
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if cache is not None and not self.client.realtime:
+        if isinstance(cache, LRU) and not self.client.realtime:
             try:
                 return cache[cache_control_key]
             except KeyError:
@@ -266,7 +266,7 @@ class HTTPClient:
 
                         perf = (perf_counter() - start) * 1000
                         log_info = {"method": method, "url": url, "perf_counter": perf, "status": response.status}
-                        if self.stats:
+                        if isinstance(self.stats, HTTPStats):
                             self.stats[route.stats_key] = perf
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
@@ -276,7 +276,7 @@ class HTTPClient:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age="))
                             data["_response_retry"] = delta
-                            if cache is not None and not self.client.realtime:
+                            if isinstance(cache, LRU) and not self.client.realtime:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
