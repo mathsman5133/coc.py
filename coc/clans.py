@@ -1,14 +1,18 @@
 """
 MIT License
+
 Copyright (c) 2019-2020 mathsman5133
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,6 +32,7 @@ from .abc import BaseClan
 
 class RankedClan(BaseClan):
     """Represents the clan object returned by leader-board rankings.
+    
     Attributes
     ----------
     tag: :class:`str`
@@ -82,6 +87,7 @@ class RankedClan(BaseClan):
 
 class Clan(BaseClan):
     """Represents a Clash of Clans clan.
+    
     Attributes
     ----------
     tag: :class:`str`
@@ -251,11 +257,14 @@ class Clan(BaseClan):
 
     def get_member(self, tag: str) -> typing.Optional[ClanMember]:
         """Return a :class:`ClanMember` with the tag provided. Returns ``None`` if not found.
+        
         Example
         --------
         .. code-block:: python3
+        
             clan = await client.get_clan('clan_tag')
             member = clan.get_member('player_tag')
+            
         Returns
         --------
         The member who matches the tag provided: Optional[:class:`ClanMember`]
@@ -271,13 +280,17 @@ class Clan(BaseClan):
 
     def get_member_by(self, **attrs) -> typing.Optional[ClanMember]:
         """Returns the first :class:`ClanMember` that meets the attributes passed
+        
         This search implements the :func:`coc.utils.get` function
+        
         Example
         -------
         .. code-block:: python3
             clan = await client.get_clan("#clantag")
+            
             member = clan.get_member_by(name="Joe")
             member = clan.get_member_by(level=125)
             member = clan.get_member_by(role=coc.Role.elder)
+            
         """
         return get(self.members, **attrs)
