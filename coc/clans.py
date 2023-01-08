@@ -1,18 +1,14 @@
 """
 MIT License
-
 Copyright (c) 2019-2020 mathsman5133
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -32,7 +28,6 @@ from .abc import BaseClan
 
 class RankedClan(BaseClan):
     """Represents the clan object returned by leader-board rankings.
-
     Attributes
     ----------
     tag: :class:`str`
@@ -48,9 +43,11 @@ class RankedClan(BaseClan):
     member_count: :class:`int`
         The number of members in the clan.
     points: :class:`int`
-        The clan's trophy-count. If retrieving info for versus leader-boards, this will be ``None``.
+        The clan's trophy-count. If retrieving info for capital or versus leader-boards, this will be ``None``.
     versus_points: :class:`int`
-        The clan's versus trophy count. If retrieving info for regular leader boards, this will be ``None``.
+        The clan's versus trophy count. If retrieving info for regular or capital leader boards, this will be ``None``.
+    capital_points: :class:`int`
+        The clan's capital trophy count. If retrieving info for regular or versus leader boards, this will be ``None``.
     rank: :class:`int`
         The clan's rank in the leader board.
     previous_rank: :class:`int`
@@ -62,6 +59,7 @@ class RankedClan(BaseClan):
         "member_count",
         "points",
         "versus_points",
+        "capital_points",
         "rank",
         "previous_rank",
     )
@@ -75,6 +73,7 @@ class RankedClan(BaseClan):
 
         self.points: int = data_get("clanPoints")
         self.versus_points: int = data_get("clanVersusPoints")
+        self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
         self.rank: int = data_get("rank")
@@ -83,7 +82,6 @@ class RankedClan(BaseClan):
 
 class Clan(BaseClan):
     """Represents a Clash of Clans clan.
-
     Attributes
     ----------
     tag: :class:`str`
@@ -97,6 +95,8 @@ class Clan(BaseClan):
     type: :class:`str`
         The clan's type for accepting members.
         This could be ``open``, ``inviteOnly`` or ``closed``.
+    family_friendly: :class:`bool`
+        Indicates the clan's family friendly status. This can be True if family friendly, or False if not.
     description: :class:`str`
         The clan's public description.
     location: :class:`Location`
@@ -105,6 +105,8 @@ class Clan(BaseClan):
         The clan's trophy count. This is calculated according to members' trophy counts.
     versus_points: :class:`int`
         The clan's versus trophy count. This is calculated according to members' versus trophy counts.
+    capital_points: :class:`int`
+        The clan's clan capital points. Unsure how this is calculated.
     required_trophies: :class:`int`
         The minimum trophies required to apply to this clan.
     required_townhall: :class:`int`
@@ -136,14 +138,18 @@ class Clan(BaseClan):
         Ensure any overriding of this inherits from :class:`coc.CapitalDistrict`.
     war_league: :class:`coc.WarLeague`
         The clan's CWL league.
+    capital_league: :class:`coc.WarLeague`
+        The clan's Clan Capital league.
     """
 
     __slots__ = (
         "type",
+        "family_friendly",
         "description",
         "location",
         "points",
         "versus_points",
+        "capital_points",
         "required_trophies",
         "war_frequency",
         "war_win_streak",
@@ -160,6 +166,7 @@ class Clan(BaseClan):
         "member_cls",
         "capital_district_cls",
         "war_league",
+        "capital_league",
         "chat_language",
         "required_townhall",
 
@@ -185,11 +192,13 @@ class Clan(BaseClan):
 
         self.points: int = data_get("clanPoints")
         self.versus_points: int = data_get("clanVersusPoints")
+        self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
 
         # only available via /clans/{clanTag} or /clans endpoint
         self.type: str = data_get("type")
+        self.family_friendly = data_get("isFamilyFriendly")
         self.required_trophies: int = data_get("requiredTrophies")
         self.war_frequency: str = data_get("warFrequency")
         self.war_win_streak: int = data_get("warWinStreak")
@@ -199,6 +208,7 @@ class Clan(BaseClan):
         self.public_war_log: bool = data_get("isWarLogPublic")
         self.description: str = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
+        self.capital_league = try_enum(WarLeague, data=data_get("capitalLeague"))
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
         self.required_townhall = data_get("requiredTownhallLevel")
 
@@ -241,14 +251,11 @@ class Clan(BaseClan):
 
     def get_member(self, tag: str) -> typing.Optional[ClanMember]:
         """Return a :class:`ClanMember` with the tag provided. Returns ``None`` if not found.
-
         Example
         --------
         .. code-block:: python3
-
             clan = await client.get_clan('clan_tag')
             member = clan.get_member('player_tag')
-
         Returns
         --------
         The member who matches the tag provided: Optional[:class:`ClanMember`]
@@ -264,17 +271,13 @@ class Clan(BaseClan):
 
     def get_member_by(self, **attrs) -> typing.Optional[ClanMember]:
         """Returns the first :class:`ClanMember` that meets the attributes passed
-
         This search implements the :func:`coc.utils.get` function
-
         Example
         -------
         .. code-block:: python3
             clan = await client.get_clan("#clantag")
-
             member = clan.get_member_by(name="Joe")
             member = clan.get_member_by(level=125)
             member = clan.get_member_by(role=coc.Role.elder)
-
         """
         return get(self.members, **attrs)
