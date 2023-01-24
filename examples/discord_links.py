@@ -5,8 +5,12 @@ from coc.ext import discordlinks
 
 
 async def main():
-    client = await discordlinks.login(os.environ["LINKS_API_USERNAME"],
-                                      os.environ["LINKS_API_PASSWORD"])
+    try:
+        client = await discordlinks.login(os.environ["LINKS_API_USERNAME"],
+                                          os.environ["LINKS_API_PASSWORD"])
+    except (TypeError, ValueError):
+        print("Wrong or not suitable credentials")
+        return
 
     player_tag = "#JY9J2Y99"
     discord_id = 230214242618441728
