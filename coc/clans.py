@@ -86,8 +86,9 @@ class RankedClan(BaseClan):
 
 
 class Clan(BaseClan):
-    """Represents a Clash of Clans clan.
-    
+    """
+    Represents a Clash of Clans clan.
+
     Attributes
     ----------
     tag: :class:`str`
@@ -108,7 +109,8 @@ class Clan(BaseClan):
     location: :class:`Location`
         The clan's location.
     points: :class:`int`
-        The clan's trophy count. This is calculated according to members' trophy counts.
+        The clan's trophy count. This is calculated according to
+        members' trophy counts.
     versus_points: :class:`int`
         The clan's versus trophy count. This is calculated according to members' versus trophy counts.
     capital_points: :class:`int`
@@ -130,7 +132,8 @@ class Clan(BaseClan):
         The number of wars the clan has lost.
     public_war_log: :class:`bool`
         Indicates if the clan has a public war log.
-        If this is ``False``, operations to find the clan's current war may raise :exc:`PrivateWarLog`.
+        If this is ``False``, operations to find the clan's current
+        war may raise :exc:`PrivateWarLog`.
     member_count: :class:`int`
         The number of members in the clan.
     label_cls: :class:`coc.Label`
@@ -140,8 +143,9 @@ class Clan(BaseClan):
         The type which the members found in :attr:`Clan.members` will be of.
         Ensure any overriding of this inherits from :class:`coc.ClanMember`.
     capital_district_cls: :class:`coc.CapitalDistrict`
-        The type which the clan capital districts found in :attr:`Clan.capital_districts` will be of.
-        Ensure any overriding of this inherits from :class:`coc.CapitalDistrict`.
+        The type which the clan capital districts found in
+        :attr:`Clan.capital_districts` will be of. Ensure any overriding of
+        this inherits from :class:`coc.CapitalDistrict`.
     war_league: :class:`coc.WarLeague`
         The clan's CWL league.
     capital_league: :class:`coc.WarLeague`
@@ -287,7 +291,7 @@ class Clan(BaseClan):
         -------
         .. code-block:: python3
             clan = await client.get_clan("#clantag")
-            
+
             member = clan.get_member_by(name="Joe")
             member = clan.get_member_by(level=125)
             member = clan.get_member_by(role=coc.Role.elder)

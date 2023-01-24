@@ -67,6 +67,7 @@ from .miscmodels import (
     Achievement,
     Badge,
     Icon,
+    GoldPassSeason,
     League,
     LegendStatistics,
     LoadGameData,
@@ -78,6 +79,7 @@ from .miscmodels import (
 )
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan
+from .raid import RaidClan, RaidMember, RaidLogEntry, RaidDistrict, RaidAttack
 from .spell import Spell
 from .troop import Troop
 from .war_clans import WarClan, ClanWarLeagueClan

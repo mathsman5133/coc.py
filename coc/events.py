@@ -26,8 +26,9 @@ import logging
 import traceback
 
 from collections.abc import Iterable
-from datetime import datetime
+from datetime import datetime, timedelta
 
+import coc.raid
 from .client import Client
 from .clans import Clan
 from .enums import WarRound
@@ -349,6 +350,19 @@ class WarEvents:
 
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, WarEvents.event_type)
 
+    @classmethod
+    def new_war(cls, tags=None, custom_class=None, retry_interval=None):
+        """Alias for the preparation start time changes, which is equal to a new war started"""
+
+        async def wrapped(cached_war: ClanWar, war: ClanWar, callback):
+            if cached_war.preparation_start_time and war.preparation_start_time \
+                    and cached_war.preparation_start_time.timestamp != war.preparation_start_time.time:
+                await callback(war)
+            elif war.preparation_start_time and not cached_war.preparation_start_time:
+                # no war on endpoint, so new war is for sure new
+                await callback(war)
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, WarEvents.event_type)
+
 
 @_ValidateEvent
 class ClientEvents:
@@ -404,7 +418,8 @@ class EventsClient(Client):
             "player": self.loop.create_task(self._player_updater()),
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
-            "season": self.loop.create_task(self._end_of_season_poller())
+            "season": self.loop.create_task(self._end_of_season_poller()),
+            "raidseason": self.loop.create_task(self._raid_poller())
         }
 
         for task in self._updater_tasks.values():
@@ -765,6 +780,34 @@ class EventsClient(Client):
             self._updater_tasks[name] = self.loop.create_task(lookup[name]())
             self._updater_tasks[name].add_done_callback(self._task_callback_check)
 
+    async def _raid_poller(self):
+        # pylint: disable=broad-except, protected-access
+        try:
+            age = 0
+            while self.loop.is_running():
+                try:
+                    [raidlog_entry] = await self.get_raidlog("#2PP", limit=1)
+                    raidlog_entry: coc.raid.RaidLogEntry
+                except Maintenance:
+                    await asyncio.sleep(15)
+                except Exception:
+                    await asyncio.sleep(DEFAULT_SLEEP)
+                else:
+                    if raidlog_entry.start_time.seconds_until + age > 0 and raidlog_entry.end_time.seconds_until > 0:
+                        # raid started
+                        self.dispatch("raidseason_start")
+                    elif raidlog_entry.end_time.seconds_until + age > 0 and 0 > raidlog_entry.end_time.seconds_until:
+                        # raid ended
+                        self.dispatch("raidseason_end")
+                    # sleep for response_retry + 1
+                    age = raidlog_entry._response_retry + 1
+                    await asyncio.sleep(age)
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._raid_poller()
+
     async def _end_of_season_poller(self):
         try:
             while self.loop.is_running():
@@ -772,6 +815,28 @@ class EventsClient(Client):
                 now = datetime.utcnow()
                 await asyncio.sleep((end_of_season - now).total_seconds())
                 self.dispatch("new_season_start")
+        except asyncio.CancelledError:
+            pass
+        except (Exception, BaseException) as exception:
+            self.dispatch("event_error", exception)
+            return await self._end_of_season_poller()
+
+    async def _clangames_poller(self):
+        try:
+            while self.loop.is_running():
+                mute = now = datetime.utcnow()
+                if now.day > 28 or (now.day == 28 and now.hour > 8):
+                    mute += timedelta(days=7)
+                    mute = datetime(year=mute.year, month=mute.month, day=22, hour=8, minute=0, second=0)
+                    event = "clangames_start"
+                elif now.day > 22 or (now.day == 22 and now.hour > 8):
+                    mute = datetime(year=now.year, month=now.month, day=28, hour=8, minute=0, second=0)
+                    event = "clangames_end"
+                else:
+                    mute = datetime(year=now.year, month=now.month, day=22, hour=8, minute=0, second=0)
+                    event = "clangames_start"
+                await asyncio.sleep((mute - now).total_seconds())
+                self.dispatch(event)
         except asyncio.CancelledError:
             pass
         except (Exception, BaseException) as exception:
