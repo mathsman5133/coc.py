@@ -376,7 +376,6 @@ class ClanWarLogEntry:
         return self.result is None or self.opponent is None
 
 
-
 class ClanWarLeagueGroup:
     """Represents a Clan War League (CWL) Group
 
