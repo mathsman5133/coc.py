@@ -48,11 +48,9 @@ class RankedClan(BaseClan):
     member_count: :class:`int`
         The number of members in the clan.
     points: :class:`int`
-        The clan's trophy-count. If retrieving info for capital or versus leader-boards, this will be ``None``.
+        The clan's trophy-count. If retrieving info for versus leader-boards, this will be ``None``.
     versus_points: :class:`int`
-        The clan's versus trophy count. If retrieving info for regular or capital leader boards, this will be ``None``.
-    capital_points: :class:`int`
-        The clan's capital trophy count. If retrieving info for regular or versus leader boards, this will be ``None``.
+        The clan's versus trophy count. If retrieving info for regular leader boards, this will be ``None``.
     rank: :class:`int`
         The clan's rank in the leader board.
     previous_rank: :class:`int`
@@ -64,7 +62,6 @@ class RankedClan(BaseClan):
         "member_count",
         "points",
         "versus_points",
-        "capital_points",
         "rank",
         "previous_rank",
     )
@@ -78,7 +75,6 @@ class RankedClan(BaseClan):
 
         self.points: int = data_get("clanPoints")
         self.versus_points: int = data_get("clanVersusPoints")
-        self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
         self.rank: int = data_get("rank")
