@@ -421,7 +421,8 @@ class RaidLogEntry:
                  "_attack_log",
                  "_defense_log",
                  "_client",
-                 "_response_retry")
+                 "_response_retry"
+                 )
 
     def __init__(self, *, data, client, **_):
         self._client = client
@@ -486,15 +487,15 @@ class RaidLogEntry:
     def attack_log(self) -> typing.List[RaidClan]:
         """List[:class:`RaidClan`]: A list of raid clans that are attacked in the raid season.
         """
-        dict_attack_log = self._attack_log = {m.tag: m for m in self._iter_attack_log}
-        return list(dict_attack_log.values())
+        list_attack_log = self._attack_log = [m for m in self._iter_attack_log]
+        return list_attack_log
 
     @cached_property("_cs_defense_log")
     def defense_log(self) -> typing.List[RaidClan]:
         """List[:class:`RaidClan`]: A list of raid clans which represents all the defensive raids of a season.
         """
-        dict_defense_log = self._defense_log = {m.tag: m for m in self._iter_defense_log}
-        return list(dict_defense_log.values())
+        list_defense_log = self._defense_log = [m for m in self._iter_defense_log]
+        return list_defense_log
 
     def get_member(self, tag: str) -> typing.Optional[RaidMember]:
         """Get a member of the clan for the given tag, or ``None`` if not found.
