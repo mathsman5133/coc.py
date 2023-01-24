@@ -82,12 +82,13 @@ class ClanWar:
         "league_group",
         "attacks_per_member",
         "_response_retry",
+        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
-
+        self._raw_data = data if client.raw_attribute else None
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
 
@@ -328,10 +329,11 @@ class ClanWarLogEntry:
 
     __slots__ = (
         "result", "end_time", "team_size", "clan", "opponent", "_client",
-        "attacks_per_member")
+        "attacks_per_member", "_raw_data")
 
     def __init__(self, *, data, client, **_):
         self._client = client
+        self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
 
     def __eq__(self, other) -> bool:
@@ -400,7 +402,7 @@ class ClanWarLeagueGroup:
     __slots__ = (
         "state", "season", "rounds", "number_of_rounds", "_client",
         "__iter_clans",
-        "_cs_clans")
+        "_cs_clans","_raw_data")
 
     def __repr__(self):
         attrs = [
@@ -412,6 +414,7 @@ class ClanWarLeagueGroup:
 
     def __init__(self, *, data, client, **_):
         self._client = client
+        self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:

@@ -143,7 +143,8 @@ class RaidAttack:
                  "attacker_name",
                  "destruction",
                  "stars",
-                 "_client")
+                 "_client",
+                 "_raw_data")
 
     def __repr__(self):
         attrs = [
@@ -172,6 +173,7 @@ class RaidAttack:
         self.raid_clan = raid_clan
         self.district = district
         self._client = client
+        self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
@@ -232,7 +234,8 @@ class RaidDistrict:
                  "attacks",
                  "raid_log_entry",
                  "raid_clan",
-                 "_client")
+                 "_client",
+                 "_raw_data")
 
     def __str__(self):
         return self.name
@@ -255,6 +258,7 @@ class RaidDistrict:
         self.looted: int = data.get("totalLooted")
         self.raid_log_entry = raid_log_entry  # type: RaidLogEntry
         self.raid_clan = raid_clan  # type: RaidClan
+        self._raw_data = data if client.raw_attribute else None
         self._client = client
         if data.get("attacks", None):
             self.attacks: List[RaidAttack] = [RaidAttack(data=adata, client=client,
@@ -305,12 +309,13 @@ class RaidClan:
         "_client",
         "_response_retry",
         "_cs_raid_districts",
-        "_iter_raid_districts"
+        "_iter_raid_districts",
+        "_raw_data"
     )
 
-    def __init__(self, *, data, client, raid_log_entry, index = 0, **_):
+    def __init__(self, *, data, client, raid_log_entry, index=0, **_):
         self._client = client
-
+        self._raw_data = data if client.raw_attribute else None
         self._response_retry = data.get("_response_retry")
         self.tag = data.get("attacker", data.get("defender")).get("tag")
         self.name = data.get("attacker", data.get("defender")).get("name")
@@ -405,7 +410,7 @@ class RaidLogEntry:
                  "destroyed_district_count",
                  "offensive_reward",
                  "defensive_reward",
-
+                 "_raw_data",
                  "_cs_attack_log",
                  "_cs_defense_log",
                  "_cs_members",
@@ -421,6 +426,7 @@ class RaidLogEntry:
     def __init__(self, *, data, client, **_):
         self._client = client
         self._response_retry = data.get("_response_retry")
+        self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
         self._members = {}
         self._attack_log = []
