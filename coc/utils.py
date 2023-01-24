@@ -26,7 +26,7 @@ import inspect
 import calendar
 import re
 
-from collections import deque
+from collections import deque, UserDict
 from datetime import datetime
 from functools import wraps
 from operator import attrgetter
@@ -388,8 +388,8 @@ def cached_property(name: str) -> Callable[[Callable[[T], T_co]], _CachedPropert
     return deco
 
 
-class LRU(dict):
-    """Implements a LRU (least-recently-used) dict with a settable max size."""
+class FIFO(UserDict):
+    """Implements a FIFO (least-recently-used) dict with a settable max size."""
 
     __slots__ = (
         "__keys",
@@ -417,6 +417,10 @@ class LRU(dict):
     def __contains__(self, key):
         self.__verify_max_size()
         return super().__contains__(key)
+    
+    def copy(self):
+        self.data = self.data.copy()
+        return self
 
 
 class HTTPStats(dict):
