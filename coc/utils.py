@@ -388,8 +388,8 @@ def cached_property(name: str) -> Callable[[Callable[[T], T_co]], _CachedPropert
     return deco
 
 
-class LRU(UserDict):
-    """Implements a LRU (least-recently-used) dict with a settable max size."""
+class FIFO(UserDict):
+    """Implements a FIFO (least-recently-used) dict with a settable max size."""
 
     __slots__ = (
         "__keys",

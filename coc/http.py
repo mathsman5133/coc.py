@@ -44,7 +44,7 @@ from .errors import (
     InvalidCredentials,
     GatewayError,
 )
-from .utils import LRU, HTTPStats
+from .utils import FIFO, HTTPStats
 
 LOG = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -207,7 +207,7 @@ class HTTPClient:
 
         self.__session = None
         self.__lock = asyncio.Semaphore(per_second)
-        self.cache = cache_max_size and LRU(cache_max_size)
+        self.cache = cache_max_size and FIFO(cache_max_size)
         self._cache_remove_count = 0
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
 
