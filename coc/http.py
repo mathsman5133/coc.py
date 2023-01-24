@@ -472,7 +472,7 @@ class HTTPClient:
 
             if len(self._keys) < self.key_count:
                 for key in keys:
-                    if k["name"] != self.key_names or ip in k["cidrRanges"]:
+                    if key["name"] != self.key_names or ip in key["cidrRanges"]:
                         continue
                     LOG.info(
                             "Deleting key with the name %s and IP %s (not matching our current IP address).",
