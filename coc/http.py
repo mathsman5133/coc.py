@@ -471,12 +471,16 @@ class HTTPClient:
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
             if len(self._keys) < self.key_count:
-                for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                for key in keys:
+                    if k["name"] != self.key_names or ip in k["cidrRanges"]:
+                        continue
                     LOG.info(
                             "Deleting key with the name %s and IP %s (not matching our current IP address).",
                             self.key_names, key["cidrRanges"],
                     )
-                    await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    resp = await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    if resp.status == 200:
+                        keys.remove(key)
 
                 while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
                     data = {
