@@ -82,6 +82,7 @@ class ClanWar:
         "league_group",
         "attacks_per_member",
         "_response_retry",
+        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
@@ -90,7 +91,7 @@ class ClanWar:
 
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
-
+        self._raw_data = data if client.raw_attribute else None
         self.clan_tag = self.clan and self.clan.tag or self.clan_tag
         self.league_group = kwargs.pop("league_group", None)
 

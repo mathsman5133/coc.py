@@ -57,7 +57,8 @@ class WarAttack:
                  "attacker_tag",
                  "defender_tag",
                  "duration",
-                 "_client")
+                 "_client",
+                 "_raw_data")
 
     def __repr__(self):
         attrs = [
@@ -92,6 +93,7 @@ class WarAttack:
     def __init__(self, *, data, client, war):
         self.war = war
         self._client = client
+        self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
