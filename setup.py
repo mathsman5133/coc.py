@@ -7,7 +7,7 @@ REQUIREMENTS = []
 with open(os.path.join(os.getcwd(), "requirements.txt")) as f:
     REQUIREMENTS = f.read().splitlines()
 
-VERSION = "2.2.1"
+VERSION = "2.2.3"
 if "a" in VERSION:
     VERSION += "+" + subprocess.check_output(["git", "rev-parse", "--short", "HEAD"]).decode("utf-8").strip()
 
