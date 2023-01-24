@@ -290,8 +290,8 @@ class Clan(BaseClan):
         Example
         -------
         .. code-block:: python3
-            clan = await client.get_clan("#clantag")
 
+            clan = await client.get_clan("#clantag")
             member = clan.get_member_by(name="Joe")
             member = clan.get_member_by(level=125)
             member = clan.get_member_by(role=coc.Role.elder)
