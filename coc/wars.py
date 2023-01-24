@@ -402,7 +402,7 @@ class ClanWarLeagueGroup:
     __slots__ = (
         "state", "season", "rounds", "number_of_rounds", "_client",
         "__iter_clans",
-        "_cs_clans","_raw_data")
+        "_cs_clans", "_raw_data")
 
     def __repr__(self):
         attrs = [
