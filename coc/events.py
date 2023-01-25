@@ -419,7 +419,8 @@ class EventsClient(Client):
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
             "season": self.loop.create_task(self._end_of_season_poller()),
-            "raidseason": self.loop.create_task(self._raid_poller())
+            "raidseason": self.loop.create_task(self._raid_poller()),
+            "clangames": self.loop.create_task(self._clangames_poller())
         }
 
         for task in self._updater_tasks.values():

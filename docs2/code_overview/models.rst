@@ -1,4 +1,4 @@
-.. currentmodule:: coc
+.. py:currentmodule:: coc
 
 Models
 ======
@@ -55,6 +55,13 @@ Clan
     :private-members:
     :inherited-members:
 
+Raid Clan
+^^^^^^^^^
+.. autoclass:: RaidClan()
+    :members:
+    :private-members:
+    :inherited-members:
+
 
 
 Players
@@ -102,4 +109,9 @@ Player
     :private-members:
     :inherited-members:
 
-
+Raid Member
+^^^^^^^^^^^
+.. autoclass:: RaidMember()
+    :members:
+    :private-members:
+    :inherited-members:
