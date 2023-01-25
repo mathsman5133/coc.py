@@ -367,7 +367,7 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
     return get_season_start(month, year)
 
 
-def get_raid_weekend_start(time: Optional[datetime] = datetime.utcnow()) -> datetime:
+def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will start.
 
     This goes by the assumption that raid weekends start at friday 7 UTC.
@@ -388,12 +388,14 @@ def get_raid_weekend_start(time: Optional[datetime] = datetime.utcnow()) -> date
         The end of the raid weekend.
     """
     # Shift the time so that we can pretend the raid ends just after midnight
+    if time is None:
+        time = datetime.utcnow()
     time = get_raid_weekend_end(time)
     time = time - timedelta(days=3)
     return time
 
 
-def get_raid_weekend_end(time: Optional[datetime] = datetime.utcnow()) -> datetime:
+def get_raid_weekend_end(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will end.
 
     This goes by the assumption that raid weekends end at monday 7 UTC.
@@ -414,6 +416,8 @@ def get_raid_weekend_end(time: Optional[datetime] = datetime.utcnow()) -> dateti
         The end of the raid weekend.
     """
     # Shift the time so that we can pretend the raid ends just after midnight
+    if time is None:
+        time = datetime.utcnow()
     time = time - timedelta(hours=7, microseconds=1)
     time = time + timedelta(weeks=1, days=-time.weekday())  # Go to the next monday
     time = time.replace(hour=7, minute=0, second=0, microsecond=0)
