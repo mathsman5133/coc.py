@@ -158,17 +158,12 @@ class BasePlayer:
 
 
 class DataContainerMetaClass(type):
-    def __repr__(cls):
-        attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
-        ]
-        return "<%s %s>" % (
-        cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+    pass
 
 
 class DataContainer(metaclass=DataContainerMetaClass):
     lab_to_townhall: Dict[int, int]
+    name: str
 
     def __init__(self, data, townhall):
         self.name: str = data["name"]

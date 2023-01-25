@@ -75,6 +75,14 @@ class Hero(DataContainer):
     regeneration_time: "TimeDelta"
     is_loaded: bool = False
 
+    def __repr__(cls):
+        attrs = [
+            ("name", cls.name),
+            ("id", cls.id),
+        ]
+        return "<%s %s>" % (
+            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+
     @property
     def is_max_for_townhall(self) -> bool:
         """:class:`bool`: Returns whether the hero is the max level for the player's townhall level."""
@@ -159,6 +167,14 @@ class Pet(DataContainer):
     upgrade_resource: "Resource"
     upgrade_time: "TimeDelta"
     is_loaded: bool = False
+
+    def __repr__(cls):
+        attrs = [
+            ("name", cls.name),
+            ("id", cls.id),
+        ]
+        return "<%s %s>" % (
+            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
 
 
 class PetHolder(DataContainerHolder):

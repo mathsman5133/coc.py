@@ -156,6 +156,15 @@ class Troop(DataContainer):
     is_super_troop: bool = False
     is_loaded: bool = False
 
+    def __repr__(cls):
+        attrs = [
+            ("name", cls.name),
+            ("id", cls.id),
+        ]
+        return "<%s %s>" % (
+            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+
     @classmethod
     def _inject_super_meta(cls, troop_meta):
         cls.is_super_troop = True

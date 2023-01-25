@@ -69,6 +69,14 @@ class Spell(DataContainer):
     is_dark_spell: bool = False
     is_loaded: bool = False
 
+    def __repr__(cls):
+        attrs = [
+            ("name", cls.name),
+            ("id", cls.id),
+        ]
+        return "<%s %s>" % (
+            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+
     @property
     def is_max_for_townhall(self):
         """:class:`bool`:
