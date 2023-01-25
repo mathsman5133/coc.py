@@ -277,8 +277,6 @@ class Client:
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
-        @Deprecated
-
         Parameters
         ----------
         email : str
@@ -301,7 +299,8 @@ class Client:
 
         Parameters
         ----------
-        keys
+        keys: list[str]
+            Keys or tokens as found from https://developer.clashofclans.com.
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys

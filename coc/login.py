@@ -35,7 +35,7 @@ def login(
     """
     This function makes logging into the client easy, returning
     the created client.
-
+    @Deprecated
     :param str email:
         Your email from https://developer.clashofclans.com
         This is used when updating keys automatically if your IP changes
@@ -70,7 +70,7 @@ def login_with_keys(*keys: str,
     Unlike :meth:`coc.login`, this login method **will not** automatically
     update and manage your keys, including when your IP address changes.
     It is recommended that you use the :meth:`coc.login` method.
-
+    @Deprecated
     .. code-block:: python3
 
         client = coc.login_with_keys("eabfcd.adk.token1", "eacjuth.haetg.token2", throttle_limit=20)
