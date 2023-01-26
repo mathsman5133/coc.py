@@ -419,7 +419,7 @@ class EventsClient(Client):
             "war": self.loop.create_task(self._war_updater()),
             "maintenance": self.loop.create_task(self._maintenance_poller()),
             "season": self.loop.create_task(self._end_of_season_poller()),
-            "raidseason": self.loop.create_task(self._raid_poller()),
+            "raid_weekend": self.loop.create_task(self._raid_poller()),
             "clangames": self.loop.create_task(self._clangames_poller())
         }
 
@@ -796,10 +796,10 @@ class EventsClient(Client):
                 else:
                     if raidlog_entry.start_time.seconds_until + age > 0 and raidlog_entry.end_time.seconds_until > 0:
                         # raid started
-                        self.dispatch("raidseason_start")
+                        self.dispatch("raid_weekend_start")
                     elif raidlog_entry.end_time.seconds_until + age > 0 and 0 > raidlog_entry.end_time.seconds_until:
                         # raid ended
-                        self.dispatch("raidseason_end")
+                        self.dispatch("raid_weekend_end")
                     # sleep for response_retry + 1
                     age = raidlog_entry._response_retry + 1
                     await asyncio.sleep(age)
