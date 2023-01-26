@@ -335,7 +335,7 @@ class ClanWarLogEntry:
         self._client = client
         self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
-        self._response_retry = kwargs['reponse_retry'] if "response_retry" in kwargs else 0
+        self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
 
     def __eq__(self, other) -> bool:
         if isinstance(other, self.__class__):

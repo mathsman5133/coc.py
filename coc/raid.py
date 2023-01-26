@@ -426,7 +426,7 @@ class RaidLogEntry:
 
     def __init__(self, *, data, client, **kwargs):
         self._client = client
-        self._response_retry = kwargs['reponse_retry'] if "response_retry" in kwargs else 0
+        self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
         self._raw_data = data if client.raw_attribute else None
         self._from_data(data)
         self._members = {}
