@@ -392,8 +392,6 @@ class Badge:
 
     async def save(self, filepath, size=None) -> int:
         """
-        |coro|
-
         Save this badge as a file-like object.
 
         Parameters
@@ -461,8 +459,6 @@ class Icon:
 
     async def save(self, filepath: str, size: Optional[str] = None) -> int:
         """
-        |coro|
-
         Save this icon as a file-like object.
 
         Parameters
