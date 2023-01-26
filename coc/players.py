@@ -77,6 +77,8 @@ class ClanMember(BasePlayer):
         The member's rank before the last leaderboard change
         (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
         and you want to find out their previous rankings, this will help.).
+    versus_rank: :class:`int`
+        The member's rank in the clan based on versus trophies.
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
@@ -99,6 +101,7 @@ class ClanMember(BasePlayer):
         "versus_trophies",
         "clan_rank",
         "clan_previous_rank",
+        "versus_rank",
         "donations",
         "received",
         "clan_cls",
@@ -122,6 +125,7 @@ class ClanMember(BasePlayer):
         self.versus_trophies: int = data_get("versusTrophies")
         self.clan_rank: int = data_get("clanRank")
         self.clan_previous_rank: int = data_get("previousClanRank")
+        self.versus_rank: int = data.get("versusRank")
         self.donations: int = data_get("donations")
         self.received: int = data_get("donationsReceived")
 
