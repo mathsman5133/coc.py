@@ -63,7 +63,7 @@ class BaseClan:
         self.badge = try_enum(Badge, data=data.get("badgeUrls"),
                               client=self._client)
         self.level = data.get("clanLevel")
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
 
     def __str__(self):
         return self.name
@@ -146,7 +146,7 @@ class BasePlayer:
     def __init__(self, *, data, client, **_):
         self._client = client
         self._response_retry = data.get("_response_retry")
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self.tag = data.get("tag")
         self.name = data.get("name")
 

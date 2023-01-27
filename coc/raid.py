@@ -173,7 +173,7 @@ class RaidAttack:
         self.raid_clan = raid_clan
         self.district = district
         self._client = client
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
@@ -258,7 +258,7 @@ class RaidDistrict:
         self.looted: int = data.get("totalLooted")
         self.raid_log_entry = raid_log_entry  # type: RaidLogEntry
         self.raid_clan = raid_clan  # type: RaidClan
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self._client = client
         if data.get("attacks", None):
             self.attacks: List[RaidAttack] = [RaidAttack(data=adata, client=client,
@@ -315,7 +315,7 @@ class RaidClan:
 
     def __init__(self, *, data, client, raid_log_entry, index=0, **_):
         self._client = client
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self._response_retry = data.get("_response_retry")
         self.tag = data.get("attacker", data.get("defender")).get("tag")
         self.name = data.get("attacker", data.get("defender")).get("name")
@@ -427,7 +427,7 @@ class RaidLogEntry:
     def __init__(self, *, data, client, **kwargs):
         self._client = client
         self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
         self._members = {}
         self._attack_log = []
