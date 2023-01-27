@@ -92,7 +92,7 @@ class WarAttack:
 
     def __init__(self, *, data, client, war):
         self.war = war
-        self._raw_data = data if client.raw_attribute else None
+        self._raw_data = data if client and client.raw_attribute else None
         self._client = client
         self._from_data(data)
 
