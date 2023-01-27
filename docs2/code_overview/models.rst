@@ -389,7 +389,7 @@ ordered as they appear in-game.
 .. data:: coc.HERO_ORDER
 
 
-All heroe pets
+All hero pets
 ^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
