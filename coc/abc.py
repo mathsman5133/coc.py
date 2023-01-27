@@ -25,6 +25,7 @@ import ujson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
+import coc
 from .enums import Resource
 from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
@@ -207,22 +208,43 @@ class DataContainer(metaclass=DataContainerMetaClass):
             cls.is_elixir_spell = True
         elif production_building == "Mini Spell Factory":
             cls.is_dark_spell = True
+        elif name in coc.HERO_PETS_ORDER:
+            production_building = "Pet Shop"
 
         # load buildings
         with open(BUILDING_FILE_PATH) as fp:
             buildings = ujson.load(fp)
 
-        # without production_building, it is a hero or pet
+        # without production_building, it is a hero
         if not production_building:
             laboratory_levels = troop_meta.get("LaboratoryLevel")
         else:
-            # it is a troop or spell
+            # it is a troop or spell or siege
             prod_unit = buildings.get(production_building)
-            min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
-            # there are some special troops, which have no BarrackLevel attribute
-            if not min_prod_unit_level:
-                laboratory_levels = troop_meta.get("LaboratoryLevel")
-            else:
+            if "barrack" in production_building.lower() or "Spell Forge" == production_building or \
+                    "SiegeWorkshop" == production_building or "Mini Spell Factory" == production_building:
+                min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
+                # there are some special troops, which have no BarrackLevel attribute
+                if not min_prod_unit_level:
+                    laboratory_levels = troop_meta.get("LaboratoryLevel")
+                else:
+                    # get the min th level were we can unlock by the required level of the production building
+                    min_th_level = [th for i, th in
+                                    enumerate(prod_unit["TownHallLevel"], start=1)
+                                    if i == min_prod_unit_level]
+                    # map the min th level to a lab level
+                    [first_lab_level] = [lab_level for lab_level, th_level in
+                                         lab_to_townhall.items()
+                                         if th_level in min_th_level]
+                    # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
+                    # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
+                    laboratory_levels = [
+                        x if x > first_lab_level else first_lab_level
+                        for x in troop_meta.get("LaboratoryLevel")]
+            elif production_building == "Pet Shop":
+                min_prod_unit_level = troop_meta.get("LaboratoryLevel", [None, ])[0]
+                # there are some special troops, which have no BarrackLevel attribute
+
                 # get the min th level were we can unlock by the required level of the production building
                 min_th_level = [th for i, th in
                                 enumerate(prod_unit["TownHallLevel"], start=1)
@@ -236,6 +258,9 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 laboratory_levels = [
                     x if x > first_lab_level else first_lab_level
                     for x in troop_meta.get("LaboratoryLevel")]
+            else:
+                print(1)
+                return
 
         cls.lab_level = try_enum(UnitStat, laboratory_levels)
         cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace",
@@ -261,7 +286,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.ability_troop_count = try_enum(UnitStat, troop_meta.get(
             "AbilitySummonTroopCount"))
         cls.required_th_level = try_enum(UnitStat, troop_meta.get(
-            "RequiredTownHallLevel"))
+            "RequiredTownHallLevel") or laboratory_levels)
         cls.regeneration_time = try_enum(UnitStat,
                                          [TimeDelta(minutes=value) for value in
                                           troop_meta.get(
@@ -314,7 +339,7 @@ class DataContainerHolder:
         with open(self.FILE_PATH) as fp:
             data = ujson.load(fp)
 
-        for supercell_name, meta in data.items():
+        for c, [supercell_name, meta] in enumerate(data.items()):
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue
@@ -334,7 +359,7 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=object_ids.get(supercell_name, 0),
+                id=object_ids.get(supercell_name, c+800),
                 name=english_aliases[meta["TID"][0]][0],
                 lab_to_townhall=lab_to_townhall,
             )
