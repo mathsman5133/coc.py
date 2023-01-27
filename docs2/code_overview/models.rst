@@ -48,13 +48,6 @@ Clan War League Clan
     :private-members:
     :inherited-members:
 
-Clan
-^^^^
-.. autoclass:: Clan()
-    :members:
-    :private-members:
-    :inherited-members:
-
 Raid Clan
 ^^^^^^^^^
 .. autoclass:: RaidClan()
@@ -62,7 +55,12 @@ Raid Clan
     :private-members:
     :inherited-members:
 
-
+Clan
+^^^^
+.. autoclass:: Clan()
+    :members:
+    :private-members:
+    :inherited-members:
 
 Players
 ~~~~~~~~
@@ -95,6 +93,13 @@ Clan War League Clan Member
     :private-members:
     :inherited-members:
 
+Raid Member
+^^^^^^^^^^^
+.. autoclass:: RaidMember()
+    :members:
+    :private-members:
+    :inherited-members:
+
 Clan War Member
 ^^^^^^^^^^^^^^^
 .. autoclass:: ClanWarMember()
@@ -109,9 +114,289 @@ Player
     :private-members:
     :inherited-members:
 
-Raid Member
-^^^^^^^^^^^
-.. autoclass:: RaidMember()
+Wars
+~~~~~
+
+Clan War
+^^^^^^^^
+.. autoclass:: ClanWar()
     :members:
     :private-members:
     :inherited-members:
+
+Clan War Log Entry
+^^^^^^^^^^^^^^^^^^
+.. autoclass:: ClanWarLogEntry()
+    :members:
+    :private-members:
+    :inherited-members:
+
+Clan War League Group
+^^^^^^^^^^^^^^^^^^^^^
+.. autoclass:: ClanWarLeagueGroup()
+    :members:
+    :private-members:
+    :inherited-members:
+
+War Round
+^^^^^^^^^
+.. class:: WarRound
+
+    An Enumeration with the following Clan War League War Round types.
+
+    .. py:attribute:: previous_war
+
+    .. py:attribute:: current_war
+
+    .. py:attribute:: current_preparation
+
+
+War Attack
+^^^^^^^^^^
+.. autoclass:: WarAttack()
+    :members:
+    :private-members:
+
+War League
+^^^^^^^^^^
+.. autoclass:: WarLeague()
+    :members:
+    :private-members:
+
+
+Raids
+~~~~~
+
+Raid Log Entry
+^^^^^^^^^^^^^^
+.. autoclass:: RaidLogEntry()
+    :members:
+    :private-members:
+
+Raid District
+^^^^^^^^^^^^^
+.. autoclass:: RaidDistrict()
+    :members:
+    :private-members:
+
+Raid Attack
+^^^^^^^^^^^
+.. autoclass:: RaidAttack()
+    :members:
+    :private-members:
+
+Game Objects
+~~~~~~~~~~~~
+
+Troop
+^^^^^
+.. autoclass:: Troop()
+    :members:
+    :private-members:
+
+
+Hero
+^^^^
+.. autoclass:: Hero()
+    :members:
+    :private-members:
+
+Pet
+^^^
+.. autoclass:: Pet()
+    :members:
+    :private-members:
+
+
+Spell
+^^^^^
+.. autoclass:: Spell()
+    :members:
+    :private-members:
+
+Resource
+^^^^^^^^
+.. class:: Resource
+
+    An Enumeration with all the resources
+
+    .. py:attribute:: gold
+
+    .. py:attribute:: elixir
+
+    .. py:attribute:: dark_elixir
+
+    .. py:attribute:: builder_elixir
+
+
+Player Attributes
+~~~~~~~~~~~~~~~~~
+
+Achievement
+^^^^^^^^^^^
+.. autoclass:: Achievement()
+    :members:
+    :private-members:
+
+
+League
+^^^^^^
+.. autoclass:: League()
+    :members:
+    :private-members:
+    :inherited-members:
+
+Legend Statistics
+^^^^^^^^^^^^^^^^^
+.. autoclass:: LegendStatistics()
+    :members:
+    :private-members:
+    :inherited-members:
+
+Role
+^^^^
+Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
+``str(member.role)`` will also return this.
+
+.. note::
+
+    The in-game role ``Elder`` is named ``admin`` in the API responses.
+
+.. class:: Role
+
+    .. py:attribute:: in_game_name
+
+
+Label
+^^^^^
+.. autoclass:: Label()
+    :members:
+    :private-members:
+
+Graphics
+~~~~~~~~
+
+Badge
+^^^^^
+.. autoclass:: Badge()
+    :members:
+    :private-members:
+
+Icon
+^^^^
+.. autoclass:: Icon()
+    :members:
+    :private-members:
+
+Time
+~~~~
+
+Timestamp
+^^^^^^^^^
+.. autoclass:: Timestamp()
+    :members:
+    :private-members:
+
+
+TimeDelta
+^^^^^^^^^
+.. autoclass:: TimeDelta()
+    :members:
+    :private-members:
+
+Location
+~~~~~~~~
+.. autoclass:: Location()
+    :members:
+    :private-members:
+
+Enumerations
+~~~~~~~~~~~~
+
+The library provides some enumerations for certain types of strings, as well as orders for troops, spells and
+achievements that are used internally.
+
+All elixir troops
+^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.ELIXIR_TROOP_ORDER
+
+
+All dark elixir troops
+^^^^^^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.DARK_ELIXIR_TROOP_ORDER
+
+
+All siege machines
+^^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.SIEGE_MACHINE_ORDER
+
+
+All super troops
+^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.SUPER_TROOP_ORDER
+
+
+All home troops
+^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+This is a combination of elixir, dark elixir and siege machine troops.
+This does not contain super troops.
+
+.. data:: coc.HOME_TROOP_ORDER
+
+
+All builder troops
+^^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.BUILDER_TROOPS_ORDER
+
+
+All elixir spells
+^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.ELIXIR_SPELL_ORDER
+
+
+All dark elixir spells
+^^^^^^^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.DARK_ELIXIR_SPELL_ORDER
+
+
+All spells
+^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.SPELL_ORDER
+
+
+All heroes
+^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.HERO_ORDER
+
+
+All hero pets
+^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.HERO_PETS_ORDER
+
+All achievements
+^^^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.ACHIEVEMENT_ORDER
