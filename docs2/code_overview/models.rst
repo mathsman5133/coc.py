@@ -258,6 +258,10 @@ Role
 Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
 ``str(member.role)`` will also return this.
 
+.. note::
+
+    The in-game role ``Elder`` is named ``admin`` in the API responses.
+
 .. class:: Role
 
     .. py:attribute:: in_game_name
@@ -384,6 +388,12 @@ ordered as they appear in-game.
 
 .. data:: coc.HERO_ORDER
 
+
+All heroe pets
+^^^^^^^^^^^^^^
+ordered as they appear in-game.
+
+.. data:: coc.HERO_PETS_ORDER
 
 All achievements
 ^^^^^^^^^^^^^^^^
