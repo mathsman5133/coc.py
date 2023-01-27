@@ -150,6 +150,8 @@ class Pet(DataContainer):
         The max level for this pet.
     village: str
         Either ``home`` or ``builderBase``, indicating which village this pet belongs to.
+    required_th_level: int
+        The minimum required townhall to unlock this level of the pet.
     """
     name: str
     level: int
@@ -167,6 +169,7 @@ class Pet(DataContainer):
     upgrade_resource: "Resource"
     upgrade_time: "TimeDelta"
     is_loaded: bool = False
+    required_th_level: int
 
     def __repr__(cls):
         attrs = [
@@ -175,6 +178,31 @@ class Pet(DataContainer):
         ]
         return "<%s %s>" % (
             cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+
+    @property
+    def is_max_for_townhall(self) -> bool:
+        """:class:`bool`: Returns whether the hero is the max level for the player's townhall level."""
+        if self.is_max:
+            return True
+
+        return self._townhall < self.__class__.required_th_level[self.level]
+
+    @classmethod
+    def get_max_level_for_townhall(cls, townhall):
+        """Get the maximum level for a spell for a given townhall level.
+
+        Parameters
+        ----------
+        townhall
+            The townhall level to get the maximum troop level for.
+
+        Returns
+        --------
+        :class:`int`
+            The maximum spell level.
+
+        """
+        return max(i for i, th in enumerate(cls.required_th_level, start=1) if th <= townhall)
 
 
 class PetHolder(DataContainerHolder):
