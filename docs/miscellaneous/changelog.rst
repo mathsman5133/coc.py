@@ -12,7 +12,7 @@ v2.2.4
 Additions:
 ~~~~~~~~~~
 
-- Added new events :func:`ClientEvents.raidseason_start`, :func:`ClientEvents.raidseason_end`,
+- Added new events :func:`ClientEvents.raid_weekend_start`, :func:`ClientEvents.raid_weekend_end`,
   :func:`ClientEvents.clangames_start`, :func:`ClientEvents.clangames_end` and :func:`WarEvents.new_war`
 - Added utility functions :func:`utils.get_raid_weekend_start`, :func:`utils.get_raid_weekend_end`
 - Added clan capital leader boards

@@ -302,9 +302,9 @@ coc.py has a few events that are unique to the library, and which provide some u
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts.                      |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.raidseason_start()``       | None                    | Fired when a raid season starts.                 |
+| ``@coc.ClientEvents.raid_weekend_start()``     | None                    | Fired when a raid weekend starts.                |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.raidseason_end()``         | None                    | Fired when a raid season ends.                   |
+| ``@coc.ClientEvents.raid_weekend_end()``       | None                    | Fired when a raid weekend ends.                  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.clangames_start()``        | None                    | Fired when clan games starts.                    |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
