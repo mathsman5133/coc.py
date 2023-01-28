@@ -9,29 +9,43 @@ coc.py: A Clash of Clans API Wrapper
 .. _getting_started:
 .. toctree::
    :maxdepth: 2
-   :caption: Getting Started:
+   :caption: Getting Started
 
-.. _code_overview:
+   client/logging_in
+   client/basic_client
+   client/events_client
+
+.. _models:
 .. toctree::
    :maxdepth: 2
-   :caption: Code Overview
+   :caption: Models
 
-   code_overview/client
-   code_overview/models
+   models/clans
+   models/players
+   models/wars
+   models/raids
+   models/game_objects
+   models/player_attributes
+   models/miscellaneous
+
+.. _more_code:
+.. toctree::
+   :maxdepth: 2
+   :caption: More code
+
    code_overview/event
    code_overview/game_data
-   code_overview/customclasses
+   code_overview/custom_classes
    code_overview/utils
    code_overview/exceptions
 
-.. _discord_links:
+.. _extensions:
 .. toctree::
-   :maxdepth: 3
-   :caption: Discord Links Extension
+   :maxdepth: 2
+   :caption: Extensions
 
-   discord-links/overview
-   discord-links/api-reference
-   discord-links/discord-links-examples
+   extensions/discord_links
+   extensions/full_war_api
 
 .. _examples:
 .. toctree::
@@ -44,17 +58,11 @@ coc.py: A Clash of Clans API Wrapper
 
 .. _miscellaneous:
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Miscellaneous
 
-   miscellaneous/migrating_to_v1
-   miscellaneous/migrating_to_v2
+   miscellaneous/index
    miscellaneous/changelog
+   miscellaneous/migrating_to_v2
+   miscellaneous/migrating_to_v1
    miscellaneous/acknowledgements
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

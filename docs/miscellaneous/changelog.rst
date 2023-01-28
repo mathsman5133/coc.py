@@ -26,7 +26,7 @@ Additions:
 
 - Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
 
-- Added FullWarApi as an extension
+- Added :ref:`full_war_api` as an extension
 
 
 Changes:
