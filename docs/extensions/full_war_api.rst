@@ -1,0 +1,10 @@
+.. py:currentmodule:: coc
+
+Full War Api Extension
+======================
+
+Overview
+--------
+
+This provides handling for a private api that is made only for a hand full of people.
+Docs can be found at https://fw-api.teamutils.com/docs

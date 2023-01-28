@@ -1,10 +1,7 @@
 .. py:currentmodule:: coc
 
-Clients and Logging In
-======================
-
 Logging In
-----------
+==========
 A coc.py client instance can be created directly by :class:`Client`. The instance can then be logged in with the methods
 
 .. autofunction:: coc.client.Client.login
@@ -55,21 +52,3 @@ LoadGameData
 ^^^^^^^^^^^^
 
 .. autoclass:: LoadGameData
-
-
-Basic Client Interface
-----------------------
-
-The following details all operations on the basic client instance.
-
-.. autoclass:: Client
-    :members:
-
-Events Client
--------------
-
-The following details all valid operations for the :class:`EventsClient`. This extends the :class:`Client` class, and
-all methods from :class:`Client` are valid with the :class:`EventsClient`, too.
-
-.. autoclass:: EventsClient
-    :members:
