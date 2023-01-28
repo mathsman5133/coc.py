@@ -1,4 +1,5 @@
 .. py:currentmodule:: coc
+.. _full_war_api:
 
 Full War Api Extension
 ======================

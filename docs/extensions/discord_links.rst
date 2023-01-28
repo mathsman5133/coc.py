@@ -1,5 +1,7 @@
 .. py:currentmodule:: coc
 
+.. _links_extension:
+
 Discord Links Extension
 =======================
 
