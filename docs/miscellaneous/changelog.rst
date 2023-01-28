@@ -13,24 +13,39 @@ Additions:
 ~~~~~~~~~~
 
 - Added new events :func:`ClientEvents.raid_weekend_start`, :func:`ClientEvents.raid_weekend_end`,
-  :func:`ClientEvents.clangames_start`, :func:`ClientEvents.clangames_end` and :func:`WarEvents.new_war`
+  :func:`ClientEvents.clangames_start`, :func:`ClientEvents.clangames_end`,
+  :func:`WarEvents.new_war` and :func:`ClanEvents.member_versus_rank`
+
 - Added utility functions :func:`utils.get_raid_weekend_start`, :func:`utils.get_raid_weekend_end`
-- Added clan capital leader boards
+
+- Added clan capital leaderboards
+
 - Added :attr:`Clan.capital_points` and :attr:`Clan.family_friendly`
+
 - Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
+
 - Added FullWarApi as an extension
 
 
 Changes:
 ~~~~~~~~
 
-- Rename of LRU to FIFO to make the principle clear
+- Rename of LRU to FIFO in order to match the cache type (this is only internal)
+- Restructured the documentation
 
 Bugs Fixed:
 ~~~~~~~~~~~
 - Fixed a bug which affected the key creation if there are 10 keys with at least one having the correct name but wrong ip range
 
-- Fixed a bug which caused a memory leak originating from the caching of api responses
+- Fixed a memory leak caused by python not properly freeing disk space after the removal of cache entries
+
+- Fixed a bug that prevented :attr:`Client.http.stats` from collecting api response time stats
+
+- Fixed a bug that tried to use a cache when `max_cache_size` was set to 0
+
+- Corrected order of elixir troups
+
+- Fixed a bug when clans faced each other multiple times in one raid weekend
 
 
 v2.2.3
