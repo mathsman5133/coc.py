@@ -22,6 +22,8 @@ Additions:
 
 - Added :attr:`Clan.capital_points` and :attr:`Clan.family_friendly`
 
+- Added :attr:`ClanMember.versus_rank`
+
 - Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
 
 - Added FullWarApi as an extension
@@ -46,6 +48,10 @@ Bugs Fixed:
 - Corrected order of elixir troups
 
 - Fixed a bug when clans faced each other multiple times in one raid weekend
+
+- Fixed a bug that caused automated tests on forks to fail
+
+- Fixed a bug that prevented you from importing some classes as :class:`coc.Class`
 
 
 v2.2.3
