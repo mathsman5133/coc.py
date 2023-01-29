@@ -25,19 +25,19 @@ coc.py: A Clash of Clans API Wrapper
    models/wars
    models/raids
    models/game_objects
-   models/player_attributes
+   models/clan_player_attributes
    models/miscellaneous
 
-.. _more_code:
+.. _advanced:
 .. toctree::
    :maxdepth: 2
-   :caption: More code
+   :caption: Advanced
 
-   code_overview/event
-   code_overview/game_data
-   code_overview/custom_classes
-   code_overview/utils
-   code_overview/exceptions
+   advanced/event
+   advanced/game_data
+   advanced/custom_classes
+   advanced/utils
+   advanced/exceptions
 
 .. _extensions:
 .. toctree::
