@@ -382,7 +382,7 @@ class RaidLogEntry:
     Attributes
     ----------
     state:
-        :class:`str`: The state of the raid log entry
+        :class:`str`: The state of the raid log entry. Currently, the states ``ongoing`` and ``ended`` are known.
     start_time:
         :class:`Timestamp`: The :class:`Timestamp` that the raid started at.
     end_time:

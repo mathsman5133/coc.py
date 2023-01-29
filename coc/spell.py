@@ -14,19 +14,19 @@ class Spell(DataContainer):
 
     Attributes
     ----------
-    id: int
+    id: :class:`int`
         The spell's unique ID.
-    name: str
+    name: :class:`str`
         The spell's name.
-    range: int
+    range: :class:`int`
         The spell's attack range.
-    upgrade_cost: int
+    upgrade_cost: :class:`int`
         The amount of resources required to upgrade the spell to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this spell.
     upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this spell to the next level.
-    training_cost: int
+    training_cost: :class:`int`
         The amount of resources required to train this spell.
     training_resource: :class:`Resource`
         The type of resource used to train this spell.
@@ -36,15 +36,13 @@ class Spell(DataContainer):
         Whether this spell is a regular spell from the Barracks
     is_dark_spell: :class:`bool`
         Whether this spell is a dark-spell, trained in the Dark Barracks.
-    is_siege_machine: :class:`bool`
-        Whether this spell is a Siege Machine.
-    is_loaded: bool
+    is_loaded: :class:`bool`
         Whether the API data has been loaded for this spell.
-    level: int
+    level: :class:`int`
         The spell's level
-    max_level: int
+    max_level: :class:`int`
         The max level for this spell.
-    village: str
+    village: :class:`str`
         Either ``home`` or ``builderBase``, indicating which village this spell belongs to.
     """
     name: str
@@ -101,7 +99,7 @@ class Spell(DataContainer):
         Parameters
         ----------
         townhall
-            The townhall level to get the maximum troop level for.
+            The townhall level to get the maximum spell level for.
 
         Returns
         --------

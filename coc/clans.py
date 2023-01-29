@@ -109,8 +109,7 @@ class Clan(BaseClan):
     location: :class:`Location`
         The clan's location.
     points: :class:`int`
-        The clan's trophy count. This is calculated according to
-        members' trophy counts.
+        The clan's trophy count. This is calculated according to members' trophy counts.
     versus_points: :class:`int`
         The clan's versus trophy count. This is calculated according to members' versus trophy counts.
     capital_points: :class:`int`
@@ -243,7 +242,7 @@ class Clan(BaseClan):
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the clan has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_members")

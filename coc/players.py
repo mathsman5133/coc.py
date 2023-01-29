@@ -134,7 +134,7 @@ class ClanMember(BasePlayer):
         self.role = data_get("role") and Role(value=data["role"])
 
     async def get_detailed_clan(self) -> Optional["Clan"]:
-        """Get detailed clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
+        """Get clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
 
         Example
         ---------
@@ -185,7 +185,7 @@ class Player(ClanMember):
     Attributes
     ----------
     achievement_cls: :class:`Achievement`
-        The constructor used to create the :attr:`Player.achievements` list. This must inherit :class:`Achievement`.
+        The constructor used to create the :attr:`Player.achievements` list. This must inherit from :class:`Achievement`.
     hero_cls: :class:`Hero`
         The constructor used to create the :attr:`Player.heroes` list. This must inherit from :class:`Hero`.
     label_cls: :class:`Label`
@@ -415,7 +415,7 @@ class Player(ClanMember):
 
     @cached_property("_cs_labels")
     def labels(self) -> List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
@@ -447,7 +447,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Achievement`]
-            The returned achievement or the ``default_value`` if not found, which defaults to ``None``..
+            The returned achievement or the ``default_value`` if not found, which defaults to ``None``.
         """
         if not self._achievements:
             _ = self.achievements
@@ -545,8 +545,8 @@ class Player(ClanMember):
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_hero_pets")
-    def hero_pets(self) -> List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's hero pets.
+    def hero_pets(self) -> List[Pet]:
+        """List[:class:`Pet`]: A :class:`List` of the player's hero pets.
 
         This will return hero pets in the order found in the Pet House in-game.
 

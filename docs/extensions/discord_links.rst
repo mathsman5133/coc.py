@@ -21,7 +21,7 @@ The coc.py extension for Discord links allows you to do the following:
 - Get a list of Discord IDs based on an iterable of player tags
 
 In order to use the Discord Links API, you will need a username and password.
-Please contact ReverendMike#6969 on Discord if you are interested.
+Please contact TubaKid#8822 on Discord if you are interested.
 
 API Reference
 -------------

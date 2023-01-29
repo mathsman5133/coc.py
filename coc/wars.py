@@ -284,8 +284,8 @@ class ClanWar:
         If the player has no defenses, this will return an empty list.
 
         Returns
-        --------
-        The player's defenses: :class:`list`[:class:`WarAttack`]"""
+        -------
+        The player's defenses: List[:class:`WarAttack`]"""
         defender = self.get_member(defender_tag)
         # we could do a global lookup on all attacks in the war but this is faster as we have to lookup half the attacks
         if defender.is_opponent:

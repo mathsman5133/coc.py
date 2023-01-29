@@ -16,85 +16,31 @@ SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json
 class Troop(DataContainer):
     """Represents a Troop object as returned by the API, optionally filled with game data.
 
-    +----------------------------------+--------------------+
-    |               Name               |       Type         |
-    +----------------------------------+--------------------+
-    |         :attr:`Troop.id`         |   :class:`int`     |
-    +----------------------------------+--------------------+
-    |        :attr:`Troop.name`        |        str         |
-    +----------------------------------+--------------------+
-    |       :attr:`Troop.range`        |        int         |
-    +----------------------------------+--------------------+
-    |        :attr:`Troop.dps`         |        int         |
-    +----------------------------------+--------------------+
-    |     :attr:`Troop.hitpoints`      |        int         |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.ground_target`    |       bool         |
-    +----------------------------------+--------------------+
-    |       :attr:`Troop.speed`        |        int         |
-    +----------------------------------+--------------------+
-    |    :attr:`Troop.upgrade_cost`    |        int         |
-    +----------------------------------+--------------------+
-    |  :attr:`Troop.upgrade_resource`  | :class:`Resource`  |
-    +----------------------------------+--------------------+
-    |    :attr:`Troop.upgrade_time`    | :class:`TimeDelta` |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.training_cost`    |        int         |
-    +----------------------------------+--------------------+
-    | :attr:`Troop.training_resource`  | :class:`Resource`  |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.training_time`    | :class:`TimeDelta` |
-    +----------------------------------+--------------------+
-    |  :attr:`Troop.is_elixir_troop`   |   :class:`bool`    |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.is_dark_troop`    |   :class:`bool`    |
-    +----------------------------------+--------------------+
-    |  :attr:`Troop.is_siege_machine`  |   :class:`bool`    |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.is_super_troop`   |   :class:`bool`    |
-    +----------------------------------+--------------------+
-    |      :attr:`Troop.cooldown`      | :class:`TimeDelta` |
-    +----------------------------------+--------------------+
-    |      :attr:`Troop.duration`      | :class:`TimeDelta` |
-    +----------------------------------+--------------------+
-    | :attr:`Troop.min_original_level` |        int         |
-    +----------------------------------+--------------------+
-    |   :attr:`Troop.original_troop`   |  :class:`Troop`    |
-    +----------------------------------+--------------------+
-    |     :attr:`Troop.is_loaded`      |       bool         |
-    +----------------------------------+--------------------+
-    |       :attr:`Troop.level`        |        int         |
-    +----------------------------------+--------------------+
-    |     :attr:`Troop.max_level`      |        int         |
-    +----------------------------------+--------------------+
-    |      :attr:`Troop.village`       |        str         |
-    +----------------------------------+--------------------+
-
     Attributes
     ----------
     id: :class:`int`
         The troop's unique ID.
-    name: str
+    name: :class:`str`
         The troop's name.
-    range: int
+    range: :class:`int`
         The troop's attack range.
-    lab_level: int
+    lab_level: :class:`int`
         The required labatory level to upgrade the troop to this level.
-    dps: int
+    dps: :class:`int`
         The troop's Damage Per Second (DPS).
-    hitpoints: int
+    hitpoints: :class:`int`
         The number of hitpoints the troop has at this level.
-    ground_target: bool
+    ground_target: :class:`bool`
         Whether the troop is ground-targetting.
-    speed: int
+    speed: :class:`int`
         The troop's speed.
-    upgrade_cost: int
+    upgrade_cost: :class:`int`
         The amount of resources required to upgrade the troop to the next level.
     upgrade_resource: :class:`Resource`
         The type of resource used to upgrade this troop.
     upgrade_time: :class:`TimeDelta`
         The time taken to upgrade this troop to the next level.
-    training_cost: int
+    training_cost: :class:`int`
         The amount of resources required to train this troop.
     training_resource: :class:`Resource`
         The type of resource used to train this troop.
@@ -113,18 +59,18 @@ class Troop(DataContainer):
         The cooldown on this super troop before being able to be reactivated [Super Troops Only].
     duration: :class:`TimeDelta`
         The length of time this super troop is active for [Super Troops Only].
-    min_original_level: int
+    min_original_level: :class:`int`
         The minimum level required of the original troop in order to boost this troop [Super Troops Only].
     original_troop: :class:`Troop`
         The "original" counterpart troop to this super troop [Super Troops Only].
 
-    is_loaded: bool
+    is_loaded: :class:`bool`
         Whether the API data has been loaded for this troop.
-    level: int
+    level: :class:`int`
         The troop's level
-    max_level: int
+    max_level: :class:`int`
         The max level for this troop.
-    village: str
+    village: :class:`str`
         Either ``home`` or ``builderBase``, indicating which village this troop belongs to.
     """
     name: str
