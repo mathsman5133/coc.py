@@ -1,5 +1,5 @@
-.. coc.py documentation master file, created by
-   sphinx-quickstart on Sun Apr  7 17:42:03 2019.
+.. coc documentation master file, created by
+   sphinx-quickstart on Wed Dec 21 21:57:12 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -11,27 +11,41 @@ coc.py: A Clash of Clans API Wrapper
    :maxdepth: 2
    :caption: Getting Started
 
-.. _code_overview:
+   client/logging_in
+   client/basic_client
+   client/events_client
+
+.. _models:
 .. toctree::
-   :maxdepth: 4
-   :caption: Code Overview
+   :maxdepth: 2
+   :caption: Models
 
-   code_overview/client
-   code_overview/models
-   code_overview/utils
-   code_overview/event
-   code_overview/customclasses
-   code_overview/game_data
-   code_overview/exceptions
+   models/clans
+   models/players
+   models/wars
+   models/raids
+   models/game_objects
+   models/clan_player_attributes
+   models/miscellaneous
 
-.. _discord_links:
+.. _advanced:
 .. toctree::
-   :maxdepth: 3
-   :caption: Discord Links Extension
+   :maxdepth: 2
+   :caption: Advanced
 
-   discord-links/overview
-   discord-links/api-reference
-   discord-links/discord-links-examples
+   advanced/event
+   advanced/game_data
+   advanced/custom_classes
+   advanced/utils
+   advanced/exceptions
+
+.. _extensions:
+.. toctree::
+   :maxdepth: 2
+   :caption: Extensions
+
+   extensions/discord_links
+   extensions/full_war_api
 
 .. _examples:
 .. toctree::
@@ -39,22 +53,16 @@ coc.py: A Clash of Clans API Wrapper
    :caption: Examples
 
    examples/discord_bot
-   examples/discord_links
    examples/events_example
    examples/war_logs
 
 .. _miscellaneous:
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: Miscellaneous
 
-   miscellaneous/migrating_to_v1
-   miscellaneous/migrating_to_v2
+   miscellaneous/index
    miscellaneous/changelog
+   miscellaneous/migrating_to_v2
+   miscellaneous/migrating_to_v1
    miscellaneous/acknowledgements
-
-If you still can't find what you're looking for, try in one of the following pages:
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

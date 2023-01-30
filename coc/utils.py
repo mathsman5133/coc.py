@@ -27,7 +27,7 @@ import calendar
 import re
 
 from collections import deque, UserDict
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import wraps
 from operator import attrgetter
 from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Tuple, Union
@@ -367,6 +367,63 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
     return get_season_start(month, year)
 
 
+def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
+    """Get the datetime that the raid weekend will start.
+
+    This goes by the assumption that raid weekends start at friday 7 UTC.
+
+    .. note::
+
+        If you want the start of the next or running raid weekend, do not pass any parameters in,
+        for any other pass a datetime in the week before.
+
+    Parameters
+    ----------
+    time: Optional[datetime]
+        Some time in the week before the raid weekend you want the start of.
+
+    Returns
+    -------
+    raid_weekend_end: :class:`datetime.datetime`
+        The end of the raid weekend.
+    """
+    # Shift the time so that we can pretend the raid ends just after midnight
+    if time is None:
+        time = datetime.utcnow()
+    time = get_raid_weekend_end(time)
+    time = time - timedelta(days=3)
+    return time
+
+
+def get_raid_weekend_end(time: Optional[datetime] = None) -> datetime:
+    """Get the datetime that the raid weekend will end.
+
+    This goes by the assumption that raid weekends end at monday 7 UTC.
+
+    .. note::
+
+        If you want the end of the next or running raid weekend, do not pass any parameters in,
+        for any other pass a datetime in the week before.
+
+    Parameters
+    ----------
+    time: Optional[datetime]
+        Some time in the week before the raid weekend you want the end of.
+
+    Returns
+    -------
+    raid_weekend_end: :class:`datetime.datetime`
+        The end of the raid weekend.
+    """
+    # Shift the time so that we can pretend the raid ends just after midnight
+    if time is None:
+        time = datetime.utcnow()
+    time = time - timedelta(hours=7, microseconds=1)
+    time = time + timedelta(weeks=1, days=-time.weekday())  # Go to the next monday
+    time = time.replace(hour=7, minute=0, second=0, microsecond=0)
+    return time
+
+
 class _CachedProperty(Generic[T, T_co]):
     def __init__(self, name: str, function: Callable[[T], T_co]) -> None:
         self.name = name
@@ -388,8 +445,8 @@ def cached_property(name: str) -> Callable[[Callable[[T], T_co]], _CachedPropert
     return deco
 
 
-class LRU(UserDict):
-    """Implements a LRU (least-recently-used) dict with a settable max size."""
+class FIFO(UserDict):
+    """Implements a FIFO (least-recently-used) dict with a settable max size."""
 
     __slots__ = (
         "__keys",
@@ -417,7 +474,7 @@ class LRU(UserDict):
     def __contains__(self, key):
         self.__verify_max_size()
         return super().__contains__(key)
-    
+
     def copy(self):
         self.data = self.data.copy()
         return self

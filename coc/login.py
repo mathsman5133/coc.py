@@ -29,52 +29,60 @@ from .events import EventsClient
 
 
 def login(
-    email: str, password: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs
+        email: str, password: str,
+        client: Type[Union[Client, EventsClient]] = Client, **kwargs
 ) -> Union[Client, EventsClient]:
-    r"""Eases logging into the coc.py Client.
-
-    This function makes logging into the client easy, returning the created client.
-
-    Parameters
-    -----------
-    email : str
-        Your password email from https://developer.clashofclans.com
+    """
+    This function makes logging into the client easy, returning
+    the created client.
+    @Deprecated
+    :param str email:
+        Your email from https://developer.clashofclans.com
         This is used when updating keys automatically if your IP changes
-    password : str
+    :param str password:
         Your password login from https://developer.clashofclans.com
         This is used when updating keys automatically if your IP changes
-    client
+    :param client:
         The type of coc.py client to use. This could either be a
         :class:`Client` or :class:`EventsClient`, depending on which you wish
         to use.
-    **kwargs
+    :type client: Client or EventsClient
+    :param dict kwargs:
         Any kwargs you wish to pass into the Client object.
+
+
+    .. deprecated:: v2.2.0
+        This function has been deemed deprecated to allow
+        asyncio to clean up the async structures. Please use Client.login()
+        instead.
     """
     instance = client(**kwargs)
     instance.loop.run_until_complete(instance.login(email, password))
     return instance
 
 
-def login_with_keys(*keys: str, client: Type[Union[Client, EventsClient]] = Client, **kwargs) -> Union[Client, EventsClient]:
-    r"""Logs into the coc.py Client using premade keys from the developer site.
+def login_with_keys(*keys: str,
+                    client: Type[Union[Client, EventsClient]] = Client,
+                    **kwargs) -> Union[Client, EventsClient]:
+    """
+    Logs into the coc.py Client using premade keys from the developer site.
 
-    Unlike :meth:`coc.login`, this login method **will not** automatically update and manage your keys, including when
-    your IP address changes. It is recommended that you use the :meth:`coc.login` method.
-
+    Unlike :meth:`coc.login`, this login method **will not** automatically
+    update and manage your keys, including when your IP address changes.
+    It is recommended that you use the :meth:`coc.login` method.
+    @Deprecated
     .. code-block:: python3
 
         client = coc.login_with_keys("eabfcd.adk.token1", "eacjuth.haetg.token2", throttle_limit=20)
 
-
-    Parameters
-    -----------
-    *keys: str
+    :param list[str] keys:
         Keys or tokens as found from https://developer.clashofclans.com.
-    client
+    :param client:
         The type of coc.py client to use. This could either be a
         :class:`Client` or :class:`EventsClient`, depending on which you wish
         to use.
-    **kwargs
+    :type client: Client or EventsClient
+    :param dict kwargs:
         Any kwargs you wish to pass into the Client object.
     """
     instance = client(**kwargs)

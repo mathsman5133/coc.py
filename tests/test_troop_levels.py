@@ -9,6 +9,7 @@ MACHINES = {
     "Siege Barracks":
         {
             "release": 13,
+            "max_release_level": 4,
             "max_at": [
                 {
                     "th": 13,
@@ -19,6 +20,7 @@ MACHINES = {
     "Wall Wrecker":
         {
             "release": 12,
+            "max_release_level": 3,
             "max_at": [
                 {
                     "th": 13,
@@ -33,19 +35,8 @@ MACHINES = {
 class TestTroopLevel(unittest.IsolatedAsyncioTestCase):
     def setUp(self) -> None:
         self.coc_client = coc.Client()
+        self.coc_client._create_holders()
         self.machines = MACHINES
-
-    async def asyncSetUp(self) -> None:
-        await asyncio.sleep(1)
-        try:
-            await self.coc_client.login(os.environ.get("DEV_SITE_EMAIL"),
-                                    os.environ.get(
-                                        "DEV_SITE_PASSWORD"))
-        except Exception as error:
-            self.fail(msg=error)
-
-    async def asyncTearDown(self) -> None:
-        await self.coc_client.close()
 
     def test_siege_machines(self):
         for machine_key in self.machines.keys():
@@ -53,9 +44,9 @@ class TestTroopLevel(unittest.IsolatedAsyncioTestCase):
 
             machine_obj = self.coc_client.get_troop(
                 name=machine_key,
-                townhall=machine.get("release") - 1)
-
-            self.assertEqual(0, machine_obj.get_max_level_for_townhall(12))
+                townhall=machine.get("release"))
+            max_level = machine_obj.get_max_level_for_townhall(12)
+            self.assertEqual(None if 12 < machine.get('release') else machine.get('max_release_level'), max_level)
 
 
 if __name__ == '__main__':

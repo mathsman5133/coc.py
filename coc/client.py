@@ -137,6 +137,9 @@ class Client:
         special flags that will only be interpreted by coc.py if you set this
         bool to True.
 
+    raw_attribute: :class:`bool`
+        The option to enable the _raw_data attribute for classes
+
     Attributes
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -156,6 +159,7 @@ class Client:
         "stats_max_size",
         "http",
         "realtime",
+        "raw_attribute",
         "_ready",
         "correct_tags",
         "load_game_data",
@@ -184,6 +188,7 @@ class Client:
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
         realtime=False,
+        raw_attribute=False,
         **_,
     ):
 
@@ -205,7 +210,7 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
-
+        self.raw_attribute = raw_attribute
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -272,8 +277,6 @@ class Client:
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
-        @Deprecated
-
         Parameters
         ----------
         email : str
@@ -296,7 +299,8 @@ class Client:
 
         Parameters
         ----------
-        keys
+        keys: list[str]
+            Keys or tokens as found from https://developer.clashofclans.com.
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys

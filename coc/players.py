@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import typing
+from typing import Optional, List, TYPE_CHECKING
 
 
 from .miscmodels import try_enum, Achievement, Label, League, LegendStatistics
@@ -45,7 +45,7 @@ from .troop import Troop
 from .utils import cached_property
 
 
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .clans import Clan  # noqa
 
@@ -77,6 +77,8 @@ class ClanMember(BasePlayer):
         The member's rank before the last leaderboard change
         (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
         and you want to find out their previous rankings, this will help.).
+    versus_rank: :class:`int`
+        The member's rank in the clan based on versus trophies.
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
@@ -99,6 +101,7 @@ class ClanMember(BasePlayer):
         "versus_trophies",
         "clan_rank",
         "clan_previous_rank",
+        "versus_rank",
         "donations",
         "received",
         "clan_cls",
@@ -122,6 +125,7 @@ class ClanMember(BasePlayer):
         self.versus_trophies: int = data_get("versusTrophies")
         self.clan_rank: int = data_get("clanRank")
         self.clan_previous_rank: int = data_get("previousClanRank")
+        self.versus_rank: int = data.get("versusRank")
         self.donations: int = data_get("donations")
         self.received: int = data_get("donationsReceived")
 
@@ -129,8 +133,8 @@ class ClanMember(BasePlayer):
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
 
-    async def get_detailed_clan(self) -> typing.Optional["Clan"]:
-        """Get detailed clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
+    async def get_detailed_clan(self) -> Optional["Clan"]:
+        """Get clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
 
         Example
         ---------
@@ -181,7 +185,7 @@ class Player(ClanMember):
     Attributes
     ----------
     achievement_cls: :class:`Achievement`
-        The constructor used to create the :attr:`Player.achievements` list. This must inherit :class:`Achievement`.
+        The constructor used to create the :attr:`Player.achievements` list. This must inherit from :class:`Achievement`.
     hero_cls: :class:`Hero`
         The constructor used to create the :attr:`Player.heroes` list. This must inherit from :class:`Hero`.
     label_cls: :class:`Label`
@@ -271,9 +275,9 @@ class Player(ClanMember):
     def __init__(self, *, data, client, load_game_data=None, **_):
         self._client = client
 
-        self._achievements = None  # type: typing.Optional[dict]
-        self._heroes = None  # type: typing.Optional[dict]
-        self._spells = None  # type: typing.Optional[dict]
+        self._achievements = None  # type: Optional[dict]
+        self._heroes = None  # type: Optional[dict]
+        self._spells = None  # type: Optional[dict]
         self._home_troops: dict = {}
         self._builder_troops: dict = {}
         self._super_troops: list = []
@@ -316,10 +320,10 @@ class Player(ClanMember):
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
 
         try:
-            self.war_opted_in: typing.Optional[bool] = True if data["warPreference"] == "in" else False
+            self.war_opted_in: Optional[bool] = True if data["warPreference"] == "in" else False
         except KeyError:
             # not in a clan / war preference not there
-            self.war_opted_in: typing.Optional[bool] = None
+            self.war_opted_in: Optional[bool] = None
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
@@ -410,12 +414,12 @@ class Player(ClanMember):
                         item._load_from_parent(holder.get(item.name))
 
     @cached_property("_cs_labels")
-    def labels(self) -> typing.List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label` that the player has."""
+    def labels(self) -> List[Label]:
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
-    def achievements(self) -> typing.List[Achievement]:
+    def achievements(self) -> List[Achievement]:
         """List[:class:`Achievement`]: A list of the player's achievements."""
         # at the time of writing, the API presents achievements in the order
         # added to the game which doesn't match in-game order.
@@ -430,7 +434,7 @@ class Player(ClanMember):
         self._achievements = sorted_achievements
         return list(sorted_achievements.values())
 
-    def get_achievement(self, name: str, default_value=None) -> typing.Optional[Achievement]:
+    def get_achievement(self, name: str, default_value=None) -> Optional[Achievement]:
         """Returns an achievement with the given name.
 
         Parameters
@@ -443,7 +447,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Achievement`]
-            The returned achievement or the ``default_value`` if not found, which defaults to ``None``..
+            The returned achievement or the ``default_value`` if not found, which defaults to ``None``.
         """
         if not self._achievements:
             _ = self.achievements
@@ -454,7 +458,7 @@ class Player(ClanMember):
             return default_value
 
     @cached_property("_cs_troops")
-    def troops(self) -> typing.List[Troop]:
+    def troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's :class:`Troop`.
 
         Troops are **not** ordered in this attribute. Use either :attr:`Player.home_troops`
@@ -493,7 +497,7 @@ class Player(ClanMember):
         return troops
 
     @cached_property("_cs_home_troops")
-    def home_troops(self) -> typing.List[Troop]:
+    def home_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
@@ -512,7 +516,7 @@ class Player(ClanMember):
         return list(sorted(self._home_troops.values(), key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_builder_troops")
-    def builder_troops(self) -> typing.List[Troop]:
+    def builder_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
         This will return troops in the order found in both barracks and labatory in-game.
@@ -528,7 +532,7 @@ class Player(ClanMember):
         return list(sorted(self._builder_troops.values(), key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_siege_machines")
-    def siege_machines(self) -> typing.List[Troop]:
+    def siege_machines(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
         This will return siege machines in the order found in both barracks and labatory in-game.
@@ -541,8 +545,8 @@ class Player(ClanMember):
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_hero_pets")
-    def hero_pets(self) -> typing.List[Troop]:
-        """List[:class:`Troop`]: A :class:`List` of the player's hero pets.
+    def hero_pets(self) -> List[Pet]:
+        """List[:class:`Pet`]: A :class:`List` of the player's hero pets.
 
         This will return hero pets in the order found in the Pet House in-game.
 
@@ -553,7 +557,7 @@ class Player(ClanMember):
         return list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
 
     @cached_property("_cs_super_troops")
-    def super_troops(self) -> typing.List[Troop]:
+    def super_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's super troops.
 
         This will return super troops in the order found in the super troop boosting building, in game.
@@ -568,7 +572,7 @@ class Player(ClanMember):
 
         return list(sorted(self._super_troops, key=lambda t: order.get(t.name, 0)))
 
-    def get_troop(self, name: str, is_home_troop=None, default_value=None) -> typing.Optional[Troop]:
+    def get_troop(self, name: str, is_home_troop=None, default_value=None) -> Optional[Troop]:
         """Returns a troop with the given name.
 
         Parameters
@@ -604,7 +608,7 @@ class Player(ClanMember):
             return default_value
 
     @cached_property("_cs_heroes")
-    def heroes(self) -> typing.List[Hero]:
+    def heroes(self) -> List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
         This will return heroes in the order found in the store and labatory in-game.
@@ -621,20 +625,18 @@ class Player(ClanMember):
         self._heroes = sorted_heroes
         return list(sorted_heroes.values())
 
-    def get_hero(self, name: str, default_value=None) -> typing.Optional[Hero]:
-        """Returns a hero with the given name.
-
+    def get_hero(self, name: str, default_value=None) -> Optional[Hero]:
+        """
+        Gets the player
         Parameters
-        -----------
-        name: :class:`str`
-            The name of a hero as found in-game.
-        default_value:
-            The default value to return if a hero with ``name`` is not found. Defaults to ``None``.
+        ----------
+        name
+        default_value
 
         Returns
-        --------
-        Optional[:class:`Hero`]
-            The returned hero or the ``default_value`` if not found, which defaults to ``None``..
+        -------
+        Hero
+
         """
         if not self._heroes:
             _ = self.heroes
@@ -645,7 +647,7 @@ class Player(ClanMember):
             return default_value
 
     @cached_property("_cs_spells")
-    def spells(self) -> typing.List[Spell]:
+    def spells(self) -> List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
         This will return spells in the order found in both spell factory and labatory in-game.
@@ -658,7 +660,7 @@ class Player(ClanMember):
                     dict_spells.values(),
                     key=lambda s: order.get(s.name, 0)))
 
-    def get_spell(self, name: str, default_value=None) -> typing.Optional[Spell]:
+    def get_spell(self, name: str, default_value=None) -> Optional[Spell]:
         """Returns a spell with the given name.
 
         Parameters

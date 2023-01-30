@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "2.2.3"
+__version__ = "2.3.0"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
@@ -66,6 +66,7 @@ from .iterators import (
 from .miscmodels import (
     Achievement,
     Badge,
+    CapitalDistrict,
     Icon,
     GoldPassSeason,
     League,

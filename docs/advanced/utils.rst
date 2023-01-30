@@ -16,3 +16,7 @@ Utility Functions
 .. autofunction:: coc.utils.get_season_start
 
 .. autofunction:: coc.utils.get_season_end
+
+.. autofunction:: coc.utils.get_raid_weekend_start
+
+.. autofunction:: coc.utils.get_raid_weekend_end

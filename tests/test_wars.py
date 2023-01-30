@@ -34,7 +34,7 @@ class TestWars(unittest.TestCase):
                 self.assertIsInstance(war.team_size, int)
             except KeyError:
                 size = 0
-                self.assertEquals(war.team_size, 0)
+                self.assertEqual(war.team_size, 0)
             self.assertEqual(war.team_size, size)
 
     def test_start_times(self):

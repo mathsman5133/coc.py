@@ -44,7 +44,7 @@ from .errors import (
     InvalidCredentials,
     GatewayError,
 )
-from .utils import LRU, HTTPStats
+from .utils import FIFO, HTTPStats
 
 LOG = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -207,7 +207,7 @@ class HTTPClient:
 
         self.__session = None
         self.__lock = asyncio.Semaphore(per_second)
-        self.cache = cache_max_size and LRU(cache_max_size)
+        self.cache = cache_max_size and FIFO(cache_max_size)
         self._cache_remove_count = 0
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
 
@@ -259,7 +259,7 @@ class HTTPClient:
         cache_control_key = route.url
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if isinstance(cache, LRU) and not self.client.realtime:
+        if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.get("ignore_cache", False):
             try:
                 return cache[cache_control_key]
             except KeyError:
@@ -283,7 +283,7 @@ class HTTPClient:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age="))
                             data["_response_retry"] = delta
-                            if isinstance(cache, LRU) and not self.client.realtime:
+                            if isinstance(cache, FIFO) and not self.client.realtime:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
@@ -471,12 +471,16 @@ class HTTPClient:
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
             if len(self._keys) < self.key_count:
-                for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                for key in keys:
+                    if key["name"] != self.key_names or ip in key["cidrRanges"]:
+                        continue
                     LOG.info(
                             "Deleting key with the name %s and IP %s (not matching our current IP address).",
                             self.key_names, key["cidrRanges"],
                     )
-                    await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    resp = await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    if resp.status == 200:
+                        keys.remove(key)
 
                 while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
                     data = {
