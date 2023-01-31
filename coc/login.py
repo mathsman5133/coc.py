@@ -84,7 +84,13 @@ def login_with_keys(*keys: str,
     :type client: Client or EventsClient
     :param dict kwargs:
         Any kwargs you wish to pass into the Client object.
+
+
+    .. deprecated:: v2.3.0
+        This function has been deemed deprecated to allow
+        asyncio to clean up the async structures. Please use Client.login_using_keys()
+        instead.
     """
     instance = client(**kwargs)
-    instance.login_with_keys(*keys)
+    instance.loop.run_until_complete(instance.login_using_keys(*keys))
     return instance
