@@ -350,13 +350,12 @@ class DataContainerHolder:
                     self.FILE_PATH):
                 continue
 
-            # Little bit of a hacky way to create a "copy" of a new Troop object that hasn't been initiated yet.
+            # A bit of a hacky way to create a "copy" of a new Troop object that hasn't been initiated yet.
             new_item = type(self.data_object.__name__,
                             self.data_object.__bases__,
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=object_ids.get(supercell_name, c+800),
                 name=english_aliases[meta["TID"][0]][0],
                 lab_to_townhall=lab_to_townhall,
             )
