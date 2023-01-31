@@ -87,7 +87,7 @@ class RankedClan(BaseClan):
 
 class Clan(BaseClan):
     """
-    Represents a Clash of Clans clan.
+    Represents a clan in Clash of Clans.
 
     Attributes
     ----------

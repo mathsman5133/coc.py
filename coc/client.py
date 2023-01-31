@@ -189,7 +189,7 @@ class Client:
         load_game_data: LoadGameData = LoadGameData(default=True),
         realtime=False,
         raw_attribute=False,
-        **_,
+        **kwargs,
     ):
 
         self.loop = loop or asyncio.get_event_loop()

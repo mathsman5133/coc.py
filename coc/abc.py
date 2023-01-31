@@ -55,7 +55,7 @@ class BaseClan:
     """
     __slots__ = ("tag", "name", "_client", "badge", "level", "_response_retry", "_raw_data")
 
-    def __init__(self, *, data, client, **_):
+    def __init__(self, *, data, client, **kwargs):
         self._client = client
 
         self._response_retry = data.get("_response_retry")
@@ -70,8 +70,7 @@ class BaseClan:
         return self.name
 
     def __repr__(self):
-        return "<%s tag=%s name=%s>" % (
-        self.__class__.__name__, self.tag, self.name)
+        return f"<{self.__class__.__name__} tag={self.tag} name={self.name}>"
 
     def __eq__(self, other):
         return isinstance(other, BaseClan) and self.tag == other.tag
@@ -154,8 +153,7 @@ class BasePlayer:
     @property
     def share_link(self) -> str:
         """:class:`str` - A formatted link to open the player in-game"""
-        return "https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{}".format(
-            self.tag.strip("#"))
+        return f"https://link.clashofclans.com/en?action=OpenPlayerProfile&tag=%23{self.tag.strip('#')}"
 
 
 class DataContainerMetaClass(type):
@@ -238,9 +236,9 @@ class DataContainer(metaclass=DataContainerMetaClass):
                                          if th_level in min_th_level]
                     # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
                     # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
-                    laboratory_levels = [
-                        x if x > first_lab_level else first_lab_level
-                        for x in troop_meta.get("LaboratoryLevel")]
+                    laboratory_levels = []
+                    for lab_level in troop_meta.get("LaboratoryLevel"):
+                        laboratory_levels.append(max(lab_level, first_lab_level))
             elif production_building == "Pet Shop":
                 min_prod_unit_level = troop_meta.get("LaboratoryLevel", [None, ])[0]
                 # there are some special troops, which have no BarrackLevel attribute
@@ -255,11 +253,10 @@ class DataContainer(metaclass=DataContainerMetaClass):
                                      if th_level in min_th_level]
                 # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
                 # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
-                laboratory_levels = [
-                    x if x > first_lab_level else first_lab_level
-                    for x in troop_meta.get("LaboratoryLevel")]
+                laboratory_levels = []
+                for lab_level in troop_meta.get("LaboratoryLevel"):
+                    laboratory_levels.append(max(lab_level, first_lab_level))
             else:
-                print(1)
                 return
 
         cls.lab_level = try_enum(UnitStat, laboratory_levels)

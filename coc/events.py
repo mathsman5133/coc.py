@@ -797,7 +797,7 @@ class EventsClient(Client):
                     if raidlog_entry.start_time.seconds_until + age > 0 and raidlog_entry.end_time.seconds_until > 0:
                         # raid started
                         self.dispatch("raid_weekend_start")
-                    elif raidlog_entry.end_time.seconds_until + age > 0 and 0 > raidlog_entry.end_time.seconds_until:
+                    elif raidlog_entry.end_time.seconds_until + age > 0 > raidlog_entry.end_time.seconds_until:
                         # raid ended
                         self.dispatch("raid_weekend_end")
                     # sleep for response_retry + 1
