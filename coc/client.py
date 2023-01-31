@@ -297,15 +297,17 @@ class Client:
     def login_with_keys(self, *keys: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
+        .. deprecated:: v2.3.0
+            This function has been deemed deprecated to allow
+            asyncio to clean up the async structures. Please use :func:`Client.login_with_tokens`
+            instead.
+
         Parameters
         ----------
         keys: list[str]
             Keys or tokens as found from https://developer.clashofclans.com.
 
-        .. deprecated:: v2.3.0
-            This function has been deemed deprecated to allow
-            asyncio to clean up the async structures. Please use Client.login_using_keys()
-            instead.
+
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys
@@ -316,18 +318,18 @@ class Client:
 
         LOG.debug("HTTP connection created. Client is ready for use.")
 
-    async def login_using_keys(self, *keys: str) -> None:
-        """Retrieves all keys and creates an HTTP connection ready for use.
-
+    async def login_with_tokens(self, *tokens: str) -> None:
+        """Retrieves all tokens and creates an HTTP connection ready for use.
+        @Deprecated
         Parameters
         ----------
-        keys: list[str]
-            Keys or tokens as found from https://developer.clashofclans.com.
+        tokens: list[str]
+            Tokens as found from https://developer.clashofclans.com.
         """
         self.http = http = self._create_client(None, None)
-        http._keys = keys
+        http._keys = tokens
         http.keys = cycle(http._keys)
-        http.key_count = len(keys)
+        http.key_count = len(tokens)
         await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
