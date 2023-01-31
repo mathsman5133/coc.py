@@ -295,7 +295,7 @@ class Client:
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
-        """Retrieves all keys and creates an HTTP connection ready for use.
+        """Creates an HTTP connection ready for use with the keys you provide.
 
         .. deprecated:: v2.3.0
             This function has been deemed deprecated to allow
@@ -319,12 +319,12 @@ class Client:
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     async def login_with_tokens(self, *tokens: str) -> None:
-        """Retrieves all tokens and creates an HTTP connection ready for use.
-        @Deprecated
+        """Creates an HTTP connection ready for use with the tokens you provide.
+
         Parameters
         ----------
         tokens: list[str]
-            Tokens as found from https://developer.clashofclans.com.
+            Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
         """
         self.http = http = self._create_client(None, None)
         http._keys = tokens
