@@ -356,6 +356,7 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
+                id=object_ids.get(supercell_name, 0),
                 name=english_aliases[meta["TID"][0]][0],
                 lab_to_townhall=lab_to_townhall,
             )
