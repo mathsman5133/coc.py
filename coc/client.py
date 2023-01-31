@@ -301,12 +301,34 @@ class Client:
         ----------
         keys: list[str]
             Keys or tokens as found from https://developer.clashofclans.com.
+
+        .. deprecated:: v2.3.0
+            This function has been deemed deprecated to allow
+            asyncio to clean up the async structures. Please use Client.login_using_keys()
+            instead.
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
         http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
+        self._create_holders()
+
+        LOG.debug("HTTP connection created. Client is ready for use.")
+
+    async def login_using_keys(self, *keys: str) -> None:
+        """Retrieves all keys and creates an HTTP connection ready for use.
+
+        Parameters
+        ----------
+        keys: list[str]
+            Keys or tokens as found from https://developer.clashofclans.com.
+        """
+        self.http = http = self._create_client(None, None)
+        http._keys = keys
+        http.keys = cycle(http._keys)
+        http.key_count = len(keys)
+        await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
         LOG.debug("HTTP connection created. Client is ready for use.")
