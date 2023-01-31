@@ -69,7 +69,7 @@ def login_with_keys(*keys: str,
 
     Unlike :meth:`coc.login`, this login method **will not** automatically
     update and manage your keys, including when your IP address changes.
-    It is recommended that you use the :meth:`coc.login` method.
+    It is recommended that you use the :meth:`coc.Client.login` method.
     @Deprecated
     .. code-block:: python3
 
@@ -92,5 +92,5 @@ def login_with_keys(*keys: str,
         instead.
     """
     instance = client(**kwargs)
-    instance.loop.run_until_complete(instance.login_using_keys(*keys))
+    instance.loop.run_until_complete(instance.login_with_tokens(*keys))
     return instance
