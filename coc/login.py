@@ -69,7 +69,7 @@ def login_with_keys(*keys: str,
 
     Unlike :meth:`coc.login`, this login method **will not** automatically
     update and manage your keys, including when your IP address changes.
-    It is recommended that you use the :meth:`coc.login` method.
+    It is recommended that you use the :meth:`coc.Client.login` method.
     @Deprecated
     .. code-block:: python3
 
@@ -84,7 +84,13 @@ def login_with_keys(*keys: str,
     :type client: Client or EventsClient
     :param dict kwargs:
         Any kwargs you wish to pass into the Client object.
+
+
+    .. deprecated:: v2.3.0
+        This function has been deemed deprecated to allow
+        asyncio to clean up the async structures. Please use Client.login_using_keys()
+        instead.
     """
     instance = client(**kwargs)
-    instance.login_with_keys(*keys)
+    instance.loop.run_until_complete(instance.login_with_tokens(*keys))
     return instance

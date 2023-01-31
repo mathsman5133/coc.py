@@ -7,7 +7,7 @@ import json
 
 from collections import namedtuple
 from datetime import datetime
-from typing import List
+from typing import List, Optional, Union
 
 import aiohttp
 
@@ -20,7 +20,7 @@ LOG = logging.getLogger(__name__)
 AccessToken = namedtuple("AccessToken", ["token", "expires_at"])
 
 
-def extract_expiry_from_jwt_token(token):
+def extract_expiry_from_jwt_token(token: Union[str, bytes]) -> Optional[datetime]:
     if isinstance(token, str):
         token = token.encode("utf-8")
     elif not isinstance(token, bytes):
@@ -136,7 +136,7 @@ class FullWarClient:
                 return await self._request(method, url, **kwargs)
 
     async def _get_key(self):
-        if not self.key or self.key.expires_at < datetime.utcnow():
+        if not self.key or (self.key.expires_at < datetime.utcnow()):
             await self._refresh_key()
 
         return self.key.token

@@ -102,7 +102,9 @@ class RaidMember(BasePlayer):
 
     @property
     def attacks(self):
-        """List[:class:`RaidAttack`]: The member's attacks in this raid log entry"""
+        """List[:class:`RaidAttack`]: The member's attacks in this raid log entry.
+        Can be empty due to missing parts in the api response
+        """
         list_attacks = self._attacks  # type: List[RaidAttack]
         if list_attacks:
             return list_attacks
