@@ -28,12 +28,18 @@ Additions:
 
 - Added :ref:`full_war_api` as an extension
 
+- Added :func:`Client.login_with_tokens` offering the same functionality as :func:`Client.login_with_keys` as an asynchronous function
+
 
 Changes:
 ~~~~~~~~
 
 - Rename of LRU to FIFO in order to match the cache type (this is only internal)
+
 - Restructured the documentation
+
+- :func:`Client.login_with_keys` was marked as deprecated
+
 
 Bugs Fixed:
 ~~~~~~~~~~~

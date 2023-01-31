@@ -6,7 +6,7 @@ A coc.py client instance can be created directly by :class:`Client`. The instanc
 
 .. autofunction:: coc.client.Client.login
 
-.. autofunction:: coc.client.Client.login_with_keys
+.. autofunction:: coc.client.Client.login_with_tokens
 
 
 Example
