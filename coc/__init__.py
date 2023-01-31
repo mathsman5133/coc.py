@@ -66,6 +66,7 @@ from .iterators import (
 from .miscmodels import (
     Achievement,
     Badge,
+    CapitalDistrict,
     Icon,
     GoldPassSeason,
     League,

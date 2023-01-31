@@ -1,7 +1,7 @@
 .. py:currentmodule:: coc
 
-Player Attributes
-=================
+Clan and Player Attributes
+==========================
 
 Achievement
 ~~~~~~~~~~~
@@ -9,6 +9,17 @@ Achievement
     :members:
     :private-members:
 
+Capital District
+~~~~~~~~~~~~~~~~
+.. autoclass:: CapitalDistrict()
+    :members:
+    :private-members:
+
+Label
+~~~~~
+.. autoclass:: Label()
+    :members:
+    :private-members:
 
 League
 ~~~~~~
@@ -37,10 +48,8 @@ Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` 
 
     .. py:attribute:: in_game_name
 
-
-Label
-~~~~~
-.. autoclass:: Label()
+War League
+~~~~~~~~~~
+.. autoclass:: WarLeague()
     :members:
     :private-members:
-
