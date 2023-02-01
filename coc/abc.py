@@ -218,7 +218,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
             # it is a troop or spell or siege
             prod_unit = buildings.get(production_building)
             if production_building in ("SiegeWorkshop", "Spell Forge", "Mini Spell Factory",
-                                       "Dark Elixir Barrack", "Barrack"):
+                                       "Dark Elixir Barrack", "Barrack", "Barrack2"):
                 min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
                 # there are some special troops, which have no BarrackLevel attribute
                 if not min_prod_unit_level:
