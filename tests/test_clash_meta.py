@@ -4,10 +4,11 @@ import coc
 
 from coc.utils import UnitStatList
 
+import tracemalloc
+
+tracemalloc.start()
 
 class ClashMetaTests(unittest.TestCase):
-    def setUp(self) -> None:
-        self.client = coc.login_with_keys("")
 
     # def test_load_never(self):
     #     client = coc.login_with_keys("", load_game_data=coc.LoadGameData(never=True))
@@ -17,13 +18,15 @@ class ClashMetaTests(unittest.TestCase):
     #     self.assertEqual(str(cm.exception), "Troop and Spell game metadata must be loaded to use this feature.")
 
     def test_load_default(self):
-        client = coc.login_with_keys("", load_game_data=coc.LoadGameData(default=True))
+        client = coc.Client(load_game_data=coc.LoadGameData(default=True))
+        client._create_holders()
 
         for holder in (client._troop_holder, client._spell_holder, client._hero_holder, client._pet_holder):
             self.assertTrue(holder.loaded)
 
     def test_load_startup_only(self):
-        client = coc.login_with_keys("", load_game_data=coc.LoadGameData(startup_only=True))
+        client = coc.Client(load_game_data=coc.LoadGameData(startup_only=True))
+        client._create_holders()
 
         for holder in (client._troop_holder, client._spell_holder, client._hero_holder, client._pet_holder):
             self.assertTrue(holder.loaded)
@@ -32,7 +35,9 @@ class ClashMetaTests(unittest.TestCase):
         self.assertIs(type(troop), type(coc.Troop))
 
     def test_troop(self):
-        barb = self.client.get_troop("Barbarian")
+        client = coc.Client()
+        client._create_holders()
+        barb = client.get_troop("Barbarian")
         self.assertIs(type(barb), type(coc.Troop))
 
         self.assertEqual(barb.name, "Barbarian")
@@ -41,7 +46,8 @@ class ClashMetaTests(unittest.TestCase):
 
 class TroopMeta(unittest.TestCase):
     def setUp(self) -> None:
-        self.client = coc.login_with_keys("")
+        self.client = coc.Client()
+        self.client._create_holders()
         self.troop = self.client.get_troop("Barbarian")
         # self.barb_i = self.client.get_troop("Barbarian", level=12)
 

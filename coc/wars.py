@@ -82,12 +82,13 @@ class ClanWar:
         "league_group",
         "attacks_per_member",
         "_response_retry",
+        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
-
+        self._raw_data = data if client and client.raw_attribute else None
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
 
@@ -283,8 +284,8 @@ class ClanWar:
         If the player has no defenses, this will return an empty list.
 
         Returns
-        --------
-        The player's defenses: :class:`list`[:class:`WarAttack`]"""
+        -------
+        The player's defenses: List[:class:`WarAttack`]"""
         defender = self.get_member(defender_tag)
         # we could do a global lookup on all attacks in the war but this is faster as we have to lookup half the attacks
         if defender.is_opponent:
@@ -328,11 +329,13 @@ class ClanWarLogEntry:
 
     __slots__ = (
         "result", "end_time", "team_size", "clan", "opponent", "_client",
-        "attacks_per_member")
+        "attacks_per_member", "_raw_data", "_response_retry")
 
-    def __init__(self, *, data, client, **_):
+    def __init__(self, *, data, client, **kwargs):
         self._client = client
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
+        self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
 
     def __eq__(self, other) -> bool:
         if isinstance(other, self.__class__):
@@ -374,7 +377,6 @@ class ClanWarLogEntry:
         return self.result is None or self.opponent is None
 
 
-
 class ClanWarLeagueGroup:
     """Represents a Clan War League (CWL) Group
 
@@ -400,7 +402,7 @@ class ClanWarLeagueGroup:
     __slots__ = (
         "state", "season", "rounds", "number_of_rounds", "_client",
         "__iter_clans",
-        "_cs_clans")
+        "_cs_clans", "_raw_data")
 
     def __repr__(self):
         attrs = [
@@ -412,6 +414,7 @@ class ClanWarLeagueGroup:
 
     def __init__(self, *, data, client, **_):
         self._client = client
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:

@@ -392,8 +392,6 @@ class Badge:
 
     async def save(self, filepath, size=None) -> int:
         """
-        |coro|
-
         Save this badge as a file-like object.
 
         Parameters
@@ -461,8 +459,6 @@ class Icon:
 
     async def save(self, filepath: str, size: Optional[str] = None) -> int:
         """
-        |coro|
-
         Save this icon as a file-like object.
 
         Parameters
@@ -536,7 +532,7 @@ class Timestamp:
 
     @property
     def now(self) -> datetime:
-        """:class:`datetime`: Returns the time in UTC now as a datetime object."""
+        """:class:`datetime`: Returns the time of the timestamp as a datetime object in UTC."""
         return datetime.utcnow()
 
     @property
@@ -616,6 +612,7 @@ class CapitalDistrict:
 
 class WarLeague:
     """Represents a clan's CWL league.
+
     Attributes
     -----------
     id: :class:`int`: The league's unique ID

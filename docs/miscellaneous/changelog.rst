@@ -7,15 +7,105 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.3.0
+------
+Additions:
+~~~~~~~~~~
+
+- Added new events :func:`ClientEvents.raid_weekend_start`, :func:`ClientEvents.raid_weekend_end`,
+  :func:`ClientEvents.clan_games_start`, :func:`ClientEvents.clan_games_end`,
+  :func:`WarEvents.new_war` and :func:`ClanEvents.member_versus_rank`
+
+- Added utility functions :func:`utils.get_clan_games_start`, :func:`utils.get_clan_games_end`
+  :func:`utils.get_raid_weekend_start` and :func:`utils.get_raid_weekend_end`
+
+- Added clan capital leaderboards
+
+- Added :attr:`Clan.capital_points` and :attr:`Clan.family_friendly`
+
+- Added :attr:`ClanMember.versus_rank`
+
+- Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
+
+- Added :ref:`full_war_api` as an extension
+
+- Added :func:`Client.login_with_tokens` offering the same functionality as :func:`Client.login_with_keys` as an asynchronous function
+
+
+Changes:
+~~~~~~~~
+
+- Rename of LRU to FIFO in order to match the cache type (this is only internal)
+
+- Restructured the documentation
+
+- :func:`Client.login_with_keys` was marked as deprecated
+
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug which affected the key creation if there are 10 keys with at least one having the correct name but wrong ip range
+
+- Fixed a memory leak caused by python not properly freeing disk space after the removal of cache entries
+
+- Fixed a bug that prevented :attr:`Client.http.stats` from collecting api response time stats
+
+- Fixed a bug that tried to use a cache when `max_cache_size` was set to 0
+
+- Corrected order of elixir troups
+
+- Fixed a bug when clans faced each other multiple times in one raid weekend
+
+- Fixed a bug that caused automated tests on forks to fail
+
+- Fixed a bug that prevented you from importing some classes as :class:`coc.Class`
+
+
+v2.2.3
+------
+Bugs Fixed:
+~~~~~~~~~~~
+
+- Fixed some issues related to the documentation
+
+- Fixed a bug which affected the max level for a townhall for various troops, spells and sieges
+
+This release includes:
+`#144 <https://github.com/mathsman5133/coc.py/pull/144>`_
+
+v2.2.2
+------
+Additions:
+~~~~~~~~~~
+
+- Added "Super Miner" to the troops
+
+Bugs Fixed:
+~~~~~~~~~~~
+
+- Fixed a bug with calculating the season start/end date
+
+- Fixed a bug with calculating the amount of attacks for a :class:`WarClan`
+
+- Fixed a bug with creating keys for realtime access accounts caused by a wrong scope
+
+This release includes:
+`#146 <https://github.com/mathsman5133/coc.py/pull/146>`_,
+`#148 <https://github.com/mathsman5133/coc.py/pull/148>`_,
+`#149 <https://github.com/mathsman5133/coc.py/pull/149>`_,
+`#150 <https://github.com/mathsman5133/coc.py/pull/150>`_,
+`#151 <https://github.com/mathsman5133/coc.py/pull/151>`_
+
 v2.2.1
 ------
 Bugs Fixed:
+~~~~~~~~~~~
 
 - Moved "Recall Spell" at the end of elixir spells (rather than end of all spells)
 
 - Fixed a bug with CWL where the final war can be retrieved properly on the last day as `current_war`
 
-- Fixed bug with iterators and comparing clan tags to skip wars.
+- Fixed a bug with iterators and comparing clan tags to skip wars.
 
 
 This release includes:
@@ -158,8 +248,8 @@ v1.0.3
 
 - Fixed an issue where the HTTP cache layer was not being utilised.
 
-- Fixed an issue where :meth:`utils.get_season_start` and :meth:`utils.get_season_end` got the previous season information
-if the system time had not yet passed 5am UTC.
+- Fixed an issue where :meth:`utils.get_season_start` and :meth:`utils.get_season_end` got the previous season information if the system time had not yet passed 5am UTC.
+
 
 
 v1.0.2
@@ -175,8 +265,7 @@ v1.0.2
 v1.0.1
 ------
 
-- Maintenance event poller logic has been reworked to enable the use of :class:`EventsClient` without any player/clan/war
-updates.
+- Maintenance event poller logic has been reworked to enable the use of :class:`EventsClient` without any player/clan/war updates.
 
 - 5min preparation time has been included in the list of valid prep times for friendly wars.
 
@@ -191,32 +280,32 @@ Please see :ref:`migrating_to_v1_0` for more info, as the change-set is too larg
 v0.3.3
 -------
 Breaking Changes
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 - ``SearchPlayer.versus_attacks_wins`` has been renamed to ``SearchPlayer.versus_attack_wins``.
 - The ``on_player_versus_attacks_change`` event has been renamed to ``on_player_versus_attack_change`` to match the above change.
 - There was a typo with the spelling of the ``coc.Maintenance`` exception. It has been renamed from ``coc.Maitenance`` to ``coc.Maintenance``.
 
 New Things
-~~~~~~~~~~~
+~~~~~~~~~~
 - Add a default `Unranked` league to ``BasicPlayer.league``.
 - Added TH13 content.
 
 BugFixes
-~~~~~~~~~
-- Fixed ``client.get_members`` raising ``AttributeError`` if no clan is found in the cache.
-- ``client.get_warlog`` was only returning league wars. This has been fixed.
+~~~~~~~~
+- Fixed :meth:`client.get_members`` raising :exc:`AttributeError` if no clan is found in the cache.
+- :meth:`client.get_warlog`` was only returning league wars. This has been fixed.
 
 
 v0.3.2
 -------
 New Features.
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 - Rename :attr:`~SearchClan.member_dict` --> :attr:`~SearchClan.members_dict` for consistency.
 - New helper function: :func:`LeagueGroup.get_wars(round_number)` which will return a
-  `LeagueWarIterator` of all SCCWL wars in that round.
+  :class:`LeagueWarIterator` of all SCCWL wars in that round.
 
 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~
 - BugFix for cache not updating properly on clans going into prep.
 - Add list of possible friendly war prep times (in seconds).
   If prep time is not in that list, assume random war.
@@ -225,28 +314,28 @@ Bug Fixes
 v0.3.1
 --------
 New Features.
-~~~~~~~~~~~~~~
-- :ref:`on_clan_member_trophy_change`, :ref:`on_clan_member_versus_trophy_change` and
-  :ref:`on_clan_member_league_change` were added as new events.
+~~~~~~~~~~~~~
+- :meth:`on_clan_member_trophy_change`, :meth:`on_clan_member_versus_trophy_change` and
+  :meth:`on_clan_member_league_change` were added as new events.
 - Add ability to pass async and other iterables into methods that return iterators.
 - Add the `HogGlider` to list of builder base troops.
 - Added support for `SearchClan.labels` and `SearchPlayer.labels`. They will return a :class:`~coc.Label` object.
-- Add a special parameter to `Client` to automatically "fix" or call `utils.correct_tag` on any tags passed in to calls.
-- `Client.get_clan_labels()` and `Client.get_player_labels()` are now valid client calls.
+- Add a special parameter to :class:`Client` to automatically "fix" or call :meth:`utils.correct_tag` on any tags passed in to calls.
+- :func:`Client.get_clan_labels()` and :func:`Client.get_player_labels()` are now valid client calls.
 
 BugFixes
-~~~~~~~~~~~~
+~~~~~~~~
 - Getting clans and players for a location will now default to getting for the global leaderboard.
-- `LeagueWar` will no longer throw an `AttributeError` when no clan is found.
-- Never update the cache automatically when the `EventsClient` is used.
-- Fixed :ref:`on_war_state_change` not firing properly when a clan entered `preparation` or `warEnded`.
+- :class:`LeagueWar` will no longer throw an :exc:`AttributeError` when no clan is found.
+- Never update the cache automatically when the :class:`EventsClient` is used.
+- Fixed :meth:`WarEvents.on_war_state_change` not firing properly when a clan entered `preparation` or `warEnded`.
 
 v0.3.0
 -------
 Bug Fixes
-~~~~~~~~~~~
+~~~~~~~~~
 - All iterators have been fixed in python 3.7
-- :ref:`on_clan_member_join` will now fire events correctly
+- :meth:`ClanEvents.on_clan_member_join` will now fire events correctly
 - Properly parse HTML errors thrown by CloudFlare
 - Accessing the ``League.badge`` attribute has been fixed
 - Clan events now sleep for the correct interval
@@ -255,7 +344,7 @@ Bug Fixes
 - Ensure the clan is in war before trying to find prep time (##21)
 
 New Things
-~~~~~~~~~~~~~
+~~~~~~~~~~
 - Check out the `Cache` tab in sidebar for a how-to work with the new cache. It still works out of the box!
 - You can now call utils with ``coc.utils.X``
 - All events now have callbacks as an extra layer of security to stop them from failing.
@@ -288,13 +377,13 @@ New Things
         pass
 
 - ``EventsClient.add_X_update`` now accepts either a string or iterable.
-- New Method: ``client.remove_events()`` which works in the same way as ``client.add_events()``
+- New Method: :meth:`client.remove_events()`` which works in the same way as :meth:`client.add_events()`
 - Speed up `utils.get`
 - New Events:
-    - :ref:`on_player_clan_join` - when a player joins a clan
-    - :ref:`on_player_clan_leave` - when a player leaves a clan
-    - :ref:`on_player_clan_level_change` - when a player's clan's level changes
-    - :ref:`on_player_clan_badge_change` - when a player's clan's badges change.
+    - :meth:`PlayerEvents.joined_clan` - when a player joins a clan
+    - :meth:`PlayerEvens.left_clan` - when a player leaves a clan
+    - :meth:`on_player_clan_level_change` - when a player's clan's level changes
+    - :meth:`on_player_clan_badge_change` - when a player's clan's badges change.
     - `on_client_close` which is dispatched upon closing the client
 
 - Rename `x_achievement_update` --> `x_achievement_change` for consistency
@@ -302,7 +391,7 @@ New Things
     - These have no effect at present.
 
 Documentation
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 - Lots of the docs have had tidy-ups, with 2 new how-to's dedicated to Cache and the Events Client.
 
 
@@ -310,7 +399,7 @@ Documentation
 v0.2.0
 --------
 EventsClient
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 - :class:`EventsClient`
 - Provides all functionality of :class:`Client`, as well as an events-like system.
 - It will constantly request to the API every X seconds and detect indifferences between the cached and new results
@@ -319,17 +408,17 @@ EventsClient
 - Split into 3 categories: player, clan and war
 
 Player
-
+~~~~~~
     - All events regarding anything in the API that can change.
     - E.g, name, troop levels (and unlocking), spells, heroes, donations, trophies etc.
 
 Clans
-
+~~~~~
     - All events regarding anything in the API that can change.
     - E.g. description, type (invite only etc.), ranks, donations etc. of members, levelups.
 
 Wars
-
+~~~~
     - All events regarding anything in the API that can change.
     - E.g. new war attack, war state change
 
@@ -341,7 +430,7 @@ Wars
   it doesn't have to be integrated into a bot. To ease this use-case, :meth:`EventsClient.run_forever` is handy.
 
 Other Importants
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 - Cache has had another overhaul about how it works, is called and default operational use.
 
 - From above, ``default_cache`` is a kwarg, and method of :class:`Client`. It defaults to the inbuilt method,
@@ -366,7 +455,7 @@ Other Importants
 - Add :attr:`ClanWar.status` returns a string ``winning, losing, tied, won, lost, tie`` depending on stars + destruction.
 
 BugFixes
-~~~~~~~~~
+~~~~~~~~
 - Lots of little ones with cache
 - Performance upgrades with use of ``__slots__`` on more classes
 - Trying to iterate over used up iterators
@@ -375,14 +464,14 @@ BugFixes
 - Few little regex and other bugs in cache.
 
 v0.1.3
---------
+------
 BugFixes
-~~~~~~~~~
+~~~~~~~~
 - TypeError will no longer be raised if no tags were found
 - Iterators will continue to search for next item if one fails
 
 Important
-~~~~~~~~~~
+~~~~~~~~~
 New Properties/Attributes
 
     - :attr:`WarMember.is_opponent` indicates if the member is a clanmate (false) or opponent (true)
@@ -396,7 +485,7 @@ New Properties/Attributes
       for eg. with locations and leagues - static information
 
 New Methods:
-
+~~~~~~~~~~~~
     - :meth:`client.get_league_named()` - get a league (ie. Bronze III etc.) by name.
     - :meth:`client.get_location_named()` - get a location (ie. Australia etc.) by name.
     - :meth:`cache.clear()` - reset the cache and clear all objects inside for that instance.
@@ -404,14 +493,14 @@ New Methods:
     - :meth:`cache.get_limit(limit)` - get the first limit number of items in cache.
 
 New Iterators:
-
+~~~~~~~~~~~~~~
     - :class:`PlayerIterator`, :class:`ClanIterator`, :class:`WarIterator` - returned when a function eg.
       :meth:`client.get_players(tags)` is called. These allow normal dot notion to be used inside `async for`,
       eg. `async for clan in client.get_clans(tags): print(clan.name)`.
     - :meth:`Iterator.flatten()` will return a list of all objects inside the iterator. Note: operation may be slow.
 
 Changed Attribute:
-
+~~~~~~~~~~~~~~~~~~
     - :attr:`SearchPlayer.troops_dict` has been changed to both :attr:`SearchPlayer.home_troops_dict` and
       :attr:`SearchPlayer.builder_troops_dict`, returning a dict of either home, or builder troops respectively.
 
@@ -419,13 +508,13 @@ Changed Attribute:
       and :attr:`SearchPlayer.ordered_builder_troops_dict`, returning a dict of either home, or builder troops respectively.
 
 Removed Dependency:
-
+~~~~~~~~~~~~~~~~~~~
     - `lru-dict` has been removed as a dependency due to a few windows problems while installing,
       and utilising :class:`collections.OrderedDict` appears to be faster.
 
 
 Documentation
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 - Many type-hints were added to functions to aid IDE integration
 - Documentation was re-written to use the NumPy style.
@@ -433,20 +522,20 @@ Documentation
 
 
 v0.1.2
---------
+------
 BugFixes
-~~~~~~~~~
+~~~~~~~~
 - Fixed 2 problems which meant automatic token resets weren't working.
   Please report any more bugs!
 
 v0.1.1
---------
+------
 BugFixes
-~~~~~~~~~
+~~~~~~~~
 - Stop nested asyncio loops from failing.
 
 Important
-~~~~~~~~~~
+~~~~~~~~~
 
 - New methods
 
@@ -497,14 +586,14 @@ Important
 
 
 v0.1.0
----------
+------
 BugFixes
-~~~~~~~~~~
+~~~~~~~~
 - Fixed bug with loops breaking when reloading the client in a discord cog.
 - A more specific error, ``aiohttp.ContentTypeError`` is raised when parsing non-json responses.
 
 Important
-~~~~~~~~~~~
+~~~~~~~~~
 - Big thanks to Jab for some of these.
 
 - Big one! Client now only accepts an email/password pair rather than tokens.
@@ -591,7 +680,7 @@ Important
 
 
 Documentation:
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 - Many docstrings were reformatted or worded, with punctuation and other typo's fixed
 - All new properties, attributes and methods have been documented.
 - Update some examples, including a `clan_info` function in discord bots (Thanks, Tuba).
@@ -599,9 +688,9 @@ Documentation:
 
 
 v0.0.6
---------
+------
 BugFixes
-~~~~~~~~~
+~~~~~~~~
 - Fix bug with always raising RuntimeError
 
 v0.0.5

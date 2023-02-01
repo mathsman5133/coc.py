@@ -120,7 +120,7 @@ class Client:
         Defaults to ``True``.
 
     connector : :class:`aiohttp.BaseConnector`
-        The aiohttp connector to use. By default this is ``None``.
+        The aiohttp connector to use. By default, this is ``None``.
 
     timeout: :class:`float`
         The number of seconds before timing out with an API query. Defaults to 30.
@@ -136,6 +136,12 @@ class Client:
         Super Cell. If you are one of those developers, your account will have
         special flags that will only be interpreted by coc.py if you set this
         bool to True.
+
+    raw_attribute: :class:`bool`
+        The option to enable the _raw_data attribute for most objects in the library. This attribute will contain
+        the original json data as returned by the API. This can be useful if you want to store a response in a database
+        for later use or are interested in new things that coc.py does not support otherwise yet. But because this
+        increases the memory footprint and is not needed for most use cases, this defaults to ``False``.
 
     Attributes
     ----------
@@ -156,6 +162,7 @@ class Client:
         "stats_max_size",
         "http",
         "realtime",
+        "raw_attribute",
         "_ready",
         "correct_tags",
         "load_game_data",
@@ -184,7 +191,8 @@ class Client:
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
         realtime=False,
-        **_,
+        raw_attribute=False,
+        **kwargs,
     ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -205,7 +213,7 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
-
+        self.raw_attribute = raw_attribute
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -272,8 +280,6 @@ class Client:
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
 
-        @Deprecated
-
         Parameters
         ----------
         email : str
@@ -292,17 +298,42 @@ class Client:
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
-        """Retrieves all keys and creates an HTTP connection ready for use.
+        """Creates an HTTP connection ready for use with the keys you provide.
+
+        .. deprecated:: v2.3.0
+            This function has been deemed deprecated to allow
+            asyncio to clean up the async structures. Please use :func:`Client.login_with_tokens`
+            instead.
 
         Parameters
         ----------
-        keys
+        keys: list[str]
+            Keys or tokens as found from https://developer.clashofclans.com.
+
+
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
         http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
+        self._create_holders()
+
+        LOG.debug("HTTP connection created. Client is ready for use.")
+
+    async def login_with_tokens(self, *tokens: str) -> None:
+        """Creates an HTTP connection ready for use with the tokens you provide.
+
+        Parameters
+        ----------
+        tokens: list[str]
+            Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
+        """
+        self.http = http = self._create_client(None, None)
+        http._keys = tokens
+        http.keys = cycle(http._keys)
+        http.key_count = len(tokens)
+        await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
         LOG.debug("HTTP connection created. Client is ready for use.")

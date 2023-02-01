@@ -56,6 +56,11 @@ async def current_war_stats(attack, war):
         f"attacked ({attack.defender.map_position}).{attack.defender} of {attack.defender.clan}")
 
 
+@coc.WarEvents.new_war()
+async def new_war(war):
+    log.info(f"New war against {war.opponent.name} detected.")
+
+
 """Player Events"""
 
 
@@ -95,13 +100,22 @@ async def on_maintenance():
 
 @coc.ClientEvents.maintenance_completion()
 async def on_maintenance_completion(time_started):
-    log.info("Maintenace Ended; started at %s", time_started)
+    log.info(f"Maintenace Ended; started at {time_started}")
 
 
 @coc.ClientEvents.new_season_start()
 async def season_started():
-    log.info("New season started, and will finish at %s",
-             str(utils.get_season_end()))
+    log.info(f"New season started, and will finish at {str(utils.get_season_end())}")
+
+
+@coc.ClientEvents.clan_games_end()
+async def clan_games_ended():
+    log.info(f"Clan games have ended. The next ones will start at {str(utils.get_clan_games_start())}")
+
+
+@coc.ClientEvents.raid_weekend_start()
+async def raid_weekend_started():
+    log.info(f"A new Raid Weekend started. It will last until {str(utils.get_raid_weekend_end())}")
 
 
 async def main() -> None:
@@ -150,7 +164,7 @@ async def main() -> None:
                 sys.exit(0)
 
         log.addHandler(Handler())
-        # we don't wanna wait forever for an event, so if
+        # we don't want to wait forever for an event, so if
         # it sets up OK lets call it quits.
         await asyncio.sleep(20)
         _loop = asyncio.get_event_loop()

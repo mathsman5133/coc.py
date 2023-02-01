@@ -1,4 +1,4 @@
-.. current-module:: coc
+.. py:currentmodule:: coc
 
 Discord Bot
 ===========

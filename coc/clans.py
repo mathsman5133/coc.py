@@ -82,7 +82,8 @@ class RankedClan(BaseClan):
 
 
 class Clan(BaseClan):
-    """Represents a Clash of Clans clan.
+    """
+    Represents a clan in Clash of Clans.
 
     Attributes
     ----------
@@ -97,6 +98,8 @@ class Clan(BaseClan):
     type: :class:`str`
         The clan's type for accepting members.
         This could be ``open``, ``inviteOnly`` or ``closed``.
+    family_friendly: :class:`bool`
+        Indicates the clan's family friendly status. This can be True if family friendly, or False if not.
     description: :class:`str`
         The clan's public description.
     location: :class:`Location`
@@ -105,6 +108,8 @@ class Clan(BaseClan):
         The clan's trophy count. This is calculated according to members' trophy counts.
     versus_points: :class:`int`
         The clan's versus trophy count. This is calculated according to members' versus trophy counts.
+    capital_points: :class:`int`
+        The clan's clan capital points. Unsure how this is calculated.
     required_trophies: :class:`int`
         The minimum trophies required to apply to this clan.
     required_townhall: :class:`int`
@@ -122,7 +127,8 @@ class Clan(BaseClan):
         The number of wars the clan has lost.
     public_war_log: :class:`bool`
         Indicates if the clan has a public war log.
-        If this is ``False``, operations to find the clan's current war may raise :exc:`PrivateWarLog`.
+        If this is ``False``, operations to find the clan's current
+        war may raise :exc:`PrivateWarLog`.
     member_count: :class:`int`
         The number of members in the clan.
     label_cls: :class:`coc.Label`
@@ -132,18 +138,23 @@ class Clan(BaseClan):
         The type which the members found in :attr:`Clan.members` will be of.
         Ensure any overriding of this inherits from :class:`coc.ClanMember`.
     capital_district_cls: :class:`coc.CapitalDistrict`
-        The type which the clan capital districts found in :attr:`Clan.capital_districts` will be of.
-        Ensure any overriding of this inherits from :class:`coc.CapitalDistrict`.
+        The type which the clan capital districts found in
+        :attr:`Clan.capital_districts` will be of. Ensure any overriding of
+        this inherits from :class:`coc.CapitalDistrict`.
     war_league: :class:`coc.WarLeague`
         The clan's CWL league.
+    capital_league: :class:`coc.WarLeague`
+        The clan's Clan Capital league.
     """
 
     __slots__ = (
         "type",
+        "family_friendly",
         "description",
         "location",
         "points",
         "versus_points",
+        "capital_points",
         "required_trophies",
         "war_frequency",
         "war_win_streak",
@@ -160,6 +171,7 @@ class Clan(BaseClan):
         "member_cls",
         "capital_district_cls",
         "war_league",
+        "capital_league",
         "chat_language",
         "required_townhall",
 
@@ -185,11 +197,13 @@ class Clan(BaseClan):
 
         self.points: int = data_get("clanPoints")
         self.versus_points: int = data_get("clanVersusPoints")
+        self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
 
         # only available via /clans/{clanTag} or /clans endpoint
         self.type: str = data_get("type")
+        self.family_friendly = data_get("isFamilyFriendly")
         self.required_trophies: int = data_get("requiredTrophies")
         self.war_frequency: str = data_get("warFrequency")
         self.war_win_streak: int = data_get("warWinStreak")
@@ -199,6 +213,7 @@ class Clan(BaseClan):
         self.public_war_log: bool = data_get("isWarLogPublic")
         self.description: str = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
+        self.capital_league = try_enum(WarLeague, data=data_get("capitalLeague"))
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
         self.required_townhall = data_get("requiredTownhallLevel")
 
@@ -207,8 +222,11 @@ class Clan(BaseClan):
 
         # update members globally. only available via /clans/{clanTag}
         member_cls = self.member_cls
+        member_data = data.get("memberList", [])
+        for rank, mdata in enumerate(sorted(member_data, key=lambda x: x["versusTrophies"], reverse=True), 1):
+            mdata["versusRank"] = rank
         self._iter_members = (
-            member_cls(data=mdata, client=self._client, clan=self) for mdata in data_get("memberList", [])
+            member_cls(data=mdata, client=self._client, clan=self) for mdata in member_data
         )
 
         capital_district_cls = self.capital_district_cls
@@ -220,7 +238,7 @@ class Clan(BaseClan):
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label` that the clan has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the clan has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_members")
@@ -270,8 +288,8 @@ class Clan(BaseClan):
         Example
         -------
         .. code-block:: python3
-            clan = await client.get_clan("#clantag")
 
+            clan = await client.get_clan("#clantag")
             member = clan.get_member_by(name="Joe")
             member = clan.get_member_by(level=125)
             member = clan.get_member_by(role=coc.Role.elder)

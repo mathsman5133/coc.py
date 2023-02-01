@@ -27,7 +27,7 @@ class LogPaginator(ABC):
 
         self._init_data = json_resp  # Initial data; this is const
         self._init_logs = json_resp.get("items", [])
-
+        self._response_retry = json_resp.get("_response_retry", 0)
         self._client = client
         self._model = model
 
@@ -44,7 +44,7 @@ class LogPaginator(ABC):
         if self._sync_index == len(self._init_logs):
             raise StopIteration
         ret = self._model(data=self._init_logs[self._sync_index],
-                          client=self._client)
+                          client=self._client, response_retry=self._response_retry)
         self._sync_index += 1
         return ret
 
@@ -53,7 +53,7 @@ class LogPaginator(ABC):
         items from the endpoint"""
         try:
             ret = self._init_logs[index]
-            return self._model(data=ret, client=self._client)
+            return self._model(data=ret, client=self._client, response_retry=self._response_retry)
         except Exception:
             raise
 
@@ -92,7 +92,7 @@ class LogPaginator(ABC):
             if self._async_index == len(self._logs):
                 raise StopAsyncIteration
             ret = self._model(data=self._logs[self._async_index],
-                              client=self._client)
+                              client=self._client, response_retry=self._response_retry)
             self._async_index += 1
             return ret
 
@@ -115,7 +115,7 @@ class LogPaginator(ABC):
             raise StopAsyncIteration
 
         self._async_index += 1
-        return self._model(data=ret, client=self._client)
+        return self._model(data=ret, client=self._client, response_retry=self._response_retry)
 
     async def _paginate(self) -> None:
         """
@@ -126,6 +126,7 @@ class LogPaginator(ABC):
                                                      self._clan_tag,
                                                      **self.options)
         self._logs = self._page_data.get("items", [])
+        self._response_retry = self._page_data.get("_response_retry", 0)
 
     @property
     def options(self) -> dict:
@@ -191,7 +192,7 @@ class ClanWarLog(LogPaginator, ABC):
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_clan_warlog(clan_tag, **options)
+        result = await client.http.get_clan_warlog(clan_tag, **options, ignore_cache=True)
         if fut:
             fut.set_result(result)
         return result

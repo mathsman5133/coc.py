@@ -30,16 +30,7 @@ Events Client
 When using events, you must use the dedicated :class:`EventsClient` class. This class extends the :class:`Client` class,
 and allows all of the same operations, as well as more specific to events.
 
-You can tell the library you wish to use the :class:`EventsClient` by passing it to the :meth:`coc.login`.
-The returned client instance will be of :class:`EventsClient`.
-
-Example:
-
-.. code-block:: python3
-
-    import coc
-
-    client = coc.login("email", "password", client=coc.EventsClient)
+You just create a :class:`EventsClient` instead of :class:`Client` before you login.
 
 
 Decorators
@@ -93,6 +84,14 @@ To get an event for when a clan's level, ie when the :attr:`Clan.level` changes,
 To get an event for when a war's state, ie :attr:`ClanWar.state` changes, you would do: ::
 
     @coc.WarEvents.state()
+
+To get an event for when a new war start, ie :attr:`ClanWar.preparation_start_time` changes, you would do: ::
+
+    @coc.WarEvents.new_war()
+
+.. note::
+    The callback function of :func:`WarEvents.new_war` has only one parameter, the new :class:`ClanWar`.
+
 
 The pattern is simple, and holds true for all attributes.
 
@@ -242,7 +241,7 @@ A few points to note:
 - Tags will be automatically corrected via the :meth:`coc.correct_tag` function.
 
 - **Every tag** that is added to the client will be sent to **every callback for that event group**.
-This makes for a much simpler internal design.
+    This makes for a much simpler internal design.
 
 
 For Example:
@@ -301,7 +300,21 @@ coc.py has a few events that are unique to the library, and which provide some u
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.maintenance_completion()`` |  start_datetime         | Fired when API (and in-game) maintenance ends.   |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts.                      |
+| ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts. This goes by the     |
+|                                                |                         | assumption that the season resets at 5am UTC at  |
+|                                                |                         | every last monday of the month.                  |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.raid_weekend_start()``     | None                    | Fired when a raid weekend starts.                |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.raid_weekend_end()``       | None                    | Fired when a raid weekend ends.                  |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.clan_games_start()``       | None                    | Fired when clan games starts. This goes by the   |
+|                                                |                         | assumption that clan games start at 8am UTC at   |
+|                                                |                         | the 22nd of each month.                          |
++------------------------------------------------+-------------------------+--------------------------------------------------+
+| ``@coc.ClientEvents.clan_games_end()``         | None                    | Fired when clan games ends. This goes by the     |
+|                                                |                         | assumption that clan games end at 8am UTC at     |
+|                                                |                         | the 28th of each month.                          |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.event_error()``            | exception               | Fired when an event hits an unhandled exception  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
