@@ -52,7 +52,7 @@ Bugs Fixed:
 
 - Fixed a bug that tried to use a cache when `max_cache_size` was set to 0
 
-- Corrected order of elixir troups
+- Corrected order of elixir troops
 
 - Fixed a bug when clans faced each other multiple times in one raid weekend
 
