@@ -8,7 +8,7 @@ Discord Links Extension
 Overview
 --------
 
-Discord has become the de facto standard for clan communication. One of the challenges in working with Discord bots and Clash of Clans is linking a Clash of Clans village to a Discord account.  Thanks to a new API created by ReverendMike, this problem is now solved.  coc.py leverages this API to allow bot developers easy access to linked accounts.
+Discord has become the de facto standard for clan communication. One of the challenges in working with Discord bots and Clash of Clans is linking a Clash of Clans village to a Discord account.  Thanks to a new API originally created by ReverendMike, now taken over by TubaKid, this problem is now solved.  coc.py leverages this API to allow bot developers easy access to linked accounts.
 
 
 The coc.py extension for Discord links allows you to do the following:
