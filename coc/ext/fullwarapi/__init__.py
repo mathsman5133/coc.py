@@ -7,10 +7,11 @@ import json
 
 from collections import namedtuple
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Any, Generator
 
 import aiohttp
 
+from ... import ClanWar
 from ...http import json_or_text
 from ...utils import correct_tag
 from ...wars import ClanWar
@@ -45,7 +46,7 @@ def extract_expiry_from_jwt_token(token: Union[str, bytes]) -> Optional[datetime
         return None
 
 
-async def login(username: str, password: str, clash_client) -> "FullWarClient":
+async def login(username: str, password: str, coc_client) -> "FullWarClient":
     """Eases logging into the API client.
 
     For more information on this project, please join the discord server - <discord.gg/Eaja7gJ>
@@ -59,9 +60,8 @@ async def login(username: str, password: str, clash_client) -> "FullWarClient":
         Your username as given on the discord server.
     password : str
         Your password as given on the discord server
-    loop : Optional[:class:`asyncio.AbstractEventLoop`]
-        The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
-        An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
+    coc_client: coc.Client
+        Client to use
     """
     if not isinstance(username, str) or not isinstance(password, str):
         raise TypeError("username and password must both be a string")
@@ -69,7 +69,7 @@ async def login(username: str, password: str, clash_client) -> "FullWarClient":
         raise ValueError("username or password must not be an empty string.")
 
     loop = asyncio.get_running_loop()
-    return FullWarClient(username, password, clash_client, loop)
+    return FullWarClient(username, password, coc_client, loop)
 
 
 class FullWarClient:
@@ -86,7 +86,7 @@ class FullWarClient:
         Your username as given on the discord server.
     password : str
         Your password as given on the discord server
-    clash_client: coc.Client
+    coc_client: coc.Client
         Client to use
 
     loop : Optional[:class:`asyncio.AbstractEventLoop`]
@@ -97,12 +97,12 @@ class FullWarClient:
 
     BASE_URL = "https://fw-api.teamutils.com"
 
-    __slots__ = ("username", "password", "clash_client", "loop", "key", "http_session")
+    __slots__ = ("username", "password", "coc_client", "loop", "key", "http_session")
 
-    def __init__(self, username: str, password: str, clash_client, loop: asyncio.AbstractEventLoop = None):
+    def __init__(self, username: str, password: str, coc_client, loop: asyncio.AbstractEventLoop = None):
         self.username = username
         self.password = password
-        self.clash_client = clash_client
+        self.coc_client = coc_client
 
         self.loop = loop or asyncio.get_event_loop()
         self.key = None  # set in get_key()
@@ -150,13 +150,11 @@ class FullWarClient:
         payload = await self._request("POST", "/login", token_request=True, json=data)
         self.key = AccessToken(payload["access_token"], extract_expiry_from_jwt_token(payload["access_token"]))
 
-    async def war_result(self, clan_tag: str, preparation_start: int = 0) -> ClanWar:
+    async def war_result(self, clan_tag: str, preparation_start: int = 0) -> ClanWar | None:
         """Get a stored war result.
 
         Parameters
         ----------
-        client: coc.Client
-            instance of the clash client
         clan_tag: str
             The clan tag to find war result for.
         preparation_start: int
@@ -172,21 +170,17 @@ class FullWarClient:
                                    f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
                                    f"&prep_start={str(preparation_start)}")
         try:
-            return ClanWar(data=data["response"], client=self.clash_client)
+            return ClanWar(data=data["response"], client=self.coc_client)
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
-    async def war_result_log(self, clan_tag: str, preparation_start: int = 0) -> List[ClanWar]:
+    async def war_result_log(self, clan_tag: str) -> Generator[ClanWar, Any, None] | None:
         """Get all stored war results for a clan.
 
         Parameters
         ----------
-        client: coc.Client
-            instance of the clash client
         clan_tag: str
             The clan tag to find war result for.
-        preparation_start: int
-            Preparation start of a specific war result to find.
 
         Returns
         --------
@@ -199,11 +193,10 @@ class FullWarClient:
         try:
             responses = data["log"]
 
-            generator = (ClanWar(data=response["response"], client=self.clash_client) for response in responses)
+            generator = (ClanWar(data=response["response"], client=self.coc_client) for response in responses)
             return generator
         except (IndexError, KeyError, TypeError, ValueError):
             return None
-
 
     async def register_war(self, clan_tag: str, preparation_start: int = 0):
         """Registers a war.
@@ -218,4 +211,3 @@ class FullWarClient:
         return await self._request("POST",
                                    f"/register_war?clan_tag={correct_tag(clan_tag, '%23')}"
                                    f"&prep_start={str(preparation_start)}")
-

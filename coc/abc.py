@@ -137,8 +137,7 @@ class BasePlayer:
         return self.name
 
     def __repr__(self):
-        return "<%s tag=%s name=%s>" % (
-        self.__class__.__name__, self.tag, self.name,)
+        return f"<{self.__class__.__name__} tag={self.tag} name={self.name}>"
 
     def __eq__(self, other):
         return isinstance(other, BasePlayer) and self.tag == other.tag
@@ -180,7 +179,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
             ("is_active", self.is_active),
         ]
         return "<%s %s>" % (
-        self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @classmethod
     def _load_json_meta(cls, troop_meta, id, name, lab_to_townhall):
@@ -280,14 +279,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         # only heroes
         cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
-        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get(
-            "AbilitySummonTroopCount"))
-        cls.required_th_level = try_enum(UnitStat, troop_meta.get(
-            "RequiredTownHallLevel") or laboratory_levels)
-        cls.regeneration_time = try_enum(UnitStat,
-                                         [TimeDelta(minutes=value) for value in
-                                          troop_meta.get(
-                                              "RegenerationTimeMinutes", [])])
+        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
+        cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel") or laboratory_levels)
+        cls.regeneration_time = try_enum(
+            UnitStat, [TimeDelta(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])]
+        )
 
         cls.is_loaded = True
         return cls
@@ -336,7 +332,7 @@ class DataContainerHolder:
         with open(self.FILE_PATH) as fp:
             data = ujson.load(fp)
 
-        for c, [supercell_name, meta] in enumerate(data.items()):
+        for supercell_name, meta in data.items():
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue

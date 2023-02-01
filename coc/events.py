@@ -420,7 +420,7 @@ class EventsClient(Client):
             "maintenance": self.loop.create_task(self._maintenance_poller()),
             "season": self.loop.create_task(self._end_of_season_poller()),
             "raid_weekend": self.loop.create_task(self._raid_poller()),
-            "clangames": self.loop.create_task(self._clangames_poller())
+            "clan_games": self.loop.create_task(self._clan_games_poller())
         }
 
         for task in self._updater_tasks.values():
@@ -822,20 +822,20 @@ class EventsClient(Client):
             self.dispatch("event_error", exception)
             return await self._end_of_season_poller()
 
-    async def _clangames_poller(self):
+    async def _clan_games_poller(self):
         try:
             while self.loop.is_running():
                 mute = now = datetime.utcnow()
                 if now.day > 28 or (now.day == 28 and now.hour > 8):
                     mute += timedelta(days=7)
                     mute = datetime(year=mute.year, month=mute.month, day=22, hour=8, minute=0, second=0)
-                    event = "clangames_start"
+                    event = "clan_games_start"
                 elif now.day > 22 or (now.day == 22 and now.hour > 8):
                     mute = datetime(year=now.year, month=now.month, day=28, hour=8, minute=0, second=0)
-                    event = "clangames_end"
+                    event = "clan_games_end"
                 else:
                     mute = datetime(year=now.year, month=now.month, day=22, hour=8, minute=0, second=0)
-                    event = "clangames_start"
+                    event = "clan_games_start"
                 await asyncio.sleep((mute - now).total_seconds())
                 self.dispatch(event)
         except asyncio.CancelledError:

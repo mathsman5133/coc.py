@@ -627,7 +627,7 @@ class Player(ClanMember):
 
     def get_hero(self, name: str, default_value=None) -> Optional[Hero]:
         """
-        Gets the player
+        Gets the hero
         Parameters
         ----------
         name

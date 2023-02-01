@@ -300,15 +300,21 @@ coc.py has a few events that are unique to the library, and which provide some u
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.maintenance_completion()`` |  start_datetime         | Fired when API (and in-game) maintenance ends.   |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts.                      |
+| ``@coc.ClientEvents.new_season_start()``       | None                    | Fired when a season starts. This goes by the     |
+|                                                |                         | assumption that the season resets at 5am UTC at  |
+|                                                |                         | every last monday of the month.                  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.raid_weekend_start()``     | None                    | Fired when a raid weekend starts.                |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.raid_weekend_end()``       | None                    | Fired when a raid weekend ends.                  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.clangames_start()``        | None                    | Fired when clan games starts.                    |
+| ``@coc.ClientEvents.clan_games_start()``       | None                    | Fired when clan games starts. This goes by the   |
+|                                                |                         | assumption that clan games start at 8am UTC at   |
+|                                                |                         | the 22nd of each month.                          |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.clangames_end()``          | None                    | Fired when clan games ends.                      |
+| ``@coc.ClientEvents.clan_games_end()``         | None                    | Fired when clan games ends. This goes by the     |
+|                                                |                         | assumption that clan games end at 8am UTC at     |
+|                                                |                         | the 28th of each month.                          |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.event_error()``            | exception               | Fired when an event hits an unhandled exception  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+

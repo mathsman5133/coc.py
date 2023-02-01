@@ -120,7 +120,7 @@ class Client:
         Defaults to ``True``.
 
     connector : :class:`aiohttp.BaseConnector`
-        The aiohttp connector to use. By default this is ``None``.
+        The aiohttp connector to use. By default, this is ``None``.
 
     timeout: :class:`float`
         The number of seconds before timing out with an API query. Defaults to 30.
@@ -138,7 +138,10 @@ class Client:
         bool to True.
 
     raw_attribute: :class:`bool`
-        The option to enable the _raw_data attribute for classes
+        The option to enable the _raw_data attribute for most objects in the library. This attribute will contain
+        the original json data as returned by the API. This can be useful if you want to store a response in a database
+        for later use or are interested in new things that coc.py does not support otherwise yet. But because this
+        increases the memory footprint and is not needed for most use cases, this defaults to ``False``.
 
     Attributes
     ----------
