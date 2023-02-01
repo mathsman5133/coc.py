@@ -29,6 +29,7 @@ from itertools import cycle
 from pathlib import Path
 from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
+import asyncpg as asyncpg
 import ujson
 
 from .clans import Clan, RankedClan
@@ -643,7 +644,8 @@ class Client:
             clan_tag: str,
             cls: Type[RaidLogEntry] = RaidLogEntry,
             page: bool = False,
-            limit: int = 0
+            limit: int = 0,
+            conn: asyncpg.Connection = None
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
@@ -672,6 +674,9 @@ class Client:
         limit:
             class:`int`: Number of logs to retrieve
 
+        conn:
+            the database connection to use for long term raid log caching
+
         Raises
         ------
         TypeError
@@ -694,6 +699,7 @@ class Client:
         --------
         :class:`RaidLog`:
             Entries in the capital raid seasons of the requested clan.
+
         """
 
         if limit < 0:
@@ -715,7 +721,8 @@ class Client:
                                           clan_tag=clan_tag,
                                           page=page,
                                           limit=limit,
-                                          model=cls)
+                                          model=cls,
+                                          conn=conn)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
