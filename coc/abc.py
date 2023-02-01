@@ -25,8 +25,7 @@ import ujson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
-import coc
-from .enums import Resource
+from .enums import PETS_ORDER, Resource
 from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
 from .utils import CaseInsensitiveDict, UnitStat, _get_maybe_first
@@ -205,7 +204,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
             cls.is_elixir_spell = True
         elif production_building == "Mini Spell Factory":
             cls.is_dark_spell = True
-        elif name in coc.HERO_PETS_ORDER:
+        elif name in PETS_ORDER:
             production_building = "Pet Shop"
 
         # load buildings
@@ -218,8 +217,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
         else:
             # it is a troop or spell or siege
             prod_unit = buildings.get(production_building)
-            if "barrack" in production_building.lower() or "Spell Forge" == production_building or \
-                    "SiegeWorkshop" == production_building or "Mini Spell Factory" == production_building:
+            if production_building in ("SiegeWorkshop", "Spell Forge", "Mini Spell Factory",
+                                       "Dark Elixir Barrack", "Barrack", "Barrack2"):
                 min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
                 # there are some special troops, which have no BarrackLevel attribute
                 if not min_prod_unit_level:
@@ -259,8 +258,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 return
 
         cls.lab_level = try_enum(UnitStat, laboratory_levels)
-        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace",
-                                             default=0)
+        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
         cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
         cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
 
@@ -332,7 +330,7 @@ class DataContainerHolder:
         with open(self.FILE_PATH) as fp:
             data = ujson.load(fp)
 
-        for supercell_name, meta in data.items():
+        for c, [supercell_name, meta] in enumerate(data.items()):
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue
@@ -352,7 +350,7 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=object_ids.get(supercell_name, 0),
+                id=object_ids.get(supercell_name, c),
                 name=english_aliases[meta["TID"][0]][0],
                 lab_to_townhall=lab_to_townhall,
             )
@@ -363,9 +361,8 @@ class DataContainerHolder:
         self.loaded = True
 
     def load(
-            self, data, townhall: int, default: Type[DataContainer] = None,
-            load_game_data: bool = True
-    ) -> DataContainer:
+            self, data: dict, townhall: int, default: Type[DataContainer] = None,
+            load_game_data: bool = True) -> DataContainer:
         if load_game_data is True:
             try:
                 item = self.item_lookup[data["name"]]

@@ -46,35 +46,35 @@ Enumerations
 The library provides some enumerations for certain types of strings, as well as orders for troops, spells and
 achievements that are used internally.
 
-All elixir troops
+All Elixir Troops
 ^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.ELIXIR_TROOP_ORDER
 
 
-All dark elixir troops
+All Dark Elixir Troops
 ^^^^^^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.DARK_ELIXIR_TROOP_ORDER
 
 
-All siege machines
+All Siege Machines
 ^^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.SIEGE_MACHINE_ORDER
 
 
-All super troops
+All Super Troops
 ^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.SUPER_TROOP_ORDER
 
 
-All home troops
+All Home Troops
 ^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
@@ -84,42 +84,42 @@ This does not contain super troops.
 .. data:: coc.HOME_TROOP_ORDER
 
 
-All builder troops
+All Builder Troops
 ^^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.BUILDER_TROOPS_ORDER
 
 
-All elixir spells
+All Elixir Spells
 ^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.ELIXIR_SPELL_ORDER
 
 
-All dark elixir spells
+All Dark Elixir Spells
 ^^^^^^^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.DARK_ELIXIR_SPELL_ORDER
 
 
-All spells
+All Spells
 ^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.SPELL_ORDER
 
 
-All heroes
+All Heroes
 ^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.HERO_ORDER
 
 
-All hero pets
+All Pets
 ^^^^^^^^^^^^^^
 ordered as they appear in-game.
 

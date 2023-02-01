@@ -103,7 +103,7 @@ class RaidMember(BasePlayer):
     @property
     def attacks(self):
         """List[:class:`RaidAttack`]: The member's attacks in this raid log entry.
-        Can be empty due to missing parts in the api response
+        Can be empty due to missing parts in the API response.
         """
         list_attacks = self._attacks  # type: List[RaidAttack]
         if list_attacks:
@@ -146,7 +146,8 @@ class RaidAttack:
                  "destruction",
                  "stars",
                  "_client",
-                 "_raw_data")
+                 "_raw_data",
+                 )
 
     def __repr__(self):
         attrs = [
@@ -155,7 +156,7 @@ class RaidAttack:
             ("district", repr(self.district)),
             ("attacker_tag", self.attacker_tag),
             ("destruction", self.destruction),
-            ("stars", self.stars)
+            ("stars", self.stars),
         ]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 

@@ -13,8 +13,8 @@ sys.path.insert(0, root_project.as_posix())
 sys.path.append((root_project / "docs").as_posix())
 
 project = 'coc'
-copyright = '2022, mathsman'
-author = 'mathsman'
+copyright = '2022, mathsman5133'
+author = 'mathsman5133'
 release = '2.3.0'
 
 # -- General configuration ---------------------------------------------------
