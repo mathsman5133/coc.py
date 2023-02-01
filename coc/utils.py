@@ -367,10 +367,68 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
     return get_season_start(month, year)
 
 
+def get_clan_games_start(time: Optional[datetime] = None) -> datetime:
+    """Get the datetime that the next clan games will start.
+
+    This goes by the assumption that clan games start at 8am UTC at the 22nd of each month.
+
+    .. note::
+
+        If you want the start of the next or running clan games, do not pass any parameters in,
+        for any other pass a datetime in the month before.
+
+    Parameters
+    ----------
+    time: Optional[datetime]
+        Some time in the month before the clan games you want the start of.
+
+    Returns
+    -------
+    clan_games_start: :class:`datetime.datetime`
+        The start of the next or running clan games.
+    """
+    if time is None:
+        time = datetime.utcnow()
+    month = time.month
+    this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
+    if time > this_months_cg_end:
+        month += 1
+    return datetime(year=time.year, month=month, day=22, hour=8, minute=0, second=0)
+
+
+def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
+    """Get the datetime that the next clan games will end.
+
+    This goes by the assumption that clan games end at 8am UTC at the 28th of each month.
+
+    .. note::
+
+        If you want the end of the next or running clan games, do not pass any parameters in,
+        for any other pass a datetime in the month before.
+
+    Parameters
+    ----------
+    time: Optional[datetime]
+        Some time in the month before the clan games you want the end of.
+
+    Returns
+    -------
+    clan_games_end: :class:`datetime.datetime`
+        The end of the next or running clan games.
+    """
+    if time is None:
+        time = datetime.utcnow()
+    month = time.month
+    this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
+    if time > this_months_cg_end:
+        month += 1
+    return datetime(year=time.year, month=month, day=28, hour=8, minute=0, second=0)
+
+
 def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will start.
 
-    This goes by the assumption that raid weekends start at friday 7 UTC.
+    This goes by the assumption that raid weekends start at friday 7am UTC.
 
     .. note::
 
@@ -384,10 +442,9 @@ def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
 
     Returns
     -------
-    raid_weekend_end: :class:`datetime.datetime`
-        The end of the raid weekend.
+    raid_weekend_start: :class:`datetime.datetime`
+        The start of the raid weekend.
     """
-    # Shift the time so that we can pretend the raid ends just after midnight
     if time is None:
         time = datetime.utcnow()
     time = get_raid_weekend_end(time)
@@ -398,7 +455,7 @@ def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
 def get_raid_weekend_end(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will end.
 
-    This goes by the assumption that raid weekends end at monday 7 UTC.
+    This goes by the assumption that raid weekends end at monday 7am UTC.
 
     .. note::
 

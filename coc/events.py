@@ -35,7 +35,7 @@ from .enums import WarRound
 from .players import Player
 from .wars import ClanWar
 from .errors import Maintenance, PrivateWarLog
-from .utils import correct_tag, get_season_end
+from .utils import correct_tag, get_season_end, get_clan_games_start, get_clan_games_end
 
 LOG = logging.getLogger(__name__)
 DEFAULT_SLEEP = 10
@@ -787,21 +787,21 @@ class EventsClient(Client):
             age = 0
             while self.loop.is_running():
                 try:
-                    [raidlog_entry] = await self.get_raidlog("#2PP", limit=1)
-                    raidlog_entry: coc.raid.RaidLogEntry
+                    [raid_log_entry] = await self.get_raidlog("#2PP", limit=1)
+                    raid_log_entry: coc.raid.RaidLogEntry
                 except Maintenance:
                     await asyncio.sleep(15)
                 except Exception:
                     await asyncio.sleep(DEFAULT_SLEEP)
                 else:
-                    if raidlog_entry.start_time.seconds_until + age > 0 and raidlog_entry.end_time.seconds_until > 0:
+                    if raid_log_entry.start_time.seconds_until + age > 0 and raid_log_entry.end_time.seconds_until > 0:
                         # raid started
                         self.dispatch("raid_weekend_start")
-                    elif raidlog_entry.end_time.seconds_until + age > 0 > raidlog_entry.end_time.seconds_until:
+                    elif raid_log_entry.end_time.seconds_until + age > 0 > raid_log_entry.end_time.seconds_until:
                         # raid ended
                         self.dispatch("raid_weekend_end")
                     # sleep for response_retry + 1
-                    age = raidlog_entry._response_retry + 1
+                    age = raid_log_entry._response_retry + 1
                     await asyncio.sleep(age)
         except asyncio.CancelledError:
             pass
@@ -825,18 +825,16 @@ class EventsClient(Client):
     async def _clan_games_poller(self):
         try:
             while self.loop.is_running():
-                mute = now = datetime.utcnow()
-                if now.day > 28 or (now.day == 28 and now.hour > 8):
-                    mute += timedelta(days=7)
-                    mute = datetime(year=mute.year, month=mute.month, day=22, hour=8, minute=0, second=0)
+                clan_games_start = get_clan_games_start()
+                clan_games_end = get_clan_games_end()
+                now = datetime.utcnow()
+                if now < clan_games_start:
                     event = "clan_games_start"
-                elif now.day > 22 or (now.day == 22 and now.hour > 8):
-                    mute = datetime(year=now.year, month=now.month, day=28, hour=8, minute=0, second=0)
-                    event = "clan_games_end"
+                    mute_time = clan_games_start - now
                 else:
-                    mute = datetime(year=now.year, month=now.month, day=22, hour=8, minute=0, second=0)
-                    event = "clan_games_start"
-                await asyncio.sleep((mute - now).total_seconds())
+                    event = "clan_games_end"
+                    mute_time = clan_games_end - now
+                await asyncio.sleep(mute_time.total_seconds())
                 self.dispatch(event)
         except asyncio.CancelledError:
             pass

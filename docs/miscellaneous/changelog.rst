@@ -13,10 +13,11 @@ Additions:
 ~~~~~~~~~~
 
 - Added new events :func:`ClientEvents.raid_weekend_start`, :func:`ClientEvents.raid_weekend_end`,
-  :func:`ClientEvents.clangames_start`, :func:`ClientEvents.clangames_end`,
+  :func:`ClientEvents.clan_games_start`, :func:`ClientEvents.clan_games_end`,
   :func:`WarEvents.new_war` and :func:`ClanEvents.member_versus_rank`
 
-- Added utility functions :func:`utils.get_raid_weekend_start`, :func:`utils.get_raid_weekend_end`
+- Added utility functions :func:`utils.get_clan_games_start`, :func:`utils.get_clan_games_end`
+  :func:`utils.get_raid_weekend_start` and :func:`utils.get_raid_weekend_end`
 
 - Added clan capital leaderboards
 
