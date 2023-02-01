@@ -7,17 +7,18 @@ import json
 
 from collections import namedtuple
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import Generator, List, Optional, Union
 
 import aiohttp
 
+import coc
 from ...http import json_or_text
 from ...utils import correct_tag
 from ...wars import ClanWar
 
 LOG = logging.getLogger(__name__)
 
-AccessToken = namedtuple("AccessToken", ["token", "expires_at"])
+FWAccessToken = namedtuple("FWAccessToken", ["token", "expires_at"])
 
 
 def extract_expiry_from_jwt_token(token: Union[str, bytes]) -> Optional[datetime]:
@@ -45,7 +46,7 @@ def extract_expiry_from_jwt_token(token: Union[str, bytes]) -> Optional[datetime
         return None
 
 
-async def login(username: str, password: str, clash_client) -> "FullWarClient":
+async def login(username: str, password: str, coc_client: Union[coc.Client, coc.EventsClient]) -> "FullWarClient":
     """Eases logging into the API client.
 
     For more information on this project, please join the discord server - <discord.gg/Eaja7gJ>
@@ -59,17 +60,15 @@ async def login(username: str, password: str, clash_client) -> "FullWarClient":
         Your username as given on the discord server.
     password : str
         Your password as given on the discord server
-    loop : Optional[:class:`asyncio.AbstractEventLoop`]
-        The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
-        An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
+    coc_client : Union[coc.Client, coc.EventsClient]
+        A coc_client to grap the loop from and create the response objects with
     """
     if not isinstance(username, str) or not isinstance(password, str):
         raise TypeError("username and password must both be a string")
     if not username or not password:
         raise ValueError("username or password must not be an empty string.")
 
-    loop = asyncio.get_running_loop()
-    return FullWarClient(username, password, clash_client, loop)
+    return FullWarClient(username, password, coc_client)
 
 
 class FullWarClient:
@@ -86,9 +85,8 @@ class FullWarClient:
         Your username as given on the discord server.
     password : str
         Your password as given on the discord server
-    clash_client: coc.Client
+    coc_client: Union[coc.Client, coc.EventClient]
         Client to use
-
     loop : Optional[:class:`asyncio.AbstractEventLoop`]
         The :class:`asyncio.AbstractEventLoop` to use for HTTP requests.
         An :func:`asyncio.get_event_loop()` will be used if ``None`` is passed
@@ -97,14 +95,15 @@ class FullWarClient:
 
     BASE_URL = "https://fw-api.teamutils.com"
 
-    __slots__ = ("username", "password", "clash_client", "loop", "key", "http_session")
+    __slots__ = ("username", "password", "coc_client", "loop", "key", "http_session")
 
-    def __init__(self, username: str, password: str, clash_client, loop: asyncio.AbstractEventLoop = None):
+    def __init__(self, username: str, password: str, coc_client: Union[coc.Client, coc.EventsClient],
+                 loop: asyncio.AbstractEventLoop = None):
         self.username = username
         self.password = password
-        self.clash_client = clash_client
+        self.coc_client = coc_client
 
-        self.loop = loop or asyncio.get_event_loop()
+        self.loop = coc_client.loop or asyncio.get_event_loop()
         self.key = None  # set in get_key()
 
         self.http_session = aiohttp.ClientSession(loop=self.loop)
@@ -136,7 +135,7 @@ class FullWarClient:
                 return await self._request(method, url, **kwargs)
 
     async def _get_key(self):
-        if not self.key or (self.key.expires_at < datetime.utcnow()):
+        if not self.key or (self.key.expires_at and self.key.expires_at < datetime.utcnow()):
             await self._refresh_key()
 
         return self.key.token
@@ -148,15 +147,13 @@ class FullWarClient:
         }
 
         payload = await self._request("POST", "/login", token_request=True, json=data)
-        self.key = AccessToken(payload["access_token"], extract_expiry_from_jwt_token(payload["access_token"]))
+        self.key = FWAccessToken(payload["access_token"], extract_expiry_from_jwt_token(payload["access_token"]))
 
-    async def war_result(self, clan_tag: str, preparation_start: int = 0) -> ClanWar:
+    async def war_result(self, clan_tag: str, preparation_start: int = 0) -> Optional[ClanWar]:
         """Get a stored war result.
 
         Parameters
         ----------
-        client: coc.Client
-            instance of the clash client
         clan_tag: str
             The clan tag to find war result for.
         preparation_start: int
@@ -164,7 +161,6 @@ class FullWarClient:
 
         Returns
         --------
-        #NOOOOO idea if this is correct xD
         Optional[:class:`ClanWar`]
             War result, or ``None`` if no war found.
         """
@@ -172,38 +168,32 @@ class FullWarClient:
                                    f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
                                    f"&prep_start={str(preparation_start)}")
         try:
-            return ClanWar(data=data["response"], client=self.clash_client)
+            return ClanWar(data=data["response"], client=self.coc_client)
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
-    async def war_result_log(self, clan_tag: str, preparation_start: int = 0) -> List[ClanWar]:
+    async def war_result_log(self, clan_tag: str) -> Optional[Generator[ClanWar]]:
         """Get all stored war results for a clan.
 
         Parameters
         ----------
-        client: coc.Client
-            instance of the clash client
         clan_tag: str
             The clan tag to find war result for.
-        preparation_start: int
-            Preparation start of a specific war result to find.
 
         Returns
         --------
-        #NOOOOO idea if this is correct xD
-        Optional[:class:`ClanWar`]
-            List of war results, or ``None`` if no wars found.
+        Optional[Generator[:class:`ClanWar`]]
+            Generator of war results, or ``None`` if no wars found.
         """
         data = await self._request("GET",
                                    f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
         try:
             responses = data["log"]
 
-            generator = (ClanWar(data=response["response"], client=self.clash_client) for response in responses)
+            generator = (ClanWar(data=response["response"], client=self.coc_client) for response in responses)
             return generator
         except (IndexError, KeyError, TypeError, ValueError):
             return None
-
 
     async def register_war(self, clan_tag: str, preparation_start: int = 0):
         """Registers a war.
@@ -213,7 +203,7 @@ class FullWarClient:
         clan_tag : str
             The clan to register a war for
         preparation_start: int
-            Preparation time of the war
+            Preparation time of the war.
         """
         return await self._request("POST",
                                    f"/register_war?clan_tag={correct_tag(clan_tag, '%23')}"
