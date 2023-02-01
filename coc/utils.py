@@ -370,7 +370,7 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
 def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will start.
 
-    This goes by the assumption that raid weekends start at friday 7 UTC.
+    This goes by the assumption that raid weekends start at Friday 7 am UTC.
 
     .. note::
 
@@ -398,7 +398,7 @@ def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
 def get_raid_weekend_end(time: Optional[datetime] = None) -> datetime:
     """Get the datetime that the raid weekend will end.
 
-    This goes by the assumption that raid weekends end at monday 7 UTC.
+    This goes by the assumption that raid weekends end at Monday 7 am UTC.
 
     .. note::
 

@@ -35,7 +35,7 @@ from .enums import (
     UNRANKED_LEAGUE_DATA,
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
-    HERO_PETS_ORDER,
+    PETS_ORDER,
 )
 from .abc import BasePlayer
 from .hero import Hero, Pet
@@ -237,6 +237,7 @@ class Player(ClanMember):
         "war_opted_in",
         "_achievements",
         "_heroes",
+        "_pets",
         "_labels",
         "_spells",
         "_home_troops",
@@ -262,7 +263,7 @@ class Player(ClanMember):
         "_cs_home_troops",
         "_cs_builder_troops",
         "_cs_siege_machines",
-        "_cs_hero_pets",
+        "_cs_pets",
         "_cs_super_troops",
         "_cs_heroes",
         "_cs_spells",
@@ -281,6 +282,7 @@ class Player(ClanMember):
         self._home_troops: dict = {}
         self._builder_troops: dict = {}
         self._super_troops: list = []
+        self._pets = None # type: Optional[dict]
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -335,7 +337,7 @@ class Player(ClanMember):
         if self._game_files_loaded:
             pet_lookup = [p.name for p in self._client._pet_holder.items]
         else:
-            pet_lookup = HERO_PETS_ORDER
+            pet_lookup = PETS_ORDER
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
@@ -400,11 +402,12 @@ class Player(ClanMember):
         # if self._game_files_loaded:
         #     return True
 
-        holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder)
+        holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder,
+                   self._client._pet_holder)
         if not all(holder.loaded for holder in holders):
             self._client._load_holders()
 
-        for items, holder in zip((self.troops, self.heroes, self.spells), holders):
+        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets), holders):
             for item in items:
                 if not item.is_loaded:
                     if isinstance(item, Troop):
@@ -435,7 +438,7 @@ class Player(ClanMember):
         return list(sorted_achievements.values())
 
     def get_achievement(self, name: str, default_value=None) -> Optional[Achievement]:
-        """Returns an achievement with the given name.
+        """Gets an achievement with the given name.
 
         Parameters
         -----------
@@ -544,8 +547,8 @@ class Player(ClanMember):
         troops = (t for t in self.troops if t.name in SIEGE_MACHINE_ORDER or t.is_siege_machine)
         return list(sorted(troops, key=lambda t: order.get(t.name, 0)))
 
-    @cached_property("_cs_hero_pets")
-    def hero_pets(self) -> List[Pet]:
+    @cached_property("_cs_pets")
+    def pets(self) -> List[Pet]:
         """List[:class:`Pet`]: A :class:`List` of the player's hero pets.
 
         This will return hero pets in the order found in the Pet House in-game.
@@ -553,8 +556,32 @@ class Player(ClanMember):
         This includes:
         - Hero pets only.
         """
-        order = {k: v for v, k in enumerate(HERO_PETS_ORDER)}
+        order = {k: v for v, k in enumerate(PETS_ORDER)}
         return list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
+
+    def get_pet(self, name: str, default_value=None) -> Optional[Pet]:
+        """Gets the pet with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a pet as found in-game.
+        default_value:
+            The default value to return if a pet with ``name`` is not found. Defaults to ``None``.
+
+        Returns
+        --------
+        Optional[:class:`Pet`]
+            The returned pet or the ``default_value`` if not found, which defaults to ``None``.
+
+        """
+        if not self._pets:
+            _ = self._pets
+
+        try:
+            return self._pets[name]
+        except KeyError:
+            return default_value
 
     @cached_property("_cs_super_troops")
     def super_troops(self) -> List[Troop]:
@@ -573,7 +600,7 @@ class Player(ClanMember):
         return list(sorted(self._super_troops, key=lambda t: order.get(t.name, 0)))
 
     def get_troop(self, name: str, is_home_troop=None, default_value=None) -> Optional[Troop]:
-        """Returns a troop with the given name.
+        """Gets a troop with the given name.
 
         Parameters
         -----------
@@ -626,16 +653,19 @@ class Player(ClanMember):
         return list(sorted_heroes.values())
 
     def get_hero(self, name: str, default_value=None) -> Optional[Hero]:
-        """
-        Gets the player
+        """Gets the hero with the given name.
+
         Parameters
-        ----------
-        name
-        default_value
+        -----------
+        name: :class:`str`
+            The name of a hero as found in-game.
+        default_value:
+            The default value to return if a hero with ``name`` is not found. Defaults to ``None``.
 
         Returns
-        -------
-        Hero
+        --------
+        Optional[:class:`Hero`]
+            The returned hero or the ``default_value`` if not found, which defaults to ``None``.
 
         """
         if not self._heroes:
@@ -661,7 +691,7 @@ class Player(ClanMember):
                     key=lambda s: order.get(s.name, 0)))
 
     def get_spell(self, name: str, default_value=None) -> Optional[Spell]:
-        """Returns a spell with the given name.
+        """Gets the spell with the given name.
 
         Parameters
         -----------

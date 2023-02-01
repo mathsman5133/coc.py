@@ -25,7 +25,7 @@ import ujson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
-from .enums import Resource
+from .enums import PETS_ORDER, Resource
 from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
 from .utils import CaseInsensitiveDict, UnitStat, _get_maybe_first
@@ -204,7 +204,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
             cls.is_elixir_spell = True
         elif production_building == "Mini Spell Factory":
             cls.is_dark_spell = True
-        elif name in coc.HERO_PETS_ORDER:
+        elif name in PETS_ORDER:
             production_building = "Pet Shop"
 
         # load buildings

@@ -149,7 +149,7 @@ SPELL_ORDER = [
 
 HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
-HERO_PETS_ORDER = [
+PETS_ORDER = [
     "L.A.S.S.I",
     "Electro Owl",
     "Mighty Yak",
