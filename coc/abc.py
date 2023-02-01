@@ -25,7 +25,6 @@ import ujson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
-import coc
 from .enums import Resource
 from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
@@ -137,8 +136,7 @@ class BasePlayer:
         return self.name
 
     def __repr__(self):
-        return "<%s tag=%s name=%s>" % (
-        self.__class__.__name__, self.tag, self.name,)
+        return "<%s tag=%s name=%s>" % (self.__class__.__name__, self.tag, self.name,)
 
     def __eq__(self, other):
         return isinstance(other, BasePlayer) and self.tag == other.tag
@@ -219,8 +217,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
         else:
             # it is a troop or spell or siege
             prod_unit = buildings.get(production_building)
-            if "barrack" in production_building.lower() or "Spell Forge" == production_building or \
-                    "SiegeWorkshop" == production_building or "Mini Spell Factory" == production_building:
+            if production_building in ("SiegeWorkshop", "Spell Forge", "Mini Spell Factory",
+                                       "Dark Elixir Barrack", "Barrack"):
                 min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
                 # there are some special troops, which have no BarrackLevel attribute
                 if not min_prod_unit_level:
@@ -260,8 +258,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 return
 
         cls.lab_level = try_enum(UnitStat, laboratory_levels)
-        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace",
-                                             default=0)
+        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
         cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
         cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
 
@@ -280,14 +277,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         # only heroes
         cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
-        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get(
-            "AbilitySummonTroopCount"))
-        cls.required_th_level = try_enum(UnitStat, troop_meta.get(
-            "RequiredTownHallLevel") or laboratory_levels)
+        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
+        cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel") or laboratory_levels)
         cls.regeneration_time = try_enum(UnitStat,
                                          [TimeDelta(minutes=value) for value in
-                                          troop_meta.get(
-                                              "RegenerationTimeMinutes", [])])
+                                          troop_meta.get("RegenerationTimeMinutes", [])])
 
         cls.is_loaded = True
         return cls
@@ -367,9 +361,8 @@ class DataContainerHolder:
         self.loaded = True
 
     def load(
-            self, data, townhall: int, default: Type[DataContainer] = None,
-            load_game_data: bool = True
-    ) -> DataContainer:
+            self, data: dict, townhall: int, default: Type[DataContainer] = None,
+            load_game_data: bool = True) -> DataContainer:
         if load_game_data is True:
             try:
                 item = self.item_lookup[data["name"]]

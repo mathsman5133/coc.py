@@ -306,9 +306,9 @@ coc.py has a few events that are unique to the library, and which provide some u
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.raid_weekend_end()``       | None                    | Fired when a raid weekend ends.                  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.clangames_start()``        | None                    | Fired when clan games starts.                    |
+| ``@coc.ClientEvents.clan_game_start()``        | None                    | Fired when clan games starts.                    |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
-| ``@coc.ClientEvents.clangames_end()``          | None                    | Fired when clan games ends.                      |
+| ``@coc.ClientEvents.clan_game_end()``          | None                    | Fired when clan games ends.                      |
 +------------------------------------------------+-------------------------+--------------------------------------------------+
 | ``@coc.ClientEvents.event_error()``            | exception               | Fired when an event hits an unhandled exception  |
 +------------------------------------------------+-------------------------+--------------------------------------------------+

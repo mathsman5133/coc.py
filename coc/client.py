@@ -138,7 +138,9 @@ class Client:
         bool to True.
 
     raw_attribute: :class:`bool`
-        The option to enable the _raw_data attribute for classes
+        The options to enable the `_raw_data` attribute for most objects in the library. This attribute will contain the
+        original json data as returned by the API. This setting defaults to `False`, since it will use more memory. It
+        is suggested to leave it set to `False` - if there's something you need, please open an issue in Github.
 
     Attributes
     ----------
