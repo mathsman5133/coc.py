@@ -403,6 +403,9 @@ class HTTPClient:
     def get_location_clans_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/clans-versus".format(location_id), **kwargs))
 
+    def get_location_clans_capital(self, location_id, **kwargs):
+        return self.request(Route("GET", "/locations/{}/rankings/capitals".format(location_id), **kwargs))
+
     def get_location_players_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), **kwargs))
 
