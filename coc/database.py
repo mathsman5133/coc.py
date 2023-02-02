@@ -27,12 +27,12 @@ class PostgresHandler(BaseDBHandler):
         super().__init__(max_db_size)
 
     async def _create_table(self):
-        await self._conn.execute('CREATE TABLE CocPyRaidCache('
+        await self._conn.execute('CREATE TABLE IF NOT EXISTSCocPyRaidCache('
                                  'clan_tag VARCHAR(12), '
                                  'end_time TIMESTAMP, '
                                  'data JSONB, '
                                  'PRIMARY KEY(clan_tag, end_time)'
-                                 ') ON CONFLICT DO NOTHING')
+                                 ')')
 
     async def _ensure_db_size(self) -> None:
         count = await self._conn.fetchrow('SELECT COUNT(*) FROM CocPyRaidCache')
