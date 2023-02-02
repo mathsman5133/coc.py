@@ -225,7 +225,7 @@ class RaidLog(LogPaginator, ABC):
             raid_log_entries = await db_handler.get_raid_log_entries(clan_tag, limit)
             limit_to_fetch = (utils.get_raid_weekend_end(datetime.utcnow() - timedelta(weeks=1))
                               - raid_log_entries[0]['end_time']).days // 7
-            if datetime.utcnow() > utils.get_raid_weekend_start():
+            if raid_log_entries and datetime.utcnow() > utils.get_raid_weekend_start():
                 limit_to_fetch += 1
             if limit_to_fetch + len(raid_log_entries) < limit:
                 args = {"limit": limit}
