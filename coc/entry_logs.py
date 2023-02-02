@@ -8,8 +8,9 @@ from typing import Optional, TYPE_CHECKING, Type, Union
 
 import asyncpg
 
-from .database import BaseDBHandler
 from . import utils
+from .database import BaseDBHandler
+from .miscmodels import Timestamp
 from .raid import RaidLogEntry
 from .wars import ClanWarLogEntry
 
@@ -244,7 +245,7 @@ class RaidLog(LogPaginator, ABC):
             # store finished raids in db
             for item in items:
                 if item["state"] == "ended":
-                    await db_handler.write_raid_log_entry(clan_tag, item['endTime'], item)
+                    await db_handler.write_raid_log_entry(clan_tag, Timestamp(data=item['endTime']).time, item)
 
             for entry in raid_log_entries:
                 items.append(entry["data"])

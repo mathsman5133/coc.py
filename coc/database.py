@@ -1,3 +1,4 @@
+import json
 from abc import abstractmethod
 from datetime import datetime
 
@@ -5,7 +6,7 @@ import asyncpg
 
 
 class BaseDBHandler:
-    def __init__(self, max_db_size: int):
+    def __init__(self, *, max_db_size: int):
         self.max_db_size = max_db_size
 
     @abstractmethod
@@ -22,9 +23,9 @@ class BaseDBHandler:
 
 
 class PostgresHandler(BaseDBHandler):
-    def __init__(self, max_db_size: int, conn: asyncpg.Connection):
+    def __init__(self, *, max_db_size: int, conn: asyncpg.Connection):
         self._conn = conn
-        super().__init__(max_db_size)
+        super().__init__(max_db_size=max_db_size)
 
     async def _create_table(self):
         await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
@@ -35,12 +36,12 @@ class PostgresHandler(BaseDBHandler):
                                  ')')
 
     async def _ensure_db_size(self) -> None:
-        count = await self._conn.fetchrow('SELECT COUNT(*) FROM CocPyRaidCache')
+        [count] = await self._conn.fetchrow('SELECT COUNT(*) FROM CocPyRaidCache')
         while count > self.max_db_size:
             deleted = await self._conn.execute('DELETE FROM CocPyRaidCache '
                                                'WHERE end_time = ('
                                                'SELECT MIN(end_time) FROM CocPyRaidCache)')
-            count -= deleted
+            count -= int(''.join([char for char in deleted if char.isdigit()]))
 
     async def get_raid_log_entries(self, clan_tag: str, limit: int) -> list[dict[str: datetime, str: dict]]:
         try:
@@ -49,12 +50,13 @@ class PostgresHandler(BaseDBHandler):
                                              'ORDER BY end_time DESC '
                                              'LIMIT $2',
                                              clan_tag, limit)
-            return [{'end_time': record['end_time'], 'data': record['data']} for record in records]
+            return [{'end_time': record['end_time'], 'data': json.loads(record['data'])} for record in records]
         except asyncpg.UndefinedTableError:
             await self._create_table()
             return []
 
     async def write_raid_log_entry(self, clan_tag: str, end_time: datetime, data: dict) -> None:
+        data = json.dumps(data)
         try:
             await self._conn.execute('INSERT INTO CocPyRaidCache(clan_tag, end_time, data) '
                                      'VALUES($1, $2, $3) '
