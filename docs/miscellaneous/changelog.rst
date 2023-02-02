@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.3.1
+------
+
+- Added back :func:`coc.Client.get_location_clans_capital` which was accidentally reverted in 2.3.0
+
+- Fixed some minor typos in the docs
+
 v2.3.0
 ------
 Additions:
