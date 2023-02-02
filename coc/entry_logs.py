@@ -8,7 +8,7 @@ from typing import Optional, TYPE_CHECKING, Type, Union
 
 import asyncpg
 
-import coc
+from .database import BaseDBHandler
 from . import utils
 from .raid import RaidLogEntry
 from .wars import ClanWarLogEntry
@@ -217,7 +217,7 @@ class RaidLog(LogPaginator, ABC):
                        model: Type[RaidLogEntry],
                        limit: int,
                        page: bool = True,
-                       db_handler: coc.BaseDBHandler = None
+                       db_handler: BaseDBHandler = None
                        ) -> RaidLog:
         if db_handler:
             if page:

@@ -24,19 +24,17 @@ SOFTWARE.
 import asyncio
 import logging
 from enum import Enum
-
 from itertools import cycle
 from pathlib import Path
 from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
-import asyncpg as asyncpg
 import ujson
 
 import coc
 from .clans import Clan, RankedClan
-from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
+from .entry_logs import ClanWarLog, RaidLog
 from .enums import WarRound
-from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
+from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -46,13 +44,13 @@ from .iterators import (
     LeagueWarIterator,
     CurrentWarIterator,
 )
+from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
 from .players import Player, ClanMember, RankedPlayer
 from .raid import RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
-from.entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
