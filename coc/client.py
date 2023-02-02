@@ -1277,6 +1277,40 @@ class Client:
         data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
         return [RankedClan(data=n, client=self) for n in data["items"]]
 
+    async def get_location_clans_capital(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ) -> List[RankedClan]:
+        """Get clan capital rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (``global``).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`RankedClan`]
+            The top clans for the requested location.
+        """
+
+        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after)
+        return [RankedClan(data=n, client=self) for n in data["items"]]
+
     async def get_location_players(
         self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
     ) -> List[RankedPlayer]:
