@@ -30,8 +30,8 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 
 import ujson
 
-import coc
 from .clans import Clan, RankedClan
+from.database import BaseDBHandler
 from .entry_logs import ClanWarLog, RaidLog
 from .enums import WarRound
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
@@ -644,7 +644,7 @@ class Client:
             cls: Type[RaidLogEntry] = RaidLogEntry,
             page: bool = False,
             limit: int = 0,
-            db_handler: coc.BaseDBHandler = None
+            db_handler: BaseDBHandler = None
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
