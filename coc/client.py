@@ -31,7 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 import ujson
 
 from .clans import Clan, RankedClan
-from.database import BaseDBHandler
+from .database import BaseDBHandler
 from .entry_logs import ClanWarLog, RaidLog
 from .enums import WarRound
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
