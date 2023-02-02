@@ -8,6 +8,7 @@ from typing import Optional, TYPE_CHECKING, Type, Union
 
 import asyncpg
 
+import coc
 from . import utils
 from .raid import RaidLogEntry
 from .wars import ClanWarLogEntry
@@ -216,17 +217,14 @@ class RaidLog(LogPaginator, ABC):
                        model: Type[RaidLogEntry],
                        limit: int,
                        page: bool = True,
-                       conn: asyncpg.Connection = None
+                       db_handler: coc.BaseDBHandler = None
                        ) -> RaidLog:
-        if conn:
+        if db_handler:
             if page:
                 raise NotImplementedError('I was too lazy to support both paging and database caching')
-            raid_log_entries = await conn.fetch('SELECT end_time, data FROM CocPyRaidCache '
-                                                'WHERE clan_tag = $1 '
-                                                'ORDER BY end_time DESC',
-                                                clan_tag)
+            raid_log_entries = await db_handler.get_raid_log_entries(clan_tag, limit)
             limit_to_fetch = (utils.get_raid_weekend_end(datetime.utcnow() - timedelta(weeks=1))
-                              - raid_log_entries[1]['end_time']).days // 7
+                              - raid_log_entries[0]['end_time']).days // 7
             if datetime.utcnow() > utils.get_raid_weekend_start():
                 limit_to_fetch += 1
             if limit_to_fetch + len(raid_log_entries) < limit:
@@ -243,10 +241,7 @@ class RaidLog(LogPaginator, ABC):
             # store finished raids in db
             for item in items:
                 if item["state"] == "ended":
-                    await conn.execute('INSERT INTO CocPyRaidCache(clan_tag, end_time, data) '
-                                       'VALUES($1, $2, $3) '
-                                       'ON CONFLICT DO NOTHING',
-                                       clan_tag, item["endTime"], item)
+                    await db_handler.write_raid_log_entry(clan_tag, item['endTime'], item)
 
             for entry in raid_log_entries:
                 items.append(entry["data"])

@@ -27,6 +27,7 @@ __version__ = "2.3.0"
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
+from .database import BaseDBHandler, PostgresHandler
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
     Resource,

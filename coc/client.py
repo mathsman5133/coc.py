@@ -32,6 +32,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 import asyncpg as asyncpg
 import ujson
 
+import coc
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
@@ -645,7 +646,7 @@ class Client:
             cls: Type[RaidLogEntry] = RaidLogEntry,
             page: bool = False,
             limit: int = 0,
-            conn: asyncpg.Connection = None
+            db_handler: coc.BaseDBHandler = None
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
@@ -674,8 +675,8 @@ class Client:
         limit:
             class:`int`: Number of logs to retrieve
 
-        conn:
-            the database connection to use for long term raid log caching
+        db_handler:
+            The database handler used for long term raid log caching.
 
         Raises
         ------
@@ -722,7 +723,7 @@ class Client:
                                           page=page,
                                           limit=limit,
                                           model=cls,
-                                          conn=conn)
+                                          db_handler=db_handler)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
