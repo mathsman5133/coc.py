@@ -27,7 +27,7 @@ class PostgresHandler(BaseDBHandler):
         super().__init__(max_db_size)
 
     async def _create_table(self):
-        await self._conn.execute('CREATE TABLE IF NOT EXISTSCocPyRaidCache('
+        await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
                                  'clan_tag VARCHAR(12), '
                                  'end_time TIMESTAMP, '
                                  'data JSONB, '
