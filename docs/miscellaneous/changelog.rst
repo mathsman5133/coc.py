@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.3.1
+------
+
+- Added back :func:`coc.Client.get_location_clans_capital` which was accidentally reverted in 2.3.0
+
+- Fixed some minor typos in the docs
+
 v2.3.0
 ------
 Additions:
@@ -52,7 +59,7 @@ Bugs Fixed:
 
 - Fixed a bug that tried to use a cache when `max_cache_size` was set to 0
 
-- Corrected order of elixir troups
+- Corrected order of elixir troops
 
 - Fixed a bug when clans faced each other multiple times in one raid weekend
 
