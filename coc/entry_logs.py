@@ -3,14 +3,8 @@ from __future__ import annotations
 
 import asyncio
 from abc import ABC, abstractmethod
-from datetime import datetime, timedelta
 from typing import Optional, TYPE_CHECKING, Type, Union
 
-import asyncpg
-
-from . import utils
-from .database import BaseDBHandler
-from .miscmodels import Timestamp
 from .raid import RaidLogEntry
 from .wars import ClanWarLogEntry
 
@@ -25,8 +19,7 @@ class LogPaginator(ABC):
                  limit: int,
                  page: bool,
                  json_resp: dict,
-                 model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry]],
-                 conn: asyncpg.Connection = None):
+                 model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry]]):
 
         self._clan_tag = clan_tag
         self._limit = limit
@@ -37,7 +30,6 @@ class LogPaginator(ABC):
         self._response_retry = json_resp.get("_response_retry", 0)
         self._client = client
         self._model = model
-        self._conn = conn
 
     def __len__(self) -> int:
         return len(self._init_logs)
@@ -188,6 +180,7 @@ class ClanWarLog(LogPaginator, ABC):
                        limit: int,
                        page: bool = True,
                        ) -> ClanWarLog:
+
         # Add the limit if specified
         args = {"limit": limit} if limit else {}
 
@@ -207,7 +200,6 @@ class ClanWarLog(LogPaginator, ABC):
 
 class RaidLog(LogPaginator, ABC):
     """Represents a Generator for a RaidLog"""
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -218,17 +210,12 @@ class RaidLog(LogPaginator, ABC):
                        model: Type[RaidLogEntry],
                        limit: int,
                        page: bool = True,
-                       db_handler: BaseDBHandler = None
                        ) -> RaidLog:
-        if db_handler:
-            if page:
-                raise NotImplementedError("Both paging and database caching at the same time are not supported.")
-            json_resp = await cls._fetch_database(client, clan_tag, limit, db_handler)
-        else:
-            # Add the limit if specified
-            args = {"limit": limit} if limit else {}
 
-            json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
+        # Add the limit if specified
+        args = {"limit": limit} if limit else {}
+
+        json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
         return RaidLog(client=client, clan_tag=clan_tag, limit=limit,
                        page=page, json_resp=json_resp, model=model)
 
@@ -240,43 +227,3 @@ class RaidLog(LogPaginator, ABC):
         if fut:
             fut.set_result(result)
         return result
-
-    @classmethod
-    async def _fetch_database(cls,
-                              client: Client,
-                              clan_tag: str,
-                              limit: int,
-                              db_handler: BaseDBHandler,
-                              ) -> dict:
-        """Class method to get cached raids from the database where possible and fetch the rest from the API"""
-        raid_log_entries = await db_handler.get_raid_log_entries(clan_tag, limit)
-        if raid_log_entries:
-            # calculate how many newer raid logs there are that might be uncached
-            limit_to_fetch = (utils.get_raid_weekend_end(datetime.utcnow() - timedelta(weeks=1))
-                              - raid_log_entries[0]["end_time"]).days // 7
-        else:  # nothing cached, so we need to request all the raid logs we want
-            limit_to_fetch = limit
-        if datetime.utcnow() > utils.get_raid_weekend_start():
-            # there is a raid currently running, so we need to fetch it to get live data
-            limit_to_fetch += 1
-        if limit_to_fetch + len(raid_log_entries) < limit:
-            # if we want more raids, than there are stored plus the ones after that, just fetch them all
-            args = {"limit": limit}
-            json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-        else:
-            if limit_to_fetch:  # request the raids after the latest cached one
-                args = {"limit": limit_to_fetch}
-                json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-            else:  # everything is cached, no need to make an API call
-                json_resp = {}
-        items = json_resp.get("items", [])
-
-        # store finished raids in db
-        for item in items:
-            if item["state"] == "ended":
-                await db_handler.write_raid_log_entry(clan_tag, Timestamp(data=item["endTime"]).time, item)
-
-        for entry in raid_log_entries:
-            items.append(entry["data"])
-        json_resp["items"] = items[:limit]
-        return json_resp
