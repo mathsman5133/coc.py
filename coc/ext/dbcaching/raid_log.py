@@ -63,7 +63,6 @@ class CachedRaidLog(RaidLog):
                 await db_handler.write_raid_log_entry(clan_tag, Timestamp(data=item["endTime"]).time, item)
         for entry in raid_log_entries:
             items.append(entry["data"])
-        # If not specified, the limit will be 0, so we don't want to slice the items in that case
-        items = items[:limit] if limit else items
-        json_resp["items"] = items
+        # If not specified, the limit will be 0, so we take as much as we have in that case
+        json_resp["items"] = items[:limit or len(raid_log_entries) + limit_to_fetch]
         return json_resp
