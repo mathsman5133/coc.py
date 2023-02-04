@@ -1,3 +1,6 @@
+# Enables circular import for type hinting coc.Client
+from __future__ import annotations
+
 import json
 from abc import abstractmethod
 from datetime import datetime
@@ -8,6 +11,14 @@ import asyncpg
 class BaseDBHandler:
     def __init__(self, *, max_db_size: int):
         self.max_db_size = max_db_size
+
+    @abstractmethod
+    async def __aenter__(self) -> BaseDBHandler:
+        pass
+
+    @abstractmethod
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        pass
 
     @abstractmethod
     async def _ensure_db_size(self) -> None:
@@ -27,9 +38,17 @@ class BaseDBHandler:
 
 
 class PostgresHandler(BaseDBHandler):
-    def __init__(self, *, max_db_size: int, conn: asyncpg.Connection):
-        self._conn = conn
+    def __init__(self, *, max_db_size: int, pool: asyncpg.Pool):
+        self._pool = pool
+        self._conn = None
         super().__init__(max_db_size=max_db_size)
+
+    async def __aenter__(self) -> PostgresHandler:
+        self._conn = await self._pool.acquire()
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self._conn.close()
 
     async def _create_table(self):
         await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
