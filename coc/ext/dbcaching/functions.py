@@ -1,9 +1,8 @@
-from datetime import datetime
 from typing import Type
 
 from coc import Client, RaidLogEntry, Forbidden, PrivateWarLog
 from coc.ext.dbcaching import CachedRaidLog, BaseDBHandler
-from coc.utils import correct_tag, get_raid_weekend_end
+from coc.utils import correct_tag
 
 
 async def get_raidlog(
@@ -12,7 +11,6 @@ async def get_raidlog(
         cls: Type[RaidLogEntry] = RaidLogEntry,
         handler: BaseDBHandler = None,
         limit: int = 0,
-        week: datetime = None
 ) -> CachedRaidLog:
     """
     Retrieve cached raid logs from a database where possible and fetch them from the API
@@ -39,10 +37,6 @@ async def get_raidlog(
     limit:
         class:`int`: Number of logs to retrieve
 
-    week:
-        class:`datetime`: A time in the week you want the raid of. This can be very efficient
-        if the raid is cached. Otherwise, it needs to fetch all the raids since that one from the API.
-
     Raises
     ------
     TypeError
@@ -50,9 +44,6 @@ async def get_raidlog(
 
     NotFound
         No clan was found with the supplied tag.
-
-    NotFound
-        No raid entry was found for the specified week.
 
     PrivateWarLog
         The clan's warlog is private.
@@ -84,8 +75,7 @@ async def get_raidlog(
                                             clan_tag=clan_tag,
                                             limit=limit,
                                             db_handler=handler,
-                                            model=cls,
-                                            end_time=get_raid_weekend_end(week))
+                                            model=cls)
     except Forbidden as exception:
         raise PrivateWarLog(exception.response,
                             exception.reason) from exception

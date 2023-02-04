@@ -1,3 +1,6 @@
+# Enables circular import for type hinting coc.Client
+from __future__ import annotations
+
 from datetime import datetime, timedelta
 from typing import Type
 
@@ -19,7 +22,6 @@ class CachedRaidLog(RaidLog):
                        model: Type[RaidLogEntry],
                        limit: int,
                        db_handler: BaseDBHandler = None,
-                       end_time: datetime = None
                        ) -> CachedRaidLog:
         json_resp = await cls._fetch_database(client, clan_tag, limit, db_handler)
         return CachedRaidLog(client=client, clan_tag=clan_tag, limit=limit,

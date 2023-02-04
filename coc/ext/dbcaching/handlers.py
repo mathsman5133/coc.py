@@ -18,6 +18,10 @@ class BaseDBHandler:
         pass
 
     @abstractmethod
+    async def get_raid_ended_at(self, clan_tag: str, end_time: datetime) -> dict:
+        pass
+
+    @abstractmethod
     async def write_raid_log_entry(self, clan_tag: str, end_time: datetime, data: dict) -> None:
         pass
 
@@ -54,6 +58,16 @@ class PostgresHandler(BaseDBHandler):
         except asyncpg.UndefinedTableError:
             await self._create_table()
             return []
+
+    async def get_raid_ended_at(self, clan_tag: str, end_time: datetime) -> dict:
+        try:
+            [data] = await self._conn.fetchrow('SELECT data FROM CocPyRaidCache '
+                                               'WHERE clan_tag = $1 '
+                                               'AND end_time = $2',
+                                               clan_tag, end_time)
+            return data
+        except asyncpg.UndefinedTableError:
+            await self._create_table()
 
     async def write_raid_log_entry(self, clan_tag: str, end_time: datetime, data: dict) -> None:
         data = json.dumps(data)
