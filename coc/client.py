@@ -229,7 +229,7 @@ class Client:
     async def __aexit__(self, *args):
         await self.close()
 
-    def _create_client(self, email, password):
+    def _create_client(self, email, password, tokens=None):
         return HTTPClient(
             client=self,
             email=email,
@@ -237,7 +237,7 @@ class Client:
             key_names=self.key_names,
             key_scopes=self.key_scopes,
             loop=self.loop,
-            key_count=self.correct_key_count,
+            key_count=self.correct_key_count if tokens is None else len(tokens),
             throttle_limit=self.throttle_limit,
             throttler=self.throttler,
             cache_max_size=self.cache_max_size,
@@ -329,10 +329,9 @@ class Client:
         tokens: list[str]
             Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
         """
-        self.http = http = self._create_client(None, None)
+        self.http = http = self._create_client(None, None, tokens=tokens)
         http._keys = tokens
         http.keys = cycle(http._keys)
-        http.key_count = len(tokens)
         await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
