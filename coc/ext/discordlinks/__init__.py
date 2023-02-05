@@ -132,7 +132,7 @@ class DiscordLinkClient:
                 return await self._request(method, url, **kwargs)
 
     async def _get_key(self):
-        if not self.key or self.key.expires_at < datetime.utcnow():
+        if not self.key or (self.key.expires_at and (self.key.expires_at < datetime.utcnow())):
             await self._refresh_key()
 
         return self.key.token

@@ -1,7 +1,9 @@
 .. currentmodule:: coc
 .. _game_data:
+
 Game Data
 =========
+
 The following provides a detailed how-to for use of static game data that is loaded into coc.py.
 
 All game data has been retrieved from https://coc.guide and is freely available.
@@ -22,6 +24,7 @@ Additionally, speed and memory consumption has been prioritised and optimised wh
 
 
 .. _initialising_game_data:
+
 Initialising the Client
 -----------------------
 
@@ -45,7 +48,7 @@ Although all efforts have been made to minimise overheads, some may prefer to on
 2. Default
 
     In this option, coc.py will always inject game metadata when using :meth:`Client.get_player`, however will not
-    load game metadata for any events dispatched. Instead see :ref:`manually_loading_metadata` for how to load it
+    load game metadata for any events dispatched. Instead see :ref:`loading_game_data` for how to load it
     when using events.
 
     Game metadata will be loaded on startup using this option, which means you can use :meth:`Client.parse_army_link` etc.
@@ -82,6 +85,7 @@ Although all efforts have been made to minimise overheads, some may prefer to on
 
 
 .. _loading_game_data:
+
 Loading Game Data Manually
 --------------------------
 
@@ -125,6 +129,7 @@ won't have metadata loaded. This is easy to fix, with the :meth:`Player.load_gam
 
 
 .. _initiated_v_uninitiated:
+
 Initiated vs Uninitiated Objects
 --------------------------------
 
@@ -136,8 +141,8 @@ is what you use when accessing :attr:`Player.troops`.
 When you use :meth:`Client.get_troop`, you receive an uninitiated class, which has slightly different ways of dealing
 with attributes.
 
-
 .. _initiated_objects:
+
 Initiated Objects
 ~~~~~~~~~~~~~~~~~
 
@@ -197,6 +202,7 @@ Alternatively, you could use :meth:`Client.get_troop` and use the unititiated ob
 
 
 .. _uninitiated_objects:
+
 Uninitiated Objects
 ~~~~~~~~~~~~~~~~~~~
 

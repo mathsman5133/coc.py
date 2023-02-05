@@ -74,6 +74,7 @@ HOME_TROOP_ORDER = [
     "Electro Dragon",
     "Yeti",
     "Dragon Rider",
+    "Electro Titan",
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -91,7 +92,8 @@ SIEGE_MACHINE_ORDER = [
     "Stone Slammer",
     "Siege Barracks",
     "Log Launcher",
-    "Flame Flinger"
+    "Flame Flinger",
+    "Battle Drill",
 ]
 
 SUPER_TROOP_ORDER = [
@@ -108,7 +110,8 @@ SUPER_TROOP_ORDER = [
     "Super Valkyrie",
     "Super Witch",
     "Ice Hound",
-    "Super Bowler"
+    "Super Bowler",
+    "Super Miner",
 ]
 
 HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
@@ -136,6 +139,7 @@ SPELL_ORDER = [
     "Freeze Spell",
     "Clone Spell",
     "Invisibility Spell",
+    "Recall Spell",
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
@@ -145,7 +149,16 @@ SPELL_ORDER = [
 
 HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
-HERO_PETS_ORDER = ["L.A.S.S.I", "Electro Owl", "Mighty Yak", "Unicorn"]
+PETS_ORDER = [
+    "L.A.S.S.I",
+    "Electro Owl",
+    "Mighty Yak",
+    "Unicorn",
+    "Frosty",
+    "Diggy",
+    "Poison Lizard",
+    "Phoenix",
+]
 
 ACHIEVEMENT_ORDER = [
     # Home Base

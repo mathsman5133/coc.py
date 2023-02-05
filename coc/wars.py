@@ -21,9 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+# Enables circular import for type hinting coc.Client
+from __future__ import annotations
+
 import itertools
 
-from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING
+from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
 from .enums import WarRound
 from .iterators import LeagueWarIterator
@@ -35,6 +38,7 @@ from .war_attack import WarAttack
 if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .war_members import ClanWarMember  # noqa
+    from .client import Client
 
 
 class ClanWar:
@@ -78,12 +82,13 @@ class ClanWar:
         "league_group",
         "attacks_per_member",
         "_response_retry",
+        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
         self._response_retry = data.get("_response_retry")
         self._client = client
-
+        self._raw_data = data if client and client.raw_attribute else None
         self.clan_tag = kwargs.pop("clan_tag", None)
         self._from_data(data)
 
@@ -94,37 +99,45 @@ class ClanWar:
         data_get = data.get
 
         self.state: str = data_get("state")
-        self.preparation_start_time = try_enum(Timestamp, data=data_get("preparationStartTime"))
+        self.preparation_start_time = try_enum(Timestamp, data=data_get(
+            "preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag: str = data_get("tag")
-        if data_get("attacksPerMember") is None and self.is_cwl:
+        if data_get("attacksPerMember") is None or self.is_cwl:
             self.attacks_per_member: int = 1
         else:
             self.attacks_per_member: int = data_get("attacksPerMember")
 
-        self.team_size: int = data_get("teamSize") or len(data_get("clan", {}).get("members", []))
+        self.team_size: int = data_get("teamSize") or len(
+            data_get("clan", {}).get("members", []))
 
         clan_data = data_get("clan")
         # annoying bug where if you request a war with a clan tag that clan could be the opponent or clan,
         # depending on the way the game stores it internally. This isn't very helpful as we always want it
         # from the perspective of the tag we provided, so switch them around if it isn't correct.
         if clan_data and clan_data.get("tag", self.clan_tag) == self.clan_tag:
-            self.clan = try_enum(WarClan, data=clan_data, client=self._client, war=self)
-            self.opponent = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
+            self.clan = try_enum(WarClan, data=clan_data, client=self._client,
+                                 war=self)
+            self.opponent = try_enum(WarClan, data=data_get("opponent"),
+                                     client=self._client, war=self)
         else:
-            self.clan = try_enum(WarClan, data=data_get("opponent"), client=self._client, war=self)
-            self.opponent = try_enum(WarClan, data=clan_data, client=self._client, war=self)
+            self.clan = try_enum(WarClan, data=data_get("opponent"),
+                                 client=self._client, war=self)
+            self.opponent = try_enum(WarClan, data=clan_data,
+                                     client=self._client, war=self)
 
     @property
     def attacks(self) -> List[WarAttack]:
         """List[:class:`WarAttack`]: Returns all attacks this war, sorted by attack order."""
-        return sorted([*self.clan.attacks, *self.opponent.attacks], key=lambda x: x.order, reverse=True)
+        return sorted([*self.clan.attacks, *self.opponent.attacks],
+                      key=lambda x: x.order, reverse=True)
 
     @property
     def members(self) -> List["ClanWarMember"]:
         """List[:class:`ClanWarMember`]: A list of members that are in the war."""
-        return sorted([*self.clan.members, *self.opponent.members], key=lambda x: (not x.is_opponent, x.map_position))
+        return sorted([*self.clan.members, *self.opponent.members],
+                      key=lambda x: (not x.is_opponent, x.map_position))
 
     @property
     def type(self) -> Optional[str]:
@@ -156,7 +169,8 @@ class ClanWar:
             20 * 60 * 60,
             24 * 60 * 60,
         ]
-        if (self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
+        if (
+                self.start_time.time - self.preparation_start_time.time).seconds in prep_list:
             return "friendly"
 
         return "random"
@@ -246,7 +260,8 @@ class ClanWar:
         """
         return get(self.members, **attrs)
 
-    def get_attack(self, attacker_tag: str, defender_tag: str) -> Optional[WarAttack]:
+    def get_attack(self, attacker_tag: str, defender_tag: str) -> Optional[
+        WarAttack]:
         """Return the :class:`WarAttack` with the attacker tag and defender tag provided.
 
         If the attack was not found, this will return ``None``.
@@ -269,15 +284,17 @@ class ClanWar:
         If the player has no defenses, this will return an empty list.
 
         Returns
-        --------
-        The player's defenses: :class:`list`[:class:`WarAttack`]"""
+        -------
+        The player's defenses: List[:class:`WarAttack`]"""
         defender = self.get_member(defender_tag)
         # we could do a global lookup on all attacks in the war but this is faster as we have to lookup half the attacks
         if defender.is_opponent:
             # we need to get home clan's attacks on this base
-            return list(filter(lambda x: x.defender_tag == defender_tag, self.clan.attacks))
+            return list(filter(lambda x: x.defender_tag == defender_tag,
+                               self.clan.attacks))
 
-        return list(filter(lambda x: x.defender_tag == defender_tag, self.opponent.attacks))
+        return list(filter(lambda x: x.defender_tag == defender_tag,
+                           self.opponent.attacks))
 
 
 class ClanWarLogEntry:
@@ -310,12 +327,26 @@ class ClanWarLogEntry:
         :class:`int`: The number of attacks each member had this war.
     """
 
-    __slots__ = ("result", "end_time", "team_size", "clan", "opponent", "_client", "attacks_per_member")
+    __slots__ = (
+        "result", "end_time", "team_size", "clan", "opponent", "_client",
+        "attacks_per_member", "_raw_data", "_response_retry")
 
-    def __init__(self, *, data, client, **_):
+    def __init__(self, *, data, client, **kwargs):
         self._client = client
-
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
+        self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, self.__class__):
+            if self.clan == other.clan \
+                    and self.opponent == other.opponent \
+                    and self.result == other.result \
+                    and self.end_time == other.end_time \
+                    and self.attacks_per_member == other.attacks_per_member:
+                return True
+
+        return False
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
@@ -333,7 +364,8 @@ class ClanWarLogEntry:
             self.attacks_per_member: int = data_get("attacksPerMember")
 
     def _fake_load_clan(self, data):
-        if not (data and data.get("tag")):  # CWL seasons have an opposition with only badges and no tag/name.
+        if not (data and data.get(
+                "tag")):  # CWL seasons have an opposition with only badges and no tag/name.
             return None
 
         data["teamSize"] = self.team_size
@@ -367,17 +399,22 @@ class ClanWarLeagueGroup:
 
     """
 
-    __slots__ = ("state", "season", "rounds", "number_of_rounds", "_client", "__iter_clans", "_cs_clans")
+    __slots__ = (
+        "state", "season", "rounds", "number_of_rounds", "_client",
+        "__iter_clans",
+        "_cs_clans", "_raw_data")
 
     def __repr__(self):
         attrs = [
             ("state", self.state),
             ("season", self.season),
         ]
-        return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+        return "<%s %s>" % (
+            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __init__(self, *, data, client, **_):
         self._client = client
+        self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
@@ -386,20 +423,23 @@ class ClanWarLeagueGroup:
         self.state: str = data_get("state")
         self.season: str = data_get("season")
 
-        rounds = data_get("rounds")
+        rounds = data_get("rounds", [])
         self.number_of_rounds: int = len(rounds)
         # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
         # we want to get only the valid rounds
-        self.rounds: List[List[str]] = [n["warTags"] for n in rounds if n["warTags"][0] != "#0"]
+        self.rounds: List[List[str]] = [n["warTags"] for n in rounds if
+                                        n["warTags"][0] != "#0"]
 
-        self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client) for data in data_get("clans", []))
+        self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client)
+                             for data in data_get("clans", []))
 
     @cached_property("_cs_clans")
     def clans(self) -> List[ClanWarLeagueClan]:
         """List[:class:`LeagueClan`]: Returns all participating clans."""
         return list(self.__iter_clans)
 
-    def get_wars_for_clan(self, clan_tag: str, cls: Type[ClanWar] = ClanWar) -> AsyncIterator[ClanWar]:
+    def get_wars_for_clan(self, clan_tag: str, cls: Type[ClanWar] = ClanWar) -> \
+            AsyncIterator[ClanWar]:
         """Returns every war the clan has participated in this current CWL.
 
         This returns a :class:`LeagueWarIterator` which fetches all wars in parallel.
@@ -426,10 +466,13 @@ class ClanWarLeagueGroup:
         :class:`ClanWar`
             A war in the current CWL season with the clan in it..
         """
-        return LeagueWarIterator(client=self._client, tags=itertools.chain(*self.rounds), clan_tag=clan_tag, cls=cls)
+        return LeagueWarIterator(client=self._client,
+                                 tags=itertools.chain(*self.rounds),
+                                 clan_tag=clan_tag, cls=cls)
 
     def get_wars(
-        self, cwl_round: WarRound = WarRound.current_war, cls: Type[ClanWar] = ClanWar
+            self, cwl_round: WarRound = WarRound.current_war,
+            cls: Type[ClanWar] = ClanWar
     ) -> AsyncIterator[ClanWar]:
         """Returns war information for every war in a league round.
 

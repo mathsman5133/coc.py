@@ -5,6 +5,10 @@ from coc.miscmodels import Location, Label, WarLeague
 from coc.players import ClanMember
 from tests.mockdata.mock_clan import SEARCH_CLAN_MOCK
 
+import tracemalloc
+
+tracemalloc.start()
+
 
 class TestClans(unittest.TestCase):
     def test_points(self):

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coc.py"
+authors = [{ name = "mathsman5133" }]
+maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuchenmampfer" }, { name = "doluk" }]
+version = "2.3.1"
+description = "A python wrapper for the Clash of Clans API"
+requires-python = ">=3.7.3"
+readme = "README.rst"
+license = { text = "MIT" }
+keywords = ["coc", "clash of clans", "coc.py", "clash api"]
+classifiers = ["Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",]
+dependencies = ["aiohttp", "ujson"]
+[project.urls]
+documentation = "https://cocpy.readthedocs.io/en/latest/"
+repository = "https://github.com/mathsman5133/coc.py"
+changelog = "https://cocpy.readthedocs.io/en/latest/miscellaneous/changelog.html"
+
+[project.optional-dependencies]
+docs = ["sphinx",
+    "sphinx_rtd_theme",
+    "sphinxcontrib_trio",
+    "autodocsumm",
+]
+
+[tool.setuptools]
+packages = ["coc", "coc.ext.discordlinks", "coc.static", "coc.ext.fullwarapi"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+coc = ["events.pyi"]

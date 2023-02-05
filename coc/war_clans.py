@@ -104,7 +104,7 @@ class WarClan(BaseClan):
 
         if self._war:
             self.max_stars: int = self._war.team_size * 3
-            self.total_attacks: int = self._war.team_size * 2
+            self.total_attacks: int = self._war.team_size * self._war.attacks_per_member
         else:
             self.max_stars: int = (data_get("teamSize") or 0) * 3
             self.total_attacks: int = (data_get("teamSize") or 0) * 3
@@ -129,7 +129,8 @@ class WarClan(BaseClan):
 
     @cached_property("_cs_attacks")
     def attacks(self) -> typing.List["WarAttack"]:
-        """List[:class:`WarAttack`]: Returns all clan member's attacks this war. This is sorted by attack order."""
+        """List[:class:`WarAttack`]: Returns all clan member's attacks this
+        war. This is sorted by attack order."""
         if not self._war:
             return []
 
@@ -141,7 +142,8 @@ class WarClan(BaseClan):
 
     @cached_property("_cs_defenses")
     def defenses(self) -> typing.List["WarAttack"]:
-        """List[:class:`WarAttack`]: Returns all clan member's defenses this war. This is sorted by attack order.
+        """List[:class:`WarAttack`]: Returns all clan member's defenses
+        this war. This is sorted by attack order.
 
         Equivalent to the other team's ``.attacks`` property.
         """
@@ -150,17 +152,21 @@ class WarClan(BaseClan):
     
     @property
     def average_attack_duration(self) -> int:
-        """:class:`int`: Returns the average duration of all clan member's attacks this war."""
+        """:class:`int`: Returns the average duration of all clan member's
+        attacks this war."""
         count = len(self.attacks)
         total_duration = sum(attack.duration for attack in self.attacks)
         return int(total_duration/count) if count > 0 else 0
 
     def get_member(self, tag: str) -> typing.Optional[ClanWarMember]:
-        """Get a member of the clan for the given tag, or ``None`` if not found.
+        """
+        Get a member of the clan for the given tag, or ``None`` if not found.
 
         Returns
         --------
-        The clan member who matches the tag.: Optional[:class:`ClanWarMember`]"""
+        ClanWarMember or None
+            The clan member who matches the tag.: Optional[:class:`ClanWarMember`]"""
+
         tag = correct_tag(tag)
         if not self._members:
             _ = self.members

@@ -50,8 +50,7 @@ More on that in the :ref:`game_data` section, however.
 
 Miscellaneous
 -------------
-- ``ujson`` has been added to the requirements and will be used where possible,
-as a faster method of deserialising json payloads from the API.
+- ``ujson`` has been added to the requirements and will be used where possible, as a faster method of deserialising json payloads from the API.
 
 - Internal handling of keys has been written to make it more stable.
 

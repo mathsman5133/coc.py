@@ -44,7 +44,7 @@ from .errors import (
     InvalidCredentials,
     GatewayError,
 )
-from .utils import LRU, HTTPStats
+from .utils import FIFO, HTTPStats
 
 LOG = logging.getLogger(__name__)
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
@@ -143,7 +143,23 @@ class Route:
 
     BASE = "https://api.clashofclans.com/v1"
 
-    def __init__(self, method, path: str, **kwargs):
+    def __init__(self, method: str, path: str, **kwargs: dict):
+        """
+        The class is used to create the final URL used to fetch the data
+        from the API. The parameters that are passed to the API are all in
+        the GET request packet. This class will parse the `kwargs` dictionary
+        and concatenate any parameters passed in.
+
+        Parameters
+        ----------
+        method:
+            :class:`str`: HTTP method used for the HTTP request
+        path:
+            :class:`str`: URL path used for the HTTP request
+        kwargs:
+            :class:`dict`: Optional options used to concatenate into the final
+            URL
+        """
         if "#" in path:
             path = path.replace("#", "%23")
 
@@ -191,7 +207,8 @@ class HTTPClient:
 
         self.__session = None
         self.__lock = asyncio.Semaphore(per_second)
-        self.cache = cache_max_size and LRU(cache_max_size)
+        self.cache = cache_max_size and FIFO(cache_max_size)
+        self._cache_remove_count = 0
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
 
         if issubclass(throttler, BasicThrottler):
@@ -210,6 +227,12 @@ class HTTPClient:
     def _cache_remove(self, key):
         try:
             del self.cache[key]
+            #  The following fixes a memory leak that is caused by python dicts not properly freeing disk space
+            self._cache_remove_count += 1
+            if self._cache_remove_count >= self.cache.max_size:
+                self.cache = self.cache.copy()
+                self._cache_remove_count = 0
+                LOG.debug("Cache copied to prevent a memory leak")
         except KeyError:
             pass
 
@@ -236,7 +259,7 @@ class HTTPClient:
         cache_control_key = route.url
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if cache is not None and not self.client.realtime:
+        if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.get("ignore_cache", False):
             try:
                 return cache[cache_control_key]
             except KeyError:
@@ -250,7 +273,7 @@ class HTTPClient:
 
                         perf = (perf_counter() - start) * 1000
                         log_info = {"method": method, "url": url, "perf_counter": perf, "status": response.status}
-                        if self.stats:
+                        if isinstance(self.stats, HTTPStats):
                             self.stats[route.stats_key] = perf
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
@@ -260,7 +283,7 @@ class HTTPClient:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age="))
                             data["_response_retry"] = delta
-                            if cache is not None and not self.client.realtime:
+                            if isinstance(cache, FIFO) and not self.client.realtime:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
@@ -339,18 +362,18 @@ class HTTPClient:
     def get_clan(self, tag):
         return self.request(Route("GET", "/clans/{}".format(tag)))
 
-    def get_clan_members(self, tag):
-        return self.request(Route("GET", "/clans/{}/members".format(tag)))
+    def get_clan_members(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/members".format(tag), **kwargs))
 
-    def get_clan_warlog(self, tag):
-        return self.request(Route("GET", "/clans/{}/warlog".format(tag)))
+    def get_clan_warlog(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/warlog".format(tag), **kwargs))
 
-    def get_clan_current_war(self, tag, realtime = None):
+    def get_clan_current_war(self, tag, realtime=None):
         return self.request(Route("GET", "/clans/{}/currentwar".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
 
-    def get_clan_war_league_group(self, tag, realtime = None):
+    def get_clan_war_league_group(self, tag, realtime=None):
         return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
@@ -359,6 +382,9 @@ class HTTPClient:
         return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
+
+    def get_clan_raidlog(self, tag, **kwargs):
+        return self.request(Route("GET", "/clans/{}/capitalraidseasons".format(tag), **kwargs))
 
     # locations
 
@@ -376,6 +402,9 @@ class HTTPClient:
 
     def get_location_clans_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/clans-versus".format(location_id), **kwargs))
+
+    def get_location_clans_capital(self, location_id, **kwargs):
+        return self.request(Route("GET", "/locations/{}/rankings/capitals".format(location_id), **kwargs))
 
     def get_location_players_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), **kwargs))
@@ -410,6 +439,9 @@ class HTTPClient:
     def get_player_labels(self, **kwargs):
         return self.request(Route("GET", "/labels/players", **kwargs))
 
+    def get_current_goldpass_season(self):
+        return self.request(Route("GET", "/goldpass/seasons/current"))
+
     # key updating management
 
     async def initialise_keys(self):
@@ -439,12 +471,16 @@ class HTTPClient:
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
             if len(self._keys) < self.key_count:
-                for key in (k for k in keys if k["name"] == self.key_names and ip not in k["cidrRanges"]):
+                for key in keys:
+                    if key["name"] != self.key_names or ip in key["cidrRanges"]:
+                        continue
                     LOG.info(
                             "Deleting key with the name %s and IP %s (not matching our current IP address).",
                             self.key_names, key["cidrRanges"],
                     )
-                    await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    resp = await session.post("https://developer.clashofclans.com/api/apikey/revoke", json={"id": key["id"]})
+                    if resp.status == 200:
+                        keys.remove(key)
 
                 while len(self._keys) < self.key_count and len(keys) < KEY_MAXIMUM:
                     data = {
@@ -458,6 +494,11 @@ class HTTPClient:
 
                     resp = await session.post("https://developer.clashofclans.com/api/apikey/create", json=data)
                     key = await resp.json()
+
+                    if resp.status != 200:
+                        LOG.error(key.get("description"))
+                        raise ValueError(key.get("description"))
+
                     self._keys.append(key["key"]["key"])
 
             if len(keys) == 10 and len(self._keys) < self.key_count:

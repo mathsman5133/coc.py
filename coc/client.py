@@ -23,6 +23,7 @@ SOFTWARE.
 """
 import asyncio
 import logging
+from enum import Enum
 
 from itertools import cycle
 from pathlib import Path
@@ -33,7 +34,7 @@ import ujson
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import Label, League, Location, LoadGameData
+from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
 from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -44,10 +45,12 @@ from .iterators import (
     CurrentWarIterator,
 )
 from .players import Player, ClanMember, RankedPlayer
+from .raid import RaidLogEntry
 from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+from.entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
     from .hero import Hero, Pet
@@ -63,6 +66,16 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
+
+
+class ClashAccountScopes(Enum):
+    """
+    Values represent the scope required for each type of user. A USER is
+    anyone who has access to the API. A REAL user is a user with special
+    access from SuperCell with realtime scope access.
+    """
+    USER = "clash"
+    REAL = "clash:*:verifytoken,realtime"
 
 
 class Client:
@@ -107,7 +120,7 @@ class Client:
         Defaults to ``True``.
 
     connector : :class:`aiohttp.BaseConnector`
-        The aiohttp connector to use. By default this is ``None``.
+        The aiohttp connector to use. By default, this is ``None``.
 
     timeout: :class:`float`
         The number of seconds before timing out with an API query. Defaults to 30.
@@ -118,6 +131,17 @@ class Client:
     load_game_data: :class:`LoadGameData`
         The option for how coc.py will load game data. See :ref:`initialising_game_data` for more info.
 
+    realtime: :class:`bool`
+        Some developers are given special access to an uncached API access by
+        Super Cell. If you are one of those developers, your account will have
+        special flags that will only be interpreted by coc.py if you set this
+        bool to True.
+
+    raw_attribute: :class:`bool`
+        The option to enable the _raw_data attribute for most objects in the library. This attribute will contain
+        the original json data as returned by the API. This can be useful if you want to store a response in a database
+        for later use or are interested in new things that coc.py does not support otherwise yet. But because this
+        increases the memory footprint and is not needed for most use cases, this defaults to ``False``.
 
     Attributes
     ----------
@@ -138,6 +162,7 @@ class Client:
         "stats_max_size",
         "http",
         "realtime",
+        "raw_attribute",
         "_ready",
         "correct_tags",
         "load_game_data",
@@ -156,7 +181,6 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        key_scopes: str = "clash",
         throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
@@ -166,8 +190,9 @@ class Client:
         cache_max_size: int = 10000,
         stats_max_size: int = 1000,
         load_game_data: LoadGameData = LoadGameData(default=True),
-        realtime = False,
-        **_,
+        realtime=False,
+        raw_attribute=False,
+        **kwargs,
     ):
 
         self.loop = loop or asyncio.get_event_loop()
@@ -178,7 +203,7 @@ class Client:
             raise RuntimeError("Key count must be within {}-{}".format(KEY_MINIMUM, KEY_MAXIMUM))
 
         self.key_names = key_names
-        self.key_scopes = key_scopes
+        self.key_scopes = ClashAccountScopes.REAL.value if realtime else ClashAccountScopes.USER.value
         self.throttle_limit = throttle_limit
         self.throttler = throttler
         self.connector = connector
@@ -188,6 +213,7 @@ class Client:
 
         self.http = None  # set in method login()
         self.realtime = realtime
+        self.raw_attribute = raw_attribute
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
 
@@ -195,6 +221,13 @@ class Client:
         self._players = {}
         self._clans = {}
         self._wars = {}
+
+    async def __aenter__(self):
+        self.__init__()
+        return self
+
+    async def __aexit__(self, *args):
+        await self.close()
 
     def _create_client(self, email, password):
         return HTTPClient(
@@ -224,10 +257,13 @@ class Client:
         for supercell_name, data in buildings.items():
             if supercell_name == "Laboratory":
                 lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                # there are troops with no lab ...
+                lab_to_townhall[-1] = 1
+                lab_to_townhall[0] = 2
                 break
         else:
             # if the files failed to load, fallback to the old formula of lab level = TH level - 2
-            lab_to_townhall = {i: i + 2 for i in range(1, 15)}
+            lab_to_townhall = {i-2: i for i in range(1, 15)}
 
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
             holder._load_json(object_ids, english_aliases, lab_to_townhall)
@@ -262,17 +298,42 @@ class Client:
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
-        """Retrieves all keys and creates an HTTP connection ready for use.
+        """Creates an HTTP connection ready for use with the keys you provide.
+
+        .. deprecated:: v2.3.0
+            This function has been deemed deprecated to allow
+            asyncio to clean up the async structures. Please use :func:`Client.login_with_tokens`
+            instead.
 
         Parameters
         ----------
-        keys
+        keys: list[str]
+            Keys or tokens as found from https://developer.clashofclans.com.
+
+
         """
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
         http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
+        self._create_holders()
+
+        LOG.debug("HTTP connection created. Client is ready for use.")
+
+    async def login_with_tokens(self, *tokens: str) -> None:
+        """Creates an HTTP connection ready for use with the tokens you provide.
+
+        Parameters
+        ----------
+        tokens: list[str]
+            Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
+        """
+        self.http = http = self._create_client(None, None)
+        http._keys = tokens
+        http.keys = cycle(http._keys)
+        http.key_count = len(tokens)
+        await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
         LOG.debug("HTTP connection created. Client is ready for use.")
@@ -493,9 +554,18 @@ class Client:
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
-        **kwargs
-    ) -> List[ClanWarLogEntry]:
-        """Retrieve a clan's clan war log.
+        page: bool = False,
+        limit: int = 0
+    ) -> ClanWarLog:
+        """
+        Retrieve a clan's clan war log. By default, this will return
+        all the clan's log available in the API. This will of course consume
+        memory. The option of limiting the amount of log items fetched
+        can be controlled with the `limit` parameter. Additionally, if
+        `paginate` is set to True, and an async for loop is performed
+        on this object, then additional log items will be fetched but only
+        consume the same amount of memory space at all time.
+
 
         .. note::
 
@@ -506,8 +576,20 @@ class Client:
 
         Parameters
         -----------
-        clan_tag : str
-            The clan tag to search for.
+        cls:
+            Target class to use to model that data returned
+
+        clan_tag:
+            class:`str`: The clan tag to search for.
+
+        page:
+            class:`bool`: Enable fetching logs while only holding the
+            same amount of logs as `limit`. If `paginate` is set to True,
+            and `limit` is set to default of 0, then `limit` will be set to
+            10 automatically.
+
+        limit:
+            class:`int`: Number of logs to retrieve
 
         Raises
         ------
@@ -529,21 +611,114 @@ class Client:
 
         Returns
         --------
-        List[:class:`ClanWarLogEntry`]
+        :class:`ClanWarLog`:
             Entries in the warlog of the requested clan.
         """
+        if limit < 0:
+            raise ValueError("Limit cannot be negative")
+
         if not issubclass(cls, ClanWarLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        try:
-            data = await self.http.get_clan_warlog(clan_tag)
-        except Forbidden as exception:
-            raise PrivateWarLog(exception.response, exception.reason) from exception
+        # If paginate is enabled and limit is set to default of 0, then
+        # set limit to a new default of 10
+        if page:
+            limit = limit if limit else 10
 
-        return [cls(data=wdata, client=self, **kwargs) for wdata in data.get("items", [])]
+        try:
+            return await ClanWarLog.init_cls(client=self,
+                                             clan_tag=clan_tag,
+                                             page=page,
+                                             limit=limit,
+                                             model=cls)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response,
+                                exception.reason) from exception
+
+    async def get_raidlog(
+            self,
+            clan_tag: str,
+            cls: Type[RaidLogEntry] = RaidLogEntry,
+            page: bool = False,
+            limit: int = 0
+    ) -> RaidLog:
+        """
+        Retrieve a clan's Capital Raid Log. By default, this will return
+        all the clan's log available in the API. This will of course consume
+        memory. The option of limiting the amount of log items fetched
+        can be controlled with the `limit` parameter. Additionally, if
+        `paginate` is set to True, and an async for loop is performed
+        on this object, then additional log items will be fetched but only
+        consume the same amount of memory space at all time.
+
+
+        Parameters
+        -----------
+        cls:
+            Target class to use to model that data returned
+
+        clan_tag:
+            class:`str`: The clan tag to search for.
+
+        page:
+            class:`bool`: Enable fetching logs while only holding the
+            same amount of logs as `limit`. If `paginate` is set to True,
+            and `limit` is set to default of 0, then `limit` will be set to
+            10 automatically.
+
+        limit:
+            class:`int`: Number of logs to retrieve
+
+        Raises
+        ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RaidLogEntry`.
+
+        NotFound
+            No clan was found with the supplied tag.
+
+        PrivateWarLog
+            The clan's warlog is private.
+
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        :class:`RaidLog`:
+            Entries in the capital raid seasons of the requested clan.
+        """
+
+        if limit < 0:
+            raise ValueError("Limit cannot be negative")
+
+        if not issubclass(cls, RaidLogEntry):
+            raise TypeError("cls must be a subclass of ClanWarLogEntry.")
+
+        if self.correct_tags:
+            clan_tag = correct_tag(clan_tag)
+
+        # If paginate is enabled and limit is set to default of 0, then
+        # set limit to a new default of 10
+        if page:
+            limit = limit if limit else 10
+
+        try:
+            return await RaidLog.init_cls(client=self,
+                                          clan_tag=clan_tag,
+                                          page=page,
+                                          limit=limit,
+                                          model=cls)
+        except Forbidden as exception:
+            raise PrivateWarLog(exception.response,
+                                exception.reason) from exception
 
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
         """
@@ -895,10 +1070,12 @@ class Client:
 
         if cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
-        elif cwl_round is WarRound.current_preparation and league_group.state == "warEnded":
+        elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
         elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
             return None  # no previous war for first rounds.
+        elif cwl_round is WarRound.current_war and league_group.state == "ended":
+            round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
         elif cwl_round is WarRound.previous_war and is_prep:
             round_tags = league_group.rounds[-2]
         elif cwl_round is WarRound.previous_war:
@@ -914,6 +1091,11 @@ class Client:
         kwargs["clan_tag"] = clan_tag
         async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
+                return war
+            elif war.opponent.tag == clan_tag:
+                tmp = war.clan
+                war.clan = war.opponent
+                war.opponent = tmp
                 return war
 
     def get_current_wars(
@@ -1087,6 +1269,40 @@ class Client:
         """
 
         data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
+        return [RankedClan(data=n, client=self) for n in data["items"]]
+
+    async def get_location_clans_capital(
+        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    ) -> List[RankedClan]:
+        """Get clan capital rankings for a specific location
+
+        Parameters
+        -----------
+        location_id : int
+            The Location ID to search for. Defaults to all locations (``global``).
+        limit : int
+            The number of results to fetch.
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`RankedClan`]
+            The top clans for the requested location.
+        """
+
+        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after)
         return [RankedClan(data=n, client=self) for n in data["items"]]
 
     async def get_location_players(
@@ -1519,6 +1735,24 @@ class Client:
 
         data = await self.http.verify_player_token(player_tag, token)
         return data and data["status"] == "ok" or False
+
+    async def get_current_goldpass_season(self) -> GoldPassSeason:
+        """Get the current gold pass season
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`GoldPassSeason`
+            The gold pass season object of the current season"""
+        data = await self.http.get_current_goldpass_season()
+        return GoldPassSeason(data=data)
 
     def parse_army_link(self, link: str):
         """Transform an army link from in-game into a list of troops and spells.
