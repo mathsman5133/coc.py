@@ -312,10 +312,10 @@ class Client:
 
 
         """
+        self.correct_key_count = len(tokens)
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
-        http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
@@ -329,10 +329,10 @@ class Client:
         tokens: list[str]
             Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
         """
+        self.correct_key_count = len(tokens)
         self.http = http = self._create_client(None, None)
         http._keys = tokens
         http.keys = cycle(http._keys)
-        http.key_count = len(tokens)
         await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
