@@ -223,7 +223,6 @@ class Client:
         self._wars = {}
 
     async def __aenter__(self):
-        self.__init__()
         return self
 
     async def __aexit__(self, *args):
