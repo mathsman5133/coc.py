@@ -74,6 +74,7 @@ class BasicThrottler:
         self.sleep_time = sleep_time
         self.last_run = None
         self.lock = asyncio.Lock()
+        LOG.debug("BasicThrottler initialized with sleeptime %s", self.sleep_time)
 
     async def __aenter__(self):
         async with self.lock:
@@ -108,6 +109,8 @@ class BatchThrottler:
         self.retry_interval = retry_interval
 
         self._task_logs = deque()
+        LOG.debug("BatchThrottler initialized with rate_limit %s, per %s, retry_interval %s", self.rate_limit, self.per,
+                  self. retry_interval)
 
     async def __aenter__(self):
         while True:
@@ -466,7 +469,8 @@ class HTTPClient:
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
             keys = (await resp.json())["keys"]
-            self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
+            self._keys.extend(key["key"] for c, key in enumerate(keys) if key["name"] == self.key_names and ip in key[
+                "cidrRanges"] and c <= self.key_count)
 
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
