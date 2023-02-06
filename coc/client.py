@@ -181,7 +181,7 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        throttle_limit: int = 10,
+        throttle_limit: int = 30,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
         throttler: Type[Union[BasicThrottler, BatchThrottler]] = BasicThrottler,
