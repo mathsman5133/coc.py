@@ -312,7 +312,7 @@ class Client:
 
 
         """
-        self.correct_key_count = len(tokens)
+        self.correct_key_count = len(keys)
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
