@@ -46,7 +46,7 @@ class CachedRaidLog(RaidLog):
         if datetime.utcnow() > utils.get_raid_weekend_start():
             # there is a raid currently running, so we need to fetch it to get live data
             limit_to_fetch += 1
-        if not limit or limit_to_fetch + len(raid_log_entries) < limit:
+        if limit and limit_to_fetch + len(raid_log_entries) < limit:
             # if we want more raids than there are stored plus the ones after that, just fetch them all
             args = {"limit": limit} if limit else {}
             json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
