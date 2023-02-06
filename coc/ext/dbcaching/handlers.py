@@ -52,8 +52,7 @@ class PostgresHandler(BaseDBHandler):
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         self._active_conn_counter -= 1
-        if not self._active_conn_counter:
-            await self._conn.close()
+        # await self._conn.close()
 
     async def _create_table(self):
         await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
