@@ -1238,7 +1238,8 @@ class Client:
         return get(locations, name=location_name)
 
     async def get_location_clans(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan rankings for a specific location
 
@@ -1269,10 +1270,11 @@ class Client:
         """
 
         data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_capital(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan capital rankings for a specific location
 
@@ -1303,10 +1305,11 @@ class Client:
         """
 
         data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_players(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
         """Get player rankings for a specific location
 
@@ -1336,10 +1339,11 @@ class Client:
             The top players for the requested location.
         """
         data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan versus rankings for a specific location
 
@@ -1369,10 +1373,11 @@ class Client:
             The top versus-clans for the requested location.
         """
         data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_players_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
         """Get player versus rankings for a specific location
 
@@ -1402,7 +1407,7 @@ class Client:
             The top versus players for the requested location.
         """
         data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
 
