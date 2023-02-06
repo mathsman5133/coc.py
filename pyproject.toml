@@ -30,7 +30,7 @@ docs = ["sphinx",
 ]
 
 [tool.setuptools]
-packages = ["coc", "coc.ext.discordlinks", "coc.static", "coc.ext.fullwarapi"]
+packages = ["coc", "coc.ext.discordlinks", "coc.static", "coc.ext.fullwarapi", "coc.ext.dbcaching"]
 include-package-data = true
 
 [tool.setuptools.package-data]
