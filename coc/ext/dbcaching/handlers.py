@@ -38,17 +38,22 @@ class BaseDBHandler:
 
 
 class PostgresHandler(BaseDBHandler):
-    def __init__(self, *, max_db_size: int, pool: asyncpg.Pool):
+    def __init__(self, *, max_db_size: int, pool: asyncpg.Pool = None, conn: asyncpg.Connection = None):
         self._pool = pool
-        self._conn = None
+        self._conn = conn
+        self._active_conn_counter = 0
         super().__init__(max_db_size=max_db_size)
 
     async def __aenter__(self) -> PostgresHandler:
-        self._conn = await self._pool.acquire()
+        self._active_conn_counter += 1
+        if not self._conn:
+            self._conn = await self._pool.acquire()
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
-        await self._conn.close()
+        self._active_conn_counter -= 1
+        if not self._active_conn_counter:
+            await self._conn.close()
 
     async def _create_table(self):
         await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
