@@ -9,15 +9,16 @@ import asyncpg
 
 
 class BaseDBHandler:
-    def __init__(self, *, max_db_size: int):
-        self.max_db_size = max_db_size
+    def __init__(self):
+        self._params_loaded = False
+        self.max_db_size = 100000
 
     @abstractmethod
-    async def __aenter__(self) -> BaseDBHandler:
+    async def load_params(self):
         pass
 
     @abstractmethod
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
+    async def set_params(self, *, max_db_size: int):
         pass
 
     @abstractmethod
@@ -37,73 +38,88 @@ class BaseDBHandler:
         pass
 
 
-class PostgresHandler(BaseDBHandler):
-    def __init__(self, *, max_db_size: int, pool: asyncpg.Pool = None, conn: asyncpg.Connection = None):
-        self._pool = pool
-        self._conn = conn
-        self._active_conn_counter = 0
-        super().__init__(max_db_size=max_db_size)
+class PostgresHandler(BaseDBHandler, asyncpg.Connection):
+    def __init__(self, protocol, transport, loop, addr, config, params):
+        BaseDBHandler.__init__(self)
+        asyncpg.Connection.__init__(self, protocol, transport, loop, addr, config, params)
 
-    async def __aenter__(self) -> PostgresHandler:
-        self._active_conn_counter += 1
-        if not self._conn:
-            self._conn = await self._pool.acquire()
-        return self
+    async def load_params(self):
+        try:
+            records = await self.fetch("SELECT name, value FROM CocPyHandlerParameters")
+            params = {record["name"]: record["value"] for record in records}
+            self.max_db_size = params.get("max_db_size", None) or self.max_db_size
+        except asyncpg.UndefinedTableError:
+            await self._create_tables()
+        self._params_loaded = True
 
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
-        self._active_conn_counter -= 1
-        # await self._conn.close()
+    async def set_params(self, *, max_db_size: int):
+        self.max_db_size = max_db_size
+        query = "INSERT INTO CocPyHandlerParameters(name, value) " \
+                "VALUES ($1, $2) " \
+                "ON CONFLICT (name) " \
+                "DO UPDATE SET value = $2 " \
+                "WHERE CocPyHandlerParameters.name = $1"
+        try:
+            await self.execute(query, "max_db_size", max_db_size)
+        except asyncpg.UndefinedTableError:
+            await self._create_tables()
+            await self.execute(query, max_db_size)
 
-    async def _create_table(self):
-        await self._conn.execute('CREATE TABLE IF NOT EXISTS CocPyRaidCache('
-                                 'clan_tag VARCHAR(12), '
-                                 'end_time TIMESTAMP, '
-                                 'data JSONB, '
-                                 'PRIMARY KEY(clan_tag, end_time)'
-                                 ')')
+    async def _create_tables(self):
+        await self.execute("CREATE TABLE IF NOT EXISTS CocPyHandlerParameters("
+                           "name VARCHAR(20) PRIMARY KEY, "
+                           "value INTEGER NOT NULL"
+                           ")")
+        await self.execute("CREATE TABLE IF NOT EXISTS CocPyRaidCache("
+                           "clan_tag VARCHAR(12), "
+                           "end_time TIMESTAMP, "
+                           "data JSONB, "
+                           "PRIMARY KEY(clan_tag, end_time)"
+                           ")")
 
     async def _ensure_db_size(self) -> None:
-        [count] = await self._conn.fetchrow('SELECT COUNT(*) FROM CocPyRaidCache')
+        await self.load_params()
+        [count] = await self.fetchrow("SELECT COUNT(*) FROM CocPyRaidCache")
         while count > self.max_db_size:
-            deleted = await self._conn.execute('DELETE FROM CocPyRaidCache '
-                                               'WHERE end_time = ('
-                                               'SELECT MIN(end_time) FROM CocPyRaidCache)')
-            count -= int(''.join([char for char in deleted if char.isdigit()]))
+            deleted = await self.execute("DELETE FROM CocPyRaidCache "
+                                         "WHERE end_time = ("
+                                         "SELECT MIN(end_time) FROM CocPyRaidCache)")
+            count -= int("".join([char for char in deleted if char.isdigit()]))
 
     async def get_raid_log_entries(self, clan_tag: str, limit: int) -> list[dict[str: datetime, str: dict]]:
         try:
-            records = await self._conn.fetch('SELECT end_time, data FROM CocPyRaidCache '
-                                             'WHERE clan_tag = $1 '
-                                             'ORDER BY end_time DESC '
-                                             'LIMIT $2',
-                                             clan_tag, limit)
-            return [{'end_time': record['end_time'], 'data': json.loads(record['data'])} for record in records]
+            records = await self.fetch("SELECT end_time, data FROM CocPyRaidCache "
+                                       "WHERE clan_tag = $1 "
+                                       "ORDER BY end_time DESC "
+                                       "LIMIT $2",
+                                       clan_tag, limit)
+            return [{"end_time": record["end_time"], "data": json.loads(record["data"])} for record in records]
         except asyncpg.UndefinedTableError:
-            await self._create_table()
+            await self._create_tables()
             return []
 
     async def get_raid_ended_at(self, clan_tag: str, end_time: datetime) -> dict:
         try:
-            [data] = await self._conn.fetchrow('SELECT data FROM CocPyRaidCache '
-                                               'WHERE clan_tag = $1 '
-                                               'AND end_time = $2',
-                                               clan_tag, end_time)
+            [data] = await self.fetchrow("SELECT data FROM CocPyRaidCache "
+                                         "WHERE clan_tag = $1 "
+                                         "AND end_time = $2",
+                                         clan_tag, end_time)
             return data
         except asyncpg.UndefinedTableError:
-            await self._create_table()
+            await self._create_tables()
 
     async def write_raid_log_entry(self, clan_tag: str, end_time: datetime, data: dict) -> None:
         data = json.dumps(data)
         try:
-            await self._conn.execute('INSERT INTO CocPyRaidCache(clan_tag, end_time, data) '
-                                     'VALUES($1, $2, $3) '
-                                     'ON CONFLICT DO NOTHING',
-                                     clan_tag, end_time, data)
+            await self.execute("INSERT INTO CocPyRaidCache(clan_tag, end_time, data) "
+                               "VALUES($1, $2, $3) "
+                               "ON CONFLICT DO NOTHING",
+                               clan_tag, end_time, data)
             await self._ensure_db_size()
         except asyncpg.UndefinedTableError:
-            await self._create_table()
-            await self._conn.execute('INSERT INTO CocPyRaidCache(clan_tag, end_time, data) '
-                                     'VALUES($1, $2, $3) '
-                                     'ON CONFLICT DO NOTHING',
-                                     clan_tag, end_time, data)
+            await self._create_tables()
+            await self.execute("INSERT INTO CocPyRaidCache(clan_tag, end_time, data) "
+                               "VALUES($1, $2, $3) "
+                               "ON CONFLICT DO NOTHING",
+                               clan_tag, end_time, data)
             await self._ensure_db_size()
