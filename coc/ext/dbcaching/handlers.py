@@ -1,4 +1,4 @@
-# Enables circular import for type hinting coc.Client
+# Enables circular import for type hinting
 from __future__ import annotations
 
 import json
@@ -9,32 +9,76 @@ import asyncpg
 
 
 class BaseDBHandler:
+    """Abstract class to inherit all database handler classes from
+    """
     def __init__(self):
         self._params_loaded = False
-        self.max_db_size = 100000
+        self.max_db_size = None
 
     @abstractmethod
     async def load_params(self):
+        """Method to load parameters from the database
+        """
         pass
 
     @abstractmethod
     async def set_params(self, *, max_db_size: int):
+        """Method to set parameters and write them to the database so other handlers can read them.
+
+        Args:
+            max_db_size:
+                :class:`int`: The maximum amount of raids that shall be stored in the database.
+                This limits the growth of the database. The size of one raid depends on various
+                factors, but should lie in the order of magnitude of a kilobyte.
+                This should only be set through this function.
+        """
         pass
 
     @abstractmethod
     async def _ensure_db_size(self) -> None:
+        """Method to ensure the database does not surpass `self.max_db_size` by deleting the least significant entries.
+        """
         pass
 
     @abstractmethod
     async def get_raid_log_entries(self, clan_tag: str, limit: int) -> list[dict[str: datetime, str: dict]]:
+        """Method to fetch the latest `limit` raid log entries for a specific clan
+
+        Args:
+            clan_tag: :class:`str`: The tag of the clan to fetch raid log entries for
+            limit: :class:`int`: The amount of raid log entries that shall be fetched
+
+        Returns:
+            A :class:`list` of :class:`dict`, each containing the end time and the data of one raid log entry
+
+        """
         pass
 
     @abstractmethod
     async def get_raid_ended_at(self, clan_tag: str, end_time: datetime) -> dict:
+        """Method to get one specific raid log entry
+
+        Args:
+            clan_tag: :class:`str`: The tag of the clan to fetch raid log entries for
+            end_time: :class:`datetime`: The time the raid ended at
+
+        Returns:
+            Optional[:class:`dict`]: the data of the raid log entry
+
+        """
         pass
 
     @abstractmethod
     async def write_raid_log_entry(self, clan_tag: str, end_time: datetime, data: dict) -> None:
+        """Method to write a new raid log entry to the database. This is expected to ignore existing ones
+        and ensure the max database size.
+
+        Args:
+            clan_tag: :class:`str`: The tag of the clan to fetch raid log entries for
+            end_time: :class:`datetime`: The time the raid ended at
+            data: :class:`dict`: The data for the raid log entry as returned from the API
+
+        """
         pass
 
 
@@ -78,7 +122,8 @@ class PostgresHandler(BaseDBHandler, asyncpg.Connection):
                            ")")
 
     async def _ensure_db_size(self) -> None:
-        await self.load_params()
+        if not self._params_loaded:
+            await self.load_params()
         [count] = await self.fetchrow("SELECT COUNT(*) FROM CocPyRaidCache")
         while count > self.max_db_size:
             deleted = await self.execute("DELETE FROM CocPyRaidCache "
