@@ -63,7 +63,7 @@ class PostgresHandler(BaseDBHandler, asyncpg.Connection):
             await self.execute(query, "max_db_size", max_db_size)
         except asyncpg.UndefinedTableError:
             await self._create_tables()
-            await self.execute(query, max_db_size)
+            await self.execute(query, "max_db_size", max_db_size)
 
     async def _create_tables(self):
         await self.execute("CREATE TABLE IF NOT EXISTS CocPyHandlerParameters("
