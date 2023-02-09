@@ -113,3 +113,62 @@ class BaseTrigger(ABC):
         """calculate the time (in seconds) until the next scheduled run. Needs to be overwritten in subclasses"""
         pass
 
+
+class IntervalTrigger(BaseTrigger):
+    """
+    A decorator class to repeat a function every `seconds` seconds
+
+    Attributes
+    ----------
+    seconds: :class:`int`
+        how many seconds to wait between trigger runs
+    iter_args: Optional[:class:`list`]
+        an optional list of arguments. The decorated function will be called once per list element,
+        and the element will be passed to the decorated function as the first positional argument
+    on_startup: Optional[:class:`bool`]
+        whether to trigger a run of the decorated function on startup. Defaults to `True`
+    error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
+        an optional function that will be called on each error incurred during the trigger execution
+    logger: Optional[:class:`logging.Logger`]
+        an optional logger instance implementing the logging.Logger functionality. Debug and error logs
+        about the trigger execution will be logged to this logger
+    loop: Optional[:class:`asyncio.AbstractEventLoop`]
+        an optional event loop that the trigger execution will be appended to. If no loop is provided,
+        the trigger will provision one using `asyncio.get_event_loop()`
+    kwargs:
+        any additional keyword arguments that will be passed to the decorated function every time it is called
+    """
+
+    def __init__(self,
+                 *,  # disable positional arguments
+                 seconds: int,
+                 iter_args: Optional[list] = None,
+                 on_startup: bool = True,
+                 error_handler: Optional[CoroFunction] = None,
+                 logger: Optional[logging.Logger] = None,
+                 loop: Optional[asyncio.AbstractEventLoop] = None,
+                 **kwargs):
+
+        super().__init__(iter_args=iter_args, on_startup=on_startup, error_handler=error_handler,
+                         logger=logger, loop=loop, **kwargs)
+
+        if not isinstance(seconds, int) or seconds <= 0:
+            raise ValueError(f'`seconds` must be a positive integer, got {seconds}')
+        self._interval_seconds = seconds
+
+    def __str__(self):
+        return f'coc.ext.triggers.IntervalTrigger(seconds={self._interval_seconds})'
+
+    def _get_sleep_time(self) -> float:
+        """calculate how many seconds need to be slept until the next trigger run. If the next run was missed,
+        return zero to immediately run again
+
+        Returns
+        -------
+        the sleep time in seconds: :class:`float`
+        """
+
+        next_run = self.current_execution + timedelta(seconds=self._interval_seconds)
+        sleep_seconds = (next_run - datetime.now()).total_seconds()
+        return max(sleep_seconds, 0)
+
