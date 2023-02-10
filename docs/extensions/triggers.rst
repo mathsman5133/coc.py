@@ -33,10 +33,14 @@ CronTrigger
 
 The ``CronTrigger`` allows you to specify a standard dialect Cron schedule string to dictate the trigger's executions. This allows you to specify highly specialised schedules to e.g. fetch clan game points before and after the clan games, legend league rankings before and after season reset and much more. For convenience, a set of class methods to instantiate triggers with common patters have been provided:
 
-- ``hourly()`` implements the "0 * * * *" schedule,
-- ``daily()`` implements "0 0 * * *",
-- ``weekly()`` implements "0 0 * * 0", and
-- ``monthly()`` implements "0 0 1 * *".
+- ``hourly()`` implements the ``0 * * * *`` schedule,
+
+- ``daily()`` implements ``0 0 * * *``,
+
+- ``weekly()`` implements ``0 0 * * 0``, and
+
+- ``monthly()`` implements ``0 0 1 * *``.
+
 
 .. autoclass:: coc.ext.triggers.CronTrigger
    :members: hourly, daily, weekly, monthly
@@ -85,4 +89,4 @@ Below are some usage examples for the triggers extension:
    :linenos:
 
 
----------------------------------------------
+

@@ -26,26 +26,34 @@ class BaseTrigger(ABC):
 
     Attributes
     ----------
+
     iter_args: Optional[:class:`list`]
         an optional list of arguments. The decorated function will be called once per list element,
         and the element will be passed to the decorated function as the first positional argument
+
     on_startup: Optional[:class:`bool`]
         whether to trigger a run of the decorated function on startup. Defaults to `True`
+
     autostart: Optional[:class:`bool`]
         whether to automatically start the trigger. Auto-starting it may cause required components to not
         have fully loaded and initialized. If you choose to disable autostart (which is the default),
         you can use `coc.ext.triggers.start_triggers()` to manually kick the trigger execution off once you
         have loaded all required resources
+
     error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
         an optional function that will be called on each error incurred during the trigger execution
+
     logger: Optional[:class:`logging.Logger`]
         an optional logger instance implementing the logging.Logger functionality. Debug and error logs
         about the trigger execution will be logged to this logger
+
     loop: Optional[:class:`asyncio.AbstractEventLoop`]
         an optional event loop that the trigger execution will be appended to. If no loop is provided,
         the trigger will provision one using `asyncio.get_event_loop()`
+
     kwargs:
         any additional keyword arguments that will be passed to the decorated function every time it is called
+
     """
 
     def __init__(self,
@@ -183,34 +191,42 @@ class IntervalTrigger(BaseTrigger):
 
     Attributes
     ----------
+
     seconds: :class:`int`
         how many seconds to wait between trigger runs
+
     iter_args: Optional[:class:`list`]
         an optional list of arguments. The decorated function will be called once per list element,
         and the element will be passed to the decorated function as the first positional argument. If
         no iter_args are defined, nothing (especially not `None`) will be injected into the decorated function
+
     on_startup: Optional[:class:`bool`]
         whether to trigger a run of the decorated function on startup. Defaults to `True`
+
     autostart: Optional[:class:`bool`]
         whether to automatically start the trigger. Auto-starting it may cause required components to not
         have fully loaded and initialized. If you choose to disable autostart (which is the default),
         you can use `coc.ext.triggers.start_triggers()` to manually kick the trigger execution off once you
         have loaded all required resources
+
     error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
         an optional coroutine function that will be called on each error incurred during the trigger execution.
         The handler will receive three arguments:
-        function_name: :class:`str`
-            the name of the failing trigger's decorated function
-        arg: Optional[:class:`Any`]
-            the failing `iter_args` element or None if no iter_args are defined
-        exception: :class:`Exception`
-            the exception that occurred
+            function_name: :class:`str`
+                the name of the failing trigger's decorated function
+            arg: Optional[:class:`Any`]
+                the failing `iter_args` element or None if no iter_args are defined
+            exception: :class:`Exception`
+                the exception that occurred
+
     logger: Optional[:class:`logging.Logger`]
         an optional logger instance implementing the logging.Logger functionality. Debug, warning and error logs
         about the trigger execution will be sent to this logger
+
     loop: Optional[:class:`asyncio.AbstractEventLoop`]
         an optional event loop that the trigger execution will be appended to. If no loop is provided,
         the trigger will provision one using `asyncio.get_event_loop()`
+
     kwargs:
         any additional keyword arguments that will be passed to the decorated function every time it is called
 
@@ -222,6 +238,7 @@ class IntervalTrigger(BaseTrigger):
         async def download_current_war(clan_tag: str):
             # use your coc client to fetch war data, store it to a file or database, ...
             pass
+
     """
 
     def __init__(self,
@@ -283,43 +300,52 @@ class CronTrigger(BaseTrigger):
     ----------
     cron_schedule: Union[:class:`str`, :class:`coc.ext.triggers.CronSchedule`]
         the Cron schedule to follow
+
     iter_args: Optional[:class:`list`]
         an optional list of arguments. The decorated function will be called once per list element,
         and the element will be passed to the decorated function as the first positional argument. If
         no iter_args are defined, nothing (especially not `None`) will be injected into the decorated function
+
     on_startup: Optional[:class:`bool`]
         whether to trigger a run of the decorated function on startup. Defaults to `True`
+
     autostart: Optional[:class:`bool`]
         whether to automatically start the trigger. Auto-starting it may cause required components to not
         have fully loaded and initialized. If you choose to disable autostart (which is the default),
         you can use `coc.ext.triggers.start_triggers()` to manually kick the trigger execution off once you
         have loaded all required resources
+
     error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
         an optional coroutine function that will be called on each error incurred during the trigger execution.
         The handler will receive three arguments:
-        function_name: :class:`str`
-            the name of the failing trigger's decorated function
-        arg: Optional[:class:`Any`]
-            the failing `iter_args` element or None if no iter_args are defined
-        exception: :class:`Exception`
-            the exception that occurred
+            function_name: :class:`str`
+                the name of the failing trigger's decorated function
+            arg: Optional[:class:`Any`]
+                the failing `iter_args` element or None if no iter_args are defined
+            exception: :class:`Exception`
+                the exception that occurred
+
     logger: Optional[:class:`logging.Logger`]
         an optional logger instance implementing the logging.Logger functionality. Debug, warning and error logs
         about the trigger execution will be sent to this logger
+
     loop: Optional[:class:`asyncio.AbstractEventLoop`]
         an optional event loop that the trigger execution will be appended to. If no loop is provided,
         the trigger will provision one using `asyncio.get_event_loop()`
+
     kwargs:
         any additional keyword arguments that will be passed to the decorated function every time it is called
 
+
     Example
-    -------
+    ----------
     .. code-block:: python3
 
         @CronTrigger(cron_schedule='0 0 * * *', iter_args=['#2PP', '#2PPP'])
         async def download_current_war(clan_tag: str):
             # use your coc client to fetch war data, store it to a file or database, ...
             pass
+
     """
 
     def __init__(self,
@@ -349,7 +375,8 @@ class CronTrigger(BaseTrigger):
 
         Returns
         -------
-        the next run date (timezone-aware): :class:`datetime.datetime`
+        :class:`datetime.datetime`
+            the next run date (timezone-aware):
         """
 
         # prevent multiple runs in one minute
@@ -401,13 +428,14 @@ def on_error() -> Callable[[], ErrorHandler]:
     -----
     This handler declaration should occur before any trigger declarations to avoid a RuntimeWarning about a
     potentially undeclared error handler, though that warning can safely be ignored.
+
     Any function decorated by this must be a coroutine and accept three parameters:
-    function_name: :class:`str`
-        the name of the failing trigger's decorated function
-    arg: Optional[:class:`Any`]
-        the failing `iter_args` element or None if no iter_args are defined
-    exception: :class:`Exception`
-        the exception that occurred
+        function_name: :class:`str`
+            the name of the failing trigger's decorated function
+        arg: Optional[:class:`Any`]
+            the failing `iter_args` element or None if no iter_args are defined
+        exception: :class:`Exception`
+            the exception that occurred
 
     Returns
     -------
@@ -421,6 +449,7 @@ def on_error() -> Callable[[], ErrorHandler]:
         async def handle_trigger_exception(function_name: str, arg: Any, exception: Exception):
             # send a Discord message, do some data cleanup, ...
             pass
+
     """
 
     def wrapper(func: ErrorHandler):
