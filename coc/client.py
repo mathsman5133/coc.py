@@ -366,7 +366,7 @@ class Client:
         max_members: int = None,
         min_clan_points: int = None,
         min_clan_level: int = None,
-        label_ids: List[Union[Label, int]] = None,
+        label_ids: List[Union[Label, int]] = [],
         limit: int = None,
         before: str = None,
         after: str = None,
