@@ -19,35 +19,43 @@ class CronParserError(Exception):
 
 class CronSchedule:
     """
-    A class representing a Cron schedule. It supports the full standard Cron dialect, but it does not
-    support name aliases for weekdays or months (e.g. Mon, Tue, ... and Jan, Feb, ...)
+    A class representing a Cron schedule. It supports the full standard Cron dialect,
+    i.e. minute, hour, day of month, month, day of week with list, range and increment modifiers.
+    Name aliases for weekdays or months (e.g. Mon, Tue, ... and Jan, Feb, ...) are not supported
 
     Attributes
     ----------
     cron_str: :class:`str`
         the string representation of the Cron schedule
+
+    Examples
+    --------
+    "0 0 * * *": run every day at midnight
+    "15 0/4 1 * *": run at 15 minutes past every fourth hour on the first day of each month
+    "0 * 14,28 * *": run every hour on the 14th and 28th day of each month
+    "1/2 * * * 1-5": run every second hour starting at 1:00 AM on Monday through Friday
     """
 
     def __init__(self, cron_str: str):
         try:
             entries = CronParts(*cron_str.split())
-        except ValueError:
+        except (TypeError, ValueError) as e:
             raise CronParserError(
                 'Invalid Cron string. A Cron string must consist of exactly five entries separated by '
                 'whitespaces: minute, hour, day of month, month, day of week. Example: `0 0 * * *`'
-            )
+            ) from e
 
         allowed_values = []
         try:
             for name, entry, limits in zip(NAMES, entries, LIMITS):
                 allowed_values.append(self.__parse_entry(name, entry, limits))
-        except ValueError:
+        except ValueError as e:
             raise CronParserError(
                 f'Invalid Cron string. {name.title()} is malformed. A Cron string element must either be the '
                 'wildcard `*` or contain one or more (comma-separated) entries. An entry must contain a time '
                 'indicator or a time range `start-end`, and it may contain an increment-suffix separated by a '
                 'slash `/`. Example: `4,12-18/2`'
-            )
+            ) from e
 
         self.cron_str = cron_str
         self._entries = entries
