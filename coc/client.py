@@ -366,6 +366,7 @@ class Client:
         max_members: int = None,
         min_clan_points: int = None,
         min_clan_level: int = None,
+        label_ids: List[Optional[Label, int]] = None,
         limit: int = None,
         before: str = None,
         after: str = None,
@@ -393,6 +394,8 @@ class Client:
             The minumum clan points.
         min_clan_level : int, optional
             The minimum clan level.
+        label_ids: :class:`List`[Optional[:class:`coc.Label`, :class:`int`]]
+            List of Labels or Label ids
         limit : int
             The number of clans to search for.
 
@@ -428,6 +431,8 @@ class Client:
             maxMembers=max_members,
             minClanPoints=min_clan_points,
             minClanLevel=min_clan_level,
+            label_ids=",".join([str(x.id) if isinstance(x, Label) else str(x) for x in label_ids
+                                if isinstance(x, (Label, int,))]),
             limit=limit,
             before=before,
             after=after,
@@ -510,7 +515,8 @@ class Client:
 
         return ClanIterator(self, tags, cls, **kwargs)
 
-    async def get_members(self, clan_tag: str, cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
+    async def get_members(self, clan_tag: str, *, limit: int = 0, after: str = "", before: str = "",
+                          cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
         """List clan members.
 
         This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -519,6 +525,15 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
+
+        limit:
+            class:`int`: Number of members to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
 
         Raises
         -------
@@ -546,7 +561,15 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        data = await self.http.get_clan(clan_tag)
+        args = {}
+        if limit:
+            args['limit'] = limit
+        if after:
+            args['after'] = after
+        if before:
+            args['before'] = before
+
+        data = await self.http.get_clan_members(clan_tag, **args)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
     async def get_warlog(
@@ -554,7 +577,10 @@ class Client:
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
         page: bool = False,
-        limit: int = 0
+        *,
+        limit: int = 0,
+        after: str = "",
+        before: str = ""
     ) -> ClanWarLog:
         """
         Retrieve a clan's clan war log. By default, this will return
@@ -589,6 +615,12 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -632,7 +664,9 @@ class Client:
                                              clan_tag=clan_tag,
                                              page=page,
                                              limit=limit,
-                                             model=cls)
+                                             model=cls,
+                                             after=after,
+                                             before=before)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
@@ -642,7 +676,10 @@ class Client:
             clan_tag: str,
             cls: Type[RaidLogEntry] = RaidLogEntry,
             page: bool = False,
-            limit: int = 0
+            *,
+            limit: int = 0,
+            after: str = "",
+            before: str = ""
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
@@ -670,6 +707,12 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -714,7 +757,9 @@ class Client:
                                           clan_tag=clan_tag,
                                           page=page,
                                           limit=limit,
-                                          model=cls)
+                                          model=cls,
+                                          after=after,
+                                          before=before)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
@@ -737,7 +782,7 @@ class Client:
             No clan was found with the supplied tag.
 
         PrivateWarLog
-            The clan's warlog is private.
+            The clan's war log is private.
 
         Maintenance
             The API is currently in maintenance.
