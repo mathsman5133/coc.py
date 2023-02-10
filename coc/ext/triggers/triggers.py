@@ -219,6 +219,24 @@ class IntervalTrigger(BaseTrigger):
 
         return datetime.now().astimezone() + timedelta(seconds=self._interval_seconds)
 
+    @classmethod
+    def hourly(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+               error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+               loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs with a one-hour break between executions"""
+
+        return cls(seconds=3600, iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+    @classmethod
+    def daily(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+              error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+              loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs with a 24-hour break between executions"""
+
+        return cls(seconds=86400, iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
 
 class CronTrigger(BaseTrigger):
     """
@@ -277,6 +295,42 @@ class CronTrigger(BaseTrigger):
         # prevent multiple runs in one minute
         now = datetime.now().astimezone()
         return self.cron_schedule.next_run_after(now.replace(second=0, microsecond=0) + timedelta(minutes=1))
+
+    @classmethod
+    def hourly(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+               error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+               loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs at the start of every hour"""
+
+        return cls(cron_schedule='0 * * * *', iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+    @classmethod
+    def daily(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+              error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+              loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs at the start of every day"""
+
+        return cls(cron_schedule='0 0 * * *', iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+    @classmethod
+    def weekly(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+               error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+               loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs at the start of every week (Sunday at 00:00)"""
+
+        return cls(cron_schedule='0 0 * * 0', iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+    @classmethod
+    def monthly(cls, iter_args: Optional[list] = None, on_startup: bool = True,
+                error_handler: Optional[CoroFunction] = None, logger: Optional[logging.Logger] = None,
+                loop: Optional[asyncio.AbstractEventLoop] = None, **kwargs):
+        """A shortcut to create a trigger that runs at the start of every month"""
+
+        return cls(cron_schedule='0 0 1 * *', iter_args=iter_args, on_startup=on_startup,
+                   error_handler=error_handler, logger=logger, loop=loop, **kwargs)
 
 
 def on_error() -> Callable[[], ErrorHandler]:
