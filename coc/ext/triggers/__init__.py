@@ -2,6 +2,6 @@
 
 
 from .cron import CronSchedule, CronParserError
-from .triggers import CronTrigger, IntervalTrigger, on_error
+from .triggers import CronTrigger, IntervalTrigger, on_error, start_triggers
 
-__all__ = ['CronParserError', 'CronSchedule', 'CronTrigger', 'IntervalTrigger', 'on_error']
+__all__ = ['CronParserError', 'CronSchedule', 'CronTrigger', 'IntervalTrigger', 'on_error', 'start_triggers']
