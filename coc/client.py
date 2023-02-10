@@ -366,7 +366,7 @@ class Client:
         max_members: int = None,
         min_clan_points: int = None,
         min_clan_level: int = None,
-        label_ids: List[Optional[Label, int]] = None,
+        label_ids: List[Union[Label, int]] = None,
         limit: int = None,
         before: str = None,
         after: str = None,
@@ -394,7 +394,7 @@ class Client:
             The minumum clan points.
         min_clan_level : int, optional
             The minimum clan level.
-        label_ids: :class:`List`[Optional[:class:`coc.Label`, :class:`int`]]
+        label_ids: :class:`List`[Union[:class:`coc.Label`, :class:`int`]]
             List of Labels or Label ids
         limit : int
             The number of clans to search for.
