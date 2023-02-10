@@ -1,6 +1,7 @@
 import asyncio
 import functools
 import logging
+import warnings
 
 from abc import ABC
 from datetime import datetime, timedelta
@@ -11,8 +12,11 @@ from typing import Any, Callable, Coroutine, Optional, Union
 from cron import CronSchedule
 
 
-# async def ... function type
+# async def ... function types
 CoroFunction = Callable[[], Coroutine[Any, Any, Any]]
+ErrorHandler = Callable[[str, Any, Exception], Coroutine[Any, Any, Any]]
+
+default_error_handler = None  # target for the @on_error() decorator
 
 
 class BaseTrigger(ABC):
@@ -42,15 +46,24 @@ class BaseTrigger(ABC):
                  *,  # disable positional arguments
                  iter_args: Optional[list] = None,
                  on_startup: Optional[bool] = True,
-                 error_handler: Optional[CoroFunction] = None,
+                 error_handler: Optional[ErrorHandler] = None,
                  logger: Optional[logging.Logger] = None,
                  loop: Optional[asyncio.AbstractEventLoop] = None,
                  **kwargs):
 
+        if not error_handler and not default_error_handler and not logger:
+            warnings.warn(
+                'No logger or error handler are defined. Without either of these components, any errors '
+                'raised during the trigger executions will be silently ignored. If you declared a global '
+                'error handler using the `@on_error()` decorator, you can safely ignore this warning or '
+                'remove it entirely by placing the handler declaration before the trigger declarations',
+                category=RuntimeWarning
+            )
+
         self.iter_args = iter_args
         self.on_startup = on_startup
         self.error_handler = error_handler
-        self.logger = logger  # TODO: emit warning if no logger or error handler are defined
+        self.logger = logger
         self.loop = loop or asyncio.get_event_loop()
         self.kwargs = kwargs
 
@@ -88,13 +101,16 @@ class BaseTrigger(ABC):
                     # call the decorated function
                     try:
                         if self.iter_args:
-                            await asyncio.gather(*map(fixture, self.iter_args))
+                            results = await asyncio.gather(*map(fixture, self.iter_args), return_exceptions=True)
+
+                            # check for exceptions
+                            for arg, res in zip(self.iter_args, results):
+                                if isinstance(res, Exception):
+                                    await self.__handle_exception(func, arg, res)
                         else:
                             await fixture()
                     except Exception as e:
-                        if self.logger:
-                            self.logger.error(''.join(format_exception(type(e), e, e.__traceback__)))
-                        # TODO: call error handler (and define proper args for it)
+                        await self.__handle_exception(func, None, e)
 
                     # sleep until next execution time
                     next_run = self.next_run
@@ -116,6 +132,19 @@ class BaseTrigger(ABC):
             self.logger.debug(f'{self.__class__.__name__} set up for {func.__name__}')
 
         return wrapped
+
+    async def __handle_exception(self, func: CoroFunction, arg: Any, exc: Exception):
+        """Handle exceptions during trigger calls. This will attempt to call the provided logger and
+        any available error handler
+        """
+
+        if self.logger:
+            self.logger.error(f'function: {func.__name__}, failing iter_arg: {arg}\n'
+                              ''.join(format_exception(type(exc), exc, exc.__traceback__)))
+
+        error_handler = self.error_handler or default_error_handler
+        if error_handler:
+            await error_handler(func.__name__, arg, exc)
 
     @staticmethod
     async def sleep_until(wakeup_date: datetime):
@@ -248,4 +277,33 @@ class CronTrigger(BaseTrigger):
         # prevent multiple runs in one minute
         now = datetime.now().astimezone()
         return self.cron_schedule.next_run_after(now.replace(second=0, microsecond=0) + timedelta(minutes=1))
+
+
+def on_error() -> Callable[[], ErrorHandler]:
+    """A decorator function that designates a function as the global fallback error handler for all exceptions
+    during trigger executions. This handler declaration should occur before any trigger declarations to avoid
+    a RuntimeWarning about a potentially undeclared error handler, though that warning can safely be ignored.
+    Any function decorated by this must be a coroutine and accept three parameters:
+    function_name: :class:`str`
+        the name of the failing trigger's decorated function
+    arg: Optional[:class:`Any`]
+        the failing `iter_args` element or None if no iter_args are defined
+    exception: :class:`Exception`
+        the exception that occurred
+
+    Returns
+    -------
+    the decorated handler function
+    """
+
+    def wrapper(func: ErrorHandler):
+        # register the error handler
+        global default_error_handler
+        default_error_handler = func
+
+        @functools.wraps(func)
+        async def wrapped(function_name, arg, error):
+            await func(function_name, arg, error)
+        return wrapped
+    return wrapper
 
