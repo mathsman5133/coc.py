@@ -95,7 +95,7 @@ class BaseTrigger(ABC):
                 if not self.on_startup:
                     next_run = self.next_run
                     if self.logger:
-                        self.logger.debug(
+                        self.logger.info(
                             f'`on_startup` is set to `False`. First run of {self.__class__.__name__} for '
                             f'{func.__name__}: {next_run.isoformat()}'
                         )
@@ -104,7 +104,7 @@ class BaseTrigger(ABC):
                 # repeat indefinitely
                 while True:
                     if self.logger:
-                        self.logger.debug(f'Running {self.__class__.__name__} for {func.__name__}')
+                        self.logger.info(f'Running {self.__class__.__name__} for {func.__name__}')
 
                     # call the decorated function
                     try:
@@ -123,7 +123,7 @@ class BaseTrigger(ABC):
                     # sleep until next execution time
                     next_run = self.next_run
                     if self.logger and datetime.now().astimezone() <= next_run:
-                        self.logger.debug(
+                        self.logger.info(
                             f'{self.__class__.__name__} finished for {func.__name__}. Next run: {next_run.isoformat()}'
                         )
                     elif self.logger:  # i.e. next_run is in the past
