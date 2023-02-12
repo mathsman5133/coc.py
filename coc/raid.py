@@ -417,6 +417,7 @@ class RaidLogEntry:
                  "_cs_members",
                  "_cs_total_defensive_loot",
                  "_cs_defense_attack_count",
+                 "_cs_defensive_destroyed_district_count",
                  "_iter_members",
                  "_iter_attack_log",
                  "_iter_defense_log",
@@ -513,6 +514,14 @@ class RaidLogEntry:
         count = 0
         for clan in self.defense_log:
             count += clan.attack_count
+        return count
+
+    @cached_property("_cs_defensive_destroyed_district_count")
+    def defensive_destroyed_district_count(self) -> int:
+        """:class:`int`: The total amount of districts destroyed by opponents."""
+        count = 0
+        for clan in self.defense_log:
+            count += clan.destroyed_district_count
         return count
 
     def get_member(self, tag: str) -> typing.Optional[RaidMember]:
