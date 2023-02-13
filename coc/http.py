@@ -284,9 +284,11 @@ class HTTPClient:
 
                         try:
                             # set a callback to remove the item from cache once it's stale.
-                            delta = int(response.headers["Cache-Control"].strip("max-age="))
-                            data["_response_retry"] = delta
-                            if isinstance(cache, FIFO) and not self.client.realtime:
+                            delta = int(response.headers["Cache-Control"].strip("max-age=").strip("public max-age="))
+                            # encounter for changed description in cache control header. for realtime it is always
+                            # 600 but that is not true. Correct is 0
+                            data["_response_retry"] = delta if 'realtime' not in url else 0
+                            if isinstance(cache, FIFO) and 'realtime' not in url:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
