@@ -5,29 +5,26 @@ import asyncio
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING, Type, Union
 
-from .players import ClanMember, RankedPlayer
-from .clans import RankedClan
-from .raid import RaidLogEntry
-from .wars import ClanWarLogEntry
+from .clans import Clan, RankedClan
+from .players import Player, RankedPlayer
+from .miscmodels import League, Location
 
 if TYPE_CHECKING:
     from .client import Client
 
 
-class LogPaginator(ABC):
+class Paginator(ABC):
     @abstractmethod
     def __init__(self, client: Client,
-                 clan_tag: str,
+                 args: dict,
                  limit: int,
                  page: bool,
                  json_resp: dict,
-                 model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry], Type[ClanMember], Type[RankedPlayer],
-                              Type[RankedClan]]):
+                 model: Union[Type[Clan], Type[League], Type[LocationPaginator]]):
 
-        self._clan_tag = clan_tag
+        self._query_args = args
         self._limit = limit
         self._page = page
-
         self._init_data = json_resp  # Initial data; this is const
         self._init_logs = json_resp.get("items", [])
         self._response_retry = json_resp.get("_response_retry", 0)
@@ -42,7 +39,7 @@ class LogPaginator(ABC):
         self._sync_index = 0
         return self
 
-    def __next__(self) -> Union[ClanWarLogEntry, RaidLogEntry, ClanMember, RankedPlayer, RankedClan]:
+    def __next__(self) -> Union[Clan, Location, League]:
         """Fetch the next item in the iter object and return the entry"""
         if self._sync_index == len(self._init_logs):
             raise StopIteration
@@ -51,7 +48,7 @@ class LogPaginator(ABC):
         self._sync_index += 1
         return ret
 
-    def __getitem__(self, index: int) -> Union[ClanWarLogEntry, RaidLogEntry, ClanMember, RankedPlayer, RankedClan]:
+    def __getitem__(self, index: int) -> Union[Clan, Location, League]:
         """Support indexing the object. This will not fetch any addition
         items from the endpoint"""
         try:
@@ -72,7 +69,7 @@ class LogPaginator(ABC):
         self._page_data = self._init_data.copy()
         return self
 
-    async def __anext__(self) -> Union[ClanWarLogEntry, RaidLogEntry, ClanMember, RankedPlayer, RankedClan]:
+    async def __anext__(self) -> Union[Clan, Location, League]:
         """
         This class supports async for loops. If the `page` bool is set to
         True then the async for loop will fetch all items from the endpoint
@@ -101,7 +98,7 @@ class LogPaginator(ABC):
 
         # If paging is enabled, update self._war_logs if the end of the
         # array is reached
-        ret: Union[ClanWarLogEntry, RaidLogEntry, ClanMember, RankedPlayer, RankedClan]
+        ret: Union[Clan, Location, League]
 
         # If index request is within range of the war_logs, return item
         if self._min_index <= self._async_index < self._max_index:
@@ -125,15 +122,14 @@ class LogPaginator(ABC):
         Request data from the endpoint and update the iter variables with
         the new data. `self._fetch_endpoint` is a child defined method.
         """
-        self._page_data = await self._fetch_endpoint(self._client,
-                                                     self._clan_tag,
+        self._page_data = await self._fetch_endpoint(self._client, **self._query_args,
                                                      **self.options)
         self._logs = self._page_data.get("items", [])
         self._response_retry = self._page_data.get("_response_retry", 0)
 
     @property
     def options(self) -> dict:
-        """Generate the header for the endpoint request"""
+        """Generate the header for the endpint request"""
         options = {"limit": self._limit}
         if self._next_page:
             options["after"] = self._next_page
@@ -169,105 +165,31 @@ class LogPaginator(ABC):
     async def init_cls(cls,
                        client: Client,
                        clan_tag: str,
-                       model: Type[ClanWarLogEntry],
+                       model: Type[Clan, RankedClan, Player, RankedPlayer],
                        limit: int,
                        paginate: bool = True,
-                       ) -> Union[ClanWarLog, RaidLog]:
+                       ) -> Union[Clan, RankedClan, Player, RankedPlayer]:
         """Class method to return an instantiated object"""
         pass
 
 
-class ClanWarLog(LogPaginator, ABC):
-    """Represents a Generator for a ClanWarLog"""
-
+class SearchClanPaginator(Paginator, ABC):
+    """Represents a Paginator for the endpoint to search for clans returning a :class:`List` of
+    :class:`coc.Clans.Clan`"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       clan_tag: str,
-                       model: Type[ClanWarLogEntry],
+                       args: dict,
+                       model: Type[Clan],
                        limit: int,
                        page: bool = True,
                        after: str = None,
                        before: str = None
-                       ) -> ClanWarLog:
+                       ) -> SearchClanPaginator:
 
-        # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
-        if after:
-            args["after"] = after
-        if before:
-            args["before"] = before
-
-        json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-        return ClanWarLog(client=client, clan_tag=clan_tag, limit=limit,
-                          page=page, json_resp=json_resp, model=model)
-
-    @staticmethod
-    async def _fetch_endpoint(client: Client, clan_tag: str,
-                              fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
-        result = await client.http.get_clan_warlog(clan_tag, **options, ignore_cache=True)
-        if fut:
-            fut.set_result(result)
-        return result
-
-
-class RaidLog(LogPaginator, ABC):
-    """Represents a Generator for a RaidLog"""
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    @classmethod
-    async def init_cls(cls,
-                       client: Client,
-                       clan_tag: str,
-                       model: Type[RaidLogEntry],
-                       limit: int,
-                       page: bool = True,
-                       after: str = None,
-                       before: str = None
-                       ) -> RaidLog:
-
-        # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
-        if after:
-            args["after"] = after
-        if before:
-            args["before"] = before
-
-        json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-        return RaidLog(client=client, clan_tag=clan_tag, limit=limit,
-                       page=page, json_resp=json_resp, model=model)
-
-    @staticmethod
-    async def _fetch_endpoint(client: Client, clan_tag: str,
-                              fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
-        result = await client.http.get_clan_raidlog(clan_tag, **options)
-        if fut:
-            fut.set_result(result)
-        return result
-
-
-class ClanMemberPaginator(LogPaginator, ABC):
-    """Represents a Paginator for endpoints returning a :class:`List` of :class:`coc.Players.ClanMember`"""
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    @classmethod
-    async def init_cls(cls,
-                       client: Client,
-                       clan_tag: str,
-                       model: Type[ClanMember],
-                       limit: int,
-                       page: bool = True,
-                       after: str = None,
-                       before: str = None
-                       ) -> ClanMemberPaginator:
-        args = {}
         # Add the limit if specified
         if limit:
             args["limit"] = limit
@@ -276,205 +198,173 @@ class ClanMemberPaginator(LogPaginator, ABC):
         if before:
             args["before"] = before
 
-        json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-        return ClanMemberPaginator(client=client, clan_tag=clan_tag, args=args, limit=limit,
-                                   page=page, json_resp=json_resp, model=model)
+        json_resp = await cls._fetch_endpoint(client, **args)
+        return SearchClanPaginator(client=client, args=args, limit=limit,
+                       page=page, json_resp=json_resp, model=model)
 
     @staticmethod
-    async def _fetch_endpoint(client: Client, clan_tag: str, *,
+    async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_clan_members(clan_tag, **options)
+        result = await client.http.search_clans(**options)
         if fut:
             fut.set_result(result)
         return result
 
 
-class PlayerRanking(LogPaginator, ABC):
-    """Represents a Generator for a PlayerRanking"""
+class CapitalLeaguePaginator(Paginator, ABC):
+    """Represents a Paginator for the endpoints returning a :class:`List` of
+    :class:`coc.miscmodels.League`"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       location_id: str,
-                       model: Type[RankedPlayer],
+                       args: dict,
+                       model: Type[League],
                        limit: int,
                        page: bool = True,
                        after: str = None,
                        before: str = None
-                       ) -> PlayerRanking:
+                       ) -> CapitalLeaguePaginator:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        if limit:
+            args["limit"] = limit
         if after:
             args["after"] = after
         if before:
             args["before"] = before
 
-        json_resp = await cls._fetch_endpoint(client, location_id, **args)
-        return PlayerRanking(client=client, location_id=location_id, limit=limit,
-                             page=page, json_resp=json_resp, model=model)
+        json_resp = await cls._fetch_endpoint(client, **args)
+        return CapitalLeaguePaginator(client=client, args=args, limit=limit,
+                       page=page, json_resp=json_resp, model=model)
 
     @staticmethod
-    async def _fetch_endpoint(client: Client, location_id: str,
+    async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_location_players(location_id, **options)
+        result = await client.http.search_capital_leagues(**options)
         if fut:
             fut.set_result(result)
         return result
 
 
-class PlayerVersusRanking(LogPaginator, ABC):
-    """Represents a Generator for a PlayerVersusRanking"""
+class LeaguePaginator(Paginator, ABC):
+    """Represents a Paginator for the endpoints returning a :class:`List` of
+    :class:`coc.miscmodels.League`"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       location_id: str,
-                       model: Type[RankedPlayer],
+                       args: dict,
+                       model: Type[League],
                        limit: int,
                        page: bool = True,
                        after: str = None,
                        before: str = None
-                       ) -> PlayerVersusRanking:
+                       ) -> LeaguePaginator:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        if limit:
+            args["limit"] = limit
         if after:
             args["after"] = after
         if before:
             args["before"] = before
 
-        json_resp = await cls._fetch_endpoint(client, location_id, **args)
-        return PlayerVersusRanking(client=client, location_id=location_id, limit=limit,
-                                   page=page, json_resp=json_resp, model=model)
+        json_resp = await cls._fetch_endpoint(client, **args)
+        return LeaguePaginator(client=client, args=args, limit=limit,
+                       page=page, json_resp=json_resp, model=model)
 
     @staticmethod
-    async def _fetch_endpoint(client: Client, location_id: str,
+    async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_location_players_versus(location_id, **options)
+        result = await client.http.search_leagues(**options)
         if fut:
             fut.set_result(result)
         return result
 
 
-class ClanRanking(LogPaginator, ABC):
-    """Represents a Generator for a ClanRanking"""
-
+class WarLeaguePaginator(Paginator, ABC):
+    """Represents a Paginator for the endpoints returning a :class:`List` of
+    :class:`coc.miscmodels.League`"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       location_id: str,
-                       model: Type[RankedClan],
+                       args: dict,
+                       model: Type[League],
                        limit: int,
                        page: bool = True,
                        after: str = None,
                        before: str = None
-                       ) -> ClanRanking:
+                       ) -> WarLeaguePaginator:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        if limit:
+            args["limit"] = limit
         if after:
             args["after"] = after
         if before:
             args["before"] = before
 
-        json_resp = await cls._fetch_endpoint(client, location_id, **args)
-        return ClanRanking(client=client, location_id=location_id, limit=limit,
-                           page=page, json_resp=json_resp, model=model)
+        json_resp = await cls._fetch_endpoint(client, **args)
+        return WarLeaguePaginator(client=client, args=args, limit=limit,
+                       page=page, json_resp=json_resp, model=model)
 
     @staticmethod
-    async def _fetch_endpoint(client: Client, location_id: str,
+    async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_location_clans(location_id, **options)
+        result = await client.http.search_war_leagues(**options)
         if fut:
             fut.set_result(result)
         return result
 
 
-class ClanVersusRanking(LogPaginator, ABC):
-    """Represents a Generator for a ClanVersusRanking"""
-
+class LocationPaginator(Paginator, ABC):
+    """Represents a Paginator for the endpoints returning a :class:`List` of
+    :class:`coc.miscmodels.Location`"""
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       location_id: str,
-                       model: Type[RankedClan],
+                       args: dict,
+                       model: Type[Location],
                        limit: int,
                        page: bool = True,
                        after: str = None,
                        before: str = None
-                       ) -> ClanVersusRanking:
+                       ) -> LocationPaginator:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        if limit:
+            args["limit"] = limit
         if after:
             args["after"] = after
         if before:
             args["before"] = before
 
-        json_resp = await cls._fetch_endpoint(client, location_id, **args)
-        return ClanVersusRanking(client=client, location_id=location_id, limit=limit,
-                                 page=page, json_resp=json_resp, model=model)
+        json_resp = await cls._fetch_endpoint(client, **args)
+        return LocationPaginator(client=client, args=args, limit=limit,
+                       page=page, json_resp=json_resp, model=model)
 
     @staticmethod
-    async def _fetch_endpoint(client: Client, location_id: str,
+    async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_location_clans_versus(location_id, **options)
+        result = await client.http.search_war_leagues(**options)
         if fut:
             fut.set_result(result)
         return result
 
 
-class ClanCapitalRanking(LogPaginator, ABC):
-    """Represents a Generator for a ClanCapitalRanking"""
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    @classmethod
-    async def init_cls(cls,
-                       client: Client,
-                       location_id: str,
-                       model: Type[RankedClan],
-                       limit: int,
-                       page: bool = True,
-                       after: str = None,
-                       before: str = None
-                       ) -> ClanCapitalRanking:
-
-        # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
-        if after:
-            args["after"] = after
-        if before:
-            args["before"] = before
-
-        json_resp = await cls._fetch_endpoint(client, location_id, **args)
-        return ClanCapitalRanking(client=client, location_id=location_id, limit=limit,
-                                  page=page, json_resp=json_resp, model=model)
-
-    @staticmethod
-    async def _fetch_endpoint(client: Client, location_id: str,
-                              fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
-        x: list
-        x.pop()
-        result = await client.http.get_location_clans_capital(location_id, **options)
-        if fut:
-            fut.set_result(result)
-        return result
