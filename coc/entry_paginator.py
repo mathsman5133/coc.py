@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import typing
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING, Type, Union
 
@@ -16,10 +17,10 @@ if TYPE_CHECKING:
 class Paginator(ABC):
     @abstractmethod
     def __init__(self, client: Client,
-                 args: dict,
+                 args: typing.Dict,
                  limit: int,
                  page: bool,
-                 json_resp: dict,
+                 json_resp: typing.Dict,
                  model: Union[Type[Clan], Type[League], Type[LocationPaginator]]):
 
         self._query_args = args
@@ -128,7 +129,7 @@ class Paginator(ABC):
         self._response_retry = self._page_data.get("_response_retry", 0)
 
     @property
-    def options(self) -> dict:
+    def options(self) -> typing.Dict:
         """Generate the header for the endpint request"""
         options = {"limit": self._limit}
         if self._next_page:
@@ -140,7 +141,7 @@ class Paginator(ABC):
         """Determine if there is a next page for the endpoint query"""
         try:
             return self._page_data.get("paging").get("cursors").get("after")
-        except KeyError:
+        except (KeyError, AttributeError):
             return None
 
     @property
@@ -148,7 +149,7 @@ class Paginator(ABC):
         """Determine if there is a previous page for the endpoint query"""
         try:
             return self._page_data.get("paging").get("cursors").get("before")
-        except KeyError:
+        except (KeyError, AttributeError):
             return None
 
     @staticmethod
@@ -156,7 +157,7 @@ class Paginator(ABC):
     async def _fetch_endpoint(client: Client,
                               clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         """Function to fetch data from the endpoint"""
         pass
 
@@ -182,7 +183,7 @@ class SearchClanPaginator(Paginator, ABC):
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       args: dict,
+                       args: typing.Dict,
                        model: Type[Clan],
                        limit: int,
                        page: bool = True,
@@ -205,7 +206,7 @@ class SearchClanPaginator(Paginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.search_clans(**options)
         if fut:
             fut.set_result(result)
@@ -221,7 +222,7 @@ class CapitalLeaguePaginator(Paginator, ABC):
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       args: dict,
+                       args: typing.Dict,
                        model: Type[League],
                        limit: int,
                        page: bool = True,
@@ -244,7 +245,7 @@ class CapitalLeaguePaginator(Paginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.search_capital_leagues(**options)
         if fut:
             fut.set_result(result)
@@ -260,7 +261,7 @@ class LeaguePaginator(Paginator, ABC):
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       args: dict,
+                       args: typing.Dict,
                        model: Type[League],
                        limit: int,
                        page: bool = True,
@@ -283,7 +284,7 @@ class LeaguePaginator(Paginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.search_leagues(**options)
         if fut:
             fut.set_result(result)
@@ -299,7 +300,7 @@ class WarLeaguePaginator(Paginator, ABC):
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       args: dict,
+                       args: typing.Dict,
                        model: Type[League],
                        limit: int,
                        page: bool = True,
@@ -322,7 +323,7 @@ class WarLeaguePaginator(Paginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.search_war_leagues(**options)
         if fut:
             fut.set_result(result)
@@ -338,7 +339,7 @@ class LocationPaginator(Paginator, ABC):
     @classmethod
     async def init_cls(cls,
                        client: Client,
-                       args: dict,
+                       args: typing.Dict,
                        model: Type[Location],
                        limit: int,
                        page: bool = True,
@@ -361,7 +362,7 @@ class LocationPaginator(Paginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.search_war_leagues(**options)
         if fut:
             fut.set_result(result)

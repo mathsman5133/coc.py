@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import typing
 from abc import ABC, abstractmethod
 from typing import Optional, TYPE_CHECKING, Type, Union
 
@@ -20,7 +21,7 @@ class LogPaginator(ABC):
                  clan_tag: str,
                  limit: int,
                  page: bool,
-                 json_resp: dict,
+                 json_resp: typing.Dict,
                  model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry], Type[ClanMember], Type[RankedPlayer],
                               Type[RankedClan]]):
 
@@ -132,7 +133,7 @@ class LogPaginator(ABC):
         self._response_retry = self._page_data.get("_response_retry", 0)
 
     @property
-    def options(self) -> dict:
+    def options(self) -> typing.Dict:
         """Generate the header for the endpoint request"""
         options = {"limit": self._limit}
         if self._next_page:
@@ -144,7 +145,7 @@ class LogPaginator(ABC):
         """Determine if there is a next page for the endpoint query"""
         try:
             return self._page_data.get("paging").get("cursors").get("after")
-        except KeyError:
+        except (KeyError, AttributeError):
             return None
 
     @property
@@ -152,7 +153,7 @@ class LogPaginator(ABC):
         """Determine if there is a previous page for the endpoint query"""
         try:
             return self._page_data.get("paging").get("cursors").get("before")
-        except KeyError:
+        except (KeyError, AttributeError):
             return None
 
     @staticmethod
@@ -160,7 +161,7 @@ class LogPaginator(ABC):
     async def _fetch_endpoint(client: Client,
                               clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         """Function to fetch data from the endpoint"""
         pass
 
@@ -195,7 +196,7 @@ class ClanWarLog(LogPaginator, ABC):
                        ) -> ClanWarLog:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -208,7 +209,7 @@ class ClanWarLog(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_clan_warlog(clan_tag, **options, ignore_cache=True)
         if fut:
             fut.set_result(result)
@@ -232,7 +233,7 @@ class RaidLog(LogPaginator, ABC):
                        ) -> RaidLog:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -245,7 +246,7 @@ class RaidLog(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_clan_raidlog(clan_tag, **options)
         if fut:
             fut.set_result(result)
@@ -283,7 +284,7 @@ class ClanMemberPaginator(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, clan_tag: str, *,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_clan_members(clan_tag, **options)
         if fut:
             fut.set_result(result)
@@ -307,7 +308,7 @@ class PlayerRanking(LogPaginator, ABC):
                        ) -> PlayerRanking:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -320,7 +321,7 @@ class PlayerRanking(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, location_id: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_location_players(location_id, **options)
         if fut:
             fut.set_result(result)
@@ -344,7 +345,7 @@ class PlayerVersusRanking(LogPaginator, ABC):
                        ) -> PlayerVersusRanking:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -357,7 +358,7 @@ class PlayerVersusRanking(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, location_id: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_location_players_versus(location_id, **options)
         if fut:
             fut.set_result(result)
@@ -382,7 +383,7 @@ class ClanRanking(LogPaginator, ABC):
                        ) -> ClanRanking:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -395,7 +396,7 @@ class ClanRanking(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, location_id: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_location_clans(location_id, **options)
         if fut:
             fut.set_result(result)
@@ -420,7 +421,7 @@ class ClanVersusRanking(LogPaginator, ABC):
                        ) -> ClanVersusRanking:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -433,7 +434,7 @@ class ClanVersusRanking(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, location_id: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         result = await client.http.get_location_clans_versus(location_id, **options)
         if fut:
             fut.set_result(result)
@@ -458,7 +459,7 @@ class ClanCapitalRanking(LogPaginator, ABC):
                        ) -> ClanCapitalRanking:
 
         # Add the limit if specified
-        args: dict[str, Union[str, int]] = {"limit": limit} if limit else {}
+        args: typing.Dict[str, Union[str, int]] = {"limit": limit} if limit else {}
         if after:
             args["after"] = after
         if before:
@@ -471,7 +472,7 @@ class ClanCapitalRanking(LogPaginator, ABC):
     @staticmethod
     async def _fetch_endpoint(client: Client, location_id: str,
                               fut: Optional[asyncio.Future] = None,
-                              **options) -> dict:
+                              **options) -> typing.Dict:
         x: list
         x.pop()
         result = await client.http.get_location_clans_capital(location_id, **options)
