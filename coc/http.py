@@ -414,13 +414,28 @@ class HTTPClient:
     def get_location_players_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), **kwargs))
 
+    def get_location_capitals(self, location_id, **kwargs):
+        return self.request(Route("GET", "/locations/{}/rankings/capitals".format(location_id), **kwargs))
+
     # leagues
 
     def search_leagues(self, **kwargs):
         return self.request(Route("GET", "/leagues", **kwargs))
 
+    def search_capital_leagues(self, **kwargs):
+        return self.request(Route("GET", "/capitalleagues", **kwargs))
+
+    def search_war_leagues(self, **kwargs):
+        return self.request(Route("GET", "/warleagues", **kwargs))
+
     def get_league(self, league_id):
         return self.request(Route("GET", "/leagues/{}".format(league_id)))
+
+    def get_capital_league(self, league_id):
+        return self.request(Route("GET", "/capitalleagues/{}".format(league_id)))
+
+    def get_war_league(self, league_id):
+        return self.request(Route("GET", "/warleagues/{}".format(league_id)))
 
     def get_league_seasons(self, league_id, **kwargs):
         return self.request(Route("GET", "/leagues/{}/seasons".format(league_id), **kwargs))
