@@ -414,9 +414,6 @@ class HTTPClient:
     def get_location_players_versus(self, location_id, **kwargs):
         return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), **kwargs))
 
-    def get_location_capitals(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/capitals".format(location_id), **kwargs))
-
     # leagues
 
     def search_leagues(self, **kwargs):
