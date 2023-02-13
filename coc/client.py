@@ -1510,9 +1510,9 @@ class Client:
         return League(data=data, client=self)
 
     async def get_league_named(self, league_name: str) -> Optional[League]:
-        """Get a location by name.
+        """Get a league by name.
 
-        This is somewhat equivilant to
+        This is somewhat equivalent to
 
         .. code-block:: python3
 
@@ -1536,9 +1536,189 @@ class Client:
         Returns
         --------
         :class:`League`
-            The first location matching the location name. Could be ``None`` if not found.
+            The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_leagues(), name=league_name)
+
+    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+        """Get list of war leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`League`]
+            The requested leagues.
+        """
+        data = await self.http.search_war_leagues(limit=limit, before=before, after=after)
+        return [League(data=n, client=self) for n in data["items"]]
+
+    async def get_war_league(self, league_id: int) -> League:
+        """
+        Get war league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`League`
+            The league with the requested ID
+        """
+        data = await self.http.get_war_league(league_id)
+        return League(data=data, client=self)
+
+    async def get_war_league_named(self, league_name: str) -> Optional[League]:
+        """Get a war league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_war_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The war league name to search for
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`League`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        return get(await self.search_war_leagues(), name=league_name)
+
+    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+        """Get list of capital leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`League`]
+            The requested leagues.
+        """
+        data = await self.http.search_capital_leagues(limit=limit, before=before, after=after)
+        return [League(data=n, client=self) for n in data["items"]]
+
+    async def get_capital_league(self, league_id: int) -> League:
+        """
+        Get capital league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`League`
+            The league with the requested ID
+        """
+        data = await self.http.get_capital_league(league_id)
+        return League(data=data, client=self)
+
+    async def get_capital_league_named(self, league_name: str) -> Optional[League]:
+        """Get a capital league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_capital_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The capital league name to search for
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`League`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        return get(await self.search_capital_leagues(), name=league_name)
 
     async def get_seasons(self, league_id: int = 29000021) -> List[str]:
         """Get league seasons.
