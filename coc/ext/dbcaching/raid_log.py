@@ -57,6 +57,7 @@ class CachedRaidLog(RaidLog):
         else:  # nothing cached, so we need to request all the raid logs we want
             args = {"limit": limit} if limit else {}
             json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
+            limit_to_fetch = len(json_resp['items'])
         items = json_resp.get("items", [])
         # store finished raids in db
         for item in items:
