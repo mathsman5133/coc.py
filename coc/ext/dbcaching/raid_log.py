@@ -41,21 +41,22 @@ class CachedRaidLog(RaidLog):
             # calculate how many newer raid logs there are that might be uncached
             limit_to_fetch = (utils.get_raid_weekend_end(datetime.utcnow() - timedelta(weeks=1))
                               - raid_log_entries[0]["end_time"]).days // 7
+            if datetime.utcnow() > utils.get_raid_weekend_start():
+                # there is a raid currently running, so we need to fetch it to get live data
+                limit_to_fetch += 1
+            if limit and limit_to_fetch + len(raid_log_entries) < limit:
+                # if we want more raids than there are stored plus the ones after that, just fetch them all
+                args = {"limit": limit} if limit else {}
+                json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
+            else:
+                if limit_to_fetch:  # request the raids after the latest cached one
+                    args = {"limit": limit_to_fetch}
+                    json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
+                else:  # everything is cached, no need to make an API call
+                    json_resp = {}
         else:  # nothing cached, so we need to request all the raid logs we want
-            limit_to_fetch = limit
-        if datetime.utcnow() > utils.get_raid_weekend_start():
-            # there is a raid currently running, so we need to fetch it to get live data
-            limit_to_fetch += 1
-        if limit and limit_to_fetch + len(raid_log_entries) < limit:
-            # if we want more raids than there are stored plus the ones after that, just fetch them all
             args = {"limit": limit} if limit else {}
             json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-        else:
-            if limit_to_fetch:  # request the raids after the latest cached one
-                args = {"limit": limit_to_fetch}
-                json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
-            else:  # everything is cached, no need to make an API call
-                json_resp = {}
         items = json_resp.get("items", [])
         # store finished raids in db
         for item in items:
