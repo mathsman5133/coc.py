@@ -23,7 +23,7 @@ API Reference
 IntervalTrigger
 ~~~~~~~~~~~~~~~
 
-The ``IntervalTrigger`` will continuously loop the decorated function, sleeping for a defined number of seconds between executions. For convenience, this trigger defines ``.hourly()``  and ``.daily()`` class methods to instantiate triggers with a sleep time of 1 hour and 24 hours, respectively.
+The :class:`IntervalTrigger` will continuously loop the decorated function, sleeping for a defined number of seconds between executions. For convenience, this trigger defines ``.hourly()``  and ``.daily()`` class methods to instantiate triggers with a sleep time of 1 hour and 24 hours, respectively.
 
 .. autoclass:: coc.ext.triggers.IntervalTrigger
    :members: hourly, daily
@@ -31,7 +31,7 @@ The ``IntervalTrigger`` will continuously loop the decorated function, sleeping 
 CronTrigger
 ~~~~~~~~~~~
 
-The ``CronTrigger`` allows you to specify a standard dialect Cron schedule string to dictate the trigger's executions. This allows you to specify highly specialised schedules to e.g. fetch clan game points before and after the clan games, legend league rankings before and after season reset and much more. For convenience, a set of class methods to instantiate triggers with common patters have been provided:
+The :class:`CronTrigger` allows you to specify a standard dialect Cron schedule string to dictate the trigger's executions. This allows you to specify highly specialised schedules to e.g. fetch clan game points before and after the clan games, legend league rankings before and after season reset and much more. For convenience, a set of class methods to instantiate triggers with common patters have been provided:
 
 - ``hourly()`` implements the ``0 * * * *`` schedule,
 
@@ -77,7 +77,9 @@ Other Parameters
 Similar to the events API, triggers allow you to specify a list of elements you want the decorated function to be spread over. If you specify the ``iter_args`` parameter when initialising a trigger, it will call the decorated function once for each element of that parameter. Each element will be positionally passed into the function's first argument. If you prefer to keep your logic inside the function or load it from somewhere else, simply don't pass the ``iter_args`` parameter. That will let the trigger know not to inject any positional args.
 You can also specify additional key word arguments (``**kwargs``). Any extra arguments will be passed to the decorated function on each call.
 The boolean ``on_startup`` flag allows you to control the trigger behaviour on startup. If it is set to ``True``, the trigger will fire immediately and resume its predefined schedule afterwards. If ``on_startup`` is ``False``, the trigger will remain dormant until its first scheduled run time.
-The ``autostart`` option allows you to decide whether a trigger should automatically start on application startup. If autostart is disabled, triggers can be started using ``coc.ext.triggers.start_triggers()`` once all dependencies and required resources are loaded.
+The ``autostart`` option allows you to decide whether a trigger should automatically start on application startup. If autostart is disabled, triggers can be started using :meth:`coc.ext.triggers.start_triggers()` once all dependencies and required resources are loaded.
+
+.. autofunction:: coc.ext.triggers.start_triggers
 
 Example
 -------
