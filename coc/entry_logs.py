@@ -179,10 +179,16 @@ class ClanWarLog(LogPaginator, ABC):
                        model: Type[ClanWarLogEntry],
                        limit: int,
                        page: bool = True,
+                       after: str = None,
+                       before: str = None
                        ) -> ClanWarLog:
 
         # Add the limit if specified
         args = {"limit": limit} if limit else {}
+        if after:
+            args["after"] = after
+        if before:
+            args["before"] = before
 
         json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
         return ClanWarLog(client=client, clan_tag=clan_tag, limit=limit,
@@ -210,10 +216,16 @@ class RaidLog(LogPaginator, ABC):
                        model: Type[RaidLogEntry],
                        limit: int,
                        page: bool = True,
+                       after: str = None,
+                       before: str = None
                        ) -> RaidLog:
 
         # Add the limit if specified
         args = {"limit": limit} if limit else {}
+        if after:
+            args["after"] = after
+        if before:
+            args["before"] = before
 
         json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
         return RaidLog(client=client, clan_tag=clan_tag, limit=limit,
