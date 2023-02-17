@@ -24,7 +24,7 @@ SOFTWARE.
 from typing import Optional, List, TYPE_CHECKING
 
 
-from .miscmodels import PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
+from .miscmodels import try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
     HERO_ORDER,
@@ -236,7 +236,6 @@ class Player(ClanMember):
         "legend_statistics",
         "war_opted_in",
         "_achievements",
-        "_player_house_elements",
         "_heroes",
         "_pets",
         "_labels",
@@ -245,7 +244,6 @@ class Player(ClanMember):
         "_builder_troops",
         "_super_troops",
         "achievement_cls",
-        "player_house_element_cls",
         "hero_cls",
         "label_cls",
         "spell_cls",
@@ -253,7 +251,6 @@ class Player(ClanMember):
         "pet_cls",
 
         "_iter_achievements",
-        "_iter_player_house_elements",
         "_iter_heroes",
         "_iter_labels",
         "_iter_spells",
@@ -262,7 +259,6 @@ class Player(ClanMember):
 
         "_cs_labels",
         "_cs_achievements",
-        "_cs_player_house_elements",
         "_cs_troops",
         "_cs_home_troops",
         "_cs_builder_troops",
@@ -289,7 +285,6 @@ class Player(ClanMember):
         self._pets = None # type: Optional[dict]
 
         self.achievement_cls = Achievement
-        self.player_house_element_cls = PlayerHouseElement
         self.hero_cls = Hero
         self.label_cls = Label
         self.spell_cls = Spell
@@ -334,7 +329,6 @@ class Player(ClanMember):
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
-        player_house_element_cls = self.player_house_element_cls
         troop_loader = self._client._troop_holder.load if self._client else None
         hero_loader =  self._client._hero_holder.load if self._client else None
         spell_loader = self._client._spell_holder.load if self._client else None
@@ -347,8 +341,6 @@ class Player(ClanMember):
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
-        self._iter_player_house_elements = (player_house_element_cls(data=adata)
-                                            for adata in data_get("playerHouse", {}).get("elements", []))
         self._iter_troops = (
             troop_loader(
                 data=tdata,
@@ -428,11 +420,6 @@ class Player(ClanMember):
     def labels(self) -> List[Label]:
         """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
         return list(self._iter_labels)
-
-    @cached_property("_cs_player_house_elements")
-    def player_house_elements(self) -> List[PlayerHouseElement]:
-        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`s that the player has."""
-        return list(self._iter_player_house_elements)
 
     @cached_property("_cs_achievements")
     def achievements(self) -> List[Achievement]:

@@ -33,22 +33,22 @@ async def test_raidlog(client: coc.Client, clan_tag: str):
     # Iterate over warlogs like the current version of coc.py
     for i, e in enumerate(raid_no_page):
         e: RaidLogEntry
-        # print(f"[{i}]-sync limit: {limit} page: False {e.start_time.time}")
+        print(f"[{i}]-sync limit: {limit} page: False {e.start_time.time}")
 
     # Option to async for loop a non paginated object
     count = 0
     async for i in raid_no_page:
-        # print(f"[{count}]-async limit: {limit} page: False")
+        print(f"[{count}]-async limit: {limit} page: False")
         count += 1
 
-    # for i, e in enumerate(raid_with_page):
-    #     print(f"[{i}]-sync limit: {page_limit} page: True")
+    for i, e in enumerate(raid_with_page):
+        print(f"[{i}]-sync limit: {page_limit} page: True")
 
     # Set `paginate=True` to enable fetching beyond the limit value until
     # there are more values to fetch
     count = 0
     async for i in raid_with_page:
-        # print(f"[{count}]-async limit: {page_limit} page: True {i.start_time.time}")
+        print(f"[{count}]-async limit: {page_limit} page: True {i.start_time.time}")
         count += 1
 
 
@@ -70,24 +70,24 @@ async def test_warlog(client: coc.Client, clan_tag: str):
     # once you iterate beyond the cached amount, it will fetch the next set
     warlogs_with_page = await client.get_warlog(clan_tag, page=True, limit=pagination_limit)
 
-    # # Iterate over warlogs like the current version of coc.py
-    # for i, e in enumerate(warlogs_no_page):
-    #     print(f"[{i}]-sync limit: {limit} page: False")
+    # Iterate over warlogs like the current version of coc.py
+    for i, e in enumerate(warlogs_no_page):
+        print(f"[{i}]-sync limit: {limit} page: False")
 
     # Option to async for loop a non paginated object
     count = 0
     async for i in warlogs_no_page:
-        # print(f"[{count}]-async limit: {limit} page: False")
+        print(f"[{count}]-async limit: {limit} page: False")
         count += 1
 
-    # for i, e in enumerate(warlogs_with_page):
-    #     print(f"[{i}]-sync limit: {pagination_limit} page: True")
+    for i, e in enumerate(warlogs_with_page):
+        print(f"[{i}]-sync limit: {pagination_limit} page: True")
 
     # Set `paginate=True` to enable fetching beyond the limit value until
     # there are more values to fetch
     count = 0
     async for i in warlogs_with_page:
-        # print(f"[{count}]-async limit: {pagination_limit} page: True {i.end_time.time}")
+        print(f"[{count}]-async limit: {pagination_limit} page: True {i.end_time.time}")
         count += 1
 
     # Simple test comparing the two data sets

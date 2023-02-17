@@ -181,7 +181,7 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        throttle_limit: int = 30,
+        throttle_limit: int = 10,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
         throttler: Type[Union[BasicThrottler, BatchThrottler]] = BasicThrottler,
@@ -223,6 +223,7 @@ class Client:
         self._wars = {}
 
     async def __aenter__(self):
+        self.__init__()
         return self
 
     async def __aexit__(self, *args):
@@ -311,10 +312,10 @@ class Client:
 
 
         """
-        self.correct_key_count = len(keys)
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
+        http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
@@ -328,10 +329,10 @@ class Client:
         tokens: list[str]
             Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
         """
-        self.correct_key_count = len(tokens)
         self.http = http = self._create_client(None, None)
         http._keys = tokens
         http.keys = cycle(http._keys)
+        http.key_count = len(tokens)
         await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
@@ -366,7 +367,6 @@ class Client:
         max_members: int = None,
         min_clan_points: int = None,
         min_clan_level: int = None,
-        label_ids: List[Union[Label, int]] = [],
         limit: int = None,
         before: str = None,
         after: str = None,
@@ -394,8 +394,6 @@ class Client:
             The minumum clan points.
         min_clan_level : int, optional
             The minimum clan level.
-        label_ids: :class:`List`[Union[:class:`coc.Label`, :class:`int`]]
-            List of Labels or Label ids
         limit : int
             The number of clans to search for.
 
@@ -431,8 +429,6 @@ class Client:
             maxMembers=max_members,
             minClanPoints=min_clan_points,
             minClanLevel=min_clan_level,
-            label_ids=",".join([str(x.id) if isinstance(x, Label) else str(x) for x in label_ids
-                                if isinstance(x, (Label, int,))]),
             limit=limit,
             before=before,
             after=after,
@@ -515,8 +511,7 @@ class Client:
 
         return ClanIterator(self, tags, cls, **kwargs)
 
-    async def get_members(self, clan_tag: str, *, limit: int = 0, after: str = "", before: str = "",
-                          cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
+    async def get_members(self, clan_tag: str, cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
         """List clan members.
 
         This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -525,15 +520,6 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
-
-        limit:
-            class:`int`: Number of members to retrieve
-
-        after:
-            class:`str`: Pagination string to get page after
-
-        before:
-            class:`str`: Pagination string to get page before
 
         Raises
         -------
@@ -561,15 +547,7 @@ class Client:
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        args = {}
-        if limit:
-            args['limit'] = limit
-        if after:
-            args['after'] = after
-        if before:
-            args['before'] = before
-
-        data = await self.http.get_clan_members(clan_tag, **args)
+        data = await self.http.get_clan(clan_tag)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
     async def get_warlog(
@@ -577,10 +555,7 @@ class Client:
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
         page: bool = False,
-        *,
-        limit: int = 0,
-        after: str = "",
-        before: str = ""
+        limit: int = 0
     ) -> ClanWarLog:
         """
         Retrieve a clan's clan war log. By default, this will return
@@ -615,12 +590,6 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
-
-        after:
-            class:`str`: Pagination string to get page after
-
-        before:
-            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -664,9 +633,7 @@ class Client:
                                              clan_tag=clan_tag,
                                              page=page,
                                              limit=limit,
-                                             model=cls,
-                                             after=after,
-                                             before=before)
+                                             model=cls)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
@@ -676,10 +643,7 @@ class Client:
             clan_tag: str,
             cls: Type[RaidLogEntry] = RaidLogEntry,
             page: bool = False,
-            *,
-            limit: int = 0,
-            after: str = "",
-            before: str = ""
+            limit: int = 0
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
@@ -707,12 +671,6 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
-
-        after:
-            class:`str`: Pagination string to get page after
-
-        before:
-            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -757,9 +715,7 @@ class Client:
                                           clan_tag=clan_tag,
                                           page=page,
                                           limit=limit,
-                                          model=cls,
-                                          after=after,
-                                          before=before)
+                                          model=cls)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
@@ -782,7 +738,7 @@ class Client:
             No clan was found with the supplied tag.
 
         PrivateWarLog
-            The clan's war log is private.
+            The clan's warlog is private.
 
         Maintenance
             The API is currently in maintenance.
@@ -1510,9 +1466,9 @@ class Client:
         return League(data=data, client=self)
 
     async def get_league_named(self, league_name: str) -> Optional[League]:
-        """Get a league by name.
+        """Get a location by name.
 
-        This is somewhat equivalent to
+        This is somewhat equivilant to
 
         .. code-block:: python3
 
@@ -1536,189 +1492,9 @@ class Client:
         Returns
         --------
         :class:`League`
-            The first league matching the league name. Could be ``None`` if not found.
+            The first location matching the location name. Could be ``None`` if not found.
         """
         return get(await self.search_leagues(), name=league_name)
-
-    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
-        """Get list of war leagues.
-
-        Parameters
-        -----------
-        limit : int
-            Number of items to fetch. Defaults to ``None`` (all leagues).
-        before : str, optional
-            For use with paging. Not implemented yet.
-        after: str, optional
-            For use with paging. Not implemented yet.
-
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-
-        Returns
-        --------
-        List[:class:`League`]
-            The requested leagues.
-        """
-        data = await self.http.search_war_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
-
-    async def get_war_league(self, league_id: int) -> League:
-        """
-        Get war league information
-
-        Parameters
-        -----------
-        league_id : str
-            The League ID to search for.
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        NotFound
-            No league was found with the supplied league ID.
-
-
-        Returns
-        --------
-        :class:`League`
-            The league with the requested ID
-        """
-        data = await self.http.get_war_league(league_id)
-        return League(data=data, client=self)
-
-    async def get_war_league_named(self, league_name: str) -> Optional[League]:
-        """Get a war league by name.
-
-        This is somewhat equivalent to
-
-        .. code-block:: python3
-
-            leagues = await client.search_war_leagues(limit=None)
-            return utils.get(leagues, name=league_name)
-
-
-        Parameters
-        -----------
-        league_name : str
-            The war league name to search for
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        Returns
-        --------
-        :class:`League`
-            The first league matching the league name. Could be ``None`` if not found.
-        """
-        return get(await self.search_war_leagues(), name=league_name)
-
-    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
-        """Get list of capital leagues.
-
-        Parameters
-        -----------
-        limit : int
-            Number of items to fetch. Defaults to ``None`` (all leagues).
-        before : str, optional
-            For use with paging. Not implemented yet.
-        after: str, optional
-            For use with paging. Not implemented yet.
-
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-
-        Returns
-        --------
-        List[:class:`League`]
-            The requested leagues.
-        """
-        data = await self.http.search_capital_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
-
-    async def get_capital_league(self, league_id: int) -> League:
-        """
-        Get capital league information
-
-        Parameters
-        -----------
-        league_id : str
-            The League ID to search for.
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        NotFound
-            No league was found with the supplied league ID.
-
-
-        Returns
-        --------
-        :class:`League`
-            The league with the requested ID
-        """
-        data = await self.http.get_capital_league(league_id)
-        return League(data=data, client=self)
-
-    async def get_capital_league_named(self, league_name: str) -> Optional[League]:
-        """Get a capital league by name.
-
-        This is somewhat equivalent to
-
-        .. code-block:: python3
-
-            leagues = await client.search_capital_leagues(limit=None)
-            return utils.get(leagues, name=league_name)
-
-
-        Parameters
-        -----------
-        league_name : str
-            The capital league name to search for
-
-        Raises
-        ------
-        Maintenance
-            The API is currently in maintenance.
-
-        GatewayError
-            The API hit an unexpected gateway exception.
-
-        Returns
-        --------
-        :class:`League`
-            The first league matching the league name. Could be ``None`` if not found.
-        """
-        return get(await self.search_capital_leagues(), name=league_name)
 
     async def get_seasons(self, league_id: int = 29000021) -> List[str]:
         """Get league seasons.

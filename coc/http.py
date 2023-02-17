@@ -74,7 +74,6 @@ class BasicThrottler:
         self.sleep_time = sleep_time
         self.last_run = None
         self.lock = asyncio.Lock()
-        LOG.debug("BasicThrottler initialized with sleeptime %s", self.sleep_time)
 
     async def __aenter__(self):
         async with self.lock:
@@ -109,8 +108,6 @@ class BatchThrottler:
         self.retry_interval = retry_interval
 
         self._task_logs = deque()
-        LOG.debug("BatchThrottler initialized with rate_limit %s, per %s, retry_interval %s", self.rate_limit, self.per,
-                  self. retry_interval)
 
     async def __aenter__(self):
         while True:
@@ -284,11 +281,9 @@ class HTTPClient:
 
                         try:
                             # set a callback to remove the item from cache once it's stale.
-                            delta = int(response.headers["Cache-Control"].strip("max-age=").strip("public max-age="))
-                            # encounter for changed description in cache control header. for realtime it is always
-                            # 600 but that is not true. Correct is 0
-                            data["_response_retry"] = delta if 'realtime' not in url else 0
-                            if isinstance(cache, FIFO) and 'realtime' not in url:
+                            delta = int(response.headers["Cache-Control"].strip("max-age="))
+                            data["_response_retry"] = delta
+                            if isinstance(cache, FIFO) and not self.client.realtime:
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
@@ -419,20 +414,8 @@ class HTTPClient:
     def search_leagues(self, **kwargs):
         return self.request(Route("GET", "/leagues", **kwargs))
 
-    def search_capital_leagues(self, **kwargs):
-        return self.request(Route("GET", "/capitalleagues", **kwargs))
-
-    def search_war_leagues(self, **kwargs):
-        return self.request(Route("GET", "/warleagues", **kwargs))
-
     def get_league(self, league_id):
         return self.request(Route("GET", "/leagues/{}".format(league_id)))
-
-    def get_capital_league(self, league_id):
-        return self.request(Route("GET", "/capitalleagues/{}".format(league_id)))
-
-    def get_war_league(self, league_id):
-        return self.request(Route("GET", "/warleagues/{}".format(league_id)))
 
     def get_league_seasons(self, league_id, **kwargs):
         return self.request(Route("GET", "/leagues/{}/seasons".format(league_id), **kwargs))
@@ -483,8 +466,7 @@ class HTTPClient:
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
             keys = (await resp.json())["keys"]
-            self._keys.extend(key["key"] for c, key in enumerate(keys) if key["name"] == self.key_names and ip in key[
-                "cidrRanges"] and c <= self.key_count)
+            self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
 
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 

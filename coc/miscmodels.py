@@ -23,7 +23,7 @@ SOFTWARE.
 """
 from datetime import datetime
 from typing import Any, Type, TypeVar, Optional
-from .enums import PlayerHouseElementType
+
 from .utils import from_timestamp
 
 T = TypeVar("T")
@@ -693,24 +693,3 @@ class GoldPassSeason:
                 and self.start_time == other.start_time
                 and self.end_time == other.end_time)
 
-
-class PlayerHouseElement:
-    """Represents an element of a player house.
-
-    Attributes
-    ----------
-    id:
-        :class:`int`: The id of the house element
-    type:
-        :class:`PlayerHouseElementType`: The type of the house element
-    """
-    __slots__ = ("id", "type")
-
-    def __init__(self, *, data):
-        self.id = data.get("id")
-        self.type = data.get("type") and PlayerHouseElementType(value=data["type"])
-
-    def __eq__(self, other):
-        return (isinstance(other, PlayerHouseElement)
-                and self.id == other.id
-                and self.type == other.type)

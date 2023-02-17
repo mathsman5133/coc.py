@@ -24,27 +24,6 @@ SOFTWARE.
 from enum import Enum
 
 
-class PlayerHouseElementType(Enum):
-    """Enum to map the type of element of the player house."""
-
-    ground = "ground"
-    roof = "roof"
-    foot = "foot"  # API docs say this exists, but unable to find it anywhere. Looks like this means `walls`
-    deco = "decoration"
-    walls = "walls"
-
-    def __str__(self):
-        return self.in_game_name
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the element type."""
-        lookup = {PlayerHouseElementType.ground: "Ground", PlayerHouseElementType.roof: "Roof",
-                  PlayerHouseElementType.foot: "Foot", PlayerHouseElementType.deco: "Decoration",
-                  PlayerHouseElementType.walls: "Walls"}
-        return lookup[self]
-
-
 class Role(Enum):
     """Enum to map a player's role in the clan."""
 

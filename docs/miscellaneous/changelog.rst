@@ -7,35 +7,6 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
-v2.4.0
-------
-Additions:
-~~~~~~~~~~
-
-- Added support for Player Houses in the clan capital
-
-- Added optional cls parameters to many classes to allow the usage of custom classes
-
-
-Changes:
-~~~~~~~~
-
-- Changed the default value of the :attr:`coc.Client.throttle_limit` to a more reasonable value
-
-
-Bugs Fixed:
-~~~~~~~~~~~
-
-- Fixed a bug, which affected :func:`coc.Client.login_with_keys`
-
-- Fixed a bug, which caused an overwrite of user set parameters if the client was used with a context manager
-
-- Fixed a bug, which resulted in the client using more keys than the key_count was
-
-- Fixed a bug, which caused a wrong throttle_limit if :func:`coc.Cleint.login_with_keys` or :func:`coc.Cleint
-  .login_with_tokens` was used
-
-
 v2.3.1
 ------
 
