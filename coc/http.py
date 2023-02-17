@@ -459,8 +459,8 @@ class HTTPClient:
 
             LOG.info("Successfully logged into the developer site.")
 
-            resp_paylaod = await resp.json()
-            ip = json_loads(base64_b64decode(resp_paylaod["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+            resp_payload = await resp.json()
+            ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
 
             LOG.info("Found IP address to be %s", ip)
 
@@ -471,7 +471,7 @@ class HTTPClient:
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
             if len(self._keys) < self.key_count:
-                for key in keys:
+                for key in keys[:]:
                     if key["name"] != self.key_names or ip in key["cidrRanges"]:
                         continue
                     LOG.info(
