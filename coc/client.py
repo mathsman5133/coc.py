@@ -398,6 +398,8 @@ class Client:
             List of Labels or Label ids
         limit : int
             The number of clans to search for.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -450,6 +452,9 @@ class Client:
         tag : str
             The clan tag to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         -------
         TypeError
@@ -499,6 +504,9 @@ class Client:
         tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -525,7 +533,8 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
-
+        cls:
+            Target class to use to model that data returned
         limit:
             class:`int`: Number of members to retrieve
 
@@ -534,6 +543,7 @@ class Client:
 
         before:
             class:`str`: Pagination string to get page before
+
 
         Raises
         -------
@@ -601,11 +611,11 @@ class Client:
 
         Parameters
         -----------
-        cls:
-            Target class to use to model that data returned
-
         clan_tag:
             class:`str`: The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         page:
             class:`bool`: Enable fetching logs while only holding the
@@ -693,11 +703,11 @@ class Client:
 
         Parameters
         -----------
-        cls:
-            Target class to use to model that data returned
-
         clan_tag:
             class:`str`: The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         page:
             class:`bool`: Enable fetching logs while only holding the
@@ -845,6 +855,9 @@ class Client:
         clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -885,6 +898,9 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -941,6 +957,9 @@ class Client:
         war_tag : str
             The league war tag to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -959,7 +978,7 @@ class Client:
         Returns
         --------
         :class:`ClanWar`
-            The league war assosiated with the war tag
+            The league war associated with the war tag
         """
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
@@ -1008,6 +1027,8 @@ class Client:
             An iterable of war tags to search for.
         clan_tag: :class:`str`
             An optional clan tag. If present, this will only return wars which belong to this clan.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -1058,6 +1079,9 @@ class Client:
             An enum detailing the type of round to get. Could be ``coc.WarRound.previous_war``,
             ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
             This defaults to ``coc.WarRound.current_war``.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -1179,6 +1203,9 @@ class Client:
         clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -1192,7 +1219,7 @@ class Client:
         if not isinstance(clan_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
         if not issubclass(cls, ClanWar):
-            raise TypeError("cls must be a subclass of either ClanWar.")
+            raise TypeError("cls must be a subclass of ClanWar.")
 
         return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
 
@@ -1282,7 +1309,8 @@ class Client:
         return get(locations, name=location_name)
 
     async def get_location_clans(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan rankings for a specific location
 
@@ -1296,9 +1324,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1311,12 +1344,14 @@ class Client:
         List[:class:`RankedClan`]
             The top clans for the requested location.
         """
-
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
         data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_capital(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan capital rankings for a specific location
 
@@ -1330,9 +1365,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1345,12 +1385,14 @@ class Client:
         List[:class:`RankedClan`]
             The top clans for the requested location.
         """
-
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
         data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_players(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
         """Get player rankings for a specific location
 
@@ -1364,9 +1406,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedPlayer`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1379,11 +1426,14 @@ class Client:
         List[:class:`RankedPlayer`]
             The top players for the requested location.
         """
+        if not issubclass(cls, RankedPlayer):
+            raise TypeError("cls must be a subclass of RankedPlayer.")
         data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
         """Get clan versus rankings for a specific location
 
@@ -1397,9 +1447,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1412,11 +1467,14 @@ class Client:
         List[:class:`RankedClan`]
             The top versus-clans for the requested location.
         """
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
         data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_players_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+        self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
         """Get player versus rankings for a specific location
 
@@ -1430,9 +1488,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedPlayer`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1445,8 +1508,10 @@ class Client:
         List[:class:`RankedPlayer`]
             The top versus players for the requested location.
         """
+        if not issubclass(cls, RankedPlayer):
+            raise TypeError("cls must be a subclass of RankedPlayer.")
         data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
 
@@ -1847,7 +1912,8 @@ class Client:
 
     # players
 
-    async def get_player(self, player_tag: str, cls: Type[Player] = Player, load_game_data: bool = None, **kwargs) -> Player:
+    async def get_player(self, player_tag: str, cls: Type[Player] = Player,
+                         load_game_data: bool = None, **kwargs) -> Player:
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1855,6 +1921,9 @@ class Client:
         ----------
         player_tag : str
             The player tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -1906,6 +1975,9 @@ class Client:
         ----------
         player_tags : Iterable[:class:`str`]
             An iterable of player tags to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
