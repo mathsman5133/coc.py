@@ -58,15 +58,15 @@ This example will get a player with a certain tag, and search for 5 clans with a
             except coc.invalidcredentials as error:
                 exit(error)
 
-            player = await client.get_player("tag")
+            player = await coc_client.get_player("tag")
             print(f"{player.name} has {player.trophies} trophies!")
 
-            clans = await client.search_clans(name="best clan ever", limit=5)
+            clans = await coc_client.search_clans(name="best clan ever", limit=5)
             for clan in clans:
                 print(f"{clan.name} ({clan.tag}) has {clan.member_count} members")
 
             try:
-                war = await client.get_current_war("#clantag")
+                war = await coc_client.get_current_war("#clantag")
                 print(f"{war.clan_tag} is currently in {war.state} state.")
             except coc.privatewarlog:
                 print("uh oh, they have a private war log!")
