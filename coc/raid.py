@@ -161,15 +161,11 @@ class RaidAttack:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        if isinstance(other, RaidAttack):
-            if (self.attacker_tag == other.attacker_tag
+        return (isinstance(other, RaidAttack)
+                and self.attacker_tag == other.attacker_tag
                 and self.destruction == other.destruction
-                and self.stars == other.stars
                 and self.raid_clan == other.raid_clan
-                and self.district == other.district
-            ):
-                return True
-        return False
+                and self.district == other.district)
 
     def __init__(self, data, client, raid_log_entry, raid_clan, district):
         self.raid_log_entry = raid_log_entry
@@ -216,17 +212,9 @@ class RaidDistrict:
     """
 
     def __eq__(self, other):
-        if isinstance(other, RaidDistrict):
-            if (self.id == other.id
-                and self.name == other.name
-                and self.hall_level == other.hall_level
-                and self.destruction == other.destruction
-                and self.looted == other.looted
-                and self.raid_clan == other.raid_clan
-                and self.attack_count == other.attack_count
-            ):
-                return True
-        return False
+        return (isinstance(other, RaidDistrict)
+                and self.id == other.id
+                and self.raid_clan == other.raid_clan)
 
     __slots__ = ("id",
                  "name",
@@ -333,9 +321,6 @@ class RaidClan:
     def __eq__(self, other):
         return (isinstance(other, RaidClan)
                 and self.tag == other.tag
-                and self.attack_count == other.attack_count
-                and self.district_count == other.district_count
-                and self.destroyed_district_count == other.destroyed_district_count
                 and self.raid_log_entry.start_time == other.raid_log_entry.start_time
                 and self.index == other.index)
 
