@@ -108,7 +108,7 @@ class Troop(DataContainer):
             ("id", cls.id),
         ]
         return "<%s %s>" % (
-            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+            cls.name, " ".join("%s=%r" % t for t in attrs),)
 
 
     @classmethod
