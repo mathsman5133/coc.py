@@ -80,15 +80,9 @@ class RaidMember(BasePlayer):
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        if isinstance(other, RaidMember):
-            if (self.tag == other.tag
-                    and self.attack_count == other.attack_count
-                    and self.attack_limit == other.attack_limit
-                    and self.bonus_attack_limit == other.bonus_attack_limit
-                    and self.capital_resources_looted == other.capital_resources_looted
-            ):
-                return True
-        return False
+        return (isinstance(other, RaidMember)
+                and self.tag == other.tag
+                and self.raid_log_entry == other.raid_log_entry)
 
     def _from_data(self, data):
         data_get = data.get
@@ -389,7 +383,8 @@ class RaidLogEntry:
         :class:`int`: The amount of defensive reward
     """
 
-    __slots__ = ("state",
+    __slots__ = ("clan_tag",
+                 "state",
                  "start_time",
                  "end_time",
                  "total_loot",
@@ -414,6 +409,7 @@ class RaidLogEntry:
 
     def __init__(self, *, data, client, **kwargs):
         self._client = client
+        self.clan_tag = kwargs['clan_tag'] if "clan_tag" in kwargs else ""
         self._response_retry = kwargs['response_retry'] if "response_retry" in kwargs else 0
         self._raw_data = data if client and client.raw_attribute else None
         self._from_data(data)
@@ -429,17 +425,9 @@ class RaidLogEntry:
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     def __eq__(self, other):
-        if isinstance(other, RaidLogEntry):
-            if (self.start_time == other.start_time
-                    and self.completed_raid_count == other.completed_raid_count
-                    and self.destroyed_district_count == other.destroyed_district_count
-                    and self.attack_count == other.attack_count
-                    and self.attack_log == other.attack_log
-                    and self.defense_log == other.defense_log
-            ):
-                return True
-
-        return False
+        return (isinstance(other, RaidLogEntry)
+                and self.start_time == other.start_time
+                and self.clan_tag == other.clan_tag)
 
 
     def _from_data(self, data: dict) -> None:
