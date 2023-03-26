@@ -356,7 +356,7 @@ class WarEvents:
 
         async def wrapped(cached_war: ClanWar, war: ClanWar, callback):
             if cached_war.preparation_start_time and war.preparation_start_time \
-                    and cached_war.preparation_start_time.timestamp != war.preparation_start_time.time:
+                    and cached_war.preparation_start_time.time != war.preparation_start_time.time:
                 await callback(war)
             elif war.preparation_start_time and not cached_war.preparation_start_time:
                 # no war on endpoint, so new war is for sure new
