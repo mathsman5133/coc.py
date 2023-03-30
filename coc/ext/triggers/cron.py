@@ -180,7 +180,7 @@ class CronSchedule:
                                                          self.allowed_values.day_of_week)
         next_dom, dom_overflow = self.__next_allowed_val(now_parts.day_of_month + (1 if hr_overflow else 0),
                                                          self.allowed_values.day_of_month)
-        if next_dom > monthrange(after.year, after.month)[1]:  # current month doesn't allow this month
+        if next_dom > monthrange(after.year, after.month)[1]:  # current month doesn't allow this day
             next_dom, dom_overflow = self.allowed_values.day_of_month[0], True
         next_day, day_overflow = self.__determine_day(after, next_dow, dow_overflow, next_dom, dom_overflow)
         if day_overflow or next_day > now_parts.day_of_month:  # backtrack
