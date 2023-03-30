@@ -3,7 +3,7 @@ import functools
 import logging
 import warnings
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 from traceback import format_exception
 from typing import Any, Callable, Coroutine, Optional, Union
@@ -180,6 +180,7 @@ class BaseTrigger(ABC):
         await asyncio.sleep(max((wakeup_date - datetime.now().astimezone()).total_seconds(), 0))
 
     @property
+    @abstractmethod
     def next_run(self) -> datetime:
         """Calculate the date and time of the next run. Needs to be overwritten in subclasses"""
         raise NotImplementedError('All `BaseTrigger` subclasses need to implement `next_run`')
