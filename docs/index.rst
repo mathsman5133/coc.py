@@ -46,6 +46,7 @@ coc.py: A Clash of Clans API Wrapper
 
    extensions/discord_links
    extensions/full_war_api
+   extensions/triggers
 
 .. _examples:
 .. toctree::
