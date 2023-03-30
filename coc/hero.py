@@ -75,13 +75,13 @@ class Hero(DataContainer):
     regeneration_time: "TimeDelta"
     is_loaded: bool = False
 
-    def __repr__(cls):
+    def __repr__(self):
         attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
+            ("name", self.name),
+            ("id", self.id),
         ]
         return "<%s %s>" % (
-            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @property
     def is_max_for_townhall(self) -> bool:

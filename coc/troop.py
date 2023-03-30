@@ -8,7 +8,6 @@ from .enums import Resource
 from .miscmodels import TimeDelta, try_enum
 from .utils import UnitStat
 
-
 TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
 SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json"))
 
@@ -102,14 +101,13 @@ class Troop(DataContainer):
     is_super_troop: bool = False
     is_loaded: bool = False
 
-    def __repr__(cls):
+    def __repr__(self):
         attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
+            ("name", self.name),
+            ("id", self.id),
         ]
         return "<%s %s>" % (
-            cls.name, " ".join("%s=%r" % t for t in attrs),)
-
+            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @classmethod
     def _inject_super_meta(cls, troop_meta):
@@ -137,7 +135,7 @@ class Troop(DataContainer):
         #    and for troop level above, it requires a higher TH than we currently have.
         #    Maybe there's a better way to go about doing this.
         return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
-                    < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
+             < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
 
     @classmethod
     def get_max_level_for_townhall(cls, townhall):
@@ -223,4 +221,3 @@ class TroopHolder(DataContainerHolder):
             return self.item_lookup[(name, home_village)]
         except KeyError:
             return None
-
