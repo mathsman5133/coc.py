@@ -171,4 +171,4 @@ subclass and overwriting the ``next_run``  property. The property needs to retur
         @property
         def next_run(self) -> datetime:
             """randomly triggers every 50-100 seconds"""
-            return datetime.now().astimezone() + timedelta(seconds=random.randint(50, 101))
+            return datetime.now().astimezone() + timedelta(seconds=randint(50, 101))
