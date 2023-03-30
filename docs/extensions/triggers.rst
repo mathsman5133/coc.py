@@ -19,7 +19,8 @@ your existing coroutine functions. The triggers extension comes with:
 - two types of triggers: ``IntervalTrigger``  and ``CronTrigger``,
 - customisable error handlers for each trigger and a global ``@on_error()`` fallback handler,
 - extensive logging that can seamlessly be integrated with your existing logger,
-- integrated tools to apply your repeating function across an iterable.
+- integrated tools to apply your repeating function across an iterable, and
+- a framework that is easy to extend, allowing you to create your own custom triggers if you need to.
 
 API Reference
 -------------
@@ -138,5 +139,36 @@ Below are some usage examples for the triggers extension:
    :language: py
    :linenos:
 
+Extending this Extension
+------------------------
+
+If you find yourself in need of scheduling logic that none of the included triggers can provide, you can easily
+create a trigger class that fits your needs by importing the :class:`BaseTrigger` from this extension, creating a
+subclass and overwriting the ``next_run``  property. The property needs to return a *timezone-aware*
+``datetime.datetime`` object indicating when the trigger should run next based on the current system time.
 
 
+.. code-block:: python3
+    from coc.ext.triggers import BaseTrigger
+    from datetime import datetime, timedelta
+    from random import randint
+
+    class RandomTrigger(BaseTrigger):
+        def __init__(self,
+                     *,  # disable positional arguments
+                     seconds: int,
+                     iter_args: Optional[list] = None,
+                     on_startup: bool = True,
+                     autostart: bool = False,
+                     error_handler: Optional[CoroFunction] = None,
+                     logger: Optional[logging.Logger] = None,
+                     loop: Optional[asyncio.AbstractEventLoop] = None,
+                     **kwargs):
+
+            super().__init__(iter_args=iter_args, on_startup=on_startup, autostart=autostart,
+                             error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+        @property
+        def next_run(self) -> datetime:
+            """randomly triggers every 50-100 seconds"""
+            return datetime.now().astimezone() + timedelta(seconds=random.randint(50, 101))

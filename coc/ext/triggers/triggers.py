@@ -22,7 +22,8 @@ trigger_registry = []  # target for start_triggers()
 
 class BaseTrigger(ABC):
     """
-    Abstract base class for all repeating trigger decorators
+    Abstract base class for all repeating trigger decorators. This class can only be inherited from,
+    it cannot be instantiated. Any subclasses have to implement the :meth:`next_run` property
 
     Attributes
     ----------
