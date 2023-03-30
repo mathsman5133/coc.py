@@ -189,7 +189,8 @@ class FullWarClient:
                                    f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
         try:
             responses = data["log"]
-            return (ClanWar(data=response["response"], client=self.coc_client, clan_tag=coc.utils.correct_tag(clan_tag)) for response in responses)
+            return (ClanWar(data=response["response"], client=self.coc_client,
+                            clan_tag=coc.utils.correct_tag(clan_tag)) for response in responses)
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
