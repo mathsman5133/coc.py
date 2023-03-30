@@ -432,6 +432,7 @@ def on_error() -> Callable[[], ErrorHandler]:
     potentially undeclared error handler, though that warning can safely be ignored.
 
     Any function decorated by this must be a coroutine and accept three parameters:
+
         function_name: :class:`str`
             the name of the failing trigger's decorated function
         arg: Optional[:class:`Any`]
