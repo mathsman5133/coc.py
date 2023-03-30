@@ -149,26 +149,27 @@ subclass and overwriting the ``next_run``  property. The property needs to retur
 
 
 .. code-block:: python3
-    from coc.ext.triggers import BaseTrigger
-    from datetime import datetime, timedelta
-    from random import randint
 
-    class RandomTrigger(BaseTrigger):
-        def __init__(self,
-                     *,  # disable positional arguments
-                     seconds: int,
-                     iter_args: Optional[list] = None,
-                     on_startup: bool = True,
-                     autostart: bool = False,
-                     error_handler: Optional[CoroFunction] = None,
-                     logger: Optional[logging.Logger] = None,
-                     loop: Optional[asyncio.AbstractEventLoop] = None,
-                     **kwargs):
+   from coc.ext.triggers import BaseTrigger
+   from datetime import datetime, timedelta
+   from random import randint
 
-            super().__init__(iter_args=iter_args, on_startup=on_startup, autostart=autostart,
-                             error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+   class RandomTrigger(BaseTrigger):
+       def __init__(self,
+                    *,  # disable positional arguments
+                    seconds: int,
+                    iter_args: Optional[list] = None,
+                    on_startup: bool = True,
+                    autostart: bool = False,
+                    error_handler: Optional[CoroFunction] = None,
+                    logger: Optional[logging.Logger] = None,
+                    loop: Optional[asyncio.AbstractEventLoop] = None,
+                    **kwargs):
 
-        @property
-        def next_run(self) -> datetime:
-            """randomly triggers every 50-100 seconds"""
-            return datetime.now().astimezone() + timedelta(seconds=randint(50, 101))
+           super().__init__(iter_args=iter_args, on_startup=on_startup, autostart=autostart,
+                            error_handler=error_handler, logger=logger, loop=loop, **kwargs)
+
+       @property
+       def next_run(self) -> datetime:
+           """randomly triggers every 50-100 seconds"""
+           return datetime.now().astimezone() + timedelta(seconds=randint(50, 101))
