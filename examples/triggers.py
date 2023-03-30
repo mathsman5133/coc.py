@@ -75,9 +75,19 @@ if __name__ == "__main__":
     try:
         # using the loop context, run the main function
         event_loop.run_until_complete(main())
+
+        # wait a few seconds to simulate other resources loading
+        event_loop.run_until_complete(asyncio.sleep(3))
+
+        # note how this print statement will show up in your console AFTER the auto-started trigger fired
+        print('NOTE: Auto-started trigger "test_default_error_handling" has already fired at this point')
+
         # then start trigger execution
         event_loop.run_until_complete(start_triggers())
+
         # set the loop to run forever so that it keeps executing the triggers
+        # NOTE: this line is blocking, no code after will be executed
         event_loop.run_forever()
+        print('This line will never make it to your console')
     except KeyboardInterrupt:
         pass

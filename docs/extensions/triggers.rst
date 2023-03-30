@@ -54,6 +54,25 @@ methods to instantiate triggers with common patters have been provided:
 .. autoclass:: coc.ext.triggers.CronTrigger
    :members: hourly, daily, weekly, monthly
 
+.. _Starting the Triggers:
+Starting the Triggers
+~~~~~~~~~~~~~~~~~~~~~
+
+By default, triggers don't start on their own. This is because you typically want to load other resources before
+running a trigger, e.g. log in to the coc dev site, start your Discord bot or boot up a database connection. If a
+trigger fired right away, the initial runs would likely fail due to unavailability of these resources. Due to how
+Python works, a trigger would run the moment the interpreter reaches the definition, usually well before you intend
+to actually start (you can see that illustrated in the examples as well). That is why by default, all triggers are
+set to ``autostart=False``.
+
+The triggers extension provides a :meth:`coc.ext.triggers.start_triggers()` function to manually kick off trigger
+execution from within your code once you're ready to start processing. If you don't need any additional resources to
+load in first or have otherwise made sure that your triggers won't fire early, you can set them to ``autostart=True``
+and omit the call to :meth:`coc.ext.triggers.start_triggers()`. If you have a mixture of auto-started and not
+auto-started triggers, :meth:`coc.ext.triggers.start_triggers()` will only start the ones that aren't already running.
+
+.. autofunction:: coc.ext.triggers.start_triggers
+
 Error Handling
 ~~~~~~~~~~~~~~
 
@@ -95,16 +114,20 @@ spread over. If you specify the ``iter_args`` parameter when initialising a trig
 function once for each element of that parameter. Each element will be positionally passed into the function's first
 argument. If you prefer to keep your logic inside the function or load it from somewhere else, simply don't pass the
 ``iter_args`` parameter. That will let the trigger know not to inject any positional args.
-You can also specify additional key word arguments (``**kwargs``). Any extra arguments will be passed to the decorated
-function on each call.
+
 The boolean ``on_startup`` flag allows you to control the trigger behaviour on startup. If it is set to ``True``, the
 trigger will fire immediately and resume its predefined schedule afterwards. If ``on_startup`` is ``False``, the
 trigger will remain dormant until its first scheduled run time.
+
 The ``autostart`` option allows you to decide whether a trigger should automatically start on application startup.
 If autostart is disabled, triggers can be started using :meth:`coc.ext.triggers.start_triggers()` once all
-dependencies and required resources are loaded.
+dependencies and required resources are loaded. Refer to `Starting the Triggers`_ for details.
 
-.. autofunction:: coc.ext.triggers.start_triggers
+The ``loop`` parameter allows you to pass your own asyncio event loop to attach the trigger execution to. If omitted,
+the current event loop will be used.
+
+You can also specify additional key word arguments (``**kwargs``). Any extra arguments will be passed to the decorated
+function as key word arguments on each call.
 
 Example
 -------

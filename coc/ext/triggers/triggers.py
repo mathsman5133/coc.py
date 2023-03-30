@@ -466,7 +466,25 @@ def on_error() -> Callable[[], ErrorHandler]:
 
 
 async def start_triggers():
-    """Manually start all triggers with `autostart=False`
+    """Manually start all triggers with `autostart=False` (which is the default value)
+
+    Example
+    --------
+    .. code-block:: python3
+
+        # define a trigger
+        @CronTrigger(cron_schedule='0 0 * * *', iter_args=['#2PP', '#2PPP'], autostart=False)
+        async def download_current_war(clan_tag: str):
+            # use your coc client to fetch war data, store it to a file or database, ...
+            pass
+
+        if __name__ = '__main__':
+            # login to coc.py and/or load other required resources here
+            event_loop = asyncio.get_event_loop()
+            # then start trigger execution
+            event_loop.run_until_complete(start_triggers())
+            # set the loop to run forever so that it keeps executing the triggers
+            event_loop.run_forever()
     """
 
     tasks = [asyncio.create_task(trigger) for trigger in trigger_registry]
