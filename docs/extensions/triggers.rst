@@ -56,6 +56,7 @@ methods to instantiate triggers with common patters have been provided:
    :members: hourly, daily, weekly, monthly
 
 .. _Starting the Triggers:
+
 Starting the Triggers
 ~~~~~~~~~~~~~~~~~~~~~
 
