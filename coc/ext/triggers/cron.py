@@ -156,13 +156,12 @@ class CronSchedule:
 
         # construct timezone-aware representation of after
         tz_naive = not after.tzinfo
-        tz = datetime.now().astimezone().tzinfo
         if tz_naive:
             warnings.warn(
                 'The input datetime was datetime-naive. Assuming the time zone of your device for processing. '
                 'The return value will be datetime-naive again', category=RuntimeWarning
             )
-            after = after.replace(tzinfo=tz)
+            after = after.replace(tzinfo=datetime.now().astimezone().tzinfo)
 
         now_parts = CronParts(after.minute, after.hour, after.day, after.month, after.isoweekday())
 
@@ -201,7 +200,8 @@ class CronSchedule:
 
         if tz_naive:
             return datetime(year=next_year, month=next_month, day=next_day, hour=next_hour, minute=next_minute)
-        return datetime(year=next_year, month=next_month, day=next_day, hour=next_hour, minute=next_minute, tzinfo=tz)
+        return datetime(year=next_year, month=next_month, day=next_day, hour=next_hour,
+                        minute=next_minute, tzinfo=after.tzinfo)
 
     @property
     def next_run(self) -> datetime:
