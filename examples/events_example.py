@@ -87,7 +87,7 @@ async def on_player_trophy_change(old_player, new_player):
 @coc.PlayerEvents.versus_trophies()
 async def on_player_versus_trophy_change(old_player, new_player):
     log.info(
-        f"{new_player} versus trophies changed from {old_player.trophies} to {new_player.trophies}")
+        f"{new_player} versus trophies changed from {old_player.versus_trophies} to {new_player.versus_trophies}")
 
 
 """Client Events"""
