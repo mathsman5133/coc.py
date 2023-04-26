@@ -61,14 +61,13 @@ class RaidMember(BasePlayer):
                  "bonus_attack_limit",
                  "capital_resources_looted",
                  "raid_log_entry",
-                 "_attacks",
+                 "_cs_attacks",
                  "_client")
 
     def __init__(self, *, data, client, raid_log_entry):
         super().__init__(data=data, client=client)
         self._client = client
         self.raid_log_entry = raid_log_entry
-        self._attacks = []
         self._from_data(data)
 
     def __repr__(self):
@@ -100,20 +99,14 @@ class RaidMember(BasePlayer):
         self.bonus_attack_limit: int = data_get("bonusAttackLimit")
         self.capital_resources_looted: int = data_get("capitalResourcesLooted")
 
-    @property
+    @cached_property("_cs_attacks")
     def attacks(self):
         """List[:class:`RaidAttack`]: The member's attacks in this raid log entry.
         Can be empty due to missing parts in the API response.
         """
-        list_attacks = self._attacks  # type: List[RaidAttack]
-        if list_attacks:
-            return list_attacks
-
-        list_attacks = list(attack for attack_raid in self.raid_log_entry.attack_log
-                            for district in attack_raid.districts for attack in district.attacks
-                            if attack and attack.attacker_tag == self.tag)
-        self._attacks = list_attacks
-        return list_attacks
+        return list(attack for attack_raid in self.raid_log_entry.attack_log
+                    for district in attack_raid.districts for attack in district.attacks
+                    if attack and attack.attacker_tag == self.tag)
 
 
 class RaidAttack:
@@ -251,7 +244,6 @@ class RaidDistrict:
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
-
     def __init__(self, *, data, client, raid_log_entry, raid_clan):
         self.id: int = data.get("id")
         self.name: str = data.get("name")
@@ -312,6 +304,7 @@ class RaidClan:
         "_client",
         "_response_retry",
         "_cs_raid_districts",
+        "_cs_looted",
         "_iter_raid_districts",
         "_raw_data"
     )
@@ -327,7 +320,6 @@ class RaidClan:
         self.level = data.get("attacker", data.get("defender")).get("level")
         self.raid_log_entry = raid_log_entry
         self.index = index
-        self._attacks = []
         self._from_data(data)
 
     def __eq__(self, other):
@@ -367,16 +359,22 @@ class RaidClan:
         attacked."""
         return list(self._iter_raid_districts)
 
-    @property
+    @cached_property("_cs_raid_attacks")
     def attacks(self) -> typing.List[RaidAttack]:
         """List[:class:`RaidAttack`]: Returns all attacks in the raid against this clan."""
-        list_attacks = self._attacks  # type: List[RaidAttack]
-        if list_attacks:
-            return list_attacks
+        return list(attack for district in self.districts for attack in district.attacks)
 
-        list_attacks = list(attack for district in self.districts for attack in district.attacks)
-        self._attacks = list_attacks
-        return list_attacks
+    @cached_property("_cs_looted")
+    def looted(self) -> int:
+        """:class:`int`: The amount of loot the raid clan got on all districts."""
+        loot = 0
+        for district in self.districts:
+            loot += district.looted
+        return loot
+
+    @property
+    def is_finished(self) -> bool:
+        return self.destroyed_district_count == self.district_count
 
 
 class RaidLogEntry:
@@ -417,6 +415,9 @@ class RaidLogEntry:
                  "_cs_attack_log",
                  "_cs_defense_log",
                  "_cs_members",
+                 "_cs_total_defensive_loot",
+                 "_cs_defense_attack_count",
+                 "_cs_defensive_destroyed_district_count",
                  "_iter_members",
                  "_iter_attack_log",
                  "_iter_defense_log",
@@ -455,7 +456,6 @@ class RaidLogEntry:
                 return True
 
         return False
-
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
@@ -500,6 +500,30 @@ class RaidLogEntry:
         list_defense_log = self._defense_log = [m for m in self._iter_defense_log]
         return list_defense_log
 
+    @cached_property("_cs_total_defensive_loot")
+    def total_defensive_loot(self) -> int:
+        """:class:`int`: The total amount of loot taken by all opponents of the raid weekend."""
+        loot = 0
+        for clan in self.defense_log:
+            loot += clan.looted
+        return loot
+
+    @cached_property("_cs_defense_attack_count")
+    def defense_attack_count(self) -> int:
+        """:class:`int`: The total amount of opponent attacks in the raid weekend."""
+        count = 0
+        for clan in self.defense_log:
+            count += clan.attack_count
+        return count
+
+    @cached_property("_cs_defensive_destroyed_district_count")
+    def defensive_destroyed_district_count(self) -> int:
+        """:class:`int`: The total amount of districts destroyed by opponents."""
+        count = 0
+        for clan in self.defense_log:
+            count += clan.destroyed_district_count
+        return count
+
     def get_member(self, tag: str) -> typing.Optional[RaidMember]:
         """Get a member of the clan for the given tag, or ``None`` if not found.
 
@@ -514,4 +538,3 @@ class RaidLogEntry:
             return self._members[tag]
         except KeyError:
             return None
-
