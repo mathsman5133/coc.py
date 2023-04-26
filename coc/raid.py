@@ -183,6 +183,7 @@ class RaidAttack:
         self.attacker_tag = data["attacker"]["tag"]
         self.attacker_name = data["attacker"]["name"]
         self.destruction = data["destructionPercent"]
+        self.stars = data["stars"]
 
     @property
     def attacker(self) -> "RaidMember":
@@ -250,7 +251,6 @@ class RaidDistrict:
                  ("hall_level", self.hall_level),
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
-
 
     def __init__(self, *, data, client, raid_log_entry, raid_clan):
         self.id: int = data.get("id")
