@@ -168,11 +168,11 @@ class FullWarClient:
                                    f"/war_result?clan_tag={correct_tag(clan_tag, '%23')}"
                                    f"&prep_start={str(preparation_start)}")
         try:
-            return ClanWar(data=data["response"], client=self.coc_client)
+            return ClanWar(data=data["response"], client=self.coc_client, clan_tag=coc.utils.correct_tag(clan_tag))
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
-    async def war_result_log(self, clan_tag: str) -> Optional[Generator[ClanWar]]:
+    async def war_result_log(self, clan_tag: str) -> Optional[Generator[ClanWar, None, None]]:
         """Get all stored war results for a clan.
 
         Parameters
@@ -189,9 +189,8 @@ class FullWarClient:
                                    f"/war_result_log?clan_tag={correct_tag(clan_tag, '%23')}")
         try:
             responses = data["log"]
-
-            generator = (ClanWar(data=response["response"], client=self.coc_client) for response in responses)
-            return generator
+            return (ClanWar(data=response["response"], client=self.coc_client,
+                            clan_tag=coc.utils.correct_tag(clan_tag)) for response in responses)
         except (IndexError, KeyError, TypeError, ValueError):
             return None
 
