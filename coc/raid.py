@@ -176,6 +176,7 @@ class RaidAttack:
         self.attacker_tag = data["attacker"]["tag"]
         self.attacker_name = data["attacker"]["name"]
         self.destruction = data["destructionPercent"]
+        self.stars = data["stars"]
 
     @property
     def attacker(self) -> "RaidMember":
