@@ -1136,12 +1136,10 @@ class Client:
 
         if league_group.state == "notInWar" or league_group.state == "groupNotFound":
             return None
-        last_round_active = league_group.number_of_rounds != len(league_group.rounds)
-        if not last_round_active and league_group.state != "":
+        last_round_active = league_group.number_of_rounds == len(league_group.rounds)
+        if last_round_active and league_group.state != "ended":
             # there are the supposed number of rounds, but without any call we are unable to know if the last round is
             # currently in preparation or already in war
-            kwargs["league_group"] = league_group
-            kwargs["clan_tag"] = clan_tag
             async for war in self.get_league_wars(league_group.rounds[-1], cls=cls, **kwargs):
                 if war.state == 'inWar':
                     # last round is already in war
