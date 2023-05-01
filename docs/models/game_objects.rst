@@ -43,4 +43,3 @@ Resource
 
     .. py:attribute:: builder_elixir
 
-
