@@ -1134,18 +1134,18 @@ class Client:
                 raise PrivateWarLog(exception.response, exception.reason) from exception
             return get_war
 
-        is_prep = league_group.state == "preparation"
-
-        if cwl_round is WarRound.current_war and league_group.state == "preparation":
+        if league_group.state == "notInWar" or league_group.state == "groupNotFound":
+            return None
+        elif cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
         elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
-        elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
-            return None  # no previous war for first rounds.
         elif cwl_round is WarRound.current_war and league_group.state == "ended":
             round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
-        elif cwl_round is WarRound.previous_war and is_prep:
-            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.previous_war and league_group.state == "ended":
+            round_tags = league_group.rounds[-2] # for the end of CWL previous_war should give the second last war
+        elif cwl_round is WarRound.previous_war and len(league_group.rounds) < 3:
+            return None  # no previous war for two rounds.
         elif cwl_round is WarRound.previous_war:
             round_tags = league_group.rounds[-3]
         elif cwl_round is WarRound.current_war:
