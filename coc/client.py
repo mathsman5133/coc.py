@@ -1136,13 +1136,29 @@ class Client:
 
         if league_group.state == "notInWar" or league_group.state == "groupNotFound":
             return None
-        elif cwl_round is WarRound.current_war and league_group.state == "preparation":
+        not_started = league_group.number_of_rounds - len(league_group.rounds)
+        is_ending = league_group.state == "ended"
+        if not not_started and not is_ending:
+            # there are the supposed number of rounds, but without any call we are unable to know if the last round is
+            # currently in preparation or already in war
+            kwargs["league_group"] = league_group
+            kwargs["clan_tag"] = clan_tag
+            async for war in self.get_league_wars(league_group.rounds[-1], cls=cls, **kwargs):
+                if war.state == 'inWar':
+                    # last round is already in war
+                    is_ending = True
+                    break
+                elif war.state == 'preparation':
+                    # last round is still in preparation
+                    is_ending = False
+                    break
+        if cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
         elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
-        elif cwl_round is WarRound.current_war and league_group.state == "ended":
+        elif cwl_round is WarRound.current_war and is_ending:
             round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
-        elif cwl_round is WarRound.previous_war and league_group.state == "ended":
+        elif cwl_round is WarRound.previous_war and is_ending:
             round_tags = league_group.rounds[-2] # for the end of CWL previous_war should give the second last war
         elif cwl_round is WarRound.previous_war and len(league_group.rounds) < 3:
             return None  # no previous war for two rounds.
