@@ -159,7 +159,8 @@ class RaidAttack:
                 and self.attacker_tag == other.attacker_tag
                 and self.destruction == other.destruction
                 and self.raid_clan == other.raid_clan
-                and self.district == other.district)
+                and self.district == other.district
+                and self.stars == other.stars)
 
     def __init__(self, data, client, raid_log_entry, raid_clan, district):
         self.raid_log_entry = raid_log_entry
