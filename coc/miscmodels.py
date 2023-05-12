@@ -325,13 +325,14 @@ class LegendStatistics:
         :class:`Season`: Legend statistics for the previous season.
     best_season:
         :class:`Season`: Legend statistics for the player's best season.
-    previous_versus_season:
-        :class:`Season`: Legend statistics for the previous versus season.
-    best_versus_season:
-        :class:`Season`: Legend statistics for the player's best versus season.
+    previous_builder_base_season:
+        :class:`Season`: Legend statistics for the previous builder base season.
+    best_builder_base_season:
+        :class:`Season`: Legend statistics for the player's best builder base season.
     """
 
-    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season", "previous_versus_season", "best_versus_season")
+    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season", "previous_builder_base_season",
+                 "best_builder_base_season")
 
     def __repr__(self):
         attrs = [
@@ -344,9 +345,9 @@ class LegendStatistics:
             isinstance(other, self.__class__)
             and self.best_season == other.best_season
             and self.current_season == other.current_season
-            and self.best_versus_season == other.best_versus_season
+            and self.best_builder_base_season == other.best_builder_base_season
             and self.previous_season == other.previous_season
-            and self.previous_versus_season == self.previous_versus_season
+            and self.previous_builder_base_season == self.previous_builder_base_season
         )
 
     def __init__(self, *, data):
@@ -354,8 +355,8 @@ class LegendStatistics:
         self.current_season = try_enum(Season, data=data.get("currentSeason"))
         self.previous_season = try_enum(Season, data=data.get("previousSeason"))
         self.best_season = try_enum(Season, data=data.get("bestSeason"))
-        self.previous_versus_season = try_enum(Season, data=data.get("previousVersusSeason"))
-        self.best_versus_season = try_enum(Season, data=data.get("bestVersusSeason"))
+        self.previous_builder_base_season = try_enum(Season, data=data.get("previousBuilderBaseSeason"))
+        self.best_builder_base_season = try_enum(Season, data=data.get("bestBuilderBaseSeason"))
 
 
 class Badge:

@@ -67,18 +67,20 @@ class ClanMember(BasePlayer):
         The member's experience level.
     league: :class:`League`
         The member's current league.
+    builder_base_league: :class:`League`
+        The member's current builder base league.
     trophies: :class:`int`
         The member's trophy count.
-    versus_trophies: :class:`int`
-        The member's versus trophy count.
+    builder_base_trophies: :class:`int`
+        The member's builder base trophy count.
     clan_rank: :class:`int`
         The member's rank in the clan.
     clan_previous_rank: :class:`int`
         The member's rank before the last leaderboard change
         (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
         and you want to find out their previous rankings, this will help.).
-    versus_rank: :class:`int`
-        The member's rank in the clan based on versus trophies.
+    builder_base_rank: :class:`int`
+        The member's rank in the clan based on builder base trophies.
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
@@ -87,7 +89,7 @@ class ClanMember(BasePlayer):
         The class to use to create the :attr:`ClanMember.clan` attribute.
         Ensure any overriding of this inherits from :class:`coc.Clan` or :class:`coc.PlayerClan`.
     league_cls: :class:`coc.League`
-        The class to use to create the :attr:`Clanmember.league` attribute.
+        The class to use to create the :attr:`Clanmember.league` and :attr:`Clanmember.builder_base_league` attribute.
         Ensure any overriding of this inherits from :class:`coc.League`.
     """
 
@@ -97,11 +99,12 @@ class ClanMember(BasePlayer):
         "role",
         "exp_level",
         "league",
+        "builder_base_league",
         "trophies",
-        "versus_trophies",
+        "builder_base_trophies",
         "clan_rank",
         "clan_previous_rank",
-        "versus_rank",
+        "builder_base_rank",
         "donations",
         "received",
         "clan_cls",
@@ -122,15 +125,17 @@ class ClanMember(BasePlayer):
 
         self.exp_level: int = data_get("expLevel")
         self.trophies: int = data_get("trophies")
-        self.versus_trophies: int = data_get("versusTrophies")
+        self.builder_base_trophies: int = data_get("builderBaseTrophies")
         self.clan_rank: int = data_get("clanRank")
         self.clan_previous_rank: int = data_get("previousClanRank")
-        self.versus_rank: int = data.get("versusRank")
+        self.builder_base_rank: int = data.get("builder_base_rank")
         self.donations: int = data_get("donations")
         self.received: int = data_get("donationsReceived")
 
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.builder_base_league = try_enum(self.league_cls, data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
+                                            client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
 
     async def get_detailed_clan(self) -> Optional["Clan"]:
@@ -153,11 +158,11 @@ class RankedPlayer(ClanMember):
     Attributes
     ----------
     attack_wins: :class:`int`
-        The player's number of attack wins. If retrieving info for versus leader-boards, this will be ``None``.
+        The player's number of attack wins. If retrieving info for builder base leader-boards, this will be ``None``.
     defense_wins: :class:`int`
-        The player's number of defense wins. If retrieving info for versus leader-boards, this will be ``None``.
-    versus_trophies: :class:`int`
-        The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
+        The player's number of defense wins. If retrieving info for builder base leader-boards, this will be ``None``.
+    builder_base_trophies: :class:`int`
+        The player's builder base trophy count. If retrieving info for regular leader-boards, this will be ``None``.
     rank: :class:`int`
         The player's rank in the clan leaderboard.
     previous_rank: :class:`int`
@@ -166,7 +171,7 @@ class RankedPlayer(ClanMember):
         and you want to find out their previous rankings, this will help.).
     """
 
-    __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
+    __slots__ = ("attack_wins", "defense_wins", "builder_base_trophies", "rank", "previous_rank")
 
     def _from_data(self, data: dict) -> None:
         super()._from_data(data)
@@ -174,7 +179,7 @@ class RankedPlayer(ClanMember):
         data_get = data.get
         self.attack_wins: int = data_get("attackWins")
         self.defense_wins: int = data_get("defenseWins")
-        self.versus_trophies: int = data_get("versusTrophies")
+        self.builder_base_trophies: int = data_get("builderBaseTrophies")
         self.rank: int = data_get("rank")
         self.previous_rank: int = data_get("previousRank")
 
@@ -208,10 +213,10 @@ class Player(ClanMember):
         The player's town hall weapon level, or ``None`` if it doesn't exist.
     builder_hall: :class:`int`
         The player's builder hall level, or 0 if it hasn't been unlocked.
-    best_versus_trophies: :class:`int`
-        The player's best versus trophy count.
-    versus_attack_wins: :class:`int`
-        The number of versus attacks the player has won
+    best_builder_base_trophies: :class:`int`
+        The player's best builder base trophy count.
+    builder_base_wins: :class:`int`
+        The number of builder base attacks the player has won
     clan_capital_contributions: :class:`int`
         The player's total contribution to clan capitals
     legend_statistics: Optional[:class:`LegendStatistics`]
@@ -230,8 +235,7 @@ class Player(ClanMember):
         "town_hall",
         "town_hall_weapon",
         "builder_hall",
-        "best_versus_trophies",
-        "versus_attack_wins",
+        "best_builder_base_trophies",
         "clan_capital_contributions",
         "legend_statistics",
         "war_opted_in",
@@ -321,8 +325,7 @@ class Player(ClanMember):
         self.town_hall: int = data_get("townHallLevel")
         self.town_hall_weapon: int = data_get("townHallWeaponLevel")
         self.builder_hall: int = data_get("builderHallLevel", 0)
-        self.best_versus_trophies: int = data_get("bestVersusTrophies")
-        self.versus_attack_wins: int = data_get("versusBattleWins")
+        self.best_builder_base_trophies: int = data_get("bestBuilderBaseTrophies")
         self.clan_capital_contributions: int = data_get("clanCapitalContributions")
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
 

@@ -1431,11 +1431,11 @@ class Client:
         data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_clans_versus(
+    async def get_location_clans_builder_base(
         self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
-        """Get clan versus rankings for a specific location
+        """Get clan builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1465,18 +1465,18 @@ class Client:
         Returns
         --------
         List[:class:`RankedClan`]
-            The top versus-clans for the requested location.
+            The top builder base-clans for the requested location.
         """
         if not issubclass(cls, RankedClan):
             raise TypeError("cls must be a subclass of RankedClan.")
-        data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
+        data = await self.http.get_location_clans_builder_base(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_players_versus(
+    async def get_location_players_builder_base(
         self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
-        """Get player versus rankings for a specific location
+        """Get player builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1506,11 +1506,11 @@ class Client:
         Returns
         --------
         List[:class:`RankedPlayer`]
-            The top versus players for the requested location.
+            The top builder base players for the requested location.
         """
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
-        data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
+        data = await self.http.get_location_players_builder_base(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues

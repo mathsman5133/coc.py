@@ -48,11 +48,13 @@ class RankedClan(BaseClan):
     member_count: :class:`int`
         The number of members in the clan.
     points: :class:`int`
-        The clan's trophy-count. If retrieving info for capital or versus leader-boards, this will be ``None``.
-    versus_points: :class:`int`
-        The clan's versus trophy count. If retrieving info for regular or capital leader boards, this will be ``None``.
+        The clan's trophy-count. If retrieving info for capital or builder base leader-boards, this will be ``None``.
+    builder_base_points: :class:`int`
+        The clan's builder base trophy count. If retrieving info for regular or capital leader boards, this will be
+        ``None``.
     capital_points: :class:`int`
-        The clan's capital trophy count. If retrieving info for regular or versus leader boards, this will be ``None``.
+        The clan's capital trophy count. If retrieving info for regular or builder base leader boards, this will be
+        ``None``.
     rank: :class:`int`
         The clan's rank in the leader board.
     previous_rank: :class:`int`
@@ -63,7 +65,7 @@ class RankedClan(BaseClan):
         "location",
         "member_count",
         "points",
-        "versus_points",
+        "builder_base_points",
         "capital_points",
         "rank",
         "previous_rank",
@@ -77,7 +79,7 @@ class RankedClan(BaseClan):
         data_get = data.get
 
         self.points: int = data_get("clanPoints")
-        self.versus_points: int = data_get("clanVersusPoints")
+        self.builder_base_points: int = data_get("clanBuilderBasePoints")
         self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
@@ -110,12 +112,14 @@ class Clan(BaseClan):
         The clan's location.
     points: :class:`int`
         The clan's trophy count. This is calculated according to members' trophy counts.
-    versus_points: :class:`int`
-        The clan's versus trophy count. This is calculated according to members' versus trophy counts.
+    builder_base_points: :class:`int`
+        The clan's builder base trophy count. This is calculated according to members' builder base trophy counts.
     capital_points: :class:`int`
         The clan's clan capital points. Unsure how this is calculated.
     required_trophies: :class:`int`
         The minimum trophies required to apply to this clan.
+    required_builder_base_trophies: :class:`int`
+        The minimum builder base trophies required to apply to this clan.
     required_townhall: :class:`int`
         The minimum townhall level required to apply to this clan.
     war_frequency: :class:`str`
@@ -157,9 +161,10 @@ class Clan(BaseClan):
         "description",
         "location",
         "points",
-        "versus_points",
+        "builder_base_points",
         "capital_points",
         "required_trophies",
+        "required_builder_base_trophies",
         "war_frequency",
         "war_win_streak",
         "war_wins",
@@ -200,7 +205,7 @@ class Clan(BaseClan):
         data_get = data.get
 
         self.points: int = data_get("clanPoints")
-        self.versus_points: int = data_get("clanVersusPoints")
+        self.builder_base_points: int = data_get("clanBuilderBasePoints")
         self.capital_points: int = data_get("clanCapitalPoints")
         self.member_count: int = data_get("members")
         self.location = try_enum(Location, data=data_get("location"))
@@ -209,6 +214,7 @@ class Clan(BaseClan):
         self.type: str = data_get("type")
         self.family_friendly = data_get("isFamilyFriendly")
         self.required_trophies: int = data_get("requiredTrophies")
+        self.required_builder_base_trophies: int = data_get("requiredBuilderBaseTrophies")
         self.war_frequency: str = data_get("warFrequency")
         self.war_win_streak: int = data_get("warWinStreak")
         self.war_wins: int = data_get("warWins")
@@ -227,8 +233,8 @@ class Clan(BaseClan):
         # update members globally. only available via /clans/{clanTag}
         member_cls = self.member_cls
         member_data = data.get("memberList", [])
-        for rank, mdata in enumerate(sorted(member_data, key=lambda x: x["versusTrophies"], reverse=True), 1):
-            mdata["versusRank"] = rank
+        for rank, mdata in enumerate(sorted(member_data, key=lambda x: x["builder_base_trophies"], reverse=True), 1):
+            mdata["builder_base_rank"] = rank
         self._iter_members = (
             member_cls(data=mdata, client=self._client, clan=self) for mdata in member_data
         )
