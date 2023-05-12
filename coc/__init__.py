@@ -54,7 +54,6 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .login import login, login_with_keys
 from .hero import Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
