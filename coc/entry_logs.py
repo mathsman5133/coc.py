@@ -44,7 +44,7 @@ class LogPaginator(ABC):
         if self._sync_index == len(self._init_logs):
             raise StopIteration
         ret = self._model(data=self._init_logs[self._sync_index],
-                          client=self._client, response_retry=self._response_retry)
+                          client=self._client, response_retry=self._response_retry, clan_tag=self._clan_tag)
         self._sync_index += 1
         return ret
 
@@ -52,8 +52,8 @@ class LogPaginator(ABC):
         """Support indexing the object. This will not fetch any addition
         items from the endpoint"""
         try:
-            ret = self._init_logs[index]
-            return self._model(data=ret, client=self._client, response_retry=self._response_retry)
+            return self._model(data=self._init_logs[index],
+                               client=self._client, response_retry=self._response_retry, clan_tag=self._clan_tag)
         except Exception:
             raise
 
@@ -92,7 +92,7 @@ class LogPaginator(ABC):
             if self._async_index == len(self._logs):
                 raise StopAsyncIteration
             ret = self._model(data=self._logs[self._async_index],
-                              client=self._client, response_retry=self._response_retry)
+                              client=self._client, response_retry=self._response_retry, clan_tag=self._clan_tag)
             self._async_index += 1
             return ret
 
@@ -115,7 +115,7 @@ class LogPaginator(ABC):
             raise StopAsyncIteration
 
         self._async_index += 1
-        return self._model(data=ret, client=self._client, response_retry=self._response_retry)
+        return self._model(data=ret, client=self._client, response_retry=self._response_retry, clan_tag=self._clan_tag)
 
     async def _paginate(self) -> None:
         """
