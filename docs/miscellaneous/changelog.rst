@@ -23,7 +23,7 @@ Additions:
   :func:`coc.RaidLogEntry.total_defensive_loot`, :func:`coc.RaidLogEntry.defense_attack_count`
   and :func:`coc.RaidLogEntry.defensive_destroyed_district_count`
 
-- Added `before` and `after` parameters to :func:`coc.Client.get_members`, :func:`coc.Client.get_warlog` and
+- Added `before`, `after` and `limit` parameters to :func:`coc.Client.get_members`, :func:`coc.Client.get_warlog` and
   :func:`coc.Client.get_raidlog`
 
 - Added :func:`coc.Client.search_war_leagues`, :func:`coc.Client.get_war_league`,
@@ -53,6 +53,8 @@ Bugs Fixed:
   if two :class:`coc.RaidAttack` objects are equal
 
 - Fixed a bug in :func:`coc.WarEvents.new_war`
+
+- Fixed a bug in :func:`coc.Client.get_current_war` which caused Exceptions or wrong return values
 
 
 v2.3.1
