@@ -1134,18 +1134,31 @@ class Client:
                 raise PrivateWarLog(exception.response, exception.reason) from exception
             return get_war
 
-        is_prep = league_group.state == "preparation"
-
+        if league_group.state == "notInWar" or league_group.state == "groupNotFound":
+            return None
+        last_round_active = league_group.number_of_rounds == len(league_group.rounds)
+        if last_round_active and league_group.state != "ended":
+            # there are the supposed number of rounds, but without any call we are unable to know if the last round is
+            # currently in preparation or already in war
+            async for war in self.get_league_wars(league_group.rounds[-1], cls=cls, **kwargs):
+                if war.state == 'inWar':
+                    # last round is already in war
+                    last_round_active = True
+                    break
+                elif war.state == 'preparation':
+                    # last round is still in preparation
+                    last_round_active = False
+                    break
         if cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
         elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
-        elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
-            return None  # no previous war for first rounds.
-        elif cwl_round is WarRound.current_war and league_group.state == "ended":
-            round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
-        elif cwl_round is WarRound.previous_war and is_prep:
-            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.current_war and (last_round_active or league_group.state == "ended"):
+            round_tags = league_group.rounds[-1]  # for the end of CWL current_war should give the last war
+        elif cwl_round is WarRound.previous_war and (last_round_active or league_group.state == "ended"):
+            round_tags = league_group.rounds[-2]  # for the end of CWL previous_war should give the second last war
+        elif cwl_round is WarRound.previous_war and len(league_group.rounds) < 3:
+            return None  # no previous war for two rounds.
         elif cwl_round is WarRound.previous_war:
             round_tags = league_group.rounds[-3]
         elif cwl_round is WarRound.current_war:
