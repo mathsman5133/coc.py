@@ -22,13 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "2.3.1"
+__version__ = "2.4.0"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
+    PlayerHouseElementType,
     Resource,
     Role,
     WarRound,
@@ -73,6 +74,7 @@ from .miscmodels import (
     LegendStatistics,
     LoadGameData,
     Location,
+    PlayerHouseElement,
     Timestamp,
     TimeDelta,
     Label,

@@ -5,7 +5,6 @@ from .abc import DataContainer, DataContainerHolder
 from .enums import Resource
 from .miscmodels import TimeDelta
 
-
 SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
 
 
@@ -67,13 +66,13 @@ class Spell(DataContainer):
     is_dark_spell: bool = False
     is_loaded: bool = False
 
-    def __repr__(cls):
+    def __repr__(self):
         attrs = [
-            ("name", cls.name),
-            ("id", cls.id),
+            ("name", self.name),
+            ("id", self.id),
         ]
         return "<%s %s>" % (
-            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
+            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @property
     def is_max_for_townhall(self):
@@ -90,7 +89,7 @@ class Spell(DataContainer):
         #    and for troop level above, it requires a higher TH than we currently have.
         #    Maybe there's a better way to go about doing this.
         return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
-                    < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
+             < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
 
     @classmethod
     def get_max_level_for_townhall(cls, townhall):

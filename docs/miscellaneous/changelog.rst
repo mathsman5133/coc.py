@@ -7,6 +7,56 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v2.4.0
+------
+Additions:
+~~~~~~~~~~
+
+- Added support for Player Houses in the clan capital: :func:`coc.Player.player_house_elements`
+
+- Added optional cls parameters to all the :func:`coc.Client.get_location_...` methods
+  in order to allow the usage of custom classes
+
+- Added the :ref:`triggers`
+
+- Added some cached properties to raid classes: :func:`coc.RaidClan.looted`,
+  :func:`coc.RaidLogEntry.total_defensive_loot`, :func:`coc.RaidLogEntry.defense_attack_count`
+  and :func:`coc.RaidLogEntry.defensive_destroyed_district_count`
+
+- Added `before`, `after` and `limit` parameters to :func:`coc.Client.get_members`, :func:`coc.Client.get_warlog` and
+  :func:`coc.Client.get_raidlog`
+
+- Added :func:`coc.Client.search_war_leagues`, :func:`coc.Client.get_war_league`,
+  :func:`coc.Client.get_war_league_named`, :func:`coc.Client.search_capital_leagues`,
+  :func:`coc.Client.get_capital_league` and :func:`coc.Client.get_capital_league_named`
+
+
+Changes:
+~~~~~~~~
+
+- Changed the default value of the :attr:`coc.Client.throttle_limit` to a more reasonable value (30 instead of 10)
+
+
+Bugs Fixed:
+~~~~~~~~~~~
+
+- Fixed a bug which affected :func:`coc.Client.login_with_keys`
+
+- Fixed a bug which caused an overwrite of user set parameters if the client was used with a context manager
+
+- Fixed a bug which resulted in the client using more keys than the key_count was
+
+- Fixed a bug which caused a wrong throttle_limit if :func:`coc.Client.login_with_keys` or
+  :func:`coc.Client.login_with_tokens` was used
+
+- Added previously missing Attribute :attr:`coc.RaidAttack.stars` which fixed a bug when checking
+  if two :class:`coc.RaidAttack` objects are equal
+
+- Fixed a bug in :func:`coc.WarEvents.new_war`
+
+- Fixed a bug in :func:`coc.Client.get_current_war` which caused Exceptions or wrong return values
+
+
 v2.3.1
 ------
 

@@ -35,6 +35,28 @@ Legend Statistics
     :private-members:
     :inherited-members:
 
+PlayerHouseElement
+~~~~~~~~~~~~~~~~~~
+.. autoclass:: PlayerHouseElement()
+    :members:
+    :private-members:
+
+PlayerHouseElementType
+~~~~~~~~~~~~~~~~~~~~~~
+.. class:: PlayerHouseElementType()
+
+    An Enumeration with all the types of player house elements
+
+    .. py:attribute:: ground
+
+    .. py:attribute:: roof
+
+    .. py:attribute:: foot
+
+    .. py:attribute:: deco
+
+    .. py:attribute:: walls
+
 Role
 ~~~~
 Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
