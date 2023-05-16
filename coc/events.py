@@ -787,7 +787,7 @@ class EventsClient(Client):
             age = 0
             while self.loop.is_running():
                 try:
-                    [raid_log_entry] = await self.get_raidlog("#2PP", limit=1)
+                    [raid_log_entry] = await self.get_raid_log("#2PP", limit=1)
                     raid_log_entry: coc.raid.RaidLogEntry
                 except Maintenance:
                     await asyncio.sleep(15)

@@ -582,7 +582,7 @@ class Client:
         data = await self.http.get_clan_members(clan_tag, **args)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
-    async def get_warlog(
+    async def get_war_log(
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
@@ -681,7 +681,7 @@ class Client:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
-    async def get_raidlog(
+    async def get_raid_log(
             self,
             clan_tag: str,
             cls: Type[RaidLogEntry] = RaidLogEntry,
