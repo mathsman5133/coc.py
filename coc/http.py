@@ -487,7 +487,7 @@ class HTTPClient:
                 LOG.debug(f"Key {key}")
                 if key["name"] != self.key_names or ip not in key["cidrRanges"]:
                     continue
-                self._keys.extend(key["key"])
+                self._keys.append(key["key"])
                 if len(self._keys) == self.key_count:
                     break
 
