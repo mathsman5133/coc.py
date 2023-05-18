@@ -483,8 +483,13 @@ class HTTPClient:
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
             keys = (await resp.json())["keys"]
-            self._keys.extend(key["key"] for c, key in enumerate(keys) if key["name"] == self.key_names and ip in key[
-                "cidrRanges"] and c <= self.key_count)
+            for key in keys:
+                LOG.debug(f"Key {key}")
+                if key["name"] != self.key_names or ip not in key["cidrRanges"]:
+                    continue
+                self._keys.append(key["key"])
+                if len(self._keys) == self.key_count:
+                    break
 
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
