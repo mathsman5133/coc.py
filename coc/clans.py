@@ -233,8 +233,8 @@ class Clan(BaseClan):
         # update members globally. only available via /clans/{clanTag}
         member_cls = self.member_cls
         member_data = data.get("memberList", [])
-        for rank, mdata in enumerate(sorted(member_data, key=lambda x: x["builder_base_trophies"], reverse=True), 1):
-            mdata["builder_base_rank"] = rank
+        for rank, mdata in enumerate(sorted(member_data, key=lambda x: x["builderBaseTrophies"], reverse=True), 1):
+            mdata["builderBaseRank"] = rank
         self._iter_members = (
             member_cls(data=mdata, client=self._client, clan=self) for mdata in member_data
         )
