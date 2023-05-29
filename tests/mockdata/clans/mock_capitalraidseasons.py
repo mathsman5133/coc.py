@@ -5703,5 +5703,6 @@ MOCK_CAPITALRAIDSEASON = {
     },
     "headers": {"cache-control": "max-age=60",
                 "content-type": "application/json; charset=utf-8"},
-    "response_code": 200
+    "response_code": 200,
+    "clantag": "#29Y8PRCJR"
 }
