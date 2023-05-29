@@ -54,8 +54,36 @@ class TestRaids(unittest.TestCase):
         # test members
         for member in mock_data.get("members", []):
             self.test_raid_member(raidlogentry, member)
-        
-        
+
+            # test member attacks
+            mock_attacks = [attack for attack_raid in mock_data.get("attackLog", []) for district in attack_raid.get(
+                    "districts", []) for attack in district.get("attacks", [])
+                            if attack and attack.get("attacker", {}).get("tag") == member.get("tag")]
+            raidmember = raidlogentry.get_member(member.get("tag"))
+            attacks = raidmember.attacks
+            self.assertEqual(len(mock_attacks), len(attacks))
+            self.assertEqual(len(mock_attacks), raidmember.attack_count)
+            for attack, mock_attack in zip(attacks, mock_attacks):
+                self.test_raid_attack(attack, mock_attack)
+
+        # test defensive custom properties
+        defensive_loot = raidlogentry.total_defensive_loot
+        defensive_attack_count = raidlogentry.defense_attack_count
+        defensive_destroyed_districts = raidlogentry.defensive_destroyed_district_count
+        defensive_loot_mock = 0
+        defensive_attack_count_mock = 0
+        defensive_destroyed_districts_mock = 0
+        for clan_data in mock_data.get("defenseLog", []):
+            defensive_destroyed_districts_mock += clan_data.get("districtsDestroyed", 0)
+            defensive_attack_count_mock += clan_data.get("attackCount", 0)
+            for district_data in clan_data.get("districts", []):
+                defensive_loot_mock += district_data.get("totalLooted", 0)
+        self.assertEqual(defensive_loot, defensive_loot_mock, "RaidLogEntry.total_defensive_loot")
+        self.assertEqual(defensive_attack_count, defensive_attack_count_mock, "RaidLogEntry.defense_attack_count")
+        self.assertEqual(defensive_destroyed_districts, defensive_destroyed_districts_mock,
+                         "RaidLogEntry.defensive_destroyed_district_count")
+
+
     def test_raid_clan(self, raidclan: RaidClan, mock_data, index):
         map_raw_to_cocpy = {
             "attackCount": "attack_count",
@@ -73,8 +101,22 @@ class TestRaids(unittest.TestCase):
         # test non trivial data
         
         # test raid districts
+        loot_mock = 0
+        destroyed_mock = 0
         for c, data in enumerate(mock_data.get("districts", [])):
             self.test_raid_district(raidclan.districts[c], data)
+            loot_mock += data.get("totalLooted", 0)
+            destroyed_mock += 1 if data.get("destructionPercent") == 100 else 0
+
+        self.assertEqual(loot_mock, raidclan.looted, "looted")
+        self.assertEqual(destroyed_mock == mock_data.get("districtCount"), raidclan.is_finished, "is_finished")
+
+        # test raid clan attacks
+        mock_attacks = [attack for district in mock_data.get("districts", []) for attack in district.get("attacks", [])]
+        attacks = raidclan.attacks
+        self.assertEqual(len(mock_attacks), len(attacks))
+        for data, mock in zip(attacks, mock_attacks):
+            self.test_raid_attack(data, mock)
             
     def test_raid_district(self, raiddistrict, mock_data):
         map_raw_to_cocpy = {
@@ -97,8 +139,8 @@ class TestRaids(unittest.TestCase):
             self.test_raid_attack(raiddistrict.attacks[c], data)
             
     def test_raid_attack(self, raidattack: RaidAttack, mock_data):
-        self.assertEqual(mock_data.get("attacker",{}).get("tag"), raidattack.attacker_tag)
-        self.assertEqual(mock_data.get("attacker",{}).get("name"), raidattack.attacker_name)
+        self.assertEqual(mock_data.get("attacker", mock_data.get("defender", {})).get("tag"), raidattack.attacker_tag)
+        self.assertEqual(mock_data.get("attacker", mock_data.get("defender", {})).get("name"), raidattack.attacker_name)
         self.assertEqual(mock_data.get("stars"), raidattack.stars)
         self.assertEqual(mock_data.get("destructionPercent"), raidattack.destruction)
         
@@ -110,3 +152,4 @@ class TestRaids(unittest.TestCase):
         self.assertEqual(raidmember.attack_limit, mock_data.get("attackLimit"))
         self.assertEqual(raidmember.bonus_attack_limit, mock_data.get("bonusAttackLimit"))
         self.assertEqual(raidmember.capital_resources_looted, mock_data.get("capitalResourcesLooted"))
+
