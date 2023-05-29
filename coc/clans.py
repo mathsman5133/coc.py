@@ -130,9 +130,9 @@ class Clan(BaseClan):
     war_wins: :class:`int`
         The number of wars the clan has won.
     war_ties: :class:`int`
-        The number of wars the clan has tied.
+        The number of wars the clan has tied. This is only available from the clan search endpoint else -1.
     war_losses: :class:`int`
-        The number of wars the clan has lost.
+        The number of wars the clan has lost.  This is only available from the clan search endpoint else -1.
     public_war_log: :class:`bool`
         Indicates if the clan has a public war log.
         If this is ``False``, operations to find the clan's current
@@ -218,8 +218,8 @@ class Clan(BaseClan):
         self.war_frequency: str = data_get("warFrequency")
         self.war_win_streak: int = data_get("warWinStreak")
         self.war_wins: int = data_get("warWins")
-        self.war_ties: int = data_get("warTies")
-        self.war_losses: int = data_get("warLosses")
+        self.war_ties: int = data_get("warTies", -1)
+        self.war_losses: int = data_get("warLosses", -1)
         self.public_war_log: bool = data_get("isWarLogPublic")
         self.description: str = data_get("description")
         self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
