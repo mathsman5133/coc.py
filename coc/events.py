@@ -83,7 +83,7 @@ class _ValidateEvent:
             return self.cls.__getattr__(self.cls, item)
 
         # handle member_x events:
-        if "member_" in item:
+        if "member_" in item and item != "member_count":
             item = item.replace("member_", "")
             nested = True
         else:
