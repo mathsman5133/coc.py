@@ -7,6 +7,10 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.0.0
+------
+Please see :ref:`migrating_to_v3_0` for more info, as changes are described more in-depth there.
+
 
 v2.4.1
 ------
@@ -17,8 +21,8 @@ Bugs Fixed:
 - Fixed a bug with the retrieval of api keys
 
 - Fixed :func:`ClanEvents.member_count`
- 
- 
+
+
 v2.4.0
 ------
 Additions:
