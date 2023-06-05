@@ -267,18 +267,15 @@ class HTTPClient:
                 data = cache[cache_control_key]
                 status_code = data.get("status_code")
                 if data.get("timestamp") and data.get("timestamp") + data.get("_response_retry", 0) < datetime.utcnow().timestamp():
-                    pass
+                    self._cache_remove(cache_control_key)
                 elif not status_code or 200 <= status_code < 300:
                     return data
                 elif status_code == 400:
                     raise InvalidArgument(400, data)
-
                 elif status_code == 403:
                     raise Forbidden(403, data)
-
                 elif status_code == 404:
                     raise NotFound(404, data)
-
                 elif status_code == 503:
                     raise Maintenance(503, data)
             except KeyError:
