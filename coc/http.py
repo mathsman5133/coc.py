@@ -264,7 +264,23 @@ class HTTPClient:
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
         if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.get("ignore_cache", False):
             try:
-                return cache[cache_control_key]
+                data = cache[cache_control_key]
+                status_code = data.get("status_code")
+                if data.get("timestamp") and data.get("timestamp") + data.get("_response_retry", 0) < datetime.utcnow().timestamp():
+                    pass
+                elif not status_code or 200 <= status_code < 300:
+                    return data
+                elif status_code == 400:
+                    raise InvalidArgument(400, data)
+
+                elif status_code == 403:
+                    raise Forbidden(403, data)
+
+                elif status_code == 404:
+                    raise NotFound(404, data)
+
+                elif status_code == 503:
+                    raise Maintenance(503, data)
             except KeyError:
                 pass
 
@@ -281,7 +297,8 @@ class HTTPClient:
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
                         data = await json_or_text(response)
-
+                        data["status_code"] = response.status
+                        data["timestamp"] = datetime.utcnow().timestamp()
                         try:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age=").strip("public max-age="))
