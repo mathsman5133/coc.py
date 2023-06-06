@@ -1,0 +1,255 @@
+{
+  "body": {
+    "state": "preparation",
+    "teamSize": 15,
+    "preparationStartTime": "20230509T085731.000Z",
+    "startTime": "20230510T092258.000Z",
+    "endTime": "20230511T092258.000Z",
+    "clan": {
+      "tag": "#29Y8PRCJR",
+      "name": "U.S.A FREEDOM",
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png"
+      },
+      "clanLevel": 20,
+      "attacks": 0,
+      "stars": 0,
+      "destructionPercentage": 0,
+      "members": [
+        {
+          "tag": "#2YC2JVQC",
+          "name": "CoLossus",
+          "townhallLevel": 15,
+          "mapPosition": 24,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#222P0VQ22",
+          "name": "Caliber",
+          "townhallLevel": 15,
+          "mapPosition": 17,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#9YL8YPG",
+          "name": "ollie812",
+          "townhallLevel": 15,
+          "mapPosition": 1,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#V00RCV2C",
+          "name": "==Dirty Angel==",
+          "townhallLevel": 15,
+          "mapPosition": 32,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#RLPR9L9U",
+          "name": "WiDoWmAkEr",
+          "townhallLevel": 15,
+          "mapPosition": 14,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PGYYGGRG",
+          "name": "joey's pizza",
+          "townhallLevel": 15,
+          "mapPosition": 19,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#J9C0JC88",
+          "name": "LuCkY",
+          "townhallLevel": 15,
+          "mapPosition": 16,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#289CY2PCJ",
+          "name": "Los Angeles",
+          "townhallLevel": 15,
+          "mapPosition": 3,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PY088RQR",
+          "name": "McElroy Scotlan",
+          "townhallLevel": 15,
+          "mapPosition": 18,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#GG29Y0GQ",
+          "name": "Mr.",
+          "townhallLevel": 15,
+          "mapPosition": 4,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#QRPGPRCU",
+          "name": "doc",
+          "townhallLevel": 15,
+          "mapPosition": 20,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#908P2V9GL",
+          "name": "Prestige〰️WW〰️",
+          "townhallLevel": 15,
+          "mapPosition": 10,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PY0PPQQV",
+          "name": "Night Wing",
+          "townhallLevel": 15,
+          "mapPosition": 23,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2VV9YRQQ",
+          "name": "alexander aaron",
+          "townhallLevel": 15,
+          "mapPosition": 8,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2LVC29V9U",
+          "name": "Prestige WW",
+          "townhallLevel": 15,
+          "mapPosition": 9,
+          "opponentAttacks": 0
+        }
+      ]
+    },
+    "opponent": {
+      "tag": "#2Y2VP2G0L",
+      "name": "DARK ARMY",
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/Q_RUltYGJDeogvKk9kWvz2pZnS7nlaw6NNW5yqdoWbo.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/Q_RUltYGJDeogvKk9kWvz2pZnS7nlaw6NNW5yqdoWbo.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/Q_RUltYGJDeogvKk9kWvz2pZnS7nlaw6NNW5yqdoWbo.png"
+      },
+      "clanLevel": 17,
+      "attacks": 0,
+      "stars": 0,
+      "destructionPercentage": 0,
+      "members": [
+        {
+          "tag": "#PLYQ8QYU8",
+          "name": "the insane",
+          "townhallLevel": 15,
+          "mapPosition": 9,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PUY8LLU8J",
+          "name": "VIBHU 07",
+          "townhallLevel": 15,
+          "mapPosition": 16,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2CQVP08CL",
+          "name": "AMIT YADAV",
+          "townhallLevel": 15,
+          "mapPosition": 6,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#RLLUGYR9",
+          "name": "(OMG)KINGKNIGHT",
+          "townhallLevel": 15,
+          "mapPosition": 1,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2Y2VGUGVL",
+          "name": "कातिल_Dev sa",
+          "townhallLevel": 15,
+          "mapPosition": 11,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2QGCPGJLP",
+          "name": "LiTtlE FiRr",
+          "townhallLevel": 15,
+          "mapPosition": 15,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#L2L88R9V",
+          "name": "Thunder Storm",
+          "townhallLevel": 15,
+          "mapPosition": 12,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#Y2JJQPYYQ",
+          "name": "Ritik rajput",
+          "townhallLevel": 15,
+          "mapPosition": 14,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#8JGVQJG8P",
+          "name": "Akash",
+          "townhallLevel": 15,
+          "mapPosition": 4,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PPQRR99C8",
+          "name": "OM HARI",
+          "townhallLevel": 15,
+          "mapPosition": 7,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#2CJ8VGCRR",
+          "name": "Amit♥Yadav",
+          "townhallLevel": 15,
+          "mapPosition": 10,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#P2VYL29VR",
+          "name": "tushar",
+          "townhallLevel": 15,
+          "mapPosition": 8,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#88LGQVY9G",
+          "name": "Assassin",
+          "townhallLevel": 15,
+          "mapPosition": 3,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PGQV8GLVJ",
+          "name": "Ashutosh 4.0",
+          "townhallLevel": 15,
+          "mapPosition": 2,
+          "opponentAttacks": 0
+        },
+        {
+          "tag": "#PLPVVRURP",
+          "name": "JC_Jitendra",
+          "townhallLevel": 15,
+          "mapPosition": 13,
+          "opponentAttacks": 0
+        }
+      ]
+    },
+    "warStartTime": "20230510T092258.000Z"
+  },
+  "headers": {
+    "cache-control": "max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

@@ -1,0 +1,150 @@
+{
+  "body": {
+    "items": [
+      {
+        "id": 56000000,
+        "name": "Clan Wars",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
+        }
+      },
+      {
+        "id": 56000001,
+        "name": "Clan War League",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/5w60_3bdtYUe9SM6rkxBRyV_8VvWw_jTlDS5ieU3IsI.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/5w60_3bdtYUe9SM6rkxBRyV_8VvWw_jTlDS5ieU3IsI.png"
+        }
+      },
+      {
+        "id": 56000002,
+        "name": "Trophy Pushing",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/hNtigjuwJjs6PWhVtVt5HvJgAp4ZOMO8e2nyjHX29sA.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/hNtigjuwJjs6PWhVtVt5HvJgAp4ZOMO8e2nyjHX29sA.png"
+        }
+      },
+      {
+        "id": 56000003,
+        "name": "Friendly Wars",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/6NxZMDn9ryFw8-FHJJimcEkKwnXZHMVUp_0cCVT6onY.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/6NxZMDn9ryFw8-FHJJimcEkKwnXZHMVUp_0cCVT6onY.png"
+        }
+      },
+      {
+        "id": 56000004,
+        "name": "Clan Games",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/7qU7tQGERiVITVG0CPFov1-BnFldu4bMN2gXML5bLIU.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/7qU7tQGERiVITVG0CPFov1-BnFldu4bMN2gXML5bLIU.png"
+        }
+      },
+      {
+        "id": 56000005,
+        "name": "Builder Base",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/kyuaiAWdnD9v3ReYPS3_x6QP3V3e0nNAPyDroOIDFZQ.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/kyuaiAWdnD9v3ReYPS3_x6QP3V3e0nNAPyDroOIDFZQ.png"
+        }
+      },
+      {
+        "id": 56000006,
+        "name": "Base Designing",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/LG966XuC6YoEJsPthcgtyJ8uS46LqYDAeiHJNQKR3YQ.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/LG966XuC6YoEJsPthcgtyJ8uS46LqYDAeiHJNQKR3YQ.png"
+        }
+      },
+      {
+        "id": 56000007,
+        "name": "International",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/zyaTKuJXrsPiU3DvjgdqaSA6B1qvcQ0cjD6ktRah4xs.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/zyaTKuJXrsPiU3DvjgdqaSA6B1qvcQ0cjD6ktRah4xs.png"
+        }
+      },
+      {
+        "id": 56000008,
+        "name": "Farming",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/iLWz6AiaIHg_DqfG6s9vAxUJKb-RsPbSYl_S0ii9GAM.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/iLWz6AiaIHg_DqfG6s9vAxUJKb-RsPbSYl_S0ii9GAM.png"
+        }
+      },
+      {
+        "id": 56000009,
+        "name": "Donations",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/RauzS-02tv4vWm1edZ-q3gPQGWKGANLZ-85HCw_NVP0.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/RauzS-02tv4vWm1edZ-q3gPQGWKGANLZ-85HCw_NVP0.png"
+        }
+      },
+      {
+        "id": 56000010,
+        "name": "Friendly",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/hM7SHnN0x7syFa-s6fE7LzeO5yWG2sfFpZUHuzgMwQg.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/hM7SHnN0x7syFa-s6fE7LzeO5yWG2sfFpZUHuzgMwQg.png"
+        }
+      },
+      {
+        "id": 56000011,
+        "name": "Talkative",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/T1c8AYalTn_RruVkY0mRPwNYF5n802thTBEEnOtNTMw.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/T1c8AYalTn_RruVkY0mRPwNYF5n802thTBEEnOtNTMw.png"
+        }
+      },
+      {
+        "id": 56000012,
+        "name": "Underdog",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/ImSgCg88EEl80mwzFZMIiJTqa33bJmJPcl4v2eT6O04.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/ImSgCg88EEl80mwzFZMIiJTqa33bJmJPcl4v2eT6O04.png"
+        }
+      },
+      {
+        "id": 56000013,
+        "name": "Relaxed",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/Kv1MZQfd5A7DLwf1Zw3tOaUiwQHGMwmRpjZqOalu_hI.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/Kv1MZQfd5A7DLwf1Zw3tOaUiwQHGMwmRpjZqOalu_hI.png"
+        }
+      },
+      {
+        "id": 56000014,
+        "name": "Competitive",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/DhBE-1SSnrZQtsfjVHyNW-BTBWMc8Zoo34MNRCNiRsA.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/DhBE-1SSnrZQtsfjVHyNW-BTBWMc8Zoo34MNRCNiRsA.png"
+        }
+      },
+      {
+        "id": 56000015,
+        "name": "Newbie Friendly",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/3oOuYkPdkjWVrBUITgByz9Ur0nmJ4GsERXc-1NUrjKg.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/3oOuYkPdkjWVrBUITgByz9Ur0nmJ4GsERXc-1NUrjKg.png"
+        }
+      },
+      {
+        "id": 56000016,
+        "name": "Clan Capital",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/Odg2DaLfhMgQOci4QvHovdoYq4SDiBrocWS2Bjm8Ah8.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/Odg2DaLfhMgQOci4QvHovdoYq4SDiBrocWS2Bjm8Ah8.png"
+        }
+      }
+    ],
+    "paging": {
+      "cursors": {}
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=60",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

@@ -1,0 +1,32 @@
+{
+  "body": {
+    "state": "notInWar",
+    "clan": {
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png"
+      },
+      "clanLevel": 0,
+      "attacks": 0,
+      "stars": 0,
+      "destructionPercentage": 0
+    },
+    "opponent": {
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/H39b_-WLZGtZVWQ0hqTkE-Tn2AaQnQWy_Iz4yBlvL0M.png"
+      },
+      "clanLevel": 0,
+      "attacks": 0,
+      "stars": 0,
+      "destructionPercentage": 0
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=120",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

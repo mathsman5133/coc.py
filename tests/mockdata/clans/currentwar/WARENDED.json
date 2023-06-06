@@ -1,0 +1,295 @@
+{
+  "body": {
+    "state": "warEnded",
+    "teamSize": 5,
+    "attacksPerMember": 1,
+    "preparationStartTime": "20230528T154814.000Z",
+    "startTime": "20230528T155314.000Z",
+    "endTime": "20230528T163814.000Z",
+    "clan": {
+      "tag": "#2GPVRU0C0",
+      "name": "G.A.M.T",
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/DcHcgP14dK0OPmf_G77JtangGL7_5u6oAOWUbbXP8Yw.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/DcHcgP14dK0OPmf_G77JtangGL7_5u6oAOWUbbXP8Yw.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/DcHcgP14dK0OPmf_G77JtangGL7_5u6oAOWUbbXP8Yw.png"
+      },
+      "clanLevel": 1,
+      "attacks": 5,
+      "stars": 11,
+      "destructionPercentage": 87.6,
+      "members": [
+        {
+          "tag": "#Y09PQVCC",
+          "name": "✨Aqueedaon✨Th12",
+          "townhallLevel": 12,
+          "mapPosition": 1,
+          "attacks": [
+            {
+              "attackerTag": "#Y09PQVCC",
+              "defenderTag": "#9R08QRUU2",
+              "stars": 1,
+              "destructionPercentage": 67,
+              "order": 10,
+              "duration": 111
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#PLGGC0L02",
+            "defenderTag": "#Y09PQVCC",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 7,
+            "duration": 155
+          }
+        },
+        {
+          "tag": "#2PRU8RPCP",
+          "name": "⭐️sncmaxi⭐️",
+          "townhallLevel": 12,
+          "mapPosition": 2,
+          "attacks": [
+            {
+              "attackerTag": "#2PRU8RPCP",
+              "defenderTag": "#28R9YGPLP",
+              "stars": 1,
+              "destructionPercentage": 71,
+              "order": 8,
+              "duration": 178
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#28R9YGPLP",
+            "defenderTag": "#2PRU8RPCP",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 3,
+            "duration": 133
+          }
+        },
+        {
+          "tag": "#YLYR8VVY",
+          "name": "FMT I Rakhman",
+          "townhallLevel": 12,
+          "mapPosition": 3,
+          "attacks": [
+            {
+              "attackerTag": "#YLYR8VVY",
+              "defenderTag": "#VRRPG0RQ",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 4,
+              "duration": 143
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#VRRPG0RQ",
+            "defenderTag": "#YLYR8VVY",
+            "stars": 2,
+            "destructionPercentage": 98,
+            "order": 5,
+            "duration": 179
+          }
+        },
+        {
+          "tag": "#QP8UP8UV",
+          "name": "Das Chaos",
+          "townhallLevel": 12,
+          "mapPosition": 5,
+          "attacks": [
+            {
+              "attackerTag": "#QP8UP8UV",
+              "defenderTag": "#PLGGC0L02",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 6,
+              "duration": 146
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#29LPYJ0LQ",
+            "defenderTag": "#QP8UP8UV",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 9,
+            "duration": 163
+          }
+        },
+        {
+          "tag": "#P0C9UJLPP",
+          "name": "YoSoyGod❤️ᵀᴴ¹²₁",
+          "townhallLevel": 12,
+          "mapPosition": 4,
+          "attacks": [
+            {
+              "attackerTag": "#P0C9UJLPP",
+              "defenderTag": "#29LPYJ0LQ",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 2,
+              "duration": 144
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#9R08QRUU2",
+            "defenderTag": "#P0C9UJLPP",
+            "stars": 2,
+            "destructionPercentage": 82,
+            "order": 1,
+            "duration": 165
+          }
+        }
+      ]
+    },
+    "opponent": {
+      "tag": "#2QCVRQCQR",
+      "name": "™ Galaxy",
+      "badgeUrls": {
+        "small": "https://api-assets.clashofclans.com/badges/70/AEaHm0FmstsRRGTqajAhcz1Mi7ceR2ys7g5PL7p2mvk.png",
+        "large": "https://api-assets.clashofclans.com/badges/512/AEaHm0FmstsRRGTqajAhcz1Mi7ceR2ys7g5PL7p2mvk.png",
+        "medium": "https://api-assets.clashofclans.com/badges/200/AEaHm0FmstsRRGTqajAhcz1Mi7ceR2ys7g5PL7p2mvk.png"
+      },
+      "clanLevel": 1,
+      "attacks": 5,
+      "stars": 13,
+      "destructionPercentage": 96,
+      "members": [
+        {
+          "tag": "#9R08QRUU2",
+          "name": "發ＮＩＴＩＳＨ❗",
+          "townhallLevel": 12,
+          "mapPosition": 1,
+          "attacks": [
+            {
+              "attackerTag": "#9R08QRUU2",
+              "defenderTag": "#P0C9UJLPP",
+              "stars": 2,
+              "destructionPercentage": 82,
+              "order": 1,
+              "duration": 165
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#Y09PQVCC",
+            "defenderTag": "#9R08QRUU2",
+            "stars": 1,
+            "destructionPercentage": 67,
+            "order": 10,
+            "duration": 111
+          }
+        },
+        {
+          "tag": "#VRRPG0RQ",
+          "name": "lalo.exe",
+          "townhallLevel": 12,
+          "mapPosition": 2,
+          "attacks": [
+            {
+              "attackerTag": "#VRRPG0RQ",
+              "defenderTag": "#YLYR8VVY",
+              "stars": 2,
+              "destructionPercentage": 98,
+              "order": 5,
+              "duration": 179
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#YLYR8VVY",
+            "defenderTag": "#VRRPG0RQ",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 4,
+            "duration": 143
+          }
+        },
+        {
+          "tag": "#PLGGC0L02",
+          "name": "Ｋ工ししモ尺 ム",
+          "townhallLevel": 12,
+          "mapPosition": 5,
+          "attacks": [
+            {
+              "attackerTag": "#PLGGC0L02",
+              "defenderTag": "#Y09PQVCC",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 7,
+              "duration": 155
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#QP8UP8UV",
+            "defenderTag": "#PLGGC0L02",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 6,
+            "duration": 146
+          }
+        },
+        {
+          "tag": "#28R9YGPLP",
+          "name": "ＧＨＯＳＴ ＦＲＥＡＫ",
+          "townhallLevel": 12,
+          "mapPosition": 3,
+          "attacks": [
+            {
+              "attackerTag": "#28R9YGPLP",
+              "defenderTag": "#2PRU8RPCP",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 3,
+              "duration": 133
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#2PRU8RPCP",
+            "defenderTag": "#28R9YGPLP",
+            "stars": 1,
+            "destructionPercentage": 71,
+            "order": 8,
+            "duration": 178
+          }
+        },
+        {
+          "tag": "#29LPYJ0LQ",
+          "name": "Viper",
+          "townhallLevel": 12,
+          "mapPosition": 4,
+          "attacks": [
+            {
+              "attackerTag": "#29LPYJ0LQ",
+              "defenderTag": "#QP8UP8UV",
+              "stars": 3,
+              "destructionPercentage": 100,
+              "order": 9,
+              "duration": 163
+            }
+          ],
+          "opponentAttacks": 1,
+          "bestOpponentAttack": {
+            "attackerTag": "#P0C9UJLPP",
+            "defenderTag": "#29LPYJ0LQ",
+            "stars": 3,
+            "destructionPercentage": 100,
+            "order": 2,
+            "duration": 144
+          }
+        }
+      ]
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=120",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

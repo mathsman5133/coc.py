@@ -1,0 +1,129 @@
+{
+  "body": {
+    "items": [
+      {
+        "tag": "#2LYQCJJ2U",
+        "name": "test",
+        "type": "closed",
+        "location": {
+          "id": 32000204,
+          "name": "Saudi Arabia",
+          "isCountry": true,
+          "countryCode": "SA"
+        },
+        "isFamilyFriendly": false,
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/gVTj7fCqT1XMQD2ozZIuvUigj7r2n1qgbnAzByQvuhw.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/gVTj7fCqT1XMQD2ozZIuvUigj7r2n1qgbnAzByQvuhw.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/gVTj7fCqT1XMQD2ozZIuvUigj7r2n1qgbnAzByQvuhw.png"
+        },
+        "clanLevel": 1,
+        "clanPoints": 4356,
+        "clanBuilderBasePoints": 3643,
+        "clanVersusPoints": 3643,
+        "clanCapitalPoints": 0,
+        "capitalLeague": {
+          "id": 85000000,
+          "name": "Unranked"
+        },
+        "requiredTrophies": 0,
+        "warFrequency": "unknown",
+        "warWinStreak": 0,
+        "warWins": 0,
+        "warTies": 0,
+        "warLosses": 0,
+        "isWarLogPublic": true,
+        "warLeague": {
+          "id": 48000000,
+          "name": "Unranked"
+        },
+        "members": 5,
+        "labels": [],
+        "requiredBuilderBaseTrophies": 0,
+        "requiredVersusTrophies": 0,
+        "requiredTownhallLevel": 14,
+        "chatLanguage": {
+          "id": 75000014,
+          "name": "العربية",
+          "languageCode": "AR"
+        }
+      },
+      {
+        "tag": "#2Q2CVGJUP",
+        "name": "clan test",
+        "type": "inviteOnly",
+        "location": {
+          "id": 32000006,
+          "name": "International",
+          "isCountry": false
+        },
+        "isFamilyFriendly": false,
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/NLvUgoC_zxul5PaUT_wK0y5qwYa7MpYSw2Sgl9MspmM.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/NLvUgoC_zxul5PaUT_wK0y5qwYa7MpYSw2Sgl9MspmM.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/NLvUgoC_zxul5PaUT_wK0y5qwYa7MpYSw2Sgl9MspmM.png"
+        },
+        "clanLevel": 6,
+        "clanPoints": 11528,
+        "clanBuilderBasePoints": 9363,
+        "clanVersusPoints": 9363,
+        "clanCapitalPoints": 0,
+        "capitalLeague": {
+          "id": 85000000,
+          "name": "Unranked"
+        },
+        "requiredTrophies": 1000,
+        "warFrequency": "always",
+        "warWinStreak": 1,
+        "warWins": 63,
+        "warTies": 0,
+        "warLosses": 42,
+        "isWarLogPublic": true,
+        "warLeague": {
+          "id": 48000000,
+          "name": "Unranked"
+        },
+        "members": 7,
+        "labels": [
+          {
+            "id": 56000000,
+            "name": "Clan Wars",
+            "iconUrls": {
+              "small": "https://api-assets.clashofclans.com/labels/64/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png",
+              "medium": "https://api-assets.clashofclans.com/labels/128/lXaIuoTlfoNOY5fKcQGeT57apz1KFWkN9-raxqIlMbE.png"
+            }
+          },
+          {
+            "id": 56000009,
+            "name": "Donations",
+            "iconUrls": {
+              "small": "https://api-assets.clashofclans.com/labels/64/RauzS-02tv4vWm1edZ-q3gPQGWKGANLZ-85HCw_NVP0.png",
+              "medium": "https://api-assets.clashofclans.com/labels/128/RauzS-02tv4vWm1edZ-q3gPQGWKGANLZ-85HCw_NVP0.png"
+            }
+          },
+          {
+            "id": 56000016,
+            "name": "Clan Capital",
+            "iconUrls": {
+              "small": "https://api-assets.clashofclans.com/labels/64/Odg2DaLfhMgQOci4QvHovdoYq4SDiBrocWS2Bjm8Ah8.png",
+              "medium": "https://api-assets.clashofclans.com/labels/128/Odg2DaLfhMgQOci4QvHovdoYq4SDiBrocWS2Bjm8Ah8.png"
+            }
+          }
+        ],
+        "requiredBuilderBaseTrophies": 400,
+        "requiredVersusTrophies": 400,
+        "requiredTownhallLevel": 11
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "after": "eyJwb3MiOjJ9"
+      }
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=60",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

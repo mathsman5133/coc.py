@@ -1,0 +1,12 @@
+{
+  "body": {
+    "id": 32000000,
+    "name": "Europe",
+    "isCountry": false
+  },
+  "headers": {
+    "cache-control": "max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}
