@@ -287,6 +287,7 @@ class RaidClan:
         "_attacks",
         "_client",
         "_response_retry",
+        "_cs_raid_attacks",
         "_cs_raid_districts",
         "_cs_looted",
         "_iter_raid_districts",
