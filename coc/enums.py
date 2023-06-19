@@ -105,6 +105,7 @@ HOME_TROOP_ORDER = [
     "Bowler",
     "Ice Golem",
     "Headhunter",
+    "Apprentice Warden"
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -133,6 +134,7 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
     "Super Bowler",
     "Super Miner",
+    "Super Hog Rider"
 ]
 
 HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
