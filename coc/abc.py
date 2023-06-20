@@ -184,7 +184,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
     def _load_json_meta(cls, troop_meta, id, name, lab_to_townhall):
         cls.id = int(id)
         cls.name = name
-        #print(name)
         cls.lab_to_townhall = lab_to_townhall
 
         cls.range = try_enum(UnitStat, troop_meta.get("AttackRange"))
