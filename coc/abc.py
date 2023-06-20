@@ -193,7 +193,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.hitpoints = try_enum(UnitStat, troop_meta.get("Hitpoints"))
 
         # get production building
-        production_building = troop_meta.get("ProductionBuilding", [None])[0]
+        production_building = troop_meta.get("ProductionBuilding", [None])[0] if troop_meta.get("ProductionBuilding") else None
         if production_building == "Barrack":
             cls.is_elixir_troop = True
         elif production_building == "Dark Elixir Barrack":
@@ -330,7 +330,9 @@ class DataContainerHolder:
         with open(self.FILE_PATH) as fp:
             data = ujson.load(fp)
 
+        id = 2000
         for c, [supercell_name, meta] in enumerate(data.items()):
+
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue
@@ -340,8 +342,12 @@ class DataContainerHolder:
                 continue
 
             # SC game files have "DisableProduction" true for all pet objects, which we want
-            if "DisableProduction" in meta and "pets" not in str(
-                    self.FILE_PATH):
+            if True in meta.get("DisableProduction", [False]) and "pets" not in str(self.FILE_PATH):
+                continue
+
+            #hacky but the aliases convert so that isnt great
+            IGNORED_PETS = ["Unused", "PhoenixEgg"]
+            if "pets" in str(self.FILE_PATH) and supercell_name in IGNORED_PETS:
                 continue
 
             # A bit of a hacky way to create a "copy" of a new Troop object that hasn't been initiated yet.
@@ -350,11 +356,11 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=object_ids.get(supercell_name, c),
-                name=english_aliases[meta["TID"][0]][0],
+                id=id,
+                name=english_aliases[meta["TID"][0]]["EN"][0],
                 lab_to_townhall=lab_to_townhall,
             )
-
+            id += 1
             self.items.append(new_item)
             self.item_lookup[new_item.name] = new_item
 
