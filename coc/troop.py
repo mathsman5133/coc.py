@@ -174,24 +174,25 @@ class TroopHolder(DataContainerHolder):
 
         super_data = {meta["Replacement"][0]: meta for _, meta in super_troop_data.items()}
 
+        id = 1000
         for supercell_name, troop_meta in troop_data.items():
+
             if not troop_meta.get("TID"):
                 continue
             if "Tutorial" in supercell_name:
                 continue
-            if "DisableProduction" in troop_meta:
+            if True in troop_meta.get("DisableProduction", [False]):
                 continue
-
             new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
             new_troop._load_json_meta(
                 troop_meta,
-                id=object_ids[supercell_name],
-                name=english_aliases[troop_meta["TID"][0]][0],
+                id=id,
+                name=english_aliases[troop_meta["TID"][0]]["EN"][0],
                 lab_to_townhall=lab_to_townhall,
             )
+            id += 1
             self.items.append(new_troop)
             self.item_lookup[(new_troop.name, new_troop._is_home_village)] = new_troop
-
             try:
                 super_meta = super_data[supercell_name]
             except KeyError:
@@ -201,7 +202,7 @@ class TroopHolder(DataContainerHolder):
 
         for troop in filter(lambda t: t.is_super_troop, self.items):
             sc_name = troop_data[troop._original]["TID"][0]
-            troop.original_troop = self.get(english_aliases[sc_name][0])
+            troop.original_troop = self.get(english_aliases[sc_name]["EN"][0])
 
         self.loaded = True
 

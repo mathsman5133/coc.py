@@ -105,6 +105,7 @@ HOME_TROOP_ORDER = [
     "Bowler",
     "Ice Golem",
     "Headhunter",
+    "Apprentice Warden"
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -133,8 +134,11 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
     "Super Bowler",
     "Super Miner",
+    "Super Hog Rider"
 ]
 
+#enum with only the actual troops, not sure why they were combined to begin with
+HV_TROOP_ORDER = HOME_TROOP_ORDER
 HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 
@@ -148,8 +152,9 @@ BUILDER_TROOPS_ORDER = [
     "Cannon Cart",
     "Night Witch",
     "Drop Ship",
-    "Super P.E.K.K.A",
+    "Power P.E.K.K.A",
     "Hog Glider",
+    "Electrofire Wizard"
 ]
 
 SPELL_ORDER = [
@@ -168,7 +173,9 @@ SPELL_ORDER = [
     "Bat Spell",
 ]
 
-HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
+HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
+BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
+HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
 PETS_ORDER = [
     "L.A.S.S.I",
