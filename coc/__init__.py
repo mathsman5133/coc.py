@@ -78,6 +78,7 @@ from .miscmodels import (
     TimeDelta,
     Label,
     WarLeague,
+    BuilderBaseLeague
 )
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan
