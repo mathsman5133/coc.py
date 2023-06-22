@@ -1,2 +1,3 @@
 aiohttp
 ujson
+zstandard
