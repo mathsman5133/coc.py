@@ -63,7 +63,6 @@ LOG = logging.getLogger(__name__)
 LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
-OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
 
@@ -244,9 +243,6 @@ class Client:
         )
 
     def _load_holders(self):
-        with open(OBJECT_IDS_PATH) as fp:
-            object_ids = {v: k for k, v in ujson.load(fp).items()}
-
         with open(ENGLISH_ALIAS_PATH) as fp:
             english_aliases = ujson.load(fp)
 
@@ -265,7 +261,7 @@ class Client:
             lab_to_townhall = {i-2: i for i in range(1, 15)}
 
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
-            holder._load_json(object_ids, english_aliases, lab_to_townhall)
+            holder._load_json(english_aliases, lab_to_townhall)
 
     def _create_holders(self):
         self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder = TroopHolder(), \
@@ -1126,7 +1122,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag,**kwargs)
+            league_group = await self.get_league_group(clan_tag, **kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
