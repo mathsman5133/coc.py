@@ -166,7 +166,7 @@ class TroopHolder(DataContainerHolder):
     items: List[Type[Troop]] = []
     item_lookup: Dict[Tuple[str, bool], Type[Troop]]
 
-    def _load_json(self, object_ids, english_aliases, lab_to_townhall):
+    def _load_json(self, english_aliases, lab_to_townhall):
         with open(TROOPS_FILE_PATH) as fp:
             troop_data = ujson.load(fp)
         with open(SUPER_TROOPS_FILE_PATH) as fp:
