@@ -23,6 +23,8 @@ SOFTWARE.
 """
 from datetime import datetime
 from typing import Any, Type, TypeVar, Optional
+
+import coc
 from .enums import PlayerHouseElementType
 from .utils import from_timestamp
 
@@ -650,12 +652,14 @@ class BuilderBaseLeague:
     __slots__ = (
         "id",
         "name",
+        "_client"
     )
 
-    def __init__(self, *, data):
+    def __init__(self, *, data, client: Optional[coc.Client] = None):
         # pylint: disable=invalid-name
         self.id: int = data["id"]
         self.name: str = data["name"]
+        self._client: coc.Client = client
 
     def __repr__(self):
         return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
