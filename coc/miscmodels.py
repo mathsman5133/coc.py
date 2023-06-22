@@ -655,11 +655,11 @@ class BuilderBaseLeague:
         "_client"
     )
 
-    def __init__(self, *, data, client: Optional[coc.Client] = None):
+    def __init__(self, *, data, client=None):
         # pylint: disable=invalid-name
         self.id: int = data["id"]
         self.name: str = data["name"]
-        self._client: coc.Client = client
+        self._client = client
 
     def __repr__(self):
         return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
