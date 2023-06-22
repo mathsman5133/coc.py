@@ -639,6 +639,34 @@ class WarLeague:
         return isinstance(self, other.__class__) and other.id == self.id
 
 
+class BuilderBaseLeague:
+    """Represents a player's Builder Base league.
+
+    Attributes
+    -----------
+    id: :class:`int`: The league's unique ID
+    name: :class:`str`: The league's name, as it appears in-game."""
+
+    __slots__ = (
+        "id",
+        "name",
+    )
+
+    def __init__(self, *, data):
+        # pylint: disable=invalid-name
+        self.id: int = data["id"]
+        self.name: str = data["name"]
+
+    def __repr__(self):
+        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
+
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and other.id == self.id
+
+
 class ChatLanguage:
     """Represents a clan's chat language.
 
