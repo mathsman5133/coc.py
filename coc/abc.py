@@ -326,7 +326,7 @@ class DataContainerHolder:
     def __init__(self):
         self.loaded = False
 
-    def _load_json(self, object_ids, english_aliases, lab_to_townhall):
+    def _load_json(self, english_aliases, lab_to_townhall):
         with open(self.FILE_PATH) as fp:
             data = ujson.load(fp)
 
