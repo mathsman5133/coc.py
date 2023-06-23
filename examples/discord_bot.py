@@ -128,7 +128,7 @@ async def member_stat(ctx, player_tag):
         f"`{'War Stars:':<15}` `{player.war_stars:<15}`\n"
         f"`{'Attack Wins:':<15}` `{player.attack_wins:<15}`\n"
         f"`{'Defense Wins:':<15}` `{player.defense_wins:<15}`\n"
-        f"`{'Castle Contrib':<15}` `{player.clan_capital_contributions:<15}`\n"
+        f"`{'Capital Contrib':<15}` `{player.clan_capital_contributions:<15}`\n"
     )
     e = discord.Embed(colour=discord.Colour.green(),
                       description=frame)
