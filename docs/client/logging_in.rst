@@ -18,7 +18,7 @@ Example
 
     async def main():
         async with coc.Client(key_names="keys for my windows pc", key_count=5) as coc_client:
-            await coc_client.login("email","password)
+            await coc_client.login("email","password")
             # do stuff
 
     if __name__ == "__main__":
@@ -31,7 +31,7 @@ Example
 
     async def main():
         coc_client= coc.Client(key_names="keys for my windows pc", key_count=5)
-        await coc_client.login("email","password)
+        await coc_client.login("email","password")
         # do stuff
         await coc_client.close()
 
