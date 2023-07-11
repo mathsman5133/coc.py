@@ -1614,6 +1614,96 @@ class Client:
         """
         return get(await self.search_leagues(), name=league_name)
 
+    async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+        """Get list of builder base leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`League`]
+            The requested leagues.
+        """
+        data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after)
+        return [League(data=n, client=self) for n in data["items"]]
+
+    async def get_builder_base_league(self, league_id: int) -> League:
+        """
+        Get builder base league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`League`
+            The league with the requested ID
+        """
+        data = await self.http.get_builder_base_league(league_id)
+        return League(data=data, client=self)
+
+    async def get_builder_base_league_named(self, league_name: str) -> Optional[League]:
+        """Get a builder base league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_builder_base_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The builder base league name to search for
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`League`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        return get(await self.search_builder_base_leagues(), name=league_name)
+
     async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
         """Get list of war leagues.
 
