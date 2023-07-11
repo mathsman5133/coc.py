@@ -41,12 +41,14 @@ but there were some additions and a removal as well:
 Game Objects
 ------------
 
-The latest game updates brought some troop changes which are reflected in the following changes in coc.py game data:
+coc.py game data was updated and now includes all the recently added troops and heros.
+This is also reflected in the following enumerations:
 
 - :class:`coc.HOME_TROOP_ORDER` now knows the "Apprentice Warden"
 - :class:`coc.SUPER_TROOP_ORDER` now knows the "Super Hog Rider"
 - in the :class:`coc.BUILDER_TROOPS_ORDER`, "Super P.E.K.K.A" got renamed to "Power P.E.K.K.A"
 - :class:`coc.BUILDER_TROOPS_ORDER` now knows the "Electrofire Wizard"
+- :class:`coc.HERO_ORDER` now knows the "Battle Copter"
 
 Furthermore
 -----------
@@ -57,4 +59,5 @@ In order to get more in line with our coding style, the following methods were r
 - :func:`coc.Client.get_raidlog` -> :func:`coc.Client.get_raid_log`
 
 :class:`coc.ClanMember` has a new cached property: :func:`player_house_elements`
+
 :class:`coc.RaidDistrict` has a new `stars` attribute
