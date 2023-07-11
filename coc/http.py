@@ -384,7 +384,7 @@ class HTTPClient:
     def get_clan_members(self, tag, **kwargs):
         return self.request(Route("GET", "/clans/{}/members".format(tag), **kwargs))
 
-    def get_clan_warlog(self, tag, **kwargs):
+    def get_clan_war_log(self, tag, **kwargs):
         return self.request(Route("GET", "/clans/{}/warlog".format(tag), **kwargs))
 
     def get_clan_current_war(self, tag, realtime=None):
@@ -402,7 +402,7 @@ class HTTPClient:
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
                                          else '')))
 
-    def get_clan_raidlog(self, tag, **kwargs):
+    def get_clan_raid_log(self, tag, **kwargs):
         return self.request(Route("GET", "/clans/{}/capitalraidseasons".format(tag), **kwargs))
 
     # locations

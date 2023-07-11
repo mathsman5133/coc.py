@@ -198,7 +198,7 @@ class ClanWarLog(LogPaginator, ABC):
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_clan_warlog(clan_tag, **options, ignore_cache=True)
+        result = await client.http.get_clan_war_log(clan_tag, **options, ignore_cache=True)
         if fut:
             fut.set_result(result)
         return result
@@ -235,7 +235,7 @@ class RaidLog(LogPaginator, ABC):
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_clan_raidlog(clan_tag, **options)
+        result = await client.http.get_clan_raid_log(clan_tag, **options)
         if fut:
             fut.set_result(result)
         return result
