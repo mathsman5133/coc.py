@@ -230,8 +230,6 @@ class Player(ClanMember):
         The player's builder hall level, or 0 if it hasn't been unlocked.
     best_builder_base_trophies: :class:`int`
         The player's best builder base trophy count.
-    builder_base_wins: :class:`int`
-        The number of builder base attacks the player has won
     clan_capital_contributions: :class:`int`
         The player's total contribution to clan capitals
     legend_statistics: Optional[:class:`LegendStatistics`]
