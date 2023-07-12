@@ -1,0 +1,416 @@
+{
+  "body": {
+    "items": [
+      {
+        "tag": "#GV98V9CC",
+        "name": "موج های آمو",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/hAHkF7BdljTlCm9z9HF0PJrin9_mzeP7dBCeeri_QzQ.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/hAHkF7BdljTlCm9z9HF0PJrin9_mzeP7dBCeeri_QzQ.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/hAHkF7BdljTlCm9z9HF0PJrin9_mzeP7dBCeeri_QzQ.png"
+        },
+        "clanLevel": 21,
+        "members": 46,
+        "clanPoints": 51162,
+        "rank": 1,
+        "previousRank": 1
+      },
+      {
+        "tag": "#20QCCC2RG",
+        "name": "LOVELY BOYS",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/5lVQBsB0y4pK-MdLqRt32dlDfeJBXIm0CtC9qIneFzs.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/5lVQBsB0y4pK-MdLqRt32dlDfeJBXIm0CtC9qIneFzs.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/5lVQBsB0y4pK-MdLqRt32dlDfeJBXIm0CtC9qIneFzs.png"
+        },
+        "clanLevel": 22,
+        "members": 42,
+        "clanPoints": 50549,
+        "rank": 2,
+        "previousRank": 2
+      },
+      {
+        "tag": "#RV2UCJ2L",
+        "name": "شایسته فراه",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/KV5fGnIIxmU2OIx6RDfSlLOXT9VyCAx5ATKUsl1O_lo.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/KV5fGnIIxmU2OIx6RDfSlLOXT9VyCAx5ATKUsl1O_lo.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/KV5fGnIIxmU2OIx6RDfSlLOXT9VyCAx5ATKUsl1O_lo.png"
+        },
+        "clanLevel": 22,
+        "members": 48,
+        "clanPoints": 50297,
+        "rank": 3,
+        "previousRank": 3
+      },
+      {
+        "tag": "#PVLCGGR",
+        "name": "Afghan champs",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/VRfG7PZkPDzBdV3tw9l4EkAdmQPYdywBkeC7lvgpHzI.png"
+        },
+        "clanLevel": 28,
+        "members": 40,
+        "clanPoints": 50163,
+        "rank": 4,
+        "previousRank": 8
+      },
+      {
+        "tag": "#28V9URCJC",
+        "name": "Afghan",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/QaHlboTIy5w9JK-C17SRJiot0QafcxTgIBt0ajBNb1k.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/QaHlboTIy5w9JK-C17SRJiot0QafcxTgIBt0ajBNb1k.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/QaHlboTIy5w9JK-C17SRJiot0QafcxTgIBt0ajBNb1k.png"
+        },
+        "clanLevel": 21,
+        "members": 50,
+        "clanPoints": 50071,
+        "rank": 5,
+        "previousRank": 4
+      },
+      {
+        "tag": "#LJUPRYGC",
+        "name": "زنده باد AFG",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/tQwqOGM1YAAT6GDXO_0trrLghGgXmaPyojtlFSzs64k.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/tQwqOGM1YAAT6GDXO_0trrLghGgXmaPyojtlFSzs64k.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/tQwqOGM1YAAT6GDXO_0trrLghGgXmaPyojtlFSzs64k.png"
+        },
+        "clanLevel": 23,
+        "members": 48,
+        "clanPoints": 49752,
+        "rank": 6,
+        "previousRank": 5
+      },
+      {
+        "tag": "#GQ229PQJ",
+        "name": "بچه های هزاره",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/KszcDGH-CaYv6-48ppq0ofRtRHPoYwzGlzGttalMGoM.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/KszcDGH-CaYv6-48ppq0ofRtRHPoYwzGlzGttalMGoM.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/KszcDGH-CaYv6-48ppq0ofRtRHPoYwzGlzGttalMGoM.png"
+        },
+        "clanLevel": 22,
+        "members": 48,
+        "clanPoints": 49610,
+        "rank": 7,
+        "previousRank": 6
+      },
+      {
+        "tag": "#209QJ0JP",
+        "name": "پسران مهاجر",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/f9vHoDnVp-Qe6ZahiERCOjw9U3JXcEJP1CqNREjQaNw.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/f9vHoDnVp-Qe6ZahiERCOjw9U3JXcEJP1CqNREjQaNw.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/f9vHoDnVp-Qe6ZahiERCOjw9U3JXcEJP1CqNREjQaNw.png"
+        },
+        "clanLevel": 27,
+        "members": 49,
+        "clanPoints": 49181,
+        "rank": 8,
+        "previousRank": 7
+      },
+      {
+        "tag": "#2YJVQPQ99",
+        "name": "هزاره کلن",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/mYhP9YnEOh_1bPJuN0153ZXvYaSuTaXQzvwNNyAYNvM.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/mYhP9YnEOh_1bPJuN0153ZXvYaSuTaXQzvwNNyAYNvM.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/mYhP9YnEOh_1bPJuN0153ZXvYaSuTaXQzvwNNyAYNvM.png"
+        },
+        "clanLevel": 18,
+        "members": 37,
+        "clanPoints": 48838,
+        "rank": 9,
+        "previousRank": 9
+      },
+      {
+        "tag": "#2PUVQ9GPQ",
+        "name": "کندهار سټار",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/PgyIAPA8U63fDwaq03MoPd_Z2YaCaNln89HRZCtQgv4.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/PgyIAPA8U63fDwaq03MoPd_Z2YaCaNln89HRZCtQgv4.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/PgyIAPA8U63fDwaq03MoPd_Z2YaCaNln89HRZCtQgv4.png"
+        },
+        "clanLevel": 13,
+        "members": 50,
+        "clanPoints": 48582,
+        "rank": 10,
+        "previousRank": 10
+      },
+      {
+        "tag": "#9Q99R88C",
+        "name": ">شکارچیان وار<",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/D7oQ12-Q6pew3Ee3-Xq2I5XZ6TrJPsxaiyT7h-IT4CY.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/D7oQ12-Q6pew3Ee3-Xq2I5XZ6TrJPsxaiyT7h-IT4CY.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/D7oQ12-Q6pew3Ee3-Xq2I5XZ6TrJPsxaiyT7h-IT4CY.png"
+        },
+        "clanLevel": 24,
+        "members": 48,
+        "clanPoints": 48213,
+        "rank": 11,
+        "previousRank": 11
+      },
+      {
+        "tag": "#UP2YVYU0",
+        "name": "ځانګړى ډله",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/sLVBgg0QSmf6FlAMV7lViP-3D8EFGI4c7k3wBNrMWuA.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/sLVBgg0QSmf6FlAMV7lViP-3D8EFGI4c7k3wBNrMWuA.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/sLVBgg0QSmf6FlAMV7lViP-3D8EFGI4c7k3wBNrMWuA.png"
+        },
+        "clanLevel": 19,
+        "members": 49,
+        "clanPoints": 48158,
+        "rank": 12,
+        "previousRank": 12
+      },
+      {
+        "tag": "#2LLV0YCLQ",
+        "name": "به یاد مادر",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/qw0kHwhUKyxGvOQJlvvfBKYNa8xvlRhD4pKt6NO37h0.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/qw0kHwhUKyxGvOQJlvvfBKYNa8xvlRhD4pKt6NO37h0.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/qw0kHwhUKyxGvOQJlvvfBKYNa8xvlRhD4pKt6NO37h0.png"
+        },
+        "clanLevel": 16,
+        "members": 42,
+        "clanPoints": 47706,
+        "rank": 13,
+        "previousRank": 13
+      },
+      {
+        "tag": "#R8CJVL98",
+        "name": "MORTAL COMBAT",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/a8DLz4_M0oo8mn-3ujGvCaF4tf5tGytpngg3CzahkKU.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/a8DLz4_M0oo8mn-3ujGvCaF4tf5tGytpngg3CzahkKU.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/a8DLz4_M0oo8mn-3ujGvCaF4tf5tGytpngg3CzahkKU.png"
+        },
+        "clanLevel": 21,
+        "members": 45,
+        "clanPoints": 46820,
+        "rank": 14,
+        "previousRank": 15
+      },
+      {
+        "tag": "#28YRVPVYU",
+        "name": "Afghan Boys",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/yCGHM04rgnVjQeZ6Xr0ZFeVv_FVvmJSnGzi1HxG6Zmw.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/yCGHM04rgnVjQeZ6Xr0ZFeVv_FVvmJSnGzi1HxG6Zmw.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/yCGHM04rgnVjQeZ6Xr0ZFeVv_FVvmJSnGzi1HxG6Zmw.png"
+        },
+        "clanLevel": 24,
+        "members": 47,
+        "clanPoints": 46716,
+        "rank": 15,
+        "previousRank": 16
+      },
+      {
+        "tag": "#QLV2GV8G",
+        "name": "زنده باد دینم",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/vaSVIqLGfLxYNKx6SfsM3pJn6bgB3Yq6Vhf1FT9vvpQ.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/vaSVIqLGfLxYNKx6SfsM3pJn6bgB3Yq6Vhf1FT9vvpQ.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/vaSVIqLGfLxYNKx6SfsM3pJn6bgB3Yq6Vhf1FT9vvpQ.png"
+        },
+        "clanLevel": 22,
+        "members": 35,
+        "clanPoints": 46578,
+        "rank": 16,
+        "previousRank": 14
+      },
+      {
+        "tag": "#YGU9YU9R",
+        "name": "5star",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/vABCk4_mn55IlnOsM78GOAMPgod9gFrTY6SLCioEbKQ.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/vABCk4_mn55IlnOsM78GOAMPgod9gFrTY6SLCioEbKQ.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/vABCk4_mn55IlnOsM78GOAMPgod9gFrTY6SLCioEbKQ.png"
+        },
+        "clanLevel": 21,
+        "members": 49,
+        "clanPoints": 45918,
+        "rank": 17,
+        "previousRank": 17
+      },
+      {
+        "tag": "#8PVV9R8P",
+        "name": "AFG fighters",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/PoRFH5IAIFLaMSmaKbhXeBWfzRQ9FP7QxdIxdA4dXuI.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/PoRFH5IAIFLaMSmaKbhXeBWfzRQ9FP7QxdIxdA4dXuI.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/PoRFH5IAIFLaMSmaKbhXeBWfzRQ9FP7QxdIxdA4dXuI.png"
+        },
+        "clanLevel": 23,
+        "members": 40,
+        "clanPoints": 45859,
+        "rank": 18,
+        "previousRank": 18
+      },
+      {
+        "tag": "#22R9LYPC2",
+        "name": "جنگجویان افغان",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/G_YDQvm11LW_c0BaX2elx1NZJE8HTFgRiuytIRx91ow.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/G_YDQvm11LW_c0BaX2elx1NZJE8HTFgRiuytIRx91ow.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/G_YDQvm11LW_c0BaX2elx1NZJE8HTFgRiuytIRx91ow.png"
+        },
+        "clanLevel": 22,
+        "members": 31,
+        "clanPoints": 45642,
+        "rank": 19,
+        "previousRank": 20
+      },
+      {
+        "tag": "#280UY29GP",
+        "name": "شکست ناپزیران",
+        "location": {
+          "id": 32000007,
+          "name": "Afghanistan",
+          "isCountry": true,
+          "countryCode": "AF"
+        },
+        "badgeUrls": {
+          "small": "https://api-assets.clashofclans.com/badges/70/a_AMlHKrUkzNGRhZPtdhstKW3sfO0KqzaVRQ_iZDKSk.png",
+          "large": "https://api-assets.clashofclans.com/badges/512/a_AMlHKrUkzNGRhZPtdhstKW3sfO0KqzaVRQ_iZDKSk.png",
+          "medium": "https://api-assets.clashofclans.com/badges/200/a_AMlHKrUkzNGRhZPtdhstKW3sfO0KqzaVRQ_iZDKSk.png"
+        },
+        "clanLevel": 24,
+        "members": 50,
+        "clanPoints": 45610,
+        "rank": 20,
+        "previousRank": 22
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "after": "eyJwb3MiOjIwfQ"
+      }
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=60",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

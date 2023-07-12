@@ -1,0 +1,13 @@
+{
+  "body": {
+    "id": 32000007,
+    "name": "Afghanistan",
+    "isCountry": true,
+    "countryCode": "AF"
+  },
+  "headers": {
+    "cache-control": "max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

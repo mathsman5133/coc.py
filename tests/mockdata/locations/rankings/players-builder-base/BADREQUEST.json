@@ -1,0 +1,11 @@
+{
+  "body": {
+    "reason": "badRequest",
+    "message": "Unknown value for parameter locationId"
+  },
+  "headers": {
+    "cache-control": "public max-age=600",
+    "content-type": "application/json"
+  },
+  "response_code": 400
+}

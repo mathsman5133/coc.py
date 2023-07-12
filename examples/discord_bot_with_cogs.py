@@ -128,8 +128,8 @@ class CocCommands(commands.Cog):
                     value=clan.points,
                     inline=False)
 
-        e.add_field(name="Total Clan Versus Trophies",
-                    value=clan.versus_points,
+        e.add_field(name="Total Clan Builder Base Trophies",
+                    value=clan.builder_base_points,
                     inline=False)
 
         e.add_field(name="WarLog Type",

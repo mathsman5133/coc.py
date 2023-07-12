@@ -1,0 +1,12 @@
+{
+  "body": {
+  "tag": "#2PP",
+  "token": "TOKEN",
+  "status": "invalid"
+},
+  "headers": {
+    "cache-control": "public max-age=600",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

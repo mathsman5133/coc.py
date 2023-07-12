@@ -34,7 +34,7 @@ import ujson
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
+from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
 from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -63,7 +63,6 @@ LOG = logging.getLogger(__name__)
 LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
-OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
 
@@ -244,9 +243,6 @@ class Client:
         )
 
     def _load_holders(self):
-        with open(OBJECT_IDS_PATH) as fp:
-            object_ids = {v: k for k, v in ujson.load(fp).items()}
-
         with open(ENGLISH_ALIAS_PATH) as fp:
             english_aliases = ujson.load(fp)
 
@@ -265,7 +261,7 @@ class Client:
             lab_to_townhall = {i-2: i for i in range(1, 15)}
 
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
-            holder._load_json(object_ids, english_aliases, lab_to_townhall)
+            holder._load_json(english_aliases, lab_to_townhall)
 
     def _create_holders(self):
         self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder = TroopHolder(), \
@@ -582,7 +578,7 @@ class Client:
         data = await self.http.get_clan_members(clan_tag, **args)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
-    async def get_warlog(
+    async def get_war_log(
         self,
         clan_tag: str,
         cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
@@ -681,7 +677,7 @@ class Client:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
-    async def get_raidlog(
+    async def get_raid_log(
             self,
             clan_tag: str,
             cls: Type[RaidLogEntry] = RaidLogEntry,
@@ -1126,7 +1122,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag,**kwargs)
+            league_group = await self.get_league_group(clan_tag, **kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
@@ -1444,11 +1440,11 @@ class Client:
         data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_clans_versus(
+    async def get_location_clans_builder_base(
         self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedClan] = RankedClan
     ) -> List[RankedClan]:
-        """Get clan versus rankings for a specific location
+        """Get clan builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1478,18 +1474,18 @@ class Client:
         Returns
         --------
         List[:class:`RankedClan`]
-            The top versus-clans for the requested location.
+            The top builder base-clans for the requested location.
         """
         if not issubclass(cls, RankedClan):
             raise TypeError("cls must be a subclass of RankedClan.")
-        data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
+        data = await self.http.get_location_clans_builder_base(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_players_versus(
+    async def get_location_players_builder_base(
         self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedPlayer] = RankedPlayer
     ) -> List[RankedPlayer]:
-        """Get player versus rankings for a specific location
+        """Get player builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1519,11 +1515,11 @@ class Client:
         Returns
         --------
         List[:class:`RankedPlayer`]
-            The top versus players for the requested location.
+            The top builder base players for the requested location.
         """
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
-        data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
+        data = await self.http.get_location_players_builder_base(location_id, limit=limit, before=before, after=after)
         return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
@@ -1618,7 +1614,98 @@ class Client:
         """
         return get(await self.search_leagues(), name=league_name)
 
-    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None)-> List[
+        BaseLeague]:
+        """Get list of builder base leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`BaseLeague`]
+            The requested leagues.
+        """
+        data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after)
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
+
+    async def get_builder_base_league(self, league_id: int) -> BaseLeague:
+        """
+        Get builder base league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The league with the requested ID
+        """
+        data = await self.http.get_builder_base_league(league_id)
+        return BaseLeague(data=data, client=self)
+
+    async def get_builder_base_league_named(self, league_name: str) -> Optional[BaseLeague]:
+        """Get a builder base league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_builder_base_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The builder base league name to search for
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        return get(await self.search_builder_base_leagues(), name=league_name)
+
+    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[BaseLeague]:
         """Get list of war leagues.
 
         Parameters
@@ -1642,13 +1729,13 @@ class Client:
 
         Returns
         --------
-        List[:class:`League`]
+        List[:class:`BaseLeague`]
             The requested leagues.
         """
         data = await self.http.search_war_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
 
-    async def get_war_league(self, league_id: int) -> League:
+    async def get_war_league(self, league_id: int) -> BaseLeague:
         """
         Get war league information
 
@@ -1671,13 +1758,13 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The league with the requested ID
         """
         data = await self.http.get_war_league(league_id)
-        return League(data=data, client=self)
+        return BaseLeague(data=data, client=self)
 
-    async def get_war_league_named(self, league_name: str) -> Optional[League]:
+    async def get_war_league_named(self, league_name: str) -> Optional[BaseLeague]:
         """Get a war league by name.
 
         This is somewhat equivalent to
@@ -1703,12 +1790,12 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_war_leagues(), name=league_name)
 
-    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[BaseLeague]:
         """Get list of capital leagues.
 
         Parameters
@@ -1732,13 +1819,13 @@ class Client:
 
         Returns
         --------
-        List[:class:`League`]
+        List[:class:`BaseLeague`]
             The requested leagues.
         """
         data = await self.http.search_capital_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
 
-    async def get_capital_league(self, league_id: int) -> League:
+    async def get_capital_league(self, league_id: int) -> BaseLeague:
         """
         Get capital league information
 
@@ -1761,13 +1848,13 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The league with the requested ID
         """
         data = await self.http.get_capital_league(league_id)
-        return League(data=data, client=self)
+        return BaseLeague(data=data, client=self)
 
-    async def get_capital_league_named(self, league_name: str) -> Optional[League]:
+    async def get_capital_league_named(self, league_name: str) -> Optional[BaseLeague]:
         """Get a capital league by name.
 
         This is somewhat equivalent to
@@ -1793,7 +1880,7 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_capital_leagues(), name=league_name)

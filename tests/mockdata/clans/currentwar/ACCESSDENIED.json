@@ -1,0 +1,10 @@
+{
+  "body": {
+    "reason": "accessDenied"
+  },
+  "headers": {
+    "cache-control": "max-age=120",
+    "content-type": "application/json"
+  },
+  "response_code": 403
+}

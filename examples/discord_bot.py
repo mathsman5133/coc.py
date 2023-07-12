@@ -144,7 +144,7 @@ async def clan_info(ctx, clan_tag):
         return
 
     try:
-        clan = await ctx.bot.coc_client.get_clan(clan_tag)
+        clan: coc.Clan = await ctx.bot.coc_client.get_clan(clan_tag)
     except coc.NotFound:
         await ctx.send("This clan doesn't exist!")
         return
@@ -167,8 +167,8 @@ async def clan_info(ctx, clan_tag):
     e.add_field(name="Clan Type", value=clan.type, inline=False)
     e.add_field(name="Location", value=clan.location, inline=False)
     e.add_field(name="Total Clan Trophies", value=clan.points, inline=False)
-    e.add_field(name="Total Clan Versus Trophies",
-                value=clan.versus_points, inline=False)
+    e.add_field(name="Total Clan Builder Base Trophies",
+                value=clan.builder_base_points, inline=False)
     e.add_field(name="WarLog Type", value=log, inline=False)
     e.add_field(name="Required Trophies",
                 value=clan.required_trophies, inline=False)

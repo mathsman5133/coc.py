@@ -56,6 +56,7 @@ coc.py: A Clash of Clans API Wrapper
    examples/discord_bot
    examples/events_example
    examples/war_logs
+   examples/import_client
 
 .. _miscellaneous:
 .. toctree::
@@ -64,6 +65,7 @@ coc.py: A Clash of Clans API Wrapper
 
    miscellaneous/index
    miscellaneous/changelog
+   miscellaneous/migrating_to_v3
    miscellaneous/migrating_to_v2
    miscellaneous/migrating_to_v1
    miscellaneous/acknowledgements

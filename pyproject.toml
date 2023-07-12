@@ -5,8 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "coc.py"
 authors = [{ name = "mathsman5133" }]
-maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuchenmampfer" }, { name = "lukasthaler" }, { name = "doluk" }]
-version = "2.4.2"
+maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuchenmampfer" },
+    { name = "lukasthaler"}, { name = "doluk"}]
+version = "3.0.0"
 description = "A python wrapper for the Clash of Clans API"
 requires-python = ">=3.7.3"
 readme = "README.rst"

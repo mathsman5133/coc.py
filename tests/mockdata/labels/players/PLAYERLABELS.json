@@ -1,0 +1,166 @@
+{
+  "body": {
+    "items": [
+      {
+        "id": 57000000,
+        "name": "Clan Wars",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/ZxJp9606Vl1sa0GHg5JmGp8TdHS4l0jE4WFuil1ENvA.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/ZxJp9606Vl1sa0GHg5JmGp8TdHS4l0jE4WFuil1ENvA.png"
+        }
+      },
+      {
+        "id": 57000001,
+        "name": "Clan War League",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/JOzAO4r91eVaJELAPB-iuAx6f_zBbRPCLM_ag5mpK4s.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/JOzAO4r91eVaJELAPB-iuAx6f_zBbRPCLM_ag5mpK4s.png"
+        }
+      },
+      {
+        "id": 57000002,
+        "name": "Trophy Pushing",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/tINt65InVEc35rFYkxqFQqGDTsBpVRqY9K7BJf5kr4A.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/tINt65InVEc35rFYkxqFQqGDTsBpVRqY9K7BJf5kr4A.png"
+        }
+      },
+      {
+        "id": 57000003,
+        "name": "Friendly Wars",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/L1JDFhgOJyt1jcNnb6-IkBddd9vQSn2UeoQQGjVLEYI.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/L1JDFhgOJyt1jcNnb6-IkBddd9vQSn2UeoQQGjVLEYI.png"
+        }
+      },
+      {
+        "id": 57000004,
+        "name": "Clan Games",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/LIXkluJJeg4ATNVQgO6scLheXxmNpyBLRYGldtv-Miw.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/LIXkluJJeg4ATNVQgO6scLheXxmNpyBLRYGldtv-Miw.png"
+        }
+      },
+      {
+        "id": 57000005,
+        "name": "Builder Base",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/UEjY-kAdKcE6bPfI_X1L4s-ADYI_IJLuxx5cmClykdU.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/UEjY-kAdKcE6bPfI_X1L4s-ADYI_IJLuxx5cmClykdU.png"
+        }
+      },
+      {
+        "id": 57000006,
+        "name": "Base Designing",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/gwTgG4oOwkse3eCpFL05AFArJMmMULIlecXNrl1Mv2g.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/gwTgG4oOwkse3eCpFL05AFArJMmMULIlecXNrl1Mv2g.png"
+        }
+      },
+      {
+        "id": 57000007,
+        "name": "Farming",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/aKHRoHhkn6n3wj09tWxAA3DfKL6s45dHe3_VtKgkkhQ.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/aKHRoHhkn6n3wj09tWxAA3DfKL6s45dHe3_VtKgkkhQ.png"
+        }
+      },
+      {
+        "id": 57000008,
+        "name": "Active Donator",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/MvL0LDt0yv9AI-Vevpu8yE5NAJUIV05Ofpsr4IfGRxQ.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/MvL0LDt0yv9AI-Vevpu8yE5NAJUIV05Ofpsr4IfGRxQ.png"
+        }
+      },
+      {
+        "id": 57000009,
+        "name": "Active Daily",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/mcWhk0ii7CyjiiHOidhRofrSulpVrxjDu24cQtGCQbE.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/mcWhk0ii7CyjiiHOidhRofrSulpVrxjDu24cQtGCQbE.png"
+        }
+      },
+      {
+        "id": 57000010,
+        "name": "Hungry Learner",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/jEvZf9PnfPaqYh2PMLBoJfB1BoBpomerqmsYWDYisKY.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/jEvZf9PnfPaqYh2PMLBoJfB1BoBpomerqmsYWDYisKY.png"
+        }
+      },
+      {
+        "id": 57000011,
+        "name": "Friendly",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/t0KZ4173i9vJFrD5F06-2TFNFk9UwJXxPjfutcG-dig.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/t0KZ4173i9vJFrD5F06-2TFNFk9UwJXxPjfutcG-dig.png"
+        }
+      },
+      {
+        "id": 57000012,
+        "name": "Talkative",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/H75LWbZqe5Lm2rXYUrEDgQNa3kpZdtFCjiyvnNSvh00.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/H75LWbZqe5Lm2rXYUrEDgQNa3kpZdtFCjiyvnNSvh00.png"
+        }
+      },
+      {
+        "id": 57000013,
+        "name": "Teacher",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/sy5nJmT4BFjS4iT4_iILE02rfrO8VjgpGKFE0rLmot4.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/sy5nJmT4BFjS4iT4_iILE02rfrO8VjgpGKFE0rLmot4.png"
+        }
+      },
+      {
+        "id": 57000014,
+        "name": "Competitive",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/DfTPKAsvjdsD-CFfbpmfIJiT2uF3FQLfftRdJgBA37Y.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/DfTPKAsvjdsD-CFfbpmfIJiT2uF3FQLfftRdJgBA37Y.png"
+        }
+      },
+      {
+        "id": 57000015,
+        "name": "Veteran",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/u-VKK5y0hj0U8B1xdawjxNcXciv-fwMK3VqEBWCn1oM.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/u-VKK5y0hj0U8B1xdawjxNcXciv-fwMK3VqEBWCn1oM.png"
+        }
+      },
+      {
+        "id": 57000016,
+        "name": "Newbie",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/PcgplBTQo2W_PXYqMi0i6g6nrNMjzCM8Ipd_umSnuHw.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/PcgplBTQo2W_PXYqMi0i6g6nrNMjzCM8Ipd_umSnuHw.png"
+        }
+      },
+      {
+        "id": 57000017,
+        "name": "Amateur Attacker",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/8Q08M2dj1xz1Zx-sAre6QO14hOX2aiEvg-FaGGSX-7M.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/8Q08M2dj1xz1Zx-sAre6QO14hOX2aiEvg-FaGGSX-7M.png"
+        }
+      },
+      {
+        "id": 57000018,
+        "name": "Clan Capital",
+        "iconUrls": {
+          "small": "https://api-assets.clashofclans.com/labels/64/S3DAe4JuqZQXxwqRTXgh76LC7OT51vF9H7CFa1bK23k.png",
+          "medium": "https://api-assets.clashofclans.com/labels/128/S3DAe4JuqZQXxwqRTXgh76LC7OT51vF9H7CFa1bK23k.png"
+        }
+      }
+    ],
+    "paging": {
+      "cursors": {}
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=36",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

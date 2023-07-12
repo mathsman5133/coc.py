@@ -208,6 +208,7 @@ class RaidDistrict:
     __slots__ = ("id",
                  "name",
                  "hall_level",
+                 "stars",
                  "destruction",
                  "attack_count",
                  "looted",
@@ -225,6 +226,7 @@ class RaidDistrict:
                  ("raid_log_entry", repr(self.raid_log_entry)),
                  ("raid_clan", repr(self.raid_clan)),
                  ("hall_level", self.hall_level),
+                 ("stars", self.stars),
                  ("destruction", self.destruction)]
         return "<%s %s>" % (self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
@@ -232,6 +234,7 @@ class RaidDistrict:
         self.id: int = data.get("id")
         self.name: str = data.get("name")
         self.hall_level: int = data.get("districtHallLevel")
+        self.stars: int = data.get("stars")
         self.destruction: float = data.get("destructionPercent")
         self.attack_count: int = data.get("attackCount")
         self.looted: int = data.get("totalLooted")
@@ -246,6 +249,8 @@ class RaidDistrict:
                                               for adata in data.get("attacks")]
         else:
             self.attacks = []
+        if self.destruction != 0 and self.stars == 0:  # attempt to fix an api bug responding with the wrong star count
+            self.stars = max(*[a.stars for a in self.attacks if a], self.stars)
 
 
 class RaidClan:

@@ -1,0 +1,567 @@
+{
+  "body": {
+    "items": [
+      {
+        "tag": "#2UUQCV8JG",
+        "name": "Alone Boy",
+        "expLevel": 247,
+        "trophies": 5683,
+        "attackWins": 69,
+        "defenseWins": 1,
+        "rank": 1,
+        "previousRank": 1,
+        "clan": {
+          "tag": "#2U2PYLQJ",
+          "name": "A.F.G کبیر",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/9paIAWRoEmVUH0-D5KWhutJkPdWjVcU8f2ki9InSlMI.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/9paIAWRoEmVUH0-D5KWhutJkPdWjVcU8f2ki9InSlMI.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/9paIAWRoEmVUH0-D5KWhutJkPdWjVcU8f2ki9InSlMI.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#2G08GY98Q",
+        "name": "NEMATTULLAH✨AFG",
+        "expLevel": 257,
+        "trophies": 5592,
+        "attackWins": 69,
+        "defenseWins": 2,
+        "rank": 2,
+        "previousRank": 31,
+        "clan": {
+          "tag": "#PQU9YQCQ",
+          "name": "Arrow",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/KQenaW3qXR_ZdaOJUNAg-Ylhllyoe1aWF1YiE2fCOwA.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/KQenaW3qXR_ZdaOJUNAg-Ylhllyoe1aWF1YiE2fCOwA.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/KQenaW3qXR_ZdaOJUNAg-Ylhllyoe1aWF1YiE2fCOwA.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#8J2LQ8L9U",
+        "name": "saeed khan",
+        "expLevel": 227,
+        "trophies": 5570,
+        "attackWins": 65,
+        "defenseWins": 0,
+        "rank": 3,
+        "previousRank": 3,
+        "clan": {
+          "tag": "#22C2V2VY",
+          "name": "Nepal",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/sCj8-4vKRxeff7hskIDBfuUFTSGnOlbAT51omTadcZY.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/sCj8-4vKRxeff7hskIDBfuUFTSGnOlbAT51omTadcZY.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/sCj8-4vKRxeff7hskIDBfuUFTSGnOlbAT51omTadcZY.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#9GGUJ2G99",
+        "name": "GeNRal Mahdi",
+        "expLevel": 266,
+        "trophies": 5564,
+        "attackWins": 66,
+        "defenseWins": 1,
+        "rank": 4,
+        "previousRank": 8,
+        "clan": {
+          "tag": "#2YRJQRPRJ",
+          "name": "TWB CWL",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/MIw7OsZ9rVdSllLwSokVrVxNz7lyNxzquQdNEYgWrBU.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/MIw7OsZ9rVdSllLwSokVrVxNz7lyNxzquQdNEYgWrBU.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/MIw7OsZ9rVdSllLwSokVrVxNz7lyNxzquQdNEYgWrBU.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#8RPYRPRC",
+        "name": "BAHRAM BINYAMIN",
+        "expLevel": 277,
+        "trophies": 5535,
+        "attackWins": 65,
+        "defenseWins": 1,
+        "rank": 5,
+        "previousRank": 7,
+        "clan": {
+          "tag": "#8G9RY99U",
+          "name": "Atron",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/-4-R6mwFfyV2s_upx6x8BORcMUTnD5i26f6E2EG0YD4.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/-4-R6mwFfyV2s_upx6x8BORcMUTnD5i26f6E2EG0YD4.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/-4-R6mwFfyV2s_upx6x8BORcMUTnD5i26f6E2EG0YD4.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#28JJ2RC2U",
+        "name": "Matador",
+        "expLevel": 256,
+        "trophies": 5510,
+        "attackWins": 63,
+        "defenseWins": 0,
+        "rank": 6,
+        "previousRank": 4,
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#809YVJJR9",
+        "name": "Rino Cadaz",
+        "expLevel": 305,
+        "trophies": 5507,
+        "attackWins": 63,
+        "defenseWins": 0,
+        "rank": 7,
+        "previousRank": 2,
+        "clan": {
+          "tag": "#9Y2LQ2G9",
+          "name": "GO GREEN (PAK)",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/Fax26DAXRVYfRa5ftZU8_7Y5ZcmS94k7XYCN05D1wHc.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/Fax26DAXRVYfRa5ftZU8_7Y5ZcmS94k7XYCN05D1wHc.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/Fax26DAXRVYfRa5ftZU8_7Y5ZcmS94k7XYCN05D1wHc.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#80PPYJRL2",
+        "name": "Amir hamza",
+        "expLevel": 239,
+        "trophies": 5503,
+        "attackWins": 66,
+        "defenseWins": 0,
+        "rank": 8,
+        "previousRank": 14,
+        "clan": {
+          "tag": "#2Q02RPLCY",
+          "name": "the best afghan",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/1Cgd3Zm-x3ZFpkEQk-F0GEgiie5ZDw_8QdC5MFsOYc4.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/1Cgd3Zm-x3ZFpkEQk-F0GEgiie5ZDw_8QdC5MFsOYc4.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/1Cgd3Zm-x3ZFpkEQk-F0GEgiie5ZDw_8QdC5MFsOYc4.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#YP2RV8GR",
+        "name": "MAHMOUD 1997",
+        "expLevel": 243,
+        "trophies": 5493,
+        "attackWins": 66,
+        "defenseWins": 3,
+        "rank": 9,
+        "previousRank": 32,
+        "clan": {
+          "tag": "#PCPRUPJJ",
+          "name": "SWEET KANDAHAR",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#20Y8VP9LQ",
+        "name": "♥️RAIS♥️JAWID♥️",
+        "expLevel": 271,
+        "trophies": 5490,
+        "attackWins": 66,
+        "defenseWins": 0,
+        "rank": 10,
+        "previousRank": 11,
+        "clan": {
+          "tag": "#98YC0JRU",
+          "name": "persian race",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/CA5Wbb0u_guAvM00fbdx8qUclAK9Z-Wq09UZu6VEaIU.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/CA5Wbb0u_guAvM00fbdx8qUclAK9Z-Wq09UZu6VEaIU.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/CA5Wbb0u_guAvM00fbdx8qUclAK9Z-Wq09UZu6VEaIU.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#2VC9U02Y",
+        "name": "ASH",
+        "expLevel": 242,
+        "trophies": 5488,
+        "attackWins": 63,
+        "defenseWins": 0,
+        "rank": 11,
+        "previousRank": 6,
+        "clan": {
+          "tag": "#2G0PQ2PL2",
+          "name": "ما همه دو نفریم",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/7CJlJdkEKkw-clZxK0f_vrXP481M5LH8peegDnvc0-g.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/7CJlJdkEKkw-clZxK0f_vrXP481M5LH8peegDnvc0-g.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/7CJlJdkEKkw-clZxK0f_vrXP481M5LH8peegDnvc0-g.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#8PLV8VUJC",
+        "name": "❣️ꪖ❣️ꪀ",
+        "expLevel": 245,
+        "trophies": 5483,
+        "attackWins": 65,
+        "defenseWins": 0,
+        "rank": 12,
+        "previousRank": 23,
+        "clan": {
+          "tag": "#RV2UCJ2L",
+          "name": "شایسته فراه",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/e1VRvDtsd-fA2Stvc4VsJWYAvld9mYGTSkff_260Av4.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/e1VRvDtsd-fA2Stvc4VsJWYAvld9mYGTSkff_260Av4.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/e1VRvDtsd-fA2Stvc4VsJWYAvld9mYGTSkff_260Av4.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#L2GPYR0J2",
+        "name": "kamalafghan",
+        "expLevel": 222,
+        "trophies": 5480,
+        "attackWins": 64,
+        "defenseWins": 0,
+        "rank": 13,
+        "previousRank": 21,
+        "clan": {
+          "tag": "#2PUVQ9GPQ",
+          "name": "کندهار سټار",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/RTKDxAfXDLjsJuE49KX52Ok8V0QPYStenikhb8_5EP0.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/RTKDxAfXDLjsJuE49KX52Ok8V0QPYStenikhb8_5EP0.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/RTKDxAfXDLjsJuE49KX52Ok8V0QPYStenikhb8_5EP0.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#8RCJVPVR8",
+        "name": "Death Dealer",
+        "expLevel": 234,
+        "trophies": 5479,
+        "attackWins": 65,
+        "defenseWins": 3,
+        "rank": 14,
+        "previousRank": 25,
+        "clan": {
+          "tag": "#8VY0QQ8J",
+          "name": "Kunduz AFG",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/ITMHqKCB5FrsQsChyzeA3ZQyUUht4mYShfeIPIiiiug.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/ITMHqKCB5FrsQsChyzeA3ZQyUUht4mYShfeIPIiiiug.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/ITMHqKCB5FrsQsChyzeA3ZQyUUht4mYShfeIPIiiiug.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#2U8V2YPGQ",
+        "name": "DR.KADIR❤️ZOYA",
+        "expLevel": 223,
+        "trophies": 5477,
+        "attackWins": 68,
+        "defenseWins": 0,
+        "rank": 15,
+        "previousRank": 120,
+        "clan": {
+          "tag": "#809LG80V",
+          "name": "Shadow Lords",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/knYuxu4pCc0CogrP0c_9pmDJubm_ELKNIg43BcGYbS8.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#JG2PCPPY",
+        "name": "ROMAN",
+        "expLevel": 234,
+        "trophies": 5475,
+        "attackWins": 63,
+        "defenseWins": 7,
+        "rank": 16,
+        "previousRank": 22,
+        "clan": {
+          "tag": "#2L9YCLUVJ",
+          "name": "MT Himmat",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/SWcSuBwZEA2kBlCyGaOkWwoPJrLxl8usYPDDPSH2NWU.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/SWcSuBwZEA2kBlCyGaOkWwoPJrLxl8usYPDDPSH2NWU.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/SWcSuBwZEA2kBlCyGaOkWwoPJrLxl8usYPDDPSH2NWU.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#Y0YJ8U98R",
+        "name": "『мR』ᴊᴀᴡɪᴅ",
+        "expLevel": 248,
+        "trophies": 5474,
+        "attackWins": 64,
+        "defenseWins": 4,
+        "rank": 17,
+        "previousRank": 9,
+        "clan": {
+          "tag": "#V2C9YGV",
+          "name": "امپراطوری ماد",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/0i4CtFrArfa4odstjP3yf64Q1c1dReDEBY5-wnrs54s.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/0i4CtFrArfa4odstjP3yf64Q1c1dReDEBY5-wnrs54s.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/0i4CtFrArfa4odstjP3yf64Q1c1dReDEBY5-wnrs54s.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#90U08V9GG",
+        "name": "عشقم❤فقط☝الله",
+        "expLevel": 245,
+        "trophies": 5472,
+        "attackWins": 57,
+        "defenseWins": 1,
+        "rank": 18,
+        "previousRank": 65,
+        "clan": {
+          "tag": "#20G82LVY9",
+          "name": "جنگجویان",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/xxgxQ7psaG0LhvfyfX4hH59EAcXx2tlxOAGkWV33WOs.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/xxgxQ7psaG0LhvfyfX4hH59EAcXx2tlxOAGkWV33WOs.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/xxgxQ7psaG0LhvfyfX4hH59EAcXx2tlxOAGkWV33WOs.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#8L0P99G",
+        "name": "Sam",
+        "expLevel": 258,
+        "trophies": 5472,
+        "attackWins": 63,
+        "defenseWins": 3,
+        "rank": 19,
+        "previousRank": 54,
+        "clan": {
+          "tag": "#PRP2YUG0",
+          "name": "✨AFG Warriors✨",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/53TDLwig12tm27xXKIsbrTbiFkyLe9a-jwGzVsFN8wQ.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/53TDLwig12tm27xXKIsbrTbiFkyLe9a-jwGzVsFN8wQ.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/53TDLwig12tm27xXKIsbrTbiFkyLe9a-jwGzVsFN8wQ.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      },
+      {
+        "tag": "#YUC9LPGQ",
+        "name": "Tactical Afghan",
+        "expLevel": 250,
+        "trophies": 5464,
+        "attackWins": 65,
+        "defenseWins": 1,
+        "rank": 20,
+        "previousRank": 35,
+        "clan": {
+          "tag": "#C9RR89UU",
+          "name": "King of war",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/80Z8kgpKFcpmTpUeFppKiYl9bqDQAJse2ebXkePTKOs.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/80Z8kgpKFcpmTpUeFppKiYl9bqDQAJse2ebXkePTKOs.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/80Z8kgpKFcpmTpUeFppKiYl9bqDQAJse2ebXkePTKOs.png"
+          }
+        },
+        "league": {
+          "id": 29000022,
+          "name": "Legend League",
+          "iconUrls": {
+            "small": "https://api-assets.clashofclans.com/leagues/72/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "tiny": "https://api-assets.clashofclans.com/leagues/36/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png",
+            "medium": "https://api-assets.clashofclans.com/leagues/288/R2zmhyqQ0_lKcDR5EyghXCxgyC9mm_mVMIjAbmGoZtw.png"
+          }
+        }
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "after": "eyJwb3MiOjIwfQ"
+      }
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=60",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}
