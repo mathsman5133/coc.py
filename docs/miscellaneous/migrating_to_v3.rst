@@ -17,7 +17,7 @@ Builder Base v2
 ---------------
 
 The builder base revamp has caused a bunch of breaking changes.
-The most significant change is renaming all the `versus` things to `builder_base` things,
+The most significant change is renaming all the :attr:`versus` things to :attr:`builder_base` things,
 but there were some additions and a removal as well:
 
 - :func:`coc.Client.get_location_clans_versus` -> :func:`coc.Client.get_location_clans_builder_base`
@@ -50,6 +50,16 @@ This is also reflected in the following enumerations:
 - :class:`coc.BUILDER_TROOPS_ORDER` now knows the "Electrofire Wizard"
 - :class:`coc.HERO_ORDER` now knows the "Battle Copter"
 
+Leagues
+-------
+
+Previously the structure of Leagues was a bit messy and not well aligned with what the API provides.
+Therefore they got a small rework:
+
+- :class:`WarLeague` was replaced with :class:`BaseLeague` which has the same attributes, but is also used for the builder base league and the clan capital league
+- :class:`League` inherits from :class:`BaseLeague` now and adds the :attr:`icon` attribute which is present for home village leagues
+- :class:`League` lost its :attr:`localized_name` and :attr:`localized_short_name` attributes as they are not present in the API
+
 Furthermore
 -----------
 
@@ -60,4 +70,4 @@ In order to get more in line with our coding style, the following methods were r
 
 :class:`coc.ClanMember` has a new cached property: :func:`player_house_elements`
 
-:class:`coc.RaidDistrict` has a new `stars` attribute
+:class:`coc.RaidDistrict` has a new :attr:`stars` attribute

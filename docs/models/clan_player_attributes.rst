@@ -21,6 +21,12 @@ Label
     :members:
     :private-members:
 
+Base League
+~~~~~~~~~~~
+.. autoclass:: BaseLeague()
+    :members:
+    :private-members:
+
 League
 ~~~~~~
 .. autoclass:: League()
@@ -69,9 +75,3 @@ Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` 
 .. class:: Role
 
     .. py:attribute:: in_game_name
-
-War League
-~~~~~~~~~~
-.. autoclass:: WarLeague()
-    :members:
-    :private-members:
