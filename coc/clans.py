@@ -25,7 +25,7 @@ import typing
 
 
 from .players import ClanMember
-from .miscmodels import try_enum, ChatLanguage, Location, Label, WarLeague, CapitalDistrict
+from .miscmodels import try_enum, ChatLanguage, Location, Label, BaseLeague, CapitalDistrict
 from .utils import get, cached_property, correct_tag
 from .abc import BaseClan
 
@@ -149,9 +149,9 @@ class Clan(BaseClan):
         The type which the clan capital districts found in
         :attr:`Clan.capital_districts` will be of. Ensure any overriding of
         this inherits from :class:`coc.CapitalDistrict`.
-    war_league: :class:`coc.WarLeague`
+    war_league: :class:`coc.BaseLeague`
         The clan's CWL league.
-    capital_league: :class:`coc.WarLeague`
+    capital_league: :class:`coc.BaseLeague`
         The clan's Clan Capital league.
     """
 
@@ -222,8 +222,8 @@ class Clan(BaseClan):
         self.war_losses: int = data_get("warLosses", -1)
         self.public_war_log: bool = data_get("isWarLogPublic")
         self.description: str = data_get("description")
-        self.war_league = try_enum(WarLeague, data=data_get("warLeague"))
-        self.capital_league = try_enum(WarLeague, data=data_get("capitalLeague"))
+        self.war_league = try_enum(BaseLeague, data=data_get("warLeague"))
+        self.capital_league = try_enum(BaseLeague, data=data_get("capitalLeague"))
         self.chat_language = try_enum(ChatLanguage, data=data_get("chatLanguage"))
         self.required_townhall = data_get("requiredTownhallLevel")
 

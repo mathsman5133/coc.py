@@ -4,7 +4,7 @@ from pathlib import Path
 import ujson
 
 from coc.clans import Clan
-from coc.miscmodels import Location, Label, WarLeague, ChatLanguage, CapitalDistrict
+from coc.miscmodels import Location, Label, BaseLeague, ChatLanguage, CapitalDistrict
 from coc.players import ClanMember
 
 import tracemalloc
@@ -98,9 +98,9 @@ class TestClans(unittest.TestCase):
 
 	def test_war_league(self):
 		clan = Clan(data=MOCK_CLAN["body"], client=None)
-		war_league = WarLeague(data=MOCK_CLAN["body"]["warLeague"])
+		war_league = BaseLeague(data=MOCK_CLAN["body"]["warLeague"])
 		self.assertEqual(clan.war_league, war_league)
-		self.assertIsInstance(clan.war_league, WarLeague)
+		self.assertIsInstance(clan.war_league, BaseLeague)
 		self.assertIsInstance(clan.war_league.id, int)
 		self.assertIsInstance(clan.war_league.name, str)
 
@@ -182,16 +182,16 @@ class TestClans(unittest.TestCase):
 		self.assertEqual(clan.badge.large, data.get("badgeUrls", {}).get("large"))
 
 		# test capital league
-		c_league = WarLeague(data=data["capitalLeague"])
+		c_league = BaseLeague(data=data["capitalLeague"])
 		self.assertEqual(clan.capital_league, c_league)
-		self.assertIsInstance(clan.capital_league, WarLeague)
+		self.assertIsInstance(clan.capital_league, BaseLeague)
 		self.assertIsInstance(clan.capital_league.id, int)
 		self.assertIsInstance(clan.capital_league.name, str)
 
 		# test war league
-		war_league = WarLeague(data=data["warLeague"])
+		war_league = BaseLeague(data=data["warLeague"])
 		self.assertEqual(clan.war_league, war_league)
-		self.assertIsInstance(clan.war_league, WarLeague)
+		self.assertIsInstance(clan.war_league, BaseLeague)
 		self.assertIsInstance(clan.war_league.id, int)
 		self.assertIsInstance(clan.war_league.name, str)
 
@@ -262,16 +262,16 @@ class TestClans(unittest.TestCase):
 			self.assertEqual(clan.badge.large, data.get("badgeUrls", {}).get("large"))
 
 			# test capital league
-			c_league = WarLeague(data=data["capitalLeague"])
+			c_league = BaseLeague(data=data["capitalLeague"])
 			self.assertEqual(clan.capital_league, c_league)
-			self.assertIsInstance(clan.capital_league, WarLeague)
+			self.assertIsInstance(clan.capital_league, BaseLeague)
 			self.assertIsInstance(clan.capital_league.id, int)
 			self.assertIsInstance(clan.capital_league.name, str)
 
 			# test war league
-			war_league = WarLeague(data=data["warLeague"])
+			war_league = BaseLeague(data=data["warLeague"])
 			self.assertEqual(clan.war_league, war_league)
-			self.assertIsInstance(clan.war_league, WarLeague)
+			self.assertIsInstance(clan.war_league, BaseLeague)
 			self.assertIsInstance(clan.war_league.id, int)
 			self.assertIsInstance(clan.war_league.name, str)
 

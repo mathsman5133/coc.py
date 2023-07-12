@@ -34,7 +34,7 @@ import ujson
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
+from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
 from .hero import HeroHolder, PetHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -1614,7 +1614,8 @@ class Client:
         """
         return get(await self.search_leagues(), name=league_name)
 
-    async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None)-> List[
+        BaseLeague]:
         """Get list of builder base leagues.
 
         Parameters
@@ -1638,13 +1639,13 @@ class Client:
 
         Returns
         --------
-        List[:class:`League`]
+        List[:class:`BaseLeague`]
             The requested leagues.
         """
         data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
 
-    async def get_builder_base_league(self, league_id: int) -> League:
+    async def get_builder_base_league(self, league_id: int) -> BaseLeague:
         """
         Get builder base league information
 
@@ -1667,13 +1668,13 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The league with the requested ID
         """
         data = await self.http.get_builder_base_league(league_id)
-        return League(data=data, client=self)
+        return BaseLeague(data=data, client=self)
 
-    async def get_builder_base_league_named(self, league_name: str) -> Optional[League]:
+    async def get_builder_base_league_named(self, league_name: str) -> Optional[BaseLeague]:
         """Get a builder base league by name.
 
         This is somewhat equivalent to
@@ -1699,12 +1700,12 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_builder_base_leagues(), name=league_name)
 
-    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[BaseLeague]:
         """Get list of war leagues.
 
         Parameters
@@ -1728,13 +1729,13 @@ class Client:
 
         Returns
         --------
-        List[:class:`League`]
+        List[:class:`BaseLeague`]
             The requested leagues.
         """
         data = await self.http.search_war_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
 
-    async def get_war_league(self, league_id: int) -> League:
+    async def get_war_league(self, league_id: int) -> BaseLeague:
         """
         Get war league information
 
@@ -1757,13 +1758,13 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The league with the requested ID
         """
         data = await self.http.get_war_league(league_id)
-        return League(data=data, client=self)
+        return BaseLeague(data=data, client=self)
 
-    async def get_war_league_named(self, league_name: str) -> Optional[League]:
+    async def get_war_league_named(self, league_name: str) -> Optional[BaseLeague]:
         """Get a war league by name.
 
         This is somewhat equivalent to
@@ -1789,12 +1790,12 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_war_leagues(), name=league_name)
 
-    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[BaseLeague]:
         """Get list of capital leagues.
 
         Parameters
@@ -1818,13 +1819,13 @@ class Client:
 
         Returns
         --------
-        List[:class:`League`]
+        List[:class:`BaseLeague`]
             The requested leagues.
         """
         data = await self.http.search_capital_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        return [BaseLeague(data=n, client=self) for n in data["items"]]
 
-    async def get_capital_league(self, league_id: int) -> League:
+    async def get_capital_league(self, league_id: int) -> BaseLeague:
         """
         Get capital league information
 
@@ -1847,13 +1848,13 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The league with the requested ID
         """
         data = await self.http.get_capital_league(league_id)
-        return League(data=data, client=self)
+        return BaseLeague(data=data, client=self)
 
-    async def get_capital_league_named(self, league_name: str) -> Optional[League]:
+    async def get_capital_league_named(self, league_name: str) -> Optional[BaseLeague]:
         """Get a capital league by name.
 
         This is somewhat equivalent to
@@ -1879,7 +1880,7 @@ class Client:
 
         Returns
         --------
-        :class:`League`
+        :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
         return get(await self.search_capital_leagues(), name=league_name)

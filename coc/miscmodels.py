@@ -242,7 +242,37 @@ class Location:
         self.localised_name: str = data_get("localizedName")
 
 
-class League:
+class BaseLeague:
+    """Represents a basic league.
+
+    Attributes
+    -----------
+    id: :class:`int`: The league's unique ID
+    name: :class:`str`: The league's name, as it appears in-game."""
+
+    __slots__ = (
+        "id",
+        "name",
+        "_client"
+    )
+
+    def __init__(self, *, data, client=None):
+        # pylint: disable=invalid-name
+        self.id: int = data["id"]
+        self.name: str = data["name"]
+        self._client = client
+
+    def __repr__(self):
+        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
+
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and other.id == self.id
+
+
+class League(BaseLeague):
     """Represents a Clash of Clans League
 
     Attributes
@@ -251,21 +281,12 @@ class League:
         :class:`int`: The league ID.
     name:
         :class:`str`: The league name.
-    localised_name:
-        :class:`str`: A localised name of the location. The extent of the use of this is unknown at present.
-    localised_short_name:
-        :class:`str`: A localised short name of the location. The extent of the use of this is unknown at present.
     icon:
         :class:`Icon`: The league's icon.
     """
 
     __slots__ = (
-        "id",
-        "name",
-        "localised_short_name",
-        "localised_name",
         "icon",
-        "_client",
     )
 
     def __str__(self):
@@ -279,17 +300,12 @@ class League:
         return isinstance(other, self.__class__) and self.id == other.id
 
     def __init__(self, *, data, client):
-        self._client = client
+        super().__init__(data=data, client=client)
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
         # pylint: disable=invalid-name
         data_get = data.get
-
-        self.id: int = data_get("id")
-        self.name: str = data_get("name")
-        self.localised_name: str = data_get("localizedName")
-        self.localised_short_name: str = data_get("localizedShortName")
         self.icon = try_enum(Icon, data=data_get("iconUrls"), client=self._client)
 
 
@@ -612,63 +628,6 @@ class CapitalDistrict:
         self.name: str = data.get("name")
         self.hall_level: int = data.get("districtHallLevel")
 
-
-class WarLeague:
-    """Represents a clan's CWL league.
-
-    Attributes
-    -----------
-    id: :class:`int`: The league's unique ID
-    name: :class:`str`: The league's name, as it appears in-game."""
-
-    __slots__ = (
-        "id",
-        "name",
-    )
-
-    def __init__(self, *, data):
-        # pylint: disable=invalid-name
-        self.id: int = data["id"]
-        self.name: str = data["name"]
-
-    def __repr__(self):
-        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
-
-    def __str__(self):
-        return self.name
-
-    def __eq__(self, other):
-        return isinstance(self, other.__class__) and other.id == self.id
-
-
-class BuilderBaseLeague:
-    """Represents a player's Builder Base league.
-
-    Attributes
-    -----------
-    id: :class:`int`: The league's unique ID
-    name: :class:`str`: The league's name, as it appears in-game."""
-
-    __slots__ = (
-        "id",
-        "name",
-        "_client"
-    )
-
-    def __init__(self, *, data, client=None):
-        # pylint: disable=invalid-name
-        self.id: int = data["id"]
-        self.name: str = data["name"]
-        self._client = client
-
-    def __repr__(self):
-        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
-
-    def __str__(self):
-        return self.name
-
-    def __eq__(self, other):
-        return isinstance(self, other.__class__) and other.id == self.id
 
 
 class ChatLanguage:

@@ -24,7 +24,7 @@ SOFTWARE.
 from typing import Optional, List, TYPE_CHECKING
 
 
-from .miscmodels import BuilderBaseLeague, PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
+from .miscmodels import BaseLeague, PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
     HERO_ORDER,
@@ -67,7 +67,7 @@ class ClanMember(BasePlayer):
         The member's experience level.
     league: :class:`League`
         The member's current league.
-    builder_base_league: :class:`League`
+    builder_base_league: :class:`BaseLeague`
         The member's current builder base league.
     trophies: :class:`int`
         The member's trophy count.
@@ -89,8 +89,11 @@ class ClanMember(BasePlayer):
         The class to use to create the :attr:`ClanMember.clan` attribute.
         Ensure any overriding of this inherits from :class:`coc.Clan` or :class:`coc.PlayerClan`.
     league_cls: :class:`coc.League`
-        The class to use to create the :attr:`Clanmember.league` and :attr:`Clanmember.builder_base_league` attribute.
+        The class to use to create the :attr:`ClanMember.league` attribute.
         Ensure any overriding of this inherits from :class:`coc.League`.
+    builder_base_league_cls: :class:`coc.League`
+        The class to use to create the :attr:`ClanMember.builder_base_league` attribute.
+        Ensure any overriding of this inherits from :class:`coc.BaseLeague`.
     """
 
     __slots__ = (
@@ -121,7 +124,7 @@ class ClanMember(BasePlayer):
         self._client = client
         self.clan_cls = PlayerClan
         self.league_cls = League
-        self.builder_base_league_cls = BuilderBaseLeague
+        self.builder_base_league_cls = BaseLeague
         self.player_house_element_cls = PlayerHouseElement
 
         self._from_data(data)
@@ -142,7 +145,8 @@ class ClanMember(BasePlayer):
         player_house_element_cls = self.player_house_element_cls
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
-        self.builder_base_league = try_enum(self.builder_base_league_cls, data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
+        self.builder_base_league = try_enum(self.builder_base_league_cls,
+                                            data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
                                             client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
         self._iter_player_house_elements = (player_house_element_cls(data=adata)
@@ -205,7 +209,8 @@ class Player(ClanMember):
     Attributes
     ----------
     achievement_cls: :class:`Achievement`
-        The constructor used to create the :attr:`Player.achievements` list. This must inherit from :class:`Achievement`.
+        The constructor used to create the :attr:`Player.achievements` list.
+        This must inherit from :class:`Achievement`.
     hero_cls: :class:`Hero`
         The constructor used to create the :attr:`Player.heroes` list. This must inherit from :class:`Hero`.
     label_cls: :class:`Label`
@@ -573,7 +578,9 @@ class Player(ClanMember):
         - Hero pets only.
         """
         order = {k: v for v, k in enumerate(PETS_ORDER)}
-        return list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
+        pets = list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
+        self._pets = {p.name: p for p in pets}
+        return pets
 
     def get_pet(self, name: str, default_value=None) -> Optional[Pet]:
         """Gets the pet with the given name.
@@ -592,7 +599,7 @@ class Player(ClanMember):
 
         """
         if not self._pets:
-            _ = self._pets
+            _ = self.pets
 
         try:
             return self._pets[name]
