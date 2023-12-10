@@ -163,12 +163,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
     name: str
 
     def __init__(self, data, townhall):
-        self.name: str = data["name"]
-        self.level: int = data["level"]
+        self._name: str = data["name"]
+        self._level: int = data["level"]
         self.max_level: int = data["maxLevel"]
-        self.village: str = data["village"]
-        self.is_active: bool = data.get("superTroopIsActive")
-
+        self._village: str = data["village"]
+        self._is_active: bool = data.get("superTroopIsActive")
         self._townhall = townhall
 
     def __repr__(self):
@@ -293,6 +292,22 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         cls.is_loaded = True
         return cls
+
+    @property
+    def name(self) -> str:
+        return self._name
+
+    @property
+    def level(self) -> int:
+        return self._level
+
+    @property
+    def village(self) -> str:
+        return self._village
+
+    @property
+    def is_active(self) -> bool:
+        return self.is_active
 
     @property
     def is_max(self) -> bool:
