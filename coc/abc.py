@@ -180,6 +180,13 @@ class DataContainer(metaclass=DataContainerMetaClass):
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
+    def __eq__(self, other):
+        return self.name == other.name and self.level == other.level \
+            and self.village == other.village and self.is_active == other.is_active
+
+    def __hash__(self):
+        return hash((self.name, self.level, self.village, self.is_active))
+
     @classmethod
     def _load_json_meta(cls, troop_meta, id, name, lab_to_townhall):
         cls.id = int(id)
@@ -193,7 +200,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.hitpoints = try_enum(UnitStat, troop_meta.get("Hitpoints"))
 
         # get production building
-        production_building = troop_meta.get("ProductionBuilding", [None])[0] if troop_meta.get("ProductionBuilding") else None
+        production_building = troop_meta.get("ProductionBuilding", [None])[0] if troop_meta.get(
+            "ProductionBuilding") else None
         if production_building == "Barrack":
             cls.is_elixir_troop = True
         elif production_building == "Dark Elixir Barrack":
@@ -345,7 +353,7 @@ class DataContainerHolder:
             if True in meta.get("DisableProduction", [False]) and "pets" not in str(self.FILE_PATH):
                 continue
 
-            #hacky but the aliases convert so that isnt great
+            # hacky but the aliases convert so that isnt great
             IGNORED_PETS = ["Unused", "PhoenixEgg"]
             if "pets" in str(self.FILE_PATH) and supercell_name in IGNORED_PETS:
                 continue
