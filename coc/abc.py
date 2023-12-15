@@ -345,6 +345,10 @@ class DataContainerHolder:
             if True in meta.get("DisableProduction", [False]) and "pets" not in str(self.FILE_PATH):
                 continue
 
+            # ignore deprecated content
+            if True in meta.get("Deprecated", [False]):
+                continue
+
             #hacky but the aliases convert so that isnt great
             IGNORED_PETS = ["Unused", "PhoenixEgg"]
             if "pets" in str(self.FILE_PATH) and supercell_name in IGNORED_PETS:
