@@ -109,7 +109,8 @@ HOME_TROOP_ORDER = [
     "Bowler",
     "Ice Golem",
     "Headhunter",
-    "Apprentice Warden"
+    "Apprentice Warden",
+    "Root Rider",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -190,6 +191,7 @@ PETS_ORDER = [
     "Diggy",
     "Poison Lizard",
     "Phoenix",
+    "Spirit Fox"
 ]
 
 EQUIPMENT = [
