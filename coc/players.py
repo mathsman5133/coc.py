@@ -118,6 +118,7 @@ class ClanMember(BasePlayer):
         "player_house_element_cls",
         "_iter_player_house_elements",
         "_cs_player_house_elements",
+        "town_hall",
     )
 
     def __init__(self, *, data, client, clan=None, **_):
@@ -150,6 +151,7 @@ class ClanMember(BasePlayer):
                                             data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
                                             client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
+        self.town_hall: int = data_get("townHallLevel")
         self._iter_player_house_elements = (player_house_element_cls(data=adata)
                                             for adata in data_get("playerHouse", {}).get("elements", []))
 
