@@ -175,13 +175,13 @@
         "UpgradeTimeH": [
             72,
             96,
+            108,
             120,
             132,
             144,
             156,
             168,
             180,
-            192,
             192,
             192,
             192,
@@ -208,21 +208,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            115000,
-            130000,
-            145000,
+            100000,
+            110000,
+            125000,
+            135000,
+            150000,
             160000,
             175000,
-            190000,
-            205000,
-            220000,
-            235000,
-            250000,
+            185000,
+            200000,
+            215000,
+            230000,
+            245000,
             260000,
-            270000,
-            280000,
-            290000,
-            290000
+            275000,
+            275000
         ],
         "DonateCost": [
             20,
@@ -724,7 +724,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -813,6 +814,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             200,
             200,
@@ -854,6 +859,23 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1"
+        ],
         "Name": []
     },
     "Bulldozer": {
@@ -1032,13 +1054,13 @@
         "UpgradeTimeH": [
             72,
             96,
+            108,
             120,
             132,
             144,
             156,
             168,
             180,
-            192,
             192,
             192,
             192,
@@ -1065,21 +1087,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            165000,
-            185000,
-            205000,
+            140000,
+            155000,
+            175000,
+            190000,
+            210000,
+            215000,
             225000,
-            245000,
-            255000,
-            265000,
-            275000,
-            285000,
+            230000,
+            240000,
+            250000,
+            260000,
+            270000,
+            280000,
             290000,
-            295000,
-            300000,
-            305000,
-            310000,
-            310000
+            290000
         ],
         "DonateCost": [
             20,
@@ -1613,7 +1635,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -1734,6 +1757,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             581,
             581,
@@ -1823,6 +1850,23 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3",
+            "Pet3"
+        ],
         "Name": []
     },
     "Electrowl": {
@@ -1951,14 +1995,14 @@
         "UpgradeTimeH": [
             72,
             96,
+            108,
             120,
             132,
             144,
             156,
             168,
             180,
-            192,
-            192
+            180
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -1974,16 +2018,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            135000,
-            150000,
+            115000,
+            130000,
+            140000,
+            155000,
             165000,
             180000,
-            195000,
-            210000,
-            225000,
-            240000,
-            255000,
-            255000
+            190000,
+            205000,
+            215000,
+            215000
         ],
         "DonateCost": [
             20,
@@ -2415,7 +2459,8 @@
         ],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -2494,6 +2539,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0,
             0,
@@ -2525,6 +2574,18 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2"
+        ],
         "Name": []
     },
     "Unipony": {
@@ -2653,14 +2714,14 @@
         "UpgradeTimeH": [
             72,
             96,
+            108,
             120,
             132,
             144,
             156,
             168,
             180,
-            192,
-            192
+            180
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -2676,16 +2737,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            180000,
+            190000,
+            200000,
             210000,
             220000,
             230000,
             240000,
             250000,
             260000,
-            270000,
-            280000,
-            290000,
-            290000
+            260000
         ],
         "DonateCost": [
             20,
@@ -3084,7 +3145,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -3174,6 +3236,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0,
             0,
@@ -3205,6 +3271,18 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2"
+        ],
         "Name": []
     },
     "Phoenix": {
@@ -3356,16 +3434,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            230000,
+            195000,
+            205000,
+            210000,
+            220000,
+            225000,
+            235000,
             240000,
             250000,
-            260000,
-            270000,
-            280000,
-            290000,
-            300000,
-            310000,
-            310000
+            255000,
+            255000
         ],
         "DonateCost": [
             20,
@@ -3775,7 +3853,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -3898,6 +3977,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0,
             0,
@@ -3951,6 +4034,18 @@
             true
         ],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5",
+            "Pet5"
+        ],
         "Name": []
     },
     "PhoenixEgg": {
@@ -4521,7 +4616,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -4633,6 +4729,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0,
             0,
@@ -4708,9 +4808,10 @@
             true,
             true
         ],
+        "PreviewScenario": [],
         "Name": []
     },
-    "Unused": {
+    "Stork": {
         "TroopLevel": [
             1
         ],
@@ -4728,7 +4829,7 @@
         ],
         "BarrackLevel": [],
         "LaboratoryLevel": [
-            5
+            1
         ],
         "Speed": [
             250
@@ -4907,7 +5008,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -4970,6 +5072,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0
         ],
@@ -4982,7 +5088,8 @@
         ],
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
-        "RecallWithMaster": []
+        "RecallWithMaster": [],
+        "PreviewScenario": []
     },
     "Poison Lizard": {
         "TroopLevel": [
@@ -5133,16 +5240,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            190000,
+            195000,
+            200000,
+            210000,
+            215000,
             225000,
-            235000,
+            230000,
+            240000,
             245000,
-            255000,
-            265000,
-            275000,
-            285000,
-            295000,
-            305000,
-            305000
+            245000
         ],
         "DonateCost": [
             20,
@@ -5530,7 +5637,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -5675,6 +5783,10 @@
             true,
             true
         ],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             400,
             400,
@@ -5717,6 +5829,18 @@
         ],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4",
+            "Pet4"
+        ],
         "Name": []
     },
     "Diggy": {
@@ -5868,16 +5992,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            220000,
+            185000,
+            195000,
+            200000,
+            210000,
+            215000,
+            225000,
             230000,
             240000,
-            250000,
-            260000,
-            270000,
-            280000,
-            290000,
-            300000,
-            300000
+            245000,
+            245000
         ],
         "DonateCost": [
             20,
@@ -6265,7 +6389,7 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [
+        "UndergroundEffect": [
             "Diggy Move",
             "Diggy Move",
             "Diggy Move",
@@ -6277,6 +6401,7 @@
             "Diggy Move",
             "Diggy Move"
         ],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [
             "Diggy Appear",
             "Diggy Appear",
@@ -6410,6 +6535,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             0,
             0,
@@ -6474,6 +6603,18 @@
         ],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1"
+        ],
         "Name": []
     },
     "Frosty": {
@@ -6625,16 +6766,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            185000,
+            190000,
+            200000,
+            210000,
             215000,
             225000,
             235000,
-            245000,
-            255000,
-            265000,
-            275000,
-            285000,
-            295000,
-            295000
+            240000,
+            250000,
+            250000
         ],
         "DonateCost": [
             20,
@@ -7088,7 +7229,8 @@
         "ChainAttackEffect": [],
         "PreAttackEffect": [],
         "MoveStartsEffect": [],
-        "MoveTrailEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
         "BecomesTargetableEffect": [],
         "BoostedIfAlone": [],
         "BoostRadius": [],
@@ -7189,6 +7331,10 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
         "LeashLength": [
             100,
             100,
@@ -7220,6 +7366,2103 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1",
+            "Pet1"
+        ],
         "Name": []
+    },
+    "Phase Fennec": {
+        "TroopLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX",
+            "TID_PET_SPIRIT_FOX"
+        ],
+        "InfoTID": [
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO",
+            "TID_PET_SPIRIT_FOX_INFO"
+        ],
+        "HousingSpace": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9
+        ],
+        "Speed": [
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300
+        ],
+        "Hitpoints": [
+            1900,
+            2000,
+            2100,
+            2200,
+            2300,
+            2400,
+            2500,
+            2600,
+            2700,
+            2800
+        ],
+        "TrainingTime": [
+            999,
+            999,
+            999,
+            999,
+            999,
+            999,
+            999,
+            999,
+            999,
+            999
+        ],
+        "TrainingResource": [
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ],
+        "UpgradeTimeH": [
+            72,
+            96,
+            120,
+            132,
+            144,
+            156,
+            168,
+            180,
+            192,
+            192
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            225000,
+            235000,
+            245000,
+            255000,
+            265000,
+            275000,
+            285000,
+            295000,
+            315000,
+            315000
+        ],
+        "DonateCost": [
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250
+        ],
+        "AttackSpeed": [
+            1600,
+            1600,
+            1600,
+            1600,
+            1600,
+            1600,
+            1600,
+            1600,
+            1600,
+            1600
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            108,
+            116,
+            124,
+            132,
+            140,
+            148,
+            156,
+            164,
+            172,
+            180
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec",
+            "icon_unit_pet_phasefennec"
+        ],
+        "BigPicture": [
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big",
+            "unit_pet_phasefennec_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc",
+            "sc/info_pet_phasefennec.sc"
+        ],
+        "Projectile": [
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile",
+            "Fennec_projectile"
+        ],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy",
+            "Barky Fennec Deploy"
+        ],
+        "AttackEffect": [
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack",
+            "Barky Fennec Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit",
+            "Miner Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "AirTargets": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "GroundTargets": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die",
+            "Barky Fennec Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault",
+            "FennecDefault"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            3525,
+            3550,
+            3575,
+            3600,
+            3625,
+            3650,
+            3675,
+            3700,
+            3725,
+            3750
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300
+        ],
+        "EnemyGroupWeight": [
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX",
+            "TID_PET_ABILITY_SPIRIT_FOX"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
+            "TID_PET_ABILITY_INFO_SPIRIT_FOX"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis",
+            "PhaseFennecInvis"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3
+        ],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+        ],
+        "DefaultSkin": [
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault",
+            "PetFennecDefault"
+        ],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2",
+            "Pet2"
+        ],
+        "Name": []
+    },
+    "Angry Chihuahua": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_MELEEJUMPER"
+        ],
+        "InfoTID": [
+            "TID_PET_MELEEJUMPER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            10
+        ],
+        "Speed": [
+            300
+        ],
+        "Hitpoints": [
+            5200
+        ],
+        "TrainingTime": [
+            999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            115000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            600
+        ],
+        "AttackSpeed": [
+            900
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            260
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_demonpup"
+        ],
+        "BigPicture": [
+            "unit_pet_lassi_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_lassi.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [
+            "Defense"
+        ],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Laser Owl Deploy"
+        ],
+        "AttackEffect": [
+            "Laser Owl Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Mega Tesla Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barky Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "AngryChihuahuaTempAnim"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            true
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            1960
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_BARKY"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_BARKY"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [
+            "AngryChihuahuaAnger"
+        ],
+        "SpecialAbilitiesLevel": [
+            1
+        ],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            0
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [
+            true
+        ],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": []
+    },
+    "JumpAuraPet": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_MELEEJUMPER"
+        ],
+        "InfoTID": [
+            "TID_PET_MELEEJUMPER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            300
+        ],
+        "Hitpoints": [
+            6000
+        ],
+        "TrainingTime": [
+            999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            115000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            80
+        ],
+        "AttackSpeed": [
+            1600
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            180
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_slimesnail"
+        ],
+        "BigPicture": [
+            "unit_pet_lassi_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_lassi.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barky Deploy"
+        ],
+        "AttackEffect": [
+            "Barky Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Miner Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barky Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "JumpPetTempAnim"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            true
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            1960
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_BARKY"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_BARKY"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [
+            "JumpPetJumpAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1
+        ],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            200
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": []
+    },
+    "SpeedupPet": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_RANGEDATTACKER"
+        ],
+        "InfoTID": [
+            "TID_PET_RANGEDATTACKER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            250
+        ],
+        "Hitpoints": [
+            2500
+        ],
+        "TrainingTime": [
+            9999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            135000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            400
+        ],
+        "AttackSpeed": [
+            1400
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            180
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_hastespirit"
+        ],
+        "BigPicture": [
+            "unit_pet_electro_owl_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_electro_owl.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Laser Owl Deploy"
+        ],
+        "AttackEffect": [
+            "Laser Owl Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Mega Tesla Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            true
+        ],
+        "AirTargets": [
+            true
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Laser Owl Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "SpeedupPet"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            30
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            3550
+        ],
+        "AuraSpell": [
+            "PetSpeedUp"
+        ],
+        "AuraSpellLevel": [
+            0
+        ],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            60
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            false
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_ELECTROWL"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_ELECTROWL"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            0
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": []
+    },
+    "Turtle": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_MELEEJUMPER"
+        ],
+        "InfoTID": [
+            "TID_PET_MELEEJUMPER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            250
+        ],
+        "Hitpoints": [
+            20000
+        ],
+        "TrainingTime": [
+            9999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            135000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            50
+        ],
+        "AttackSpeed": [
+            1800
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            80
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_spiritjellyfish"
+        ],
+        "BigPicture": [
+            "unit_pet_lassi_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_lassi.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barky Deploy"
+        ],
+        "AttackEffect": [
+            "Barky Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Miner Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barky Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "TurtleTempAnim"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            3550
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_ELECTROWL"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_ELECTROWL"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            0
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": []
+    },
+    "AirSplitPetSpawnRemoved": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_RANGEDATTACKER"
+        ],
+        "InfoTID": [
+            "TID_PET_RANGEDATTACKER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            250
+        ],
+        "Hitpoints": [
+            1600
+        ],
+        "TrainingTime": [
+            9999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            135000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            80
+        ],
+        "AttackSpeed": [
+            1400
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            160
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_spiritjellyfish"
+        ],
+        "BigPicture": [
+            "unit_pet_electro_owl_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_electro_owl.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Laser Owl Deploy"
+        ],
+        "AttackEffect": [
+            "Laser Owl Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Mega Tesla Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            true
+        ],
+        "AirTargets": [
+            true
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Laser Owl Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "AirSplitPetSpawn"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            30
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [
+            true
+        ],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            3550
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            60
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_ELECTROWL"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_ELECTROWL"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            350
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": []
     }
 }

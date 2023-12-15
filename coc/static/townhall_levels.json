@@ -21,6 +21,15 @@
         "WarPrizeDarkElixirCap": [
             0
         ],
+        "WarPrizeCommonOreCap": [
+            0
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
+            0
+        ],
         "LegendPrizeGoldCap": [
             1000
         ],
@@ -252,7 +261,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             17500
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "2": {
         "AttackCost": [
@@ -274,6 +286,15 @@
             2500
         ],
         "WarPrizeDarkElixirCap": [
+            0
+        ],
+        "WarPrizeCommonOreCap": [
+            0
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
             0
         ],
         "LegendPrizeGoldCap": [
@@ -479,7 +500,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             37500
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "3": {
         "AttackCost": [
@@ -501,6 +525,15 @@
             6250
         ],
         "WarPrizeDarkElixirCap": [
+            0
+        ],
+        "WarPrizeCommonOreCap": [
+            0
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
             0
         ],
         "LegendPrizeGoldCap": [
@@ -728,7 +761,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             62500
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "4": {
         "AttackCost": [
@@ -750,6 +786,15 @@
             12500
         ],
         "WarPrizeDarkElixirCap": [
+            0
+        ],
+        "WarPrizeCommonOreCap": [
+            0
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
             0
         ],
         "LegendPrizeGoldCap": [
@@ -967,7 +1012,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             87500
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "5": {
         "AttackCost": [
@@ -989,6 +1037,15 @@
             20000
         ],
         "WarPrizeDarkElixirCap": [
+            0
+        ],
+        "WarPrizeCommonOreCap": [
+            0
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
             0
         ],
         "LegendPrizeGoldCap": [
@@ -1212,7 +1269,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             150000
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "6": {
         "AttackCost": [
@@ -1234,6 +1294,15 @@
             30000
         ],
         "WarPrizeDarkElixirCap": [
+            0
+        ],
+        "WarPrizeCommonOreCap": [
+            100
+        ],
+        "WarPrizeRareOreCap": [
+            0
+        ],
+        "WarPrizeEpicOreCap": [
             0
         ],
         "LegendPrizeGoldCap": [
@@ -1467,7 +1536,10 @@
         ],
         "ElixirCartStorageCap": [
             200000
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "7": {
         "AttackCost": [
@@ -1490,6 +1562,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             125
+        ],
+        "WarPrizeCommonOreCap": [
+            150
+        ],
+        "WarPrizeRareOreCap": [
+            10
+        ],
+        "WarPrizeEpicOreCap": [
+            0
         ],
         "LegendPrizeGoldCap": [
             50000
@@ -1718,7 +1799,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             250000
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "8": {
         "AttackCost": [
@@ -1741,6 +1825,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             200
+        ],
+        "WarPrizeCommonOreCap": [
+            380
+        ],
+        "WarPrizeRareOreCap": [
+            15
+        ],
+        "WarPrizeEpicOreCap": [
+            0
         ],
         "LegendPrizeGoldCap": [
             100000
@@ -1973,6 +2066,11 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             300000
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": [
+            1
         ]
     },
     "9": {
@@ -1996,6 +2094,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             333
+        ],
+        "WarPrizeCommonOreCap": [
+            410
+        ],
+        "WarPrizeRareOreCap": [
+            18
+        ],
+        "WarPrizeEpicOreCap": [
+            0
         ],
         "LegendPrizeGoldCap": [
             150000
@@ -2228,7 +2335,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             350000
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "10": {
         "AttackCost": [
@@ -2251,6 +2361,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             500
+        ],
+        "WarPrizeCommonOreCap": [
+            460
+        ],
+        "WarPrizeRareOreCap": [
+            21
+        ],
+        "WarPrizeEpicOreCap": [
+            3
         ],
         "LegendPrizeGoldCap": [
             250000
@@ -2459,7 +2578,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             400000
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "11": {
         "AttackCost": [
@@ -2482,6 +2604,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             600
+        ],
+        "WarPrizeCommonOreCap": [
+            560
+        ],
+        "WarPrizeRareOreCap": [
+            24
+        ],
+        "WarPrizeEpicOreCap": [
+            3
         ],
         "LegendPrizeGoldCap": [
             350000
@@ -2674,7 +2805,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             9999990
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "12": {
         "AttackCost": [
@@ -2697,6 +2831,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             650
+        ],
+        "WarPrizeCommonOreCap": [
+            610
+        ],
+        "WarPrizeRareOreCap": [
+            27
+        ],
+        "WarPrizeEpicOreCap": [
+            4
         ],
         "LegendPrizeGoldCap": [
             450000
@@ -2889,7 +3032,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             9999991
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "13": {
         "AttackCost": [
@@ -2912,6 +3058,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             700
+        ],
+        "WarPrizeCommonOreCap": [
+            710
+        ],
+        "WarPrizeRareOreCap": [
+            30
+        ],
+        "WarPrizeEpicOreCap": [
+            4
         ],
         "LegendPrizeGoldCap": [
             500000
@@ -3100,7 +3255,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             9999992
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "14": {
         "AttackCost": [
@@ -3123,6 +3281,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             750
+        ],
+        "WarPrizeCommonOreCap": [
+            810
+        ],
+        "WarPrizeRareOreCap": [
+            33
+        ],
+        "WarPrizeEpicOreCap": [
+            5
         ],
         "LegendPrizeGoldCap": [
             550000
@@ -3313,7 +3480,10 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             9999993
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
     },
     "15": {
         "AttackCost": [
@@ -3336,6 +3506,15 @@
         ],
         "WarPrizeDarkElixirCap": [
             800
+        ],
+        "WarPrizeCommonOreCap": [
+            960
+        ],
+        "WarPrizeRareOreCap": [
+            36
+        ],
+        "WarPrizeEpicOreCap": [
+            5
         ],
         "LegendPrizeGoldCap": [
             600000
@@ -3518,6 +3697,226 @@
         "Recovery Building": [],
         "ElixirCartStorageCap": [
             9999994
-        ]
+        ],
+        "Merged Archer Tower": [],
+        "Merged Cannon": [],
+        "Smithy": []
+    },
+    "16": {
+        "AttackCost": [
+            1500
+        ],
+        "ResourceStorageLootPercentage": [
+            10
+        ],
+        "DarkElixirStorageLootPercentage": [
+            4
+        ],
+        "ResourceStorageLootCap": [
+            700000
+        ],
+        "DarkElixirStorageLootCap": [
+            6000
+        ],
+        "WarPrizeResourceCap": [
+            160000
+        ],
+        "WarPrizeDarkElixirCap": [
+            850
+        ],
+        "WarPrizeCommonOreCap": [
+            1110
+        ],
+        "WarPrizeRareOreCap": [
+            39
+        ],
+        "WarPrizeEpicOreCap": [
+            6
+        ],
+        "LegendPrizeGoldCap": [
+            650000
+        ],
+        "LegendPrizeElixirCap": [
+            650000
+        ],
+        "LegendPrizeDarkElixirCap": [
+            7000
+        ],
+        "WarPrizeAllianceExpCap": [
+            14
+        ],
+        "CartLootCapResource": [
+            3200000
+        ],
+        "CartLootReengagementResource": [
+            19000000
+        ],
+        "CartLootCapDarkElixir": [
+            6400
+        ],
+        "CartLootReengagementDarkElixir": [
+            190000
+        ],
+        "ReengagementBuildingBudget": [
+            41040000
+        ],
+        "ReengagementHeroBudget": [
+            55000000
+        ],
+        "ReengagementWallBudget": [
+            20520000
+        ],
+        "ReengagementLabBudget": [
+            41040000
+        ],
+        "HeroBoostHours": [
+            120
+        ],
+        "PowerBoostHours": [
+            120
+        ],
+        "ResourceProductionBoostHours": [
+            120
+        ],
+        "StarBonusBoostHours": [
+            120
+        ],
+        "Troop Housing": [],
+        "Elixir Storage": [],
+        "Gold Storage": [],
+        "Elixir Pump": [],
+        "Gold Mine": [],
+        "Barrack": [],
+        "Cannon": [],
+        "Cannon_gearup": [],
+        "Wall": [
+            325
+        ],
+        "Archer Tower": [],
+        "Archer Tower_gearup": [],
+        "Wizard Tower": [],
+        "Air Defense": [],
+        "Mortar": [],
+        "Mortar_gearup": [],
+        "Alliance Castle": [],
+        "Ejector": [],
+        "Superbomb": [],
+        "Mine": [],
+        "Worker Building": [],
+        "Laboratory": [],
+        "Communications mast": [],
+        "Tesla Tower": [],
+        "Spell Forge": [],
+        "Mini Spell Factory": [],
+        "Bow": [],
+        "Halloweenbomb": [],
+        "Slowbomb": [],
+        "Hero Altar Barbarian King": [],
+        "Dark Elixir Pump": [],
+        "Dark Elixir Storage": [],
+        "Hero Altar Archer Queen": [],
+        "AirTrap": [],
+        "MegaAirTrap": [],
+        "Dark Elixir Barrack": [],
+        "Dark Tower": [],
+        "SantaTrap": [],
+        "StrengthMaxTroopTypes": [
+            13
+        ],
+        "StrengthMaxSpellTypes": [
+            9
+        ],
+        "StrengthMaxSiegeTypes": [
+            3
+        ],
+        "Totem": [],
+        "Halloweenskels": [],
+        "Air Blaster": [],
+        "Hero Altar Grand Warden": [],
+        "Mega Cannon": [],
+        "Ancient Artillery": [],
+        "Bomb Tower": [],
+        "TreasuryGold": [],
+        "TreasuryElixir": [],
+        "TreasuryDarkElixir": [],
+        "TreasuryWarGold": [
+            5200000
+        ],
+        "TreasuryWarElixir": [
+            5200000
+        ],
+        "TreasuryWarDarkElixir": [
+            26000
+        ],
+        "FriendlyCost": [
+            0
+        ],
+        "PackElixir": [
+            1000000
+        ],
+        "PackGold": [
+            1000000
+        ],
+        "PackDarkElixir": [
+            10000
+        ],
+        "PackGold2": [],
+        "PackElixir2": [],
+        "FreezeBomb": [],
+        "DuelPrizeResourceCap": [],
+        "Elixir Pump2": [],
+        "Elixir Storage2": [],
+        "Gold Mine2": [],
+        "Gold Storage2": [],
+        "WallStraight": [],
+        "Cannon2": [],
+        "Archer Tower2": [],
+        "Troop Housing2": [],
+        "Tesla Tower2": [],
+        "Double Cannon": [],
+        "Clock Tower": [],
+        "Laboratory2": [],
+        "Multi Mortar": [],
+        "Barrack2": [],
+        "Mega Tesla": [],
+        "Guard Post": [],
+        "Pusher": [],
+        "Hero Altar Warmachine": [],
+        "Air Defense Mini": [],
+        "Crusher": [],
+        "AirGroundTrap": [],
+        "Air Defense2": [],
+        "MegaAirGroundTrap": [],
+        "AttackCostVillage2": [],
+        "Flamer": [],
+        "Gem Mine": [],
+        "Ejector2": [],
+        "Giant Cannon": [],
+        "ShrinkTrap": [],
+        "SiegeWorkshop": [],
+        "TornadoTrap": [],
+        "LavaLauncher": [],
+        "Builder6Home": [],
+        "Builder6Unlock": [],
+        "Hero Altar Royal Champion": [],
+        "Scattershot": [],
+        "Pet Shop": [],
+        "Spell Tower": [],
+        "Monolith": [],
+        "UnlockStage": [],
+        "Battle Copter Altar": [],
+        "Xbow_BB": [],
+        "Reinforcement Camp": [],
+        "Recovery Building": [],
+        "ElixirCartStorageCap": [
+            9999995
+        ],
+        "Merged Archer Tower": [
+            2
+        ],
+        "Merged Cannon": [
+            2
+        ],
+        "Smithy": []
     }
 }
