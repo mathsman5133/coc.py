@@ -77,6 +77,10 @@ class Resource(Enum):
     builder_elixir = "Elixir2"
     dark_elixir = "DarkElixir"
     gold = "Gold"
+    builder_gold = "Gold2"
+    shiny_ore = "CommonOre"
+    glowy_ore = "RareOre"
+    starry_ore = "EpicOre"
 
 
 HOME_TROOP_ORDER = [
@@ -186,6 +190,23 @@ PETS_ORDER = [
     "Diggy",
     "Poison Lizard",
     "Phoenix",
+]
+
+EQUIPMENT = [
+    "Barbarian Puppet",
+    "Rage Vial",
+    "Archer Puppet",
+    "Invisibility Vial",
+    "Eternal Tome",
+    "Life Gem",
+    "Seeking Shield",
+    "Royal Gem",
+    "Earthquake Boots",
+    "Vampstache",
+    "Giant Arrow",
+    "Healer Puppet",
+    "Rage Gem",
+    "Healing Tome"
 ]
 
 ACHIEVEMENT_ORDER = [

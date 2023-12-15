@@ -35,7 +35,7 @@ from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
-from .hero import HeroHolder, PetHolder
+from .hero import HeroHolder, PetHolder, EquipmentHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
@@ -173,6 +173,7 @@ class Client:
         "_spell_holder",
         "_hero_holder",
         "_pet_holder",
+        "_equipment_holder"
     )
 
     def __init__(
@@ -249,25 +250,31 @@ class Client:
         with open(BUILDING_FILE_PATH) as fp:
             buildings = ujson.load(fp)
 
+        # defaults for if loading fails
+        lab_to_townhall = {i - 2: i for i in range(1, 17)}
+        smithy_to_townhall = {i - 7: i for i in range(8, 17)}
+
         for supercell_name, data in buildings.items():
             if supercell_name == "Laboratory":
                 lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
                 # there are troops with no lab ...
                 lab_to_townhall[-1] = 1
                 lab_to_townhall[0] = 2
-                break
-        else:
-            # if the files failed to load, fallback to the old formula of lab level = TH level - 2
-            lab_to_townhall = {i-2: i for i in range(1, 15)}
+            elif supercell_name =='Smithy':
+                smithy_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
 
+        # load holders tied to the lab
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
             holder._load_json(english_aliases, lab_to_townhall)
+        # load holders tied to the smithy
+        self._equipment_holder._load_json(english_aliases, smithy_to_townhall)
 
     def _create_holders(self):
-        self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder = TroopHolder(), \
-                                                                                      SpellHolder(), \
-                                                                                      HeroHolder(), \
-                                                                                      PetHolder()
+        self._troop_holder = TroopHolder()
+        self._spell_holder = SpellHolder()
+        self._hero_holder = HeroHolder()
+        self._pet_holder = PetHolder()
+        self._equipment_holder = EquipmentHolder()
 
         if not self.load_game_data.never:
             self._load_holders()

@@ -36,9 +36,10 @@ from .enums import (
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
+    EQUIPMENT,
 )
 from .abc import BasePlayer
-from .hero import Hero, Pet
+from .hero import Hero, Equipment, Pet
 from .player_clan import PlayerClan
 from .spell import Spell
 from .troop import Troop
@@ -260,6 +261,7 @@ class Player(ClanMember):
         "_achievements",
         "_heroes",
         "_pets",
+        "_equipment",
         "_labels",
         "_spells",
         "_home_troops",
@@ -271,6 +273,7 @@ class Player(ClanMember):
         "spell_cls",
         "troop_cls",
         "pet_cls",
+        "equipment_cls",
 
         "_iter_achievements",
         "_iter_heroes",
@@ -278,6 +281,7 @@ class Player(ClanMember):
         "_iter_spells",
         "_iter_troops",
         "_iter_pets",
+        "_iter_equipment",
 
         "_cs_labels",
         "_cs_achievements",
@@ -289,6 +293,7 @@ class Player(ClanMember):
         "_cs_super_troops",
         "_cs_heroes",
         "_cs_spells",
+        "_cs_equipment",
 
         "_game_files_loaded",
         "_load_game_data",
@@ -304,7 +309,8 @@ class Player(ClanMember):
         self._home_troops: dict = {}
         self._builder_troops: dict = {}
         self._super_troops: list = []
-        self._pets = None # type: Optional[dict]
+        self._pets = None  # type: Optional[dict]
+        self._equipment: Optional[dict] = None
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -312,6 +318,7 @@ class Player(ClanMember):
         self.spell_cls = Spell
         self.troop_cls = Troop
         self.pet_cls = Pet
+        self.equipment_cls = Equipment
 
         if self._client and self._client._troop_holder.loaded:
             self._game_files_loaded = True
@@ -354,11 +361,14 @@ class Player(ClanMember):
         hero_loader =  self._client._hero_holder.load if self._client else None
         spell_loader = self._client._spell_holder.load if self._client else None
         pet_loader = self._client._pet_holder.load if self._client else None
+        equipment_loader = self._client._equipment_holder.load if self._client else None
 
         if self._game_files_loaded:
             pet_lookup = [p.name for p in self._client._pet_holder.items]
+            equipment_lookup = [e.name for e in self._client._equipment_holder.items]
         else:
             pet_lookup = PETS_ORDER
+            equipment_lookup = EQUIPMENT
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
@@ -398,6 +408,15 @@ class Player(ClanMember):
             ) for tdata in data_get("troops", []) if tdata["name"] in pet_lookup
         )
 
+        self._iter_equipment = (
+            equipment_loader(
+                data=edata,
+                townhall=self.town_hall,
+                default=self.equipment_cls,
+                load_game_data=self._load_game_data,
+            ) for edata in data_get('heroEquipment', []) if edata['name'] in equipment_lookup
+        )
+
     def _inject_clan_member(self, member):
         if member:
             self.clan_rank = getattr(member, "clan_rank", None)
@@ -424,11 +443,11 @@ class Player(ClanMember):
         #     return True
 
         holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder,
-                   self._client._pet_holder)
+                   self._client._pet_holder, self._client._equipment_holder)
         if not all(holder.loaded for holder in holders):
             self._client._load_holders()
 
-        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets), holders):
+        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets, self.equipment), holders):
             for item in items:
                 if not item.is_loaded:
                     if isinstance(item, Troop):
@@ -603,6 +622,43 @@ class Player(ClanMember):
 
         try:
             return self._pets[name]
+        except KeyError:
+            return default_value
+
+    @cached_property('_cs_equipment')
+    def equipment(self) -> List[Equipment]:
+        """List[:class:`Equipment`]: A :class:`List` of the player's hero equipment.
+
+        This will return hero equipment in the order it is in the player's profile
+
+        This includes:
+        - Hero equipment only.
+        """
+        order = {k: v for v, k in enumerate(EQUIPMENT)}
+        equipment = list(sorted(self._iter_equipment, key=lambda t: order.get(t.name, 0)))
+        self._equipment = {e.name: e for e in equipment}
+        return equipment
+
+    def get_equipment(self, name: str, default_value=None) -> Optional[Equipment]:
+        """Gets the hero equipment with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a hero equipment as found in-game.
+        default_value:
+            The default value to return if a hero equipment with ``name`` is not found. Defaults to ``None``.
+
+        Returns
+        --------
+        Optional[:class:`Equipment`]
+            The returned hero equipment or the ``default_value`` if not found, which defaults to ``None``.
+        """
+        if not self._equipment:
+            _ = self.equipment
+
+        try:
+            return self._equipment[name]
         except KeyError:
             return default_value
 
