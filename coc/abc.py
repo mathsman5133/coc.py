@@ -171,6 +171,13 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         self._townhall = townhall
 
+    def __eq__(self, other):
+        return self.name == other.name and self.level == other.level \
+            and self.village == other.village and self.is_active == other.is_active
+
+    def __hash__(self):
+        return hash((self.name, self.level, self.village, self.is_active))
+
     def __repr__(self):
         attrs = [
             ("name", self.name),
