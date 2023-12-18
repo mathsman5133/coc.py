@@ -1,3 +1,5 @@
+import ujson
+
 from typing import Type, Dict, List
 from pathlib import Path
 
@@ -6,6 +8,7 @@ from .enums import Resource
 from .miscmodels import TimeDelta
 
 SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
+ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spell_ids.json"))
 
 
 class Spell(DataContainer):
@@ -122,3 +125,36 @@ class SpellHolder(DataContainerHolder):
 
     FILE_PATH = SPELLS_FILE_PATH
     data_object = Spell
+
+    def _load_json(self, english_aliases, lab_to_townhall):
+        with open(SPELLS_FILE_PATH) as fp:
+            spell_data = ujson.load(fp)
+        with open(ARMY_LINK_ID_FILE_PATH) as fp:
+            army_link_ids = ujson.load(fp)
+
+        id = 2000  # fallback ID for non-standard spells
+        for supercell_name, spell_meta in spell_data.items():
+
+            if not spell_meta.get("TID"):
+                continue
+
+            # ignore deprecated content
+            if True in spell_meta.get("Deprecated", [False]):
+                continue
+            if True in spell_meta.get("DisableProduction", [False]):
+                continue
+            spell_name = english_aliases[spell_meta["TID"][0]]["EN"][0]
+            new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
+            spell_id = army_link_ids.get(spell_name, id)
+            if isinstance(spell_id, int):
+                id += 1
+            new_spell._load_json_meta(
+                spell_meta,
+                id=spell_id,
+                name=spell_name,
+                lab_to_townhall=lab_to_townhall,
+            )
+            self.items.append(new_spell)
+            self.item_lookup[(new_spell.name, new_spell._is_home_village)] = new_spell
+
+        self.loaded = True

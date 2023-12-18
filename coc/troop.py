@@ -10,6 +10,7 @@ from .utils import UnitStat
 
 TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
 SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json"))
+ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/troop_ids.json"))
 
 
 class Troop(DataContainer):
@@ -171,26 +172,30 @@ class TroopHolder(DataContainerHolder):
             troop_data = ujson.load(fp)
         with open(SUPER_TROOPS_FILE_PATH) as fp:
             super_troop_data = ujson.load(fp)
+        with open(ARMY_LINK_ID_FILE_PATH) as fp:
+            army_link_ids = ujson.load(fp)
 
         super_data = {meta["Replacement"][0]: meta for _, meta in super_troop_data.items()}
 
-        id = 1000
+        id = 1000  # fallback ID for builder base troops
         for supercell_name, troop_meta in troop_data.items():
-
             if not troop_meta.get("TID"):
                 continue
             if "Tutorial" in supercell_name:
                 continue
             if True in troop_meta.get("DisableProduction", [False]):
                 continue
+            troop_name = english_aliases[troop_meta["TID"][0]]["EN"][0]
             new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
+            troop_id = army_link_ids.get(troop_name, id)
+            if isinstance(troop_id, int):
+                id += 1
             new_troop._load_json_meta(
                 troop_meta,
-                id=id,
-                name=english_aliases[troop_meta["TID"][0]]["EN"][0],
+                id=troop_id,
+                name=troop_name,
                 lab_to_townhall=lab_to_townhall,
             )
-            id += 1
             self.items.append(new_troop)
             self.item_lookup[(new_troop.name, new_troop._is_home_village)] = new_troop
             try:
