@@ -171,6 +171,12 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         self._townhall = townhall
 
+        # copies for a static hash
+        self.__name = data['name']
+        self.__level = data['level']
+        self.__village = data['village']
+        self.__is_active = data.get("superTroopIsActive")
+
     def __repr__(self):
         attrs = [
             ("name", self.name),
@@ -185,7 +191,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
             and self.village == other.village and self.is_active == other.is_active
 
     def __hash__(self):
-        return hash((self.name, self.level, self.village, self.is_active))
+        return hash((self.__name, self.__level, self.__village, self.__is_active))
 
     @classmethod
     def _load_json_meta(cls, json_meta, id, name, lab_to_townhall):
