@@ -180,6 +180,13 @@ class DataContainer(metaclass=DataContainerMetaClass):
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
+    def __eq__(self, other):
+        return self.name == other.name and self.level == other.level \
+            and self.village == other.village and self.is_active == other.is_active
+
+    def __hash__(self):
+        return hash((self.name, self.level, self.village, self.is_active))
+
     @classmethod
     def _load_json_meta(cls, json_meta, id, name, lab_to_townhall):
         cls.id = int(id)
