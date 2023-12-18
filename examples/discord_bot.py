@@ -210,7 +210,7 @@ async def clan_member(ctx, clan_tag):
 
     member = ""
     for i, a in enumerate(clan.members, start=1):
-        member += f"`{i}.` {a.name}\n"
+        member += f"`{i}.` {a.name} (th{a.town_hall})\n"
 
     embed = discord.Embed(colour=discord.Colour.red(),
                           title=f"Members of {clan.name}", description=member)
