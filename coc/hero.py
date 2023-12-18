@@ -90,6 +90,12 @@ class Hero(DataContainer):
 
         self._townhall = townhall
 
+        # copies for a static hash
+        self.__name = data['name']
+        self.__level = data['level']
+        self.__village = data['village']
+        self.__is_active = data.get("superTroopIsActive")
+
         # end of copy & pasted init
 
         equipment = [try_enum(Equipment, equipment, townhall=townhall) for equipment in data.get('equipment', [])]
