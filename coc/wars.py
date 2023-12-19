@@ -66,6 +66,9 @@ class ClanWar:
         :class:`ClanWarLeagueGroup`: The war's league group. This is ``None`` unless this is a Clan League War.
     attacks_per_member:
         :class:`int`: The number of attacks each member has this war.
+    clan_cls: :class:`WarClan`
+        the type `war.clan` and `war.opponent` will be of.
+        Ensure any overriding of this inherits from :class:`coc.WarClan`.
     """
 
     __slots__ = (
@@ -81,6 +84,7 @@ class ClanWar:
         "opponent",
         "league_group",
         "attacks_per_member",
+        "clan_cls",
         "_response_retry",
         "_raw_data"
     )
@@ -90,6 +94,7 @@ class ClanWar:
         self._client = client
         self._raw_data = data if client and client.raw_attribute else None
         self.clan_tag = kwargs.pop("clan_tag", None)
+        self.clan_cls = kwargs.pop('clan_cls', WarClan)
         self._from_data(data)
 
         self.clan_tag = self.clan and self.clan.tag or self.clan_tag
@@ -117,14 +122,14 @@ class ClanWar:
         # depending on the way the game stores it internally. This isn't very helpful as we always want it
         # from the perspective of the tag we provided, so switch them around if it isn't correct.
         if clan_data and clan_data.get("tag", self.clan_tag) == self.clan_tag:
-            self.clan = try_enum(WarClan, data=clan_data, client=self._client,
+            self.clan = try_enum(self.clan_cls, data=clan_data, client=self._client,
                                  war=self)
-            self.opponent = try_enum(WarClan, data=data_get("opponent"),
+            self.opponent = try_enum(self.clan_cls, data=data_get("opponent"),
                                      client=self._client, war=self)
         else:
-            self.clan = try_enum(WarClan, data=data_get("opponent"),
+            self.clan = try_enum(self.clan_cls, data=data_get("opponent"),
                                  client=self._client, war=self)
-            self.opponent = try_enum(WarClan, data=clan_data,
+            self.opponent = try_enum(self.clan_cls, data=clan_data,
                                      client=self._client, war=self)
 
     @property

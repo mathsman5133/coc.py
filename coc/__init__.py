@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "3.1.0"
+__version__ = "3.2.0"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
@@ -54,7 +54,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .hero import Hero, Pet
+from .hero import Equipment, Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
