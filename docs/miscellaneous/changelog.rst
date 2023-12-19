@@ -7,6 +7,21 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.2.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added custom class support to a few more classes:
+
+  - :class:`ClanWarMember` now supports the :attr:`attack_cls` attribute to customize the type returned in
+    :func:`ClanWarMember.attacks` (and, by extension also :func:`WarClan.attacks` and :func:`ClanWar.attacks`)
+  - :class:`WarClan` now supports the :attr:`member_cls` attribute to customize the type returned in
+    :func:`WarClan.members` (and, by extension also :func:`ClanWar.members`)
+  - :class:`ClanWar` now supports the :attr:`clan_cls` attribute to customize the types of
+    :func:`ClanWar.clan` and :func:`ClanWar.opponent`
+  - the :class:`Equipment` class can now be imported as ``coc.Equipment``
+
 v3.1.0
 ------
 
