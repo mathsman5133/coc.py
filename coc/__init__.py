@@ -54,7 +54,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .hero import Hero, Pet
+from .hero import Equipment, Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
