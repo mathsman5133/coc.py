@@ -1,8 +1,11 @@
-from dataclasses import dataclass
-from typing import TYPE_CHECKING, Dict, List, Type
+import ujson
+
+from typing import TYPE_CHECKING, Dict, List, Optional, Type
 from pathlib import Path
 
 from .abc import DataContainer, DataContainerHolder
+from .miscmodels import try_enum
+from .utils import UnitStat
 
 if TYPE_CHECKING:
     from .enums import Resource
@@ -11,6 +14,7 @@ if TYPE_CHECKING:
 
 HERO_FILE_PATH = Path(__file__).parent.joinpath(Path("static/heroes.json"))
 PET_FILE_PATH = Path(__file__).parent.joinpath(Path("static/pets.json"))
+EQUIPMENT_FILE_PATH = Path(__file__).parent.joinpath(Path("static/equipment.json"))
 
 
 class Hero(DataContainer):
@@ -60,6 +64,7 @@ class Hero(DataContainer):
     max_level: int
     village: str
     is_active: bool
+    equipment: List["Equipment"]
 
     id: int
     range: int
@@ -74,6 +79,27 @@ class Hero(DataContainer):
     required_th_level: int
     regeneration_time: "TimeDelta"
     is_loaded: bool = False
+
+    def __init__(self, data, townhall):
+        # super().__init__ call fails, hence copy & pasted the parent init
+        self.name: str = data["name"]
+        self.level: int = data["level"]
+        self.max_level: int = data["maxLevel"]
+        self.village: str = data["village"]
+        self.is_active: bool = data.get("superTroopIsActive")
+
+        self._townhall = townhall
+
+        # copies for a static hash
+        self.__name = data['name']
+        self.__level = data['level']
+        self.__village = data['village']
+        self.__is_active = data.get("superTroopIsActive")
+
+        # end of copy & pasted init
+
+        equipment = [try_enum(Equipment, equipment, townhall=townhall) for equipment in data.get('equipment', [])]
+        self.equipment = [eq for eq in equipment if eq is not None]
 
     def __repr__(self):
         attrs = [
@@ -211,3 +237,106 @@ class PetHolder(DataContainerHolder):
 
     FILE_PATH = PET_FILE_PATH
     data_object = Pet
+
+
+class Equipment(DataContainer):
+    """Represents a hero equipment object as returned by the API
+
+        Attributes
+        ----------
+        name: :class:`str`
+            The equipment's name.
+        level: :class:`int`
+            The equipment's level
+        max_level: :class:`int`
+            The max level for this equipment.
+        village: :class:`str`
+            Either ``home`` or ``builderBase``, indicating which village this equipment belongs to.
+    """
+    name: str
+    level: int
+    max_level: int
+    village: str
+
+    @classmethod
+    def _load_json_meta(cls, json_meta, id, name, smithy_to_townhall):
+        cls.id = int(id)
+        cls.name = name
+        cls.smithy_to_townhall = smithy_to_townhall
+
+        smithy_levels = json_meta.get("RequiredBlacksmithLevel")
+
+        cls.smithy_level = try_enum(UnitStat, smithy_levels)
+        cls.level = cls.smithy_level and UnitStat(range(1, len(cls.smithy_level) + 1))
+        cls.hero_level = try_enum(UnitStat, json_meta.get('RequiredCharacterLevel'))
+        cls.speed = try_enum(UnitStat, json_meta.get('Speed'))
+        cls.hitpoints = try_enum(UnitStat, json_meta.get('HitPoints'))
+        cls.attack_range = try_enum(UnitStat, json_meta.get('AttackRange'))
+        cls.dps = try_enum(UnitStat, json_meta.get('DPS'))
+        cls.heal = try_enum(UnitStat, json_meta.get('HealOnActivation'))
+
+        # hacky way to translate internal hero names to English
+        hero = json_meta.get('AllowedCharacters', [''])[0].strip(';')
+        cls.hero = hero if hero != 'Warrior Princess' else 'Royal Champion'
+
+        costs = [(int(el) for el in str(cost).split(';')) for cost in json_meta.get('UpgradeCost', '')]
+        resources = [(Resource(el.strip()) for el in resource.split(';'))
+                     for resource in json_meta.get('UpgradeResource', '')]
+        cls.upgrade_cost = try_enum(UnitStat, [[(c, r) for c, r in zip(cost, resource)]
+                                               for cost, resource in zip(costs, resources)])
+
+        cls._is_home_village = True  # todo: update with json key if they add builder base equipment
+        cls.village = "home" if cls._is_home_village else "builderBase"
+
+        cls.is_loaded = True
+        return cls
+
+
+class EquipmentHolder(DataContainerHolder):
+    items: List[Type[Equipment]] = []
+    item_lookup: Dict[str, Type[Equipment]]
+
+    FILE_PATH = EQUIPMENT_FILE_PATH
+    data_object = Equipment
+
+    def _load_json(self, english_aliases, lab_to_townhall):
+        id = 3000
+        with open(EQUIPMENT_FILE_PATH) as fp:
+            equipment_data = ujson.load(fp)
+
+        for supercell_name, equipment_meta in equipment_data.items():
+
+            if not equipment_meta.get("TID"):
+                continue
+            if True in equipment_meta.get("Deprecated", [False]):
+                continue
+            new_equipment: Type[Equipment] = type('Equipment', Equipment.__bases__, dict(Equipment.__dict__))
+            new_equipment._load_json_meta(
+                equipment_meta,
+                id=id,
+                name=english_aliases[equipment_meta["TID"][0]]["EN"][0],
+                smithy_to_townhall=lab_to_townhall,
+            )
+            id += 1
+            self.items.append(new_equipment)
+            self.item_lookup[new_equipment.name] = new_equipment
+
+        self.is_loaded = True
+
+    def load(self, data, townhall: int, default: "Equipment" = Equipment, load_game_data: bool = None
+             ) -> Equipment:
+        if load_game_data is True:
+            try:
+                equipment = self.item_lookup[data["name"]]
+            except KeyError:
+                equipment = default
+        else:
+            equipment = default
+
+        return equipment(data=data, townhall=townhall)
+
+    def get(self, name, home_village=True) -> Optional[Type[Equipment]]:
+        try:
+            return self.item_lookup[name]
+        except KeyError:
+            return None

@@ -210,12 +210,12 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
     for match in matches:
         if match.group("units"):
             units = [
-                (4_000_000 + int(split[1]), int(split[0]))
+                (int(split[1]), int(split[0]))
                 for split in (troop.split('x') for troop in match.group("units").split('-'))
             ]
         elif match.group("spells"):
             spells = [
-                (26_000_000 + int(split[1]), int(split[0]))
+                (int(split[1]), int(split[0]))
                 for split in (spell.split('x') for spell in match.group("spells").split('-'))
             ]
 
