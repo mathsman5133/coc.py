@@ -7,6 +7,29 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.1.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added support for Hero Equipment:
+
+  - an :class:`Equipment` class
+  - a cached :func:`Player.equipment` property and :func:`Player.get_equipment` method. Equipment obtained this way
+    will be enriched with game data if enabled
+  - a :attr:`Hero.equipment` attribute to return the currently active equipment for a hero. Equipment obtained this
+    way will never be enriched with game data and only have the basic ``name``, ``level``, ``max_level`` and ``village``
+    attributes
+- Added the new Root Rider troop
+- Added the new Spirit Fox pet
+- The :class:`ClanMember` class now has a :attr:``town_hall`` attribute that will also be present in
+  :attr:`Clan.members` and :meth:`Clan.get_members`
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed an issue that would cause troop and hero change events to fire even when no upgrades were detected
+- Fixed the army link parser
+
 v3.0.0
 ------
 Please see :ref:`migrating_to_v3_0` for more info, as changes are described more in-depth there.
