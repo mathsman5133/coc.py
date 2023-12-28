@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.2.1
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed an issue that would cause spells to not be properly looked up, breaking :func:`coc.Client.get_spell` and
+  :attr:`Player.spells`
+- Fixed a month overflow issue with clan game start/end events that would occur from Dec 28th to Dec 31st
+
 v3.2.0
 ------
 
