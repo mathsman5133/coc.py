@@ -158,3 +158,14 @@ class SpellHolder(DataContainerHolder):
             self.item_lookup[(new_spell.name, new_spell._is_home_village)] = new_spell
 
         self.loaded = True
+
+    def load(self, data, townhall: int, default: "Spell" = Spell, load_game_data: bool = None) -> Spell:
+        if load_game_data is True:
+            try:
+                spell = self.item_lookup[(data["name"], True)]
+            except KeyError:
+                spell = default
+        else:
+            spell = default
+
+        return spell(data=data, townhall=townhall)

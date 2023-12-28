@@ -390,10 +390,14 @@ def get_clan_games_start(time: Optional[datetime] = None) -> datetime:
     if time is None:
         time = datetime.utcnow()
     month = time.month
+    year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
-    if time > this_months_cg_end:
+    if time > this_months_cg_end and month < 12:
         month += 1
-    return datetime(year=time.year, month=month, day=22, hour=8, minute=0, second=0)
+    elif time > this_months_cg_end:  # we're at the end of December
+        month = 1
+        year += 1
+    return datetime(year=year, month=month, day=22, hour=8, minute=0, second=0)
 
 
 def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
@@ -419,10 +423,14 @@ def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
     if time is None:
         time = datetime.utcnow()
     month = time.month
+    year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
-    if time > this_months_cg_end:
+    if time > this_months_cg_end and month < 12:
         month += 1
-    return datetime(year=time.year, month=month, day=28, hour=8, minute=0, second=0)
+    elif time > this_months_cg_end:  # we're in December
+        month = 1
+        year += 1
+    return datetime(year=year, month=month, day=28, hour=8, minute=0, second=0)
 
 
 def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
