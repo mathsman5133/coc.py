@@ -2413,7 +2413,7 @@ class Client:
         if not self._spell_holder.loaded:
             raise RuntimeError("Spell metadata must be loaded to use this feature.")
 
-        spell = self._spell_holder.get(name)
+        spell = self._spell_holder.get((name, True))
         if spell is None:
             return None
         elif level is not None:
