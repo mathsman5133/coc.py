@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.2.2
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- The Root Rider now is correctly sorted with the other Elixir troops in `coc.enums.HOME_TROOP_ORDER`
+
 v3.2.1
 ------
 
