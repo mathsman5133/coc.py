@@ -184,6 +184,7 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Haste Spell",
     "Skeleton Spell",
     "Bat Spell",
+    "Overgrowth Spell",
 ]
 
 
@@ -220,6 +221,10 @@ EQUIPMENT = [
     "Healer Puppet",
     "Rage Gem",
     "Healing Tome",
+    "Giant Gauntlet",
+    "Frozen Arrow",
+    "Hog Rider Puppet",
+    "Haste Vial",
 ]
 
 ACHIEVEMENT_ORDER = [
