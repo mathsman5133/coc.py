@@ -7,6 +7,20 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.3.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added dedicated enums for elixir/dark elixir troops and spells: `coc.ELIXIR_TROOP_ORDER`,
+  `coc.DARK_ELIXIR_TROOP_ORDER`, `coc.ELIXIR_SPELL_ORDER` and `coc.DARK_ELIXIR_SPELL_ORDER`
+- Added the new Overgrowth Spell
+- Added the new equipment introduced since the last release (up to and including the February 2024 update)
+
+Bugs Fixed:
+~~~~~~~~~~~
+- The Root Rider is now correctly sorted with the elixir troops
+
 v3.2.1
 ------
 
