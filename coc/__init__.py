@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "3.2.1"
+__version__ = "3.3.0"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
@@ -37,8 +37,12 @@ from .enums import (
     BUILDER_TROOPS_ORDER,
     HERO_ORDER,
     PETS_ORDER,
+    ELIXIR_TROOP_ORDER,
+    DARK_ELIXIR_TROOP_ORDER,
     HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
+    ELIXIR_SPELL_ORDER,
+    DARK_ELIXIR_SPELL_ORDER,
     SPELL_ORDER,
     SUPER_TROOP_ORDER,
     UNRANKED_LEAGUE_DATA,

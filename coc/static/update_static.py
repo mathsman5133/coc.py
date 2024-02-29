@@ -23,7 +23,7 @@ TARGETS = [
     ("logic/townhall_levels.csv", "townhall_levels.csv"),
     ("localization/texts.csv", "texts_EN.csv"),
 ]
-FINGERPRINT = "4d914a7b1fb02eb22e5dbe854297b69fabd7d25f"
+FINGERPRINT = "7dc27bbc98c5bf2818587453f966e99919e32211"
 BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 
 

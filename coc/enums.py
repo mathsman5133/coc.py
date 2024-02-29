@@ -83,7 +83,7 @@ class Resource(Enum):
     starry_ore = "EpicOre"
 
 
-HOME_TROOP_ORDER = [
+ELIXIR_TROOP_ORDER = [
     "Barbarian",
     "Archer",
     "Giant",
@@ -101,6 +101,10 @@ HOME_TROOP_ORDER = [
     "Dragon Rider",
     "Electro Titan",
     "Root Rider",
+]
+
+
+DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -139,12 +143,11 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
     "Super Bowler",
     "Super Miner",
-    "Super Hog Rider"
+    "Super Hog Rider",
 ]
 
-#enum with only the actual troops, not sure why they were combined to begin with
-HV_TROOP_ORDER = HOME_TROOP_ORDER
-HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
+HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
+HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 
 BUILDER_TROOPS_ORDER = [
@@ -159,10 +162,11 @@ BUILDER_TROOPS_ORDER = [
     "Drop Ship",
     "Power P.E.K.K.A",
     "Hog Glider",
-    "Electrofire Wizard"
+    "Electrofire Wizard",
 ]
 
-SPELL_ORDER = [
+
+ELIXIR_SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
     "Rage Spell",
@@ -171,12 +175,20 @@ SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
+]
+
+
+DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
     "Skeleton Spell",
     "Bat Spell",
+    "Overgrowth Spell",
 ]
+
+
+SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
 HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
@@ -191,7 +203,7 @@ PETS_ORDER = [
     "Diggy",
     "Poison Lizard",
     "Phoenix",
-    "Spirit Fox"
+    "Spirit Fox",
 ]
 
 EQUIPMENT = [
@@ -208,7 +220,11 @@ EQUIPMENT = [
     "Giant Arrow",
     "Healer Puppet",
     "Rage Gem",
-    "Healing Tome"
+    "Healing Tome",
+    "Giant Gauntlet",
+    "Frozen Arrow",
+    "Hog Rider Puppet",
+    "Haste Vial",
 ]
 
 ACHIEVEMENT_ORDER = [

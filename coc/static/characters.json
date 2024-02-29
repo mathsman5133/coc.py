@@ -496,6 +496,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -1212,6 +1213,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -1826,6 +1828,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -2524,6 +2527,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -3305,6 +3309,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -4085,6 +4090,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -4820,6 +4826,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -5444,6 +5451,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -5746,7 +5754,7 @@
             4200,
             4500,
             4900,
-            5200
+            5300
         ],
         "TrainingTime": [
             180,
@@ -6118,6 +6126,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -6782,6 +6791,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -6994,10 +7004,12 @@
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "Deprecated": [],
         "TID": [
+            "TID_GARGOYLE",
             "TID_GARGOYLE",
             "TID_GARGOYLE",
             "TID_GARGOYLE",
@@ -7021,9 +7033,11 @@
             "TID_CHARACTER_INFO_MINION",
             "TID_CHARACTER_INFO_MINION",
             "TID_CHARACTER_INFO_MINION",
+            "TID_CHARACTER_INFO_MINION",
             "TID_CHARACTER_INFO_MINION"
         ],
         "HousingSpace": [
+            2,
             2,
             2,
             2,
@@ -7047,6 +7061,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
@@ -7060,9 +7075,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            400,
             400,
             400,
             400,
@@ -7086,9 +7103,11 @@
             96,
             102,
             108,
-            114
+            114,
+            120
         ],
         "TrainingTime": [
+            18,
             18,
             18,
             18,
@@ -7112,10 +7131,12 @@
             168,
             288,
             312,
-            312
+            336,
+            336
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -7139,9 +7160,11 @@
             150000,
             210000,
             310000,
-            310000
+            320000,
+            320000
         ],
         "DonateCost": [
+            1,
             1,
             1,
             1,
@@ -7167,9 +7190,11 @@
             225,
             225,
             225,
+            225,
             225
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -7194,9 +7219,11 @@
             62,
             66,
             70,
-            74
+            74,
+            78
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -7223,9 +7250,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_gargoyle",
             "icon_unit_gargoyle",
             "icon_unit_gargoyle",
             "icon_unit_gargoyle",
@@ -7249,6 +7278,7 @@
             "unit_flyingF_big",
             "unit_flyingF_big",
             "unit_flyingF_big",
+            "unit_flyingF_big",
             "unit_flyingF_big"
         ],
         "BigPictureSWF": [
@@ -7262,9 +7292,11 @@
             "sc/info_minion.sc",
             "sc/info_minion.sc",
             "sc/info_minion.sc",
+            "sc/info_minion.sc",
             "sc/info_minion.sc"
         ],
         "Projectile": [
+            "gargoyle_projectile",
             "gargoyle_projectile",
             "gargoyle_projectile",
             "gargoyle_projectile",
@@ -7292,10 +7324,12 @@
             "Gargoyle Deploy",
             "Gargoyle Deploy",
             "Gargoyle Deploy",
+            "Gargoyle Deploy",
             "Gargoyle Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Gargoyle Attack",
             "Gargoyle Attack",
             "Gargoyle Attack",
             "Gargoyle Attack",
@@ -7320,10 +7354,12 @@
             "Gargoyle Hit",
             "Gargoyle Hit",
             "Gargoyle Hit",
+            "Gargoyle Hit",
             "Gargoyle Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            true,
             true,
             true,
             true,
@@ -7347,9 +7383,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -7374,6 +7412,7 @@
             "Gargoyle Die",
             "Gargoyle Die",
             "Gargoyle Die",
+            "Gargoyle Die",
             "Gargoyle Die"
         ],
         "DieEffect2": [],
@@ -7388,9 +7427,11 @@
             "Gargoyle_lvl5",
             "Gargoyle_lvl6",
             "Gargoyle_lvl7",
-            "Gargoyle_lvl8"
+            "Gargoyle_lvl8",
+            "Gargoyle_lvl9"
         ],
         "ProductionBuilding": [
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
@@ -7404,6 +7445,7 @@
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -7428,9 +7470,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -7458,6 +7502,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -7469,6 +7514,7 @@
             115,
             110,
             105,
+            100,
             100,
             100,
             100,
@@ -7508,6 +7554,7 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "SecondarySpawnOffset": [],
@@ -7520,6 +7567,7 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
+            150,
             150,
             150,
             150,
@@ -7543,10 +7591,12 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -7652,6 +7702,7 @@
             "TroopMinion",
             "TroopMinion",
             "TroopMinion",
+            "TroopMinion",
             "TroopMinion"
         ],
         "AltPreviewScenario": [],
@@ -7671,10 +7722,12 @@
             9,
             10,
             11,
-            12
+            12,
+            13
         ],
         "Deprecated": [],
         "TID": [
+            "TID_BOARRIDER",
             "TID_BOARRIDER",
             "TID_BOARRIDER",
             "TID_BOARRIDER",
@@ -7700,9 +7753,11 @@
             "TID_CHARACTER_INFO_RIDER",
             "TID_CHARACTER_INFO_RIDER",
             "TID_CHARACTER_INFO_RIDER",
+            "TID_CHARACTER_INFO_RIDER",
             "TID_CHARACTER_INFO_RIDER"
         ],
         "HousingSpace": [
+            5,
             5,
             5,
             5,
@@ -7728,6 +7783,7 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "LaboratoryLevel": [
@@ -7742,9 +7798,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            300,
             300,
             300,
             300,
@@ -7770,9 +7828,11 @@
             890,
             970,
             1080,
-            1230
+            1230,
+            1380
         ],
         "TrainingTime": [
+            45,
             45,
             45,
             45,
@@ -7798,10 +7858,12 @@
             168,
             288,
             318,
-            318
+            348,
+            348
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -7827,9 +7889,11 @@
             175000,
             240000,
             335000,
-            335000
+            350000,
+            350000
         ],
         "DonateCost": [
+            3,
             3,
             3,
             3,
@@ -7857,9 +7921,11 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -7886,9 +7952,11 @@
             161,
             174,
             187,
-            200
+            200,
+            213
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -7917,9 +7985,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_boarRider",
             "icon_unit_boarRider",
             "icon_unit_boarRider",
             "icon_unit_boarRider",
@@ -7945,9 +8015,11 @@
             "unit_boarRider_big",
             "unit_boarRider_big",
             "unit_boarRider_big",
+            "unit_boarRider_big",
             "unit_boarRider_big"
         ],
         "BigPictureSWF": [
+            "sc/info_hogrider.sc",
             "sc/info_hogrider.sc",
             "sc/info_hogrider.sc",
             "sc/info_hogrider.sc",
@@ -7976,10 +8048,12 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "BoarRider Deploy",
             "BoarRider Deploy",
             "BoarRider Deploy",
             "BoarRider Deploy",
@@ -8006,10 +8080,12 @@
             "BoarRider Attack",
             "BoarRider Attack",
             "BoarRider Attack",
+            "BoarRider Attack",
             "BoarRider Attack"
         ],
         "AttackEffect2": [],
         "HitEffect": [
+            "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
@@ -8036,6 +8112,7 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
@@ -8050,9 +8127,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -8079,6 +8158,7 @@
             "BoarRider Die",
             "BoarRider Die",
             "BoarRider Die",
+            "BoarRider Die",
             "BoarRider Die"
         ],
         "DieEffect2": [],
@@ -8094,9 +8174,11 @@
             "BoarRider_lvl7",
             "BoarRider_lvl8",
             "BoarRider_lvl9",
-            "BoarRider_lvl10"
+            "BoarRider_lvl10",
+            "BoarRider_lvl11"
         ],
         "ProductionBuilding": [
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
@@ -8111,6 +8193,7 @@
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            true,
             true,
             true,
             true,
@@ -8137,9 +8220,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -8168,6 +8253,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -8185,7 +8271,8 @@
             400,
             480,
             520,
-            500
+            500,
+            480
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -8209,6 +8296,7 @@
         "TransitionEffectLv3": [],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            "-50",
             "-50",
             "-50",
             "-50",
@@ -8243,9 +8331,11 @@
             600,
             600,
             600,
+            600,
             600
         ],
         "EnemyGroupWeight": [
+            500,
             500,
             500,
             500,
@@ -8261,6 +8351,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -8357,6 +8448,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "TroopDefenseGround",
             "TroopDefenseGround",
             "TroopDefenseGround",
             "TroopDefenseGround",
@@ -8862,6 +8954,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -9714,6 +9807,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -10442,6 +10536,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -11026,6 +11121,15 @@
             4,
             5
         ],
+        "SummonTime": [
+            875,
+            875,
+            875,
+            875,
+            875,
+            875,
+            875
+        ],
         "SummonCooldown": [
             7000,
             7000,
@@ -11350,6 +11454,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -11571,7 +11676,7 @@
             150,
             168,
             192,
-            192
+            216
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -11588,7 +11693,7 @@
             85000,
             120000,
             160000,
-            160000
+            300000
         ],
         "DonateCost": [
             15,
@@ -11752,9 +11857,9 @@
             "ADSeeker_lvl1",
             "ADSeeker_lvl2",
             "ADSeeker_lvl3",
+            "ADSeeker_lvl4",
             "ADSeeker_lvl5",
-            "ADSeeker_lvl6",
-            "ADSeeker_lvl7"
+            "ADSeeker_lvl6"
         ],
         "ProductionBuilding": [
             "Dark Elixir Barrack",
@@ -11846,6 +11951,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -12160,6 +12266,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -12421,6 +12528,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -12690,6 +12798,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -12949,6 +13058,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -13096,10 +13206,12 @@
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "Deprecated": [],
         "TID": [
+            "TID_BOWLER",
             "TID_BOWLER",
             "TID_BOWLER",
             "TID_BOWLER",
@@ -13115,9 +13227,11 @@
             "TID_CHARACTER_INFO_BOWLER",
             "TID_CHARACTER_INFO_BOWLER",
             "TID_CHARACTER_INFO_BOWLER",
+            "TID_CHARACTER_INFO_BOWLER",
             "TID_CHARACTER_INFO_BOWLER"
         ],
         "HousingSpace": [
+            6,
             6,
             6,
             6,
@@ -13133,6 +13247,7 @@
             7,
             7,
             7,
+            7,
             7
         ],
         "LaboratoryLevel": [
@@ -13142,9 +13257,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            175,
             175,
             175,
             175,
@@ -13160,9 +13277,11 @@
             420,
             455,
             500,
-            550
+            550,
+            600
         ],
         "TrainingTime": [
+            60,
             60,
             60,
             60,
@@ -13178,10 +13297,12 @@
             168,
             288,
             318,
-            318
+            360,
+            360
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -13197,9 +13318,11 @@
             170000,
             240000,
             335000,
-            335000
+            350000,
+            350000
         ],
         "DonateCost": [
+            3,
             3,
             3,
             3,
@@ -13217,9 +13340,11 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "AttackSpeed": [
+            2200,
             2200,
             2200,
             2200,
@@ -13236,9 +13361,11 @@
             90,
             96,
             102,
-            114
+            114,
+            126
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -13248,6 +13375,7 @@
             1
         ],
         "DamageRadius": [
+            30,
             30,
             30,
             30,
@@ -13265,9 +13393,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_troll",
             "icon_unit_troll",
             "icon_unit_troll",
             "icon_unit_troll",
@@ -13283,9 +13413,11 @@
             "unit_troll_big",
             "unit_troll_big",
             "unit_troll_big",
+            "unit_troll_big",
             "unit_troll_big"
         ],
         "BigPictureSWF": [
+            "sc/info_troll.sc",
             "sc/info_troll.sc",
             "sc/info_troll.sc",
             "sc/info_troll.sc",
@@ -13301,13 +13433,15 @@
             "trollBoulder_lvl3",
             "trollBoulder_lvl5",
             "trollBoulder_lvl6",
-            "trollBoulder_lvl7"
+            "trollBoulder_lvl7",
+            "trollBoulder_lvl8"
         ],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
         "PreferedTargetBuildingClass": [],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "Troll Deploy",
             "Troll Deploy",
             "Troll Deploy",
             "Troll Deploy",
@@ -13326,6 +13460,7 @@
             "trollBoulderHit",
             "trollBoulderHit",
             "trollBoulderHit",
+            "trollBoulderHit",
             "trollBoulderHit"
         ],
         "HitEffect2": [
@@ -13335,9 +13470,11 @@
             "trollBoulderHit_dust_lvl2",
             "trollBoulderHit_dust_lvl2",
             "trollBoulderHit_dust_lvl2",
+            "trollBoulderHit_dust_lvl2",
             "trollBoulderHit_dust_lvl2"
         ],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -13353,9 +13490,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -13372,6 +13511,7 @@
             "Wizard Die",
             "Wizard Die",
             "Wizard Die",
+            "Wizard Die",
             "Wizard Die"
         ],
         "DieEffect2": [],
@@ -13382,9 +13522,11 @@
             "Troll_lvl3",
             "Troll_lvl5",
             "Troll_lvl6",
-            "Troll_lvl7"
+            "Troll_lvl7",
+            "Troll_lvl8"
         ],
         "ProductionBuilding": [
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
@@ -13394,6 +13536,7 @@
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -13410,9 +13553,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -13436,6 +13581,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -13448,6 +13594,7 @@
             1000,
             1200,
             1250,
+            1200,
             1200
         ],
         "AuraSpell": [],
@@ -13478,6 +13625,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -13495,9 +13643,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "FriendlyGroupWeight": [
+            600,
             600,
             600,
             600,
@@ -13513,9 +13663,11 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "NewTargetAttackDelay": [
+            1100,
             1100,
             1100,
             1100,
@@ -13531,9 +13683,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ChainShootingDistance": [
+            400,
             400,
             400,
             400,
@@ -13548,6 +13702,7 @@
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
         "PreAttackEffect": [
+            "trollAttack",
             "trollAttack",
             "trollAttack",
             "trollAttack",
@@ -13638,6 +13793,7 @@
             "TroopBowler",
             "TroopBowler",
             "TroopBowler",
+            "TroopBowler",
             "TroopBowler"
         ],
         "AltPreviewScenario": [],
@@ -13654,10 +13810,12 @@
             6,
             7,
             8,
-            9
+            9,
+            10
         ],
         "Deprecated": [],
         "TID": [
+            "TID_BABY_DRAGON",
             "TID_BABY_DRAGON",
             "TID_BABY_DRAGON",
             "TID_BABY_DRAGON",
@@ -13677,9 +13835,11 @@
             "TID_BABY_DRAGON_INFO",
             "TID_BABY_DRAGON_INFO",
             "TID_BABY_DRAGON_INFO",
+            "TID_BABY_DRAGON_INFO",
             "TID_BABY_DRAGON_INFO"
         ],
         "HousingSpace": [
+            10,
             10,
             10,
             10,
@@ -13699,6 +13859,7 @@
             11,
             11,
             11,
+            11,
             11
         ],
         "LaboratoryLevel": [
@@ -13710,9 +13871,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            250,
             250,
             250,
             250,
@@ -13732,9 +13895,11 @@
             1700,
             1800,
             1900,
-            2000
+            2000,
+            2100
         ],
         "TrainingTime": [
+            90,
             90,
             90,
             90,
@@ -13754,10 +13919,12 @@
             168,
             264,
             312,
-            312
+            360,
+            360
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -13777,9 +13944,11 @@
             7200000,
             16000000,
             18000000,
-            18000000
+            20000000,
+            20000000
         ],
         "DonateCost": [
+            5,
             5,
             5,
             5,
@@ -13801,9 +13970,11 @@
             225,
             225,
             225,
+            225,
             225
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -13824,10 +13995,12 @@
             125,
             135,
             145,
-            155
+            155,
+            165
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [
+            30,
             30,
             30,
             30,
@@ -13849,9 +14022,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_babydragon",
             "icon_unit_babydragon",
             "icon_unit_babydragon",
             "icon_unit_babydragon",
@@ -13871,9 +14046,11 @@
             "unit_babydragon_big",
             "unit_babydragon_big",
             "unit_babydragon_big",
+            "unit_babydragon_big",
             "unit_babydragon_big"
         ],
         "BigPictureSWF": [
+            "sc/info_babydragon.sc",
             "sc/info_babydragon.sc",
             "sc/info_babydragon.sc",
             "sc/info_babydragon.sc",
@@ -13893,13 +14070,15 @@
             "babydragon_projectile_lvl3",
             "babydragon_projectile_lvl3",
             "babydragon_projectile_lvl3",
-            "babydragon_projectile_lvl3"
+            "babydragon_projectile_lvl3",
+            "babydragon_projectile_lvl10"
         ],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
         "PreferedTargetBuildingClass": [],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "Bdragon Deploy",
             "Bdragon Deploy",
             "Bdragon Deploy",
             "Bdragon Deploy",
@@ -13920,10 +14099,12 @@
             "Bdragon Attack",
             "Bdragon Attack",
             "Bdragon Attack",
+            "Bdragon Attack",
             "Bdragon Attack"
         ],
         "AttackEffect2": [],
         "HitEffect": [
+            "Bdragon Hit",
             "Bdragon Hit",
             "Bdragon Hit",
             "Bdragon Hit",
@@ -13944,6 +14125,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "AirTargets": [
@@ -13955,9 +14137,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -13978,6 +14162,7 @@
             "Bdragon Die",
             "Bdragon Die",
             "Bdragon Die",
+            "Bdragon Die",
             "Bdragon Die"
         ],
         "DieEffect2": [],
@@ -13990,9 +14175,11 @@
             "Baby Dragon 6",
             "Baby Dragon 7",
             "Baby Dragon 8",
-            "Baby Dragon 9"
+            "Baby Dragon 9",
+            "Baby Dragon 10"
         ],
         "ProductionBuilding": [
+            "Barrack",
             "Barrack",
             "Barrack",
             "Barrack",
@@ -14004,6 +14191,7 @@
             "Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -14024,9 +14212,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "TombStone": [
+            "TombStone",
             "TombStone",
             "TombStone",
             "TombStone",
@@ -14052,6 +14242,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -14066,6 +14257,7 @@
             450,
             500,
             550,
+            600,
             600
         ],
         "AuraSpell": [],
@@ -14098,6 +14290,7 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "SecondarySpawnOffset": [],
@@ -14118,9 +14311,11 @@
             1000,
             1000,
             1000,
+            1000,
             1000
         ],
         "EnemyGroupWeight": [
+            1000,
             1000,
             1000,
             1000,
@@ -14133,6 +14328,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -14164,9 +14360,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "BoostRadius": [
+            450,
             450,
             450,
             450,
@@ -14186,9 +14384,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "BoostAttackSpeed": [
+            50,
             50,
             50,
             50,
@@ -14213,6 +14413,7 @@
         "SpecialAbilityEffect": [],
         "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [
+            "spitfire_flame",
             "spitfire_flame",
             "spitfire_flame",
             "spitfire_flame",
@@ -14276,6 +14477,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "TroopAirAny",
             "TroopAirAny",
             "TroopAirAny",
             "TroopAirAny",
@@ -14710,6 +14912,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -15368,6 +15571,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -15575,13 +15779,13 @@
     },
     "EliteBarbarian": {
         "VisualLevel": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            7,
             8,
             9,
             10,
@@ -15674,18 +15878,18 @@
             250
         ],
         "Hitpoints": [
-            1000,
-            1000,
-            1000,
-            1000,
-            1000,
-            1000,
-            1000,
+            700,
+            700,
+            700,
+            700,
+            700,
+            800,
+            900,
             1000,
             1100,
-            1250,
-            1400,
-            1500
+            1200,
+            1300,
+            1350
         ],
         "TrainingTime": [
             25,
@@ -15764,13 +15968,13 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            180,
-            180,
-            180,
-            180,
-            180,
-            180,
-            180,
+            120,
+            120,
+            120,
+            120,
+            120,
+            140,
+            160,
             180,
             200,
             220,
@@ -16044,6 +16248,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -16356,13 +16561,13 @@
     },
     "EliteArcher": {
         "VisualLevel": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            7,
             8,
             9,
             10,
@@ -16455,18 +16660,18 @@
             300
         ],
         "Hitpoints": [
-            450,
-            450,
-            450,
-            450,
-            450,
-            450,
-            450,
+            300,
+            300,
+            300,
+            300,
+            300,
+            350,
+            400,
             450,
             510,
             550,
-            600,
-            650
+            575,
+            600
         ],
         "TrainingTime": [
             72,
@@ -16545,13 +16750,13 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
+            84,
+            84,
+            84,
+            84,
+            84,
+            96,
+            108,
             120,
             132,
             144,
@@ -16838,6 +17043,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -17137,12 +17343,12 @@
     },
     "EliteWallBreaker": {
         "VisualLevel": [
-            7,
-            7,
-            7,
-            7,
-            7,
-            7,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
             7,
             8,
             9,
@@ -17236,12 +17442,12 @@
             350
         ],
         "Hitpoints": [
-            350,
-            350,
-            350,
-            350,
-            350,
-            350,
+            250,
+            250,
+            250,
+            250,
+            250,
+            300,
             350,
             400,
             450,
@@ -17326,12 +17532,12 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            78,
-            78,
-            78,
-            78,
-            78,
-            78,
+            34,
+            34,
+            34,
+            34,
+            34,
+            56,
             78,
             100,
             120,
@@ -17631,12 +17837,12 @@
             "TombStone"
         ],
         "DieDamage": [
-            175,
-            175,
-            175,
-            175,
-            175,
-            175,
+            105,
+            105,
+            105,
+            105,
+            105,
+            140,
             175,
             225,
             275,
@@ -17671,6 +17877,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -17970,14 +18177,14 @@
     },
     "EliteGiant": {
         "VisualLevel": [
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            7,
+            8,
             9,
             10,
             11,
@@ -18069,14 +18276,14 @@
             150
         ],
         "Hitpoints": [
-            4000,
-            4000,
-            4000,
-            4000,
-            4000,
-            4000,
-            4000,
-            4000,
+            3200,
+            3200,
+            3200,
+            3200,
+            3200,
+            3400,
+            3600,
+            3800,
             4000,
             4200,
             4400,
@@ -18159,14 +18366,14 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            130,
-            130,
-            130,
-            130,
-            130,
-            130,
-            130,
-            130,
+            90,
+            90,
+            90,
+            90,
+            90,
+            100,
+            110,
+            120,
             130,
             140,
             150,
@@ -18452,6 +18659,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -19233,6 +19441,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -20230,6 +20439,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -21390,6 +21600,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -22571,6 +22782,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -23754,6 +23966,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -25040,6 +25253,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -26097,6 +26311,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -27133,6 +27348,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -27826,26 +28042,26 @@
         "DonateXP": [],
         "DonateCount": [],
         "AttackRange": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
         ],
         "AttackSpeed": [
             3500,
@@ -27915,26 +28131,26 @@
             1
         ],
         "DamageRadius": [
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75,
-            75
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125,
+            125
         ],
         "AreaDamageIgnoresWalls": [],
         "SelfAsAoeCenter": [
@@ -28504,6 +28720,28 @@
             3,
             3,
             3
+        ],
+        "SummonTime": [
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337,
+            337
         ],
         "SummonCooldown": [
             2700,
@@ -29139,6 +29377,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -29400,6 +29639,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -30302,6 +30542,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -30944,26 +31185,26 @@
             150
         ],
         "Hitpoints": [
-            690,
-            690,
-            690,
-            690,
-            690,
-            690,
-            690,
-            690,
-            690,
-            690,
-            759,
-            759,
-            835,
-            835,
-            918,
-            918,
-            1010,
-            1010,
-            1111,
-            1111
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            830,
+            830,
+            915,
+            915,
+            1000,
+            1000,
+            1100,
+            1100,
+            1220,
+            1220
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [
@@ -31632,6 +31873,28 @@
             4,
             4
         ],
+        "SummonTime": [
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            750,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+        ],
         "SummonCooldown": [
             6000,
             6000,
@@ -31970,26 +32233,26 @@
         ],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
-            6,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
             7,
             7,
             7,
             7,
             8,
             8,
+            8,
+            8,
             9,
             9,
-            10
+            10,
+            10,
+            11
         ],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
@@ -32222,6 +32485,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -33038,6 +33302,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -33473,6 +33738,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -33742,6 +34008,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -34191,6 +34458,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -34787,6 +35055,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -35287,6 +35556,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -35967,6 +36237,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -36481,6 +36752,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -36586,25 +36858,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -36655,8 +36915,20 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineRamSelfDestruct",
+            "SiegeMachineRamSelfDestruct",
+            "SiegeMachineRamSelfDestruct",
+            "SiegeMachineRamSelfDestruct",
+            "SiegeMachineRamSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true,
@@ -36959,6 +37231,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -37052,23 +37325,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_flyer_ability",
-            "icon_unit_siege_machine_flyer_ability",
-            "icon_unit_siege_machine_flyer_ability",
-            "icon_unit_siege_machine_flyer_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -37128,8 +37391,18 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineFlyerSelfDestruct",
+            "SiegeMachineFlyerSelfDestruct",
+            "SiegeMachineFlyerSelfDestruct",
+            "SiegeMachineFlyerSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true,
@@ -37222,7 +37495,7 @@
             168,
             288,
             330,
-            330
+            354
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -37237,7 +37510,7 @@
             9000000,
             17100000,
             19000000,
-            19000000
+            19500000
         ],
         "DonateCost": [
             9,
@@ -37436,6 +37709,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -37872,6 +38146,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -38050,12 +38325,12 @@
     },
     "EliteGoblin": {
         "VisualLevel": [
-            7,
-            7,
-            7,
-            7,
-            7,
-            7,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
             7,
             8,
             9
@@ -38128,12 +38403,12 @@
             400
         ],
         "Hitpoints": [
-            270,
-            270,
-            270,
-            270,
-            270,
-            270,
+            200,
+            200,
+            200,
+            200,
+            200,
+            240,
             270,
             320,
             350
@@ -38200,12 +38475,12 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            155,
-            155,
-            155,
-            155,
-            155,
-            155,
+            120,
+            120,
+            120,
+            120,
+            120,
+            140,
             155,
             170,
             180
@@ -38436,6 +38711,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -38686,12 +38962,12 @@
     },
     "Super Miner": {
         "VisualLevel": [
-            7,
-            7,
-            7,
-            7,
-            7,
-            7,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
             7,
             8,
             9,
@@ -38771,12 +39047,12 @@
             400
         ],
         "Hitpoints": [
-            2900,
-            2900,
-            2900,
-            2900,
-            2900,
-            2900,
+            1700,
+            1900,
+            2100,
+            2300,
+            2500,
+            2700,
             2900,
             3200,
             3500,
@@ -38849,12 +39125,12 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            170,
-            170,
-            170,
-            170,
-            170,
-            170,
+            80,
+            95,
+            110,
+            125,
+            140,
+            155,
             170,
             185,
             200,
@@ -39079,12 +39355,12 @@
             "TombStone"
         ],
         "DieDamage": [
-            1400,
-            1400,
-            1400,
-            1400,
-            1400,
-            1400,
+            800,
+            900,
+            1000,
+            1100,
+            1200,
+            1300,
             1400,
             1600,
             1800,
@@ -39137,6 +39413,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -39166,24 +39443,24 @@
             true
         ],
         "DPSLv2": [
-            340,
-            340,
-            340,
-            340,
-            340,
-            340,
+            160,
+            190,
+            220,
+            250,
+            280,
+            310,
             340,
             370,
             400,
             430
         ],
         "DPSLv3": [
-            520,
-            520,
-            520,
-            520,
-            520,
-            520,
+            280,
+            320,
+            360,
+            400,
+            440,
+            480,
             520,
             560,
             600,
@@ -39465,13 +39742,13 @@
     },
     "HastyBalloon": {
         "VisualLevel": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            7,
             8,
             9,
             10,
@@ -39557,13 +39834,13 @@
             150
         ],
         "Hitpoints": [
-            840,
-            840,
-            840,
-            840,
-            840,
-            840,
-            840,
+            280,
+            280,
+            280,
+            280,
+            280,
+            390,
+            545,
             840,
             940,
             1040,
@@ -39641,13 +39918,13 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            236,
-            236,
-            236,
-            236,
-            236,
-            236,
-            236,
+            108,
+            108,
+            108,
+            108,
+            108,
+            162,
+            198,
             236,
             256,
             276,
@@ -39925,13 +40202,13 @@
             "TombStone"
         ],
         "DieDamage": [
-            400,
-            400,
-            400,
-            400,
-            400,
-            400,
-            400,
+            250,
+            250,
+            250,
+            250,
+            250,
+            300,
+            350,
             400,
             500,
             600,
@@ -39987,6 +40264,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -40001,9 +40279,9 @@
             300,
             300,
             300,
-            350,
-            400,
-            400
+            300,
+            300,
+            300
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -40373,7 +40651,7 @@
             156,
             264,
             318,
-            318
+            342
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -40392,7 +40670,7 @@
             125000,
             240000,
             335000,
-            335000
+            340000
         ],
         "DonateCost": [
             8,
@@ -40615,6 +40893,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -40926,8 +41205,8 @@
             4200,
             4500,
             4800,
-            5100,
-            5300
+            5200,
+            5500
         ],
         "TrainingTime": [
             360,
@@ -41195,6 +41474,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -41571,6 +41851,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -42146,6 +42427,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -42666,6 +42948,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -42771,25 +43054,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_balloon_ability",
-            "icon_unit_siege_machine_balloon_ability",
-            "icon_unit_siege_machine_balloon_ability",
-            "icon_unit_siege_machine_balloon_ability",
-            "icon_unit_siege_machine_balloon_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -42876,8 +43147,20 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineBallonSelfDestruct",
+            "SiegeMachineBallonSelfDestruct",
+            "SiegeMachineBallonSelfDestruct",
+            "SiegeMachineBallonSelfDestruct",
+            "SiegeMachineBallonSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true,
@@ -42904,18 +43187,20 @@
     },
     "InfernoDragon": {
         "VisualLevel": [
-            6,
-            6,
-            6,
-            6,
-            6,
+            1,
+            2,
+            3,
+            4,
+            5,
             6,
             7,
             8,
-            9
+            9,
+            10
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_INFERNO_DRAGON",
             "TID_CHARACTER_INFERNO_DRAGON",
             "TID_CHARACTER_INFERNO_DRAGON",
             "TID_CHARACTER_INFERNO_DRAGON",
@@ -42935,9 +43220,11 @@
             "TID_CHARACTER_INFERNO_DRAGON_INFO",
             "TID_CHARACTER_INFERNO_DRAGON_INFO",
             "TID_CHARACTER_INFERNO_DRAGON_INFO",
+            "TID_CHARACTER_INFERNO_DRAGON_INFO",
             "TID_CHARACTER_INFERNO_DRAGON_INFO"
         ],
         "HousingSpace": [
+            15,
             15,
             15,
             15,
@@ -42957,9 +43244,11 @@
             11,
             11,
             11,
+            11,
             11
         ],
         "LaboratoryLevel": [
+            10,
             10,
             10,
             10,
@@ -42979,20 +43268,23 @@
             225,
             225,
             225,
+            225,
             225
         ],
         "Hitpoints": [
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
+            1150,
+            1300,
+            1450,
+            1600,
+            1750,
             1900,
             2050,
             2200,
-            2300
+            2300,
+            2400
         ],
         "TrainingTime": [
+            135,
             135,
             135,
             135,
@@ -43014,10 +43306,12 @@
             "Elixir",
             "Elixir",
             "Elixir",
+            "Elixir",
             "Elixir"
         ],
         "UpgradeCost": [],
         "DonateCost": [
+            8,
             8,
             8,
             8,
@@ -43039,9 +43333,11 @@
             350,
             350,
             350,
+            350,
             350
         ],
         "AttackSpeed": [
+            128,
             128,
             128,
             128,
@@ -43054,17 +43350,19 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            75,
-            75,
-            75,
-            75,
-            75,
+            55,
+            59,
+            63,
+            67,
+            71,
             75,
             79,
             83,
-            85
+            85,
+            87
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -43087,9 +43385,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_elite_infernodragon",
             "icon_unit_elite_infernodragon",
             "icon_unit_elite_infernodragon",
             "icon_unit_elite_infernodragon",
@@ -43109,9 +43409,11 @@
             "unit_elite_infernodragon_big",
             "unit_elite_infernodragon_big",
             "unit_elite_infernodragon_big",
+            "unit_elite_infernodragon_big",
             "unit_elite_infernodragon_big"
         ],
         "BigPictureSWF": [
+            "sc/info_elite_infernodragon.sc",
             "sc/info_elite_infernodragon.sc",
             "sc/info_elite_infernodragon.sc",
             "sc/info_elite_infernodragon.sc",
@@ -43136,10 +43438,12 @@
             "Infdragon Deploy",
             "Infdragon Deploy",
             "Infdragon Deploy",
+            "Infdragon Deploy",
             "Infdragon Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Inferno Dragon Attack 1",
             "Inferno Dragon Attack 1",
             "Inferno Dragon Attack 1",
             "Inferno Dragon Attack 1",
@@ -43159,9 +43463,11 @@
             "Inferno Fire2",
             "Inferno Fire2",
             "Inferno Fire2",
+            "Inferno Fire2",
             "Inferno Fire2"
         ],
         "HitEffect": [
+            "Dark Tower Hit",
             "Dark Tower Hit",
             "Dark Tower Hit",
             "Dark Tower Hit",
@@ -43182,6 +43488,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "AirTargets": [
@@ -43193,9 +43500,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -43216,10 +43525,12 @@
             "Infdragon Die",
             "Infdragon Die",
             "Infdragon Die",
+            "Infdragon Die",
             "Infdragon Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "InfernoDragon",
             "InfernoDragon",
             "InfernoDragon",
             "InfernoDragon",
@@ -43239,9 +43550,11 @@
             "Barrack",
             "Barrack",
             "Barrack",
+            "Barrack",
             "Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -43262,9 +43575,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "TombStone": [
+            "TombStone",
             "TombStone",
             "TombStone",
             "TombStone",
@@ -43290,12 +43605,14 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
+            200,
             200,
             200,
             200,
@@ -43325,31 +43642,35 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "DPSLv2": [
-            150,
-            150,
-            150,
-            150,
-            150,
+            110,
+            118,
+            126,
+            134,
+            142,
             150,
             158,
             166,
-            170
+            170,
+            174
         ],
         "DPSLv3": [
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
+            1100,
+            1180,
+            1260,
+            1340,
+            1420,
             1500,
             1580,
             1660,
-            1700
+            1700,
+            1740
         ],
         "Lv2SwitchTime": [
+            1700,
             1700,
             1700,
             1700,
@@ -43369,6 +43690,7 @@
             3200,
             3200,
             3200,
+            3200,
             3200
         ],
         "AttackEffectLv2": [
@@ -43380,9 +43702,11 @@
             "Inferno Dragon Attack 2",
             "Inferno Dragon Attack 2",
             "Inferno Dragon Attack 2",
+            "Inferno Dragon Attack 2",
             "Inferno Dragon Attack 2"
         ],
         "AttackEffectLv3": [
+            "Inferno Dragon Attack 3",
             "Inferno Dragon Attack 3",
             "Inferno Dragon Attack 3",
             "Inferno Dragon Attack 3",
@@ -43403,9 +43727,11 @@
             "Inf Dragon Up 2",
             "Inf Dragon Up 2",
             "Inf Dragon Up 2",
+            "Inf Dragon Up 2",
             "Inf Dragon Up 2"
         ],
         "TransitionEffectLv3": [
+            "Inf Dragon Up 3",
             "Inf Dragon Up 3",
             "Inf Dragon Up 3",
             "Inf Dragon Up 3",
@@ -43418,6 +43744,7 @@
         ],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            60,
             60,
             60,
             60,
@@ -43446,9 +43773,11 @@
             1500,
             1500,
             1500,
+            1500,
             1500
         ],
         "EnemyGroupWeight": [
+            1500,
             1500,
             1500,
             1500,
@@ -43461,6 +43790,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -43499,6 +43829,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityName": [
@@ -43510,9 +43841,11 @@
             "TID_INFERNO_DRAGON_ABILITY_NAME",
             "TID_INFERNO_DRAGON_ABILITY_NAME",
             "TID_INFERNO_DRAGON_ABILITY_NAME",
+            "TID_INFERNO_DRAGON_ABILITY_NAME",
             "TID_INFERNO_DRAGON_ABILITY_NAME"
         ],
         "SpecialAbilityInfo": [
+            "TID_INFERNO_DRAGON_ABILITY_HELP",
             "TID_INFERNO_DRAGON_ABILITY_HELP",
             "TID_INFERNO_DRAGON_ABILITY_HELP",
             "TID_INFERNO_DRAGON_ABILITY_HELP",
@@ -43535,6 +43868,7 @@
         "ScaleByTH": [],
         "EnabledByCalendar": [],
         "EnabledBySuperLicence": [
+            true,
             true,
             true,
             true,
@@ -43602,6 +43936,7 @@
             "InfernoDragon",
             "InfernoDragon",
             "InfernoDragon",
+            "InfernoDragon",
             "InfernoDragon"
         ],
         "AltPreviewScenario": [],
@@ -43610,12 +43945,12 @@
     },
     "EliteValkyrie": {
         "VisualLevel": [
-            7,
-            7,
-            7,
-            7,
-            7,
-            7,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
             7,
             8,
             9,
@@ -43702,12 +44037,12 @@
             300
         ],
         "Hitpoints": [
-            2400,
-            2400,
-            2400,
-            2400,
-            2400,
-            2400,
+            1200,
+            1400,
+            1600,
+            1800,
+            2000,
+            2200,
             2400,
             2700,
             2900,
@@ -43786,12 +44121,12 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            250,
-            250,
-            250,
-            250,
-            250,
-            250,
+            100,
+            125,
+            150,
+            175,
+            200,
+            225,
             250,
             300,
             325,
@@ -44072,6 +44407,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -44631,6 +44967,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -44791,10 +45128,10 @@
     },
     "Head Witch": {
         "VisualLevel": [
-            5,
-            5,
-            5,
-            5,
+            1,
+            2,
+            3,
+            4,
             5,
             6,
             7
@@ -44855,10 +45192,10 @@
             150
         ],
         "Hitpoints": [
-            3200,
-            3200,
-            3200,
-            3200,
+            2400,
+            2600,
+            2800,
+            3000,
             3200,
             3400,
             3600
@@ -44931,10 +45268,10 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            360,
-            360,
-            360,
-            360,
+            240,
+            270,
+            300,
+            330,
             360,
             390,
             420
@@ -45160,6 +45497,15 @@
             1,
             1,
             1
+        ],
+        "SummonTime": [
+            1000,
+            1000,
+            1000,
+            1000,
+            1000,
+            1000,
+            1000
         ],
         "SummonCooldown": [
             30000,
@@ -45517,6 +45863,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -45796,6 +46143,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -46221,6 +46569,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -47253,6 +47602,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -48373,6 +48723,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -49121,6 +49472,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -49475,6 +49827,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -49740,6 +50093,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -49886,10 +50240,12 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "Deprecated": [],
         "TID": [
+            "TID_SIEGE_MACHINE_CARRIER",
             "TID_SIEGE_MACHINE_CARRIER",
             "TID_SIEGE_MACHINE_CARRIER",
             "TID_SIEGE_MACHINE_CARRIER",
@@ -49899,9 +50255,11 @@
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CARRIER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CARRIER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CARRIER",
+            "TID_CHARACTER_INFO_SIEGE_MACHINE_CARRIER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CARRIER"
         ],
         "HousingSpace": [
+            1,
             1,
             1,
             1,
@@ -49911,15 +50269,18 @@
             4,
             4,
             4,
+            4,
             4
         ],
         "LaboratoryLevel": [
             9,
             10,
             10,
-            11
+            11,
+            14
         ],
         "Speed": [
+            0,
             0,
             0,
             0,
@@ -49929,9 +50290,11 @@
             3300,
             3700,
             4100,
-            4500
+            4500,
+            4800
         ],
         "TrainingTime": [
+            1200,
             1200,
             1200,
             1200,
@@ -49941,10 +50304,12 @@
             120,
             180,
             192,
-            192
+            288,
+            288
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -49954,9 +50319,11 @@
             5000000,
             7000000,
             8500000,
-            8500000
+            18000000,
+            18000000
         ],
         "DonateCost": [
+            15,
             15,
             15,
             15,
@@ -49966,9 +50333,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "DonateCount": [
+            30,
             30,
             30,
             30,
@@ -49978,9 +50347,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "AttackSpeed": [
+            800,
             800,
             800,
             800,
@@ -49990,9 +50361,11 @@
             550,
             550,
             550,
+            550,
             550
         ],
         "DPS": [
+            0,
             0,
             0,
             0,
@@ -50002,9 +50375,11 @@
             10,
             10,
             10,
+            10,
             10
         ],
         "DamageRadius": [
+            0,
             0,
             0,
             0,
@@ -50016,9 +50391,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_siege_machine_carrier",
             "icon_unit_siege_machine_carrier",
             "icon_unit_siege_machine_carrier",
             "icon_unit_siege_machine_carrier",
@@ -50028,9 +50405,11 @@
             "unit_siege_machine_clan_carrier_big",
             "unit_siege_machine_clan_carrier_big",
             "unit_siege_machine_clan_carrier_big",
+            "unit_siege_machine_clan_carrier_big",
             "unit_siege_machine_clan_carrier_big"
         ],
         "BigPictureSWF": [
+            "sc/info_siege_clan_carrier.sc",
             "sc/info_siege_clan_carrier.sc",
             "sc/info_siege_clan_carrier.sc",
             "sc/info_siege_clan_carrier.sc",
@@ -50044,9 +50423,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "DeployEffect": [
+            "Siege Carrier Deploy",
             "Siege Carrier Deploy",
             "Siege Carrier Deploy",
             "Siege Carrier Deploy",
@@ -50059,9 +50440,11 @@
             "Siege Ram Hit",
             "Siege Ram Hit",
             "Siege Ram Hit",
+            "Siege Ram Hit",
             "Siege Ram Hit"
         ],
         "HitEffect2": [
+            "Giant Big Hit",
             "Giant Big Hit",
             "Giant Big Hit",
             "Giant Big Hit",
@@ -50071,15 +50454,18 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -50090,6 +50476,7 @@
             "Siege Ram Die",
             "Siege Ram Die",
             "Siege Ram Die",
+            "Siege Ram Die",
             "Siege Ram Die"
         ],
         "DieEffect2": [],
@@ -50097,9 +50484,11 @@
             "SiegeMachine_Carrier_lvl1",
             "SiegeMachine_Carrier_lvl2",
             "SiegeMachine_Carrier_lvl3",
-            "SiegeMachine_Carrier_lvl4"
+            "SiegeMachine_Carrier_lvl4",
+            "SiegeMachine_Carrier_lvl5"
         ],
         "ProductionBuilding": [
+            "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
@@ -50109,10 +50498,12 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
             0,
             0,
             0,
@@ -50134,6 +50525,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -50141,10 +50533,12 @@
             1300,
             1300,
             1300,
+            1300,
             1300
         ],
         "SpawnOnAttack": [],
         "StrengthWeight": [
+            53,
             53,
             53,
             53,
@@ -50175,6 +50569,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -50190,9 +50585,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "EnemyGroupWeight": [
+            100,
             100,
             100,
             100,
@@ -50200,6 +50597,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -50227,28 +50625,19 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_carrier_ability",
-            "icon_unit_siege_machine_carrier_ability",
-            "icon_unit_siege_machine_carrier_ability",
-            "icon_unit_siege_machine_carrier_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -50264,6 +50653,7 @@
         "EvolveTime": [],
         "CanAttackWhileMoving": [],
         "PreferredMovementTarget": [
+            "Town Hall",
             "Town Hall",
             "Town Hall",
             "Town Hall",
@@ -50287,27 +50677,32 @@
             "PEKKA",
             "Wizard",
             "Wizard",
+            "Wizard",
             "Wizard"
         ],
         "BunkerTroopCount1": [
             1,
             1,
             1,
-            1
+            1,
+            2
         ],
         "BunkerTroopCount2": [
             6,
             8,
             10,
+            11,
             11
         ],
         "BunkerDegenerationTime": [
             30000,
             30000,
             30000,
+            30000,
             30000
         ],
         "BunkerSpawnDist": [
+            0,
             0,
             0,
             0,
@@ -50323,10 +50718,23 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineCarrierSelfDestruct",
+            "SiegeMachineCarrierSelfDestruct",
+            "SiegeMachineCarrierSelfDestruct",
+            "SiegeMachineCarrierSelfDestruct",
+            "SiegeMachineCarrierSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
+            true,
             true,
             true,
             true,
@@ -50341,6 +50749,7 @@
             "SiegeBarrack",
             "SiegeBarrack",
             "SiegeBarrack",
+            "SiegeBarrack",
             "SiegeBarrack"
         ],
         "AltPreviewScenario": [],
@@ -50349,10 +50758,10 @@
     },
     "Ice Hound": {
         "VisualLevel": [
-            5,
-            5,
-            5,
-            5,
+            1,
+            2,
+            3,
+            4,
             5,
             6
         ],
@@ -50406,10 +50815,10 @@
             250
         ],
         "Hitpoints": [
-            9500,
-            9500,
-            9500,
-            9500,
+            7500,
+            8000,
+            8500,
+            9000,
             9500,
             10000
         ],
@@ -50460,10 +50869,10 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            10,
-            10,
-            10,
-            10,
+            2,
+            4,
+            6,
+            8,
             10,
             15
         ],
@@ -50639,10 +51048,10 @@
         ],
         "IsSecondaryTroop": [],
         "SecondaryTroopCnt": [
-            10,
-            10,
-            10,
-            10,
+            6,
+            7,
+            8,
+            9,
             10,
             12
         ],
@@ -50667,6 +51076,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -50678,7 +51088,7 @@
             550,
             550,
             550,
-            600
+            550
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -51119,9 +51529,9 @@
             "ADSeeker_lvl1",
             "ADSeeker_lvl2",
             "ADSeeker_lvl3",
+            "ADSeeker_lvl4",
             "ADSeeker_lvl5",
-            "ADSeeker_lvl6",
-            "ADSeeker_lvl7"
+            "ADSeeker_lvl6"
         ],
         "ProductionBuilding": [
             "Dark Elixir Barrack",
@@ -51220,19 +51630,13 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            160,
-            240,
-            350,
-            420,
-            490,
-            560
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -51523,6 +51927,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -51664,10 +52069,10 @@
     },
     "Ice Hound_DEF": {
         "VisualLevel": [
-            5,
-            5,
-            5,
-            5,
+            1,
+            2,
+            3,
+            4,
             5,
             6
         ],
@@ -51721,10 +52126,10 @@
             250
         ],
         "Hitpoints": [
-            9500,
-            9500,
-            9500,
-            9500,
+            7500,
+            8000,
+            8500,
+            9000,
             9500,
             10000
         ],
@@ -51754,10 +52159,10 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            10,
-            10,
-            10,
-            10,
+            2,
+            4,
+            6,
+            8,
             10,
             15
         ],
@@ -51933,10 +52338,10 @@
         ],
         "IsSecondaryTroop": [],
         "SecondaryTroopCnt": [
-            10,
-            10,
-            10,
-            10,
+            6,
+            7,
+            8,
+            9,
             10,
             11
         ],
@@ -51961,19 +52366,13 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            550,
-            550,
-            550,
-            550,
-            550,
-            600
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -52161,16 +52560,18 @@
     },
     "Super Bowler": {
         "VisualLevel": [
-            4,
-            4,
-            4,
+            1,
+            2,
+            3,
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "Deprecated": [],
         "TID": [
+            "TID_SUPER_BOWLER",
             "TID_SUPER_BOWLER",
             "TID_SUPER_BOWLER",
             "TID_SUPER_BOWLER",
@@ -52186,9 +52587,11 @@
             "TID_SUPER_BOWLER_INFO",
             "TID_SUPER_BOWLER_INFO",
             "TID_SUPER_BOWLER_INFO",
+            "TID_SUPER_BOWLER_INFO",
             "TID_SUPER_BOWLER_INFO"
         ],
         "HousingSpace": [
+            30,
             30,
             30,
             30,
@@ -52204,9 +52607,11 @@
             7,
             7,
             7,
+            7,
             7
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -52222,18 +52627,21 @@
             175,
             175,
             175,
+            175,
             175
         ],
         "Hitpoints": [
-            1600,
-            1600,
-            1600,
+            1000,
+            1200,
+            1400,
             1600,
             1800,
             2000,
-            2200
+            2200,
+            2400
         ],
         "TrainingTime": [
+            300,
             300,
             300,
             300,
@@ -52251,10 +52659,12 @@
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
+            "DarkElixir",
             "DarkElixir"
         ],
         "UpgradeCost": [],
         "DonateCost": [
+            15,
             15,
             15,
             15,
@@ -52272,9 +52682,11 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "AttackSpeed": [
+            2200,
             2200,
             2200,
             2200,
@@ -52285,15 +52697,17 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            170,
-            170,
-            170,
+            125,
+            140,
+            155,
             170,
             185,
             200,
-            215
+            215,
+            230
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -52303,6 +52717,7 @@
             1
         ],
         "DamageRadius": [
+            60,
             60,
             60,
             60,
@@ -52320,9 +52735,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_elite_bowler",
             "icon_unit_elite_bowler",
             "icon_unit_elite_bowler",
             "icon_unit_elite_bowler",
@@ -52338,6 +52755,7 @@
             "unit_elite_bowler_big",
             "unit_elite_bowler_big",
             "unit_elite_bowler_big",
+            "unit_elite_bowler_big",
             "unit_elite_bowler_big"
         ],
         "BigPictureSWF": [
@@ -52347,9 +52765,11 @@
             "sc/info_elite_bowler.sc",
             "sc/info_elite_bowler.sc",
             "sc/info_elite_bowler.sc",
+            "sc/info_elite_bowler.sc",
             "sc/info_elite_bowler.sc"
         ],
         "Projectile": [
+            "SuperBowlerProjectile",
             "SuperBowlerProjectile",
             "SuperBowlerProjectile",
             "SuperBowlerProjectile",
@@ -52369,12 +52789,14 @@
             "Super Troll Deploy",
             "Super Troll Deploy",
             "Super Troll Deploy",
+            "Super Troll Deploy",
             "Super Troll Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [],
         "AttackEffect2": [],
         "HitEffect": [
+            "trollBoulderHit",
             "trollBoulderHit",
             "trollBoulderHit",
             "trollBoulderHit",
@@ -52390,9 +52812,11 @@
             "trollBoulderHit_dust_lvl1",
             "trollBoulderHit_dust_lvl1",
             "trollBoulderHit_dust_lvl2",
+            "trollBoulderHit_dust_lvl2",
             "trollBoulderHit_dust_lvl2"
         ],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -52408,9 +52832,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -52427,10 +52853,12 @@
             "Wizard Die",
             "Wizard Die",
             "Wizard Die",
+            "Wizard Die",
             "Wizard Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "SuperBowler",
             "SuperBowler",
             "SuperBowler",
             "SuperBowler",
@@ -52446,9 +52874,11 @@
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -52465,9 +52895,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -52491,20 +52923,13 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            600,
-            600,
-            600,
-            600,
-            800,
-            800,
-            800
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -52533,6 +52958,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -52550,9 +52976,11 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "FriendlyGroupWeight": [
+            2500,
             2500,
             2500,
             2500,
@@ -52568,9 +52996,11 @@
             2500,
             2500,
             2500,
+            2500,
             2500
         ],
         "NewTargetAttackDelay": [
+            1100,
             1100,
             1100,
             1100,
@@ -52586,9 +53016,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ChainShootingDistance": [
+            300,
             300,
             300,
             300,
@@ -52603,6 +53035,7 @@
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
         "PreAttackEffect": [
+            "SuptrollAttack",
             "SuptrollAttack",
             "SuptrollAttack",
             "SuptrollAttack",
@@ -52630,6 +53063,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityName": [
@@ -52639,9 +53073,11 @@
             "TID_SUPER_BOWLER_ABILITY_NAME",
             "TID_SUPER_BOWLER_ABILITY_NAME",
             "TID_SUPER_BOWLER_ABILITY_NAME",
+            "TID_SUPER_BOWLER_ABILITY_NAME",
             "TID_SUPER_BOWLER_ABILITY_NAME"
         ],
         "SpecialAbilityInfo": [
+            "TID_SUPER_BOWLER_ABILITY_HELP",
             "TID_SUPER_BOWLER_ABILITY_HELP",
             "TID_SUPER_BOWLER_ABILITY_HELP",
             "TID_SUPER_BOWLER_ABILITY_HELP",
@@ -52662,6 +53098,7 @@
         "ScaleByTH": [],
         "EnabledByCalendar": [],
         "EnabledBySuperLicence": [
+            true,
             true,
             true,
             true,
@@ -52725,6 +53162,7 @@
             "SuperTroopLongRange",
             "SuperTroopLongRange",
             "SuperTroopLongRange",
+            "SuperTroopLongRange",
             "SuperTroopLongRange"
         ],
         "AltPreviewScenario": [],
@@ -52733,12 +53171,12 @@
     },
     "Super Dragon": {
         "VisualLevel": [
-            7,
-            7,
-            7,
-            7,
-            7,
-            7,
+            3,
+            3,
+            3,
+            4,
+            5,
+            6,
             7,
             8,
             9,
@@ -52825,17 +53263,17 @@
             175
         ],
         "Hitpoints": [
-            6100,
-            6100,
-            6100,
-            6100,
-            6100,
-            6100,
+            3900,
+            3900,
+            3900,
+            4500,
+            5100,
+            5600,
             6100,
             6400,
             6700,
-            7100,
-            7400
+            7200,
+            7600
         ],
         "TrainingTime": [
             360,
@@ -52921,12 +53359,12 @@
             1500
         ],
         "DPS": [
-            80,
-            80,
-            80,
-            80,
-            80,
-            80,
+            60,
+            60,
+            60,
+            65,
+            70,
+            75,
             80,
             85,
             90,
@@ -53207,6 +53645,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -53671,6 +54110,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -53853,14 +54293,14 @@
     },
     "Super Wizard": {
         "VisualLevel": [
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
-            9,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            7,
+            8,
             9,
             10,
             11,
@@ -53952,14 +54392,14 @@
             250
         ],
         "Hitpoints": [
-            450,
-            450,
-            450,
-            450,
-            450,
-            450,
-            450,
-            450,
+            250,
+            250,
+            250,
+            250,
+            250,
+            300,
+            350,
+            400,
             450,
             500,
             540,
@@ -54042,14 +54482,14 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            220,
-            220,
-            220,
-            220,
-            220,
-            220,
-            220,
-            220,
+            140,
+            140,
+            140,
+            140,
+            140,
+            160,
+            180,
+            200,
             220,
             240,
             260,
@@ -54322,6 +54762,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -54647,20 +55088,22 @@
     },
     "Super Minion": {
         "VisualLevel": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
+            4,
+            4,
+            4,
+            4,
+            5,
+            6,
+            7,
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "Deprecated": [],
         "TID": [
+            "TID_SUPER_MINION",
             "TID_SUPER_MINION",
             "TID_SUPER_MINION",
             "TID_SUPER_MINION",
@@ -54684,9 +55127,11 @@
             "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION",
+            "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION"
         ],
         "HousingSpace": [
+            12,
             12,
             12,
             12,
@@ -54710,9 +55155,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -54736,22 +55183,25 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "Hitpoints": [
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
+            1100,
+            1100,
+            1100,
+            1100,
+            1200,
+            1300,
+            1400,
             1500,
             1600,
             1700,
-            1800
+            1800,
+            1900
         ],
         "TrainingTime": [
+            108,
             108,
             108,
             108,
@@ -54777,10 +55227,12 @@
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
+            "DarkElixir",
             "DarkElixir"
         ],
         "UpgradeCost": [],
         "DonateCost": [
+            6,
             6,
             6,
             6,
@@ -54806,9 +55258,11 @@
             350,
             350,
             350,
+            350,
             350
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -54823,19 +55277,21 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
+            200,
+            200,
+            200,
+            200,
+            225,
+            250,
+            275,
             300,
             325,
             350,
-            360
+            360,
+            370
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -54862,9 +55318,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_elite_minion",
             "icon_unit_elite_minion",
             "icon_unit_elite_minion",
             "icon_unit_elite_minion",
@@ -54888,9 +55346,11 @@
             "unit_elite_minion_big",
             "unit_elite_minion_big",
             "unit_elite_minion_big",
+            "unit_elite_minion_big",
             "unit_elite_minion_big"
         ],
         "BigPictureSWF": [
+            "sc/info_elite_minion.sc",
             "sc/info_elite_minion.sc",
             "sc/info_elite_minion.sc",
             "sc/info_elite_minion.sc",
@@ -54914,9 +55374,11 @@
             "super_gargoyle_projectile",
             "super_gargoyle_projectile",
             "super_gargoyle_projectile",
+            "super_gargoyle_projectile",
             "super_gargoyle_projectile"
         ],
         "AltProjectile": [
+            "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
@@ -54943,10 +55405,12 @@
             "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy",
+            "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
@@ -54971,10 +55435,12 @@
             "Moving Cannon Hit",
             "Moving Cannon Hit",
             "Moving Cannon Hit",
+            "Moving Cannon Hit",
             "Moving Cannon Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            true,
             true,
             true,
             true,
@@ -54998,9 +55464,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -55025,10 +55493,12 @@
             "Gargoyle Die",
             "Gargoyle Die",
             "Gargoyle Die",
+            "Gargoyle Die",
             "Gargoyle Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "SuperMinion",
             "SuperMinion",
             "SuperMinion",
             "SuperMinion",
@@ -55052,9 +55522,11 @@
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -55079,9 +55551,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -55109,6 +55583,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -55147,6 +55622,7 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "SecondarySpawnOffset": [],
@@ -55159,6 +55635,7 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
+            1200,
             1200,
             1200,
             1200,
@@ -55182,10 +55659,12 @@
             1000,
             1000,
             1000,
+            1000,
             1000
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -55228,9 +55707,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityName": [
+            "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
@@ -55254,9 +55735,11 @@
             "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP",
+            "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP"
         ],
         "SpecialAbilityType": [
+            "SpecialProjectile",
             "SpecialProjectile",
             "SpecialProjectile",
             "SpecialProjectile",
@@ -55280,9 +55763,11 @@
             6,
             6,
             6,
+            6,
             6
         ],
         "SpecialAbilityAttribute2": [
+            165,
             165,
             165,
             165,
@@ -55304,6 +55789,7 @@
         "ScaleByTH": [],
         "EnabledByCalendar": [],
         "EnabledBySuperLicence": [
+            true,
             true,
             true,
             true,
@@ -55349,6 +55835,7 @@
             "Super Minion_DEF",
             "Super Minion_DEF",
             "Super Minion_DEF",
+            "Super Minion_DEF",
             "Super Minion_DEF"
         ],
         "DamageReductionToStorages": [],
@@ -55377,6 +55864,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "SuperTroopAir",
             "SuperTroopAir",
             "SuperTroopAir",
             "SuperTroopAir",
@@ -55521,6 +56009,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -55664,20 +56153,22 @@
     },
     "Super Minion_DEF": {
         "VisualLevel": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
+            4,
+            4,
+            4,
+            4,
+            5,
+            6,
+            7,
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "Deprecated": [],
         "TID": [
+            "TID_SUPER_MINION",
             "TID_SUPER_MINION",
             "TID_SUPER_MINION",
             "TID_SUPER_MINION",
@@ -55701,9 +56192,11 @@
             "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION",
+            "TID_CHARACTER_INFO_SUPER_MINION",
             "TID_CHARACTER_INFO_SUPER_MINION"
         ],
         "HousingSpace": [
+            12,
             12,
             12,
             12,
@@ -55727,9 +56220,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -55753,20 +56248,22 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "Hitpoints": [
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
+            1100,
+            1100,
+            1100,
+            1100,
+            1200,
+            1300,
+            1400,
             1500,
             1600,
             1700,
-            1800
+            1800,
+            1900
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
@@ -55774,6 +56271,7 @@
         "UpgradeResource": [],
         "UpgradeCost": [],
         "DonateCost": [
+            6,
             6,
             6,
             6,
@@ -55799,9 +56297,11 @@
             350,
             350,
             350,
+            350,
             350
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -55816,19 +56316,21 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
+            200,
+            200,
+            200,
+            200,
+            225,
+            250,
+            275,
             300,
             325,
             350,
-            360
+            360,
+            370
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -55859,9 +56361,11 @@
             "super_gargoyle_projectile",
             "super_gargoyle_projectile",
             "super_gargoyle_projectile",
+            "super_gargoyle_projectile",
             "super_gargoyle_projectile"
         ],
         "AltProjectile": [
+            "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
             "super_gargoyle_projectile_big",
@@ -55888,10 +56392,12 @@
             "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy",
+            "Super_Gargoyle Deploy",
             "Super_Gargoyle Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
             "Super_Gargoyle Attack",
@@ -55916,10 +56422,12 @@
             "Moving Cannon Hit",
             "Moving Cannon Hit",
             "Moving Cannon Hit",
+            "Moving Cannon Hit",
             "Moving Cannon Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            true,
             true,
             true,
             true,
@@ -55943,9 +56451,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -55970,10 +56480,12 @@
             "Gargoyle Die",
             "Gargoyle Die",
             "Gargoyle Die",
+            "Gargoyle Die",
             "Gargoyle Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "SuperMinion",
             "SuperMinion",
             "SuperMinion",
             "SuperMinion",
@@ -55998,6 +56510,7 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "MovementOffsetAmount": [],
@@ -56012,9 +56525,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -56042,6 +56557,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "SecondaryTroop": [],
@@ -56054,6 +56570,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -56092,6 +56609,7 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "SecondarySpawnOffset": [],
@@ -56104,6 +56622,7 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
+            1200,
             1200,
             1200,
             1200,
@@ -56127,10 +56646,12 @@
             1000,
             1000,
             1000,
+            1000,
             1000
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -56173,9 +56694,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityName": [
+            "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
             "TID_SUPER_MINION_ABILITY_NAME",
@@ -56199,9 +56722,11 @@
             "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP",
+            "TID_SUPER_MINION_ABILITY_HELP",
             "TID_SUPER_MINION_ABILITY_HELP"
         ],
         "SpecialAbilityType": [
+            "SpecialProjectile",
             "SpecialProjectile",
             "SpecialProjectile",
             "SpecialProjectile",
@@ -56225,9 +56750,11 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "SpecialAbilityAttribute2": [
+            165,
             165,
             165,
             165,
@@ -56307,10 +56834,12 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "Deprecated": [],
         "TID": [
+            "TID_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_SIEGE_MACHINE_LOG_LAUNCHER",
@@ -56320,9 +56849,11 @@
             "TID_CHARACTER_INFO_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_LOG_LAUNCHER",
+            "TID_CHARACTER_INFO_SIEGE_MACHINE_LOG_LAUNCHER",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_LOG_LAUNCHER"
         ],
         "HousingSpace": [
+            1,
             1,
             1,
             1,
@@ -56332,15 +56863,18 @@
             5,
             5,
             5,
+            5,
             5
         ],
         "LaboratoryLevel": [
             9,
             10,
             10,
-            11
+            11,
+            14
         ],
         "Speed": [
+            70,
             70,
             70,
             70,
@@ -56350,9 +56884,11 @@
             4000,
             4400,
             4800,
-            5200
+            5200,
+            5500
         ],
         "TrainingTime": [
+            1200,
             1200,
             1200,
             1200,
@@ -56362,10 +56898,12 @@
             120,
             180,
             192,
-            192
+            288,
+            288
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -56375,9 +56913,11 @@
             4800000,
             6500000,
             8500000,
-            8500000
+            18000000,
+            18000000
         ],
         "DonateCost": [
+            15,
             15,
             15,
             15,
@@ -56387,9 +56927,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "DonateCount": [
+            30,
             30,
             30,
             30,
@@ -56399,9 +56941,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "AttackSpeed": [
+            3000,
             3000,
             3000,
             3000,
@@ -56412,9 +56956,11 @@
             140,
             160,
             180,
-            200
+            200,
+            220
         ],
         "PreferedTargetDamageMod": [
+            4,
             4,
             4,
             4,
@@ -56427,9 +56973,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_siege_machine_LogLauncher",
             "icon_unit_siege_machine_LogLauncher",
             "icon_unit_siege_machine_LogLauncher",
             "icon_unit_siege_machine_LogLauncher",
@@ -56439,15 +56987,18 @@
             "unit_siege_machine_loglauncher_big",
             "unit_siege_machine_loglauncher_big",
             "unit_siege_machine_loglauncher_big",
+            "unit_siege_machine_loglauncher_big",
             "unit_siege_machine_loglauncher_big"
         ],
         "BigPictureSWF": [
             "sc/info_siege_machine_loglauncher.sc",
             "sc/info_siege_machine_loglauncher.sc",
             "sc/info_siege_machine_loglauncher.sc",
+            "sc/info_siege_machine_loglauncher.sc",
             "sc/info_siege_machine_loglauncher.sc"
         ],
         "Projectile": [
+            "RollingLog",
             "RollingLog",
             "RollingLog",
             "RollingLog",
@@ -56459,15 +57010,18 @@
             "Wall",
             "Wall",
             "Wall",
+            "Wall",
             "Wall"
         ],
         "PreferredTargetNoTargeting": [
             true,
             true,
             true,
+            true,
             true
         ],
         "DeployEffect": [
+            "Log Siege Deploy",
             "Log Siege Deploy",
             "Log Siege Deploy",
             "Log Siege Deploy",
@@ -56478,10 +57032,12 @@
             "Log Siege Attack",
             "Log Siege Attack",
             "Log Siege Attack",
+            "Log Siege Attack",
             "Log Siege Attack"
         ],
         "AttackEffect2": [],
         "HitEffect": [
+            "Generic Hit",
             "Generic Hit",
             "Generic Hit",
             "Generic Hit",
@@ -56492,15 +57048,18 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -56511,6 +57070,7 @@
             "Siege Ram Die",
             "Siege Ram Die",
             "Siege Ram Die",
+            "Siege Ram Die",
             "Siege Ram Die"
         ],
         "DieEffect2": [],
@@ -56518,9 +57078,11 @@
             "SiegeMachine_LogLauncher_lvl1",
             "SiegeMachine_LogLauncher_lvl2",
             "SiegeMachine_LogLauncher_lvl3",
-            "SiegeMachine_LogLauncher_lvl4"
+            "SiegeMachine_LogLauncher_lvl4",
+            "SiegeMachine_LogLauncher_lvl5"
         ],
         "ProductionBuilding": [
+            "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
@@ -56530,10 +57092,12 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
             0,
             0,
             0,
@@ -56555,6 +57119,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -56564,6 +57129,7 @@
             34,
             36,
             38,
+            40,
             40
         ],
         "AuraSpell": [],
@@ -56573,6 +57139,7 @@
         "NoClipping": [],
         "Squad": [],
         "WallMovementCost": [
+            16,
             16,
             16,
             16,
@@ -56596,6 +57163,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -56611,9 +57179,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "EnemyGroupWeight": [
+            100,
             100,
             100,
             100,
@@ -56621,6 +57191,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -56648,28 +57219,19 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_loglauncher_ability1",
-            "icon_unit_siege_machine_loglauncher_ability1",
-            "icon_unit_siege_machine_loglauncher_ability1",
-            "icon_unit_siege_machine_loglauncher_ability1"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -56679,9 +57241,11 @@
             156,
             156,
             156,
+            156,
             156
         ],
         "LoseHpInterval": [
+            1000,
             1000,
             1000,
             1000,
@@ -56697,9 +57261,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "PreferredMovementTarget": [
+            "Town Hall",
             "Town Hall",
             "Town Hall",
             "Town Hall",
@@ -56710,9 +57276,11 @@
             2900,
             3000,
             3100,
-            3200
+            3200,
+            3400
         ],
         "Damage2Radius": [
+            100,
             100,
             100,
             100,
@@ -56739,9 +57307,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "PenetratingRadius": [
+            120,
             120,
             120,
             120,
@@ -56751,9 +57321,11 @@
             1900,
             1900,
             1900,
+            1900,
             1900
         ],
         "ImmuneToHealing": [
+            true,
             true,
             true,
             true,
@@ -56764,10 +57336,23 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineLogLauncherSelfDestruct",
+            "SiegeMachineLogLauncherSelfDestruct",
+            "SiegeMachineLogLauncherSelfDestruct",
+            "SiegeMachineLogLauncherSelfDestruct",
+            "SiegeMachineLogLauncherSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
+            true,
             true,
             true,
             true,
@@ -56782,6 +57367,7 @@
             "LogLauncher",
             "LogLauncher",
             "LogLauncher",
+            "LogLauncher",
             "LogLauncher"
         ],
         "AltPreviewScenario": [],
@@ -56793,12 +57379,14 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "Deprecated": [],
         "TID": [],
         "InfoTID": [],
         "HousingSpace": [
+            1,
             1,
             1,
             1,
@@ -56810,13 +57398,15 @@
             350,
             350,
             350,
+            350,
             350
         ],
         "Hitpoints": [
             100000,
             100500,
             101000,
-            101500
+            101500,
+            101600
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
@@ -56830,9 +57420,11 @@
             50,
             50,
             50,
+            50,
             50
         ],
         "AttackSpeed": [
+            750,
             750,
             750,
             750,
@@ -56843,7 +57435,8 @@
             "-50",
             "-60",
             "-70",
-            "-80"
+            "-80",
+            "-85"
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [],
@@ -56866,10 +57459,12 @@
             "Builder Repair",
             "Builder Repair",
             "Builder Repair",
+            "Builder Repair",
             "Builder Repair"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -56879,9 +57474,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -56894,10 +57491,12 @@
             "Defending Builder",
             "Defending Builder",
             "Defending Builder",
+            "Defending Builder",
             "Defending Builder"
         ],
         "ProductionBuilding": [],
         "IsJumper": [
+            true,
             true,
             true,
             true,
@@ -56914,6 +57513,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "SecondaryTroop": [],
@@ -56926,6 +57526,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -56954,6 +57555,7 @@
         "TransitionEffectLv3": [],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            "-50",
             "-50",
             "-50",
             "-50",
@@ -57185,6 +57787,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -57454,6 +58057,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -57653,7 +58257,7 @@
             180,
             288,
             300,
-            300
+            324
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -57666,7 +58270,7 @@
             7600000,
             10500000,
             13300000,
-            13300000
+            18000000
         ],
         "DonateCost": [
             15,
@@ -57856,6 +58460,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -57959,23 +58564,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability",
-            "icon_unit_siege_machine_ram_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -58040,8 +58635,18 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineCatapultSelfDestruct",
+            "SiegeMachineCatapultSelfDestruct",
+            "SiegeMachineCatapultSelfDestruct",
+            "SiegeMachineCatapultSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true,
@@ -58307,6 +58912,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -58425,23 +59031,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct",
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_BattleDrill_ability1",
-            "icon_unit_siege_machine_BattleDrill_ability1",
-            "icon_unit_siege_machine_BattleDrill_ability1",
-            "icon_unit_siege_machine_BattleDrill_ability1"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -58486,8 +59082,18 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineBattleDrillSelfDestruct",
+            "SiegeMachineBattleDrillSelfDestruct",
+            "SiegeMachineBattleDrillSelfDestruct",
+            "SiegeMachineBattleDrillSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true,
@@ -58646,6 +59252,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -58883,11 +59490,11 @@
         "Hitpoints": [
             300,
             600,
-            800,
-            1000,
+            700,
+            900,
             1200,
-            1400,
-            1600,
+            1350,
+            1650,
             1750,
             1900,
             2100,
@@ -59239,6 +59846,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -59699,6 +60307,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -59989,6 +60598,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -60374,6 +60984,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -60579,21 +61190,23 @@
     },
     "Super Hog Rider": {
         "VisualLevel": [
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
+            4,
+            4,
+            4,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
             10,
             11,
-            12
+            12,
+            13
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_SUPER_HOG_RIDER",
             "TID_CHARACTER_SUPER_HOG_RIDER",
             "TID_CHARACTER_SUPER_HOG_RIDER",
             "TID_CHARACTER_SUPER_HOG_RIDER",
@@ -60619,9 +61232,11 @@
             "TID_CHARACTER_SUPER_HOG_RIDER_INFO",
             "TID_CHARACTER_SUPER_HOG_RIDER_INFO",
             "TID_CHARACTER_SUPER_HOG_RIDER_INFO",
+            "TID_CHARACTER_SUPER_HOG_RIDER_INFO",
             "TID_CHARACTER_SUPER_HOG_RIDER_INFO"
         ],
         "HousingSpace": [
+            12,
             12,
             12,
             12,
@@ -60647,9 +61262,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -60675,23 +61292,26 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "Hitpoints": [
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
-            1500,
+            800,
+            800,
+            800,
+            800,
+            900,
+            1100,
+            1200,
+            1300,
+            1400,
             1500,
             1600,
-            1700
+            1700,
+            1800
         ],
         "TrainingTime": [
+            108,
             108,
             108,
             108,
@@ -60719,10 +61339,12 @@
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
+            "DarkElixir",
             "DarkElixir"
         ],
         "UpgradeCost": [],
         "DonateCost": [
+            6,
             6,
             6,
             6,
@@ -60750,9 +61372,11 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -60768,24 +61392,26 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
+            100,
+            100,
+            100,
+            100,
+            115,
+            130,
+            145,
+            160,
+            175,
             190,
             210,
-            230
+            230,
+            250
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [],
         "AreaDamageIgnoresWalls": [],
         "SelfAsAoeCenter": [],
         "IconSWF": [
+            "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
@@ -60811,6 +61437,7 @@
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
+            "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider"
         ],
         "BigPicture": [
@@ -60825,9 +61452,11 @@
             "unit_elite_hogrider_big",
             "unit_elite_hogrider_big",
             "unit_elite_hogrider_big",
+            "unit_elite_hogrider_big",
             "unit_elite_hogrider_big"
         ],
         "BigPictureSWF": [
+            "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
@@ -60856,10 +61485,12 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "SuperBoarRider Deploy",
             "SuperBoarRider Deploy",
             "SuperBoarRider Deploy",
             "SuperBoarRider Deploy",
@@ -60886,10 +61517,12 @@
             "SuperBoarRider Attack",
             "SuperBoarRider Attack",
             "SuperBoarRider Attack",
+            "SuperBoarRider Attack",
             "SuperBoarRider Attack"
         ],
         "AttackEffect2": [],
         "HitEffect": [
+            "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
@@ -60916,6 +61549,7 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
@@ -60930,9 +61564,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -60959,10 +61595,12 @@
             "SuperBoarRider Die",
             "SuperBoarRider Die",
             "SuperBoarRider Die",
+            "SuperBoarRider Die",
             "SuperBoarRider Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "SuperHogRider",
             "SuperHogRider",
             "SuperHogRider",
             "SuperHogRider",
@@ -60988,9 +61626,11 @@
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            true,
             true,
             true,
             true,
@@ -61006,6 +61646,7 @@
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
             0,
             0,
             0,
@@ -61035,25 +61676,13 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            6,
-            7
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -61076,6 +61705,7 @@
         "TransitionEffectLv3": [],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            "-50",
             "-50",
             "-50",
             "-50",
@@ -61110,9 +61740,11 @@
             1200,
             1200,
             1200,
+            1200,
             1200
         ],
         "EnemyGroupWeight": [
+            1200,
             1200,
             1200,
             1200,
@@ -61128,6 +61760,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -61172,9 +61805,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityName": [
+            "TID_SUPER_HOG_RIDER_ABILITY",
             "TID_SUPER_HOG_RIDER_ABILITY",
             "TID_SUPER_HOG_RIDER_ABILITY",
             "TID_SUPER_HOG_RIDER_ABILITY",
@@ -61200,6 +61835,7 @@
             "TID_SUPER_HOG_RIDER_ABILITY_INFO",
             "TID_SUPER_HOG_RIDER_ABILITY_INFO",
             "TID_SUPER_HOG_RIDER_ABILITY_INFO",
+            "TID_SUPER_HOG_RIDER_ABILITY_INFO",
             "TID_SUPER_HOG_RIDER_ABILITY_INFO"
         ],
         "SpecialAbilityType": [],
@@ -61214,6 +61850,7 @@
         "ScaleByTH": [],
         "EnabledByCalendar": [],
         "EnabledBySuperLicence": [
+            true,
             true,
             true,
             true,
@@ -61278,6 +61915,7 @@
             "SuperHogRiderSummonRider;SuperHogRiderSummonHog",
             "SuperHogRiderSummonRider;SuperHogRiderSummonHog",
             "SuperHogRiderSummonRider;SuperHogRiderSummonHog",
+            "SuperHogRiderSummonRider;SuperHogRiderSummonHog",
             "SuperHogRiderSummonRider;SuperHogRiderSummonHog"
         ],
         "SpecialAbilitiesLevel": [
@@ -61285,14 +61923,15 @@
             "1;1",
             "1;1",
             "1;1",
-            "1;1",
-            "1;1",
-            "1;1",
-            "1;1",
-            "1;1",
-            "1;1",
             "2;2",
-            "3;3"
+            "3;3",
+            "4;4",
+            "5;5",
+            "6;6",
+            "7;7",
+            "8;8",
+            "9;9",
+            "10;10"
         ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [],
@@ -61313,6 +61952,7 @@
             "SuperHogRider",
             "SuperHogRider",
             "SuperHogRider",
+            "SuperHogRider",
             "SuperHogRider"
         ],
         "AltPreviewScenario": [],
@@ -61321,21 +61961,23 @@
     },
     "Riderless Hog": {
         "VisualLevel": [
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
+            4,
+            4,
+            4,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
             10,
             11,
-            12
+            12,
+            13
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_RIDERLESS_HOG",
             "TID_CHARACTER_RIDERLESS_HOG",
             "TID_CHARACTER_RIDERLESS_HOG",
             "TID_CHARACTER_RIDERLESS_HOG",
@@ -61361,9 +62003,11 @@
             "TID_CHARACTER_RIDERLESS_HOG_INFO",
             "TID_CHARACTER_RIDERLESS_HOG_INFO",
             "TID_CHARACTER_RIDERLESS_HOG_INFO",
+            "TID_CHARACTER_RIDERLESS_HOG_INFO",
             "TID_CHARACTER_RIDERLESS_HOG_INFO"
         ],
         "HousingSpace": [
+            5,
             5,
             5,
             5,
@@ -61391,26 +62035,29 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "Hitpoints": [
-            800,
-            800,
-            800,
-            800,
-            800,
-            800,
-            800,
-            800,
-            800,
+            320,
+            320,
+            320,
+            320,
+            400,
+            480,
+            560,
+            640,
+            720,
             800,
             900,
-            1000
+            1000,
+            1050
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -61440,9 +62087,11 @@
             60,
             60,
             60,
+            60,
             60
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -61458,20 +62107,22 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
+            32,
+            32,
+            32,
+            32,
+            35,
+            38,
+            41,
+            44,
+            47,
             50,
             55,
-            60
+            60,
+            65
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -61500,9 +62151,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
@@ -61528,9 +62181,11 @@
             "unit_elite_hog",
             "unit_elite_hog",
             "unit_elite_hog",
+            "unit_elite_hog",
             "unit_elite_hog"
         ],
         "BigPictureSWF": [
+            "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
@@ -61559,10 +62214,12 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "SuperBoar Deploy",
             "SuperBoar Deploy",
             "SuperBoar Deploy",
             "SuperBoar Deploy",
@@ -61589,10 +62246,12 @@
             "SuperBoar Attack",
             "SuperBoar Attack",
             "SuperBoar Attack",
+            "SuperBoar Attack",
             "SuperBoar Attack"
         ],
         "AttackEffect2": [],
         "HitEffect": [
+            "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
@@ -61619,6 +62278,7 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
@@ -61633,9 +62293,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -61662,10 +62324,12 @@
             "SuperBoar Die",
             "SuperBoar Die",
             "SuperBoar Die",
+            "SuperBoar Die",
             "SuperBoar Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "RiderlessHog",
             "RiderlessHog",
             "RiderlessHog",
             "RiderlessHog",
@@ -61691,9 +62355,11 @@
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            true,
             true,
             true,
             true,
@@ -61720,9 +62386,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -61752,10 +62420,12 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "SecondaryTroop": [],
         "IsSecondaryTroop": [
+            true,
             true,
             true,
             true,
@@ -61777,12 +62447,14 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
+            150,
             150,
             150,
             150,
@@ -61829,6 +62501,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -61841,6 +62514,7 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
+            600,
             600,
             600,
             600,
@@ -61866,10 +62540,12 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -61977,6 +62653,7 @@
             "SecondaryTroopDefense",
             "SecondaryTroopDefense",
             "SecondaryTroopDefense",
+            "SecondaryTroopDefense",
             "SecondaryTroopDefense"
         ],
         "AltPreviewScenario": [],
@@ -61985,21 +62662,23 @@
     },
     "Hogless Rider": {
         "VisualLevel": [
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
-            10,
+            4,
+            4,
+            4,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
             10,
             11,
-            12
+            12,
+            13
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_HOGLESS_RIDER",
             "TID_CHARACTER_HOGLESS_RIDER",
             "TID_CHARACTER_HOGLESS_RIDER",
             "TID_CHARACTER_HOGLESS_RIDER",
@@ -62025,9 +62704,11 @@
             "TID_CHARACTER_HOGLESS_RIDER_INFO",
             "TID_CHARACTER_HOGLESS_RIDER_INFO",
             "TID_CHARACTER_HOGLESS_RIDER_INFO",
+            "TID_CHARACTER_HOGLESS_RIDER_INFO",
             "TID_CHARACTER_HOGLESS_RIDER_INFO"
         ],
         "HousingSpace": [
+            5,
             5,
             5,
             5,
@@ -62055,26 +62736,29 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "Hitpoints": [
-            550,
-            550,
-            550,
-            550,
-            550,
-            550,
-            550,
-            550,
-            550,
+            250,
+            250,
+            250,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
             550,
             625,
-            700
+            700,
+            750
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -62104,9 +62788,11 @@
             40,
             40,
             40,
+            40,
             40
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -62122,20 +62808,22 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
-            190,
+            100,
+            100,
+            100,
+            100,
+            115,
+            130,
+            145,
+            160,
+            175,
             190,
             210,
-            230
+            230,
+            250
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -62164,9 +62852,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
             "icon_unit_elite_hogrider",
@@ -62192,9 +62882,11 @@
             "unit_elite_rider",
             "unit_elite_rider",
             "unit_elite_rider",
+            "unit_elite_rider",
             "unit_elite_rider"
         ],
         "BigPictureSWF": [
+            "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
             "sc/info_elite_hogrider.sc",
@@ -62225,10 +62917,12 @@
             "BoarLessRider Deploy",
             "BoarLessRider Deploy",
             "BoarLessRider Deploy",
+            "BoarLessRider Deploy",
             "BoarLessRider Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "SuperBoarRider Attack",
             "SuperBoarRider Attack",
             "SuperBoarRider Attack",
             "SuperBoarRider Attack",
@@ -62255,10 +62949,12 @@
             "BoarRider Hit",
             "BoarRider Hit",
             "BoarRider Hit",
+            "BoarRider Hit",
             "BoarRider Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -62284,9 +62980,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -62313,10 +63011,12 @@
             "BoarLessRider Die",
             "BoarLessRider Die",
             "BoarLessRider Die",
+            "BoarLessRider Die",
             "BoarLessRider Die"
         ],
         "DieEffect2": [],
         "Animation": [
+            "HoglessRider",
             "HoglessRider",
             "HoglessRider",
             "HoglessRider",
@@ -62342,9 +63042,11 @@
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -62371,9 +63073,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -62403,10 +63107,12 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "SecondaryTroop": [],
         "IsSecondaryTroop": [
+            true,
             true,
             true,
             true,
@@ -62428,12 +63134,14 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
+            150,
             150,
             150,
             150,
@@ -62480,6 +63188,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -62492,6 +63201,7 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
+            200,
             200,
             200,
             200,
@@ -62517,10 +63227,12 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -62597,9 +63309,11 @@
             "Wall",
             "Wall",
             "Wall",
+            "Wall",
             "Wall"
         ],
         "DamageMultiplierPercent": [
+            200,
             200,
             200,
             200,
@@ -62643,6 +63357,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "SecondaryTroop",
             "SecondaryTroop",
             "SecondaryTroop",
             "SecondaryTroop",
@@ -63069,6 +63784,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -63870,6 +64586,18 @@
             12,
             12
         ],
+        "SummonTime": [
+            875,
+            875,
+            875,
+            875,
+            875,
+            875,
+            875,
+            875,
+            875,
+            875
+        ],
         "SummonCooldown": [
             7000,
             7000,
@@ -64638,6 +65366,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -65461,6 +66190,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -65858,6 +66588,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -66724,6 +67455,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -67668,6 +68400,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -68238,6 +68971,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -68557,6 +69291,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -68736,9 +69471,9 @@
             150
         ],
         "Hitpoints": [
-            7200,
-            7600,
-            8000
+            6650,
+            7050,
+            7400
         ],
         "TrainingTime": [
             220,
@@ -68898,6 +69633,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -69226,6 +69962,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -69307,17 +70044,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_ram_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -69364,8 +70097,12 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineInvisiSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true
@@ -69519,6 +70256,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -69598,17 +70336,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_balloon_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -69653,8 +70387,12 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineFlyingInvisiSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true
@@ -69806,6 +70544,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -69913,10 +70652,10 @@
         "DamageMultiplierTarget": [],
         "DamageMultiplierPercent": [],
         "FrostOnHitTime": [
-            4000
+            3000
         ],
         "FrostOnHitPercent": [
-            50
+            30
         ],
         "DoesNotOpenCC": [
             true
@@ -70347,6 +71086,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -70775,6 +71515,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -70854,17 +71595,13 @@
         "SpecialAbilityLevel": [],
         "SpecialAbilityName": [],
         "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [
-            "SelfDestruct"
-        ],
+        "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [
-            "icon_unit_siege_machine_ram_ability"
-        ],
+        "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [],
         "ScaleByTH": [],
@@ -70917,8 +71654,12 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "SiegeMachineTroopCatapultSelfDestruct"
+        ],
+        "SpecialAbilitiesLevel": [
+            1
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
             true
@@ -71058,6 +71799,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -71586,6 +72328,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -71878,11 +72621,11 @@
             600,
             800,
             1000,
-            1200,
-            1400,
-            1600,
-            1800,
-            2000,
+            1100,
+            1350,
+            1550,
+            1700,
+            1900,
             2200,
             2400
         ],
@@ -72244,6 +72987,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -72522,17 +73266,17 @@
             "TID_CHARACTER_INFO_FIRECRACKER"
         ],
         "HousingSpace": [
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
         ],
         "BarrackLevel": [
             1,
@@ -72616,32 +73360,32 @@
         ],
         "UpgradeCost": [],
         "DonateCost": [
-            4,
-            4,
-            4,
-            4,
-            4,
-            4,
-            4,
-            4,
-            4,
-            4,
-            4
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ],
         "DonateXP": [],
         "DonateCount": [],
         "AttackRange": [
-            700,
-            700,
-            700,
-            700,
-            700,
-            700,
-            700,
-            700,
-            700,
-            700,
-            700
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
         ],
         "AttackSpeed": [
             1800,
@@ -72664,10 +73408,10 @@
             95,
             110,
             125,
-            140,
+            145,
             155,
             170,
-            185,
+            190,
             200
         ],
         "PreferedTargetDamageMod": [],
@@ -72956,6 +73700,7 @@
         ],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -73222,17 +73967,17 @@
             "TID_CHARACTER_INFO_WATER_DRAGON"
         ],
         "HousingSpace": [
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40
         ],
         "BarrackLevel": [
             1,
@@ -73274,30 +74019,30 @@
             160
         ],
         "Hitpoints": [
-            3000,
-            3500,
-            4000,
+            2400,
+            2800,
+            3200,
+            3800,
+            4400,
             5000,
-            6000,
-            7000,
-            8000,
-            9000,
-            10000,
-            11000,
-            12000
+            5600,
+            6200,
+            6600,
+            7200,
+            7600
         ],
         "TrainingTime": [
-            360,
-            360,
-            360,
-            360,
-            360,
-            360,
-            360,
-            360,
-            360,
-            360,
-            360
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300,
+            300
         ],
         "UpgradeTimeH": [],
         "UpgradeTimeM": [],
@@ -73316,17 +74061,17 @@
         ],
         "UpgradeCost": [],
         "DonateCost": [
-            25,
-            25,
-            25,
-            25,
-            25,
-            25,
-            25,
-            25,
-            25,
-            25,
-            25
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20,
+            20
         ],
         "DonateXP": [],
         "DonateCount": [],
@@ -73344,31 +74089,31 @@
             250
         ],
         "AttackSpeed": [
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900,
-            1900
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700,
+            1700
         ],
         "CoolDownOverride": [],
         "DPS": [
-            115,
-            135,
-            155,
-            175,
-            195,
-            215,
-            235,
-            255,
-            275,
-            295,
-            315
+            130,
+            140,
+            150,
+            160,
+            170,
+            180,
+            190,
+            200,
+            210,
+            220,
+            227
         ],
         "PreferedTargetDamageMod": [
             1,
@@ -73632,6 +74377,7 @@
         "PushbackAfterHit": [],
         "SummonTroop": [],
         "SummonTroopCount": [],
+        "SummonTime": [],
         "SummonCooldown": [],
         "SummonEffect": [],
         "SummonLimit": [],
@@ -73939,5 +74685,561 @@
         "AltPreviewScenario": [],
         "ProjectileConsumesBunkerTroops": [],
         "Name": []
+    },
+    "Prototype4": {
+        "VisualLevel": [
+            1
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_BARBARIAN"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_BARBARIAN"
+        ],
+        "HousingSpace": [
+            1
+        ],
+        "BarrackLevel": [
+            1
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            200
+        ],
+        "Hitpoints": [
+            45
+        ],
+        "TrainingTime": [
+            5
+        ],
+        "UpgradeTimeH": [
+            6
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            25000
+        ],
+        "DonateCost": [
+            1
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            40
+        ],
+        "AttackSpeed": [
+            1000
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            8
+        ],
+        "PreferedTargetDamageMod": [
+            1
+        ],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_barbarian"
+        ],
+        "BigPicture": [
+            "unit_barbarian_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_barbarian.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barbarian Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Barbarian Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Barbarian Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barbarian Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "Barbarian"
+        ],
+        "ProductionBuilding": [
+            "Barrack"
+        ],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            100
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            100
+        ],
+        "EnemyGroupWeight": [
+            100
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": []
+    },
+    "Prototype5": {
+        "VisualLevel": [
+            1
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_BARBARIAN"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_BARBARIAN"
+        ],
+        "HousingSpace": [
+            1
+        ],
+        "BarrackLevel": [
+            1
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            200
+        ],
+        "Hitpoints": [
+            45
+        ],
+        "TrainingTime": [
+            5
+        ],
+        "UpgradeTimeH": [
+            6
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            25000
+        ],
+        "DonateCost": [
+            1
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            40
+        ],
+        "AttackSpeed": [
+            1000
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            8
+        ],
+        "PreferedTargetDamageMod": [
+            1
+        ],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_barbarian"
+        ],
+        "BigPicture": [
+            "unit_barbarian_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_barbarian.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barbarian Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Barbarian Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Barbarian Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barbarian Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "Barbarian"
+        ],
+        "ProductionBuilding": [
+            "Barrack"
+        ],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            100
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            100
+        ],
+        "EnemyGroupWeight": [
+            100
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": []
     }
 }

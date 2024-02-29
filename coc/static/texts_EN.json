@@ -301,7 +301,7 @@
     },
     "TID_POPUP_UNDER_ATTACK": {
         "EN": [
-            "You are under attack! Please wait, your village will load automatically."
+            "You are under attack! Please wait, your Village will load automatically."
         ]
     },
     "TID_POPUP_TRY_AGAIN": {
@@ -486,7 +486,7 @@
     },
     "TID_ATTACK_FAIL_NO_MATCHES": {
         "EN": [
-            "Unable to find villages to attack!"
+            "Unable to find Villages to attack!"
         ]
     },
     "TID_ATTACK_FAIL_ALREADY_UNDER_ATTACK": {
@@ -516,7 +516,7 @@
     },
     "TID_ATTACK_FAIL_NEWBIE_PROTECTED": {
         "EN": [
-            "Can't attack this village because its Town Hall is below level <number>."
+            "Can't attack this Village because its Town Hall is below level <number>."
         ]
     },
     "TID_DEFAULT_VILLAGE_NAME": {
@@ -541,7 +541,7 @@
     },
     "TID_NO_SPELLS": {
         "EN": [
-            "You need to brew some spells first."
+            "You need to brew some Spells first."
         ]
     },
     "TID_ERROR_POP_UP_BANNED_TITLE": {
@@ -1141,12 +1141,12 @@
     },
     "TID_TOWN_HALL_INFO": {
         "EN": [
-            "This is the heart of your village. Upgrading your Town Hall unlocks new defenses, buildings, traps and much more.\\nDestroying an opponent's Town Hall wins you the battle and you get one Star. Destroying 50% of enemy buildings gains you a second Star, while 100% annihilation awards full three Stars.\\nBeware, your enemies will be trying to destroy your Town Hall too!\\nFor maximum protection, keep your Town Hall in the middle of your village and protect it with walls, traps and defensive buildings. Your enemies are sneaky and can attack from any side!"
+            "This is the heart of your Village. Upgrading your Town Hall unlocks new defenses, Buildings, Traps and much more.\\nDestroying an opponent's Town Hall wins you the battle and you get one Star. Destroying 50% of enemy Buildings gains you a second Star, while 100% annihilation awards full three Stars.\\nBeware, your enemies will be trying to destroy your Town Hall too!\\nFor maximum protection, keep your Town Hall in the middle of your Village and protect it with Walls, Traps and defensive Buildings. Your enemies are sneaky and can attack from any side!"
         ]
     },
     "TID_ELIXIR_PUMP_INFO": {
         "EN": [
-            "Elixir is pumped from Ley Lines coursing underneath your village. Upgrade your Elixir Collectors to maximize elixir production."
+            "Elixir is pumped from Ley Lines coursing underneath your Village. Upgrade your Elixir Collectors to maximize Elixir production."
         ]
     },
     "TID_ELIXIR_STORAGE_INFO": {
@@ -1156,12 +1156,12 @@
     },
     "TID_GOLD_MINE_INFO": {
         "EN": [
-            "The Gold Mine produces gold. Upgrade it to boost its production and gold storage capacity."
+            "The Gold Mine produces Gold. Upgrade it to boost its production and Gold Storage capacity."
         ]
     },
     "TID_GOLD_STORAGE_INFO": {
         "EN": [
-            "All your precious gold is stored here. Don't let sneaky goblins anywhere near! Upgrade the storage to increase its capacity and durability against attack."
+            "All your precious Gold is stored here. Don't let sneaky Goblins anywhere near! Upgrade the Storage to increase its capacity and durability against attack."
         ]
     },
     "TID_BARRACK_INFO": {
@@ -1171,17 +1171,17 @@
     },
     "TID_BASIC_TURRET_INFO": {
         "EN": [
-            "Cannons are great for point defense. Upgrade cannons to increase their firepower, but beware that your defensive turrets cannot shoot while being upgraded!"
+            "Cannons are great for point defense. Upgrade Cannons to increase their firepower, but beware that your defensive turrets cannot shoot while being upgraded!"
         ]
     },
     "TID_ARCHER_TOWER_INFO": {
         "EN": [
-            "Archer Towers have longer range than cannons, and unlike cannons they can attack flying enemies."
+            "Archer Towers have longer range than Cannons, and unlike Cannons they can attack flying enemies."
         ]
     },
     "TID_WIZARD_TOWER_INFO": {
         "EN": [
-            "The Ultimate Arcane Defense! Tower Wizards cast powerful area effect spells that target both flying and ground troops."
+            "The Ultimate Arcane Defense! Tower Wizards cast powerful area effect Spells that target both flying and ground Troops."
         ]
     },
     "TID_TESLA_TOWER_INFO": {
@@ -1201,7 +1201,7 @@
     },
     "TID_ALLIANCE_CASTLE_INFO": {
         "EN": [
-            "The Clan Castle houses your Treasury and any reinforcement troops or spells sent by your clanmates."
+            "The Clan Castle houses your Treasury and any reinforcement troops or Spells sent by your clanmates."
         ]
     },
     "TID_WORKER_INFO": {
@@ -1211,7 +1211,7 @@
     },
     "TID_LABORATORY_INFO": {
         "EN": [
-            "What dark secrets do these Wizards hide inside their Laboratory? Nobody has dared to look. All we know is that their research makes our spells and troops harder, better, faster and stronger!"
+            "What dark secrets do these Wizards hide inside their Laboratory? Nobody has dared to look. All we know is that their research makes our Spells and Troops harder, better, faster and stronger!"
         ]
     },
     "TID_STREAM_SENDER_YOU": {
@@ -1401,7 +1401,7 @@
     },
     "TID_LOCAL_NOTIFICATION_FORGOT_SPELLS": {
         "EN": [
-            "Oops, did you forget to brew your spells?"
+            "Oops, did you forget to brew your Spells?"
         ]
     },
     "TID_NEW": {
@@ -1466,7 +1466,7 @@
     },
     "TID_ALLIANCE_SNEAK_PREVIEW": {
         "EN": [
-            "Unlock Clans by rebuilding the Clan Castle!\\n\\nClanmates help each other and send reinforcement troops and spells."
+            "Unlock Clans by rebuilding the Clan Castle!\\n\\nClanmates help each other and send reinforcement troops and Spells."
         ]
     },
     "TID_BUILD_TIME_INSTANT": {
@@ -1856,7 +1856,7 @@
     },
     "TID_YOU_HAVE_BEEN_ATTACKED": {
         "EN": [
-            "Chief, our village was attacked!"
+            "Chief, our Village was attacked!"
         ]
     },
     "TID_YOU_HAVE_BEEN_ATTACKED_TITLE": {
@@ -1866,7 +1866,7 @@
     },
     "TID_YOU_HAVE_BEEN_ATTACKED_HEADER": {
         "EN": [
-            "Chief, the village was attacked while you were gone!"
+            "Chief, the Village was attacked while you were gone!"
         ]
     },
     "TID_TUTORIAL_CANNON_1": {
@@ -1876,17 +1876,17 @@
     },
     "TID_TUTORIAL_CANNON_2": {
         "EN": [
-            "This is our new village! Life here would be perfect if it wasn't for...."
+            "This is our new Village! Life here would be perfect if it wasn't for...."
         ]
     },
     "TID_TUTORIAL_CANNON_3": {
         "EN": [
-            "Oh no, GOBLINS! Quickly, set up a Cannon to defend the village!"
+            "Oh no, GOBLINS! Quickly, set up a Cannon to defend the Village!"
         ]
     },
     "TID_TUTORIAL_CANNON_4": {
         "EN": [
-            "Place the Cannon in the village. We must protect the Town Hall!"
+            "Place the Cannon in the Village. We must protect the Town Hall!"
         ]
     },
     "TID_TUTORIAL_CANNON_5": {
@@ -1911,12 +1911,12 @@
     },
     "TID_TUTORIAL_DEFEND_4": {
         "EN": [
-            "The village is built on a Ley Line. The buildings will magically repair themselves!"
+            "The Village is built on a Ley Line. The Buildings will magically repair themselves!"
         ]
     },
     "TID_TUTORIAL_DEFEND_5": {
         "EN": [
-            "Gwarh, GOLD! We goblins love gold!"
+            "Gwarh, GOLD! We Goblins love Gold!"
         ]
     },
     "TID_TUTORIAL_DEFEND_BUTTON": {
@@ -1926,7 +1926,7 @@
     },
     "TID_TUTORIAL_WORKER_1": {
         "EN": [
-            "Wow, nice going! Now we need to get this village into fighting shape."
+            "Wow, nice going! Now we need to get this Village into fighting shape."
         ]
     },
     "TID_TUTORIAL_WORKER_2": {
@@ -1961,7 +1961,7 @@
     },
     "TID_TUTORIAL_GOLD_STORAGE_2": {
         "EN": [
-            "Build a Gold Storage so we can stockpile more gold!"
+            "Build a Gold Storage so we can stockpile more Gold!"
         ]
     },
     "TID_TUTORIAL_BARRACK_1": {
@@ -2001,7 +2001,7 @@
     },
     "TID_TUTORIAL_ACHIEVEMENTS2": {
         "EN": [
-            "Chief, you obviously know what you're doing. The whole village is counting on you!"
+            "Chief, you obviously know what you're doing. The whole Village is counting on you!"
         ]
     },
     "TID_GOBLIN_SPEAKS_1": {
@@ -2601,7 +2601,7 @@
     },
     "TID_GAMECENTER_BOUND_TO_OTHER_ACCOUNT": {
         "EN": [
-            "Do you want to load Chief <name>'s village with Town Hall level <number>? Warning: progress in the current game will be lost."
+            "Do you want to load Chief <name>'s Village with Town Hall level <number>? Warning: progress in the current game will be lost."
         ]
     },
     "TID_GOOGLE_SERVICE_BOUND_TO_OTHER_ACCOUNT_TITLE": {
@@ -2611,7 +2611,7 @@
     },
     "TID_GOOGLE_SERVICE_BOUND_TO_OTHER_ACCOUNT": {
         "EN": [
-            "Do you want to load Chief <name>'s village with Town Hall level <number>? Warning: progress in the current game will be lost."
+            "Do you want to load Chief <name>'s Village with Town Hall level <number>? Warning: progress in the current game will be lost."
         ]
     },
     "TID_FACEBOOK_BOUND_TO_OTHER_ACCOUNT_TITLE": {
@@ -2746,12 +2746,12 @@
     },
     "TID_COME_BACK_NOTIFICATION_MEDIUM": {
         "EN": [
-            "Your village needs a leader. Come back Chief!"
+            "Your Village needs a leader. Come back Chief!"
         ]
     },
     "TID_COME_BACK_NOTIFICATION_LARGE": {
         "EN": [
-            "Hey come back, your village needs a leader"
+            "Hey come back, your Village needs a leader"
         ]
     },
     "TID_SETTINGS_ON": {
@@ -2966,12 +2966,12 @@
     },
     "TID_WALL_INFO": {
         "EN": [
-            "Walls are great for keeping your village safe and your enemies in the line of fire."
+            "Walls are great for keeping your Village safe and your enemies in the line of fire."
         ]
     },
     "TID_ABOUT": {
         "EN": [
-            "Credits\\n\\n<names>\\n\\nClash of Clans \u2122 <version>\\nCopyright 2012-2023 Supercell Ltd. All Rights Reserved.\\nUS Patent Pending\\nAll use of this software is subject to Terms and Conditions and Privacy Policy at www.supercell.com."
+            "Credits\\n\\n<names>\\n\\nClash of Clans \u2122 <version>\\nCopyright 2012-2024 Supercell Ltd. All Rights Reserved.\\nUS Patent Pending\\nAll use of this software is subject to Terms and Conditions and Privacy Policy at www.supercell.com."
         ]
     },
     "TID_GEM_BUY_CONFIRMATION": {
@@ -2986,12 +2986,12 @@
     },
     "TID_GUARD_INFO": {
         "EN": [
-            "The best in offense and defense! Guard prevents attacks on your village while letting you attack others all you want. Only available while Shield is down."
+            "The best in offense and defense! Guard prevents attacks on your Village while letting you attack others all you want. Only available while Shield is down."
         ]
     },
     "TID_SHIELD_INFO": {
         "EN": [
-            "Long-lasting defense! Shields prevent attacks on your village, but remaining Shield time will go down if you attack. If you buy more than one Shield, their durations are added up."
+            "Long-lasting defense! Shields prevent attacks on your Village, but remaining Shield time will go down if you attack. If you buy more than one Shield, their durations are added up."
         ]
     },
     "TID_PLACEMENT_HINT_TUTORIAL1": {
@@ -3076,7 +3076,7 @@
     },
     "TID_ACHIEVEMENT_LOOT_GOLD": {
         "EN": [
-            "Steal <number> gold"
+            "Steal <number> Gold"
         ]
     },
     "TID_ACHIEVEMENT_LOOT_ELIXIR_TITLE": {
@@ -3301,7 +3301,7 @@
     },
     "TID_PUSH_ATTACKED": {
         "EN": [
-            "Your village was raided by <attacker>!"
+            "Your Village was raided by <attacker>!"
         ]
     },
     "TID_SURRENDER_POPUP_TITLE": {
@@ -3361,7 +3361,7 @@
     },
     "TID_HINT_UPGRADE_CANNONS": {
         "EN": [
-            "Upgrade your cannons to improve your defense against intruders"
+            "Upgrade your Cannons to improve your defense against intruders"
         ]
     },
     "TID_HINT_SHIELD": {
@@ -3376,7 +3376,7 @@
     },
     "TID_HINT_UPGRADE_MINES": {
         "EN": [
-            "Out of gold? Try upgrading your gold mines"
+            "Out of Gold? Try upgrading your Gold Mines"
         ]
     },
     "TID_HINT_BUY_TROOP_HOUSING": {
@@ -3386,7 +3386,7 @@
     },
     "TID_HINT_UPGRADE_WALLS": {
         "EN": [
-            "Upgrade your walls to slow down the enemy"
+            "Upgrade your Walls to slow down the enemy"
         ]
     },
     "TID_HINT_CANNON_UPGRADE_NOT_FUNCTIONING": {
@@ -3401,7 +3401,7 @@
     },
     "TID_HINT_RESOURCE_LOSSES": {
         "EN": [
-            "Even if your village is completely destroyed, you always keep some of your Gold and Elixir"
+            "Even if your Village is completely destroyed, you always keep some of your Gold and Elixir"
         ]
     },
     "TID_HINT_DEFENSE": {
@@ -3441,12 +3441,12 @@
     },
     "TID_HINT_WALLBREAKER_TARGET": {
         "EN": [
-            "Wall Breakers blast holes into walls, opening a way to attack to enemy buildings."
+            "Wall Breakers blast holes into Walls, opening a way to attack to enemy buildings."
         ]
     },
     "TID_HINT_WALLBREAKER_DAMAGE": {
         "EN": [
-            "Wall Breakers deal major damage to enemy walls, but blow up themselves in the process"
+            "Wall Breakers deal major damage to enemy Walls, but blow up themselves in the process"
         ]
     },
     "TID_HINT_BALLOON_TARGET": {
@@ -3546,7 +3546,7 @@
     },
     "TID_HINT_BATTLE_LOG": {
         "EN": [
-            "The Battle Log shows information about attacks against your village"
+            "The Battle Log shows information about attacks against your Village"
         ]
     },
     "TID_HINT_REPLAY": {
@@ -3561,12 +3561,12 @@
     },
     "TID_HINT_CLAN_CASTLE": {
         "EN": [
-            "Troops in the Clan Castle will defend your village"
+            "Troops in the Clan Castle will defend your Village"
         ]
     },
     "TID_HINT_CAMP": {
         "EN": [
-            "Troops in the Camps are for attacking only - they won't defend your village"
+            "Troops in the Camps are for attacking only - they won't defend your Village"
         ]
     },
     "TID_HINT_SHIELD2": {
@@ -3576,12 +3576,12 @@
     },
     "TID_HINT_SHIELD_GAIN": {
         "EN": [
-            "You get a free Shield if an attacker destroys your village"
+            "You get a free Shield if an attacker destroys your Village"
         ]
     },
     "TID_HINT_SHIELD_GAIN_TIME": {
         "EN": [
-            "You get a longer lasting Shield if your village takes a lot of damage"
+            "You get a longer lasting Shield if your Village takes a lot of damage"
         ]
     },
     "TID_HINT_SHIELD_LOSE": {
@@ -3596,7 +3596,7 @@
     },
     "TID_HINT_SINGLE_PLAYER_REWARDS": {
         "EN": [
-            "Need a bit more gold for an upgrade? Take it from the Goblins in a single player mission!"
+            "Need a bit more Gold for an upgrade? Take it from the Goblins in a single player mission!"
         ]
     },
     "TID_HINT_TROPHY_COUNT": {
@@ -3626,7 +3626,7 @@
     },
     "TID_HINT_CLAN_TROOP_DEPLOY": {
         "EN": [
-            "Clan Castle reinforcement troops can defend your village from an enemy attack, or you can deploy them when attacking"
+            "Clan Castle reinforcement Troops can defend your Village from an enemy attack, or you can deploy them when attacking"
         ]
     },
     "TID_HINT_SPELL_LIGTHNING": {
@@ -3646,12 +3646,12 @@
     },
     "TID_HINT_SPELL_JUMP": {
         "EN": [
-            "The Jump Spell creates a temporary path over enemy walls for your troops to follow."
+            "The Jump Spell creates a temporary path over enemy Walls for your Troops to follow."
         ]
     },
     "TID_HINT_SPELL_JUMP_2": {
         "EN": [
-            "Try using the Jump Spell to redirect melee troops who are busy attacking a wall!"
+            "Try using the Jump Spell to redirect melee Troops who are busy attacking a Wall!"
         ]
     },
     "TID_HINT_FORUMS": {
@@ -3701,7 +3701,7 @@
     },
     "TID_HINT_BATTLE_ENDS": {
         "EN": [
-            "The battle ends when you have expended all your troops, clan reinforcements and damaging spells."
+            "The battle ends when you have expended all your troops, clan reinforcements and damaging Spells."
         ]
     },
     "TID_HINT_XBOW_LVL_8": {
@@ -3761,7 +3761,7 @@
     },
     "TID_HINT HEROES_USE": {
         "EN": [
-            "Your Hero can attack enemy villages or guard yours against enemy attacks."
+            "Your Hero can attack enemy Villages or guard yours against enemy attacks."
         ]
     },
     "TID_HINT HEROES_DIE": {
@@ -3801,12 +3801,12 @@
     },
     "TID_OTHER_SPELL_LEFT": {
         "EN": [
-            "Select a different spell"
+            "Select a different Spell"
         ]
     },
     "TID_ALL_SPELLS_USED": {
         "EN": [
-            "No spells left"
+            "No Spells left"
         ]
     },
     "TID_TRAIN_SPELL_STORAGE_FULL": {
@@ -3896,12 +3896,12 @@
     },
     "TID_TIP_SPELL_FORGE": {
         "EN": [
-            "Brew powerful spells that can be used when attacking"
+            "Brew powerful Spells that can be used when attacking"
         ]
     },
     "TID_POPUP_FORGE_TITLE": {
         "EN": [
-            "Brew spells <limit>"
+            "Brew Spells <limit>"
         ]
     },
     "TID_CANCLE_TRAINING_INFO": {
@@ -3911,7 +3911,7 @@
     },
     "TID_CANCLE_SPELL_INFO": {
         "EN": [
-            "Note! Removing spells from the queue will refund only <number>% of the cost."
+            "Note! Removing Spells from the queue will refund only <number>% of the cost."
         ]
     },
     "TID_HASTE_SPEED": {
@@ -4066,12 +4066,12 @@
     },
     "TID_LIGHTNING_STORM_INFO": {
         "EN": [
-            "Electrocute your enemies with a bolt of lightning!\\n\\nCast this spell at the enemy village to damage and stun buildings and units inside a small area."
+            "Electrocute your enemies with a bolt of lightning!\\n\\nCast this Spell at the enemy Village to damage and stun Buildings and units inside a small area."
         ]
     },
     "TID_HEALING_WAVE_INFO": {
         "EN": [
-            "Heal your troops to keep them in the fight!\\n\\nCast this spell to create a Ring of Healing. Your units will be healed while they are inside this ring."
+            "Heal your Troops to keep them in the fight!\\n\\nCast this Spell to create a Ring of Healing. Your units will be healed while they are inside this ring."
         ]
     },
     "TID_HASTE_INFO": {
@@ -4281,7 +4281,7 @@
     },
     "TID_CONFIRM_ARE_YOU_SURE": {
         "EN": [
-            "Are you absolutely sure that you want to delete the current village and replace it with:"
+            "Are you absolutely sure that you want to delete the current Village and replace it with:"
         ]
     },
     "TID_CONFIRM_CONFIRM": {
@@ -4451,7 +4451,7 @@
     },
     "TID_ATTACK_FAIL_GENERIC": {
         "EN": [
-            "Unable to attack village! Try again later."
+            "Unable to attack Village! Try again later."
         ]
     },
     "TID_BUTTON_BOOST": {
@@ -4466,7 +4466,7 @@
     },
     "TID_POPUP_BOOST_GOLD_MINE": {
         "EN": [
-            "Double the gold production for <time>?"
+            "Double the Gold production for <time>?"
         ]
     },
     "TID_POPUP_BOOST_ELIXIR_COLLECTOR": {
@@ -4481,12 +4481,12 @@
     },
     "TID_POPUP_BOOST_SPELL_FACTORY": {
         "EN": [
-            "Boost the spell brewing speed by <multiplier>x for <time>?"
+            "Boost the Spell brewing speed by <multiplier>x for <time>?"
         ]
     },
     "TID_POPUP_BOOST_BARRACKS_AND_SPELLS": {
         "EN": [
-            "Boost the troop training and spell brewing speed by <multiplier>x for <time>?"
+            "Boost the Troop training and Spell brewing speed by <multiplier>x for <time>?"
         ]
     },
     "TID_ALREADY_BOOSTED": {
@@ -4551,7 +4551,7 @@
     },
     "TID_BARBARIAN_KING_INFO": {
         "EN": [
-            "The Barbarian King is the toughest and meanest barbarian in all the realm, whose appetite for Dark Elixir has caused him to grow to a giant size. He can attack enemy villages or guard your village."
+            "The Barbarian King is the toughest and meanest barbarian in all the realm, whose appetite for Dark Elixir has caused him to grow to a giant size. He can attack enemy Villages or guard your Village."
         ]
     },
     "TID_HERO_INSTRUCTIONS": {
@@ -4566,7 +4566,7 @@
     },
     "TID_ARCHER_QUEEN_INFO": {
         "EN": [
-            "The Archer Queen is an eagle-eyed warrior, whose weapon of choice is a modified X-Bow that few men could dream of wielding. She can attack enemy villages or guard your village."
+            "The Archer Queen is an eagle-eyed warrior, whose weapon of choice is a modified X-Bow that few men could dream of wielding. She can attack enemy Villages or guard your Village."
         ]
     },
     "TID_DARK_ELIXIR": {
@@ -4756,7 +4756,7 @@
     },
     "TID_DARK_ELIXIR_BARRACK_INFO": {
         "EN": [
-            "The Dark Barracks will open doors for creatures born out of Dark Elixir. Upgrade the barracks to unlock more troops with unique battle skills."
+            "The Dark Barracks will open doors for creatures born out of Dark Elixir. Upgrade the Barracks to unlock more Troops with unique battle skills."
         ]
     },
     "TID_WARRIORGIRL": {
@@ -4811,7 +4811,7 @@
     },
     "TID_CHARACTER_INFO_BARBARIAN": {
         "EN": [
-            "This fearless warrior relies on his bulging muscles and striking mustache to wreak havoc in enemy villages. Release a horde of Barbarians and enjoy the mayhem!"
+            "This fearless warrior relies on his bulging muscles and striking mustache to wreak havoc in enemy Villages. Release a horde of Barbarians and enjoy the mayhem!"
         ]
     },
     "TID_CHARACTER_INFO_ARCHER": {
@@ -4826,17 +4826,17 @@
     },
     "TID_CHARACTER_INFO_GIANT": {
         "EN": [
-            "These big guys may seem calm, but show them a turret or cannon and you\u00b4ll see their fury unleashed! Slow yet durable, these warriors are best used to soak up hits."
+            "These big guys may seem calm, but show them a Turret or Cannon and you\u00b4ll see their fury unleashed! Slow yet durable, these warriors are best used to soak up hits."
         ]
     },
     "TID_CHARACTER_INFO_WALLBREAKER": {
         "EN": [
-            "Nothing warms a Wall Breaker's cold and undead heart like blowing up walls. A squad of them will make way for your ground units, and they will do it with a BANG!"
+            "Nothing warms a Wall Breaker's cold and undead heart like blowing up Walls. A squad of them will make way for your ground units, and they will do it with a BANG!"
         ]
     },
     "TID_CHARACTER_INFO_BALLOON": {
         "EN": [
-            "These promoted skeletons have traded in their joy of destroying walls for a joy of destroying defenses. Deploy them to take out pesky mortars and cannons!"
+            "These promoted Skeletons have traded in their joy of destroying Walls for a joy of destroying defenses. Deploy them to take out pesky Mortars and Cannons!"
         ]
     },
     "TID_CHARACTER_INFO_WIZARD": {
@@ -4866,7 +4866,7 @@
     },
     "TID_CHARACTER_INFO_RIDER": {
         "EN": [
-            "Having tamed the fierce leaping hog, the Hog Rider punishes those who hide behind their puny walls! Fueled by Dark Elixir, these warriors have never known defeat!"
+            "Having tamed the fierce leaping Hog, the Hog Rider punishes those who hide behind their puny Walls! Fueled by Dark Elixir, these warriors have never known defeat!"
         ]
     },
     "TID_CHARACTER_INFO_VALKYRIE": {
@@ -5051,7 +5051,7 @@
     },
     "TID_LEAGUE_TITLE2": {
         "EN": [
-            "Each League Season lasts for one month. At the start of a season, attack any player village to see your new League and Loot Bonus."
+            "Each League Season lasts for one month. At the start of a season, attack any player Village to see your new League and Loot Bonus."
         ]
     },
     "TID_NEXT_LEAGUE": {
@@ -5261,7 +5261,7 @@
     },
     "TID_LEAGUES_UNRANKED_AFTER_SHUFFLE": {
         "EN": [
-            "League Season has ended. Attack any village to get placed in a new League!"
+            "League Season has ended. Attack any Village to get placed in a new League!"
         ]
     },
     "TID_LEAGUE_DIVISIONS": {
@@ -5281,7 +5281,7 @@
     },
     "TID_HINT LEAGUE_PLACEMENT": {
         "EN": [
-            "If you have enough trophies, attacking any village will automatically place you in a League."
+            "If you have enough Trophies, attacking any Village will automatically place you in a League."
         ]
     },
     "TID_HINT LEAGUE_PROMOTION": {
@@ -5311,7 +5311,7 @@
     },
     "TID_LEAGUE_INFO_PLACEMENT_HEADLINE": {
         "EN": [
-            "Attack any player village to enter a League"
+            "Attack any player Village to enter a League"
         ]
     },
     "TID_LEAGUE_INFO_PLACEMENT": {
@@ -5461,7 +5461,7 @@
     },
     "TID_ALLIANCE_JOIN_CLAN": {
         "EN": [
-            "Join or create a clan and get stronger.\\n\\nClanmates help each other and can send reinforcement troops and spells."
+            "Join or create a Clan and get stronger.\\n\\nClanmates help each other and can send reinforcement Troops and Spells."
         ]
     },
     "TID_BUTTON_APPBANK": {
@@ -5536,7 +5536,7 @@
     },
     "TID_HINT_SPELL_JUMP_DURATION": {
         "EN": [
-            "Upgrade the Jump Spell to give your units more time to jump over walls."
+            "Upgrade the Jump Spell to give your units more time to jump over Walls."
         ]
     },
     "TID_HINT_SPELL_FREEZE": {
@@ -5576,7 +5576,7 @@
     },
     "TID_JUMP_SPELL_INFO": {
         "EN": [
-            "Walls slowing you down? Try making a shortcut!\\n\\nCast this spell near enemy walls to create a route straight over them. Your troops will jump over affected wall pieces as if they weren't even there!"
+            "Walls slowing you down? Try making a shortcut!\\n\\nCast this Spell near enemy Walls to create a route straight over them. Your Troops will jump over affected wall pieces as if they weren't even there!"
         ]
     },
     "TID_MUTE_PLAYER_BUTTON": {
@@ -5746,7 +5746,7 @@
     },
     "TID_CONFIRM_DEVICE_LINK_TEXT": {
         "EN": [
-            "Are you absolutely sure you want to delete the current village and replace it with:"
+            "Are you absolutely sure you want to delete the current Village and replace it with:"
         ]
     },
     "TID_LINK_DEVICES_ENTER_CODE_TITLE": {
@@ -5831,7 +5831,7 @@
     },
     "TID_ERROR_POP_UP_LOGGED_FROM_ANOTHER_DEVICE": {
         "EN": [
-            "Another device is connecting to this village."
+            "Another device is connecting to this Village."
         ]
     },
     "TID_ERROR_POP_UP_LOGGED_FROM_ANOTHER_DEVICE_BUTTON": {
@@ -5846,7 +5846,7 @@
     },
     "TID_DEVICE_LINKED_MAIL_ITEM": {
         "EN": [
-            "New device was linked to your village."
+            "New device was linked to your Village."
         ]
     },
     "TID_TITLE_SHARE_REPLAY": {
@@ -6026,7 +6026,7 @@
     },
     "TID_ACHIEVEMENT_DESTROY_WALLS_COMPLETED": {
         "EN": [
-            "Total walls destroyed: <value>"
+            "Total Walls destroyed: <value>"
         ]
     },
     "TID_ACHIEVEMENT_DESTROY_TOWNHALL_COMPLETED": {
@@ -6126,7 +6126,7 @@
     },
     "TID_GOOGLE_SERVICE_CONNECT_TEXT": {
         "EN": [
-            "Chief!\\n<c2>Safeguard your progress now</c> by signing in using your Google Play account.\\n\\nAfterward, <c2>you will always be able to restore your village on any Android device</c> whenever you sign in again using the same Google Play account."
+            "Chief!\\n<c2>Safeguard your progress now</c> by signing in using your Google Play account.\\n\\nAfterward, <c2>you will always be able to restore your Village on any Android device</c> whenever you sign in again using the same Google Play account."
         ]
     },
     "TID_GOOGLE_SERVICE_CONNECT_BUTTON": {
@@ -6176,7 +6176,7 @@
     },
     "TID_DEVICE_LINK_ERROR_NOT_ATTACHED": {
         "EN": [
-            "Your village hasn't yet been attached to a Game Center account. Please make sure you're logged into a Game Center account with no existing village attached and restart the game.\\n\\nYou will be asked if you want to attach the current village to the Game Center account. Answer 'Yes'.\\n\\nWARNING: Attaching a village is permanent and can not be changed later."
+            "Your Village hasn't yet been attached to a Game Center account. Please make sure you're logged into a Game Center account with no existing Village attached and restart the game.\\n\\nYou will be asked if you want to attach the current Village to the Game Center account. Answer 'Yes'.\\n\\nWARNING: Attaching a Village is permanent and cannot be changed later."
         ]
     },
     "TID_DEVICE_LINK_ERROR_NOT_ATTACHED_TITLE_ANDROID": {
@@ -6186,7 +6186,7 @@
     },
     "TID_DEVICE_LINK_ERROR_NOT_ATTACHED_ANDROID": {
         "EN": [
-            "Your village hasn't yet been attached to a Google account. Go back to the settings screen and sign in with Google Play with no existing village attached.\\n\\nWARNING: Attaching a village is permanent and can not be changed later."
+            "Your Village hasn't yet been attached to a Google account. Go back to the settings screen and sign in with Google Play with no existing Village attached.\\n\\nWARNING: Attaching a Village is permanent and cannot be changed later."
         ]
     },
     "TID_DEVICE_LINK_WRONG_ACCOUNT_TITLE": {
@@ -6196,12 +6196,12 @@
     },
     "TID_DEVICE_LINK_WRONG_ACCOUNT": {
         "EN": [
-            "The current village is attached to a different Game Center account than the one you're logged into.\\n\\nPlease log out from the Game Center app and login again with the account attached to this village.\\n\\nThen try linking again."
+            "The current Village is attached to a different Game Center account than the one you're logged into.\\n\\nPlease log out from the Game Center app and login again with the account attached to this Village.\\n\\nThen try linking again."
         ]
     },
     "TID_DEVICE_LINK_WRONG_ACCOUNT_ANDROID": {
         "EN": [
-            "The current village is attached to a different Google account than the one you're signed into.\\n\\nPlease sign out of the current Google account from the settings screen, and sign in with the account attached to this village.\\n\\nThen try linking again."
+            "The current Village is attached to a different Google account than the one you're signed into.\\n\\nPlease sign out of the current Google account from the settings screen, and sign in with the account attached to this Village.\\n\\nThen try linking again."
         ]
     },
     "TID_DEVICE_LINK_ERROR_ALREADY_BOUND_TO_ALL_PLATFORMS_TITLE": {
@@ -6211,7 +6211,7 @@
     },
     "TID_DEVICE_LINK_ERROR_ALREADY_BOUND_TO_ALL_PLATFORMS": {
         "EN": [
-            "The current village has already been linked. The linking can be done only once."
+            "The current Village has already been linked. The linking can be done only once."
         ]
     },
     "TID_LINK_CANCELLED_TITLE": {
@@ -6226,22 +6226,22 @@
     },
     "TID_DEVICE_LINK_ERROR_CODE_CURRENT_VILLAGE_TOO_HIGH": {
         "EN": [
-            "Cannot overwrite village"
+            "Cannot overwrite Village"
         ]
     },
     "TID_DEVICE_LINK_ERROR_CODE_CURRENT_VILLAGE_TOO_HIGH_TEXT": {
         "EN": [
-            "Your village is already permanently attached to the Game Center account you have logged in with.\\n\\nBecause the village already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
+            "Your Village is already permanently attached to the Game Center account you have logged in with.\\n\\nBecause the Village already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
         ]
     },
     "TID_DEVICE_LINK_ERROR_CODE_CURRENT_VILLAGE_TOO_HIGH_TEXT_ANDROID": {
         "EN": [
-            "Your village is already permanently attached to the Google account you have signed in with.\\n\\nBecause the village already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
+            "Your Village is already permanently attached to the Google account you have signed in with.\\n\\nBecause the Village already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
         ]
     },
     "TID_DEVICE_LINK_ERROR_CODE_CURRENT_VILLAGE_TOO_HIGH_TEXT_KUNLUN": {
         "EN": [
-            "Your village is already permanently attached to the account you have signed in with.\\n\\nBecause the base already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
+            "Your Village is already permanently attached to the account you have signed in with.\\n\\nBecause the base already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
         ]
     },
     "TID_DEVICE_LINK_ERROR_CODE_SAME_PLATFORM": {
@@ -6336,7 +6336,7 @@
     },
     "TID_EDIT_MODE_SAVE_FIRST": {
         "EN": [
-            "You need to finish your village first"
+            "You need to finish your Village first"
         ]
     },
     "TID_POPUP_EDIT_MODE_SAVE_TITLE": {
@@ -6426,7 +6426,7 @@
     },
     "TID_EDIT_MODE_TIP_WALLS": {
         "EN": [
-            "Drag from the arrow to build walls"
+            "Drag from the arrow to build Walls"
         ]
     },
     "TID_OPEN_GAMECENTER_BUTTON_ANDROID": {
@@ -6621,7 +6621,7 @@
     },
     "TID_HINT_VILLAGE_EDIT_MODE": {
         "EN": [
-            "Easily reorganize your village with the Village Edit Mode"
+            "Easily reorganize your Village with the Village Edit Mode"
         ]
     },
     "TID_HINT_TRAP_REPAIR": {
@@ -6771,7 +6771,7 @@
     },
     "TID_VILLAGE_EDIT_SUCCESS": {
         "EN": [
-            "Your village has been saved!"
+            "Your Village has been saved!"
         ]
     },
     "TID_ERROR_POP_UP_SERVER_MAINTENANCE_ESTIMATED_LONG": {
@@ -6811,7 +6811,7 @@
     },
     "TID_EDIT_MODE_NEED_TO_FINISH": {
         "EN": [
-            "Your last village editing session has been recovered"
+            "Your last Village editing session has been recovered"
         ]
     },
     "TID_TRAINING_CAPACITY": {
@@ -6866,12 +6866,12 @@
     },
     "TID_ALLIANCE_WAR_VISIT_FAILED_NOT_FOUND": {
         "EN": [
-            "Can't visit, village was not found! Please try again later."
+            "Can't visit, Village was not found! Please try again later."
         ]
     },
     "TID_ALLIANCE_WAR_VISIT_FAILED_UNAVAILABLE": {
         "EN": [
-            "Can't visit, village is unavailable! Please try again later."
+            "Can't visit, Village is unavailable! Please try again later."
         ]
     },
     "TID_ALLIANCE_WAR_VISIT_FAILED": {
@@ -6886,7 +6886,7 @@
     },
     "TID_ALLIANCE_WAR_SNAPSHOT_FAILED": {
         "EN": [
-            "Couldn't save village, please try again later!"
+            "Couldn't save Village, please try again later!"
         ]
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED_ALL_ATTACKS_USED": {
@@ -6896,7 +6896,7 @@
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED_INVALID_TARGET": {
         "EN": [
-            "Can't attack this village, invalid target!"
+            "Can't attack this Village, invalid target!"
         ]
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED_TARGET_NOT_IN_WAR": {
@@ -6911,7 +6911,7 @@
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED_SNAPSHOT_NOT_AVAILABLE": {
         "EN": [
-            "Target village is unavailable right now, try again later!"
+            "Target Village is unavailable right now, try again later!"
         ]
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED_TARGET_UNDER_ATTACK": {
@@ -6921,7 +6921,7 @@
     },
     "TID_ALLIANCE_WAR_ATTACK_FAILED": {
         "EN": [
-            "Can't attack this village, try again later!"
+            "Can't attack this Village, try again later!"
         ]
     },
     "TID_ALLIANCE_WAR_LOOKING_FOR_OPPONENT": {
@@ -7056,7 +7056,7 @@
     },
     "TID_HERO_ABILITY_QUEEN_DESC": {
         "EN": [
-            "The queen vanishes from sight to recover some health and unleash devastating volleys of high-damage ammunition. Defenses will lose her as their target, and a group of archers will appear to distract them!"
+            "The Queen vanishes from sight to recover some health and unleash devastating volleys of high-damage ammunition. Defenses will lose her as their target, and a group of Archers will appear to distract them!"
         ]
     },
     "TID_HERO_ABILITY_NUM_SUMMONED_UNITS": {
@@ -7066,7 +7066,7 @@
     },
     "TID_POPUP_BOOST_HERO_REST": {
         "EN": [
-            "Boost the hero's healing rate by <multiplier>x for <time>?"
+            "Boost the Hero's healing rate by <multiplier>x for <time>?"
         ]
     },
     "TID_POPUP_HEADER_ABOUT_TO_BOOST_HERO": {
@@ -7076,7 +7076,7 @@
     },
     "TID_CANCEL_HERO_BOOST_CONFIRMATION": {
         "EN": [
-            "Upgrading the hero will end the boost. Are you sure?"
+            "Upgrading the Hero will end the boost. Are you sure?"
         ]
     },
     "TID_ITEM_LOCKED": {
@@ -7246,12 +7246,12 @@
     },
     "TID_ACHIEVEMENT_WAR_LOOT": {
         "EN": [
-            "Collect <number> gold from the Clan Castle"
+            "Collect <number> Gold from the Clan Castle"
         ]
     },
     "TID_ACHIEVEMENT_WAR_LOOT_COMPLETED": {
         "EN": [
-            "Total gold collected in Clan War bonuses: <value>"
+            "Total Gold collected in Clan War bonuses: <value>"
         ]
     },
     "TID_CANCEL_WAR_MATCHMAKING_CONFIRMATION_TITLE": {
@@ -7311,7 +7311,7 @@
     },
     "TID_WAR_PREPARE_ARMYCAMP_INFO": {
         "EN": [
-            "Prepare your village for the war!\\nFill your <c2>clan castle</c> and help your clanmates, recruit your best <c2>troops</c>, create powerful <c2>spells</c> and make sure your <c2>heroes</c> are ready to fight!"
+            "Prepare your Village for the War!\\nFill your <c2>Clan Castle</c> and help your Clanmates, recruit your best <c2>Troops</c>, create powerful <c2>Spells</c> and make sure your <c2>Heroes</c> are ready to fight!"
         ]
     },
     "TID_ALLIANCE_WAR_PERSONAL_ATTACK_1": {
@@ -7516,17 +7516,17 @@
     },
     "TID_ALLIANCE_WAR_ATTACK_CONFIRM_1STAR": {
         "EN": [
-            "Your clan has already won 1 star from this village. Do you want to try for a better score?"
+            "Your Clan has already won 1 star from this Village. Do you want to try for a better score?"
         ]
     },
     "TID_ALLIANCE_WAR_ATTACK_CONFIRM_2STARS": {
         "EN": [
-            "Your clan has already won 2 Stars from this village. Do you want to try for a better score?"
+            "Your Clan has already won 2 Stars from this Village. Do you want to try for a better score?"
         ]
     },
     "TID_ALLIANCE_WAR_ATTACK_CONFIRM_3STARS": {
         "EN": [
-            "This village has already been destroyed and your clan can't gain more Stars from it. Are you sure you want to attack?"
+            "This Village has already been destroyed and your Clan can't gain more Stars from it. Are you sure you want to attack?"
         ]
     },
     "TID_ALLIANCE_WAR_ENDING_PROMPT": {
@@ -7551,7 +7551,7 @@
     },
     "TID_EVENT_BOOST_SPELL_AND_HEROES": {
         "EN": [
-            "Special Event: Boost your heroes and spells for ONE GEM each! Event lasts until March 6th."
+            "Special Event: Boost your heroes and Spells for ONE GEM each! Event lasts until March 6th."
         ]
     },
     "TID_EVENT_BOOST_EVERYTHING": {
@@ -7561,7 +7561,7 @@
     },
     "TID_EVENT_BOOST_ATTACKS": {
         "EN": [
-            "Attack Event: Boost all Barracks, spells and heroes for ONE GEM each! Event lasts until January 7th."
+            "Attack Event: Boost all Barracks, Spells and Heroes for ONE GEM each! Event lasts until January 7th."
         ]
     },
     "TID_WAR_HISTORY_NOT_AVAILABLE": {
@@ -7601,7 +7601,7 @@
     },
     "TID_WAR_WAR_BASE_INFO": {
         "EN": [
-            "During preparation day, War Bases are open for troop donation and can be redesigned using all the parts of your regular village. These bases defend during war and will keep your resources and trophies perfectly safe. Remember to place any new buildings you've constructed!"
+            "During preparation day, War Bases are open for Troop donation and can be redesigned using all the parts of your regular Village. These bases defend during War and will keep your resources and Trophies perfectly safe. Remember to place any new Buildings you've constructed!"
         ]
     },
     "TID_WAR_WAR_BASE_HEADLINE": {
@@ -7926,22 +7926,22 @@
     },
     "TID_GOOGLE_PLUS_SIGNIN_TUTORIAL": {
         "EN": [
-            "Already have a village?"
+            "Already have a Village?"
         ]
     },
     "TID_ALLIANCE_WAR_STAT_PARTICIPATION_TOP": {
         "EN": [
-            "Attacks used (top villages)"
+            "Attacks used (top Villages)"
         ]
     },
     "TID_ALLIANCE_WAR_STAT_PARTICIPATION_MID": {
         "EN": [
-            "Attacks used (middle villages)"
+            "Attacks used (middle Villages)"
         ]
     },
     "TID_ALLIANCE_WAR_STAT_PARTICIPATION_BOTTOM": {
         "EN": [
-            "Attacks used (bottom villages)"
+            "Attacks used (bottom Villages)"
         ]
     },
     "TID_ALLIANCE_WAR_MEMBER_STAT_DEFENCES": {
@@ -8021,7 +8021,7 @@
     },
     "TID_FEEDBACK_INFO5": {
         "EN": [
-            "Please give us the following information about your lost village.\\nExact name of village:\\nTown Hall level:\\nXP level:\\nName of clan (if any):"
+            "Please give us the following information about your lost Village.\\nExact name of Village:\\nTown Hall level:\\nXP level:\\nName of Clan (if any):"
         ]
     },
     "TID_FEEDBACK_INFO6": {
@@ -8096,7 +8096,7 @@
     },
     "TID_HINT_NAMECHANGE": {
         "EN": [
-            "You can't change the name of your village. Your villagers wouldn't know where they live!"
+            "You can't change the name of your Village. Your Villagers wouldn't know where they live!"
         ]
     },
     "TID_LIVE_REPLAY_FAIL_GENERIC": {
@@ -8156,12 +8156,12 @@
     },
     "TID_HERO_INSTRUCTIONS_BARBARIAN": {
         "EN": [
-            "This colossal menace soaks up huge amounts of damage and bashes anything in his path. He guards his territory fiercely when defending, and can launch into a devastating rage when attacking once his Iron Fist ability is unlocked!"
+            "Biggest and bravest of all barbarians, this colossal menace soaks up huge amounts of damage and smashes anything in his path with his sword. He guards his territory fiercely when defending."
         ]
     },
     "TID_HERO_INSTRUCTIONS_QUEEN": {
         "EN": [
-            "This graceful huntress is a master of destructive force, though modest in health. She snipes targets in her territory when defending, and can summon stealth and terrifying damage when attacking once her Royal Cloak ability is unlocked!"
+            "Towering above all other Archers, this graceful huntress is a master of destructive force. Although her health is modest, she snipes targets from afar with her powerful X-bow. As a defender she guards the Village with a vengeance."
         ]
     },
     "TID_MORE_YOUKU": {
@@ -8171,12 +8171,12 @@
     },
     "TID_POPUP_UPGRADE_WALL_SECTION_TEXT": {
         "EN": [
-            "Do you really want to upgrade the selected walls for <number> <resource>?"
+            "Do you really want to upgrade the selected Walls for <number> <resource>?"
         ]
     },
     "TID_POPUP_UPGRADE_WALL_SECTION_TITLE": {
         "EN": [
-            "Upgrade walls"
+            "Upgrade Walls"
         ]
     },
     "TID_POPUP_REMOVE_REINFORCEMENTS_TITLE": {
@@ -8201,22 +8201,22 @@
     },
     "TID_POPUP_REMOVE_SPELL_TITLE": {
         "EN": [
-            "Remove spells?"
+            "Remove Spells?"
         ]
     },
     "TID_POPUP_REMOVE_SPELL_TEXT": {
         "EN": [
-            "Do you really want to remove the spells?"
+            "Do you really want to remove the Spells?"
         ]
     },
     "TID_POPUP_REMOVE_TROOP_AND_SPELL_TITLE": {
         "EN": [
-            "Remove troops and spells?"
+            "Remove Troops and Spells?"
         ]
     },
     "TID_POPUP_REMOVE_TROOP_AND_SPELL_TEXT": {
         "EN": [
-            "Do you really want to remove the troops and spells?"
+            "Do you really want to remove the Troops and Spells?"
         ]
     },
     "TID_REMOVE_TROOP_BUTTON": {
@@ -8236,7 +8236,7 @@
     },
     "TID_REMOVE_TROOP_AND_SPELL_MESSAGE": {
         "EN": [
-            "Troops and spells removed"
+            "Troops and Spells removed"
         ]
     },
     "TID_NEWS_BIRTHDAY_TITLE": {
@@ -8301,7 +8301,7 @@
     },
     "TID_NEWS_UPDATE_TEXT": {
         "EN": [
-            "* Improved Lightning, Poison, Earthquake and Freeze spells!\\n* Lightning Spell level 7 and 25 new Wall pieces have been added to Town Hall level 10\\n* Total Destruction is now a Clan Wars tiebreaker - if the score is even at the end of the war, the Clan with more destruction percentage in their best attacks will be the victor!"
+            "* Improved Lightning, Poison, Earthquake and Freeze Spells!\\n* Lightning Spell level 7 and 25 new Wall pieces have been added to Town Hall level 10\\n* Total Destruction is now a Clan Wars tiebreaker - if the score is even at the end of the War, the Clan with more destruction percentage in their best attacks will be the victor!"
         ]
     },
     "TID_NEWS_TROOP_TITLE": {
@@ -8311,12 +8311,12 @@
     },
     "TID_NEWS_TROOP_TEXT": {
         "EN": [
-            "This flying creature made of stone and lava can take loads of damage. It hunts Air Defenses and goes deep inside enemy village, providing cover to other troops. Once destroyed it erupts into smaller Lava Pups that will keep the fight going for a little while longer."
+            "This flying creature made of stone and lava can take loads of damage. It hunts Air Defenses and goes deep inside enemy Village, providing cover to other Troops. Once destroyed it erupts into smaller Lava Pups that will keep the fight going for a little while longer."
         ]
     },
     "TID_NEWS_TROOP_TEXT2": {
         "EN": [
-            "This flying creature made of stone and lava can take loads of damage. It targets Air Defenses and goes deep inside enemy village, providing cover to other troops. Once destroyed it spawns smaller menaces that will distract the enemy defenses for a little while longer."
+            "This flying creature made of stone and lava can take loads of damage. It targets Air Defenses and goes deep inside enemy Village, providing cover to other Troops. Once destroyed it spawns smaller menaces that will distract the enemy defenses for a little while longer."
         ]
     },
     "TID_GEM_BALANCE": {
@@ -8416,7 +8416,7 @@
     },
     "TID_ACCOUNT_SWITCHING_NOT_SUPPORTED": {
         "EN": [
-            "You are signed in to a GameCenter account belonging to Chief <name>'s village.\\n\\nThis village is available to play, but switching to this account is not supported below iOS version 7. To switch to this account, please update your iOS version.\\n\\nMore information about iOS updates:\\nhttp://support.apple.com/kb/HT4623"
+            "You are signed in to a GameCenter account belonging to Chief <name>'s Village.\\n\\nThis Village is available to play, but switching to this account is not supported below iOS version 7. To switch to this account, please update your iOS version.\\n\\nMore information about iOS updates:\\nhttp://support.apple.com/kb/HT4623"
         ]
     },
     "TID_DIAMOND_PACK_RED": {
@@ -8511,7 +8511,7 @@
     },
     "TID_LOCAL_NOTIFICATION_YOUR_SPELLS_ARE_READY": {
         "EN": [
-            "Your spells are ready to take into battle!"
+            "Your Spells are ready to take into battle!"
         ]
     },
     "TID_YES": {
@@ -8616,12 +8616,12 @@
     },
     "TID_FB_CONNECT_NOT_SAFE_TEXT": {
         "EN": [
-            "Connecting your village with Facebook allows you to be connected to your friends. To safeguard your progress and to play on multiple devices, please sign in to Game Center."
+            "Connecting your Village with Facebook allows you to be connected to your friends. To safeguard your progress and to play on multiple devices, please sign in to Game Center."
         ]
     },
     "TID_FB_CONNECT_NOT_SAFE_TEXT_ANDROID": {
         "EN": [
-            "Connecting your village with Facebook allows you to be connected to your friends. To safeguard your progress and to play on multiple devices, please sign in to Google Play."
+            "Connecting your Village with Facebook allows you to be connected to your friends. To safeguard your progress and to play on multiple devices, please sign in to Google Play."
         ]
     },
     "TID_OBSTACLE_HALLOWEEN2014": {
@@ -8711,7 +8711,7 @@
     },
     "TID_BOUND_TO_OTHER_ACCOUNT_LOAD_VILLAGE_TITLE": {
         "EN": [
-            "Load village?"
+            "Load Village?"
         ]
     },
     "TID_LAYOUTS_ALREADY_ACTIVE": {
@@ -8741,7 +8741,7 @@
     },
     "TID_PUSH_UNDER_ATTACK": {
         "EN": [
-            "Your village is being raided by <attacker>!"
+            "Your Village is being raided by <attacker>!"
         ]
     },
     "TID_LAYOUTS_EMPTY_SLOT": {
@@ -8756,7 +8756,7 @@
     },
     "TID_POPUP_UNDER_ATTACK_LIVE_REPLAY": {
         "EN": [
-            "Your village is under attack!"
+            "Your Village is under attack!"
         ]
     },
     "TID_LAYOUTS_CANT_REPLACE_ACTIVE": {
@@ -9104,7 +9104,7 @@
     },
     "TID_CLANPERK_DESC_DONATION_LIMIT_VALUE": {
         "EN": [
-            "<troops> troops, <spells> spells"
+            "<troops> Troops, <spells> Spells"
         ]
     },
     "TID_CLANPERK_DESC_DONATION_REFUND_VALUE": {
@@ -9359,7 +9359,7 @@
     },
     "TID_WAR_ATTACK_CONFIRM_CASTLE_TEXT": {
         "EN": [
-            "Clan Castle troops and spells: <number>"
+            "Clan Castle Troops and Spells: <number>"
         ]
     },
     "TID_WAR_ATTACK_CONFIRM_CASTLE_TROOPS_ONLY_TEXT": {
@@ -9511,12 +9511,12 @@
     },
     "TID_HINT_STORAGES_SPELL_IMMUNITY": {
         "EN": [
-            "All resource storages are immune to spell damage!"
+            "All resource storages are immune to Spell damage!"
         ]
     },
     "TID_STORAGES_SPELL_IMMUNITY": {
         "EN": [
-            "All resource storages are immune to spell damage!"
+            "All resource storages are immune to Spell damage!"
         ]
     },
     "TID_POPUP_ARMY_OVERVIEW": {
@@ -9546,7 +9546,7 @@
     },
     "TID_EARTHQUAKE_INFO": {
         "EN": [
-            "Weaken walls and buildings with crippling earthquakes!\\n\\nEarthquake Spells damage structures based on their maximum hitpoints. Repeated earthquakes deal decreasing damage to the same buildings, but increasing damage to the same Walls. No wall can withstand the might of four Earthquake Spells!"
+            "Weaken Walls and Buildings with crippling earthquakes!\\n\\nEarthquake Spells damage structures based on their maximum hitpoints. Repeated earthquakes deal decreasing damage to the same Buildings, but increasing damage to the same Walls. No Wall can withstand the might of four Earthquake Spells!"
         ]
     },
     "TID_HINT_SPELL_EARTHQUAKE1": {
@@ -9918,7 +9918,7 @@
     },
     "TID_NATIVE_DIALOG_VERSION_NOT_UP_TO_DATE_STORE_NOT_READY_MESSAGE": {
         "EN": [
-            "We are updating to a new version of Clash of Clans. Your village will be ready soon. Please check back in a short while!"
+            "We are updating to a new version of Clash of Clans. Your Village will be ready soon. Please check back in a short while!"
         ]
     },
     "TID_NATIVE_DIALOG_VERSION_NOT_UP_TO_DATE_STORE_NOT_READY_BUTTON": {
@@ -9953,17 +9953,17 @@
     },
     "TID_BUTTON_GENERATE_CODE_TEXT": {
         "EN": [
-            "Transfer your village to another Android App Store. Transferring your village will help safeguard your data!"
+            "Transfer your Village to another Android App Store. Transferring your Village will help safeguard your data!"
         ]
     },
     "TID_LINK_CODE_GENERATE_CODE_TEXT": {
         "EN": [
-            "Use the link code below to transfer your village to another Android App Store. Check the tutorial for a detailed guide!"
+            "Use the link code below to transfer your Village to another Android App Store. Check the tutorial for a detailed guide!"
         ]
     },
     "TID_LINK_DEVICES_ENTER_CODE_KUNLUN_TEXT": {
         "EN": [
-            "You can get a link code from your village by going to Settings - Link a device. Check our tutorial for a detailed guide!"
+            "You can get a link code from your Village by going to Settings - Link a device. Check our tutorial for a detailed guide!"
         ]
     },
     "TID_MORE_WECHAT": {
@@ -9978,7 +9978,7 @@
     },
     "TID_NEWS_ACCOUNT_TRANSFER_TEXT": {
         "EN": [
-            "Transfer your village now to a supported Android App Store to safeguard your village, get official player support, updates and more!"
+            "Transfer your Village now to a supported Android App Store to safeguard your Village, get official player support, updates and more!"
         ]
     },
     "TID_SLOW_SPEED_AND_ATTACK": {
@@ -10023,7 +10023,7 @@
     },
     "TID_ERROR_POP_UP_LOGIN_FAILED_15": {
         "EN": [
-            "Your village progress can be accessed by installing,\u00a0and launching Clash of Clans from <APP_STORE> Android App Store."
+            "Your Village progress can be accessed by installing,\u00a0and launching Clash of Clans from <APP_STORE> Android App Store."
         ]
     },
     "TID_KUNLUN_APP_STORE_360": {
@@ -10183,12 +10183,12 @@
     },
     "TID_ACHIEVEMENT_SPELL_DONATION": {
         "EN": [
-            "Donate <number> spell storage capacity worth of spells"
+            "Donate <number> Spell storage capacity worth of Spells"
         ]
     },
     "TID_ACHIEVEMENT_SPELL_DONATION_COMPLETED": {
         "EN": [
-            "Total spell capacity donated: <value>"
+            "Total Spell capacity donated: <value>"
         ]
     },
     "TID_ACHIEVEMENT_DESTROY_ARTILLERY_TITLE": {
@@ -10283,12 +10283,12 @@
     },
     "TID_GRAND_WARDEN_INFO": {
         "EN": [
-            "The Grand Warden is a veteran tactician equipped with a magical Staff and a magical Tome. He toughens troops that attack enemy villages or guard your village."
+            "The Grand Warden is a veteran tactician equipped with a powerful magic staff. He can support your Troops in attacking enemy Villages or guard your Village."
         ]
     },
     "TID_HERO_INSTRUCTIONS_WARDEN": {
         "EN": [
-            "The warden follows groups of friendly troops and boosts them with his Life Aura. Attacking he can walk over walls or fly high. On defense he turns into a tower. Unlock his Eternal Tome ability to make nearby troops immune to damage!"
+            "The Grand Warden is a powerful master of magic who supports your attacking Troops with blasts from his magic staff. He can walk over Walls or fly high with Air Troops, so he can help any attacking army. On defense he turns into a powerful Tower."
         ]
     },
     "TID_HERO_AURA_WARDEN_TITLE": {
@@ -10408,7 +10408,7 @@
     },
     "TID_NEWS_TH11_UPDATE_OVERVIEW_TEXT": {
         "EN": [
-            "\u2022 Town Hall 11 is bursting onto the scene! BOOM!\\n\u2022 Grand Warden & Eagle Artillery: The most powerful and strategic additions ever!\\n\u2022 New troop levels, defense levels, and Clan Spell donation\\n\u2022 Attack through Shield at any time, but be sure to protect your Town Hall!\\n\u2022 Guard your playtime when Shield is down and never get attacked off-guard again\\n\u2022 Goblins chasing Town Halls, bigger League Bonuses, Trophy offers, and much more!"
+            "\u2022 Town Hall 11 is bursting onto the scene! BOOM!\\n\u2022 Grand Warden & Eagle Artillery: The most powerful and strategic additions ever!\\n\u2022 New Troop levels, defense levels, and Clan Spell donation\\n\u2022 Attack through Shield at any time, but be sure to protect your Town Hall!\\n\u2022 Guard your playtime when Shield is down and never get attacked off-guard again\\n\u2022 Goblins chasing Town Halls, bigger League Bonuses, Trophy offers, and much more!"
         ]
     },
     "TID_NEWS_TH11_UPDATE_TH11_TITLE": {
@@ -10418,7 +10418,7 @@
     },
     "TID_NEWS_TH11_UPDATE_TH11_TEXT": {
         "EN": [
-            "\u2022 Experience the biggest, baddest, most challenging Town Hall level ever: Town Hall 11!\\n\u2022 New Town Hall 11 hero Grand Warden can make armies nearly unstoppable!\\n\u2022 New Town Hall 11 defense Eagle Artillery delivers awe-inspiring devastation from afar\\n\u2022 More defenses, including an extra Cannon, Archer Tower, Wizard Tower and X-Bow!\\n\u2022 New Town Hall 11 levels for Minion, Witch, Wizard Tower and more!"
+            "\u2022 Experience the biggest, baddest, most challenging Town Hall level ever: Town Hall 11!\\n\u2022 New Town Hall 11 Hero Grand Warden can make armies nearly unstoppable!\\n\u2022 New Town Hall 11 defense Eagle Artillery delivers awe-inspiring devastation from afar\\n\u2022 More defenses, including an extra Cannon, Archer Tower, Wizard Tower and X-Bow!\\n\u2022 New Town Hall 11 levels for Minion, Witch, Wizard Tower, and more!"
         ]
     },
     "TID_NEWS_TH11_UPDATE_HERO_TITLE": {
@@ -10448,7 +10448,7 @@
     },
     "TID_NEWS_TH11_UPDATE_SPELLS_TEXT": {
         "EN": [
-            "\u2022 Request reinforcement spells, not just troops, starting from Clan Castle level 4\\n\u2022 Donated spells receive all existing Clan Perks benefits\\n\u2022 Freeze Spell is now unlocked at Town Hall 9 and has slightly longer duration on lower levels"
+            "\u2022 Request reinforcement Spells, not just Troops, starting from Clan Castle level 4\\n\u2022 Donated Spells receive all existing Clan Perks benefits\\n\u2022 Freeze Spell is now unlocked at Town Hall 9 and has slightly longer duration on lower levels"
         ]
     },
     "TID_NEWS_TH11_UPDATE_SHIELDS_TITLE": {
@@ -10488,7 +10488,7 @@
     },
     "TID_NEWS_TH11_UPDATE_GAMEPLAY_TEXT": {
         "EN": [
-            "\u2022 Battle time limit has been increased by 30 seconds\\n\u2022 Goblins now target the Town Hall and Clan Castle for 2x damage\\n\u2022 Rearm costs for all traps have been massively reduced\\n\u2022 Reload costs for X-Bows have been massively reduced\\n\u2022 Large amounts of Healers now have reduced effectiveness on the same unit\\n\u2022 Army boosts have been reduced to 5 gems for 1 hour of boost\\n\u2022 Cost for finding a match and \u2018Nexting\u00b4 reduced for TH10\\n\u2022 Clan War Preparation Day has been reduced to 23 hours\\n\u2022 Troop combat and pathfinding AI has been polished up and tightened\\n\u2022 Available loot percentage on Town Hall levels 6-10 has been slightly increased\\n\u2022 Villages one Town Hall level lower are now worth slightly less loot\\n\u2022 The playing field and troop deployment area have both been expanded (outlying obstacles have been automatically moved)"
+            "\u2022 Battle time limit has been increased by 30 seconds\\n\u2022 Goblins now target the Town Hall and Clan Castle for 2x damage\\n\u2022 Rearm costs for all Traps have been massively reduced\\n\u2022 Reload costs for X-Bows have been massively reduced\\n\u2022 Large amounts of Healers now have reduced effectiveness on the same unit\\n\u2022 Army boosts have been reduced to 5 Gems for 1 hour of boost\\n\u2022 Cost for finding a match and \u2018Nexting\u00b4 reduced for TH10\\n\u2022 Clan War Preparation Day has been reduced to 23 hours\\n\u2022 Troop combat and pathfinding AI has been polished up and tightened\\n\u2022 Available loot percentage on Town Hall levels 6-10 has been slightly increased\\n\u2022 Villages one Town Hall level lower are now worth slightly less loot\\n\u2022 The playing field and Troop deployment area have both been expanded (outlying obstacles have been automatically moved)"
         ]
     },
     "TID_NEWS_TH11_UPDATE_OTHER_TITLE": {
@@ -10498,7 +10498,7 @@
     },
     "TID_NEWS_TH11_UPDATE_OTHER_TEXT": {
         "EN": [
-            "\u2022 Two new achievements have been added: Anti-Artillery and Sharing is Caring\\n\u2022 Troop/Spell donation interface has been revamped and now shows existing donations\\n\u2022 Troops in Barracks can now be queued in sequence, similarly to the Spell Factory\\n\u2022 The Clan War button now animates when a war attack starts\\n\u2022 Active Shield or Guard can now be manually dismissed by tapping on the icon\\n\u2022 You can now be offline a bit longer before being made vulnerable to attack\\n\u2022 A special sound plays when finding a multiplayer target after 10 seconds of searching\\n\u2022 A special sound plays when no multiplayer targets are found and a search is cancelled\\n\u2022 Personal Break online-time limit has been reduced to 3 hours\\n\u2022 Personal Break limit is now extended instead of reset in some cases\\n\u2022 Multiplayer matchmaking is less likely to offer opponents under your Town Hall level (only below Champion League)"
+            "\u2022 Two new achievements have been added: Anti-Artillery and Sharing is Caring\\n\u2022 Troop/Spell donation interface has been revamped and now shows existing donations\\n\u2022 Troops in Barracks can now be queued in sequence, similarly to the Spell Factory\\n\u2022 The Clan War button now animates when a War attack starts\\n\u2022 Active Shield or Guard can now be manually dismissed by tapping on the icon\\n\u2022 You can now be offline a bit longer before being made vulnerable to attack\\n\u2022 A special sound plays when finding a multiplayer target after 10 seconds of searching\\n\u2022 A special sound plays when no multiplayer targets are found and a search is cancelled\\n\u2022 Personal Break online-time limit has been reduced to 3 hours\\n\u2022 Personal Break limit is now extended instead of reset in some cases\\n\u2022 Multiplayer matchmaking is less likely to offer opponents under your Town Hall level (only below Champion League)"
         ]
     },
     "TID_NEWS_TOS_UPDATE": {
@@ -10718,17 +10718,17 @@
     },
     "TID_NEWS_ECONOMY_TEXT": {
         "EN": [
-            "\\n\u2022 Training time and cost have been reduced for some troops\\n\u2022 Training time and cost have been reduced for some spells\\n\u2022 Training time and cost have been reduced for some troops and spells"
+            "\\n\u2022 Training time and cost have been reduced for some Troops\\n\u2022 Training time and cost have been reduced for some Spells\\n\u2022 Training time and cost have been reduced for some Troops and Spells"
         ]
     },
     "TID_NEWS_ECONOMY_TEXT2": {
         "EN": [
-            "\\n\u2022 Training time has been reduced for some troops\\n\u2022 Training time has been reduced for some spells\\n* Training time has been reduced for some troops and spells"
+            "\\n\u2022 Training time has been reduced for some Troops\\n\u2022 Training time has been reduced for some Spells\\n* Training time has been reduced for some Troops and Spells"
         ]
     },
     "TID_NEWS_ECONOMY_TEXT3": {
         "EN": [
-            "\\n\u2022 Training cost has been reduced for some troops\\n\u2022 Training cost has been reduced for some spells\\n\u2022 Training cost has been reduced for some troops and spells"
+            "\\n\u2022 Training cost has been reduced for some Troops\\n\u2022 Training cost has been reduced for some Spells\\n\u2022 Training cost has been reduced for some Troops and Spells"
         ]
     },
     "TID_HINT_STAR_BONUS_LEAGUE": {
@@ -10763,7 +10763,7 @@
     },
     "TID_AVATAR_MESSAGE_TEXT_LAYOUTS_SCRAMBLED": {
         "EN": [
-            "Your village layouts have been reset due to an inappropriate layout. Further offenses will lead to increased suspension!\\nFor more information about inappropriate Village Layouts, please tap below."
+            "Your Village layouts have been reset due to an inappropriate layout. Further offenses will lead to increased suspension!\\nFor more information about inappropriate Village Layouts, please tap below."
         ]
     },
     "TID_ALLIANCE_WAR_REPLAY_PERSONAL_DEFENSE": {
@@ -10882,12 +10882,12 @@
     },
     "TID_CHALLENGE_HEADER": {
         "EN": [
-            "Challenge your Clan member to attack your village"
+            "Challenge your Clan member to attack your Village"
         ]
     },
     "TID_CHALLENGE_DEFAULT_INPUT": {
         "EN": [
-            "Can you beat my village?"
+            "Can you beat my Village?"
         ]
     },
     "TID_CHALLENGE_CLOSED": {
@@ -11032,7 +11032,7 @@
     },
     "TID_TRAIN_SPELLS_QUEUE_SIZE": {
         "EN": [
-            "Brew spells: <num>/<max>"
+            "Brew Spells: <num>/<max>"
         ]
     },
     "TID_TRAINING_QUEUE_IS_EMPTY": {
@@ -11272,7 +11272,7 @@
     },
     "TID_MINER_INFO": {
         "EN": [
-            "These sneaky shovelers burrow underground, pass beneath walls and pop up right next to their targets. While underground, Miners cannot be damaged and will not trigger traps, but still gain bonuses from Spells."
+            "These sneaky shovelers burrow underground, pass beneath Walls and pop up right next to their targets. While underground, Miners cannot be damaged and will not trigger Traps, but still gain bonuses from Spells."
         ]
     },
     "TID_CHALLENGE_CANCELLED": {
@@ -11717,12 +11717,12 @@
     },
     "TID_CHALLENGE_ATTACK_CODE_HINT": {
         "EN": [
-            "Challenge a friend to attack your village with this code! Your Clash Friends can also directly accept this challenge from their Friends List."
+            "Challenge a friend to attack your Village with this code! Your Clash Friends can also directly accept this challenge from their Friends List."
         ]
     },
     "TID_CHALLENGE_FRIEND_CONTENT": {
         "EN": [
-            "Challenge a friend to attack your village"
+            "Challenge a friend to attack your Village"
         ]
     },
     "TID_CHALLENGE_CANT_REQUEST": {
@@ -12012,7 +12012,7 @@
     },
     "TID_TRAINING_SPELLS_INFO_BUILD": {
         "EN": [
-            "Build Spell Factory to unlock spells!"
+            "Build Spell Factory to unlock Spells!"
         ]
     },
     "TID_SEARCH_TAB_BOOKMARKS": {
@@ -12102,7 +12102,7 @@
     },
     "TID_CREATE_PRESET_INFO": {
         "EN": [
-            "Add troops and spells, then save the army"
+            "Add Troops and Spells, then save the army"
         ]
     },
     "TID_PRESET_INFO": {
@@ -12257,7 +12257,7 @@
     },
     "TID_HELP_TRAINING_SPELLS_HELP_POPUP": {
         "EN": [
-            "You can brew extra spells and leave them here until your Army has free space."
+            "You can brew extra Spells and leave them here until your Army has free space."
         ]
     },
     "TID_DIAMOND_BUNDLE_BUILDER_INFO": {
@@ -12317,7 +12317,7 @@
     },
     "TID_OVERQUEUE_HELPER_SPELLS": {
         "EN": [
-            "These spells will move to your army when there is free space!"
+            "These Spells will move to your Army when there is free space!"
         ]
     },
     "TID_CANCEL_FRIENDLY_WAR_SENDER_TEXT": {
@@ -12807,7 +12807,7 @@
     },
     "TID_EVENT_ARMYSPELL_BOOST_INFO": {
         "EN": [
-            "Get full armies 4x faster!\\n\\nBoost the following for 1 Gem each:\\n\u2022 Heroes\\n\u2022 Troop Training\\n\u2022 Spell Brewing"
+            "Get full Armies 4x faster!\\n\\nBoost the following for 1 Gem each:\\n\u2022 Heroes\\n\u2022 Troop Training\\n\u2022 Spell Brewing"
         ]
     },
     "TID_DIAMOND_BUNDLE_GOLD_ELIXIR_DARK_ELIXIR_INFO": {
@@ -13080,7 +13080,7 @@
     },
     "TID_TENCENT_BOUND_TO_OTHER_ACCOUNT": {
         "EN": [
-            "Do you want to load Chief <name>'s village with Town Hall level <number>?"
+            "Do you want to load Chief <name>'s Village with Town Hall level <number>?"
         ]
     },
     "TID_INFO_POP_UP_IAP_NOTE_TENCENT": {
@@ -13105,7 +13105,7 @@
     },
     "TID_DEVICE_LINK_ERROR_CODE_CURRENT_VILLAGE_TOO_HIGH_TEXT_TENCENT": {
         "EN": [
-            "Your village is already permanently attached to the account you have signed in with.\\n\\nBecause the base already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
+            "Your Village is already permanently attached to the account you have signed in with.\\n\\nBecause the base already has progress (Town Hall level <level> or a purchase made), it cannot be overwritten anymore."
         ]
     },
     "TID_DEVICE_LINK_ERROR_CODE_SAME_PLATFORM_TEXT_TENCENT": {
@@ -13145,7 +13145,7 @@
     },
     "TID_ACHIEVEMENT_ACCOUNT_BOUND": {
         "EN": [
-            "Protect your village by connecting to a social network"
+            "Protect your Village by connecting to a social network"
         ]
     },
     "TID_ACHIEVEMENT_ACCOUNT_BOUND_TITLE": {
@@ -13165,7 +13165,7 @@
     },
     "TID_ACHIEVEMENT_ACCOUNT_BOUND_KUNLUN": {
         "EN": [
-            "Your village is safeguarded"
+            "Your Village is safeguarded"
         ]
     },
     "TID_ACHIEVEMENT_ACCOUNT_BOUND_TENCENT": {
@@ -13215,7 +13215,7 @@
     },
     "TID_EVENT_ARMY_GOWIWI_INFO": {
         "EN": [
-            "Destroy villages with the classic Golem-Wizard-Witch army! Each unit is now 50% cheaper!"
+            "Destroy Villages with the classic Golem-Wizard-Witch army! Each unit is now 50% cheaper!"
         ]
     },
     "TID_CNY_PACK": {
@@ -13500,7 +13500,7 @@
     },
     "TID_BALLOON2_ABILITY_HELP": {
         "EN": [
-            "Deals <num2> damage, destroys walls and spawns <num> Skeletons when activated"
+            "Deals <num2> damage, destroys Walls and spawns <num> Skeletons when activated"
         ]
     },
     "TID_GARG2_ABILITY_NAME": {
@@ -13560,7 +13560,7 @@
     },
     "TID_CLOCK_TOWER_INFO": {
         "EN": [
-            "The Clock Tower makes things happen faster in your village! Collect resources, research and build faster."
+            "The Clock Tower makes things happen faster in your Village! Collect resources, research and build faster."
         ]
     },
     "TID_BOOST": {
@@ -13640,7 +13640,7 @@
     },
     "TID_DOUBLE_CANNON_INFO": {
         "EN": [
-            "Double cannons, double shots per cannon, It's a double-double dose of trouble!"
+            "Double Cannons, double shots per Cannon, It's a double-double dose of trouble!"
         ]
     },
     "TID_BUILDING_GUARD_POST": {
@@ -13835,7 +13835,7 @@
     },
     "TID_TUTORIAL_WORKER_MENU4": {
         "EN": [
-            "Chief, seems there is plenty to do here. Let's be sure to look after our village too!"
+            "Chief, seems there is plenty to do here. Let's be sure to look after our Village too!"
         ]
     },
     "TID_WARMACHINE": {
@@ -13980,7 +13980,7 @@
     },
     "TID_CHARACTER_INFO_MOVING_CANNON": {
         "EN": [
-            "A cannon on wheels?! Wait, did it just turn into a mortar?? Bet they won\u00b4t see that coming! Both powerful and versatile!"
+            "A Cannon on wheels?! Wait, did it just turn into a Mortar?? Bet they won\u00b4t see that coming! Both powerful and versatile!"
         ]
     },
     "TID_CHARACTER_INFO_IRONFIST_GIANT": {
@@ -14490,7 +14490,7 @@
     },
     "TID_EVENT_ARMY_INFO": {
         "EN": [
-            "Destroy villages with this army! Each unit is now <num>% cheaper!"
+            "Destroy Villages with this army! Each unit is now <num>% cheaper!"
         ]
     },
     "TID_CAMP_FIRE_DECO": {
@@ -14610,7 +14610,7 @@
     },
     "TID_WORKER_TARGET_OTHER_VILLAGE": {
         "EN": [
-            "Builder is working in another village!"
+            "Builder is working in another Village!"
         ]
     },
     "TID_GEAR_UP_ITEM": {
@@ -14935,7 +14935,7 @@
     },
     "TID_HINT_GEAR_UP": {
         "EN": [
-            "Look for a Gear Up option in your home village defenses to apply special upgrades from the Master Builder!"
+            "Look for a Gear Up option in your Home Village defenses to apply special upgrades from the Master Builder!"
         ]
     },
     "TID_HINT_VERSUS_BATTLE1": {
@@ -14985,7 +14985,7 @@
     },
     "TID_DEVICE_LINK_ERROR_BOTH_HAVE_OPEN_ID_KUNLUN": {
         "EN": [
-            "The current village has already been linked. The linking can be done only once."
+            "The current Village has already been linked. The linking can be done only once."
         ]
     },
     "TID_RES_PACK_INFO_GOLD": {
@@ -15095,7 +15095,7 @@
     },
     "TID_USE_SPELL_EVENT_ACHIEVEMENT_DESC_PLURAL": {
         "EN": [
-            "Event Challenge: Win multiplayer battles!\\n<cffec78>\u2022 Must use <usecount> <unit> spells</c>"
+            "Event Challenge: Win multiplayer battles!\\n<cffec78>\u2022 Must use <usecount> <unit> Spells</c>"
         ]
     },
     "TID_USE_SPELL_EVENT_ACHIEVEMENT_DESC": {
@@ -15145,7 +15145,7 @@
     },
     "TID_CHARACTER_INFO_GHOST": {
         "EN": [
-            "Upset that no one notices him, the Royal Ghost is determined to smash things up until he gets the recognition he deserves. He's so unnoticeable that even walls won't hold him back!"
+            "Upset that no one notices him, the Royal Ghost is determined to smash things up until he gets the recognition he deserves. He's so unnoticeable that even Walls won't hold him back!"
         ]
     },
     "TID_OBSTACLE_HALLOWEEN2017": {
@@ -15180,7 +15180,7 @@
     },
     "TID_CHARACTER_INFO_GIANT_SKELETON": {
         "EN": [
-            "Big boned from early age, the Giant Skeleton was always destined to blow up more than just walls. His massive bomb damages everything around him after he is destroyed."
+            "Big boned from early age, the Giant Skeleton was always destined to blow up more than just Walls. His massive bomb damages everything around him after he is destroyed."
         ]
     },
     "TID_FRIENDS_ONLINE": {
@@ -15335,7 +15335,7 @@
     },
     "TID_LOCAL_NOTIFICATION_EVENT_SPECIAL_TROOP_DragonLighting": {
         "EN": [
-            "Chief, earn 200 gems during the Dragon/Lightning Spell event!"
+            "Chief, earn 200 Gems during the Dragon/Lightning Spell event!"
         ]
     },
     "TID_LOCAL_NOTIFICATION_EVENT_CLAN_LootXP": {
@@ -15990,7 +15990,7 @@
     },
     "TID_CLANGAMES_TASK_INFO_DONATE_SPELLS": {
         "EN": [
-            "Donate a total of <num> Housing Space worth of spells."
+            "Donate a total of <num> Housing Space worth of Spells."
         ]
     },
     "TID_CLAN_GAMES_CENTRE": {
@@ -16115,17 +16115,17 @@
     },
     "TID_BOOSTER_FINISH_ANY_UPGRADE_INFO": {
         "EN": [
-            "This extremely powerful magical encyclopedia can be used to instantly finish any upgrade timer. Works in both villages!"
+            "This extremely powerful magical encyclopedia can be used to instantly finish any upgrade timer. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_FINISH_SPELL_UPGRADE_INFO": {
         "EN": [
-            "Written by unknown wizards, this magical book can be used to instantly finish any spell upgrade timer. Works in Home Village."
+            "Written by unknown wizards, this magical book can be used to instantly finish any Spell upgrade timer. Works in Home Village."
         ]
     },
     "TID_BOOSTER_FINISH_HERO_UPGRADE_INFO": {
         "EN": [
-            "Full of heroic tales and sound advice, this magical book can be used to instantly finish any hero or pet upgrade timer. Works in both villages!"
+            "Full of heroic tales and sound advice, this magical book can be used to instantly finish any hero or pet upgrade timer. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_MAX_LEVEL_ARMY_INFO": {
@@ -16135,22 +16135,22 @@
     },
     "TID_BOOSTER_FINISH_TROOP_UPGRADE_INFO": {
         "EN": [
-            "Filled with very efficient training programs, this magical book can be used to instantly finish any troop upgrade timer. Works in both villages!"
+            "Filled with very efficient training programs, this magical book can be used to instantly finish any troop upgrade timer. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_FINISH_BUILDING_UPGRADE_INFO": {
         "EN": [
-            "Supposedly authored by the Master Builder himself, this magical book can be used to instantly complete any building upgrade. Works in both villages!"
+            "Supposedly authored by the Master Builder himself, this magical book can be used to instantly complete any building upgrade. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_BOOST_RESOURCES_INFO": {
         "EN": [
-            "A haste spell turned into a potion, this magical elixir can greatly boost your resource collector efficiency for <time>. Works in Home Village."
+            "A haste Spell turned into a potion, this magical Elixir can greatly boost your resource collector efficiency for <time>. Works in Home Village."
         ]
     },
     "TID_BOOSTER_BOOST_PRODUCTION_INFO": {
         "EN": [
-            "This energetic elixir boosts your army production, increasing efficiency of Barracks, Spell Factories, Workshop and hero regeneration for <time>. Works in Home Village."
+            "This energetic Elixir boosts your Army production, increasing efficiency of Barracks, Spell Factories, Workshop and Hero regeneration for <time>. Works in Home Village."
         ]
     },
     "TID_NOT_ENOUGH_BOOSTER": {
@@ -16300,7 +16300,7 @@
     },
     "TID_TREASURY_BOOSTERS_DESCRIPTION": {
         "EN": [
-            "Magic items have wonderful powers ranging from helping you with upgrades to boosting various things in your village and army. You can only hold a limited number of each item at once."
+            "Magic items have wonderful powers ranging from helping you with upgrades to boosting various things in your Village and army. You can only hold a limited number of each item at once."
         ]
     },
     "TID_ALLIANCE_GAMES_CHECKING_RESULTS": {
@@ -16585,7 +16585,7 @@
     },
     "TID_BOOSTER_BOOST_ALL_PRODUCTION_TEXT": {
         "EN": [
-            "Use a Training Potion to boost troop training, spell brewing and hero regeneration speed by <multiplier>x for <time>?"
+            "Use a Training Potion to boost Troop training, Spell brewing and Hero regeneration speed by <multiplier>x for <time>?"
         ]
     },
     "TID_CLAN_GAMES_STARTED_NOTIFICATION": {
@@ -16670,7 +16670,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_TRAINING_POTION_INFO": {
         "EN": [
-            "\u2022 <gems> Gems\\n\u2022 <booster1>x Training Potion\\n\u2022 No storage limits!\\n\\nBoost your troop training, spell brewing and hero regeneration!\\n\\nDon't miss this offer!"
+            "\u2022 <gems> Gems\\n\u2022 <booster1>x Training Potion\\n\u2022 No storage limits!\\n\\nBoost your Troop training, Spell brewing and Hero regeneration!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_RESOURCE_POTION": {
@@ -16690,7 +16690,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_HERO_BOOK_INFO": {
         "EN": [
-            "\u2022 <gems> Gems\\n\u2022 <booster1>x Book of Heroes\\n\u2022 No storage limits!\\n\\nFinish any hero upgrade immediately with the Book of Heroes!!\\n\\nDon't miss this offer!"
+            "\u2022 <gems> Gems\\n\u2022 <booster1>x Book of Heroes\\n\u2022 No storage limits!\\n\\nFinish any Hero upgrade immediately with the Book of Heroes!!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_TROOP_BOOK": {
@@ -16720,7 +16720,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_SPELL_BOOK_INFO": {
         "EN": [
-            "\u2022 <gems> Gems\\n\u2022 <booster1>x Book of Spells\\n\u2022 No storage limits!\\n\\nFinish upgrade your spells immediately with the Book of Spells!\\n\\nDon't miss this offer!"
+            "\u2022 <gems> Gems\\n\u2022 <booster1>x Book of Spells\\n\u2022 No storage limits!\\n\\nFinish upgrading your Spells immediately with the Book of Spells!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_EVERYTHING_BOOK": {
@@ -16750,7 +16750,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_SPELL_LEVEL_PACK_INFO": {
         "EN": [
-            "\u2022 <gems> Gems\\n\u2022 <res0> Elixir\\n\u2022 <booster1>x Book of Spells\\n\u2022 No storage limits!\\n\\nEverything you need for upgrading your spells!\\n\\nDon't miss this offer!"
+            "\u2022 <gems> Gems\\n\u2022 <res0> Elixir\\n\u2022 <booster1>x Book of Spells\\n\u2022 No storage limits!\\n\\nEverything you need for upgrading your Spells!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_TROOP_LEVEL_PACK": {
@@ -16820,7 +16820,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_TRAINING_POTION_ONLY_INFO": {
         "EN": [
-            "\u2022 <booster1>x Training Potion\\n\u2022 No storage limits!\\n\\nBoost your troop training, spell brewing and hero regeneration!\\n\\nDon't miss this offer!"
+            "\u2022 <booster1>x Training Potion\\n\u2022 No storage limits!\\n\\nBoost your Troop training, Spell brewing and Hero regeneration!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_RESOURCE_POTION_ONLY": {
@@ -16840,7 +16840,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_HERO_BOOK_WITH_RESOURCES_INFO_OLD": {
         "EN": [
-            "\u2022 <booster1>x Book of Heroes\\n\u2022 <res0> Dark Elixir\\n\u2022 No storage limits!\\n\\nFinish any hero upgrade immediately with the Book of Heroes!!\\n\\ nDon't miss this <cffec78><value>X value</c> ONE time offer!"
+            "\u2022 <booster1>x Book of Heroes\\n\u2022 <res0> Dark Elixir\\n\u2022 No storage limits!\\n\\nFinish any Hero upgrade immediately with the Book of Heroes!!\\n\\ nDon't miss this <cffec78><value>X value</c> ONE time offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_TROOP_BOOK_WITH_RESOURCES": {
@@ -16870,7 +16870,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_SPELL_BOOK_WITH_RESOURCES_INFO": {
         "EN": [
-            "\u2022 <booster1>x Book of Spells\\n\u2022 <res0> Elixir\\n\u2022 No storage limits!\\n\\nFinish upgrade your spells immediately with the Book of Spells!\\n\\nDon't miss this offer!"
+            "\u2022 <booster1>x Book of Spells\\n\u2022 <res0> Elixir\\n\u2022 No storage limits!\\n\\nFinish upgrading your Spells immediately with the Book of Spells!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_EVERYTHING_BOOK_WITH_RESOURCES": {
@@ -16970,7 +16970,7 @@
     },
     "TID_CANNOT_SWITCH_TO_ACCOUNT_WITHOUT_SUPERCELL_ID": {
         "EN": [
-            "Chief <name>'s village with Town Hall level <number> has been found! Load it by logging in with your Supercell ID."
+            "Chief <name>'s Village with Town Hall level <number> has been found! Load it by logging in with your Supercell ID."
         ]
     },
     "TID_BUY_MULTIPLE_BOOSTERS": {
@@ -17030,7 +17030,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_BUILDING_BOOK_AND_HERO_BOOK_INFO_OLD": {
         "EN": [
-            "\u2022 <gems> Gems\\n\u2022 <booster1> Book of Heroes\\n\u2022 <booster2>x Book of Building\\n\u2022 No storage limits!\\n\\nBuilders busy? Too many resources to spend and not enough time? Get the Magic Book Pack to immediately finish one hero and one building upgrade!\\n\\nNo storage limits!\\n\\nDon't miss this offer!"
+            "\u2022 <gems> Gems\\n\u2022 <booster1> Book of Heroes\\n\u2022 <booster2>x Book of Building\\n\u2022 No storage limits!\\n\\nBuilders busy? Too many resources to spend and not enough time? Get the Magic Book Pack to immediately finish one Hero and one Building upgrade!\\n\\nNo storage limits!\\n\\nDon't miss this offer!"
         ]
     },
     "TID_CLANGAMES_TASK_DESTROY_BB_BUILDERHALL": {
@@ -17265,7 +17265,7 @@
     },
     "TID_LOCAL_NOTIFICATION_EVENT_SPECIAL_TROOP_DRAGONLIGHTNING": {
         "EN": [
-            "Chief, earn 200 gems during the Dragon/Lightning Spell event!"
+            "Chief, earn 200 Gems during the Dragon/Lightning Spell event!"
         ]
     },
     "TID_LOCAL_NOTIFICATION_EVENT_CLAN_LOOTXP": {
@@ -17485,12 +17485,12 @@
     },
     "TID_CLANGAMES_TASK_INFO_WIN_STARS_WITHOUT_SPELLS": {
         "EN": [
-            "Earn <num> Stars without using spells in Multiplayer Battles."
+            "Earn <num> Stars without using Spells in Multiplayer Battles."
         ]
     },
     "TID_CLANGAMES_TASK_INFO_WIN_STARS_WITHOUT_HEROES": {
         "EN": [
-            "Earn <num> Stars without using heroes in Multiplayer Battles."
+            "Earn <num> Stars without using Heroes in Multiplayer Battles."
         ]
     },
     "TID_CLANGAMES_TASK_INFO_WIN_STARS_VS_HIGHER_TOWNHALL": {
@@ -17525,7 +17525,7 @@
     },
     "TID_CLANGAMES_TASK_INFO_GET_KILLS_VS_ALLHEROES": {
         "EN": [
-            "Knock out enemy hero <num> times in Multiplayer Battles."
+            "Knock out enemy Hero <num> times in Multiplayer Battles."
         ]
     },
     "TID_CLANGAMES_TASK_INFO_GET_LEVELKILLS_VS_BARBARIANKING": {
@@ -17545,7 +17545,7 @@
     },
     "TID_CLANGAMES_TASK_INFO_GET_LEVELKILLS_VS_ALLHEROES": {
         "EN": [
-            "Knock out <num> levels worth of heroes in Multiplayer Battles."
+            "Knock out <num> levels worth of Heroes in Multiplayer Battles."
         ]
     },
     "TID_TRADER_MENU_TITLE": {
@@ -17583,7 +17583,7 @@
     },
     "TID_BOOSTER_WALL_UPGRADE_INFO": {
         "EN": [
-            "Punching a Wall Piece with this Ring on will instantly upgrade it, though higher level walls might require multiple rings to upgrade. Works in both villages!"
+            "Punching a Wall Piece with this Ring on will instantly upgrade it, though higher level Walls might require multiple Rings to upgrade. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_BUILDERS": {
@@ -17829,7 +17829,7 @@
     },
     "TID_DIAMOND_BUNDLE_MAGICITEMS_HERO_BOOK_WITH_RESOURCES_INFO": {
         "EN": [
-            "\u2022 <booster1>x Book of Heroes\\n\u2022 <res0> Dark Elixir\\n\u2022 No storage limits!\\n\\nFinish any hero upgrade immediately with the Book of Heroes!!\\n\\nDon't miss this <cffec78><value>X value</c> ONE time offer!"
+            "\u2022 <booster1>x Book of Heroes\\n\u2022 <res0> Dark Elixir\\n\u2022 No storage limits!\\n\\nFinish any Hero upgrade immediately with the Book of Heroes!!\\n\\nDon't miss this <cffec78><value>X value</c> ONE time offer!"
         ]
     },
     "TID_CLAN_GAMES_BUILDER_THEME": {
@@ -17949,12 +17949,12 @@
     },
     "TID_CHARACTER_INFO_FLYING_GOBLIN": {
         "EN": [
-            "Flying Menace to wreck havoc in the village. Hopefully at enemy village."
+            "Flying Menace to wreck havoc in the Village. Hopefully at enemy Village."
         ]
     },
     "TID_CHARACTER_INFO_SIEGE_MACHINE_RAM": {
         "EN": [
-            "The Wall Wrecker exists for two simple purposes: smash through anything that it comes across and deliver the Clan Castle troops straight to the heart of the village. Built from heavy duty materials, it can take a pummeling before breaking down. Immune to spell effects."
+            "The Wall Wrecker exists for two simple purposes: to smash through anything that it comes across and to deliver the Clan Castle Troops straight to the heart of the Village. Built from heavy duty materials, it can take a pummeling before breaking down. Immune to Spell effects."
         ]
     },
     "TID_NOT_ENOUGH_BOOSTERS": {
@@ -18044,7 +18044,7 @@
     },
     "TID_TUTORIAL_CLANCASTLE_1": {
         "EN": [
-            "Chief, our storages are flush with gold. Let's repair the Clan Castle!"
+            "Chief, our storages are flush with Gold. Let's repair the Clan Castle!"
         ]
     },
     "TID_TUTORIAL_CLANCASTLE_2": {
@@ -18059,7 +18059,7 @@
     },
     "TID_CHARACTER_INFO_SIEGE_MACHINE_FLYER": {
         "EN": [
-            "The Battle Blimp bypasses ground-based obstacles and delivers your Clan Castle troops directly into the heart of the enemy village, all while dropping bombs along the way. However, its thin hide makes it easier to shoot down. Immune to spell effects."
+            "The Battle Blimp bypasses ground-based obstacles and delivers your Clan Castle troops directly into the heart of the enemy Village, all while dropping bombs along the way. However, its thin hide makes it easier to shoot down. Immune to Spell effects."
         ]
     },
     "TID_ICEGOLEM": {
@@ -18079,7 +18079,7 @@
     },
     "TID_SPECIAL_OFFER_INFO_EASTER_LIMITED_9999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Dark Elixir\\n\u2022 <booster4>x Rune of Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your upgrades going and walls leveled up with this amazing pack!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Dark Elixir\\n\u2022 <booster4>x Rune of Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your upgrades going and Walls leveled up with this amazing Pack!"
         ]
     },
     "TID_SPECIAL_OFFER_EASTER_LIMITED_4999": {
@@ -18089,7 +18089,7 @@
     },
     "TID_SPECIAL_OFFER_INFO_EASTER_LIMITED_4999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Dark Elixir\\n\u2022 <booster4>x Rune of Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet the resources you need and level up your walls with this awesome offer!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Dark Elixir\\n\u2022 <booster4>x Rune of Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet the resources you need and level up your Walls with this awesome offer!"
         ]
     },
     "TID_SPECIAL_OFFER_EASTER_LIMITED_1999": {
@@ -18099,7 +18099,7 @@
     },
     "TID_SPECIAL_OFFER_INFO_EASTER_LIMITED_1999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Dark Elixir\\n\u2022 <booster3>x Builder Potion\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nUpgrade your walls, fill up your Dark Elixir storage and speed up your builders with this spectacular pack!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Dark Elixir\\n\u2022 <booster3>x Builder Potion\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nUpgrade your Walls, fill up your Dark Elixir storage and speed up your Builders with this spectacular Pack!"
         ]
     },
     "TID_SPECIAL_OFFER_EASTER_LIMITED_999": {
@@ -18469,17 +18469,17 @@
     },
     "TID_HAMMERJAM_OFFER2_MAGICITEMS_WALLRING_AND_ALLRUNES_INFO_9999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Gold\\n\u2022 <booster4>x Rune of Dark Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your upgrades going with this amazing Update pack!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Gold\\n\u2022 <booster4>x Rune of Dark Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your upgrades going with this amazing Update Pack!"
         ]
     },
     "TID_HAMMERJAM_OFFER2_MAGICITEMS_WALLRING_AND_ALLRUNES_INFO_4999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Gold\\n\u2022 <booster4>x Rune of Dark Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your upgrades going with this amazing Update pack!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Elixir\\n\u2022 <booster3>x Rune of Gold\\n\u2022 <booster4>x Rune of Dark Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your upgrades going with this amazing Update Pack!"
         ]
     },
     "TID_HAMMERJAM_OFFER2_MAGICITEMS_WALLRING_AND_ALLRUNES_INFO_1999": {
         "EN": [
-            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Dark Elixir\\n\u2022 <booster3>x Builder Potion\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nGet your upgrades going with this amazing Update pack!"
+            "\u2022 <booster1>x Ring of Walls\\n\u2022 <booster2>x Rune of Dark Elixir\\n\u2022 <booster3>x Builder Potion\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nGet your upgrades going with this amazing Update Pack!"
         ]
     },
     "TID_EVENT_TITLE_HAMMERJAM_PACK": {
@@ -18614,7 +18614,7 @@
     },
     "TID_SIEGE_MACHINES_OVERVIEW_TEXT": {
         "EN": [
-            "Siege Machines are a new and alternative way to deliver your Clan Castle reinforcements. Rather than deploying your Clan Castle troops from the periphery of the map, Siege Machines allow you to deliver them straight into the heart of the enemy\u00b4s village! The Siege Workshop allows you to build a Siege Machine for yourself or your Clan mates can donate one to you. Keep in mind your Clan Castle must be at least level 6 in order to fit a Siege Machine."
+            "Siege Machines are a new and alternative way to deliver your Clan Castle reinforcements. Rather than deploying your Clan Castle troops from the periphery of the map, Siege Machines allow you to deliver them straight into the heart of the enemy\u00b4s Village! The Siege Workshop allows you to build a Siege Machine for yourself or your Clan mates can donate one to you. Keep in mind your Clan Castle must be at least level 6 in order to fit a Siege Machine."
         ]
     },
     "TID_SIEGE_MACHINES_BATTLE_TEXT": {
@@ -18959,7 +18959,7 @@
     },
     "TID_BOOSTER_FREE_HERO_UPGRADE_INFO": {
         "EN": [
-            "A swing of this magic hammer will instantly upgrade any hero or pet to the next level. Works in both villages!"
+            "A swing of this magic hammer will instantly upgrade any Hero or Pet to the next level. Works in both Villages!"
         ]
     },
     "TID_BOOSTER_FREE_TROOP_UPGRADE": {
@@ -18979,7 +18979,7 @@
     },
     "TID_BOOSTER_FREE_SPELL_UPGRADE_INFO": {
         "EN": [
-            "A swing of this magic hammer will instantly upgrade any spell to the next level. Works in the Home Village!"
+            "A swing of this magic hammer will instantly upgrade any Spell to the next level. Works in the Home Village!"
         ]
     },
     "TID_SHOP_CATEGORY_OFFERS": {
@@ -19004,7 +19004,7 @@
     },
     "TID_SELECT_TROOP_OR_SPELL": {
         "EN": [
-            "Please select a unit or spell to deploy"
+            "Please select a Unit or Spell to deploy"
         ]
     },
     "TID_WL_ROUND_INFO_BUTTON": {
@@ -19459,12 +19459,12 @@
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOKS_AND_RUNES_INFO_9999": {
         "EN": [
-            "\u2022 <booster1>x Book of Heroes - instantly complete any ongoing hero upgrade\\n\u2022 <booster2>x Book of Building - instantly complete any building upgrade\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <booster2>x Book of Building - instantly complete any building upgrade\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOKS_AND_RUNES_INFO_4999": {
         "EN": [
-            "\u2022 <booster1>x Book of Heroes - instantly complete any ongoing hero upgrade\\n\u2022 <booster2>x Book of Building - instantly complete any building upgrade\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <booster2>x Book of Building - instantly complete any building upgrade\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOK_AND_RUNES_INFO_1999": {
@@ -19474,27 +19474,27 @@
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOK_AND_GOLD_INFO_999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022 <booster1>x Book of Building - instantly complete any building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <res0> Gold\\n\u2022 <booster1>x Book of Building - instantly complete any building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOKS_AND_ALLRUNES_INFO_9999": {
         "EN": [
-            "\u2022 <booster1>x Wall Rings - instantly upgrade walls (higher level walls may require multiple rings to upgrade)\\n\u2022 <booster2>x Rune of Elixir - completely fill your Elixir Storages\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <booster1>x Wall Rings - instantly upgrade Walls (higher level Walls may require multiple Rings to upgrade)\\n\u2022 <booster2>x Rune of Elixir - completely fill your Elixir Storages\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_RING_AND_ALLRUNES_INFO_4999": {
         "EN": [
-            "\u2022 <booster1>x Wall Rings - instantly upgrade walls (higher level walls may require multiple rings to upgrade)\\n\u2022 <booster2>x Rune of Elixir - completely fill your Elixir Storages\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <booster1>x Wall Rings - instantly upgrade Walls (higher level Walls may require multiple Rings to upgrade)\\n\u2022 <booster2>x Rune of Elixir - completely fill your Elixir Storages\\n\u2022 <booster3>x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster4>x Rune of Dark Elixir - completely fill your Dark Elixir Storages\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_RING_AND_GOLD_ELIXIR_INFO_1999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Wall Rings - instantly upgrade walls (higher level walls may require multiple rings to upgrade)\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Wall Rings - instantly upgrade Walls (higher level Walls may require multiple Rings to upgrade)\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 10 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_BOOK_AND_GOLD_ELIXIR_INFO_999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Book of Building - instantly complete any buidling upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Book of Building - instantly complete any buidling upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_POTION_AND_GOLD_ELIXIR_INFO_1999": {
@@ -19504,7 +19504,7 @@
     },
     "TID_6ANNIVERSARY_OFFER_MAGICITEMS_POTION_AND_GOLD_ELIXIR_INFO_999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Builder Potion - allows your builders to work 10x faster for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary pack now for a limited time only!"
+            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Builder Potion - allows your Builders to work 10x faster for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 20 times!\\n\\nGet your Anniversary Pack now for a limited time only!"
         ]
     },
     "TID_LOCAL_NOTIFICATION_EVENT_6TH_1_GEM_BOOST": {
@@ -19529,22 +19529,22 @@
     },
     "TID_ENDOFSUMMER_OFFER_INFO_9999_4999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing hero upgrade\\n\u2022 <res1> Gold\\n\u2022 <res2> Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nNow for a limited time only!"
+            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <res1> Gold\\n\u2022 <res2> Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times!\\n\\nNow for a limited time only!"
         ]
     },
     "TID_ENDOFSUMMER_OFFER_INFO_TH0712_1999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing hero upgrade\\n\u2022 <res1> Gold\\n\u2022 <res2> Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
+            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <res1> Gold\\n\u2022 <res2> Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
         ]
     },
     "TID_ENDOFSUMMER_OFFER_INFO_TH0712_0999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing hero upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
+            "\u2022 <res0> Dark Elixir\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
         ]
     },
     "TID_ENDOFSUMMER_OFFER_INFO_TH0206_1999_0999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022 <res1> Elixir\\n\u2022 <booster1>x Power Potion - boost your troops and spell to the maximum level for 1h\\n\u2022 <booster2>x Builder Potion - allow your builders to work 10x faster for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
+            "\u2022 <res0> Gold\\n\u2022 <res1> Elixir\\n\u2022 <booster1>x Power Potion - boost your Troops and Spells to the maximum level for 1h\\n\u2022 <booster2>x Builder Potion - allow your Builders to work 10x faster for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 5 times!\\n\\nNow for a limited time only!"
         ]
     },
     "TID_LOCAL_NOTIFICATION_EVENT_GEM_BOOST_ATTACK": {
@@ -19569,12 +19569,12 @@
     },
     "TID_REGULAR_THEMED_BUILD_OFFER_INFO_TH0712_9999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Ring of Walls - instantly upgrade any wall, though higher level walls might require multiple rings\\n\u2022 <booster2>x Book of Buildings - instantly complete any building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\nTake this time to upgrade your defenses!"
+            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Ring of Walls - instantly upgrade any Wall, though higher level Walls might require multiple Rings\\n\u2022 <booster2>x Book of Buildings - instantly complete any Building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\nTake this time to upgrade your defenses!"
         ]
     },
     "TID_REGULAR_THEMED_BUILD_OFFER_INFO_TH0712_4999": {
         "EN": [
-            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Ring of Walls - instantly upgrade any wall, though higher level walls might require multiple rings\\n\u2022 <booster2>x Book of Buildings - instantly complete any building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the displayed time period\\n\u2022 Take this time to upgrade your defenses!"
+            "\u2022 <res0> Gold\\n\u2022<res1> Elixir\\n\u2022 <booster1>x Ring of Walls - instantly upgrade any Wall, though higher level Walls might require multiple Rings\\n\u2022 <booster2>x Book of Buildings - instantly complete any Building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the displayed time period\\n\u2022 Take this time to upgrade your defenses!"
         ]
     },
     "TID_REGULAR_THEMED_BUILD_OFFER_INFO_TH0712_1999": {
@@ -19604,12 +19604,12 @@
     },
     "TID_LOCAL_NOTIFICATION_EVENT_REGULAR_THEMED_PREPARE_TH0212": {
         "EN": [
-            "Rally your forces, for battle calls! Upgrade your Heroes & Troops and call upon mightier spells with this upgrade offer!"
+            "Rally your forces, for battle calls! Upgrade your Heroes & Troops and call upon mightier Spells with this upgrade offer!"
         ]
     },
     "TID_REGULAR_THEMED_PREPARE_OFFER_INFO_TH0712_9999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <booster2>x Book of Spells - instantly complete any ongoing Spell upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\n\u2022 Upgrade your Heroes & Troops and call upon mightier spells!"
+            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022 <booster1>x Book of Heroes - instantly complete any ongoing Hero upgrade\\n\u2022 <booster2>x Book of Spells - instantly complete any ongoing Spell upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\n\u2022 Upgrade your Heroes & Troops and call upon mightier Spells!"
         ]
     },
     "TID_REGULAR_THEMED_PREPARE_OFFER_INFO_TH0712_4999": {
@@ -19649,12 +19649,12 @@
     },
     "TID_REGULAR_THEMED_BATTLE_OFFER_INFO_TH0712_9999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022<res2> Elixir\\n\u2022 <booster1>x Book of Fighting - instantly complete any ongoing troop upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\n\u2022 Lead your Clan into glorious battle with this special offer!"
+            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022<res2> Elixir\\n\u2022 <booster1>x Book of Fighting - instantly complete any ongoing Troop upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period\\n\u2022 Lead your Clan into glorious battle with this special offer!"
         ]
     },
     "TID_REGULAR_THEMED_BATTLE_OFFER_INFO_TH0712_4999": {
         "EN": [
-            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022<res2> Elixir\\n\u2022 <booster1>x Book of Fighting - instantly complete any ongoing troop upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the displayed time period\\n\u2022 Lead your Clan into glorious battle with this special offer!"
+            "\u2022 <res0> Dark Elixir\\n\u2022<res1> Gold\\n\u2022<res2> Elixir\\n\u2022 <booster1>x Book of Fighting - instantly complete any ongoing Troop upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the displayed time period\\n\u2022 Lead your Clan into glorious battle with this special offer!"
         ]
     },
     "TID_REGULAR_THEMED_BATTLE_OFFER_INFO_TH0712_1999": {
@@ -19689,7 +19689,7 @@
     },
     "TID_CONVERSION_OFFER_GEMS_NOOB_INFO_0099_0299": {
         "EN": [
-            "\u2022 <res0>x Gems\\n\u2022 <booster1>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and hero regeneration for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period!\\n\\nGet some help with this one time amazing offer!"
+            "\u2022 <res0>x Gems\\n\u2022 <booster1>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and Hero regeneration for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period!\\n\\nGet some help with this one time amazing offer!"
         ]
     },
     "TID_EVENT_TITLE_END_OF_SEP_OFFER_TH071": {
@@ -19704,27 +19704,27 @@
     },
     "TID_ENDOFSEP_OFFER_INFO_9999": {
         "EN": [
-            "\u2022 <booster1> x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster2>x Rune of Elixir - complete fill your Elixir Storages\\n\u2022 <booster3> Book of Fighting - instantly complete any ongoing troop upgrade\\n\u2022 <booster4> Book of Building - instantly complete any building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the display period!\\n\\nIt's time for our Autumn Rumble!"
+            "\u2022 <booster1> x Rune of Gold - completely fill your Gold Storages\\n\u2022 <booster2>x Rune of Elixir - complete fill your Elixir Storages\\n\u2022 <booster3> Book of Fighting - instantly complete any ongoing Troop upgrade\\n\u2022 <booster4> Book of Building - instantly complete any Building upgrade\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the display period!\\n\\nIt's time for our Autumn Rumble!"
         ]
     },
     "TID_ENDOFSEP_OFFER_INFO_4999": {
         "EN": [
-            "\u2022 <booster1> Book of Fighting - instantly complete any ongoing troop upgrade\\n\u2022 <booster2> Book of Building - instantly complete any building upgrade\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
+            "\u2022 <booster1> Book of Fighting - instantly complete any ongoing Troop upgrade\\n\u2022 <booster2> Book of Building - instantly complete any Building upgrade\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 2 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
         ]
     },
     "TID_ENDOFSEP_OFFER_INFO_TH0712_1999": {
         "EN": [
-            "\u2022 <booster1> Book of Building - instantly complete any building upgrade\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 3 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
+            "\u2022 <booster1> Book of Building - instantly complete any Building upgrade\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 3 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
         ]
     },
     "TID_ENDOFSEP_OFFER_INFO_TH0712_0999": {
         "EN": [
-            "\u2022 <booster1> Book of Building - instantly complete any building upgrade\\n\u2022 <res0> x Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
+            "\u2022 <booster1> Book of Building - instantly complete any Building upgrade\\n\u2022 <res0> x Gold\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 4 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
         ]
     },
     "TID_ENDOFSEP_OFFER_INFO_TH0206_1999_0999": {
         "EN": [
-            "\u2022 <booster1> Builder Potion - your builders will work 10x faster for 1h\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 3 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
+            "\u2022 <booster1> Builder Potion - your Builders will work 10x faster for 1h\\n\u2022 <res0> x Gold\\n\u2022 <res1>x Elixir\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased 3 times during the display period!\\n\\nIt's time for our Autumn Rumble!"
         ]
     },
     "TID_ENDOFSEP_OFFER_INFO_TH0206_0999": {
@@ -19739,7 +19739,7 @@
     },
     "TID_CONVERSION_OFFER_GEMS_NOOB_INFO_0099_0299_NEW": {
         "EN": [
-            "\u2022 <gems>x Gems\\n\u2022 <booster1>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and hero regeneration for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period!\\n\\nGet some help with this one time amazing offer!"
+            "\u2022 <gems>x Gems\\n\u2022 <booster1>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and Hero regeneration for 1h\\n\\n\u2022 No storage limits!\\n\u2022 This offer can be purchased only 1 time during the displayed time period!\\n\\nGet some help with this one time amazing offer!"
         ]
     },
     "TID_DECORATION_LEAGUE_I_STATUE": {
@@ -20009,7 +20009,7 @@
     },
     "TID_BOOSTER_FINISH_HERO_UPGRADE_OFFER_INFO": {
         "EN": [
-            "<num>x Book of Heroes - instantly finish any hero or pet upgrade timer"
+            "<num>x Book of Heroes - instantly finish any Hero or Pet upgrade timer"
         ]
     },
     "TID_BOOSTER_FINISH_ANY_UPGRADE_OFFER_INFO": {
@@ -20029,7 +20029,7 @@
     },
     "TID_BOOSTER_BOOST_PRODUCTION_OFFER_INFO": {
         "EN": [
-            "<num>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and hero regeneration for <time>"
+            "<num>x Training Potion - increase efficiency of Barracks, Spell Factories, Workshop and Hero regeneration for <time>"
         ]
     },
     "TID_BOOSTER_FILL_GOLD_STORAGE_OFFER_INFO": {
@@ -20059,7 +20059,7 @@
     },
     "TID_BOOSTER_WALL_UPGRADE_OFFER_INFO": {
         "EN": [
-            "<num>x Wall Ring - instantly upgrade walls (higher level walls may require multiple rings to upgrade)"
+            "<num>x Wall Ring - instantly upgrade Walls (higher level Walls may require multiple Rings to upgrade)"
         ]
     },
     "TID_BOOSTER_BUILDERS_OFFER_INFO": {
@@ -20084,7 +20084,7 @@
     },
     "TID_BOOSTER_FREE_HERO_UPGRADE_OFFER_INFO": {
         "EN": [
-            "<num>x Hammer of Heroes - instantly upgrade any hero or pet to the next level"
+            "<num>x Hammer of Heroes - instantly upgrade any Hero or Pet to the next level"
         ]
     },
     "TID_BOOSTER_CLOCKTOWER_OFFER_INFO": {
@@ -20329,7 +20329,7 @@
     },
     "TID_CHARACTER_INFO_EL_PRIMO": {
         "EN": [
-            "This mysterious masked fighter seemingly turned up out of nowhere, throwing punches that shatter walls with ease! No one knows his true identity, only that he's strong, he's a man and he brawls for your clan."
+            "This mysterious masked fighter seemingly turned up out of nowhere, throwing punches that shatter Walls with ease! No one knows his true identity, only that he's strong, he's a man and he brawls for your Clan."
         ]
     },
     "TID_PERSONAL_WAR_PREFERENCE_SHORT": {
@@ -20389,7 +20389,7 @@
     },
     "TID_DECORATION_GOLDEN_HOG_INFO": {
         "EN": [
-            "It looks like gold, smells like gold, feels like gold. It's probably gold."
+            "It looks like Gold, smells like Gold, feels like Gold. It's probably Gold."
         ]
     },
     "TID_DECORATION_HOG_FLAG": {
@@ -20399,7 +20399,7 @@
     },
     "TID_DECORATION_HOG_FLAG_INFO": {
         "EN": [
-            "This is happy hog territory."
+            "This is happy Hog territory."
         ]
     },
     "TID_SHOP_STORAGE": {
@@ -20969,7 +20969,7 @@
     },
     "TID_NPC_CHALLENGE_TH6_GIWIWA_WALL_BREAKERS1": {
         "EN": [
-            "Destroy the first layer of walls before the <c54a0fe>Giant</c> dies."
+            "Destroy the first layer of Walls before the <c54a0fe>Giant</c> dies."
         ]
     },
     "TID_NPC_CHALLENGE_TH6_GIWIWA_GIANTS": {
@@ -20989,7 +20989,7 @@
     },
     "TID_NPC_CHALLENGE_TH6_GIWIWA_WALL_BREAKERS2": {
         "EN": [
-            "After <cf70d16>Mortar</c> shots have landed, open up the second layer of walls so your army can get to the <cf70d16>Town Hall</c>!"
+            "After <cf70d16>Mortar</c> shots have landed, open up the second layer of Walls so your army can get to the <cf70d16>Town Hall</c>!"
         ]
     },
     "TID_NPC_CHALLENGE_TH6_GIWIWA_WIZARDS2": {
@@ -21169,7 +21169,7 @@
     },
     "TID_NPC_CHALLENGE_TH4_GIANT_WALL_BREAKERS": {
         "EN": [
-            "Quickly destroy walls before the <c54a0fe>Giant</c> dies."
+            "Quickly destroy Walls before the <c54a0fe>Giant</c> dies."
         ]
     },
     "TID_NPC_CHALLENGE_TH4_GIANT_GIANTS2": {
@@ -21479,7 +21479,7 @@
     },
     "TID_NPC_CHALLENGE_FOUR_EARTHQUAKES": {
         "EN": [
-            "Four <ca9561f>Earthquake Spells</c> always destroy walls. Use them to open up the base!"
+            "Four <ca9561f>Earthquake Spells</c> always destroy Walls. Use them to open up the base!"
         ]
     },
     "TID_NPC_CHALLENGE_TH8_GOWIVA_HOG_RIDER": {
@@ -22144,7 +22144,7 @@
     },
     "TID_CHARACTER_INFO_HOG_GLIDER": {
         "EN": [
-            "The real riders in the sky. They have a great track record in getting over walls, but are not very good at avoiding crashes."
+            "The real riders in the sky. They have a great track record in getting over Walls, but are not very good at avoiding crashes."
         ]
     },
     "TID_HOG_RIDER": {
@@ -22154,7 +22154,7 @@
     },
     "TID_CHARACTER_INFO_HOG_RIDER": {
         "EN": [
-            "Lose the Glider, and you are left with two original daredevils. This dynamic duo also has zero problems getting over walls."
+            "Lose the Glider, and you are left with two original daredevils. This dynamic duo also has zero problems getting over Walls."
         ]
     },
     "TID_HOG_GLIDER_ABILITY_NAME": {
@@ -22604,7 +22604,7 @@
     },
     "TID_NPC_CHALLENGE_TH10_MINER_TEST_WALL_BREAKER": {
         "EN": [
-            "Deploy a <c54a0fe>Wall Breaker</c> to check if there are any <cf70d16>Bombs</c> near the wall."
+            "Deploy a <c54a0fe>Wall Breaker</c> to check if there are any <cf70d16>Bombs</c> near the Wall."
         ]
     },
     "TID_NPC_CHALLENGE_TH10_MINER_WALL_BREAKERS": {
@@ -22914,7 +22914,7 @@
     },
     "TID_NPC_CHALLENGE_TH10_BOBAT_WALL_WRECKER": {
         "EN": [
-            "Use remaining troops to clear remaining <cf70d16>Wizard Towers</c> and <cf70d16>Multi Inferno Tower</c>. Start with <c54a0fe>Wall Wrecker</c>."
+            "Use remaining Troops to clear remaining <cf70d16>Wizard Towers</c> and <cf70d16>Multi Inferno Tower</c>. Start with <c54a0fe>Wall Wrecker</c>."
         ]
     },
     "TID_NPC_CHALLENGE_TH10_BOBAT_PEKKAS": {
@@ -23939,7 +23939,7 @@
     },
     "TID_GOLD_PASS_SKIN_DETAILS": {
         "EN": [
-            "This Season's exclusive hero skin is <skin>!\\n\\nIf you haven't unlocked <hero> yet the skin will be available for you to use when you do."
+            "This Season's exclusive Hero Skin is <skin>!\\n\\nIf you haven't unlocked <hero> yet the Skin will be available for you to use when you do."
         ]
     },
     "TID_GOLD_PASS_PURCHASE_INFO": {
@@ -24119,7 +24119,7 @@
     },
     "TID_ROYAL_GHOST_ABILITY_HELP": {
         "EN": [
-            "Ignored by defenses and walls for <num> seconds after being deployed."
+            "Ignored by defenses and Walls for <num> seconds after being deployed."
         ]
     },
     "TID_ERROR_MAX_TAGS_SELECTED": {
@@ -24234,7 +24234,7 @@
     },
     "TID_HERO_INSTRUCTIONS_ROYAL_CHAMPION": {
         "EN": [
-            "Over the wall and at them! The Royal Champion is only afraid of four things, and the enemy isn't one of them. She attacks with her spear at short range and throws her shield to take down defenses once her Seeking Shield ability is unlocked!"
+            "Over the Wall and at them! The Royal Champion is only afraid of four things, and the enemy isn't one of them. Her short range is perfect for stabbing defenses up close and personal."
         ]
     },
     "TID_HERO_ABILITY_ROYAL_CHAMPION_TITLE": {
@@ -24364,7 +24364,7 @@
     },
     "TID_DECORATION_GOLDEN_GOBLIN_INFO": {
         "EN": [
-            "Love of gold so True and Bold, it inspires goblins Young and Old!"
+            "Love of Gold so True and Bold, it inspires Goblins Young and Old!"
         ]
     },
     "TID_SHIELD_TARGET_COUNT": {
@@ -24394,12 +24394,12 @@
     },
     "TID_HINT_ROYAL_CHAMPION": {
         "EN": [
-            "The Royal Champion can jump over walls to charge at enemy defenses!"
+            "The Royal Champion can jump over Walls to charge at enemy defenses!"
         ]
     },
     "TID_HINT_YETI": {
         "EN": [
-            "Yetis can't jump over walls, but Yetimites can."
+            "Yetis can't jump over Walls, but Yetimites can."
         ]
     },
     "TID_HINT_SIEGE BARRACKS": {
@@ -24504,7 +24504,7 @@
     },
     "TID_CHARACTER_INFO_ELITE_WALLBREAKER": {
         "EN": [
-            "Who knew that rolling was so much superior to running? Super Wall Breakers use pre-ignited bombs that blow up under all circumstances! No more duds!"
+            "Who knew that rolling was that much superior to running? Super Wall Breakers use pre-ignited bombs that blow up under all circumstances! No more duds!"
         ]
     },
     "TID_CHARACTER_ELITE_GOBLIN": {
@@ -24524,7 +24524,7 @@
     },
     "TID_CHARACTER_INFO_ELITE_GIANT": {
         "EN": [
-            "Super Giants are bigger than their ordinary cousins and are great at punching their way through walls. The belt is from the annual village eating contest."
+            "Super Giants are bigger than their ordinary cousins and are great at punching their way through walls. The belt is from the annual Village eating contest."
         ]
     },
     "TID_PRIMAL_WARDEN": {
@@ -24909,7 +24909,7 @@
     },
     "TID_SUPER_GIANT_ABILITY_HELP": {
         "EN": [
-            "Deals increased damage to walls."
+            "Deals increased damage to Walls."
         ]
     },
     "TID_BABY_ELECTRO_DRAGON_ABILITY_NAME": {
@@ -25439,7 +25439,7 @@
     },
     "TID_CHARACTER_INFO_HEADHUNTER": {
         "EN": [
-            "Headhunter has just one job: taking out enemy heroes. As her other job, she works at the village apothecary. She's lightweight enough to jump over walls and her poisoned weapons make her targets move and attack slower."
+            "Headhunter has just one job: taking out enemy Heroes. At her other job, she works at the Village Apothecary. She's lightweight enough to jump over Walls and her Poisoned Weapons make her targets move and attack slower."
         ]
     },
     "TID_STAR_BONUS_BOOST_TEXT_BONUS": {
@@ -26154,17 +26154,17 @@
     },
     "TID_BP_ACTIVATE_BUTTON": {
         "EN": [
-            "Get"
+            "Activate"
         ]
     },
     "TID_BP_ACTIVATE_SCID_CONFIRM": {
         "EN": [
-            "Your Supercell ID has <num> x Gold Pass available. Use one to get this Season's Gold Pass?"
+            "Your Supercell ID has <num> x Gold Pass available. Use one to activate this Season's Gold Pass?"
         ]
     },
     "TID_BP_ACTIVATE_SCID_TITLE": {
         "EN": [
-            "Get Gold Pass?"
+            "Activate Gold Pass?"
         ]
     },
     "TID_SCENERY_EPIC_WINTER": {
@@ -26419,7 +26419,7 @@
     },
     "TID_PET_SHOP_INFO": {
         "EN": [
-            "Every hero deserves a loyal companion. The Pet House allows you to unlock powerful Pets with various abilities to fight alongside your heroes."
+            "Every Hero deserves a loyal companion. The Pet House allows you to unlock powerful Pets with various abilities to fight alongside your Heroes."
         ]
     },
     "TID_BUTTON_PET_SHOP": {
@@ -26444,7 +26444,7 @@
     },
     "TID_PET_SHOP_UPGRADING": {
         "EN": [
-            "Cannot start pet upgrade while Pet House is upgrading"
+            "Cannot start Pet upgrade while Pet House is upgrading"
         ]
     },
     "TID_PET_ALREADY_AT_MAX_LEVEL": {
@@ -26519,7 +26519,7 @@
     },
     "TID_PET_WALLBUSTER_INFO": {
         "EN": [
-            "Built like a Siege Machine, the Mighty Yak has a knack for knocking down any walls it comes in contact with. It also flies into a rage if you knock out its companion."
+            "Built like a Siege Machine, the Mighty Yak has a knack for knocking down any Walls it comes in contact with. It also flies into a rage if you knock out its companion."
         ]
     },
     "TID_PET_RANGEDATTACKER_INFO": {
@@ -26844,7 +26844,7 @@
     },
     "TID_PET_DESCRIPTION": {
         "EN": [
-            "Mighty companions for the mightiest heroes!"
+            "Mighty companions for the mightiest Heroes!"
         ]
     },
     "TID_CHAT_LANGUAGE": {
@@ -27084,7 +27084,7 @@
     },
     "TID_PET_ABILITY_INFO_BARKY": {
         "EN": [
-            "L.A.S.S.I can jump over walls to attack targets on the other side."
+            "L.A.S.S.I can jump over Walls to attack targets on the other side."
         ]
     },
     "TID_PET_ABILITY_BULLDOZER": {
@@ -27094,7 +27094,7 @@
     },
     "TID_PET_ABILITY_INFO_BULLDOZER": {
         "EN": [
-            "Mighty Yak deals extra damage to walls."
+            "Mighty Yak deals extra damage to Walls."
         ]
     },
     "TID_PET_ABILITY_ELECTROWL": {
@@ -27114,7 +27114,7 @@
     },
     "TID_PET_ABILITY_INFO_UNIPONY": {
         "EN": [
-            "Unicorn follows and heals the hero it is paired with."
+            "Unicorn follows and heals the Hero it is paired with."
         ]
     },
     "TID_FACEBOOK_UNAVAILABLE_TRACKING_DISABLED": {
@@ -27154,7 +27154,7 @@
     },
     "TID_TUTORIAL_PETS_2": {
         "EN": [
-            "Pets are powerful companions that fight alongside your heroes in battle."
+            "Pets are powerful companions that fight alongside your Heroes in battle."
         ]
     },
     "TID_TUTORIAL_PETS_3": {
@@ -27164,12 +27164,12 @@
     },
     "TID_TUTORIAL_PETS_4": {
         "EN": [
-            "Let's pair up the first one, L.A.S.S.I, with one of your heroes!"
+            "Let's pair the first one up, L.A.S.S.I, with one of your Heroes!"
         ]
     },
     "TID_TUTORIAL_PETS_5": {
         "EN": [
-            "Excellent choice! Each pet is unique and there's many great combinations."
+            "Excellent choice! Each Pet is unique and there are many great combinations."
         ]
     },
     "TID_TUTORIAL_PETS_6": {
@@ -28294,7 +28294,7 @@
     },
     "TID_CAPBUILD_CANNON_INFO": {
         "EN": [
-            "This cannon might be slow firing, but it makes up for it in punch. Additional drawback is that it doesn't tilt high enough to reach air targets."
+            "This Cannon might be slow firing, but it makes up for it in punch. Additional drawback is that it doesn't tilt high enough to reach air targets."
         ]
     },
     "TID_CAPBUILD_ARMY_FIELD_INFO": {
@@ -28339,7 +28339,7 @@
     },
     "TID_CAPBUILD_BARRACKS_WIZARD_INFO": {
         "EN": [
-            "It looks like a barracks for Super Wizards, but continuous explosions are making it scary to get closer."
+            "It looks like a Barracks for Super Wizards, but continuous explosions are making it scary to get closer."
         ]
     },
     "TID_CAPBUILD_BARRACKS_BALLOON": {
@@ -29289,7 +29289,7 @@
     },
     "TID_CAPBUILD_MULTICANNON_INFO": {
         "EN": [
-            "It's a cannon with many barrels!"
+            "It's a Cannon with many barrels!"
         ]
     },
     "TID_WATER_2": {
@@ -29809,7 +29809,7 @@
     },
     "TID_CHARACTER_INFO_SUPER_GIANTS": {
         "EN": [
-            "A pair of Super Giants are a true multi-tool: beefy, great at smashing defenses, but also talented at breaking through walls when needed!"
+            "A pair of Super Giants are a true multi-tool: beefy, great at smashing defenses, but also talented at breaking through Walls, when needed!"
         ]
     },
     "TID_CHARACTER_INFO_ROCKET_BALLOONS": {
@@ -29834,7 +29834,7 @@
     },
     "TID_CAPITAL_JUMP_INFO": {
         "EN": [
-            "Walls and Water in your way? Cast this spell over them to create a route straight over. Your troops will jump over like there was nothing in their way!"
+            "Walls and Water in your way? Cast this Spell over them to create a route straight over. Your Troops will jump over like there was nothing in their way!"
         ]
     },
     "TID_CAPITAL_FROST_INFO": {
@@ -30004,7 +30004,7 @@
     },
     "TID_CAPITAL_PLAYGROUND_DEPLOY_AREA_EXPLANATION_3": {
         "EN": [
-            "The deployment area expands when you destroy buildings and Walls in its way."
+            "The deployment area expands when you destroy Buildings and Walls in its way."
         ]
     },
     "TID_CAPITAL_PLAYGROUND_DEPLOY_AREA_EXPLANATION_4": {
@@ -30019,7 +30019,7 @@
     },
     "TID_CAPITAL_PLAYGROUND_WALL_EXPLANATION": {
         "EN": [
-            "Ground troops cannot walk around Walls which are connected to water, cliffs or the edge of the district."
+            "Ground Troops cannot walk around Walls which are connected to water, cliffs or the edge of the district."
         ]
     },
     "TID_CAPITAL_PLAYGROUND_WALL_EXPLANATION_2": {
@@ -30639,7 +30639,7 @@
     },
     "TID_CAPBUILD_WALL_INFO": {
         "EN": [
-            "Walls protect districts and keep enemies at bay.\\n\\nA district's Walls are always the same level and upgrade at the same time. Build together, battle together, upgrade walls together!"
+            "Walls protect districts and keep enemies at bay.\\n\\nA district's Walls are always the same level and upgrade at the same time. Build together, battle together, upgrade Walls together!"
         ]
     },
     "TID_OBSTACLE_BIRTHDAY2022": {
@@ -30959,7 +30959,7 @@
     },
     "TID_PET_FROSTY_INFO": {
         "EN": [
-            "Frosty is the coolest pet... literally. Not only does his icy breath cause enemies to chill out, but he also releases swarms of Frostmites to further slow down defenses and help his Hero."
+            "Frosty is the coolest Pet... literally. Not only does his icy breath cause enemies to chill out, but he also releases swarms of Frostmites to further slow down defenses and help his Hero."
         ]
     },
     "TID_CHARACTER_SIEGE_BATTLE_DRILL_INFO": {
@@ -31499,7 +31499,7 @@
     },
     "TID_RAM_RIDER_ABILITY_INFO": {
         "EN": [
-            "Charges the first defense she sees, smashing walls on the way!"
+            "Charges the first defense she sees, smashing Walls on the way!"
         ]
     },
     "TID_SHOP_CATEGORY_SKINS": {
@@ -31679,7 +31679,7 @@
     },
     "TID_CHARACTER_INFO_RIDER_SHORT": {
         "EN": [
-            "Leaps over walls for up close hammer time with defenses."
+            "Leaps over Walls for up close hammer time with defenses."
         ]
     },
     "TID_HASTE_INFO_SHORT": {
@@ -31779,7 +31779,7 @@
     },
     "TID_JUMP_SPELL_INFO_SHORT": {
         "EN": [
-            "Why go through walls when you can go over them?"
+            "Why go through Walls when you can go over them?"
         ]
     },
     "TID_TOWN_HALL_10_INFO_SHORT": {
@@ -31799,7 +31799,7 @@
     },
     "TID_MINER_INFO_SHORT": {
         "EN": [
-            "Why go through walls when you can go under them?"
+            "Why go through Walls when you can go under them?"
         ]
     },
     "TID_SPELL_BATS_INFO_SHORT": {
@@ -31934,7 +31934,7 @@
     },
     "TID_PET_WALLBUSTER_INFO_SHORT": {
         "EN": [
-            "Stubborn and especially fond of smashing walls!"
+            "Stubborn and especially fond of smashing Walls!"
         ]
     },
     "TID_PET_RANGEDATTACKER_INFO_SHORT": {
@@ -32854,7 +32854,7 @@
     },
     "TID_CHARACTER_INFO_BOMBER_SHORT": {
         "EN": [
-            "A simple sort that loves bombs and hates walls."
+            "A simple sort that loves bombs and hates Walls."
         ]
     },
     "TID_CHARACTER_INFO_BABY_DRAGON2_SHORT": {
@@ -32889,7 +32889,7 @@
     },
     "TID_CHARACTER_INFO_MOVING_CANNON_SHORT": {
         "EN": [
-            "How many cannons can a Cannon Cart cart?"
+            "How many Cannons can a Cannon Cart cart?"
         ]
     },
     "TID_MULTI_MORTAR_INFO_SHORT": {
@@ -32929,7 +32929,7 @@
     },
     "TID_GIANT_CANNON_INFO_SHORT": {
         "EN": [
-            "A colossal cannon that scatters lightweight troops like pins."
+            "A colossal Cannon that scatters lightweight Troops like pins."
         ]
     },
     "TID_BUILDER_HALL_8_INFO_SHORT": {
@@ -32944,7 +32944,7 @@
     },
     "TID_MEGA_TESLA_INFO_SHORT": {
         "EN": [
-            "The \"Mega\" stands for \"Megavolt\"."
+            "The \\qMega\\q stands for \\qMegavolt\\q."
         ]
     },
     "TID_BUILDER_HALL_9_INFO_SHORT": {
@@ -32959,7 +32959,7 @@
     },
     "TID_CHARACTER_INFO_HOG_GLIDER_SHORT": {
         "EN": [
-            "Free as a bird, happy as a hog."
+            "Free as a bird, happy as a Hog."
         ]
     },
     "TID_LAVA_LAUNCHER_INFO_SHORT": {
@@ -33459,7 +33459,7 @@
     },
     "TID_HERO_INFO_BATTLE_COPTER": {
         "EN": [
-            "Get to the Copter! Tired of hammering through Walls, Master Builder's next-generation flying machine lets him soar over them. The Battle Copter attacks from afar with its powerful cannons; or can get up close and personal when using its Bomb Rush ability."
+            "Get to the Copter! Tired of hammering through Walls, Master Builder's next-generation flying machine lets him soar over them. The Battle Copter attacks from afar with its powerful Cannons; or can get up close and personal when using its Bomb Rush ability."
         ]
     },
     "TID_HERO_ABILITY_BATTLE_COPTER": {
@@ -34189,7 +34189,7 @@
     },
     "TID_CHARACTER_RIDERLESS_HOG_INFO": {
         "EN": [
-            "Without its Rider, the Hog jumps over walls and attacks defenses. So, what's the Rider even there for, in the first place?"
+            "Without its Rider, the Hog jumps over Walls and attacks defenses. So, what's the Rider even there for, in the first place?"
         ]
     },
     "TID_BOOSTER_PET_POTION": {
@@ -35644,7 +35644,7 @@
     },
     "TID_CHARACTER_INFO_SIEGE_CART": {
         "EN": [
-            "A cannon on wheels?! Bet they won't see that coming! Tons of fire-power, but not that sturdy!"
+            "A Cannon on wheels?! Bet they won't see that coming! Tons of fire-power, but not that sturdy!"
         ]
     },
     "TID_BP_SEASON_BANK_BB_SIZE_INCREASE": {
@@ -35699,12 +35699,12 @@
     },
     "TID_CHARACTER_INFO_TREANT": {
         "EN": [
-            "This earth warrior is so in tune with nature she doesn't need to walk herself. Riding into battle on top a tough tree root which can smash through walls and slam defenses into dust."
+            "This earth warrior is so in tune with nature she doesn't need to walk herself. Riding into battle on top a tough tree root which can smash through Walls and slam defenses into dust."
         ]
     },
     "TID_CHARACTER_INFO_TREANT_SHORT": {
         "EN": [
-            "Her tough tree root smashes walls and defenses into dust."
+            "Her tough tree root smashes Walls and defenses into dust."
         ]
     },
     "TID_SPELL_BAG_OF_FROSTMITES": {
@@ -35799,7 +35799,7 @@
     },
     "TID_SMITHY_INFO": {
         "EN": [
-            "Bring the right magical ores here and your heroes' equipment can be upgraded to be even mightier! The smoke from the furnace helps make delicious, if unhealthy, brisket."
+            "Bring the right magical Ores here and your Heroes' Equipment can be upgraded to be even mightier! The smoke from the furnace helps make delicious, if unhealthy, brisket."
         ]
     },
     "TID_PLAYER_MUTED_HUD_MESSAGE": {
@@ -35824,17 +35824,17 @@
     },
     "TID_CHARACTER_INFO_FIRECRACKER": {
         "EN": [
-            "Firecraker description."
+            "This pink-haired pyromaniac traded her Archer's bow for something with more firepower. Firecracker is always looking to fling her flamboyant fulminations at the nearest target; however, the recoil from her attacks sends her slightly backwards. She may be responsible for colorful and explosive displays during Lunar New Year, just don't leave anything flammable in her proximity."
         ]
     },
     "TID_CHARACTER_WATER_DRAGON": {
         "EN": [
-            "Water Dragon"
+            "Azure Dragon"
         ]
     },
     "TID_CHARACTER_INFO_WATER_DRAGON": {
         "EN": [
-            "Water Dragon description."
+            "The Year of the Azure Dragon represents strength and power, and this majestic wyrm embodies both. As a harbinger of spring and the coming rainfall, may Azure Dragon rain victory upon your battlefield. With its high hit points and piercing splash projectile that also deals damage behind its initial target, this mighty unit will definitely make sure your battles don't... drag on."
         ]
     },
     "TID_CHARACTER_COOKIE_PEKKA": {
@@ -35974,7 +35974,7 @@
     },
     "TID_GEAR_INFO_EARTHQUAKE_BOOTS": {
         "EN": [
-            "Causes a powerful earthquake which destroys walls and damages buildings"
+            "Causes a powerful earthquake which destroys Walls and damages Buildings"
         ]
     },
     "TID_GEAR_INFO_GIANT_GAUNTLET": {
@@ -36194,7 +36194,7 @@
     },
     "TID_TUTORIAL_SMITHY_2": {
         "EN": [
-            "You can use it to unlock and upgrade equipment to make your heroes stronger."
+            "You can use it to unlock and upgrade Equipment to make your Heroes stronger."
         ]
     },
     "TID_PET_SPIRIT_FOX": {
@@ -36204,7 +36204,7 @@
     },
     "TID_PET_SPIRIT_FOX_INFO": {
         "EN": [
-            "An extremely shy creature, who's happiest alone in the woods outside the Village. When called to battle, Spirit Fox fights fiercely alongside their hero and helps them with a little invisibility."
+            "An extremely shy creature, who's happiest alone in the woods outside the Village. When called to battle, Spirit Fox fights fiercely alongside their Hero and helps them with a little invisibility."
         ]
     },
     "TID_PET_SPIRIT_FOX_INFO_SHORT": {
@@ -36219,7 +36219,7 @@
     },
     "TID_PET_ABILITY_INFO_SPIRIT_FOX": {
         "EN": [
-            "Periodically turns itself and its hero invisible."
+            "Periodically turns itself and its Hero invisible."
         ]
     },
     "TID_BUILDING_MULTI_ARCHER_TOWER": {
@@ -36324,7 +36324,7 @@
     },
     "TID_DECO_DUCK_POND": {
         "EN": [
-            "Duck Pond"
+            "Duck Bath"
         ]
     },
     "TID_LIFE_STEAL": {
@@ -36344,7 +36344,7 @@
     },
     "TID_FEATURE_HERO_GEAR_DESC": {
         "EN": [
-            "Make your heroes truly yours with Equipment! Use the Blacksmith to pick abilities for your heroes."
+            "Make your Heroes truly yours with Equipment! Use the Blacksmith to pick abilities for your Heroes."
         ]
     },
     "TID_UNLOCK_GEAR": {
@@ -36394,7 +36394,7 @@
     },
     "TID_GEAR_FIRE_IN_A_CAN": {
         "EN": [
-            "Magic Tinderbox"
+            "Fireball"
         ]
     },
     "TID_GEAR_HOG_TOTEM": {
@@ -36402,14 +36402,14 @@
             "Hog Rider Puppet"
         ]
     },
-    "TID_GEAR_TITLE_SPEEDY_SPEARS": {
+    "TID_GEAR_TITLE_HASTE_VIAL": {
         "EN": [
             "Haste Vial"
         ]
     },
     "TID_GEAR_INFO_FIRE_IN_A_CAN": {
         "EN": [
-            "Throws a giant exploding fireball at the current target"
+            "Throws a giant exploding fireball at the closest defense."
         ]
     },
     "TID_GEAR_INFO_HOG_TOTEM": {
@@ -36417,7 +36417,7 @@
             "Summons a stampede of Hog Riders"
         ]
     },
-    "TID_GEAR_INFO_SPEEDY_SPEARS": {
+    "TID_GEAR_INFO_HASTE_VIAL": {
         "EN": [
             "Casts Haste on the Royal Champion"
         ]
@@ -36489,7 +36489,7 @@
     },
     "TID_GEAR_RESOURCE_GENERIC_INFO": {
         "EN": [
-            "Bring this magical Ore to the Blacksmith to upgrade your heroes' equipment!"
+            "Bring this magical Ore to the Blacksmith to upgrade your Heroes' Equipment!"
         ]
     },
     "TID_EP_REWARD_LOCKED_NEED_PREMIUM": {
@@ -36544,12 +36544,17 @@
     },
     "TID_SPELL_OVERGROWTH": {
         "EN": [
-            "Overgrowth"
+            "Overgrowth Spell"
         ]
     },
     "TID_SPELL_OVERGROWTH_INFO": {
         "EN": [
-            "WIP Freezes and makes invisible all buildings in a large area for a long time."
+            "Traps nearby Buildings in tough roots, stopping defenses attacking. Troops ignore trapped Buildings."
+        ]
+    },
+    "TID_SPELL_OVERGROWTH_INFO_SHORT": {
+        "EN": [
+            "Tangle the enemy up to take them down."
         ]
     },
     "TID_SPELL_HEAL_SPIRIT": {
@@ -36595,6 +36600,831 @@
     "TID_SCENERY_GINGERBREAD": {
         "EN": [
             "Gingerbread Scenery"
+        ]
+    },
+    "TID_POPUP_UPGRADE_WALL_TITLE": {
+        "EN": [
+            "Upgrade Wall!"
+        ]
+    },
+    "TID_POPUP_UPGRADE_WALL_TEXT": {
+        "EN": [
+            "Use <num> x <booster> to upgrade this Wall?"
+        ]
+    },
+    "TID_HERO_GEAR_UNLOCKED": {
+        "EN": [
+            "<gear> Unlocked!"
+        ]
+    },
+    "TID_STAR_BONUS_LOOT_HEADER": {
+        "EN": [
+            "Star Bonus loot delivered to <destination>:"
+        ]
+    },
+    "TID_ALLIANCE_WAR_LOOT_COLLECT_INFO_2": {
+        "EN": [
+            "You can collect the war loot bonus from your Treasury and Blacksmith."
+        ]
+    },
+    "TID_AVAILABLE_IN_SHOP": {
+        "EN": [
+            "Available in the Shop!"
+        ]
+    },
+    "TID_EVENT_ACHIEVEMENT_BOOSTER_GEM_XP_REWARD_CLAIMED": {
+        "EN": [
+            "Event completed! You received <gem> Gems, <number>x <booster> and <xp> XP!"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_TROOPS": {
+        "EN": [
+            "Troop Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_SPELLS": {
+        "EN": [
+            "Spell Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_HEROES": {
+        "EN": [
+            "Hero Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_CLAN_CASTLE": {
+        "EN": [
+            "Clan Castle Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_SIEGE_MACHINES": {
+        "EN": [
+            "Siege Machine Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_SELECT_TROOP": {
+        "EN": [
+            "Select Troop <num>"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_ACTIVATE_SPELL": {
+        "EN": [
+            "Activate Spell <num>"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_SELECT_HERO": {
+        "EN": [
+            "Select Hero <num>"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_SELECT_CLAN_CASTLE": {
+        "EN": [
+            "Select Clan Castle"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_SELECT_SIEGE_MACHINE": {
+        "EN": [
+            "Select Siege Machine"
+        ]
+    },
+    "TID_CLAN_NOTICE_TITLE": {
+        "EN": [
+            "Clan Notice"
+        ]
+    },
+    "TID_TAB_CLANS_FIND_PLAYERS": {
+        "EN": [
+            "Find Players"
+        ]
+    },
+    "TID_CREATE_CLAN_NOTICE_SUBTEXT": {
+        "EN": [
+            "Your Clan Notice will use your current Clan Settings."
+        ]
+    },
+    "TID_BUTTON_EDIT_CLAN_SETTINGS": {
+        "EN": [
+            "Edit Clan Settings"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_PUBLISH": {
+        "EN": [
+            "Publish Notice"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_PUBLISH_INFO_1": {
+        "EN": [
+            "You currently don't have an active Clan Notice."
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_PUBLISH_INFO_2": {
+        "EN": [
+            "Your Clan Notice is currently active."
+        ]
+    },
+    "TID_CLAN_STATUS_ACTIVE": {
+        "EN": [
+            "Active"
+        ]
+    },
+    "TID_CLAN_STATUS_VERY_ACTIVE": {
+        "EN": [
+            "Very Active"
+        ]
+    },
+    "TID_CLAN_STATUS_CHAT": {
+        "EN": [
+            "Chat:"
+        ]
+    },
+    "TID_CLAN_STATUS_WARS": {
+        "EN": [
+            "Wars"
+        ]
+    },
+    "TID_CLAN_STATUS_DONATIONS": {
+        "EN": [
+            "Donations:"
+        ]
+    },
+    "TID_DECO_LNY24_ANCHOR": {
+        "EN": [
+            "Lucky Anchor"
+        ]
+    },
+    "TID_DECO_LNY24_CRAB": {
+        "EN": [
+            "Crab at home"
+        ]
+    },
+    "TID_GOLD_PASS_ACTIVATE_INFO": {
+        "EN": [
+            "Activate this season's Gold Pass and you can unlock the above rewards and more!"
+        ]
+    },
+    "TID_GP_ACTIVATE_BANNER_TITLE": {
+        "EN": [
+            "Activate Gold Pass"
+        ]
+    },
+    "TID_GP_ACTIVATE_COUNTDOWN": {
+        "EN": [
+            "Pass activation window ends in <time>"
+        ]
+    },
+    "TID_DECO_LNY24_BABY_DRAGON": {
+        "EN": [
+            "Baby Dragon Statue"
+        ]
+    },
+    "TID_DECO_LNY24_DRAGON_PINATA": {
+        "EN": [
+            "Dragon Pinata"
+        ]
+    },
+    "TID_LAST_ONLINE_ONE_WEEK_AGO": {
+        "EN": [
+            "Played a week ago"
+        ]
+    },
+    "TID_LAST_ONLINE_MULTIPLE_WEEKS_AGO": {
+        "EN": [
+            "Played <num> weeks ago"
+        ]
+    },
+    "TID_LAST_ONLINE_OVER_MONTH_AGO": {
+        "EN": [
+            "Played over a month ago"
+        ]
+    },
+    "TID_JOIN_CLAN_TITLE": {
+        "EN": [
+            "Join A Clan"
+        ]
+    },
+    "TID_JOIN_CLAN_INFO_CHAT": {
+        "EN": [
+            "Chat with Clanmates!"
+        ]
+    },
+    "TID_JOIN_CLAN_INFO_DONATE": {
+        "EN": [
+            "Get free Army donations!"
+        ]
+    },
+    "TID_JOIN_CLAN_INFO_FEATURES": {
+        "EN": [
+            "Unlocks Clan Wars, Clan Games and more!"
+        ]
+    },
+    "TID_JOIN_CLAN_INFO_TOGETHER": {
+        "EN": [
+            "Play together and win more loot!"
+        ]
+    },
+    "TID_JOIN_CLAN_INFO_CAPITAL": {
+        "EN": [
+            "Build and battle together in Clan Capital!"
+        ]
+    },
+    "TID_CHAT_TEXTFIELD_TEXT": {
+        "EN": [
+            "Clan Message\u2026"
+        ]
+    },
+    "TID_CHAT_TEXTFIELD_PIN_TEXT": {
+        "EN": [
+            "Pinned Message\u2026"
+        ]
+    },
+    "TID_CHAT_BUTTON_ADD_PIN": {
+        "EN": [
+            "Pin"
+        ]
+    },
+    "TID_CHAT_BUTTON_REMOVE_PIN": {
+        "EN": [
+            "Unpin"
+        ]
+    },
+    "TID_CHAT_FEATURE_TITLE": {
+        "EN": [
+            "New Chat Features!"
+        ]
+    },
+    "TID_CHAT_FEATURES_LIST": {
+        "EN": [
+            "-Tag a <cff8000>@Player</c> in your message to send them a notification!\\n-Tap and hold a message to add a reaction!\\n-Messages can be pinned by Leaders and Co-Leaders!"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_PURCHASE": {
+        "EN": [
+            "<TID_STREAK_EVENT_BUTTON_PURCHASE>"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_BOOSTS": {
+        "EN": [
+            "Boosts"
+        ]
+    },
+    "TID_STREAK_EVENT_TIME_LEFT": {
+        "EN": [
+            "Event ends in: <time>"
+        ]
+    },
+    "TID_STREAK_EVENT_TASK_NUMBER": {
+        "EN": [
+            "Task <num>/<max>"
+        ]
+    },
+    "TID_STREAK_EVENT_REWARD_PERCENT": {
+        "EN": [
+            "<num>%"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_COMPLETED": {
+        "EN": [
+            "Streak completed!"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_COMPLETED_DESCRIPTION": {
+        "EN": [
+            "Congratulations, Chief! You have cleared the whole Streak!"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_RUSH": {
+        "EN": [
+            "Rush!"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_BROKEN": {
+        "EN": [
+            "Continue!"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_TITLE": {
+        "EN": [
+            "Your Streak was broken!"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_TEXT": {
+        "EN": [
+            "You can continue your Streak or reset it back to start"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_BUTTON_CONTINUE": {
+        "EN": [
+            "Continue!"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_BUTTON_BREAK": {
+        "EN": [
+            "Reset!"
+        ]
+    },
+    "TID_STREAK_EVENT_RUSH_STREAK_TITLE": {
+        "EN": [
+            "Rush your Streak!"
+        ]
+    },
+    "TID_STREAK_EVENT_RUSH_STREAK_TEXT": {
+        "EN": [
+            "You can unlock next tier of the Streak early!"
+        ]
+    },
+    "TID_STREAK_EVENT_RUSH_STREAK_BUTTON_CONTINUE": {
+        "EN": [
+            "Rush!"
+        ]
+    },
+    "TID_STREAK_EVENT_RUSH_STREAK_BUTTON_CANCEL": {
+        "EN": [
+            "Cancel!"
+        ]
+    },
+    "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_NAME": {
+        "EN": [
+            "League boost"
+        ]
+    },
+    "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_TOPIC": {
+        "EN": [
+            "League boost:"
+        ]
+    },
+    "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_INFO": {
+        "EN": [
+            "With higher league boost, you can get bigger rewards for attacking!"
+        ]
+    },
+    "TID_OPEN_STREAK_EVENT": {
+        "EN": [
+            "Open"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_RESET": {
+        "EN": [
+            "Reset!"
+        ]
+    },
+    "TID_STREAK_DESCRIPTION_TASK_BROKEN": {
+        "EN": [
+            "Your Streak was broken! You can continue your Streak or reset it back to start."
+        ]
+    },
+    "TID_STREAK_EVENT_COMPLETE_CURRENT_TIER_TO_RUSH": {
+        "EN": [
+            "Complete current task in order to rush"
+        ]
+    },
+    "TID_STREAK_COUNTER": {
+        "EN": [
+            "<num>/<max>"
+        ]
+    },
+    "TID_STREAK_COUNTER_STREAKS": {
+        "EN": [
+            "Streak"
+        ]
+    },
+    "TID_CANCEL": {
+        "EN": [
+            "Cancel"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_TEXT_CONTINUE": {
+        "EN": [
+            "Continue your Streak from where you left off"
+        ]
+    },
+    "TID_STREAK_EVENT_STREAK_BROKEN_TEXT_RESET": {
+        "EN": [
+            "Reset your Streak back to start"
+        ]
+    },
+    "TID_SETTING_CHAT_TAG": {
+        "EN": [
+            "Clan Chat tagging"
+        ]
+    },
+    "TID_SETTING_CHAT_TAG_INFO": {
+        "EN": [
+            "If this is \\qOn,\\q you will receive notifications when tagged in Clan Chat."
+        ]
+    },
+    "TID_SILVER_PASS_REWARDS": {
+        "EN": [
+            "Silver Pass Rewards"
+        ]
+    },
+    "TID_GOLD_PASS_REWARDS": {
+        "EN": [
+            "Gold Pass Rewards"
+        ]
+    },
+    "TID_GOLD_PASS_PERKS": {
+        "EN": [
+            "Gold Pass Perks"
+        ]
+    },
+    "TID_BP_TAB_TRACK": {
+        "EN": [
+            "Track"
+        ]
+    },
+    "TID_BP_REWARD_UNLOCKED_IN_TRACK": {
+        "EN": [
+            "Reward can be claimed in the Track"
+        ]
+    },
+    "TID_BP_REWARD_RESOURCE_INFO": {
+        "EN": [
+            "Collect Resources and spend them on upgrades for your Home Village, Builder Base, and Clan Capital!"
+        ]
+    },
+    "TID_PIN_NOT_ALLOWED_REGULAR_MEMBER": {
+        "EN": [
+            "Only Leaders and Co-Leaders can write pinned messages!"
+        ]
+    },
+    "TID_PIN_NOT_ALLOWED_FEED_FULL": {
+        "EN": [
+            "Maximum number of <num> pinned messages reached!"
+        ]
+    },
+    "TID_EVENT_TRACK_REWARD_INFO_SUPER_TROOP_NOT_AVAILABLE": {
+        "EN": [
+            "Free Super Troop is no longer available"
+        ]
+    },
+    "TID_EP_SUPER_TROOP_UNLOCKED": {
+        "EN": [
+            "<name> activated!"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE": {
+        "EN": [
+            "<object> <cffcc33>Level <number></c>"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE_UPGRADE": {
+        "EN": [
+            "Upgrade <object> to <cffcc33>Level <number>?</c>"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE_UPGRADING": {
+        "EN": [
+            "Upgrading <object> to <cffcc33>Level <number></c>"
+        ]
+    },
+    "TID_CHAT_INELIGIBLE_PIN_INFO": {
+        "EN": [
+            "Only Leaders and Co-Leaders can pin messages."
+        ]
+    },
+    "TID_CHAT_NO_PINNED_MESSAGES": {
+        "EN": [
+            "No currently pinned messages."
+        ]
+    },
+    "TID_CHAT_PIN_NOTIFICATION_INFO": {
+        "EN": [
+            "Send notification to tagged players?"
+        ]
+    },
+    "TID_SUPER_TROOP_ALREADY_ACTIVE_THROUGH_EVENT": {
+        "EN": [
+            "Already activated through an Event"
+        ]
+    },
+    "TID_SUPER_TROOP_AVAILABLE_FROM_EVENT": {
+        "EN": [
+            "Available for free in the Event <event>!"
+        ]
+    },
+    "TID_PUSH_CHAT_TAG": {
+        "EN": [
+            "You were mentioned in Clan Chat"
+        ]
+    },
+    "TID_CHAT_TAG_TITLE_ALL": {
+        "EN": [
+            "all"
+        ]
+    },
+    "TID_CHAT_TAG_TITLE_LEADERS": {
+        "EN": [
+            "Leaders"
+        ]
+    },
+    "TID_CHAT_TAG_LEADERS_INFO": {
+        "EN": [
+            "Tag Clan Leaders"
+        ]
+    },
+    "TID_CHAT_TAG_ALL_INFO": {
+        "EN": [
+            "Tag all Clan Members"
+        ]
+    },
+    "TID_STREAK_EVENT_BUTTON_CLAIM": {
+        "EN": [
+            "Claim"
+        ]
+    },
+    "TID_MEDAL_EVENT_TROOP_BONUS": {
+        "EN": [
+            "Bonus for using <troop>"
+        ]
+    },
+    "TID_FIRST_TIME_DISCOUNT": {
+        "EN": [
+            "First Time Discount"
+        ]
+    },
+    "TID_GEAR_ROCKET_SPEAR": {
+        "EN": [
+            "Rocket Spear"
+        ]
+    },
+    "TID_GEAR_INFO_ROCKET_SPEAR": {
+        "EN": [
+            "Her next few spear throws are stronger and longer-ranged"
+        ]
+    },
+    "TID_SUPER_TROOP_MENU_EVENT_TROOP": {
+        "EN": [
+            "Event Troop"
+        ]
+    },
+    "TID_STREAK_EVENT_HUD_NOTIFICATION": {
+        "EN": [
+            "Task <num>/<max> completed!"
+        ]
+    },
+    "TID_DEAL_END_TIME": {
+        "EN": [
+            "Deal ends in:"
+        ]
+    },
+    "TID_MEDAL_EVENT_BUTTON_TITLE": {
+        "EN": [
+            "Rewards"
+        ]
+    },
+    "TID_CHAT_ERROR_MESSAGE": {
+        "EN": [
+            "Failed to send Chat message: {0}"
+        ]
+    },
+    "TID_CHAT_ERROR_PERMISSION_DENIED": {
+        "EN": [
+            "Something went wrong. Please try again later."
+        ]
+    },
+    "TID_CHAT_ERROR_INVALID_TAGS": {
+        "EN": [
+            "You used invalid tags. Please try again."
+        ]
+    },
+    "TID_CHAT_ERROR_TOO_MANY_TAGS": {
+        "EN": [
+            "You tagged too many players in your message."
+        ]
+    },
+    "TID_CHAT_ERROR_THROTTLE": {
+        "EN": [
+            "Please wait a moment to tag players again."
+        ]
+    },
+    "TID_CHAT_ERROR_UNDEFINED": {
+        "EN": [
+            "Something went wrong. Please try again."
+        ]
+    },
+    "TID_PIN_ERROR_MESSAGE": {
+        "EN": [
+            "Failed to pin message: {0}"
+        ]
+    },
+    "TID_PIN_ERROR_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again later."
+        ]
+    },
+    "TID_PIN_ERROR_INVALID_STREAM_ENTRY_ID": {
+        "EN": [
+            "Something went wrong. Please try again later!"
+        ]
+    },
+    "TID_PIN_ERROR_NOT_IN_ALLIANCE": {
+        "EN": [
+            "Can\u2019t pin message because you are not in a Clan."
+        ]
+    },
+    "TID_PIN_ERROR_NOT_PINNABLE": {
+        "EN": [
+            "This message cannot be pinned."
+        ]
+    },
+    "TID_PIN_ERROR_NO_MORE_PINS": {
+        "EN": [
+            "Maximum number of messages pinned."
+        ]
+    },
+    "TID_PIN_ERROR_THROTTLED": {
+        "EN": [
+            "Please wait a moment to pin more messages."
+        ]
+    },
+    "TID_UNPIN_ERROR_MESSAGE": {
+        "EN": [
+            "Failed to unpin message: {0}"
+        ]
+    },
+    "TID_UNPIN_ERROR_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again later."
+        ]
+    },
+    "TID_JUST_NOW": {
+        "EN": [
+            "Just now"
+        ]
+    },
+    "TID_GOBLIN_BUILDER": {
+        "EN": [
+            "Goblin Builder"
+        ]
+    },
+    "TID_FREE_A_BUILDER": {
+        "EN": [
+            "Free a Builder"
+        ]
+    },
+    "TID_INFO_SCREEN_PASS_TEASER": {
+        "EN": [
+            "With the Gold Pass you could save up to:"
+        ]
+    },
+    "TID_EP_ACTIVATE_BANNER_TITLE": {
+        "EN": [
+            "Activate Event Pass"
+        ]
+    },
+    "TID_EVENT_PASS_ACTIVATE_TITLE": {
+        "EN": [
+            "Activate Event Pass!"
+        ]
+    },
+    "TID_EVENT_PASS_ACTIVATE_TEXT": {
+        "EN": [
+            "Activate Event Pass to get more rewards!"
+        ]
+    },
+    "TID_EP_ACTIVATE_COUNTDOWN": {
+        "EN": [
+            "Event Pass activation window ends in <time>"
+        ]
+    },
+    "TID_EP_ACTIVATE_BUTTON": {
+        "EN": [
+            "Activate"
+        ]
+    },
+    "TID_EP_ACTIVATE_SCID_CONFIRM": {
+        "EN": [
+            "Your Supercell ID has <num> x Event Pass available. Activate one for this Event?"
+        ]
+    },
+    "TID_EP_ACTIVATE_SCID_TITLE": {
+        "EN": [
+            "Activate Event Pass?"
+        ]
+    },
+    "TID_DECO_SPACE_2024_CRATER": {
+        "EN": [
+            "Clashy Crater"
+        ]
+    },
+    "TID_DECO_SPACE_2024_GLOBE": {
+        "EN": [
+            "Stone Globe"
+        ]
+    },
+    "TID_DECO_SPACE_2024_GOBLIN_STATUE": {
+        "EN": [
+            "Goblin Explorer"
+        ]
+    },
+    "TID_DECO_EGYPT_2024_BABYDRAGON": {
+        "EN": [
+            "Baby Ptah"
+        ]
+    },
+    "TID_DECO_EGYPT_2024_GOBLIN": {
+        "EN": [
+            "Goblin Pharaoh"
+        ]
+    },
+    "TID_DECO_EGYPT_2024_HOG": {
+        "EN": [
+            "Hog Sphinx"
+        ]
+    },
+    "TID_OBSTACLE_BALL": {
+        "EN": [
+            "Mysterious Object"
+        ]
+    },
+    "TID_ATTACK_RANGE_TILES": {
+        "EN": [
+            "Attack Range: Tiles"
+        ]
+    },
+    "TID_INVISIBILITY_SECONDS": {
+        "EN": [
+            "Invisibility: Seconds"
+        ]
+    },
+    "TID_NUM_ATTACKS_UNTILL_DEACTIVATE": {
+        "EN": [
+            "Attacks: Count"
+        ]
+    },
+    "TID_POPUP_GOBLIN_BUILDER_EXPENSIVE_DISCLAIMER": {
+        "EN": [
+            "The Goblin Builder still needs the resources and time to build. Freeing a Builder is cheaper in this case."
+        ]
+    },
+    "TID_GOBLIN_BUILDER_AVAILABLE": {
+        "EN": [
+            "Available!"
+        ]
+    },
+    "TID_NAME_UNKNOWN": {
+        "EN": [
+            "Unknown"
+        ]
+    },
+    "TID_WINTER_KING": {
+        "EN": [
+            "King of the North"
+        ]
+    },
+    "TID_WINTER_QUEEN": {
+        "EN": [
+            "Queen of the North"
+        ]
+    },
+    "TID_OFTHENORTH_BATTLE_MACHINE": {
+        "EN": [
+            "Battle Machine of the North"
+        ]
+    },
+    "TID_LUNAR_KING": {
+        "EN": [
+            "Dragon King"
+        ]
+    },
+    "TID_LNY24_CHAMPION": {
+        "EN": [
+            "Dragon Champion"
+        ]
+    },
+    "TID_LNY24_WARDEN": {
+        "EN": [
+            "Dragon Warden"
+        ]
+    },
+    "TID_LNY24_QUEEN": {
+        "EN": [
+            "Dragon Queen"
+        ]
+    },
+    "TID_SCENERY_OFTHENORTH": {
+        "EN": [
+            "Of the North Scenery"
+        ]
+    },
+    "TID_DRAGON_PALACE_SCENERY": {
+        "EN": [
+            "Dragon Palace Scenery"
+        ]
+    },
+    "TID_GOBLIN_RESEARCHER": {
+        "EN": [
+            "Goblin Researcher"
+        ]
+    },
+    "TID_FREE_RESEARCHER": {
+        "EN": [
+            "Finish research"
+        ]
+    },
+    "TID_POPUP_GOBLIN_RESEARCHER_EXPENSIVE_DISCLAIMER": {
+        "EN": [
+            "The Goblin Researcher still needs the resources and time to build. Finishing your current research is cheaper in this case."
         ]
     }
 }
