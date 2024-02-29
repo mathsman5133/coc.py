@@ -540,6 +540,9 @@
             "SpellLightning",
             "SpellLightning"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "HealingWave": {
@@ -1015,6 +1018,9 @@
             "SpellHeal",
             "SpellHeal"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Haste": {
@@ -1369,6 +1375,9 @@
             "SpellRage",
             "SpellRage"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Jump": {
@@ -1678,6 +1687,9 @@
             "SpellJump",
             "SpellJump"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "xmas": {
@@ -1864,7 +1876,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Freeze": {
         "Level": [
@@ -2243,6 +2258,9 @@
             "SpellFreeze",
             "SpellFreeze"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "xmas2013": {
@@ -2786,6 +2804,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Slow": {
@@ -2987,6 +3008,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "BoostDefences": {
@@ -3182,6 +3206,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Poison": {
@@ -3778,6 +3805,9 @@
             "SpellPoison",
             "SpellPoison"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Earthquake": {
@@ -4111,6 +4141,9 @@
             "SpellQuake",
             "SpellQuake"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "SpeedUp": {
@@ -4426,6 +4459,9 @@
             "SpellBooster",
             "SpellBooster"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Shield": {
@@ -4929,6 +4965,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Growth": {
@@ -5196,6 +5235,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Artillery Center": {
@@ -5205,11 +5247,13 @@
             3,
             4,
             5,
-            6
+            6,
+            7
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -5241,7 +5285,8 @@
             375,
             425,
             475,
-            500
+            500,
+            525
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -5249,6 +5294,7 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            75,
             75,
             75,
             75,
@@ -5262,6 +5308,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "RandomRadius": [
@@ -5270,9 +5317,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            150,
             150,
             150,
             150,
@@ -5294,9 +5343,11 @@
             "Artillery Hit",
             "Artillery Hit",
             "Artillery Hit",
+            "Artillery Hit",
             "Artillery Hit"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            false,
             false,
             false,
             false,
@@ -5382,6 +5433,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "MiniGrowth": {
@@ -5532,7 +5586,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Duplicate": {
         "Level": [
@@ -5934,6 +5991,9 @@
             "SpellBooster",
             "SpellBooster"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "SpawnSkele": {
@@ -6336,6 +6396,9 @@
             "SpellSkeleton",
             "SpellSkeleton"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "FreezeTrap": {
@@ -6494,7 +6557,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Mortar2Poison": {
         "Level": [
@@ -6848,6 +6914,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TroopRage": {
@@ -7071,6 +7140,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "ShrinkTrap": {
@@ -7225,7 +7297,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Birthday2017": {
         "Level": [
@@ -7419,7 +7494,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "IceGolemFreeze": {
         "Level": [
@@ -7670,6 +7748,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "ElectroDragonDie": {
@@ -7947,6 +8028,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TornadoTrap": {
@@ -8178,6 +8262,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TroopHaste": {
@@ -8332,7 +8419,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "ProtoSpell2": {
         "Level": [
@@ -8629,6 +8719,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "SpawnBats": {
@@ -8997,6 +9090,9 @@
             "SpellBat",
             "SpellBat"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "IceGolemFreeze_DEF": {
@@ -9225,6 +9321,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "IceBreakerSplinters": {
@@ -9232,11 +9331,13 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -9251,15 +9352,18 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ChargingTimeMS": [
             0,
             0,
             0,
+            0,
             0
         ],
         "HitTimeMS": [
+            0,
             0,
             0,
             0,
@@ -9279,7 +9383,8 @@
             300,
             360,
             420,
-            450
+            450,
+            480
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -9290,9 +9395,11 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "NumberOfHits": [
+            1,
             1,
             1,
             1,
@@ -9302,9 +9409,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            0,
             0,
             0,
             0,
@@ -9322,9 +9431,11 @@
             "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1",
+            "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -9378,10 +9489,12 @@
             90,
             90,
             90,
+            90,
             90
         ],
         "FreezePercent": [],
         "MinRadius": [
+            100,
             100,
             100,
             100,
@@ -9391,7 +9504,8 @@
             100,
             120,
             140,
-            150
+            150,
+            160
         ],
         "StunTimeMS": [],
         "TornadoForce1": [],
@@ -9414,6 +9528,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "BoostDefenders": [],
@@ -9428,6 +9543,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "BatRage": {
@@ -9570,7 +9688,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "TH13Freeze": {
         "Level": [
@@ -9785,6 +9906,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "ElectroTitanDamageAura": {
@@ -9968,6 +10092,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "EliteValkyrieRage": {
@@ -10124,7 +10251,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Invisibility": {
         "Level": [
@@ -10402,6 +10532,9 @@
             "SpellInvisibility",
             "SpellInvisibility"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "IceHoundFreeze": {
@@ -10570,6 +10703,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TH14Poison": {
@@ -10855,6 +10991,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "FireSpiritExplosion": {
@@ -10862,11 +11001,13 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -10881,15 +11022,18 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ChargingTimeMS": [
             300,
             300,
             300,
+            300,
             300
         ],
         "HitTimeMS": [
+            500,
             500,
             500,
             500,
@@ -10902,15 +11046,18 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "SpeedBoost": [
             0,
             0,
             0,
+            0,
             0
         ],
         "SpeedBoost2": [
+            0,
             0,
             0,
             0,
@@ -10921,6 +11068,7 @@
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
         "Damage": [
+            1,
             1,
             1,
             1,
@@ -10935,9 +11083,11 @@
             250,
             250,
             250,
+            250,
             250
         ],
         "NumberOfHits": [
+            75,
             75,
             75,
             75,
@@ -10947,9 +11097,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            400,
             400,
             400,
             400,
@@ -10963,10 +11115,12 @@
             "Catapult Ground Effects",
             "Catapult Ground Effects",
             "Catapult Ground Effects",
+            "Catapult Ground Effects",
             "Catapult Ground Effects"
         ],
         "DeployEffect2Delay": [],
         "DeployEffect2": [
+            "Multi Mortar Area Effects",
             "Multi Mortar Area Effects",
             "Multi Mortar Area Effects",
             "Multi Mortar Area Effects",
@@ -10975,6 +11129,7 @@
         "ChargingEffect": [],
         "HitEffect": [],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -10987,6 +11142,7 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ProductionBuilding": [],
@@ -10995,9 +11151,11 @@
             "Wall",
             "Wall",
             "Wall",
+            "Wall",
             "Wall"
         ],
         "PreferredTargetDamageMod": [
+            25,
             25,
             25,
             25,
@@ -11013,9 +11171,11 @@
             80,
             95,
             105,
-            120
+            120,
+            130
         ],
         "PoisonIncreaseSlowly": [
+            true,
             true,
             true,
             true,
@@ -11026,9 +11186,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "PoisonAffectAir": [
+            false,
             false,
             false,
             false,
@@ -11085,6 +11247,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ImmunitySiegeMachines": [],
@@ -11098,6 +11261,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "PhoenixImmortality": {
@@ -11245,6 +11411,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TroopImmortality": {
@@ -11392,6 +11561,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "AreaStun": {
@@ -11534,7 +11706,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "DrillerSurfacing": {
         "Level": [
@@ -11678,7 +11853,10 @@
             true
         ],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "TH15Poison": {
         "Level": [
@@ -11963,6 +12141,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "PoisonST": {
@@ -12169,17 +12350,34 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "SuperHogRiderSummonHog": {
         "Level": [
             1,
             2,
-            3
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             true,
             true,
             true
@@ -12192,14 +12390,35 @@
         "DeployTimeMS": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "ChargingTimeMS": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "HitTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -12217,6 +12436,13 @@
         "Damage": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "TroopDamagePermil": [],
@@ -12227,9 +12453,23 @@
         "Radius": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "NumberOfHits": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             1,
             1,
             1
@@ -12237,9 +12477,23 @@
         "RandomRadius": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -12251,6 +12505,13 @@
         "DeployEffect": [
             "SuperBoar Deploy",
             "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
+            "SuperBoar Deploy",
             "SuperBoar Deploy"
         ],
         "DeployEffect2Delay": [],
@@ -12258,6 +12519,13 @@
         "ChargingEffect": [],
         "HitEffect": [],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             true,
             true,
             true
@@ -12268,6 +12536,13 @@
         "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY"
@@ -12296,9 +12571,23 @@
         "SummonTroop": [
             "Riderless Hog",
             "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
+            "Riderless Hog",
             "Riderless Hog"
         ],
         "UnitsToSpawn": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             1,
             1,
             1
@@ -12306,7 +12595,14 @@
         "SpawnUpgradeLevel": [
             1,
             2,
-            3
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
         ],
         "ShrinkReduceSpeedRatio": [],
         "ShrinkHitpointsRatio": [],
@@ -12356,6 +12652,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "RageST": {
@@ -12544,17 +12843,34 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "SuperHogRiderSummonRider": {
         "Level": [
             1,
             2,
-            3
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             true,
             true,
             true
@@ -12567,14 +12883,35 @@
         "DeployTimeMS": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "ChargingTimeMS": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "HitTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -12592,6 +12929,13 @@
         "Damage": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "TroopDamagePermil": [],
@@ -12602,9 +12946,23 @@
         "Radius": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "NumberOfHits": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             1,
             1,
             1
@@ -12612,9 +12970,23 @@
         "RandomRadius": [
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -12631,6 +13003,13 @@
         "RandomRadiusAffectsOnlyGfx": [
             true,
             true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             true
         ],
         "FreezeTimeMS": [],
@@ -12639,6 +13018,13 @@
         "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY"
@@ -12667,9 +13053,23 @@
         "SummonTroop": [
             "Hogless Rider",
             "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
+            "Hogless Rider",
             "Hogless Rider"
         ],
         "UnitsToSpawn": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
             1,
             1,
             1
@@ -12677,7 +13077,14 @@
         "SpawnUpgradeLevel": [
             1,
             2,
-            3
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
         ],
         "ShrinkReduceSpeedRatio": [],
         "ShrinkHitpointsRatio": [],
@@ -12727,6 +13134,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "InvisibilityST": {
@@ -12917,7 +13327,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "GraveGolemSummonBigBoy": {
         "Level": [
@@ -13227,6 +13640,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "HogWizardDamageAura": {
@@ -13377,7 +13793,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "BagOfFrostmitesSpawn": {
         "Level": [
@@ -13620,6 +14039,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "COOKIEAura": {
@@ -13768,7 +14190,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Recall": {
         "Level": [
@@ -14095,6 +14520,9 @@
             "SpellRecall",
             "SpellRecall"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "GrandWardenRangeRing": {
@@ -14245,7 +14673,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "PoisonLizardAttack": {
         "Level": [
@@ -14444,6 +14875,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "RamRiderDestroyWalls": {
@@ -14600,7 +15034,10 @@
             true
         ],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Unused10": {
         "Level": [
@@ -14790,7 +15227,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Unused11": {
         "Level": [
@@ -14980,7 +15420,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Baby Dragon Flaming Sneeze": {
         "Level": [
@@ -15211,6 +15654,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Power PEKKA Overcharge": {
@@ -15430,6 +15876,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Drop Ship Skeleton Bomb": {
@@ -15492,10 +15941,10 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
-            300,
-            300,
-            300,
-            300
+            225,
+            225,
+            225,
+            225
         ],
         "NumberOfHits": [
             1,
@@ -15643,6 +16092,9 @@
         ],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Night Witch Bat Swarm": {
@@ -15795,11 +16247,11 @@
             "Bat Enraged"
         ],
         "UnitsToSpawn": [
-            6,
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "SpawnUpgradeLevel": [],
         "ShrinkReduceSpeedRatio": [],
@@ -15862,6 +16314,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Cannon Cart Mortar Mode Splash": {
@@ -16048,6 +16503,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Apprentice Growth": {
@@ -16246,6 +16704,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "PetJump": {
@@ -16396,7 +16857,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "PetSpeedUp": {
         "Level": [
@@ -16552,7 +17016,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "FireSpiritBurn": {
         "Level": [
@@ -16718,7 +17185,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "TreantWallDamageAura": {
         "Level": [
@@ -16878,7 +17348,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "SiegeInvisibility": {
         "Level": [
@@ -17036,53 +17509,96 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Overgrowth": {
         "Level": [
-            1
+            1,
+            2,
+            3,
+            4
         ],
         "TID": [
+            "TID_SPELL_OVERGROWTH",
+            "TID_SPELL_OVERGROWTH",
+            "TID_SPELL_OVERGROWTH",
             "TID_SPELL_OVERGROWTH"
         ],
         "InfoTID": [
+            "TID_SPELL_OVERGROWTH_INFO",
+            "TID_SPELL_OVERGROWTH_INFO",
+            "TID_SPELL_OVERGROWTH_INFO",
             "TID_SPELL_OVERGROWTH_INFO"
         ],
-        "DisableProduction": [
-            true
-        ],
+        "DisableProduction": [],
         "SpellForgeLevel": [
-            8
+            6,
+            6,
+            6,
+            6
         ],
         "LaboratoryLevel": [
-            1
+            1,
+            10,
+            12,
+            14
         ],
         "DonateCost": [
+            10,
+            10,
+            10,
             10
         ],
         "HousingSpace": [
+            2,
+            2,
+            2,
             2
         ],
         "TrainingTime": [
-            180
+            360,
+            360,
+            360,
+            360
         ],
         "DeployTimeMS": [
+            800,
+            800,
+            800,
             800
         ],
         "ChargingTimeMS": [
+            300,
+            300,
+            300,
             300
         ],
         "HitTimeMS": [
+            400,
+            400,
+            400,
             400
         ],
         "UpgradeTimeH": [
-            42
+            240,
+            288,
+            384,
+            384
         ],
         "UpgradeResource": [
-            "Elixir"
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir"
         ],
         "UpgradeCost": [
-            7500000
+            125000,
+            250000,
+            350000,
+            350000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -17098,54 +17614,99 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            700,
+            700,
+            700,
             700
         ],
         "NumberOfHits": [
+            1,
+            1,
+            1,
             1
         ],
         "RandomRadius": [
+            400,
+            400,
+            400,
             400
         ],
         "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
             0
         ],
         "IconSWF": [
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_spell_overgrowth",
+            "icon_spell_overgrowth",
+            "icon_spell_overgrowth",
             "icon_spell_overgrowth"
         ],
         "BigPicture": [
-            "icon_spell_freeze"
+            "icon_spell_overgrowth",
+            "icon_spell_overgrowth",
+            "icon_spell_overgrowth",
+            "icon_spell_overgrowth"
         ],
         "PreDeployEffect": [
-            "Freeze predeploy"
+            "Entangle_predeploy",
+            "Entangle_predeploy",
+            "Entangle_predeploy",
+            "Entangle_predeploy"
         ],
         "DeployEffect": [
-            "Freeze deploy lvl1"
+            "Entangle_area_deploy",
+            "Entangle_area_deploy",
+            "Entangle_area_deploy",
+            "Entangle_area_deploy"
         ],
         "DeployEffect2Delay": [],
         "DeployEffect2": [
-            "Freeze deploy2 lvl1"
+            "entangle_spell_circle_radius",
+            "entangle_spell_circle_radius_lvl2",
+            "entangle_spell_circle_radius_lvl3",
+            "entangle_spell_circle_radius_lvl4"
         ],
         "ChargingEffect": [],
         "HitEffect": [],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true,
+            true,
             true
         ],
         "FreezeTimeMS": [
-            30000
+            22000,
+            24000,
+            26000,
+            28000
         ],
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
+            50,
+            50,
+            50,
             50
         ],
         "ProductionBuilding": [
-            "Spell Forge"
+            "Mini Spell Factory",
+            "Mini Spell Factory",
+            "Mini Spell Factory",
+            "Mini Spell Factory"
         ],
         "TargetInfoString": [
-            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+            "TID_INFO_TARGET_TYPE_GROUND",
+            "TID_INFO_TARGET_TYPE_GROUND",
+            "TID_INFO_TARGET_TYPE_GROUND",
+            "TID_INFO_TARGET_TYPE_GROUND"
         ],
         "PreferredTarget": [],
         "PreferredTargetDamageMod": [],
@@ -17162,9 +17723,15 @@
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
         "ShieldTime": [
-            30000
+            22000,
+            24000,
+            26000,
+            28000
         ],
         "ShieldProtectionPercent": [
+            100,
+            100,
+            100,
             100
         ],
         "MaxUnitsHit": [],
@@ -17188,10 +17755,16 @@
         "UpgradeLevelByTH": [],
         "ChangeTeamTime": [],
         "InvisibilityTime": [
-            30000
+            22000,
+            24000,
+            26000,
+            28000
         ],
         "FreezeOuterTimeMS": [
-            30000
+            22000,
+            24000,
+            26000,
+            28000
         ],
         "ConeAngle": [],
         "FreezePercent": [],
@@ -17216,17 +17789,29 @@
         "ChainSpell": [],
         "AffectsSiegeMachines": [],
         "BoostDefenders": [
+            true,
+            true,
+            true,
             true
         ],
         "ImmunitySiegeMachines": [
+            true,
+            true,
+            true,
             true
         ],
         "ImmunityOtherCharacters": [
+            true,
+            true,
+            true,
             true
         ],
         "ImmunityTH_CC": [],
         "ImmunityStorages": [],
         "ImmunityWalls": [
+            true,
+            true,
+            true,
             true
         ],
         "ImmunityOtherBuildings": [],
@@ -17234,7 +17819,31 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [
+            "SpellOvergrowth",
+            "SpellOvergrowth",
+            "SpellOvergrowth",
+            "SpellOvergrowth"
+        ],
+        "TombStone": [
+            "OvergrowthGrass",
+            "OvergrowthGrass",
+            "OvergrowthGrass",
+            "OvergrowthGrass"
+        ],
+        "NumTombStones": [
+            40,
+            40,
+            40,
+            40
+        ],
+        "Overgrowth": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "Name": []
     },
     "Unused12": {
         "Level": [
@@ -17428,7 +18037,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "Blizzard": {
         "Level": [
@@ -17622,7 +18234,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "BagOfFrostmites": {
         "Level": [
@@ -18056,6 +18671,8 @@
             "BouncingFrostmite"
         ],
         "UnitsToSpawn": [
+            8,
+            9,
             10,
             11,
             12,
@@ -18063,38 +18680,24 @@
             14,
             15,
             16,
-            17,
-            18,
-            19,
-            20
+            16,
+            16
         ],
-        "SpawnUpgradeLevel": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11
-        ],
+        "SpawnUpgradeLevel": [],
         "ShrinkReduceSpeedRatio": [],
         "ShrinkHitpointsRatio": [],
         "SpawnDuration": [
-            5000,
-            6000,
-            7000,
+            4000,
+            4700,
+            5400,
+            6100,
+            6800,
+            7500,
             8000,
+            8500,
             9000,
-            10000,
-            11000,
-            12000,
-            13000,
-            14000,
-            15000
+            9000,
+            9000
         ],
         "SpawnFirstGroupSize": [
             1,
@@ -18110,7 +18713,19 @@
             1
         ],
         "DamageTHPercent": [],
-        "DisableDonate": [],
+        "DisableDonate": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "ScaleByTH": [],
         "EnabledByCalendar": [
             true,
@@ -18201,6 +18816,9 @@
             "SpellFrostmites",
             "SpellFrostmites"
         ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "TroopCatapultSummonTroop": {
@@ -18353,7 +18971,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "LavaloonSpawnPup": {
         "Level": [
@@ -18652,6 +19273,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "Firecracker Explosion": {
@@ -18744,10 +19368,10 @@
             171,
             198,
             225,
-            252,
+            261,
             279,
             306,
-            333,
+            342,
             360
         ],
         "TroopDamagePermil": [],
@@ -18907,10 +19531,10 @@
             38,
             44,
             50,
-            56,
+            58,
             62,
             68,
-            74,
+            76,
             80
         ],
         "StunTimeMS": [],
@@ -18955,6 +19579,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "EarthquakeBoots": {
@@ -19206,6 +19833,9 @@
         ],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "FireBallExplosion": {
@@ -19372,7 +20002,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "RageAura": {
         "Level": [
@@ -19631,6 +20264,9 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
     },
     "QueenFreeze": {
@@ -19779,7 +20415,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "ElectrifiedShield": {
         "Level": [
@@ -19929,7 +20568,10 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "BarbarianKingDestroyWalls": {
         "Level": [
@@ -20085,7 +20727,10 @@
             true
         ],
         "RecallHousing": [],
-        "PreviewScenario": []
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     },
     "HealAura": {
         "Level": [
@@ -20336,6 +20981,206 @@
         "DestroyWalls": [],
         "RecallHousing": [],
         "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
         "Name": []
+    },
+    "Unused13": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_SPELL_FROST"
+        ],
+        "InfoTID": [
+            "TID_SPELL_FROST_INFO"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [
+            5
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "DonateCost": [
+            10
+        ],
+        "HousingSpace": [
+            1
+        ],
+        "TrainingTime": [
+            180
+        ],
+        "DeployTimeMS": [
+            800
+        ],
+        "ChargingTimeMS": [
+            300
+        ],
+        "HitTimeMS": [
+            400
+        ],
+        "UpgradeTimeH": [
+            42
+        ],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            26000
+        ],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            5
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500
+        ],
+        "NumberOfHits": [
+            67
+        ],
+        "RandomRadius": [
+            400
+        ],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_cc_frost"
+        ],
+        "BigPicture": [
+            "icon_spell_freeze"
+        ],
+        "PreDeployEffect": [
+            "Capital Frost Predeploy"
+        ],
+        "DeployEffect": [
+            "Blizzard"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [
+            500
+        ],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [
+            1000
+        ],
+        "ProductionBuilding": [
+            "Mini Spell Factory"
+        ],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [
+            true
+        ],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [
+            500
+        ],
+        "ConeAngle": [],
+        "FreezePercent": [
+            70
+        ],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            true
+        ],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [
+            true
+        ],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": []
     }
 }
