@@ -353,6 +353,9 @@ class HTTPClient:
                             await asyncio.sleep(tries * 2 + 1)
                             continue
 
+                        # catch any stray status codes
+                        raise HTTPException(response, data)
+
             except asyncio.TimeoutError:
                 # api timed out, retry again
                 if tries > 3:
@@ -360,7 +363,6 @@ class HTTPClient:
 
                 await asyncio.sleep(tries * 2 + 1)
                 continue
-            raise
 
         else:
             if response.status in (500, 502, 504):
