@@ -7,6 +7,14 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.3.1
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a behaviour where in some cases (when the API responds with an unusual status code), coc.py would not
+  properly raise an :class:`HTTPException`
+
 v3.3.0
 ------
 
