@@ -1,4 +1,12 @@
 on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'I want to manually trigger a PyPi push, without publishing a GitHub release (recommended)'
+        required: true
+        type: choice
+        options:
+          - Yes
   release:
     types: [created]
 
