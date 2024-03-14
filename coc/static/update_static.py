@@ -21,6 +21,7 @@ TARGETS = [
     ("logic/spells.csv", "spells.csv"),
     ("logic/super_licences.csv", "supers.csv"),
     ("logic/townhall_levels.csv", "townhall_levels.csv"),
+    ("logic/character_items.csv", "equipment.csv"),
     ("localization/texts.csv", "texts_EN.csv"),
 ]
 FINGERPRINT = "7dc27bbc98c5bf2818587453f966e99919e32211"
