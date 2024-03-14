@@ -2,11 +2,9 @@ on:
   workflow_dispatch:
     inputs:
       confirmation:
-        description: 'I want to manually trigger a PyPi push, without publishing a GitHub release (recommended)'
+        description: 'I want to manually trigger a PyPi push, without publishing a GitHub release (not recommended!)'
         required: true
-        type: choice
-        options:
-          - Yes
+        type: boolean
   release:
     types: [created]
 
@@ -19,17 +17,19 @@ jobs:
       url: https://pypi.org/p/coc.py
     permissions:
       id-token: write
+    if: github.event_name != 'workflow_dispatch' || (github.event_name == 'workflow_dispatch' &&  github.event.inputs.confirmation != 'false')
     steps:
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel twine
+        pip install --upgrade pip
+        pip install --upgrade build
     - name: Build
       run: |
-        python setup.py sdist bdist_wheel
+        python -m build
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
