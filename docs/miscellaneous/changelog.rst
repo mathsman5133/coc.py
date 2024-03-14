@@ -7,6 +7,19 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.4.0
+------
+
+Additions:
+~~~~~~~~~~
+- added the new Fireball equipment to `coc.EQUIPMENT`
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed an oversight that caused static equipment data not to be updated, which in turn resulted in some newer
+  equipment pieces not showing up in :attr:`coc.Player.equipment` if game data was enabled
+- Fixed some errors in the docs
+
 v3.3.1
 ------
 

@@ -222,6 +222,8 @@ class Player(ClanMember):
         The constructor used to create the :attr:`Player.spells` list. This must inherit from :class:`Spell`.
     troop_cls: :class:`Troop`
         The constructor used to create the :attr:`Player.troops` list. This must inherit from :class:`Troop`.
+    equipment_cls: :class:`Equipment`
+        The constructor used to create the :attr:`Player.equipment` list. This must inherit from :class:`Equipment`.
     attack_wins: :class:`int`
         The number of attacks the player has won this season.
     defense_wins: :class:`int`
@@ -245,6 +247,8 @@ class Player(ClanMember):
     war_opted_in: Optional[:class:`bool`]
         Whether the player has selected that they are opted "in" (True) for wars, or opted "out" (False).
         This will be ``None`` if the player is not in a clan.
+    equipment: List[:class:`Equipment`]
+        The player's unlocked hero equipment
     """
 
     __slots__ = (
