@@ -55,7 +55,7 @@ This example will get a player with a certain tag, and search for 5 clans with a
         async with coc.Client() as coc_client:
             try:
                 await coc_client.login("email", "password")
-            except coc.invalidcredentials as error:
+            except coc.InvalidCredentials as error:
                 exit(error)
 
             player = await coc_client.get_player("tag")

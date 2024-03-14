@@ -50,6 +50,8 @@ class Hero(DataContainer):
         The minimum required townhall to unlock this level of the hero.
     regeneration_time: :class:`TimeDelta`
         The time required for this hero to regenerate after being "knocked out".
+    equipment: :class:`List[Equipment]`
+        a list of the equipment currently used by this hero
     is_loaded: :class:`bool`
         Whether the API data has been loaded for this hero.
     level: :class:`int`
