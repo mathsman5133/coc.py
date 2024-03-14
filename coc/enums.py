@@ -225,6 +225,7 @@ EQUIPMENT = [
     "Frozen Arrow",
     "Hog Rider Puppet",
     "Haste Vial",
+    "Fireball",
 ]
 
 ACHIEVEMENT_ORDER = [
