@@ -31,10 +31,7 @@ jobs:
         DEV_SITE_EMAIL: ${{ secrets.DEV_SITE_EMAIL }}
         DEV_SITE_PASSWORD: ${{ secrets.DEV_SITE_PASSWORD }}
         DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-        LINKS_API_USERNAME: ${{ secrets.LINKS_API_USERNAME }}
-        LINKS_API_PASSWORD: ${{ secrets.LINKS_API_PASSWORD }}
         RUNNING_TESTS: true
       run: |
-        python -m examples.discord_links
         python -m examples.events_example
         python -m examples.war_logs
