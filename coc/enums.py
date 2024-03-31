@@ -261,9 +261,13 @@ ACHIEVEMENT_ORDER = [
     "Firefighter",
     "Anti-Artillery",
     "Shattered and Scattered",
+    "Counterspell",
+    "Monolith Masher",
     "Get those Goblins!",
     "Get those other Goblins!",
+    "Get even more Goblins!",
     "Dragon Slayer",
+    "Ungrateful Child",
     "Superb Work",
 
     # Builder Base
