@@ -7,12 +7,20 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.4.1
+------
+
+Additions:
+~~~~~~~~~~
+- added the missing achievements to :class:`coc.ACHIEVEMENT_ORDER`
+- updated static data to reflect the March 26th balance patch
+
 v3.4.0
 ------
 
 Additions:
 ~~~~~~~~~~
-- added the new Fireball equipment to `coc.EQUIPMENT`
+- added the new Fireball equipment to :class:`coc.EQUIPMENT`
 
 Bugs Fixed:
 ~~~~~~~~~~~
