@@ -69471,9 +69471,9 @@
             150
         ],
         "Hitpoints": [
+            6300,
             6650,
-            7050,
-            7400
+            7000
         ],
         "TrainingTime": [
             220,
@@ -69515,9 +69515,9 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
+            190
             210,
-            230,
-            250
+            230
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [],
