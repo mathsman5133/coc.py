@@ -7267,27 +7267,27 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            100,
-            99,
-            98,
-            97,
-            96,
-            95,
-            94,
-            93,
-            91,
-            89,
-            87,
-            85,
-            83,
-            81,
-            79,
-            77,
-            77,
-            77,
-            77,
-            77,
-            77
+            195,
+            225,
+            274,
+            323,
+            389,
+            454,
+            548,
+            632,
+            710,
+            783,
+            874,
+            969,
+            1050,
+            1130,
+            1205,
+            1236,
+            1297,
+            1361,
+            1463,
+            1569,
+            1665
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -8076,8 +8076,8 @@
             1050,
             1130,
             1230,
-            1330,
-            1410,
+            1310,
+            1390,
             1510,
             1600,
             1700,
@@ -8781,27 +8781,27 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            100,
-            99,
-            98,
-            97,
-            96,
-            95,
-            94,
-            93,
-            92,
-            91,
-            90,
-            89,
-            88,
-            87,
-            85,
-            83,
-            83,
-            83,
-            83,
-            83,
-            83
+            205,
+            252,
+            299,
+            364,
+            418,
+            470,
+            543,
+            607,
+            688,
+            758,
+            830,
+            883,
+            935,
+            1029,
+            1111,
+            1147,
+            1206,
+            1309,
+            1411,
+            1498,
+            1577
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -9661,23 +9661,23 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            20,
+            28,
+            36,
+            44,
+            50,
+            54,
+            58
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [
@@ -9745,9 +9745,7 @@
         "DefenceTroopCharacter": [],
         "DefenceTroopCharacter2": [],
         "DefenceTroopLevel": [],
-        "AmountCanBeUpgraded": [
-            250
-        ],
+        "AmountCanBeUpgraded": [],
         "SelfAsAoeCenter": [],
         "NewTargetAttackDelay": [],
         "GearUpBuilding": [],
@@ -10640,22 +10638,22 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            450,
-            420,
-            390,
-            360,
-            330,
-            300,
-            270,
-            240,
-            240,
-            240,
-            240,
-            240,
-            240,
-            240,
-            250,
-            250
+            1193,
+            1229,
+            1287,
+            1377,
+            1485,
+            1680,
+            1890,
+            1944,
+            2208,
+            2688,
+            3024,
+            3360,
+            3636,
+            3900,
+            4250,
+            4519
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -11459,20 +11457,20 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50
+            500,
+            656,
+            813,
+            919,
+            1075,
+            1281,
+            1538,
+            1751,
+            1963,
+            2175,
+            2388,
+            2706,
+            2919,
+            3231
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -12514,22 +12512,22 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            450,
-            440,
-            430,
-            420,
-            410,
-            400,
-            390,
-            380,
-            370,
-            360,
-            350,
-            350,
-            340,
-            340,
-            340,
-            340
+            630,
+            715,
+            796,
+            872,
+            984,
+            1090,
+            1268,
+            1520,
+            1804,
+            2070,
+            2363,
+            2643,
+            2873,
+            3290,
+            3664,
+            3995
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -12804,9 +12802,11 @@
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "TID": [
+            "TID_BUILDING_ALLIANCE_CASTLE",
             "TID_BUILDING_ALLIANCE_CASTLE",
             "TID_BUILDING_ALLIANCE_CASTLE",
             "TID_BUILDING_ALLIANCE_CASTLE",
@@ -12830,6 +12830,7 @@
             "TID_ALLIANCE_CASTLE_INFO",
             "TID_ALLIANCE_CASTLE_INFO",
             "TID_ALLIANCE_CASTLE_INFO",
+            "TID_ALLIANCE_CASTLE_INFO",
             "TID_ALLIANCE_CASTLE_INFO"
         ],
         "BuildingClass": [
@@ -12843,9 +12844,11 @@
             "Army",
             "Army",
             "Army",
+            "Army",
             "Army"
         ],
         "SecondaryTargetingClass": [
+            "Resource",
             "Resource",
             "Resource",
             "Resource",
@@ -12870,6 +12873,7 @@
             "sc/buildings.sc",
             "sc/buildings.sc",
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
@@ -12883,10 +12887,12 @@
             "alliance_castle_lvl8",
             "alliance_castle_lvl9",
             "alliance_castle_lvl10",
-            "alliance_castle_lvl11"
+            "alliance_castle_lvl11",
+            "alliance_castle_lvl12"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "generic_construction_state3",
             "generic_construction_state3",
             "generic_construction_state3",
             "generic_construction_state3",
@@ -12910,6 +12916,7 @@
             "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken",
+            "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken"
         ],
         "BuildTimeD": [
@@ -12923,7 +12930,8 @@
             9,
             11,
             13,
-            14
+            14,
+            15
         ],
         "BuildTimeH": [
             0,
@@ -12936,9 +12944,11 @@
             0,
             0,
             0,
-            0
+            0,
+            12
         ],
         "BuildTimeM": [
+            0,
             0,
             0,
             0,
@@ -12962,9 +12972,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "BuildResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -12988,7 +13000,8 @@
             8000000,
             10000000,
             12600000,
-            20000000
+            20000000,
+            21000000
         ],
         "TownHallLevel": [
             3,
@@ -13001,7 +13014,8 @@
             12,
             13,
             14,
-            15
+            15,
+            16
         ],
         "CapitalHallLevel": [
             3,
@@ -13014,9 +13028,11 @@
             12,
             13,
             14,
-            15
+            15,
+            16
         ],
         "Width": [
+            3,
             3,
             3,
             3,
@@ -13040,10 +13056,12 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "Icon": [],
         "ExportNameBuildAnim": [
+            "alliance_castle_upg",
             "alliance_castle_upg",
             "alliance_castle_upg",
             "alliance_castle_upg",
@@ -13075,7 +13093,8 @@
             2800000,
             3200000,
             3600000,
-            4000000
+            4000000,
+            4400000
         ],
         "MaxStoredWarElixir": [
             75000,
@@ -13088,7 +13107,8 @@
             2800000,
             3200000,
             3600000,
-            4000000
+            4000000,
+            4400000
         ],
         "MaxStoredWarDarkElixir": [
             500,
@@ -13101,7 +13121,8 @@
             14000,
             16000,
             18000,
-            20000
+            20000,
+            22000
         ],
         "MaxStoredGold2": [],
         "MaxStoredElixir2": [],
@@ -13119,9 +13140,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "Bunker": [
+            true,
             true,
             true,
             true,
@@ -13147,6 +13170,7 @@
             40,
             45,
             45,
+            50,
             50
         ],
         "HousingSpaceAlt": [
@@ -13159,6 +13183,7 @@
             2,
             2,
             2,
+            3,
             3,
             3
         ],
@@ -13173,7 +13198,8 @@
             1,
             1,
             1,
-            1
+            1,
+            2
         ],
         "ProducesResource": [],
         "ResourcePer100Hours": [],
@@ -13196,12 +13222,14 @@
             4400,
             4800,
             5200,
-            5400
+            5400,
+            5600
         ],
         "RegenTime": [
             27,
             28,
             29,
+            30,
             30,
             30,
             30,
@@ -13225,6 +13253,7 @@
         "PreferredTargetDamageMod": [],
         "RandomHitPosition": [],
         "DestroyEffect": [
+            "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
@@ -13260,9 +13289,11 @@
             "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken",
+            "alliance_castle_lvl1_broken",
             "alliance_castle_lvl1_broken"
         ],
         "BuildingW": [
+            2,
             2,
             2,
             2,
@@ -13286,10 +13317,12 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "BaseGfx": [],
         "ExportNameBase": [
+            "alliance_castle_base",
             "alliance_castle_base",
             "alliance_castle_base",
             "alliance_castle_base",
@@ -13331,9 +13364,11 @@
             "Alliance Castle Pickup",
             "Alliance Castle Pickup",
             "Alliance Castle Pickup",
+            "Alliance Castle Pickup",
             "Alliance Castle Pickup"
         ],
         "PlacingEffect": [
+            "Alliance Castle Placing",
             "Alliance Castle Placing",
             "Alliance Castle Placing",
             "Alliance Castle Placing",
@@ -13363,9 +13398,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "StartingHomeCount": [
+            1,
             1,
             1,
             1,
@@ -13399,7 +13436,20 @@
         "TransitionEffectLv3": [],
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
-        "StrengthWeight": [],
+        "StrengthWeight": [
+            200,
+            400,
+            600,
+            800,
+            2000,
+            2400,
+            4200,
+            4800,
+            5400,
+            6000,
+            6600,
+            7200
+        ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
         "SpeedMod": [],
@@ -13478,6 +13528,7 @@
             900,
             900,
             900,
+            900,
             900
         ],
         "UpgradeTasks": [],
@@ -13494,6 +13545,7 @@
             "ClanCastleTH7",
             "ClanCastleTH7",
             "ClanCastleTH7",
+            "ClanCastleTH11",
             "ClanCastleTH11",
             "ClanCastleTH11",
             "ClanCastleTH11",
@@ -13518,9 +13570,11 @@
             2,
             3,
             4,
-            5
+            5,
+            6
         ],
         "TID": [
+            "TID_WORKER_BUILDING",
             "TID_WORKER_BUILDING",
             "TID_WORKER_BUILDING",
             "TID_WORKER_BUILDING",
@@ -13532,9 +13586,11 @@
             "TID_WORKER_INFO",
             "TID_WORKER_INFO",
             "TID_WORKER_INFO",
+            "TID_WORKER_INFO",
             "TID_WORKER_INFO"
         ],
         "BuildingClass": [
+            "Worker",
             "Worker",
             "Worker",
             "Worker",
@@ -13548,6 +13604,7 @@
             "sc/buildings.sc",
             "sc/buildings.sc",
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
@@ -13555,10 +13612,12 @@
             "worker_building_armed_lvl1",
             "worker_building_armed_lvl2",
             "worker_building_armed_lvl3",
-            "worker_building_armed_lvl4"
+            "worker_building_armed_lvl4",
+            "worker_building_armed_lvl5"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "worker_building_const",
             "worker_building_const",
             "worker_building_const",
             "worker_building_const",
@@ -13571,16 +13630,19 @@
             9,
             11,
             13,
-            14
+            14,
+            15
         ],
         "BuildTimeH": [
             0,
             12,
             12,
             6,
-            6
+            6,
+            0
         ],
         "BuildTimeM": [
+            0,
             0,
             0,
             0,
@@ -13592,10 +13654,12 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "BuildResource": [
             "Diamonds",
+            "Gold",
             "Gold",
             "Gold",
             "Gold",
@@ -13606,23 +13670,27 @@
             8000000,
             10000000,
             12000000,
-            17000000
+            17000000,
+            20000000
         ],
         "TownHallLevel": [
             1,
             14,
             14,
             14,
-            15
+            15,
+            16
         ],
         "CapitalHallLevel": [
             1,
             14,
             14,
             14,
-            15
+            15,
+            16
         ],
         "Width": [
+            2,
             2,
             2,
             2,
@@ -13634,10 +13702,12 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "Icon": [],
         "ExportNameBuildAnim": [
+            "worker_building_upg",
             "worker_building_upg",
             "worker_building_upg",
             "worker_building_upg",
@@ -13680,6 +13750,7 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "FreeBoost": [],
@@ -13688,9 +13759,11 @@
             1000,
             1300,
             1600,
-            1800
+            1800,
+            1900
         ],
         "RegenTime": [
+            20,
             20,
             20,
             20,
@@ -13698,6 +13771,7 @@
             20
         ],
         "AttackRange": [
+            700,
             700,
             700,
             700,
@@ -13712,6 +13786,7 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "AltAttackSpeed": [],
@@ -13720,7 +13795,8 @@
             80,
             100,
             120,
-            135
+            135,
+            150
         ],
         "AltDPS": [],
         "Damage": [],
@@ -13732,10 +13808,12 @@
             "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
+            "Building Destroyed",
             "Building Destroyed"
         ],
         "DestroyDamageEffect": [],
         "AttackEffect": [
+            "Nailgun Attack FX",
             "Nailgun Attack FX",
             "Nailgun Attack FX",
             "Nailgun Attack FX",
@@ -13752,11 +13830,13 @@
             "Generic Hit",
             "Generic Hit",
             "Generic Hit",
+            "Generic Hit",
             "Generic Hit"
         ],
         "Projectile": [
             "Nail Ammo",
             "Nail Ammo",
+            "Nail Ammo 2",
             "Nail Ammo 2",
             "Nail Ammo 2"
         ],
@@ -13767,6 +13847,7 @@
             "destroyedBuilding_2s_pit_wood_darkbrown",
             "destroyedBuilding_2s_pit_wood_darkbrown",
             "destroyedBuilding_2s_pit_wood_darkgreen",
+            "destroyedBuilding_2s_pit_wood_darkpurple",
             "destroyedBuilding_2s_pit_wood_darkpurple"
         ],
         "BuildingW": [
@@ -13774,9 +13855,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "BuildingH": [
+            1,
             1,
             1,
             1,
@@ -13789,6 +13872,7 @@
             "worker_building_base",
             "worker_building_base",
             "worker_building_base",
+            "worker_building_base",
             "worker_building_base"
         ],
         "AirTargets": [
@@ -13796,9 +13880,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -13826,6 +13912,7 @@
             "Worker Building Pickup",
             "Worker Building Pickup",
             "Worker Building Pickup",
+            "Worker Building Pickup",
             "Worker Building Pickup"
         ],
         "PlacingEffect": [
@@ -13833,9 +13920,11 @@
             "Worker Building Placing",
             "Worker Building Placing",
             "Worker Building Placing",
+            "Worker Building Placing",
             "Worker Building Placing"
         ],
         "AnimateTurret": [
+            true,
             true,
             true,
             true,
@@ -13849,6 +13938,7 @@
         "DestructionXP": [],
         "Locked": [],
         "StartingHomeCount": [
+            1,
             1,
             1,
             1,
@@ -13877,10 +13967,12 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            400,
-            380,
-            360,
-            340
+            0,
+            4600,
+            5795,
+            6840,
+            7480,
+            8000
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -13914,9 +14006,11 @@
             1600,
             1600,
             1600,
+            1600,
             1600
         ],
         "WakeUpSpace": [
+            1,
             1,
             1,
             1,
@@ -13945,9 +14039,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "DefenceTroopCharacter": [
+            "Defending Builder",
             "Defending Builder",
             "Defending Builder",
             "Defending Builder",
@@ -13958,7 +14054,8 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "AmountCanBeUpgraded": [],
         "SelfAsAoeCenter": [],
@@ -13976,12 +14073,14 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "CombatActivationDelay": [],
         "CombatActivationEffect": [],
         "Weapon": [],
         "HintPriority": [
+            200,
             200,
             200,
             200,
@@ -13997,6 +14096,7 @@
         "DefaultProjectileVariant": [],
         "PreviewScenario": [
             "NoCombatBuilding",
+            "DefensiveBuilder",
             "DefensiveBuilder",
             "DefensiveBuilder",
             "DefensiveBuilder",
@@ -15654,21 +15754,21 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
+            490,
+            558,
+            645,
+            723,
+            823,
+            943,
+            1073,
+            1203,
+            1325,
+            1445,
+            1575,
+            1700,
+            1838,
+            1963,
+            2088
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -17026,17 +17126,17 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            350,
-            325,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300
+            3413,
+            3819,
+            4125,
+            4725,
+            5625,
+            6450,
+            7275,
+            8100,
+            8850,
+            9450,
+            10200
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -20273,16 +20373,16 @@
         ],
         "PreventsHealing": [],
         "StrengthWeight": [
-            2800,
-            2500,
-            2250,
-            2100,
-            2000,
-            1900,
-            1800,
-            1700,
-            1650,
-            1650
+            18900,
+            20000,
+            20813,
+            23100,
+            25500,
+            27550,
+            30150,
+            32725,
+            34650,
+            37950
         ],
         "AlternatePickNewTargetDelay": [
             50,
@@ -20852,13 +20952,13 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20
+            678,
+            840,
+            1003,
+            1165,
+            1328,
+            1490,
+            1653
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -21782,9 +21882,11 @@
             3,
             4,
             5,
-            6
+            6,
+            7
         ],
         "TID": [
+            "TID_BUILDING_ARTILLERY",
             "TID_BUILDING_ARTILLERY",
             "TID_BUILDING_ARTILLERY",
             "TID_BUILDING_ARTILLERY",
@@ -21798,9 +21900,11 @@
             "TID_ARTILLERY_INFO",
             "TID_ARTILLERY_INFO",
             "TID_ARTILLERY_INFO",
+            "TID_ARTILLERY_INFO",
             "TID_ARTILLERY_INFO"
         ],
         "BuildingClass": [
+            "Defense",
             "Defense",
             "Defense",
             "Defense",
@@ -21816,6 +21920,7 @@
             "sc/buildings.sc",
             "sc/buildings.sc",
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
@@ -21824,10 +21929,12 @@
             "doom_cannon_lvl3",
             "doom_cannon_lvl4",
             "doom_cannon_lvl5",
-            "doom_cannon_lvl6"
+            "doom_cannon_lvl6",
+            "doom_cannon_lvl7"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "laboratory_const",
             "laboratory_const",
             "laboratory_const",
             "laboratory_const",
@@ -21842,7 +21949,8 @@
             9,
             10,
             13,
-            14
+            14,
+            15
         ],
         "BuildTimeH": [
             0,
@@ -21850,9 +21958,11 @@
             0,
             0,
             0,
-            0
+            0,
+            12
         ],
         "BuildTimeM": [
+            0,
             0,
             0,
             0,
@@ -21866,9 +21976,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "BuildResource": [
+            "Gold",
             "Gold",
             "Gold",
             "Gold",
@@ -21882,7 +21994,8 @@
             10000000,
             13000000,
             17000000,
-            21500000
+            21500000,
+            22000000
         ],
         "TownHallLevel": [
             11,
@@ -21890,7 +22003,8 @@
             12,
             13,
             14,
-            15
+            15,
+            16
         ],
         "CapitalHallLevel": [
             11,
@@ -21898,9 +22012,11 @@
             12,
             13,
             14,
-            15
+            15,
+            16
         ],
         "Width": [
+            4,
             4,
             4,
             4,
@@ -21909,6 +22025,7 @@
             4
         ],
         "Height": [
+            4,
             4,
             4,
             4,
@@ -21923,6 +22040,7 @@
             "laboratory_upg",
             "laboratory_upg",
             "laboratory_upg",
+            "laboratory_upg",
             "laboratory_upg"
         ],
         "ExportNameUpgradeAnim": [
@@ -21931,6 +22049,7 @@
             "doom_cannon_lvl3_upgrade",
             "doom_cannon_lvl4_upgrade",
             "doom_cannon_lvl5_upgrade",
+            "doom_cannon_lvl6_upgrade",
             "doom_cannon_lvl6_upgrade"
         ],
         "MaxStoredGold": [],
@@ -21971,7 +22090,8 @@
             4800,
             5200,
             5600,
-            5900
+            5900,
+            6200
         ],
         "RegenTime": [
             20,
@@ -21979,9 +22099,11 @@
             21,
             21,
             21,
+            21,
             21
         ],
         "AttackRange": [
+            5000,
             5000,
             5000,
             5000,
@@ -21998,6 +22120,7 @@
             10000,
             10000,
             10000,
+            10000,
             10000
         ],
         "AltAttackSpeed": [],
@@ -22007,9 +22130,11 @@
             6992,
             6992,
             6992,
+            6992,
             6992
         ],
         "DPS": [
+            0,
             0,
             0,
             0,
@@ -22024,7 +22149,8 @@
             30,
             35,
             40,
-            45
+            45,
+            50
         ],
         "PreferredTarget": [],
         "PreferredTargetDamageMod": [],
@@ -22035,10 +22161,12 @@
             "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
+            "Building Destroyed",
             "Building Destroyed"
         ],
         "DestroyDamageEffect": [],
         "AttackEffect": [
+            "Artillery Attack",
             "Artillery Attack",
             "Artillery Attack",
             "Artillery Attack",
@@ -22058,6 +22186,7 @@
             "Ancient Hit",
             "Ancient Hit",
             "Ancient Hit",
+            "Ancient Hit",
             "Ancient Hit"
         ],
         "Projectile": [
@@ -22066,11 +22195,13 @@
             "Artillery Ammo3",
             "Artillery Ammo4",
             "Artillery Ammo5",
-            "Artillery Ammo6"
+            "Artillery Ammo6",
+            "Artillery Ammo7"
         ],
         "AltProjectile": [],
         "ExportNameDamagedSWF": [],
         "ExportNameDamaged": [
+            "destroyedBuilding_4m_base_rock",
             "destroyedBuilding_4m_base_rock",
             "destroyedBuilding_4m_base_rock",
             "destroyedBuilding_4m_base_rock",
@@ -22084,9 +22215,11 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "BuildingH": [
+            3,
             3,
             3,
             3,
@@ -22101,6 +22234,7 @@
             "laboratory_base",
             "laboratory_base",
             "laboratory_base",
+            "laboratory_base",
             "laboratory_base"
         ],
         "AirTargets": [
@@ -22109,9 +22243,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -22131,9 +22267,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "AmmoResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -22147,9 +22285,11 @@
             45000,
             50000,
             55000,
-            60000
+            60000,
+            65000
         ],
         "MinAttackRange": [
+            700,
             700,
             700,
             700,
@@ -22163,9 +22303,11 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "PushBack": [
+            50,
             50,
             50,
             50,
@@ -22180,9 +22322,11 @@
             "Artillery Load",
             "Artillery Load",
             "Artillery Load",
+            "Artillery Load",
             "Artillery Load"
         ],
         "NoAmmoEffect": [
+            "Artillery No Ammo",
             "Artillery No Ammo",
             "Artillery No Ammo",
             "Artillery No Ammo",
@@ -22197,9 +22341,11 @@
             "Basic Turret Pickup",
             "Basic Turret Pickup",
             "Basic Turret Pickup",
+            "Basic Turret Pickup",
             "Basic Turret Pickup"
         ],
         "PlacingEffect": [
+            "Artillery Placing",
             "Artillery Placing",
             "Artillery Placing",
             "Artillery Placing",
@@ -22237,12 +22383,13 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            4900,
-            4450,
-            4100,
-            3800,
-            3550,
-            3400
+            58800,
+            60075,
+            61500,
+            62700,
+            63900,
+            65450,
+            67000
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -22264,9 +22411,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "TargetGroupsRadius": [
+            500,
             500,
             500,
             500,
@@ -22282,9 +22431,11 @@
             "beam_up",
             "beam_up",
             "beam_up",
+            "beam_up",
             "beam_up"
         ],
         "ExportNameBeamEnd": [
+            "beam_down",
             "beam_down",
             "beam_down",
             "beam_down",
@@ -22305,6 +22456,7 @@
             1125,
             1125,
             1125,
+            1125,
             1125
         ],
         "WakeUpSpace": [
@@ -22313,9 +22465,11 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "PreAttackEffect": [
+            "Artillery PreAttack",
             "Artillery PreAttack",
             "Artillery PreAttack",
             "Artillery PreAttack",
@@ -22330,9 +22484,11 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "BurstDelay": [
+            750,
             750,
             750,
             750,
@@ -22380,6 +22536,7 @@
             150,
             150,
             150,
+            150,
             150
         ],
         "UpgradeTasks": [],
@@ -22390,6 +22547,7 @@
         "ProjectileVariantByTargetMaxHP": [],
         "DefaultProjectileVariant": [],
         "PreviewScenario": [
+            "AncientArtillery",
             "AncientArtillery",
             "AncientArtillery",
             "AncientArtillery",
@@ -23029,17 +23187,17 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            400,
-            420,
-            440,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460
+            1610,
+            1911,
+            2233,
+            2818,
+            3416,
+            4071,
+            4784,
+            5497,
+            6509,
+            7199,
+            7889
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -30869,14 +31027,14 @@
         "ExportNameBuildAnim": [
             "mortar_upg",
             "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg",
-            "mortar_upg"
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg",
+            "tower_turret_upg"
         ],
         "ExportNameUpgradeAnim": [],
         "MaxStoredGold": [],
@@ -34502,15 +34660,15 @@
         "PreventsHealing": [],
         "StrengthWeight": [
             422,
-            379,
-            265,
-            265,
-            212,
-            212,
-            190,
-            190,
-            190,
-            190
+            422,
+            422,
+            422,
+            422,
+            422,
+            422,
+            422,
+            422,
+            422
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -42684,11 +42842,11 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            700,
-            700,
-            700,
-            700,
-            700
+            15050,
+            17850,
+            20650,
+            21875,
+            22575
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -42812,9 +42970,11 @@
             6,
             7,
             8,
-            9
+            9,
+            10
         ],
         "TID": [
+            "TID_PET_SHOP",
             "TID_PET_SHOP",
             "TID_PET_SHOP",
             "TID_PET_SHOP",
@@ -42834,9 +42994,11 @@
             "TID_PET_SHOP_INFO",
             "TID_PET_SHOP_INFO",
             "TID_PET_SHOP_INFO",
+            "TID_PET_SHOP_INFO",
             "TID_PET_SHOP_INFO"
         ],
         "BuildingClass": [
+            "Army",
             "Army",
             "Army",
             "Army",
@@ -42858,6 +43020,7 @@
             "sc/buildings.sc",
             "sc/buildings.sc",
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
@@ -42869,10 +43032,12 @@
             "pet_house_lvl6",
             "pet_house_lvl7",
             "pet_house_lvl8",
-            "pet_house_lvl9"
+            "pet_house_lvl9",
+            "pet_house_lvl10"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "laboratory_const",
             "laboratory_const",
             "laboratory_const",
             "laboratory_const",
@@ -42893,7 +43058,8 @@
             13,
             13,
             14,
-            15
+            15,
+            16
         ],
         "BuildTimeH": [
             0,
@@ -42904,9 +43070,11 @@
             12,
             18,
             0,
+            0,
             0
         ],
         "BuildTimeM": [
+            0,
             0,
             0,
             0,
@@ -42926,9 +43094,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "BuildResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -42948,7 +43118,8 @@
             20000000,
             20250000,
             20500000,
-            21000000
+            21000000,
+            21500000
         ],
         "TownHallLevel": [
             14,
@@ -42959,6 +43130,7 @@
             15,
             15,
             15,
+            16,
             16
         ],
         "CapitalHallLevel": [
@@ -42970,9 +43142,11 @@
             15,
             15,
             15,
+            16,
             16
         ],
         "Width": [
+            3,
             3,
             3,
             3,
@@ -42992,10 +43166,12 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "Icon": [],
         "ExportNameBuildAnim": [
+            "laboratory_upg",
             "laboratory_upg",
             "laboratory_upg",
             "laboratory_upg",
@@ -43043,6 +43219,7 @@
             "PET",
             "PET",
             "PET",
+            "PET",
             "PET"
         ],
         "ProducesUnitsOfType": [],
@@ -43058,9 +43235,11 @@
             1100,
             1150,
             1200,
-            1250
+            1250,
+            1300
         ],
         "RegenTime": [
+            15,
             15,
             15,
             15,
@@ -43093,6 +43272,7 @@
             "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
+            "Building Destroyed",
             "Building Destroyed"
         ],
         "DestroyDamageEffect": [],
@@ -43116,6 +43296,7 @@
             "destroyedBuilding_3l_pit_rockwood",
             "destroyedBuilding_3l_pit_rockwood",
             "destroyedBuilding_3l_pit_rockwood",
+            "destroyedBuilding_3l_pit_rockwood",
             "destroyedBuilding_3l_pit_rockwood"
         ],
         "BuildingW": [
@@ -43127,9 +43308,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "BuildingH": [
+            2,
             2,
             2,
             2,
@@ -43150,6 +43333,7 @@
             "pet_house_lvl6_base",
             "pet_house_lvl7_base",
             "pet_house_lvl8_base",
+            "pet_house_lvl9_base",
             "pet_house_lvl9_base"
         ],
         "AirTargets": [],
@@ -43179,9 +43363,11 @@
             "Training Barrack Pickup",
             "Training Barrack Pickup",
             "Training Barrack Pickup",
+            "Training Barrack Pickup",
             "Training Barrack Pickup"
         ],
         "PlacingEffect": [
+            "Training Barrack Placing",
             "Training Barrack Placing",
             "Training Barrack Placing",
             "Training Barrack Placing",
@@ -43298,6 +43484,7 @@
             1000,
             1000,
             1000,
+            1000,
             1000
         ],
         "UpgradeTasks": [],
@@ -43308,6 +43495,7 @@
         "ProjectileVariantByTargetMaxHP": [],
         "DefaultProjectileVariant": [],
         "PreviewScenario": [
+            "NoCombatBuilding",
             "NoCombatBuilding",
             "NoCombatBuilding",
             "NoCombatBuilding",
@@ -44730,9 +44918,9 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            1000,
-            1400,
-            1800
+            6250,
+            9800,
+            13950
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -46033,17 +46221,21 @@
     "Monolith": {
         "BuildingLevel": [
             1,
-            2
+            2,
+            3
         ],
         "TID": [
+            "TID_BUILDING_MONOLITH",
             "TID_BUILDING_MONOLITH",
             "TID_BUILDING_MONOLITH"
         ],
         "InfoTID": [
             "TID_BUILDING_MONOLITH_INFO",
+            "TID_BUILDING_MONOLITH_INFO",
             "TID_BUILDING_MONOLITH_INFO"
         ],
         "BuildingClass": [
+            "Defense",
             "Defense",
             "Defense"
         ],
@@ -46051,66 +46243,81 @@
         "ShopBuildingClass": [],
         "SWF": [
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
             "monolith_lvl_1",
-            "monolith_lvl_2"
+            "monolith_lvl_2",
+            "monolith_lvl_3"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "tower_turret_const",
             "tower_turret_const",
             "tower_turret_const"
         ],
         "ExportNameLocked": [],
         "BuildTimeD": [
             13,
-            14
+            14,
+            16
         ],
         "BuildTimeH": [
             12,
+            0,
             0
         ],
         "BuildTimeM": [
+            0,
             0,
             0
         ],
         "BuildTimeS": [
             0,
+            0,
             0
         ],
         "BuildResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir"
         ],
         "BuildCost": [
             300000,
-            360000
+            360000,
+            370000
         ],
         "TownHallLevel": [
             15,
-            15
+            15,
+            16
         ],
         "CapitalHallLevel": [
             15,
-            15
+            15,
+            16
         ],
         "Width": [
+            3,
             3,
             3
         ],
         "Height": [
+            3,
             3,
             3
         ],
         "Icon": [],
         "ExportNameBuildAnim": [
             "tower_turret_upg",
+            "tower_turret_upg",
             "tower_turret_upg"
         ],
         "ExportNameUpgradeAnim": [
             "monolith_lvl_1_upgrade",
-            "monolith_lvl_2_upgrade"
+            "monolith_lvl_2_upgrade",
+            "monolith_lvl_3_upgrade"
         ],
         "MaxStoredGold": [],
         "MaxStoredElixir": [],
@@ -46146,13 +46353,16 @@
         "FreeBoost": [],
         "Hitpoints": [
             4747,
-            5050
+            5050,
+            5353
         ],
         "RegenTime": [
             25,
+            26,
             26
         ],
         "AttackRange": [
+            1100,
             1100,
             1100
         ],
@@ -46161,16 +46371,19 @@
         "PrepareSpeed": [],
         "AttackSpeed": [
             1500,
+            1500,
             1500
         ],
         "AltAttackSpeed": [],
         "CoolDownOverride": [
             750,
+            750,
             750
         ],
         "DPS": [
             150,
-            175
+            175,
+            193
         ],
         "AltDPS": [],
         "Damage": [],
@@ -46179,10 +46392,12 @@
         "RandomHitPosition": [],
         "DestroyEffect": [
             "Building Destroyed",
+            "Building Destroyed",
             "Building Destroyed"
         ],
         "DestroyDamageEffect": [],
         "AttackEffect": [
+            "Monolith Attack",
             "Monolith Attack",
             "Monolith Attack"
         ],
@@ -46194,9 +46409,11 @@
         "AttackEffectAlt": [],
         "HitEffect": [
             "Explosive Arrow",
+            "Explosive Arrow",
             "Explosive Arrow"
         ],
         "Projectile": [
+            "MonolithProjectileMin;MonolithProjectileMed;MonolithProjectileMax",
             "MonolithProjectileMin;MonolithProjectileMed;MonolithProjectileMax",
             "MonolithProjectileMin;MonolithProjectileMed;MonolithProjectileMax"
         ],
@@ -46204,26 +46421,32 @@
         "ExportNameDamagedSWF": [],
         "ExportNameDamaged": [
             "destroyedBuilding_3l_base_rockwood",
+            "destroyedBuilding_3l_base_rockwood",
             "destroyedBuilding_3l_base_rockwood"
         ],
         "BuildingW": [
             2,
+            2,
             2
         ],
         "BuildingH": [
+            2,
             2,
             2
         ],
         "BaseGfx": [],
         "ExportNameBase": [
             "dark_tower_base",
+            "dark_tower_base",
             "dark_tower_base"
         ],
         "AirTargets": [
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true
         ],
@@ -46245,9 +46468,11 @@
         "ToggleAttackModeEffect": [],
         "PickUpEffect": [
             "Monolith Pickup",
+            "Monolith Pickup",
             "Monolith Pickup"
         ],
         "PlacingEffect": [
+            "Monolith Placing",
             "Monolith Placing",
             "Monolith Placing"
         ],
@@ -46255,9 +46480,11 @@
         "DefenderCharacter": [],
         "DefenderCount": [
             1,
+            1,
             1
         ],
         "DefenderZ": [
+            155,
             155,
             155
         ],
@@ -46287,8 +46514,9 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            1400,
-            1300
+            37615,
+            39163,
+            40750
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -46359,28 +46587,34 @@
         "Weapon": [],
         "HintPriority": [
             150,
+            150,
             150
         ],
         "UpgradeTasks": [],
         "UpgradeTasksRequired": [],
         "AnimationActionFrame": [
             5,
+            5,
             5
         ],
         "SpellOnNearbyDamage": [],
         "DamagePermilHp": [
             110,
-            120
+            120,
+            130
         ],
         "ProjectileVariantByTargetMaxHP": [
             "600;2500",
-            "650;2750"
+            "650;2750",
+            "700;3000"
         ],
         "DefaultProjectileVariant": [
+            3,
             3,
             3
         ],
         "PreviewScenario": [
+            "Monolith",
             "Monolith",
             "Monolith"
         ],
@@ -49149,8 +49383,8 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            400,
-            440
+            9400,
+            11000
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],
@@ -49497,8 +49731,8 @@
         "AltNumMultiTargets": [],
         "PreventsHealing": [],
         "StrengthWeight": [
-            200,
-            220
+            9900,
+            11715
         ],
         "AlternatePickNewTargetDelay": [],
         "AltBuildResource": [],

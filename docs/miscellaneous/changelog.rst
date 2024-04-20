@@ -7,6 +7,14 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.4.2
+------
+
+Additions:
+~~~~~~~~~~
+- added the new Angry Jelly pet to :class:`coc.PETS_ORDER`
+- updated static data to reflect the April 2024 update
+
 v3.4.1
 ------
 
