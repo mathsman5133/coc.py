@@ -1171,7 +1171,7 @@
     },
     "TID_BASIC_TURRET_INFO": {
         "EN": [
-            "Cannons are great for point defense. Upgrade Cannons to increase their firepower, but beware that your defensive turrets cannot shoot while being upgraded!"
+            "Cannons are great for point defense. Upgrade Cannons to increase their firepower, but beware that your Defenses cannot shoot while being upgraded!"
         ]
     },
     "TID_ARCHER_TOWER_INFO": {
@@ -3666,7 +3666,7 @@
     },
     "TID_HINT_DPS": {
         "EN": [
-            "The Damage statistic in unit and turret info is measured as Damage Per Second."
+            "The Damage statistic in Unit and Defense info is measured as Damage Per Second."
         ]
     },
     "TID_HINT_LABORATORY_UPGRADES": {
@@ -4826,7 +4826,7 @@
     },
     "TID_CHARACTER_INFO_GIANT": {
         "EN": [
-            "These big guys may seem calm, but show them a Turret or Cannon and you\u00b4ll see their fury unleashed! Slow yet durable, these warriors are best used to soak up hits."
+            "These big guys may seem calm, but show them a Cannon or Archer Tower and you\u00b4ll see their fury unleashed! Slow yet durable, these warriors are best used to soak up hits."
         ]
     },
     "TID_CHARACTER_INFO_WALLBREAKER": {
@@ -9104,7 +9104,7 @@
     },
     "TID_CLANPERK_DESC_DONATION_LIMIT_VALUE": {
         "EN": [
-            "<troops> Troops, <spells> Spells"
+            "<troops> Troops, <spells> Spells, <sieges> Siege Machines"
         ]
     },
     "TID_CLANPERK_DESC_DONATION_REFUND_VALUE": {
@@ -36109,7 +36109,7 @@
     },
     "TID_MEDAL_EVENT_INFO_TRACK_ENDED": {
         "EN": [
-            "<soft_currency> is gone, but there's still time to claim rewards and spend your <hard_currency> at the Trader!"
+            "Progress can be earned no more, but there's still time to claim rewards and spend your <hard_currency> at the Trader!"
         ]
     },
     "TID_EP_GET_SCREEN_TITLE": {
@@ -36514,7 +36514,7 @@
     },
     "TID_CHARACTER_FIREMITE": {
         "EN": [
-            "Firemite"
+            "WIP Firemite"
         ]
     },
     "TID_CHARACTER_INFO_FIREMITE": {
@@ -36524,7 +36524,7 @@
     },
     "TID_SIEGE_MACHINE_INVISIBLE": {
         "EN": [
-            "Invisible Machine"
+            "WIP Invisible Machine"
         ]
     },
     "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE": {
@@ -36534,7 +36534,7 @@
     },
     "TID_SIEGE_MACHINE_INVISIBLE_FLYING": {
         "EN": [
-            "Invisibility Drone"
+            "WIP Invisibility Drone"
         ]
     },
     "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE_FLYING": {
@@ -36549,7 +36549,7 @@
     },
     "TID_SPELL_OVERGROWTH_INFO": {
         "EN": [
-            "Traps nearby Buildings in tough roots, stopping defenses attacking. Troops ignore trapped Buildings."
+            "Ever wish you could ignore a whole chunk of that enemy base? The Overgrowth Spell traps nearby Buildings in tough roots, stopping Defenses attacking. Troops ignore trapped Buildings."
         ]
     },
     "TID_SPELL_OVERGROWTH_INFO_SHORT": {
@@ -36559,7 +36559,7 @@
     },
     "TID_SPELL_HEAL_SPIRIT": {
         "EN": [
-            "Heal Spirit"
+            "WIP Heal Spirit"
         ]
     },
     "TID_SPELL_HEAL_SPIRIT_INFO": {
@@ -36569,7 +36569,7 @@
     },
     "TID_SPELL_FROST": {
         "EN": [
-            "Targeted Frost"
+            "WIP Targeted Frost"
         ]
     },
     "TID_SPELL_FROST_INFO": {
@@ -36579,12 +36579,12 @@
     },
     "TID_CHARACTER_SIEGE_MACHINE_TROOP_CATAPULT": {
         "EN": [
-            "Troop Catapult Prototype"
+            "WIP Troop Catapult Prototype"
         ]
     },
     "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT": {
         "EN": [
-            "Flings your Siege Machine troops"
+            "WIP Flings your Siege Machine troops"
         ]
     },
     "TID_CHAMPION_CHAMPION": {
@@ -36879,7 +36879,7 @@
     },
     "TID_STREAK_EVENT_REWARD_PERCENT": {
         "EN": [
-            "<num>%"
+            "+<num>%"
         ]
     },
     "TID_STREAK_EVENT_STREAK_COMPLETED": {
@@ -36894,7 +36894,7 @@
     },
     "TID_STREAK_EVENT_BUTTON_RUSH": {
         "EN": [
-            "Rush!"
+            "Unlock!"
         ]
     },
     "TID_STREAK_EVENT_BUTTON_BROKEN": {
@@ -36909,7 +36909,7 @@
     },
     "TID_STREAK_EVENT_STREAK_BROKEN_TEXT": {
         "EN": [
-            "You can continue your Streak or reset it back to start"
+            "You can continue your Streak or start over with a new one"
         ]
     },
     "TID_STREAK_EVENT_STREAK_BROKEN_BUTTON_CONTINUE": {
@@ -36919,7 +36919,7 @@
     },
     "TID_STREAK_EVENT_STREAK_BROKEN_BUTTON_BREAK": {
         "EN": [
-            "Reset!"
+            "Start Over!"
         ]
     },
     "TID_STREAK_EVENT_RUSH_STREAK_TITLE": {
@@ -36929,7 +36929,7 @@
     },
     "TID_STREAK_EVENT_RUSH_STREAK_TEXT": {
         "EN": [
-            "You can unlock next tier of the Streak early!"
+            "Unlock the next tier of the Streak early?"
         ]
     },
     "TID_STREAK_EVENT_RUSH_STREAK_BUTTON_CONTINUE": {
@@ -36944,17 +36944,17 @@
     },
     "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_NAME": {
         "EN": [
-            "League boost"
+            "Streak Bonus"
         ]
     },
     "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_TOPIC": {
         "EN": [
-            "League boost:"
+            "Streak Bonus:"
         ]
     },
     "TID_STREAK_EVENT_PERK_LEAGUE_BOOST_INFO": {
         "EN": [
-            "With higher league boost, you can get bigger rewards for attacking!"
+            "With a bigger Streak Bonus, you'll get more Loot Bonus in Multiplayer Attacks!"
         ]
     },
     "TID_OPEN_STREAK_EVENT": {
@@ -36964,17 +36964,17 @@
     },
     "TID_STREAK_EVENT_BUTTON_RESET": {
         "EN": [
-            "Reset!"
+            "Start Over!"
         ]
     },
     "TID_STREAK_DESCRIPTION_TASK_BROKEN": {
         "EN": [
-            "Your Streak was broken! You can continue your Streak or reset it back to start."
+            "You broke your Streak! You can continue your Streak or start over."
         ]
     },
     "TID_STREAK_EVENT_COMPLETE_CURRENT_TIER_TO_RUSH": {
         "EN": [
-            "Complete current task in order to rush"
+            "You need to complete the current task before you can rush"
         ]
     },
     "TID_STREAK_COUNTER": {
@@ -36984,7 +36984,7 @@
     },
     "TID_STREAK_COUNTER_STREAKS": {
         "EN": [
-            "Streak"
+            "Progress"
         ]
     },
     "TID_CANCEL": {
@@ -36994,12 +36994,12 @@
     },
     "TID_STREAK_EVENT_STREAK_BROKEN_TEXT_CONTINUE": {
         "EN": [
-            "Continue your Streak from where you left off"
+            "Continue your Streak from where you were or start over?"
         ]
     },
     "TID_STREAK_EVENT_STREAK_BROKEN_TEXT_RESET": {
         "EN": [
-            "Reset your Streak back to start"
+            "Start"
         ]
     },
     "TID_SETTING_CHAT_TAG": {
@@ -37104,7 +37104,7 @@
     },
     "TID_PUSH_CHAT_TAG": {
         "EN": [
-            "You were mentioned in Clan Chat"
+            "<name>, you have been mentioned in Clan Chat!"
         ]
     },
     "TID_CHAT_TAG_TITLE_ALL": {
@@ -37150,6 +37150,76 @@
     "TID_GEAR_INFO_ROCKET_SPEAR": {
         "EN": [
             "Her next few spear throws are stronger and longer-ranged"
+        ]
+    },
+    "TID_GEAR_TITLE_FOOTBALL": {
+        "EN": [
+            "Spiky Ball"
+        ]
+    },
+    "TID_GEAR_INFO_FOOTBALL": {
+        "EN": [
+            "Shoots a Spiky Ball which smashes between buildings"
+        ]
+    },
+    "TID_GEAR_TITLE_SUPER_ARCHER_PUPPET": {
+        "EN": [
+            "WIP Super Archer Puppet"
+        ]
+    },
+    "TID_GEAR_INFO_SUPER_ARCHER_PUPPET": {
+        "EN": [
+            "WIP Summons a regiment of Super Archers"
+        ]
+    },
+    "TID_GEAR_TITLE_LIGHT_BOMB": {
+        "EN": [
+            "WIP Light Bomb"
+        ]
+    },
+    "TID_GEAR_INFO_LIGHT_BOMB": {
+        "EN": [
+            "WIP Shoots a bomb of light that stuns a large area"
+        ]
+    },
+    "TID_GEAR_TITLE_OLYMPIC_TORCH": {
+        "EN": [
+            "WIP Olympic Torch"
+        ]
+    },
+    "TID_GEAR_INFO_OLYMPIC_TORCH": {
+        "EN": [
+            "WIP Gives troops nearby Jump, increased move speed and reduced damage taken for <num> seconds"
+        ]
+    },
+    "TID_GEAR_TITLE_OLYMPIC_BATON": {
+        "EN": [
+            "WIP Olympic Baton"
+        ]
+    },
+    "TID_GEAR_INFO_OLYMPIC_BATON": {
+        "EN": [
+            "WIP Troops that dies while close to the Olympic Baton stay alive for an extra <num> seconds before perishing"
+        ]
+    },
+    "TID_GEAR_TITLE_CLONING_CLOAK": {
+        "EN": [
+            "Magic Mirror"
+        ]
+    },
+    "TID_GEAR_INFO_CLONING_CLOAK": {
+        "EN": [
+            "Summons clones of the Archer Queen"
+        ]
+    },
+    "TID_GEAR_TITLE_OLYMPIC_TORCH_GIVEN_ABILITY": {
+        "EN": [
+            "WIP Olympic Jumper"
+        ]
+    },
+    "TID_GEAR_INFO_OLYMPIC_TORCH_GIVEN_ABILITY": {
+        "EN": [
+            "WIP The troop is able to jump over walls for the next <num> seconds"
         ]
     },
     "TID_SUPER_TROOP_MENU_EVENT_TROOP": {
@@ -37412,6 +37482,26 @@
             "Dragon Palace Scenery"
         ]
     },
+    "TID_PET_ANGRY_JELLY": {
+        "EN": [
+            "Angry Jelly"
+        ]
+    },
+    "TID_PET_ANGRY_JELLY_INFO": {
+        "EN": [
+            "This blob of pure anger gets impatient waiting around the Village, it's hungry for a good fight. During Battle it convinces its Hero to attack Defenses before splitting to fight separately."
+        ]
+    },
+    "TID_INFO_TARGET_TYPE_BUILDINGS": {
+        "EN": [
+            "Buildings"
+        ]
+    },
+    "TID_INFO_TARGET_TYPE_DEFENSES_AND_HEROES": {
+        "EN": [
+            "Defenses and Heroes"
+        ]
+    },
     "TID_GOBLIN_RESEARCHER": {
         "EN": [
             "Goblin Researcher"
@@ -37425,6 +37515,690 @@
     "TID_POPUP_GOBLIN_RESEARCHER_EXPENSIVE_DISCLAIMER": {
         "EN": [
             "The Goblin Researcher still needs the resources and time to build. Finishing your current research is cheaper in this case."
+        ]
+    },
+    "TID_STREAK_TASK_REVEALED_IN": {
+        "EN": [
+            "Task <task> revealed in:"
+        ]
+    },
+    "TID_STREAK_EVENT_LEAGUE_BOOST": {
+        "EN": [
+            "Streak Bonus"
+        ]
+    },
+    "TID_STREAK_EVENT_BROKEN_TIMER": {
+        "EN": [
+            "Task failed: 0h 0m"
+        ]
+    },
+    "TID_STREAK_EVENT_LEAGUE_BOOST_DESCRIPTION": {
+        "EN": [
+            "Gain <num>% extra resources from your League loot bonus!"
+        ]
+    },
+    "TID_STREAK_EVENT_TIME_REMAINING": {
+        "EN": [
+            "Time left: <time>"
+        ]
+    },
+    "TID_SCENERY_SPACE": {
+        "EN": [
+            "WIP-SPACE"
+        ]
+    },
+    "TID_STREAK_EVENT_BANNER_TITLE": {
+        "EN": [
+            "Progress"
+        ]
+    },
+    "TID_CHARACTER_SHAPESHIFTER_DRUID": {
+        "EN": [
+            "WIP Shapeshifter Druid"
+        ]
+    },
+    "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO": {
+        "EN": [
+            "WIP Starts as a ground healer and switche to another troops after some time."
+        ]
+    },
+    "TID_CHARACTER_CHAIN_HEAL_DRUID": {
+        "EN": [
+            "WIP Chain Heal Druid"
+        ]
+    },
+    "TID_CHARACTER_CHAIN_HEAL_DRUID_INFO": {
+        "EN": [
+            "WIP This Druid casts a heal that chains to other nearby troops."
+        ]
+    },
+    "TID_CHARACTER_BATTLE_DRUID": {
+        "EN": [
+            "WIP Battle Druid"
+        ]
+    },
+    "TID_CHARACTER_BATTLE_DRUID_INFO": {
+        "EN": [
+            "WIP This Druid attacks buildings and heals troops around that area."
+        ]
+    },
+    "TID_DECO_GIFT_2024_CROWNSWORD": {
+        "EN": [
+            "Crown Sword"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_BOUNCE": {
+        "EN": [
+            "WIP: Townhall Bounce"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_BOUNCE_INFO": {
+        "EN": [
+            "WIP: Football that targets Town Hall then defenses"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_STRIKE": {
+        "EN": [
+            "WIP: Townhall Strike"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_STRIKE_INFO": {
+        "EN": [
+            "WIP: Piercing football that targets Town Hall, causing damage on the way"
+        ]
+    },
+    "TID_SCENERY_EGYPT": {
+        "EN": [
+            "WIP: Egypt"
+        ]
+    },
+    "TID_TRYING_TO_TYPE_TOO_MANY_TAGS": {
+        "EN": [
+            "You can tag only up to <num> players per message"
+        ]
+    },
+    "TID_EDIT_CLAN_NOTICE_TITLE": {
+        "EN": [
+            "Edit Clan Notice"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_DESCRIPTION": {
+        "EN": [
+            "Notice Description"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_MESSAGE": {
+        "EN": [
+            "Use Clan Message"
+        ]
+    },
+    "TID_BUTTON_CLAN_SEND_REQUEST": {
+        "EN": [
+            "Send Request"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_BOARD": {
+        "EN": [
+            "Notice Board"
+        ]
+    },
+    "TID_NOTICE_BOARD_FTUE_TITLE": {
+        "EN": [
+            "Hey Chief! Let\u2019s find the best possible Clan for you by selecting a few quick preferences first!"
+        ]
+    },
+    "TID_NOTICE_BOARD_FTUE_SUBTEXT": {
+        "EN": [
+            "You can still change these settings later"
+        ]
+    },
+    "TID_NOTICE_BOARD_FTUE_ACTIVITY": {
+        "EN": [
+            "WIP: Clan Activity"
+        ]
+    },
+    "TID_DECO_GAME_CAMPAIGN": {
+        "EN": []
+    },
+    "TID_ABILITY_FREE_KICK": {
+        "EN": [
+            "Free Kick"
+        ]
+    },
+    "TID_ABILITY_FREE_KICK_INFO": {
+        "EN": [
+            "Targets closest Defense causing <num> damage"
+        ]
+    },
+    "TID_ABILITY_THROW_IN": {
+        "EN": [
+            "Throw In"
+        ]
+    },
+    "TID_ABILITY_THROW_IN_INFO": {
+        "EN": [
+            "Bounces twice, destroys Walls and causes <num> damage each time it lands"
+        ]
+    },
+    "TID_CHALLENGE_CASTLE_EMPTY": {
+        "EN": [
+            "Your Clan Castle is empty!"
+        ]
+    },
+    "TID_BUTTON_USE": {
+        "EN": [
+            "Use"
+        ]
+    },
+    "TID_MASS_TAG_CLAN": {
+        "EN": [
+            "clan"
+        ]
+    },
+    "TID_MASS_TAG_LEADERS": {
+        "EN": [
+            "leaders"
+        ]
+    },
+    "TID_PET_ABILITY_ANGRY_JELLY": {
+        "EN": [
+            "Brainwash"
+        ]
+    },
+    "TID_PET_ABILITY_INFO_ANGRY_JELLY": {
+        "EN": [
+            "Its Hero targets Defenses for a while after deployment."
+        ]
+    },
+    "TID_DECO_CLASHBALL_GOLDENBOOT": {
+        "EN": [
+            "Golden Boot"
+        ]
+    },
+    "TID_DECO_CLASHBALL_TROPHYBALL": {
+        "EN": [
+            "Bestest Ball"
+        ]
+    },
+    "TID_DECO_CLASHBALL_STATUECHARACTER": {
+        "EN": []
+    },
+    "TID_DECO_CLASHBALL_TROPHYBEVERAGE": {
+        "EN": []
+    },
+    "TID_CLANGAMES_TASK_USE_FREE_KICKERS": {
+        "EN": [
+            "Kicker Kickoff"
+        ]
+    },
+    "TID_CLANGAMES_TASK_USE_EQUIPMENT": {
+        "EN": [
+            "Earn a Star in <num>x Multiplayer Battles using <equipment>."
+        ]
+    },
+    "TID_CLANGAMES_TASK_USE_EQUIPMENT_FOOTBALL": {
+        "EN": [
+            "Hat Trick!"
+        ]
+    },
+    "TID_CHAT_ENTRY_WAR_SIGNUP_TITLE": {
+        "EN": [
+            "Clan War Sign-Up"
+        ]
+    },
+    "TID_CHAT_ENTRY_WAR_SIGNUP_INFO": {
+        "EN": [
+            "<cffffff>Sign up for the upcoming Clan War?</c>"
+        ]
+    },
+    "TID_CHAT_ENTRY_WAR_SIGNUP_YES": {
+        "EN": [
+            "<c6cd900>You\u2019ve opted in for the next Clan War</c>"
+        ]
+    },
+    "TID_CHAT_ENTRY_WAR_SIGNUP_NO": {
+        "EN": [
+            "<cff6266>You\u2019ve opted out from the next Clan War</c>"
+        ]
+    },
+    "TID_HERO_ABILITY_NUM_CLONES": {
+        "EN": [
+            "Clones: <number>"
+        ]
+    },
+    "TID_GIVEN_ABILITY_DURATION": {
+        "EN": [
+            "<ability> duration: Seconds"
+        ]
+    },
+    "TID_GIVEN_ABILITY_BOOST_DAMAGE_PERCENTAGE": {
+        "EN": [
+            "<ability> damage increase: <number>%"
+        ]
+    },
+    "TID_GIVEN_ABILITY_NERF_DAMAGE_PERCENTAGE": {
+        "EN": [
+            "<ability> damage decreased to: <number>%"
+        ]
+    },
+    "TID_NERF_DAMAGE_PERCENTAGE": {
+        "EN": [
+            "Damage decreased to: <number>%"
+        ]
+    },
+    "TID_GEAR_BARBARIAN_CROWN_GIVEN_ABILITY": {
+        "EN": [
+            "Rage"
+        ]
+    },
+    "TID_GEAR_CLONING_CLOAK_GIVEN_ABILITY": {
+        "EN": [
+            "Clone"
+        ]
+    },
+    "TID_BUTTON_SEND_WAR_SIGNUP": {
+        "EN": [
+            "Send War Sign-up"
+        ]
+    },
+    "TID_MESSAGE_INFO_WAR_SIGNUP_ACTIVE": {
+        "EN": [
+            "You already have an active War Sign-up in the Chat."
+        ]
+    },
+    "TID_MESSAGE_WAR_SIGNUP_CONFIRM_TITLE": {
+        "EN": [
+            "Send War Sign-up?"
+        ]
+    },
+    "TID_MESSAGE_WAR_SIGNUP_CONFIRM": {
+        "EN": [
+            "Send a War Sign-up to the Clan Chat?"
+        ]
+    },
+    "TID_HERO_ABILITY_SUMMONED_UNITS_DAMAGE": {
+        "EN": [
+            "Summoned units damage: <number>"
+        ]
+    },
+    "TID_HERO_ABILITY_CLONE_DAMAGE": {
+        "EN": [
+            "Clone damage: <number>"
+        ]
+    },
+    "TID_HERO_ABILITY_SUMMONED_UNITS_HEALTH": {
+        "EN": [
+            "Summoned units health: <number>"
+        ]
+    },
+    "TID_HERO_ABILITY_CLONE_HEALTH": {
+        "EN": [
+            "Clone health: <number>"
+        ]
+    },
+    "TID_TUTORIAL_ENTER_AGE_ALTERNATE_PATH": {
+        "EN": [
+            "Welcome Chief! Let's get started."
+        ]
+    },
+    "TID_DELETE_BUTTON": {
+        "EN": [
+            "Remove"
+        ]
+    },
+    "TID_STREAK_EVENT_INFO_SCREEN_1": {
+        "EN": [
+            "Complete a task every day within the given time limit to extend your Streak"
+        ]
+    },
+    "TID_STREAK_EVENT_INFO_SCREEN_2": {
+        "EN": [
+            "A longer Streak unlocks bigger League Bonus multipliers and other Rewards"
+        ]
+    },
+    "TID_STREAK_EVENT_INFO_SCREEN_3": {
+        "EN": [
+            "If you don't complete your task in time, start over or use Gems to retry the task"
+        ]
+    },
+    "TID_STREAK_EVENT_INFO_SCREEN_TITLE": {
+        "EN": [
+            "Streak Event"
+        ]
+    },
+    "TID_STREAK_EVENT_NO_TIMER_YET": {
+        "EN": [
+            "Complete your first task to get started!"
+        ]
+    },
+    "TID_STREAK_EVENT_FAILED": {
+        "EN": [
+            "Task Failed"
+        ]
+    },
+    "TID_STREAK_EVENT_NOTIFICATION_STREAK_ADVANCED": {
+        "EN": [
+            "Task Completed!"
+        ]
+    },
+    "TID_STREAK_EVENT_NOTIFICATION_STREAK_BROKEN": {
+        "EN": [
+            "Streak Broken"
+        ]
+    },
+    "TID_STREAM_EVENT_ACCEPTED_NEW": {
+        "EN": [
+            "<player> was accepted to the clan by <name>"
+        ]
+    },
+    "TID_STREAM_EVENT_DEMOTED_NEW": {
+        "EN": [
+            "<player> was demoted to <role> by <name>"
+        ]
+    },
+    "TID_STREAM_EVENT_PROMOTED_NEW": {
+        "EN": [
+            "<player> was promoted to <role> by <name>"
+        ]
+    },
+    "TID_STREAM_EVENT_JOINED_NEW": {
+        "EN": [
+            "<player> joined the clan"
+        ]
+    },
+    "TID_STREAM_EVENT_KICKED_NEW": {
+        "EN": [
+            "<player> has been kicked out of the clan by <name>"
+        ]
+    },
+    "TID_STREAM_EVENT_LEFT_NEW": {
+        "EN": [
+            "<player> has left the clan"
+        ]
+    },
+    "TID_STREAM_EVENT_JOINED_AND_LEFT_NEW": {
+        "EN": [
+            "<player> joined and left the clan"
+        ]
+    },
+    "TID_STREAM_EVENT_PROMOTED_AUTOMATICALLY_NEW": {
+        "EN": [
+            "<player> was promoted to <role> automatically"
+        ]
+    },
+    "TID_STREAM_EVENT_STARTED_WAR_LEAGUE_NEW": {
+        "EN": [
+            "<player> started Clan War League search"
+        ]
+    },
+    "TID_STREAM_EVENT_CANCELLED_WAR_LEAGUE_NEW": {
+        "EN": [
+            "<player> cancelled Clan War League search"
+        ]
+    },
+    "TID_STREAM_EVENT_CANCELLED_ARRANGED_WAR_NEW": {
+        "EN": [
+            "<player> cancelled Friendly War"
+        ]
+    },
+    "TID_STREAM_EVENT_NAME_CHANGED_NEW": {
+        "EN": [
+            "<player> changed their name to <name>"
+        ]
+    },
+    "TID_STREAM_EVENT_STARTED_WAR_NEW": {
+        "EN": [
+            "<player> started Clan War search"
+        ]
+    },
+    "TID_STREAM_EVENT_CANCELLED_WAR_NEW": {
+        "EN": [
+            "<player> cancelled Clan War search"
+        ]
+    },
+    "TID_STREAM_EVENT_CHANGED_SETTINGS_NEW": {
+        "EN": [
+            "<player> updated clan settings"
+        ]
+    },
+    "TID_WAR_SIGNUP_RESPONSE_NOT_AVAILABLE_IN_MODE": {
+        "EN": [
+            "Return Home to respond!"
+        ]
+    },
+    "TID_STREAK_EVENT_REWARDS": {
+        "EN": [
+            "Rewards:"
+        ]
+    },
+    "TID_DECO_WILDWEST_CACTUS": {
+        "EN": [
+            "Cactus Guy"
+        ]
+    },
+    "TID_DECO_WILDWEST_SKELLY": {
+        "EN": [
+            "Cowboy Skeleton"
+        ]
+    },
+    "TID_DECO_WILDWEST_TOTEM": {
+        "EN": [
+            "Dragon Totem"
+        ]
+    },
+    "TID_DECO_CLASHBALL_GOAL": {
+        "EN": [
+            "WIP: Goal"
+        ]
+    },
+    "TID_DAILY_LOGIN_HUB_TEXT": {
+        "EN": [
+            "Check out the <cffcc33>Login Calendar</c> for daily rewards"
+        ]
+    },
+    "TID_CHALLENGES_HUB_TEXT": {
+        "EN": [
+            "Check out <cffcc33>Challenges</c> to guide your next steps"
+        ]
+    },
+    "TID_LOOTCART_HUB_TEXT": {
+        "EN": [
+            "Collect <cffcc33>Bonus Loot</c> and start upgrading your Village"
+        ]
+    },
+    "TID_TRAINING_HUB_TEXT": {
+        "EN": [
+            "Enjoy your <cffcc33>Training Boost</c> and battle away"
+        ]
+    },
+    "TID_BUILDER_HUB_TEXT": {
+        "EN": [
+            "Enjoy your <cffcc33>Builder Boost</c>"
+        ]
+    },
+    "TID_LABORATORY_HUB_TEXT": {
+        "EN": [
+            "Enjoy your <cffcc33>Research Boost</c>"
+        ]
+    },
+    "TID_JOINCLAN_HUB_TEXT": {
+        "EN": [
+            "<cffcc33>Join a Clan</c> and play with others for even more fun"
+        ]
+    },
+    "TID_PRACTICELEVELS_HUB_TEXT": {
+        "EN": [
+            "Replay <cffcc33>Practice Attacks</c> to sharpen your skills"
+        ]
+    },
+    "TID_CHIEFSJOURNEY_HUB_TEXT": {
+        "EN": [
+            "View <cffcc33>Chief's Journey</c> to see what you\u2019ve unlocked"
+        ]
+    },
+    "TID_EVENTS_HUB_TEXT": {
+        "EN": [
+            "Check our <cffcc33>Events</c> for more fun and rewards"
+        ]
+    },
+    "TID_REENGAGEMENT_HUB_TITLE": {
+        "EN": [
+            "Tutorial Hub"
+        ]
+    },
+    "TID_HERO_ABILITY_SUMMONED_UNITS_DPS": {
+        "EN": [
+            "Summoned units DPS: <number>"
+        ]
+    },
+    "TID_HERO_ABILITY_CLONE_DPS": {
+        "EN": [
+            "Clone DPS: <number>"
+        ]
+    },
+    "TID_WAIT_BEFORE_TAGGING": {
+        "EN": [
+            "Chat tagging will be available <number> minutes after joining a Clan!"
+        ]
+    },
+    "TID_NO_MATCHING_RESULTS_FOUND": {
+        "EN": [
+            "No matching results found"
+        ]
+    },
+    "TID_STREAK_EVENT_EXTRA_REWARD": {
+        "EN": [
+            "+<num>"
+        ]
+    },
+    "TID_EP_RESOURCE_REWARD_GET_GEM_ALTERNATIVE_TOO_LOW_TH_TITLE": {
+        "EN": [
+            "No Storage"
+        ]
+    },
+    "TID_EP_RESOURCE_REWARD_GET_GEM_ALTERNATIVE_TOO_LOW_TH_TEXT": {
+        "EN": [
+            "<resource> can be stored after building Blacksmith on Town Hall 8.\\nSell for <amount> Gems instead?"
+        ]
+    },
+    "TID_EP_RESOURCE_REWARD_GET_GEM_ALTERNATIVE_NO_BLACKSMITH_TITLE": {
+        "EN": [
+            "No Storage"
+        ]
+    },
+    "TID_EP_RESOURCE_REWARD_GET_GEM_ALTERNATIVE_NO_BLACKSMITH_TEXT": {
+        "EN": [
+            "Build Blacksmith in order to store <resource>.\\nSell for <amount> Gems instead?"
+        ]
+    },
+    "TID_STREAK_EVENT_INFO_SCREEN_4": {
+        "EN": [
+            "Can't wait until the next task unlocks? Spend Gems to unlock it now."
+        ]
+    },
+    "TID_OFFER_TOWNHALL_UPGRADE_PACK": {
+        "EN": [
+            "Townhall <num> Pack now available in the Shop!"
+        ]
+    },
+    "TID_STREAK_EVENT_REWARD_PERCENT_TOTAL": {
+        "EN": [
+            "<num>%"
+        ]
+    },
+    "TID_EGYPT_KING": {
+        "EN": [
+            "Egypt King"
+        ]
+    },
+    "TID_SPACE_CHAMPION": {
+        "EN": [
+            "Space Champion"
+        ]
+    },
+    "TID_SPACE_WARDEN": {
+        "EN": [
+            "Space Warden"
+        ]
+    },
+    "TID_SPACE_KING": {
+        "EN": [
+            "Space King"
+        ]
+    },
+    "TID_SPACE_QUEEN": {
+        "EN": [
+            "Space Queen"
+        ]
+    },
+    "TID_EGYPTIAN_CHAMPION": {
+        "EN": [
+            "Egypt Champion"
+        ]
+    },
+    "TID_EGYPTIAN_QUEEN": {
+        "EN": [
+            "Egypt Queen"
+        ]
+    },
+    "TID_EGYPTIAN_WARDEN": {
+        "EN": [
+            "Egypt Warden"
+        ]
+    },
+    "TID_CHARACTER_FREE_KICKER": {
+        "EN": [
+            "Barbarian Kicker"
+        ]
+    },
+    "TID_CHARACTER_INFO_FREE_KICKER": {
+        "EN": [
+            "Starts the match with a calm, carefully aimed shot that smashes the nearest Defense. Then goes on the usual Barbarian rampage."
+        ]
+    },
+    "TID_CHARACTER_SIDE_THROWER": {
+        "EN": [
+            "Giant Thrower"
+        ]
+    },
+    "TID_CHARACTER_INFO_SIDE_THROWER": {
+        "EN": [
+            "This big budding sportsman throws a heavy bouncing ball at the nearest Building. Then he moves on to the typical Giant smashing!"
+        ]
+    },
+    "TID_EVENT_TRACK_REWARD_INFO_SUPER_TROOP_BOOSTED": {
+        "EN": [
+            "Activate <name> for free!\\nTraining time shortened by <pct>%."
+        ]
+    },
+    "TID_EVENT_TRACK_REWARD_INFO_SUPER_TROOP": {
+        "EN": [
+            "Activate <name> for free!"
+        ]
+    },
+    "TID_SPELL_YELLOW_CARD": {
+        "EN": [
+            "Yellow Card"
+        ]
+    },
+    "TID_SPELL_YELLOW_CARD_INFO": {
+        "EN": [
+            "Bad sportsmanship deserves punishment and spoiling your attack is rude. Temporarily suspend the targeted Defense or Hero. They can't attack or be attacked while suspended."
+        ]
+    },
+    "TID_DECO_CLASHBALL_TROPHYCROWN": {
+        "EN": [
+            "Triumphant Trophy"
+        ]
+    },
+    "TID_DECO_CLASHBALL_TROPHYCUP": {
+        "EN": [
+            "Celebration Cup"
+        ]
+    },
+    "TID_SCENERY_CLASHBALL": {
+        "EN": [
+            "WIP Football scenery"
         ]
     }
 }

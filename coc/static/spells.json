@@ -382,17 +382,17 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            30,
-            30,
-            30,
-            30,
-            30,
-            27,
-            24,
-            22,
-            20,
-            22,
-            22
+            700,
+            800,
+            900,
+            1000,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            2000,
+            2100
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -434,6 +434,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -475,6 +476,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -543,6 +546,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "HealingWave": {
@@ -889,16 +895,16 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            230,
-            215,
-            200,
-            190,
-            180,
-            170,
-            170,
-            200,
-            200,
-            200
+            900,
+            1000,
+            1100,
+            1200,
+            1300,
+            1400,
+            1500,
+            1800,
+            2000,
+            2100
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -949,6 +955,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -978,6 +985,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -1021,6 +1030,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Haste": {
@@ -1273,12 +1285,12 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            100,
-            95,
-            90,
-            85,
-            80,
-            95
+            900,
+            1000,
+            1100,
+            1200,
+            1300,
+            1700
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -1310,6 +1322,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -1339,6 +1352,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -1378,6 +1393,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Jump": {
@@ -1589,11 +1607,11 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            250,
-            170,
-            130,
-            110,
-            90
+            1200,
+            1300,
+            1400,
+            1700,
+            1900
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -1623,6 +1641,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -1652,6 +1671,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -1690,6 +1711,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "xmas": {
@@ -1792,9 +1816,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -1815,6 +1837,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -1848,6 +1871,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -1879,7 +1904,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Freeze": {
         "Level": [
@@ -2136,13 +2164,13 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            1000,
-            1150,
+            1100,
+            1200,
             1300,
-            1450,
+            1400,
+            1500,
             1600,
-            1750,
-            1900
+            1700
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -2176,6 +2204,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -2213,6 +2242,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -2261,6 +2292,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "xmas2013": {
@@ -2633,19 +2667,7 @@
             5,
             5
         ],
-        "StrengthWeight": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge",
             "Spell Forge",
@@ -2686,6 +2708,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -2751,6 +2774,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -2807,6 +2832,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Slow": {
@@ -2924,10 +2952,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0,
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge",
             "Spell Forge"
@@ -2950,6 +2975,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -2979,6 +3005,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -3011,6 +3039,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "BoostDefences": {
@@ -3122,10 +3153,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0,
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge",
             "Spell Forge"
@@ -3148,6 +3176,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -3177,6 +3206,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -3209,6 +3240,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Poison": {
@@ -3566,16 +3600,16 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            "-160",
-            "-170",
-            "-190",
-            "-210",
-            "-230",
-            "-250",
-            "-270",
-            "-275",
-            "-280",
-            "-285"
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            1800,
+            1900,
+            2000,
+            2100
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -3681,6 +3715,7 @@
             true
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -3710,6 +3745,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -3808,6 +3845,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Earthquake": {
@@ -4013,11 +4053,11 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            150,
-            145,
-            140,
-            135,
-            130
+            1200,
+            1300,
+            1400,
+            1500,
+            1600
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -4059,6 +4099,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -4088,6 +4129,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -4144,6 +4187,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "SpeedUp": {
@@ -4361,11 +4407,11 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            200,
-            200,
-            180,
-            180,
-            180
+            1200,
+            1300,
+            1400,
+            1500,
+            1600
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -4395,6 +4441,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -4424,6 +4471,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -4462,6 +4511,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Shield": {
@@ -4774,6 +4826,7 @@
             true,
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [
             3000,
             3250,
@@ -4841,6 +4894,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -4968,6 +5023,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Growth": {
@@ -5169,6 +5227,7 @@
             true,
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -5206,6 +5265,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -5238,6 +5299,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Artillery Center": {
@@ -5375,6 +5439,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -5404,6 +5469,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -5436,6 +5503,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "MiniGrowth": {
@@ -5529,6 +5599,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -5558,6 +5629,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -5589,7 +5662,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Duplicate": {
         "Level": [
@@ -5863,14 +5939,14 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            300,
-            330,
-            360,
-            360,
-            360,
-            330,
-            310,
-            290
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1800,
+            1900,
+            2000
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -5906,6 +5982,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -5953,6 +6030,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -5994,6 +6073,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "SpawnSkele": {
@@ -6250,14 +6332,14 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            460,
-            470,
-            480,
-            500,
-            520,
-            540,
-            560,
-            580
+            1200,
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            1800,
+            2000
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -6293,6 +6375,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -6358,6 +6441,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -6399,6 +6484,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "FreezeTrap": {
@@ -6490,6 +6578,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -6527,6 +6616,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -6560,7 +6651,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Mortar2Poison": {
         "Level": [
@@ -6779,6 +6873,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -6819,6 +6914,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -6917,6 +7014,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TroopRage": {
@@ -7082,6 +7182,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -7111,6 +7212,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -7143,6 +7246,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "ShrinkTrap": {
@@ -7232,6 +7338,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -7267,6 +7374,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -7300,7 +7409,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Birthday2017": {
         "Level": [
@@ -7404,9 +7516,7 @@
         "NumObstacles": [
             3
         ],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -7427,6 +7537,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -7466,6 +7577,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -7497,7 +7610,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "IceGolemFreeze": {
         "Level": [
@@ -7507,11 +7623,13 @@
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -7532,9 +7650,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ChargingTimeMS": [
+            300,
             300,
             300,
             300,
@@ -7550,6 +7670,7 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "UpgradeTimeH": [],
@@ -7558,6 +7679,7 @@
         "BoostTimeMS": [],
         "SpeedBoost": [],
         "SpeedBoost2": [
+            0,
             0,
             0,
             0,
@@ -7583,9 +7705,11 @@
             750,
             750,
             750,
+            750,
             750
         ],
         "NumberOfHits": [
+            1,
             1,
             1,
             1,
@@ -7601,9 +7725,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            0,
             0,
             0,
             0,
@@ -7623,7 +7749,8 @@
             "IceGolem Freeze deploy lvl4",
             "IceGolem Freeze deploy lvl5",
             "IceGolem Freeze deploy lvl6",
-            "IceGolem Freeze deploy lvl7"
+            "IceGolem Freeze deploy lvl7",
+            "IceGolem Freeze deploy lvl8"
         ],
         "DeployEffect2Delay": [],
         "DeployEffect2": [
@@ -7633,11 +7760,13 @@
             "IceGolem Freeze deploy2 lvl4",
             "IceGolem Freeze deploy2 lvl5",
             "IceGolem Freeze deploy2 lvl6",
-            "IceGolem Freeze deploy2 lvl7"
+            "IceGolem Freeze deploy2 lvl7",
+            "IceGolem Freeze deploy2 lvl8"
         ],
         "ChargingEffect": [],
         "HitEffect": [],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -7653,7 +7782,8 @@
             6250,
             7000,
             7500,
-            8000
+            8000,
+            8500
         ],
         "SpawnObstacle": [],
         "NumObstacles": [],
@@ -7674,6 +7804,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -7704,13 +7835,16 @@
             4688,
             5250,
             5625,
-            5950
+            5950,
+            6275
         ],
         "ConeAngle": [],
         "FreezePercent": [],
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -7734,6 +7868,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "BoostDefenders": [],
@@ -7751,6 +7886,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "ElectroDragonDie": {
@@ -7970,6 +8108,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -7999,6 +8138,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -8031,6 +8172,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TornadoTrap": {
@@ -8144,6 +8288,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -8173,6 +8318,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [
             400,
             400,
@@ -8265,6 +8412,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TroopHaste": {
@@ -8362,6 +8512,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -8391,6 +8542,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -8422,7 +8575,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "ProtoSpell2": {
         "Level": [
@@ -8626,13 +8782,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            230,
-            230,
-            230,
-            230,
-            230
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge",
             "Spell Forge",
@@ -8661,6 +8811,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -8690,6 +8841,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -8722,6 +8875,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "SpawnBats": {
@@ -8960,12 +9116,12 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            460,
-            470,
-            480,
-            500,
-            520,
-            560
+            1300,
+            1400,
+            1500,
+            1600,
+            1700,
+            2000
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -8997,6 +9153,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -9054,6 +9211,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -9093,6 +9252,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "IceGolemFreeze_DEF": {
@@ -9249,6 +9411,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -9285,6 +9448,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -9324,6 +9489,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "IceBreakerSplinters": {
@@ -9461,6 +9629,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -9508,6 +9677,8 @@
             160
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -9546,6 +9717,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "BatRage": {
@@ -9631,6 +9805,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -9660,6 +9835,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -9691,7 +9868,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "TH13Freeze": {
         "Level": [
@@ -9830,6 +10010,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -9871,6 +10052,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -9909,17 +10092,22 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "ElectroTitanDamageAura": {
         "Level": [
             1,
             2,
-            3
+            3,
+            4
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true
@@ -9932,6 +10120,7 @@
         "DeployTimeMS": [],
         "ChargingTimeMS": [],
         "HitTimeMS": [
+            400,
             400,
             400,
             400
@@ -9949,7 +10138,8 @@
         "Damage": [
             30,
             40,
-            50
+            50,
+            55
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -9959,9 +10149,11 @@
         "Radius": [
             350,
             350,
+            350,
             350
         ],
         "NumberOfHits": [
+            4000,
             4000,
             4000,
             4000
@@ -9969,9 +10161,11 @@
         "RandomRadius": [
             0,
             0,
+            0,
             0
         ],
         "TimeBetweenHitsMS": [
+            400,
             400,
             400,
             400
@@ -9981,6 +10175,7 @@
         "BigPicture": [],
         "PreDeployEffect": [],
         "DeployEffect": [
+            "E_titanAreaDamage",
             "E_titanAreaDamage",
             "E_titanAreaDamage",
             "E_titanAreaDamage"
@@ -9996,10 +10191,12 @@
         "StrengthWeight": [
             0,
             0,
+            0,
             0
         ],
         "ProductionBuilding": [],
         "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -10007,6 +10204,7 @@
         "PreferredTarget": [],
         "PreferredTargetDamageMod": [],
         "HeroDamageMultiplier": [
+            25,
             25,
             25,
             25
@@ -10024,8 +10222,10 @@
         "ScaleDeployEffects": [
             true,
             true,
+            true,
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -10055,6 +10255,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -10074,6 +10276,7 @@
         "AffectsSiegeMachines": [
             true,
             true,
+            true,
             true
         ],
         "BoostDefenders": [],
@@ -10082,6 +10285,7 @@
         "ImmunityTH_CC": [],
         "ImmunityStorages": [],
         "ImmunityWalls": [
+            true,
             true,
             true,
             true
@@ -10095,6 +10299,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "EliteValkyrieRage": {
@@ -10192,6 +10399,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -10223,6 +10431,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -10254,7 +10464,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Invisibility": {
         "Level": [
@@ -10423,10 +10636,10 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            210,
-            215,
-            220,
-            225
+            1500,
+            1600,
+            1700,
+            1800
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -10454,6 +10667,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -10488,6 +10702,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -10535,6 +10751,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "IceHoundFreeze": {
@@ -10639,6 +10858,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -10671,6 +10891,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -10706,6 +10928,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TH14Poison": {
@@ -10897,6 +11122,7 @@
             true
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -10926,6 +11152,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -10994,6 +11222,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "FireSpiritExplosion": {
@@ -11138,13 +11369,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [
@@ -11197,6 +11422,7 @@
             false
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -11226,6 +11452,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -11264,6 +11492,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "PhoenixImmortality": {
@@ -11345,6 +11576,11 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [
+            6500,
+            7500,
+            8500
+        ],
         "ShieldTime": [
             6500,
             7500,
@@ -11382,6 +11618,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -11414,6 +11652,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TroopImmortality": {
@@ -11495,6 +11736,11 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [
+            6000,
+            7000,
+            8000
+        ],
         "ShieldTime": [
             6000,
             7000,
@@ -11532,6 +11778,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -11564,6 +11812,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "AreaStun": {
@@ -11639,6 +11890,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -11670,6 +11922,8 @@
         "StunTimeMS": [
             5000
         ],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -11709,7 +11963,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "DrillerSurfacing": {
         "Level": [
@@ -11784,6 +12041,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -11815,6 +12073,8 @@
         "StunTimeMS": [
             2000
         ],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -11856,7 +12116,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "TH15Poison": {
         "Level": [
@@ -12047,6 +12310,7 @@
             true
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -12076,6 +12340,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -12144,6 +12410,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "PoisonST": {
@@ -12248,9 +12517,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            "-160"
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Mini Spell Factory"
         ],
@@ -12283,6 +12550,7 @@
             true
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -12312,6 +12580,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -12353,7 +12623,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "SuperHogRiderSummonHog": {
         "Level": [
@@ -12561,6 +12834,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -12623,6 +12897,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -12655,6 +12931,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "RageST": {
@@ -12763,9 +13042,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            100
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -12786,6 +13063,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -12815,6 +13093,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -12846,7 +13126,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "SuperHogRiderSummonRider": {
         "Level": [
@@ -13043,6 +13326,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -13105,6 +13389,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -13137,6 +13423,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "InvisibilityST": {
@@ -13241,9 +13530,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            225
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -13264,6 +13551,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -13295,6 +13583,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -13330,7 +13620,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "GraveGolemSummonBigBoy": {
         "Level": [
@@ -13527,6 +13820,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -13611,6 +13905,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -13643,6 +13939,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "HogWizardDamageAura": {
@@ -13709,9 +14008,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -13732,6 +14029,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -13761,6 +14059,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -13796,7 +14096,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "BagOfFrostmitesSpawn": {
         "Level": [
@@ -13921,6 +14224,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -14010,6 +14314,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -14042,6 +14348,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "COOKIEAura": {
@@ -14106,9 +14415,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -14129,6 +14436,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -14158,6 +14466,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -14193,7 +14503,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Recall": {
         "Level": [
@@ -14416,11 +14729,11 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            120,
-            130,
-            140,
-            145,
-            150
+            1700,
+            1800,
+            1900,
+            2000,
+            2100
         ],
         "ProductionBuilding": [
             "Spell Forge",
@@ -14450,6 +14763,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -14479,6 +14793,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -14523,6 +14839,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "GrandWardenRangeRing": {
@@ -14614,6 +14933,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -14645,6 +14965,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -14676,7 +14998,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "PoisonLizardAttack": {
         "Level": [
@@ -14797,6 +15122,7 @@
             true
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -14826,6 +15152,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -14878,6 +15206,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "RamRiderDestroyWalls": {
@@ -14956,9 +15287,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [],
@@ -14975,6 +15304,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -15004,6 +15334,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -15037,7 +15369,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Unused10": {
         "Level": [
@@ -15139,9 +15474,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            1000
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -15162,6 +15495,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -15197,6 +15531,8 @@
             130
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -15230,7 +15566,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Unused11": {
         "Level": [
@@ -15332,9 +15671,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            1000
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge"
         ],
@@ -15355,6 +15692,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -15390,6 +15728,8 @@
             130
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -15423,7 +15763,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Baby Dragon Flaming Sneeze": {
         "Level": [
@@ -15566,6 +15909,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -15619,6 +15963,8 @@
             440
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -15657,6 +16003,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Power PEKKA Overcharge": {
@@ -15806,6 +16155,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -15847,6 +16197,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -15879,6 +16231,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Drop Ship Skeleton Bomb": {
@@ -16014,6 +16369,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16058,6 +16414,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -16095,6 +16453,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Night Witch Bat Swarm": {
@@ -16232,6 +16593,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16285,6 +16647,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -16317,6 +16681,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Cannon Cart Mortar Mode Splash": {
@@ -16427,6 +16794,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16474,6 +16842,8 @@
             120
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -16506,6 +16876,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Apprentice Growth": {
@@ -16628,10 +17001,10 @@
         "ShieldProjectileSpeed": [],
         "ShieldProjectileDamageMod": [],
         "ExtraHealthPermil": [
+            200,
+            220,
             240,
-            260,
-            280,
-            300
+            260
         ],
         "ExtraHealthMin": [],
         "ExtraHealthMax": [],
@@ -16641,6 +17014,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16675,6 +17049,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -16707,6 +17083,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "PetJump": {
@@ -16800,6 +17179,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16829,6 +17209,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -16860,7 +17242,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "PetSpeedUp": {
         "Level": [
@@ -16959,6 +17344,7 @@
         "ScaleDeployEffects": [
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -16988,6 +17374,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -17019,7 +17407,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "FireSpiritBurn": {
         "Level": [
@@ -17097,9 +17488,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [],
@@ -17124,6 +17513,7 @@
             false
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -17153,6 +17543,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -17188,7 +17580,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "TreantWallDamageAura": {
         "Level": [
@@ -17252,9 +17647,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -17277,6 +17670,7 @@
         "ScaleDeployEffects": [
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -17306,6 +17700,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -17351,7 +17747,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "SiegeInvisibility": {
         "Level": [
@@ -17440,6 +17839,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -17471,6 +17871,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -17512,7 +17914,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Overgrowth": {
         "Level": [
@@ -17691,10 +18096,10 @@
         "SpawnObstacle": [],
         "NumObstacles": [],
         "StrengthWeight": [
-            50,
-            50,
-            50,
-            50
+            1600,
+            1700,
+            1900,
+            2100
         ],
         "ProductionBuilding": [
             "Mini Spell Factory",
@@ -17722,6 +18127,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [
             22000,
             24000,
@@ -17771,6 +18177,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -17843,6 +18251,9 @@
             true,
             true
         ],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Unused12": {
@@ -17850,23 +18261,21 @@
             1
         ],
         "TID": [
-            "TID_SPELL_FROST"
+            "TID_FREEZE_SPELL"
         ],
         "InfoTID": [
-            "TID_SPELL_FROST_INFO"
+            "TID_FREEZE_SPELL_INFO"
         ],
         "DisableProduction": [
             true
         ],
         "SpellForgeLevel": [
-            5
+            4
         ],
         "LaboratoryLevel": [
-            1
+            8
         ],
-        "DonateCost": [
-            10
-        ],
+        "DonateCost": [],
         "HousingSpace": [
             1
         ],
@@ -17874,32 +18283,38 @@
             180
         ],
         "DeployTimeMS": [
-            800
+            0
         ],
         "ChargingTimeMS": [
-            300
+            0
         ],
         "HitTimeMS": [
-            400
+            0
         ],
         "UpgradeTimeH": [
-            42
+            72
         ],
         "UpgradeResource": [
-            "DarkElixir"
+            "Elixir"
         ],
         "UpgradeCost": [
-            26000
+            0
         ],
-        "BoostTimeMS": [],
-        "SpeedBoost": [],
-        "SpeedBoost2": [],
+        "BoostTimeMS": [
+            0
+        ],
+        "SpeedBoost": [
+            0
+        ],
+        "SpeedBoost2": [
+            0
+        ],
         "JumpHousingLimit": [],
         "JumpBoostMS": [],
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
         "Damage": [
-            5
+            390
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -17910,46 +18325,40 @@
             500
         ],
         "NumberOfHits": [
-            67
+            1
         ],
         "RandomRadius": [
-            400
+            0
         ],
         "TimeBetweenHitsMS": [
-            300
+            0
         ],
         "IconSWF": [
             "sc/ui.sc"
         ],
         "IconExportName": [
-            "icon_spell_cc_frost"
+            "icon_spell_freeze"
         ],
         "BigPicture": [
             "icon_spell_freeze"
         ],
-        "PreDeployEffect": [
-            "Capital Frost Predeploy"
-        ],
-        "DeployEffect": [
-            "Blizzard"
-        ],
+        "PreDeployEffect": [],
+        "DeployEffect": [],
         "DeployEffect2Delay": [],
         "DeployEffect2": [],
         "ChargingEffect": [],
-        "HitEffect": [],
+        "HitEffect": [
+            "Ice Breaker Hit lvl1"
+        ],
         "RandomRadiusAffectsOnlyGfx": [
             true
         ],
-        "FreezeTimeMS": [
-            500
-        ],
+        "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            1000
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
-            "Mini Spell Factory"
+            "Spell Forge"
         ],
         "TargetInfoString": [
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -17967,9 +18376,8 @@
         "AttackSpeedBoost": [],
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
-        "ScaleDeployEffects": [
-            true
-        ],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -17993,16 +18401,20 @@
         "UpgradeLevelByTH": [],
         "ChangeTeamTime": [],
         "InvisibilityTime": [],
-        "FreezeOuterTimeMS": [
-            500
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [
+            90
         ],
-        "ConeAngle": [],
-        "FreezePercent": [
-            70
+        "FreezePercent": [],
+        "MinRadius": [
+            100
         ],
-        "MinRadius": [],
-        "MinDamage": [],
+        "MinDamage": [
+            130
+        ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -18026,12 +18438,8 @@
         "ImmunitySiegeMachines": [],
         "ImmunityOtherCharacters": [],
         "ImmunityTH_CC": [],
-        "ImmunityStorages": [
-            true
-        ],
-        "ImmunityWalls": [
-            true
-        ],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
         "ImmunityOtherBuildings": [],
         "HideImmunityVFX": [],
         "CapitalAttackCount": [],
@@ -18040,7 +18448,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "Blizzard": {
         "Level": [
@@ -18142,9 +18553,7 @@
         ],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            1000
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Mini Spell Factory"
         ],
@@ -18167,6 +18576,7 @@
         "ScaleDeployEffects": [
             true
         ],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -18200,6 +18610,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -18237,7 +18649,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "BagOfFrostmites": {
         "Level": [
@@ -18597,19 +19012,7 @@
         ],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460,
-            460
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
             "Spell Forge",
             "Spell Forge",
@@ -18650,6 +19053,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -18775,6 +19179,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -18819,6 +19225,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "TroopCatapultSummonTroop": {
@@ -18910,6 +19319,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -18943,6 +19353,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -18974,7 +19386,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "LavaloonSpawnPup": {
         "Level": [
@@ -19154,18 +19569,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [],
@@ -19182,6 +19586,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -19244,6 +19649,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -19276,6 +19683,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "Firecracker Explosion": {
@@ -19485,6 +19895,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -19538,6 +19949,8 @@
             80
         ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -19582,6 +19995,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "EarthquakeBoots": {
@@ -19767,6 +20183,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -19796,6 +20213,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -19836,6 +20255,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "FireBallExplosion": {
@@ -19916,9 +20338,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [],
@@ -19943,6 +20363,7 @@
             false
         ],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -19972,6 +20393,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20005,7 +20428,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "RageAura": {
         "Level": [
@@ -20206,6 +20632,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -20235,6 +20662,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20267,6 +20696,9 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
     "QueenFreeze": {
@@ -20356,6 +20788,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -20385,6 +20818,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20418,7 +20853,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "ElectrifiedShield": {
         "Level": [
@@ -20511,6 +20949,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -20540,6 +20979,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20571,7 +21012,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "BarbarianKingDestroyWalls": {
         "Level": [
@@ -20649,9 +21093,7 @@
         "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            0
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [],
         "PreferredTarget": [],
@@ -20668,6 +21110,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -20697,6 +21140,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20730,7 +21175,10 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     },
     "HealAura": {
         "Level": [
@@ -20923,6 +21371,7 @@
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
         "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -20952,6 +21401,8 @@
         "MinRadius": [],
         "MinDamage": [],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -20984,23 +21435,24 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
         "Name": []
     },
-    "Unused13": {
+    "Yellow Card": {
         "Level": [
             1
         ],
         "TID": [
-            "TID_SPELL_FROST"
+            "TID_SPELL_YELLOW_CARD"
         ],
         "InfoTID": [
-            "TID_SPELL_FROST_INFO"
+            "TID_SPELL_YELLOW_CARD_INFO"
         ],
-        "DisableProduction": [
-            true
-        ],
+        "DisableProduction": [],
         "SpellForgeLevel": [
-            5
+            1
         ],
         "LaboratoryLevel": [
             1
@@ -21023,15 +21475,11 @@
         "HitTimeMS": [
             400
         ],
-        "UpgradeTimeH": [
-            42
-        ],
+        "UpgradeTimeH": [],
         "UpgradeResource": [
-            "DarkElixir"
+            "Elixir"
         ],
-        "UpgradeCost": [
-            26000
-        ],
+        "UpgradeCost": [],
         "BoostTimeMS": [],
         "SpeedBoost": [],
         "SpeedBoost2": [],
@@ -21039,8 +21487,223 @@
         "JumpBoostMS": [],
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            0
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_suspension"
+        ],
+        "BigPicture": [
+            "icon_spell_suspension"
+        ],
+        "PreDeployEffect": [
+            "Referee Whistle Effect"
+        ],
+        "DeployEffect": [
+            "Yellow Card Effect"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [
+            15000
+        ],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [
+            "Spell Forge"
+        ],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_DEFENSES_AND_HEROES"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true
+        ],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [
+            6
+        ],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [
+            15000
+        ],
+        "FreezeOuterTimeMS": [
+            15000
+        ],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [
+            true
+        ],
+        "ImmunitySiegeMachines": [
+            true
+        ],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [
+            "SpellYellowCard"
+        ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "Targeted": [
+            true
+        ],
+        "TargetedProjectile": [
+            "Yellow Card Projectile"
+        ],
+        "TargetedAgainEffect": [
+            "Red Card Effect"
+        ]
+    },
+    "Unused13": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_FREEZE_SPELL"
+        ],
+        "InfoTID": [
+            "TID_FREEZE_SPELL_INFO"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [
+            4
+        ],
+        "LaboratoryLevel": [
+            8
+        ],
+        "DonateCost": [],
+        "HousingSpace": [
+            1
+        ],
+        "TrainingTime": [
+            180
+        ],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            0
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            0
+        ],
+        "BoostTimeMS": [
+            0
+        ],
+        "SpeedBoost": [
+            0
+        ],
+        "SpeedBoost2": [
+            0
+        ],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
         "Damage": [
-            5
+            390
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -21051,46 +21714,40 @@
             500
         ],
         "NumberOfHits": [
-            67
+            1
         ],
         "RandomRadius": [
-            400
+            0
         ],
         "TimeBetweenHitsMS": [
-            300
+            0
         ],
         "IconSWF": [
             "sc/ui.sc"
         ],
         "IconExportName": [
-            "icon_spell_cc_frost"
+            "icon_spell_freeze"
         ],
         "BigPicture": [
             "icon_spell_freeze"
         ],
-        "PreDeployEffect": [
-            "Capital Frost Predeploy"
-        ],
-        "DeployEffect": [
-            "Blizzard"
-        ],
+        "PreDeployEffect": [],
+        "DeployEffect": [],
         "DeployEffect2Delay": [],
         "DeployEffect2": [],
         "ChargingEffect": [],
-        "HitEffect": [],
+        "HitEffect": [
+            "Ice Breaker Hit lvl1"
+        ],
         "RandomRadiusAffectsOnlyGfx": [
             true
         ],
-        "FreezeTimeMS": [
-            500
-        ],
+        "FreezeTimeMS": [],
         "SpawnObstacle": [],
         "NumObstacles": [],
-        "StrengthWeight": [
-            1000
-        ],
+        "StrengthWeight": [],
         "ProductionBuilding": [
-            "Mini Spell Factory"
+            "Spell Forge"
         ],
         "TargetInfoString": [
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
@@ -21108,9 +21765,8 @@
         "AttackSpeedBoost": [],
         "BoostLinkedToPoison": [],
         "PoisonAffectAir": [],
-        "ScaleDeployEffects": [
-            true
-        ],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
         "ShieldTime": [],
         "ShieldProtectionPercent": [],
         "MaxUnitsHit": [],
@@ -21134,16 +21790,20 @@
         "UpgradeLevelByTH": [],
         "ChangeTeamTime": [],
         "InvisibilityTime": [],
-        "FreezeOuterTimeMS": [
-            500
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [
+            90
         ],
-        "ConeAngle": [],
-        "FreezePercent": [
-            70
+        "FreezePercent": [],
+        "MinRadius": [
+            100
         ],
-        "MinRadius": [],
-        "MinDamage": [],
+        "MinDamage": [
+            130
+        ],
         "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
         "TornadoForce1": [],
         "TornadoForce2": [],
         "TornadoForce3": [],
@@ -21167,12 +21827,8 @@
         "ImmunitySiegeMachines": [],
         "ImmunityOtherCharacters": [],
         "ImmunityTH_CC": [],
-        "ImmunityStorages": [
-            true
-        ],
-        "ImmunityWalls": [
-            true
-        ],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
         "ImmunityOtherBuildings": [],
         "HideImmunityVFX": [],
         "CapitalAttackCount": [],
@@ -21181,6 +21837,206 @@
         "PreviewScenario": [],
         "TombStone": [],
         "NumTombStones": [],
-        "Overgrowth": []
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
+    },
+    "Unused14": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_FREEZE_SPELL"
+        ],
+        "InfoTID": [
+            "TID_FREEZE_SPELL_INFO"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [
+            4
+        ],
+        "LaboratoryLevel": [
+            8
+        ],
+        "DonateCost": [],
+        "HousingSpace": [
+            1
+        ],
+        "TrainingTime": [
+            180
+        ],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            0
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            0
+        ],
+        "BoostTimeMS": [
+            0
+        ],
+        "SpeedBoost": [
+            0
+        ],
+        "SpeedBoost2": [
+            0
+        ],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            390
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_freeze"
+        ],
+        "BigPicture": [
+            "icon_spell_freeze"
+        ],
+        "PreDeployEffect": [],
+        "DeployEffect": [],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [
+            "Ice Breaker Hit lvl1"
+        ],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [
+            "Spell Forge"
+        ],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [
+            90
+        ],
+        "FreezePercent": [],
+        "MinRadius": [
+            100
+        ],
+        "MinDamage": [
+            130
+        ],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            true
+        ],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "Targeted": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": []
     }
 }

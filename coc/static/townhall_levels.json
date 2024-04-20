@@ -140,10 +140,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            2
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -264,7 +264,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            1
+        ]
     },
     "2": {
         "AttackCost": [
@@ -393,10 +396,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            2
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -503,7 +506,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            2
+        ]
     },
     "3": {
         "AttackCost": [
@@ -640,10 +646,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            2
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -764,7 +770,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            3
+        ]
     },
     "4": {
         "AttackCost": [
@@ -895,10 +904,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            3
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -1015,7 +1024,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            5
+        ]
     },
     "5": {
         "AttackCost": [
@@ -1154,10 +1166,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            3
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -1272,7 +1284,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            8
+        ]
     },
     "6": {
         "AttackCost": [
@@ -1407,10 +1422,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            4
         ],
         "StrengthMaxSpellTypes": [
-            6
+            1
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -1539,7 +1554,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            16
+        ]
     },
     "7": {
         "AttackCost": [
@@ -1686,10 +1704,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            4
         ],
         "StrengthMaxSpellTypes": [
-            6
+            2
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -1802,7 +1820,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            30
+        ]
     },
     "8": {
         "AttackCost": [
@@ -1947,10 +1968,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            6
+            5
         ],
         "StrengthMaxSpellTypes": [
-            7
+            2
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -2071,6 +2092,9 @@
         "Merged Cannon": [],
         "Smithy": [
             1
+        ],
+        "ChallengeLootPercentage": [
+            50
         ]
     },
     "9": {
@@ -2218,10 +2242,10 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            7
+            5
         ],
         "StrengthMaxSpellTypes": [
-            7
+            3
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -2338,7 +2362,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            65
+        ]
     },
     "10": {
         "AttackCost": [
@@ -2473,10 +2500,10 @@
         ],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            8
+            7
         ],
         "StrengthMaxSpellTypes": [
-            8
+            5
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -2581,7 +2608,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            80
+        ]
     },
     "11": {
         "AttackCost": [
@@ -2713,7 +2743,7 @@
             10
         ],
         "StrengthMaxSpellTypes": [
-            8
+            7
         ],
         "StrengthMaxSiegeTypes": [
             0
@@ -2808,7 +2838,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            90
+        ]
     },
     "12": {
         "AttackCost": [
@@ -2941,7 +2974,7 @@
         ],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            12
+            11
         ],
         "StrengthMaxSpellTypes": [
             8
@@ -3035,7 +3068,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            95
+        ]
     },
     "13": {
         "AttackCost": [
@@ -3162,7 +3198,7 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            12
+            11
         ],
         "StrengthMaxSpellTypes": [
             8
@@ -3258,7 +3294,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            100
+        ]
     },
     "14": {
         "AttackCost": [
@@ -3387,7 +3426,7 @@
         "Dark Tower": [],
         "SantaTrap": [],
         "StrengthMaxTroopTypes": [
-            12
+            11
         ],
         "StrengthMaxSpellTypes": [
             8
@@ -3483,7 +3522,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            100
+        ]
     },
     "15": {
         "AttackCost": [
@@ -3700,7 +3742,10 @@
         ],
         "Merged Archer Tower": [],
         "Merged Cannon": [],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            100
+        ]
     },
     "16": {
         "AttackCost": [
@@ -3917,6 +3962,9 @@
         "Merged Cannon": [
             2
         ],
-        "Smithy": []
+        "Smithy": [],
+        "ChallengeLootPercentage": [
+            100
+        ]
     }
 }

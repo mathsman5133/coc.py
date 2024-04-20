@@ -503,18 +503,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            100,
-            100,
-            90,
-            80,
-            70,
-            65,
-            60,
-            55,
-            55,
-            55,
-            55,
-            55
+            800,
+            1200,
+            1400,
+            1600,
+            1700,
+            1800,
+            2000,
+            3000,
+            4000,
+            6000,
+            7000,
+            8000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -1220,18 +1220,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            150,
-            150,
-            140,
-            130,
-            120,
-            110,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
+            800,
+            1200,
+            1400,
+            1600,
+            1700,
+            1800,
+            2000,
+            3000,
+            4000,
+            6000,
+            7000,
+            8000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -1835,15 +1835,15 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            50,
-            50,
-            45,
-            40,
-            35,
-            30,
-            30,
-            30,
-            30
+            700,
+            900,
+            1100,
+            1300,
+            1400,
+            1700,
+            2000,
+            4000,
+            7000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -2534,18 +2534,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            120,
-            120,
-            120,
-            120,
-            120,
-            200,
-            240,
-            280,
-            320,
-            360,
-            380,
-            400
+            1000,
+            1500,
+            1700,
+            1900,
+            2000,
+            2500,
+            3000,
+            4000,
+            5000,
+            6000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -3316,18 +3316,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            100,
-            100,
-            100,
-            100,
-            90,
-            80,
-            70,
-            70,
-            70,
-            70,
-            70,
-            70
+            900,
+            1000,
+            1200,
+            1400,
+            1500,
+            2500,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -4097,17 +4097,17 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            120,
-            150,
-            160,
-            180,
-            180,
-            200,
-            300,
-            350,
-            400,
-            450,
-            475
+            1400,
+            1600,
+            1800,
+            2000,
+            2200,
+            3000,
+            4000,
+            5000,
+            6000,
+            8000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -4833,18 +4833,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            130,
-            130,
-            120,
-            120,
-            120,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
+            1400,
+            1600,
+            1800,
+            2000,
+            2200,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -5458,15 +5458,15 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            180,
-            185,
-            200,
-            220,
-            240,
-            260,
-            280,
-            300,
-            320
+            1400,
+            1600,
+            1800,
+            2500,
+            4000,
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -6133,17 +6133,17 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            160,
-            165,
-            170,
-            250,
-            420,
-            480,
-            540,
-            600,
-            660,
-            660,
-            660
+            1800,
+            2000,
+            2200,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -6798,17 +6798,17 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            120,
-            150,
-            180,
-            220,
-            350,
-            400,
-            400,
-            400,
-            400,
-            500,
-            500
+            1600,
+            1800,
+            2000,
+            2500,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -7509,18 +7509,18 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            120,
-            120,
-            115,
-            110,
-            105,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
+            1500,
+            1600,
+            1700,
+            1800,
+            1900,
+            2000,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -8260,19 +8260,19 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            220,
-            300,
-            380,
-            380,
-            400,
-            480,
-            520,
-            500,
-            480
+            1800,
+            2000,
+            2100,
+            2200,
+            3000,
+            4000,
+            5000,
+            5500,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -8961,17 +8961,17 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            130,
-            160,
-            190,
-            220,
-            230,
-            280,
-            310,
-            380,
-            380,
-            420,
-            440
+            1800,
+            2000,
+            2100,
+            2200,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -9814,19 +9814,19 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            160,
-            170,
-            210,
-            270,
-            400,
-            500,
-            500,
-            500,
-            500,
-            500,
-            550,
-            600,
-            650
+            1800,
+            2000,
+            2200,
+            2500,
+            3000,
+            3500,
+            4000,
+            4500,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -11160,13 +11160,13 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            800,
-            900,
-            1100,
-            1250,
-            1400,
-            1600,
-            1700
+            2000,
+            3000,
+            4000,
+            5000,
+            6000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -11676,7 +11676,7 @@
             150,
             168,
             192,
-            216
+            192
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -11693,7 +11693,7 @@
             85000,
             120000,
             160000,
-            300000
+            160000
         ],
         "DonateCost": [
             15,
@@ -11958,12 +11958,12 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            160,
-            240,
-            350,
-            420,
-            490,
-            560
+            2000,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -13588,14 +13588,14 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            600,
-            800,
-            800,
-            1000,
-            1200,
-            1250,
-            1200,
-            1200
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -14249,16 +14249,16 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            200,
-            250,
-            300,
-            350,
-            400,
-            450,
-            500,
-            550,
-            600,
-            600
+            2000,
+            2500,
+            3000,
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -14919,16 +14919,16 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            250,
-            350,
-            450,
-            450,
-            500,
-            550,
-            600,
-            650,
-            650,
-            650
+            3000,
+            3500,
+            4000,
+            4500,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -16254,20 +16254,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -17049,20 +17036,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -17883,20 +17857,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -18665,20 +18626,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -19447,20 +19395,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -20647,138 +20582,14 @@
             4,
             4
         ],
-        "SpecialAbilityLevel": [
-            1,
-            1,
-            2,
-            2,
-            2,
-            2,
-            3,
-            3,
-            4,
-            4,
-            5,
-            5,
-            6,
-            6,
-            7,
-            7,
-            8,
-            8,
-            9
-        ],
-        "SpecialAbilityName": [
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME",
-            "TID_BARB2_ABILITY_NAME"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP",
-            "TID_BARB2_ABILITY_HELP"
-        ],
-        "SpecialAbilityType": [
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy"
-        ],
-        "SpecialAbilityAttribute": [
-            6,
-            6,
-            8,
-            8,
-            8,
-            8,
-            10,
-            10,
-            12,
-            12,
-            14,
-            14,
-            16,
-            16,
-            18,
-            18,
-            20,
-            20,
-            22
-        ],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
-        "SpecialAbilitySpell": [
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage",
-            "TroopRage"
-        ],
+        "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
         "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
@@ -20825,8 +20636,48 @@
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility",
+            "EliteBarbarianAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            4,
+            4,
+            5,
+            5,
+            6,
+            6,
+            7,
+            7,
+            8,
+            8,
+            9
+        ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [],
         "CarryOverToNextStage": [],
@@ -34464,15 +34315,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            86,
-            86,
-            86,
-            86,
-            86,
-            86,
-            86
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -35061,15 +34904,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100,
-            100,
-            90,
-            80,
-            70,
-            65,
-            60
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -35562,15 +35397,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100,
-            100,
-            90,
-            80,
-            70,
-            65,
-            60
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -36759,11 +36586,11 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            29,
-            29,
-            29,
-            28,
-            27
+            6000,
+            6500,
+            7000,
+            8000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -37238,10 +37065,10 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            45,
-            45,
-            45,
-            45
+            6000,
+            6500,
+            7000,
+            8000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -37431,10 +37258,12 @@
             2,
             3,
             4,
-            5
+            5,
+            6
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_YETI",
             "TID_CHARACTER_YETI",
             "TID_CHARACTER_YETI",
             "TID_CHARACTER_YETI",
@@ -37446,9 +37275,11 @@
             "TID_CHARACTER_INFO_YETI",
             "TID_CHARACTER_INFO_YETI",
             "TID_CHARACTER_INFO_YETI",
+            "TID_CHARACTER_INFO_YETI",
             "TID_CHARACTER_INFO_YETI"
         ],
         "HousingSpace": [
+            18,
             18,
             18,
             18,
@@ -37460,6 +37291,7 @@
             14,
             14,
             14,
+            14,
             14
         ],
         "LaboratoryLevel": [
@@ -37467,9 +37299,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            150,
             150,
             150,
             150,
@@ -37481,9 +37315,11 @@
             3200,
             3500,
             3700,
-            3900
+            3900,
+            4100
         ],
         "TrainingTime": [
+            180,
             180,
             180,
             180,
@@ -37495,10 +37331,12 @@
             168,
             288,
             330,
-            354
+            360,
+            360
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -37510,9 +37348,11 @@
             9000000,
             17100000,
             19000000,
-            19500000
+            21000000,
+            21000000
         ],
         "DonateCost": [
+            9,
             9,
             9,
             9,
@@ -37526,9 +37366,11 @@
             80,
             80,
             80,
+            80,
             80
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -37541,9 +37383,11 @@
             250,
             270,
             290,
-            310
+            310,
+            330
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -37558,9 +37402,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_yeti",
             "icon_unit_yeti",
             "icon_unit_yeti",
             "icon_unit_yeti",
@@ -37572,9 +37418,11 @@
             "unit_yeti_big",
             "unit_yeti_big",
             "unit_yeti_big",
+            "unit_yeti_big",
             "unit_yeti_big"
         ],
         "BigPictureSWF": [
+            "sc/info_yeti.sc",
             "sc/info_yeti.sc",
             "sc/info_yeti.sc",
             "sc/info_yeti.sc",
@@ -37591,10 +37439,12 @@
             "Yeti Deploy",
             "Yeti Deploy",
             "Yeti Deploy",
+            "Yeti Deploy",
             "Yeti Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Yeti Attack",
             "Yeti Attack",
             "Yeti Attack",
             "Yeti Attack",
@@ -37607,10 +37457,12 @@
             "Yeti Hit",
             "Yeti Hit",
             "Yeti Hit",
+            "Yeti Hit",
             "Yeti Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -37622,9 +37474,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -37637,6 +37491,7 @@
             "Yeti Die",
             "Yeti Die",
             "Yeti Die",
+            "Yeti Die",
             "Yeti Die"
         ],
         "DieEffect2": [],
@@ -37645,9 +37500,11 @@
             "yeti_lvl2",
             "yeti_lvl3",
             "yeti_lvl4",
-            "yeti_lvl5"
+            "yeti_lvl5",
+            "yeti_lvl6"
         ],
         "ProductionBuilding": [
+            "Barrack",
             "Barrack",
             "Barrack",
             "Barrack",
@@ -37655,6 +37512,7 @@
             "Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -37667,9 +37525,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "TombStone",
             "TombStone",
             "TombStone",
             "TombStone",
@@ -37686,6 +37546,7 @@
             "Yetimite",
             "Yetimite",
             "Yetimite",
+            "Yetimite",
             "Yetimite"
         ],
         "IsSecondaryTroop": [],
@@ -37694,9 +37555,11 @@
             9,
             10,
             11,
-            12
+            12,
+            13
         ],
         "SecondarySpawnDist": [
+            100,
             100,
             100,
             100,
@@ -37716,11 +37579,12 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            550,
-            600,
-            650,
-            700,
-            750
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -37748,6 +37612,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -37764,9 +37629,11 @@
             1800,
             1800,
             1800,
+            1800,
             1800
         ],
         "EnemyGroupWeight": [
+            1800,
             1800,
             1800,
             1800,
@@ -37775,6 +37642,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -37808,9 +37676,11 @@
             "SpawnUnitsWhenDamaged",
             "SpawnUnitsWhenDamaged",
             "SpawnUnitsWhenDamaged",
+            "SpawnUnitsWhenDamaged",
             "SpawnUnitsWhenDamaged"
         ],
         "SpecialAbilityAttribute": [
+            600,
             600,
             600,
             600,
@@ -37822,6 +37692,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityAttribute3": [],
@@ -37829,6 +37700,7 @@
         "SpecialAbilityEffect": [],
         "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [
+            "full",
             "full",
             "full",
             "full",
@@ -37892,6 +37764,7 @@
             "TroopGroundAny2",
             "TroopGroundAny2",
             "TroopGroundAny2",
+            "TroopGroundAny2",
             "TroopGroundAny2"
         ],
         "AltPreviewScenario": [],
@@ -37904,10 +37777,12 @@
             2,
             3,
             4,
-            5
+            5,
+            6
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_YETIMITE",
             "TID_CHARACTER_YETIMITE",
             "TID_CHARACTER_YETIMITE",
             "TID_CHARACTER_YETIMITE",
@@ -37919,9 +37794,11 @@
             "TID_CHARACTER_INFO_YETIMITE",
             "TID_CHARACTER_INFO_YETIMITE",
             "TID_CHARACTER_INFO_YETIMITE",
+            "TID_CHARACTER_INFO_YETIMITE",
             "TID_CHARACTER_INFO_YETIMITE"
         ],
         "HousingSpace": [
+            3,
             3,
             3,
             3,
@@ -37933,9 +37810,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -37947,6 +37826,7 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "Hitpoints": [
@@ -37954,7 +37834,8 @@
             350,
             400,
             450,
-            500
+            500,
+            550
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
@@ -37969,9 +37850,11 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "AttackSpeed": [
+            1000,
             1000,
             1000,
             1000,
@@ -37984,9 +37867,11 @@
             64,
             72,
             78,
-            84
+            84,
+            88
         ],
         "PreferedTargetDamageMod": [
+            4,
             4,
             4,
             4,
@@ -37994,6 +37879,7 @@
             4
         ],
         "DamageRadius": [
+            80,
             80,
             80,
             80,
@@ -38007,9 +37893,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_yeti",
             "icon_unit_yeti",
             "icon_unit_yeti",
             "icon_unit_yeti",
@@ -38021,9 +37909,11 @@
             "unit_yetimite_big",
             "unit_yetimite_big",
             "unit_yetimite_big",
+            "unit_yetimite_big",
             "unit_yetimite_big"
         ],
         "BigPictureSWF": [
+            "sc/info_yeti.sc",
             "sc/info_yeti.sc",
             "sc/info_yeti.sc",
             "sc/info_yeti.sc",
@@ -38035,11 +37925,13 @@
             "YetimiteJump2",
             "YetimiteJump3",
             "YetimiteJump4",
-            "YetimiteJump4"
+            "YetimiteJump4",
+            "YetimiteJump6"
         ],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
         "PreferedTargetBuildingClass": [
+            "Defense",
             "Defense",
             "Defense",
             "Defense",
@@ -38056,10 +37948,12 @@
             "Yeti Hit",
             "Yeti Hit",
             "Yeti Hit",
+            "Yeti Hit",
             "Yeti Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -38071,9 +37965,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -38085,9 +37981,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "DieEffect": [
+            "Yetimite Die",
             "Yetimite Die",
             "Yetimite Die",
             "Yetimite Die",
@@ -38100,10 +37998,12 @@
             "yetimite_lvl2",
             "yetimite_lvl3",
             "yetimite_lvl4",
-            "yetimite_lvl4"
+            "yetimite_lvl4",
+            "yetimite_lvl6"
         ],
         "ProductionBuilding": [],
         "IsJumper": [
+            true,
             true,
             true,
             true,
@@ -38112,6 +38012,7 @@
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
             0,
             0,
             0,
@@ -38128,10 +38029,12 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "SecondaryTroop": [],
         "IsSecondaryTroop": [
+            true,
             true,
             true,
             true,
@@ -38179,6 +38082,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -38195,9 +38099,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "EnemyGroupWeight": [
+            100,
             100,
             100,
             100,
@@ -38209,9 +38115,11 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "TriggersTraps": [
+            false,
             false,
             false,
             false,
@@ -38278,10 +38186,12 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "DefensiveTroop": [],
         "DamageReductionToStorages": [
+            50,
             50,
             50,
             50,
@@ -38313,6 +38223,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "SecondaryTroopDefense",
             "SecondaryTroopDefense",
             "SecondaryTroopDefense",
             "SecondaryTroopDefense",
@@ -38717,17 +38628,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -39834,13 +39735,13 @@
             150
         ],
         "Hitpoints": [
-            280,
-            280,
-            280,
-            280,
-            280,
+            390,
+            390,
+            390,
+            390,
             390,
             545,
+            690,
             840,
             940,
             1040,
@@ -39918,16 +39819,16 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            108,
-            108,
-            108,
-            108,
-            108,
-            162,
-            198,
-            236,
-            256,
-            276,
+            170,
+            170,
+            170,
+            170,
+            170,
+            220,
+            260,
+            270,
+            280,
+            285,
             290
         ],
         "PreferedTargetDamageMod": [
@@ -40202,16 +40103,16 @@
             "TombStone"
         ],
         "DieDamage": [
-            250,
-            250,
-            250,
-            250,
-            250,
             300,
-            350,
+            300,
+            300,
+            300,
+            300,
             400,
             500,
-            600,
+            580,
+            620,
+            650,
             700
         ],
         "DieDamageRadius": [
@@ -40270,19 +40171,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300,
-            300
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -40569,10 +40458,12 @@
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "Deprecated": [],
         "TID": [
+            "TID_ICEGOLEM",
             "TID_ICEGOLEM",
             "TID_ICEGOLEM",
             "TID_ICEGOLEM",
@@ -40588,9 +40479,11 @@
             "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM",
+            "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM"
         ],
         "HousingSpace": [
+            15,
             15,
             15,
             15,
@@ -40606,6 +40499,7 @@
             8,
             8,
             8,
+            8,
             8
         ],
         "LaboratoryLevel": [
@@ -40615,9 +40509,11 @@
             10,
             10,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            150,
             150,
             150,
             150,
@@ -40633,9 +40529,11 @@
             3200,
             3400,
             3600,
-            3900
+            3900,
+            4200
         ],
         "TrainingTime": [
+            150,
             150,
             150,
             150,
@@ -40651,10 +40549,12 @@
             156,
             264,
             318,
-            342
+            372,
+            372
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "DarkElixir",
             "DarkElixir",
             "DarkElixir",
             "DarkElixir",
@@ -40670,9 +40570,11 @@
             125000,
             240000,
             335000,
-            340000
+            360000,
+            360000
         ],
         "DonateCost": [
+            8,
             8,
             8,
             8,
@@ -40690,9 +40592,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "AttackSpeed": [
+            2000,
             2000,
             2000,
             2000,
@@ -40709,9 +40613,11 @@
             36,
             40,
             44,
-            48
+            48,
+            52
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -40730,9 +40636,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_iceGolem",
             "icon_unit_iceGolem",
             "icon_unit_iceGolem",
             "icon_unit_iceGolem",
@@ -40748,9 +40656,11 @@
             "unit_ice_golem_big",
             "unit_ice_golem_big",
             "unit_ice_golem_big",
+            "unit_ice_golem_big",
             "unit_ice_golem_big"
         ],
         "BigPictureSWF": [
+            "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
@@ -40769,10 +40679,12 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "Icegolem Deploy",
             "Icegolem Deploy",
             "Icegolem Deploy",
             "Icegolem Deploy",
@@ -40791,10 +40703,12 @@
             "IceWizard Hit1",
             "IceWizard Hit1",
             "IceWizard Hit1",
+            "IceWizard Hit1",
             "IceWizard Hit1"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -40810,9 +40724,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -40829,6 +40745,7 @@
             "Giant Die",
             "Giant Die",
             "Giant Die",
+            "Giant Die",
             "Giant Die"
         ],
         "DieEffect2": [],
@@ -40839,9 +40756,11 @@
             "IceGolem_lvl4",
             "IceGolem_lvl5",
             "IceGolem_lvl6",
-            "IceGolem_lvl7"
+            "IceGolem_lvl7",
+            "IceGolem_lvl8"
         ],
         "ProductionBuilding": [
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
@@ -40851,6 +40770,7 @@
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -40867,9 +40787,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -40900,13 +40822,14 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            200,
-            300,
-            400,
-            500,
-            600,
-            700,
-            750
+            3000,
+            3500,
+            4000,
+            4500,
+            5000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -40936,6 +40859,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -40954,9 +40878,11 @@
             600,
             600,
             600,
+            600,
             600
         ],
         "EnemyGroupWeight": [
+            500,
             500,
             500,
             500,
@@ -40973,6 +40899,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ChainShootingDistance": [],
@@ -40982,6 +40909,7 @@
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
         "PreAttackEffect": [
+            "Icegolem Attack",
             "Icegolem Attack",
             "Icegolem Attack",
             "Icegolem Attack",
@@ -41012,6 +40940,7 @@
             "CastSpellOnDeath",
             "CastSpellOnDeath",
             "CastSpellOnDeath",
+            "CastSpellOnDeath",
             "CastSpellOnDeath"
         ],
         "SpecialAbilityAttribute": [
@@ -41021,11 +40950,13 @@
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [
+            "IceGolemFreeze",
             "IceGolemFreeze",
             "IceGolemFreeze",
             "IceGolemFreeze",
@@ -41067,9 +40998,11 @@
             2000,
             2000,
             2000,
+            2000,
             2000
         ],
         "FrostOnHitPercent": [
+            50,
             50,
             50,
             50,
@@ -41080,6 +41013,7 @@
         ],
         "DoesNotOpenCC": [],
         "DefensiveTroop": [
+            "Ice Golem_DEF",
             "Ice Golem_DEF",
             "Ice Golem_DEF",
             "Ice Golem_DEF",
@@ -41107,6 +41041,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "DefaultSkin": [],
@@ -41122,6 +41057,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "TroopIceGolem",
             "TroopIceGolem",
             "TroopIceGolem",
             "TroopIceGolem",
@@ -41481,13 +41417,13 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            650,
-            700,
-            800,
-            860,
-            920,
-            970,
-            1000
+            4000,
+            5000,
+            6000,
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -41857,9 +41793,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            160
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -42433,17 +42367,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            190,
-            260,
-            330,
-            330
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -42955,11 +42879,11 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            25,
-            25,
-            25,
-            25,
-            25
+            6000,
+            6500,
+            7000,
+            8000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -43611,18 +43535,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200,
-            200
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -44974,10 +44887,10 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            580,
-            660,
-            740,
-            820
+            6000,
+            7000,
+            8000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -45869,9 +45782,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -46293,10 +46204,12 @@
             4,
             5,
             6,
-            7
+            7,
+            8
         ],
         "Deprecated": [],
         "TID": [
+            "TID_ICEGOLEM",
             "TID_ICEGOLEM",
             "TID_ICEGOLEM",
             "TID_ICEGOLEM",
@@ -46312,9 +46225,11 @@
             "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM",
+            "TID_CHARACTER_INFO_ICEGOLEM",
             "TID_CHARACTER_INFO_ICEGOLEM"
         ],
         "HousingSpace": [
+            15,
             15,
             15,
             15,
@@ -46332,6 +46247,7 @@
             150,
             150,
             150,
+            150,
             150
         ],
         "Hitpoints": [
@@ -46341,7 +46257,8 @@
             3200,
             3400,
             3600,
-            3900
+            3900,
+            4200
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [],
@@ -46358,9 +46275,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "AttackSpeed": [
+            2000,
             2000,
             2000,
             2000,
@@ -46377,9 +46296,11 @@
             36,
             40,
             44,
-            48
+            48,
+            52
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1,
@@ -46398,9 +46319,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_iceGolem",
             "icon_unit_iceGolem",
             "icon_unit_iceGolem",
             "icon_unit_iceGolem",
@@ -46416,9 +46339,11 @@
             "unit_ice_golem_big",
             "unit_ice_golem_big",
             "unit_ice_golem_big",
+            "unit_ice_golem_big",
             "unit_ice_golem_big"
         ],
         "BigPictureSWF": [
+            "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
             "sc/info_ice_golem.sc",
@@ -46437,10 +46362,12 @@
             "Defense",
             "Defense",
             "Defense",
+            "Defense",
             "Defense"
         ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
+            "Icegolem Deploy",
             "Icegolem Deploy",
             "Icegolem Deploy",
             "Icegolem Deploy",
@@ -46459,10 +46386,12 @@
             "IceWizard Hit1",
             "IceWizard Hit1",
             "IceWizard Hit1",
+            "IceWizard Hit1",
             "IceWizard Hit1"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false,
@@ -46478,9 +46407,11 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -46497,6 +46428,7 @@
             "Giant Die",
             "Giant Die",
             "Giant Die",
+            "Giant Die",
             "Giant Die"
         ],
         "DieEffect2": [],
@@ -46507,9 +46439,11 @@
             "IceGolem_lvl4",
             "IceGolem_lvl5",
             "IceGolem_lvl6",
-            "IceGolem_lvl7"
+            "IceGolem_lvl7",
+            "IceGolem_lvl8"
         ],
         "ProductionBuilding": [
+            "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
             "Dark Elixir Barrack",
@@ -46519,6 +46453,7 @@
             "Dark Elixir Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false,
@@ -46535,9 +46470,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
             "DarkTombStone",
@@ -46551,6 +46488,7 @@
         "DieDamageEffect": [],
         "DieDamageDelay": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -46604,6 +46542,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -46622,9 +46561,11 @@
             600,
             600,
             600,
+            600,
             600
         ],
         "EnemyGroupWeight": [
+            500,
             500,
             500,
             500,
@@ -46641,6 +46582,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ChainShootingDistance": [],
@@ -46650,6 +46592,7 @@
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
         "PreAttackEffect": [
+            "Icegolem Attack",
             "Icegolem Attack",
             "Icegolem Attack",
             "Icegolem Attack",
@@ -46680,6 +46623,7 @@
             "CastSpellOnDeath",
             "CastSpellOnDeath",
             "CastSpellOnDeath",
+            "CastSpellOnDeath",
             "CastSpellOnDeath"
         ],
         "SpecialAbilityAttribute": [
@@ -46689,11 +46633,13 @@
             4,
             5,
             6,
+            6,
             6
         ],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
         "SpecialAbilitySpell": [
+            "IceGolemFreeze_DEF",
             "IceGolemFreeze_DEF",
             "IceGolemFreeze_DEF",
             "IceGolemFreeze_DEF",
@@ -46735,9 +46681,11 @@
             2000,
             2000,
             2000,
+            2000,
             2000
         ],
         "FrostOnHitPercent": [
+            50,
             50,
             50,
             50,
@@ -48729,28 +48677,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            326,
-            338,
-            350,
-            362,
-            374,
-            386
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -49478,19 +49405,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -50538,11 +50453,11 @@
         ],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            53,
-            53,
-            53,
-            53,
-            53
+            6000,
+            7000,
+            8000,
+            9000,
+            11000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -51082,14 +50997,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            550,
-            550,
-            550,
-            550,
-            550,
-            550
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -51933,9 +51841,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -54117,9 +54023,9 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            500,
-            600,
-            700
+            5000,
+            6000,
+            7000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -54157,14 +54063,14 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
-            600,
-            600,
-            600
+            100,
+            100,
+            100
         ],
         "EnemyGroupWeight": [
-            500,
-            500,
-            500
+            100,
+            100,
+            100
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
@@ -57126,11 +57032,11 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            34,
-            36,
-            38,
-            40,
-            40
+            6000,
+            7000,
+            8000,
+            9000,
+            11000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -57793,9 +57699,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -58063,9 +57967,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -58202,10 +58104,12 @@
             1,
             2,
             3,
-            4
+            4,
+            5
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_SIEGE_MACHINE_CATAPULT",
@@ -58215,9 +58119,11 @@
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CATAPULT",
+            "TID_CHARACTER_INFO_SIEGE_MACHINE_CATAPULT",
             "TID_CHARACTER_INFO_SIEGE_MACHINE_CATAPULT"
         ],
         "HousingSpace": [
+            1,
             1,
             1,
             1,
@@ -58227,15 +58133,18 @@
             6,
             6,
             6,
+            6,
             6
         ],
         "LaboratoryLevel": [
             9,
             10,
             10,
-            11
+            11,
+            14
         ],
         "Speed": [
+            80,
             80,
             80,
             80,
@@ -58245,9 +58154,11 @@
             1700,
             1800,
             1900,
-            2000
+            2000,
+            2100
         ],
         "TrainingTime": [
+            1200,
             1200,
             1200,
             1200,
@@ -58257,10 +58168,12 @@
             180,
             288,
             300,
+            324,
             324
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -58270,9 +58183,11 @@
             7600000,
             10500000,
             13300000,
-            18000000
+            19000000,
+            19000000
         ],
         "DonateCost": [
+            15,
             15,
             15,
             15,
@@ -58282,9 +58197,11 @@
             30,
             30,
             30,
+            30,
             30
         ],
         "DonateCount": [
+            30,
             30,
             30,
             30,
@@ -58294,9 +58211,11 @@
             1005,
             1005,
             1005,
+            1005,
             1005
         ],
         "AttackSpeed": [
+            5000,
             5000,
             5000,
             5000,
@@ -58306,16 +58225,19 @@
             550,
             550,
             550,
+            550,
             550
         ],
         "DPS": [
             45,
             50,
             55,
-            60
+            60,
+            65
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [
+            100,
             100,
             100,
             100,
@@ -58327,9 +58249,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_siege_machine_catapult",
             "icon_unit_siege_machine_catapult",
             "icon_unit_siege_machine_catapult",
             "icon_unit_siege_machine_catapult",
@@ -58339,9 +58263,11 @@
             "unit_siege_machine_catapult_big",
             "unit_siege_machine_catapult_big",
             "unit_siege_machine_catapult_big",
+            "unit_siege_machine_catapult_big",
             "unit_siege_machine_catapult_big"
         ],
         "BigPictureSWF": [
+            "sc/info_siege_machine_catapult.sc",
             "sc/info_siege_machine_catapult.sc",
             "sc/info_siege_machine_catapult.sc",
             "sc/info_siege_machine_catapult.sc",
@@ -58351,11 +58277,13 @@
             "FireCatapultProjectile1",
             "FireCatapultProjectile2",
             "FireCatapultProjectile3",
-            "FireCatapultProjectile4"
+            "FireCatapultProjectile4",
+            "FireCatapultProjectile5"
         ],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
         "PreferedTargetBuildingClass": [
+            "Defense",
             "Defense",
             "Defense",
             "Defense",
@@ -58366,10 +58294,12 @@
             "Siege Ram Deploy",
             "Siege Ram Deploy",
             "Siege Ram Deploy",
+            "Siege Ram Deploy",
             "Siege Ram Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Catapult Attack",
             "Catapult Attack",
             "Catapult Attack",
             "Catapult Attack",
@@ -58380,9 +58310,11 @@
             "Catapult Hit",
             "Catapult Hit",
             "Catapult Hit",
+            "Catapult Hit",
             "Catapult Hit"
         ],
         "HitEffect2": [
+            "Catapult Big Hit",
             "Catapult Big Hit",
             "Catapult Big Hit",
             "Catapult Big Hit",
@@ -58392,15 +58324,18 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "AirTargets": [
             false,
             false,
             false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true,
@@ -58411,6 +58346,7 @@
             "Siege Ram Die",
             "Siege Ram Die",
             "Siege Ram Die",
+            "Siege Ram Die",
             "Siege Ram Die"
         ],
         "DieEffect2": [],
@@ -58418,9 +58354,11 @@
             "SiegeMachine_Catapult_lvl1",
             "SiegeMachine_Catapult_lvl2",
             "SiegeMachine_Catapult_lvl3",
-            "SiegeMachine_Catapult_lvl4"
+            "SiegeMachine_Catapult_lvl4",
+            "SiegeMachine_Catapult_lvl5"
         ],
         "ProductionBuilding": [
+            "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
             "SiegeWorkshop",
@@ -58430,10 +58368,12 @@
             false,
             false,
             false,
+            false,
             false
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
             0,
             0,
             0,
@@ -58445,6 +58385,7 @@
         "DieDamageEffect": [],
         "DieDamageDelay": [],
         "DisableProduction": [
+            false,
             false,
             false,
             false,
@@ -58467,10 +58408,11 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            98,
-            102,
-            106,
-            110
+            7000,
+            7500,
+            8000,
+            9000,
+            11000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -58483,9 +58425,11 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "BurstDelay": [
+            128,
             128,
             128,
             128,
@@ -58507,6 +58451,7 @@
             "-50",
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -58522,9 +58467,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "EnemyGroupWeight": [
+            100,
             100,
             100,
             100,
@@ -58532,6 +58479,7 @@
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true,
@@ -58559,6 +58507,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "SpecialAbilityLevel": [],
@@ -58580,9 +58529,11 @@
             17,
             17,
             17,
+            17,
             17
         ],
         "LoseHpInterval": [
+            1000,
             1000,
             1000,
             1000,
@@ -58607,9 +58558,11 @@
             "Wall",
             "Wall",
             "Wall",
+            "Wall",
             "Wall"
         ],
         "DamageMultiplierPercent": [
+            800,
             800,
             800,
             800,
@@ -58639,9 +58592,11 @@
             "SiegeMachineCatapultSelfDestruct",
             "SiegeMachineCatapultSelfDestruct",
             "SiegeMachineCatapultSelfDestruct",
+            "SiegeMachineCatapultSelfDestruct",
             "SiegeMachineCatapultSelfDestruct"
         ],
         "SpecialAbilitiesLevel": [
+            1,
             1,
             1,
             1,
@@ -58649,6 +58604,7 @@
         ],
         "ReflectsDamage": [],
         "AvoidNoiseInAttackPositionSelection": [
+            true,
             true,
             true,
             true,
@@ -58660,6 +58616,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "FlameFlinger",
             "FlameFlinger",
             "FlameFlinger",
             "FlameFlinger",
@@ -58924,10 +58881,10 @@
         ],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            31,
-            31,
-            31,
-            31
+            7500,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -59258,9 +59215,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -59852,19 +59807,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -60111,10 +60054,12 @@
         "VisualLevel": [
             1,
             2,
-            3
+            3,
+            4
         ],
         "Deprecated": [],
         "TID": [
+            "TID_CHARACTER_ELECTRO_TITAN",
             "TID_CHARACTER_ELECTRO_TITAN",
             "TID_CHARACTER_ELECTRO_TITAN",
             "TID_CHARACTER_ELECTRO_TITAN"
@@ -60122,9 +60067,11 @@
         "InfoTID": [
             "TID_CHARACTER_ELECTRO_TITAN_INFO",
             "TID_CHARACTER_ELECTRO_TITAN_INFO",
+            "TID_CHARACTER_ELECTRO_TITAN_INFO",
             "TID_CHARACTER_ELECTRO_TITAN_INFO"
         ],
         "HousingSpace": [
+            32,
             32,
             32,
             32
@@ -60132,14 +60079,17 @@
         "BarrackLevel": [
             16,
             16,
+            16,
             16
         ],
         "LaboratoryLevel": [
             1,
             12,
-            13
+            13,
+            14
         ],
         "Speed": [
+            200,
             200,
             200,
             200
@@ -60147,9 +60097,11 @@
         "Hitpoints": [
             7200,
             7700,
-            8200
+            8200,
+            8400
         ],
         "TrainingTime": [
+            360,
             360,
             360,
             360
@@ -60157,10 +60109,12 @@
         "UpgradeTimeH": [
             312,
             336,
-            336
+            384,
+            384
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir"
@@ -60168,9 +60122,11 @@
         "UpgradeCost": [
             19500000,
             20500000,
-            20500000
+            22000000,
+            22000000
         ],
         "DonateCost": [
+            16,
             16,
             16,
             16
@@ -60180,9 +60136,11 @@
         "AttackRange": [
             125,
             125,
+            125,
             125
         ],
         "AttackSpeed": [
+            1500,
             1500,
             1500,
             1500
@@ -60191,9 +60149,11 @@
         "DPS": [
             180,
             200,
-            220
+            220,
+            240
         ],
         "PreferedTargetDamageMod": [
+            1,
             1,
             1,
             1
@@ -60204,9 +60164,11 @@
         "IconSWF": [
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_unit_electrotitan",
             "icon_unit_electrotitan",
             "icon_unit_electrotitan",
             "icon_unit_electrotitan"
@@ -60214,9 +60176,11 @@
         "BigPicture": [
             "unit_electro_titan_big",
             "unit_electro_titan_big",
+            "unit_electro_titan_big",
             "unit_electro_titan_big"
         ],
         "BigPictureSWF": [
+            "sc/info_electro_titan.sc",
             "sc/info_electro_titan.sc",
             "sc/info_electro_titan.sc",
             "sc/info_electro_titan.sc"
@@ -60229,10 +60193,12 @@
         "DeployEffect": [
             "Elektro Titan Deploy",
             "Elektro Titan Deploy",
+            "Elektro Titan Deploy",
             "Elektro Titan Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
+            "Electro_Titan Attack_lvl1",
             "Electro_Titan Attack_lvl1",
             "Electro_Titan Attack_lvl1",
             "Electro_Titan Attack_lvl1"
@@ -60241,10 +60207,12 @@
         "HitEffect": [
             "Golem Hit",
             "Golem Hit",
+            "Golem Hit",
             "Golem Hit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
             false,
             false,
             false
@@ -60252,9 +60220,11 @@
         "AirTargets": [
             true,
             true,
+            true,
             true
         ],
         "GroundTargets": [
+            true,
             true,
             true,
             true
@@ -60263,20 +60233,24 @@
         "DieEffect": [
             "ElektroTitanDie",
             "ElektroTitanDie",
+            "ElektroTitanDie",
             "ElektroTitanDie"
         ],
         "DieEffect2": [],
         "Animation": [
             "ElectroTitan_lvl1",
             "ElectroTitan_lvl2",
-            "ElectroTitan_lvl3"
+            "ElectroTitan_lvl3",
+            "ElectroTitan_lvl4"
         ],
         "ProductionBuilding": [
+            "Barrack",
             "Barrack",
             "Barrack",
             "Barrack"
         ],
         "IsJumper": [
+            false,
             false,
             false,
             false
@@ -60285,9 +60259,11 @@
         "MovementOffsetSpeed": [
             0,
             0,
+            0,
             0
         ],
         "TombStone": [
+            "TombStone",
             "TombStone",
             "TombStone",
             "TombStone"
@@ -60314,11 +60290,13 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            650,
-            700,
-            750
+            7000,
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [
+            "ElectroTitanDamageAura",
             "ElectroTitanDamageAura",
             "ElectroTitanDamageAura",
             "ElectroTitanDamageAura"
@@ -60326,7 +60304,8 @@
         "AuraSpellLevel": [
             0,
             1,
-            2
+            2,
+            3
         ],
         "SpawnWhenDamaged": [],
         "JumpHeightPercent": [],
@@ -60350,6 +60329,7 @@
         "TargetedEffectOffset": [
             "-50",
             "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -60364,15 +60344,18 @@
         "FriendlyGroupWeight": [
             3000,
             3000,
+            3000,
             3000
         ],
         "EnemyGroupWeight": [
+            3000,
             3000,
             3000,
             3000
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
             true,
             true,
             true
@@ -60460,6 +60443,7 @@
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
         "PreviewScenario": [
+            "TroopElectroTitan",
             "TroopElectroTitan",
             "TroopElectroTitan",
             "TroopElectroTitan"
@@ -60991,10 +60975,10 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            1200,
-            1300,
-            1400,
-            1500
+            6000,
+            7000,
+            8000,
+            9000
         ],
         "AuraSpell": [
             "Apprentice Growth",
@@ -62453,21 +62437,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -63140,21 +63110,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150,
-            150
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -63790,18 +63746,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            140,
-            130,
-            120,
-            110,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -64636,18 +64581,7 @@
         ],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            200,
-            250,
-            300,
-            400,
-            500,
-            500,
-            500,
-            550,
-            600
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -65372,18 +65306,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            150,
-            150,
-            150,
-            220,
-            300,
-            380,
-            400,
-            480,
-            520,
-            500
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [
             "HogWizardDamageAura",
             "HogWizardDamageAura",
@@ -66196,18 +66119,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            90,
-            100,
-            110,
-            120,
-            150,
-            160,
-            180,
-            180,
-            200,
-            300
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -69297,9 +69209,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -69640,9 +69550,9 @@
         "SpawnIdle": [],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            400,
-            440,
-            480
+            8000,
+            9000,
+            10000
         ],
         "AuraSpell": [
             "TreantWallDamageAura",
@@ -69968,9 +69878,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            29
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [
             "SiegeInvisibility"
         ],
@@ -70262,9 +70170,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            25
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [
             "SiegeInvisibility"
         ],
@@ -71104,19 +71010,7 @@
             100
         ],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            53,
-            53,
-            53,
-            53,
-            53,
-            53,
-            53,
-            53,
-            53,
-            53,
-            53
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -71521,9 +71415,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            98
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -72334,18 +72226,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -72993,19 +72874,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120,
-            120
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -74383,19 +74252,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            650,
-            650,
-            650,
-            650,
-            650,
-            650,
-            650,
-            650,
-            650,
-            650,
-            650
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -74686,6 +74543,1512 @@
         "ProjectileConsumesBunkerTroops": [],
         "Name": []
     },
+    "Free Kicker": {
+        "VisualLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER",
+            "TID_CHARACTER_FREE_KICKER"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER",
+            "TID_CHARACTER_INFO_FREE_KICKER"
+        ],
+        "HousingSpace": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+        ],
+        "BarrackLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "LaboratoryLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "Speed": [
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250,
+            250
+        ],
+        "Hitpoints": [
+            300,
+            350,
+            650,
+            1000,
+            1200,
+            1400,
+            1600,
+            1900,
+            2000,
+            2100,
+            2300,
+            2400
+        ],
+        "TrainingTime": [
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90,
+            90
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir"
+        ],
+        "UpgradeCost": [],
+        "DonateCost": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60
+        ],
+        "AttackSpeed": [
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300,
+            1300
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            50,
+            60,
+            90,
+            110,
+            125,
+            135,
+            145,
+            160,
+            165,
+            170,
+            180,
+            190
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian",
+            "icon_unit_footballbarbarian"
+        ],
+        "BigPicture": [
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big",
+            "unit_football_barbarian_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc",
+            "sc/info_football_barbarian.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy",
+            "Barbarian_Football_Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk",
+            "Barbarian_Football_Atk"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit",
+            "Barbarian Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "AirTargets": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "GroundTargets": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die",
+            "Barbarian Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian",
+            "FootballBarbarian"
+        ],
+        "ProductionBuilding": [
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack"
+        ],
+        "IsJumper": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TombStone": [
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400
+        ],
+        "EnemyGroupWeight": [
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400,
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SpecialAbilityName": [
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK",
+            "TID_ABILITY_FREE_KICK"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO",
+            "TID_ABILITY_FREE_KICK_INFO"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [
+            507,
+            561,
+            815,
+            1015,
+            1286,
+            1685,
+            2011,
+            2247,
+            2700,
+            2900,
+            3008,
+            3153
+        ],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [
+            3,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+        ],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick",
+            "FreeKick"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+        ],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker",
+            "TroopFreeKicker"
+        ],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": [],
+        "Name": []
+    },
+    "Side Thrower": {
+        "VisualLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER",
+            "TID_CHARACTER_SIDE_THROWER"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER",
+            "TID_CHARACTER_INFO_SIDE_THROWER"
+        ],
+        "HousingSpace": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+        ],
+        "BarrackLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "LaboratoryLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "Speed": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+        ],
+        "Hitpoints": [
+            500,
+            750,
+            1400,
+            1700,
+            1900,
+            2200,
+            2500,
+            2800,
+            3100,
+            3400,
+            3600
+        ],
+        "TrainingTime": [
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120,
+            120
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir"
+        ],
+        "UpgradeCost": [],
+        "DonateCost": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            70,
+            70,
+            70,
+            70,
+            70,
+            70,
+            70,
+            70,
+            70,
+            70,
+            70
+        ],
+        "AttackSpeed": [
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800,
+            1800
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            100,
+            110,
+            120,
+            130,
+            140,
+            150,
+            160,
+            170,
+            180,
+            190,
+            200
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc",
+            "sc/update.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant",
+            "icon_unit_footballgiant"
+        ],
+        "BigPicture": [
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big",
+            "unit_football_giant_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc",
+            "sc/info_football_giant.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense"
+        ],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy",
+            "Giant_Football_Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk",
+            "Giant_Football_Atk"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit",
+            "Giant Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "AirTargets": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "GroundTargets": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die",
+            "Giant_Football_Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant",
+            "FootballGiant"
+        ],
+        "ProductionBuilding": [
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack",
+            "Barrack"
+        ],
+        "IsJumper": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TombStone": [
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone",
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50",
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+        ],
+        "EnemyGroupWeight": [
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600,
+            600
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SpecialAbilityName": [
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN",
+            "TID_ABILITY_THROW_IN"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO",
+            "TID_ABILITY_THROW_IN_INFO"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [
+            150,
+            300,
+            450,
+            600,
+            780,
+            975,
+            1080,
+            1200,
+            1350,
+            1500,
+            1650
+        ],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+        ],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn",
+            "ThrowIn"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower",
+            "TroopSideThrower"
+        ],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": [],
+        "Name": []
+    },
     "Prototype4": {
         "VisualLevel": [
             1
@@ -74828,9 +76191,7 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
-            100
-        ],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -75106,9 +76467,559 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [
+        "StrengthWeight": [],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
             100
         ],
+        "EnemyGroupWeight": [
+            100
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": []
+    },
+    "Prototype6": {
+        "VisualLevel": [
+            1
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_BARBARIAN"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_BARBARIAN"
+        ],
+        "HousingSpace": [
+            1
+        ],
+        "BarrackLevel": [
+            1
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            200
+        ],
+        "Hitpoints": [
+            45
+        ],
+        "TrainingTime": [
+            5
+        ],
+        "UpgradeTimeH": [
+            6
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            25000
+        ],
+        "DonateCost": [
+            1
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            40
+        ],
+        "AttackSpeed": [
+            1000
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            8
+        ],
+        "PreferedTargetDamageMod": [
+            1
+        ],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_barbarian"
+        ],
+        "BigPicture": [
+            "unit_barbarian_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_barbarian.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barbarian Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Barbarian Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Barbarian Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barbarian Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "Barbarian"
+        ],
+        "ProductionBuilding": [
+            "Barrack"
+        ],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpawnWhenDamaged": [],
+        "JumpHeightPercent": [],
+        "NoClipping": [],
+        "Squad": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            "-50"
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            100
+        ],
+        "EnemyGroupWeight": [
+            100
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackMaxTargets": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "MovingEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "SpecialAbilityHideClipName": [],
+        "DisableDonate": [
+            true
+        ],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [
+            true
+        ],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "LoseHpEffect": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "DefaultSkin": [],
+        "DefenseBonus": [],
+        "SmoothJump": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "AvoidNoiseInAttackPositionSelection": [],
+        "CarryOverToNextStage": [],
+        "FightWithGroups": [],
+        "TargetGroupsRadius": [],
+        "TargetGroupsRange": [],
+        "TargetGroupsMinWeight": [],
+        "PreviewScenario": [],
+        "AltPreviewScenario": [],
+        "ProjectileConsumesBunkerTroops": []
+    },
+    "Prototype7": {
+        "VisualLevel": [
+            1
+        ],
+        "Deprecated": [],
+        "TID": [
+            "TID_BARBARIAN"
+        ],
+        "InfoTID": [
+            "TID_CHARACTER_INFO_BARBARIAN"
+        ],
+        "HousingSpace": [
+            1
+        ],
+        "BarrackLevel": [
+            1
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            200
+        ],
+        "Hitpoints": [
+            45
+        ],
+        "TrainingTime": [
+            5
+        ],
+        "UpgradeTimeH": [
+            6
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            25000
+        ],
+        "DonateCost": [
+            1
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            40
+        ],
+        "AttackSpeed": [
+            1000
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            8
+        ],
+        "PreferedTargetDamageMod": [
+            1
+        ],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_barbarian"
+        ],
+        "BigPicture": [
+            "unit_barbarian_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_barbarian.sc"
+        ],
+        "Projectile": [],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Barbarian Deploy"
+        ],
+        "DeployEffect2": [],
+        "AttackEffect": [
+            "Barbarian Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Barbarian Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            false
+        ],
+        "AirTargets": [
+            false
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Barbarian Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "Barbarian"
+        ],
+        "ProductionBuilding": [
+            "Barrack"
+        ],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            0
+        ],
+        "TombStone": [
+            "TombStone"
+        ],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "PushbackAfterHit": [],
+        "SummonTroop": [],
+        "SummonTroopCount": [],
+        "SummonTime": [],
+        "SummonCooldown": [],
+        "SummonEffect": [],
+        "SummonLimit": [],
+        "SpawnIdle": [],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
