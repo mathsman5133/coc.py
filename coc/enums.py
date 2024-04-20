@@ -204,6 +204,7 @@ PETS_ORDER = [
     "Poison Lizard",
     "Phoenix",
     "Spirit Fox",
+    "Angry Jelly",
 ]
 
 EQUIPMENT = [
