@@ -275,6 +275,32 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
+    def equipment_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has upgraded or unlocked an equipment."""
+
+        async def wrapped(cached_player, player, callback):
+            equipment_upgrades = (n for n in player.equipment if n not in set(cached_player.equipment))
+            for equipment in equipment_upgrades:
+                await callback(cached_player, player, equipment)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
+    def active_equipment_change(cls, tags=None, custom_class=None, retry_interval=None):
+        """Event for when a player has changed their active equipment."""
+
+        async def wrapped(cached_player, player, callback):
+            for hero in player.heroes:
+                cached_hero = cached_player.get_hero(hero.name)
+                if not cached_hero:
+                    continue
+                for equipment in hero.equipment:
+                    if cached_hero and equipment not in cached_hero.equipment:
+                        await callback(cached_player, player, hero, equipment)
+
+        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
+
+    @classmethod
     def joined_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
