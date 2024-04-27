@@ -7,6 +7,22 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.5.1
+------
+
+Additions:
+~~~~~~~~~~
+- added the option to change the base url of the API in :class:`coc.Client` to allow an easier use of proxies
+- added the new events :class:`coc.PlayerEvents.equipment_change` and :class:`coc.PlayerEvents.active_equipment_change`
+- added the new names for builder base related events to :class:`coc.ClanEvents` and :class:`coc.PlayerEvents`
+- added the change in the api model for ClanMembers. :class:`coc.ClanMember` now has a new attribute `town_hall` which
+  is the town hall level.
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed an issue with the renaming of versus_trophies to builder_base_trophies and similar name changes in the event
+  related code
+
 v3.4.2
 ------
 

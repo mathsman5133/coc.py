@@ -92,6 +92,10 @@ To get an event for when a new war start, ie :attr:`ClanWar.preparation_start_ti
 .. note::
     The callback function of :func:`WarEvents.new_war` has only one parameter, the new :class:`ClanWar`.
 
+.. note::
+    The callback function of :func:`PlayerEvents.active_equipment_change` has four parameters, the old
+    :class:`Player`, the new :class:`Player`, the :class:`Hero` and the newly equipped :class:`Equipment`.
+
 
 The pattern is simple, and holds true for all attributes.
 

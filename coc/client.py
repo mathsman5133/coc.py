@@ -142,6 +142,9 @@ class Client:
         for later use or are interested in new things that coc.py does not support otherwise yet. But because this
         increases the memory footprint and is not needed for most use cases, this defaults to ``False``.
 
+    base_url: :class:`str`
+        The base URL to use for API requests. Defaults to "https://api.clashofclans.com/v1"
+
     Attributes
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -149,6 +152,7 @@ class Client:
     """
 
     __slots__ = (
+        "base_url",
         "loop",
         "correct_key_count",
         "key_names",
@@ -192,6 +196,7 @@ class Client:
         load_game_data: LoadGameData = LoadGameData(default=True),
         realtime=False,
         raw_attribute=False,
+        base_url: str = "https://api.clashofclans.com/v1",
         **kwargs,
     ):
 
@@ -216,7 +221,7 @@ class Client:
         self.raw_attribute = raw_attribute
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
-
+        self.base_url = base_url
         # cache
         self._players = {}
         self._clans = {}
@@ -241,6 +246,7 @@ class Client:
             throttler=self.throttler,
             cache_max_size=self.cache_max_size,
             stats_max_size=self.stats_max_size,
+            base_url=self.base_url,
         )
 
     def _load_holders(self):

@@ -40,10 +40,11 @@ async def on_clan_trophy_change(old_clan, new_clan):
         f"{new_clan.name} total trophies changed from {old_clan.points} to {new_clan.points}")
 
 
-@coc.ClanEvents.member_versus_trophies()
-async def clan_member_versus_trophies_changed(old_member, new_member):
+@coc.ClanEvents.member_builder_base_trophies()
+async def clan_member_builder_base_trophies_changed(old_member, new_member):
     log.info(
-        f"{new_member} versus trophies changed from {old_member.versus_trophies} to {new_member.versus_trophies}")
+        f"{new_member} builder_base trophies changed from {old_member.builder_base_trophies} to"
+        f" {new_member.builder_base_trophies}")
 
 
 """War Events"""
@@ -84,10 +85,10 @@ async def on_player_trophy_change(old_player, new_player):
         f"{new_player} trophies changed from {old_player.trophies} to {new_player.trophies}")
 
 
-@coc.PlayerEvents.versus_trophies()
-async def on_player_versus_trophy_change(old_player, new_player):
+@coc.PlayerEvents.builder_base_trophies()
+async def on_player_builder_base_trophy_change(old_player, new_player):
     log.info(
-        f"{new_player} versus trophies changed from {old_player.versus_trophies} to {new_player.versus_trophies}")
+        f"{new_player} builder_base trophies changed from {old_player.builder_base_trophies} to {new_player.builder_base_trophies}")
 
 
 """Client Events"""
@@ -144,12 +145,12 @@ async def main() -> None:
         on_clan_member_join,
         on_clan_member_leave,
         on_clan_trophy_change,
-        clan_member_versus_trophies_changed,
+        clan_member_builder_base_trophies_changed,
         current_war_stats,
         on_player_donation,
         on_player_donation_receive,
         on_player_trophy_change,
-        on_player_versus_trophy_change,
+        on_player_builder_base_trophy_change,
         on_maintenance,
         on_maintenance_completion,
         season_started
