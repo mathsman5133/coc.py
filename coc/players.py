@@ -74,6 +74,8 @@ class ClanMember(BasePlayer):
         The member's trophy count.
     builder_base_trophies: :class:`int`
         The member's builder base trophy count.
+    town_hall: :class:`int`
+        The player's town hall level. In case the player hasn't logged in since 2019, this will be `0`.
     clan_rank: :class:`int`
         The member's rank in the clan.
     clan_previous_rank: :class:`int`
@@ -232,8 +234,6 @@ class Player(ClanMember):
         The player's best recorded trophies for the home base.
     war_stars: :class:`int`
         The player's total war stars.
-    town_hall: :class:`int`
-        The player's town hall level.
     town_hall_weapon: Optional[:class:`int`]
         The player's town hall weapon level, or ``None`` if it doesn't exist.
     builder_hall: :class:`int`
@@ -257,7 +257,6 @@ class Player(ClanMember):
         "defense_wins",
         "best_trophies",
         "war_stars",
-        "town_hall",
         "town_hall_weapon",
         "builder_hall",
         "best_builder_base_trophies",
@@ -348,7 +347,6 @@ class Player(ClanMember):
         self.defense_wins: int = data_get("defenseWins")
         self.best_trophies: int = data_get("bestTrophies")
         self.war_stars: int = data_get("warStars")
-        self.town_hall: int = data_get("townHallLevel")
         self.town_hall_weapon: int = data_get("townHallWeaponLevel")
         self.builder_hall: int = data_get("builderHallLevel", 0)
         self.best_builder_base_trophies: int = data_get("bestBuilderBaseTrophies")
