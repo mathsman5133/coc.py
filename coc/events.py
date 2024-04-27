@@ -82,6 +82,9 @@ class _ValidateEvent:
         if self.cls.event_type == "client":
             return self.cls.__getattr__(self.cls, item)
 
+        if "versus" in item:
+            item = item.replace("versus", "builder_base")
+
         # handle member_x events:
         if "member_" in item and item != "member_count":
             item = item.replace("member_", "")
