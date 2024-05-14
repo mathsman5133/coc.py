@@ -388,8 +388,6 @@ class Badge:
         :class:`str` - URL for a medium sized badge (200x200).
     large:
         :class:`str` - URL for a large sized badge (512x512).
-    url:
-        :class:`str` - Medium, the default URL badge size.
     """
 
     __slots__ = ("small", "medium", "large", "url", "_client")
@@ -407,7 +405,11 @@ class Badge:
         self.medium: str = data.get("medium")
         self.large: str = data.get("large")
 
-        self.url: str = self.medium
+    @property
+    def url(self) -> str:
+        """:class:`str`: the default icon URL. Returns the medium-sized icon URL if available.
+        Falls back to small and large (in that order) if not"""
+        return self.medium or self.small or self.large
 
     async def save(self, filepath, size=None) -> int:
         """
@@ -436,7 +438,7 @@ class Badge:
         if size and size in sizes.keys():
             url = sizes[size]
         else:
-            url = self.medium
+            url = self.url
 
         data = await self._client.http.get_data_from_url(url)
 
@@ -455,8 +457,6 @@ class Icon:
         :class:`str`: URL for a small sized icon (72x72).
     medium:
         :class:`str`: URL for a medium sized icon (288x288).
-    url:
-        :class:`str`: ``small``, the default URL icon size
     """
 
     __slots__ = ("small", "medium", "tiny", "url", "_client")
@@ -474,7 +474,11 @@ class Icon:
         self.small: str = data.get("small")
         self.medium: str = data.get("medium")
 
-        self.url: str = self.medium
+    @property
+    def url(self) -> str:
+        """:class:`str`: the default icon URL. Returns the medium-sized icon URL if available.
+        Falls back to small and tiny (in that order) if not"""
+        return self.medium or self.small or self.tiny
 
     async def save(self, filepath: str, size: Optional[str] = None) -> int:
         """
@@ -503,7 +507,7 @@ class Icon:
         if size and size in sizes.keys():
             url = sizes[size]
         else:
-            url = self.medium
+            url = self.url
 
         data = await self._client.http.get_data_from_url(url)
 
