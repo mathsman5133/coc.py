@@ -7,7 +7,16 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
-v3.5.1
+v3.5.3
+------
+
+Bugs Fixed:
+~~~~~~~~~~
+- :attr:`coc.Badge.url` and :attr:`coc.Icon.url` now use differently sized fallbacks if the default URL is not
+  available. The same is true if :func:`coc.Badge.save` or :func:`coc.Icon.save` are called without the optional
+  size parameter
+
+v3.5.2
 ------
 
 Additions:
