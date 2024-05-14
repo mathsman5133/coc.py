@@ -15,6 +15,8 @@ Bugs Fixed:
 - :attr:`coc.Badge.url` and :attr:`coc.Icon.url` now use differently sized fallbacks if the default URL is not
   available. The same is true if :func:`coc.Badge.save` or :func:`coc.Icon.save` are called without the optional
   size parameter
+- corrected the default value for the ``league_id`` parameter of :func:`coc.Client.get_seasons` to point at Legends
+  league and fixed a type hint in :func:`coc.Client.get_season_rankings` as well as a few doc strings
 
 v3.5.2
 ------
