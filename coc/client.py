@@ -1898,12 +1898,12 @@ class Client:
         """
         return get(await self.search_capital_leagues(), name=league_name)
 
-    async def get_seasons(self, league_id: int = 29000021) -> List[str]:
+    async def get_seasons(self, league_id: int = 29000022) -> List[str]:
         """Get league seasons.
 
         .. note::
 
-            League season information is available only for Legend League, with a league ID 29000021.
+            League season information is available only for Legend League, with a league ID 29000022.
 
 
         Parameters
@@ -1914,7 +1914,7 @@ class Client:
         Raises
         ------
         InvalidArgument
-            An invalid league_id was supplied. Currently the only league supported is legends.
+            An invalid league_id was supplied. Currently, the only league supported is legends.
 
         Maintenance
             The API is currently in maintenance.
@@ -1930,12 +1930,12 @@ class Client:
         data = await self.http.get_league_seasons(league_id)
         return [entry["id"] for entry in data["items"]]
 
-    async def get_season_rankings(self, league_id: int, season_id: int) -> List[RankedPlayer]:
+    async def get_season_rankings(self, league_id: int, season_id: str) -> List[RankedPlayer]:
         """Get league season rankings.
 
         .. note::
 
-            League season information is available only for Legend League, with a league ID 29000021.
+            League season information is available only for Legend League, with a league ID 29000022.
 
 
         Parameters
@@ -1948,7 +1948,7 @@ class Client:
         Raises
         ------
         InvalidArgument
-            An invalid league_id or season_id was supplied. Currently the only league supported is legends.
+            An invalid league_id or season_id was supplied. Currently, the only league supported is legends.
 
         Maintenance
             The API is currently in maintenance.
