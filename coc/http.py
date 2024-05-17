@@ -509,8 +509,10 @@ class HTTPClient:
             LOG.info("Successfully logged into the developer site.")
 
             resp_payload = await resp.json()
-            ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
-            ip = self.ip or ip
+            if not self.ip:
+                ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+            else:
+                ip = self.ip
             LOG.info("Found IP address to be %s", ip)
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
