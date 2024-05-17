@@ -172,12 +172,13 @@ class ClanMember(BasePlayer):
 
     @cached_property("_cs_player_house_elements")
     def player_house_elements(self) -> List[PlayerHouseElement]:
-        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`s that the player has."""
+        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`\s that the player has."""
         return list(self._iter_player_house_elements)
 
 
 class RankedPlayer(ClanMember):
-    """Represents a leaderboard-ranked player.
+    """
+    Represents a leaderboard-ranked player.
 
     Attributes
     ----------
@@ -209,7 +210,8 @@ class RankedPlayer(ClanMember):
 
 
 class Player(ClanMember):
-    """Represents a Clash of Clans Player.
+    """
+    Represents a Clash of Clans Player.
 
     Attributes
     ----------
@@ -247,8 +249,6 @@ class Player(ClanMember):
     war_opted_in: Optional[:class:`bool`]
         Whether the player has selected that they are opted "in" (True) for wars, or opted "out" (False).
         This will be ``None`` if the player is not in a clan.
-    equipment: List[:class:`Equipment`]
-        The player's unlocked hero equipment
     """
 
     __slots__ = (
@@ -362,7 +362,7 @@ class Player(ClanMember):
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
         troop_loader = self._client._troop_holder.load if self._client else None
-        hero_loader =  self._client._hero_holder.load if self._client else None
+        hero_loader = self._client._hero_holder.load if self._client else None
         spell_loader = self._client._spell_holder.load if self._client else None
         pet_loader = self._client._pet_holder.load if self._client else None
         equipment_loader = self._client._equipment_holder.load if self._client else None
@@ -462,7 +462,7 @@ class Player(ClanMember):
 
     @cached_property("_cs_labels")
     def labels(self) -> List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`\s that the player has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
@@ -547,7 +547,7 @@ class Player(ClanMember):
     def home_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
-        This will return troops in the order found in both barracks and labatory in-game.
+        This will return troops in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Elixir Troops (Barbarian, Balloon, etc.)
@@ -566,7 +566,7 @@ class Player(ClanMember):
     def builder_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
-        This will return troops in the order found in both barracks and labatory in-game.
+        This will return troops in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Builder troops
@@ -582,7 +582,7 @@ class Player(ClanMember):
     def siege_machines(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
-        This will return siege machines in the order found in both barracks and labatory in-game.
+        This will return siege machines in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Siege machines only.
@@ -699,7 +699,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Troop`]
-            The returned troop or the ``default_value`` if not found, which defaults to ``None``..
+            The returned troop or the ``default_value`` if not found, which defaults to ``None``.
         """
         _ = self.troops
 
@@ -721,7 +721,7 @@ class Player(ClanMember):
     def heroes(self) -> List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
-        This will return heroes in the order found in the store and labatory in-game.
+        This will return heroes in the order found in the store and laboratory in-game.
         """
         heroes_dict = {h.name: h for h in self._iter_heroes}
         sorted_heroes = {}
@@ -763,15 +763,15 @@ class Player(ClanMember):
     def spells(self) -> List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
-        This will return spells in the order found in both spell factory and labatory in-game.
+        This will return spells in the order found in both spell factory and laboratory in-game.
         """
         self._spells = {s.name: s for s in self._iter_spells}
         dict_spells = self._spells
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
 
         return list(sorted(
-                    dict_spells.values(),
-                    key=lambda s: order.get(s.name, 0)))
+                dict_spells.values(),
+                key=lambda s: order.get(s.name, 0)))
 
     def get_spell(self, name: str, default_value=None) -> Optional[Spell]:
         """Gets the spell with the given name.
@@ -786,7 +786,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Spell`]
-            The returned spell or the ``default_value`` if not found, which defaults to ``None``..
+            The returned spell or the ``default_value`` if not found, which defaults to ``None``.
         """
         if not self._spells:
             _ = self.spells

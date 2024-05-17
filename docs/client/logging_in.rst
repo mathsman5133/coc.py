@@ -4,9 +4,11 @@ Logging In
 ==========
 A coc.py client instance can be created directly by :class:`Client`. The instance can then be logged in with the methods
 
-.. autofunction:: coc.Client.login
+.. automethod:: coc.Client.login
+	:noindex:
 
-.. autofunction:: coc.Client.login_with_tokens
+.. automethod:: coc.Client.login_with_tokens
+	:noindex:
 
 
 Example
