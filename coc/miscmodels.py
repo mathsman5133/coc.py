@@ -390,7 +390,7 @@ class Badge:
         :class:`str` - URL for a large sized badge (512x512).
     """
 
-    __slots__ = ("small", "medium", "large", "url", "_client")
+    __slots__ = ("small", "medium", "large", "_client")
 
     def __repr__(self):
         attrs = [
@@ -459,7 +459,7 @@ class Icon:
         :class:`str`: URL for a medium sized icon (288x288).
     """
 
-    __slots__ = ("small", "medium", "tiny", "url", "_client")
+    __slots__ = ("small", "medium", "tiny", "_client")
 
     def __repr__(self):
         attrs = [

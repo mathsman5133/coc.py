@@ -200,6 +200,7 @@ class HTTPClient:
             cache_max_size=10000,
             stats_max_size=1000,
             base_url="https://api.clashofclans.com/v1",
+            ip=None,
     ):
         self.client = client
         self.loop = loop
@@ -222,6 +223,7 @@ class HTTPClient:
             self.base_url = base_url
         else:
             raise ValueError("base_url must be a string and not empty.")
+        self.ip = ip
         if issubclass(throttler, BasicThrottler):
             self.__throttle = throttler(1 / per_second)
         elif issubclass(throttler, BatchThrottler):
@@ -507,8 +509,10 @@ class HTTPClient:
             LOG.info("Successfully logged into the developer site.")
 
             resp_payload = await resp.json()
-            ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
-
+            if not self.ip:
+                ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+            else:
+                ip = self.ip
             LOG.info("Found IP address to be %s", ip)
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")

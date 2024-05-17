@@ -145,6 +145,10 @@ class Client:
     base_url: :class:`str`
         The base URL to use for API requests. Defaults to "https://api.clashofclans.com/v1"
 
+    ip: :class:`str`
+        The IP address to use for API requests. Defaults to None, which means the IP address will be automatically
+        detected.
+
     Attributes
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -153,6 +157,7 @@ class Client:
 
     __slots__ = (
         "base_url",
+        "ip",
         "loop",
         "correct_key_count",
         "key_names",
@@ -197,6 +202,7 @@ class Client:
         realtime=False,
         raw_attribute=False,
         base_url: str = "https://api.clashofclans.com/v1",
+        ip: Optional[str] = None,
         **kwargs,
     ):
 
@@ -222,6 +228,7 @@ class Client:
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
         self.base_url = base_url
+        self.ip = ip
         # cache
         self._players = {}
         self._clans = {}
@@ -247,6 +254,7 @@ class Client:
             cache_max_size=self.cache_max_size,
             stats_max_size=self.stats_max_size,
             base_url=self.base_url,
+            ip=self.ip,
         )
 
     def _load_holders(self):

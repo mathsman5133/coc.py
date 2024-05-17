@@ -214,6 +214,7 @@ class IntervalTrigger(BaseTrigger):
     error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
         an optional coroutine function that will be called on each error incurred during the trigger execution.
         The handler will receive three arguments:
+
             function_name: :class:`str`
                 the name of the failing trigger's decorated function
             arg: Optional[:class:`Any`]
@@ -320,6 +321,7 @@ class CronTrigger(BaseTrigger):
     error_handler: Optional[:class:`coc.ext.triggers.CoroFunction`]
         an optional coroutine function that will be called on each error incurred during the trigger execution.
         The handler will receive three arguments:
+
             function_name: :class:`str`
                 the name of the failing trigger's decorated function
             arg: Optional[:class:`Any`]
@@ -340,12 +342,13 @@ class CronTrigger(BaseTrigger):
 
 
     Example
-    ----------
+    -------
+
     .. code-block:: python3
 
         @CronTrigger(cron_schedule='0 0 * * *', iter_args=['#2PP', '#2PPP'])
         async def download_current_war(clan_tag: str):
-            # use your coc client to fetch war data, store it to a file or database, ...
+            # use your coc client to fetch war data, store it to a file or database,
             pass
 
     """

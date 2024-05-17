@@ -7,11 +7,24 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.6.0
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Issues causing the documentation to not build properly have been fixed.
+- Fixed a few spelling errors in the documentation.
+
+Additions:
+~~~~~~~~~~
+- Added :attr:`coc.Client.ip` to manually overwrite the IP address used for generating API keys. This is especially useful
+  for using the API with a proxy.
+
 v3.5.3
 ------
 
 Bugs Fixed:
-~~~~~~~~~~
+~~~~~~~~~~~
 - :attr:`coc.Badge.url` and :attr:`coc.Icon.url` now use differently sized fallbacks if the default URL is not
   available. The same is true if :func:`coc.Badge.save` or :func:`coc.Icon.save` are called without the optional
   size parameter
@@ -158,7 +171,7 @@ Additions:
 - Added optional cls parameters to all the :func:`coc.Client.get_location_...` methods
   in order to allow the usage of custom classes
 
-- Added the :ref:`triggers`
+- Added the :ref:`triggers_extension` as an extension
 
 - Added some cached properties to raid classes: :func:`coc.RaidClan.looted`,
   :func:`coc.RaidLogEntry.total_defensive_loot`, :func:`coc.RaidLogEntry.defense_attack_count`
