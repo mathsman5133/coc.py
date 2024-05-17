@@ -7,7 +7,7 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
-v3.5.4
+v3.6.0
 ------
 
 Bugs Fixed:
