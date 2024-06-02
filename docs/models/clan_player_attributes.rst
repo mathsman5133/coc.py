@@ -8,29 +8,25 @@ Achievement
 .. autoclass:: Achievement()
     :members:
     :private-members:
-    :show-inheritance:
 
 Capital District
 ~~~~~~~~~~~~~~~~
 .. autoclass:: CapitalDistrict()
     :members:
     :private-members:
-    :show-inheritance:
 
 Label
 ~~~~~
 .. autoclass:: Label()
     :members:
     :private-members:
-    :show-inheritance:
 
 Base League
 ~~~~~~~~~~~
 .. autoclass:: BaseLeague()
     :members:
     :private-members:
-    :show-inheritance:
-
+    
 League
 ~~~~~~
 .. autoclass:: League()
@@ -45,14 +41,12 @@ Legend Statistics
     :members:
     :private-members:
     :inherited-members:
-    :show-inheritance:
 
 PlayerHouseElement
 ~~~~~~~~~~~~~~~~~~
 .. autoclass:: PlayerHouseElement()
     :members:
     :private-members:
-    :show-inheritance:
 
 PlayerHouseElementType
 ~~~~~~~~~~~~~~~~~~~~~~

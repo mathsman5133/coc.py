@@ -9,7 +9,6 @@ Base Clan
     :members:
     :private-members:
     :inherited-members:
-    :show-inheritance:
 
 Player Clan
 ~~~~~~~~~~~
