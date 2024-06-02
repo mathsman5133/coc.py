@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.6.1
+------
+
+Additions:
+~~~~~~~~~~
+- Added inheritance of classes into the docs to make it easier to see what classes inherit from others.
+
 v3.6.0
 ------
 
