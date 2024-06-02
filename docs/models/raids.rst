@@ -23,5 +23,3 @@ Raid Attack
     :members:
     :private-members:
     
-
-

@@ -10,6 +10,7 @@ Base Clan
     :private-members:
     :inherited-members:
 
+
 Player Clan
 ~~~~~~~~~~~
 .. autoclass:: PlayerClan()
@@ -17,6 +18,7 @@ Player Clan
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Ranked Clan
 ~~~~~~~~~~~
@@ -26,6 +28,7 @@ Ranked Clan
     :inherited-members:
     :show-inheritance:
 
+
 War Clan
 ~~~~~~~~
 .. autoclass:: WarClan()
@@ -33,6 +36,7 @@ War Clan
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Clan War League Clan
 ~~~~~~~~~~~~~~~~~~~~
@@ -42,6 +46,7 @@ Clan War League Clan
     :inherited-members:
     :show-inheritance:
 
+
 Raid Clan
 ~~~~~~~~~
 .. autoclass:: RaidClan()
@@ -49,6 +54,7 @@ Raid Clan
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Clan
 ~~~~

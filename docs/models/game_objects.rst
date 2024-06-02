@@ -8,7 +8,8 @@ Troop
 .. autoclass:: Troop()
     :members:
     :private-members:
-    
+
+
 Hero
 ~~~~
 .. autoclass:: Hero()
@@ -21,7 +22,6 @@ Pet
 .. autoclass:: Pet()
     :members:
     :private-members:
-
 
 
 Spell

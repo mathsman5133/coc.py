@@ -128,8 +128,10 @@ ordered as they appear in-game.
 
 .. data:: coc.HERO_PETS_ORDER
 
+
 All achievements
 ^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.ACHIEVEMENT_ORDER
+

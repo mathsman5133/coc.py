@@ -10,6 +10,7 @@ Base Player
     :private-members:
     :inherited-members:
 
+
 Clan Member
 ~~~~~~~~~~~
 .. autoclass:: ClanMember()
@@ -17,6 +18,7 @@ Clan Member
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Ranked Player
 ~~~~~~~~~~~~~
@@ -26,6 +28,7 @@ Ranked Player
     :inherited-members:
     :show-inheritance:
 
+
 Clan War League Clan Member
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. autoclass:: ClanWarLeagueClanMember()
@@ -33,6 +36,7 @@ Clan War League Clan Member
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Raid Member
 ~~~~~~~~~~~
@@ -42,6 +46,7 @@ Raid Member
     :inherited-members:
     :show-inheritance:
 
+
 Clan War Member
 ~~~~~~~~~~~~~~~
 .. autoclass:: ClanWarMember()
@@ -49,6 +54,7 @@ Clan War Member
     :private-members:
     :inherited-members:
     :show-inheritance:
+
 
 Player
 ~~~~~~
