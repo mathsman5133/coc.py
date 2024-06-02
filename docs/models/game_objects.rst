@@ -8,21 +8,20 @@ Troop
 .. autoclass:: Troop()
     :members:
     :private-members:
-    :show-inheritance:
-
+    
 Hero
 ~~~~
 .. autoclass:: Hero()
     :members:
     :private-members:
-    :show-inheritance:
+    
 
 Pet
 ~~~
 .. autoclass:: Pet()
     :members:
     :private-members:
-    :show-inheritance:
+
 
 
 Spell
@@ -30,7 +29,7 @@ Spell
 .. autoclass:: Spell()
     :members:
     :private-members:
-    :show-inheritance:
+    
 
 Resource
 ~~~~~~~~
