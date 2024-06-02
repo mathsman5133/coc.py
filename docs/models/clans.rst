@@ -9,6 +9,7 @@ Base Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 Player Clan
 ~~~~~~~~~~~
@@ -16,6 +17,7 @@ Player Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 Ranked Clan
 ~~~~~~~~~~~
@@ -23,6 +25,7 @@ Ranked Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 War Clan
 ~~~~~~~~
@@ -30,6 +33,7 @@ War Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 Clan War League Clan
 ~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +41,7 @@ Clan War League Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 Raid Clan
 ~~~~~~~~~
@@ -44,6 +49,7 @@ Raid Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 
 Clan
 ~~~~
@@ -51,4 +57,5 @@ Clan
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
 

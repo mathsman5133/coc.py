@@ -11,12 +11,14 @@ Badge
 .. autoclass:: Badge()
     :members:
     :private-members:
+    :show-inheritance:
 
 Icon
 ^^^^
 .. autoclass:: Icon()
     :members:
     :private-members:
+    :show-inheritance:
 
 Time
 ~~~~
@@ -26,6 +28,7 @@ Timestamp
 .. autoclass:: Timestamp()
     :members:
     :private-members:
+    :show-inheritance:
 
 
 TimeDelta
@@ -33,12 +36,14 @@ TimeDelta
 .. autoclass:: TimeDelta()
     :members:
     :private-members:
+    :show-inheritance:
 
 Location
 ~~~~~~~~
 .. autoclass:: Location()
     :members:
     :private-members:
+    :show-inheritance:
 
 Enumerations
 ~~~~~~~~~~~~
