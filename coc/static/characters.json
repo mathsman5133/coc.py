@@ -133,11 +133,11 @@
             12,
             24,
             36,
+            42,
             48,
-            60,
-            84,
+            72,
+            120,
             144,
-            288,
             312,
             312
         ],
@@ -165,8 +165,8 @@
             2100000,
             2800000,
             5000000,
-            10000000,
-            16000000,
+            8500000,
+            12000000,
             18000000,
             18000000
         ],
@@ -837,11 +837,11 @@
             12,
             24,
             36,
+            42,
             48,
-            60,
-            84,
+            72,
+            120,
             144,
-            288,
             312,
             312
         ],
@@ -869,8 +869,8 @@
             2500000,
             3200000,
             5600000,
-            10200000,
-            16000000,
+            9000000,
+            14000000,
             18000000,
             18000000
         ],
@@ -1527,10 +1527,10 @@
             12,
             24,
             36,
-            72,
-            144,
-            318,
-            318
+            60,
+            96,
+            168,
+            168
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -1552,8 +1552,8 @@
             2000000,
             3000000,
             5600000,
-            16000000,
-            16000000
+            12000000,
+            12000000
         ],
         "DonateCost": [
             1,
@@ -2152,10 +2152,10 @@
             24,
             48,
             68,
-            96,
-            132,
-            168,
-            300,
+            72,
+            84,
+            108,
+            156,
             336,
             336
         ],
@@ -2184,7 +2184,7 @@
             3500000,
             5600000,
             8000000,
-            16500000,
+            14000000,
             18500000,
             18500000
         ],
@@ -2869,10 +2869,10 @@
             24,
             36,
             51,
-            84,
+            72,
             156,
-            288,
-            300,
+            240,
+            264,
             336,
             336
         ],
@@ -2900,8 +2900,8 @@
             4200000,
             6500000,
             8000000,
-            11000000,
-            16500000,
+            9500000,
+            14000000,
             19000000,
             19000000
         ],
@@ -4441,7 +4441,7 @@
             84,
             126,
             168,
-            300,
+            264,
             336,
             336
         ],
@@ -4470,7 +4470,7 @@
             5000000,
             5800000,
             8500000,
-            17200000,
+            15000000,
             19200000,
             19200000
         ],
@@ -5140,8 +5140,8 @@
             48,
             96,
             156,
+            264,
             288,
-            318,
             360,
             360
         ],
@@ -5164,7 +5164,7 @@
             4200000,
             8000000,
             16000000,
-            18000000,
+            17000000,
             21000000,
             21000000
         ],
@@ -6455,7 +6455,7 @@
             114,
             144,
             168,
-            312,
+            216,
             348,
             348
         ],
@@ -6482,7 +6482,7 @@
             5200000,
             7000000,
             8500000,
-            18000000,
+            17000000,
             20500000,
             20500000
         ],
@@ -7129,8 +7129,8 @@
             84,
             120,
             168,
+            264,
             288,
-            312,
             336,
             336
         ],
@@ -7158,8 +7158,8 @@
             63000,
             95000,
             150000,
-            210000,
-            310000,
+            200000,
+            230000,
             320000,
             320000
         ],
@@ -7851,13 +7851,13 @@
             20,
             30,
             48,
-            64,
-            84,
-            126,
+            60,
+            72,
+            96,
+            120,
             168,
-            168,
+            210,
             288,
-            318,
             348,
             348
         ],
@@ -7885,10 +7885,10 @@
             37000,
             70000,
             95000,
-            150000,
+            100000,
             175000,
-            240000,
-            335000,
+            215000,
+            250000,
             350000,
             350000
         ],
@@ -7947,10 +7947,10 @@
             92,
             105,
             118,
-            135,
-            148,
-            161,
-            174,
+            140,
+            155,
+            165,
+            176,
             187,
             200,
             213
@@ -8593,8 +8593,8 @@
             102,
             126,
             168,
+            264,
             288,
-            318,
             360,
             360
         ],
@@ -8620,8 +8620,8 @@
             63000,
             110000,
             155000,
+            215000,
             240000,
-            320000,
             340000,
             340000
         ],
@@ -8673,9 +8673,9 @@
             119,
             133,
             148,
-            163,
-            178,
-            193,
+            167,
+            185,
+            196,
             208,
             223,
             238
@@ -9293,11 +9293,11 @@
             6000,
             6300,
             6600,
-            6900,
-            7200,
+            7000,
             7500,
-            8000,
-            8400,
+            7900,
+            8200,
+            8500,
             8800,
             9200
         ],
@@ -9326,8 +9326,8 @@
             132,
             156,
             168,
-            288,
-            318,
+            216,
+            240,
             360,
             360
         ],
@@ -9357,8 +9357,8 @@
             100000,
             125000,
             160000,
-            230000,
-            330000,
+            210000,
+            245000,
             350000,
             350000
         ],
@@ -10818,9 +10818,9 @@
             300,
             320,
             400,
-            440,
-            480,
+            470,
             520,
+            540,
             560
         ],
         "TrainingTime": [
@@ -10856,7 +10856,7 @@
             58000,
             90000,
             125000,
-            340000,
+            300000,
             360000,
             360000
         ],
@@ -10894,8 +10894,8 @@
             100,
             110,
             140,
-            160,
-            180,
+            165,
+            185,
             200,
             220
         ],
@@ -11672,8 +11672,8 @@
         ],
         "UpgradeTimeH": [
             60,
-            96,
-            150,
+            84,
+            120,
             168,
             192,
             192
@@ -13272,12 +13272,12 @@
         ],
         "Hitpoints": [
             325,
-            350,
-            385,
+            375,
             420,
-            455,
-            500,
-            550,
+            470,
+            505,
+            530,
+            565,
             600
         ],
         "TrainingTime": [
@@ -13295,8 +13295,8 @@
             84,
             120,
             168,
-            288,
-            318,
+            216,
+            240,
             360,
             360
         ],
@@ -13316,8 +13316,8 @@
             88000,
             125000,
             170000,
-            240000,
-            335000,
+            220000,
+            290000,
             350000,
             350000
         ],
@@ -13356,11 +13356,11 @@
         "CoolDownOverride": [],
         "DPS": [
             60,
-            70,
-            80,
-            90,
+            72,
+            84,
             96,
             102,
+            108,
             114,
             126
         ],
@@ -13918,7 +13918,7 @@
             150,
             168,
             264,
-            312,
+            288,
             360,
             360
         ],
@@ -13943,7 +13943,7 @@
             5500000,
             7200000,
             16000000,
-            18000000,
+            16500000,
             20000000,
             20000000
         ],
@@ -14607,10 +14607,10 @@
             72,
             96,
             102,
-            168,
+            144,
             192,
-            264,
-            318,
+            216,
+            240,
             360,
             360
         ],
@@ -14634,8 +14634,8 @@
             5000000,
             5800000,
             8000000,
-            16500000,
-            18500000,
+            15000000,
+            16000000,
             20500000,
             20500000
         ],
@@ -19815,7 +19815,6 @@
         ],
         "TrainingTime": [],
         "UpgradeTimeH": [
-            0,
             0,
             0,
             5,
@@ -36346,8 +36345,8 @@
             96,
             120,
             192,
-            312,
-            312
+            240,
+            240
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -37329,8 +37328,8 @@
         "UpgradeTimeH": [
             144,
             168,
+            264,
             288,
-            330,
             360,
             360
         ],
@@ -40548,7 +40547,7 @@
             120,
             156,
             264,
-            318,
+            288,
             372,
             372
         ],
@@ -40568,8 +40567,8 @@
             85000,
             100000,
             125000,
-            240000,
-            335000,
+            220000,
+            280000,
             360000,
             360000
         ],
@@ -41158,7 +41157,7 @@
             132,
             216,
             288,
-            336,
+            312,
             384,
             384
         ],
@@ -42639,8 +42638,8 @@
             96,
             120,
             192,
-            312,
-            312
+            240,
+            240
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -45643,284 +45642,6 @@
         "AltPreviewScenario": [],
         "ProjectileConsumesBunkerTroops": [],
         "Name": []
-    },
-    "ElPrimo": {
-        "VisualLevel": [
-            1
-        ],
-        "Deprecated": [],
-        "TID": [
-            "TID_EL_PRIMO"
-        ],
-        "InfoTID": [
-            "TID_CHARACTER_INFO_EL_PRIMO"
-        ],
-        "HousingSpace": [
-            10
-        ],
-        "BarrackLevel": [
-            7
-        ],
-        "LaboratoryLevel": [
-            1
-        ],
-        "Speed": [
-            300
-        ],
-        "Hitpoints": [
-            900
-        ],
-        "TrainingTime": [
-            60
-        ],
-        "UpgradeTimeH": [
-            204
-        ],
-        "UpgradeTimeM": [],
-        "UpgradeResource": [
-            "DarkElixir"
-        ],
-        "UpgradeCost": [
-            120000
-        ],
-        "DonateCost": [],
-        "DonateXP": [],
-        "DonateCount": [],
-        "AttackRange": [
-            60
-        ],
-        "AttackSpeed": [
-            1000
-        ],
-        "CoolDownOverride": [
-            550
-        ],
-        "DPS": [
-            120
-        ],
-        "PreferedTargetDamageMod": [],
-        "DamageRadius": [],
-        "AreaDamageIgnoresWalls": [],
-        "SelfAsAoeCenter": [],
-        "IconSWF": [
-            "sc/ui.sc"
-        ],
-        "IconExportName": [
-            "icon_unit_barbarian"
-        ],
-        "BigPicture": [
-            "unit_troll_big"
-        ],
-        "BigPictureSWF": [
-            "sc/info_troll.sc"
-        ],
-        "Projectile": [],
-        "AltProjectile": [],
-        "PreferedTargetBuilding": [],
-        "PreferedTargetBuildingClass": [
-            "Defense"
-        ],
-        "PreferredTargetNoTargeting": [],
-        "DeployEffect": [
-            "Elprimo Deploy"
-        ],
-        "DeployEffect2": [],
-        "AttackEffect": [],
-        "AttackEffect2": [],
-        "HitEffect": [
-            "Giant Hit"
-        ],
-        "HitEffect2": [],
-        "IsFlying": [
-            false
-        ],
-        "AirTargets": [
-            false
-        ],
-        "GroundTargets": [
-            true
-        ],
-        "AttackCount": [],
-        "DieEffect": [
-            "Elprimo Die"
-        ],
-        "DieEffect2": [],
-        "Animation": [
-            "Barbarian"
-        ],
-        "ProductionBuilding": [
-            "Barrack"
-        ],
-        "IsJumper": [
-            false
-        ],
-        "MovementOffsetAmount": [],
-        "MovementOffsetSpeed": [
-            0
-        ],
-        "TombStone": [
-            "TombStone"
-        ],
-        "DieDamage": [],
-        "DieDamageRadius": [],
-        "DieDamageEffect": [],
-        "DieDamageDelay": [],
-        "DisableProduction": [],
-        "SecondaryTroop": [],
-        "IsSecondaryTroop": [],
-        "SecondaryTroopCnt": [],
-        "SecondarySpawnDist": [],
-        "RandomizeSecSpawnDist": [],
-        "PickNewTargetAfterPushback": [],
-        "PushbackSpeed": [],
-        "PushbackAfterHit": [],
-        "SummonTroop": [],
-        "SummonTroopCount": [],
-        "SummonTime": [],
-        "SummonCooldown": [],
-        "SummonEffect": [],
-        "SummonLimit": [],
-        "SpawnIdle": [],
-        "SpawnOnAttack": [],
-        "StrengthWeight": [],
-        "AuraSpell": [],
-        "AuraSpellLevel": [],
-        "SpawnWhenDamaged": [],
-        "JumpHeightPercent": [],
-        "NoClipping": [],
-        "Squad": [],
-        "WallMovementCost": [],
-        "BurstCount": [],
-        "BurstDelay": [],
-        "AttackMultipleBuildings": [],
-        "IncreasingDamage": [],
-        "DPSLv2": [],
-        "DPSLv3": [],
-        "Lv2SwitchTime": [],
-        "Lv3SwitchTime": [],
-        "AttackEffectLv2": [],
-        "AttackEffectLv3": [],
-        "AttackEffectLv4": [],
-        "TransitionEffectLv2": [],
-        "TransitionEffectLv3": [],
-        "TransitionEffectLv4": [],
-        "TargetedEffectOffset": [
-            "-50"
-        ],
-        "SecondarySpawnOffset": [],
-        "CustomDefenderIcon": [],
-        "SpecialMovementMod": [],
-        "InvisibilityRadius": [],
-        "HealthReductionPerSecond": [],
-        "AutoMergeDistance": [],
-        "AutoMergeGroupSize": [],
-        "IsUnderground": [],
-        "ProjectileBounces": [],
-        "FriendlyGroupWeight": [
-            600
-        ],
-        "EnemyGroupWeight": [
-            500
-        ],
-        "NewTargetAttackDelay": [],
-        "TriggersTraps": [
-            true
-        ],
-        "ChainShootingDistance": [],
-        "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
-        "ChainAttackDelay": [],
-        "ChainAttackDamageReductionPercent": [],
-        "ChainAttackEffect": [],
-        "PreAttackEffect": [
-            "Elprimo Attack"
-        ],
-        "MoveStartsEffect": [],
-        "UndergroundEffect": [],
-        "UnderwaterEffect": [],
-        "MovingEffect": [],
-        "BecomesTargetableEffect": [],
-        "BoostedIfAlone": [],
-        "BoostRadius": [],
-        "BoostDmgPerfect": [],
-        "BoostAttackSpeed": [],
-        "HideEffect": [],
-        "VillageType": [],
-        "UnitsInCamp": [],
-        "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [],
-        "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [],
-        "SpecialAbilityAttribute": [],
-        "SpecialAbilityAttribute2": [],
-        "SpecialAbilityAttribute3": [],
-        "SpecialAbilitySpell": [],
-        "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [],
-        "SpecialAbilityHideClipName": [],
-        "DisableDonate": [
-            true
-        ],
-        "ScaleByTH": [],
-        "EnabledByCalendar": [
-            true
-        ],
-        "EnabledBySuperLicence": [],
-        "LoseHpPerTick": [],
-        "LoseHpInterval": [],
-        "LoseHpEffect": [],
-        "UpgradeLevelByTH": [],
-        "EvolveToCharacter": [],
-        "EvolveEffect": [],
-        "EvolveOnDamageDealt": [],
-        "EvolveTime": [],
-        "CanAttackWhileMoving": [],
-        "PreferredMovementTarget": [],
-        "RetargetAfterHit": [],
-        "Damage2": [],
-        "Damage2Radius": [],
-        "Damage2Delay": [],
-        "Damage2Min": [],
-        "Damage2FalloffStart": [],
-        "Damage2FalloffEnd": [],
-        "DamageMultiplierTarget": [
-            "Wall"
-        ],
-        "DamageMultiplierPercent": [
-            2000
-        ],
-        "FrostOnHitTime": [],
-        "FrostOnHitPercent": [],
-        "DoesNotOpenCC": [],
-        "DefensiveTroop": [],
-        "DamageReductionToStorages": [],
-        "BunkerTroops": [],
-        "BunkerTroopCount1": [],
-        "BunkerTroopCount2": [],
-        "BunkerDegenerationTime": [],
-        "BunkerSpawnDist": [],
-        "HeroDamageMultiplier": [],
-        "PenetratingProjectile": [],
-        "PenetratingRadius": [],
-        "PenetratingExtraRange": [],
-        "ImmuneToHealing": [],
-        "PreferHeroes": [],
-        "HealerWeight": [],
-        "DefaultSkin": [],
-        "DefenseBonus": [],
-        "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
-        "ReflectsDamage": [],
-        "AvoidNoiseInAttackPositionSelection": [],
-        "CarryOverToNextStage": [],
-        "FightWithGroups": [],
-        "TargetGroupsRadius": [],
-        "TargetGroupsRange": [],
-        "TargetGroupsMinWeight": [],
-        "PreviewScenario": [],
-        "AltPreviewScenario": [],
-        "ProjectileConsumesBunkerTroops": []
     },
     "SpellBat": {
         "VisualLevel": [
@@ -58165,9 +57886,9 @@
             1200
         ],
         "UpgradeTimeH": [
+            120,
             180,
-            288,
-            300,
+            240,
             324,
             324
         ],
@@ -58683,10 +58404,10 @@
             1200
         ],
         "UpgradeTimeH": [
+            180,
             240,
             288,
-            300,
-            300
+            288
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -60801,9 +60522,9 @@
         ],
         "UpgradeCost": [
             180000,
-            300000,
-            340000,
-            340000
+            270000,
+            320000,
+            320000
         ],
         "DonateCost": [
             10,
@@ -69381,9 +69102,9 @@
             150
         ],
         "Hitpoints": [
-            6300,
-            6650,
-            7000
+            6200,
+            6350,
+            6500
         ],
         "TrainingTime": [
             220,
@@ -69425,9 +69146,9 @@
         ],
         "CoolDownOverride": [],
         "DPS": [
-            190,
-            210,
-            230
+            95,
+            105,
+            115
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [],
@@ -76049,135 +75770,243 @@
         "ProjectileConsumesBunkerTroops": [],
         "Name": []
     },
-    "Prototype4": {
+    "Druid_Healer": {
         "VisualLevel": [
-            1
+            1,
+            2,
+            3,
+            4
         ],
         "Deprecated": [],
         "TID": [
-            "TID_BARBARIAN"
+            "TID_CHARACTER_SHAPESHIFTER_DRUID",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID"
         ],
         "InfoTID": [
-            "TID_CHARACTER_INFO_BARBARIAN"
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO"
         ],
         "HousingSpace": [
-            1
+            16,
+            16,
+            16,
+            16
         ],
         "BarrackLevel": [
-            1
+            11,
+            11,
+            11,
+            11
         ],
         "LaboratoryLevel": [
-            1
+            1,
+            12,
+            13,
+            14
         ],
         "Speed": [
-            200
+            300,
+            300,
+            300,
+            300
         ],
         "Hitpoints": [
-            45
+            1300,
+            1400,
+            1500,
+            1600
         ],
         "TrainingTime": [
-            5
+            150,
+            150,
+            150,
+            150
         ],
         "UpgradeTimeH": [
-            6
+            288,
+            336,
+            384,
+            384
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
-            "Elixir"
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir",
+            "DarkElixir"
         ],
         "UpgradeCost": [
-            25000
+            250000,
+            350000,
+            375000,
+            375000
         ],
         "DonateCost": [
-            1
+            8,
+            8,
+            8,
+            8
         ],
         "DonateXP": [],
         "DonateCount": [],
         "AttackRange": [
-            40
+            500,
+            500,
+            500,
+            500
         ],
         "AttackSpeed": [
+            1000,
+            1000,
+            1000,
             1000
         ],
         "CoolDownOverride": [],
         "DPS": [
-            8
+            "-110",
+            "-120",
+            "-130",
+            "-140"
         ],
         "PreferedTargetDamageMod": [
+            1,
+            1,
+            1,
             1
         ],
         "DamageRadius": [],
         "AreaDamageIgnoresWalls": [],
         "SelfAsAoeCenter": [],
         "IconSWF": [
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
-            "icon_unit_barbarian"
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear"
         ],
         "BigPicture": [
-            "unit_barbarian_big"
+            "unit_druid_big",
+            "unit_druid_big",
+            "unit_druid_big",
+            "unit_druid_big"
         ],
         "BigPictureSWF": [
-            "sc/info_barbarian.sc"
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc"
         ],
-        "Projectile": [],
+        "Projectile": [
+            "BattleDruidProjectile",
+            "BattleDruidProjectile",
+            "BattleDruidProjectile",
+            "BattleDruidProjectile"
+        ],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
         "PreferedTargetBuildingClass": [],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
-            "Barbarian Deploy"
+            "BattleDruidDeploy",
+            "BattleDruidDeploy",
+            "BattleDruidDeploy",
+            "BattleDruidDeploy"
         ],
         "DeployEffect2": [],
-        "AttackEffect": [
-            "Barbarian Attack"
-        ],
+        "AttackEffect": [],
         "AttackEffect2": [],
         "HitEffect": [
-            "Barbarian Hit"
+            "BattleDruidHealingEffect",
+            "BattleDruidHealingEffect",
+            "BattleDruidHealingEffect",
+            "BattleDruidHealingEffect"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
+            false,
+            false,
             false
         ],
         "AirTargets": [
-            false
+            true,
+            true,
+            true,
+            true
         ],
         "GroundTargets": [
+            true,
+            true,
+            true,
             true
         ],
         "AttackCount": [],
         "DieEffect": [
-            "Barbarian Die"
+            "druid_bear_transformation",
+            "druid_bear_transformation",
+            "druid_bear_transformation",
+            "druid_bear_transformation"
         ],
         "DieEffect2": [],
         "Animation": [
-            "Barbarian"
+            "DruidChain",
+            "DruidChain",
+            "DruidChain_lvl2",
+            "DruidChain_lvl2"
         ],
         "ProductionBuilding": [
-            "Barrack"
+            "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
+            "Dark Elixir Barrack",
+            "Dark Elixir Barrack"
         ],
         "IsJumper": [
-            false
+            true,
+            true,
+            true,
+            true
         ],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
-            0
+            50,
+            50,
+            50,
+            50
         ],
-        "TombStone": [
-            "TombStone"
-        ],
+        "TombStone": [],
         "DieDamage": [],
         "DieDamageRadius": [],
         "DieDamageEffect": [],
         "DieDamageDelay": [],
-        "DisableProduction": [
+        "DisableProduction": [],
+        "SecondaryTroop": [
+            "Druid_Tank",
+            "Druid_Tank",
+            "Druid_Tank",
+            "Druid_Tank"
+        ],
+        "DontSpawnSecondaryWhenEjected": [
+            true,
+            true,
+            true,
             true
         ],
-        "SecondaryTroop": [],
         "IsSecondaryTroop": [],
-        "SecondaryTroopCnt": [],
+        "SecondaryTroopCnt": [
+            1,
+            1,
+            1,
+            1
+        ],
         "SecondarySpawnDist": [],
         "RandomizeSecSpawnDist": [],
         "PickNewTargetAfterPushback": [],
@@ -76191,7 +76020,12 @@
         "SummonLimit": [],
         "SpawnIdle": [],
         "SpawnOnAttack": [],
-        "StrengthWeight": [],
+        "StrengthWeight": [
+            7000,
+            8000,
+            9000,
+            10000
+        ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
         "SpawnWhenDamaged": [],
@@ -76214,6 +76048,9 @@
         "TransitionEffectLv3": [],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            "-50",
+            "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -76224,15 +76061,29 @@
         "AutoMergeDistance": [],
         "AutoMergeGroupSize": [],
         "IsUnderground": [],
-        "ProjectileBounces": [],
+        "ProjectileBounces": [
+            4,
+            4,
+            4,
+            4
+        ],
         "FriendlyGroupWeight": [
-            100
+            200,
+            200,
+            200,
+            200
         ],
         "EnemyGroupWeight": [
-            100
+            1600,
+            1600,
+            1600,
+            1600
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
+            true,
+            true,
             true
         ],
         "ChainShootingDistance": [],
@@ -76265,22 +76116,33 @@
         "SpecialAbilityEffect": [],
         "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
-        "DisableDonate": [
-            true
-        ],
+        "DisableDonate": [],
         "ScaleByTH": [],
-        "EnabledByCalendar": [
-            true
-        ],
+        "EnabledByCalendar": [],
         "EnabledBySuperLicence": [],
         "LoseHpPerTick": [],
         "LoseHpInterval": [],
         "LoseHpEffect": [],
         "UpgradeLevelByTH": [],
-        "EvolveToCharacter": [],
-        "EvolveEffect": [],
+        "EvolveToCharacter": [
+            "Druid_Tank",
+            "Druid_Tank",
+            "Druid_Tank",
+            "Druid_Tank"
+        ],
+        "EvolveEffect": [
+            "druid_bear_transformation",
+            "druid_bear_transformation",
+            "druid_bear_transformation",
+            "druid_bear_transformation"
+        ],
         "EvolveOnDamageDealt": [],
-        "EvolveTime": [],
+        "EvolveTime": [
+            30000,
+            30000,
+            30000,
+            30000
+        ],
         "CanAttackWhileMoving": [],
         "PreferredMovementTarget": [],
         "RetargetAfterHit": [],
@@ -76321,138 +76183,211 @@
         "TargetGroupsRadius": [],
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
-        "PreviewScenario": [],
+        "PreviewScenario": [
+            "TroopDruidHealer",
+            "TroopDruidHealer",
+            "TroopDruidHealer",
+            "TroopDruidHealer"
+        ],
         "AltPreviewScenario": [],
-        "ProjectileConsumesBunkerTroops": []
+        "ProjectileConsumesBunkerTroops": [],
+        "Name": []
     },
-    "Prototype5": {
+    "Druid_Tank": {
         "VisualLevel": [
-            1
+            1,
+            2,
+            3,
+            4
         ],
         "Deprecated": [],
         "TID": [
-            "TID_BARBARIAN"
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR"
         ],
         "InfoTID": [
-            "TID_CHARACTER_INFO_BARBARIAN"
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR_INFO",
+            "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR_INFO"
         ],
         "HousingSpace": [
-            1
+            16,
+            16,
+            16,
+            16
         ],
-        "BarrackLevel": [
-            1
-        ],
-        "LaboratoryLevel": [
-            1
-        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [],
         "Speed": [
-            200
+            250,
+            250,
+            250,
+            250
         ],
         "Hitpoints": [
-            45
+            3800,
+            4000,
+            4200,
+            4400
         ],
-        "TrainingTime": [
-            5
-        ],
-        "UpgradeTimeH": [
-            6
-        ],
+        "TrainingTime": [],
+        "UpgradeTimeH": [],
         "UpgradeTimeM": [],
-        "UpgradeResource": [
-            "Elixir"
-        ],
-        "UpgradeCost": [
-            25000
-        ],
-        "DonateCost": [
-            1
-        ],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "DonateCost": [],
         "DonateXP": [],
         "DonateCount": [],
         "AttackRange": [
-            40
+            60,
+            60,
+            60,
+            60
         ],
         "AttackSpeed": [
+            1000,
+            1000,
+            1000,
             1000
         ],
         "CoolDownOverride": [],
         "DPS": [
-            8
+            150,
+            160,
+            170,
+            180
         ],
         "PreferedTargetDamageMod": [
+            1,
+            1,
+            1,
             1
         ],
         "DamageRadius": [],
         "AreaDamageIgnoresWalls": [],
         "SelfAsAoeCenter": [],
         "IconSWF": [
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
-            "icon_unit_barbarian"
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear",
+            "icon_unit_druid_bear"
         ],
         "BigPicture": [
-            "unit_barbarian_big"
+            "unit_druid_bear_big",
+            "unit_druid_bear_big",
+            "unit_druid_bear_big",
+            "unit_druid_bear_big"
         ],
         "BigPictureSWF": [
-            "sc/info_barbarian.sc"
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc",
+            "sc/info_druid_bear.sc"
         ],
         "Projectile": [],
         "AltProjectile": [],
         "PreferedTargetBuilding": [],
-        "PreferedTargetBuildingClass": [],
+        "PreferedTargetBuildingClass": [
+            "Defense",
+            "Defense",
+            "Defense",
+            "Defense"
+        ],
         "PreferredTargetNoTargeting": [],
         "DeployEffect": [
-            "Barbarian Deploy"
+            "Golem Deploy",
+            "Golem Deploy",
+            "Golem Deploy",
+            "Golem Deploy"
         ],
         "DeployEffect2": [],
         "AttackEffect": [
-            "Barbarian Attack"
+            "BattleDruidAttackSFX",
+            "BattleDruidAttackSFX",
+            "BattleDruidAttackSFX",
+            "BattleDruidAttackSFX"
         ],
         "AttackEffect2": [],
         "HitEffect": [
-            "Barbarian Hit"
+            "BattleDruidAttackHit",
+            "BattleDruidAttackHit",
+            "BattleDruidAttackHit",
+            "BattleDruidAttackHit"
         ],
         "HitEffect2": [],
         "IsFlying": [
+            false,
+            false,
+            false,
             false
         ],
         "AirTargets": [
+            false,
+            false,
+            false,
             false
         ],
         "GroundTargets": [
+            true,
+            true,
+            true,
             true
         ],
         "AttackCount": [],
         "DieEffect": [
-            "Barbarian Die"
+            "BattleDruidDie",
+            "BattleDruidDie",
+            "BattleDruidDie",
+            "BattleDruidDie"
         ],
         "DieEffect2": [],
         "Animation": [
-            "Barbarian"
+            "DruidShapeshifted",
+            "DruidShapeshifted",
+            "DruidShapeshifted_lvl2",
+            "DruidShapeshifted_lvl2"
         ],
-        "ProductionBuilding": [
-            "Barrack"
-        ],
-        "IsJumper": [
-            false
-        ],
+        "ProductionBuilding": [],
+        "IsJumper": [],
         "MovementOffsetAmount": [],
         "MovementOffsetSpeed": [
+            0,
+            0,
+            0,
             0
         ],
         "TombStone": [
-            "TombStone"
+            "DarkTombStone",
+            "DarkTombStone",
+            "DarkTombStone",
+            "DarkTombStone"
         ],
         "DieDamage": [],
         "DieDamageRadius": [],
         "DieDamageEffect": [],
         "DieDamageDelay": [],
         "DisableProduction": [
+            true,
+            true,
+            true,
             true
         ],
         "SecondaryTroop": [],
-        "IsSecondaryTroop": [],
+        "IsSecondaryTroop": [
+            true,
+            true,
+            true,
+            true
+        ],
         "SecondaryTroopCnt": [],
         "SecondarySpawnDist": [],
         "RandomizeSecSpawnDist": [],
@@ -76490,6 +76425,9 @@
         "TransitionEffectLv3": [],
         "TransitionEffectLv4": [],
         "TargetedEffectOffset": [
+            "-50",
+            "-50",
+            "-50",
             "-50"
         ],
         "SecondarySpawnOffset": [],
@@ -76502,289 +76440,22 @@
         "IsUnderground": [],
         "ProjectileBounces": [],
         "FriendlyGroupWeight": [
-            100
-        ],
-        "EnemyGroupWeight": [
-            100
-        ],
-        "NewTargetAttackDelay": [],
-        "TriggersTraps": [
-            true
-        ],
-        "ChainShootingDistance": [],
-        "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
-        "ChainAttackDelay": [],
-        "ChainAttackDamageReductionPercent": [],
-        "ChainAttackEffect": [],
-        "PreAttackEffect": [],
-        "MoveStartsEffect": [],
-        "UndergroundEffect": [],
-        "UnderwaterEffect": [],
-        "MovingEffect": [],
-        "BecomesTargetableEffect": [],
-        "BoostedIfAlone": [],
-        "BoostRadius": [],
-        "BoostDmgPerfect": [],
-        "BoostAttackSpeed": [],
-        "HideEffect": [],
-        "VillageType": [],
-        "UnitsInCamp": [],
-        "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [],
-        "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [],
-        "SpecialAbilityAttribute": [],
-        "SpecialAbilityAttribute2": [],
-        "SpecialAbilityAttribute3": [],
-        "SpecialAbilitySpell": [],
-        "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [],
-        "SpecialAbilityHideClipName": [],
-        "DisableDonate": [
-            true
-        ],
-        "ScaleByTH": [],
-        "EnabledByCalendar": [
-            true
-        ],
-        "EnabledBySuperLicence": [],
-        "LoseHpPerTick": [],
-        "LoseHpInterval": [],
-        "LoseHpEffect": [],
-        "UpgradeLevelByTH": [],
-        "EvolveToCharacter": [],
-        "EvolveEffect": [],
-        "EvolveOnDamageDealt": [],
-        "EvolveTime": [],
-        "CanAttackWhileMoving": [],
-        "PreferredMovementTarget": [],
-        "RetargetAfterHit": [],
-        "Damage2": [],
-        "Damage2Radius": [],
-        "Damage2Delay": [],
-        "Damage2Min": [],
-        "Damage2FalloffStart": [],
-        "Damage2FalloffEnd": [],
-        "DamageMultiplierTarget": [],
-        "DamageMultiplierPercent": [],
-        "FrostOnHitTime": [],
-        "FrostOnHitPercent": [],
-        "DoesNotOpenCC": [],
-        "DefensiveTroop": [],
-        "DamageReductionToStorages": [],
-        "BunkerTroops": [],
-        "BunkerTroopCount1": [],
-        "BunkerTroopCount2": [],
-        "BunkerDegenerationTime": [],
-        "BunkerSpawnDist": [],
-        "HeroDamageMultiplier": [],
-        "PenetratingProjectile": [],
-        "PenetratingRadius": [],
-        "PenetratingExtraRange": [],
-        "ImmuneToHealing": [],
-        "PreferHeroes": [],
-        "HealerWeight": [],
-        "DefaultSkin": [],
-        "DefenseBonus": [],
-        "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
-        "ReflectsDamage": [],
-        "AvoidNoiseInAttackPositionSelection": [],
-        "CarryOverToNextStage": [],
-        "FightWithGroups": [],
-        "TargetGroupsRadius": [],
-        "TargetGroupsRange": [],
-        "TargetGroupsMinWeight": [],
-        "PreviewScenario": [],
-        "AltPreviewScenario": [],
-        "ProjectileConsumesBunkerTroops": []
-    },
-    "Prototype6": {
-        "VisualLevel": [
-            1
-        ],
-        "Deprecated": [],
-        "TID": [
-            "TID_BARBARIAN"
-        ],
-        "InfoTID": [
-            "TID_CHARACTER_INFO_BARBARIAN"
-        ],
-        "HousingSpace": [
-            1
-        ],
-        "BarrackLevel": [
-            1
-        ],
-        "LaboratoryLevel": [
-            1
-        ],
-        "Speed": [
-            200
-        ],
-        "Hitpoints": [
-            45
-        ],
-        "TrainingTime": [
-            5
-        ],
-        "UpgradeTimeH": [
-            6
-        ],
-        "UpgradeTimeM": [],
-        "UpgradeResource": [
-            "Elixir"
-        ],
-        "UpgradeCost": [
-            25000
-        ],
-        "DonateCost": [
-            1
-        ],
-        "DonateXP": [],
-        "DonateCount": [],
-        "AttackRange": [
-            40
-        ],
-        "AttackSpeed": [
+            1000,
+            1000,
+            1000,
             1000
         ],
-        "CoolDownOverride": [],
-        "DPS": [
-            8
-        ],
-        "PreferedTargetDamageMod": [
-            1
-        ],
-        "DamageRadius": [],
-        "AreaDamageIgnoresWalls": [],
-        "SelfAsAoeCenter": [],
-        "IconSWF": [
-            "sc/ui.sc"
-        ],
-        "IconExportName": [
-            "icon_unit_barbarian"
-        ],
-        "BigPicture": [
-            "unit_barbarian_big"
-        ],
-        "BigPictureSWF": [
-            "sc/info_barbarian.sc"
-        ],
-        "Projectile": [],
-        "AltProjectile": [],
-        "PreferedTargetBuilding": [],
-        "PreferedTargetBuildingClass": [],
-        "PreferredTargetNoTargeting": [],
-        "DeployEffect": [
-            "Barbarian Deploy"
-        ],
-        "DeployEffect2": [],
-        "AttackEffect": [
-            "Barbarian Attack"
-        ],
-        "AttackEffect2": [],
-        "HitEffect": [
-            "Barbarian Hit"
-        ],
-        "HitEffect2": [],
-        "IsFlying": [
-            false
-        ],
-        "AirTargets": [
-            false
-        ],
-        "GroundTargets": [
-            true
-        ],
-        "AttackCount": [],
-        "DieEffect": [
-            "Barbarian Die"
-        ],
-        "DieEffect2": [],
-        "Animation": [
-            "Barbarian"
-        ],
-        "ProductionBuilding": [
-            "Barrack"
-        ],
-        "IsJumper": [
-            false
-        ],
-        "MovementOffsetAmount": [],
-        "MovementOffsetSpeed": [
-            0
-        ],
-        "TombStone": [
-            "TombStone"
-        ],
-        "DieDamage": [],
-        "DieDamageRadius": [],
-        "DieDamageEffect": [],
-        "DieDamageDelay": [],
-        "DisableProduction": [
-            true
-        ],
-        "SecondaryTroop": [],
-        "IsSecondaryTroop": [],
-        "SecondaryTroopCnt": [],
-        "SecondarySpawnDist": [],
-        "RandomizeSecSpawnDist": [],
-        "PickNewTargetAfterPushback": [],
-        "PushbackSpeed": [],
-        "PushbackAfterHit": [],
-        "SummonTroop": [],
-        "SummonTroopCount": [],
-        "SummonTime": [],
-        "SummonCooldown": [],
-        "SummonEffect": [],
-        "SummonLimit": [],
-        "SpawnIdle": [],
-        "SpawnOnAttack": [],
-        "StrengthWeight": [],
-        "AuraSpell": [],
-        "AuraSpellLevel": [],
-        "SpawnWhenDamaged": [],
-        "JumpHeightPercent": [],
-        "NoClipping": [],
-        "Squad": [],
-        "WallMovementCost": [],
-        "BurstCount": [],
-        "BurstDelay": [],
-        "AttackMultipleBuildings": [],
-        "IncreasingDamage": [],
-        "DPSLv2": [],
-        "DPSLv3": [],
-        "Lv2SwitchTime": [],
-        "Lv3SwitchTime": [],
-        "AttackEffectLv2": [],
-        "AttackEffectLv3": [],
-        "AttackEffectLv4": [],
-        "TransitionEffectLv2": [],
-        "TransitionEffectLv3": [],
-        "TransitionEffectLv4": [],
-        "TargetedEffectOffset": [
-            "-50"
-        ],
-        "SecondarySpawnOffset": [],
-        "CustomDefenderIcon": [],
-        "SpecialMovementMod": [],
-        "InvisibilityRadius": [],
-        "HealthReductionPerSecond": [],
-        "AutoMergeDistance": [],
-        "AutoMergeGroupSize": [],
-        "IsUnderground": [],
-        "ProjectileBounces": [],
-        "FriendlyGroupWeight": [
-            100
-        ],
         "EnemyGroupWeight": [
-            100
+            1600,
+            1600,
+            1600,
+            1600
         ],
         "NewTargetAttackDelay": [],
         "TriggersTraps": [
+            true,
+            true,
+            true,
             true
         ],
         "ChainShootingDistance": [],
@@ -76818,12 +76489,13 @@
         "SpecialAbilityIcon": [],
         "SpecialAbilityHideClipName": [],
         "DisableDonate": [
+            true,
+            true,
+            true,
             true
         ],
         "ScaleByTH": [],
-        "EnabledByCalendar": [
-            true
-        ],
+        "EnabledByCalendar": [],
         "EnabledBySuperLicence": [],
         "LoseHpPerTick": [],
         "LoseHpInterval": [],
@@ -76860,283 +76532,12 @@
         "PenetratingExtraRange": [],
         "ImmuneToHealing": [],
         "PreferHeroes": [],
-        "HealerWeight": [],
-        "DefaultSkin": [],
-        "DefenseBonus": [],
-        "SmoothJump": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
-        "ReflectsDamage": [],
-        "AvoidNoiseInAttackPositionSelection": [],
-        "CarryOverToNextStage": [],
-        "FightWithGroups": [],
-        "TargetGroupsRadius": [],
-        "TargetGroupsRange": [],
-        "TargetGroupsMinWeight": [],
-        "PreviewScenario": [],
-        "AltPreviewScenario": [],
-        "ProjectileConsumesBunkerTroops": []
-    },
-    "Prototype7": {
-        "VisualLevel": [
-            1
-        ],
-        "Deprecated": [],
-        "TID": [
-            "TID_BARBARIAN"
-        ],
-        "InfoTID": [
-            "TID_CHARACTER_INFO_BARBARIAN"
-        ],
-        "HousingSpace": [
-            1
-        ],
-        "BarrackLevel": [
-            1
-        ],
-        "LaboratoryLevel": [
-            1
-        ],
-        "Speed": [
-            200
-        ],
-        "Hitpoints": [
-            45
-        ],
-        "TrainingTime": [
+        "HealerWeight": [
+            5,
+            5,
+            5,
             5
         ],
-        "UpgradeTimeH": [
-            6
-        ],
-        "UpgradeTimeM": [],
-        "UpgradeResource": [
-            "Elixir"
-        ],
-        "UpgradeCost": [
-            25000
-        ],
-        "DonateCost": [
-            1
-        ],
-        "DonateXP": [],
-        "DonateCount": [],
-        "AttackRange": [
-            40
-        ],
-        "AttackSpeed": [
-            1000
-        ],
-        "CoolDownOverride": [],
-        "DPS": [
-            8
-        ],
-        "PreferedTargetDamageMod": [
-            1
-        ],
-        "DamageRadius": [],
-        "AreaDamageIgnoresWalls": [],
-        "SelfAsAoeCenter": [],
-        "IconSWF": [
-            "sc/ui.sc"
-        ],
-        "IconExportName": [
-            "icon_unit_barbarian"
-        ],
-        "BigPicture": [
-            "unit_barbarian_big"
-        ],
-        "BigPictureSWF": [
-            "sc/info_barbarian.sc"
-        ],
-        "Projectile": [],
-        "AltProjectile": [],
-        "PreferedTargetBuilding": [],
-        "PreferedTargetBuildingClass": [],
-        "PreferredTargetNoTargeting": [],
-        "DeployEffect": [
-            "Barbarian Deploy"
-        ],
-        "DeployEffect2": [],
-        "AttackEffect": [
-            "Barbarian Attack"
-        ],
-        "AttackEffect2": [],
-        "HitEffect": [
-            "Barbarian Hit"
-        ],
-        "HitEffect2": [],
-        "IsFlying": [
-            false
-        ],
-        "AirTargets": [
-            false
-        ],
-        "GroundTargets": [
-            true
-        ],
-        "AttackCount": [],
-        "DieEffect": [
-            "Barbarian Die"
-        ],
-        "DieEffect2": [],
-        "Animation": [
-            "Barbarian"
-        ],
-        "ProductionBuilding": [
-            "Barrack"
-        ],
-        "IsJumper": [
-            false
-        ],
-        "MovementOffsetAmount": [],
-        "MovementOffsetSpeed": [
-            0
-        ],
-        "TombStone": [
-            "TombStone"
-        ],
-        "DieDamage": [],
-        "DieDamageRadius": [],
-        "DieDamageEffect": [],
-        "DieDamageDelay": [],
-        "DisableProduction": [
-            true
-        ],
-        "SecondaryTroop": [],
-        "IsSecondaryTroop": [],
-        "SecondaryTroopCnt": [],
-        "SecondarySpawnDist": [],
-        "RandomizeSecSpawnDist": [],
-        "PickNewTargetAfterPushback": [],
-        "PushbackSpeed": [],
-        "PushbackAfterHit": [],
-        "SummonTroop": [],
-        "SummonTroopCount": [],
-        "SummonTime": [],
-        "SummonCooldown": [],
-        "SummonEffect": [],
-        "SummonLimit": [],
-        "SpawnIdle": [],
-        "SpawnOnAttack": [],
-        "StrengthWeight": [],
-        "AuraSpell": [],
-        "AuraSpellLevel": [],
-        "SpawnWhenDamaged": [],
-        "JumpHeightPercent": [],
-        "NoClipping": [],
-        "Squad": [],
-        "WallMovementCost": [],
-        "BurstCount": [],
-        "BurstDelay": [],
-        "AttackMultipleBuildings": [],
-        "IncreasingDamage": [],
-        "DPSLv2": [],
-        "DPSLv3": [],
-        "Lv2SwitchTime": [],
-        "Lv3SwitchTime": [],
-        "AttackEffectLv2": [],
-        "AttackEffectLv3": [],
-        "AttackEffectLv4": [],
-        "TransitionEffectLv2": [],
-        "TransitionEffectLv3": [],
-        "TransitionEffectLv4": [],
-        "TargetedEffectOffset": [
-            "-50"
-        ],
-        "SecondarySpawnOffset": [],
-        "CustomDefenderIcon": [],
-        "SpecialMovementMod": [],
-        "InvisibilityRadius": [],
-        "HealthReductionPerSecond": [],
-        "AutoMergeDistance": [],
-        "AutoMergeGroupSize": [],
-        "IsUnderground": [],
-        "ProjectileBounces": [],
-        "FriendlyGroupWeight": [
-            100
-        ],
-        "EnemyGroupWeight": [
-            100
-        ],
-        "NewTargetAttackDelay": [],
-        "TriggersTraps": [
-            true
-        ],
-        "ChainShootingDistance": [],
-        "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
-        "ChainAttackDelay": [],
-        "ChainAttackDamageReductionPercent": [],
-        "ChainAttackEffect": [],
-        "PreAttackEffect": [],
-        "MoveStartsEffect": [],
-        "UndergroundEffect": [],
-        "UnderwaterEffect": [],
-        "MovingEffect": [],
-        "BecomesTargetableEffect": [],
-        "BoostedIfAlone": [],
-        "BoostRadius": [],
-        "BoostDmgPerfect": [],
-        "BoostAttackSpeed": [],
-        "HideEffect": [],
-        "VillageType": [],
-        "UnitsInCamp": [],
-        "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [],
-        "SpecialAbilityInfo": [],
-        "SpecialAbilityType": [],
-        "SpecialAbilityAttribute": [],
-        "SpecialAbilityAttribute2": [],
-        "SpecialAbilityAttribute3": [],
-        "SpecialAbilitySpell": [],
-        "SpecialAbilityEffect": [],
-        "SpecialAbilityIcon": [],
-        "SpecialAbilityHideClipName": [],
-        "DisableDonate": [
-            true
-        ],
-        "ScaleByTH": [],
-        "EnabledByCalendar": [
-            true
-        ],
-        "EnabledBySuperLicence": [],
-        "LoseHpPerTick": [],
-        "LoseHpInterval": [],
-        "LoseHpEffect": [],
-        "UpgradeLevelByTH": [],
-        "EvolveToCharacter": [],
-        "EvolveEffect": [],
-        "EvolveOnDamageDealt": [],
-        "EvolveTime": [],
-        "CanAttackWhileMoving": [],
-        "PreferredMovementTarget": [],
-        "RetargetAfterHit": [],
-        "Damage2": [],
-        "Damage2Radius": [],
-        "Damage2Delay": [],
-        "Damage2Min": [],
-        "Damage2FalloffStart": [],
-        "Damage2FalloffEnd": [],
-        "DamageMultiplierTarget": [],
-        "DamageMultiplierPercent": [],
-        "FrostOnHitTime": [],
-        "FrostOnHitPercent": [],
-        "DoesNotOpenCC": [],
-        "DefensiveTroop": [],
-        "DamageReductionToStorages": [],
-        "BunkerTroops": [],
-        "BunkerTroopCount1": [],
-        "BunkerTroopCount2": [],
-        "BunkerDegenerationTime": [],
-        "BunkerSpawnDist": [],
-        "HeroDamageMultiplier": [],
-        "PenetratingProjectile": [],
-        "PenetratingRadius": [],
-        "PenetratingExtraRange": [],
-        "ImmuneToHealing": [],
-        "PreferHeroes": [],
-        "HealerWeight": [],
         "DefaultSkin": [],
         "DefenseBonus": [],
         "SmoothJump": [],
@@ -77149,8 +76550,14 @@
         "TargetGroupsRadius": [],
         "TargetGroupsRange": [],
         "TargetGroupsMinWeight": [],
-        "PreviewScenario": [],
+        "PreviewScenario": [
+            "SecondaryTroopDefense",
+            "SecondaryTroopDefense",
+            "SecondaryTroopDefense",
+            "SecondaryTroopDefense"
+        ],
         "AltPreviewScenario": [],
-        "ProjectileConsumesBunkerTroops": []
+        "ProjectileConsumesBunkerTroops": [],
+        "Name": []
     }
 }

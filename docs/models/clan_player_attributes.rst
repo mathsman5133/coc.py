@@ -9,11 +9,13 @@ Achievement
     :members:
     :private-members:
 
+
 Capital District
 ~~~~~~~~~~~~~~~~
 .. autoclass:: CapitalDistrict()
     :members:
     :private-members:
+
 
 Label
 ~~~~~
@@ -21,11 +23,13 @@ Label
     :members:
     :private-members:
 
+
 Base League
 ~~~~~~~~~~~
 .. autoclass:: BaseLeague()
     :members:
     :private-members:
+
 
 League
 ~~~~~~
@@ -33,6 +37,8 @@ League
     :members:
     :private-members:
     :inherited-members:
+    :show-inheritance:
+
 
 Legend Statistics
 ~~~~~~~~~~~~~~~~~
@@ -41,11 +47,13 @@ Legend Statistics
     :private-members:
     :inherited-members:
 
+
 PlayerHouseElement
 ~~~~~~~~~~~~~~~~~~
 .. autoclass:: PlayerHouseElement()
     :members:
     :private-members:
+
 
 PlayerHouseElementType
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -63,6 +71,7 @@ PlayerHouseElementType
 
     .. py:attribute:: walls
 
+
 Role
 ~~~~
 Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` or ``Elder``.
@@ -75,3 +84,4 @@ Returns a string that is rendered as the role appears in-game, ie ``Co-Leader`` 
 .. class:: Role
 
     .. py:attribute:: in_game_name
+

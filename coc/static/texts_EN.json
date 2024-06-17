@@ -17593,7 +17593,7 @@
     },
     "TID_BOOSTER_BUILDERS_INFO": {
         "EN": [
-            "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your builders to work 10x faster for <time>. Works in Home Village!"
+            "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your Builders to work 10x faster for <time>. Works in the Home Village! Unfortunately, the Builder's Apprentice is too young to enjoy this brew, so his working speed will not be impacted."
         ]
     },
     "TID_POPUP_BOOST_BUILDERS_TITLE": {
@@ -29434,7 +29434,7 @@
     },
     "TID_FLYING_FORTRESS_ABILITY_INFO": {
         "EN": [
-            "Defends itself with Skeleton Gliders and releases <num2> angry Skeletons when defeated."
+            "Defends itself with Skeleton Gliders and releases <num> angry Skeletons when defeated."
         ]
     },
     "TID_MOUNTAIN_GOLEM": {
@@ -37544,7 +37544,7 @@
     },
     "TID_SCENERY_SPACE": {
         "EN": [
-            "WIP-SPACE"
+            "Space Scenery"
         ]
     },
     "TID_STREAK_EVENT_BANNER_TITLE": {
@@ -37554,12 +37554,17 @@
     },
     "TID_CHARACTER_SHAPESHIFTER_DRUID": {
         "EN": [
-            "WIP Shapeshifter Druid"
+            "Druid"
         ]
     },
     "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO": {
         "EN": [
-            "WIP Starts as a ground healer and switche to another troops after some time."
+            "The Druid has complicated emotions. One moment he's calmly helping heal his fellow Troops, and the next he's turned into a very angry Bear."
+        ]
+    },
+    "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO_SHORT": {
+        "EN": [
+            "A helpful healer who turns into a very angry bear."
         ]
     },
     "TID_CHARACTER_CHAIN_HEAL_DRUID": {
@@ -37609,7 +37614,7 @@
     },
     "TID_SCENERY_EGYPT": {
         "EN": [
-            "WIP: Egypt"
+            "Egypt Scenery"
         ]
     },
     "TID_TRYING_TO_TYPE_TOO_MANY_TAGS": {
@@ -37644,12 +37649,12 @@
     },
     "TID_NOTICE_BOARD_FTUE_TITLE": {
         "EN": [
-            "Hey Chief! Let\u2019s find the best possible Clan for you by selecting a few quick preferences first!"
+            "Hey Chief! Let\u2019s find the best possible Clan for you by selecting your language first."
         ]
     },
     "TID_NOTICE_BOARD_FTUE_SUBTEXT": {
         "EN": [
-            "You can still change these settings later"
+            "You can still change this setting later"
         ]
     },
     "TID_NOTICE_BOARD_FTUE_ACTIVITY": {
@@ -37658,7 +37663,9 @@
         ]
     },
     "TID_DECO_GAME_CAMPAIGN": {
-        "EN": []
+        "EN": [
+            "Surprising Squad"
+        ]
     },
     "TID_ABILITY_FREE_KICK": {
         "EN": [
@@ -37721,10 +37728,14 @@
         ]
     },
     "TID_DECO_CLASHBALL_STATUECHARACTER": {
-        "EN": []
+        "EN": [
+            "Haaland Statue"
+        ]
     },
     "TID_DECO_CLASHBALL_TROPHYBEVERAGE": {
-        "EN": []
+        "EN": [
+            "Victory Milk"
+        ]
     },
     "TID_CLANGAMES_TASK_USE_FREE_KICKERS": {
         "EN": [
@@ -37988,7 +37999,7 @@
     },
     "TID_DECO_CLASHBALL_GOAL": {
         "EN": [
-            "WIP: Goal"
+            "Football Camp"
         ]
     },
     "TID_DAILY_LOGIN_HUB_TEXT": {

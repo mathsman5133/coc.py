@@ -24,7 +24,33 @@ SOFTWARE.
 from enum import Enum
 
 
-class PlayerHouseElementType(Enum):
+class ExtendedEnum(Enum):
+    """An Enum class that allows for the `__str__` method to be implemented."""
+    def __str__(self):
+        return self.in_game_name
+
+    def __eq__(self, other):
+        """Check if the enum is equal to another enum or a string."""
+        if isinstance(other, Enum):
+            return self.value == other.value
+        elif isinstance(other, str):
+            return str(self.name) == other or str(self.value) == other
+        return False
+
+    @property
+    def in_game_name(self) -> str:
+        raise NotImplementedError
+
+    @classmethod
+    def values(cls):
+        return list(map(lambda c: c.value, cls))
+
+    @classmethod
+    def names(cls):
+        return list(map(lambda c: c.name, cls))
+
+
+class PlayerHouseElementType(ExtendedEnum):
     """Enum to map the type of element of the player house."""
 
     ground = "ground"
@@ -33,19 +59,14 @@ class PlayerHouseElementType(Enum):
     deco = "decoration"
     walls = "walls"
 
-    def __str__(self):
-        return self.in_game_name
-
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the element type."""
-        lookup = {PlayerHouseElementType.ground: "Ground", PlayerHouseElementType.roof: "Roof",
-                  PlayerHouseElementType.foot: "Foot", PlayerHouseElementType.deco: "Decoration",
-                  PlayerHouseElementType.walls: "Walls"}
-        return lookup[self]
+        lookup = {"ground": "Ground", "roof": "Roof", "foot": "Foot", "decoration": "Decoration", "walls": "Walls"}
+        return lookup[self.value]
 
 
-class Role(Enum):
+class Role(ExtendedEnum):
     """Enum to map a player's role in the clan."""
 
     member = "member"
@@ -53,17 +74,14 @@ class Role(Enum):
     co_leader = "coLeader"
     leader = "leader"
 
-    def __str__(self):
-        return self.in_game_name
-
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
-        lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
-        return lookup[self]
+        lookup = {"member": "Member", "admin": "Elder", "coLeader": "Co-Leader", "leader": "Leader"}
+        return lookup[self.value]
 
 
-class WarRound(Enum):
+class WarRound(ExtendedEnum):
     previous_war = 0
     current_war = 1
     current_preparation = 2
@@ -71,8 +89,53 @@ class WarRound(Enum):
     def __str__(self):
         return self.name
 
+    @property
+    def in_game_name(self) -> str:
+        lookup = ["Previous War", "Current War", "Current Preparation"]
+        return lookup[self.value]
 
-class Resource(Enum):
+
+class BattleModifier(ExtendedEnum):
+    """Enum to map the type of battle modifiers."""
+    none = "none"
+    hard_mode = "hardMode"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the battle modifier."""
+        lookup = {"none": "None", "hardMode": "Hard Mode"}
+        return lookup[self.value]
+
+
+class WarState(ExtendedEnum):
+    """Enum to map the state of the war.
+    Compared to the api docs a few states are missing, but those were never observed in the wild."""
+    not_in_war = "notInWar"
+    preparation = "preparation"
+    in_war = "inWar"
+    war_ended = "warEnded"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the war state."""
+        lookup = {"notInWar": "Not in War", "preparation": "Preparation", "inWar": "In War", "warEnded": "War Ended"}
+        return lookup[self.value]
+
+
+class WarResult(ExtendedEnum):
+    """Enum to map the result of the war"""
+    win = "win"
+    lose = "lose"
+    tie = "tie"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the war state."""
+        lookup = {"win": "Win", "lose": "Lose", "tie": "Tie"}
+        return lookup[self.value]
+
+
+class Resource(ExtendedEnum):
     elixir = "Elixir"
     builder_elixir = "Elixir2"
     dark_elixir = "DarkElixir"
@@ -81,6 +144,14 @@ class Resource(Enum):
     shiny_ore = "CommonOre"
     glowy_ore = "RareOre"
     starry_ore = "EpicOre"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the resource."""
+        lookup = {"Elixir": "Elixir", "Elixir2": "Builder Elixir",
+                  "DarkElixir": "Dark Elixir", "Gold": "Gold", "Gold2": "Builder Gold",
+                  "CommonOre": "Shiny Ore", "RareOre": "Glowy Ore", "EpicOre": "Starry Ore"}
+        return lookup[self.value]
 
 
 ELIXIR_TROOP_ORDER = [
@@ -115,6 +186,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Ice Golem",
     "Headhunter",
     "Apprentice Warden",
+    "Druid",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -227,6 +299,8 @@ EQUIPMENT = [
     "Hog Rider Puppet",
     "Haste Vial",
     "Fireball",
+    "Spiky Ball",
+    "Rocket Spear"
 ]
 
 ACHIEVEMENT_ORDER = [

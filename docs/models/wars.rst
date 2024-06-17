@@ -9,6 +9,7 @@ Clan War
     :members:
     :private-members:
     :inherited-members:
+   
 
 Clan War Log Entry
 ~~~~~~~~~~~~~~~~~~
@@ -16,6 +17,7 @@ Clan War Log Entry
     :members:
     :private-members:
     :inherited-members:
+    
 
 Clan War League Group
 ~~~~~~~~~~~~~~~~~~~~~
@@ -23,6 +25,7 @@ Clan War League Group
     :members:
     :private-members:
     :inherited-members:
+    
 
 War Round
 ~~~~~~~~~
@@ -40,3 +43,4 @@ War Attack
 .. autoclass:: WarAttack()
     :members:
     :private-members:
+   

@@ -7,6 +7,22 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.7.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added inheritance of classes into the docs to make it easier to see what classes inherit from others.
+- Added the new :class:`BattleModifier` to :attr:`ClanWar.battle_modifier` and :class:`ClanWarLogEntry.battle_modifier`.
+- Added the new troop and equipment in June 2024 update to the static data.
+
+Changes:
+~~~~~~~~
+- Changed the way the :class:`ClanWar` and :class:`ClanWarLogEntry` classes handles the :attr:`state` and :attr:`result`
+  attribute, respectively. It now returns a :class:`WarState`/:class:`WarResult` enumeration object instead of a string
+  to allow better type hinting and easier comparison.
+- Updated the static data to reflect the June 2024 update changes.
+
 v3.6.0
 ------
 
