@@ -334,11 +334,13 @@ class ClanWarLogEntry:
         :class:`WarClan`: The opposition clan.
     attacks_per_member:
         :class:`int`: The number of attacks each member had this war.
+    battle_modifier:
+        :class:`BattleModifier`: The battle modifier for this war.
     """
 
     __slots__ = (
         "result", "end_time", "team_size", "clan", "opponent", "_client",
-        "attacks_per_member", "_raw_data", "_response_retry")
+        "attacks_per_member", "battle_modifier", "_raw_data", "_response_retry")
 
     def __init__(self, *, data, client, **kwargs):
         self._client = client
@@ -366,6 +368,7 @@ class ClanWarLogEntry:
 
         self.clan = self._fake_load_clan(data_get("clan"))
         self.opponent = self._fake_load_clan(data_get("opponent"))
+        self.battle_modifier: BattleModifier = try_enum(BattleModifier, data=str(data_get('battleModifier')))
 
         if data_get("attacksPerMember") is None and self.is_league_entry:
             self.attacks_per_member: int = 1
