@@ -23,8 +23,33 @@ SOFTWARE.
 """
 from enum import Enum
 
+class ExtendedEnum(Enum):
+    """An Enum class that allows for the `__str__` method to be implemented."""
+    def __str__(self):
+        return self.in_game_name
 
-class PlayerHouseElementType(Enum):
+    def __eq__(self, other):
+        """Check if the enum is equal to another enum or a string."""
+        if isinstance(other, Enum):
+            return self.value == other.value
+        elif isinstance(other, str):
+            return str(self.name) == other or str(self.value) == other
+        return False
+
+    @property
+    def in_game_name(self) -> str:
+        raise NotImplementedError
+
+    @classmethod
+    def values(cls):
+        return list(map(lambda c: c.value, cls))
+
+    @classmethod
+    def names(cls):
+        return list(map(lambda c: c.name, cls))
+
+
+class PlayerHouseElementType(ExtendedEnum):
     """Enum to map the type of element of the player house."""
 
     ground = "ground"
@@ -32,9 +57,6 @@ class PlayerHouseElementType(Enum):
     foot = "foot"  # API docs say this exists, but unable to find it anywhere. Looks like this means `walls`
     deco = "decoration"
     walls = "walls"
-
-    def __str__(self):
-        return self.in_game_name
 
     @property
     def in_game_name(self) -> str:
@@ -45,16 +67,13 @@ class PlayerHouseElementType(Enum):
         return lookup[self]
 
 
-class Role(Enum):
+class Role(ExtendedEnum):
     """Enum to map a player's role in the clan."""
 
     member = "member"
     elder = "admin"
     co_leader = "coLeader"
     leader = "leader"
-
-    def __str__(self):
-        return self.in_game_name
 
     @property
     def in_game_name(self) -> str:
@@ -63,7 +82,7 @@ class Role(Enum):
         return lookup[self]
 
 
-class WarRound(Enum):
+class WarRound(ExtendedEnum):
     previous_war = 0
     current_war = 1
     current_preparation = 2
@@ -71,8 +90,34 @@ class WarRound(Enum):
     def __str__(self):
         return self.name
 
+class BattleModifier(ExtendedEnum):
+    """Enum to map the type of battle modifiers."""
+    none = "None"
+    hard_mode = "hardMode"
 
-class Resource(Enum):
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the battle modifier."""
+        lookup = {BattleModifier.none: "None", BattleModifier.hard_mode: "Hard Mode"}
+        return lookup[self]
+
+class WarState(ExtendedEnum):
+    """Enum to map the state of the war.
+    Compared to the api docs a few states are missing, but those were never observed in the wild."""
+    not_in_war = "notInWar"
+    preparation = "preparation"
+    in_war = "inWar"
+    war_ended = "warEnded"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the war state."""
+        lookup = {WarState.not_in_war: "Not in War", WarState.preparation: "Preparation",
+                  WarState.in_war: "In War", WarState.war_ended: "War Ended"}
+        return lookup[self]
+
+
+class Resource(ExtendedEnum):
     elixir = "Elixir"
     builder_elixir = "Elixir2"
     dark_elixir = "DarkElixir"
@@ -81,6 +126,14 @@ class Resource(Enum):
     shiny_ore = "CommonOre"
     glowy_ore = "RareOre"
     starry_ore = "EpicOre"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the resource."""
+        lookup = {Resource.elixir: "Elixir", Resource.builder_elixir: "Builder Elixir",
+                  Resource.dark_elixir: "Dark Elixir", Resource.gold: "Gold", Resource.builder_gold: "Builder Gold",
+                  Resource.shiny_ore: "Shiny Ore", Resource.glowy_ore: "Glowy Ore", Resource.starry_ore: "Starry Ore"}
+        return lookup[self]
 
 
 ELIXIR_TROOP_ORDER = [
