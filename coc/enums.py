@@ -168,6 +168,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Ice Golem",
     "Headhunter",
     "Apprentice Warden",
+    "Druid",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -280,6 +281,8 @@ EQUIPMENT = [
     "Hog Rider Puppet",
     "Haste Vial",
     "Fireball",
+    "Spiky Ball",
+    "Rocket Spear"
 ]
 
 ACHIEVEMENT_ORDER = [

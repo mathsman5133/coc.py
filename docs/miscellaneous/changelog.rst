@@ -13,6 +13,14 @@ v3.6.1
 Additions:
 ~~~~~~~~~~
 - Added inheritance of classes into the docs to make it easier to see what classes inherit from others.
+- Added the new `BattleModifier` to the `ClanWar` class.
+- Added the new troop and equipment in June 2024 update to the static data.
+
+Changes:
+~~~~~~~~
+- Changed the way the `ClanWar` class handles the `state` attribute. It now returns a `WarState` enumeration object
+  instead of a string to allow better type hinting and easier comparison.
+- Updated the static data to reflect the June 2024 update changes.
 
 v3.6.0
 ------
