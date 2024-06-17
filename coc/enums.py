@@ -97,7 +97,7 @@ class WarRound(ExtendedEnum):
 
 class BattleModifier(ExtendedEnum):
     """Enum to map the type of battle modifiers."""
-    none = "None"
+    none = "none"
     hard_mode = "hardMode"
 
     @property
