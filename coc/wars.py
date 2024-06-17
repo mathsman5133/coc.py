@@ -28,7 +28,7 @@ import itertools
 
 from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
-from .enums import BattleModifier, WarRound, WarState
+from .enums import BattleModifier, WarResult, WarRound, WarState
 from .iterators import LeagueWarIterator
 from .miscmodels import try_enum, Timestamp
 from .utils import cached_property, get
@@ -323,7 +323,7 @@ class ClanWarLogEntry:
     Attributes
     ----------
     result:
-        :class:`str`: The result of the war - ``win`` or ``loss``
+        :class:`WarResult`: The result of the war - ``win``, ``lose`` or ``tie``
     end_time:
         :class:`Timestamp`: The :class:`Timestamp` that the war ended at.
     team_size:
@@ -362,7 +362,7 @@ class ClanWarLogEntry:
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.result: str = data_get("result")
+        self.result: WarResult = try_enum(WarResult, data=data_get("result"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.team_size: int = data_get("teamSize")
 

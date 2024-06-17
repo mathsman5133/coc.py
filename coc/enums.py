@@ -90,6 +90,7 @@ class WarRound(ExtendedEnum):
     def __str__(self):
         return self.name
 
+
 class BattleModifier(ExtendedEnum):
     """Enum to map the type of battle modifiers."""
     none = "None"
@@ -100,6 +101,7 @@ class BattleModifier(ExtendedEnum):
         """Get a neat client-facing string value for the battle modifier."""
         lookup = {BattleModifier.none: "None", BattleModifier.hard_mode: "Hard Mode"}
         return lookup[self]
+
 
 class WarState(ExtendedEnum):
     """Enum to map the state of the war.
@@ -114,6 +116,19 @@ class WarState(ExtendedEnum):
         """Get a neat client-facing string value for the war state."""
         lookup = {WarState.not_in_war: "Not in War", WarState.preparation: "Preparation",
                   WarState.in_war: "In War", WarState.war_ended: "War Ended"}
+        return lookup[self]
+
+
+class WarResult(ExtendedEnum):
+    """Enum to map the result of the war"""
+    win = "win"
+    lose = "lose"
+    tie = "tie"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the war state."""
+        lookup = {WarResult.win: "Win", WarResult.lose: "Lose", WarResult.tie: "Tie"}
         return lookup[self]
 
 
