@@ -397,12 +397,13 @@ class WarEvents:
         """Alias for the war end time changes, indicating a war has just ended"""
 
         async def wrapped(cached_war: ClanWar, war: ClanWar, callback):
-            # Check if the end time has changed or if it's newly set
-            end_time_changed = cached_war.end_time and war.end_time and cached_war.end_time.time != war.end_time.time
-            end_time_newly_set = war.end_time and not cached_war.end_time
+            if war.state == "warEnded":
+                # Check if the end time has changed or if it's newly set
+                end_time_changed = cached_war.end_time and war.end_time and cached_war.end_time.time != war.end_time.time
+                end_time_newly_set = war.end_time and not cached_war.end_time
 
-            if end_time_changed or end_time_newly_set:
-                await callback(war)
+                if end_time_changed or end_time_newly_set:
+                    await callback(war)
 
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, WarEvents.event_type)
 
