@@ -15,7 +15,7 @@ sys.path.append((root_project / "docs").as_posix())
 project = 'coc'
 copyright = '2022, mathsman5133'
 author = 'mathsman5133'
-release = '3.7.0'
+release = '3.7.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
