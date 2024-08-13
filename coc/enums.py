@@ -300,7 +300,8 @@ EQUIPMENT = [
     "Haste Vial",
     "Fireball",
     "Spiky Ball",
-    "Rocket Spear"
+    "Rocket Spear",
+    "Magic Mirror"
 ]
 
 ACHIEVEMENT_ORDER = [
