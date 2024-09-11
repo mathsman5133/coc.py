@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.7.2
+------
+
+Additions:
+~~~~~~~~~~
+- Enable gzip and deflate encoding/compression
+
 v3.7.1
 ------
 
