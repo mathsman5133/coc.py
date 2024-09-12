@@ -263,6 +263,7 @@ class HTTPClient:
         headers = {
             "Accept"       : "application/json",
             "authorization": "Bearer {}".format(next(self.keys)),
+            "Accept-Encoding": "gzip, deflate",
         }
         kwargs["headers"] = headers
 
