@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
 from enum import Enum
 
 
@@ -39,9 +40,13 @@ class PlayerHouseElementType(Enum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the element type."""
-        lookup = {PlayerHouseElementType.ground: "Ground", PlayerHouseElementType.roof: "Roof",
-                  PlayerHouseElementType.foot: "Foot", PlayerHouseElementType.deco: "Decoration",
-                  PlayerHouseElementType.walls: "Walls"}
+        lookup = {
+            PlayerHouseElementType.ground: "Ground",
+            PlayerHouseElementType.roof: "Roof",
+            PlayerHouseElementType.foot: "Foot",
+            PlayerHouseElementType.deco: "Decoration",
+            PlayerHouseElementType.walls: "Walls",
+        }
         return lookup[self]
 
 
@@ -59,7 +64,12 @@ class Role(Enum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
-        lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
+        lookup = {
+            Role.member: "Member",
+            Role.elder: "Elder",
+            Role.co_leader: "Co-Leader",
+            Role.leader: "Leader",
+        }
         return lookup[self]
 
 
@@ -190,7 +200,13 @@ DARK_ELIXIR_SPELL_ORDER = [
 
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
+HOME_BASE_HERO_ORDER = [
+    "Barbarian King",
+    "Archer Queen",
+    "Grand Warden",
+    "Royal Champion",
+    "Minion Prince",
+]
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
 HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
@@ -227,6 +243,9 @@ EQUIPMENT = [
     "Hog Rider Puppet",
     "Haste Vial",
     "Fireball",
+    "Lavaloon Puppet",
+    "Dark Orb",
+    "Henchmen Puppet",
 ]
 
 ACHIEVEMENT_ORDER = [
@@ -270,7 +289,6 @@ ACHIEVEMENT_ORDER = [
     "Dragon Slayer",
     "Ungrateful Child",
     "Superb Work",
-
     # Builder Base
     "Master Engineering",
     "Hidden Treasures",
@@ -278,7 +296,6 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",
