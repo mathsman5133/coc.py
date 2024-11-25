@@ -3,6 +3,7 @@ Automates updating the static files. If new files need to be added, then
 place them in the TARGETS list.
 """
 import json
+import traceback
 import urllib
 import urllib.request
 import logging
@@ -12,6 +13,9 @@ import csv
 import os
 import zipfile
 from collections import defaultdict
+
+import lzma
+import zstandard
 
 # Targets first index is the URL and the second is the filename. If filename
 # is None, then the url name is used
@@ -26,7 +30,7 @@ TARGETS = [
     ("logic/character_items.csv", "equipment.csv"),
     ("localization/texts.csv", "texts_EN.csv"),
 ]
-FINGERPRINT = "ef352b21171ef765a724f84dae76d8edbc79a93a"
+FINGERPRINT = "91456c2b271d060dc0f5b22069acd9abb11bf30c"
 BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
 
@@ -46,15 +50,24 @@ def decompress(data):
         decompressed = lzham.decompress(
             data[9:], uncompressed_size, {"dict_size_log2": dict_size}
         )
+        compression_details = {
+            "dict_size"        : dict_size,
+            "uncompressed_size": uncompressed_size,
+        }
     elif int.from_bytes(data[0:4], byteorder="little") == zstandard.MAGIC_NUMBER:
         logging.debug("Decompressing using ZSTD ...")
         decompressed = zstandard.decompress(data)
+        compression_details = {
+            "dict_size"        : None,
+            "uncompressed_size": None,
+        }
     else:
         logging.debug("Decompressing using LZMA ...")
         # fix uncompressed size to 64 bit
         data = data[0:9] + (b"\x00" * 4) + data[9:]
 
         prop = data[0]
+        o_prop = prop
         if prop > (4 * 5 + 4) * 9 + 8:
             raise Exception("LZMA properties error")
         pb = int(prop / (9 * 5))
@@ -68,16 +81,29 @@ def decompress(data):
         logging.debug(f"dictionary size: {dictionary_size}")
         uncompressed_size = int.from_bytes(data[5:13], byteorder="little")
         logging.debug(f"uncompressed size: {uncompressed_size}")
-
+        compression_details = {
+            "dict_size"        : dictionary_size,
+            "uncompressed_size": uncompressed_size,
+            "lc"               : lc,
+            "lp"               : lp,
+            "pb"               : pb,
+            "prop"             : prop,
+            "original_prop"    : o_prop,
+        }
         decompressed = lzma.LZMADecompressor().decompress(data)
-    return decompressed
+    return decompressed, compression_details
+
+
+
 
 
 def process_csv(data, file_path, save_name):
-    decompressed = decompress(data)
+    # decompress the data if needed
+    if not (data[:6] == '"Name"' or data[:6] == b'"Name"' or data[:6] == b'"name"' or data[:6] == b'"name"'):
+        decompressed = decompress(data)
 
-    with open(f"{file_path}", "wb") as f:
-        f.write(decompressed)
+        with open(f"{file_path}", "wb") as f:
+            f.write(decompressed[0])
 
     # create a dictionary
     data = defaultdict(lambda: defaultdict(list))
@@ -143,6 +169,8 @@ def check_header(data):
         return "sc"
     if data[:4] == b"\x53\x69\x67\x3a":
         return "sig:"
+    if data[:6] == '"Name"' or data[:6] == b'"Name"' or data[:6] == b'"name"' or data[:6] == b'"name"':
+        return "decoded csv"
     raise Exception("  Unknown header")
 
 

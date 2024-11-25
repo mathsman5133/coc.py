@@ -114,7 +114,7 @@
             6,
             8,
             9,
-            12
+            11
         ],
         "BuildTimeH": [
             0,
@@ -128,7 +128,7 @@
             6,
             18,
             12,
-            12
+            0
         ],
         "BuildTimeM": [
             5,
@@ -184,7 +184,7 @@
             4200000,
             5700000,
             9600000,
-            19000000
+            15000000
         ],
         "TownHallLevel": [
             1,
@@ -332,6 +332,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -362,7 +364,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -1120,6 +1123,8 @@
             32
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -1154,7 +1159,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -2008,6 +2014,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -2042,7 +2050,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -2479,11 +2488,11 @@
             0,
             0,
             0,
+            1,
             2,
             3,
-            5,
-            11,
-            12,
+            4,
+            6,
             12
         ],
         "BuildTimeH": [
@@ -2499,9 +2508,9 @@
             12,
             16,
             0,
-            12,
-            12,
-            6,
+            0,
+            0,
+            0,
             0,
             12
         ],
@@ -2577,7 +2586,7 @@
             1000000,
             1800000,
             2800000,
-            4000000,
+            3900000,
             6500000,
             7500000
         ],
@@ -2767,6 +2776,8 @@
             25
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -2802,7 +2813,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -3578,6 +3590,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -3612,7 +3626,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -4066,11 +4081,11 @@
             0,
             0,
             0,
+            1,
             2,
             3,
-            5,
-            11,
-            12,
+            4,
+            6,
             12
         ],
         "BuildTimeH": [
@@ -4086,9 +4101,9 @@
             12,
             16,
             0,
-            12,
-            12,
-            6,
+            0,
+            0,
+            0,
             0,
             12
         ],
@@ -4354,6 +4369,8 @@
             25
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -4389,7 +4406,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -4933,8 +4951,8 @@
             6500000,
             8000000,
             10000000,
-            12000000,
-            16000000
+            11000000,
+            14000000
         ],
         "TownHallLevel": [
             1,
@@ -5173,6 +5191,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -5208,7 +5228,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -5713,8 +5734,8 @@
             3800000,
             5500000,
             8100000,
-            12500000,
-            13500000
+            12000000,
+            13000000
         ],
         "TownHallLevel": [
             3,
@@ -5878,6 +5899,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -5910,7 +5933,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -6363,12 +6387,12 @@
             0,
             1,
             1,
+            2,
+            2,
             3,
             3,
-            7,
-            7,
-            9,
-            13
+            4,
+            5
         ],
         "BuildTimeH": [
             0,
@@ -6384,14 +6408,14 @@
             12,
             18,
             18,
-            6,
-            6,
             0,
             0,
             0,
             0,
-            12,
-            6
+            0,
+            0,
+            0,
+            0
         ],
         "BuildTimeM": [
             0,
@@ -6478,12 +6502,12 @@
             1700000,
             2000000,
             2500000,
-            4400000,
-            5600000,
+            4000000,
+            5000000,
+            6000000,
             6500000,
-            7800000,
-            11600000,
-            16000000
+            10000000,
+            12000000
         ],
         "TownHallLevel": [
             1,
@@ -6703,6 +6727,52 @@
             900,
             900
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON",
+            "TID_BUILDING_CANNON"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG",
+            "TID_BUILDING_CANNON_BURST_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -6811,12 +6881,12 @@
             74,
             85,
             95,
+            100,
             105,
+            110,
             115,
-            120,
             125,
-            130,
-            140,
+            135,
             150,
             160
         ],
@@ -6896,7 +6966,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -7789,12 +7860,12 @@
             0,
             1,
             1,
+            2,
+            2,
             3,
             3,
-            7,
-            7,
-            9,
-            13
+            4,
+            5
         ],
         "BuildTimeH": [
             0,
@@ -7810,14 +7881,14 @@
             14,
             18,
             18,
-            6,
-            6,
             0,
             0,
             0,
             0,
-            12,
-            6
+            0,
+            0,
+            0,
+            0
         ],
         "BuildTimeM": [
             1,
@@ -7904,12 +7975,12 @@
             2000000,
             2200000,
             2500000,
-            4700000,
-            6100000,
-            6800000,
+            4000000,
+            5000000,
+            6500000,
             8000000,
-            11600000,
-            16000000
+            10000000,
+            12000000
         ],
         "TownHallLevel": [
             2,
@@ -8129,6 +8200,52 @@
             1000,
             1000
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER",
+            "TID_BUILDING_ARCHER_TOWER"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -8235,15 +8352,15 @@
             56,
             63,
             70,
-            75,
-            80,
+            74,
+            78,
+            82,
+            85,
             90,
             100,
-            105,
             110,
             120,
-            130,
-            138,
+            135,
             145
         ],
         "AltDPS": [
@@ -8322,7 +8439,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -9319,8 +9437,8 @@
             1000000,
             2000000,
             3000000,
-            5000000,
-            8000000,
+            4000000,
+            6000000,
             9000000
         ],
         "TownHallLevel": [
@@ -9491,6 +9609,8 @@
             29
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -9526,7 +9646,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -9769,8 +9890,8 @@
             1,
             2,
             3,
-            5,
-            8,
+            4,
+            6,
             9
         ],
         "ActivateCombatOnDamageTaken": [],
@@ -9833,6 +9954,47 @@
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
         "ProjectileBounces": [],
+        "UseCustomCornerPiecesInEnds": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "UseCustomCornerPiecesInTurns": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "UseCustomCornerPiecesInTJunctions": [
+            true
+        ],
         "Name": []
     },
     "Wizard Tower": {
@@ -9977,11 +10139,11 @@
             2,
             2,
             3,
+            4,
+            4,
+            5,
+            6,
             7,
-            8,
-            9,
-            13,
-            13,
             14
         ],
         "BuildTimeH": [
@@ -9996,10 +10158,10 @@
             12,
             0,
             0,
-            0,
-            0,
-            0,
             12,
+            0,
+            0,
+            6,
             12
         ],
         "BuildTimeM": [
@@ -10067,11 +10229,11 @@
             2200000,
             2800000,
             4000000,
-            7200000,
-            9200000,
-            10200000,
-            12000000,
-            19200000,
+            5000000,
+            8000000,
+            9000000,
+            11000000,
+            15500000,
             20200000
         ],
         "TownHallLevel": [
@@ -10207,12 +10369,12 @@
             960,
             1200,
             1440,
-            1680,
-            2000,
+            1600,
+            1900,
+            2120,
             2240,
-            2480,
-            2700,
-            2900,
+            2500,
+            2800,
             3000,
             3150
         ],
@@ -10252,6 +10414,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -10337,7 +10501,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -10904,25 +11069,25 @@
             2,
             2,
             3,
+            4,
+            5,
+            7,
             8,
-            9,
-            12,
-            13,
             15
         ],
         "BuildTimeH": [
             3,
-            8,
-            12,
-            18,
+            6,
+            10,
+            16,
             0,
             12,
             0,
             12,
             0,
-            18,
-            0,
-            0,
+            12,
+            12,
+            12,
             12,
             0
         ],
@@ -10986,8 +11151,8 @@
             3400000,
             5800000,
             8400000,
-            11900000,
-            19500000,
+            11000000,
+            16000000,
             20500000
         ],
         "TownHallLevel": [
@@ -11167,6 +11332,8 @@
             1000,
             1000
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -11244,7 +11411,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -11726,35 +11894,35 @@
             0,
             0,
             0,
+            0,
+            0,
+            1,
             1,
             2,
             2,
-            2,
             3,
             3,
+            4,
+            6,
             7,
-            7,
-            7,
-            12,
-            13,
             14
         ],
         "BuildTimeH": [
+            2,
             3,
+            4,
             6,
             12,
             18,
             0,
-            0,
             12,
-            12,
-            0,
-            0,
-            0,
             0,
             12,
             0,
             12,
+            0,
+            0,
+            6,
             12
         ],
         "BuildTimeM": [
@@ -11825,8 +11993,8 @@
             5800000,
             6500000,
             8200000,
+            11000000,
             15000000,
-            19000000,
             19500000
         ],
         "TownHallLevel": [
@@ -12007,6 +12175,42 @@
             1100,
             1100
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR",
+            "TID_BUILDING_MORTAR"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG",
+            "TID_BUILDING_MORTAR_BURST_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -12160,7 +12364,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -12927,10 +13132,10 @@
             2,
             5,
             6,
+            8,
             9,
             11,
             13,
-            14,
             15
         ],
         "BuildTimeH": [
@@ -13000,7 +13205,7 @@
             8000000,
             10000000,
             12600000,
-            20000000,
+            18000000,
             21000000
         ],
         "TownHallLevel": [
@@ -13240,6 +13445,8 @@
             30
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -13270,7 +13477,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -13627,18 +13835,18 @@
         "ExportNameLocked": [],
         "BuildTimeD": [
             0,
+            8,
+            9,
             9,
             11,
-            13,
-            14,
             15
         ],
         "BuildTimeH": [
             0,
+            0,
+            0,
             12,
-            12,
-            6,
-            6,
+            0,
             0
         ],
         "BuildTimeM": [
@@ -13670,7 +13878,7 @@
             8000000,
             10000000,
             12000000,
-            17000000,
+            15000000,
             20000000
         ],
         "TownHallLevel": [
@@ -13778,6 +13986,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -13822,7 +14032,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -14119,10 +14330,10 @@
             1
         ],
         "TID": [
-            "TID_COMM_MAST"
+            "TID_CAPBUILD_GOBLIN_HUT"
         ],
         "InfoTID": [
-            "TID_COMM_MAST"
+            "TID_CAPBUILD_GOBLIN_HUT_INFO"
         ],
         "BuildingClass": [
             "Npc"
@@ -14214,6 +14425,8 @@
             30
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -14233,7 +14446,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -14389,15 +14603,22 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Goblin main building": {
         "BuildingLevel": [
             1,
             2
         ],
-        "TID": [],
-        "InfoTID": [],
+        "TID": [
+            "TID_BUILDING_GOBLIN_HALL",
+            "TID_BUILDING_GOBLIN_HALL"
+        ],
+        "InfoTID": [
+            "TID_GOBLIN_HALL_INFO",
+            "TID_GOBLIN_HALL_INFO"
+        ],
         "BuildingClass": [
             "Npc Town Hall",
             "Npc Town Hall"
@@ -14511,6 +14732,8 @@
         "AttackRange": [
             1000
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -14539,7 +14762,8 @@
             "Tesla Attack_9_Secondary"
         ],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -14723,8 +14947,12 @@
         "BuildingLevel": [
             1
         ],
-        "TID": [],
-        "InfoTID": [],
+        "TID": [
+            "TID_CAPBUILD_GOBLIN_HUT"
+        ],
+        "InfoTID": [
+            "TID_CAPBUILD_GOBLIN_HUT_INFO"
+        ],
         "BuildingClass": [
             "Npc"
         ],
@@ -14793,9 +15021,7 @@
         "Bunker": [],
         "Blacksmith": [],
         "ArmySlotType": [],
-        "HousingSpace": [
-            20
-        ],
+        "HousingSpace": [],
         "HousingSpaceAlt": [],
         "HousingSpaceSiege": [],
         "ProducesResource": [],
@@ -14815,6 +15041,8 @@
             30
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -14834,7 +15062,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -14994,7 +15223,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Tesla Tower": {
         "BuildingLevel": [
@@ -15130,11 +15360,11 @@
             2,
             2,
             3,
+            3,
+            5,
+            6,
             7,
             8,
-            8,
-            13,
-            13,
             14
         ],
         "BuildTimeH": [
@@ -15147,11 +15377,11 @@
             0,
             12,
             0,
-            18,
-            0,
-            0,
-            0,
             12,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "BuildTimeM": [
@@ -15218,8 +15448,8 @@
             5000000,
             7700000,
             9000000,
-            12000000,
-            19100000,
+            10000000,
+            15000000,
             20000000
         ],
         "TownHallLevel": [
@@ -15392,6 +15622,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -15483,7 +15715,8 @@
             "Tesla Attack_10_Secondary"
         ],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -16150,6 +16383,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -16175,7 +16410,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -16503,8 +16739,8 @@
             8,
             9,
             9,
-            13,
-            13,
+            10,
+            11,
             15
         ],
         "BuildTimeH": [
@@ -16517,7 +16753,7 @@
             0,
             0,
             0,
-            18,
+            0,
             0
         ],
         "BuildTimeM": [
@@ -16569,7 +16805,7 @@
             8300000,
             10300000,
             14000000,
-            20000000,
+            18000000,
             21000000
         ],
         "TownHallLevel": [
@@ -16722,6 +16958,32 @@
             1400,
             1400
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG",
+            "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -16768,12 +17030,12 @@
             60,
             70,
             80,
-            90,
+            85,
+            95,
             110,
             130,
-            150,
-            170,
-            190,
+            155,
+            185,
             205,
             225
         ],
@@ -16823,7 +17085,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -17362,6 +17625,8 @@
         ],
         "RegenTime": [],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -17381,7 +17646,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -17547,7 +17813,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Dark Elixir Pump": {
         "BuildingLevel": [
@@ -17884,6 +18151,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -17912,7 +18181,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -18255,8 +18525,8 @@
             2,
             2,
             3,
+            5,
             6,
-            12,
             12,
             15
         ],
@@ -18270,7 +18540,7 @@
             12,
             0,
             0,
-            12,
+            0,
             0
         ],
         "BuildTimeM": [
@@ -18321,8 +18591,8 @@
             3000000,
             3800000,
             5400000,
-            8100000,
-            12500000,
+            7000000,
+            11000000,
             13500000
         ],
         "TownHallLevel": [
@@ -18463,6 +18733,8 @@
             30
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -18492,7 +18764,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -18839,6 +19112,8 @@
         ],
         "RegenTime": [],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -18858,7 +19133,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -19024,7 +19300,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Dark Elixir Barrack": {
         "BuildingLevel": [
@@ -19037,9 +19314,11 @@
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "TID": [
+            "TID_DARK_ELIXIR_BARRACK",
             "TID_DARK_ELIXIR_BARRACK",
             "TID_DARK_ELIXIR_BARRACK",
             "TID_DARK_ELIXIR_BARRACK",
@@ -19061,9 +19340,11 @@
             "TID_DARK_ELIXIR_BARRACK_INFO",
             "TID_DARK_ELIXIR_BARRACK_INFO",
             "TID_DARK_ELIXIR_BARRACK_INFO",
+            "TID_DARK_ELIXIR_BARRACK_INFO",
             "TID_DARK_ELIXIR_BARRACK_INFO"
         ],
         "BuildingClass": [
+            "Army",
             "Army",
             "Army",
             "Army",
@@ -19087,6 +19368,7 @@
             "sc/buildings.sc",
             "sc/buildings.sc",
             "sc/buildings.sc",
+            "sc/buildings.sc",
             "sc/buildings.sc"
         ],
         "ExportName": [
@@ -19099,10 +19381,12 @@
             "darkBarracks_lvl7",
             "darkBarracks_lvl8",
             "darkBarracks_lvl9",
-            "darkBarracks_lvl10"
+            "darkBarracks_lvl10",
+            "darkBarracks_lvl11"
         ],
         "ExportNameNpc": [],
         "ExportNameConstruction": [
+            "darkBarracks_const",
             "darkBarracks_const",
             "darkBarracks_const",
             "darkBarracks_const",
@@ -19125,6 +19409,7 @@
             6,
             8,
             10,
+            12,
             13
         ],
         "BuildTimeH": [
@@ -19137,9 +19422,11 @@
             12,
             0,
             0,
+            0,
             0
         ],
         "BuildTimeM": [
+            0,
             0,
             0,
             0,
@@ -19161,9 +19448,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "BuildResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -19185,7 +19474,8 @@
             4000000,
             7500000,
             9000000,
-            13000000
+            11000000,
+            14000000
         ],
         "TownHallLevel": [
             7,
@@ -19197,7 +19487,8 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "CapitalHallLevel": [
             7,
@@ -19209,9 +19500,11 @@
             10,
             11,
             12,
-            13
+            13,
+            14
         ],
         "Width": [
+            3,
             3,
             3,
             3,
@@ -19233,10 +19526,12 @@
             3,
             3,
             3,
+            3,
             3
         ],
         "Icon": [],
         "ExportNameBuildAnim": [
+            "darkBarracks_upg",
             "darkBarracks_upg",
             "darkBarracks_upg",
             "darkBarracks_upg",
@@ -19285,10 +19580,12 @@
             100,
             110,
             120,
-            130
+            130,
+            140
         ],
         "UpgradesUnitType": [],
         "ProducesUnitsOfType": [
+            2,
             2,
             2,
             2,
@@ -19310,9 +19607,11 @@
             "TID_REQUIRED_DARK_BARRACK_LEVEL",
             "TID_REQUIRED_DARK_BARRACK_LEVEL",
             "TID_REQUIRED_DARK_BARRACK_LEVEL",
+            "TID_REQUIRED_DARK_BARRACK_LEVEL",
             "TID_REQUIRED_DARK_BARRACK_LEVEL"
         ],
         "BoostCost": [
+            5,
             5,
             5,
             5,
@@ -19335,9 +19634,11 @@
             800,
             850,
             900,
-            950
+            950,
+            1000
         ],
         "RegenTime": [
+            15,
             15,
             15,
             15,
@@ -19350,6 +19651,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -19372,13 +19675,15 @@
             "Building Destroyed",
             "Building Destroyed",
             "Building Destroyed",
+            "Building Destroyed",
             "Building Destroyed"
         ],
         "DestroyDamageEffect": [],
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -19387,6 +19692,7 @@
         "AltProjectile": [],
         "ExportNameDamagedSWF": [],
         "ExportNameDamaged": [
+            "destroyedBuilding_3m_pit_wood_red",
             "destroyedBuilding_3m_pit_wood_red",
             "destroyedBuilding_3m_pit_wood_red",
             "destroyedBuilding_3m_pit_wood_red",
@@ -19408,9 +19714,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "BuildingH": [
+            2,
             2,
             2,
             2,
@@ -19424,6 +19732,7 @@
         ],
         "BaseGfx": [],
         "ExportNameBase": [
+            "barracks_base",
             "barracks_base",
             "barracks_base",
             "barracks_base",
@@ -19463,9 +19772,11 @@
             "Training Barrack Pickup",
             "Training Barrack Pickup",
             "Training Barrack Pickup",
+            "Training Barrack Pickup",
             "Training Barrack Pickup"
         ],
         "PlacingEffect": [
+            "Training Barrack Placing",
             "Training Barrack Placing",
             "Training Barrack Placing",
             "Training Barrack Placing",
@@ -19584,6 +19895,7 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "UpgradeTasks": [],
@@ -19594,6 +19906,7 @@
         "ProjectileVariantByTargetMaxHP": [],
         "DefaultProjectileVariant": [],
         "PreviewScenario": [
+            "NoCombatBuilding",
             "NoCombatBuilding",
             "NoCombatBuilding",
             "NoCombatBuilding",
@@ -19712,10 +20025,10 @@
             3,
             4,
             5,
+            7,
             8,
             9,
-            13,
-            13,
+            11,
             14
         ],
         "BuildTimeH": [
@@ -19724,10 +20037,10 @@
             0,
             6,
             0,
-            12,
             0,
-            0,
+            6,
             18,
+            0,
             12
         ],
         "BuildTimeM": [
@@ -19774,8 +20087,8 @@
             4200000,
             6500000,
             10500000,
-            12600000,
-            21000000,
+            12000000,
+            19000000,
             22000000
         ],
         "TownHallLevel": [
@@ -19919,6 +20232,30 @@
             900,
             900
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG",
+            "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG",
+            "TID_BUILDING_DARK_TOWER_MULTI_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -19962,12 +20299,12 @@
             30,
             35,
             40,
+            45,
             50,
-            60,
-            70,
-            85,
+            55,
+            65,
+            80,
             100,
-            110,
             120
         ],
         "AltDPS": [],
@@ -20002,7 +20339,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -20268,11 +20606,11 @@
             100,
             120,
             140,
+            150,
             160,
             180,
-            200,
-            220,
-            240,
+            210,
+            230,
             260
         ],
         "DPSLv3": [
@@ -20280,11 +20618,11 @@
             1000,
             1200,
             1400,
+            1500,
             1600,
             1800,
-            2000,
-            2200,
-            2400,
+            2100,
+            2300,
             2600
         ],
         "Lv2SwitchTime": [
@@ -20752,6 +21090,8 @@
             1500,
             1500
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [
@@ -20809,7 +21149,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -21339,6 +21680,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -21363,7 +21706,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -21686,6 +22030,8 @@
         ],
         "RegenTime": [],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -21705,7 +22051,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -21873,7 +22220,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Ancient Artillery": {
         "BuildingLevel": [
@@ -21993,8 +22341,8 @@
             8000000,
             10000000,
             13000000,
-            17000000,
-            21500000,
+            15000000,
+            19500000,
             22000000
         ],
         "TownHallLevel": [
@@ -22111,6 +22459,8 @@
             5000,
             5000
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -22176,7 +22526,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -22670,10 +23021,10 @@
             2,
             3,
             3,
-            8,
-            9,
-            13,
-            13,
+            4,
+            6,
+            7,
+            10,
             14
         ],
         "BuildTimeH": [
@@ -22683,10 +23034,10 @@
             0,
             0,
             0,
-            0,
-            0,
-            0,
             12,
+            0,
+            0,
+            0,
             12
         ],
         "BuildTimeM": [
@@ -22735,10 +23086,10 @@
             2000000,
             2800000,
             4000000,
-            6300000,
-            8800000,
-            12300000,
-            20000000,
+            6000000,
+            8000000,
+            12000000,
+            17500000,
             20800000
         ],
         "TownHallLevel": [
@@ -22879,6 +23230,8 @@
             600,
             600
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -22956,7 +23309,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -23639,6 +23993,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -23667,7 +24023,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -24224,6 +24581,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -24252,7 +24611,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -24859,6 +25219,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -24887,7 +25249,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -25505,6 +25868,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -25533,7 +25898,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -26173,6 +26539,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -26201,7 +26569,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -26819,6 +27188,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -26847,7 +27218,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -27465,6 +27837,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -27493,7 +27867,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -28137,6 +28512,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -28167,7 +28544,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -28726,6 +29104,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -28798,7 +29178,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -29232,6 +29613,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -29251,7 +29634,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -29427,7 +29811,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Tesla Tower2": {
         "BuildingLevel": [
@@ -29720,6 +30105,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -29786,7 +30173,8 @@
             "Tesla Attack_8_Secondary"
         ],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -30426,6 +30814,8 @@
             850,
             850
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -30487,7 +30877,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -31105,6 +31496,8 @@
             1100,
             1100
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -31188,7 +31581,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -31850,6 +32244,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -31878,7 +32274,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -32239,6 +32636,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -32258,7 +32657,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -32424,7 +32824,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Archer Tower2": {
         "BuildingLevel": [
@@ -32728,6 +33129,30 @@
             1000,
             1000
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG",
+            "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -32833,7 +33258,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -33322,6 +33748,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -33341,7 +33769,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -33519,7 +33948,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Air Defense Mini": {
         "BuildingLevel": [
@@ -33812,6 +34242,8 @@
             900,
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -33884,7 +34316,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -34502,6 +34935,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -34530,7 +34965,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -35115,6 +35551,8 @@
             750,
             750
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -35187,7 +35625,7 @@
             300,
             300
         ],
-        "ChainAttackMaxTargets": [
+        "ChainAttackDepth": [
             2,
             2,
             2,
@@ -35198,6 +35636,18 @@
             2,
             2,
             2
+        ],
+        "ChainAttackFactor": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
         ],
         "ChainAttackDelay": [
             128,
@@ -35629,6 +36079,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -35648,7 +36100,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -35822,7 +36275,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Air Defense2": {
         "BuildingLevel": [
@@ -36115,6 +36569,8 @@
             750,
             750
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -36176,7 +36632,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -36794,6 +37251,8 @@
             230,
             230
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -36866,7 +37325,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -37484,6 +37944,8 @@
             700,
             700
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -37567,7 +38029,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -38196,6 +38659,8 @@
             950,
             950
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -38257,7 +38722,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -38952,6 +39418,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -38980,7 +39448,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -39390,10 +39859,10 @@
             4,
             5,
             7,
+            8,
+            9,
             10,
-            11,
-            13,
-            13
+            11
         ],
         "BuildTimeH": [
             0,
@@ -39402,7 +39871,7 @@
             0,
             0,
             0,
-            12
+            0
         ],
         "BuildTimeM": [
             0,
@@ -39438,7 +39907,7 @@
             9000000,
             10000000,
             14000000,
-            19000000
+            17000000
         ],
         "TownHallLevel": [
             12,
@@ -39578,6 +40047,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -39603,7 +40074,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -39920,6 +40392,12 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_CANNON"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_CANNON_BURST_CONFIG"
+        ],
         "AltAttackMode": [
             true
         ],
@@ -39953,7 +40431,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -40145,7 +40624,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Goblin Castle": {
         "BuildingLevel": [
@@ -40265,6 +40745,8 @@
             10
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -40284,7 +40766,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -40448,7 +40931,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Dragon Cave": {
         "BuildingLevel": [
@@ -40568,6 +41052,8 @@
             10
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -40587,7 +41073,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -40751,7 +41238,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "LavaLauncher": {
         "BuildingLevel": [
@@ -41044,6 +41532,8 @@
             1300,
             1300
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -41127,7 +41617,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -41567,6 +42058,8 @@
             20
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -41586,7 +42079,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -41746,7 +42240,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Builder6Unlock": {
         "BuildingLevel": [
@@ -41928,6 +42423,8 @@
             20
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -41951,7 +42448,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -42269,6 +42767,8 @@
         ],
         "RegenTime": [],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -42288,7 +42788,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -42454,7 +42955,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Scattershot": {
         "BuildingLevel": [
@@ -42549,7 +43051,7 @@
             11000000,
             12000000,
             12600000,
-            21300000,
+            19300000,
             22500000
         ],
         "TownHallLevel": [
@@ -42648,6 +43150,8 @@
             1000,
             1000
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -42695,7 +43199,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -43050,25 +43555,25 @@
         ],
         "ExportNameLocked": [],
         "BuildTimeD": [
+            7,
+            7,
+            8,
+            8,
+            9,
+            10,
+            11,
             12,
-            12,
-            12,
-            13,
-            13,
-            13,
-            13,
-            14,
             15,
             16
         ],
         "BuildTimeH": [
             0,
             12,
-            18,
             0,
-            6,
             12,
-            18,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -43112,12 +43617,12 @@
         "BuildCost": [
             10000000,
             12000000,
-            14000000,
+            13000000,
+            15000000,
             16000000,
-            19750000,
-            20000000,
-            20250000,
-            20500000,
+            17000000,
+            18000000,
+            19000000,
             21000000,
             21500000
         ],
@@ -43251,6 +43756,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -43279,7 +43786,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -43334,7 +43842,7 @@
             "pet_house_lvl7_base",
             "pet_house_lvl8_base",
             "pet_house_lvl9_base",
-            "pet_house_lvl9_base"
+            "pet_house_lvl10_base"
         ],
         "AirTargets": [],
         "GroundTargets": [],
@@ -43522,8 +44030,12 @@
         "BuildingLevel": [
             1
         ],
-        "TID": [],
-        "InfoTID": [],
+        "TID": [
+            "TID_BUILDING_GOBLIN_HALL"
+        ],
+        "InfoTID": [
+            "TID_GOBLIN_HALL_INFO"
+        ],
         "BuildingClass": [
             "Npc Town Hall"
         ],
@@ -43614,6 +44126,8 @@
             30
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -43633,7 +44147,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -43803,7 +44318,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Smithy": {
         "BuildingLevel": [
@@ -44105,6 +44621,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -44132,7 +44650,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -44363,305 +44882,6 @@
         "ProjectileBounces": [],
         "Name": []
     },
-    "Unused2": {
-        "BuildingLevel": [
-            1
-        ],
-        "TID": [
-            "TID_BUILDING_CANNON"
-        ],
-        "InfoTID": [
-            "TID_BASIC_TURRET_INFO"
-        ],
-        "BuildingClass": [
-            "Defense"
-        ],
-        "SecondaryTargetingClass": [],
-        "ShopBuildingClass": [],
-        "SWF": [
-            "sc/buildings.sc"
-        ],
-        "ExportName": [
-            "basic_turret_lvl1"
-        ],
-        "ExportNameNpc": [],
-        "ExportNameConstruction": [
-            "basic_turret_const"
-        ],
-        "ExportNameLocked": [],
-        "BuildTimeD": [
-            0
-        ],
-        "BuildTimeH": [
-            0
-        ],
-        "BuildTimeM": [
-            0
-        ],
-        "BuildTimeS": [
-            10
-        ],
-        "BuildResource": [
-            "Gold"
-        ],
-        "BuildCost": [
-            250
-        ],
-        "TownHallLevel": [
-            1000
-        ],
-        "CapitalHallLevel": [],
-        "Width": [
-            3
-        ],
-        "Height": [
-            3
-        ],
-        "Icon": [],
-        "ExportNameBuildAnim": [
-            "basic_turret_upg"
-        ],
-        "ExportNameUpgradeAnim": [],
-        "MaxStoredGold": [],
-        "MaxStoredElixir": [],
-        "MaxStoredDarkElixir": [],
-        "MaxStoredSourElixir": [],
-        "MaxStoredCommonOre": [],
-        "MaxStoredRareOre": [],
-        "MaxStoredEpicOre": [],
-        "MaxStoredWarGold": [],
-        "MaxStoredWarElixir": [],
-        "MaxStoredWarDarkElixir": [],
-        "MaxStoredGold2": [],
-        "MaxStoredElixir2": [],
-        "PercentageStoredGold": [],
-        "PercentageStoredElixir": [],
-        "PercentageStoredDarkElixir": [],
-        "LootOnDestruction": [],
-        "Bunker": [],
-        "Blacksmith": [],
-        "ArmySlotType": [],
-        "HousingSpace": [],
-        "HousingSpaceAlt": [],
-        "HousingSpaceSiege": [],
-        "ProducesResource": [],
-        "ResourcePer100Hours": [],
-        "ResourceMax": [],
-        "ResourceIconLimit": [],
-        "UnitProduction": [],
-        "UpgradesUnitType": [],
-        "ProducesUnitsOfType": [],
-        "LevelRequirementTID": [],
-        "BoostCost": [],
-        "FreeBoost": [],
-        "Hitpoints": [
-            420
-        ],
-        "RegenTime": [
-            15
-        ],
-        "AttackRange": [
-            900
-        ],
-        "AltAttackMode": [],
-        "AltAttackRange": [],
-        "PrepareSpeed": [],
-        "AttackSpeed": [
-            800
-        ],
-        "AltAttackSpeed": [],
-        "CoolDownOverride": [],
-        "DPS": [
-            9
-        ],
-        "AltDPS": [],
-        "Damage": [],
-        "PreferredTarget": [],
-        "PreferredTargetDamageMod": [],
-        "RandomHitPosition": [],
-        "DestroyEffect": [
-            "Building Destroyed"
-        ],
-        "DestroyDamageEffect": [],
-        "AttackEffect": [
-            "Cannon Attack"
-        ],
-        "AttackEffect2": [],
-        "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
-        "ChainAttackDelay": [],
-        "ChainAttackDamageReductionPercent": [],
-        "AttackEffectAlt": [],
-        "HitEffect": [
-            "Generic Hit"
-        ],
-        "Projectile": [
-            "Cannonball"
-        ],
-        "AltProjectile": [
-            "Cannonball"
-        ],
-        "ExportNameDamagedSWF": [],
-        "ExportNameDamaged": [
-            "destroyedBuilding_3s_pit_none"
-        ],
-        "BuildingW": [
-            2
-        ],
-        "BuildingH": [
-            2
-        ],
-        "BaseGfx": [],
-        "ExportNameBase": [
-            "basic_cannon_lvl1_base"
-        ],
-        "AirTargets": [
-            false
-        ],
-        "GroundTargets": [
-            true
-        ],
-        "MultiTargets": [],
-        "NumMultiTargets": [],
-        "MultiHitsTarget": [],
-        "AltAirTargets": [],
-        "AltGroundTargets": [],
-        "AltMultiTargets": [],
-        "AmmoCount": [],
-        "AmmoResource": [],
-        "AmmoCost": [],
-        "MinAttackRange": [],
-        "DamageRadius": [],
-        "PushBack": [],
-        "WallCornerPieces": [],
-        "LoadAmmoEffect": [],
-        "NoAmmoEffect": [],
-        "ToggleAttackModeEffect": [],
-        "PickUpEffect": [
-            "Basic Turret Pickup"
-        ],
-        "PlacingEffect": [
-            "Basic Turret Placing"
-        ],
-        "AnimateTurret": [
-            true
-        ],
-        "DefenderCharacter": [],
-        "DefenderCount": [],
-        "DefenderZ": [],
-        "AltDefenderZ": [],
-        "DestructionXP": [],
-        "Locked": [],
-        "StartingHomeCount": [],
-        "Hidden": [],
-        "AOESpell": [],
-        "AOESpellAlternate": [],
-        "TriggerRadius": [],
-        "ExportNameTriggered": [],
-        "AppearEffect": [],
-        "ForgesSpells": [],
-        "ForgesMiniSpells": [],
-        "IsHeroBarrack": [],
-        "HeroType": [],
-        "IncreasingDamage": [],
-        "DPSLv2": [],
-        "DPSLv3": [],
-        "Lv2SwitchTime": [],
-        "Lv3SwitchTime": [],
-        "AttackEffectLv2": [],
-        "AttackEffectLv3": [],
-        "TransitionEffectLv2": [],
-        "TransitionEffectLv3": [],
-        "AltNumMultiTargets": [],
-        "PreventsHealing": [],
-        "StrengthWeight": [],
-        "AlternatePickNewTargetDelay": [],
-        "AltBuildResource": [],
-        "SpeedMod": [],
-        "StatusEffectTime": [],
-        "ShockwavePushStrength": [],
-        "ShockwaveArcLength": [],
-        "ShockwaveExpandRadius": [],
-        "TargetingConeAngle": [],
-        "AimRotateStep": [],
-        "PenetratingProjectile": [],
-        "PenetratingRadius": [],
-        "PenetratingExtraRange": [],
-        "TurnSpeed": [],
-        "NeedsAim": [],
-        "TargetGroups": [],
-        "TargetGroupsRadius": [],
-        "HitSpell": [],
-        "HitSpellLevel": [],
-        "ExportNameBeamStart": [],
-        "ExportNameBeamEnd": [],
-        "Damage2": [],
-        "Damage2Radius": [],
-        "Damage2Delay": [],
-        "Damage2Min": [],
-        "Damage2FalloffStart": [],
-        "Damage2FalloffEnd": [],
-        "HitEffect2": [],
-        "WakeUpSpeed": [],
-        "WakeUpSpace": [],
-        "PreAttackEffect": [],
-        "ShareHeroCombatData": [],
-        "BurstCount": [],
-        "BurstDelay": [],
-        "AltBurstCount": [],
-        "AltBurstDelay": [],
-        "DummyProjectileCount": [],
-        "DieDamage": [],
-        "DieDamageRadius": [],
-        "DieDamageEffect": [],
-        "DieDamageDelay": [],
-        "IsRed": [],
-        "VillageType": [],
-        "RedMul": [],
-        "GreenMul": [],
-        "BlueMul": [],
-        "RedAdd": [],
-        "GreenAdd": [],
-        "BlueAdd": [],
-        "DefenceTroopCount": [],
-        "DefenceTroopCharacter": [],
-        "DefenceTroopCharacter2": [],
-        "DefenceTroopLevel": [],
-        "AmountCanBeUpgraded": [],
-        "SelfAsAoeCenter": [],
-        "NewTargetAttackDelay": [],
-        "GearUpBuilding": [],
-        "GearUpLevelRequirement": [],
-        "GearUpResource": [],
-        "GearUpCost": [],
-        "GearUpTime": [],
-        "GearUpTID": [],
-        "StartUpgradeBoosterCost": [],
-        "ActivateCombatOnDamageTaken": [],
-        "ActivatedCombatAddBuildingClass": [],
-        "CombatActivationDelay": [],
-        "CombatActivationEffect": [],
-        "Weapon": [],
-        "HintPriority": [],
-        "UpgradeTasks": [],
-        "UpgradeTasksRequired": [],
-        "AnimationActionFrame": [],
-        "SpellOnNearbyDamage": [],
-        "DamagePermilHp": [],
-        "ProjectileVariantByTargetMaxHP": [],
-        "DefaultProjectileVariant": [],
-        "PreviewScenario": [],
-        "AltPreviewScenario": [],
-        "CustomTargetHitBuildingInRange": [],
-        "UnlockWeaponMode": [],
-        "Stage": [],
-        "SecondaryTroop": [],
-        "SecondaryTroopCnt": [],
-        "SecondaryTroopLvl": [],
-        "HealthRecoveryPercent": [],
-        "MergeRequirement": [],
-        "ProjectileBounces": []
-    },
     "Spell Tower": {
         "BuildingLevel": [
             1,
@@ -44703,14 +44923,14 @@
         ],
         "ExportNameLocked": [],
         "BuildTimeD": [
-            12,
-            12,
-            13
+            9,
+            10,
+            11
         ],
         "BuildTimeH": [
             0,
-            12,
-            12
+            18,
+            0
         ],
         "BuildTimeM": [
             0,
@@ -44729,8 +44949,8 @@
         ],
         "BuildCost": [
             14000000,
-            16000000,
-            18000000
+            15000000,
+            17000000
         ],
         "TownHallLevel": [
             15,
@@ -44806,6 +45026,8 @@
             800,
             800
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -44827,7 +45049,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -45022,7 +45245,7 @@
         "ProjectileBounces": [],
         "Name": []
     },
-    "Unused3": {
+    "ReservedDontUse1": {
         "BuildingLevel": [
             1
         ],
@@ -45122,6 +45345,8 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -45147,7 +45372,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -45319,9 +45545,10 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
-    "Unused4": {
+    "ReservedDontUse2": {
         "BuildingLevel": [
             1
         ],
@@ -45421,6 +45648,8 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -45446,7 +45675,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -45618,9 +45848,10 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
-    "Unused5": {
+    "ReservedDontUse3": {
         "BuildingLevel": [
             1
         ],
@@ -45720,6 +45951,8 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -45745,7 +45978,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -45917,9 +46151,10 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
-    "Unused6": {
+    "ReservedDontUse4": {
         "BuildingLevel": [
             1
         ],
@@ -46019,6 +46254,8 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -46044,7 +46281,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -46216,7 +46454,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Monolith": {
         "BuildingLevel": [
@@ -46284,8 +46523,8 @@
             "DarkElixir"
         ],
         "BuildCost": [
+            255000,
             300000,
-            360000,
             370000
         ],
         "TownHallLevel": [
@@ -46366,6 +46605,8 @@
             1100,
             1100
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -46403,7 +46644,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -46921,6 +47163,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -46949,7 +47193,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -47354,6 +47599,8 @@
         "AttackRange": [
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -47379,7 +47626,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -47551,7 +47799,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Battle Copter Altar": {
         "BuildingLevel": [
@@ -47657,6 +47906,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -47676,7 +47927,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -47846,7 +48098,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Xbow_BB": {
         "BuildingLevel": [
@@ -48040,6 +48293,20 @@
             1200,
             1200
         ],
+        "NormalModeTID": [
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG",
+            "TID_BUILDING_BOW_GROUND_CONFIG"
+        ],
+        "AlternateModeTID": [
+            "TID_BUILDING_BOW_AIR_CONFIG",
+            "TID_BUILDING_BOW_AIR_CONFIG",
+            "TID_BUILDING_BOW_AIR_CONFIG",
+            "TID_BUILDING_BOW_AIR_CONFIG",
+            "TID_BUILDING_BOW_AIR_CONFIG"
+        ],
         "AltAttackMode": [
             true,
             true,
@@ -48111,7 +48378,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -48582,6 +48850,8 @@
             1
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -48606,7 +48876,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -48937,6 +49208,8 @@
             15
         ],
         "AttackRange": [],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -48956,7 +49229,8 @@
         "AttackEffect": [],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -49118,7 +49392,8 @@
         "SecondaryTroopLvl": [],
         "HealthRecoveryPercent": [],
         "MergeRequirement": [],
-        "ProjectileBounces": []
+        "ProjectileBounces": [],
+        "UseCustomCornerPiecesInTJunctions": []
     },
     "Merged Archer Tower": {
         "BuildingLevel": [
@@ -49243,6 +49518,8 @@
             1000,
             1000
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -49272,7 +49549,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],
@@ -49606,6 +49884,8 @@
             900,
             900
         ],
+        "NormalModeTID": [],
+        "AlternateModeTID": [],
         "AltAttackMode": [],
         "AltAttackRange": [],
         "PrepareSpeed": [],
@@ -49635,7 +49915,8 @@
         ],
         "AttackEffect2": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "AttackEffectAlt": [],

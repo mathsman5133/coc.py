@@ -25,7 +25,7 @@ from datetime import datetime
 from typing import Any, Type, TypeVar, Optional
 
 import coc
-from .enums import PlayerHouseElementType
+from .enums import ExtendedEnum, PlayerHouseElementType
 from .utils import from_timestamp
 
 T = TypeVar("T")
@@ -33,6 +33,8 @@ T = TypeVar("T")
 
 def try_enum(_class: Type[T], data: Any, **kwargs) -> Optional[T]:
     """Helper function to create a class from the given data."""
+    if issubclass(_class, ExtendedEnum):
+        return data and _class(data)
     return data and _class(data=data, **kwargs)
 
 

@@ -173,7 +173,10 @@
             15
         ],
         "UpgradeTimeH": [
+            48,
+            60,
             72,
+            84,
             96,
             108,
             120,
@@ -182,9 +185,6 @@
             156,
             168,
             180,
-            192,
-            192,
-            192,
             192,
             192,
             192
@@ -208,21 +208,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            90000,
             100000,
             110000,
-            125000,
-            135000,
+            120000,
+            130000,
+            140000,
             150000,
             160000,
-            175000,
-            185000,
+            170000,
+            180000,
+            190000,
             200000,
-            215000,
-            230000,
-            245000,
-            260000,
-            275000,
-            275000
+            210000,
+            220000,
+            220000
         ],
         "DonateCost": [
             20,
@@ -718,7 +718,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -1052,7 +1053,10 @@
             15
         ],
         "UpgradeTimeH": [
+            48,
+            60,
             72,
+            84,
             96,
             108,
             120,
@@ -1061,9 +1065,6 @@
             156,
             168,
             180,
-            192,
-            192,
-            192,
             192,
             192,
             192
@@ -1087,21 +1088,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            120000,
+            130000,
             140000,
-            155000,
-            175000,
+            150000,
+            160000,
+            170000,
+            180000,
             190000,
+            200000,
             210000,
-            215000,
-            225000,
+            220000,
             230000,
             240000,
             250000,
-            260000,
-            270000,
-            280000,
-            290000,
-            290000
+            250000
         ],
         "DonateCost": [
             20,
@@ -1629,7 +1630,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -2604,7 +2606,7 @@
             300,
             300
         ],
-        "ChainAttackMaxTargets": [
+        "ChainAttackDepth": [
             2,
             2,
             2,
@@ -2620,6 +2622,23 @@
             2,
             2,
             2
+        ],
+        "ChainAttackFactor": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
         ],
         "ChainAttackDelay": [
             128,
@@ -3379,7 +3398,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -4087,7 +4107,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -4850,7 +4871,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -5086,16 +5108,12 @@
         "TrainingCost": [
             1
         ],
-        "UpgradeTimeH": [
-            72
-        ],
+        "UpgradeTimeH": [],
         "UpgradeTimeM": [],
         "UpgradeResource": [
             "DarkElixir"
         ],
-        "UpgradeCost": [
-            135000
-        ],
+        "UpgradeCost": [],
         "DonateCost": [
             20
         ],
@@ -5240,7 +5258,8 @@
         "TriggersTraps": [],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -5453,6 +5472,7 @@
             10
         ],
         "UpgradeTimeH": [
+            48,
             72,
             96,
             120,
@@ -5461,8 +5481,7 @@
             156,
             168,
             180,
-            192,
-            192
+            180
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -5478,16 +5497,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            160000,
+            165000,
+            170000,
+            175000,
+            180000,
+            185000,
             190000,
             195000,
             200000,
-            210000,
-            215000,
-            225000,
-            230000,
-            240000,
-            245000,
-            245000
+            200000
         ],
         "DonateCost": [
             20,
@@ -5869,7 +5888,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -6621,7 +6641,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -7004,16 +7025,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            185000,
+            180000,
             190000,
+            195000,
             200000,
             210000,
             215000,
             225000,
-            235000,
+            230000,
             240000,
-            250000,
-            250000
+            240000
         ],
         "DonateCost": [
             20,
@@ -7461,7 +7482,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -8158,7 +8180,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -8855,7 +8878,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -9201,7 +9225,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -9483,7 +9508,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -9757,7 +9783,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],
@@ -10033,7 +10060,8 @@
         ],
         "ChainShootingDistance": [],
         "ChainAttackDistance": [],
-        "ChainAttackMaxTargets": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
         "ChainAttackDelay": [],
         "ChainAttackDamageReductionPercent": [],
         "ChainAttackEffect": [],

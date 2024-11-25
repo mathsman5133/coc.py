@@ -17593,7 +17593,7 @@
     },
     "TID_BOOSTER_BUILDERS_INFO": {
         "EN": [
-            "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your builders to work 10x faster for <time>. Works in Home Village!"
+            "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your Builders to work 10x faster for <time>. Works in the Home Village! Unfortunately, the Builder's Apprentice is too young to enjoy this brew, so his working speed will not be impacted."
         ]
     },
     "TID_POPUP_BOOST_BUILDERS_TITLE": {
@@ -29434,7 +29434,7 @@
     },
     "TID_FLYING_FORTRESS_ABILITY_INFO": {
         "EN": [
-            "Defends itself with Skeleton Gliders and releases <num2> angry Skeletons when defeated."
+            "Defends itself with Skeleton Gliders and releases <num> angry Skeletons when defeated."
         ]
     },
     "TID_MOUNTAIN_GOLEM": {
@@ -36409,7 +36409,7 @@
     },
     "TID_GEAR_INFO_FIRE_IN_A_CAN": {
         "EN": [
-            "Throws a giant exploding fireball at the closest defense."
+            "Throws a giant exploding fireball at the closest defense"
         ]
     },
     "TID_GEAR_INFO_HOG_TOTEM": {
@@ -36512,36 +36512,6 @@
             "Lucky Letterbox"
         ]
     },
-    "TID_CHARACTER_FIREMITE": {
-        "EN": [
-            "WIP Firemite"
-        ]
-    },
-    "TID_CHARACTER_INFO_FIREMITE": {
-        "EN": [
-            "WIP The Firemite will jump into a nearby building doing damage over time."
-        ]
-    },
-    "TID_SIEGE_MACHINE_INVISIBLE": {
-        "EN": [
-            "WIP Invisible Machine"
-        ]
-    },
-    "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE": {
-        "EN": [
-            "WIP Moves toward the TH and has an invisibility aura to hide your troops."
-        ]
-    },
-    "TID_SIEGE_MACHINE_INVISIBLE_FLYING": {
-        "EN": [
-            "WIP Invisibility Drone"
-        ]
-    },
-    "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE_FLYING": {
-        "EN": [
-            "WIP Flying drone that follows your troops with the GW AI and has an invisibility aura."
-        ]
-    },
     "TID_SPELL_OVERGROWTH": {
         "EN": [
             "Overgrowth Spell"
@@ -36555,36 +36525,6 @@
     "TID_SPELL_OVERGROWTH_INFO_SHORT": {
         "EN": [
             "Tangle the enemy up to take them down."
-        ]
-    },
-    "TID_SPELL_HEAL_SPIRIT": {
-        "EN": [
-            "WIP Heal Spirit"
-        ]
-    },
-    "TID_SPELL_HEAL_SPIRIT_INFO": {
-        "EN": [
-            "WIP Summons a heal spirit that heavily heals a troop nearby."
-        ]
-    },
-    "TID_SPELL_FROST": {
-        "EN": [
-            "WIP Targeted Frost"
-        ]
-    },
-    "TID_SPELL_FROST_INFO": {
-        "EN": [
-            "WIP Applies frost in a small area for a long time, and does small damage in the area"
-        ]
-    },
-    "TID_CHARACTER_SIEGE_MACHINE_TROOP_CATAPULT": {
-        "EN": [
-            "WIP Troop Catapult Prototype"
-        ]
-    },
-    "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT": {
-        "EN": [
-            "WIP Flings your Siege Machine troops"
         ]
     },
     "TID_CHAMPION_CHAMPION": {
@@ -36924,7 +36864,7 @@
     },
     "TID_STREAK_EVENT_RUSH_STREAK_TITLE": {
         "EN": [
-            "Rush your Streak!"
+            "Unlock next task?"
         ]
     },
     "TID_STREAK_EVENT_RUSH_STREAK_TEXT": {
@@ -37162,44 +37102,14 @@
             "Shoots a Spiky Ball which smashes between buildings"
         ]
     },
-    "TID_GEAR_TITLE_SUPER_ARCHER_PUPPET": {
+    "TID_GEAR_TITLE_HEROIC_TORCH": {
         "EN": [
-            "WIP Super Archer Puppet"
+            "Heroic Torch"
         ]
     },
-    "TID_GEAR_INFO_SUPER_ARCHER_PUPPET": {
+    "TID_GEAR_INFO_HEROIC_TORCH": {
         "EN": [
-            "WIP Summons a regiment of Super Archers"
-        ]
-    },
-    "TID_GEAR_TITLE_LIGHT_BOMB": {
-        "EN": [
-            "WIP Light Bomb"
-        ]
-    },
-    "TID_GEAR_INFO_LIGHT_BOMB": {
-        "EN": [
-            "WIP Shoots a bomb of light that stuns a large area"
-        ]
-    },
-    "TID_GEAR_TITLE_OLYMPIC_TORCH": {
-        "EN": [
-            "WIP Olympic Torch"
-        ]
-    },
-    "TID_GEAR_INFO_OLYMPIC_TORCH": {
-        "EN": [
-            "WIP Gives troops nearby Jump, increased move speed and reduced damage taken for <num> seconds"
-        ]
-    },
-    "TID_GEAR_TITLE_OLYMPIC_BATON": {
-        "EN": [
-            "WIP Olympic Baton"
-        ]
-    },
-    "TID_GEAR_INFO_OLYMPIC_BATON": {
-        "EN": [
-            "WIP Troops that dies while close to the Olympic Baton stay alive for an extra <num> seconds before perishing"
+            "When used, nearby Troops move faster, take less damage and can jump"
         ]
     },
     "TID_GEAR_TITLE_CLONING_CLOAK": {
@@ -37212,14 +37122,14 @@
             "Summons clones of the Archer Queen"
         ]
     },
-    "TID_GEAR_TITLE_OLYMPIC_TORCH_GIVEN_ABILITY": {
+    "TID_GEAR_TITLE_HEROIC_TORCH_GIVEN_ABILITY": {
         "EN": [
-            "WIP Olympic Jumper"
+            "Ability"
         ]
     },
-    "TID_GEAR_INFO_OLYMPIC_TORCH_GIVEN_ABILITY": {
+    "TID_GEAR_INFO_HEROIC_TORCH_GIVEN_ABILITY": {
         "EN": [
-            "WIP The troop is able to jump over walls for the next <num> seconds"
+            "The Troop moves faster, takes less damage and can jump"
         ]
     },
     "TID_SUPER_TROOP_MENU_EVENT_TROOP": {
@@ -37544,7 +37454,7 @@
     },
     "TID_SCENERY_SPACE": {
         "EN": [
-            "WIP-SPACE"
+            "Space Scenery"
         ]
     },
     "TID_STREAK_EVENT_BANNER_TITLE": {
@@ -37554,32 +37464,17 @@
     },
     "TID_CHARACTER_SHAPESHIFTER_DRUID": {
         "EN": [
-            "WIP Shapeshifter Druid"
+            "Druid"
         ]
     },
     "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO": {
         "EN": [
-            "WIP Starts as a ground healer and switche to another troops after some time."
+            "The Druid has complicated emotions. One moment he's calmly helping heal his fellow Troops, and the next he's turned into a very angry Bear."
         ]
     },
-    "TID_CHARACTER_CHAIN_HEAL_DRUID": {
+    "TID_CHARACTER_SHAPESHIFTER_DRUID_INFO_SHORT": {
         "EN": [
-            "WIP Chain Heal Druid"
-        ]
-    },
-    "TID_CHARACTER_CHAIN_HEAL_DRUID_INFO": {
-        "EN": [
-            "WIP This Druid casts a heal that chains to other nearby troops."
-        ]
-    },
-    "TID_CHARACTER_BATTLE_DRUID": {
-        "EN": [
-            "WIP Battle Druid"
-        ]
-    },
-    "TID_CHARACTER_BATTLE_DRUID_INFO": {
-        "EN": [
-            "WIP This Druid attacks buildings and heals troops around that area."
+            "A helpful healer who turns into a very angry bear."
         ]
     },
     "TID_DECO_GIFT_2024_CROWNSWORD": {
@@ -37587,29 +37482,9 @@
             "Crown Sword"
         ]
     },
-    "TID_GEAR_FOOTBALL_BOUNCE": {
-        "EN": [
-            "WIP: Townhall Bounce"
-        ]
-    },
-    "TID_GEAR_FOOTBALL_BOUNCE_INFO": {
-        "EN": [
-            "WIP: Football that targets Town Hall then defenses"
-        ]
-    },
-    "TID_GEAR_FOOTBALL_STRIKE": {
-        "EN": [
-            "WIP: Townhall Strike"
-        ]
-    },
-    "TID_GEAR_FOOTBALL_STRIKE_INFO": {
-        "EN": [
-            "WIP: Piercing football that targets Town Hall, causing damage on the way"
-        ]
-    },
     "TID_SCENERY_EGYPT": {
         "EN": [
-            "WIP: Egypt"
+            "Egypt Scenery"
         ]
     },
     "TID_TRYING_TO_TYPE_TOO_MANY_TAGS": {
@@ -37644,21 +37519,18 @@
     },
     "TID_NOTICE_BOARD_FTUE_TITLE": {
         "EN": [
-            "Hey Chief! Let\u2019s find the best possible Clan for you by selecting a few quick preferences first!"
+            "Hey Chief! Let\u2019s find the best possible Clan for you by selecting your language first."
         ]
     },
     "TID_NOTICE_BOARD_FTUE_SUBTEXT": {
         "EN": [
-            "You can still change these settings later"
-        ]
-    },
-    "TID_NOTICE_BOARD_FTUE_ACTIVITY": {
-        "EN": [
-            "WIP: Clan Activity"
+            "You can still change this setting later"
         ]
     },
     "TID_DECO_GAME_CAMPAIGN": {
-        "EN": []
+        "EN": [
+            "Surprising Squad"
+        ]
     },
     "TID_ABILITY_FREE_KICK": {
         "EN": [
@@ -37721,10 +37593,14 @@
         ]
     },
     "TID_DECO_CLASHBALL_STATUECHARACTER": {
-        "EN": []
+        "EN": [
+            "Haaland Statue"
+        ]
     },
     "TID_DECO_CLASHBALL_TROPHYBEVERAGE": {
-        "EN": []
+        "EN": [
+            "Victory Milk"
+        ]
     },
     "TID_CLANGAMES_TASK_USE_FREE_KICKERS": {
         "EN": [
@@ -37988,7 +37864,7 @@
     },
     "TID_DECO_CLASHBALL_GOAL": {
         "EN": [
-            "WIP: Goal"
+            "Football Camp"
         ]
     },
     "TID_DAILY_LOGIN_HUB_TEXT": {
@@ -38196,9 +38072,679 @@
             "Celebration Cup"
         ]
     },
+    "TID_KEYBOARD_CONTROL_GROUP_TITLE_REINFORCEMENTS": {
+        "EN": [
+            "Reinforcements Control"
+        ]
+    },
+    "TID_KEYBOARD_CONTROL_SELECT_REINFORCEMENTS": {
+        "EN": [
+            "Select Reinforcements"
+        ]
+    },
+    "TID_CHARACTER_COURIER": {
+        "EN": [
+            "Broom Witch"
+        ]
+    },
+    "TID_CHARACTER_INFO_COURIER": {
+        "EN": [
+            "A trainee Witch who flies around the battlefield delivering Witch Spirits. She particularly dislikes snooty Wizards atop fancy towers."
+        ]
+    },
+    "TID_LAYOUTS_UNPLACED_BUILDINGS_OR_TRAPS": {
+        "EN": [
+            "Place unplaced buildings and traps first"
+        ]
+    },
+    "TID_CHARACTER_COURIERSPAWN": {
+        "EN": [
+            "Witch Spirit"
+        ]
+    },
+    "TID_CHARACTER_INFO_COURIERSPAWN": {
+        "EN": [
+            "These little sparks of mischief look cute but pack a serious punch to nearby Defenses."
+        ]
+    },
+    "TID_CLAN_NOTICE_BOARD_HEADER_TITLE": {
+        "EN": [
+            "Discover Clans from the latest Notices!"
+        ]
+    },
+    "TID_CLAN_NOTICE_BOARD_REFRESH": {
+        "EN": [
+            "Refresh"
+        ]
+    },
+    "TID_DEFENSIVE_LAYOUT_OBSTRUCTED_TITLE": {
+        "EN": [
+            "Defensive Layout obstructed"
+        ]
+    },
+    "TID_DEFENSIVE_LAYOUT_OBSTRUCTED_TEXT": {
+        "EN": [
+            "Your Defensive Layout is blocked by obstacles. Active layout will be used for defense until the obstacles have been cleared."
+        ]
+    },
+    "TID_SPECIAL_FTUE_TUTORIAL_1": {
+        "EN": [
+            "Hey Chief! Erling Haaland here! Welcome to the team!"
+        ]
+    },
+    "TID_SPECIAL_FTUE_TUTORIAL_2": {
+        "EN": [
+            "Welcome to your Village! Life would be perfect if it wasn\u2019t for\u2026"
+        ]
+    },
+    "TID_SPECIAL_FTUE_TUTORIAL_3": {
+        "EN": [
+            "Oh no, Goblins again... Fast, set up a Cannon to defend your Village!"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_1": {
+        "EN": [
+            "Coach! Erling Haaland checking in! Great to see you back!"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_2": {
+        "EN": [
+            "Hope you haven't lost your touch while warming the bench."
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_3": {
+        "EN": [
+            "How about a friendly match to showcase your skills?"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_4": {
+        "EN": [
+            "Alright, let's see if you can beat your own defense!"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_5": {
+        "EN": [
+            "Well played, Coach!"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_6": {
+        "EN": [
+            "Your fierce speed, strength, and positioning are truly impressive!"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_7": {
+        "EN": [
+            "Given all that's happened in your Village, let's start by taking a good look around, shall we?"
+        ]
+    },
+    "TID_SPECIAL_REENG_TUTORIAL_8": {
+        "EN": [
+            "See you later on the pitch!"
+        ]
+    },
+    "TID_CHALLENGE_TITLE_HARD_MODE": {
+        "EN": [
+            "Hard Mode"
+        ]
+    },
+    "TID_DECO_ANIME_FORTUNETELLER": {
+        "EN": [
+            "Wizard Vendor"
+        ]
+    },
+    "TID_SQUAD_KING": {
+        "EN": [
+            "Super Squad King"
+        ]
+    },
+    "TID_HAALAND_KING": {
+        "EN": [
+            "King Haaland"
+        ]
+    },
+    "TID_HAALANDCLASH_KING": {
+        "EN": [
+            "Football King"
+        ]
+    },
+    "TID_FOOTBALL_WARDEN": {
+        "EN": [
+            "Football Warden"
+        ]
+    },
+    "TID_FOOTBALL_QUEEN": {
+        "EN": [
+            "Football Queen"
+        ]
+    },
+    "TID_FOOTBALL_CHAMPION": {
+        "EN": [
+            "Football Champion"
+        ]
+    },
     "TID_SCENERY_CLASHBALL": {
         "EN": [
-            "WIP Football scenery"
+            "Football Scenery"
+        ]
+    },
+    "TID_RANDOM_REWARD_TAP": {
+        "EN": [
+            "Tap!"
+        ]
+    },
+    "TID_PET_ANGRY_JELLY_INFO_SHORT": {
+        "EN": [
+            "Brainwashes its Hero into attacking defenses."
+        ]
+    },
+    "TID_SHOP_SCID_TITLE": {
+        "EN": [
+            "Earn Exclusive Rewards!"
+        ]
+    },
+    "TID_SHOP_SCID_DESCRIPTION": {
+        "EN": [
+            "Activate your Supercell ID Rewards Card and get 1000 free points!"
+        ]
+    },
+    "TID_SHOP_SCID_BUTTON_CTA": {
+        "EN": [
+            "Unlock my Card"
+        ]
+    },
+    "TID_VILLAGER_LIST_PROGRESS_BUTTON_START": {
+        "EN": [
+            "Assign"
+        ]
+    },
+    "TID_VILLAGER_LIST_IN_PROGRESS": {
+        "EN": [
+            "Job in progress"
+        ]
+    },
+    "TID_VILLAGER_LIST_ASSIGN": {
+        "EN": [
+            "Assign the Builder's Apprentice?"
+        ]
+    },
+    "TID_VILLAGER_LIST_BUILDER_NO_JOB": {
+        "EN": [
+            "Start a Builder upgrade to assign the Builder\u2019s Apprentice"
+        ]
+    },
+    "TID_GIVEN_ABILITY_SHIELD_PROTECTION": {
+        "EN": [
+            "<ability> damage reduction: <number>%"
+        ]
+    },
+    "TID_GIVEN_ABILITY_MOVEMENT_SPEED": {
+        "EN": [
+            "<ability> Movement speed:"
+        ]
+    },
+    "TID_GIVEN_ABILITY_HASTE_SPEED": {
+        "EN": [
+            "<ability> Speed increase: <number>"
+        ]
+    },
+    "TID_VILLAGER_STATUS_READY": {
+        "EN": [
+            "Ready to work!"
+        ]
+    },
+    "TID_GEAR_ELECTRO_SHIELD": {
+        "EN": [
+            "Electro Boots"
+        ]
+    },
+    "TID_GEAR_INFO_ELECTRO_SHIELD": {
+        "EN": [
+            "Periodically damages everything around the Royal Champion"
+        ]
+    },
+    "TID_SCENERY_WILDWEST": {
+        "EN": [
+            "Wild West Scenery"
+        ]
+    },
+    "TID_BUILDING_CANNON_BURST_CONFIG": {
+        "EN": [
+            "Burst Cannon"
+        ]
+    },
+    "TID_BUILDING_BOW_GROUND_CONFIG": {
+        "EN": [
+            "Ground Targeting X-Bow"
+        ]
+    },
+    "TID_BUILDING_BOW_AIR_CONFIG": {
+        "EN": [
+            "Air Targeting X-Bow"
+        ]
+    },
+    "TID_BUILDING_BOW_GROUND_AND_AIR_CONFIG": {
+        "EN": [
+            "Ground & Air Targeting X-Bow"
+        ]
+    },
+    "TID_BUILDING_MORTAR_BURST_CONFIG": {
+        "EN": [
+            "Burst Mortar"
+        ]
+    },
+    "TID_BUILDING_ARCHER_TOWER_FAST_CONFIG": {
+        "EN": [
+            "Fast Attack Archer Tower"
+        ]
+    },
+    "TID_BUILDING_ARCHER_TOWER_LONG_RANGE_CONFIG": {
+        "EN": [
+            "Long Range Archer Tower"
+        ]
+    },
+    "TID_BUILDING_DARK_TOWER_MULTI_CONFIG": {
+        "EN": [
+            "Multi Target Inferno Tower"
+        ]
+    },
+    "TID_BUILDING_DARK_TOWER_SINGLE_CONFIG": {
+        "EN": [
+            "Single Target Inferno Tower"
+        ]
+    },
+    "TID_BUTTON_TIMER_AVAILABLE_IN": {
+        "EN": [
+            "Available in:"
+        ]
+    },
+    "TID_DECO_ANIME_BONSAI_TREE": {
+        "EN": [
+            "Cherry Bonsai"
+        ]
+    },
+    "TID_DECO_ANIME_CHIBI_ARCHER": {
+        "EN": [
+            "Chibi Archer"
+        ]
+    },
+    "TID_DECO_ANIME_GIANT_SCHOOL_GIRL": {
+        "EN": [
+            "Kawaii Giant"
+        ]
+    },
+    "TID_DECO_SC_BEACH_CANNON": {
+        "EN": [
+            "Boom Idol"
+        ]
+    },
+    "TID_DECO_SC_BRAWLSTARS": {
+        "EN": [
+            "Brawl's Star"
+        ]
+    },
+    "TID_DECO_SC_GAUNTLET": {
+        "EN": [
+            "Gargantuan Gauntlet"
+        ]
+    },
+    "TID_DECO_SC_HAYDAY_CHICKEN": {
+        "EN": [
+            "Heroic Chicken"
+        ]
+    },
+    "TID_DECO_SC_ROYALE_CASTLE": {
+        "EN": [
+            "Royale Tower"
+        ]
+    },
+    "TID_DECO_CLASHGAMES_FIREBOWL": {
+        "EN": [
+            "Champion's Flame"
+        ]
+    },
+    "TID_DECO_CLASHGAMES_GOBLINDIVE": {
+        "EN": [
+            "Goblin High Dive"
+        ]
+    },
+    "TID_OBSTACLE_BIRTHDAY2024": {
+        "EN": [
+            "12th Anniversary Cake"
+        ]
+    },
+    "TID_DECO_CLASHGAMES_ARCHERFOOT": {
+        "EN": [
+            "Foot Tribute"
+        ]
+    },
+    "TID_DECO_TTRPG_TREEPORTAL": {
+        "EN": [
+            "Pretty Portal"
+        ]
+    },
+    "TID_DECO_TTRPG_SUPERDECO_D20": {
+        "EN": [
+            "Decision Dice"
+        ]
+    },
+    "TID_DECO_TTRPG_MIMIC_CHEST": {
+        "EN": [
+            "Cuddly Chest"
+        ]
+    },
+    "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR": {
+        "EN": [
+            "Bear"
+        ]
+    },
+    "TID_CHARACTER_SHAPESHIFTER_DRUID_BEAR_INFO": {
+        "EN": [
+            "Angry and tanky, as a Bear the Druid really loves bearing down on defenses and smashing them!"
+        ]
+    },
+    "TID_MECHA": {
+        "EN": [
+            "M.E.C.H.A"
+        ]
+    },
+    "TID_CHARACTER_INFO_MECHA": {
+        "EN": [
+            "Is M.E.C.H.A a knight? A samurai? A robot? YES! M.E.C.H.A easily smashes through Walls in the way between her and the next Defense!"
+        ]
+    },
+    "TID_BUILDING_GOBLIN_HALL": {
+        "EN": [
+            "Goblin Hall"
+        ]
+    },
+    "TID_GOBLIN_HALL_INFO": {
+        "EN": [
+            "This is the heart of the Goblin Village."
+        ]
+    },
+    "TID_HEROJELLY_EVENT_TITLE": {
+        "EN": [
+            "Unlimited Heroes!!!"
+        ]
+    },
+    "TID_HEROJELLY_BANNER_SHORT_DESCRIPTION": {
+        "EN": [
+            "Heroes can still fight in battles while being upgraded!"
+        ]
+    },
+    "TID_HARD_MODE_DESC": {
+        "EN": [
+            "Defenses deal 5% more damage. Attacking Heroes have 10% less HP and deal 15% less damage!"
+        ]
+    },
+    "TID_NOTICE_ACTIVE_FOR": {
+        "EN": [
+            "Active for:"
+        ]
+    },
+    "TID_CREATE_CLAN_NOTICE_SUBTEXT_ACTIVE": {
+        "EN": [
+            "Your Clan Notice is currently active on the Notice Board!"
+        ]
+    },
+    "TID_STREAK_EVENT_TASK_REQUIREMENT_COMBAT_100": {
+        "EN": [
+            "Get 100% Destruction to complete your Streak task!"
+        ]
+    },
+    "TID_STREAK_EVENT_TASK_REQUIREMENT_COMBAT": {
+        "EN": [
+            "Get at least <amount>% Destruction to complete your Streak task!"
+        ]
+    },
+    "TID_CLAN_NOTICE_LANGUAGE_MISSING_INFO": {
+        "EN": [
+            "One last thing! Looks like your Clan doesn\u2019t have a Clan Language defined. Set your language to help players find your Clan!"
+        ]
+    },
+    "TID_BUTTON_CLAN_NOTICE_REMOVE": {
+        "EN": [
+            "Remove Notice"
+        ]
+    },
+    "TID_VILLAGER_BUILDER_INFO_ITEM1": {
+        "EN": [
+            "The Builder's Apprentice helps Builders complete upgrades faster!"
+        ]
+    },
+    "TID_VILLAGER_BUILDER_INFO_ITEM2": {
+        "EN": [
+            "He can be assigned to work on an upgrade once a day, when he is fully rested."
+        ]
+    },
+    "TID_VILLAGER_BUILDER_INFO_ITEM3": {
+        "EN": [
+            "He works for one hour each day. Level him up to multiply his working speed."
+        ]
+    },
+    "TID_BUILDER_APPRENTICE": {
+        "EN": [
+            "Builder's Apprentice"
+        ]
+    },
+    "TID_BUILDER_APPRENTICE_BOOST_DURATION": {
+        "EN": [
+            "Working time:"
+        ]
+    },
+    "TID_BUILDER_APPRENTICE_BOOST_COOLDOWN": {
+        "EN": [
+            "Cooldown:"
+        ]
+    },
+    "TID_BUILDER_APPRENTICE_BOOST_MULTIPLIER": {
+        "EN": [
+            "Working speed:"
+        ]
+    },
+    "TID_BUTTON_VILLAGERS": {
+        "EN": [
+            "Builder's Apprentice"
+        ]
+    },
+    "TID_VILLAGER_LIST_WAITING": {
+        "EN": [
+            "Ongoing upgrades:"
+        ]
+    },
+    "TID_VILLAGER_STATUS_LOCKED": {
+        "EN": [
+            "Locked"
+        ]
+    },
+    "TID_VILLAGER_STATUS_WAITING": {
+        "EN": [
+            "Available in: <time>"
+        ]
+    },
+    "TID_VILLAGER_STATUS_WORKING": {
+        "EN": [
+            "Time left: <time>"
+        ]
+    },
+    "TID_VILLAGER_UNLOCK_FIRST": {
+        "EN": [
+            "Unlock the Builder's Apprentice in the Shop to assign him to an upgrade"
+        ]
+    },
+    "TID_VILLAGER_WAIT_COOLDOWN": {
+        "EN": [
+            "The Builder's Apprentice is resting right now. Come back later!"
+        ]
+    },
+    "TID_BUILDER_APPRENTICE_INFO": {
+        "EN": [
+            "The Builder's Apprentice helps Builders complete upgrades faster. Assign him once a day, and level him up to work even faster!"
+        ]
+    },
+    "TID_BA_CONFIRM_ASSIGN_JOB_TITLE": {
+        "EN": [
+            "Speed up the <building>?"
+        ]
+    },
+    "TID_BA_CONFIRM_ASSIGN_JOB": {
+        "EN": [
+            "Do you want to assign the Apprentice to the <building>?"
+        ]
+    },
+    "TID_BA_CONFIRM_ASSIGN_JOB_LOSE_TIME": {
+        "EN": [
+            "The excess time will be lost."
+        ]
+    },
+    "TID_BA_JOB_TIME_SAVED": {
+        "EN": [
+            "Saved time: <time>"
+        ]
+    },
+    "TID_COOLDOWN_TIME": {
+        "EN": [
+            "Cooldown time:"
+        ]
+    },
+    "TID_BA_CANT_UPGRADE_WORKING": {
+        "EN": [
+            "You cannot upgrade the Builder's Apprentice while he is working. Try again when he is resting!"
+        ]
+    },
+    "TID_UNLOCKING_ITEM": {
+        "EN": [
+            "<cffcc33>Unlock</c> <item>?"
+        ]
+    },
+    "TID_BA_ASSIGN_BUTTON": {
+        "EN": [
+            "Assign Apprentice"
+        ]
+    },
+    "TID_NOTIFICATION_VILLAGER_READY": {
+        "EN": [
+            "The Builder\u2019s Apprentice is ready to speed up upgrades!"
+        ]
+    },
+    "TID_BA_JOB_UPGRADE_TIME": {
+        "EN": [
+            "Upgrade will be ready in: <cffcc33><time></c>"
+        ]
+    },
+    "TID_POPUP_REMOVE_CLAN_NOTICE_TITLE": {
+        "EN": [
+            "Remove Clan Notice?"
+        ]
+    },
+    "TID_POPUP_REMOVE_CLAN_NOTICE_TEXT": {
+        "EN": [
+            "Remove your current Notice from the Notice Board?"
+        ]
+    },
+    "TID_CLAN_NOTICE_BOARD_INFO": {
+        "EN": [
+            "Find your perfect Clan through Notices published by Clans. Adjust the Advanced Options to find the best Clan for you!\\n\\nLeaders and Co-leaders in Clans can create and share their Notices here. Each Notice is available for 24 hours or until the Clan gets full."
+        ]
+    },
+    "TID_CLAN_NOTICE_PUBLISH_FAILED_MESSAGE": {
+        "EN": [
+            "Failed to publish Clan Notice: {0}"
+        ]
+    },
+    "TID_CLAN_NOTICE_PUBLISH_FAILED_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again."
+        ]
+    },
+    "TID_CLAN_NOTICE_UNPUBLISH_FAILED_MESSAGE": {
+        "EN": [
+            "Failed to remove Clan Notice: {0}"
+        ]
+    },
+    "TID_CLAN_NOTICE_UNPUBLISH_FAILED_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again."
+        ]
+    },
+    "TID_CLAN_NOTICE_UNPUBLISH_FAILED_NO_PERMISSION": {
+        "EN": [
+            "Only Leaders and Co-Leaders can remove the Notice."
+        ]
+    },
+    "TID_CLAN_NOTICE_UNPUBLISH_FAILED_THROTTLED": {
+        "EN": [
+            "Please wait a moment to remove the Notice."
+        ]
+    },
+    "TID_CLAN_NOTICE_SAVE_FAILED_MESSAGE": {
+        "EN": [
+            "Failed to save Clan Notice: {0}"
+        ]
+    },
+    "TID_CLAN_NOTICE_SAVE_FAILED_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again."
+        ]
+    },
+    "TID_CLAN_NOTICE_SAVE_FAILED_NO_PERMISSION": {
+        "EN": [
+            "Only Leaders and Co-Leaders can edit the Notice."
+        ]
+    },
+    "TID_CLAN_NOTICE_SAVE_FAILED_THROTTLED": {
+        "EN": [
+            "Please wait a moment to edit the Notice."
+        ]
+    },
+    "TID_BUTTONS_SETTINGS_RESET": {
+        "EN": [
+            "Reset Search Options"
+        ]
+    },
+    "TID_BUTTON_RECRUIT_MEMBERS": {
+        "EN": [
+            "Recruit Members"
+        ]
+    },
+    "TID_TRADER_SPECIAL_OFFER_TAB": {
+        "EN": [
+            "Specials"
+        ]
+    },
+    "TID_TRADER_SPECIAL_OFFER_TAB_INFO": {
+        "EN": [
+            "You can now buy these select Magic Items multiple times each week! Each one has a limited number of purchases at special discounts."
+        ]
+    },
+    "TID_WILDWEST_QUEEN": {
+        "EN": [
+            "Wild West Queen"
+        ]
+    },
+    "TID_WILDWEST_CHAMPION": {
+        "EN": [
+            "Wild West Champion"
+        ]
+    },
+    "TID_WILDWEST_KING": {
+        "EN": [
+            "Wild West King"
+        ]
+    },
+    "TID_WILDWEST_WARDEN": {
+        "EN": [
+            "Wild West Warden"
+        ]
+    },
+    "TID_APPRENTICE_UNLOCKED": {
+        "EN": [
+            "<item> Unlocked!"
+        ]
+    },
+    "TID_APPRENTICE_UPGRADED": {
+        "EN": [
+            "<item> upgraded to level <level>!"
         ]
     }
 }

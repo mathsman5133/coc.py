@@ -263,6 +263,7 @@ class HTTPClient:
         headers = {
             "Accept"       : "application/json",
             "authorization": "Bearer {}".format(next(self.keys)),
+            "Accept-Encoding": "gzip, deflate",
         }
         kwargs["headers"] = headers
 
@@ -303,7 +304,7 @@ class HTTPClient:
                             self.stats[route.stats_key] = perf
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
-                        data = await json_or_text(response)
+                        data = (await json_or_text(response)) or {}
                         data["status_code"] = response.status
                         data["timestamp"] = datetime.utcnow().timestamp()
                         try:
