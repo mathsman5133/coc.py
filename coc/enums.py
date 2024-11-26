@@ -337,6 +337,9 @@ EQUIPMENT = [
     "Spiky Ball",
     "Rocket Spear",
     "Magic Mirror",
+    "Lavaloon Puppet",
+    "Dark Orb",
+    "Henchmen Puppet",
 ]
 
 ACHIEVEMENT_ORDER = [
