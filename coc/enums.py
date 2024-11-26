@@ -172,6 +172,7 @@ ELIXIR_TROOP_ORDER = [
     "Dragon Rider",
     "Electro Titan",
     "Root Rider",
+    "Thrower"
 ]
 
 
@@ -247,6 +248,7 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
+    "Revive Spell"
 ]
 
 
@@ -262,7 +264,7 @@ DARK_ELIXIR_SPELL_ORDER = [
 
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
+HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince"]
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
 HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
@@ -301,7 +303,9 @@ EQUIPMENT = [
     "Fireball",
     "Spiky Ball",
     "Rocket Spear",
-    "Magic Mirror"
+    "Magic Mirror",
+    "Henchmen Puppet",
+    "Dark Orb"
 ]
 
 ACHIEVEMENT_ORDER = [
