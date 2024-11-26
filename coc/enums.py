@@ -269,7 +269,7 @@ class HeroData(ExtendedEnum):
     archer_queen = "Archer Queen"
     grand_warden = "Grand Warden"
     royal_champon = "Royal Champion"
-    minion_hero = "Minion Prince"
+    minion_hero = "Minion hero"
 
     @property
     def in_game_name(self) -> str:

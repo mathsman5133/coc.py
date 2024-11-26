@@ -288,7 +288,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
             cls.upgrade_resource = Resource(value=json_meta["UpgradeResource"][0])
         except IndexError as e:
-            cls.upgrade_resource = Resource()
+            pass
         cls.upgrade_time = try_enum(UnitStat,
                                     [TimeDelta(hours=hours) for hours in
                                      json_meta.get("UpgradeTimeH", [])])
