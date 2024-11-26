@@ -30,7 +30,7 @@ TARGETS = [
     ("logic/character_items.csv", "equipment.csv"),
     ("localization/texts.csv", "texts_EN.csv"),
 ]
-FINGERPRINT = "ffdcbe6cfb14f18138ef6efe9ecbd4ed55b75911"
+FINGERPRINT = "6bdd27f6d6027bf63beb1466f3d031dfa77e4856"
 BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
 
