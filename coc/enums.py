@@ -276,6 +276,7 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
+    "Revive Spell",
 ]
 
 
