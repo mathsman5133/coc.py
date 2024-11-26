@@ -23,6 +23,8 @@ SOFTWARE.
 """
 from enum import Enum
 
+from coc import Equipment
+
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
@@ -261,30 +263,25 @@ DARK_ELIXIR_SPELL_ORDER = [
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
 
-# HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince"]
+HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince"]
 
 
-class HeroData(ExtendedEnum):
-    barbarian_king = "Barbarian King"
-    archer_queen = "Archer Queen"
-    grand_warden = "Grand Warden"
-    royal_champon = "Royal Champion"
-    minion_hero = "Minion hero"
+class EquipmentOverrides:
+    def __init__(self, equipment):
+        self.equipment = equipment
+        self.map_hero()
 
-    @property
-    def in_game_name(self) -> str:
+    def map_hero(self):
         """Get a neat client-facing string value for the resource."""
-        lookup = {"Barbarian King": "Barbarian King",
-                  "Archer Queen": "Archer Queen",
-                  "Grand Warden": "Grand Warden",
-                  "Royal Champion": "Royal Champion",
-                  "Minion hero": "Minion Prince",
-                  }
-        return lookup[self.value]
+        lookup = {
+            'Minion Hero': 'Minion Prince',
+        }
+        hero_before = self.equipment.hero
+        self.equipment.hero = lookup.get(hero_before, hero_before)
 
 
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
-HERO_ORDER = BUILDER_BASE_HERO_ORDER
+HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
 PETS_ORDER = [
     "L.A.S.S.I",
