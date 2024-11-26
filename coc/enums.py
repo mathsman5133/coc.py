@@ -26,6 +26,7 @@ from enum import Enum
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
+
     def __str__(self):
         return self.in_game_name
 
@@ -175,7 +176,6 @@ ELIXIR_TROOP_ORDER = [
     "Thrower"
 ]
 
-
 DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
     "Hog Rider",
@@ -222,7 +222,6 @@ SUPER_TROOP_ORDER = [
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
 HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
-
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",
     "Sneaky Archer",
@@ -238,7 +237,6 @@ BUILDER_TROOPS_ORDER = [
     "Electrofire Wizard",
 ]
 
-
 ELIXIR_SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
@@ -251,7 +249,6 @@ ELIXIR_SPELL_ORDER = [
     "Revive Spell"
 ]
 
-
 DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
@@ -261,12 +258,33 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Overgrowth Spell",
 ]
 
-
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Hero"]
+
+# HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince"]
+
+
+class HeroData(ExtendedEnum):
+    barbarian_king = "Barbarian King"
+    archer_queen = "Archer Queen"
+    grand_warden = "Grand Warden"
+    royal_champon = "Royal Champion"
+    minion_hero = "Minion Prince"
+
+    @property
+    def in_game_name(self) -> str:
+        """Get a neat client-facing string value for the resource."""
+        lookup = {"Barbarian King": "Barbarian King",
+                  "Archer Queen": "Archer Queen",
+                  "Grand Warden": "Grand Warden",
+                  "Royal Champion": "Royal Champion",
+                  "Minion hero": "Minion Prince",
+                  }
+        return lookup[self.value]
+
+
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
-HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
+HERO_ORDER = BUILDER_BASE_HERO_ORDER
 
 PETS_ORDER = [
     "L.A.S.S.I",
@@ -358,7 +376,7 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
+
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",

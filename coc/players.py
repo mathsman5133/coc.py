@@ -36,7 +36,7 @@ from .enums import (
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
-    EQUIPMENT,
+    EQUIPMENT, Heroes, HeroData,
 )
 from .abc import BasePlayer
 from .hero import Hero, Equipment, Pet
@@ -729,6 +729,12 @@ class Player(ClanMember):
             # have to do it this way because it's less expensive than removing None's if they don't have a troop.
             try:
                 sorted_heroes[name] = heroes_dict[name]
+            except KeyError:
+                continue
+        for hero in HeroData.values():
+            # have to do it this way because it's less expensive than removing None's if they don't have a troop.
+            try:
+                sorted_heroes[hero] = heroes_dict[hero]
             except KeyError:
                 continue
 

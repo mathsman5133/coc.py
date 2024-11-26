@@ -21,13 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import ujson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
+import ujson
+
 from .enums import PETS_ORDER, Resource
-from .miscmodels import try_enum, Badge, TimeDelta
 from .iterators import PlayerIterator
+from .miscmodels import try_enum, Badge, TimeDelta
 from .utils import CaseInsensitiveDict, UnitStat, _get_maybe_first
 
 if TYPE_CHECKING:
@@ -206,7 +207,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.hitpoints = try_enum(UnitStat, json_meta.get("Hitpoints"))
 
         # get production building
-        production_building = json_meta.get("ProductionBuilding", [None])[0] if json_meta.get("ProductionBuilding") else None
+        production_building = json_meta.get("ProductionBuilding", [None])[0] if json_meta.get(
+            "ProductionBuilding") else None
         if production_building == "Barrack":
             cls.is_elixir_troop = True
         elif production_building == "Dark Elixir Barrack":
@@ -232,7 +234,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
             prod_unit = buildings.get(production_building)
             if production_building in ("SiegeWorkshop", "Spell Forge", "Mini Spell Factory",
                                        "Dark Elixir Barrack", "Barrack", "Barrack2"):
-                min_prod_unit_level = json_meta.get("BarrackLevel", [None, ])[0]
+                min_prod_unit_level = json_meta.get("BarrackLevel", [None, ])[0] if json_meta.get(
+                    "BarrackLevel") else None
                 # there are some special troops, which have no BarrackLevel attribute
                 if not min_prod_unit_level:
                     laboratory_levels = json_meta.get("LaboratoryLevel")
@@ -242,14 +245,18 @@ class DataContainer(metaclass=DataContainerMetaClass):
                                     enumerate(prod_unit["TownHallLevel"], start=1)
                                     if i == min_prod_unit_level]
                     # map the min th level to a lab level
-                    [first_lab_level] = [lab_level for lab_level, th_level in
-                                         lab_to_townhall.items()
-                                         if th_level in min_th_level]
-                    # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
-                    # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
-                    laboratory_levels = []
-                    for lab_level in json_meta.get("LaboratoryLevel"):
-                        laboratory_levels.append(max(lab_level, first_lab_level))
+                    try:
+                        [first_lab_level] = [lab_level for lab_level, th_level in
+                                             lab_to_townhall.items()
+                                             if th_level in min_th_level]
+
+                        # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
+                        # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
+                        laboratory_levels = []
+                        for lab_level in json_meta.get("LaboratoryLevel"):
+                            laboratory_levels.append(max(lab_level, first_lab_level))
+                    except ValueError as e:
+                        laboratory_levels = json_meta.get("LaboratoryLevel")
             elif production_building == "Pet Shop":
                 min_prod_unit_level = json_meta.get("LaboratoryLevel", [None, ])[0]
                 # there are some special troops, which have no BarrackLevel attribute
@@ -277,7 +284,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         # all 3
         cls.upgrade_cost = try_enum(UnitStat, json_meta.get("UpgradeCost"))
-        cls.upgrade_resource = Resource(value=json_meta["UpgradeResource"][0])
+        try:
+
+            cls.upgrade_resource = Resource(value=json_meta["UpgradeResource"][0])
+        except IndexError as e:
+            cls.upgrade_resource = Resource()
         cls.upgrade_time = try_enum(UnitStat,
                                     [TimeDelta(hours=hours) for hours in
                                      json_meta.get("UpgradeTimeH", [])])
@@ -362,7 +373,7 @@ class DataContainerHolder:
             if True in meta.get("Deprecated", [False]):
                 continue
 
-            #hacky but the aliases convert so that isnt great
+            # hacky but the aliases convert so that isnt great
             IGNORED_PETS = ["Unused", "PhoenixEgg"]
             if "pets" in str(self.FILE_PATH) and supercell_name in IGNORED_PETS:
                 continue
