@@ -23,8 +23,6 @@ SOFTWARE.
 """
 from enum import Enum
 
-from coc import Equipment
-
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
