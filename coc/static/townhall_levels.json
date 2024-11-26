@@ -130,10 +130,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -151,7 +149,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -247,7 +244,6 @@
             1
         ],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -265,9 +261,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             1
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "2": {
         "AttackCost": [
@@ -386,10 +386,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -407,7 +405,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -491,7 +488,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -507,9 +503,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             2
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "3": {
         "AttackCost": [
@@ -636,10 +636,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -657,7 +655,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -755,7 +752,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -771,9 +767,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             3
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "4": {
         "AttackCost": [
@@ -894,10 +894,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -915,7 +913,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -1009,7 +1006,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -1025,9 +1021,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             5
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "5": {
         "AttackCost": [
@@ -1154,10 +1154,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [
             2
         ],
@@ -1177,7 +1175,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -1269,7 +1266,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -1285,9 +1281,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             8
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "6": {
         "AttackCost": [
@@ -1412,10 +1412,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -1435,7 +1433,6 @@
         "Air Blaster": [
             1
         ],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -1533,7 +1530,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -1555,9 +1551,13 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             16
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "7": {
         "AttackCost": [
@@ -1570,7 +1570,7 @@
             6
         ],
         "ResourceStorageLootCap": [
-            250000
+            360000
         ],
         "DarkElixirStorageLootCap": [
             2000
@@ -1684,16 +1684,12 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [
-            1
-        ],
         "Dark Elixir Pump": [
             1
         ],
         "Dark Elixir Storage": [
             1
         ],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [
             1
@@ -1715,7 +1711,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -1805,7 +1800,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -1821,9 +1815,15 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             30
-        ]
+        ],
+        "Hero Hall": [
+            1
+        ],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "8": {
         "AttackCost": [
@@ -1836,10 +1836,10 @@
             6
         ],
         "ResourceStorageLootCap": [
-            300000
+            480000
         ],
         "DarkElixirStorageLootCap": [
-            2000
+            2400
         ],
         "WarPrizeResourceCap": [
             55000
@@ -1952,12 +1952,10 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [
             2
         ],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [
             4
         ],
@@ -1981,7 +1979,6 @@
             2
         ],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [
@@ -2073,7 +2070,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -2093,9 +2089,13 @@
         "Smithy": [
             1
         ],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             50
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "9": {
         "AttackCost": [
@@ -2108,10 +2108,10 @@
             5
         ],
         "ResourceStorageLootCap": [
-            350000
+            560000
         ],
         "DarkElixirStorageLootCap": [
-            2500
+            4700
         ],
         "WarPrizeResourceCap": [
             70000
@@ -2226,14 +2226,10 @@
         ],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [
             3
         ],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [
-            1
-        ],
         "AirTrap": [],
         "MegaAirTrap": [
             4
@@ -2259,7 +2255,6 @@
         "Air Blaster": [
             2
         ],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -2345,7 +2340,6 @@
         "Builder6Unlock": [
             1
         ],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -2363,8 +2357,14 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             65
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": [
+            1
         ]
     },
     "10": {
@@ -2372,16 +2372,16 @@
             900
         ],
         "ResourceStorageLootPercentage": [
-            12
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            400000
+            595000
         ],
         "DarkElixirStorageLootCap": [
-            3000
+            5000
         ],
         "WarPrizeResourceCap": [
             90000
@@ -2484,10 +2484,8 @@
         ],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [
             5
         ],
@@ -2515,7 +2513,6 @@
             3
         ],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [
@@ -2591,7 +2588,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -2609,25 +2605,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             80
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "11": {
         "AttackCost": [
             1000
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            450000
+            700000
         ],
         "DarkElixirStorageLootCap": [
-            3500
+            5500
         ],
         "WarPrizeResourceCap": [
             110000
@@ -2730,10 +2730,8 @@
         ],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -2751,9 +2749,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [
-            1
-        ],
         "Mega Cannon": [],
         "Ancient Artillery": [
             1
@@ -2823,7 +2818,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -2839,25 +2833,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             90
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "12": {
         "AttackCost": [
             1100
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            500000
+            980000
         ],
         "DarkElixirStorageLootCap": [
-            4000
+            6000
         ],
         "WarPrizeResourceCap": [
             120000
@@ -2958,10 +2956,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [
             6
         ],
@@ -2985,7 +2981,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -3053,7 +3048,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -3069,25 +3063,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             95
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "13": {
         "AttackCost": [
             1200
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            550000
+            1260000
         ],
         "DarkElixirStorageLootCap": [
-            4500
+            7500
         ],
         "WarPrizeResourceCap": [
             130000
@@ -3186,10 +3184,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [
             7
@@ -3209,7 +3205,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -3275,9 +3270,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [
-            1
-        ],
         "Scattershot": [
             2
         ],
@@ -3295,25 +3287,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             100
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "14": {
         "AttackCost": [
             1300
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            600000
+            1400000
         ],
         "DarkElixirStorageLootCap": [
-            5000
+            8700
         ],
         "WarPrizeResourceCap": [
             140000
@@ -3412,10 +3408,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [
             7
         ],
@@ -3439,7 +3433,6 @@
             4
         ],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -3505,7 +3498,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [
             1
@@ -3523,25 +3515,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             100
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "15": {
         "AttackCost": [
             1400
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            650000
+            1540000
         ],
         "DarkElixirStorageLootCap": [
-            5500
+            9200
         ],
         "WarPrizeResourceCap": [
             150000
@@ -3636,10 +3632,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -3657,7 +3651,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -3723,7 +3716,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [
@@ -3743,25 +3735,29 @@
         "Merged Archer Tower": [],
         "Merged Cannon": [],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             100
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
     },
     "16": {
         "AttackCost": [
             1500
         ],
         "ResourceStorageLootPercentage": [
-            10
+            14
         ],
         "DarkElixirStorageLootPercentage": [
-            4
+            5
         ],
         "ResourceStorageLootCap": [
-            700000
+            1610000
         ],
         "DarkElixirStorageLootCap": [
-            6000
+            9500
         ],
         "WarPrizeResourceCap": [
             160000
@@ -3856,10 +3852,8 @@
         "Bow": [],
         "Halloweenbomb": [],
         "Slowbomb": [],
-        "Hero Altar Barbarian King": [],
         "Dark Elixir Pump": [],
         "Dark Elixir Storage": [],
-        "Hero Altar Archer Queen": [],
         "AirTrap": [],
         "MegaAirTrap": [],
         "Dark Elixir Barrack": [],
@@ -3877,7 +3871,6 @@
         "Totem": [],
         "Halloweenskels": [],
         "Air Blaster": [],
-        "Hero Altar Grand Warden": [],
         "Mega Cannon": [],
         "Ancient Artillery": [],
         "Bomb Tower": [],
@@ -3943,7 +3936,6 @@
         "LavaLauncher": [],
         "Builder6Home": [],
         "Builder6Unlock": [],
-        "Hero Altar Royal Champion": [],
         "Scattershot": [],
         "Pet Shop": [],
         "Spell Tower": [],
@@ -3963,8 +3955,242 @@
             2
         ],
         "Smithy": [],
+        "Firespitter": [],
         "ChallengeLootPercentage": [
             100
-        ]
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [],
+        "VillagerApprenticeHQ": []
+    },
+    "17": {
+        "AttackCost": [
+            1600
+        ],
+        "ResourceStorageLootPercentage": [
+            14
+        ],
+        "DarkElixirStorageLootPercentage": [
+            5
+        ],
+        "ResourceStorageLootCap": [
+            1680000
+        ],
+        "DarkElixirStorageLootCap": [
+            9800
+        ],
+        "WarPrizeResourceCap": [
+            170000
+        ],
+        "WarPrizeDarkElixirCap": [
+            1000
+        ],
+        "WarPrizeCommonOreCap": [
+            1110
+        ],
+        "WarPrizeRareOreCap": [
+            39
+        ],
+        "WarPrizeEpicOreCap": [
+            6
+        ],
+        "LegendPrizeGoldCap": [
+            800000
+        ],
+        "LegendPrizeElixirCap": [
+            800000
+        ],
+        "LegendPrizeDarkElixirCap": [
+            8000
+        ],
+        "WarPrizeAllianceExpCap": [
+            15
+        ],
+        "CartLootCapResource": [
+            3400000
+        ],
+        "CartLootReengagementResource": [
+            20000000
+        ],
+        "CartLootCapDarkElixir": [
+            6800
+        ],
+        "CartLootReengagementDarkElixir": [
+            200000
+        ],
+        "ReengagementBuildingBudget": [
+            41040000
+        ],
+        "ReengagementHeroBudget": [
+            55000000
+        ],
+        "ReengagementWallBudget": [
+            20520000
+        ],
+        "ReengagementLabBudget": [
+            41040000
+        ],
+        "HeroBoostHours": [
+            120
+        ],
+        "PowerBoostHours": [
+            120
+        ],
+        "ResourceProductionBoostHours": [
+            120
+        ],
+        "StarBonusBoostHours": [
+            120
+        ],
+        "Troop Housing": [],
+        "Elixir Storage": [],
+        "Gold Storage": [],
+        "Elixir Pump": [],
+        "Gold Mine": [],
+        "Barrack": [],
+        "Cannon": [],
+        "Cannon_gearup": [],
+        "Wall": [
+            325
+        ],
+        "Archer Tower": [
+            9
+        ],
+        "Archer Tower_gearup": [],
+        "Wizard Tower": [],
+        "Air Defense": [],
+        "Mortar": [],
+        "Mortar_gearup": [],
+        "Alliance Castle": [],
+        "Ejector": [],
+        "Superbomb": [
+            8
+        ],
+        "Mine": [],
+        "Worker Building": [],
+        "Laboratory": [],
+        "Communications mast": [],
+        "Tesla Tower": [],
+        "Spell Forge": [],
+        "Mini Spell Factory": [],
+        "Bow": [],
+        "Halloweenbomb": [],
+        "Slowbomb": [],
+        "Dark Elixir Pump": [],
+        "Dark Elixir Storage": [],
+        "AirTrap": [],
+        "MegaAirTrap": [
+            9
+        ],
+        "Dark Elixir Barrack": [],
+        "Dark Tower": [],
+        "SantaTrap": [],
+        "StrengthMaxTroopTypes": [
+            14
+        ],
+        "StrengthMaxSpellTypes": [
+            10
+        ],
+        "StrengthMaxSiegeTypes": [
+            3
+        ],
+        "Totem": [],
+        "Halloweenskels": [],
+        "Air Blaster": [],
+        "Mega Cannon": [],
+        "Ancient Artillery": [],
+        "Bomb Tower": [],
+        "TreasuryGold": [],
+        "TreasuryElixir": [],
+        "TreasuryDarkElixir": [],
+        "TreasuryWarGold": [
+            5600000
+        ],
+        "TreasuryWarElixir": [
+            5600000
+        ],
+        "TreasuryWarDarkElixir": [
+            30000
+        ],
+        "FriendlyCost": [
+            0
+        ],
+        "PackElixir": [
+            1000000
+        ],
+        "PackGold": [
+            1000000
+        ],
+        "PackDarkElixir": [
+            10000
+        ],
+        "PackGold2": [],
+        "PackElixir2": [],
+        "FreezeBomb": [],
+        "DuelPrizeResourceCap": [],
+        "Elixir Pump2": [],
+        "Elixir Storage2": [],
+        "Gold Mine2": [],
+        "Gold Storage2": [],
+        "WallStraight": [],
+        "Cannon2": [],
+        "Archer Tower2": [],
+        "Troop Housing2": [],
+        "Tesla Tower2": [],
+        "Double Cannon": [],
+        "Clock Tower": [],
+        "Laboratory2": [],
+        "Multi Mortar": [],
+        "Barrack2": [],
+        "Mega Tesla": [],
+        "Guard Post": [],
+        "Pusher": [],
+        "Hero Altar Warmachine": [],
+        "Air Defense Mini": [],
+        "Crusher": [],
+        "AirGroundTrap": [],
+        "Air Defense2": [],
+        "MegaAirGroundTrap": [],
+        "AttackCostVillage2": [],
+        "Flamer": [],
+        "Gem Mine": [],
+        "Ejector2": [],
+        "Giant Cannon": [],
+        "ShrinkTrap": [],
+        "SiegeWorkshop": [],
+        "TornadoTrap": [],
+        "LavaLauncher": [],
+        "Builder6Home": [],
+        "Builder6Unlock": [],
+        "Scattershot": [],
+        "Pet Shop": [],
+        "Spell Tower": [],
+        "Monolith": [],
+        "UnlockStage": [],
+        "Battle Copter Altar": [],
+        "Xbow_BB": [],
+        "Reinforcement Camp": [],
+        "Recovery Building": [],
+        "ElixirCartStorageCap": [
+            9999996
+        ],
+        "Merged Archer Tower": [
+            3
+        ],
+        "Merged Cannon": [
+            3
+        ],
+        "Smithy": [],
+        "Firespitter": [
+            2
+        ],
+        "ChallengeLootPercentage": [
+            100
+        ],
+        "Hero Hall": [],
+        "GigaBomb": [
+            1
+        ],
+        "VillagerApprenticeHQ": []
     }
 }

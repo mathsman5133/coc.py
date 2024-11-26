@@ -1429,6 +1429,11 @@
             "Do you really want to stop upgrading <item>? Only <number>% of the cost will be refunded."
         ]
     },
+    "TID_POPUP_CANCEL_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Do you really want to stop Supercharging <item>? Only <number>% of the cost will be refunded."
+        ]
+    },
     "TID_POPUP_CANCEL_CLEAR_TITLE": {
         "EN": [
             "Stop removal?"
@@ -2492,6 +2497,11 @@
     "TID_POPUP_NOT_ENOUGH_DIAMONDS_TITLE": {
         "EN": [
             "Not enough Gems"
+        ]
+    },
+    "TID_POPUP_NOT_ENOUGH_DIAMONDS_SHOW_MISSING_TITLE": {
+        "EN": [
+            "Missing <number> Gems!"
         ]
     },
     "TID_POPUP_NOT_ENOUGH_DIAMONDS": {
@@ -4266,7 +4276,7 @@
     },
     "TID_PLAYER_ALREADY_REPORTED": {
         "EN": [
-            "You have already reported this player!"
+            "This player has already been reported"
         ]
     },
     "TID_TOO_MANY_REPORTS_SENT": {
@@ -8541,7 +8551,7 @@
     },
     "TID_SEARCH_OPTIONS": {
         "EN": [
-            "Advanced search options"
+            "Search Options"
         ]
     },
     "TID_SHOW_SEARCH_OPTIONS": {
@@ -8566,12 +8576,12 @@
     },
     "TID_CLAN_ADVANCED_SEARCH_RESULTS_WITH_NAME": {
         "EN": [
-            "Displaying search results for \\q<name>\\q, using advanced options"
+            "Displaying search results for \\q<name>\\q, using Search Options"
         ]
     },
     "TID_CLAN_ADVANCED_SEARCH_RESULTS_NO_NAME": {
         "EN": [
-            "Displaying search results using advanced options"
+            "Displaying search results using Search Options"
         ]
     },
     "TID_CLAN_LOCATION_UNKNOWN": {
@@ -9209,7 +9219,7 @@
     },
     "TID_NO_BOOKMARKS": {
         "EN": [
-            "You haven't bookmarked any Clans.\\n\\nYou can bookmark a Clan from the Clan's info page."
+            "You haven't bookmarked any Clans.\\n\\nYou can bookmark a Clan from a Clan Notice or a Clan's info page."
         ]
     },
     "TID_ERROR_BOOKMARKS_FULL": {
@@ -10288,7 +10298,7 @@
     },
     "TID_HERO_INSTRUCTIONS_WARDEN": {
         "EN": [
-            "The Grand Warden is a powerful master of magic who supports your attacking Troops with blasts from his magic staff. He can walk over Walls or fly high with Air Troops, so he can help any attacking army. On defense he turns into a powerful Tower."
+            "This powerful master of magic supports Troops by blasting enemies with his Staff! The Grand Warden can even walk or fly over Walls! He\u2019ll make a majestic stand at his Hero Banner when defending."
         ]
     },
     "TID_HERO_AURA_WARDEN_TITLE": {
@@ -12052,12 +12062,12 @@
     },
     "TID_ADVANCED_SEARCH_BUTTON_MORE": {
         "EN": [
-            "Advanced Options"
+            "Search Options"
         ]
     },
     "TID_ADVANCED_SEARCH_BUTTON_LESS": {
         "EN": [
-            "Hide Advanced Options"
+            "Hide Search Options"
         ]
     },
     "TID_ALLIANCE_CREATE_ARRANGED_WARS": {
@@ -13480,7 +13490,7 @@
     },
     "TID_CANNON_ABILITY_HELP": {
         "EN": [
-            "Cannon keeps shooting after cart is destroyed with <num2> temporary hitpoints"
+            "Cannon keeps shooting after cart is destroyed with <num> temporary hitpoints"
         ]
     },
     "TID_PEKKA2_ABILITY_NAME": {
@@ -14250,12 +14260,12 @@
     },
     "TID_ELIXIR2": {
         "EN": [
-            "Elixir"
+            "Builder Elixir"
         ]
     },
     "TID_GOLD2": {
         "EN": [
-            "Gold"
+            "Builder Gold"
         ]
     },
     "TID_LAYOUTS_VILLAGE2": {
@@ -15360,7 +15370,7 @@
     },
     "TID_SUPERCELL_ID_BUTTON_CONNECTED": {
         "EN": [
-            "Connected"
+            "Open"
         ]
     },
     "TID_SUPERCELL_ID_BUTTON_DISCONNECTED": {
@@ -22499,7 +22509,7 @@
     },
     "TID_BOOSTER_LAB_POTION_INFO": {
         "EN": [
-            "This healthy-looking beverage helps the mysterious Wizards inside the Laboratory research <multiplier>x faster for <time>. Works in Home Village!"
+            "This healthy-looking beverage helps the mysterious Wizards inside the Laboratory research <multiplier>x faster for <time>. Works in Home Village! Unfortunately, the Lab Assistant doesn\u2019t qualify as a Wizard just yet so his working speed will not be impacted."
         ]
     },
     "TID_POPUP_BOOST_RESEARCH_TITLE": {
@@ -23144,7 +23154,7 @@
     },
     "TID_LEGEND_SIGN_UP_CONFIRM_SHIELD_REMOVAL": {
         "EN": [
-            "Your shield will be removed if you sign up to Legend League. Do you want to proceed?"
+            "Legend League has different rules from other Leagues, such as a limited number of attacks. Your shield will also be removed if you sign up to Legend League. Do you want to proceed?"
         ]
     },
     "TID_LEGEND_SIGN_UP_CONFIRM_TITLE": {
@@ -26009,7 +26019,7 @@
     },
     "TID_ICE_HOUND_ABILITY_INFO": {
         "EN": [
-            "Ice Hound's attacks slow down the target. Upon defeat, the Ice Hound freezes its surroundings."
+            "Attacks slow down the target. Upon defeat freezes its surroundings."
         ]
     },
     "TID_BUTTON_VIEW_SKIN": {
@@ -35507,6 +35517,11 @@
             "Do you really want to stop upgrading <item>? Gems paid to the Goblin Builder will not be refunded and only <number>% of the resource cost will be refunded."
         ]
     },
+    "TID_POPUP_CANCEL_GOBLIN_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Do you really want to stop Supercharging <item>? Gems paid to the Goblin Builder will not be refunded and only <number>% of the resource cost will be refunded."
+        ]
+    },
     "TID_POPUP_CANCEL_GOBLIN_CLEAR_TITLE": {
         "EN": [
             "Stop removal?"
@@ -35949,7 +35964,7 @@
     },
     "TID_GEAR_INFO_ARCHER_CROWN": {
         "EN": [
-            "Summons a gang of Archers"
+            "Summons a gang of invisible Archers"
         ]
     },
     "TID_GEAR_INFO_ROYAL_CLOAK": {
@@ -37079,7 +37094,7 @@
     },
     "TID_FIRST_TIME_DISCOUNT": {
         "EN": [
-            "First Time Discount"
+            "Special Discount!"
         ]
     },
     "TID_GEAR_ROCKET_SPEAR": {
@@ -37499,12 +37514,12 @@
     },
     "TID_BUTTON_CLAN_NOTICE_DESCRIPTION": {
         "EN": [
-            "Notice Description"
+            "Notice Message"
         ]
     },
     "TID_BUTTON_CLAN_NOTICE_MESSAGE": {
         "EN": [
-            "Use Clan Message"
+            "Use Clan Description"
         ]
     },
     "TID_BUTTON_CLAN_SEND_REQUEST": {
@@ -38192,6 +38207,26 @@
             "Wizard Vendor"
         ]
     },
+    "TID_GOBLINMACHINE": {
+        "EN": [
+            "Goblin Machine"
+        ]
+    },
+    "TID_STEAMPUNK_BATTLE_COPTER": {
+        "EN": [
+            "SteamPunk Copter"
+        ]
+    },
+    "TID_HOTROD_BATTLE_COPTER": {
+        "EN": [
+            "Hotrod Copter"
+        ]
+    },
+    "TID_STEAMPUNK_BATTLE_MACHINE": {
+        "EN": [
+            "Steampunk Machine"
+        ]
+    },
     "TID_SQUAD_KING": {
         "EN": [
             "Super Squad King"
@@ -38287,6 +38322,41 @@
             "<ability> Speed increase: <number>"
         ]
     },
+    "TID_HERO_TAVERN": {
+        "EN": [
+            "Hero Hall"
+        ]
+    },
+    "TID_HERO_TAVERN_INFO": {
+        "EN": [
+            "This fancy Hall honors your Village's mightiest warriors! Visit the Hero Hall for all your heroic essentials, and to upgrade Heroes. Upgrade the Hero Hall to unlock more Heroes!"
+        ]
+    },
+    "TID_NOTICE_BOARD_ERROR": {
+        "EN": [
+            "Notice Board error"
+        ]
+    },
+    "TID_FAILED_TO_RETRIEVE_NOTICES": {
+        "EN": [
+            "Failed to retrieve Clan Notices.\\nPlease try again later."
+        ]
+    },
+    "TID_HERO_TAVERN_TOO_LOW": {
+        "EN": [
+            "Requires Hero Hall at level <number>!"
+        ]
+    },
+    "TID_HERO_FLAG": {
+        "EN": [
+            "Hero Banner"
+        ]
+    },
+    "TID_HERO_FLAG_INFO": {
+        "EN": [
+            "This proud Hero Banner marks the defensive position of one of your Heroes!"
+        ]
+    },
     "TID_VILLAGER_STATUS_READY": {
         "EN": [
             "Ready to work!"
@@ -38372,9 +38442,9 @@
             "Kawaii Giant"
         ]
     },
-    "TID_DECO_SC_BEACH_CANNON": {
+    "TID_DECO_SC_BEACH_PARASOL": {
         "EN": [
-            "Boom Idol"
+            "Beach Break"
         ]
     },
     "TID_DECO_SC_BRAWLSTARS": {
@@ -38394,7 +38464,7 @@
     },
     "TID_DECO_SC_ROYALE_CASTLE": {
         "EN": [
-            "Royale Tower"
+            "Sleepy King"
         ]
     },
     "TID_DECO_CLASHGAMES_FIREBOWL": {
@@ -38474,7 +38544,7 @@
     },
     "TID_HARD_MODE_DESC": {
         "EN": [
-            "Defenses deal 5% more damage. Attacking Heroes have 10% less HP and deal 15% less damage!"
+            "Defenses deal 5% more damage. Attacking Heroes have 5% less HP and deal 5% less damage. Common Equipment is capped to level 15 and Epic Equipment to level 21."
         ]
     },
     "TID_NOTICE_ACTIVE_FOR": {
@@ -38497,6 +38567,11 @@
             "Get at least <amount>% Destruction to complete your Streak task!"
         ]
     },
+    "TID_NOTICE_CREATE_INFO": {
+        "EN": [
+            "Publish a Clan Notice that will appear on the Notice Board for 24 hours. You can edit the message and choose its visual style.\\n\\nNotices will be removed if your Clan becomes full."
+        ]
+    },
     "TID_CLAN_NOTICE_LANGUAGE_MISSING_INFO": {
         "EN": [
             "One last thing! Looks like your Clan doesn\u2019t have a Clan Language defined. Set your language to help players find your Clan!"
@@ -38504,7 +38579,7 @@
     },
     "TID_BUTTON_CLAN_NOTICE_REMOVE": {
         "EN": [
-            "Remove Notice"
+            "Unpublish Notice"
         ]
     },
     "TID_VILLAGER_BUILDER_INFO_ITEM1": {
@@ -38624,7 +38699,7 @@
     },
     "TID_NOTIFICATION_VILLAGER_READY": {
         "EN": [
-            "The Builder\u2019s Apprentice is ready to speed up upgrades!"
+            "A Helper is ready to work!"
         ]
     },
     "TID_BA_JOB_UPGRADE_TIME": {
@@ -38644,7 +38719,7 @@
     },
     "TID_CLAN_NOTICE_BOARD_INFO": {
         "EN": [
-            "Find your perfect Clan through Notices published by Clans. Adjust the Advanced Options to find the best Clan for you!\\n\\nLeaders and Co-leaders in Clans can create and share their Notices here. Each Notice is available for 24 hours or until the Clan gets full."
+            "Find your perfect Clan through Notices published by Clans. Adjust the Search Options to find the best Clan for you!\\n\\nLeaders and Co-leaders in Clans can create and share their Notices here. Each Notice is available for 24 hours or until the Clan gets full."
         ]
     },
     "TID_CLAN_NOTICE_PUBLISH_FAILED_MESSAGE": {
@@ -38699,7 +38774,7 @@
     },
     "TID_BUTTONS_SETTINGS_RESET": {
         "EN": [
-            "Reset Search Options"
+            "Reset"
         ]
     },
     "TID_BUTTON_RECRUIT_MEMBERS": {
@@ -38745,6 +38820,2001 @@
     "TID_APPRENTICE_UPGRADED": {
         "EN": [
             "<item> upgraded to level <level>!"
+        ]
+    },
+    "TID_CLAN_NOTICE_SETTINGS_APPLY_INFO": {
+        "EN": [
+            "Apply changes made to Clan Notice Search Options?"
+        ]
+    },
+    "TID_CLAN_NOTICE_SETTINGS_APPLY_TITLE": {
+        "EN": [
+            "Apply changes?"
+        ]
+    },
+    "TID_CLAN_NOTICE_JOIN_DISCLAIMER": {
+        "EN": [
+            "Note! Your Clan type is set to <type>. Players can still join your Clan through the Clan Notice."
+        ]
+    },
+    "TID_CHAT_NOTICE_CREATED": {
+        "EN": [
+            "<name> has created a new Clan Notice."
+        ]
+    },
+    "TID_CHAT_NOTICE_EXPIRED": {
+        "EN": [
+            "Clan Notice has expired after being active for <time>"
+        ]
+    },
+    "TID_CHAT_NOTICE_MAX_PLAYERS": {
+        "EN": [
+            "Clan Notice has been unpublished after reaching Clan member limit."
+        ]
+    },
+    "TID_CLAN_NOTICE_RESET_SETTINGS_CONFIRM": {
+        "EN": [
+            "Reset Search Options to default values?"
+        ]
+    },
+    "TID_CLAN_NOTICE_STAT_LOCATION": {
+        "EN": [
+            "Location:"
+        ]
+    },
+    "TID_CLAN_NOTICE_STAT_LANGUAGE": {
+        "EN": [
+            "Language:"
+        ]
+    },
+    "TID_CLAN_NOTICE_STAT_WAR_LEAGUE": {
+        "EN": [
+            "War League:"
+        ]
+    },
+    "TID_CLAN_NOTICE_STAT_WAR_FREQUENCY": {
+        "EN": [
+            "War Frequency:"
+        ]
+    },
+    "TID_GEAR_LAVALOON_PUPPET": {
+        "EN": [
+            "Lavaloon Puppet"
+        ]
+    },
+    "TID_GEAR_INFO_LAVALOON_PUPPET": {
+        "EN": [
+            "Summons spooky Lavaloons"
+        ]
+    },
+    "TID_ICEMINION": {
+        "EN": [
+            "Ice Minion"
+        ]
+    },
+    "TID_CHARACTER_INFO_ICEMINION": {
+        "EN": [
+            "Mixing the ferociousness of a Minion with the freeziness of an Ice Golem, the Ice Minion targets and slows down Defenses. Like a snowflake, it's fragile!"
+        ]
+    },
+    "TID_ICE_MINION_ABILITY_NAME": {
+        "EN": [
+            "Cold Hearted"
+        ]
+    },
+    "TID_ICE_MINION_ABILITY_INFO": {
+        "EN": [
+            "Freezes its surroundings when destroyed."
+        ]
+    },
+    "TID_SET_CHAT_LANGUAGE_HUD_MESSAGE": {
+        "EN": [
+            "You must set a Chat language before publishing the Notice."
+        ]
+    },
+    "TID_CLASH_GAMES_KING": {
+        "EN": [
+            "Clash Games King"
+        ]
+    },
+    "TID_CLASH_GAMES_QUEEN": {
+        "EN": [
+            "Clash Games Queen"
+        ]
+    },
+    "TID_CLASH_GAMES_WARDEN": {
+        "EN": [
+            "Clash Games Warden"
+        ]
+    },
+    "TID_SCENERY_CLASHGAMES": {
+        "EN": [
+            "Clash Games Stadium"
+        ]
+    },
+    "TID_CLAN_NOTICE_OPEN_FAILED_INTERNAL_ERROR": {
+        "EN": [
+            "Something went wrong. Please try again."
+        ]
+    },
+    "TID_CLAN_SETTINGS_APPLY_INFO": {
+        "EN": [
+            "Apply changes made to Clan Settings?"
+        ]
+    },
+    "TID_CLAN_SETTINGS_APPLY_TITLE": {
+        "EN": [
+            "Apply changes?"
+        ]
+    },
+    "TID_OBSTACLE_CLASHWEEN_2024": {
+        "EN": [
+            "Ghost Post"
+        ]
+    },
+    "TID_MINION_HERO": {
+        "EN": [
+            "Minion Prince"
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_MINION_HERO": {
+        "EN": [
+            "This self-proclaimed Prince of Darkness means business! The Minion Prince takes to the skies and deals damaging dark goop to Defenses and Troops! He\u2019ll hover near his Hero Banner when defending."
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_MINION_HERO_SHORT": {
+        "EN": [
+            "This unlikely Hero takes to the skies to cause a royal ruckus!"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE_HERO_FLAG": {
+        "EN": [
+            "<flag>: <cffcc33><hero></c>"
+        ]
+    },
+    "TID_CLAN_NOTICE_APPLY_INFO": {
+        "EN": [
+            "Apply changes made to the Clan Notice?"
+        ]
+    },
+    "TID_CLAN_NOTICE_APPLY_TITLE": {
+        "EN": [
+            "Apply changes?"
+        ]
+    },
+    "TID_BOOSTER_HERO_POTION_MAXED_FOR_TH": {
+        "EN": [
+            "Cannot boost Heroes. Upgrade your Town Hall first!"
+        ]
+    },
+    "TID_GENERIC_ERROR_MESSAGE": {
+        "EN": [
+            "You cannot do that now."
+        ]
+    },
+    "TID_GENERIC_ERROR_HOME_VILLAGE": {
+        "EN": [
+            "You can only do that in Home Village."
+        ]
+    },
+    "TID_GENERIC_ERROR_BUILDER_BASE": {
+        "EN": [
+            "You can only do that in Builder Base."
+        ]
+    },
+    "TID_ALLIANCE_CREATE_MIN_TROPHIES": {
+        "EN": [
+            "Minimum Trophies:"
+        ]
+    },
+    "TID_ALLIANCE_CREATE_MIN_REQUIREMENTS": {
+        "EN": [
+            "Minimum Requirements:"
+        ]
+    },
+    "TID_NOTICE_BOARD_SEARCH_NO_RESULTS": {
+        "EN": [
+            "No Results"
+        ]
+    },
+    "TID_NOTICE_BOARD_SEARCH_NO_RESULTS_INFO": {
+        "EN": [
+            "Try changing your Search Options for more results."
+        ]
+    },
+    "TID_NOTICES_REFRESH_THROTTLED_HUD_MESSAGE": {
+        "EN": [
+            "Please wait a moment before refreshing."
+        ]
+    },
+    "TID_ANIME_CHAMPION": {
+        "EN": [
+            "Anime Champion"
+        ]
+    },
+    "TID_ANIME_KING": {
+        "EN": [
+            "Anime King"
+        ]
+    },
+    "TID_ANIME_QUEEN": {
+        "EN": [
+            "Anime Queen"
+        ]
+    },
+    "TID_ANIME_WARDEN": {
+        "EN": [
+            "Anime Warden"
+        ]
+    },
+    "TID_TTRPG_WARDEN": {
+        "EN": [
+            "Grand Dwarf"
+        ]
+    },
+    "TID_TTRPG_QUEEN": {
+        "EN": [
+            "Archer Satyr"
+        ]
+    },
+    "TID_TTRPG_CHAMPION": {
+        "EN": [
+            "Paladin Champion"
+        ]
+    },
+    "TID_TTRPG_KING": {
+        "EN": [
+            "Barbarian Orc"
+        ]
+    },
+    "TID_CLAN_BADGE_APPLY_INFO": {
+        "EN": [
+            "Apply changes made to the Clan Badge?"
+        ]
+    },
+    "TID_CLAN_BADGE_APPLY_TITLE": {
+        "EN": [
+            "Apply changes?"
+        ]
+    },
+    "TID_MUST_CREATE_ALLIANCE_HUD_PROMPT": {
+        "EN": [
+            "Create a Clan to apply your changes!"
+        ]
+    },
+    "TID_SCENERY_ANIME": {
+        "EN": [
+            "Anime Scenery"
+        ]
+    },
+    "TID_SCENERY_TTRPG": {
+        "EN": [
+            "Clash of Dragons"
+        ]
+    },
+    "TID_CLAN_NOTICE_REPORT_TITLE": {
+        "EN": [
+            "Report Clan Notice?"
+        ]
+    },
+    "TID_CLAN_NOTICE_REPORT_INFO": {
+        "EN": [
+            "Are you sure you want to report Clan <name> Notice as inappropriate?"
+        ]
+    },
+    "TID_CLAN_NOTICE_REPORT_NOTIFICATION": {
+        "EN": [
+            "Clan Notice reported!"
+        ]
+    },
+    "TID_ALLIANCE_JOIN_ERROR_NOTICE_EXPIRED": {
+        "EN": [
+            "The Notice has expired."
+        ]
+    },
+    "TID_CLAN_SETTINGS_APPLY_REMOVE_NOTICE_TITLE": {
+        "EN": [
+            "Remove Clan Notice?"
+        ]
+    },
+    "TID_CLAN_SETTINGS_APPLY_REMOVE_NOTICE_INFO": {
+        "EN": [
+            "Changing Chat language setting will remove Clan Notice from the Notice Board. Apply changes?"
+        ]
+    },
+    "TID_DECO_SC_BEACH_CANNON": {
+        "EN": [
+            "Beach Break"
+        ]
+    },
+    "TID_MINI_LEVEL_INFO_TITLE": {
+        "EN": [
+            "Supercharge!"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Supercharge <object> to <c00ffff>Charge <number></c>?"
+        ]
+    },
+    "TID_INFO_SCREEN_TITLE_UPGRADING_MINI_LEVEL": {
+        "EN": [
+            "Supercharging <object> to <c00ffff>Charge <number></c>"
+        ]
+    },
+    "TID_BUTTON_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Supercharge!"
+        ]
+    },
+    "TID_WORKER_CONTEXT_MINI_LEVEL": {
+        "EN": [
+            "Supercharge <object>"
+        ]
+    },
+    "TID_INFO_SCREEN_INFO_MINI_LEVEL_UPGRADE": {
+        "EN": [
+            "Supercharge"
+        ]
+    },
+    "TID_MINI_LEVEL_STATUS": {
+        "EN": [
+            "Level <level> Charge <charge>"
+        ]
+    },
+    "TID_INFO_SCREEN_INFO_MINI_LEVEL_CONFIRM": {
+        "EN": [
+            "Confirm"
+        ]
+    },
+    "TID_INFO_SCREEN_DISCLAIMER_MINI_LEVEL_TITLE": {
+        "EN": [
+            "New Level Coming!"
+        ]
+    },
+    "TID_INFO_SCREEN_DISCLAIMER_MINI_LEVEL": {
+        "EN": [
+            "This Supercharge will last until this Building's new upgrade level becomes available."
+        ]
+    },
+    "TID_INFO_SCREEN_MINI_LEVEL_INFO_TITLE": {
+        "EN": [
+            "Supercharged!"
+        ]
+    },
+    "TID_INFO_SCREEN_MINI_LEVEL_INFO_TEXT": {
+        "EN": [
+            "Supercharges last until a new upgrade level becomes available."
+        ]
+    },
+    "TID_INFO_SCREEN_MINI_LEVEL_DEFAULT_INFO": {
+        "EN": [
+            "Supercharging makes Buildings stronger! Tap the info button to learn more."
+        ]
+    },
+    "TID_MINI_LEVEL_INFO_ITEM1": {
+        "EN": [
+            "Supercharge some of your max level Buildings using your Builders."
+        ]
+    },
+    "TID_MINI_LEVEL_INFO_ITEM2": {
+        "EN": [
+            "Each Supercharge makes your Buildings stronger.\\nPush your Buildings to the limit!"
+        ]
+    },
+    "TID_MINI_LEVEL_INFO_ITEM3": {
+        "EN": [
+            "Supercharges last until a new upgrade level for the Building becomes available."
+        ]
+    },
+    "TID_MINI_LEVEL_TIMER_TEXT": {
+        "EN": [
+            "Depletes Soon!"
+        ]
+    },
+    "TID_MINI_LEVEL_REMOVED_TITLE": {
+        "EN": [
+            "New Building Levels!"
+        ]
+    },
+    "TID_MINI_LEVEL_REMOVED_TEXT": {
+        "EN": [
+            "These Buildings have new levels available!\\nAll of their Supercharges have now been depleted."
+        ]
+    },
+    "TID_MINI_LEVEL_REMOVED_REFUND": {
+        "EN": [
+            "Your unfinished Supercharge upgrades have been refunded."
+        ]
+    },
+    "TID_JOIN_CLAN_REQUIREMENT_CASTLE": {
+        "EN": [
+            "Requires Clan Castle"
+        ]
+    },
+    "TID_GEAR_TITLE_ARCHER_PUPPET_GIVEN_ABILITY": {
+        "EN": [
+            "Invisibility"
+        ]
+    },
+    "TID_DECO_SC_ROYALE_BED": {
+        "EN": [
+            "Sleepy King"
+        ]
+    },
+    "TID_EVENT_TREASURE_HUNT_TITLE": {
+        "EN": [
+            "Treasure Hunt"
+        ]
+    },
+    "TID_EVENT_TREASURE_HUNT_DESCRIPTION": {
+        "EN": [
+            "Destroy Enemy Buildings to find the hidden Treasure!"
+        ]
+    },
+    "TID_EVENT_TREASURE_HUNT_FOUND": {
+        "EN": [
+            "Chests found:"
+        ]
+    },
+    "TID_EVENT_TREASURE_HUNT_COOLDOWN": {
+        "EN": [
+            "New Chests in: <time>"
+        ]
+    },
+    "TID_STORAGE_ITEM_USES_LEFT": {
+        "EN": [
+            "Uses Left:"
+        ]
+    },
+    "TID_STORAGE_ITEM_USES_ACTIVE": {
+        "EN": [
+            "Active"
+        ]
+    },
+    "TID_STORAGE_ITEM_USES_EXPIRES": {
+        "EN": [
+            "Expires in:"
+        ]
+    },
+    "TID_STORAGE_ITEM_UNPLACED": {
+        "EN": [
+            "Unplaced"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_BUILDER": {
+        "EN": [
+            "Builder Bite"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_LAB": {
+        "EN": [
+            "Study Soup"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_ARMY": {
+        "EN": [
+            "Power Pancakes"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_HERO": {
+        "EN": [
+            "Mighty Morsel"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_BUILDER_INFO": {
+        "EN": [
+            "A hearty bite that makes your Builders work <num>x as fast for <time>. Works in the Home Village! Sadly, the Builder\u2019s Apprentice is a vegetarian and won't be boosted!"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_LAB_INFO": {
+        "EN": [
+            "This bubbling broth makes your Laboratory research and Pet House upgrades <num>x as fast for <time>. Works in the Home Village!"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_ARMY_INFO": {
+        "EN": [
+            "A hearty meal that boosts Troops, Spells and Siege Machines to the maximum level for your Town Hall for the next <battles> battles. Works in the Home Village!"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_HERO_INFO": {
+        "EN": [
+            "A mighty meal that boosts Heroes, Pets and Equipment to the maximum level for your Town Hall for the next <battles> battles. Works in the Home Village!"
+        ]
+    },
+    "TID_STORAGE_ITEM_EXPIRED": {
+        "EN": [
+            "Item expired"
+        ]
+    },
+    "TID_CONSUMABLE_INSTANT_TRAINING": {
+        "EN": [
+            "Training Treat"
+        ]
+    },
+    "TID_CONSUMABLE_INSTANT_TRAINING_INFO": {
+        "EN": [
+            "A quick bite that will instantly train all Troops, Spells and Siege Machines for <time> or at most <battles> battles."
+        ]
+    },
+    "TID_STORAGE_ITEM_BATTLES_LEFT": {
+        "EN": [
+            "Battles Left:"
+        ]
+    },
+    "TID_STORAGE_ITEM_QUICK_TRAINING_LEFT": {
+        "EN": [
+            "Instant Training Left:"
+        ]
+    },
+    "TID_TREASURE_HUNT_INFO_TEXT_1": {
+        "EN": [
+            "Attack Multiplayer Bases and destroy Buildings to find the Hidden Treasure!"
+        ]
+    },
+    "TID_TREASURE_HUNT_INFO_TEXT_2": {
+        "EN": [
+            "Only one of the potential Treasure locations during the attack contains a Chest!"
+        ]
+    },
+    "TID_TREASURE_HUNT_INFO_TEXT_3": {
+        "EN": [
+            "A total of three Chests can be claimed until the timer resets."
+        ]
+    },
+    "TID_TREASURE_HUNT_INFO_TEXT_4": {
+        "EN": [
+            "Smash open Chests for a chance of rare rewards!"
+        ]
+    },
+    "TID_TREASURE_HUNT_EVENT_TIMER": {
+        "EN": [
+            "Ends in: <time>"
+        ]
+    },
+    "TID_CONSUMABLE_CC_REFILL": {
+        "EN": [
+            "Clan Castle Cake"
+        ]
+    },
+    "TID_CONSUMABLE_CC_REFILL_INFO": {
+        "EN": [
+            "A sweet deal! Add free Reinforcements to your Clan Castle for <time>. To enjoy this treat, join a Clan and add Reinforcements at your Clan Castle!"
+        ]
+    },
+    "TID_CONSUMABLE_CC_REFILL_AMOUNT_INFO": {
+        "EN": [
+            "Clan Castle Cake Active!"
+        ]
+    },
+    "TID_CONSUMABLE_CC_REFILL_BANNER_INFO": {
+        "EN": [
+            "Reinforce your Clan Castle for free with the Clan Castle Cake!"
+        ]
+    },
+    "TID_BUTTON_TRAIN_PRESET_INSTANT": {
+        "EN": [
+            "Instant Train"
+        ]
+    },
+    "TID_STORAGE_ITEM_USE_CC_REFILL": {
+        "EN": [
+            "Reinforce your Clan Castle for free with the Clan Castle Cake!"
+        ]
+    },
+    "TID_STORAGE_ITEM_CC_REFILL_LEFT": {
+        "EN": [
+            "Refills Left:"
+        ]
+    },
+    "TID_CONSUMABLE_CLAIM_WARNING": {
+        "EN": [
+            "\\n\\n <c3c74a5>Use this item while it is available otherwise you will lose it.</c>"
+        ]
+    },
+    "TID_STORAGE_BUTTON_USE": {
+        "EN": [
+            "Use"
+        ]
+    },
+    "TID_ACHIEVEMENT_MINI_LEVEL_TITLE": {
+        "EN": [
+            "Supercharger"
+        ]
+    },
+    "TID_ACHIEVEMENT_MINI_LEVEL": {
+        "EN": [
+            "Supercharge buildings <number> times"
+        ]
+    },
+    "TID_ACHIEVEMENT_MINI_LEVEL_COMPLETED": {
+        "EN": [
+            "Total Supercharges: <value>"
+        ]
+    },
+    "TID_DECO_CLASHOWEEN_2024": {
+        "EN": [
+            "Hydra Headstone"
+        ]
+    },
+    "TID_DECO_CLASHOWEEN_2024_PRISONBOX": {
+        "EN": [
+            "Jailbroken Box"
+        ]
+    },
+    "TID_DECO_CLASHOWEEN_2024_SUPERDECO_CAULDRON": {
+        "EN": [
+            "Bubble Boil Cauldron"
+        ]
+    },
+    "TID_DIAMOND_PACK_7": {
+        "EN": [
+            "Storage of Gems"
+        ]
+    },
+    "TID_DONATE_WAR_AMOUNT_AND_CAPACITY": {
+        "EN": [
+            "<donations>/<capacity>"
+        ]
+    },
+    "TID_DECO_SUPERDECO_MOCHAPOT": {
+        "EN": [
+            "Abra-Cada-Brewer"
+        ]
+    },
+    "TID_FAMILY_FRIENDLY_LOCKED_YOUNG_PLAYER": {
+        "EN": [
+            "You can only search for Family Friendly Clans"
+        ]
+    },
+    "TID_LEGEND_SIGN_UP_CONFIRM_TEXT": {
+        "EN": [
+            "Legend League has different rules from other Leagues, such as a limited number of attacks. Are you sure you want sign up?"
+        ]
+    },
+    "TID_BUILDING_MAXED_MINI_LEVEL_INFO": {
+        "EN": [
+            "Town Hall level <number> Required to Supercharge"
+        ]
+    },
+    "TID_PRESET_INSTANTLY_TRAINED": {
+        "EN": [
+            "Army instantly trained!"
+        ]
+    },
+    "TID_ITEM_INSTANTLY_TRAINED": {
+        "EN": [
+            "<item> instantly trained!"
+        ]
+    },
+    "TID_DELIVER_REWARD_TEMPORARY_STORAGE": {
+        "EN": [
+            "Item delivered to the Temporary Storage."
+        ]
+    },
+    "TID_DELIVER_REWARD_TEMPORARY_STORAGE_STORAGE_FULL": {
+        "EN": [
+            "Storage is full! Extras were delivered to the Temporary Storage."
+        ]
+    },
+    "TID_DELIVER_REWARD_DELIVERED_OVERFLOWING": {
+        "EN": [
+            "Storage is almost full! Resources will overflow your storage capacity."
+        ]
+    },
+    "TID_DELIVER_REWARD_NOT_DELIVERED_RESOURCE_FULL": {
+        "EN": [
+            "Oops! Storage is full and this reward doesn't fit."
+        ]
+    },
+    "TID_POPUP_SPEED_UP_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Do you want to finish Supercharging this <item>?"
+        ]
+    },
+    "TID_POPUP_SPEED_UP_BOOSTER_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Do you want to finish Supercharging this <item> with <booster>?"
+        ]
+    },
+    "TID_POPUP_BOOSTER_INSTANT_UPGRADE_MINI_LEVEL": {
+        "EN": [
+            "Use <booster> to instantly Supercharge <item>?"
+        ]
+    },
+    "TID_BUTTON_SKIP": {
+        "EN": [
+            "Skip"
+        ]
+    },
+    "TID_INFO_SCREEN_INFO_TEXT_MINI_LEVEL": {
+        "EN": [
+            "Waiting for the next Building level? Supercharge fully upgraded Buildings to make them stronger in the meantime!"
+        ]
+    },
+    "TID_BUTTON_BOOST_TRAINING": {
+        "EN": [
+            "Boost Training"
+        ]
+    },
+    "TID_BUTTON_TRAIN_ALL": {
+        "EN": [
+            "Train All"
+        ]
+    },
+    "TID_SKIP_CHEST_OPEN": {
+        "EN": [
+            "Skip Chest opening"
+        ]
+    },
+    "TID_SKIP_CHEST_OPEN_DESCRIPTION": {
+        "EN": [
+            "You\u2019ll receive the Reward, but will skip the Chest opening sequence. Still want to skip?"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_BUILDER_WARN": {
+        "EN": [
+            "This won't multiply a Builder Potion's boost, they work separately."
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_LAB_WARN": {
+        "EN": [
+            "This won't multiply a Research Potion's boost, they work separately."
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_HERO_WARN": {
+        "EN": [
+            "Your Heroes and Pets are already boosted!"
+        ]
+    },
+    "TID_CONSUMABLE_BOOST_ARMY_WARN": {
+        "EN": [
+            "Your Army is already boosted!"
+        ]
+    },
+    "TID_CONSUMABLE_INSTANT_TRAINING_WARN": {
+        "EN": [
+            "You have an active Training Boost!"
+        ]
+    },
+    "TID_CONSUMABLE_CONFIRM_TITLE": {
+        "EN": [
+            "Use Magic Snack?"
+        ]
+    },
+    "TID_GEAR_SUMMONED_TROOPS_NO_UPGRADE_TEXT": {
+        "EN": [
+            "Summoned Troop"
+        ]
+    },
+    "TID_CLAN_NOTICE_PUBLISH_FAILED_ALLIANCE_FULL": {
+        "EN": [
+            "Notice couldn\u2019t be published, because your Clan is already full."
+        ]
+    },
+    "TID_TROOP_TRAINING_HERO_INFO_TEXT": {
+        "EN": [
+            "Tap to edit Heroes"
+        ]
+    },
+    "TID_TROOP_TRAINING_COPY_ARMY_TEXT": {
+        "EN": [
+            "Copy Army"
+        ]
+    },
+    "TID_TROOP_TRAINING_CC_OVERVIEW": {
+        "EN": [
+            "Clan Castle Reinforcements"
+        ]
+    },
+    "TID_BUTTON_CHEST_DROPRATES": {
+        "EN": [
+            "View Reward Chances"
+        ]
+    },
+    "TID_EVENT_PASS_MINI_PURCHASE_TITLE": {
+        "EN": [
+            "Get Mini Event Pass!"
+        ]
+    },
+    "TID_EVENT_PASS_MINI_PURCHASE_TEXT": {
+        "EN": [
+            "Purchase Mini Event Pass to get more Rewards!"
+        ]
+    },
+    "TID_PTE_PERK_NEEDS_PREMIUM_MINI": {
+        "EN": [
+            "Unlock with Mini Event Pass"
+        ]
+    },
+    "TID_PTE_REWARD_LOCKED_NEED_PREMIUM_MINI": {
+        "EN": [
+            "You need the Mini Event Pass to unlock this Reward."
+        ]
+    },
+    "TID_PTE_REWARD_LOCKED_NOT_ENOUGH_POINTS_AND_NEED_PREMIUM_MINI": {
+        "EN": [
+            "You need <num> more <soft_currency>, and the Mini Event Pass to unlock this Reward."
+        ]
+    },
+    "TID_EVENT_PASS_MINI_PACKAGE": {
+        "EN": [
+            "Mini Event Pass"
+        ]
+    },
+    "TID_EVENT_PASS_MINI_PACKAGE_INFO": {
+        "EN": [
+            "Purchase Mini Event Pass to get access to more Rewards"
+        ]
+    },
+    "TID_EP_MINI_GET_BANNER_TITLE": {
+        "EN": [
+            "Buy Mini Event Pass"
+        ]
+    },
+    "TID_EP_MINI_GET_SCREEN_TITLE": {
+        "EN": [
+            "Get Mini Event Pass!"
+        ]
+    },
+    "TID_EVENT_PASS_MINI_PURCHASE_INFO": {
+        "EN": [
+            "Purchase Mini Event Pass to gain access to more Rewards"
+        ]
+    },
+    "TID_EP_MINI_RECEIVED": {
+        "EN": [
+            "Mini Event Pass received!"
+        ]
+    },
+    "TID_ME_MINI_BONUS_POINTS_INFO": {
+        "EN": [
+            "Gain <num> <soft_currency> by purchasing the Mini Event Pass!"
+        ]
+    },
+    "TID_EP_MINI_REWARD_LOCKED_NEED_PREMIUM": {
+        "EN": [
+            "You need the Mini Event Pass to unlock this Reward."
+        ]
+    },
+    "TID_EP_MINI_ACTIVATE_BANNER_TITLE": {
+        "EN": [
+            "Activate Mini Event Pass"
+        ]
+    },
+    "TID_EVENT_MINI_PASS_ACTIVATE_TITLE": {
+        "EN": [
+            "Activate Mini Event Pass!"
+        ]
+    },
+    "TID_EVENT_PASS_MINI_ACTIVATE_TEXT": {
+        "EN": [
+            "Activate Mini Event Pass to get more Rewards!"
+        ]
+    },
+    "TID_EP_MINI_ACTIVATE_COUNTDOWN": {
+        "EN": [
+            "Mini Event Pass activation window ends in <time>"
+        ]
+    },
+    "TID_EP_MINI_ACTIVATE_SCID_CONFIRM": {
+        "EN": [
+            "Your Supercell ID has <num> x Mini Event Pass available. Activate one for this Event?"
+        ]
+    },
+    "TID_EP_MINI_ACTIVATE_SCID_TITLE": {
+        "EN": [
+            "Activate Mini Event Pass?"
+        ]
+    },
+    "TID_TRAINING_EDIT_HERO_SELECT_HERO": {
+        "EN": [
+            "Select Hero"
+        ]
+    },
+    "TID_TRAINING_EDIT_HERO_SELECT_PET": {
+        "EN": [
+            "Select Pet"
+        ]
+    },
+    "TID_TRAINING_EDIT_HERO_SELECT_GEAR": {
+        "EN": [
+            "Select Equipment"
+        ]
+    },
+    "TID_SCENERY_CLASHOWEEN2024": {
+        "EN": [
+            "Doomed Scenery"
+        ]
+    },
+    "TID_BOX_OPEN_INFO_ON_SKIP": {
+        "EN": [
+            "Opened a chest and got <reward>"
+        ]
+    },
+    "TID_TRAINING_TAB_TITLE_ARMY": {
+        "EN": [
+            "Army"
+        ]
+    },
+    "TID_TRAINING_TAB_TITLE_RESERVE": {
+        "EN": [
+            "Reserve"
+        ]
+    },
+    "TID_TRAINING_TAB_TITLE_PRESETS": {
+        "EN": [
+            "Army Presets"
+        ]
+    },
+    "TID_GOLD_SHOP_PACK_2": {
+        "EN": [
+            "<number> Builder Gold"
+        ]
+    },
+    "TID_ELIXIR_SHOP_PACK_2": {
+        "EN": [
+            "<number> Builder Elixir"
+        ]
+    },
+    "TID_CLASHOWEEN_QUEEN": {
+        "EN": [
+            "Dark Minion Queen"
+        ]
+    },
+    "TID_CLASHOWEEN_KING": {
+        "EN": [
+            "Dark Minion King"
+        ]
+    },
+    "TID_CLASHOWEEN_WARDEN": {
+        "EN": [
+            "Dark Minion Warden"
+        ]
+    },
+    "TID_BUTTON_OK": {
+        "EN": [
+            "Okay"
+        ]
+    },
+    "TID_HERO_HEAL_PERCENT": {
+        "EN": [
+            "Hero Heal: <number>%"
+        ]
+    },
+    "TID_SPELL_REVIVE": {
+        "EN": [
+            "Revive Spell"
+        ]
+    },
+    "TID_SPELL_REVIVE_INFO": {
+        "EN": [
+            "The Healer's own special recipe! The Revive Spell brings a defeated Hero in its range back into the fight with some health. Bring this Spell into battle, and a floating golden heart will appear above any defeated Hero that can be revived. Upgrade the Revive Spell to increase the amount of health Heroes regain."
+        ]
+    },
+    "TID_BUILDING_GATLING_GUN": {
+        "EN": [
+            "Firespitter"
+        ]
+    },
+    "TID_BUILDING_GATLING_GUN_INFO": {
+        "EN": [
+            "The Firespitter spews flames at a fire rate faster than the X-Bow! If it misses, the Firespitter will shoot past its target to deal damage to enemies behind. It can only face a single direction, so place carefully!"
+        ]
+    },
+    "TID_CHEST_COMMON_NAME": {
+        "EN": [
+            "Chest"
+        ]
+    },
+    "TID_CHEST_COMMON_INFO": {
+        "EN": [
+            "A Chest that contains a random reward!"
+        ]
+    },
+    "TID_CHEST_RARE_NAME": {
+        "EN": [
+            "Rare Chest"
+        ]
+    },
+    "TID_CHEST_EPIC_NAME": {
+        "EN": [
+            "Epic Chest"
+        ]
+    },
+    "TID_CHEST_RARE_INFO": {
+        "EN": [
+            "A Chest that contains at least a rare reward!"
+        ]
+    },
+    "TID_CHEST_EPIC_INFO": {
+        "EN": [
+            "A Chest that contains at least an epic reward!"
+        ]
+    },
+    "TID_CHARACTER_SNAKE_BARREL": {
+        "EN": [
+            "Snake Barrel"
+        ]
+    },
+    "TID_TH17_KING": {
+        "EN": [
+            "Judgment King"
+        ]
+    },
+    "TID_TH17_QUEEN": {
+        "EN": [
+            "Justice Queen"
+        ]
+    },
+    "TID_TH17_WARDEN": {
+        "EN": [
+            "Grand Judge"
+        ]
+    },
+    "TID_OBSTACLE_DEPLOY_AREA_MARKER": {
+        "EN": [
+            "Deployable area marker"
+        ]
+    },
+    "TID_DECO_DIWALI_2024": {
+        "EN": [
+            "Festival Lantern"
+        ]
+    },
+    "TID_TOWN_HALL_17_INFO_SHORT": {
+        "EN": [
+            "Lay down the law!"
+        ]
+    },
+    "TID_SCENERY_TH17": {
+        "EN": [
+            "Justice Scenery"
+        ]
+    },
+    "TID_TRAP_GIGA_BOMB": {
+        "EN": [
+            "Giga Bomb"
+        ]
+    },
+    "TID_TRAP_GIGA_BOMB_INFO": {
+        "EN": [
+            "Villagers didn't want to keep this dangerous Weapon inside the Town Hall, so they moved it out! The Giga Bomb pushes enemies back with massive damage. This Trap is so deadly, it doesn't need to hide!"
+        ]
+    },
+    "TID_CHARACTER_THROWER": {
+        "EN": [
+            "Thrower"
+        ]
+    },
+    "TID_CHARACTER_INFO_THROWER": {
+        "EN": [
+            "This powerful pitcher has his eye on the prize! The Thrower hurls mighty spears from long range at enemies and Defenses. His secret? The strength lies in his fabulous facial hair!"
+        ]
+    },
+    "TID_SNAKE": {
+        "EN": [
+            "Snake"
+        ]
+    },
+    "TID_CHARACTER_INFO_SNAKE": {
+        "EN": [
+            "These little green menaces have come up from underground to get a taste of battle! They\u2019ll slither over Walls, and sink their teeth into anything and everything! They\u2019re even deadlier in groups!"
+        ]
+    },
+    "TID_BARBKINGEQUIPSNAKE": {
+        "EN": [
+            "Snake"
+        ]
+    },
+    "TID_CHARACTER_INFO_BARBKINGEQUIPSNAKE": {
+        "EN": [
+            "These hungry serpents are summoned by a mysterious, ancient bracelet with only one purpose, BITE EVERYTHING!"
+        ]
+    },
+    "TID_BUILDING_PET_CAGE": {
+        "EN": [
+            "Candy Cage"
+        ]
+    },
+    "TID_BUILDING_TROOP_CAGE": {
+        "EN": [
+            "Candy Cage"
+        ]
+    },
+    "TID_BUILDING_SPELL_CAGE": {
+        "EN": [
+            "Spell Surprise"
+        ]
+    },
+    "TID_SPELL_MASS_DESTRUCTION": {
+        "EN": [
+            "Mass Destruction"
+        ]
+    },
+    "TID_BUILDING_DEFENSE_TROOP_CAGE": {
+        "EN": [
+            "Candy Cane"
+        ]
+    },
+    "TID_BUILDING_DIRECT_HERO_CONTROL_MAIN_BUILDING": {
+        "EN": [
+            "Festive Fireworks"
+        ]
+    },
+    "TID_DECO_CLASHMAS_2024": {
+        "EN": [
+            "Rocking Reindeer"
+        ]
+    },
+    "TID_UPGRADE_TOWNHALL_EAGLE_MERGE_INFO": {
+        "EN": [
+            "The Eagle Artillery will be merged into the Town Hall to start this upgrade. This action cannot be undone."
+        ]
+    },
+    "TID_INFO_TRIGGER_HOUSING": {
+        "EN": [
+            "Trigger housing space:"
+        ]
+    },
+    "TID_SCENERY_WAR_MACHINE": {
+        "EN": [
+            "War Machine Scenery"
+        ]
+    },
+    "TID_GEAR_TITLE_SNAKE_ARMOR": {
+        "EN": [
+            "Snake Bracelet"
+        ]
+    },
+    "TID_GEAR_INFO_SNAKE_ARMOR": {
+        "EN": [
+            "Summon snakes that fight by your side when taking damage"
+        ]
+    },
+    "TID_WEAPON_TOWN_HALL_17": {
+        "EN": [
+            "Inferno Artillery"
+        ]
+    },
+    "TID_WEAPON_TOWN_HALL_17_INFO": {
+        "EN": [
+            "Bring the heat! The Inferno Artillery launches 4 enemy-seeking explosives and leaves burning pools of fire where it strikes. If there are less than 4 enemies in range, it can strike the same target multiple times. Ouch!"
+        ]
+    },
+    "TID_DECO_CLASHMAS_2024_SACK": {
+        "EN": [
+            "Gift Bag"
+        ]
+    },
+    "TID_DECO_CLASHMAS_2024_CHOIR": {
+        "EN": [
+            "Clockwork Choir"
+        ]
+    },
+    "TID_CHARACTER_INFO_SNAKE_BARREL": {
+        "EN": [
+            "This Lunar New Year, it\u2019s raining snakes! These green menaces are barrels of fun, and bite chunks out of Defenses. They\u2019ll slither over Walls, and are effective in groups!"
+        ]
+    },
+    "TID_DECO_CLASHMAS_2024_SUPERDECO_GLOBE": {
+        "EN": [
+            "Snow Globe"
+        ]
+    },
+    "TID_GEAR_TITLE_MINION_BODYGUARDS": {
+        "EN": [
+            "Henchmen Puppet"
+        ]
+    },
+    "TID_GEAR_TITLE_DARK_ORB": {
+        "EN": [
+            "Dark Orb"
+        ]
+    },
+    "TID_UPGRADE_TH_LOCKED_TITLE3": {
+        "EN": [
+            "Required Upgrades:"
+        ]
+    },
+    "TID_UPGRADE_HOME_TH_LOCKED2_INFO": {
+        "EN": [
+            "Upgrade the following buildings to unlock the next Town Hall level!"
+        ]
+    },
+    "TID_ALL_HEROES_LOCKED": {
+        "EN": [
+            "No Heroes unlocked"
+        ]
+    },
+    "TID_HERO_TAVERN_HERO_LOCKED": {
+        "EN": [
+            "Unlock at Hero Hall Level <level>!"
+        ]
+    },
+    "TID_HERO_TAVERN_HERO_MAX_LEVEL_FOR_TAVERN": {
+        "EN": [
+            "Upgrade Hero Hall to Level <level> to further upgrade <hero>!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_DEFENCE_TITLE": {
+        "EN": [
+            "Defending Heroes"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_DEFENCE_TEXT": {
+        "EN": [
+            "Heroes defend your Village against attacks. Place Hero Banners in your base and assign Heroes to defend them."
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_DEFENCE_BUTTON": {
+        "EN": [
+            "View Hero Banners"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_ATTACK_BUTTON": {
+        "EN": [
+            "Go to Training"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_BLACKSMITH_TITLE": {
+        "EN": [
+            "Hero Equipment"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_BLACKSMITH_TEXT": {
+        "EN": [
+            "Empower Heroes with Equipment and give them new abilities in battle! Upgrade Equipment in the Blacksmiths using Ores."
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_BLACKSMITH_BUTTON": {
+        "EN": [
+            "Go to Blacksmith"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_PET_SHOP_TITLE": {
+        "EN": [
+            "Pets"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_PET_SHOP_TEXT": {
+        "EN": [
+            "Pets are a Hero's best friend. Assign Pets to Heroes and make them even more formidable in battle!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_PET_SHOP_BUTTON": {
+        "EN": [
+            "Go to Pet House"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_BUTTON_LOCKED": {
+        "EN": [
+            "Locked"
+        ]
+    },
+    "TID_CHOOSE_DEFENDING_HERO": {
+        "EN": [
+            "Choose a Hero to switch"
+        ]
+    },
+    "TID_AVAILABLE_DEFENDING_HEROES": {
+        "EN": [
+            "Free Heroes"
+        ]
+    },
+    "TID_TROOP_TRAINING_INFO_TAP_TO_EDIT": {
+        "EN": [
+            "Tap to edit"
+        ]
+    },
+    "TID_INFO_DISCLAIMER_PLACE_TAVERN": {
+        "EN": [
+            "Place Hero Hall to access Heroes"
+        ]
+    },
+    "TID_INFO_DISCLAIMER_BUILD_TAVERN": {
+        "EN": [
+            "Build Hero Hall to unlock Heroes"
+        ]
+    },
+    "TID_HERO_SWAP": {
+        "EN": [
+            "Swap Hero"
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_BARBARIAN_SHORT": {
+        "EN": [
+            "The biggest, meanest, toughest Barbarian of them all."
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_QUEEN_SHORT": {
+        "EN": [
+            "Her X-Bow breaks buildings as easily as she breaks hearts."
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_ROYAL_CHAMPION_SHORT": {
+        "EN": [
+            "A Hero always found at the heart of the action."
+        ]
+    },
+    "TID_HERO_SLOT_DESCRIPTION": {
+        "EN": [
+            "Hero Banners provide a defensive post for your Heroes. They cannot be destroyed in attacks."
+        ]
+    },
+    "TID_HERO_IS_LOCKED": {
+        "EN": [
+            "<name> is locked"
+        ]
+    },
+    "TID_HEROES_UNLOCK_AT": {
+        "EN": [
+            "Heroes unlock at Town Hall Level <level>!"
+        ]
+    },
+    "TID_BUILD_HERO_TAVERN_TO_UNLOCK_HEROES": {
+        "EN": [
+            "Build the Hero Hall to unlock Heroes!"
+        ]
+    },
+    "TID_CLAIM_HERO_AT_TAVERN": {
+        "EN": [
+            "Claim this Hero by visiting the Hero Hall!"
+        ]
+    },
+    "TID_NO_HERO_FLAGS_PLACED": {
+        "EN": [
+            "You have no Hero Banners placed!"
+        ]
+    },
+    "TID_HERO_TAVERN_LEVEL": {
+        "EN": [
+            "Hero Hall - <cffcc33>Level <level></c>"
+        ]
+    },
+    "TID_ATTACK_WARNING_HERO_TAVERN": {
+        "EN": [
+            "Unplaced Hero Hall"
+        ]
+    },
+    "TID_ATTACK_WARNING_HERO_TAVERN_INFO": {
+        "EN": [
+            "Place the Hero Hall in order to bring your Heroes into Battle."
+        ]
+    },
+    "TID_BUTTON_ATTACK_HERO_TAVERN_PLACE": {
+        "EN": [
+            "Place Hero Hall"
+        ]
+    },
+    "TID_BUTTON_ATTACK_HERO_TAVERN_ATTACK": {
+        "EN": [
+            "Continue to Battle"
+        ]
+    },
+    "TID_ATTACK_WARNING_HERO_TAVERN_TITLE": {
+        "EN": [
+            "No Heroes in your Army!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_UNPLACED_FLAG_TEXT": {
+        "EN": [
+            "You have an unplaced Hero Banner!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_UNPLACED_FLAG_BUTTON": {
+        "EN": [
+            "Place Hero Banner"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_NEXT_FLAG_TEXT": {
+        "EN": [
+            "Next Banner unlocks at Hero Hall level <level>!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_UNLOCKS_AT_TEXT": {
+        "EN": [
+            "<building> unlocks at Town Hall level <level>"
+        ]
+    },
+    "TID_HERO_TAVERN_UNLOCKS_PENDING": {
+        "EN": [
+            "New Heroes Available!"
+        ]
+    },
+    "TID_HERO_TAVERN_UNPLACED": {
+        "EN": [
+            "Unplaced Hero Hall!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_INTRO_1": {
+        "EN": [
+            "Hey, Chief! A mighty Hero has shown up at our new Hero Hall. Let's say hello!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_INTRO_2": {
+        "EN": [
+            "GRRGH!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_INTRO_3": {
+        "EN": [
+            "A king of few words. Heroes are the most powerful part of your Army!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_INTRO_4": {
+        "EN": [
+            "Heroes also protect our Village from Attacks using Hero Banners. Let's place one!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_INTRO_5": {
+        "EN": [
+            "Upgrade the Hero Hall to unlock more Heroes and Hero Banners! Now, unleash your Hero in battle!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_MIGRATION_1": {
+        "EN": [
+            "GRRGH! Puny, cramped Altar! Embarrassing for a King!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_MIGRATION_2": {
+        "EN": [
+            "Good news! We've made a Building worthy of our mighty Heroes! Let's place the Hero Hall!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_MIGRATION_3": {
+        "EN": [
+            "Welcome to the Hero Hall! All your Heroic essentials are here!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_MIGRATION_4": {
+        "EN": [
+            "The Altars are gone, but Heroes will still protect our Village. Let's visit a Hero Banner!"
+        ]
+    },
+    "TID_TUTORIAL_HERO_TAVERN_MIGRATION_5": {
+        "EN": [
+            "The Altars are gone, but Heroes will still protect our Village. Let's place a Hero Banner!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_PURCHASE_BUILDING": {
+        "EN": [
+            "<building> can be purchased now!"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_SHOP": {
+        "EN": [
+            "Go to Shop"
+        ]
+    },
+    "TID_HERO_SLOT_UNLOCK_INFO": {
+        "EN": [
+            "Slot number <slot> will unlock at \\n<building> level <level>."
+        ]
+    },
+    "TID_GEAR_INFO_MINION_BODYGUARDS": {
+        "EN": [
+            "Summons flying bodyguards to support the Minion Prince"
+        ]
+    },
+    "TID_GEAR_INFO_DARK_ORB": {
+        "EN": [
+            "Damages and slows down everything it touches"
+        ]
+    },
+    "TID_MINION_BODYGUARD": {
+        "EN": [
+            "Henchmen"
+        ]
+    },
+    "TID_CHARACTER_INFO_MINION_BODYGUARD": {
+        "EN": [
+            "Minion Prince can call on these sinister siblings to fight by his side! They\u2019ll soak up damage and attack Defenses."
+        ]
+    },
+    "TID_TUTORIAL_DEFENSIVE_HERO_SWAPPING_1": {
+        "EN": [
+            "You can now select which Hero will guard this Banner. You can change it anytime."
+        ]
+    },
+    "TID_HERO_SELECTION_UPGRADE_TAVERN_INFO": {
+        "EN": [
+            "Upgrade <building>\\n to unlock more Heroes!"
+        ]
+    },
+    "TID_HERO_SELECTION_UNLOCK_BLACKSMITH_INFO": {
+        "EN": [
+            "Build <building>\\n to unlock more Equipment!"
+        ]
+    },
+    "TID_HERO_SELECTION_UNLOCK_PET_SHOP_INFO": {
+        "EN": [
+            "Build <building>\\n to unlock Pets!"
+        ]
+    },
+    "TID_TUTORIAL_OFFENSIVE_HERO_SWAPPING_1": {
+        "EN": [
+            "Choose the best Heroes to join your Armies in battle! Unlock Hero Slots by upgrading the Hero Hall."
+        ]
+    },
+    "TID_GUIDANCE_WRONG_LOCATION_FOR_CONTROLLABLE_HERO_GROUND": {
+        "EN": [
+            "Tap the correct location!"
+        ]
+    },
+    "TID_VILLAGER_POPUP_INFO_ASSIGN_REPEAT": {
+        "EN": [
+            "Keep assigned until upgrade is complete."
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_UPGRADE_INFO": {
+        "EN": [
+            "New max resource input capacity:"
+        ]
+    },
+    "TID_RESEARCHER_APPRENTICE": {
+        "EN": [
+            "Lab Assistant"
+        ]
+    },
+    "TID_RESEARCHER_APPRENTICE_INFO": {
+        "EN": [
+            "The Lab Assistant helps speed up research. Assign him once a day and level him up to work even faster!"
+        ]
+    },
+    "TID_VILLAGER_LIST_RESEARCHER_NO_JOB": {
+        "EN": [
+            "Start a Laboratory research upgrade to assign the Lab Assistant."
+        ]
+    },
+    "TID_VILLAGER_TOTAL_SAVED_TIME": {
+        "EN": [
+            "Total saved time: <time>"
+        ]
+    },
+    "TID_LAB_APPRENTICE_TITLE": {
+        "EN": [
+            "Lab Assistant"
+        ]
+    },
+    "TID_VILLAGER_LAB_INFO_ITEM1": {
+        "EN": [
+            "The Lab Assistant helps speed up research upgrades in the Laboratory."
+        ]
+    },
+    "TID_VILLAGER_LAB_INFO_ITEM2": {
+        "EN": [
+            "He can lend his brilliant mind to one upgrade a day when he is fully rested."
+        ]
+    },
+    "TID_VILLAGER_LAB_INFO_ITEM3": {
+        "EN": [
+            "He works for one hour each day. Level him up to increase his working speed."
+        ]
+    },
+    "TID_VILLAGER_STOP_RECURRENCE_TITLE": {
+        "EN": [
+            "Stop Recurrence?"
+        ]
+    },
+    "TID_VILLAGER_STOP_RECURRENCE": {
+        "EN": [
+            "Do you want to remove the <villager> from the recurrent job on <building>?\\nYou can assign the <villager> again when they are available to work."
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_CHOOSE_RESOURCE": {
+        "EN": [
+            "Choose a resource to convert:"
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_TARGET_RESOURCE": {
+        "EN": [
+            "Convert <resource> to:"
+        ]
+    },
+    "TID_ALCHEMIST_APPRENTICE": {
+        "EN": [
+            "Alchemist"
+        ]
+    },
+    "TID_ALCHEMIST_APPRENTICE_INFO": {
+        "EN": [
+            "The Alchemist helps convert resources into different types. Assign her once a day, and level her up to work more efficiently!"
+        ]
+    },
+    "TID_CONVERT_RESOURCES_TITLE": {
+        "EN": [
+            "Convert Resources?"
+        ]
+    },
+    "TID_CONVERT_RESOURCES_INSTANT": {
+        "EN": [
+            "Resources will be converted <cffcc33>instantly</c>"
+        ]
+    },
+    "TID_CONVERT_RESOURCES_WARN": {
+        "EN": [
+            "<c3c74a5>Your storage is almost full and some of the resources will be lost.</c>"
+        ]
+    },
+    "TID_CONVERT_RESOURCES_TEXT": {
+        "EN": [
+            "Do you want to convert <resource1> into <resource2>?"
+        ]
+    },
+    "TID_ALCHEMIST_WAIT_COOLDOWN": {
+        "EN": [
+            "The Alchemist is resting right now. Come back later!"
+        ]
+    },
+    "TID_ALCHEMIST_WAIT_WORKING": {
+        "EN": [
+            "The Alchemist is working right now. Try again later!"
+        ]
+    },
+    "TID_ALCHEMIST_WAIT_LOCKED": {
+        "EN": [
+            "You need to unlock the Alchemist first!"
+        ]
+    },
+    "TID_ALCHEMIST_NOT_ENOUGH_RESOURCES": {
+        "EN": [
+            "Not enough <resource>"
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_AMOUNT_ZERO": {
+        "EN": [
+            "You need to select a resource to convert!"
+        ]
+    },
+    "TID_ALCHEMIST_BOOST_MULTIPLIER": {
+        "EN": [
+            "Conversion bonus:"
+        ]
+    },
+    "TID_ALCHEMIST_SOURCE_MULTIPLIER": {
+        "EN": [
+            "Resource input:"
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_INFO_ITEM1": {
+        "EN": [
+            "The Alchemist quickly converts resources in your storages to a different resource type."
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_INFO_ITEM2": {
+        "EN": [
+            "She can work on one conversion a day when she is fully rested."
+        ]
+    },
+    "TID_VILLAGER_ALCHEMIST_INFO_ITEM3": {
+        "EN": [
+            "Level her up to increase her conversion capacity and rate."
+        ]
+    },
+    "TID_BUILDING_VILLAGER_APPRENTICE": {
+        "EN": [
+            "Helper Hut"
+        ]
+    },
+    "TID_LA_ASSIGN_BUTTON": {
+        "EN": [
+            "Assign Assistant"
+        ]
+    },
+    "TID_ALCHEMIST_ASSIGN_BUTTON": {
+        "EN": [
+            "Convert Resources"
+        ]
+    },
+    "TID_VILLAGER_MIGRATION_TUTORIAL_1": {
+        "EN": [
+            "Hoo-wee! After all that hard work, I\u2019m finally getting my own place!"
+        ]
+    },
+    "TID_VILLAGER_MIGRATION_TUTORIAL_2": {
+        "EN": [
+            "Not so fast, roomie!"
+        ]
+    },
+    "TID_VILLAGER_MIGRATION_TUTORIAL_3": {
+        "EN": [
+            "Seems like the Laboratory could use someone of my talent."
+        ]
+    },
+    "TID_ALCHEMIST_CANT_CONVERT_SAME_RESOURCE": {
+        "EN": [
+            "Cannot convert to the same resource"
+        ]
+    },
+    "TID_BUILDING_VILLAGER_APPRENTICE_INFO": {
+        "EN": [
+            "Helpers rest up on a warm bunk bed in this cozy little hut! Visit the Helper Hut and assign Helpers to jobs around the Village."
+        ]
+    },
+    "TID_PLACEMENT_HINT_CONTROLLABLE_HERO": {
+        "EN": [
+            "Place the Hero on the deployment area to start the attack!"
+        ]
+    },
+    "TID_BUTTON_WATCH_REPLAY": {
+        "EN": [
+            "Watch Replay"
+        ]
+    },
+    "TID_BUILDING_GATLING_GUN_INFO_SHORT": {
+        "EN": [
+            "Cook the competition with fast and fierce flames!"
+        ]
+    },
+    "TID_TRAP_GIGA_BOMB_INFO_SHORT": {
+        "EN": [
+            "The biggest of BOOMS!"
+        ]
+    },
+    "TID_CHARACTER_INFO_THROWER_SHORT": {
+        "EN": [
+            "The more you throw, the more you know!"
+        ]
+    },
+    "TID_SPELL_REVIVE_INFO_SHORT": {
+        "EN": [
+            "Think your Hero is out of the fight? Think again!"
+        ]
+    },
+    "TID_HERO_INSTRUCTIONS_WARDEN_SHORT": {
+        "EN": [
+            "A master of magic who supports any Army."
+        ]
+    },
+    "TID_SCENERY_CLASHMAS2024": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_INFO_DISCLAIMER_VISIT_TAVERN": {
+        "EN": [
+            "Visit the Hero Hall to unlock Heroes!"
+        ]
+    },
+    "TID_ATTACK_WARNING_SWAP_HERO_RECOVER": {
+        "EN": [
+            "Swap recovering Hero!"
+        ]
+    },
+    "TID_ATTACK_WARNING_SWAP_HERO_UPGRADE": {
+        "EN": [
+            "Swap upgrading Hero!"
+        ]
+    },
+    "TID_ATTACK_WARNING_SWAP_HERO_UPGRADE_TEXT": {
+        "EN": [
+            "A Hero in your Army is being upgraded and can't fight, but a different Hero is available. Do you want to swap Heroes?"
+        ]
+    },
+    "TID_ATTACK_WARNING_SWAP_HERO_RECOVER_TEXT": {
+        "EN": [
+            "A Hero in your Army is recovering and can't fight, but a different Hero is available. Do you want to swap Heroes?"
+        ]
+    },
+    "TID_HERO_TAVERN_UNPLACED_TEXT": {
+        "EN": [
+            "You have an unplaced Hero Hall! You will not be able to use Heroes in your attacks until you have placed it! Do you want to place it now?"
+        ]
+    },
+    "TID_HERO_TAVERN_UNLOCKS_PENDING_TEXT": {
+        "EN": [
+            "New Heroes are ready to be unlocked in the Hero Hall! Do you want to visit the Hero Hall to meet them?"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_CONTINUE_ATTACKING": {
+        "EN": [
+            "Continue Attack"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_PLACE_TAVERN": {
+        "EN": [
+            "Place Hero Hall"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_VISIT_TAVERN": {
+        "EN": [
+            "Visit Hero Hall"
+        ]
+    },
+    "TID_HERO_TAVERN_POP_UP_GO_TO_TRAINING": {
+        "EN": [
+            "Go to Training"
+        ]
+    },
+    "TID_UNPLACED_HERO_TAVERN_HINT": {
+        "EN": [
+            "Place Hero Hall to use Heroes"
+        ]
+    },
+    "TID_HERO_TAVERN_MENU_HEART_POP_UP_TEXT": {
+        "EN": [
+            "Heroes lose health during attacks but will restore it over time."
+        ]
+    },
+    "TID_HERO_IS_SLEEPING": {
+        "EN": [
+            "<name> is healing and cannot be used in attack"
+        ]
+    },
+    "TID_HERO_IS_UPGRADING": {
+        "EN": [
+            "<name> is upgrading and cannot be used in attack"
+        ]
+    },
+    "TID_CHARACTER_FIREMITE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_CHARACTER_INFO_FIREMITE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SIEGE_MACHINE_INVISIBLE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SIEGE_MACHINE_INVISIBLE_FLYING": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_CHARACTER_INFO_SIEGE_MACHINE_INVISIBLE_FLYING": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_CHARACTER_SIEGE_MACHINE_TROOP_CATAPULT": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SPELL_FROST": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SPELL_FROST_INFO": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SPELL_RESURRECT": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_SPELL_RESURRECT_INFO": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_APPRENTICEBUILDER_KING": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_TITLE_SUPER_ARCHER_PUPPET": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_INFO_SUPER_ARCHER_PUPPET": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_TITLE_PHOENIX_STICK": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_INFO_PHOENIX_STICK": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_TITLE_LIGHT_BOMB": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_INFO_LIGHT_BOMB": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_BOUNCE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_BOUNCE_INFO": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_STRIKE": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_GEAR_FOOTBALL_STRIKE_INFO": {
+        "EN": [
+            "WIP"
+        ]
+    },
+    "TID_BUTTON_NEXT_LEVEL": {
+        "EN": [
+            "Next level!"
+        ]
+    },
+    "TID_LAB_ASSISTANT_CONFIRM_ASSIGN_JOB": {
+        "EN": [
+            "Do you want to assign the Assistant to the <building>?"
+        ]
+    },
+    "TID_ALCHEMIST_CONFIRM_ASSIGN_JOB": {
+        "EN": [
+            "Do you want to assign the Alchemist to the <building>?"
+        ]
+    },
+    "TID_LAB_ASSISTANT_CANT_UPGRADE_WORKING": {
+        "EN": [
+            "You cannot upgrade the Lab Assistant while he is working. Try again when he is resting!"
+        ]
+    },
+    "TID_ALCHEMIST_CANT_UPGRADE_WORKING": {
+        "EN": [
+            "You cannot upgrade the Alchemist while she is working. Try again when she is resting!"
+        ]
+    },
+    "TID_SCENERY_MASHUP": {
+        "EN": [
+            "Crossover Scenery"
+        ]
+    },
+    "TID_PIRATE_BATTLE_COPTER": {
+        "EN": [
+            "Boat Copter"
+        ]
+    },
+    "TID_CLASHMAS_QUEEN": {
+        "EN": [
+            "Puppet Queen"
+        ]
+    },
+    "TID_CLASHMAS_KING": {
+        "EN": [
+            "Robo King"
+        ]
+    },
+    "TID_VILLAGER_LIST_ASSIGN_LAB_ASSISTANT": {
+        "EN": [
+            "Assign the Lab Assistant?"
+        ]
+    },
+    "TID_VILLAGER_LIST_ASSIGN_ALCHEMIST": {
+        "EN": [
+            "Assign the Alchemist?"
         ]
     }
 }
