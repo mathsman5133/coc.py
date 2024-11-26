@@ -2,12 +2,13 @@
 Automates updating the static files. If new files need to be added, then
 place them in the TARGETS list.
 """
-import asyncio
 import json
-import tempfile
+import traceback
+import urllib
+import urllib.request
 import logging
-
-import aiohttp
+import zstandard
+import lzma
 import csv
 import os
 import zipfile
@@ -19,17 +20,17 @@ import zstandard
 # Targets first index is the URL and the second is the filename. If filename
 # is None, then the url name is used
 TARGETS = [
-    ("assets/logic/buildings.csv", "buildings.csv"),
-    ("assets/logic/characters.csv", "characters.csv"),
-    ("assets/logic/heroes.csv", "heroes.csv"),
-    ("assets/logic/pets.csv", "pets.csv"),
-    ("assets/logic/spells.csv", "spells.csv"),
-    ("assets/logic/super_licences.csv", "supers.csv"),
-    ("assets/logic/townhall_levels.csv", "townhall_levels.csv"),
-    ("assets/logic/character_items.csv", "equipment.csv"),
-    ("assets/localization/texts.csv", "texts_EN.csv"),
+    ("logic/buildings.csv", "buildings.csv"),
+    ("logic/characters.csv", "characters.csv"),
+    ("logic/heroes.csv", "heroes.csv"),
+    ("logic/pets.csv", "pets.csv"),
+    ("logic/spells.csv", "spells.csv"),
+    ("logic/super_licences.csv", "supers.csv"),
+    ("logic/townhall_levels.csv", "townhall_levels.csv"),
+    ("logic/character_items.csv", "equipment.csv"),
+    ("localization/texts.csv", "texts_EN.csv"),
 ]
-FINGERPRINT = "fffdcbe6cfb14f18138ef6efe9ecbd4ed55b75911"
+FINGERPRINT = "ffdcbe6cfb14f18138ef6efe9ecbd4ed55b75911"
 BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
 
@@ -184,65 +185,20 @@ def get_fingerprint():
 
     data = asyncio.run(download())
 
-    temp_dir = tempfile.TemporaryDirectory()
-    os.makedirs(temp_dir.name)
-    file=os.path.join(temp_dir.name,"apk.zip")
-    print(f" tempAPKFile: {file}")
-    with open(f"{file}", "wb") as f:
+    with open("apk.zip", "wb") as f:
         f.write(data)
-    zf = zipfile.ZipFile(f"{file}")
+    zf = zipfile.ZipFile("apk.zip")
     with zf.open('assets/fingerprint.json') as fp:
         fingerprint = json.loads(fp.read())['sha']
 
     # clean up apk
-    try:
-        os.unlink(f"{file}")
-    except PermissionError as e:
-        print (f" {e}")
+    os.unlink("apk.zip")
 
     return fingerprint
 
 
-def save_apk():
-    async def download():
-        async with aiohttp.request('GET', APK_URL) as fp:
-            c = await fp.read()
-        return c
-
-    data = asyncio.run(download())
-
-    temp_dir = tempfile.TemporaryDirectory().name
-    if not os.path.exists(temp_dir):
-        os.makedirs(temp_dir)
-    file = os.path.join(temp_dir,"apk.zip")
-    print(f" apk_file: {file}")
-    with open(f"{file}", "wb") as f:
-        f.write(data)
-    zf = zipfile.ZipFile(f"{file}")
-    print(f"zip file {zf}")
-    return file
-
-
-def find_file_in_zip(zip_path, target_file):
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        # List all files in the zip
-        all_files = zip_ref.namelist()
-
-        # Check if the target file exists in the zip
-        if target_file in all_files:
-            # Extract and read the content of the target file
-            with zip_ref.open(target_file) as file:
-                content = file.read()
-                return content
-        else:
-            return f"File {target_file} not found in the zip."
-
-
 def main():
-
-    apk_zip=save_apk()
     for target_file, target_save in TARGETS:
-        """
         target_save = target_file if target_save is None else target_save
         download_url = f"{BASE_URL}/{target_file}"
 
@@ -250,12 +206,8 @@ def main():
         with urllib.request.urlopen(download_url, timeout=10) as conn:
             data = conn.read()
 
-       
-
         with open(target_save, "wb") as f:
             f.write(data)
-        """
-        data = find_file_in_zip(apk_zip,target_file)
 
         file_type = check_header(data)
         if file_type == "csv":
