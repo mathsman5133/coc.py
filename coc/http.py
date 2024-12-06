@@ -479,7 +479,11 @@ class HTTPClient:
         return self.request(Route("GET", self.base_url, "/players/{}".format(player_tag)))
 
     def verify_player_token(self, player_tag, token):
-        return self.request(Route("POST", self.base_url, "/players/{}/verifytoken".format(player_tag)), json={"token": token})
+        return self.request(
+            Route("POST", self.base_url, "/players/{}/verifytoken".format(player_tag)),
+            json={"token": token},
+            ignore_cache=True,
+        )
 
     # labels
 
