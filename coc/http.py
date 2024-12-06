@@ -273,7 +273,7 @@ class HTTPClient:
         cache_control_key = route.url
         cache = self.cache
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.get("ignore_cache", False):
+        if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.pop("ignore_cache", False):
             try:
                 data = cache[cache_control_key]
                 status_code = data.get("status_code")
