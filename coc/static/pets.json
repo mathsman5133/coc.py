@@ -173,6 +173,8 @@
             15
         ],
         "UpgradeTimeH": [
+            24,
+            36,
             48,
             60,
             72,
@@ -185,9 +187,7 @@
             156,
             168,
             180,
-            192,
-            192,
-            192
+            180
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -208,21 +208,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            67500,
+            75000,
+            82500,
             90000,
-            100000,
-            110000,
+            97500,
+            105000,
+            112500,
             120000,
-            130000,
-            140000,
+            127500,
+            135000,
+            142500,
             150000,
-            160000,
-            170000,
-            180000,
-            190000,
-            200000,
-            210000,
-            220000,
-            220000
+            157500,
+            165000,
+            165000
         ],
         "DonateCost": [
             20,
@@ -736,40 +736,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY",
-            "TID_PET_ABILITY_BARKY"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY",
-            "TID_PET_ABILITY_INFO_BARKY"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -816,8 +784,40 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility",
+            "BarkyPlaceholderAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             200,
@@ -1053,6 +1053,8 @@
             15
         ],
         "UpgradeTimeH": [
+            24,
+            36,
             48,
             60,
             72,
@@ -1065,9 +1067,7 @@
             156,
             168,
             180,
-            192,
-            192,
-            192
+            180
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -1088,21 +1088,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            90000,
+            97500,
+            105000,
+            112500,
             120000,
-            130000,
-            140000,
+            127500,
+            135000,
+            142500,
             150000,
-            160000,
-            170000,
+            157500,
+            165000,
+            172500,
             180000,
-            190000,
-            200000,
-            210000,
-            220000,
-            230000,
-            240000,
-            250000,
-            250000
+            187500,
+            187500
         ],
         "DonateCost": [
             20,
@@ -1648,40 +1648,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER",
-            "TID_PET_ABILITY_BULLDOZER"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER",
-            "TID_PET_ABILITY_INFO_BULLDOZER"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -1760,8 +1728,40 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility",
+            "BulldozerPlaceholderAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             581,
@@ -2045,16 +2045,16 @@
             15
         ],
         "UpgradeTimeH": [
+            36,
+            48,
             72,
             96,
             108,
             120,
-            132,
+            142,
             144,
             156,
             168,
-            180,
-            192,
             192,
             192,
             192,
@@ -2080,21 +2080,21 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            115000,
-            130000,
-            140000,
-            155000,
-            165000,
-            180000,
-            190000,
-            205000,
-            215000,
-            230000,
-            250000,
-            265000,
-            285000,
-            300000,
-            300000
+            86250,
+            97500,
+            105000,
+            116250,
+            123750,
+            135000,
+            142500,
+            153750,
+            161250,
+            172500,
+            187500,
+            198750,
+            213750,
+            225000,
+            225000
         ],
         "DonateCost": [
             20,
@@ -2704,40 +2704,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL",
-            "TID_PET_ABILITY_ELECTROWL"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL",
-            "TID_PET_ABILITY_INFO_ELECTROWL"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -2784,8 +2752,40 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility",
+            "ElectrowlPlaceholderAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             0,
@@ -2971,16 +2971,16 @@
             10
         ],
         "UpgradeTimeH": [
+            36,
+            48,
             72,
             96,
             108,
             120,
-            132,
+            142,
             144,
             156,
-            168,
-            180,
-            180
+            156
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -2996,16 +2996,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            135000,
+            142500,
+            150000,
+            157500,
+            165000,
+            172500,
             180000,
-            190000,
-            200000,
-            210000,
-            220000,
-            230000,
-            240000,
-            250000,
-            260000,
-            260000
+            187500,
+            195000,
+            195000
         ],
         "DonateCost": [
             20,
@@ -3416,30 +3416,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY",
-            "TID_PET_ABILITY_UNIPONY"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY",
-            "TID_PET_ABILITY_INFO_UNIPONY"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -3497,8 +3475,30 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility",
+            "UniponyPlaceholderAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             0,
@@ -3669,16 +3669,16 @@
             10
         ],
         "UpgradeTimeH": [
+            36,
+            48,
             72,
             96,
+            108,
             120,
-            132,
+            142,
             144,
             156,
-            168,
-            180,
-            192,
-            192
+            156
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -3694,16 +3694,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            195000,
-            205000,
-            210000,
-            220000,
-            225000,
-            235000,
-            240000,
-            250000,
-            255000,
-            255000
+            146250,
+            153750,
+            157500,
+            165000,
+            168750,
+            176250,
+            180000,
+            187500,
+            191250,
+            191250
         ],
         "DonateCost": [
             20,
@@ -4124,80 +4124,14 @@
         "HideEffect": [],
         "VillageType": [],
         "UnitsInCamp": [],
-        "SpecialAbilityLevel": [
-            1,
-            1,
-            1,
-            1,
-            2,
-            2,
-            2,
-            2,
-            2,
-            3
-        ],
-        "SpecialAbilityName": [
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY",
-            "TID_PET_PHOENIX_ABILITY"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO",
-            "TID_PET_PHOENIX_ABILITY_INFO"
-        ],
-        "SpecialAbilityType": [
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy",
-            "BoostUnitOnDeploy"
-        ],
-        "SpecialAbilityAttribute": [
-            4,
-            4,
-            4,
-            4,
-            6,
-            6,
-            6,
-            6,
-            6,
-            8
-        ],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
         "SpecialAbilityAttribute3": [],
-        "SpecialAbilitySpell": [
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality",
-            "PhoenixImmortality"
-        ],
+        "SpecialAbilitySpell": [],
         "SpecialAbilityEffect": [],
         "SpecialAbilityIcon": [],
         "DisableDonate": [],
@@ -4239,8 +4173,30 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility",
+            "PhoenixSpawnAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             0,
@@ -4296,16 +4252,16 @@
         ],
         "RecallWithMaster": [],
         "PreviewScenario": [
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5",
-            "Pet5"
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix",
+            "PetPhoenix"
         ],
         "Name": []
     },
@@ -5472,16 +5428,16 @@
             10
         ],
         "UpgradeTimeH": [
+            24,
+            36,
             48,
+            60,
             72,
+            84,
             96,
+            108,
             120,
-            132,
-            144,
-            156,
-            168,
-            180,
-            180
+            120
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -5497,16 +5453,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            160000,
-            165000,
-            170000,
-            175000,
-            180000,
-            185000,
-            190000,
-            195000,
-            200000,
-            200000
+            120000,
+            123750,
+            127500,
+            131250,
+            135000,
+            138750,
+            142500,
+            146250,
+            150000,
+            150000
         ],
         "DonateCost": [
             20,
@@ -5905,7 +5861,18 @@
         "HideEffect": [],
         "VillageType": [],
         "UnitsInCamp": [],
-        "SpecialAbilityLevel": [],
+        "SpecialAbilityLevel": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3
+        ],
         "SpecialAbilityName": [
             "TID_PET_POISON_LIZARD_ABILITY",
             "TID_PET_POISON_LIZARD_ABILITY",
@@ -6088,16 +6055,16 @@
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
         "PreviewScenario": [
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4",
-            "Pet4"
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard",
+            "PetPoisonLizard"
         ],
         "Name": []
     },
@@ -6225,16 +6192,16 @@
             10
         ],
         "UpgradeTimeH": [
+            36,
+            48,
             72,
             96,
+            108,
             120,
-            132,
+            142,
             144,
             156,
-            168,
-            180,
-            192,
-            192
+            156
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -6250,16 +6217,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            185000,
-            195000,
-            200000,
-            210000,
-            215000,
-            225000,
-            230000,
-            240000,
-            245000,
-            245000
+            138750,
+            146250,
+            150000,
+            157500,
+            161250,
+            168750,
+            172500,
+            180000,
+            183750,
+            183750
         ],
         "DonateCost": [
             20,
@@ -6691,7 +6658,18 @@
         ],
         "VillageType": [],
         "UnitsInCamp": [],
-        "SpecialAbilityLevel": [],
+        "SpecialAbilityLevel": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3
+        ],
         "SpecialAbilityName": [
             "TID_PET_DIGGY_ABILITY",
             "TID_PET_DIGGY_ABILITY",
@@ -7000,16 +6978,16 @@
             10
         ],
         "UpgradeTimeH": [
+            36,
+            48,
             72,
             96,
+            108,
             120,
-            132,
+            142,
             144,
             156,
-            168,
-            180,
-            192,
-            192
+            156
         ],
         "UpgradeTimeM": [],
         "UpgradeResource": [
@@ -7025,16 +7003,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            135000,
+            142500,
+            146250,
+            150000,
+            157500,
+            161250,
+            168750,
+            172500,
             180000,
-            190000,
-            195000,
-            200000,
-            210000,
-            215000,
-            225000,
-            230000,
-            240000,
-            240000
+            180000
         ],
         "DonateCost": [
             20,
@@ -7500,30 +7478,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY",
-            "TID_PET_FROSTY_ABILITY"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO",
-            "TID_PET_FROSTY_ABILITY_INFO"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -7592,8 +7548,30 @@
         "ImmuneToHealing": [],
         "PreferHeroes": [],
         "HealerWeight": [],
-        "SpecialAbilities": [],
-        "SpecialAbilitiesLevel": [],
+        "SpecialAbilities": [
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility",
+            "FrostyPlaceholderAbility"
+        ],
+        "SpecialAbilitiesLevel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
         "ReflectsDamage": [],
         "LeashLength": [
             100,
@@ -7789,16 +7767,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            225000,
-            235000,
-            245000,
-            255000,
-            265000,
-            275000,
-            285000,
-            295000,
-            315000,
-            315000
+            168750,
+            176250,
+            183750,
+            191250,
+            198750,
+            206250,
+            213750,
+            221250,
+            236250,
+            236250
         ],
         "DonateCost": [
             20,
@@ -8198,30 +8176,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX",
-            "TID_PET_ABILITY_SPIRIT_FOX"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX",
-            "TID_PET_ABILITY_INFO_SPIRIT_FOX"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -8487,16 +8443,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            225000,
-            235000,
-            245000,
-            255000,
-            265000,
-            275000,
-            285000,
-            295000,
-            315000,
-            315000
+            168750,
+            176250,
+            183750,
+            191250,
+            198750,
+            206250,
+            213750,
+            221250,
+            236250,
+            236250
         ],
         "DonateCost": [
             20,
@@ -8896,30 +8852,8 @@
         "VillageType": [],
         "UnitsInCamp": [],
         "SpecialAbilityLevel": [],
-        "SpecialAbilityName": [
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY",
-            "TID_PET_ABILITY_ANGRY_JELLY"
-        ],
-        "SpecialAbilityInfo": [
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY",
-            "TID_PET_ABILITY_INFO_ANGRY_JELLY"
-        ],
+        "SpecialAbilityName": [],
+        "SpecialAbilityInfo": [],
         "SpecialAbilityType": [],
         "SpecialAbilityAttribute": [],
         "SpecialAbilityAttribute2": [],
@@ -9615,7 +9549,7 @@
             1
         ],
         "Speed": [
-            250
+            100
         ],
         "Hitpoints": [
             20000
@@ -9648,11 +9582,11 @@
             50
         ],
         "AttackSpeed": [
-            1800
+            2000
         ],
         "CoolDownOverride": [],
         "DPS": [
-            80
+            20
         ],
         "PreferedTargetDamageMod": [],
         "DamageRadius": [],
@@ -9736,7 +9670,7 @@
         ],
         "SpawnOnAttack": [],
         "StrengthWeight": [
-            3550
+            15000
         ],
         "AuraSpell": [],
         "AuraSpellLevel": [],
@@ -9857,7 +9791,7 @@
         "SpecialAbilitiesLevel": [],
         "ReflectsDamage": [],
         "LeashLength": [
-            0
+            200
         ],
         "DefaultSkin": [],
         "HeroDeathAbilityLevel": [],
@@ -9867,7 +9801,9 @@
         "PreferMasterTarget": [],
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
-        "PreviewScenario": []
+        "PreviewScenario": [
+            "Pet1"
+        ]
     },
     "AirSplitPetSpawnRemoved": {
         "TroopLevel": [
@@ -10145,5 +10081,294 @@
         "SummonsInheritMaster": [],
         "RecallWithMaster": [],
         "PreviewScenario": []
+    },
+    "AirSpawnerPet": {
+        "TroopLevel": [
+            1
+        ],
+        "Deprecated": [
+            true
+        ],
+        "TID": [
+            "TID_PET_RANGEDATTACKER"
+        ],
+        "InfoTID": [
+            "TID_PET_RANGEDATTACKER_INFO"
+        ],
+        "HousingSpace": [
+            20
+        ],
+        "BarrackLevel": [],
+        "LaboratoryLevel": [
+            1
+        ],
+        "Speed": [
+            200
+        ],
+        "Hitpoints": [
+            4200
+        ],
+        "TrainingTime": [
+            9999
+        ],
+        "TrainingResource": [
+            "DarkElixir"
+        ],
+        "TrainingCost": [
+            1
+        ],
+        "UpgradeTimeH": [
+            72
+        ],
+        "UpgradeTimeM": [],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            135000
+        ],
+        "DonateCost": [
+            20
+        ],
+        "DonateXP": [],
+        "DonateCount": [],
+        "AttackRange": [
+            750
+        ],
+        "AttackSpeed": [
+            1000
+        ],
+        "CoolDownOverride": [],
+        "DPS": [
+            20
+        ],
+        "PreferedTargetDamageMod": [],
+        "DamageRadius": [],
+        "AreaDamageIgnoresWalls": [],
+        "SelfAsAoeCenter": [],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_spiritjellyfish"
+        ],
+        "BigPicture": [
+            "unit_pet_electro_owl_big"
+        ],
+        "BigPictureSWF": [
+            "sc/info_pet_electro_owl.sc"
+        ],
+        "Projectile": [
+            "gargoyle_projectile"
+        ],
+        "AltProjectile": [],
+        "PreferedTargetBuilding": [],
+        "PreferedTargetBuildingClass": [
+            "Defense"
+        ],
+        "PreferredTargetNoTargeting": [],
+        "DeployEffect": [
+            "Laser Owl Deploy"
+        ],
+        "AttackEffect": [
+            "Gargoyle Attack"
+        ],
+        "AttackEffect2": [],
+        "HitEffect": [
+            "Gargoyle Hit"
+        ],
+        "HitEffect2": [],
+        "IsFlying": [
+            true
+        ],
+        "AirTargets": [
+            true
+        ],
+        "GroundTargets": [
+            true
+        ],
+        "AttackCount": [],
+        "DieEffect": [
+            "Laser Owl Die"
+        ],
+        "DieEffect2": [],
+        "Animation": [
+            "AirSplitPetSpawn"
+        ],
+        "ProductionBuilding": [],
+        "IsJumper": [
+            false
+        ],
+        "MovementOffsetAmount": [],
+        "MovementOffsetSpeed": [
+            30
+        ],
+        "TombStone": [],
+        "DieDamage": [],
+        "DieDamageRadius": [],
+        "DieDamageEffect": [],
+        "DieDamageDelay": [],
+        "DisableProduction": [
+            true
+        ],
+        "SecondaryTroop": [],
+        "IsSecondaryTroop": [],
+        "SecondaryTroopCnt": [],
+        "SecondarySpawnDist": [],
+        "RandomizeSecSpawnDist": [],
+        "PickNewTargetAfterPushback": [],
+        "PushbackSpeed": [],
+        "SummonTroop": [
+            "AirSpawnerPetSpawn"
+        ],
+        "SummonTroopCount": [
+            1
+        ],
+        "SummonCooldown": [
+            8000
+        ],
+        "SummonEffect": [],
+        "SummonLimit": [
+            4
+        ],
+        "SpawnIdle": [
+            100
+        ],
+        "SpawnOnAttack": [],
+        "StrengthWeight": [
+            15000
+        ],
+        "AuraSpell": [],
+        "AuraSpellLevel": [],
+        "SpeedDecreasePerChildTroopLost": [],
+        "ChildTroop0_X": [],
+        "ChildTroop0_Y": [],
+        "ChildTroop1_X": [],
+        "WallMovementCost": [],
+        "BurstCount": [],
+        "BurstDelay": [],
+        "AttackMultipleBuildings": [],
+        "IncreasingDamage": [],
+        "DPSLv2": [],
+        "DPSLv3": [],
+        "Lv2SwitchTime": [],
+        "Lv3SwitchTime": [],
+        "AttackEffectLv2": [],
+        "AttackEffectLv3": [],
+        "AttackEffectLv4": [],
+        "TransitionEffectLv2": [],
+        "TransitionEffectLv3": [],
+        "TransitionEffectLv4": [],
+        "TargetedEffectOffset": [
+            60
+        ],
+        "SecondarySpawnOffset": [],
+        "CustomDefenderIcon": [],
+        "SpecialMovementMod": [],
+        "InvisibilityRadius": [],
+        "HealthReductionPerSecond": [],
+        "AutoMergeDistance": [],
+        "AutoMergeGroupSize": [],
+        "IsUnderground": [],
+        "ProjectileBounces": [],
+        "FriendlyGroupWeight": [
+            300
+        ],
+        "EnemyGroupWeight": [
+            400
+        ],
+        "NewTargetAttackDelay": [],
+        "TriggersTraps": [
+            true
+        ],
+        "ChainShootingDistance": [],
+        "ChainAttackDistance": [],
+        "ChainAttackDepth": [],
+        "ChainAttackFactor": [],
+        "ChainAttackDelay": [],
+        "ChainAttackDamageReductionPercent": [],
+        "ChainAttackEffect": [],
+        "PreAttackEffect": [],
+        "MoveStartsEffect": [],
+        "UndergroundEffect": [],
+        "UnderwaterEffect": [],
+        "BecomesTargetableEffect": [],
+        "BoostedIfAlone": [],
+        "BoostRadius": [],
+        "BoostDmgPerfect": [],
+        "BoostAttackSpeed": [],
+        "HideEffect": [],
+        "VillageType": [],
+        "UnitsInCamp": [],
+        "SpecialAbilityLevel": [],
+        "SpecialAbilityName": [
+            "TID_PET_ABILITY_ELECTROWL"
+        ],
+        "SpecialAbilityInfo": [
+            "TID_PET_ABILITY_INFO_ELECTROWL"
+        ],
+        "SpecialAbilityType": [],
+        "SpecialAbilityAttribute": [],
+        "SpecialAbilityAttribute2": [],
+        "SpecialAbilityAttribute3": [],
+        "SpecialAbilitySpell": [],
+        "SpecialAbilityEffect": [],
+        "SpecialAbilityIcon": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "EnabledBySuperLicence": [],
+        "LoseHpPerTick": [],
+        "LoseHpInterval": [],
+        "UpgradeLevelByTH": [],
+        "EvolveToCharacter": [],
+        "EvolveEffect": [],
+        "EvolveOnDamageDealt": [],
+        "EvolveTime": [],
+        "CanAttackWhileMoving": [],
+        "PreferredMovementTarget": [],
+        "RetargetAfterHit": [],
+        "Damage2": [],
+        "Damage2Radius": [],
+        "Damage2Delay": [],
+        "Damage2Min": [],
+        "Damage2FalloffStart": [],
+        "Damage2FalloffEnd": [],
+        "DamageMultiplierTarget": [],
+        "DamageMultiplierPercent": [],
+        "FrostOnHitTime": [],
+        "FrostOnHitPercent": [],
+        "DoesNotOpenCC": [],
+        "DefensiveTroop": [],
+        "DamageReductionToStorages": [],
+        "BunkerTroops": [],
+        "BunkerTroopCount1": [],
+        "BunkerTroopCount2": [],
+        "BunkerDegenerationTime": [],
+        "BunkerSpawnDist": [],
+        "HeroDamageMultiplier": [],
+        "PenetratingProjectile": [],
+        "PenetratingRadius": [],
+        "PenetratingExtraRange": [],
+        "ImmuneToHealing": [],
+        "PreferHeroes": [],
+        "HealerWeight": [],
+        "SpecialAbilities": [],
+        "SpecialAbilitiesLevel": [],
+        "ReflectsDamage": [],
+        "LeashLength": [
+            400
+        ],
+        "DefaultSkin": [],
+        "HeroDeathAbilityLevel": [],
+        "HeroDeathAbilityType": [],
+        "HeroDeathAbilitySpell": [],
+        "CarriesMaster": [],
+        "PreferMasterTarget": [],
+        "SummonsInheritMaster": [],
+        "RecallWithMaster": [],
+        "PreviewScenario": [
+            "Pet2"
+        ]
     }
 }

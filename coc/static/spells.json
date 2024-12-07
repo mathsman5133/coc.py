@@ -11,9 +11,11 @@
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "TID": [
+            "TID_LIGHTNING_STORM",
             "TID_LIGHTNING_STORM",
             "TID_LIGHTNING_STORM",
             "TID_LIGHTNING_STORM",
@@ -27,6 +29,7 @@
             "TID_LIGHTNING_STORM"
         ],
         "InfoTID": [
+            "TID_LIGHTNING_STORM_INFO",
             "TID_LIGHTNING_STORM_INFO",
             "TID_LIGHTNING_STORM_INFO",
             "TID_LIGHTNING_STORM_INFO",
@@ -51,6 +54,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
@@ -64,9 +68,11 @@
             9,
             10,
             13,
-            14
+            14,
+            15
         ],
         "DonateCost": [
+            5,
             5,
             5,
             5,
@@ -90,9 +96,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "TrainingTime": [
+            180,
             180,
             180,
             180,
@@ -116,9 +124,11 @@
             800,
             800,
             800,
+            800,
             800
         ],
         "ChargingTimeMS": [
+            0,
             0,
             0,
             0,
@@ -142,6 +152,7 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "UpgradeTimeH": [
@@ -149,15 +160,17 @@
             8,
             12,
             24,
+            48,
             72,
-            96,
+            120,
             144,
-            168,
             216,
+            264,
             336,
             336
         ],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -179,6 +192,7 @@
             2500000,
             4200000,
             6300000,
+            10000000,
             13500000,
             18500000,
             18500000
@@ -201,7 +215,8 @@
             480,
             560,
             600,
-            640
+            640,
+            680
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -209,6 +224,7 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            200,
             200,
             200,
             200,
@@ -232,9 +248,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "RandomRadius": [
+            0,
             0,
             0,
             0,
@@ -258,9 +276,11 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "IconSWF": [
+            "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
@@ -284,9 +304,11 @@
             "icon_spell_lightning",
             "icon_spell_lightning",
             "icon_spell_lightning",
+            "icon_spell_lightning",
             "icon_spell_lightning"
         ],
         "BigPicture": [
+            "icon_spell_lightning",
             "icon_spell_lightning",
             "icon_spell_lightning",
             "icon_spell_lightning",
@@ -310,9 +332,11 @@
             "Lightning predeploy",
             "Lightning predeploy",
             "Lightning predeploy",
+            "Lightning predeploy",
             "Lightning predeploy"
         ],
         "DeployEffect": [
+            "Lightning area small",
             "Lightning area small",
             "Lightning area small",
             "Lightning area small",
@@ -338,9 +362,11 @@
             "Lightning Spell",
             "Lightning Spell",
             "Lightning Spell",
+            "Lightning Spell",
             "Lightning Spell"
         ],
         "HitEffect": [
+            "Lightning Spell Hit",
             "Lightning Spell Hit",
             "Lightning Spell Hit",
             "Lightning Spell Hit",
@@ -364,9 +390,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "FreezeTimeMS": [
+            100,
             100,
             100,
             100,
@@ -392,9 +420,11 @@
             1600,
             1700,
             2000,
-            2100
+            2100,
+            2200
         ],
         "ProductionBuilding": [
+            "Spell Forge",
             "Spell Forge",
             "Spell Forge",
             "Spell Forge",
@@ -408,6 +438,7 @@
             "Spell Forge"
         ],
         "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
@@ -469,6 +500,7 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "ConeAngle": [],
@@ -509,9 +541,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ImmunityStorages": [
+            true,
             true,
             true,
             true,
@@ -541,14 +575,17 @@
             "SpellLightning",
             "SpellLightning",
             "SpellLightning",
+            "SpellLightning",
             "SpellLightning"
         ],
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "HealingWave": {
@@ -562,9 +599,11 @@
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "TID": [
+            "TID_HEALING_WAVE",
             "TID_HEALING_WAVE",
             "TID_HEALING_WAVE",
             "TID_HEALING_WAVE",
@@ -577,6 +616,7 @@
             "TID_HEALING_WAVE"
         ],
         "InfoTID": [
+            "TID_HEALING_WAVE_INFO",
             "TID_HEALING_WAVE_INFO",
             "TID_HEALING_WAVE_INFO",
             "TID_HEALING_WAVE_INFO",
@@ -599,6 +639,7 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "LaboratoryLevel": [
@@ -611,9 +652,11 @@
             8,
             11,
             13,
-            14
+            14,
+            15
         ],
         "DonateCost": [
+            10,
             10,
             10,
             10,
@@ -635,9 +678,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "TrainingTime": [
+            360,
             360,
             360,
             360,
@@ -659,9 +704,11 @@
             800,
             800,
             800,
+            800,
             800
         ],
         "ChargingTimeMS": [
+            300,
             300,
             300,
             300,
@@ -683,6 +730,7 @@
             400,
             400,
             400,
+            400,
             400
         ],
         "UpgradeTimeH": [
@@ -690,14 +738,16 @@
             10,
             20,
             36,
+            48,
             72,
-            96,
-            144,
+            120,
             216,
+            288,
             360,
             360
         ],
         "UpgradeResource": [
+            "Elixir",
             "Elixir",
             "Elixir",
             "Elixir",
@@ -716,8 +766,9 @@
             900000,
             1800000,
             3000000,
-            8500000,
-            14500000,
+            6000000,
+            11000000,
+            14000000,
             19000000,
             19000000
         ],
@@ -738,7 +789,8 @@
             "-45",
             "-50",
             "-55",
-            "-60"
+            "-60",
+            "-65"
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -746,6 +798,7 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            500,
             500,
             500,
             500,
@@ -767,9 +820,11 @@
             40,
             40,
             40,
+            40,
             40
         ],
         "RandomRadius": [
+            200,
             200,
             200,
             200,
@@ -791,9 +846,11 @@
             300,
             300,
             300,
+            300,
             300
         ],
         "IconSWF": [
+            "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
@@ -815,9 +872,11 @@
             "icon_spell_healing",
             "icon_spell_healing",
             "icon_spell_healing",
+            "icon_spell_healing",
             "icon_spell_healing"
         ],
         "BigPicture": [
+            "icon_spell_healing",
             "icon_spell_healing",
             "icon_spell_healing",
             "icon_spell_healing",
@@ -839,9 +898,11 @@
             "Heal predeploy",
             "Heal predeploy",
             "Heal predeploy",
+            "Heal predeploy",
             "Heal predeploy"
         ],
         "DeployEffect": [
+            "Heal area",
             "Heal area",
             "Heal area",
             "Heal area",
@@ -864,6 +925,7 @@
             "Heal area top",
             "Heal area top",
             "Heal area top",
+            "Heal area top",
             "Heal area top"
         ],
         "ChargingEffect": [],
@@ -877,9 +939,11 @@
             "Heal spell",
             "Heal spell",
             "Heal spell",
+            "Heal spell",
             "Heal spell"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -904,9 +968,11 @@
             1500,
             1800,
             2000,
-            2100
+            2100,
+            2200
         ],
         "ProductionBuilding": [
+            "Spell Forge",
             "Spell Forge",
             "Spell Forge",
             "Spell Forge",
@@ -928,11 +994,13 @@
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
         ],
         "PreferredTarget": [],
         "PreferredTargetDamageMod": [],
         "HeroDamageMultiplier": [
+            55,
             55,
             55,
             55,
@@ -1025,14 +1093,17 @@
             "SpellHeal",
             "SpellHeal",
             "SpellHeal",
+            "SpellHeal",
             "SpellHeal"
         ],
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Haste": {
@@ -1130,8 +1201,8 @@
             24,
             48,
             96,
-            144,
-            144
+            120,
+            120
         ],
         "UpgradeResource": [
             "Elixir",
@@ -1146,8 +1217,8 @@
             800000,
             1600000,
             2400000,
-            7000000,
-            7000000
+            5000000,
+            5000000
         ],
         "BoostTimeMS": [
             1000,
@@ -1393,9 +1464,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Jump": {
@@ -1478,11 +1551,11 @@
             400
         ],
         "UpgradeTimeH": [
-            72,
+            36,
+            48,
             96,
-            144,
-            204,
-            204
+            156,
+            156
         ],
         "UpgradeResource": [
             "Elixir",
@@ -1492,11 +1565,11 @@
             "Elixir"
         ],
         "UpgradeCost": [
+            1000000,
             2000000,
-            3400000,
-            7200000,
-            14000000,
-            14000000
+            5000000,
+            8000000,
+            8000000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -1711,9 +1784,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "xmas": {
@@ -1905,9 +1980,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Freeze": {
         "Level": [
@@ -2012,12 +2089,12 @@
         ],
         "UpgradeTimeH": [
             36,
-            62,
-            78,
-            96,
+            48,
+            60,
+            72,
+            120,
             144,
-            168,
-            168
+            144
         ],
         "UpgradeResource": [
             "Elixir",
@@ -2292,9 +2369,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "xmas2013": {
@@ -2309,9 +2388,11 @@
             8,
             9,
             10,
-            11
+            11,
+            12
         ],
         "TID": [
+            "TID_XMAS_SPELL",
             "TID_XMAS_SPELL",
             "TID_XMAS_SPELL",
             "TID_XMAS_SPELL",
@@ -2325,6 +2406,7 @@
             "TID_XMAS_SPELL"
         ],
         "InfoTID": [
+            "TID_XMAS_SPELL_INFO",
             "TID_XMAS_SPELL_INFO",
             "TID_XMAS_SPELL_INFO",
             "TID_XMAS_SPELL_INFO",
@@ -2349,9 +2431,11 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "LaboratoryLevel": [
+            1,
             1,
             1,
             1,
@@ -2376,9 +2460,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "TrainingTime": [
+            360,
             360,
             360,
             360,
@@ -2402,6 +2488,7 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ChargingTimeMS": [
@@ -2415,9 +2502,11 @@
             4500,
             4500,
             4500,
+            4500,
             4500
         ],
         "HitTimeMS": [
+            6000,
             6000,
             6000,
             6000,
@@ -2442,6 +2531,7 @@
             "Elixir",
             "Elixir",
             "Elixir",
+            "Elixir",
             "Elixir"
         ],
         "UpgradeCost": [],
@@ -2453,17 +2543,18 @@
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
         "Damage": [
-            150,
-            160,
-            170,
             180,
             190,
             200,
-            220,
-            240,
+            210,
+            230,
             260,
             280,
-            300
+            300,
+            330,
+            350,
+            370,
+            390
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -2471,19 +2562,21 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100,
-            100
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
         ],
         "NumberOfHits": [
+            5,
             5,
             5,
             5,
@@ -2507,9 +2600,11 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "TimeBetweenHitsMS": [
+            100,
             100,
             100,
             100,
@@ -2533,6 +2628,7 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
@@ -2546,9 +2642,11 @@
             "icon_spell_xmas",
             "icon_spell_xmas",
             "icon_spell_xmas",
+            "icon_spell_xmas",
             "icon_spell_xmas"
         ],
         "BigPicture": [
+            "icon_spell_xmas",
             "icon_spell_xmas",
             "icon_spell_xmas",
             "icon_spell_xmas",
@@ -2573,9 +2671,11 @@
             "xmas Red Smoke",
             "xmas Red Smoke",
             "xmas Red Smoke",
+            "xmas Red Smoke",
             "xmas Red Smoke"
         ],
         "DeployEffect2Delay": [
+            2500,
             2500,
             2500,
             2500,
@@ -2599,9 +2699,11 @@
             "xmas test",
             "xmas test",
             "xmas test",
+            "xmas test",
             "xmas test"
         ],
         "ChargingEffect": [
+            "xmas Drop Bombs",
             "xmas Drop Bombs",
             "xmas Drop Bombs",
             "xmas Drop Bombs",
@@ -2625,9 +2727,11 @@
             "xmas boom",
             "xmas boom",
             "xmas boom",
+            "xmas boom",
             "xmas boom"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            false,
             false,
             false,
             false,
@@ -2652,9 +2756,11 @@
             "Xmas TombStone",
             "Xmas TombStone",
             "Xmas TombStone",
+            "Xmas TombStone",
             "Xmas TombStone"
         ],
         "NumObstacles": [
+            5,
             5,
             5,
             5,
@@ -2679,9 +2785,11 @@
             "Spell Forge",
             "Spell Forge",
             "Spell Forge",
+            "Spell Forge",
             "Spell Forge"
         ],
         "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
@@ -2735,10 +2843,12 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ScaleByTH": [],
         "EnabledByCalendar": [
+            true,
             true,
             true,
             true,
@@ -2754,7 +2864,6 @@
         "VillageType": [],
         "PauseCombatComponentsMs": [],
         "UpgradeLevelByTH": [
-            5,
             6,
             7,
             8,
@@ -2764,7 +2873,9 @@
             12,
             13,
             14,
-            15
+            15,
+            16,
+            17
         ],
         "ChangeTeamTime": [],
         "InvisibilityTime": [],
@@ -2807,9 +2918,11 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "ImmunityStorages": [
+            true,
             true,
             true,
             true,
@@ -2828,13 +2941,28 @@
         "CapitalAttackCount": [],
         "DestroyWalls": [],
         "RecallHousing": [],
-        "PreviewScenario": [],
+        "PreviewScenario": [
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise",
+            "SpellSantaSurprise"
+        ],
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Slow": {
@@ -3039,9 +3167,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "BoostDefences": {
@@ -3240,9 +3370,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Poison": {
@@ -3382,14 +3514,14 @@
         "UpgradeTimeH": [
             8,
             24,
-            62,
+            48,
             96,
-            150,
-            168,
+            120,
+            144,
             216,
+            240,
             288,
-            360,
-            360
+            288
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -3404,16 +3536,16 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            5000,
             10000,
-            20000,
-            43000,
-            70000,
-            110000,
-            155000,
-            200000,
-            270000,
-            350000,
-            350000
+            21500,
+            35000,
+            55000,
+            77500,
+            100000,
+            135000,
+            175000,
+            175000
         ],
         "BoostTimeMS": [
             500,
@@ -3845,9 +3977,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Earthquake": {
@@ -3933,8 +4067,8 @@
             18,
             36,
             102,
-            168,
-            168
+            120,
+            120
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -3944,11 +4078,11 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            6000,
             12000,
-            24000,
-            51000,
-            84000,
-            84000
+            25500,
+            42000,
+            42000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -4187,9 +4321,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "SpeedUp": {
@@ -4273,10 +4409,10 @@
         ],
         "UpgradeTimeH": [
             36,
-            62,
+            48,
+            96,
             108,
-            168,
-            168
+            108
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -4286,11 +4422,11 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            16000,
-            34000,
-            60000,
-            77000,
-            77000
+            8000,
+            17000,
+            30000,
+            38500,
+            38500
         ],
         "BoostTimeMS": [
             1000,
@@ -4511,9 +4647,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Shield": {
@@ -4833,19 +4971,19 @@
             4000,
             4250,
             4500,
+            5250,
             5500,
             5750,
-            6000,
+            6500,
+            6600,
+            6700,
             7000,
+            7100,
             7200,
-            7400,
-            8000,
-            8200,
-            8400,
-            9000,
-            9100,
-            9200,
-            9500
+            7500,
+            7600,
+            7700,
+            8000
         ],
         "ShieldProtectionPercent": [
             100,
@@ -5023,9 +5161,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Growth": {
@@ -5205,13 +5345,13 @@
             0
         ],
         "ExtraHealthMax": [
-            275,
-            350,
-            425,
-            500,
-            575,
-            650,
-            725
+            330,
+            420,
+            510,
+            600,
+            690,
+            780,
+            870
         ],
         "PoisonDPS": [],
         "PoisonIncreaseSlowly": [],
@@ -5299,9 +5439,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Artillery Center": {
@@ -5503,9 +5645,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "MiniGrowth": {
@@ -5663,9 +5807,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Duplicate": {
         "Level": [
@@ -5780,14 +5926,14 @@
             400
         ],
         "UpgradeTimeH": [
-            42,
-            72,
+            24,
+            48,
+            60,
             84,
             96,
             144,
             192,
-            240,
-            240
+            192
         ],
         "UpgradeResource": [
             "Elixir",
@@ -5800,14 +5946,14 @@
             "Elixir"
         ],
         "UpgradeCost": [
-            2100000,
-            3400000,
-            4200000,
-            5600000,
-            7200000,
-            12000000,
-            15000000,
-            15000000
+            1500000,
+            2500000,
+            3000000,
+            4000000,
+            5000000,
+            8000000,
+            9000000,
+            9000000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -6073,9 +6219,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "SpawnSkele": {
@@ -6191,14 +6339,14 @@
             0
         ],
         "UpgradeTimeH": [
-            32,
-            62,
+            24,
+            48,
+            72,
+            84,
             96,
-            102,
-            132,
-            168,
-            288,
-            288
+            120,
+            192,
+            192
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -6211,14 +6359,14 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            22000,
-            34000,
+            11000,
+            17000,
+            25000,
+            40000,
             50000,
-            80000,
-            100000,
-            150000,
-            270000,
-            270000
+            75000,
+            135000,
+            135000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -6484,9 +6632,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "FreezeTrap": {
@@ -6652,9 +6802,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Mortar2Poison": {
         "Level": [
@@ -7014,9 +7166,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TroopRage": {
@@ -7246,9 +7400,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "ShrinkTrap": {
@@ -7410,9 +7566,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Birthday2017": {
         "Level": [
@@ -7611,9 +7769,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "IceGolemFreeze": {
         "Level": [
@@ -7886,9 +8046,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "ElectroDragonDie": {
@@ -7902,11 +8064,13 @@
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -7933,6 +8097,7 @@
             800,
             800,
             800,
+            800,
             800
         ],
         "ChargingTimeMS": [
@@ -7945,9 +8110,11 @@
             1000,
             1000,
             1000,
+            1000,
             1000
         ],
         "HitTimeMS": [
+            1100,
             1100,
             1100,
             1100,
@@ -7979,7 +8146,8 @@
             95,
             105,
             115,
-            125
+            125,
+            135
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -7987,6 +8155,7 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            200,
             200,
             200,
             200,
@@ -8008,6 +8177,7 @@
             6,
             6,
             6,
+            6,
             6
         ],
         "RandomRadius": [
@@ -8020,9 +8190,11 @@
             250,
             250,
             250,
+            250,
             250
         ],
         "TimeBetweenHitsMS": [
+            400,
             400,
             400,
             400,
@@ -8048,11 +8220,13 @@
             "Lightning area",
             "Lightning area",
             "Lightning area",
+            "Lightning area",
             "Lightning area"
         ],
         "DeployEffect2Delay": [],
         "DeployEffect2": [],
         "ChargingEffect": [
+            "Lightning Spell",
             "Lightning Spell",
             "Lightning Spell",
             "Lightning Spell",
@@ -8074,9 +8248,11 @@
             "Lightning Spell Hit",
             "Lightning Spell Hit",
             "Lightning Spell Hit",
+            "Lightning Spell Hit",
             "Lightning Spell Hit"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            false,
             false,
             false,
             false,
@@ -8172,9 +8348,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TornadoTrap": {
@@ -8412,9 +8590,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TroopHaste": {
@@ -8576,9 +8756,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "ProtoSpell2": {
         "Level": [
@@ -8875,9 +9057,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "SpawnBats": {
@@ -8971,12 +9155,12 @@
             0
         ],
         "UpgradeTimeH": [
-            42,
-            76,
-            126,
-            144,
-            312,
-            312
+            30,
+            56,
+            84,
+            108,
+            204,
+            204
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -8987,12 +9171,12 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
-            26000,
-            51000,
-            70000,
-            95000,
-            280000,
-            280000
+            13000,
+            25500,
+            35000,
+            47500,
+            140000,
+            140000
         ],
         "BoostTimeMS": [
             0,
@@ -9252,9 +9436,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "IceGolemFreeze_DEF": {
@@ -9489,9 +9675,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "IceBreakerSplinters": {
@@ -9717,9 +9905,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "BatRage": {
@@ -9869,9 +10059,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "TH13Freeze": {
         "Level": [
@@ -10092,9 +10284,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "ElectroTitanDamageAura": {
@@ -10299,9 +10493,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "EliteValkyrieRage": {
@@ -10465,9 +10661,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Invisibility": {
         "Level": [
@@ -10538,10 +10736,10 @@
             400
         ],
         "UpgradeTimeH": [
-            132,
-            144,
-            228,
-            228
+            96,
+            108,
+            168,
+            168
         ],
         "UpgradeResource": [
             "Elixir",
@@ -10550,10 +10748,10 @@
             "Elixir"
         ],
         "UpgradeCost": [
-            5600000,
-            7500000,
-            9000000,
-            9000000
+            5000000,
+            6000000,
+            7000000,
+            7000000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -10751,9 +10949,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "IceHoundFreeze": {
@@ -10928,9 +11128,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TH14Poison": {
@@ -11222,9 +11424,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "FireSpiritExplosion": {
@@ -11492,9 +11696,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "PhoenixImmortality": {
@@ -11652,9 +11858,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TroopImmortality": {
@@ -11812,9 +12020,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "AreaStun": {
@@ -11964,9 +12174,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "DrillerSurfacing": {
         "Level": [
@@ -12117,9 +12329,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "TH15Poison": {
         "Level": [
@@ -12410,9 +12624,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "PoisonST": {
@@ -12624,9 +12840,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "SuperHogRiderSummonHog": {
         "Level": [
@@ -12931,9 +13149,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "RageST": {
@@ -13127,9 +13347,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "SuperHogRiderSummonRider": {
         "Level": [
@@ -13423,9 +13645,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "InvisibilityST": {
@@ -13621,9 +13845,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "GraveGolemSummonBigBoy": {
         "Level": [
@@ -13636,11 +13862,13 @@
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "TID": [],
         "InfoTID": [],
         "DisableProduction": [
+            true,
             true,
             true,
             true,
@@ -13667,6 +13895,7 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "ChargingTimeMS": [
@@ -13679,9 +13908,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "HitTimeMS": [
+            0,
             0,
             0,
             0,
@@ -13713,6 +13944,7 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "TroopDamagePermil": [],
@@ -13721,6 +13953,7 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
+            200,
             200,
             200,
             200,
@@ -13742,6 +13975,7 @@
             1,
             1,
             1,
+            1,
             1
         ],
         "RandomRadius": [
@@ -13754,9 +13988,11 @@
             150,
             150,
             150,
+            150,
             150
         ],
         "TimeBetweenHitsMS": [
+            300,
             300,
             300,
             300,
@@ -13782,6 +14018,7 @@
             "Warlock Summon",
             "Warlock Summon",
             "Warlock Summon",
+            "Warlock Summon",
             "Warlock Summon"
         ],
         "DeployEffect2Delay": [],
@@ -13795,6 +14032,7 @@
         "StrengthWeight": [],
         "ProductionBuilding": [],
         "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
             "TID_PREFERRED_TARGET_ANY",
@@ -13838,6 +14076,7 @@
             "Witch Golem Big Boy",
             "Witch Golem Big Boy",
             "Witch Golem Big Boy",
+            "Witch Golem Big Boy",
             "Witch Golem Big Boy"
         ],
         "UnitsToSpawn": [
@@ -13850,7 +14089,8 @@
             3,
             3,
             3,
-            3
+            3,
+            4
         ],
         "SpawnUpgradeLevel": [
             1,
@@ -13862,7 +14102,8 @@
             7,
             8,
             9,
-            10
+            10,
+            11
         ],
         "ShrinkReduceSpeedRatio": [],
         "ShrinkHitpointsRatio": [],
@@ -13876,9 +14117,11 @@
             600,
             600,
             600,
+            600,
             600
         ],
         "SpawnFirstGroupSize": [
+            0,
             0,
             0,
             0,
@@ -13939,9 +14182,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "HogWizardDamageAura": {
@@ -14097,9 +14342,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "BagOfFrostmitesSpawn": {
         "Level": [
@@ -14348,9 +14595,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "COOKIEAura": {
@@ -14504,9 +14753,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Recall": {
         "Level": [
@@ -14514,9 +14765,11 @@
             2,
             3,
             4,
-            5
+            5,
+            6
         ],
         "TID": [
+            "TID_SPELL_RECALL",
             "TID_SPELL_RECALL",
             "TID_SPELL_RECALL",
             "TID_SPELL_RECALL",
@@ -14524,6 +14777,7 @@
             "TID_SPELL_RECALL"
         ],
         "InfoTID": [
+            "TID_SPELL_RECALL_INFO",
             "TID_SPELL_RECALL_INFO",
             "TID_SPELL_RECALL_INFO",
             "TID_SPELL_RECALL_INFO",
@@ -14536,6 +14790,7 @@
             7,
             7,
             7,
+            7,
             7
         ],
         "LaboratoryLevel": [
@@ -14543,9 +14798,11 @@
             11,
             12,
             13,
-            14
+            14,
+            15
         ],
         "DonateCost": [
+            10,
             10,
             10,
             10,
@@ -14557,9 +14814,11 @@
             2,
             2,
             2,
+            2,
             2
         ],
         "TrainingTime": [
+            360,
             360,
             360,
             360,
@@ -14571,9 +14830,11 @@
             800,
             800,
             800,
+            800,
             800
         ],
         "ChargingTimeMS": [
+            0,
             0,
             0,
             0,
@@ -14585,12 +14846,14 @@
             100,
             100,
             100,
+            100,
             100
         ],
         "UpgradeTimeH": [
-            228,
+            168,
             276,
             288,
+            312,
             360,
             360
         ],
@@ -14599,16 +14862,19 @@
             "Elixir",
             "Elixir",
             "Elixir",
+            "Elixir",
             "Elixir"
         ],
         "UpgradeCost": [
             7500000,
-            12500000,
-            15000000,
-            19500000,
-            19500000
+            8000000,
+            9000000,
+            13000000,
+            21000000,
+            21000000
         ],
         "BoostTimeMS": [
+            0,
             0,
             0,
             0,
@@ -14620,9 +14886,11 @@
             0,
             0,
             0,
+            0,
             0
         ],
         "SpeedBoost2": [
+            0,
             0,
             0,
             0,
@@ -14634,6 +14902,7 @@
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
         "Damage": [
+            0,
             0,
             0,
             0,
@@ -14650,9 +14919,11 @@
             500,
             500,
             500,
+            500,
             500
         ],
         "NumberOfHits": [
+            1,
             1,
             1,
             1,
@@ -14664,9 +14935,11 @@
             200,
             200,
             200,
+            200,
             200
         ],
         "TimeBetweenHitsMS": [
+            100,
             100,
             100,
             100,
@@ -14678,9 +14951,11 @@
             "sc/ui.sc",
             "sc/ui.sc",
             "sc/ui.sc",
+            "sc/ui.sc",
             "sc/ui.sc"
         ],
         "IconExportName": [
+            "icon_spell_recall",
             "icon_spell_recall",
             "icon_spell_recall",
             "icon_spell_recall",
@@ -14692,6 +14967,7 @@
             "icon_spell_recall",
             "icon_spell_recall",
             "icon_spell_recall",
+            "icon_spell_recall",
             "icon_spell_recall"
         ],
         "PreDeployEffect": [
@@ -14699,9 +14975,11 @@
             "Recall_Predeploy",
             "Recall_Predeploy",
             "Recall_Predeploy",
+            "Recall_Predeploy",
             "Recall_Predeploy"
         ],
         "DeployEffect": [
+            "RecallDeployAuraGround",
             "RecallDeployAuraGround",
             "RecallDeployAuraGround",
             "RecallDeployAuraGround",
@@ -14714,11 +14992,13 @@
             "RecallDeployAuraTop",
             "RecallDeployAuraTop",
             "RecallDeployAuraTop",
+            "RecallDeployAuraTop",
             "RecallDeployAuraTop"
         ],
         "ChargingEffect": [],
         "HitEffect": [],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -14733,9 +15013,11 @@
             1800,
             1900,
             2000,
-            2100
+            2100,
+            2200
         ],
         "ProductionBuilding": [
+            "Spell Forge",
             "Spell Forge",
             "Spell Forge",
             "Spell Forge",
@@ -14743,6 +15025,7 @@
             "Spell Forge"
         ],
         "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
             "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
@@ -14827,9 +15110,11 @@
             89,
             95,
             101,
-            107
+            107,
+            113
         ],
         "PreviewScenario": [
+            "SpellRecall",
             "SpellRecall",
             "SpellRecall",
             "SpellRecall",
@@ -14839,9 +15124,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "GrandWardenRangeRing": {
@@ -14999,9 +15286,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "PoisonLizardAttack": {
         "Level": [
@@ -15206,9 +15495,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "RamRiderDestroyWalls": {
@@ -15370,9 +15661,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Unused10": {
         "Level": [
@@ -15567,9 +15860,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Unused11": {
         "Level": [
@@ -15764,9 +16059,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Baby Dragon Flaming Sneeze": {
         "Level": [
@@ -16003,9 +16300,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Power PEKKA Overcharge": {
@@ -16231,9 +16530,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Drop Ship Skeleton Bomb": {
@@ -16453,9 +16754,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Night Witch Bat Swarm": {
@@ -16681,9 +16984,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Cannon Cart Mortar Mode Splash": {
@@ -16876,9 +17181,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Apprentice Growth": {
@@ -17083,9 +17390,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "PetJump": {
@@ -17243,9 +17552,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "PetSpeedUp": {
         "Level": [
@@ -17408,9 +17719,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "FireSpiritBurn": {
         "Level": [
@@ -17581,9 +17894,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "TreantWallDamageAura": {
         "Level": [
@@ -17748,9 +18063,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "SiegeInvisibility": {
         "Level": [
@@ -17915,9 +18232,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "Overgrowth": {
         "Level": [
@@ -17988,10 +18307,10 @@
             400
         ],
         "UpgradeTimeH": [
-            240,
+            168,
             288,
-            384,
-            384
+            312,
+            312
         ],
         "UpgradeResource": [
             "DarkElixir",
@@ -18000,10 +18319,10 @@
             "DarkElixir"
         ],
         "UpgradeCost": [
+            62500,
             125000,
-            250000,
-            350000,
-            350000
+            175000,
+            175000
         ],
         "BoostTimeMS": [],
         "SpeedBoost": [],
@@ -18019,10 +18338,10 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
-            700,
-            700,
-            700,
-            700
+            600,
+            600,
+            600,
+            600
         ],
         "NumberOfHits": [
             1,
@@ -18089,9 +18408,9 @@
         ],
         "FreezeTimeMS": [
             22000,
+            23000,
             24000,
-            26000,
-            28000
+            25000
         ],
         "SpawnObstacle": [],
         "NumObstacles": [],
@@ -18130,9 +18449,9 @@
         "ImmortalTime": [],
         "ShieldTime": [
             22000,
+            23000,
             24000,
-            26000,
-            28000
+            25000
         ],
         "ShieldProtectionPercent": [
             100,
@@ -18162,15 +18481,15 @@
         "ChangeTeamTime": [],
         "InvisibilityTime": [
             22000,
+            23000,
             24000,
-            26000,
-            28000
+            25000
         ],
         "FreezeOuterTimeMS": [
             22000,
+            23000,
             24000,
-            26000,
-            28000
+            25000
         ],
         "ConeAngle": [],
         "FreezePercent": [],
@@ -18251,9 +18570,11 @@
             true,
             true
         ],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "GWHeroicTorchSpell": {
@@ -18581,9 +18902,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Blizzard": {
@@ -18783,9 +19106,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "BagOfFrostmites": {
         "Level": [
@@ -19358,9 +19683,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "TroopCatapultSummonTroop": {
@@ -19520,308 +19847,13 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
-        "TargetedProjectile": [],
-        "TargetedAgainEffect": []
-    },
-    "LavaloonSpawnPup": {
-        "Level": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-        ],
-        "TID": [],
-        "InfoTID": [],
-        "DisableProduction": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-        ],
-        "SpellForgeLevel": [],
-        "LaboratoryLevel": [],
-        "DonateCost": [],
-        "HousingSpace": [],
-        "TrainingTime": [],
-        "DeployTimeMS": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "ChargingTimeMS": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "HitTimeMS": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "UpgradeTimeH": [],
-        "UpgradeResource": [],
-        "UpgradeCost": [],
-        "BoostTimeMS": [],
-        "SpeedBoost": [],
-        "SpeedBoost2": [],
-        "JumpHousingLimit": [],
-        "JumpBoostMS": [],
-        "DamageBoostPercent": [],
-        "BuildingDamageBoostPercent": [],
-        "Damage": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "TroopDamagePermil": [],
-        "BuildingDamagePermil": [],
-        "ExecuteHealthPermil": [],
-        "DamagePermilMin": [],
-        "PreferredDamagePermilMin": [],
-        "Radius": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "NumberOfHits": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-        ],
-        "RandomRadius": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "TimeBetweenHitsMS": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "IconSWF": [],
-        "IconExportName": [],
-        "BigPicture": [],
-        "PreDeployEffect": [],
-        "DeployEffect": [],
-        "DeployEffect2Delay": [],
-        "DeployEffect2": [],
-        "ChargingEffect": [],
-        "HitEffect": [
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect",
-            "LavaloonAttackEffect"
-        ],
-        "RandomRadiusAffectsOnlyGfx": [
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
-        ],
-        "FreezeTimeMS": [],
-        "SpawnObstacle": [],
-        "NumObstacles": [],
-        "StrengthWeight": [],
-        "ProductionBuilding": [],
-        "TargetInfoString": [],
-        "PreferredTarget": [],
-        "PreferredTargetDamageMod": [],
-        "HeroDamageMultiplier": [],
-        "ShieldProjectileSpeed": [],
-        "ShieldProjectileDamageMod": [],
-        "ExtraHealthPermil": [],
-        "ExtraHealthMin": [],
-        "ExtraHealthMax": [],
-        "PoisonDPS": [],
-        "PoisonIncreaseSlowly": [],
-        "AttackSpeedBoost": [],
-        "BoostLinkedToPoison": [],
-        "PoisonAffectAir": [],
-        "ScaleDeployEffects": [],
-        "ImmortalTime": [],
-        "ShieldTime": [],
-        "ShieldProtectionPercent": [],
-        "MaxUnitsHit": [],
-        "EnemyDeployEffect": [],
-        "SnapToGrid": [],
-        "DuplicateHousing": [],
-        "DuplicateLifetime": [],
-        "SummonTroop": [
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup",
-            "Lavaloon Pup"
-        ],
-        "UnitsToSpawn": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
-        ],
-        "SpawnUpgradeLevel": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-        ],
-        "ShrinkReduceSpeedRatio": [],
-        "ShrinkHitpointsRatio": [],
-        "SpawnDuration": [],
-        "SpawnFirstGroupSize": [],
-        "DamageTHPercent": [],
-        "DisableDonate": [],
-        "ScaleByTH": [],
-        "EnabledByCalendar": [],
-        "VillageType": [],
-        "PauseCombatComponentsMs": [],
-        "UpgradeLevelByTH": [],
-        "ChangeTeamTime": [],
-        "InvisibilityTime": [],
-        "FreezeOuterTimeMS": [],
-        "ConeAngle": [],
-        "FreezePercent": [],
-        "MinRadius": [],
-        "MinDamage": [],
-        "StunTimeMS": [],
-        "GiveSpecialAbility": [],
-        "GivenSpecialAbilityLevel": [],
-        "TornadoForce1": [],
-        "TornadoForce2": [],
-        "TornadoForce3": [],
-        "TornadoForce4": [],
-        "TornadoForce5": [],
-        "TornadoForceAir1": [],
-        "TornadoForceAir2": [],
-        "TornadoForceAir3": [],
-        "TornadoForceAir4": [],
-        "TornadoForceAir5": [],
-        "TornadoRotationSpeed": [],
-        "TornadoSpeedTowardsCenter": [],
-        "TornadoInnerRadius": [],
-        "TornadoInnerForcePercent": [],
-        "TornadoOuterForcePercent": [],
-        "ChainSpell": [],
-        "AffectsSiegeMachines": [],
-        "BoostDefenders": [],
-        "ImmunitySiegeMachines": [],
-        "ImmunityOtherCharacters": [],
-        "ImmunityTH_CC": [],
-        "ImmunityStorages": [],
-        "ImmunityWalls": [],
-        "ImmunityOtherBuildings": [],
-        "HideImmunityVFX": [],
-        "CapitalAttackCount": [],
-        "DestroyWalls": [],
-        "RecallHousing": [],
-        "PreviewScenario": [],
-        "TombStone": [],
-        "NumTombStones": [],
-        "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
-        "Name": []
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
-    "Firecracker Explosion": {
+    "LavaloonSpawnPup": {
         "Level": [
             1,
             2,
@@ -19905,17 +19937,17 @@
         "DamageBoostPercent": [],
         "BuildingDamageBoostPercent": [],
         "Damage": [
-            90,
-            117,
-            144,
-            171,
-            198,
-            225,
-            261,
-            279,
-            306,
-            342,
-            360
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "TroopDamagePermil": [],
         "BuildingDamagePermil": [],
@@ -19923,17 +19955,17 @@
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
-            500,
-            500,
-            500,
-            500,
-            500,
-            500,
-            500,
-            500,
-            500,
-            500,
-            500
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
         ],
         "NumberOfHits": [
             1,
@@ -19983,6 +20015,331 @@
         "DeployEffect2": [],
         "ChargingEffect": [],
         "HitEffect": [
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect"
+        ],
+        "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup",
+            "Lavaloon Pup"
+        ],
+        "UnitsToSpawn": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SpawnUpgradeLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
+        "Name": []
+    },
+    "Firecracker Explosion": {
+        "Level": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "ChargingTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "HitTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            90,
+            117,
+            144,
+            171,
+            198,
+            225,
+            261,
+            279,
+            306,
+            342,
+            360,
+            378
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500,
+            500
+        ],
+        "NumberOfHits": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "RandomRadius": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [
+            "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1",
             "Ice Breaker Hit lvl1",
@@ -19996,6 +20353,7 @@
             "Ice Breaker Hit lvl1"
         ],
         "RandomRadiusAffectsOnlyGfx": [
+            true,
             true,
             true,
             true,
@@ -20064,6 +20422,7 @@
             90,
             90,
             90,
+            90,
             90
         ],
         "FreezePercent": [],
@@ -20079,7 +20438,8 @@
             62,
             68,
             76,
-            80
+            80,
+            84
         ],
         "StunTimeMS": [],
         "GiveSpecialAbility": [],
@@ -20111,6 +20471,7 @@
             true,
             true,
             true,
+            true,
             true
         ],
         "BoostDefenders": [],
@@ -20128,9 +20489,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "EarthquakeBoots": {
@@ -20226,22 +20589,22 @@
             20,
             40,
             60,
-            70,
             80,
-            90,
-            100
+            100,
+            110,
+            120
         ],
         "ExecuteHealthPermil": [],
         "DamagePermilMin": [],
         "PreferredDamagePermilMin": [],
         "Radius": [
-            600,
-            600,
-            600,
-            600,
-            600,
-            600,
-            600
+            800,
+            800,
+            800,
+            800,
+            800,
+            800,
+            800
         ],
         "NumberOfHits": [
             5,
@@ -20388,9 +20751,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "FireBallExplosion": {
@@ -20562,9 +20927,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "RageAura": {
         "Level": [
@@ -20652,11 +21019,11 @@
         "JumpHousingLimit": [],
         "JumpBoostMS": [],
         "DamageBoostPercent": [
+            15,
             20,
             25,
             30,
             35,
-            40,
             45,
             50
         ],
@@ -20829,9 +21196,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "QueenFreeze": {
@@ -20987,9 +21356,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "ElectrifiedShield": {
         "Level": [
@@ -21146,9 +21517,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "BarbarianKingDestroyWalls": {
         "Level": [
@@ -21309,9 +21682,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "HealAura": {
         "Level": [
@@ -21568,9 +21943,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "Yellow Card": {
@@ -21768,15 +22145,17 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [
-            true
+        "TargetingRadius": [
+            300
         ],
         "TargetedProjectile": [
             "Yellow Card Projectile"
         ],
         "TargetedAgainEffect": [
             "Red Card Effect"
-        ]
+        ],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "GWPhoenixStickSpell": {
         "Level": [
@@ -22169,9 +22548,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
     },
     "BattleDruidHeal": {
@@ -22335,9 +22716,11 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
-        "TargetedAgainEffect": []
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     },
     "RCDamageAura": {
         "Level": [
@@ -22631,9 +23014,3032 @@
         "TombStone": [],
         "NumTombStones": [],
         "Overgrowth": [],
-        "Targeted": [],
+        "TargetingRadius": [],
         "TargetedProjectile": [],
         "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
         "Name": []
+    },
+    "GWLavaloonSpawnPup": {
+        "Level": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "ChargingTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "HitTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "NumberOfHits": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "RandomRadius": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect",
+            "LavaloonAttackEffect"
+        ],
+        "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup",
+            "GW equipment Lavaloon Pup"
+        ],
+        "UnitsToSpawn": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SpawnUpgradeLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
+        "Name": []
+    },
+    "IceMinionFreeze": {
+        "Level": [
+            1,
+            2
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true,
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0,
+            0
+        ],
+        "ChargingTimeMS": [
+            300,
+            300
+        ],
+        "HitTimeMS": [
+            400,
+            400
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            450,
+            450
+        ],
+        "NumberOfHits": [
+            1,
+            1
+        ],
+        "RandomRadius": [
+            0,
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0,
+            0
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "IceMinionFreeze deploy lvl1",
+            "IceMinionFreeze deploy lvl2"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [
+            "IceMinion Freeze Deploy2",
+            "IceMinion Freeze Deploy2"
+        ],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true
+        ],
+        "FreezeTimeMS": [
+            1500,
+            2500
+        ],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [
+            863,
+            1294
+        ],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
+        "Name": []
+    },
+    "Commander Aura": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            300
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            0
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500
+        ],
+        "NumberOfHits": [
+            4000
+        ],
+        "RandomRadius": [],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "Apprentice Growth aura"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            false
+        ],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [
+            true
+        ],
+        "ResurrectHitpointPercentage": []
+    },
+    "TroopCatapultSummonTroopNew": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            0
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            0
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "SuperBoar Deploy"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "Giant"
+        ],
+        "UnitsToSpawn": [
+            1
+        ],
+        "SpawnUpgradeLevel": [
+            12
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [
+            200
+        ],
+        "SpawnFirstGroupSize": [
+            1
+        ],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [
+            "BarbSum"
+        ],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "TorchThrowerB": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            300
+        ],
+        "HitTimeMS": [
+            500
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            60
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            250
+        ],
+        "NumberOfHits": [
+            25
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            400
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "TorchThrowerB"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "Destroyer": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [],
+        "ChargingTimeMS": [],
+        "HitTimeMS": [
+            400
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            120
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500
+        ],
+        "NumberOfHits": [
+            4000
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            400
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "E_titanAreaDamage"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [
+            0
+        ],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [
+            true
+        ],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            true
+        ],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "BarbSum": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            150
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            200
+        ],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "SuperBoar Deploy"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "Barbarian"
+        ],
+        "UnitsToSpawn": [
+            5
+        ],
+        "SpawnUpgradeLevel": [
+            12
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [
+            1000
+        ],
+        "SpawnFirstGroupSize": [
+            2
+        ],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [
+            "ArchSum"
+        ],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "ArchSum": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            500
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            150
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            200
+        ],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "SuperBoar Deploy"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "Archer"
+        ],
+        "UnitsToSpawn": [
+            4
+        ],
+        "SpawnUpgradeLevel": [
+            12
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [
+            1000
+        ],
+        "SpawnFirstGroupSize": [
+            1
+        ],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [
+            "WBSum"
+        ],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "WBSum": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            500
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            150
+        ],
+        "NumberOfHits": [
+            1
+        ],
+        "RandomRadius": [
+            200
+        ],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "SuperBoar Deploy"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "Wall Breaker"
+        ],
+        "UnitsToSpawn": [
+            3
+        ],
+        "SpawnUpgradeLevel": [
+            12
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [
+            1000
+        ],
+        "SpawnFirstGroupSize": [
+            1
+        ],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "Resurrect": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_SPELL_RESURRECT"
+        ],
+        "InfoTID": [
+            "TID_SPELL_RESURRECT_INFO"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [
+            6
+        ],
+        "LaboratoryLevel": [
+            1
+        ],
+        "DonateCost": [
+            10
+        ],
+        "HousingSpace": [
+            2
+        ],
+        "TrainingTime": [
+            360
+        ],
+        "DeployTimeMS": [
+            100
+        ],
+        "ChargingTimeMS": [
+            300
+        ],
+        "HitTimeMS": [
+            400
+        ],
+        "UpgradeTimeH": [
+            240
+        ],
+        "UpgradeResource": [
+            "DarkElixir"
+        ],
+        "UpgradeCost": [
+            125000
+        ],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            500
+        ],
+        "NumberOfHits": [
+            40
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            300
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_unit_pet_phoenix"
+        ],
+        "BigPicture": [
+            "icon_spell_healing"
+        ],
+        "PreDeployEffect": [
+            "Heal predeploy"
+        ],
+        "DeployEffect": [
+            "ResurrectSpell"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [
+            1600
+        ],
+        "ProductionBuilding": [
+            "Mini Spell Factory"
+        ],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [
+            3000
+        ],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            true
+        ],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [
+            true
+        ],
+        "ImmunityStorages": [
+            true
+        ],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [
+            true
+        ],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [
+            "SpellResurrect"
+        ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "Revive": {
+        "Level": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "TID": [
+            "TID_SPELL_REVIVE",
+            "TID_SPELL_REVIVE",
+            "TID_SPELL_REVIVE",
+            "TID_SPELL_REVIVE"
+        ],
+        "InfoTID": [
+            "TID_SPELL_REVIVE_INFO",
+            "TID_SPELL_REVIVE_INFO",
+            "TID_SPELL_REVIVE_INFO",
+            "TID_SPELL_REVIVE_INFO"
+        ],
+        "DisableProduction": [],
+        "SpellForgeLevel": [
+            8,
+            8,
+            8,
+            8
+        ],
+        "LaboratoryLevel": [
+            1,
+            13,
+            14,
+            15
+        ],
+        "DonateCost": [
+            20,
+            20,
+            20,
+            20
+        ],
+        "HousingSpace": [
+            2,
+            2,
+            2,
+            2
+        ],
+        "TrainingTime": [
+            360,
+            360,
+            360,
+            360
+        ],
+        "DeployTimeMS": [
+            800,
+            800,
+            800,
+            800
+        ],
+        "ChargingTimeMS": [
+            300,
+            300,
+            300,
+            300
+        ],
+        "HitTimeMS": [
+            400,
+            400,
+            400,
+            400
+        ],
+        "UpgradeTimeH": [
+            240,
+            336,
+            384,
+            384
+        ],
+        "UpgradeResource": [
+            "Elixir",
+            "Elixir",
+            "Elixir",
+            "Elixir"
+        ],
+        "UpgradeCost": [
+            18000000,
+            20000000,
+            22000000,
+            22000000
+        ],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "NumberOfHits": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "RandomRadius": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "IconSWF": [
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc",
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive"
+        ],
+        "BigPicture": [
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive",
+            "icon_spell_hero_revive"
+        ],
+        "PreDeployEffect": [
+            "hero_revive_bottle_effect",
+            "hero_revive_bottle_effect",
+            "hero_revive_bottle_effect",
+            "hero_revive_bottle_effect"
+        ],
+        "DeployEffect": [
+            "hero_revive_top_layer",
+            "hero_revive_top_layer",
+            "hero_revive_top_layer",
+            "hero_revive_top_layer"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [
+            "hero_revive_ground_layer",
+            "hero_revive_ground_layer",
+            "hero_revive_ground_layer",
+            "hero_revive_ground_layer"
+        ],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [
+            "Spell Forge",
+            "Spell Forge",
+            "Spell Forge",
+            "Spell Forge"
+        ],
+        "TargetInfoString": [
+            "TID_PLAYER_PROFILE_HEROES",
+            "TID_PLAYER_PROFILE_HEROES",
+            "TID_PLAYER_PROFILE_HEROES",
+            "TID_PLAYER_PROFILE_HEROES"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "ImmunityOtherBuildings": [
+            true,
+            true,
+            true,
+            true
+        ],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [
+            "SpellRevive",
+            "SpellRevive",
+            "SpellRevive",
+            "SpellRevive"
+        ],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [
+            800,
+            800,
+            800,
+            800
+        ],
+        "TargetedProjectile": [
+            "Hero Revive Projectile",
+            "Hero Revive Projectile",
+            "Hero Revive Projectile",
+            "Hero Revive Projectile"
+        ],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [
+            60,
+            65,
+            70,
+            75
+        ],
+        "Name": []
+    },
+    "TH17WeaponAreaDamage": {
+        "Level": [
+            1
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [
+            500
+        ],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            250
+        ],
+        "NumberOfHits": [
+            17
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            400
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "TH17AreaDmgEffect"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [
+            75
+        ],
+        "PoisonIncreaseSlowly": [
+            false
+        ],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [
+            true
+        ],
+        "PoisonAffectAir": [
+            true
+        ],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [
+            true
+        ],
+        "BoostDefenders": [
+            true
+        ],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [
+            true
+        ],
+        "ImmunityStorages": [
+            true
+        ],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [
+            true
+        ],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "BarbKingEquipSpawn": {
+        "Level": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ],
+        "TID": [],
+        "InfoTID": [],
+        "DisableProduction": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "ChargingTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "HitTimeMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+        ],
+        "NumberOfHits": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "RandomRadius": [
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150,
+            150
+        ],
+        "TimeBetweenHitsMS": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "IconSWF": [],
+        "IconExportName": [],
+        "BigPicture": [],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon",
+            "Snake Summon"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [],
+        "ProductionBuilding": [],
+        "TargetInfoString": [
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY",
+            "TID_PREFERRED_TARGET_ANY"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake",
+            "BarbKingEquipSnake"
+        ],
+        "UnitsToSpawn": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SpawnUpgradeLevel": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+        ],
+        "SpawnFirstGroupSize": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": [],
+        "Name": []
+    },
+    "MassDestruction": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_SPELL_MASS_DESTRUCTION"
+        ],
+        "InfoTID": [
+            "TID_SPELL_MASS_DESTRUCTION"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            800
+        ],
+        "ChargingTimeMS": [
+            300
+        ],
+        "HitTimeMS": [
+            400
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [],
+        "SpeedBoost": [],
+        "SpeedBoost2": [],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [
+            500
+        ],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            9000
+        ],
+        "NumberOfHits": [
+            100
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            200
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_earthquake"
+        ],
+        "BigPicture": [
+            "icon_spell_earthquake"
+        ],
+        "PreDeployEffect": [
+            "Earthquake_Predeploy"
+        ],
+        "DeployEffect": [
+            "EarthQuake_deploy_ground_0"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [
+            "EarthQuake_deploy_0"
+        ],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [
+            1200
+        ],
+        "ProductionBuilding": [],
+        "TargetInfoString": [],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [],
+        "PoisonIncreaseSlowly": [],
+        "AttackSpeedBoost": [],
+        "BoostLinkedToPoison": [],
+        "PoisonAffectAir": [],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [
+            1
+        ],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
+    },
+    "MinionGiantPoison": {
+        "Level": [
+            1
+        ],
+        "TID": [
+            "TID_POISON_CLOUD"
+        ],
+        "InfoTID": [
+            "TID_POISON_CLOUD_INFO"
+        ],
+        "DisableProduction": [
+            true
+        ],
+        "SpellForgeLevel": [],
+        "LaboratoryLevel": [],
+        "DonateCost": [],
+        "HousingSpace": [],
+        "TrainingTime": [],
+        "DeployTimeMS": [
+            0
+        ],
+        "ChargingTimeMS": [
+            0
+        ],
+        "HitTimeMS": [
+            400
+        ],
+        "UpgradeTimeH": [],
+        "UpgradeResource": [],
+        "UpgradeCost": [],
+        "BoostTimeMS": [
+            500
+        ],
+        "SpeedBoost": [
+            "-38"
+        ],
+        "SpeedBoost2": [
+            "-38"
+        ],
+        "JumpHousingLimit": [],
+        "JumpBoostMS": [],
+        "DamageBoostPercent": [],
+        "BuildingDamageBoostPercent": [],
+        "Damage": [],
+        "TroopDamagePermil": [],
+        "BuildingDamagePermil": [],
+        "ExecuteHealthPermil": [],
+        "DamagePermilMin": [],
+        "PreferredDamagePermilMin": [],
+        "Radius": [
+            600
+        ],
+        "NumberOfHits": [
+            40
+        ],
+        "RandomRadius": [
+            0
+        ],
+        "TimeBetweenHitsMS": [
+            400
+        ],
+        "IconSWF": [
+            "sc/ui.sc"
+        ],
+        "IconExportName": [
+            "icon_spell_toxic"
+        ],
+        "BigPicture": [
+            "icon_spell_toxic"
+        ],
+        "PreDeployEffect": [],
+        "DeployEffect": [
+            "ToxicGroundMinion"
+        ],
+        "DeployEffect2Delay": [],
+        "DeployEffect2": [
+            "ToxicDeployMinion"
+        ],
+        "ChargingEffect": [],
+        "HitEffect": [],
+        "RandomRadiusAffectsOnlyGfx": [
+            true
+        ],
+        "FreezeTimeMS": [],
+        "SpawnObstacle": [],
+        "NumObstacles": [],
+        "StrengthWeight": [
+            1200
+        ],
+        "ProductionBuilding": [
+            "Mini Spell Factory"
+        ],
+        "TargetInfoString": [
+            "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+        ],
+        "PreferredTarget": [],
+        "PreferredTargetDamageMod": [],
+        "HeroDamageMultiplier": [],
+        "ShieldProjectileSpeed": [],
+        "ShieldProjectileDamageMod": [],
+        "ExtraHealthPermil": [],
+        "ExtraHealthMin": [],
+        "ExtraHealthMax": [],
+        "PoisonDPS": [
+            70
+        ],
+        "PoisonIncreaseSlowly": [
+            false
+        ],
+        "AttackSpeedBoost": [
+            "-50"
+        ],
+        "BoostLinkedToPoison": [
+            true
+        ],
+        "PoisonAffectAir": [
+            true
+        ],
+        "ScaleDeployEffects": [],
+        "ImmortalTime": [],
+        "ShieldTime": [],
+        "ShieldProtectionPercent": [],
+        "MaxUnitsHit": [],
+        "EnemyDeployEffect": [],
+        "SnapToGrid": [],
+        "DuplicateHousing": [],
+        "DuplicateLifetime": [],
+        "SummonTroop": [],
+        "UnitsToSpawn": [],
+        "SpawnUpgradeLevel": [],
+        "ShrinkReduceSpeedRatio": [],
+        "ShrinkHitpointsRatio": [],
+        "SpawnDuration": [],
+        "SpawnFirstGroupSize": [],
+        "DamageTHPercent": [],
+        "DisableDonate": [],
+        "ScaleByTH": [],
+        "EnabledByCalendar": [],
+        "VillageType": [],
+        "PauseCombatComponentsMs": [],
+        "UpgradeLevelByTH": [],
+        "ChangeTeamTime": [],
+        "InvisibilityTime": [],
+        "FreezeOuterTimeMS": [],
+        "ConeAngle": [],
+        "FreezePercent": [],
+        "MinRadius": [],
+        "MinDamage": [],
+        "StunTimeMS": [],
+        "GiveSpecialAbility": [],
+        "GivenSpecialAbilityLevel": [],
+        "TornadoForce1": [],
+        "TornadoForce2": [],
+        "TornadoForce3": [],
+        "TornadoForce4": [],
+        "TornadoForce5": [],
+        "TornadoForceAir1": [],
+        "TornadoForceAir2": [],
+        "TornadoForceAir3": [],
+        "TornadoForceAir4": [],
+        "TornadoForceAir5": [],
+        "TornadoRotationSpeed": [],
+        "TornadoSpeedTowardsCenter": [],
+        "TornadoInnerRadius": [],
+        "TornadoInnerForcePercent": [],
+        "TornadoOuterForcePercent": [],
+        "ChainSpell": [],
+        "AffectsSiegeMachines": [],
+        "BoostDefenders": [
+            true
+        ],
+        "ImmunitySiegeMachines": [],
+        "ImmunityOtherCharacters": [],
+        "ImmunityTH_CC": [],
+        "ImmunityStorages": [],
+        "ImmunityWalls": [
+            true
+        ],
+        "ImmunityOtherBuildings": [],
+        "HideImmunityVFX": [],
+        "CapitalAttackCount": [],
+        "DestroyWalls": [],
+        "RecallHousing": [],
+        "PreviewScenario": [],
+        "TombStone": [],
+        "NumTombStones": [],
+        "Overgrowth": [],
+        "TargetingRadius": [],
+        "TargetedProjectile": [],
+        "TargetedAgainEffect": [],
+        "MasterAura": [],
+        "ResurrectHitpointPercentage": []
     }
 }

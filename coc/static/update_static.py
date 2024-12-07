@@ -14,8 +14,7 @@ import os
 import zipfile
 from collections import defaultdict
 
-import lzma
-import zstandard
+
 
 # Targets first index is the URL and the second is the filename. If filename
 # is None, then the url name is used
@@ -30,9 +29,33 @@ TARGETS = [
     ("logic/character_items.csv", "equipment.csv"),
     ("localization/texts.csv", "texts_EN.csv"),
 ]
-FINGERPRINT = "91456c2b271d060dc0f5b22069acd9abb11bf30c"
-BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
+
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
+
+def get_fingerprint():
+    import aiohttp
+    import asyncio
+
+    async def download():
+        async with aiohttp.request('GET', APK_URL) as fp:
+            c = await fp.read()
+        return c
+
+    data = asyncio.run(download())
+
+    with open("apk.zip", "wb") as f:
+        f.write(data)
+    zf = zipfile.ZipFile("apk.zip")
+    with zf.open('assets/fingerprint.json') as fp:
+        fingerprint = json.loads(fp.read())['sha']
+
+    # clean up apk
+    os.unlink("apk.zip")
+
+    return fingerprint
+
+FINGERPRINT = get_fingerprint()
+BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 
 
 def decompress(data):
@@ -92,9 +115,6 @@ def decompress(data):
         }
         decompressed = lzma.LZMADecompressor().decompress(data)
     return decompressed, compression_details
-
-
-
 
 
 def process_csv(data, file_path, save_name):
@@ -174,27 +194,7 @@ def check_header(data):
     raise Exception("  Unknown header")
 
 
-def get_fingerprint():
-    import aiohttp
-    import asyncio
 
-    async def download():
-        async with aiohttp.request('GET', APK_URL) as fp:
-            c = await fp.read()
-        return c
-
-    data = asyncio.run(download())
-
-    with open("apk.zip", "wb") as f:
-        f.write(data)
-    zf = zipfile.ZipFile("apk.zip")
-    with zf.open('assets/fingerprint.json') as fp:
-        fingerprint = json.loads(fp.read())['sha']
-
-    # clean up apk
-    os.unlink("apk.zip")
-
-    return fingerprint
 
 
 def main():
