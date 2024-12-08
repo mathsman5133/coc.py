@@ -230,7 +230,7 @@ class Client:
         ip: Optional[str] = None,
         lookup_cache: Optional[bool] = True,
         update_cache: Optional[bool] = True,
-        ignore_cached_errors: Union[list[int], None] = None,
+        ignore_cached_errors: Union[List[int], None] = None,
         **kwargs,
     ):
 
