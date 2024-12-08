@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
 from enum import Enum
 
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
+
     def __str__(self):
         return self.in_game_name
 
@@ -62,7 +64,13 @@ class PlayerHouseElementType(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the element type."""
-        lookup = {"ground": "Ground", "roof": "Roof", "foot": "Foot", "decoration": "Decoration", "walls": "Walls"}
+        lookup = {
+            "ground": "Ground",
+            "roof": "Roof",
+            "foot": "Foot",
+            "decoration": "Decoration",
+            "walls": "Walls",
+        }
         return lookup[self.value]
 
 
@@ -77,7 +85,12 @@ class Role(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
-        lookup = {"member": "Member", "admin": "Elder", "coLeader": "Co-Leader", "leader": "Leader"}
+        lookup = {
+            "member": "Member",
+            "admin": "Elder",
+            "coLeader": "Co-Leader",
+            "leader": "Leader",
+        }
         return lookup[self.value]
 
 
@@ -97,6 +110,7 @@ class WarRound(ExtendedEnum):
 
 class BattleModifier(ExtendedEnum):
     """Enum to map the type of battle modifiers."""
+
     none = "none"
     hard_mode = "hardMode"
 
@@ -109,7 +123,9 @@ class BattleModifier(ExtendedEnum):
 
 class WarState(ExtendedEnum):
     """Enum to map the state of the war.
-    Compared to the api docs a few states are missing, but those were never observed in the wild."""
+    Compared to the api docs a few states are missing, but those were never observed in the wild.
+    """
+
     not_in_war = "notInWar"
     preparation = "preparation"
     in_war = "inWar"
@@ -118,12 +134,18 @@ class WarState(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the war state."""
-        lookup = {"notInWar": "Not in War", "preparation": "Preparation", "inWar": "In War", "warEnded": "War Ended"}
+        lookup = {
+            "notInWar": "Not in War",
+            "preparation": "Preparation",
+            "inWar": "In War",
+            "warEnded": "War Ended",
+        }
         return lookup[self.value]
 
 
 class WarResult(ExtendedEnum):
     """Enum to map the result of the war"""
+
     win = "win"
     lose = "lose"
     tie = "tie"
@@ -148,9 +170,16 @@ class Resource(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the resource."""
-        lookup = {"Elixir": "Elixir", "Elixir2": "Builder Elixir",
-                  "DarkElixir": "Dark Elixir", "Gold": "Gold", "Gold2": "Builder Gold",
-                  "CommonOre": "Shiny Ore", "RareOre": "Glowy Ore", "EpicOre": "Starry Ore"}
+        lookup = {
+            "Elixir": "Elixir",
+            "Elixir2": "Builder Elixir",
+            "DarkElixir": "Dark Elixir",
+            "Gold": "Gold",
+            "Gold2": "Builder Gold",
+            "CommonOre": "Shiny Ore",
+            "RareOre": "Glowy Ore",
+            "EpicOre": "Starry Ore",
+        }
         return lookup[self.value]
 
 
@@ -247,6 +276,7 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
+    "Revive Spell",
 ]
 
 
@@ -262,7 +292,13 @@ DARK_ELIXIR_SPELL_ORDER = [
 
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
+HOME_BASE_HERO_ORDER = [
+    "Barbarian King",
+    "Archer Queen",
+    "Grand Warden",
+    "Royal Champion",
+    "Minion Prince",
+]
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
 HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
@@ -301,7 +337,10 @@ EQUIPMENT = [
     "Fireball",
     "Spiky Ball",
     "Rocket Spear",
-    "Magic Mirror"
+    "Magic Mirror",
+    "Lavaloon Puppet",
+    "Dark Orb",
+    "Henchmen Puppet",
 ]
 
 ACHIEVEMENT_ORDER = [
@@ -345,7 +384,6 @@ ACHIEVEMENT_ORDER = [
     "Dragon Slayer",
     "Ungrateful Child",
     "Superb Work",
-
     # Builder Base
     "Master Engineering",
     "Hidden Treasures",
@@ -353,7 +391,6 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",
