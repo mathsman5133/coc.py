@@ -54623,7 +54623,7 @@
             "TID_BUILDING_VILLAGER_APPRENTICE_INFO"
         ],
         "BuildingClass": [
-            "Resource"
+            "Helper"
         ],
         "SecondaryTargetingClass": [],
         "ShopBuildingClass": [],
