@@ -273,6 +273,11 @@ class BaseLeague:
     def __eq__(self, other):
         return isinstance(self, other.__class__) and other.id == self.id
 
+    def __lt__(self, other):
+        if isinstance(other, BaseLeague):
+            return self.id < other.id
+        return NotImplemented
+
 
 class League(BaseLeague):
     """Represents a Clash of Clans League
