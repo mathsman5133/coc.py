@@ -36,7 +36,7 @@ from .enums import (
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
-    EQUIPMENT,
+    EQUIPMENT, EquipmentOverrides,
 )
 from .abc import BasePlayer
 from .hero import Hero, Equipment, Pet
@@ -641,7 +641,10 @@ class Player(ClanMember):
         order = {k: v for v, k in enumerate(EQUIPMENT)}
         equipment = list(sorted(self._iter_equipment, key=lambda t: order.get(t.name, 0)))
         self._equipment = {e.name: e for e in equipment}
-        return equipment
+
+        #override equipment defaults if needed
+        new_equipment_list = [EquipmentOverrides(eq).equipment for eq in equipment]
+        return new_equipment_list
 
     def get_equipment(self, name: str, default_value=None) -> Optional[Equipment]:
         """Gets the hero equipment with the given name.
