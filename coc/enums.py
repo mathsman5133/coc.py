@@ -26,6 +26,7 @@ from enum import Enum
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
+
     def __str__(self):
         return self.in_game_name
 
@@ -172,8 +173,8 @@ ELIXIR_TROOP_ORDER = [
     "Dragon Rider",
     "Electro Titan",
     "Root Rider",
+    "Thrower"
 ]
-
 
 DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
@@ -221,7 +222,6 @@ SUPER_TROOP_ORDER = [
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
 HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
-
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",
     "Sneaky Archer",
@@ -237,7 +237,6 @@ BUILDER_TROOPS_ORDER = [
     "Electrofire Wizard",
 ]
 
-
 ELIXIR_SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
@@ -247,8 +246,8 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
+    "Revive Spell"
 ]
-
 
 DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
@@ -259,10 +258,26 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Overgrowth Spell",
 ]
 
-
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"]
+
+HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Minion Prince"]
+
+
+class EquipmentOverrides:
+    def __init__(self, equipment):
+        self.equipment = equipment
+        self.map_hero()
+
+    def map_hero(self):
+        """Get a neat client-facing string value for the resource."""
+        lookup = {
+            'Minion Hero': 'Minion Prince',
+        }
+        hero_before = self.equipment.hero
+        self.equipment.hero = lookup.get(hero_before, hero_before)
+
+
 BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
 HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
@@ -301,7 +316,10 @@ EQUIPMENT = [
     "Fireball",
     "Spiky Ball",
     "Rocket Spear",
-    "Magic Mirror"
+    "Magic Mirror",
+    "Lavaloon Puppet",
+    "Hehnchmen Puppet",
+    "Dark Orb"
 ]
 
 ACHIEVEMENT_ORDER = [
@@ -353,7 +371,7 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
+
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",

@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.0
+------
+
+Additions:
+~~~~~~~~~~
+- Th17 Support
+- Support new Hero, Troops, Spells, Equipment available
+- Handle some inconsistencies with the API.
+
 v3.7.2
 ------
 
