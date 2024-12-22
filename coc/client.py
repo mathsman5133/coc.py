@@ -264,18 +264,26 @@ class Client:
         with open(BUILDING_FILE_PATH) as fp:
             buildings = ujson.load(fp)
 
+        english_aliases = {
+            v["TID"]: v.get("EN", None)
+            for outer_dict in english_aliases.values()
+            for v in outer_dict.values()
+        }
+
         # defaults for if loading fails
         lab_to_townhall = {i - 2: i for i in range(1, 17)}
         smithy_to_townhall = {i - 7: i for i in range(8, 17)}
 
         for supercell_name, data in buildings.items():
             if supercell_name == "Laboratory":
-                lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                lab_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
+                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
                 # there are troops with no lab ...
                 lab_to_townhall[-1] = 1
                 lab_to_townhall[0] = 2
             elif supercell_name =='Smithy':
-                smithy_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                smithy_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
+                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
 
         # load holders tied to the lab
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):

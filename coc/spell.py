@@ -139,15 +139,13 @@ class SpellHolder(DataContainerHolder):
                 continue
 
             # ignore deprecated content
-            if True in spell_meta.get("Deprecated", [False]):
+            if spell_meta.get("Deprecated") or  spell_meta.get("DisableProduction"):
                 continue
-            if True in spell_meta.get("DisableProduction", [False]):
-                continue
-            spell_name = english_aliases[spell_meta["TID"][0]]["EN"][0]
+
+            spell_name = english_aliases[spell_meta.get("TID")]
             new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
-            spell_id = army_link_ids.get(spell_name, id)
-            if isinstance(spell_id, int):
-                id += 1
+            spell_id = army_link_ids.get(spell_name, (id := id + 1))
+
             new_spell._load_json_meta(
                 spell_meta,
                 id=spell_id,

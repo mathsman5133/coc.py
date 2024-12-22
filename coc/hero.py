@@ -7,8 +7,8 @@ from .abc import DataContainer, DataContainerHolder
 from .miscmodels import try_enum
 from .utils import UnitStat
 
+from .enums import Resource
 if TYPE_CHECKING:
-    from .enums import Resource
     from .miscmodels import TimeDelta
 
 
@@ -267,23 +267,27 @@ class Equipment(DataContainer):
         cls.smithy_to_townhall = smithy_to_townhall
 
         smithy_levels = json_meta.get("RequiredBlacksmithLevel")
+        levels_available = [key for key in json_meta.keys() if key.isnumeric()]
 
         cls.smithy_level = try_enum(UnitStat, smithy_levels)
         cls.level = cls.smithy_level and UnitStat(range(1, len(cls.smithy_level) + 1))
-        cls.hero_level = try_enum(UnitStat, json_meta.get('RequiredCharacterLevel'))
-        cls.speed = try_enum(UnitStat, json_meta.get('Speed'))
-        cls.hitpoints = try_enum(UnitStat, json_meta.get('HitPoints'))
-        cls.attack_range = try_enum(UnitStat, json_meta.get('AttackRange'))
-        cls.dps = try_enum(UnitStat, json_meta.get('DPS'))
-        cls.heal = try_enum(UnitStat, json_meta.get('HealOnActivation'))
+        cls.hero_level = try_enum(UnitStat, [json_meta.get(level).get("RequiredCharacterLevel") for level in levels_available])
+        cls.speed = try_enum(UnitStat, [json_meta.get(level).get("Speed") for level in levels_available])
+        cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("HitPoints") for level in levels_available])
+        cls.attack_range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
+        cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
+        cls.heal = try_enum(UnitStat, [json_meta.get(level).get("HealOnActivation") for level in levels_available])
+
 
         # hacky way to translate internal hero names to English
-        hero = json_meta.get('AllowedCharacters', [''])[0].strip(';')
-        cls.hero = hero if hero != 'Warrior Princess' else 'Royal Champion'
+        hero = json_meta.get('AllowedCharacters', '').strip(';')
+        hero_map = {"Warrior Princess" : "Royal Champion", "Minion Hero" : "Minion Prince"}
+        cls.hero = hero_map.get(hero, hero)
 
-        costs = [(int(el) for el in str(cost).split(';')) for cost in json_meta.get('UpgradeCost', '')]
-        resources = [(Resource(el.strip()) for el in resource.split(';'))
-                     for resource in json_meta.get('UpgradeResource', '')]
+        costs = [(int(el) for el in str(cost).split(';')) for cost in [json_meta.get(level).get('UpgradeCosts') for level in levels_available] if cost]
+
+        resources = [(Resource(el.strip()) for el in resource.split(';')) for resource in [json_meta.get(level).get('UpgradeResources', '') for level in levels_available]]
+
         cls.upgrade_cost = try_enum(UnitStat, [[(c, r) for c, r in zip(cost, resource)]
                                                for cost, resource in zip(costs, resources)])
 
@@ -307,19 +311,20 @@ class EquipmentHolder(DataContainerHolder):
             equipment_data = ujson.load(fp)
 
         for supercell_name, equipment_meta in equipment_data.items():
-
             if not equipment_meta.get("TID"):
                 continue
-            if True in equipment_meta.get("Deprecated", [False]):
+
+            # ignore deprecated content
+            if equipment_meta.get("Deprecated") or equipment_meta.get("DisableProduction"):
                 continue
+
             new_equipment: Type[Equipment] = type('Equipment', Equipment.__bases__, dict(Equipment.__dict__))
             new_equipment._load_json_meta(
                 equipment_meta,
-                id=id,
-                name=english_aliases[equipment_meta["TID"][0]]["EN"][0],
+                id=(id := id + 1),
+                name=english_aliases[equipment_meta.get("TID")],
                 smithy_to_townhall=lab_to_townhall,
             )
-            id += 1
             self.items.append(new_equipment)
             self.item_lookup[new_equipment.name] = new_equipment
 
