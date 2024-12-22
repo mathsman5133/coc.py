@@ -303,6 +303,7 @@ EQUIPMENT = [
     "Fireball",
     "Spiky Ball",
     "Rocket Spear",
+    "Lavaloon Puppet",
     "Magic Mirror",
     "Henchmen Puppet",
     "Dark Orb"
