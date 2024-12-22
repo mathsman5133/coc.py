@@ -1,4196 +1,1011 @@
 {
-    "1": {
-        "AttackCost": [
-            5
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            1000
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            0
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            1000
-        ],
-        "LegendPrizeElixirCap": [
-            1000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            1
-        ],
-        "CartLootCapResource": [
-            200000
-        ],
-        "CartLootReengagementResource": [
-            5000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            0
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            0
-        ],
-        "ReengagementLabBudget": [
-            0
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            0
-        ],
-        "ResourceProductionBoostHours": [
-            0
-        ],
-        "StarBonusBoostHours": [
-            0
-        ],
-        "Troop Housing": [
-            1
-        ],
-        "Elixir Storage": [
-            1
-        ],
-        "Gold Storage": [
-            1
-        ],
-        "Elixir Pump": [
-            1
-        ],
-        "Gold Mine": [
-            1
-        ],
-        "Barrack": [
-            1
-        ],
-        "Cannon": [
-            1
-        ],
-        "Cannon_gearup": [
-            1
-        ],
-        "Wall": [],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [
-            1
-        ],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [
-            1
-        ],
-        "Alliance Castle": [
-            1
-        ],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [
-            5
-        ],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            2
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [
-            0
-        ],
-        "TreasuryElixir": [
-            0
-        ],
-        "TreasuryDarkElixir": [
-            0
-        ],
-        "TreasuryWarGold": [
-            50000
-        ],
-        "TreasuryWarElixir": [
-            50000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            0
-        ],
-        "PackGold": [
-            0
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            0
-        ],
-        "PackElixir2": [
-            0
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            4000
-        ],
-        "Elixir Pump2": [
-            1
-        ],
-        "Elixir Storage2": [],
-        "Gold Mine2": [
-            1
-        ],
-        "Gold Storage2": [],
-        "WallStraight": [
-            10
-        ],
-        "Cannon2": [
-            1
-        ],
-        "Archer Tower2": [],
-        "Troop Housing2": [
-            1
-        ],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [
-            1
-        ],
-        "Multi Mortar": [],
-        "Barrack2": [
-            1
-        ],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [
-            1
-        ],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [
-            1
-        ],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            17500
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            1
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "2": {
-        "AttackCost": [
-            10
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            2500
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            0
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            2500
-        ],
-        "LegendPrizeElixirCap": [
-            2500
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            1
-        ],
-        "CartLootCapResource": [
-            200000
-        ],
-        "CartLootReengagementResource": [
-            25000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            691200
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            345600
-        ],
-        "ReengagementLabBudget": [
-            691200
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            0
-        ],
-        "ResourceProductionBoostHours": [
-            0
-        ],
-        "StarBonusBoostHours": [
-            0
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [
-            2
-        ],
-        "Gold Mine": [
-            2
-        ],
-        "Barrack": [],
-        "Cannon": [
-            2
-        ],
-        "Cannon_gearup": [],
-        "Wall": [
-            25
-        ],
-        "Archer Tower": [
-            1
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            2
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            200000
-        ],
-        "TreasuryWarElixir": [
-            200000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            0
-        ],
-        "PackGold": [
-            0
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            0
-        ],
-        "PackElixir2": [
-            0
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            16000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [
-            20
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [
-            1
-        ],
-        "Troop Housing2": [
-            2
-        ],
-        "Tesla Tower2": [],
-        "Double Cannon": [
-            1
-        ],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [
-            1
-        ],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            37500
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            2
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "3": {
-        "AttackCost": [
-            50
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            6250
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            0
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            6250
-        ],
-        "LegendPrizeElixirCap": [
-            6250
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            1
-        ],
-        "CartLootCapResource": [
-            200000
-        ],
-        "CartLootReengagementResource": [
-            150000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            3369600
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            1684800
-        ],
-        "ReengagementLabBudget": [
-            3369600
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            0
-        ],
-        "ResourceProductionBoostHours": [
-            0
-        ],
-        "StarBonusBoostHours": [
-            0
-        ],
-        "Troop Housing": [
-            2
-        ],
-        "Elixir Storage": [
-            2
-        ],
-        "Gold Storage": [
-            2
-        ],
-        "Elixir Pump": [
-            3
-        ],
-        "Gold Mine": [
-            3
-        ],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            50
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [
-            1
-        ],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [
-            2
-        ],
-        "Worker Building": [],
-        "Laboratory": [
-            1
-        ],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            2
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            400000
-        ],
-        "TreasuryWarElixir": [
-            400000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            0
-        ],
-        "PackGold": [
-            0
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            0
-        ],
-        "PackElixir2": [
-            0
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            40000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [
-            1
-        ],
-        "Gold Mine2": [],
-        "Gold Storage2": [
-            1
-        ],
-        "WallStraight": [
-            50
-        ],
-        "Cannon2": [
-            2
-        ],
-        "Archer Tower2": [],
-        "Troop Housing2": [
-            3
-        ],
-        "Tesla Tower2": [
-            1
-        ],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [
-            2
-        ],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [
-            1
-        ],
-        "Crusher": [
-            1
-        ],
-        "AirGroundTrap": [
-            2
-        ],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [
-            1
-        ],
-        "Ejector2": [
-            2
-        ],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            62500
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            3
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "4": {
-        "AttackCost": [
-            100
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            12500
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            0
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            12500
-        ],
-        "LegendPrizeElixirCap": [
-            12500
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            2
-        ],
-        "CartLootCapResource": [
-            200000
-        ],
-        "CartLootReengagementResource": [
-            1000000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            6566400
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            3283200
-        ],
-        "ReengagementLabBudget": [
-            6566400
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            72
-        ],
-        "ResourceProductionBoostHours": [
-            72
-        ],
-        "StarBonusBoostHours": [
-            72
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [
-            4
-        ],
-        "Gold Mine": [
-            4
-        ],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            75
-        ],
-        "Archer Tower": [
-            2
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [
-            1
-        ],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [
-            2
-        ],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            3
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            600000
-        ],
-        "TreasuryWarElixir": [
-            600000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            100000
-        ],
-        "PackGold": [
-            100000
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            100000
-        ],
-        "PackElixir2": [
-            100000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            80000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [
-            75
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [
-            2
-        ],
-        "Troop Housing2": [
-            4
-        ],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [
-            1
-        ],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [
-            1
-        ],
-        "Pusher": [
-            3
-        ],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [
-            3
-        ],
-        "Air Defense2": [
-            1
-        ],
-        "MegaAirGroundTrap": [
-            1
-        ],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [
-            1
-        ],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            87500
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            5
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
+  "1": {
     "5": {
-        "AttackCost": [
-            150
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            20000
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            0
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            20000
-        ],
-        "LegendPrizeElixirCap": [
-            20000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            2
-        ],
-        "CartLootCapResource": [
-            600000
-        ],
-        "CartLootReengagementResource": [
-            4000000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            12096000
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            6048000
-        ],
-        "ReengagementLabBudget": [
-            12096000
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            72
-        ],
-        "ResourceProductionBoostHours": [
-            72
-        ],
-        "StarBonusBoostHours": [
-            72
-        ],
-        "Troop Housing": [
-            3
-        ],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [
-            5
-        ],
-        "Gold Mine": [
-            5
-        ],
-        "Barrack": [],
-        "Cannon": [
-            3
-        ],
-        "Cannon_gearup": [],
-        "Wall": [
-            100
-        ],
-        "Archer Tower": [
-            3
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [
-            1
-        ],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [
-            4
-        ],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [
-            1
-        ],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [
-            2
-        ],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            3
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            800000
-        ],
-        "TreasuryWarElixir": [
-            800000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            300000
-        ],
-        "PackGold": [
-            300000
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            300000
-        ],
-        "PackElixir2": [
-            300000
-        ],
-        "FreezeBomb": [
-            1
-        ],
-        "DuelPrizeResourceCap": [
-            120000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [
-            100
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [
-            2
-        ],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [
-            1
-        ],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [
-            4
-        ],
-        "Hero Altar Warmachine": [
-            1
-        ],
-        "Air Defense Mini": [
-            2
-        ],
-        "Crusher": [],
-        "AirGroundTrap": [
-            4
-        ],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [
-            3
-        ],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            150000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            8
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "6": {
-        "AttackCost": [
-            250
-        ],
-        "ResourceStorageLootPercentage": [
-            20
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            200000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            30000
-        ],
-        "WarPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeCommonOreCap": [
-            100
-        ],
-        "WarPrizeRareOreCap": [
-            0
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            30000
-        ],
-        "LegendPrizeElixirCap": [
-            30000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            0
-        ],
-        "WarPrizeAllianceExpCap": [
-            2
-        ],
-        "CartLootCapResource": [
-            1000000
-        ],
-        "CartLootReengagementResource": [
-            6000000
-        ],
-        "CartLootCapDarkElixir": [
-            0
-        ],
-        "CartLootReengagementDarkElixir": [
-            0
-        ],
-        "ReengagementBuildingBudget": [
-            14515200
-        ],
-        "ReengagementHeroBudget": [
-            0
-        ],
-        "ReengagementWallBudget": [
-            7258600
-        ],
-        "ReengagementLabBudget": [
-            14515200
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            72
-        ],
-        "ResourceProductionBoostHours": [
-            72
-        ],
-        "StarBonusBoostHours": [
-            72
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [
-            6
-        ],
-        "Gold Mine": [
-            6
-        ],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            125
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [
-            2
-        ],
-        "Air Defense": [
-            2
-        ],
-        "Mortar": [
-            2
-        ],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [
-            4
-        ],
-        "Superbomb": [
-            1
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            4
-        ],
-        "StrengthMaxSpellTypes": [
-            1
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [
-            1
-        ],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            1200000
-        ],
-        "TreasuryWarElixir": [
-            1200000
-        ],
-        "TreasuryWarDarkElixir": [
-            0
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            500000
-        ],
-        "PackGold": [
-            500000
-        ],
-        "PackDarkElixir": [
-            0
-        ],
-        "PackGold2": [
-            500000
-        ],
-        "PackElixir2": [
-            500000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            180000
-        ],
-        "Elixir Pump2": [
-            2
-        ],
-        "Elixir Storage2": [
-            2
-        ],
-        "Gold Mine2": [
-            2
-        ],
-        "Gold Storage2": [
-            2
-        ],
-        "WallStraight": [
-            120
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [
-            3
-        ],
-        "Troop Housing2": [
-            5
-        ],
-        "Tesla Tower2": [
-            2
-        ],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [
-            2
-        ],
-        "AirGroundTrap": [
-            5
-        ],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [
-            2
-        ],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [
-            1
-        ],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [
-            2
-        ],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [
-            1
-        ],
-        "Recovery Building": [
-            1
-        ],
-        "ElixirCartStorageCap": [
-            200000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            16
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "7": {
-        "AttackCost": [
-            350
-        ],
-        "ResourceStorageLootPercentage": [
-            18
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            360000
-        ],
-        "DarkElixirStorageLootCap": [
-            2000
-        ],
-        "WarPrizeResourceCap": [
-            40000
-        ],
-        "WarPrizeDarkElixirCap": [
-            125
-        ],
-        "WarPrizeCommonOreCap": [
-            150
-        ],
-        "WarPrizeRareOreCap": [
-            10
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            50000
-        ],
-        "LegendPrizeElixirCap": [
-            50000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            125
-        ],
-        "WarPrizeAllianceExpCap": [
-            3
-        ],
-        "CartLootCapResource": [
-            1400000
-        ],
-        "CartLootReengagementResource": [
-            8000000
-        ],
-        "CartLootCapDarkElixir": [
-            2800
-        ],
-        "CartLootReengagementDarkElixir": [
-            80000
-        ],
-        "ReengagementBuildingBudget": [
-            18144000
-        ],
-        "ReengagementHeroBudget": [
-            4860000
-        ],
-        "ReengagementWallBudget": [
-            9072000
-        ],
-        "ReengagementLabBudget": [
-            18144000
-        ],
-        "HeroBoostHours": [
-            0
-        ],
-        "PowerBoostHours": [
-            96
-        ],
-        "ResourceProductionBoostHours": [
-            96
-        ],
-        "StarBonusBoostHours": [
-            96
-        ],
-        "Troop Housing": [
-            4
-        ],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [
-            5
-        ],
-        "Cannon_gearup": [],
-        "Wall": [
-            175
-        ],
-        "Archer Tower": [
-            4
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [
-            3
-        ],
-        "Mortar": [
-            3
-        ],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [
-            2
-        ],
-        "Mine": [
-            6
-        ],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [
-            2
-        ],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [
-            1
-        ],
-        "Dark Elixir Storage": [
-            1
-        ],
-        "AirTrap": [],
-        "MegaAirTrap": [
-            1
-        ],
-        "Dark Elixir Barrack": [
-            1
-        ],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            4
-        ],
-        "StrengthMaxSpellTypes": [
-            2
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            1600000
-        ],
-        "TreasuryWarElixir": [
-            1600000
-        ],
-        "TreasuryWarDarkElixir": [
-            8000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            700000
-        ],
-        "PackGold": [
-            700000
-        ],
-        "PackDarkElixir": [
-            7000
-        ],
-        "PackGold2": [
-            700000
-        ],
-        "PackElixir2": [
-            700000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            240000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [
-            140
-        ],
-        "Cannon2": [
-            3
-        ],
-        "Archer Tower2": [],
-        "Troop Housing2": [
-            6
-        ],
-        "Tesla Tower2": [
-            3
-        ],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [
-            5
-        ],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [
-            3
-        ],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [
-            4
-        ],
-        "Giant Cannon": [
-            1
-        ],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            250000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            30
-        ],
-        "Hero Hall": [
-            1
-        ],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "8": {
-        "AttackCost": [
-            550
-        ],
-        "ResourceStorageLootPercentage": [
-            16
-        ],
-        "DarkElixirStorageLootPercentage": [
-            6
-        ],
-        "ResourceStorageLootCap": [
-            480000
-        ],
-        "DarkElixirStorageLootCap": [
-            2400
-        ],
-        "WarPrizeResourceCap": [
-            55000
-        ],
-        "WarPrizeDarkElixirCap": [
-            200
-        ],
-        "WarPrizeCommonOreCap": [
-            380
-        ],
-        "WarPrizeRareOreCap": [
-            15
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            100000
-        ],
-        "LegendPrizeElixirCap": [
-            100000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            200
-        ],
-        "WarPrizeAllianceExpCap": [
-            4
-        ],
-        "CartLootCapResource": [
-            1600000
-        ],
-        "CartLootReengagementResource": [
-            10000000
-        ],
-        "CartLootCapDarkElixir": [
-            3200
-        ],
-        "CartLootReengagementDarkElixir": [
-            100000
-        ],
-        "ReengagementBuildingBudget": [
-            21772800
-        ],
-        "ReengagementHeroBudget": [
-            9720000
-        ],
-        "ReengagementWallBudget": [
-            10886400
-        ],
-        "ReengagementLabBudget": [
-            21772800
-        ],
-        "HeroBoostHours": [
-            96
-        ],
-        "PowerBoostHours": [
-            96
-        ],
-        "ResourceProductionBoostHours": [
-            96
-        ],
-        "StarBonusBoostHours": [
-            96
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [
-            3
-        ],
-        "Gold Storage": [
-            3
-        ],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            225
-        ],
-        "Archer Tower": [
-            5
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [
-            3
-        ],
-        "Air Defense": [],
-        "Mortar": [
-            4
-        ],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [
-            6
-        ],
-        "Superbomb": [
-            3
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [
-            3
-        ],
-        "Spell Forge": [],
-        "Mini Spell Factory": [
-            1
-        ],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [
-            2
-        ],
-        "Dark Elixir Storage": [],
-        "AirTrap": [
-            4
-        ],
-        "MegaAirTrap": [
-            2
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            5
-        ],
-        "StrengthMaxSpellTypes": [
-            2
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [
-            2
-        ],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [
-            1
-        ],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            2000000
-        ],
-        "TreasuryWarElixir": [
-            2000000
-        ],
-        "TreasuryWarDarkElixir": [
-            10000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            800000
-        ],
-        "PackGold": [
-            800000
-        ],
-        "PackDarkElixir": [
-            8000
-        ],
-        "PackGold2": [
-            800000
-        ],
-        "PackElixir2": [
-            800000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            300000
-        ],
-        "Elixir Pump2": [
-            3
-        ],
-        "Elixir Storage2": [],
-        "Gold Mine2": [
-            3
-        ],
-        "Gold Storage2": [],
-        "WallStraight": [
-            160
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [
-            3
-        ],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [
-            1
-        ],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [
-            4
-        ],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [
-            3
-        ],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [
-            5
-        ],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [
-            1
-        ],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            300000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [
-            1
-        ],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            50
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "9": {
-        "AttackCost": [
-            750
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            560000
-        ],
-        "DarkElixirStorageLootCap": [
-            4700
-        ],
-        "WarPrizeResourceCap": [
-            70000
-        ],
-        "WarPrizeDarkElixirCap": [
-            333
-        ],
-        "WarPrizeCommonOreCap": [
-            410
-        ],
-        "WarPrizeRareOreCap": [
-            18
-        ],
-        "WarPrizeEpicOreCap": [
-            0
-        ],
-        "LegendPrizeGoldCap": [
-            150000
-        ],
-        "LegendPrizeElixirCap": [
-            150000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            500
-        ],
-        "WarPrizeAllianceExpCap": [
-            5
-        ],
-        "CartLootCapResource": [
-            1800000
-        ],
-        "CartLootReengagementResource": [
-            11500000
-        ],
-        "CartLootCapDarkElixir": [
-            3600
-        ],
-        "CartLootReengagementDarkElixir": [
-            115000
-        ],
-        "ReengagementBuildingBudget": [
-            25401600
-        ],
-        "ReengagementHeroBudget": [
-            32400000
-        ],
-        "ReengagementWallBudget": [
-            12700800
-        ],
-        "ReengagementLabBudget": [
-            25401600
-        ],
-        "HeroBoostHours": [
-            96
-        ],
-        "PowerBoostHours": [
-            96
-        ],
-        "ResourceProductionBoostHours": [
-            96
-        ],
-        "StarBonusBoostHours": [
-            96
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [
-            4
-        ],
-        "Gold Storage": [
-            4
-        ],
-        "Elixir Pump": [
-            7
-        ],
-        "Gold Mine": [
-            7
-        ],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            250
-        ],
-        "Archer Tower": [
-            6
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [
-            4
-        ],
-        "Air Defense": [
-            4
-        ],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [
-            4
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [
-            4
-        ],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [
-            2
-        ],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [
-            3
-        ],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [
-            4
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            5
-        ],
-        "StrengthMaxSpellTypes": [
-            3
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [
-            1
-        ],
-        "Halloweenskels": [
-            2
-        ],
-        "Air Blaster": [
-            2
-        ],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            2400000
-        ],
-        "TreasuryWarElixir": [
-            2400000
-        ],
-        "TreasuryWarDarkElixir": [
-            12000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            900000
-        ],
-        "PackGold": [
-            900000
-        ],
-        "PackDarkElixir": [
-            9000
-        ],
-        "PackGold2": [
-            900000
-        ],
-        "PackElixir2": [
-            900000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            360000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [
-            180
-        ],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [
-            5
-        ],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [
-            4
-        ],
-        "AttackCostVillage2": [
-            0
-        ],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [
-            6
-        ],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [
-            1
-        ],
-        "Builder6Home": [],
-        "Builder6Unlock": [
-            1
-        ],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [
-            2
-        ],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            350000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            65
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": [
-            1
-        ]
-    },
-    "10": {
-        "AttackCost": [
-            900
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            595000
-        ],
-        "DarkElixirStorageLootCap": [
-            5000
-        ],
-        "WarPrizeResourceCap": [
-            90000
-        ],
-        "WarPrizeDarkElixirCap": [
-            500
-        ],
-        "WarPrizeCommonOreCap": [
-            460
-        ],
-        "WarPrizeRareOreCap": [
-            21
-        ],
-        "WarPrizeEpicOreCap": [
-            3
-        ],
-        "LegendPrizeGoldCap": [
-            250000
-        ],
-        "LegendPrizeElixirCap": [
-            250000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            1200
-        ],
-        "WarPrizeAllianceExpCap": [
-            7
-        ],
-        "CartLootCapResource": [
-            2000000
-        ],
-        "CartLootReengagementResource": [
-            13000000
-        ],
-        "CartLootCapDarkElixir": [
-            4000
-        ],
-        "CartLootReengagementDarkElixir": [
-            130000
-        ],
-        "ReengagementBuildingBudget": [
-            29635200
-        ],
-        "ReengagementHeroBudget": [
-            38880000
-        ],
-        "ReengagementWallBudget": [
-            14817600
-        ],
-        "ReengagementLabBudget": [
-            29635200
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [
-            6
-        ],
-        "Cannon_gearup": [],
-        "Wall": [
-            275
-        ],
-        "Archer Tower": [
-            7
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [
-            5
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [
-            3
-        ],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [
-            5
-        ],
-        "MegaAirTrap": [
-            5
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [
-            2
-        ],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            7
-        ],
-        "StrengthMaxSpellTypes": [
-            5
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [
-            2
-        ],
-        "Halloweenskels": [
-            3
-        ],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [
-            2
-        ],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            2800000
-        ],
-        "TreasuryWarElixir": [
-            2800000
-        ],
-        "TreasuryWarDarkElixir": [
-            14000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [
-            1000000
-        ],
-        "PackElixir2": [
-            1000000
-        ],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [
-            420000
-        ],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [
-            6
-        ],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [
-            1
-        ],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            400000
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            80
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "11": {
-        "AttackCost": [
-            1000
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            700000
-        ],
-        "DarkElixirStorageLootCap": [
-            5500
-        ],
-        "WarPrizeResourceCap": [
-            110000
-        ],
-        "WarPrizeDarkElixirCap": [
-            600
-        ],
-        "WarPrizeCommonOreCap": [
-            560
-        ],
-        "WarPrizeRareOreCap": [
-            24
-        ],
-        "WarPrizeEpicOreCap": [
-            3
-        ],
-        "LegendPrizeGoldCap": [
-            350000
-        ],
-        "LegendPrizeElixirCap": [
-            350000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            3250
-        ],
-        "WarPrizeAllianceExpCap": [
-            9
-        ],
-        "CartLootCapResource": [
-            2200000
-        ],
-        "CartLootReengagementResource": [
-            14000000
-        ],
-        "CartLootCapDarkElixir": [
-            4400
-        ],
-        "CartLootReengagementDarkElixir": [
-            140000
-        ],
-        "ReengagementBuildingBudget": [
-            33868800
-        ],
-        "ReengagementHeroBudget": [
-            45360000
-        ],
-        "ReengagementWallBudget": [
-            16934400
-        ],
-        "ReengagementLabBudget": [
-            33868800
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [
-            7
-        ],
-        "Cannon_gearup": [],
-        "Wall": [
-            300
-        ],
-        "Archer Tower": [
-            8
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [
-            5
-        ],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [
-            4
-        ],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            10
-        ],
-        "StrengthMaxSpellTypes": [
-            7
-        ],
-        "StrengthMaxSiegeTypes": [
-            0
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [
-            1
-        ],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            3200000
-        ],
-        "TreasuryWarElixir": [
-            3200000
-        ],
-        "TreasuryWarDarkElixir": [
-            16000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [
-            1
-        ],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999990
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            90
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "12": {
-        "AttackCost": [
-            1100
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            980000
-        ],
-        "DarkElixirStorageLootCap": [
-            6000
-        ],
-        "WarPrizeResourceCap": [
-            120000
-        ],
-        "WarPrizeDarkElixirCap": [
-            650
-        ],
-        "WarPrizeCommonOreCap": [
-            610
-        ],
-        "WarPrizeRareOreCap": [
-            27
-        ],
-        "WarPrizeEpicOreCap": [
-            4
-        ],
-        "LegendPrizeGoldCap": [
-            450000
-        ],
-        "LegendPrizeElixirCap": [
-            450000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            6500
-        ],
-        "WarPrizeAllianceExpCap": [
-            10
-        ],
-        "CartLootCapResource": [
-            2400000
-        ],
-        "CartLootReengagementResource": [
-            15000000
-        ],
-        "CartLootCapDarkElixir": [
-            4800
-        ],
-        "CartLootReengagementDarkElixir": [
-            150000
-        ],
-        "ReengagementBuildingBudget": [
-            36720000
-        ],
-        "ReengagementHeroBudget": [
-            50000000
-        ],
-        "ReengagementWallBudget": [
-            18360000
-        ],
-        "ReengagementLabBudget": [
-            36720000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            300
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [
-            8
-        ],
-        "Superbomb": [
-            6
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [
-            5
-        ],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [
-            6
-        ],
-        "MegaAirTrap": [
-            6
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [
-            3
-        ],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            11
-        ],
-        "StrengthMaxSpellTypes": [
-            8
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            3600000
-        ],
-        "TreasuryWarElixir": [
-            3600000
-        ],
-        "TreasuryWarDarkElixir": [
-            18000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [
-            1
-        ],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999991
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            95
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "13": {
-        "AttackCost": [
-            1200
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            1260000
-        ],
-        "DarkElixirStorageLootCap": [
-            7500
-        ],
-        "WarPrizeResourceCap": [
-            130000
-        ],
-        "WarPrizeDarkElixirCap": [
-            700
-        ],
-        "WarPrizeCommonOreCap": [
-            710
-        ],
-        "WarPrizeRareOreCap": [
-            30
-        ],
-        "WarPrizeEpicOreCap": [
-            4
-        ],
-        "LegendPrizeGoldCap": [
-            500000
-        ],
-        "LegendPrizeElixirCap": [
-            500000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            7000
-        ],
-        "WarPrizeAllianceExpCap": [
-            11
-        ],
-        "CartLootCapResource": [
-            2600000
-        ],
-        "CartLootReengagementResource": [
-            16000000
-        ],
-        "CartLootCapDarkElixir": [
-            5200
-        ],
-        "CartLootReengagementDarkElixir": [
-            160000
-        ],
-        "ReengagementBuildingBudget": [
-            41040000
-        ],
-        "ReengagementHeroBudget": [
-            55000000
-        ],
-        "ReengagementWallBudget": [
-            20520000
-        ],
-        "ReengagementLabBudget": [
-            41040000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            300
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [
-            9
-        ],
-        "Superbomb": [],
-        "Mine": [
-            7
-        ],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [
-            7
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            11
-        ],
-        "StrengthMaxSpellTypes": [
-            8
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            4000000
-        ],
-        "TreasuryWarElixir": [
-            4000000
-        ],
-        "TreasuryWarDarkElixir": [
-            20000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [
-            2
-        ],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999992
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            100
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "14": {
-        "AttackCost": [
-            1300
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            1400000
-        ],
-        "DarkElixirStorageLootCap": [
-            8700
-        ],
-        "WarPrizeResourceCap": [
-            140000
-        ],
-        "WarPrizeDarkElixirCap": [
-            750
-        ],
-        "WarPrizeCommonOreCap": [
-            810
-        ],
-        "WarPrizeRareOreCap": [
-            33
-        ],
-        "WarPrizeEpicOreCap": [
-            5
-        ],
-        "LegendPrizeGoldCap": [
-            550000
-        ],
-        "LegendPrizeElixirCap": [
-            550000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            7000
-        ],
-        "WarPrizeAllianceExpCap": [
-            12
-        ],
-        "CartLootCapResource": [
-            2800000
-        ],
-        "CartLootReengagementResource": [
-            17000000
-        ],
-        "CartLootCapDarkElixir": [
-            5600
-        ],
-        "CartLootReengagementDarkElixir": [
-            170000
-        ],
-        "ReengagementBuildingBudget": [
-            41040000
-        ],
-        "ReengagementHeroBudget": [
-            55000000
-        ],
-        "ReengagementWallBudget": [
-            20520000
-        ],
-        "ReengagementLabBudget": [
-            41040000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            325
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [
-            7
-        ],
-        "Mine": [
-            8
-        ],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [
-            7
-        ],
-        "MegaAirTrap": [
-            8
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            11
-        ],
-        "StrengthMaxSpellTypes": [
-            8
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [
-            4
-        ],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            4400000
-        ],
-        "TreasuryWarElixir": [
-            4400000
-        ],
-        "TreasuryWarDarkElixir": [
-            22000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [
-            1
-        ],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999993
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            100
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "15": {
-        "AttackCost": [
-            1400
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            1540000
-        ],
-        "DarkElixirStorageLootCap": [
-            9200
-        ],
-        "WarPrizeResourceCap": [
-            150000
-        ],
-        "WarPrizeDarkElixirCap": [
-            800
-        ],
-        "WarPrizeCommonOreCap": [
-            960
-        ],
-        "WarPrizeRareOreCap": [
-            36
-        ],
-        "WarPrizeEpicOreCap": [
-            5
-        ],
-        "LegendPrizeGoldCap": [
-            600000
-        ],
-        "LegendPrizeElixirCap": [
-            600000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            7000
-        ],
-        "WarPrizeAllianceExpCap": [
-            13
-        ],
-        "CartLootCapResource": [
-            3000000
-        ],
-        "CartLootReengagementResource": [
-            18000000
-        ],
-        "CartLootCapDarkElixir": [
-            6000
-        ],
-        "CartLootReengagementDarkElixir": [
-            180000
-        ],
-        "ReengagementBuildingBudget": [
-            41040000
-        ],
-        "ReengagementHeroBudget": [
-            55000000
-        ],
-        "ReengagementWallBudget": [
-            20520000
-        ],
-        "ReengagementLabBudget": [
-            41040000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            325
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            12
-        ],
-        "StrengthMaxSpellTypes": [
-            8
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            4800000
-        ],
-        "TreasuryWarElixir": [
-            4800000
-        ],
-        "TreasuryWarDarkElixir": [
-            24000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [
-            2
-        ],
-        "Monolith": [
-            1
-        ],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999994
-        ],
-        "Merged Archer Tower": [],
-        "Merged Cannon": [],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            100
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "16": {
-        "AttackCost": [
-            1500
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            1610000
-        ],
-        "DarkElixirStorageLootCap": [
-            9500
-        ],
-        "WarPrizeResourceCap": [
-            160000
-        ],
-        "WarPrizeDarkElixirCap": [
-            850
-        ],
-        "WarPrizeCommonOreCap": [
-            1110
-        ],
-        "WarPrizeRareOreCap": [
-            39
-        ],
-        "WarPrizeEpicOreCap": [
-            6
-        ],
-        "LegendPrizeGoldCap": [
-            650000
-        ],
-        "LegendPrizeElixirCap": [
-            650000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            7000
-        ],
-        "WarPrizeAllianceExpCap": [
-            14
-        ],
-        "CartLootCapResource": [
-            3200000
-        ],
-        "CartLootReengagementResource": [
-            19000000
-        ],
-        "CartLootCapDarkElixir": [
-            6400
-        ],
-        "CartLootReengagementDarkElixir": [
-            190000
-        ],
-        "ReengagementBuildingBudget": [
-            41040000
-        ],
-        "ReengagementHeroBudget": [
-            55000000
-        ],
-        "ReengagementWallBudget": [
-            20520000
-        ],
-        "ReengagementLabBudget": [
-            41040000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            325
-        ],
-        "Archer Tower": [],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            13
-        ],
-        "StrengthMaxSpellTypes": [
-            9
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            5200000
-        ],
-        "TreasuryWarElixir": [
-            5200000
-        ],
-        "TreasuryWarDarkElixir": [
-            26000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999995
-        ],
-        "Merged Archer Tower": [
-            2
-        ],
-        "Merged Cannon": [
-            2
-        ],
-        "Smithy": [],
-        "Firespitter": [],
-        "ChallengeLootPercentage": [
-            100
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [],
-        "VillagerApprenticeHQ": []
-    },
-    "17": {
-        "AttackCost": [
-            1600
-        ],
-        "ResourceStorageLootPercentage": [
-            14
-        ],
-        "DarkElixirStorageLootPercentage": [
-            5
-        ],
-        "ResourceStorageLootCap": [
-            1680000
-        ],
-        "DarkElixirStorageLootCap": [
-            9800
-        ],
-        "WarPrizeResourceCap": [
-            170000
-        ],
-        "WarPrizeDarkElixirCap": [
-            1000
-        ],
-        "WarPrizeCommonOreCap": [
-            1110
-        ],
-        "WarPrizeRareOreCap": [
-            39
-        ],
-        "WarPrizeEpicOreCap": [
-            6
-        ],
-        "LegendPrizeGoldCap": [
-            800000
-        ],
-        "LegendPrizeElixirCap": [
-            800000
-        ],
-        "LegendPrizeDarkElixirCap": [
-            8000
-        ],
-        "WarPrizeAllianceExpCap": [
-            15
-        ],
-        "CartLootCapResource": [
-            3400000
-        ],
-        "CartLootReengagementResource": [
-            20000000
-        ],
-        "CartLootCapDarkElixir": [
-            6800
-        ],
-        "CartLootReengagementDarkElixir": [
-            200000
-        ],
-        "ReengagementBuildingBudget": [
-            41040000
-        ],
-        "ReengagementHeroBudget": [
-            55000000
-        ],
-        "ReengagementWallBudget": [
-            20520000
-        ],
-        "ReengagementLabBudget": [
-            41040000
-        ],
-        "HeroBoostHours": [
-            120
-        ],
-        "PowerBoostHours": [
-            120
-        ],
-        "ResourceProductionBoostHours": [
-            120
-        ],
-        "StarBonusBoostHours": [
-            120
-        ],
-        "Troop Housing": [],
-        "Elixir Storage": [],
-        "Gold Storage": [],
-        "Elixir Pump": [],
-        "Gold Mine": [],
-        "Barrack": [],
-        "Cannon": [],
-        "Cannon_gearup": [],
-        "Wall": [
-            325
-        ],
-        "Archer Tower": [
-            9
-        ],
-        "Archer Tower_gearup": [],
-        "Wizard Tower": [],
-        "Air Defense": [],
-        "Mortar": [],
-        "Mortar_gearup": [],
-        "Alliance Castle": [],
-        "Ejector": [],
-        "Superbomb": [
-            8
-        ],
-        "Mine": [],
-        "Worker Building": [],
-        "Laboratory": [],
-        "Communications mast": [],
-        "Tesla Tower": [],
-        "Spell Forge": [],
-        "Mini Spell Factory": [],
-        "Bow": [],
-        "Halloweenbomb": [],
-        "Slowbomb": [],
-        "Dark Elixir Pump": [],
-        "Dark Elixir Storage": [],
-        "AirTrap": [],
-        "MegaAirTrap": [
-            9
-        ],
-        "Dark Elixir Barrack": [],
-        "Dark Tower": [],
-        "SantaTrap": [],
-        "StrengthMaxTroopTypes": [
-            14
-        ],
-        "StrengthMaxSpellTypes": [
-            10
-        ],
-        "StrengthMaxSiegeTypes": [
-            3
-        ],
-        "Totem": [],
-        "Halloweenskels": [],
-        "Air Blaster": [],
-        "Mega Cannon": [],
-        "Ancient Artillery": [],
-        "Bomb Tower": [],
-        "TreasuryGold": [],
-        "TreasuryElixir": [],
-        "TreasuryDarkElixir": [],
-        "TreasuryWarGold": [
-            5600000
-        ],
-        "TreasuryWarElixir": [
-            5600000
-        ],
-        "TreasuryWarDarkElixir": [
-            30000
-        ],
-        "FriendlyCost": [
-            0
-        ],
-        "PackElixir": [
-            1000000
-        ],
-        "PackGold": [
-            1000000
-        ],
-        "PackDarkElixir": [
-            10000
-        ],
-        "PackGold2": [],
-        "PackElixir2": [],
-        "FreezeBomb": [],
-        "DuelPrizeResourceCap": [],
-        "Elixir Pump2": [],
-        "Elixir Storage2": [],
-        "Gold Mine2": [],
-        "Gold Storage2": [],
-        "WallStraight": [],
-        "Cannon2": [],
-        "Archer Tower2": [],
-        "Troop Housing2": [],
-        "Tesla Tower2": [],
-        "Double Cannon": [],
-        "Clock Tower": [],
-        "Laboratory2": [],
-        "Multi Mortar": [],
-        "Barrack2": [],
-        "Mega Tesla": [],
-        "Guard Post": [],
-        "Pusher": [],
-        "Hero Altar Warmachine": [],
-        "Air Defense Mini": [],
-        "Crusher": [],
-        "AirGroundTrap": [],
-        "Air Defense2": [],
-        "MegaAirGroundTrap": [],
-        "AttackCostVillage2": [],
-        "Flamer": [],
-        "Gem Mine": [],
-        "Ejector2": [],
-        "Giant Cannon": [],
-        "ShrinkTrap": [],
-        "SiegeWorkshop": [],
-        "TornadoTrap": [],
-        "LavaLauncher": [],
-        "Builder6Home": [],
-        "Builder6Unlock": [],
-        "Scattershot": [],
-        "Pet Shop": [],
-        "Spell Tower": [],
-        "Monolith": [],
-        "UnlockStage": [],
-        "Battle Copter Altar": [],
-        "Xbow_BB": [],
-        "Reinforcement Camp": [],
-        "Recovery Building": [],
-        "ElixirCartStorageCap": [
-            9999996
-        ],
-        "Merged Archer Tower": [
-            3
-        ],
-        "Merged Cannon": [
-            3
-        ],
-        "Smithy": [],
-        "Firespitter": [
-            2
-        ],
-        "ChallengeLootPercentage": [
-            100
-        ],
-        "Hero Hall": [],
-        "GigaBomb": [
-            1
-        ],
-        "VillagerApprenticeHQ": []
+      "Name": 1,
+      "AttackCost": 5,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 1000,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 0,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 1000,
+      "LegendPrizeElixirCap": 1000,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 1,
+      "CartLootCapResource": 200000,
+      "CartLootReengagementResource": 5000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 0,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 0,
+      "ReengagementLabBudget": 0,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 0,
+      "ResourceProductionBoostHours": 0,
+      "StarBonusBoostHours": 0,
+      "Troop Housing": 1,
+      "Elixir Storage": 1,
+      "Gold Storage": 1,
+      "Elixir Pump": 1,
+      "Gold Mine": 1,
+      "Barrack": 1,
+      "Cannon": 1,
+      "Cannon_gearup": 1,
+      "Archer Tower_gearup": 1,
+      "Mortar_gearup": 1,
+      "Alliance Castle": 1,
+      "Worker Building": 5,
+      "StrengthMaxTroopTypes": 2,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryGold": 0,
+      "TreasuryElixir": 0,
+      "TreasuryDarkElixir": 0,
+      "TreasuryWarGold": 50000,
+      "TreasuryWarElixir": 50000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 0,
+      "PackGold": 0,
+      "PackDarkElixir": 0,
+      "PackGold2": 0,
+      "PackElixir2": 0,
+      "DuelPrizeResourceCap": 4000,
+      "Elixir Pump2": 1,
+      "Gold Mine2": 1,
+      "WallStraight": 10,
+      "Cannon2": 1,
+      "Troop Housing2": 1,
+      "Laboratory2": 1,
+      "Barrack2": 1,
+      "AttackCostVillage2": 0,
+      "Builder6Home": 1,
+      "UnlockStage": 1,
+      "ElixirCartStorageCap": 17500,
+      "ChallengeLootPercentage": 1
     }
+  },
+  "2": {
+    "10": {
+      "Name": 2,
+      "AttackCost": 10,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 2500,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 0,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 2500,
+      "LegendPrizeElixirCap": 2500,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 1,
+      "CartLootCapResource": 200000,
+      "CartLootReengagementResource": 25000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 691200,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 345600,
+      "ReengagementLabBudget": 691200,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 0,
+      "ResourceProductionBoostHours": 0,
+      "StarBonusBoostHours": 0,
+      "Elixir Pump": 2,
+      "Gold Mine": 2,
+      "Cannon": 2,
+      "Wall": 25,
+      "Archer Tower": 1,
+      "StrengthMaxTroopTypes": 2,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryWarGold": 200000,
+      "TreasuryWarElixir": 200000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 0,
+      "PackGold": 0,
+      "PackDarkElixir": 0,
+      "PackGold2": 0,
+      "PackElixir2": 0,
+      "DuelPrizeResourceCap": 16000,
+      "WallStraight": 20,
+      "Archer Tower2": 1,
+      "Troop Housing2": 2,
+      "Double Cannon": 1,
+      "Pusher": 1,
+      "AttackCostVillage2": 0,
+      "ElixirCartStorageCap": 37500,
+      "ChallengeLootPercentage": 2
+    }
+  },
+  "3": {
+    "50": {
+      "Name": 3,
+      "AttackCost": 50,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 6250,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 0,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 6250,
+      "LegendPrizeElixirCap": 6250,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 1,
+      "CartLootCapResource": 200000,
+      "CartLootReengagementResource": 150000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 3369600,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 1684800,
+      "ReengagementLabBudget": 3369600,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 0,
+      "ResourceProductionBoostHours": 0,
+      "StarBonusBoostHours": 0,
+      "Troop Housing": 2,
+      "Elixir Storage": 2,
+      "Gold Storage": 2,
+      "Elixir Pump": 3,
+      "Gold Mine": 3,
+      "Wall": 50,
+      "Mortar": 1,
+      "Mine": 2,
+      "Laboratory": 1,
+      "StrengthMaxTroopTypes": 2,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryWarGold": 400000,
+      "TreasuryWarElixir": 400000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 0,
+      "PackGold": 0,
+      "PackDarkElixir": 0,
+      "PackGold2": 0,
+      "PackElixir2": 0,
+      "DuelPrizeResourceCap": 40000,
+      "Elixir Storage2": 1,
+      "Gold Storage2": 1,
+      "WallStraight": 50,
+      "Cannon2": 2,
+      "Troop Housing2": 3,
+      "Tesla Tower2": 1,
+      "Pusher": 2,
+      "Air Defense Mini": 1,
+      "Crusher": 1,
+      "AirGroundTrap": 2,
+      "AttackCostVillage2": 0,
+      "Gem Mine": 1,
+      "Ejector2": 2,
+      "ElixirCartStorageCap": 62500,
+      "ChallengeLootPercentage": 3
+    }
+  },
+  "4": {
+    "100": {
+      "Name": 4,
+      "AttackCost": 100,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 12500,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 0,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 12500,
+      "LegendPrizeElixirCap": 12500,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 2,
+      "CartLootCapResource": 200000,
+      "CartLootReengagementResource": 1000000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 6566400,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 3283200,
+      "ReengagementLabBudget": 6566400,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 72,
+      "ResourceProductionBoostHours": 72,
+      "StarBonusBoostHours": 72,
+      "Elixir Pump": 4,
+      "Gold Mine": 4,
+      "Wall": 75,
+      "Archer Tower": 2,
+      "Air Defense": 1,
+      "Ejector": 2,
+      "StrengthMaxTroopTypes": 3,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryWarGold": 600000,
+      "TreasuryWarElixir": 600000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 100000,
+      "PackGold": 100000,
+      "PackDarkElixir": 0,
+      "PackGold2": 100000,
+      "PackElixir2": 100000,
+      "DuelPrizeResourceCap": 80000,
+      "WallStraight": 75,
+      "Archer Tower2": 2,
+      "Troop Housing2": 4,
+      "Clock Tower": 1,
+      "Guard Post": 1,
+      "Pusher": 3,
+      "AirGroundTrap": 3,
+      "Air Defense2": 1,
+      "MegaAirGroundTrap": 1,
+      "AttackCostVillage2": 0,
+      "ShrinkTrap": 1,
+      "ElixirCartStorageCap": 87500,
+      "ChallengeLootPercentage": 5
+    }
+  },
+  "5": {
+    "150": {
+      "Name": 5,
+      "AttackCost": 150,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 20000,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 0,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 20000,
+      "LegendPrizeElixirCap": 20000,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 2,
+      "CartLootCapResource": 600000,
+      "CartLootReengagementResource": 4000000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 12096000,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 6048000,
+      "ReengagementLabBudget": 12096000,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 72,
+      "ResourceProductionBoostHours": 72,
+      "StarBonusBoostHours": 72,
+      "Troop Housing": 3,
+      "Elixir Pump": 5,
+      "Gold Mine": 5,
+      "Cannon": 3,
+      "Wall": 100,
+      "Archer Tower": 3,
+      "Wizard Tower": 1,
+      "Mine": 4,
+      "Spell Forge": 1,
+      "AirTrap": 2,
+      "StrengthMaxTroopTypes": 3,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryWarGold": 800000,
+      "TreasuryWarElixir": 800000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 300000,
+      "PackGold": 300000,
+      "PackDarkElixir": 0,
+      "PackGold2": 300000,
+      "PackElixir2": 300000,
+      "FreezeBomb": 1,
+      "DuelPrizeResourceCap": 120000,
+      "WallStraight": 100,
+      "Double Cannon": 2,
+      "Multi Mortar": 1,
+      "Pusher": 4,
+      "Hero Altar Warmachine": 1,
+      "Air Defense Mini": 2,
+      "AirGroundTrap": 4,
+      "AttackCostVillage2": 0,
+      "Ejector2": 3,
+      "ElixirCartStorageCap": 150000,
+      "ChallengeLootPercentage": 8
+    }
+  },
+  "6": {
+    "250": {
+      "Name": 6,
+      "AttackCost": 250,
+      "ResourceStorageLootPercentage": 20,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 200000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 30000,
+      "WarPrizeDarkElixirCap": 0,
+      "WarPrizeCommonOreCap": 100,
+      "WarPrizeRareOreCap": 0,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 30000,
+      "LegendPrizeElixirCap": 30000,
+      "LegendPrizeDarkElixirCap": 0,
+      "WarPrizeAllianceExpCap": 2,
+      "CartLootCapResource": 1000000,
+      "CartLootReengagementResource": 6000000,
+      "CartLootCapDarkElixir": 0,
+      "CartLootReengagementDarkElixir": 0,
+      "ReengagementBuildingBudget": 14515200,
+      "ReengagementHeroBudget": 0,
+      "ReengagementWallBudget": 7258600,
+      "ReengagementLabBudget": 14515200,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 72,
+      "ResourceProductionBoostHours": 72,
+      "StarBonusBoostHours": 72,
+      "Elixir Pump": 6,
+      "Gold Mine": 6,
+      "Wall": 125,
+      "Wizard Tower": 2,
+      "Air Defense": 2,
+      "Mortar": 2,
+      "Ejector": 4,
+      "Superbomb": 1,
+      "StrengthMaxTroopTypes": 4,
+      "StrengthMaxSpellTypes": 1,
+      "StrengthMaxSiegeTypes": 0,
+      "Air Blaster": 1,
+      "TreasuryWarGold": 1200000,
+      "TreasuryWarElixir": 1200000,
+      "TreasuryWarDarkElixir": 0,
+      "FriendlyCost": 0,
+      "PackElixir": 500000,
+      "PackGold": 500000,
+      "PackDarkElixir": 0,
+      "PackGold2": 500000,
+      "PackElixir2": 500000,
+      "DuelPrizeResourceCap": 180000,
+      "Elixir Pump2": 2,
+      "Elixir Storage2": 2,
+      "Gold Mine2": 2,
+      "Gold Storage2": 2,
+      "WallStraight": 120,
+      "Archer Tower2": 3,
+      "Troop Housing2": 5,
+      "Tesla Tower2": 2,
+      "Crusher": 2,
+      "AirGroundTrap": 5,
+      "MegaAirGroundTrap": 2,
+      "AttackCostVillage2": 0,
+      "Flamer": 1,
+      "UnlockStage": 2,
+      "Reinforcement Camp": 1,
+      "Recovery Building": 1,
+      "ElixirCartStorageCap": 200000,
+      "ChallengeLootPercentage": 16
+    }
+  },
+  "7": {
+    "350": {
+      "Name": 7,
+      "AttackCost": 350,
+      "ResourceStorageLootPercentage": 18,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 360000,
+      "DarkElixirStorageLootCap": 2000,
+      "WarPrizeResourceCap": 40000,
+      "WarPrizeDarkElixirCap": 125,
+      "WarPrizeCommonOreCap": 150,
+      "WarPrizeRareOreCap": 10,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 50000,
+      "LegendPrizeElixirCap": 50000,
+      "LegendPrizeDarkElixirCap": 125,
+      "WarPrizeAllianceExpCap": 3,
+      "CartLootCapResource": 1400000,
+      "CartLootReengagementResource": 8000000,
+      "CartLootCapDarkElixir": 2800,
+      "CartLootReengagementDarkElixir": 80000,
+      "ReengagementBuildingBudget": 18144000,
+      "ReengagementHeroBudget": 1000000,
+      "ReengagementWallBudget": 9072000,
+      "ReengagementLabBudget": 18144000,
+      "HeroBoostHours": 0,
+      "PowerBoostHours": 96,
+      "ResourceProductionBoostHours": 96,
+      "StarBonusBoostHours": 96,
+      "Troop Housing": 4,
+      "Cannon": 5,
+      "Wall": 175,
+      "Archer Tower": 4,
+      "Air Defense": 3,
+      "Mortar": 3,
+      "Superbomb": 2,
+      "Mine": 6,
+      "Tesla Tower": 2,
+      "Dark Elixir Pump": 1,
+      "Dark Elixir Storage": 1,
+      "MegaAirTrap": 1,
+      "Dark Elixir Barrack": 1,
+      "StrengthMaxTroopTypes": 4,
+      "StrengthMaxSpellTypes": 2,
+      "StrengthMaxSiegeTypes": 0,
+      "TreasuryWarGold": 1600000,
+      "TreasuryWarElixir": 1600000,
+      "TreasuryWarDarkElixir": 8000,
+      "FriendlyCost": 0,
+      "PackElixir": 700000,
+      "PackGold": 700000,
+      "PackDarkElixir": 7000,
+      "PackGold2": 700000,
+      "PackElixir2": 700000,
+      "DuelPrizeResourceCap": 240000,
+      "WallStraight": 140,
+      "Cannon2": 3,
+      "Troop Housing2": 6,
+      "Tesla Tower2": 3,
+      "Pusher": 5,
+      "Air Defense Mini": 3,
+      "AttackCostVillage2": 0,
+      "Ejector2": 4,
+      "Giant Cannon": 1,
+      "ElixirCartStorageCap": 250000,
+      "ChallengeLootPercentage": 30,
+      "Hero Hall": 1
+    }
+  },
+  "8": {
+    "550": {
+      "Name": 8,
+      "AttackCost": 550,
+      "ResourceStorageLootPercentage": 16,
+      "DarkElixirStorageLootPercentage": 6,
+      "ResourceStorageLootCap": 480000,
+      "DarkElixirStorageLootCap": 2400,
+      "WarPrizeResourceCap": 55000,
+      "WarPrizeDarkElixirCap": 200,
+      "WarPrizeCommonOreCap": 380,
+      "WarPrizeRareOreCap": 15,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 100000,
+      "LegendPrizeElixirCap": 100000,
+      "LegendPrizeDarkElixirCap": 200,
+      "WarPrizeAllianceExpCap": 4,
+      "CartLootCapResource": 1600000,
+      "CartLootReengagementResource": 10000000,
+      "CartLootCapDarkElixir": 3200,
+      "CartLootReengagementDarkElixir": 100000,
+      "ReengagementBuildingBudget": 21772800,
+      "ReengagementHeroBudget": 1000000,
+      "ReengagementWallBudget": 10886400,
+      "ReengagementLabBudget": 21772800,
+      "HeroBoostHours": 96,
+      "PowerBoostHours": 96,
+      "ResourceProductionBoostHours": 96,
+      "StarBonusBoostHours": 96,
+      "Elixir Storage": 3,
+      "Gold Storage": 3,
+      "Wall": 225,
+      "Archer Tower": 5,
+      "Wizard Tower": 3,
+      "Mortar": 4,
+      "Ejector": 6,
+      "Superbomb": 3,
+      "Tesla Tower": 3,
+      "Mini Spell Factory": 1,
+      "Dark Elixir Pump": 2,
+      "AirTrap": 4,
+      "MegaAirTrap": 2,
+      "StrengthMaxTroopTypes": 5,
+      "StrengthMaxSpellTypes": 2,
+      "StrengthMaxSiegeTypes": 0,
+      "Halloweenskels": 2,
+      "Bomb Tower": 1,
+      "TreasuryWarGold": 2000000,
+      "TreasuryWarElixir": 2000000,
+      "TreasuryWarDarkElixir": 10000,
+      "FriendlyCost": 0,
+      "PackElixir": 800000,
+      "PackGold": 800000,
+      "PackDarkElixir": 8000,
+      "PackGold2": 800000,
+      "PackElixir2": 800000,
+      "DuelPrizeResourceCap": 300000,
+      "Elixir Pump2": 3,
+      "Gold Mine2": 3,
+      "WallStraight": 160,
+      "Double Cannon": 3,
+      "Mega Tesla": 1,
+      "Air Defense Mini": 4,
+      "MegaAirGroundTrap": 3,
+      "AttackCostVillage2": 0,
+      "Ejector2": 5,
+      "Battle Copter Altar": 1,
+      "ElixirCartStorageCap": 300000,
+      "Smithy": 1,
+      "ChallengeLootPercentage": 50
+    }
+  },
+  "9": {
+    "750": {
+      "Name": 9,
+      "AttackCost": 750,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 560000,
+      "DarkElixirStorageLootCap": 4700,
+      "WarPrizeResourceCap": 70000,
+      "WarPrizeDarkElixirCap": 333,
+      "WarPrizeCommonOreCap": 410,
+      "WarPrizeRareOreCap": 18,
+      "WarPrizeEpicOreCap": 0,
+      "LegendPrizeGoldCap": 150000,
+      "LegendPrizeElixirCap": 150000,
+      "LegendPrizeDarkElixirCap": 500,
+      "WarPrizeAllianceExpCap": 5,
+      "CartLootCapResource": 1800000,
+      "CartLootReengagementResource": 11500000,
+      "CartLootCapDarkElixir": 3600,
+      "CartLootReengagementDarkElixir": 115000,
+      "ReengagementBuildingBudget": 25401600,
+      "ReengagementHeroBudget": 1000000,
+      "ReengagementWallBudget": 12700800,
+      "ReengagementLabBudget": 25401600,
+      "HeroBoostHours": 96,
+      "PowerBoostHours": 96,
+      "ResourceProductionBoostHours": 96,
+      "StarBonusBoostHours": 96,
+      "Elixir Storage": 4,
+      "Gold Storage": 4,
+      "Elixir Pump": 7,
+      "Gold Mine": 7,
+      "Wall": 250,
+      "Archer Tower": 6,
+      "Wizard Tower": 4,
+      "Air Defense": 4,
+      "Superbomb": 4,
+      "Tesla Tower": 4,
+      "Bow": 2,
+      "Dark Elixir Pump": 3,
+      "MegaAirTrap": 4,
+      "StrengthMaxTroopTypes": 5,
+      "StrengthMaxSpellTypes": 3,
+      "StrengthMaxSiegeTypes": 0,
+      "Totem": 1,
+      "Halloweenskels": 2,
+      "Air Blaster": 2,
+      "TreasuryWarGold": 2400000,
+      "TreasuryWarElixir": 2400000,
+      "TreasuryWarDarkElixir": 12000,
+      "FriendlyCost": 0,
+      "PackElixir": 900000,
+      "PackGold": 900000,
+      "PackDarkElixir": 9000,
+      "PackGold2": 900000,
+      "PackElixir2": 900000,
+      "DuelPrizeResourceCap": 360000,
+      "WallStraight": 180,
+      "Air Defense Mini": 5,
+      "MegaAirGroundTrap": 4,
+      "AttackCostVillage2": 0,
+      "Ejector2": 6,
+      "LavaLauncher": 1,
+      "Builder6Unlock": 1,
+      "Reinforcement Camp": 2,
+      "ElixirCartStorageCap": 350000,
+      "ChallengeLootPercentage": 65,
+      "VillagerApprenticeHQ": 1
+    }
+  },
+  "10": {
+    "900": {
+      "Name": 10,
+      "AttackCost": 900,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 595000,
+      "DarkElixirStorageLootCap": 5000,
+      "WarPrizeResourceCap": 90000,
+      "WarPrizeDarkElixirCap": 500,
+      "WarPrizeCommonOreCap": 460,
+      "WarPrizeRareOreCap": 21,
+      "WarPrizeEpicOreCap": 3,
+      "LegendPrizeGoldCap": 250000,
+      "LegendPrizeElixirCap": 250000,
+      "LegendPrizeDarkElixirCap": 1200,
+      "WarPrizeAllianceExpCap": 7,
+      "CartLootCapResource": 2000000,
+      "CartLootReengagementResource": 13000000,
+      "CartLootCapDarkElixir": 4000,
+      "CartLootReengagementDarkElixir": 130000,
+      "ReengagementBuildingBudget": 29635200,
+      "ReengagementHeroBudget": 1500000,
+      "ReengagementWallBudget": 14817600,
+      "ReengagementLabBudget": 29635200,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Cannon": 6,
+      "Wall": 275,
+      "Archer Tower": 7,
+      "Superbomb": 5,
+      "Bow": 3,
+      "AirTrap": 5,
+      "MegaAirTrap": 5,
+      "Dark Tower": 2,
+      "StrengthMaxTroopTypes": 7,
+      "StrengthMaxSpellTypes": 5,
+      "StrengthMaxSiegeTypes": 0,
+      "Totem": 2,
+      "Halloweenskels": 3,
+      "Bomb Tower": 2,
+      "TreasuryWarGold": 2800000,
+      "TreasuryWarElixir": 2800000,
+      "TreasuryWarDarkElixir": 14000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "PackGold2": 1000000,
+      "PackElixir2": 1000000,
+      "DuelPrizeResourceCap": 420000,
+      "AirGroundTrap": 6,
+      "Xbow_BB": 1,
+      "ElixirCartStorageCap": 400000,
+      "ChallengeLootPercentage": 80
+    }
+  },
+  "11": {
+    "1000": {
+      "Name": 11,
+      "AttackCost": 1000,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 700000,
+      "DarkElixirStorageLootCap": 5500,
+      "WarPrizeResourceCap": 110000,
+      "WarPrizeDarkElixirCap": 600,
+      "WarPrizeCommonOreCap": 560,
+      "WarPrizeRareOreCap": 24,
+      "WarPrizeEpicOreCap": 3,
+      "LegendPrizeGoldCap": 350000,
+      "LegendPrizeElixirCap": 350000,
+      "LegendPrizeDarkElixirCap": 3250,
+      "WarPrizeAllianceExpCap": 9,
+      "CartLootCapResource": 2200000,
+      "CartLootReengagementResource": 14000000,
+      "CartLootCapDarkElixir": 4400,
+      "CartLootReengagementDarkElixir": 140000,
+      "ReengagementBuildingBudget": 33868800,
+      "ReengagementHeroBudget": 3500000,
+      "ReengagementWallBudget": 16934400,
+      "ReengagementLabBudget": 33868800,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Cannon": 7,
+      "Wall": 300,
+      "Archer Tower": 8,
+      "Wizard Tower": 5,
+      "Bow": 4,
+      "StrengthMaxTroopTypes": 10,
+      "StrengthMaxSpellTypes": 7,
+      "StrengthMaxSiegeTypes": 0,
+      "Ancient Artillery": 1,
+      "TreasuryWarGold": 3200000,
+      "TreasuryWarElixir": 3200000,
+      "TreasuryWarDarkElixir": 16000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "TornadoTrap": 1,
+      "ElixirCartStorageCap": 9999990,
+      "ChallengeLootPercentage": 90
+    }
+  },
+  "12": {
+    "1100": {
+      "Name": 12,
+      "AttackCost": 1100,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 980000,
+      "DarkElixirStorageLootCap": 6000,
+      "WarPrizeResourceCap": 120000,
+      "WarPrizeDarkElixirCap": 650,
+      "WarPrizeCommonOreCap": 610,
+      "WarPrizeRareOreCap": 27,
+      "WarPrizeEpicOreCap": 4,
+      "LegendPrizeGoldCap": 450000,
+      "LegendPrizeElixirCap": 450000,
+      "LegendPrizeDarkElixirCap": 6500,
+      "WarPrizeAllianceExpCap": 10,
+      "CartLootCapResource": 2400000,
+      "CartLootReengagementResource": 15000000,
+      "CartLootCapDarkElixir": 4800,
+      "CartLootReengagementDarkElixir": 150000,
+      "ReengagementBuildingBudget": 36720000,
+      "ReengagementHeroBudget": 5500000,
+      "ReengagementWallBudget": 18360000,
+      "ReengagementLabBudget": 36720000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 300,
+      "Ejector": 8,
+      "Superbomb": 6,
+      "Tesla Tower": 5,
+      "AirTrap": 6,
+      "MegaAirTrap": 6,
+      "Dark Tower": 3,
+      "StrengthMaxTroopTypes": 11,
+      "StrengthMaxSpellTypes": 8,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 3600000,
+      "TreasuryWarElixir": 3600000,
+      "TreasuryWarDarkElixir": 18000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "SiegeWorkshop": 1,
+      "ElixirCartStorageCap": 9999991,
+      "ChallengeLootPercentage": 95
+    }
+  },
+  "13": {
+    "1200": {
+      "Name": 13,
+      "AttackCost": 1200,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1260000,
+      "DarkElixirStorageLootCap": 7500,
+      "WarPrizeResourceCap": 130000,
+      "WarPrizeDarkElixirCap": 700,
+      "WarPrizeCommonOreCap": 710,
+      "WarPrizeRareOreCap": 30,
+      "WarPrizeEpicOreCap": 4,
+      "LegendPrizeGoldCap": 500000,
+      "LegendPrizeElixirCap": 500000,
+      "LegendPrizeDarkElixirCap": 7000,
+      "WarPrizeAllianceExpCap": 11,
+      "CartLootCapResource": 2600000,
+      "CartLootReengagementResource": 16000000,
+      "CartLootCapDarkElixir": 5200,
+      "CartLootReengagementDarkElixir": 160000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 10500000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 300,
+      "Ejector": 9,
+      "Mine": 7,
+      "MegaAirTrap": 7,
+      "StrengthMaxTroopTypes": 11,
+      "StrengthMaxSpellTypes": 8,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 4000000,
+      "TreasuryWarElixir": 4000000,
+      "TreasuryWarDarkElixir": 20000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "Scattershot": 2,
+      "ElixirCartStorageCap": 9999992,
+      "ChallengeLootPercentage": 100
+    }
+  },
+  "14": {
+    "1300": {
+      "Name": 14,
+      "AttackCost": 1300,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1400000,
+      "DarkElixirStorageLootCap": 8700,
+      "WarPrizeResourceCap": 140000,
+      "WarPrizeDarkElixirCap": 750,
+      "WarPrizeCommonOreCap": 810,
+      "WarPrizeRareOreCap": 33,
+      "WarPrizeEpicOreCap": 5,
+      "LegendPrizeGoldCap": 550000,
+      "LegendPrizeElixirCap": 550000,
+      "LegendPrizeDarkElixirCap": 7000,
+      "WarPrizeAllianceExpCap": 12,
+      "CartLootCapResource": 2800000,
+      "CartLootReengagementResource": 17000000,
+      "CartLootCapDarkElixir": 5600,
+      "CartLootReengagementDarkElixir": 170000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 15500000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 325,
+      "Superbomb": 7,
+      "Mine": 8,
+      "AirTrap": 7,
+      "MegaAirTrap": 8,
+      "StrengthMaxTroopTypes": 11,
+      "StrengthMaxSpellTypes": 8,
+      "StrengthMaxSiegeTypes": 3,
+      "Halloweenskels": 4,
+      "TreasuryWarGold": 4400000,
+      "TreasuryWarElixir": 4400000,
+      "TreasuryWarDarkElixir": 22000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "Pet Shop": 1,
+      "ElixirCartStorageCap": 9999993,
+      "ChallengeLootPercentage": 100
+    }
+  },
+  "15": {
+    "1400": {
+      "Name": 15,
+      "AttackCost": 1400,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1540000,
+      "DarkElixirStorageLootCap": 9200,
+      "WarPrizeResourceCap": 150000,
+      "WarPrizeDarkElixirCap": 800,
+      "WarPrizeCommonOreCap": 960,
+      "WarPrizeRareOreCap": 36,
+      "WarPrizeEpicOreCap": 5,
+      "LegendPrizeGoldCap": 600000,
+      "LegendPrizeElixirCap": 600000,
+      "LegendPrizeDarkElixirCap": 7000,
+      "WarPrizeAllianceExpCap": 13,
+      "CartLootCapResource": 3000000,
+      "CartLootReengagementResource": 18000000,
+      "CartLootCapDarkElixir": 6000,
+      "CartLootReengagementDarkElixir": 180000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 20500000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 325,
+      "StrengthMaxTroopTypes": 12,
+      "StrengthMaxSpellTypes": 8,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 4800000,
+      "TreasuryWarElixir": 4800000,
+      "TreasuryWarDarkElixir": 24000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "Spell Tower": 2,
+      "Monolith": 1,
+      "ElixirCartStorageCap": 9999994,
+      "ChallengeLootPercentage": 100
+    }
+  },
+  "16": {
+    "1500": {
+      "Name": 16,
+      "AttackCost": 1500,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1610000,
+      "DarkElixirStorageLootCap": 9500,
+      "WarPrizeResourceCap": 160000,
+      "WarPrizeDarkElixirCap": 850,
+      "WarPrizeCommonOreCap": 1110,
+      "WarPrizeRareOreCap": 39,
+      "WarPrizeEpicOreCap": 6,
+      "LegendPrizeGoldCap": 650000,
+      "LegendPrizeElixirCap": 650000,
+      "LegendPrizeDarkElixirCap": 7000,
+      "WarPrizeAllianceExpCap": 14,
+      "CartLootCapResource": 3200000,
+      "CartLootReengagementResource": 19000000,
+      "CartLootCapDarkElixir": 6400,
+      "CartLootReengagementDarkElixir": 190000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 28000000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 325,
+      "StrengthMaxTroopTypes": 13,
+      "StrengthMaxSpellTypes": 9,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 5200000,
+      "TreasuryWarElixir": 5200000,
+      "TreasuryWarDarkElixir": 26000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "ElixirCartStorageCap": 9999995,
+      "Merged Archer Tower": 2,
+      "Merged Cannon": 2,
+      "ChallengeLootPercentage": 100
+    }
+  },
+  "17": {
+    "1600": {
+      "Name": 17,
+      "AttackCost": 1600,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1680000,
+      "DarkElixirStorageLootCap": 9800,
+      "WarPrizeResourceCap": 170000,
+      "WarPrizeDarkElixirCap": 1000,
+      "WarPrizeCommonOreCap": 1110,
+      "WarPrizeRareOreCap": 39,
+      "WarPrizeEpicOreCap": 6,
+      "LegendPrizeGoldCap": 750000,
+      "LegendPrizeElixirCap": 750000,
+      "LegendPrizeDarkElixirCap": 7500,
+      "WarPrizeAllianceExpCap": 15,
+      "CartLootCapResource": 3400000,
+      "CartLootReengagementResource": 20000000,
+      "CartLootCapDarkElixir": 6800,
+      "CartLootReengagementDarkElixir": 200000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 38000000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 325,
+      "Archer Tower": 9,
+      "Superbomb": 8,
+      "MegaAirTrap": 9,
+      "StrengthMaxTroopTypes": 14,
+      "StrengthMaxSpellTypes": 10,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 5600000,
+      "TreasuryWarElixir": 5600000,
+      "TreasuryWarDarkElixir": 30000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "ElixirCartStorageCap": 9999996,
+      "Merged Archer Tower": 3,
+      "Merged Cannon": 3,
+      "Firespitter": 2,
+      "ChallengeLootPercentage": 100,
+      "GigaBomb": 1
+    }
+  }
 }

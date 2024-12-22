@@ -1,434 +1,210 @@
 {
-    "SuperBarbarian": {
-        "Original": [
-            "Barbarian"
-        ],
-        "MinOriginalLevel": [
-            7
-        ],
-        "Replacement": [
-            "EliteBarbarian"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_BARB_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperGoblin": {
-        "Original": [
-            "Goblin"
-        ],
-        "MinOriginalLevel": [
-            6
-        ],
-        "Replacement": [
-            "EliteGoblin"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_GOBLIN_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperGiant": {
-        "Original": [
-            "Giant"
-        ],
-        "MinOriginalLevel": [
-            8
-        ],
-        "Replacement": [
-            "EliteGiant"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_GIANT_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperWallbreaker": {
-        "Original": [
-            "Wall Breaker"
-        ],
-        "MinOriginalLevel": [
-            6
-        ],
-        "Replacement": [
-            "EliteWallBreaker"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_WALLBREAKER_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperArcher": {
-        "Original": [
-            "Archer"
-        ],
-        "MinOriginalLevel": [
-            7
-        ],
-        "Replacement": [
-            "EliteArcher"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_ARCHER_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperWitch": {
-        "Original": [
-            "Warlock"
-        ],
-        "MinOriginalLevel": [
-            4
-        ],
-        "Replacement": [
-            "Head Witch"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_WITCH_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "InfernoDragon": {
-        "Original": [
-            "BabyDragon"
-        ],
-        "MinOriginalLevel": [
-            5
-        ],
-        "Replacement": [
-            "InfernoDragon"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "INFERNO_DRAGON_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperValkyrie": {
-        "Original": [
-            "Warrior Girl"
-        ],
-        "MinOriginalLevel": [
-            6
-        ],
-        "Replacement": [
-            "EliteValkyrie"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_VALKYRIE_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperMinion": {
-        "Original": [
-            "Gargoyle"
-        ],
-        "MinOriginalLevel": [
-            7
-        ],
-        "Replacement": [
-            "Super Minion"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_MINION_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperWizard": {
-        "Original": [
-            "Wizard"
-        ],
-        "MinOriginalLevel": [
-            8
-        ],
-        "Replacement": [
-            "Super Wizard"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_WIZARD_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "IceHound": {
-        "Original": [
-            "AirDefenceSeeker"
-        ],
-        "MinOriginalLevel": [
-            4
-        ],
-        "Replacement": [
-            "Ice Hound"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_LAVAHOUND_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperBalloon": {
-        "Original": [
-            "Balloon"
-        ],
-        "MinOriginalLevel": [
-            7
-        ],
-        "Replacement": [
-            "HastyBalloon"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_BALLOON_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperBowler": {
-        "Original": [
-            "Bowler"
-        ],
-        "MinOriginalLevel": [
-            3
-        ],
-        "Replacement": [
-            "Super Bowler"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_BOWLER_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperDragon": {
-        "Original": [
-            "Dragon"
-        ],
-        "MinOriginalLevel": [
-            6
-        ],
-        "Replacement": [
-            "Super Dragon"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_DRAGON_INTRO_TH13"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperMiner": {
-        "Original": [
-            "Miner"
-        ],
-        "MinOriginalLevel": [
-            6
-        ],
-        "Replacement": [
-            "Super Miner"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_MINER_INTRO"
-        ],
-        "EnabledByCalendar": []
-    },
-    "SuperHogRider": {
-        "Original": [
-            "Boar Rider"
-        ],
-        "MinOriginalLevel": [
-            9
-        ],
-        "Replacement": [
-            "Super Hog Rider"
-        ],
-        "DurationH": [
-            72
-        ],
-        "CooldownH": [
-            72
-        ],
-        "Resource": [
-            "DarkElixir"
-        ],
-        "ResourceCost": [
-            25000
-        ],
-        "TrialNPC": [
-            "SUPER_HOG_INTRO"
-        ],
-        "EnabledByCalendar": []
+  "SuperBarbarian": {
+    "Barbarian": {
+      "Name": "SuperBarbarian",
+      "Original": "Barbarian",
+      "MinOriginalLevel": 7,
+      "Replacement": "EliteBarbarian",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_BARB_INTRO_TH13"
     }
+  },
+  "SuperGoblin": {
+    "Goblin": {
+      "Name": "SuperGoblin",
+      "Original": "Goblin",
+      "MinOriginalLevel": 6,
+      "Replacement": "EliteGoblin",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_GOBLIN_INTRO_TH13"
+    }
+  },
+  "SuperGiant": {
+    "Giant": {
+      "Name": "SuperGiant",
+      "Original": "Giant",
+      "MinOriginalLevel": 8,
+      "Replacement": "EliteGiant",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_GIANT_INTRO_TH13"
+    }
+  },
+  "SuperWallbreaker": {
+    "Wall Breaker": {
+      "Name": "SuperWallbreaker",
+      "Original": "Wall Breaker",
+      "MinOriginalLevel": 6,
+      "Replacement": "EliteWallBreaker",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_WALLBREAKER_INTRO_TH13"
+    }
+  },
+  "SuperArcher": {
+    "Archer": {
+      "Name": "SuperArcher",
+      "Original": "Archer",
+      "MinOriginalLevel": 7,
+      "Replacement": "EliteArcher",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_ARCHER_INTRO_TH13"
+    }
+  },
+  "SuperWitch": {
+    "Warlock": {
+      "Name": "SuperWitch",
+      "Original": "Warlock",
+      "MinOriginalLevel": 4,
+      "Replacement": "Head Witch",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_WITCH_INTRO_TH13"
+    }
+  },
+  "InfernoDragon": {
+    "BabyDragon": {
+      "Name": "InfernoDragon",
+      "Original": "BabyDragon",
+      "MinOriginalLevel": 5,
+      "Replacement": "InfernoDragon",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "INFERNO_DRAGON_INTRO_TH13"
+    }
+  },
+  "SuperValkyrie": {
+    "Warrior Girl": {
+      "Name": "SuperValkyrie",
+      "Original": "Warrior Girl",
+      "MinOriginalLevel": 6,
+      "Replacement": "EliteValkyrie",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_VALKYRIE_INTRO_TH13"
+    }
+  },
+  "SuperMinion": {
+    "Gargoyle": {
+      "Name": "SuperMinion",
+      "Original": "Gargoyle",
+      "MinOriginalLevel": 7,
+      "Replacement": "Super Minion",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_MINION_INTRO_TH13"
+    }
+  },
+  "SuperWizard": {
+    "Wizard": {
+      "Name": "SuperWizard",
+      "Original": "Wizard",
+      "MinOriginalLevel": 8,
+      "Replacement": "Super Wizard",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_WIZARD_INTRO_TH13"
+    }
+  },
+  "IceHound": {
+    "AirDefenceSeeker": {
+      "Name": "IceHound",
+      "Original": "AirDefenceSeeker",
+      "MinOriginalLevel": 4,
+      "Replacement": "Ice Hound",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_LAVAHOUND_INTRO_TH13"
+    }
+  },
+  "SuperBalloon": {
+    "Balloon": {
+      "Name": "SuperBalloon",
+      "Original": "Balloon",
+      "MinOriginalLevel": 7,
+      "Replacement": "HastyBalloon",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_BALLOON_INTRO_TH13"
+    }
+  },
+  "SuperBowler": {
+    "Bowler": {
+      "Name": "SuperBowler",
+      "Original": "Bowler",
+      "MinOriginalLevel": 3,
+      "Replacement": "Super Bowler",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_BOWLER_INTRO_TH13"
+    }
+  },
+  "SuperDragon": {
+    "Dragon": {
+      "Name": "SuperDragon",
+      "Original": "Dragon",
+      "MinOriginalLevel": 6,
+      "Replacement": "Super Dragon",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_DRAGON_INTRO_TH13"
+    }
+  },
+  "SuperMiner": {
+    "Miner": {
+      "Name": "SuperMiner",
+      "Original": "Miner",
+      "MinOriginalLevel": 6,
+      "Replacement": "Super Miner",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_MINER_INTRO"
+    }
+  },
+  "SuperHogRider": {
+    "Boar Rider": {
+      "Name": "SuperHogRider",
+      "Original": "Boar Rider",
+      "MinOriginalLevel": 9,
+      "Replacement": "Super Hog Rider",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_HOG_INTRO"
+    }
+  }
 }
