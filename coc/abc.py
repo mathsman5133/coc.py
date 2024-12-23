@@ -240,14 +240,15 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 else:
                     #get the townhall level of the spot where prod building level is equal to the one of the unit
                     min_th_level = prod_unit.get(str(min_prod_unit_level)).get("TownHallLevel", 0)
-
                     # map the min th level to a lab level
                     [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items() if th_level == min_th_level]
                     # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
                     # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
                     laboratory_levels = []
-                    for lab_level in [json_meta.get(level).get("LaboratoryLevel") for level in levels_available]:
+                    for lab_level in [json_meta.get(level).get("LaboratoryLevel", 1) for level in levels_available]:
                         laboratory_levels.append(max(lab_level, first_lab_level))
+
+
 
 
             elif production_building == "Pet Shop":

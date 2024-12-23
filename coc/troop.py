@@ -181,17 +181,17 @@ class TroopHolder(DataContainerHolder):
         id = 1000  # fallback ID for builder base troops
         for supercell_name, troop_meta in troop_data.items(): #type: str, dict
 
-            if troop_meta.get("UpgradeResource") is None:
+            if troop_meta.get("Deprecated") or troop_meta.get("1", {}).get("Deprecated"):
+                continue
+
+            if troop_meta.get("DisableProduction") or troop_meta.get("1", {}).get("DisableProduction"):
                 continue
 
             if "_DEF" in supercell_name:
                 continue
 
-            if super_data.get(supercell_name):
-                continue
-
             #is seasonal
-            if troop_meta.get("EnabledByCalendar") or troop_meta.get("DisableProduction"):
+            if troop_meta.get("EnabledByCalendar") or troop_meta.get("1", {}).get("EnabledByCalendar"):
                 continue
 
             troop_name = english_aliases.get(troop_meta.get("TID"))
