@@ -197,8 +197,11 @@ class TroopHolder(DataContainerHolder):
             troop_name = english_aliases.get(troop_meta.get("TID"))
 
             new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
-            troop_id = army_link_ids.get(troop_name, (id := id +1))
-
+            # hacky way to prevent builder base baby dragon from taking spot of home village one
+            troop_id = army_link_ids.get(
+                f"BB_{troop_name}" if troop_meta.get("VillageType") else troop_name,
+                (id := id + 1)
+            )
             new_troop._load_json_meta(
                 troop_meta,
                 id=troop_id,
