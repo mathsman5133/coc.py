@@ -306,7 +306,8 @@ EQUIPMENT = [
     "Lavaloon Puppet",
     "Magic Mirror",
     "Henchmen Puppet",
-    "Dark Orb"
+    "Dark Orb",
+    "Electro Boots"
 ]
 
 ACHIEVEMENT_ORDER = [
