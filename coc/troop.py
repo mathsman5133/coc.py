@@ -114,11 +114,11 @@ class Troop(DataContainer):
     @classmethod
     def _inject_super_meta(cls, troop_meta):
         cls.is_super_troop = True
-
-        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("CooldownH", [])])
-        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("DurationH", [])])
-        cls.min_original_level = troop_meta["MinOriginalLevel"][0]
-        cls._original = troop_meta["Original"][0]
+        levels_available = [key for key in troop_meta.keys() if key.isnumeric()]
+        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("CooldownH") for level in levels_available]])
+        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("DurationH") for level in levels_available]])
+        cls.min_original_level = troop_meta["MinOriginalLevel"]
+        cls._original = troop_meta["Original"]
 
         return cls
 

@@ -203,8 +203,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
         levels_available = [key for key in json_meta.keys() if key.isnumeric()]
 
         cls.ground_target = json_meta.get("GroundTargets", True)
-
-
         cls.range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
         cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
         cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("Hitpoints") for level in levels_available])
@@ -240,12 +238,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 if not min_prod_unit_level:
                     laboratory_levels = [json_meta.get(level).get("LaboratoryLevel") for level in levels_available]
                 else:
-                    # get the min th level were we can unlock by the required level of the production building
                     #get the townhall level of the spot where prod building level is equal to the one of the unit
                     min_th_level = prod_unit.get(str(min_prod_unit_level)).get("TownHallLevel", 0)
-
-                    #min_th_level = [th for i, th in enumerate(prod_unit["TownHallLevel"], start=1) if i == min_prod_unit_level]
-
 
                     # map the min th level to a lab level
                     [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items() if th_level == min_th_level]
@@ -258,10 +252,10 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
             elif production_building == "Pet Shop":
                 min_prod_unit_level = json_meta.get("1").get("LaboratoryLevel")
-                # there are some special troops, which have no BarrackLevel attribute
 
                 # get the min th level were we can unlock by the required level of the production building
                 min_th_level = prod_unit.get(str(min_prod_unit_level)).get("TownHallLevel", 0)
+
                 # map the min th level to a lab level
                 [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items() if th_level == min_th_level]
                 # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
@@ -279,17 +273,15 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.speed = try_enum(UnitStat, [json_meta.get(level).get("Speed") for level in levels_available])
         cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
 
-        # all 3
         cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
-
         cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
-
         upgrade_times = [
             TimeDelta(hours=hours)
             for level in levels_available
             if (hours := json_meta.get(level, {}).get("UpgradeTimeH")) is not None
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
+
         cls._is_home_village = False if json_meta.get("VillageType") else True
         cls.village = "home" if cls._is_home_village else "builderBase"
 
@@ -298,8 +290,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.training_time = try_enum(UnitStat, [json_meta.get(level).get("TrainingTime") for level in levels_available])
 
         # only heroes
-        #lets add new things
-
         cls.ability_time = try_enum(UnitStat, [json_meta.get(level).get("AbilityTime") for level in levels_available])
         cls.ability_troop_count = try_enum(UnitStat, [json_meta.get(level).get("AbilitySummonTroopCount") for level in levels_available])
 
