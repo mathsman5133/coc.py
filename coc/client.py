@@ -2644,7 +2644,7 @@ class Client:
 
 
         """
-        if not self._equipment_holder.loaded:
+        if not self._equipment_holder.is_loaded:
             raise RuntimeError("Equipment metadata must be loaded to use this feature.")
 
         equipment = self._equipment_holder.get(name)
