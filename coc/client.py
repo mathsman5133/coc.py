@@ -53,7 +53,7 @@ from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from.entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
-    from .hero import Hero, Pet
+    from .hero import Hero, Pet, Equipment
     from .spell import Spell
     from .troop import Troop
 
@@ -2539,7 +2539,7 @@ class Client:
 
         .. code-block:: python3
 
-            troop = client.get_pet("Electro Owl")
+            pet = client.get_pet("Electro Owl")
 
             for level, cost in enumerate(pet.upgrade_cost, start=1):
                 print(f"{pet.name} has an upgrade cost of {cost} at Lv{level}")
@@ -2590,3 +2590,74 @@ class Client:
             return pet(data, townhall=townhall)
         else:
             return pet
+
+
+    def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
+        """Get an uninitiated Equipment object with the given name.
+
+        .. note::
+
+            You must have Equipment metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            gear = client.get_equipment("Dark Orb")
+
+            for level, cost in enumerate(gear.upgrade_cost, start=1):
+                print(f"{gear.name} has an upgrade cost of {cost} at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The equipment name, which must match in-game **exactly**, but is case-insensitive.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Equipment` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Equipment` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+        Raises
+        ------
+        RuntimeError
+            Pet game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Equipment`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the equipment is not found, this will return ``None``.
+
+
+        """
+        if not self._equipment_holder.loaded:
+            raise RuntimeError("Equipment metadata must be loaded to use this feature.")
+
+        equipment = self._equipment_holder.get(name)
+        if equipment is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": equipment.name,
+                "level": level,
+                "maxLevel": len(equipment.required_th_level) + 1,
+                "village": "home"
+            }
+            townhall = townhall or equipment.required_th_level[level]
+            return equipment(data, townhall=townhall)
+        else:
+            return equipment
