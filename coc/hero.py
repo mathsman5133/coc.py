@@ -8,9 +8,9 @@ from .miscmodels import try_enum
 from .utils import UnitStat
 
 from .enums import Resource
+
 if TYPE_CHECKING:
     from .miscmodels import TimeDelta
-
 
 HERO_FILE_PATH = Path(__file__).parent.joinpath(Path("static/heroes.json"))
 PET_FILE_PATH = Path(__file__).parent.joinpath(Path("static/pets.json"))
@@ -266,27 +266,31 @@ class Equipment(DataContainer):
         cls.name = name
         cls.smithy_to_townhall = smithy_to_townhall
 
+        cls._json_meta = json_meta
         smithy_levels = json_meta.get("RequiredBlacksmithLevel")
         levels_available = [key for key in json_meta.keys() if key.isnumeric()]
+        cls.levels_available = levels_available
 
         cls.smithy_level = try_enum(UnitStat, smithy_levels)
         cls.level = cls.smithy_level and UnitStat(range(1, len(cls.smithy_level) + 1))
-        cls.hero_level = try_enum(UnitStat, [json_meta.get(level).get("RequiredCharacterLevel") for level in levels_available])
+        cls.hero_level = try_enum(UnitStat,
+                                  [json_meta.get(level).get("RequiredCharacterLevel") for level in levels_available])
         cls.speed = try_enum(UnitStat, [json_meta.get(level).get("Speed") for level in levels_available])
         cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("HitPoints") for level in levels_available])
         cls.attack_range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
         cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
         cls.heal = try_enum(UnitStat, [json_meta.get(level).get("HealOnActivation") for level in levels_available])
 
-
         # hacky way to translate internal hero names to English
         hero = json_meta.get('AllowedCharacters', '').strip(';')
-        hero_map = {"Warrior Princess" : "Royal Champion", "Minion Hero" : "Minion Prince"}
+        hero_map = {"Warrior Princess": "Royal Champion", "Minion Hero": "Minion Prince"}
         cls.hero = hero_map.get(hero, hero)
 
-        costs = [(int(el) for el in str(cost).split(';')) for cost in [json_meta.get(level).get('UpgradeCosts') for level in levels_available] if cost]
+        costs = [(int(el) for el in str(cost).split(';')) for cost in
+                 [json_meta.get(level).get('UpgradeCosts') for level in levels_available] if cost]
 
-        resources = [(Resource(el.strip()) for el in resource.split(';')) for resource in [json_meta.get(level).get('UpgradeResources', '') for level in levels_available]]
+        resources = [(Resource(el.strip()) for el in resource.split(';')) for resource in
+                     [json_meta.get(level).get('UpgradeResources', '') for level in levels_available]]
 
         cls.upgrade_cost = try_enum(UnitStat, [[(c, r) for c, r in zip(cost, resource)]
                                                for cost, resource in zip(costs, resources)])

@@ -2654,10 +2654,11 @@ class Client:
             data = {
                 "name": equipment.name,
                 "level": level,
-                "maxLevel": len(equipment.required_th_level) + 1,
+                "maxLevel": equipment.levels_available[-1],
                 "village": "home"
             }
-            townhall = townhall or equipment.required_th_level[level]
+            #really hacky, need to find out why
+            townhall = townhall or equipment.smithy_to_townhall[equipment._json_meta.get(str(level)).get("RequiredBlacksmithLevel")]
             return equipment(data, townhall=townhall)
         else:
             return equipment
