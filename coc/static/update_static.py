@@ -3,6 +3,8 @@ Automates updating the static files.
 Now saves both the raw CSV and the generated JSON files.
 If new files need to be added, then place them in the TARGETS list.
 """
+import aiohttp
+import asyncio
 import json
 import traceback
 import urllib
@@ -30,9 +32,6 @@ TARGETS = [
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
 
 def get_fingerprint():
-    import aiohttp
-    import asyncio
-
     async def download():
         async with aiohttp.request('GET', APK_URL) as fp:
             c = await fp.read()
