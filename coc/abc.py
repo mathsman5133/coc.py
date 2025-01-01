@@ -352,7 +352,7 @@ class DataContainerHolder:
         id = 2000
         for c, [supercell_name, meta] in enumerate(data.items()):
 
-            #Not interested if it doesn't have a TID, since it likely isn't a real troop.
+            # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue
 
