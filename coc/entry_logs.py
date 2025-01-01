@@ -19,11 +19,17 @@ class LogPaginator(ABC):
                  limit: int,
                  page: bool,
                  json_resp: dict,
-                 model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry]]):
+                 model: Union[Type[ClanWarLogEntry], Type[RaidLogEntry]],
+                 **kwargs):
 
         self._clan_tag = clan_tag
         self._limit = limit
         self._page = page
+        
+        self.kwargs = kwargs
+        self.kwargs["lookup_cache"] = kwargs.get("lookup_cache", client.lookup_cache)
+        self.kwargs["update_cache"] = kwargs.get("update_cache", client.update_cache)
+        self.kwargs["ignore_cached_errors"] = kwargs.get("ignore_cached_errors", client.ignore_cached_errors)
 
         self._init_data = json_resp  # Initial data; this is const
         self._init_logs = json_resp.get("items", [])
@@ -131,7 +137,7 @@ class LogPaginator(ABC):
     @property
     def options(self) -> dict:
         """Generate the header for the endpint request"""
-        options = {"limit": self._limit}
+        options = {"limit": self._limit, **self.kwargs}
         if self._next_page:
             options["after"] = self._next_page
         return options
@@ -161,6 +167,7 @@ class LogPaginator(ABC):
                        model: Type[ClanWarLogEntry],
                        limit: int,
                        paginate: bool = True,
+                       **kwargs,
                        ) -> Union[ClanWarLog, RaidLog]:
         """Class method to return an instantiated object"""
         pass
@@ -180,7 +187,8 @@ class ClanWarLog(LogPaginator, ABC):
                        limit: int,
                        page: bool = True,
                        after: str = None,
-                       before: str = None
+                       before: str = None,
+                       **kwargs
                        ) -> ClanWarLog:
 
         # Add the limit if specified
@@ -189,16 +197,19 @@ class ClanWarLog(LogPaginator, ABC):
             args["after"] = after
         if before:
             args["before"] = before
+        args["lookup_cache"] = kwargs.get("lookup_cache", client.lookup_cache)
+        args["update_cache"] = kwargs.get("update_cache", client.update_cache)
+        args["ignore_cached_errors"] = kwargs.get("ignore_cached_errors", client.ignore_cached_errors)
 
         json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
         return ClanWarLog(client=client, clan_tag=clan_tag, limit=limit,
-                          page=page, json_resp=json_resp, model=model)
+                          page=page, json_resp=json_resp, model=model, **kwargs)
 
     @staticmethod
     async def _fetch_endpoint(client: Client, clan_tag: str,
                               fut: Optional[asyncio.Future] = None,
                               **options) -> dict:
-        result = await client.http.get_clan_war_log(clan_tag, **options, ignore_cache=True)
+        result = await client.http.get_clan_war_log(clan_tag, **options)
         if fut:
             fut.set_result(result)
         return result
@@ -217,7 +228,8 @@ class RaidLog(LogPaginator, ABC):
                        limit: int,
                        page: bool = True,
                        after: str = None,
-                       before: str = None
+                       before: str = None,
+                       **kwargs
                        ) -> RaidLog:
 
         # Add the limit if specified
@@ -226,10 +238,13 @@ class RaidLog(LogPaginator, ABC):
             args["after"] = after
         if before:
             args["before"] = before
+        args["lookup_cache"] = kwargs.get("lookup_cache", client.lookup_cache)
+        args["update_cache"] = kwargs.get("update_cache", client.update_cache)
+        args["ignore_cached_errors"] = kwargs.get("ignore_cached_errors", client.ignore_cached_errors)
 
         json_resp = await cls._fetch_endpoint(client, clan_tag, **args)
         return RaidLog(client=client, clan_tag=clan_tag, limit=limit,
-                       page=page, json_resp=json_resp, model=model)
+                       page=page, json_resp=json_resp, model=model, **kwargs,)
 
     @staticmethod
     async def _fetch_endpoint(client: Client, clan_tag: str,

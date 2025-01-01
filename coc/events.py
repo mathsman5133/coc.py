@@ -428,9 +428,9 @@ class EventsClient(Client):
         self.player_retry_interval = 0
         self.war_retry_interval = 0
 
-        self.clan_cls = Clan
-        self.player_cls = Player
-        self.war_cls = ClanWar
+        self.clan_cls = self.objects_cls['Clan']
+        self.player_cls = self.objects_cls['Player']
+        self.war_cls = self.objects_cls['ClanWar']
 
         self.clan_loops_run = 0
         self.player_loops_run = 0
