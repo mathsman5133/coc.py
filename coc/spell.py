@@ -144,7 +144,9 @@ class SpellHolder(DataContainerHolder):
 
             spell_name = english_aliases[spell_meta.get("TID")]
             new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
-            spell_id = army_link_ids.get(spell_name, (id := id + 1))
+            spell_id = army_link_ids.get(spell_name, id)
+            if spell_id == id:
+                id += 1
 
             new_spell._load_json_meta(
                 spell_meta,

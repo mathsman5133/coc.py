@@ -325,10 +325,11 @@ class EquipmentHolder(DataContainerHolder):
             new_equipment: Type[Equipment] = type('Equipment', Equipment.__bases__, dict(Equipment.__dict__))
             new_equipment._load_json_meta(
                 equipment_meta,
-                id=(id := id + 1),
+                id=id,
                 name=english_aliases[equipment_meta.get("TID")],
                 smithy_to_townhall=lab_to_townhall,
             )
+            id += 1
             self.items.append(new_equipment)
             self.item_lookup[new_equipment.name] = new_equipment
 

@@ -277,9 +277,9 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
         cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
         upgrade_times = [
-            TimeDelta(hours=hours)
+            TimeDelta(hours=json_meta.get(level, {}).get("UpgradeTimeH"))
             for level in levels_available
-            if (hours := json_meta.get(level, {}).get("UpgradeTimeH")) is not None
+            if json_meta.get(level, {}).get("UpgradeTimeH") is not None
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
 
@@ -296,9 +296,9 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.required_th_level = try_enum(UnitStat, required_townhall_levels if any(required_townhall_levels) else laboratory_levels)
 
         regeneration_times = [
-            TimeDelta(minutes=value)
+            TimeDelta(minutes=json_meta.get(level, {}).get("RegenerationTimeMinutes"))
             for level in levels_available
-            if (value := json_meta.get(level, {}).get("RegenerationTimeMinutes")) is not None
+            if json_meta.get(level, {}).get("RegenerationTimeMinutes") is not None
         ]
         cls.regeneration_time = try_enum(UnitStat, regeneration_times)
 
@@ -379,10 +379,11 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=(id := id + 1),
+                id=id,
                 name=english_aliases[meta.get("TID")],
                 lab_to_townhall=lab_to_townhall,
             )
+            id += 1
             self.items.append(new_item)
             self.item_lookup[new_item.name] = new_item
 
