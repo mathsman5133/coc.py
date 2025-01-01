@@ -7,6 +7,25 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added the new Lavaloon & Electro Boots equipment to :class:`coc.EQUIPMENT`
+- Added :func:`coc.Client.get_equipment`
+- Added new Minion Prince hero to :class:`Hero`
+- Updated static data & enums for TH17
+- Added explicit cache control to every endpoint
+  - Use :attr:`coc.Client.lookup_cache` (default `True`) or pass it as a kwarg to API calling methods (default `None`) to control whether a lookup in the cache is performed. If `None`, it defaults to :attr:`client.lookup_cache`.
+  - Use :attr:`coc.Client.update_cache` to control whether the cache is updated after a request.
+  - Use :attr:`coc.Client.ignore_cached_errors` to specify status codes to ignore in the cache. For example, cached `404 Not Found` responses can be bypassed by setting `ignore_cached_errors=[404]`.
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug that would cause the first war of CWL to not appear while it was in prep
+
+
 v3.7.2
 ------
 
