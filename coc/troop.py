@@ -113,11 +113,11 @@ class Troop(DataContainer):
     @classmethod
     def _inject_super_meta(cls, troop_meta):
         cls.is_super_troop = True
-
-        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("CooldownH", [])])
-        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in troop_meta.get("DurationH", [])])
-        cls.min_original_level = troop_meta["MinOriginalLevel"][0]
-        cls._original = troop_meta["Original"][0]
+        levels_available = [key for key in troop_meta.keys() if key.isnumeric()]
+        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("CooldownH") for level in levels_available]])
+        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("DurationH") for level in levels_available]])
+        cls.min_original_level = troop_meta["MinOriginalLevel"]
+        cls._original = troop_meta["Original"]
 
         return cls
 
@@ -167,29 +167,40 @@ class TroopHolder(DataContainerHolder):
     items: List[Type[Troop]] = []
     item_lookup: Dict[Tuple[str, bool], Type[Troop]]
 
-    def _load_json(self, english_aliases, lab_to_townhall):
+    def _load_json(self, english_aliases: dict, lab_to_townhall):
         with open(TROOPS_FILE_PATH) as fp:
             troop_data = ujson.load(fp)
         with open(SUPER_TROOPS_FILE_PATH) as fp:
             super_troop_data = ujson.load(fp)
         with open(ARMY_LINK_ID_FILE_PATH) as fp:
-            army_link_ids = ujson.load(fp)
+            army_link_ids: dict = ujson.load(fp)
 
-        super_data = {meta["Replacement"][0]: meta for _, meta in super_troop_data.items()}
+        super_data: dict = {v["Replacement"]: v for item in super_troop_data.values() for v in item.values()}
 
         id = 1000  # fallback ID for builder base troops
-        for supercell_name, troop_meta in troop_data.items():
-            if not troop_meta.get("TID"):
+        for supercell_name, troop_meta in troop_data.items(): #type: str, dict
+
+            if troop_meta.get("Deprecated") or troop_meta.get("1", {}).get("Deprecated"):
                 continue
-            if "Tutorial" in supercell_name:
+
+            if troop_meta.get("DisableProduction") or troop_meta.get("1", {}).get("DisableProduction"):
                 continue
-            if True in troop_meta.get("DisableProduction", [False]):
+
+            if "_DEF" in supercell_name:
                 continue
-            troop_name = english_aliases[troop_meta["TID"][0]]["EN"][0]
+
+            #is seasonal
+            if troop_meta.get("EnabledByCalendar") or troop_meta.get("1", {}).get("EnabledByCalendar"):
+                continue
+
+            troop_name = english_aliases.get(troop_meta.get("TID"))
+
             new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
-            troop_id = army_link_ids.get(troop_name, id)
-            if isinstance(troop_id, int):
+            # hacky way to prevent builder base baby dragon from taking spot of home village one
+            troop_id = army_link_ids.get(f"BB_{troop_name}" if troop_meta.get("VillageType") else troop_name, id)
+            if troop_id == id:
                 id += 1
+
             new_troop._load_json_meta(
                 troop_meta,
                 id=troop_id,
@@ -206,8 +217,8 @@ class TroopHolder(DataContainerHolder):
                 new_troop._inject_super_meta(super_meta)
 
         for troop in filter(lambda t: t.is_super_troop, self.items):
-            sc_name = troop_data[troop._original]["TID"][0]
-            troop.original_troop = self.get(english_aliases[sc_name]["EN"][0])
+            sc_name = troop_data[troop._original].get("TID")
+            troop.original_troop = self.get(english_aliases.get(sc_name))
 
         self.loaded = True
 
