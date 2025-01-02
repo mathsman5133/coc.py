@@ -26,7 +26,7 @@ Additions:
 Bugs Fixed:
 ~~~~~~~~~~~
 - Fixed a bug that would cause the first war of CWL to not appear while it was in prep & caused an index error appearing in output/logs
-
+- :func:`coc.Client.verify_player_token` requests are no longer cached
 
 v3.7.2
 ------
