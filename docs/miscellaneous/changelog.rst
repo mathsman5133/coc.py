@@ -20,7 +20,7 @@ Additions:
    - Use :attr:`coc.Client.lookup_cache` (default `True`) or pass it as a kwarg to API calling methods (default `None`) to control whether a lookup in the cache is performed. If `None`, it defaults to :attr:`client.lookup_cache`.
    - Use :attr:`coc.Client.update_cache` to control whether the cache is updated after a request.
    - Use :attr:`coc.Client.ignore_cached_errors` to specify status codes to ignore in the cache. For example, cached `404 Not Found` responses can be bypassed by setting `ignore_cached_errors=[404]`.
-- Moved `cls` functionality for player, war, and clan data from `EventClient` to `Client`
+- Moved `cls` functionality from `EventClient` to `Client` via :func:`coc.Client.set_object_cls`
    - Previously, `cls` could only be set at the `EventClient` level and applied to every event automatically. Now, it can be set directly in the normal `Client` when initializing and can override the API call if needed. This eliminates the need to change `cls` for every individual API call.
 
 Bugs Fixed:
