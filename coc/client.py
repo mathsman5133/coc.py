@@ -573,15 +573,12 @@ class Client:
                                 if isinstance(x, (Label, int,))]),
             limit=limit,
             before=before,
-            after=after,
-            lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-            update_cache=kwargs.get("update_cache", self.update_cache),
-            ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
+            after=after
         )
 
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
-    @with_defaults()
+
     async def get_clan(self, tag: str, cls: Type[Clan] = None, **kwargs) -> Clan:
         """Get information about a single clan by clan tag.
 
@@ -626,7 +623,7 @@ class Client:
         data = await self.http.get_clan(tag,
                                         lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
                                         update_cache=kwargs.get("update_cache", self.update_cache),
-                                        ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),)
+                                        ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors))
         return cls(data=data, client=self, **kwargs)
 
     @with_defaults()
@@ -669,12 +666,9 @@ class Client:
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
-        return ClanIterator(self, tags, cls,
-                            lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                            update_cache=kwargs.get("update_cache", self.update_cache),
-                            ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors), **kwargs)
+        return ClanIterator(self, tags, cls, **kwargs)
 
-    @with_defaults()
+
     async def get_members(self, clan_tag: str, *, limit: int = 0, after: str = "", before: str = "",
                           cls: Type[ClanMember] = None, **kwargs) -> List[ClanMember]:
         """List clan members.
@@ -839,9 +833,6 @@ class Client:
                                              model=cls,
                                              after=after,
                                              before=before,
-                                             lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                             update_cache=kwargs.get("update_cache", self.update_cache),
-                                             ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                              **kwargs)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
@@ -939,16 +930,12 @@ class Client:
                                           model=cls,
                                           after=after,
                                           before=before,
-                                          lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                          update_cache=kwargs.get("update_cache", self.update_cache),
-                                          ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                           **kwargs
                                           )
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
-    @with_defaults()
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = None, **kwargs) -> ClanWar:
         """
         Retrieve information about clan's current clan war
@@ -1067,10 +1054,7 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return ClanWarIterator(self, clan_tags, cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                               update_cache=kwargs.get("update_cache", self.update_cache),
-                               ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                               **kwargs)
+        return ClanWarIterator(self, clan_tags, cls=cls, **kwargs)
 
     @with_defaults()
     async def get_league_group(
@@ -1126,13 +1110,7 @@ class Client:
             realtime = None
 
         try:
-            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime,
-                                                             lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                             update_cache=kwargs.get("update_cache", self.update_cache),
-                                                             ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                             self.ignore_cached_errors),
-                                                             **kwargs
-                                                             )
+            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime, **kwargs)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -1191,12 +1169,7 @@ class Client:
             realtime = None
 
         try:
-            data = await self.http.get_cwl_wars(war_tag, realtime=realtime,
-                                                lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                update_cache=kwargs.get("update_cache", self.update_cache),
-                                                ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                **kwargs
-                                                )
+            data = await self.http.get_cwl_wars(war_tag, realtime=realtime, **kwargs)
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -1249,10 +1222,7 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return LeagueWarIterator(self, war_tags, clan_tag, cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                 update_cache=kwargs.get("update_cache", self.update_cache),
-                                 ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                 **kwargs)
+        return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
 
     @with_defaults()
     async def get_current_war(
@@ -1330,10 +1300,7 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            get_war = await self.get_clan_war(clan_tag, cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                              update_cache=kwargs.get("update_cache", self.update_cache),
-                                              ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                              **kwargs)
+            get_war = await self.get_clan_war(clan_tag, cls=cls, **kwargs)
         except PrivateWarLog:
             get_war = None
 
@@ -1341,10 +1308,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                       update_cache=kwargs.get("update_cache", self.update_cache),
-                                                       ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                       **kwargs)
+            league_group = await self.get_league_group(clan_tag, **kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
@@ -1358,11 +1322,7 @@ class Client:
         if last_round_active and league_group.state != "ended":
             # there are the supposed number of rounds, but without any call we are unable to know if the last round is
             # currently in preparation or already in war
-            async for war in self.get_league_wars(league_group.rounds[-1], cls=cls,
-                                                  lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                  **kwargs):
+            async for war in self.get_league_wars(league_group.rounds[-1], cls=cls, **kwargs):
                 if war.state == 'inWar':
                     # last round is already in war
                     last_round_active = True
@@ -1394,10 +1354,7 @@ class Client:
 
         kwargs["league_group"] = league_group
         kwargs["clan_tag"] = clan_tag
-        async for war in self.get_league_wars(round_tags, cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                              update_cache=kwargs.get("update_cache", self.update_cache),
-                                              ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                              **kwargs):
+        async for war in self.get_league_wars(round_tags, cls=cls, **kwargs):
             if war.clan_tag == clan_tag:
                 return war
             elif war.opponent.tag == clan_tag:
@@ -1464,10 +1421,7 @@ class Client:
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                  **kwargs)
+        return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
 
     @with_defaults()
     async def search_locations(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Location] = None,
@@ -1503,11 +1457,7 @@ class Client:
             cls = self.objects_cls['Location']
         if not issubclass(cls, Location):
             raise TypeError("cls must be a subclass of Location.")
-        data = await self.http.search_locations(limit=limit, before=before, after=after,
-                                                lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                update_cache=kwargs.get("update_cache", self.update_cache),
-                                                ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                **kwargs)
+        data = await self.http.search_locations(limit=limit, before=before, after=after, **kwargs)
 
         return [cls(data=n) for n in data["items"]]
 
@@ -1543,10 +1493,7 @@ class Client:
             cls = self.objects_cls['Location']
         if not issubclass(cls, Location):
             raise TypeError("cls must be a subclass of Location.")
-        data = await self.http.get_location(location_id, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                            update_cache=kwargs.get("update_cache", self.update_cache),
-                                            ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                            **kwargs)
+        data = await self.http.get_location(location_id, **kwargs)
         return cls(data=data)
 
     @with_defaults()
@@ -1577,11 +1524,7 @@ class Client:
             cls = self.objects_cls['Location']
         if not issubclass(cls, Location):
             raise TypeError("cls must be a subclass of Location.")
-        data = await self.http.search_locations(limit=None, before=None, after=None,
-                                                lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                update_cache=kwargs.get("update_cache", self.update_cache),
-                                                ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                **kwargs)
+        data = await self.http.search_locations(limit=None, before=None, after=None, **kwargs)
         locations = [cls(data=n) for n in data["items"]]
 
         return get(locations, name=location_name)
@@ -1628,11 +1571,7 @@ class Client:
             cls = self.objects_cls['RankedClan']
         if not issubclass(cls, RankedClan):
             raise TypeError("cls must be a subclass of RankedClan.")
-        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after,
-                                                  lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                  **kwargs)
+        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -1677,13 +1616,7 @@ class Client:
             cls = self.objects_cls['RankedClan']
         if not issubclass(cls, RankedClan):
             raise TypeError("cls must be a subclass of RankedClan.")
-        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after,
-                                                          lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                          update_cache=kwargs.get("update_cache", self.update_cache),
-                                                          ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                          self.ignore_cached_errors),
-                                                          **kwargs
-                                                          )
+        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -1728,12 +1661,7 @@ class Client:
             cls = self.objects_cls['RankedPlayer']
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
-        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after,
-                                                    lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                    update_cache=kwargs.get("update_cache", self.update_cache),
-                                                    ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                    **kwargs
-                                                    )
+        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -1778,12 +1706,7 @@ class Client:
         if not issubclass(cls, RankedClan):
             raise TypeError("cls must be a subclass of RankedClan.")
         data = await self.http.get_location_clans_builder_base(location_id, limit=limit, before=before, after=after,
-                                                               lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                               update_cache=kwargs.get("update_cache", self.update_cache),
-                                                               ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                               self.ignore_cached_errors),
-                                                               **kwargs
-                                                               )
+                                                               **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -1828,12 +1751,7 @@ class Client:
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
         data = await self.http.get_location_players_builder_base(location_id, limit=limit, before=before, after=after,
-                                                                 lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                                 update_cache=kwargs.get("update_cache", self.update_cache),
-                                                                 ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                                 self.ignore_cached_errors),
-                                                                 **kwargs
-                                                                 )
+                                                                 **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
@@ -1870,12 +1788,7 @@ class Client:
             cls = self.objects_cls['League']
         if not issubclass(cls, League):
             raise TypeError("cls must be a subclass of League.")
-        data = await self.http.search_leagues(limit=limit, before=before, after=after,
-                                              lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                              update_cache=kwargs.get("update_cache", self.update_cache),
-                                              ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                              **kwargs
-                                              )
+        data = await self.http.search_leagues(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -1909,10 +1822,7 @@ class Client:
             cls = self.objects_cls['League']
         if not issubclass(cls, League):
             raise TypeError("cls must be a subclass of League.")
-        data = await self.http.get_league(league_id, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                          update_cache=kwargs.get("update_cache", self.update_cache),
-                                          ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                          **kwargs)
+        data = await self.http.get_league(league_id, **kwargs)
         return cls(data=data, client=self)
 
     @with_defaults()
@@ -1951,10 +1861,7 @@ class Client:
             cls = self.objects_cls['League']
         if not issubclass(cls, League):
             raise TypeError("cls must be a subclass of League.")
-        return get(await self.search_leagues(cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                             update_cache=kwargs.get("update_cache", self.update_cache),
-                                             ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                             **kwargs), name=league_name)
+        return get(await self.search_leagues(cls=cls, **kwargs), name=league_name)
 
     @with_defaults()
     async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None,
@@ -1991,12 +1898,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after,
-                                                           lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                           update_cache=kwargs.get("update_cache", self.update_cache),
-                                                           ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                           self.ignore_cached_errors),
-                                                           **kwargs)
+        data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -2032,12 +1934,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.get_builder_base_league(league_id,
-                                                       lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                       update_cache=kwargs.get("update_cache", self.update_cache),
-                                                       ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                       self.ignore_cached_errors),
-                                                       **kwargs)
+        data = await self.http.get_builder_base_league(league_id, **kwargs)
         return cls(data=data, client=self)
 
     @with_defaults()
@@ -2072,13 +1969,7 @@ class Client:
         :class:`BaseLeague`
             The first league matching the league name. Could be ``None`` if not found.
         """
-        return get(await self.search_builder_base_leagues(cls=cls,
-                                                          lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                          update_cache=kwargs.get("update_cache", self.update_cache),
-                                                          ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                          self.ignore_cached_errors),
-                                                          **kwargs),
-                   name=league_name)
+        return get(await self.search_builder_base_leagues(cls=cls, **kwargs), name=league_name)
 
     @with_defaults()
     async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
@@ -2115,11 +2006,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.search_war_leagues(limit=limit, before=before, after=after,
-                                                  lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                  **kwargs)
+        data = await self.http.search_war_leagues(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -2155,11 +2042,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.get_war_league(league_id,
-                                             lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                             update_cache=kwargs.get("update_cache", self.update_cache),
-                                             ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                             **kwargs)
+        data = await self.http.get_war_league(league_id, **kwargs)
         return cls(data=data, client=self)
 
     @with_defaults()
@@ -2198,12 +2081,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        return get(await self.search_war_leagues(cls=cls,
-                                                 lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                 update_cache=kwargs.get("update_cache", self.update_cache),
-                                                 ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                 **kwargs),
-                   name=league_name)
+        return get(await self.search_war_leagues(cls=cls, **kwargs), name=league_name)
 
     @with_defaults()
     async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
@@ -2239,11 +2117,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.search_capital_leagues(limit=limit, before=before, after=after,
-                                                      lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                      update_cache=kwargs.get("update_cache", self.update_cache),
-                                                      ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                      **kwargs)
+        data = await self.http.search_capital_leagues(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -2279,10 +2153,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        data = await self.http.get_capital_league(league_id, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                  **kwargs)
+        data = await self.http.get_capital_league(league_id, **kwargs)
         return cls(data=data, client=self)
 
     @with_defaults()
@@ -2321,10 +2192,7 @@ class Client:
             cls = self.objects_cls['BaseLeague']
         if not issubclass(cls, BaseLeague):
             raise TypeError("cls must be a subclass of BaseLeague.")
-        return get(await self.search_capital_leagues(cls=cls, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                     update_cache=kwargs.get("update_cache", self.update_cache),
-                                                     ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                     **kwargs), name=league_name)
+        return get(await self.search_capital_leagues(cls=cls, **kwargs), name=league_name)
 
     @with_defaults()
     async def get_seasons(self, league_id: int = 29000022, **kwargs) -> List[str]:
@@ -2358,10 +2226,7 @@ class Client:
         List[str]
             The legend season IDs, in the form ``YYYY-MM``, ie. ``2020-04``.
         """
-        data = await self.http.get_league_seasons(league_id, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                  update_cache=kwargs.get("update_cache", self.update_cache),
-                                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                **kwargs)
+        data = await self.http.get_league_seasons(league_id, **kwargs)
         return [entry["id"] for entry in data["items"]]
 
     @with_defaults()
@@ -2403,10 +2268,7 @@ class Client:
             cls = self.objects_cls['RankedPlayer']
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
-        data = await self.http.get_league_season_info(league_id, season_id, lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                      update_cache=kwargs.get("update_cache", self.update_cache),
-                                                      ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                      **kwargs)
+        data = await self.http.get_league_season_info(league_id, season_id, **kwargs)
         return [cls(data=n, client=self) for n in data.get("items", [])]
 
     @with_defaults()
@@ -2443,11 +2305,7 @@ class Client:
             cls = self.objects_cls['Label']
         if not issubclass(cls, Label):
             raise TypeError("cls must be a subclass of Label.")
-        data = await self.http.get_clan_labels(limit=limit, before=before, after=after,
-                                               lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                               update_cache=kwargs.get("update_cache", self.update_cache),
-                                               ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                               **kwargs)
+        data = await self.http.get_clan_labels(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     @with_defaults()
@@ -2484,11 +2342,7 @@ class Client:
             cls = self.objects_cls['Label']
         if not issubclass(cls, Label):
             raise TypeError("cls must be a subclass of Label.")
-        data = await self.http.get_player_labels(limit=limit, before=before, after=after,
-                                                 lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                 update_cache=kwargs.get("update_cache", self.update_cache),
-                                                 ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                                                 **kwargs)
+        data = await self.http.get_player_labels(limit=limit, before=before, after=after, **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
     # players
@@ -2537,11 +2391,7 @@ class Client:
             player_tag = correct_tag(player_tag)
 
         data = await self.http.get_player(player_tag)
-        return cls(data=data, client=self, load_game_data=load_game_data,
-                   lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                   update_cache=kwargs.get("update_cache", self.update_cache),
-                   ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                   **kwargs)
+        return cls(data=data, client=self, load_game_data=load_game_data, **kwargs)
 
     @with_defaults()
     def get_players(self, player_tags: Iterable[str], cls: Type[Player] = None, load_game_data: bool = None, **kwargs) -> AsyncIterator[
@@ -2585,13 +2435,8 @@ class Client:
         if load_game_data and not isinstance(load_game_data, bool):
             raise TypeError("load_game_data must be either True or False.")
 
-        return PlayerIterator(self, player_tags, cls=cls, load_game_data=load_game_data,
-                              lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                              update_cache=kwargs.get("update_cache", self.update_cache),
-                              ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
-                              **kwargs)
+        return PlayerIterator(self, player_tags, cls=cls, load_game_data=load_game_data, **kwargs)
 
-    @with_defaults()
     async def verify_player_token(self, player_tag: str, token: str, **kwargs) -> bool:
         """Verify player API token that can be found from the game settings.
 
@@ -2654,14 +2499,9 @@ class Client:
             cls = self.objects_cls['GoldPassSeason']
         if not issubclass(cls, GoldPassSeason):
             raise TypeError("cls must be a subclass of GoldPassSeason.")
-        data = await self.http.get_current_goldpass_season(lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                           update_cache=kwargs.get("update_cache", self.update_cache),
-                                                           ignore_cached_errors=kwargs.get("ignore_cached_errors",
-                                                                                           self.ignore_cached_errors),
-                                                           **kwargs)
+        data = await self.http.get_current_goldpass_season(**kwargs)
         return cls(data=data)
 
-    @with_defaults()
     def parse_army_link(self, link: str):
         """Transform an army link from in-game into a list of troops and spells.
 
@@ -2714,7 +2554,6 @@ class Client:
         return [(lookup_troops.get(t_id, self._troop_holder.get('Barbarian')), qty) for t_id, qty in troops], \
                [(lookup_spells.get(s_id, s_id), qty) for s_id, qty in spells]
 
-    @with_defaults()
     def create_army_link(self, **kwargs):
         r"""Transform troops and spells into an in-game army share link.
 
@@ -2789,7 +2628,6 @@ class Client:
 
         return base
 
-    @with_defaults()
     def get_troop(
         self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
     ) -> Optional[Union[Type["Troop"], "Troop"]]:
@@ -2864,7 +2702,6 @@ class Client:
         else:
             return troop
 
-    @with_defaults()
     def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
         """Get an uninitiated Spell object with the given name.
 
@@ -2936,7 +2773,6 @@ class Client:
         else:
             return spell
 
-    @with_defaults()
     def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
         """Get an uninitiated Hero object with the given name.
 
@@ -3008,7 +2844,6 @@ class Client:
         else:
             return hero
 
-    @with_defaults()
     def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
         """Get an uninitiated Pet object with the given name.
 
@@ -3079,7 +2914,6 @@ class Client:
         else:
             return pet
 
-    @with_defaults()
     def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
         """Get an uninitiated Equipment object with the given name.
 
