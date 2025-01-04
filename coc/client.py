@@ -198,7 +198,6 @@ class Client:
         "load_game_data",
         "lookup_cache",
         "update_cache",
-        "_defaults",
         "ignore_cached_errors",
         "_players",
         "_clans",
