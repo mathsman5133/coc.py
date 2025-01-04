@@ -555,9 +555,9 @@ class Client:
                                 if isinstance(x, (Label, int,))]),
             limit=limit,
             before=before,
-            after=after
+            after=after,
+            **{**self._defaults, **kwargs}
         )
-        kwargs = {**self._defaults, **kwargs}
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
 
