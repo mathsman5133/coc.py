@@ -254,11 +254,6 @@ class Client:
         self.lookup_cache = lookup_cache
         self.update_cache = update_cache
         self.ignore_cached_errors = ignore_cached_errors
-        self._defaults = {
-                "lookup_cache": self.lookup_cache,
-                "update_cache": self.update_cache,
-                "ignore_cached_errors": self.ignore_cached_errors,
-            }
 
         self.http: Optional[HTTPClient] = None  # set in method login()
         self.realtime = realtime
@@ -279,6 +274,14 @@ class Client:
         self._players = {}
         self._clans = {}
         self._wars = {}
+
+    @property
+    def _defaults(self):
+        return {
+            "lookup_cache": self.lookup_cache,
+            "update_cache": self.update_cache,
+            "ignore_cached_errors": self.ignore_cached_errors,
+        }
 
     async def __aenter__(self):
         return self
