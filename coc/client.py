@@ -25,6 +25,7 @@ import asyncio
 import logging
 from enum import Enum
 
+from inspect import iscoroutinefunction
 from itertools import cycle
 from functools import wraps
 from pathlib import Path
@@ -79,11 +80,20 @@ class ClashAccountScopes(Enum):
 
 def with_defaults():
     def decorator(func):
-        @wraps(func)
-        async def wrapper(self, *args, **kwargs):
-            merged_kwargs = {**self._defaults, **kwargs}
-            return await func(self, *args, **merged_kwargs)
-        return wrapper
+        # we have to check if the function is async or not, because we have both
+        if iscoroutinefunction(func):
+            @wraps(func)
+            async def async_wrapper(self, *args, **kwargs):
+                merged_kwargs = {**self._defaults, **kwargs}
+                return await func(self, *args, **merged_kwargs)
+            return async_wrapper
+        else:
+            @wraps(func)
+            def sync_wrapper(self, *args, **kwargs):
+                defaults = self._defaults if hasattr(self, "_defaults") else {}
+                merged_kwargs = {**self._defaults, **kwargs}
+                return func(self, *args, **merged_kwargs)
+            return sync_wrapper
     return decorator
 
 class Client:
