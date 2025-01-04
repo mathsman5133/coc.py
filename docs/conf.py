@@ -17,6 +17,7 @@ copyright = '2022, mathsman5133'
 author = 'mathsman5133'
 release = '3.8.1'
 
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
