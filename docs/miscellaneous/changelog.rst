@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.1
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug with **kwargs in :class:`coc.Client` functions that caused duplicated values
+
 v3.8.0
 ------
 
