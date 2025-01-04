@@ -26,6 +26,7 @@ import logging
 from enum import Enum
 
 from itertools import cycle
+from functools import wraps
 from pathlib import Path
 from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
@@ -76,6 +77,14 @@ class ClashAccountScopes(Enum):
     USER = "clash"
     REAL = "clash:*:verifytoken,realtime"
 
+def with_defaults():
+    def decorator(func):
+        @wraps(func)
+        async def wrapper(self, *args, **kwargs):
+            merged_kwargs = {**self._defaults, **kwargs}
+            return await func(self, *args, **merged_kwargs)
+        return wrapper
+    return decorator
 
 class Client:
     """This is the client connection used to interact with the Clash of Clans API.
@@ -198,6 +207,7 @@ class Client:
         "load_game_data",
         "lookup_cache",
         "update_cache",
+        "_defaults",
         "ignore_cached_errors",
         "_players",
         "_clans",
@@ -253,6 +263,11 @@ class Client:
         self.lookup_cache = lookup_cache
         self.update_cache = update_cache
         self.ignore_cached_errors = ignore_cached_errors
+        self._defaults = {
+                "lookup_cache": self.lookup_cache,
+                "update_cache": self.update_cache,
+                "ignore_cached_errors": self.ignore_cached_errors,
+            }
 
         self.http: Optional[HTTPClient] = None  # set in method login()
         self.realtime = realtime
@@ -319,7 +334,6 @@ class Client:
         if not issubclass(cls, default_cls[name]):
             raise TypeError(f"The cls {cls} must be a subclass of {default_cls[name]}")
         self.objects_cls[name] = cls
-
 
     def _create_client(self, email, password):
         return HTTPClient(
@@ -465,6 +479,7 @@ class Client:
         else:
             fctn(*args, **kwargs)
 
+    @with_defaults()
     async def search_clans(
         self,
         *,
@@ -556,6 +571,7 @@ class Client:
 
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
+    @with_defaults()
     async def get_clan(self, tag: str, cls: Type[Clan] = None, **kwargs) -> Clan:
         """Get information about a single clan by clan tag.
 
@@ -603,6 +619,7 @@ class Client:
                                         ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),)
         return cls(data=data, client=self, **kwargs)
 
+    @with_defaults()
     def get_clans(self, tags: Iterable[str], cls: Type[Clan] = None, **kwargs) -> AsyncIterator[Clan]:
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
@@ -647,6 +664,7 @@ class Client:
                             update_cache=kwargs.get("update_cache", self.update_cache),
                             ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors), **kwargs)
 
+    @with_defaults()
     async def get_members(self, clan_tag: str, *, limit: int = 0, after: str = "", before: str = "",
                           cls: Type[ClanMember] = None, **kwargs) -> List[ClanMember]:
         """List clan members.
@@ -711,6 +729,7 @@ class Client:
         data = await self.http.get_clan_members(clan_tag, **args)
         return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
 
+    @with_defaults()
     async def get_war_log(
         self,
         clan_tag: str,
@@ -818,6 +837,7 @@ class Client:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
+    @with_defaults()
     async def get_raid_log(
             self,
             clan_tag: str,
@@ -918,6 +938,7 @@ class Client:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
+    @with_defaults()
     async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = None, **kwargs) -> ClanWar:
         """
         Retrieve information about clan's current clan war
@@ -974,6 +995,7 @@ class Client:
 
         return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
+    @with_defaults()
     def get_clan_wars(self, clan_tags: Iterable[str], cls: Type[ClanWar] = None, **kwargs) -> AsyncIterator[ClanWar]:
         """
         Retrieve information multiple clan's current clan wars
@@ -1040,6 +1062,7 @@ class Client:
                                ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                **kwargs)
 
+    @with_defaults()
     async def get_league_group(
         self,
         clan_tag: str,
@@ -1110,6 +1133,7 @@ class Client:
 
         return cls(data=data, client=self, **kwargs)
 
+    @with_defaults()
     async def get_league_war(self, war_tag: str, cls: Type[ClanWar] = None, **kwargs) -> ClanWar:
         """
         Retrieve information about a clan war league war.
@@ -1169,6 +1193,7 @@ class Client:
         data["tag"] = war_tag  # API doesn't return this, even though it is in docs.
         return cls(data=data, client=self, **kwargs)
 
+    @with_defaults()
     def get_league_wars(
         self,
         war_tags: Iterable[str],
@@ -1219,6 +1244,7 @@ class Client:
                                  ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                  **kwargs)
 
+    @with_defaults()
     async def get_current_war(
         self,
         clan_tag: str,
@@ -1370,6 +1396,7 @@ class Client:
                 war.opponent = tmp
                 return war
 
+    @with_defaults()
     def get_current_wars(
         self,
         clan_tags: Iterable[str],
@@ -1432,7 +1459,7 @@ class Client:
                                   ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                   **kwargs)
 
-    # locations
+    @with_defaults()
     async def search_locations(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Location] = None,
                                **kwargs) -> List[Location]:
         """List all available locations
@@ -1474,6 +1501,7 @@ class Client:
 
         return [cls(data=n) for n in data["items"]]
 
+    @with_defaults()
     async def get_location(self, location_id: int, cls: Type[Location] = None, **kwargs) -> Location:
         """Get information about specific location
 
@@ -1511,6 +1539,7 @@ class Client:
                                             **kwargs)
         return cls(data=data)
 
+    @with_defaults()
     async def get_location_named(self, location_name: str, cls: Type[Location] = None, **kwargs) -> Optional[Location]:
         """Get a location by name.
 
@@ -1547,6 +1576,7 @@ class Client:
 
         return get(locations, name=location_name)
 
+    @with_defaults()
     async def get_location_clans(
             self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedClan] = None,
@@ -1595,6 +1625,7 @@ class Client:
                                                   **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_location_clans_capital(
             self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedClan] = None,
@@ -1645,6 +1676,7 @@ class Client:
                                                           )
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_location_players(
             self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedPlayer] = None,
@@ -1694,6 +1726,7 @@ class Client:
                                                     )
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_location_clans_builder_base(
             self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedClan] = None, **kwargs
@@ -1743,6 +1776,7 @@ class Client:
                                                                )
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_location_players_builder_base(
             self, location_id: int = "global", *, limit: int = None,
             before: str = None, after: str = None, cls: Type[RankedPlayer] = None, **kwargs
@@ -1793,7 +1827,7 @@ class Client:
         return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
-
+    @with_defaults()
     async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[League] = None,
                              **kwargs) -> List[League]:
         """Get list of leagues.
@@ -1834,6 +1868,7 @@ class Client:
                                               )
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_league(self, league_id: int, cls: Type[League] = None, **kwargs) -> League:
         """
         Get league information
@@ -1870,6 +1905,7 @@ class Client:
                                           **kwargs)
         return cls(data=data, client=self)
 
+    @with_defaults()
     async def get_league_named(self, league_name: str, cls: Type[League] = None, **kwargs) -> Optional[League]:
         """Get a league by name.
 
@@ -1910,6 +1946,7 @@ class Client:
                                              ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                              **kwargs), name=league_name)
 
+    @with_defaults()
     async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None,
                                           cls: Type[BaseLeague] = None, **kwargs)-> List[BaseLeague]:
         """Get list of builder base leagues.
@@ -1952,6 +1989,7 @@ class Client:
                                                            **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_builder_base_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
         """
         Get builder base league information
@@ -1992,6 +2030,7 @@ class Client:
                                                        **kwargs)
         return cls(data=data, client=self)
 
+    @with_defaults()
     async def get_builder_base_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
         """Get a builder base league by name.
 
@@ -2031,6 +2070,7 @@ class Client:
                                                           **kwargs),
                    name=league_name)
 
+    @with_defaults()
     async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
                                  **kwargs) -> List[BaseLeague]:
         """Get list of war leagues.
@@ -2072,6 +2112,7 @@ class Client:
                                                   **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_war_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
         """
         Get war league information
@@ -2111,6 +2152,7 @@ class Client:
                                              **kwargs)
         return cls(data=data, client=self)
 
+    @with_defaults()
     async def get_war_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
         """Get a war league by name.
 
@@ -2153,6 +2195,7 @@ class Client:
                                                  **kwargs),
                    name=league_name)
 
+    @with_defaults()
     async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
                                      **kwargs) -> List[BaseLeague]:
         """Get list of capital leagues.
@@ -2193,6 +2236,7 @@ class Client:
                                                       **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_capital_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
         """
         Get capital league information
@@ -2231,6 +2275,7 @@ class Client:
                                                   **kwargs)
         return cls(data=data, client=self)
 
+    @with_defaults()
     async def get_capital_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
         """Get a capital league by name.
 
@@ -2271,6 +2316,7 @@ class Client:
                                                      ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                                                      **kwargs), name=league_name)
 
+    @with_defaults()
     async def get_seasons(self, league_id: int = 29000022, **kwargs) -> List[str]:
         """Get league seasons.
 
@@ -2308,6 +2354,7 @@ class Client:
                                                 **kwargs)
         return [entry["id"] for entry in data["items"]]
 
+    @with_defaults()
     async def get_season_rankings(self, league_id: int, season_id: str, cls: Type[RankedPlayer] = None, **kwargs) -> List[RankedPlayer]:
         """Get league season rankings.
 
@@ -2352,6 +2399,7 @@ class Client:
                                                       **kwargs)
         return [cls(data=n, client=self) for n in data.get("items", [])]
 
+    @with_defaults()
     async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Label] = None, **kwargs
                               ) -> List[Label]:
         """Fetch all possible clan labels.
@@ -2392,6 +2440,7 @@ class Client:
                                                **kwargs)
         return [cls(data=n, client=self) for n in data["items"]]
 
+    @with_defaults()
     async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Label] = None, **kwargs
                                 ) -> List[Label]:
         """Fetch all possible player labels.
@@ -2433,7 +2482,7 @@ class Client:
         return [cls(data=n, client=self) for n in data["items"]]
 
     # players
-
+    @with_defaults()
     async def get_player(self, player_tag: str, cls: Type[Player] = Player,
                          load_game_data: bool = None, **kwargs) -> Player:
         """Get information about a single player by player tag.
@@ -2484,6 +2533,7 @@ class Client:
                    ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                    **kwargs)
 
+    @with_defaults()
     def get_players(self, player_tags: Iterable[str], cls: Type[Player] = None, load_game_data: bool = None, **kwargs) -> AsyncIterator[
         Player]:
         """Get information about a multiple players by player tag.
@@ -2531,6 +2581,7 @@ class Client:
                               ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors),
                               **kwargs)
 
+    @with_defaults()
     async def verify_player_token(self, player_tag: str, token: str, **kwargs) -> bool:
         """Verify player API token that can be found from the game settings.
 
@@ -2568,6 +2619,7 @@ class Client:
                                                    ignore_cached_errors=kwargs.get('ignore_cached_errors', self.ignore_cached_errors))
         return data and data["status"] == "ok" or False
 
+    @with_defaults()
     async def get_current_goldpass_season(self, cls: Type[GoldPassSeason] = None, **kwargs) -> GoldPassSeason:
         """Get the current gold pass season
         
@@ -2599,6 +2651,7 @@ class Client:
                                                            **kwargs)
         return cls(data=data)
 
+    @with_defaults()
     def parse_army_link(self, link: str):
         """Transform an army link from in-game into a list of troops and spells.
 
@@ -2651,6 +2704,7 @@ class Client:
         return [(lookup_troops.get(t_id, self._troop_holder.get('Barbarian')), qty) for t_id, qty in troops], \
                [(lookup_spells.get(s_id, s_id), qty) for s_id, qty in spells]
 
+    @with_defaults()
     def create_army_link(self, **kwargs):
         r"""Transform troops and spells into an in-game army share link.
 
@@ -2725,6 +2779,7 @@ class Client:
 
         return base
 
+    @with_defaults()
     def get_troop(
         self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
     ) -> Optional[Union[Type["Troop"], "Troop"]]:
@@ -2799,6 +2854,7 @@ class Client:
         else:
             return troop
 
+    @with_defaults()
     def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
         """Get an uninitiated Spell object with the given name.
 
@@ -2870,6 +2926,7 @@ class Client:
         else:
             return spell
 
+    @with_defaults()
     def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
         """Get an uninitiated Hero object with the given name.
 
@@ -2941,6 +2998,7 @@ class Client:
         else:
             return hero
 
+    @with_defaults()
     def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
         """Get an uninitiated Pet object with the given name.
 
@@ -3011,7 +3069,7 @@ class Client:
         else:
             return pet
 
-
+    @with_defaults()
     def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
         """Get an uninitiated Equipment object with the given name.
 
