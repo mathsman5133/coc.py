@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.2
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug with :func:`coc.Client.get_current_war` that caused it to not fetch the correct current CWL war
+
 v3.8.1
 ------
 
