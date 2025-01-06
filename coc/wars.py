@@ -440,7 +440,7 @@ class ClanWarLeagueGroup:
         # the API returns a list and the rounds that haven't started contain war tags of #0 (not sure why)...
         # we want to get only the valid rounds
         self.rounds: List[List[str]] = [n["warTags"] for n in rounds if
-                                        n["warTags"][0] != "#0" or n]
+                                        n["warTags"][0] != "#0"]
 
         self.__iter_clans = (ClanWarLeagueClan(data=data, client=self._client)
                              for data in data_get("clans", []))
