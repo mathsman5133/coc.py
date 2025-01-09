@@ -7,6 +7,13 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.3
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug in serveral war related endpoints that passed realtime twice to the http client.
+
 v3.8.2
 ------
 

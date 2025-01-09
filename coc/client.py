@@ -280,6 +280,7 @@ class Client:
             "lookup_cache": self.lookup_cache,
             "update_cache": self.update_cache,
             "ignore_cached_errors": self.ignore_cached_errors,
+            "realtime": self.realtime,
         }
 
     async def __aenter__(self):
@@ -957,15 +958,7 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_clan_current_war(clan_tag, realtime=realtime,
-                                                        lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
-                                                        update_cache=kwargs.get("update_cache", self.update_cache),
-                                                        ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors))
+            data = await self.http.get_clan_current_war(clan_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -1082,12 +1075,7 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime, **{**self._defaults, **kwargs})
+            data = await self.http.get_clan_war_league_group(clan_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -1140,12 +1128,7 @@ class Client:
             war_tag = correct_tag(war_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_cwl_wars(war_tag, realtime=realtime, **{**self._defaults, **kwargs})
+            data = await self.http.get_cwl_wars(war_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
