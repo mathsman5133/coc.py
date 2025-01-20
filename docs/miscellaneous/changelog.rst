@@ -7,12 +7,19 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.8.4
+------
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug in army ids where "Super Hog Rider" was defined as "Super Hog"
+
 v3.8.3
 ------
 
 Bugs Fixed:
 ~~~~~~~~~~~
-- Fixed a bug in serveral war related endpoints that passed realtime twice to the http client.
+- Fixed a bug in several war related endpoints that passed realtime twice to the http client.
 
 v3.8.2
 ------
