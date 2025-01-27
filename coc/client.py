@@ -713,7 +713,7 @@ class Client:
         args['ignore_cached_errors'] = kwargs.get("ignore_cached_errors", self.ignore_cached_errors)
 
         data = await self.http.get_clan_members(clan_tag, **args)
-        return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
+        return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("items", [])]
 
     async def get_war_log(
         self,
