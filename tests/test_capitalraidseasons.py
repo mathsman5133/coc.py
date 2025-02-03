@@ -2,7 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
-import ujson
+import orjson
 
 from coc import RaidLogEntry, RaidClan, RaidAttack, RaidMember
 from coc.entry_logs import RaidLog
@@ -11,9 +11,8 @@ import tracemalloc
 
 tracemalloc.start()
 
-with open(Path(__file__).parent.joinpath(Path("mockdata/clans/capitalraidseasons/CAPITALRAIDSEASON.json")),
-          encoding="utf-8") as fp:
-	MOCK_CAPITALRAIDSEASON = ujson.load(fp)
+with open(Path(__file__).parent.joinpath(Path("mockdata/clans/capitalraidseasons/CAPITALRAIDSEASON.json")),'rb') as fp:
+	MOCK_CAPITALRAIDSEASON = orjson.loads(fp.read())
 
 
 class TestRaids(unittest.TestCase):

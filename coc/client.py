@@ -29,7 +29,7 @@ from itertools import cycle
 from pathlib import Path
 from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
-import ujson
+import orjson
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
@@ -350,11 +350,11 @@ class Client:
         )
 
     def _load_holders(self):
-        with open(ENGLISH_ALIAS_PATH) as fp:
-            english_aliases = ujson.load(fp)
+        with open(ENGLISH_ALIAS_PATH, 'rb') as fp:
+            english_aliases = orjson.loads(fp.read())
 
-        with open(BUILDING_FILE_PATH) as fp:
-            buildings = ujson.load(fp)
+        with open(BUILDING_FILE_PATH, 'rb') as fp:
+            buildings = orjson.loads(fp.read())
 
         english_aliases = {
             v["TID"]: v.get("EN", None)
