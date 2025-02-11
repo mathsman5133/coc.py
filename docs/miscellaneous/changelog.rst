@@ -7,6 +7,15 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.9.0
+------
+
+Additions:
+~~~~~~~~~~
+- Added the new Metal Pants & Snake Bracelet equipment to :class:`coc.EQUIPMENT`
+- Added the new Troop Launcher Siege
+- Updated static data & enums for the February 2025 update
+
 v3.8.4
 ------
 
