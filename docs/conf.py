@@ -15,7 +15,7 @@ sys.path.append((root_project / "docs").as_posix())
 project = 'coc'
 copyright = '2022, mathsman5133'
 author = 'mathsman5133'
-release = '3.8.4'
+release = '3.9.0'
 
 
 # -- General configuration ---------------------------------------------------
