@@ -6,8 +6,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
-      "HitPoints": 281,
-      "HealOnActivation": 100,
+      "HitPoints": 309,
+      "HealOnActivation": 110,
       "StrengthWeight": 100
     },
     "2": {
@@ -16,8 +16,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
-      "HitPoints": 350,
-      "HealOnActivation": 150,
+      "HitPoints": 385,
+      "HealOnActivation": 165,
       "StrengthWeight": 200
     },
     "3": {
@@ -26,8 +26,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
-      "HitPoints": 425,
-      "HealOnActivation": 200,
+      "HitPoints": 467,
+      "HealOnActivation": 220,
       "StrengthWeight": 300
     },
     "4": {
@@ -36,8 +36,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
-      "HitPoints": 513,
-      "HealOnActivation": 250,
+      "HitPoints": 564,
+      "HealOnActivation": 275,
       "StrengthWeight": 400
     },
     "5": {
@@ -46,8 +46,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
-      "HitPoints": 590,
-      "HealOnActivation": 300,
+      "HitPoints": 649,
+      "HealOnActivation": 330,
       "StrengthWeight": 500
     },
     "6": {
@@ -56,8 +56,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
-      "HitPoints": 668,
-      "HealOnActivation": 350,
+      "HitPoints": 734,
+      "HealOnActivation": 385,
       "StrengthWeight": 600
     },
     "7": {
@@ -66,8 +66,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
-      "HitPoints": 760,
-      "HealOnActivation": 400,
+      "HitPoints": 836,
+      "HealOnActivation": 440,
       "StrengthWeight": 700
     },
     "8": {
@@ -76,8 +76,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "1800;200",
       "MainAbilityLevels": 3,
-      "HitPoints": 855,
-      "HealOnActivation": 450,
+      "HitPoints": 940,
+      "HealOnActivation": 495,
       "StrengthWeight": 800
     },
     "9": {
@@ -86,8 +86,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
-      "HitPoints": 950,
-      "HealOnActivation": 520,
+      "HitPoints": 1045,
+      "HealOnActivation": 572,
       "StrengthWeight": 900
     },
     "10": {
@@ -96,8 +96,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
-      "HitPoints": 1050,
-      "HealOnActivation": 600,
+      "HitPoints": 1155,
+      "HealOnActivation": 660,
       "StrengthWeight": 1000
     },
     "11": {
@@ -106,8 +106,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2100;400",
       "MainAbilityLevels": 4,
-      "HitPoints": 1150,
-      "HealOnActivation": 680,
+      "HitPoints": 1265,
+      "HealOnActivation": 748,
       "StrengthWeight": 1100
     },
     "12": {
@@ -116,8 +116,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
-      "HitPoints": 1314,
-      "HealOnActivation": 770,
+      "HitPoints": 1445,
+      "HealOnActivation": 847,
       "StrengthWeight": 1200
     },
     "13": {
@@ -126,8 +126,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
-      "HitPoints": 1596,
-      "HealOnActivation": 860,
+      "HitPoints": 1755,
+      "HealOnActivation": 946,
       "StrengthWeight": 1300
     },
     "14": {
@@ -136,8 +136,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2400;600",
       "MainAbilityLevels": 5,
-      "HitPoints": 1898,
-      "HealOnActivation": 940,
+      "HitPoints": 2087,
+      "HealOnActivation": 1034,
       "StrengthWeight": 1400
     },
     "15": {
@@ -146,8 +146,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
-      "HitPoints": 2222,
-      "HealOnActivation": 1060,
+      "HitPoints": 2444,
+      "HealOnActivation": 1166,
       "StrengthWeight": 1900
     },
     "16": {
@@ -156,8 +156,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
-      "HitPoints": 2458,
-      "HealOnActivation": 1130,
+      "HitPoints": 2703,
+      "HealOnActivation": 1243,
       "StrengthWeight": 2000
     },
     "17": {
@@ -166,16 +166,16 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2700;600",
       "MainAbilityLevels": 6,
-      "HitPoints": 2812,
-      "HealOnActivation": 1200,
+      "HitPoints": 3093,
+      "HealOnActivation": 1320,
       "StrengthWeight": 2100
     },
     "18": {
       "Level": 18,
       "RequiredBlacksmithLevel": 7,
       "MainAbilityLevels": 7,
-      "HitPoints": 3060,
-      "HealOnActivation": 1260,
+      "HitPoints": 3366,
+      "HealOnActivation": 1386,
       "StrengthWeight": 2600
     },
     "Name": "Barbarian Crown",
@@ -386,8 +386,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
-      "DPS": 26,
-      "HealOnActivation": 160,
+      "DPS": 28,
+      "HealOnActivation": 176,
       "StrengthWeight": 100
     },
     "2": {
@@ -396,8 +396,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
-      "DPS": 34,
-      "HealOnActivation": 175,
+      "DPS": 37,
+      "HealOnActivation": 193,
       "StrengthWeight": 200
     },
     "3": {
@@ -406,8 +406,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
-      "DPS": 42,
-      "HealOnActivation": 190,
+      "DPS": 46,
+      "HealOnActivation": 209,
       "StrengthWeight": 300
     },
     "4": {
@@ -416,8 +416,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
-      "DPS": 49,
-      "HealOnActivation": 205,
+      "DPS": 54,
+      "HealOnActivation": 226,
       "StrengthWeight": 400
     },
     "5": {
@@ -426,8 +426,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
-      "DPS": 55,
-      "HealOnActivation": 220,
+      "DPS": 61,
+      "HealOnActivation": 242,
       "StrengthWeight": 500
     },
     "6": {
@@ -436,8 +436,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
-      "DPS": 62,
-      "HealOnActivation": 235,
+      "DPS": 68,
+      "HealOnActivation": 259,
       "StrengthWeight": 600
     },
     "7": {
@@ -446,8 +446,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
-      "DPS": 71,
-      "HealOnActivation": 250,
+      "DPS": 78,
+      "HealOnActivation": 275,
       "StrengthWeight": 700
     },
     "8": {
@@ -456,8 +456,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "1800;200",
       "MainAbilityLevels": 3,
-      "DPS": 80,
-      "HealOnActivation": 265,
+      "DPS": 88,
+      "HealOnActivation": 292,
       "StrengthWeight": 800
     },
     "9": {
@@ -466,8 +466,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
-      "DPS": 90,
-      "HealOnActivation": 280,
+      "DPS": 99,
+      "HealOnActivation": 308,
       "StrengthWeight": 900
     },
     "10": {
@@ -476,8 +476,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
-      "DPS": 100,
-      "HealOnActivation": 295,
+      "DPS": 110,
+      "HealOnActivation": 323,
       "StrengthWeight": 1000
     },
     "11": {
@@ -486,8 +486,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2100;400",
       "MainAbilityLevels": 4,
-      "DPS": 109,
-      "HealOnActivation": 310,
+      "DPS": 120,
+      "HealOnActivation": 341,
       "StrengthWeight": 1100
     },
     "12": {
@@ -496,8 +496,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
-      "DPS": 115,
-      "HealOnActivation": 325,
+      "DPS": 127,
+      "HealOnActivation": 358,
       "StrengthWeight": 1200
     },
     "13": {
@@ -506,8 +506,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
-      "DPS": 122,
-      "HealOnActivation": 340,
+      "DPS": 134,
+      "HealOnActivation": 374,
       "StrengthWeight": 1300
     },
     "14": {
@@ -516,8 +516,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2400;600",
       "MainAbilityLevels": 5,
-      "DPS": 127,
-      "HealOnActivation": 360,
+      "DPS": 140,
+      "HealOnActivation": 396,
       "StrengthWeight": 1400
     },
     "15": {
@@ -526,8 +526,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
-      "DPS": 132,
-      "HealOnActivation": 380,
+      "DPS": 145,
+      "HealOnActivation": 418,
       "StrengthWeight": 1900
     },
     "16": {
@@ -536,8 +536,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
-      "DPS": 136,
-      "HealOnActivation": 400,
+      "DPS": 150,
+      "HealOnActivation": 440,
       "StrengthWeight": 2000
     },
     "17": {
@@ -546,16 +546,16 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2700;600",
       "MainAbilityLevels": 6,
-      "DPS": 140,
-      "HealOnActivation": 420,
+      "DPS": 154,
+      "HealOnActivation": 462,
       "StrengthWeight": 2100
     },
     "18": {
       "Level": 18,
       "RequiredBlacksmithLevel": 7,
       "MainAbilityLevels": 7,
-      "DPS": 144,
-      "HealOnActivation": 440,
+      "DPS": 159,
+      "HealOnActivation": 484,
       "StrengthWeight": 2600
     },
     "Name": "Archer Crown",
@@ -902,8 +902,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
-      "HitPoints": 150,
-      "DPS": 10,
+      "HitPoints": 165,
+      "DPS": 11,
       "StrengthWeight": 100
     },
     "2": {
@@ -912,8 +912,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
-      "HitPoints": 163,
-      "DPS": 12,
+      "HitPoints": 179,
+      "DPS": 13,
       "StrengthWeight": 200
     },
     "3": {
@@ -922,8 +922,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
-      "HitPoints": 172,
-      "DPS": 14,
+      "HitPoints": 189,
+      "DPS": 16,
       "StrengthWeight": 300
     },
     "4": {
@@ -932,8 +932,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
-      "HitPoints": 181,
-      "DPS": 16,
+      "HitPoints": 199,
+      "DPS": 18,
       "StrengthWeight": 400
     },
     "5": {
@@ -942,8 +942,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
-      "HitPoints": 192,
-      "DPS": 18,
+      "HitPoints": 211,
+      "DPS": 20,
       "StrengthWeight": 500
     },
     "6": {
@@ -952,8 +952,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
-      "HitPoints": 203,
-      "DPS": 20,
+      "HitPoints": 223,
+      "DPS": 22,
       "StrengthWeight": 600
     },
     "7": {
@@ -962,8 +962,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
-      "HitPoints": 225,
-      "DPS": 22,
+      "HitPoints": 248,
+      "DPS": 24,
       "StrengthWeight": 700
     },
     "8": {
@@ -972,8 +972,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "1800;200",
       "MainAbilityLevels": 3,
-      "HitPoints": 249,
-      "DPS": 24,
+      "HitPoints": 274,
+      "DPS": 26,
       "StrengthWeight": 800
     },
     "9": {
@@ -982,8 +982,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
-      "HitPoints": 275,
-      "DPS": 28,
+      "HitPoints": 303,
+      "DPS": 31,
       "StrengthWeight": 900
     },
     "10": {
@@ -992,8 +992,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
-      "HitPoints": 304,
-      "DPS": 32,
+      "HitPoints": 334,
+      "DPS": 35,
       "StrengthWeight": 1000
     },
     "11": {
@@ -1002,8 +1002,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2100;400",
       "MainAbilityLevels": 4,
-      "HitPoints": 336,
-      "DPS": 38,
+      "HitPoints": 370,
+      "DPS": 42,
       "StrengthWeight": 1100
     },
     "12": {
@@ -1012,8 +1012,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
-      "HitPoints": 351,
-      "DPS": 42,
+      "HitPoints": 386,
+      "DPS": 46,
       "StrengthWeight": 1200
     },
     "13": {
@@ -1022,8 +1022,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
-      "HitPoints": 366,
-      "DPS": 46,
+      "HitPoints": 403,
+      "DPS": 51,
       "StrengthWeight": 1300
     },
     "14": {
@@ -1032,8 +1032,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2400;600",
       "MainAbilityLevels": 5,
-      "HitPoints": 381,
-      "DPS": 50,
+      "HitPoints": 419,
+      "DPS": 55,
       "StrengthWeight": 1400
     },
     "15": {
@@ -1042,8 +1042,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
-      "HitPoints": 396,
-      "DPS": 54,
+      "HitPoints": 436,
+      "DPS": 59,
       "StrengthWeight": 1900
     },
     "16": {
@@ -1052,8 +1052,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
-      "HitPoints": 411,
-      "DPS": 58,
+      "HitPoints": 452,
+      "DPS": 64,
       "StrengthWeight": 2000
     },
     "17": {
@@ -1062,16 +1062,16 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2700;600",
       "MainAbilityLevels": 6,
-      "HitPoints": 426,
-      "DPS": 62,
+      "HitPoints": 469,
+      "DPS": 68,
       "StrengthWeight": 2100
     },
     "18": {
       "Level": 18,
       "RequiredBlacksmithLevel": 7,
       "MainAbilityLevels": 7,
-      "HitPoints": 441,
-      "DPS": 66,
+      "HitPoints": 485,
+      "DPS": 73,
       "StrengthWeight": 2600
     },
     "Name": "Life Gem",
@@ -1264,8 +1264,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
-      "HitPoints": 40,
-      "DPS": 20,
+      "HitPoints": 60,
+      "DPS": 35,
       "StrengthWeight": 100
     },
     "2": {
@@ -1274,8 +1274,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
-      "HitPoints": 60,
-      "DPS": 25,
+      "HitPoints": 90,
+      "DPS": 40,
       "StrengthWeight": 200
     },
     "3": {
@@ -1284,8 +1284,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
-      "HitPoints": 80,
-      "DPS": 30,
+      "HitPoints": 120,
+      "DPS": 45,
       "StrengthWeight": 300
     },
     "4": {
@@ -1294,8 +1294,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
-      "HitPoints": 100,
-      "DPS": 35,
+      "HitPoints": 150,
+      "DPS": 50,
       "StrengthWeight": 400
     },
     "5": {
@@ -1304,8 +1304,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
-      "HitPoints": 120,
-      "DPS": 40,
+      "HitPoints": 180,
+      "DPS": 55,
       "StrengthWeight": 500
     },
     "6": {
@@ -1314,8 +1314,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
-      "HitPoints": 140,
-      "DPS": 45,
+      "HitPoints": 210,
+      "DPS": 60,
       "StrengthWeight": 600
     },
     "7": {
@@ -1324,8 +1324,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
-      "HitPoints": 160,
-      "DPS": 50,
+      "HitPoints": 240,
+      "DPS": 65,
       "StrengthWeight": 700
     },
     "8": {
@@ -1334,8 +1334,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "1800;200",
       "MainAbilityLevels": 3,
-      "HitPoints": 180,
-      "DPS": 55,
+      "HitPoints": 270,
+      "DPS": 70,
       "StrengthWeight": 800
     },
     "9": {
@@ -1344,8 +1344,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
-      "HitPoints": 200,
-      "DPS": 60,
+      "HitPoints": 300,
+      "DPS": 75,
       "StrengthWeight": 900
     },
     "10": {
@@ -1354,8 +1354,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
-      "HitPoints": 220,
-      "DPS": 65,
+      "HitPoints": 330,
+      "DPS": 80,
       "StrengthWeight": 1000
     },
     "11": {
@@ -1364,8 +1364,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2100;400",
       "MainAbilityLevels": 4,
-      "HitPoints": 240,
-      "DPS": 70,
+      "HitPoints": 360,
+      "DPS": 85,
       "StrengthWeight": 1100
     },
     "12": {
@@ -1374,8 +1374,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
-      "HitPoints": 260,
-      "DPS": 75,
+      "HitPoints": 390,
+      "DPS": 90,
       "StrengthWeight": 1200
     },
     "13": {
@@ -1384,8 +1384,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
-      "HitPoints": 280,
-      "DPS": 80,
+      "HitPoints": 420,
+      "DPS": 95,
       "StrengthWeight": 1300
     },
     "14": {
@@ -1394,8 +1394,8 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2400;600",
       "MainAbilityLevels": 5,
-      "HitPoints": 300,
-      "DPS": 85,
+      "HitPoints": 450,
+      "DPS": 100,
       "StrengthWeight": 1400
     },
     "15": {
@@ -1404,8 +1404,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
-      "HitPoints": 320,
-      "DPS": 90,
+      "HitPoints": 480,
+      "DPS": 105,
       "StrengthWeight": 1900
     },
     "16": {
@@ -1414,8 +1414,8 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
-      "HitPoints": 340,
-      "DPS": 95,
+      "HitPoints": 510,
+      "DPS": 110,
       "StrengthWeight": 2000
     },
     "17": {
@@ -1424,16 +1424,16 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "2700;600",
       "MainAbilityLevels": 6,
-      "HitPoints": 360,
-      "DPS": 100,
+      "HitPoints": 540,
+      "DPS": 115,
       "StrengthWeight": 2100
     },
     "18": {
       "Level": 18,
       "RequiredBlacksmithLevel": 7,
       "MainAbilityLevels": 7,
-      "HitPoints": 380,
-      "DPS": 105,
+      "HitPoints": 570,
+      "DPS": 120,
       "StrengthWeight": 2600
     },
     "Name": "Protective Cloak",
@@ -2117,7 +2117,7 @@
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
       "AttackSpeedPercentage": 5,
-      "DPS": 9,
+      "DPS": 10,
       "StrengthWeight": 100
     },
     "2": {
@@ -2127,7 +2127,7 @@
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
       "AttackSpeedPercentage": 6,
-      "DPS": 10,
+      "DPS": 15,
       "StrengthWeight": 200
     },
     "3": {
@@ -2137,7 +2137,7 @@
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
       "AttackSpeedPercentage": 7,
-      "DPS": 12,
+      "DPS": 20,
       "StrengthWeight": 300
     },
     "4": {
@@ -2147,7 +2147,7 @@
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
       "AttackSpeedPercentage": 8,
-      "DPS": 13,
+      "DPS": 25,
       "StrengthWeight": 400
     },
     "5": {
@@ -2157,7 +2157,7 @@
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
       "AttackSpeedPercentage": 9,
-      "DPS": 15,
+      "DPS": 30,
       "StrengthWeight": 500
     },
     "6": {
@@ -2167,7 +2167,7 @@
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
       "AttackSpeedPercentage": 10,
-      "DPS": 16,
+      "DPS": 40,
       "StrengthWeight": 600
     },
     "7": {
@@ -2177,7 +2177,7 @@
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
       "AttackSpeedPercentage": 11,
-      "DPS": 18,
+      "DPS": 45,
       "StrengthWeight": 700
     },
     "8": {
@@ -2187,7 +2187,7 @@
       "UpgradeCosts": "1800;200",
       "MainAbilityLevels": 3,
       "AttackSpeedPercentage": 12,
-      "DPS": 19,
+      "DPS": 50,
       "StrengthWeight": 800
     },
     "9": {
@@ -2197,7 +2197,7 @@
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
       "AttackSpeedPercentage": 13,
-      "DPS": 22,
+      "DPS": 60,
       "StrengthWeight": 900
     },
     "10": {
@@ -2207,7 +2207,7 @@
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
       "AttackSpeedPercentage": 14,
-      "DPS": 27,
+      "DPS": 65,
       "StrengthWeight": 1000
     },
     "11": {
@@ -2217,7 +2217,7 @@
       "UpgradeCosts": "2100;400",
       "MainAbilityLevels": 4,
       "AttackSpeedPercentage": 15,
-      "DPS": 32,
+      "DPS": 70,
       "StrengthWeight": 1100
     },
     "12": {
@@ -2227,7 +2227,7 @@
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
       "AttackSpeedPercentage": 16,
-      "DPS": 37,
+      "DPS": 80,
       "StrengthWeight": 1200
     },
     "13": {
@@ -2237,7 +2237,7 @@
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
       "AttackSpeedPercentage": 17,
-      "DPS": 42,
+      "DPS": 85,
       "StrengthWeight": 1300
     },
     "14": {
@@ -2247,7 +2247,7 @@
       "UpgradeCosts": "2400;600",
       "MainAbilityLevels": 5,
       "AttackSpeedPercentage": 18,
-      "DPS": 48,
+      "DPS": 90,
       "StrengthWeight": 1400
     },
     "15": {
@@ -2257,7 +2257,7 @@
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
       "AttackSpeedPercentage": 19,
-      "DPS": 53,
+      "DPS": 100,
       "StrengthWeight": 1900
     },
     "16": {
@@ -2267,7 +2267,7 @@
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
       "AttackSpeedPercentage": 20,
-      "DPS": 58,
+      "DPS": 105,
       "StrengthWeight": 2000
     },
     "17": {
@@ -2277,7 +2277,7 @@
       "UpgradeCosts": "2700;600",
       "MainAbilityLevels": 6,
       "AttackSpeedPercentage": 21,
-      "DPS": 63,
+      "DPS": 110,
       "StrengthWeight": 2100
     },
     "18": {
@@ -2285,7 +2285,7 @@
       "RequiredBlacksmithLevel": 7,
       "MainAbilityLevels": 7,
       "AttackSpeedPercentage": 22,
-      "DPS": 68,
+      "DPS": 120,
       "StrengthWeight": 2600
     },
     "Name": "Vampstache",
@@ -5202,7 +5202,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 120,
       "MainAbilityLevels": 1,
-      "HitPoints": 320
+      "HitPoints": 150,
+      "AttackSpeedPercentage": 1,
+      "DPS": 10
     },
     "2": {
       "Level": 2,
@@ -5210,7 +5212,9 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "240;20",
       "MainAbilityLevels": 1,
-      "HitPoints": 500
+      "HitPoints": 300,
+      "AttackSpeedPercentage": 1,
+      "DPS": 11
     },
     "3": {
       "Level": 3,
@@ -5218,7 +5222,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 400,
       "MainAbilityLevels": 2,
-      "HitPoints": 680
+      "HitPoints": 450,
+      "AttackSpeedPercentage": 2,
+      "DPS": 12
     },
     "4": {
       "Level": 4,
@@ -5226,7 +5232,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 600,
       "MainAbilityLevels": 2,
-      "HitPoints": 860
+      "HitPoints": 600,
+      "AttackSpeedPercentage": 2,
+      "DPS": 14
     },
     "5": {
       "Level": 5,
@@ -5234,7 +5242,9 @@
       "UpgradeResources": "CommonOre; RareOre",
       "UpgradeCosts": "840;100",
       "MainAbilityLevels": 2,
-      "HitPoints": 1040
+      "HitPoints": 750,
+      "AttackSpeedPercentage": 2,
+      "DPS": 16
     },
     "6": {
       "Level": 6,
@@ -5242,7 +5252,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1120,
       "MainAbilityLevels": 3,
-      "HitPoints": 1220
+      "HitPoints": 900,
+      "AttackSpeedPercentage": 3,
+      "DPS": 18
     },
     "7": {
       "Level": 7,
@@ -5250,7 +5262,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1440,
       "MainAbilityLevels": 3,
-      "HitPoints": 1400
+      "HitPoints": 1050,
+      "AttackSpeedPercentage": 3,
+      "DPS": 20
     },
     "8": {
       "Level": 8,
@@ -5258,7 +5272,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "1800;200;10",
       "MainAbilityLevels": 3,
-      "HitPoints": 1580
+      "HitPoints": 1200,
+      "AttackSpeedPercentage": 3,
+      "DPS": 22
     },
     "9": {
       "Level": 9,
@@ -5266,7 +5282,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 1900,
       "MainAbilityLevels": 4,
-      "HitPoints": 1760
+      "HitPoints": 1350,
+      "AttackSpeedPercentage": 4,
+      "DPS": 24
     },
     "10": {
       "Level": 10,
@@ -5274,7 +5292,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2000,
       "MainAbilityLevels": 4,
-      "HitPoints": 1940
+      "HitPoints": 1500,
+      "AttackSpeedPercentage": 4,
+      "DPS": 26
     },
     "11": {
       "Level": 11,
@@ -5282,7 +5302,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "2100;400;20",
       "MainAbilityLevels": 4,
-      "HitPoints": 2120
+      "HitPoints": 1650,
+      "AttackSpeedPercentage": 4,
+      "DPS": 28
     },
     "12": {
       "Level": 12,
@@ -5290,7 +5312,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2200,
       "MainAbilityLevels": 5,
-      "HitPoints": 2300
+      "HitPoints": 1800,
+      "AttackSpeedPercentage": 5,
+      "DPS": 30
     },
     "13": {
       "Level": 13,
@@ -5298,7 +5322,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2300,
       "MainAbilityLevels": 5,
-      "HitPoints": 2480
+      "HitPoints": 1950,
+      "AttackSpeedPercentage": 5,
+      "DPS": 33
     },
     "14": {
       "Level": 14,
@@ -5306,7 +5332,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "2400;600;30",
       "MainAbilityLevels": 5,
-      "HitPoints": 2660
+      "HitPoints": 2100,
+      "AttackSpeedPercentage": 5,
+      "DPS": 36
     },
     "15": {
       "Level": 15,
@@ -5314,7 +5342,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2500,
       "MainAbilityLevels": 6,
-      "HitPoints": 2840
+      "HitPoints": 2250,
+      "AttackSpeedPercentage": 6,
+      "DPS": 39
     },
     "16": {
       "Level": 16,
@@ -5322,7 +5352,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2600,
       "MainAbilityLevels": 6,
-      "HitPoints": 3020
+      "HitPoints": 2400,
+      "AttackSpeedPercentage": 6,
+      "DPS": 42
     },
     "17": {
       "Level": 17,
@@ -5330,7 +5362,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "2700;600;50",
       "MainAbilityLevels": 6,
-      "HitPoints": 3200
+      "HitPoints": 2550,
+      "AttackSpeedPercentage": 6,
+      "DPS": 45
     },
     "18": {
       "Level": 18,
@@ -5338,7 +5372,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2800,
       "MainAbilityLevels": 7,
-      "HitPoints": 3380
+      "HitPoints": 2700,
+      "AttackSpeedPercentage": 7,
+      "DPS": 48
     },
     "19": {
       "Level": 19,
@@ -5346,7 +5382,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 2900,
       "MainAbilityLevels": 7,
-      "HitPoints": 3560
+      "HitPoints": 2850,
+      "AttackSpeedPercentage": 7,
+      "DPS": 51
     },
     "20": {
       "Level": 20,
@@ -5354,7 +5392,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "3000;600;100",
       "MainAbilityLevels": 7,
-      "HitPoints": 3740
+      "HitPoints": 3000,
+      "AttackSpeedPercentage": 7,
+      "DPS": 54
     },
     "21": {
       "Level": 21,
@@ -5362,7 +5402,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 3100,
       "MainAbilityLevels": 8,
-      "HitPoints": 3920
+      "HitPoints": 3150,
+      "AttackSpeedPercentage": 8,
+      "DPS": 57
     },
     "22": {
       "Level": 22,
@@ -5370,7 +5412,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 3200,
       "MainAbilityLevels": 8,
-      "HitPoints": 4100
+      "HitPoints": 3300,
+      "AttackSpeedPercentage": 8,
+      "DPS": 60
     },
     "23": {
       "Level": 23,
@@ -5378,7 +5422,9 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "3300;600;120",
       "MainAbilityLevels": 8,
-      "HitPoints": 4280
+      "HitPoints": 3450,
+      "AttackSpeedPercentage": 8,
+      "DPS": 63
     },
     "24": {
       "Level": 24,
@@ -5386,7 +5432,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 3400,
       "MainAbilityLevels": 9,
-      "HitPoints": 4460
+      "HitPoints": 3600,
+      "AttackSpeedPercentage": 9,
+      "DPS": 66
     },
     "25": {
       "Level": 25,
@@ -5394,7 +5442,9 @@
       "UpgradeResources": "CommonOre",
       "UpgradeCosts": 3500,
       "MainAbilityLevels": 9,
-      "HitPoints": 4640
+      "HitPoints": 3750,
+      "AttackSpeedPercentage": 9,
+      "DPS": 69
     },
     "26": {
       "Level": 26,
@@ -5402,13 +5452,17 @@
       "UpgradeResources": "CommonOre; RareOre; EpicOre",
       "UpgradeCosts": "3600;600;150",
       "MainAbilityLevels": 9,
-      "HitPoints": 4820
+      "HitPoints": 3900,
+      "AttackSpeedPercentage": 9,
+      "DPS": 72
     },
     "27": {
       "Level": 27,
       "RequiredBlacksmithLevel": 9,
       "MainAbilityLevels": 10,
-      "HitPoints": 5000
+      "HitPoints": 4050,
+      "AttackSpeedPercentage": 10,
+      "DPS": 75
     },
     "Name": "Snake Armor",
     "IconSWF": "sc/ui.sc",
@@ -7326,5 +7380,385 @@
     "RequiredCharacterLevel": 1,
     "MainAbilities": "MinionAttackAbility",
     "PreviewScenario": "GearMPDarkOrb"
+  },
+  "MP Stone Skin": {
+    "1": {
+      "Level": 1,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 120,
+      "MainAbilityLevels": 1,
+      "HitPoints": 350,
+      "HealOnActivation": 1600,
+      "StrengthWeight": 100
+    },
+    "2": {
+      "Level": 2,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "240;20",
+      "MainAbilityLevels": 1,
+      "HitPoints": 400,
+      "HealOnActivation": 1675,
+      "StrengthWeight": 200
+    },
+    "3": {
+      "Level": 3,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 400,
+      "MainAbilityLevels": 2,
+      "HitPoints": 450,
+      "HealOnActivation": 1750,
+      "StrengthWeight": 300
+    },
+    "4": {
+      "Level": 4,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 600,
+      "MainAbilityLevels": 2,
+      "HitPoints": 500,
+      "HealOnActivation": 1800,
+      "StrengthWeight": 400
+    },
+    "5": {
+      "Level": 5,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "840;100",
+      "MainAbilityLevels": 2,
+      "HitPoints": 550,
+      "HealOnActivation": 1850,
+      "StrengthWeight": 500
+    },
+    "6": {
+      "Level": 6,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1120,
+      "MainAbilityLevels": 3,
+      "HitPoints": 600,
+      "HealOnActivation": 1900,
+      "StrengthWeight": 600
+    },
+    "7": {
+      "Level": 7,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1440,
+      "MainAbilityLevels": 3,
+      "HitPoints": 650,
+      "HealOnActivation": 1950,
+      "StrengthWeight": 700
+    },
+    "8": {
+      "Level": 8,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "1800;200",
+      "MainAbilityLevels": 3,
+      "HitPoints": 700,
+      "HealOnActivation": 2000,
+      "StrengthWeight": 800
+    },
+    "9": {
+      "Level": 9,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1900,
+      "MainAbilityLevels": 4,
+      "HitPoints": 750,
+      "HealOnActivation": 2050,
+      "StrengthWeight": 900
+    },
+    "10": {
+      "Level": 10,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2000,
+      "MainAbilityLevels": 4,
+      "HitPoints": 800,
+      "HealOnActivation": 2100,
+      "StrengthWeight": 1000
+    },
+    "11": {
+      "Level": 11,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2100;400",
+      "MainAbilityLevels": 4,
+      "HitPoints": 850,
+      "HealOnActivation": 2150,
+      "StrengthWeight": 1100
+    },
+    "12": {
+      "Level": 12,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2200,
+      "MainAbilityLevels": 5,
+      "HitPoints": 900,
+      "HealOnActivation": 2200,
+      "StrengthWeight": 1200
+    },
+    "13": {
+      "Level": 13,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2300,
+      "MainAbilityLevels": 5,
+      "HitPoints": 950,
+      "HealOnActivation": 2250,
+      "StrengthWeight": 1300
+    },
+    "14": {
+      "Level": 14,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2400;600",
+      "MainAbilityLevels": 5,
+      "HitPoints": 1000,
+      "HealOnActivation": 2300,
+      "StrengthWeight": 1400
+    },
+    "15": {
+      "Level": 15,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2500,
+      "MainAbilityLevels": 6,
+      "HitPoints": 1050,
+      "HealOnActivation": 2350,
+      "StrengthWeight": 1900
+    },
+    "16": {
+      "Level": 16,
+      "RequiredBlacksmithLevel": 7,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2600,
+      "MainAbilityLevels": 6,
+      "HitPoints": 1100,
+      "HealOnActivation": 2400,
+      "StrengthWeight": 2000
+    },
+    "17": {
+      "Level": 17,
+      "RequiredBlacksmithLevel": 7,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2700;600",
+      "MainAbilityLevels": 6,
+      "HitPoints": 1150,
+      "HealOnActivation": 2450,
+      "StrengthWeight": 2100
+    },
+    "18": {
+      "Level": 18,
+      "RequiredBlacksmithLevel": 7,
+      "MainAbilityLevels": 7,
+      "HitPoints": 1200,
+      "HealOnActivation": 2500,
+      "StrengthWeight": 2600
+    },
+    "Name": "MP Stone Skin",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_gear_MP_MetalPants",
+    "TID": "TID_GEAR_TITLE_STONE_AMULET",
+    "InfoTID": "TID_GEAR_INFO_STONE_AMULET",
+    "AllowedCharacters": "Minion Hero;",
+    "Rarity": "Common",
+    "RequiredCharacterLevel": 1,
+    "MainAbilities": "MinionPrinceStoneSkinAbility",
+    "PreviewScenario": "GearMPMetalPants"
+  },
+  "MP Trap Shield": {
+    "1": {
+      "Level": 1,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 120,
+      "MainAbilityLevels": 1,
+      "HitPoints": 150,
+      "DPS": 24,
+      "StrengthWeight": 100
+    },
+    "2": {
+      "Level": 2,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "240;20",
+      "MainAbilityLevels": 1,
+      "HitPoints": 200,
+      "DPS": 30,
+      "StrengthWeight": 200
+    },
+    "3": {
+      "Level": 3,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 400,
+      "MainAbilityLevels": 2,
+      "HitPoints": 250,
+      "DPS": 40,
+      "StrengthWeight": 300
+    },
+    "4": {
+      "Level": 4,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 600,
+      "MainAbilityLevels": 2,
+      "HitPoints": 300,
+      "DPS": 46,
+      "StrengthWeight": 400
+    },
+    "5": {
+      "Level": 5,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "840;100",
+      "MainAbilityLevels": 2,
+      "HitPoints": 350,
+      "DPS": 52,
+      "StrengthWeight": 500
+    },
+    "6": {
+      "Level": 6,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1120,
+      "MainAbilityLevels": 3,
+      "HitPoints": 400,
+      "DPS": 62,
+      "StrengthWeight": 600
+    },
+    "7": {
+      "Level": 7,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1440,
+      "MainAbilityLevels": 3,
+      "HitPoints": 450,
+      "DPS": 68,
+      "StrengthWeight": 700
+    },
+    "8": {
+      "Level": 8,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "1800;200",
+      "MainAbilityLevels": 3,
+      "HitPoints": 500,
+      "DPS": 74,
+      "StrengthWeight": 800
+    },
+    "9": {
+      "Level": 9,
+      "RequiredBlacksmithLevel": 1,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 1900,
+      "MainAbilityLevels": 4,
+      "HitPoints": 550,
+      "DPS": 84,
+      "StrengthWeight": 900
+    },
+    "10": {
+      "Level": 10,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2000,
+      "MainAbilityLevels": 4,
+      "HitPoints": 600,
+      "DPS": 90,
+      "StrengthWeight": 1000
+    },
+    "11": {
+      "Level": 11,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2100;400",
+      "MainAbilityLevels": 4,
+      "HitPoints": 650,
+      "DPS": 96,
+      "StrengthWeight": 1100
+    },
+    "12": {
+      "Level": 12,
+      "RequiredBlacksmithLevel": 3,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2200,
+      "MainAbilityLevels": 5,
+      "HitPoints": 700,
+      "DPS": 106,
+      "StrengthWeight": 1200
+    },
+    "13": {
+      "Level": 13,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2300,
+      "MainAbilityLevels": 5,
+      "HitPoints": 750,
+      "DPS": 112,
+      "StrengthWeight": 1300
+    },
+    "14": {
+      "Level": 14,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2400;600",
+      "MainAbilityLevels": 5,
+      "HitPoints": 800,
+      "DPS": 118,
+      "StrengthWeight": 1400
+    },
+    "15": {
+      "Level": 15,
+      "RequiredBlacksmithLevel": 5,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2500,
+      "MainAbilityLevels": 6,
+      "HitPoints": 850,
+      "DPS": 128,
+      "StrengthWeight": 1900
+    },
+    "16": {
+      "Level": 16,
+      "RequiredBlacksmithLevel": 7,
+      "UpgradeResources": "CommonOre",
+      "UpgradeCosts": 2600,
+      "MainAbilityLevels": 6,
+      "HitPoints": 900,
+      "DPS": 134,
+      "StrengthWeight": 2000
+    },
+    "17": {
+      "Level": 17,
+      "RequiredBlacksmithLevel": 7,
+      "UpgradeResources": "CommonOre; RareOre",
+      "UpgradeCosts": "2700;600",
+      "MainAbilityLevels": 6,
+      "HitPoints": 950,
+      "DPS": 140,
+      "StrengthWeight": 2100
+    },
+    "18": {
+      "Level": 18,
+      "RequiredBlacksmithLevel": 7,
+      "MainAbilityLevels": 7,
+      "HitPoints": 1000,
+      "DPS": 150,
+      "StrengthWeight": 2600
+    },
+    "Name": "MP Trap Shield",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_unit_pet_electrowl",
+    "TID": "TID_GEAR_TITLE_TRAP_SHIELD",
+    "InfoTID": "TID_GEAR_INFO_TRAP_SHIELD",
+    "Deprecated": true,
+    "AllowedCharacters": "Minion Hero;",
+    "Rarity": "Common",
+    "RequiredCharacterLevel": 1,
+    "MainAbilities": "MinionPrinceTrapShieldAbility"
   }
 }
