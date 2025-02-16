@@ -67,7 +67,8 @@
       "Builder6Home": 1,
       "UnlockStage": 1,
       "ElixirCartStorageCap": 17500,
-      "ChallengeLootPercentage": 1
+      "ResourceScalingPercentage": 1,
+      "ResourceScalingPercentage2": 5
     }
   },
   "2": {
@@ -124,7 +125,8 @@
       "Pusher": 1,
       "AttackCostVillage2": 0,
       "ElixirCartStorageCap": 37500,
-      "ChallengeLootPercentage": 2
+      "ResourceScalingPercentage": 2,
+      "ResourceScalingPercentage2": 10
     }
   },
   "3": {
@@ -192,7 +194,8 @@
       "Gem Mine": 1,
       "Ejector2": 2,
       "ElixirCartStorageCap": 62500,
-      "ChallengeLootPercentage": 3
+      "ResourceScalingPercentage": 3,
+      "ResourceScalingPercentage2": 27
     }
   },
   "4": {
@@ -255,7 +258,8 @@
       "AttackCostVillage2": 0,
       "ShrinkTrap": 1,
       "ElixirCartStorageCap": 87500,
-      "ChallengeLootPercentage": 5
+      "ResourceScalingPercentage": 5,
+      "ResourceScalingPercentage2": 40
     }
   },
   "5": {
@@ -321,7 +325,8 @@
       "AttackCostVillage2": 0,
       "Ejector2": 3,
       "ElixirCartStorageCap": 150000,
-      "ChallengeLootPercentage": 8
+      "ResourceScalingPercentage": 8,
+      "ResourceScalingPercentage2": 73
     }
   },
   "6": {
@@ -392,7 +397,8 @@
       "Reinforcement Camp": 1,
       "Recovery Building": 1,
       "ElixirCartStorageCap": 200000,
-      "ChallengeLootPercentage": 16
+      "ResourceScalingPercentage": 16,
+      "ResourceScalingPercentage2": 87
     }
   },
   "7": {
@@ -417,7 +423,7 @@
       "CartLootCapDarkElixir": 2800,
       "CartLootReengagementDarkElixir": 80000,
       "ReengagementBuildingBudget": 18144000,
-      "ReengagementHeroBudget": 1000000,
+      "ReengagementHeroBudget": 4860000,
       "ReengagementWallBudget": 9072000,
       "ReengagementLabBudget": 18144000,
       "HeroBoostHours": 0,
@@ -460,7 +466,8 @@
       "Ejector2": 4,
       "Giant Cannon": 1,
       "ElixirCartStorageCap": 250000,
-      "ChallengeLootPercentage": 30,
+      "ResourceScalingPercentage": 30,
+      "ResourceScalingPercentage2": 93,
       "Hero Hall": 1
     }
   },
@@ -486,7 +493,7 @@
       "CartLootCapDarkElixir": 3200,
       "CartLootReengagementDarkElixir": 100000,
       "ReengagementBuildingBudget": 21772800,
-      "ReengagementHeroBudget": 1000000,
+      "ReengagementHeroBudget": 9720000,
       "ReengagementWallBudget": 10886400,
       "ReengagementLabBudget": 21772800,
       "HeroBoostHours": 96,
@@ -533,7 +540,8 @@
       "Battle Copter Altar": 1,
       "ElixirCartStorageCap": 300000,
       "Smithy": 1,
-      "ChallengeLootPercentage": 50
+      "ResourceScalingPercentage": 50,
+      "ResourceScalingPercentage2": 100
     }
   },
   "9": {
@@ -558,7 +566,7 @@
       "CartLootCapDarkElixir": 3600,
       "CartLootReengagementDarkElixir": 115000,
       "ReengagementBuildingBudget": 25401600,
-      "ReengagementHeroBudget": 1000000,
+      "ReengagementHeroBudget": 32400000,
       "ReengagementWallBudget": 12700800,
       "ReengagementLabBudget": 25401600,
       "HeroBoostHours": 96,
@@ -603,7 +611,8 @@
       "Builder6Unlock": 1,
       "Reinforcement Camp": 2,
       "ElixirCartStorageCap": 350000,
-      "ChallengeLootPercentage": 65,
+      "ResourceScalingPercentage": 65,
+      "ResourceScalingPercentage2": 100,
       "VillagerApprenticeHQ": 1
     }
   },
@@ -629,7 +638,7 @@
       "CartLootCapDarkElixir": 4000,
       "CartLootReengagementDarkElixir": 130000,
       "ReengagementBuildingBudget": 29635200,
-      "ReengagementHeroBudget": 1500000,
+      "ReengagementHeroBudget": 38880000,
       "ReengagementWallBudget": 14817600,
       "ReengagementLabBudget": 29635200,
       "HeroBoostHours": 120,
@@ -663,7 +672,8 @@
       "AirGroundTrap": 6,
       "Xbow_BB": 1,
       "ElixirCartStorageCap": 400000,
-      "ChallengeLootPercentage": 80
+      "ResourceScalingPercentage": 80,
+      "ResourceScalingPercentage2": 100
     }
   },
   "11": {
@@ -688,7 +698,7 @@
       "CartLootCapDarkElixir": 4400,
       "CartLootReengagementDarkElixir": 140000,
       "ReengagementBuildingBudget": 33868800,
-      "ReengagementHeroBudget": 3500000,
+      "ReengagementHeroBudget": 45360000,
       "ReengagementWallBudget": 16934400,
       "ReengagementLabBudget": 33868800,
       "HeroBoostHours": 120,
@@ -713,7 +723,7 @@
       "PackDarkElixir": 10000,
       "TornadoTrap": 1,
       "ElixirCartStorageCap": 9999990,
-      "ChallengeLootPercentage": 90
+      "ResourceScalingPercentage": 90
     }
   },
   "12": {
@@ -738,7 +748,7 @@
       "CartLootCapDarkElixir": 4800,
       "CartLootReengagementDarkElixir": 150000,
       "ReengagementBuildingBudget": 36720000,
-      "ReengagementHeroBudget": 5500000,
+      "ReengagementHeroBudget": 50000000,
       "ReengagementWallBudget": 18360000,
       "ReengagementLabBudget": 36720000,
       "HeroBoostHours": 120,
@@ -764,7 +774,7 @@
       "PackDarkElixir": 10000,
       "SiegeWorkshop": 1,
       "ElixirCartStorageCap": 9999991,
-      "ChallengeLootPercentage": 95
+      "ResourceScalingPercentage": 95
     }
   },
   "13": {
@@ -789,7 +799,7 @@
       "CartLootCapDarkElixir": 5200,
       "CartLootReengagementDarkElixir": 160000,
       "ReengagementBuildingBudget": 41040000,
-      "ReengagementHeroBudget": 10500000,
+      "ReengagementHeroBudget": 55000000,
       "ReengagementWallBudget": 20520000,
       "ReengagementLabBudget": 41040000,
       "HeroBoostHours": 120,
@@ -812,7 +822,7 @@
       "PackDarkElixir": 10000,
       "Scattershot": 2,
       "ElixirCartStorageCap": 9999992,
-      "ChallengeLootPercentage": 100
+      "ResourceScalingPercentage": 100
     }
   },
   "14": {
@@ -837,7 +847,7 @@
       "CartLootCapDarkElixir": 5600,
       "CartLootReengagementDarkElixir": 170000,
       "ReengagementBuildingBudget": 41040000,
-      "ReengagementHeroBudget": 15500000,
+      "ReengagementHeroBudget": 55000000,
       "ReengagementWallBudget": 20520000,
       "ReengagementLabBudget": 41040000,
       "HeroBoostHours": 120,
@@ -862,7 +872,7 @@
       "PackDarkElixir": 10000,
       "Pet Shop": 1,
       "ElixirCartStorageCap": 9999993,
-      "ChallengeLootPercentage": 100
+      "ResourceScalingPercentage": 100
     }
   },
   "15": {
@@ -887,7 +897,7 @@
       "CartLootCapDarkElixir": 6000,
       "CartLootReengagementDarkElixir": 180000,
       "ReengagementBuildingBudget": 41040000,
-      "ReengagementHeroBudget": 20500000,
+      "ReengagementHeroBudget": 55000000,
       "ReengagementWallBudget": 20520000,
       "ReengagementLabBudget": 41040000,
       "HeroBoostHours": 120,
@@ -908,7 +918,7 @@
       "Spell Tower": 2,
       "Monolith": 1,
       "ElixirCartStorageCap": 9999994,
-      "ChallengeLootPercentage": 100
+      "ResourceScalingPercentage": 100
     }
   },
   "16": {
@@ -933,7 +943,7 @@
       "CartLootCapDarkElixir": 6400,
       "CartLootReengagementDarkElixir": 190000,
       "ReengagementBuildingBudget": 41040000,
-      "ReengagementHeroBudget": 28000000,
+      "ReengagementHeroBudget": 55000000,
       "ReengagementWallBudget": 20520000,
       "ReengagementLabBudget": 41040000,
       "HeroBoostHours": 120,
@@ -954,7 +964,7 @@
       "ElixirCartStorageCap": 9999995,
       "Merged Archer Tower": 2,
       "Merged Cannon": 2,
-      "ChallengeLootPercentage": 100
+      "ResourceScalingPercentage": 100
     }
   },
   "17": {
@@ -979,7 +989,7 @@
       "CartLootCapDarkElixir": 6800,
       "CartLootReengagementDarkElixir": 200000,
       "ReengagementBuildingBudget": 41040000,
-      "ReengagementHeroBudget": 38000000,
+      "ReengagementHeroBudget": 55000000,
       "ReengagementWallBudget": 20520000,
       "ReengagementLabBudget": 41040000,
       "HeroBoostHours": 120,
@@ -1004,8 +1014,9 @@
       "Merged Archer Tower": 3,
       "Merged Cannon": 3,
       "Firespitter": 2,
-      "ChallengeLootPercentage": 100,
-      "GigaBomb": 1
+      "ResourceScalingPercentage": 100,
+      "GigaBomb": 1,
+      "Merged Archer Cannon": 1
     }
   }
 }

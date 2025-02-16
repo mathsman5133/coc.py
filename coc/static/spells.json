@@ -601,8 +601,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl1",
-      "DeployEffect2": "Freeze deploy2 lvl1",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 2500,
       "StrengthWeight": 1100,
       "FreezeOuterTimeMS": 2250
@@ -616,8 +616,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl2",
-      "DeployEffect2": "Freeze deploy2 lvl2",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 3000,
       "StrengthWeight": 1200,
       "FreezeOuterTimeMS": 2700
@@ -631,8 +631,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl3",
-      "DeployEffect2": "Freeze deploy2 lvl3",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl3",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 3500,
       "StrengthWeight": 1300,
       "FreezeOuterTimeMS": 3150
@@ -646,8 +646,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl4",
-      "DeployEffect2": "Freeze deploy2 lvl4",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl4",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 4000,
       "StrengthWeight": 1400,
       "FreezeOuterTimeMS": 3600
@@ -661,8 +661,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl5",
-      "DeployEffect2": "Freeze deploy2 lvl5",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl5",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 4500,
       "StrengthWeight": 1500,
       "FreezeOuterTimeMS": 4050
@@ -676,8 +676,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl6",
-      "DeployEffect2": "Freeze deploy2 lvl6",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl6",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 5000,
       "StrengthWeight": 1600,
       "FreezeOuterTimeMS": 4500
@@ -689,8 +689,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 400,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "Freeze deploy lvl7",
-      "DeployEffect2": "Freeze deploy2 lvl7",
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl7",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
       "FreezeTimeMS": 5500,
       "StrengthWeight": 1700,
       "FreezeOuterTimeMS": 4950
@@ -1017,12 +1017,24 @@
     "10": {
       "Level": 10,
       "LaboratoryLevel": 14,
+      "UpgradeTimeH": 348,
+      "UpgradeCost": 280000,
       "BoostTimeMS": 500,
       "SpeedBoost": -50,
       "SpeedBoost2": -50,
       "StrengthWeight": 2100,
       "PoisonDPS": 340,
       "AttackSpeedBoost": -72
+    },
+    "11": {
+      "Level": 11,
+      "LaboratoryLevel": 15,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -51,
+      "SpeedBoost2": -51,
+      "StrengthWeight": 2200,
+      "PoisonDPS": 360,
+      "AttackSpeedBoost": -73
     },
     "Name": "Poison",
     "TID": "TID_POISON_CLOUD",
@@ -1197,12 +1209,24 @@
     "5": {
       "Level": 5,
       "LaboratoryLevel": 9,
+      "UpgradeTimeH": 300,
+      "UpgradeCost": 200000,
       "SpeedBoost": 52,
       "SpeedBoost2": 26,
       "NumberOfHits": 120,
       "DeployEffect": "Speedup_deploy_lvl5",
       "DeployEffect2": "Speedup_deploy_top_lvl5",
       "StrengthWeight": 1600
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 15,
+      "SpeedBoost": 56,
+      "SpeedBoost2": 28,
+      "NumberOfHits": 120,
+      "DeployEffect": "Speedup_deploy_lvl5",
+      "DeployEffect2": "Speedup_deploy_top_lvl5",
+      "StrengthWeight": 2200
     },
     "Name": "SpeedUp",
     "TID": "TID_SPEEDUP",
@@ -1343,43 +1367,43 @@
       "Level": 1,
       "ExtraHealthPermil": 400,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 330
+      "ExtraHealthMax": 510
     },
     "2": {
       "Level": 2,
       "ExtraHealthPermil": 500,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 420
+      "ExtraHealthMax": 600
     },
     "3": {
       "Level": 3,
       "ExtraHealthPermil": 600,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 510
+      "ExtraHealthMax": 690
     },
     "4": {
       "Level": 4,
       "ExtraHealthPermil": 700,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 600
+      "ExtraHealthMax": 780
     },
     "5": {
       "Level": 5,
       "ExtraHealthPermil": 800,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 690
+      "ExtraHealthMax": 870
     },
     "6": {
       "Level": 6,
       "ExtraHealthPermil": 900,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 780
+      "ExtraHealthMax": 960
     },
     "7": {
       "Level": 7,
       "ExtraHealthPermil": 1000,
       "ExtraHealthMin": 0,
-      "ExtraHealthMax": 870
+      "ExtraHealthMax": 1050
     },
     "Name": "Growth",
     "DisableProduction": true,
@@ -1652,6 +1676,7 @@
     "ProductionBuilding": "Mini Spell Factory",
     "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND",
     "SummonTroop": "ShieldedSkeleton",
+    "SpawnUpgradeLevel": 1,
     "SpawnFirstGroupSize": 3,
     "PreviewScenario": "SpellSkeleton"
   },
@@ -1856,8 +1881,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl1",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl1",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 4000,
       "FreezeOuterTimeMS": 3000
     },
@@ -1868,8 +1893,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl2",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl2",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 4750,
       "FreezeOuterTimeMS": 3563
     },
@@ -1880,8 +1905,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl3",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl3",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl3",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 5500,
       "FreezeOuterTimeMS": 4125
     },
@@ -1892,8 +1917,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl4",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl4",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl4",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 6250,
       "FreezeOuterTimeMS": 4688
     },
@@ -1904,8 +1929,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl5",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl5",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl5",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 7000,
       "FreezeOuterTimeMS": 5250
     },
@@ -1916,8 +1941,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl6",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl6",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl6",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 7500,
       "FreezeOuterTimeMS": 5625
     },
@@ -1928,8 +1953,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl7",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl7",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl7",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 8000,
       "FreezeOuterTimeMS": 5950
     },
@@ -1940,8 +1965,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl8",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl8",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl8",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 8500,
       "FreezeOuterTimeMS": 6275
     },
@@ -2287,6 +2312,7 @@
     "ProductionBuilding": "Mini Spell Factory",
     "TargetInfoString": "TID_BUILDING_CLASS_DEFENSE",
     "SummonTroop": "SpellBat",
+    "SpawnUpgradeLevel": 1,
     "SpawnFirstGroupSize": 1,
     "PreviewScenario": "SpellBat"
   },
@@ -2297,8 +2323,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl1_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl1_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 2000,
       "FreezeOuterTimeMS": 1650
     },
@@ -2308,8 +2334,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl2_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl2_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 2250,
       "FreezeOuterTimeMS": 1856
     },
@@ -2319,8 +2345,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl3_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl3_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl3",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 2500,
       "FreezeOuterTimeMS": 2063
     },
@@ -2330,8 +2356,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl4_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl4_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl4",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 2750,
       "FreezeOuterTimeMS": 2269
     },
@@ -2341,8 +2367,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl5_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl5_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl5",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 3000,
       "FreezeOuterTimeMS": 2475
     },
@@ -2352,8 +2378,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceGolem Freeze deploy lvl6_DEF",
-      "DeployEffect2": "IceGolem Freeze deploy2 lvl6_DEF",
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl6",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 3250,
       "FreezeOuterTimeMS": 2681
     },
@@ -2383,13 +2409,18 @@
     },
     "4": {
       "Level": 4,
-      "Damage": 450,
+      "Damage": 440,
       "MinDamage": 150
     },
     "5": {
       "Level": 5,
-      "Damage": 480,
+      "Damage": 460,
       "MinDamage": 160
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 480,
+      "MinDamage": 170
     },
     "Name": "IceBreakerSplinters",
     "DisableProduction": true,
@@ -2529,7 +2560,7 @@
       "LaboratoryLevel": 1,
       "UpgradeTimeH": 96,
       "UpgradeCost": 5000000,
-      "NumberOfHits": 15,
+      "NumberOfHits": 14,
       "DeployEffect": "Invisibility area lvl1",
       "StrengthWeight": 1500
     },
@@ -2538,7 +2569,7 @@
       "LaboratoryLevel": 9,
       "UpgradeTimeH": 108,
       "UpgradeCost": 6000000,
-      "NumberOfHits": 16,
+      "NumberOfHits": 15,
       "DeployEffect": "Invisibility area lvl2",
       "StrengthWeight": 1600
     },
@@ -2547,14 +2578,14 @@
       "LaboratoryLevel": 10,
       "UpgradeTimeH": 168,
       "UpgradeCost": 7000000,
-      "NumberOfHits": 17,
+      "NumberOfHits": 16,
       "DeployEffect": "Invisibility area lvl3",
       "StrengthWeight": 1700
     },
     "4": {
       "Level": 4,
       "LaboratoryLevel": 11,
-      "NumberOfHits": 18,
+      "NumberOfHits": 17,
       "DeployEffect": "Invisibility area lvl4",
       "StrengthWeight": 1800
     },
@@ -2591,8 +2622,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceHound Freeze Deploy1 lvl1",
-      "DeployEffect2": "IceHound Freeze Deploy2",
+      "DeployEffect": "ps_chr_icehound_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 3500,
       "FreezeOuterTimeMS": 3019
     },
@@ -2602,8 +2633,8 @@
       "NumberOfHits": 1,
       "RandomRadius": 0,
       "TimeBetweenHitsMS": 0,
-      "DeployEffect": "IceHound Freeze Deploy1 lvl2",
-      "DeployEffect2": "IceHound Freeze Deploy2",
+      "DeployEffect": "ps_chr_icehound_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
       "FreezeTimeMS": 4250,
       "FreezeOuterTimeMS": 3666
     },
@@ -2995,7 +3026,9 @@
     "RandomRadiusAffectsOnlyGfx": true,
     "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
     "SummonTroop": "Riderless Hog",
-    "UnitsToSpawn": 1
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
   },
   "RageST": {
     "1": {
@@ -3088,7 +3121,9 @@
     "RandomRadiusAffectsOnlyGfx": true,
     "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
     "SummonTroop": "Hogless Rider",
-    "UnitsToSpawn": 1
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
   },
   "InvisibilityST": {
     "1": {
@@ -3638,6 +3673,9 @@
     "RandomRadiusAffectsOnlyGfx": true,
     "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
     "SummonTroop": "Balloon Skeleton",
+    "SpawnUpgradeLevel": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0,
     "VillageType": 1,
     "DestroyWalls": true
   },
@@ -3684,6 +3722,8 @@
     "RandomRadiusAffectsOnlyGfx": true,
     "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
     "SummonTroop": "Bat Enraged",
+    "SpawnUpgradeLevel": 1,
+    "SpawnFirstGroupSize": 0,
     "VillageType": 1
   },
   "Cannon Cart Mortar Mode Splash": {
@@ -4193,6 +4233,7 @@
     "ProductionBuilding": "Spell Forge",
     "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
     "SummonTroop": "BouncingFrostmite",
+    "SpawnUpgradeLevel": 1,
     "SpawnFirstGroupSize": 1,
     "DisableDonate": true,
     "EnabledByCalendar": true,
@@ -4215,7 +4256,9 @@
       "RandomRadiusAffectsOnlyGfx": true,
       "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
       "UnitsToSpawn": 1,
-      "SpawnUpgradeLevel": 1
+      "SpawnUpgradeLevel": 1,
+      "SpawnDuration": 0,
+      "SpawnFirstGroupSize": 0
     }
   },
   "LavaloonSpawnPup": {
@@ -4286,7 +4329,9 @@
     "TimeBetweenHitsMS": 0,
     "HitEffect": "LavaloonAttackEffect",
     "RandomRadiusAffectsOnlyGfx": true,
-    "SummonTroop": "Lavaloon Pup"
+    "SummonTroop": "Lavaloon Pup",
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
   },
   "Firecracker Explosion": {
     "1": {
@@ -4366,38 +4411,31 @@
   "EarthquakeBoots": {
     "1": {
       "Level": 1,
-      "Damage": 20,
       "BuildingDamagePermil": 20
     },
     "2": {
       "Level": 2,
-      "Damage": 20,
       "BuildingDamagePermil": 40
     },
     "3": {
       "Level": 3,
-      "Damage": 20,
       "BuildingDamagePermil": 60
     },
     "4": {
       "Level": 4,
-      "Damage": 20,
-      "BuildingDamagePermil": 80
+      "BuildingDamagePermil": 68
     },
     "5": {
       "Level": 5,
-      "Damage": 20,
-      "BuildingDamagePermil": 100
+      "BuildingDamagePermil": 72
     },
     "6": {
       "Level": 6,
-      "Damage": 20,
-      "BuildingDamagePermil": 110
+      "BuildingDamagePermil": 76
     },
     "7": {
       "Level": 7,
-      "Damage": 20,
-      "BuildingDamagePermil": 120
+      "BuildingDamagePermil": 80
     },
     "Name": "EarthquakeBoots",
     "TID": "TID_EARTHQUAKE",
@@ -4721,52 +4759,52 @@
   "RCDamageAura": {
     "1": {
       "Level": 1,
-      "Damage": 55,
+      "Damage": 53,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "2": {
       "Level": 2,
-      "Damage": 60,
+      "Damage": 56,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "3": {
       "Level": 3,
-      "Damage": 65,
+      "Damage": 59,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "4": {
       "Level": 4,
-      "Damage": 70,
+      "Damage": 62,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "5": {
       "Level": 5,
-      "Damage": 75,
+      "Damage": 65,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "6": {
       "Level": 6,
-      "Damage": 80,
+      "Damage": 68,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "7": {
       "Level": 7,
-      "Damage": 85,
+      "Damage": 71,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "8": {
       "Level": 8,
-      "Damage": 90,
+      "Damage": 74,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "9": {
       "Level": 9,
-      "Damage": 95,
+      "Damage": 77,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "10": {
       "Level": 10,
-      "Damage": 100,
+      "Damage": 80,
       "DeployEffect": "HeroGear_RC_ElectroBoots"
     },
     "Name": "RCDamageAura",
@@ -4851,7 +4889,9 @@
     "TimeBetweenHitsMS": 0,
     "HitEffect": "LavaloonAttackEffect",
     "RandomRadiusAffectsOnlyGfx": true,
-    "SummonTroop": "GW equipment Lavaloon Pup"
+    "SummonTroop": "GW equipment Lavaloon Pup",
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
   },
   "IceMinionFreeze": {
     "1": {
@@ -4903,27 +4943,40 @@
   },
   "TroopCatapultSummonTroopNew": {
     "1": {
-      "Name": "TroopCatapultSummonTroopNew",
       "Level": 1,
-      "DisableProduction": true,
-      "DeployTimeMS": 0,
-      "ChargingTimeMS": 0,
-      "HitTimeMS": 0,
-      "Damage": 0,
-      "Radius": 0,
-      "NumberOfHits": 1,
-      "RandomRadius": 0,
-      "TimeBetweenHitsMS": 0,
-      "DeployEffect": "SuperBoar Deploy",
-      "RandomRadiusAffectsOnlyGfx": true,
-      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
-      "SummonTroop": "Giant",
-      "UnitsToSpawn": 1,
-      "SpawnUpgradeLevel": 12,
-      "SpawnDuration": 200,
-      "SpawnFirstGroupSize": 1,
-      "ChainSpell": "BarbSum"
-    }
+      "UnitsToSpawn": "1;2;3;1",
+      "SpawnUpgradeLevel": "9;9;9;9"
+    },
+    "2": {
+      "Level": 2,
+      "UnitsToSpawn": "1;2;3;2",
+      "SpawnUpgradeLevel": "10;10;10;10"
+    },
+    "3": {
+      "Level": 3,
+      "UnitsToSpawn": "1;2;4;2",
+      "SpawnUpgradeLevel": "11;11;11;11"
+    },
+    "4": {
+      "Level": 4,
+      "UnitsToSpawn": "1;2;4;2",
+      "SpawnUpgradeLevel": "12;12;12;12"
+    },
+    "Name": "TroopCatapultSummonTroopNew",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Giant;Barbarian;Archer;Wall Breaker",
+    "SpawnDuration": "200;1000;1500;1200",
+    "SpawnFirstGroupSize": "1;1;1;1"
   },
   "TorchThrowerB": {
     "1": {
@@ -4962,9 +5015,9 @@
       "ImmunityWalls": true
     }
   },
-  "BarbSum": {
+  "Unused12": {
     "1": {
-      "Name": "BarbSum",
+      "Name": "Unused12",
       "Level": 1,
       "DisableProduction": true,
       "DeployTimeMS": 0,
@@ -4978,16 +5031,15 @@
       "RandomRadiusAffectsOnlyGfx": true,
       "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
       "SummonTroop": "Barbarian",
-      "UnitsToSpawn": 5,
-      "SpawnUpgradeLevel": 12,
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 10,
       "SpawnDuration": 1000,
-      "SpawnFirstGroupSize": 2,
-      "ChainSpell": "ArchSum"
+      "SpawnFirstGroupSize": 1
     }
   },
-  "ArchSum": {
+  "Unused13": {
     "1": {
-      "Name": "ArchSum",
+      "Name": "Unused13",
       "Level": 1,
       "DisableProduction": true,
       "DeployTimeMS": 0,
@@ -5001,16 +5053,15 @@
       "RandomRadiusAffectsOnlyGfx": true,
       "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
       "SummonTroop": "Archer",
-      "UnitsToSpawn": 4,
-      "SpawnUpgradeLevel": 12,
-      "SpawnDuration": 1000,
-      "SpawnFirstGroupSize": 1,
-      "ChainSpell": "WBSum"
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 10,
+      "SpawnDuration": 1500,
+      "SpawnFirstGroupSize": 1
     }
   },
-  "WBSum": {
+  "Unused14": {
     "1": {
-      "Name": "WBSum",
+      "Name": "Unused14",
       "Level": 1,
       "DisableProduction": true,
       "DeployTimeMS": 0,
@@ -5024,9 +5075,9 @@
       "RandomRadiusAffectsOnlyGfx": true,
       "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
       "SummonTroop": "Wall Breaker",
-      "UnitsToSpawn": 3,
-      "SpawnUpgradeLevel": 12,
-      "SpawnDuration": 1000,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 10,
+      "SpawnDuration": 1200,
       "SpawnFirstGroupSize": 1
     }
   },
@@ -5100,7 +5151,7 @@
     "TID": "TID_SPELL_REVIVE",
     "InfoTID": "TID_SPELL_REVIVE_INFO",
     "SpellForgeLevel": 8,
-    "DonateCost": 20,
+    "DonateCost": 10,
     "HousingSpace": 2,
     "TrainingTime": 360,
     "DeployTimeMS": 800,

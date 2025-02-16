@@ -1782,15 +1782,15 @@
     }
   },
   "TID_DIAMONDS_FOUND": {
-    "You found <number> gems in the <name>!": {
+    "You found <cb3f357><number> Gems </c>in the <name>!": {
       "TID": "TID_DIAMONDS_FOUND",
-      "EN": "You found <number> gems in the <name>!"
+      "EN": "You found <cb3f357><number> Gems </c>in the <name>!"
     }
   },
   "TID_DIAMOND_FOUND": {
-    "You found a gem in the <name>!": {
+    "You found a <cb3f357>Gem</c> in the <name>!": {
       "TID": "TID_DIAMOND_FOUND",
-      "EN": "You found a gem in the <name>!"
+      "EN": "You found a <cb3f357>Gem</c> in the <name>!"
     }
   },
   "TID_SHOP_CATEGORY_DECOS": {
@@ -3582,9 +3582,9 @@
     }
   },
   "TID_GEM_BUY_CONFIRMATION": {
-    "<amount> gems received!": {
+    "<cb3f357><amount></c> Gems received!": {
       "TID": "TID_GEM_BUY_CONFIRMATION",
-      "EN": "<amount> gems received!"
+      "EN": "<cb3f357><amount></c> Gems received!"
     }
   },
   "TID_MULTIDEVICE_INFO": {
@@ -3852,9 +3852,9 @@
     }
   },
   "TID_ACHIEVEMENT_REWARD_CLAIMED": {
-    "Achievement completed! You received <number> gems.": {
+    "Achievement completed! You received <cb3f357><number> Gems.</c>": {
       "TID": "TID_ACHIEVEMENT_REWARD_CLAIMED",
-      "EN": "Achievement completed! You received <number> gems."
+      "EN": "Achievement completed! You received <cb3f357><number> Gems.</c>"
     }
   },
   "TID_X": {
@@ -12201,22 +12201,22 @@
       "EN": "\uccad\uc57d\ucca0\ud68c\ub294 \uad6c\ub9e4\uc77c\ub85c\ubd80\ud130 7\uc77c \uc774\ub0b4 \uac00\ub2a5(\ub2e8, \uc0ac\uc6a9\uc2dc \ucca0\ud68c\ubd88\uac00) \ubc95\uc815\ub300\ub9ac\uc778 \ub3d9\uc758 \uc5c6\ub294 \ubbf8\uc131\ub144\uc790\uba85\uc758 \uacb0\uc81c \uc2dc \ucde8\uc18c\uac00\ub2a5"
     }
   },
-  "TID_INFO_POP_UP_TOS_PP_TITLE": {
+  "TID_INFO_POP_UP_TOS_PP_TITLE_OLD_PLAYER": {
     "Important Notice": {
-      "TID": "TID_INFO_POP_UP_TOS_PP_TITLE",
+      "TID": "TID_INFO_POP_UP_TOS_PP_TITLE_OLD_PLAYER",
       "EN": "Important Notice"
     }
   },
-  "TID_INFO_POP_UP_TOS_PP_NOTE": {
-    "Clash of Clans is free to play, but you can speed up progress with in-app purchases (you can disable this in your device settings). Tap OK to accept our Terms and Privacy Policy.": {
-      "TID": "TID_INFO_POP_UP_TOS_PP_NOTE",
-      "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases (you can disable this in your device settings). Tap OK to accept our Terms and Privacy Policy."
+  "TID_INFO_POP_UP_TOS_PP_NOTE_OLD_PLAYER": {
+    "We have updated the Terms of Service. Tap Agree to accept the new terms and continue playing.": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_NOTE_OLD_PLAYER",
+      "EN": "We have updated the Terms of Service. Tap Agree to accept the new terms and continue playing."
     }
   },
   "TID_INFO_POP_UP_TOS_PP_NOTE_ANDROID": {
-    "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). Tap OK to accept our Terms and Privacy Policy.": {
+    "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). By tapping Agree, you accept our Terms of Service and Privacy Policy.": {
       "TID": "TID_INFO_POP_UP_TOS_PP_NOTE_ANDROID",
-      "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). Tap OK to accept our Terms and Privacy Policy."
+      "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). By tapping Agree, you accept our Terms of Service and Privacy Policy."
     }
   },
   "TID_INFO_POP_UP_TOS_PP_NOTE_KUNLUN": {
@@ -12225,10 +12225,10 @@
       "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases. Tap OK to accept our Terms and Privacy Policy."
     }
   },
-  "TID_INFO_POP_UP_TOS_PP_BUTTON1": {
-    "OK": {
-      "TID": "TID_INFO_POP_UP_TOS_PP_BUTTON1",
-      "EN": "OK"
+  "TID_INFO_POP_UP_TOS_PP_BUTTON1_NEW_TOS": {
+    "Agree": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_BUTTON1_NEW_TOS",
+      "EN": "Agree"
     }
   },
   "TID_INFO_POP_UP_TOS_PP_BUTTON2": {
@@ -12268,15 +12268,15 @@
     }
   },
   "TID_ACHIEVEMENT_DESTROY_ARTILLERY": {
-    "Destroy <number> Eagle Artilleries in Multiplayer battles": {
+    "Destroy <number> Eagle or Inferno Artilleries in Multiplayer battles": {
       "TID": "TID_ACHIEVEMENT_DESTROY_ARTILLERY",
-      "EN": "Destroy <number> Eagle Artilleries in Multiplayer battles"
+      "EN": "Destroy <number> Eagle or Inferno Artilleries in Multiplayer battles"
     }
   },
   "TID_ACHIEVEMENT_DESTROY_ARTILLERY_COMPLETED": {
-    "Total Eagle Artilleries destroyed: <value>": {
+    "Total Eagle or Inferno Artilleries destroyed: <value>": {
       "TID": "TID_ACHIEVEMENT_DESTROY_ARTILLERY_COMPLETED",
-      "EN": "Total Eagle Artilleries destroyed: <value>"
+      "EN": "Total Eagle or Inferno Artilleries destroyed: <value>"
     }
   },
   "TID_POPUP_BREAK_SHIELD": {
@@ -13478,9 +13478,9 @@
     }
   },
   "TID_AVATAR_MESSAGE_SUBJECT_GEM_DONATION": {
-    "Received <amount> gems": {
+    "Received <cb3f357><amount> gems</c>": {
       "TID": "TID_AVATAR_MESSAGE_SUBJECT_GEM_DONATION",
-      "EN": "Received <amount> gems"
+      "EN": "Received <cb3f357><amount> gems</c>"
     }
   },
   "TID_UI_TOP_VIEWERS_TITLE": {
@@ -14996,9 +14996,9 @@
     }
   },
   "TID_BUNDLE_GEMS_CONFIRMATION": {
-    "<ce53cff><amount> gems received!</c>": {
+    "<cb3f357f><amount> gems received!</c>": {
       "TID": "TID_BUNDLE_GEMS_CONFIRMATION",
-      "EN": "<ce53cff><amount> gems received!</c>"
+      "EN": "<cb3f357f><amount> gems received!</c>"
     }
   },
   "TID_DIAMOND_BUNDLE_GOLD_INFO": {
@@ -17312,9 +17312,9 @@
     }
   },
   "TID_GEM_MINE_INFO": {
-    "Gem Mines access a rare deposit of this highly valuable resource! Mining gems is slow and hard work.": {
+    "Gem Mines access a rare deposit of this highly valuable resource! Mining Gems is slow and hard work.": {
       "TID": "TID_GEM_MINE_INFO",
-      "EN": "Gem Mines access a rare deposit of this highly valuable resource! Mining gems is slow and hard work."
+      "EN": "Gem Mines access a rare deposit of this highly valuable resource! Mining Gems is slow and hard work."
     }
   },
   "TID_PRODUCTION_RATE_PER_DAY": {
@@ -24005,15 +24005,15 @@
     }
   },
   "TID_OFFER_DONT_MISS_ONE_TIME_OFFER": {
-    "Don't miss this ONE time offer!": {
+    "This offer can be purchased only one time during the displayed time period!": {
       "TID": "TID_OFFER_DONT_MISS_ONE_TIME_OFFER",
-      "EN": "Don't miss this ONE time offer!"
+      "EN": "This offer can be purchased only one time during the displayed time period!"
     }
   },
   "TID_OFFER_DONT_MISS_ONE_TIME_OFFER_VALUE": {
-    "Don't miss this <cffec78><value>X value</c> ONE time offer!": {
+    "This offer can be purchased only one time during the displayed time period! The <cffec78><value>X value</c> represents the multiplier based on the nominal Gem pricing of the included items.": {
       "TID": "TID_OFFER_DONT_MISS_ONE_TIME_OFFER_VALUE",
-      "EN": "Don't miss this <cffec78><value>X value</c> ONE time offer!"
+      "EN": "This offer can be purchased only one time during the displayed time period! The <cffec78><value>X value</c> represents the multiplier based on the nominal Gem pricing of the included items."
     }
   },
   "TID_OFFER_NO_STORAGE_LIMITS": {
@@ -29267,9 +29267,9 @@
     }
   },
   "TID_SETTING_GROUP_ATTACK": {
-    "Attack Settings": {
+    "Gameplay Settings": {
       "TID": "TID_SETTING_GROUP_ATTACK",
-      "EN": "Attack Settings"
+      "EN": "Gameplay Settings"
     }
   },
   "TID_SETTINGS_2_ROW_DEPLOYMENT_BAR_INFO": {
@@ -29585,9 +29585,9 @@
     }
   },
   "TID_FRIENDLY_CHALLENGE_SET_CASTLE_TROOPS_TEXT": {
-    "Use these Clan Castle troops in Friendly Challenge defenses?": {
+    "Set Clan Castle troops to defend your village in Friendly Challenge defenses.": {
       "TID": "TID_FRIENDLY_CHALLENGE_SET_CASTLE_TROOPS_TEXT",
-      "EN": "Use these Clan Castle troops in Friendly Challenge defenses?"
+      "EN": "Set Clan Castle troops to defend your village in Friendly Challenge defenses."
     }
   },
   "TID_SUPER_TROOPS_INTRO_LEVEL_TITLE": {
@@ -32183,27 +32183,27 @@
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_1": {
-    "I've set up some challenges for you to tackle!": {
+    "I've got some Starter challenges for you to tackle!": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_1",
-      "EN": "I've set up some challenges for you to tackle!"
+      "EN": "I've got some Starter challenges for you to tackle!"
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_2": {
-    "Completing each challenge earns you points.": {
+    "Complete a challenge to earn points.": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_2",
-      "EN": "Completing each challenge earns you points."
+      "EN": "Complete a challenge to earn points."
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_2A": {
-    "Sometimes you'll also unlock new challenges too.": {
+    "Earn enough points and you\u2019ll unlock rewards!": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_2A",
-      "EN": "Sometimes you'll also unlock new challenges too."
+      "EN": "Earn enough points and you\u2019ll unlock rewards!"
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_3": {
-    "Earn enough points, and you'll win rewards!": {
+    "Unlock more Starter challenges by upgrading your Town Hall.": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_3",
-      "EN": "Earn enough points, and you'll win rewards!"
+      "EN": "Unlock more Starter challenges by upgrading your Town Hall."
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_4": {
@@ -32213,9 +32213,9 @@
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_5": {
-    "These will help our village get stronger and stronger!": {
+    "You\u2019ll get Starter challenges all the way up to Town Hall 7.": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_5",
-      "EN": "These will help our village get stronger and stronger!"
+      "EN": "You\u2019ll get Starter challenges all the way up to Town Hall 7."
     }
   },
   "TID_FAVORITE_TARGET_HERO": {
@@ -32483,9 +32483,9 @@
     }
   },
   "TID_TUTORIAL_STARTER_CHALLENGE_6": {
-    "Good luck Chief! You've got this!": {
+    "Want even more rewards? Try the Starter Pass!": {
       "TID": "TID_TUTORIAL_STARTER_CHALLENGE_6",
-      "EN": "Good luck Chief! You've got this!"
+      "EN": "Want even more rewards? Try the Starter Pass!"
     }
   },
   "TID_TUTORIAL_SEASON_CHALLENGE_1": {
@@ -34415,9 +34415,9 @@
     }
   },
   "TID_INVALID_PLACEMENT_CAPITAL": {
-    "Deploy troops on the white area!": {
+    "Deploy troops on the highlighted area!": {
       "TID": "TID_INVALID_PLACEMENT_CAPITAL",
-      "EN": "Deploy troops on the white area!"
+      "EN": "Deploy troops on the highlighted area!"
     }
   },
   "TID_CRAFTING_FINISHES_IN": {
@@ -40463,9 +40463,9 @@
     }
   },
   "TID_GEM_MINE_INFO_SHORT": {
-    "Extract precious gems from the earth itself.": {
+    "Extract precious Gems from the earth itself.": {
       "TID": "TID_GEM_MINE_INFO_SHORT",
-      "EN": "Extract precious gems from the earth itself."
+      "EN": "Extract precious Gems from the earth itself."
     }
   },
   "TID_CLOCK_TOWER_INFO_SHORT": {
@@ -46295,9 +46295,9 @@
     }
   },
   "TID_HARD_MODE_DESC": {
-    "Defenses deal 5% more damage. Attacking Heroes have 5% less HP and deal 5% less damage. Common Equipment is capped to level 15 and Epic Equipment to level 21.": {
+    "Defenses deal 20% more damage. Defending Heroes\u2019 damage and health are increased by 20%. Attacking Heroes\u2019 damage and health are decreased by 10%. Common Equipment is capped at level 15. Epic Equipment is capped at level 21.": {
       "TID": "TID_HARD_MODE_DESC",
-      "EN": "Defenses deal 5% more damage. Attacking Heroes have 5% less HP and deal 5% less damage. Common Equipment is capped to level 15 and Epic Equipment to level 21."
+      "EN": "Defenses deal 20% more damage. Defending Heroes\u2019 damage and health are increased by 20%. Attacking Heroes\u2019 damage and health are decreased by 10%. Common Equipment is capped at level 15. Epic Equipment is capped at level 21."
     }
   },
   "TID_NOTICE_ACTIVE_FOR": {
@@ -46793,9 +46793,9 @@
     }
   },
   "TID_HERO_INSTRUCTIONS_MINION_HERO": {
-    "This self-proclaimed Prince of Darkness means business! The Minion Prince takes to the skies and deals damaging dark goop to Defenses and Troops! He\u2019ll hover near his Hero Banner when defending.": {
+    "This self-proclaimed Prince of Darkness means business! The Minion Prince takes to the skies and damages targets with dark magic! When defending, he can only be attacked by ranged and air units.": {
       "TID": "TID_HERO_INSTRUCTIONS_MINION_HERO",
-      "EN": "This self-proclaimed Prince of Darkness means business! The Minion Prince takes to the skies and deals damaging dark goop to Defenses and Troops! He\u2019ll hover near his Hero Banner when defending."
+      "EN": "This self-proclaimed Prince of Darkness means business! The Minion Prince takes to the skies and damages targets with dark magic! When defending, he can only be attacked by ranged and air units."
     }
   },
   "TID_HERO_INSTRUCTIONS_MINION_HERO_SHORT": {
@@ -47273,9 +47273,9 @@
     }
   },
   "TID_TREASURE_HUNT_INFO_TEXT_3": {
-    "A total of three Chests can be claimed until the timer resets.": {
+    "Collect up to <number> Chests during the event! <number2> new Chests will become available every <number3> hours.": {
       "TID": "TID_TREASURE_HUNT_INFO_TEXT_3",
-      "EN": "A total of three Chests can be claimed until the timer resets."
+      "EN": "Collect up to <number> Chests during the event! <number2> new Chests will become available every <number3> hours."
     }
   },
   "TID_TREASURE_HUNT_INFO_TEXT_4": {
@@ -47447,9 +47447,9 @@
     }
   },
   "TID_DELIVER_REWARD_NOT_DELIVERED_RESOURCE_FULL": {
-    "Oops! Storage is full and this reward doesn't fit.": {
+    "Storage is full and this reward doesn't fit.": {
       "TID": "TID_DELIVER_REWARD_NOT_DELIVERED_RESOURCE_FULL",
-      "EN": "Oops! Storage is full and this reward doesn't fit."
+      "EN": "Storage is full and this reward doesn't fit."
     }
   },
   "TID_POPUP_SPEED_UP_UPGRADE_MINI_LEVEL": {
@@ -48413,9 +48413,9 @@
     }
   },
   "TID_CHARACTER_INFO_MINION_BODYGUARD": {
-    "Minion Prince can call on these sinister siblings to fight by his side! They\u2019ll soak up damage and attack Defenses.": {
+    "These sinister siblings are loyal to the Minion Prince. They\u2019ll soak up damage and slash their targets!": {
       "TID": "TID_CHARACTER_INFO_MINION_BODYGUARD",
-      "EN": "Minion Prince can call on these sinister siblings to fight by his side! They\u2019ll soak up damage and attack Defenses."
+      "EN": "These sinister siblings are loyal to the Minion Prince. They\u2019ll soak up damage and slash their targets!"
     }
   },
   "TID_TUTORIAL_DEFENSIVE_HERO_SWAPPING_1": {
@@ -48461,9 +48461,9 @@
     }
   },
   "TID_VILLAGER_ALCHEMIST_UPGRADE_INFO": {
-    "New max resource input capacity:": {
+    "New resource conversion max:": {
       "TID": "TID_VILLAGER_ALCHEMIST_UPGRADE_INFO",
-      "EN": "New max resource input capacity:"
+      "EN": "New resource conversion max:"
     }
   },
   "TID_RESEARCHER_APPRENTICE": {
@@ -48545,9 +48545,9 @@
     }
   },
   "TID_ALCHEMIST_APPRENTICE_INFO": {
-    "The Alchemist helps convert resources into different types. Assign her once a day, and level her up to work more efficiently!": {
+    "The Alchemist helps convert resources into different types! She works once a day. Level her up to boost her effectiveness!": {
       "TID": "TID_ALCHEMIST_APPRENTICE_INFO",
-      "EN": "The Alchemist helps convert resources into different types. Assign her once a day, and level her up to work more efficiently!"
+      "EN": "The Alchemist helps convert resources into different types! She works once a day. Level her up to boost her effectiveness!"
     }
   },
   "TID_CONVERT_RESOURCES_TITLE": {
@@ -48611,9 +48611,9 @@
     }
   },
   "TID_ALCHEMIST_SOURCE_MULTIPLIER": {
-    "Resource input:": {
+    "Resource Conversion Max:": {
       "TID": "TID_ALCHEMIST_SOURCE_MULTIPLIER",
-      "EN": "Resource input:"
+      "EN": "Resource Conversion Max:"
     }
   },
   "TID_VILLAGER_ALCHEMIST_INFO_ITEM1": {
@@ -48725,9 +48725,9 @@
     }
   },
   "TID_SCENERY_CLASHMAS2024": {
-    "WIP": {
+    "Toy Workshop Scenery": {
       "TID": "TID_SCENERY_CLASHMAS2024",
-      "EN": "WIP"
+      "EN": "Toy Workshop Scenery"
     }
   },
   "TID_INFO_DISCLAIMER_VISIT_TAVERN": {
@@ -48857,15 +48857,15 @@
     }
   },
   "TID_CHARACTER_SIEGE_MACHINE_TROOP_CATAPULT": {
-    "WIP": {
+    "Troop Launcher": {
       "TID": "TID_CHARACTER_SIEGE_MACHINE_TROOP_CATAPULT",
-      "EN": "WIP"
+      "EN": "Troop Launcher"
     }
   },
   "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT": {
-    "WIP": {
+    "This immobile machine launches barrel loads of Troops and Clan Castle Troops at your allies in battle to support them. Each barrel can hold multiple Troops, including one Clan Castle Troop. There's only a few barrels inside, so make them count!": {
       "TID": "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT",
-      "EN": "WIP"
+      "EN": "This immobile machine launches barrel loads of Troops and Clan Castle Troops at your allies in battle to support them. Each barrel can hold multiple Troops, including one Clan Castle Troop. There's only a few barrels inside, so make them count!"
     }
   },
   "TID_SPELL_FROST": {
@@ -49022,6 +49022,618 @@
     "Assign the Alchemist?": {
       "TID": "TID_VILLAGER_LIST_ASSIGN_ALCHEMIST",
       "EN": "Assign the Alchemist?"
+    }
+  },
+  "TID_CLAN_SEARCH_TOWN_LEVEL_DISCLAIMER_TEXT": {
+    "Town Hall level too high": {
+      "TID": "TID_CLAN_SEARCH_TOWN_LEVEL_DISCLAIMER_TEXT",
+      "EN": "Town Hall level too high"
+    }
+  },
+  "TID_ICE_WARDEN": {
+    "Ice Warden": {
+      "TID": "TID_ICE_WARDEN",
+      "EN": "Ice Warden"
+    }
+  },
+  "TID_ICE_CHAMPION": {
+    "Ice Champion": {
+      "TID": "TID_ICE_CHAMPION",
+      "EN": "Ice Champion"
+    }
+  },
+  "TID_FIRE_QUEEN": {
+    "Fire Queen": {
+      "TID": "TID_FIRE_QUEEN",
+      "EN": "Fire Queen"
+    }
+  },
+  "TID_FIRE_KING": {
+    "Fire King": {
+      "TID": "TID_FIRE_KING",
+      "EN": "Fire King"
+    }
+  },
+  "TID_DECO_LNY_2025": {
+    "Snake Shrine": {
+      "TID": "TID_DECO_LNY_2025",
+      "EN": "Snake Shrine"
+    }
+  },
+  "TID_DECO_LNY_2025_MONK": {
+    "Monk Statue": {
+      "TID": "TID_DECO_LNY_2025_MONK",
+      "EN": "Monk Statue"
+    }
+  },
+  "TID_DECO_LNY_2025_COOKIE": {
+    "Lucky Cookies": {
+      "TID": "TID_DECO_LNY_2025_COOKIE",
+      "EN": "Lucky Cookies"
+    }
+  },
+  "TID_DECO_FIRE_ICE_SAUNA": {
+    "Cozy Sauna": {
+      "TID": "TID_DECO_FIRE_ICE_SAUNA",
+      "EN": "Cozy Sauna"
+    }
+  },
+  "TID_OBSTACLE_LNY2025_EGG": {
+    "Snake Sculpture": {
+      "TID": "TID_OBSTACLE_LNY2025_EGG",
+      "EN": "Snake Sculpture"
+    }
+  },
+  "TID_SCENERY_FIRE_ICE": {
+    "Fire and Ice Scenery": {
+      "TID": "TID_SCENERY_FIRE_ICE",
+      "EN": "Fire and Ice Scenery"
+    }
+  },
+  "TID_SPELL_FACTORY_REVOKE_SUCCESS_TITLE": {
+    "Refund Processed": {
+      "TID": "TID_SPELL_FACTORY_REVOKE_SUCCESS_TITLE",
+      "EN": "Refund Processed"
+    }
+  },
+  "TID_GEAR_TITLE_STONE_AMULET": {
+    "Metal Pants": {
+      "TID": "TID_GEAR_TITLE_STONE_AMULET",
+      "EN": "Metal Pants"
+    }
+  },
+  "TID_GEAR_INFO_STONE_AMULET": {
+    "Creates a protective barrier that reduces damage taken temporarily": {
+      "TID": "TID_GEAR_INFO_STONE_AMULET",
+      "EN": "Creates a protective barrier that reduces damage taken temporarily"
+    }
+  },
+  "TID_GEAR_TITLE_TRAP_SHIELD": {
+    "Trap Shield": {
+      "TID": "TID_GEAR_TITLE_TRAP_SHIELD",
+      "EN": "Trap Shield"
+    }
+  },
+  "TID_GEAR_INFO_TRAP_SHIELD": {
+    "Protects from damage caused by Traps. Seeking Air Mines are no longer nemesis of the hero.": {
+      "TID": "TID_GEAR_INFO_TRAP_SHIELD",
+      "EN": "Protects from damage caused by Traps. Seeking Air Mines are no longer nemesis of the hero."
+    }
+  },
+  "TID_BOOSTER_HERO_POTION_HERO_UPGRADING": {
+    "Cannot boost Heroes. Eligible Heroes are upgrading!": {
+      "TID": "TID_BOOSTER_HERO_POTION_HERO_UPGRADING",
+      "EN": "Cannot boost Heroes. Eligible Heroes are upgrading!"
+    }
+  },
+  "TID_BOOSTER_HERO_POTION_PET_UPGRADING": {
+    "Cannot boost Heroes. Eligible Heroes are maxed or upgrading, and affected Pets are upgrading!": {
+      "TID": "TID_BOOSTER_HERO_POTION_PET_UPGRADING",
+      "EN": "Cannot boost Heroes. Eligible Heroes are maxed or upgrading, and affected Pets are upgrading!"
+    }
+  },
+  "TID_BUTTON_ALCHEMIST_CONVERT": {
+    "Convert": {
+      "TID": "TID_BUTTON_ALCHEMIST_CONVERT",
+      "EN": "Convert"
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_NOTE_NEW_PLAYER": {
+    "Clash of Clans is free to play, but you can speed up progress with in-app purchases (you can disable this in your device settings). By tapping Agree, you accept our Terms of Services.": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_NOTE_NEW_PLAYER",
+      "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases (you can disable this in your device settings). By tapping Agree, you accept our Terms of Services."
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_TITLE_NEW_PLAYER": {
+    "Important Notice": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_TITLE_NEW_PLAYER",
+      "EN": "Important Notice"
+    }
+  },
+  "TID_FORGE_UI_END_CRAFTING_POP_UP_CANCEL_TITLE": {
+    "Cancel Job?": {
+      "TID": "TID_FORGE_UI_END_CRAFTING_POP_UP_CANCEL_TITLE",
+      "EN": "Cancel Job?"
+    }
+  },
+  "TID_FORGE_UI_END_CRAFTING_POP_UP_CANCEL_TEXT": {
+    "Do you wish to cancel this Forge job? Resources spent will not be refunded.": {
+      "TID": "TID_FORGE_UI_END_CRAFTING_POP_UP_CANCEL_TEXT",
+      "EN": "Do you wish to cancel this Forge job? Resources spent will not be refunded."
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_NOTE": {
+    "We have updated the Terms of Service. Click \\qAgree\\q to accept the new terms and continue playing.": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_NOTE",
+      "EN": "We have updated the Terms of Service. Click \\qAgree\\q to accept the new terms and continue playing."
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_TITLE": {
+    "Important Notice": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_TITLE",
+      "EN": "Important Notice"
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_BUTTON1": {
+    "Agree": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_BUTTON1",
+      "EN": "Agree"
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_NOTE_NEW_PLAYER_ANDROID": {
+    "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). By tapping Agree, you accept our Terms of Service.": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_NOTE_NEW_PLAYER_ANDROID",
+      "EN": "Clash of Clans is free to play, but you can speed up progress with in-app purchases (to disable this, set up password protection in your Google Play Store app settings). By tapping Agree, you accept our Terms of Service."
+    }
+  },
+  "TID_INFO_POP_UP_TOS_PP_TITLE_NEW_PLAYER_ANDROID": {
+    "Important Notice": {
+      "TID": "TID_INFO_POP_UP_TOS_PP_TITLE_NEW_PLAYER_ANDROID",
+      "EN": "Important Notice"
+    }
+  },
+  "TID_BUILDING_ARCHER_CANNON": {
+    "Multi-Gear Tower": {
+      "TID": "TID_BUILDING_ARCHER_CANNON",
+      "EN": "Multi-Gear Tower"
+    }
+  },
+  "TID_BUILDING_ARCHER_CANNON_INFO": {
+    "The Multi-Gear Tower is a powerful combination of two classic Defenses! Choose the attack mode that suits you and let the destruction begin! Targets air and ground units.": {
+      "TID": "TID_BUILDING_ARCHER_CANNON_INFO",
+      "EN": "The Multi-Gear Tower is a powerful combination of two classic Defenses! Choose the attack mode that suits you and let the destruction begin! Targets air and ground units."
+    }
+  },
+  "TID_BUILDING_ARCHER_CANNON_LONG_RANGE_CONFIG": {
+    "Long Range Multi-Gear Tower": {
+      "TID": "TID_BUILDING_ARCHER_CANNON_LONG_RANGE_CONFIG",
+      "EN": "Long Range Multi-Gear Tower"
+    }
+  },
+  "TID_BULDING_ARCHER_CANNON_FAST_ATTACK_CONFIG": {
+    "Fast Attack Multi-Gear Tower": {
+      "TID": "TID_BULDING_ARCHER_CANNON_FAST_ATTACK_CONFIG",
+      "EN": "Fast Attack Multi-Gear Tower"
+    }
+  },
+  "TID_SCENERY_LNY2025": {
+    "Year of the Snake": {
+      "TID": "TID_SCENERY_LNY2025",
+      "EN": "Year of the Snake"
+    }
+  },
+  "TID_UPGRADE_GEARUP_BUILDING_TO_LEVEL_TO_BUILD_MORE": {
+    "Upgrade and gear up <building> to level <number> to build more!": {
+      "TID": "TID_UPGRADE_GEARUP_BUILDING_TO_LEVEL_TO_BUILD_MORE",
+      "EN": "Upgrade and gear up <building> to level <number> to build more!"
+    }
+  },
+  "TID_AGE_GATE_INFO": {
+    "Why am I seeing this?": {
+      "TID": "TID_AGE_GATE_INFO",
+      "EN": "Why am I seeing this?"
+    }
+  },
+  "TID_AGE_GATE_DESCRIPTION": {
+    "Clash of Clans is a game for all audiences. We need to ask your age to ensure you have the best experience possible.": {
+      "TID": "TID_AGE_GATE_DESCRIPTION",
+      "EN": "Clash of Clans is a game for all audiences. We need to ask your age to ensure you have the best experience possible."
+    }
+  },
+  "TID_GET_STARTER_PASS_TITLE": {
+    "Buy Starter Pass": {
+      "TID": "TID_GET_STARTER_PASS_TITLE",
+      "EN": "Buy Starter Pass"
+    }
+  },
+  "TID_STARTER_PASS_PURCHASE_INFO": {
+    "Kick-start your Clash adventure with the Starter Pass and earn the above rewards and more!": {
+      "TID": "TID_STARTER_PASS_PURCHASE_INFO",
+      "EN": "Kick-start your Clash adventure with the Starter Pass and earn the above rewards and more!"
+    }
+  },
+  "TID_STARTER_PASS_TIMER_TEXT": {
+    "Starter Pass ends when you reach Town Hall 7": {
+      "TID": "TID_STARTER_PASS_TIMER_TEXT",
+      "EN": "Starter Pass ends when you reach Town Hall 7"
+    }
+  },
+  "TID_WALL_WIZARD_NO_AVAILABLE_WALLS": {
+    "No more walls at that level to add to your selection.": {
+      "TID": "TID_WALL_WIZARD_NO_AVAILABLE_WALLS",
+      "EN": "No more walls at that level to add to your selection."
+    }
+  },
+  "TID_WALL_WIZARD_NO_SELECTED_WALLS": {
+    "No more walls to remove from your selection.": {
+      "TID": "TID_WALL_WIZARD_NO_SELECTED_WALLS",
+      "EN": "No more walls to remove from your selection."
+    }
+  },
+  "TID_WALL_WIZARD_TOO_MANY_UPGRADES": {
+    "You may only upgrade <number> buildings at a time.": {
+      "TID": "TID_WALL_WIZARD_TOO_MANY_UPGRADES",
+      "EN": "You may only upgrade <number> buildings at a time."
+    }
+  },
+  "TID_WALL_WIZARD_CANT_AFFORD_WALLS": {
+    "Additional walls exceed your resource capacity.": {
+      "TID": "TID_WALL_WIZARD_CANT_AFFORD_WALLS",
+      "EN": "Additional walls exceed your resource capacity."
+    }
+  },
+  "TID_WALL_WIZARD_NOT_ENOUGH_AVAILABLE_WALLS": {
+    "Less than <number> available walls remaining to be selected.": {
+      "TID": "TID_WALL_WIZARD_NOT_ENOUGH_AVAILABLE_WALLS",
+      "EN": "Less than <number> available walls remaining to be selected."
+    }
+  },
+  "TID_WALL_WIZARD_BUTTON": {
+    "Upgrade More": {
+      "TID": "TID_WALL_WIZARD_BUTTON",
+      "EN": "Upgrade More"
+    }
+  },
+  "TID_WALL_WIZARD_BUTTON_ADD_WALL": {
+    "Add Wall": {
+      "TID": "TID_WALL_WIZARD_BUTTON_ADD_WALL",
+      "EN": "Add Wall"
+    }
+  },
+  "TID_WALL_WIZARD_BUTTON_REMOVE_WALL": {
+    "Remove Wall": {
+      "TID": "TID_WALL_WIZARD_BUTTON_REMOVE_WALL",
+      "EN": "Remove Wall"
+    }
+  },
+  "TID_WALL_WIZARD_TITLE": {
+    "<building> x <number>": {
+      "TID": "TID_WALL_WIZARD_TITLE",
+      "EN": "<building> x <number>"
+    }
+  },
+  "TID_OBSTACLE_APRIL25": {
+    "WIP\uff1athat april 25 obstacle": {
+      "TID": "TID_OBSTACLE_APRIL25",
+      "EN": "WIP\uff1athat april 25 obstacle"
+    }
+  },
+  "TID_BUTTON_OPEN_LABORATORY": {
+    "Open Laboratory": {
+      "TID": "TID_BUTTON_OPEN_LABORATORY",
+      "EN": "Open Laboratory"
+    }
+  },
+  "TID_EVENT_TREASURE_HUNT_NEW_CHESTS_IN": {
+    "<value> new chests in: <time>": {
+      "TID": "TID_EVENT_TREASURE_HUNT_NEW_CHESTS_IN",
+      "EN": "<value> new chests in: <time>"
+    }
+  },
+  "TID_EVENT_TREASURE_HUNT_CHESTS_COLLECTED": {
+    "Collected:": {
+      "TID": "TID_EVENT_TREASURE_HUNT_CHESTS_COLLECTED",
+      "EN": "Collected:"
+    }
+  },
+  "TID_BUTTON_SETTINGS_CHEST_DROPRATES": {
+    "Chest Reward Chances": {
+      "TID": "TID_BUTTON_SETTINGS_CHEST_DROPRATES",
+      "EN": "Chest Reward Chances"
+    }
+  },
+  "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT_SHORT": {
+    "Launches barrel loads of Troops to support your Army!": {
+      "TID": "TID_CHARACTER_INFO_SIEGE_MACHINE_TROOP_CATAPULT_SHORT",
+      "EN": "Launches barrel loads of Troops to support your Army!"
+    }
+  },
+  "TID_SCENERY_LNY2025_STONE_TITLE": {
+    "EARTH": {
+      "TID": "TID_SCENERY_LNY2025_STONE_TITLE",
+      "EN": "EARTH"
+    }
+  },
+  "TID_SCENERY_LNY2025_STONE_YEARCYCKLE": {
+    "YEAR CYCLE": {
+      "TID": "TID_SCENERY_LNY2025_STONE_YEARCYCKLE",
+      "EN": "YEAR CYCLE"
+    }
+  },
+  "TID_SCENERY_LNY2025_STONE_TRAIT1": {
+    "PRAGMATIC": {
+      "TID": "TID_SCENERY_LNY2025_STONE_TRAIT1",
+      "EN": "PRAGMATIC"
+    }
+  },
+  "TID_SCENERY_LNY2025_STONE_TRAIT2": {
+    "PATIENT": {
+      "TID": "TID_SCENERY_LNY2025_STONE_TRAIT2",
+      "EN": "PATIENT"
+    }
+  },
+  "TID_SCENERY_LNY2025_STONE_TRAIT3": {
+    "WISE": {
+      "TID": "TID_SCENERY_LNY2025_STONE_TRAIT3",
+      "EN": "WISE"
+    }
+  },
+  "TID_SCENERY_LNY2025_FIRE_TITLE": {
+    "FIRE": {
+      "TID": "TID_SCENERY_LNY2025_FIRE_TITLE",
+      "EN": "FIRE"
+    }
+  },
+  "TID_SCENERY_LNY2025_FIRE_YEARCYCKLE": {
+    "YEAR CYCLE": {
+      "TID": "TID_SCENERY_LNY2025_FIRE_YEARCYCKLE",
+      "EN": "YEAR CYCLE"
+    }
+  },
+  "TID_SCENERY_LNY2025_FIRE_TRAIT1": {
+    "PASSIONATE": {
+      "TID": "TID_SCENERY_LNY2025_FIRE_TRAIT1",
+      "EN": "PASSIONATE"
+    }
+  },
+  "TID_SCENERY_LNY2025_FIRE_TRAIT2": {
+    "ADVENTUROUS": {
+      "TID": "TID_SCENERY_LNY2025_FIRE_TRAIT2",
+      "EN": "ADVENTUROUS"
+    }
+  },
+  "TID_SCENERY_LNY2025_FIRE_TRAIT3": {
+    "BRAVE": {
+      "TID": "TID_SCENERY_LNY2025_FIRE_TRAIT3",
+      "EN": "BRAVE"
+    }
+  },
+  "TID_SCENERY_LNY2025_METAL_TITLE": {
+    "METAL": {
+      "TID": "TID_SCENERY_LNY2025_METAL_TITLE",
+      "EN": "METAL"
+    }
+  },
+  "TID_SCENERY_LNY2025_METAL_YEARCYCLE": {
+    "YEAR CYCLE": {
+      "TID": "TID_SCENERY_LNY2025_METAL_YEARCYCLE",
+      "EN": "YEAR CYCLE"
+    }
+  },
+  "TID_SCENERY_LNY2025_METAL_TRAIT1": {
+    "AMBITIOUS": {
+      "TID": "TID_SCENERY_LNY2025_METAL_TRAIT1",
+      "EN": "AMBITIOUS"
+    }
+  },
+  "TID_SCENERY_LNY2025_METAL_TRAIT2": {
+    "DETERMINED": {
+      "TID": "TID_SCENERY_LNY2025_METAL_TRAIT2",
+      "EN": "DETERMINED"
+    }
+  },
+  "TID_SCENERY_LNY2025_METAL_TRAIT3": {
+    "STRATEGIC": {
+      "TID": "TID_SCENERY_LNY2025_METAL_TRAIT3",
+      "EN": "STRATEGIC"
+    }
+  },
+  "TID_SCENERY_LNY2025_WATER_TITLE": {
+    "WATER": {
+      "TID": "TID_SCENERY_LNY2025_WATER_TITLE",
+      "EN": "WATER"
+    }
+  },
+  "TID_SCENERY_LNY2025_WATER_YEARCYCLE": {
+    "YEAR CYCLE": {
+      "TID": "TID_SCENERY_LNY2025_WATER_YEARCYCLE",
+      "EN": "YEAR CYCLE"
+    }
+  },
+  "TID_SCENERY_LNY2025_WATER_TRAIT1": {
+    "CARING": {
+      "TID": "TID_SCENERY_LNY2025_WATER_TRAIT1",
+      "EN": "CARING"
+    }
+  },
+  "TID_SCENERY_LNY2025_WATER_TRAIT2": {
+    "MYSTERIOUS": {
+      "TID": "TID_SCENERY_LNY2025_WATER_TRAIT2",
+      "EN": "MYSTERIOUS"
+    }
+  },
+  "TID_SCENERY_LNY2025_WATER_TRAIT3": {
+    "SOCIAL": {
+      "TID": "TID_SCENERY_LNY2025_WATER_TRAIT3",
+      "EN": "SOCIAL"
+    }
+  },
+  "TID_SCENERY_LNY2025_WOOD_TITLE": {
+    "WOOD": {
+      "TID": "TID_SCENERY_LNY2025_WOOD_TITLE",
+      "EN": "WOOD"
+    }
+  },
+  "TID_SCENERY_LNY2025_WOOD_YEARCYCLE": {
+    "YEAR CYCLE": {
+      "TID": "TID_SCENERY_LNY2025_WOOD_YEARCYCLE",
+      "EN": "YEAR CYCLE"
+    }
+  },
+  "TID_SCENERY_LNY2025_WOOD_TRAIT1": {
+    "DIPLOMATIC": {
+      "TID": "TID_SCENERY_LNY2025_WOOD_TRAIT1",
+      "EN": "DIPLOMATIC"
+    }
+  },
+  "TID_SCENERY_LNY2025_WOOD_TRAIT2": {
+    "CREATIVE": {
+      "TID": "TID_SCENERY_LNY2025_WOOD_TRAIT2",
+      "EN": "CREATIVE"
+    }
+  },
+  "TID_SCENERY_LNY2025_WOOD_TRAIT3": {
+    "INTROSPECTIVE": {
+      "TID": "TID_SCENERY_LNY2025_WOOD_TRAIT3",
+      "EN": "INTROSPECTIVE"
+    }
+  },
+  "TID_BUILDING_ARCHER_CANNON_INFO_SHORT": {
+    "Speed? Range? The choice is yours!": {
+      "TID": "TID_BUILDING_ARCHER_CANNON_INFO_SHORT",
+      "EN": "Speed? Range? The choice is yours!"
+    }
+  },
+  "TID_EVENT_TREASURE_HUNT_CHESTS_COMPLETE": {
+    "All Chests collected!": {
+      "TID": "TID_EVENT_TREASURE_HUNT_CHESTS_COMPLETE",
+      "EN": "All Chests collected!"
+    }
+  },
+  "TID_GEARED_UP": {
+    "Geared Up <building>": {
+      "TID": "TID_GEARED_UP",
+      "EN": "Geared Up <building>"
+    }
+  },
+  "TID_SHOP_MERGE_BUILDING_DISCLAIMER_NON_GEARED": {
+    "Both buildings will be merged into this new building. Uses Non-Geared Up buildings. This action cannot be undone.": {
+      "TID": "TID_SHOP_MERGE_BUILDING_DISCLAIMER_NON_GEARED",
+      "EN": "Both buildings will be merged into this new building. Uses Non-Geared Up buildings. This action cannot be undone."
+    }
+  },
+  "TID_SPELL_SUMMON_TROOP_LEVEL": {
+    "<name> Level: <number>": {
+      "TID": "TID_SPELL_SUMMON_TROOP_LEVEL",
+      "EN": "<name> Level: <number>"
+    }
+  },
+  "TID_SP_REWARD_LOCKED_NEED_PREMIUM": {
+    "You need the Starter Pass to unlock this reward.": {
+      "TID": "TID_SP_REWARD_LOCKED_NEED_PREMIUM",
+      "EN": "You need the Starter Pass to unlock this reward."
+    }
+  },
+  "TID_SP_REWARD_LOCKED_NOT_ENOUGH_POINTS_AND_NEED_PREMIUM": {
+    "You need <num> more points and the Starter Pass to unlock this reward.": {
+      "TID": "TID_SP_REWARD_LOCKED_NOT_ENOUGH_POINTS_AND_NEED_PREMIUM",
+      "EN": "You need <num> more points and the Starter Pass to unlock this reward."
+    }
+  },
+  "TID_SETTINGS_HAPTIC_FEEDBACK": {
+    "Haptic Feedback": {
+      "TID": "TID_SETTINGS_HAPTIC_FEEDBACK",
+      "EN": "Haptic Feedback"
+    }
+  },
+  "TID_SETTINGS_LEGENDARY_LOADING": {
+    "Show Legendary Scenery animation in Matchmaking": {
+      "TID": "TID_SETTINGS_LEGENDARY_LOADING",
+      "EN": "Show Legendary Scenery animation in Matchmaking"
+    }
+  },
+  "TID_DONATION_RESOURCE_TITLE": {
+    "Donation Resource": {
+      "TID": "TID_DONATION_RESOURCE_TITLE",
+      "EN": "Donation Resource"
+    }
+  },
+  "TID_SP_RECEIVED": {
+    "Starter Pass received!": {
+      "TID": "TID_SP_RECEIVED",
+      "EN": "Starter Pass received!"
+    }
+  },
+  "TID_ALCHEMIST_TUTORIAL": {
+    "With a sprinkle of magic, I can transform resources into different types.": {
+      "TID": "TID_ALCHEMIST_TUTORIAL",
+      "EN": "With a sprinkle of magic, I can transform resources into different types."
+    }
+  },
+  "TID_DECO_MILITARY_2025_SUPERDECO_RANGE": {
+    "Shooting Range": {
+      "TID": "TID_DECO_MILITARY_2025_SUPERDECO_RANGE",
+      "EN": "Shooting Range"
+    }
+  },
+  "TID_UNABLE_TO_USE_GEARUP_FOR_MERGE": {
+    "Cannot use Geared Up defenses for this merge.": {
+      "TID": "TID_UNABLE_TO_USE_GEARUP_FOR_MERGE",
+      "EN": "Cannot use Geared Up defenses for this merge."
+    }
+  },
+  "TID_LNY25_PRINCE": {
+    "Snake Prince": {
+      "TID": "TID_LNY25_PRINCE",
+      "EN": "Snake Prince"
+    }
+  },
+  "TID_LNY25_WARDEN": {
+    "Snake Warden": {
+      "TID": "TID_LNY25_WARDEN",
+      "EN": "Snake Warden"
+    }
+  },
+  "TID_LNY25_QUEEN": {
+    "Snake Queen": {
+      "TID": "TID_LNY25_QUEEN",
+      "EN": "Snake Queen"
+    }
+  },
+  "TID_LNY25_KING": {
+    "Snake King": {
+      "TID": "TID_LNY25_KING",
+      "EN": "Snake King"
+    }
+  },
+  "TID_LNY25_CHAMPION": {
+    "Snake Champion": {
+      "TID": "TID_LNY25_CHAMPION",
+      "EN": "Snake Champion"
+    }
+  },
+  "TID_VILLAGER_STATUS_READY_MALE": {
+    "Ready to work!": {
+      "TID": "TID_VILLAGER_STATUS_READY_MALE",
+      "EN": "Ready to work!"
+    }
+  },
+  "TID_VILLAGER_STATUS_READY_FEMALE": {
+    "Ready to work!": {
+      "TID": "TID_VILLAGER_STATUS_READY_FEMALE",
+      "EN": "Ready to work!"
+    }
+  },
+  "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE": {
+    "Available until Town Hall 7": {
+      "TID": "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE",
+      "EN": "Available until Town Hall 7"
+    }
+  },
+  "TID_STARTER_PASS": {
+    "Starter Pass": {
+      "TID": "TID_STARTER_PASS",
+      "EN": "Starter Pass"
     }
   }
 }

@@ -198,6 +198,7 @@ SIEGE_MACHINE_ORDER = [
     "Log Launcher",
     "Flame Flinger",
     "Battle Drill",
+    "Troop Launcher"
 ]
 
 SUPER_TROOP_ORDER = [
@@ -307,7 +308,9 @@ EQUIPMENT = [
     "Magic Mirror",
     "Henchmen Puppet",
     "Dark Orb",
-    "Electro Boots"
+    "Electro Boots",
+    "Snake Bracelet",
+    "Metal Pants"
 ]
 
 ACHIEVEMENT_ORDER = [
