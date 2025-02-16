@@ -15,6 +15,11 @@ Additions:
 - Added the new Metal Pants & Snake Bracelet equipment to :class:`coc.EQUIPMENT`
 - Added the new Troop Launcher Siege
 - Updated static data & enums for the February 2025 update
+- Changed from ujson to orjson for improved performance and future-proofing
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug that would cause :meth:`coc.Client.get_members` to return an empty list
 
 v3.8.4
 ------
