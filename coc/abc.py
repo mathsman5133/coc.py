@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import ujson
+import orjson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
@@ -223,8 +223,8 @@ class DataContainer(metaclass=DataContainerMetaClass):
             production_building = "Pet Shop"
 
         # load buildings
-        with open(BUILDING_FILE_PATH) as fp:
-            buildings = ujson.load(fp)
+        with open(BUILDING_FILE_PATH, 'rb') as fp:
+            buildings = orjson.loads(fp.read())
 
         # without production_building, it is a hero
         if not production_building:
@@ -346,8 +346,8 @@ class DataContainerHolder:
         self.loaded = False
 
     def _load_json(self, english_aliases, lab_to_townhall):
-        with open(self.FILE_PATH) as fp:
-            data = ujson.load(fp)
+        with open(self.FILE_PATH, 'rb') as fp:
+            data = orjson.loads(fp.read())
 
         id = 2000
         for c, [supercell_name, meta] in enumerate(data.items()):

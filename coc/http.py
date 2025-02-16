@@ -35,6 +35,7 @@ from base64 import b64decode as base64_b64decode
 from json import loads as json_loads
 
 import aiohttp
+import orjson
 
 from .errors import (
     HTTPException,
@@ -52,10 +53,10 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 stats_url_matcher = re.compile(r"%23[\da-zA-Z]+|\d{8,}|global")
 
 
-async def json_or_text(response):
+async def json_or_text(response: aiohttp.ClientResponse):
     """Parses an aiohttp response into a the string or json response."""
     try:
-        ret = await response.json()
+        ret = await response.json(loads=orjson.loads)
     except aiohttp.ContentTypeError:
         ret = await response.text(encoding="utf-8")
 

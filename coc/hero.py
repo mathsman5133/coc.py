@@ -1,4 +1,4 @@
-import ujson
+import orjson
 
 from typing import TYPE_CHECKING, Dict, List, Optional, Type
 from pathlib import Path
@@ -311,8 +311,8 @@ class EquipmentHolder(DataContainerHolder):
 
     def _load_json(self, english_aliases, lab_to_townhall):
         id = 3000
-        with open(EQUIPMENT_FILE_PATH) as fp:
-            equipment_data = ujson.load(fp)
+        with open(EQUIPMENT_FILE_PATH, 'rb') as fp:
+            equipment_data = orjson.loads(fp.read())
 
         for supercell_name, equipment_meta in equipment_data.items():
             if not equipment_meta.get("TID"):

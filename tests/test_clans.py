@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-import ujson
+import orjson
 
 from coc.clans import Clan
 from coc.miscmodels import Location, Label, BaseLeague, ChatLanguage, CapitalDistrict
@@ -11,11 +11,11 @@ import tracemalloc
 
 tracemalloc.start()
 
-with open(Path(__file__).parent.joinpath(Path("mockdata/clans/clans/CLAN.json")), encoding="utf-8") as fp:
-	MOCK_CLAN = ujson.load(fp)
+with open(Path(__file__).parent.joinpath(Path("mockdata/clans/clans/CLAN.json")), 'rb') as fp:
+	MOCK_CLAN = orjson.loads(fp.read())
 
-with open(Path(__file__).parent.joinpath(Path("mockdata/clans/search/CLANS_FOUND.json")), encoding="utf-8") as fp:
-	MOCK_SEARCH_CLAN = ujson.load(fp)
+with open(Path(__file__).parent.joinpath(Path("mockdata/clans/search/CLANS_FOUND.json")), 'rb') as fp:
+	MOCK_SEARCH_CLAN = orjson.loads(fp.read())
 
 
 class TestClans(unittest.TestCase):

@@ -1,7 +1,7 @@
 from typing import Dict, List, Optional, Tuple, Type
 from pathlib import Path
 
-import ujson
+import orjson
 
 from .abc import DataContainer, DataContainerHolder
 from .enums import Resource
@@ -168,12 +168,12 @@ class TroopHolder(DataContainerHolder):
     item_lookup: Dict[Tuple[str, bool], Type[Troop]]
 
     def _load_json(self, english_aliases: dict, lab_to_townhall):
-        with open(TROOPS_FILE_PATH) as fp:
-            troop_data = ujson.load(fp)
-        with open(SUPER_TROOPS_FILE_PATH) as fp:
-            super_troop_data = ujson.load(fp)
-        with open(ARMY_LINK_ID_FILE_PATH) as fp:
-            army_link_ids: dict = ujson.load(fp)
+        with open(TROOPS_FILE_PATH, 'rb') as fp:
+            troop_data = orjson.loads(fp.read())
+        with open(SUPER_TROOPS_FILE_PATH, 'rb') as fp:
+            super_troop_data = orjson.loads(fp.read())
+        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
+            army_link_ids: dict = orjson.loads(fp.read())
 
         super_data: dict = {v["Replacement"]: v for item in super_troop_data.values() for v in item.values()}
 
