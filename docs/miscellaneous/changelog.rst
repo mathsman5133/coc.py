@@ -7,6 +7,17 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.9.1
+------
+
+Additions:
+~~~~~~~~~~
+- Added the achievement 'Supercharger'
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug when installing coc.py that would cause not all dependencies being installed
+
 v3.9.0
 ------
 
