@@ -18,6 +18,10 @@ Bugs Fixed:
 ~~~~~~~~~~~
 - Fixed a bug when installing coc.py that would cause not all dependencies being installed
 
+Removals:
+~~~~~~~~~
+- Removal of the `full_war_api` extension, as it is not longer maintained
+
 v3.9.0
 ------
 
@@ -347,7 +351,7 @@ Additions:
 
 - Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
 
-- Added :ref:`full_war_api` as an extension
+- Added `full_war_api` as an extension
 
 - Added :func:`Client.login_with_tokens` offering the same functionality as :func:`Client.login_with_keys` as an asynchronous function
 

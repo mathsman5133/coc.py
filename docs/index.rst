@@ -44,7 +44,6 @@ coc.py: A Clash of Clans API Wrapper
    :maxdepth: 2
    :caption: Extensions
 
-   extensions/full_war_api
    extensions/triggers
 
 .. _examples:
