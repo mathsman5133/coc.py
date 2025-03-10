@@ -10,6 +10,10 @@ of what has changed, and whats new for each version of the lib.
 v3.9.1
 ------
 
+Changes:
+~~~~~~~~
+- Minimum Python version required was changed from `3.7` to `3.9` as `3.7` and `3.8` are end-of-life.
+
 Additions:
 ~~~~~~~~~~
 - Added the achievement 'Supercharger'
