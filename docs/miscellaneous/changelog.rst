@@ -58,7 +58,7 @@ v3.8.1
 
 Bugs Fixed:
 ~~~~~~~~~~~
-- Fixed a bug with **kwargs in :class:`coc.Client` functions that caused duplicated values
+- Fixed a bug with `**kwargs` in :class:`coc.Client` functions that caused duplicated values
 
 v3.8.0
 ------
