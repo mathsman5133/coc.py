@@ -26,7 +26,7 @@ Getting Started
 
 Installing
 -----------
-**Python 3.7 or higher is required**
+**Python 3.9 or higher is required**
 
 .. code:: sh
 

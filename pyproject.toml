@@ -7,9 +7,9 @@ name = "coc.py"
 authors = [{ name = "mathsman5133" }]
 maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuchenmampfer" },
     { name = "lukasthaler"}, { name = "doluk"}]
-version = "3.9.0"
+version = "3.9.1"
 description = "A python wrapper for the Clash of Clans API"
-requires-python = ">=3.7.3"
+requires-python = ">=3.9.0"
 readme = "README.rst"
 license = { text = "MIT" }
 keywords = ["coc", "clash of clans", "coc.py", "clash api"]
@@ -17,7 +17,7 @@ classifiers = ["Development Status :: 5 - Production/Stable",
     "Programming Language :: Python",
     "Natural Language :: English",
     "Operating System :: OS Independent",]
-dependencies = ["aiohttp", "ujson"]
+dependencies = ["aiohttp", "orjson"]
 [project.urls]
 documentation = "https://cocpy.readthedocs.io/en/latest/"
 repository = "https://github.com/mathsman5133/coc.py"

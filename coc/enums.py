@@ -354,6 +354,7 @@ ACHIEVEMENT_ORDER = [
     "Dragon Slayer",
     "Ungrateful Child",
     "Superb Work",
+    "Supercharger",
 
     # Builder Base
     "Master Engineering",

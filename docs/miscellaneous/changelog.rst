@@ -7,6 +7,25 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.9.1
+------
+
+Changes:
+~~~~~~~~
+- Minimum Python version required was changed from `3.7` to `3.9` as `3.7` and `3.8` are end-of-life.
+
+Additions:
+~~~~~~~~~~
+- Added the achievement 'Supercharger'
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug when installing coc.py that would cause not all dependencies being installed
+
+Removals:
+~~~~~~~~~
+- Removal of the `full_war_api` extension, as it is not longer maintained
+
 v3.9.0
 ------
 
@@ -47,7 +66,7 @@ v3.8.1
 
 Bugs Fixed:
 ~~~~~~~~~~~
-- Fixed a bug with **kwargs in :class:`coc.Client` functions that caused duplicated values
+- Fixed a bug with `**kwargs` in :class:`coc.Client` functions that caused duplicated values
 
 v3.8.0
 ------
@@ -336,7 +355,7 @@ Additions:
 
 - Added :attr:`Client.raw_attribute` to control if the new `_raw_data` attribute of various objects gets populated
 
-- Added :ref:`full_war_api` as an extension
+- Added `full_war_api` as an extension
 
 - Added :func:`Client.login_with_tokens` offering the same functionality as :func:`Client.login_with_keys` as an asynchronous function
 
