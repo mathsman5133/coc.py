@@ -11,7 +11,7 @@ jobs:
       # For example, pypy2 and pypy3
       matrix:
 #        python-version: ["3.7.13", "3.8.13", "3.9.13", "3.10"]
-         python-version: [3.8]
+         python-version: [3.9]
 
     steps:
     - uses: actions/checkout@v3
