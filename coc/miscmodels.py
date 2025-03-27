@@ -728,11 +728,23 @@ class IDLookups:
 
 
 class HeroLoadout:
+    """
+    Represents a hero loadout including a hero, optional pet, and up to two pieces of equipment.
+
+    Attributes
+    ----------
+    hero : Hero
+        The resolved Hero object.
+    pet : Optional[Pet]
+        The resolved Pet object or None if not included.
+    equipment : list[Equipment]
+        A list of resolved Equipment objects.
+    """
     def __init__(self, loadout: tuple, lookup: IDLookups):
         self._lookup = lookup
 
-        self.hero: 'Hero'  = self._lookup.heroes.get(loadout[0], self._lookup.heroes.get(0))
-        self.pet: Optional['Pet']  = self._lookup.pets.get(loadout[1], self._lookup.pets.get(0)) if loadout[1] else None
+        self.hero: 'Hero' = self._lookup.heroes.get(loadout[0], self._lookup.heroes.get(0))
+        self.pet: Optional['Pet'] = self._lookup.pets.get(loadout[1], self._lookup.pets.get(0)) if loadout[1] else None
         self.equipment: list['Equipment'] = []
         for e in loadout[2:]:
             if e:
@@ -740,6 +752,26 @@ class HeroLoadout:
 
 
 class ArmyRecipe:
+    """
+    Represents an army recipe consisting of heroes, troops, spells, and Clan Castle units.
+
+    Attributes
+    ----------
+    heroes_loadout : list[HeroLoadout]
+        The list of hero loadouts including heroes, pets, and equipment.
+
+    troops : list[tuple[Troop, int]]
+        List of tuples representing each troop and its quantity.
+
+    spells : list[tuple[Spell, int]]
+        List of tuples representing each spell and its quantity.
+
+    clan_castle_troops : list[tuple[Troop, int]]
+        List of tuples for Clan Castle troops and their quantities.
+
+    clan_castle_spells : list[tuple[Spell, int]]
+        List of tuples for Clan Castle spells and their quantities.
+    """
     def __init__(self, client, recipe: tuple):
         self._client = client
         self._lookup = IDLookups(client)
@@ -751,25 +783,25 @@ class ArmyRecipe:
         self.__castle_spells = recipe[4]
 
     @property
-    def heroes_loadout(self) -> list[HeroLoadout] :
+    def heroes_loadout(self) -> list[HeroLoadout]:
         return [HeroLoadout(loadout, self._lookup) for loadout in self.__hero_loadout]
 
     @property
-    def troops(self) -> tuple['Troop', int]:
+    def troops(self) -> list[tuple['Troop', int]]:
         return [(self._lookup.troops.get(t_id, self._lookup.troops.get(0)), qty)
                 for t_id, qty in self.__troops]
 
     @property
-    def spells(self) -> tuple['Spell', int]:
+    def spells(self) -> list[tuple['Spell', int]]:
         return [(self._lookup.spells.get(t_id, self._lookup.spells.get(0)), qty)
                 for t_id, qty in self.__spells]
 
     @property
-    def clan_castle_troops(self) -> tuple['Troop', int]:
+    def clan_castle_troops(self) -> list[tuple['Troop', int]]:
         return [(self._lookup.troops.get(t_id, self._lookup.troops.get(0)), qty)
                 for t_id, qty in self.__castle_troops]
 
     @property
-    def clan_castle_spells(self)-> tuple['Spell', int]:
+    def clan_castle_spells(self) -> list[tuple['Spell', int]]:
         return [(self._lookup.spells.get(t_id, self._lookup.spells.get(0)), qty)
                 for t_id, qty in self.__castle_spells]
