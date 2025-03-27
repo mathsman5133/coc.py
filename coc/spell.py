@@ -8,8 +8,6 @@ from .enums import Resource
 from .miscmodels import TimeDelta
 
 SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
-ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spell_ids.json"))
-
 
 class Spell(DataContainer):
     """Represents a Spell object as returned by the API, optionally filled with game data.
@@ -32,8 +30,6 @@ class Spell(DataContainer):
         The amount of resources required to train this spell.
     training_resource: :class:`Resource`
         The type of resource used to train this spell.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this spell.
     is_elixir_spell: :class:`bool`
         Whether this spell is a regular spell from the Barracks
     is_dark_spell: :class:`bool`
@@ -63,7 +59,6 @@ class Spell(DataContainer):
     upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "TimeDelta"
 
     is_elixir_spell: bool = False
     is_dark_spell: bool = False
@@ -129,11 +124,8 @@ class SpellHolder(DataContainerHolder):
     def _load_json(self, english_aliases, lab_to_townhall):
         with open(SPELLS_FILE_PATH, 'rb') as fp:
             spell_data = orjson.loads(fp.read())
-        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
-            army_link_ids = orjson.loads(fp.read())
 
-        id = 2000  # fallback ID for non-standard spells
-        for supercell_name, spell_meta in spell_data.items():
+        for ID, (supercell_name, spell_meta) in enumerate(spell_data.items()):
 
             if not spell_meta.get("TID"):
                 continue
@@ -144,13 +136,10 @@ class SpellHolder(DataContainerHolder):
 
             spell_name = english_aliases[spell_meta.get("TID")]
             new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
-            spell_id = army_link_ids.get(spell_name, id)
-            if spell_id == id:
-                id += 1
 
             new_spell._load_json_meta(
                 spell_meta,
-                id=spell_id,
+                id=ID,
                 name=spell_name,
                 lab_to_townhall=lab_to_townhall,
             )

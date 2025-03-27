@@ -2298,9 +2298,9 @@
     }
   },
   "TID_TUTORIAL_DEFEND_4": {
-    "The Village is built on a Ley Line. The Buildings will magically repair themselves!": {
+    "A prudent Wizard once lived on these grounds, so Buildings will magically repair themselves!": {
       "TID": "TID_TUTORIAL_DEFEND_4",
-      "EN": "The Village is built on a Ley Line. The Buildings will magically repair themselves!"
+      "EN": "A prudent Wizard once lived on these grounds, so Buildings will magically repair themselves!"
     }
   },
   "TID_TUTORIAL_DEFEND_5": {
@@ -2328,9 +2328,9 @@
     }
   },
   "TID_TUTORIAL_ELIXIR_1": {
-    "Elixir is used to construct and upgrade Buildings.": {
+    "Elixir is used to construct and upgrade Buildings, and it's used to upgrade Troops.": {
       "TID": "TID_TUTORIAL_ELIXIR_1",
-      "EN": "Elixir is used to construct and upgrade Buildings."
+      "EN": "Elixir is used to construct and upgrade Buildings, and it's used to upgrade Troops."
     }
   },
   "TID_TUTORIAL_ELIXIR_2": {
@@ -4488,15 +4488,15 @@
     }
   },
   "TID_HINT_BOOST_SPELLS": {
-    "You can Boost the production rate of Spell Factory with Gems.": {
+    "Brew Spells in the Spell Factory and make your army even more powerful!": {
       "TID": "TID_HINT_BOOST_SPELLS",
-      "EN": "You can Boost the production rate of Spell Factory with Gems."
+      "EN": "Brew Spells in the Spell Factory and make your army even more powerful!"
     }
   },
   "TID_HINT_BOOST_TRAINING": {
-    "You can Boost the training speed of Barracks with Gems.": {
+    "Troops are always ready to fight. Just train \u2018em!": {
       "TID": "TID_HINT_BOOST_TRAINING",
-      "EN": "You can Boost the training speed of Barracks with Gems."
+      "EN": "Troops are always ready to fight. Just train \u2018em!"
     }
   },
   "TID_HINT_USE_SPELLS": {
@@ -4530,15 +4530,15 @@
     }
   },
   "TID_HINT HEROES_DIE": {
-    "Heroes are immortal, but they can be injured and must be healed before they can fight again.": {
+    "Heroes are immortal. How? Why? No one knows!": {
       "TID": "TID_HINT HEROES_DIE",
-      "EN": "Heroes are immortal, but they can be injured and must be healed before they can fight again."
+      "EN": "Heroes are immortal. How? Why? No one knows!"
     }
   },
   "TID_HINT HEROES_REGENERATE": {
-    "Heal your hero by letting him sleep or by using the Heal button.": {
+    "The Hero Hall is your one-stop shop for heroic essentials!": {
       "TID": "TID_HINT HEROES_REGENERATE",
-      "EN": "Heal your hero by letting him sleep or by using the Heal button."
+      "EN": "The Hero Hall is your one-stop shop for heroic essentials!"
     }
   },
   "TID_HINT HERO_BARBARIAN_KING": {
@@ -12430,9 +12430,9 @@
     }
   },
   "TID_HINT_HERO_GRAND_WARDEN_MODE": {
-    "Using an flying army? Try setting the Grand Warden to air mode!": {
+    "Using a flying army? Try setting the Grand Warden to air mode!": {
       "TID": "TID_HINT_HERO_GRAND_WARDEN_MODE",
-      "EN": "Using an flying army? Try setting the Grand Warden to air mode!"
+      "EN": "Using a flying army? Try setting the Grand Warden to air mode!"
     }
   },
   "TID_HINT_ARTILLERY_TARGET": {
@@ -19388,45 +19388,45 @@
     }
   },
   "TID_BOOSTER_FINISH_ANY_UPGRADE_INFO": {
-    "This extremely powerful magical encyclopedia can be used to instantly finish any upgrade timer. Works in both Villages!": {
+    "Instantly finish any upgrade. Works in both Villages!": {
       "TID": "TID_BOOSTER_FINISH_ANY_UPGRADE_INFO",
-      "EN": "This extremely powerful magical encyclopedia can be used to instantly finish any upgrade timer. Works in both Villages!"
+      "EN": "Instantly finish any upgrade. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FINISH_SPELL_UPGRADE_INFO": {
-    "Written by unknown wizards, this magical book can be used to instantly finish any Spell upgrade timer. Works in Home Village.": {
+    "Instantly finish any Spell upgrade in Home Village.": {
       "TID": "TID_BOOSTER_FINISH_SPELL_UPGRADE_INFO",
-      "EN": "Written by unknown wizards, this magical book can be used to instantly finish any Spell upgrade timer. Works in Home Village."
+      "EN": "Instantly finish any Spell upgrade in Home Village."
     }
   },
   "TID_BOOSTER_FINISH_HERO_UPGRADE_INFO": {
-    "Full of heroic tales and sound advice, this magical book can be used to instantly finish any hero or pet upgrade timer. Works in both Villages!": {
+    "Instantly finish a Hero or Pet upgrade. Works in both Villages!": {
       "TID": "TID_BOOSTER_FINISH_HERO_UPGRADE_INFO",
-      "EN": "Full of heroic tales and sound advice, this magical book can be used to instantly finish any hero or pet upgrade timer. Works in both Villages!"
+      "EN": "Instantly finish a Hero or Pet upgrade. Works in both Villages!"
     }
   },
   "TID_BOOSTER_MAX_LEVEL_ARMY_INFO": {
-    "This strong-smelling magical brew boosts Troops, Spells and Siege Machines to the maximum level allowed at your Town Hall level for 1h. Works in both Villages!": {
+    "Boost Troops, Spells, and Siege Machines to their maximum level allowed by your Town Hall for 1h. Works in both Villages!": {
       "TID": "TID_BOOSTER_MAX_LEVEL_ARMY_INFO",
-      "EN": "This strong-smelling magical brew boosts Troops, Spells and Siege Machines to the maximum level allowed at your Town Hall level for 1h. Works in both Villages!"
+      "EN": "Boost Troops, Spells, and Siege Machines to their maximum level allowed by your Town Hall for 1h. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FINISH_TROOP_UPGRADE_INFO": {
-    "Filled with very efficient training programs, this magical book can be used to instantly finish any troop upgrade timer. Works in both Villages!": {
+    "Instantly finish any Troop upgrade. Works in both Villages!": {
       "TID": "TID_BOOSTER_FINISH_TROOP_UPGRADE_INFO",
-      "EN": "Filled with very efficient training programs, this magical book can be used to instantly finish any troop upgrade timer. Works in both Villages!"
+      "EN": "Instantly finish any Troop upgrade. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FINISH_BUILDING_UPGRADE_INFO": {
-    "Supposedly authored by the Master Builder himself, this magical book can be used to instantly complete any building upgrade. Works in both Villages!": {
+    "Instantly finish any Building upgrade. Works in both Villages!": {
       "TID": "TID_BOOSTER_FINISH_BUILDING_UPGRADE_INFO",
-      "EN": "Supposedly authored by the Master Builder himself, this magical book can be used to instantly complete any building upgrade. Works in both Villages!"
+      "EN": "Instantly finish any Building upgrade. Works in both Villages!"
     }
   },
   "TID_BOOSTER_BOOST_RESOURCES_INFO": {
-    "A haste Spell turned into a potion, this magical Elixir can greatly boost your resource collector efficiency for <time>. Works in Home Village.": {
+    "Boost resource collector efficiency for <time> in Home Village.": {
       "TID": "TID_BOOSTER_BOOST_RESOURCES_INFO",
-      "EN": "A haste Spell turned into a potion, this magical Elixir can greatly boost your resource collector efficiency for <time>. Works in Home Village."
+      "EN": "Boost resource collector efficiency for <time> in Home Village."
     }
   },
   "TID_BOOSTER_BOOST_PRODUCTION_INFO": {
@@ -20822,33 +20822,33 @@
     }
   },
   "TID_BOOSTER_FILL_GOLD_STORAGE_INFO": {
-    "Seemingly providing an endless stream of Gold, this magical item allows you to completely fill your Gold Storages in the Home Village.": {
+    "Completely fill your Gold Storages in Home Village.": {
       "TID": "TID_BOOSTER_FILL_GOLD_STORAGE_INFO",
-      "EN": "Seemingly providing an endless stream of Gold, this magical item allows you to completely fill your Gold Storages in the Home Village."
+      "EN": "Completely fill your Gold Storages in Home Village."
     }
   },
   "TID_BOOSTER_FILL_ELIXIR_STORAGE_INFO": {
-    "Seemingly providing an endless stream of Elixir, this magical item allows you to completely fill your Elixir Storages in the Home Village.": {
+    "Completely fill your Elixir Storages in Home Village.": {
       "TID": "TID_BOOSTER_FILL_ELIXIR_STORAGE_INFO",
-      "EN": "Seemingly providing an endless stream of Elixir, this magical item allows you to completely fill your Elixir Storages in the Home Village."
+      "EN": "Completely fill your Elixir Storages in Home Village."
     }
   },
   "TID_BOOSTER_FILL_DARK_ELIXIR_STORAGE_INFO": {
-    "Seemingly providing an endless stream of Dark Elixir, this magical item allows you to completely fill your Dark Elixir Storages in the Home Village.": {
+    "Completely fill your Dark Elixir storages in Home Village.": {
       "TID": "TID_BOOSTER_FILL_DARK_ELIXIR_STORAGE_INFO",
-      "EN": "Seemingly providing an endless stream of Dark Elixir, this magical item allows you to completely fill your Dark Elixir Storages in the Home Village."
+      "EN": "Completely fill your Dark Elixir storages in Home Village."
     }
   },
   "TID_BOOSTER_FILL_GOLD2_STORAGE_INFO": {
-    "Seemingly providing an endless stream of Builder Gold, this magical item allows you to completely fill your Gold Storages in the Builder Base.": {
+    "Completely fill your Builder Gold Storages in Builder Base.": {
       "TID": "TID_BOOSTER_FILL_GOLD2_STORAGE_INFO",
-      "EN": "Seemingly providing an endless stream of Builder Gold, this magical item allows you to completely fill your Gold Storages in the Builder Base."
+      "EN": "Completely fill your Builder Gold Storages in Builder Base."
     }
   },
   "TID_BOOSTER_FILL_ELIXIR2_STORAGE_INFO": {
-    "Seemingly providing an endless stream of Builder Elixir, this magical item allows you to completely fill your Elixir Storages in the Builder Base.": {
+    "Completely fill your Builder Elixir Storages in Builder Base.": {
       "TID": "TID_BOOSTER_FILL_ELIXIR2_STORAGE_INFO",
-      "EN": "Seemingly providing an endless stream of Builder Elixir, this magical item allows you to completely fill your Elixir Storages in the Builder Base."
+      "EN": "Completely fill your Builder Elixir Storages in Builder Base."
     }
   },
   "TID_POPUP_BOOSTER_FILL_STORAGE_TITLE": {
@@ -21151,9 +21151,9 @@
     }
   },
   "TID_BOOSTER_WALL_UPGRADE_INFO": {
-    "Punching a Wall Piece with this Ring on will instantly upgrade it, though higher level Walls might require multiple Rings to upgrade. Works in both Villages!": {
+    "Instantly upgrade a Wall piece. Some higher level Walls may require multiple Rings to upgrade. Requires a free Builder. Works in both Villages!": {
       "TID": "TID_BOOSTER_WALL_UPGRADE_INFO",
-      "EN": "Punching a Wall Piece with this Ring on will instantly upgrade it, though higher level Walls might require multiple Rings to upgrade. Works in both Villages!"
+      "EN": "Instantly upgrade a Wall piece. Some higher level Walls may require multiple Rings to upgrade. Requires a free Builder. Works in both Villages!"
     }
   },
   "TID_BOOSTER_BUILDERS": {
@@ -21163,9 +21163,9 @@
     }
   },
   "TID_BOOSTER_BUILDERS_INFO": {
-    "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your Builders to work 10x faster for <time>. Works in the Home Village! Unfortunately, the Builder's Apprentice is too young to enjoy this brew, so his working speed will not be impacted.": {
+    "Boost Builder work to 10x its regular speed for <time> in Home Village. The Builder's Apprentice will not be affected.": {
       "TID": "TID_BOOSTER_BUILDERS_INFO",
-      "EN": "Brewed by the Builder in case of emergency all-nighters, this invigorating potion allows your Builders to work 10x faster for <time>. Works in the Home Village! Unfortunately, the Builder's Apprentice is too young to enjoy this brew, so his working speed will not be impacted."
+      "EN": "Boost Builder work to 10x its regular speed for <time> in Home Village. The Builder's Apprentice will not be affected."
     }
   },
   "TID_POPUP_BOOST_BUILDERS_TITLE": {
@@ -22793,9 +22793,9 @@
     }
   },
   "TID_BOOSTER_FREE_BUILDING_UPGRADE_INFO": {
-    "A swing of this magic hammer will instantly upgrade any building to the next level. Requires a free builder. Works in both villages!": {
+    "Instantly upgrade any Building to the next level. Requires a free Builder. Works in both Villages!": {
       "TID": "TID_BOOSTER_FREE_BUILDING_UPGRADE_INFO",
-      "EN": "A swing of this magic hammer will instantly upgrade any building to the next level. Requires a free builder. Works in both villages!"
+      "EN": "Instantly upgrade any Building to the next level. Requires a free Builder. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FREE_HERO_UPGRADE": {
@@ -22805,9 +22805,9 @@
     }
   },
   "TID_BOOSTER_FREE_HERO_UPGRADE_INFO": {
-    "A swing of this magic hammer will instantly upgrade any Hero or Pet to the next level. Works in both Villages!": {
+    "Instantly upgrade any Hero or Pet to the next level. Works in both Villages!": {
       "TID": "TID_BOOSTER_FREE_HERO_UPGRADE_INFO",
-      "EN": "A swing of this magic hammer will instantly upgrade any Hero or Pet to the next level. Works in both Villages!"
+      "EN": "Instantly upgrade any Hero or Pet to the next level. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FREE_TROOP_UPGRADE": {
@@ -22817,9 +22817,9 @@
     }
   },
   "TID_BOOSTER_FREE_TROOP_UPGRADE_INFO": {
-    "A swing of this magic hammer will instantly upgrade any troop to the next level. Works in both villages!": {
+    "Instantly upgrade any Troop to the next level. Works in both Villages!": {
       "TID": "TID_BOOSTER_FREE_TROOP_UPGRADE_INFO",
-      "EN": "A swing of this magic hammer will instantly upgrade any troop to the next level. Works in both villages!"
+      "EN": "Instantly upgrade any Troop to the next level. Works in both Villages!"
     }
   },
   "TID_BOOSTER_FREE_SPELL_UPGRADE": {
@@ -22829,9 +22829,9 @@
     }
   },
   "TID_BOOSTER_FREE_SPELL_UPGRADE_INFO": {
-    "A swing of this magic hammer will instantly upgrade any Spell to the next level. Works in the Home Village!": {
+    "Instantly upgrade any Spell to the next level in Home Village.": {
       "TID": "TID_BOOSTER_FREE_SPELL_UPGRADE_INFO",
-      "EN": "A swing of this magic hammer will instantly upgrade any Spell to the next level. Works in the Home Village!"
+      "EN": "Instantly upgrade any Spell to the next level in Home Village."
     }
   },
   "TID_SHOP_CATEGORY_OFFERS": {
@@ -23387,9 +23387,9 @@
     }
   },
   "TID_BOOSTER_CLOCKTOWER_INFO": {
-    "This thick elixir made from ground-up magic cogs activates your Clock Tower boost for <time>. Works in Builder Base.": {
+    "Activate Clock Tower boost for <time>. Works in Builder Base!": {
       "TID": "TID_BOOSTER_CLOCKTOWER_INFO",
-      "EN": "This thick elixir made from ground-up magic cogs activates your Clock Tower boost for <time>. Works in Builder Base."
+      "EN": "Activate Clock Tower boost for <time>. Works in Builder Base!"
     }
   },
   "TID_EVENT_TITLE_6TH_ANNIVERSARY_PACK": {
@@ -24353,9 +24353,9 @@
     }
   },
   "TID_BOOSTER_MOVE_OBSTACLE_INFO": {
-    "Strong but fragile, this magical shovel can be used to move a single obstacle. Works in both villages!": {
+    "Make a single object permanently movable. Works in both Villages!": {
       "TID": "TID_BOOSTER_MOVE_OBSTACLE_INFO",
-      "EN": "Strong but fragile, this magical shovel can be used to move a single obstacle. Works in both villages!"
+      "EN": "Make a single object permanently movable. Works in both Villages!"
     }
   },
   "TID_BOOSTER_MOVE_OBSTACLE_OFFER_INFO": {
@@ -24395,9 +24395,9 @@
     }
   },
   "TID_BOOSTER_HERO_POTION_INFO": {
-    "This potent potion temporarily boosts all Heroes and Pets to the maximum level allowed at your Town Hall level for <time>. Works in both Villages!": {
+    "Boost all Heroes and Pets to their maximum level allowed by your Town Hall for <time>. Works in both Villages!": {
       "TID": "TID_BOOSTER_HERO_POTION_INFO",
-      "EN": "This potent potion temporarily boosts all Heroes and Pets to the maximum level allowed at your Town Hall level for <time>. Works in both Villages!"
+      "EN": "Boost all Heroes and Pets to their maximum level allowed by your Town Hall for <time>. Works in both Villages!"
     }
   },
   "TID_BOOSTER_HERO_POTION_OFFER_INFO": {
@@ -27053,9 +27053,9 @@
     }
   },
   "TID_BOOSTER_LAB_POTION_INFO": {
-    "This healthy-looking beverage helps the mysterious Wizards inside the Laboratory research <multiplier>x faster for <time>. Works in Home Village! Unfortunately, the Lab Assistant doesn\u2019t qualify as a Wizard just yet so his working speed will not be impacted.": {
+    "Boost Laboratory research to <multiplier>x its regular speed in Home Village for <time>. The Lab Assistant will not be affected.": {
       "TID": "TID_BOOSTER_LAB_POTION_INFO",
-      "EN": "This healthy-looking beverage helps the mysterious Wizards inside the Laboratory research <multiplier>x faster for <time>. Works in Home Village! Unfortunately, the Lab Assistant doesn\u2019t qualify as a Wizard just yet so his working speed will not be impacted."
+      "EN": "Boost Laboratory research to <multiplier>x its regular speed in Home Village for <time>. The Lab Assistant will not be affected."
     }
   },
   "TID_POPUP_BOOST_RESEARCH_TITLE": {
@@ -31289,9 +31289,9 @@
     }
   },
   "TID_BOOSTER_SUPER_POTION_INFO": {
-    "Dark Elixir brewed into a delicious golden form, best enjoyed in a hot, humid environment with a few close friends. The Super Potion can boost a Troop into its Super Troop version for 3 days.": {
+    "Can Boost a Troop into its Super Troop form for 3 days!": {
       "TID": "TID_BOOSTER_SUPER_POTION_INFO",
-      "EN": "Dark Elixir brewed into a delicious golden form, best enjoyed in a hot, humid environment with a few close friends. The Super Potion can boost a Troop into its Super Troop version for 3 days."
+      "EN": "Can Boost a Troop into its Super Troop form for 3 days!"
     }
   },
   "TID_BOOSTER_SUPER_POTION_OFFER_INFO": {
@@ -31883,9 +31883,9 @@
     }
   },
   "TID_PET_RANGEDATTACKER_INFO": {
-    "Electro Owl zaps enemy defenses into dust from great distance. He's mostly made of feathers though, so better keep him well protected!": {
+    "Electro Owl zaps enemy Defenses into dust from great distance. He's mostly made of feathers though, so better keep him well protected!": {
       "TID": "TID_PET_RANGEDATTACKER_INFO",
-      "EN": "Electro Owl zaps enemy defenses into dust from great distance. He's mostly made of feathers though, so better keep him well protected!"
+      "EN": "Electro Owl zaps enemy Defenses into dust from great distance. He's mostly made of feathers though, so better keep him well protected!"
     }
   },
   "TID_PET_MELEEJUMPER_INFO": {
@@ -37199,9 +37199,9 @@
     }
   },
   "TID_PET_DIGGY_INFO": {
-    "Diggy is an introvert and spends a lot of time hiding underground. Still when it comes to battle he'll do his part, coming up to attack buildings and aid his Hero. If his Hero's taken out he'll seek out a new one for support and scritches.": {
+    "Diggy is an introvert and spends a lot of time hiding underground. Still when it comes to battle he'll do his part, coming up to attack Buildings and aid his Hero. If his Hero's taken out he'll seek out a new one for support and scritches.": {
       "TID": "TID_PET_DIGGY_INFO",
-      "EN": "Diggy is an introvert and spends a lot of time hiding underground. Still when it comes to battle he'll do his part, coming up to attack buildings and aid his Hero. If his Hero's taken out he'll seek out a new one for support and scritches."
+      "EN": "Diggy is an introvert and spends a lot of time hiding underground. Still when it comes to battle he'll do his part, coming up to attack Buildings and aid his Hero. If his Hero's taken out he'll seek out a new one for support and scritches."
     }
   },
   "TID_PET_FROSTY_INFO": {
@@ -37277,9 +37277,9 @@
     }
   },
   "TID_PET_DIGGY_ABILITY_INFO": {
-    "Mostly underground, Diggy comes up to stun and smash defenses.": {
+    "Mostly underground, Diggy comes up to stun and smash Defenses.": {
       "TID": "TID_PET_DIGGY_ABILITY_INFO",
-      "EN": "Mostly underground, Diggy comes up to stun and smash defenses."
+      "EN": "Mostly underground, Diggy comes up to stun and smash Defenses."
     }
   },
   "TID_PET_FROSTY_ABILITY": {
@@ -37289,9 +37289,9 @@
     }
   },
   "TID_PET_FROSTY_ABILITY_INFO": {
-    "Periodically spawns Frostmites against nearby defenses.": {
+    "Periodically spawns Frostmites against nearby Defenses.": {
       "TID": "TID_PET_FROSTY_ABILITY_INFO",
-      "EN": "Periodically spawns Frostmites against nearby defenses."
+      "EN": "Periodically spawns Frostmites against nearby Defenses."
     }
   },
   "TID_LOGIN_RESTRICTED_BY_LOCATION": {
@@ -41093,9 +41093,9 @@
     }
   },
   "TID_BOOSTER_PET_POTION_INFO": {
-    "Containing everything a Pet needs for a healthy, glossy coat. This helps Pets upgrade <multiplier>x faster for <time>.": {
+    "Boost Pet upgrades to <multiplier>x their regular speed for <time>.": {
       "TID": "TID_BOOSTER_PET_POTION_INFO",
-      "EN": "Containing everything a Pet needs for a healthy, glossy coat. This helps Pets upgrade <multiplier>x faster for <time>."
+      "EN": "Boost Pet upgrades to <multiplier>x their regular speed for <time>."
     }
   },
   "TID_BOOSTER_PET_POTION_ALT_2_LINE": {
@@ -41117,9 +41117,9 @@
     }
   },
   "TID_BOOSTER_STAR_POTION_INFO": {
-    "Smashing this fragile jar full of stars instantly makes your Star Bonus available in the Builder Base.": {
+    "Instantly make your Star Bonus available in Builder Base.": {
       "TID": "TID_BOOSTER_STAR_POTION_INFO",
-      "EN": "Smashing this fragile jar full of stars instantly makes your Star Bonus available in the Builder Base."
+      "EN": "Instantly make your Star Bonus available in Builder Base."
     }
   },
   "TID_BOOSTER_STAR_POTION_ALT_2_LINE": {
@@ -45815,69 +45815,69 @@
     }
   },
   "TID_SPECIAL_FTUE_TUTORIAL_1": {
-    "Hey Chief! Erling Haaland here! Welcome to the team!": {
+    "Welcome, Chief! OverlordRHODES has unleashed WWE Superstars into the fight!": {
       "TID": "TID_SPECIAL_FTUE_TUTORIAL_1",
-      "EN": "Hey Chief! Erling Haaland here! Welcome to the team!"
+      "EN": "Welcome, Chief! OverlordRHODES has unleashed WWE Superstars into the fight!"
     }
   },
   "TID_SPECIAL_FTUE_TUTORIAL_2": {
-    "Welcome to your Village! Life would be perfect if it wasn\u2019t for\u2026": {
+    "Those Superstars will show up in your Village soon. So let me show you the ropes\u2026": {
       "TID": "TID_SPECIAL_FTUE_TUTORIAL_2",
-      "EN": "Welcome to your Village! Life would be perfect if it wasn\u2019t for\u2026"
+      "EN": "Those Superstars will show up in your Village soon. So let me show you the ropes\u2026"
     }
   },
   "TID_SPECIAL_FTUE_TUTORIAL_3": {
-    "Oh no, Goblins again... Fast, set up a Cannon to defend your Village!": {
+    "Goblins!? This is your Village, Chief. Set up a Cannon and defend it!": {
       "TID": "TID_SPECIAL_FTUE_TUTORIAL_3",
-      "EN": "Oh no, Goblins again... Fast, set up a Cannon to defend your Village!"
+      "EN": "Goblins!? This is your Village, Chief. Set up a Cannon and defend it!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_1": {
-    "Coach! Erling Haaland checking in! Great to see you back!": {
+    "Chief, you're just in time for the main event!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_1",
-      "EN": "Coach! Erling Haaland checking in! Great to see you back!"
+      "EN": "Chief, you're just in time for the main event!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_2": {
-    "Hope you haven't lost your touch while warming the bench.": {
+    "You're gonna need all your strength!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_2",
-      "EN": "Hope you haven't lost your touch while warming the bench."
+      "EN": "You're gonna need all your strength!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_3": {
-    "How about a friendly match to showcase your skills?": {
+    "Let's see if you've still got what it takes by taking on your own Defenses!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_3",
-      "EN": "How about a friendly match to showcase your skills?"
+      "EN": "Let's see if you've still got what it takes by taking on your own Defenses!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_4": {
-    "Alright, let's see if you can beat your own defense!": {
+    "It\u2019s time to fight!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_4",
-      "EN": "Alright, let's see if you can beat your own defense!"
+      "EN": "It\u2019s time to fight!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_5": {
-    "Well played, Coach!": {
+    "You did it! This is a comeback for the ages!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_5",
-      "EN": "Well played, Coach!"
+      "EN": "You did it! This is a comeback for the ages!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_6": {
-    "Your fierce speed, strength, and positioning are truly impressive!": {
+    "Welcome back, Chief! A lot has happened while you were gone.": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_6",
-      "EN": "Your fierce speed, strength, and positioning are truly impressive!"
+      "EN": "Welcome back, Chief! A lot has happened while you were gone."
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_7": {
-    "Given all that's happened in your Village, let's start by taking a good look around, shall we?": {
+    "OverlordRHODES has unleashed WWE Superstars!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_7",
-      "EN": "Given all that's happened in your Village, let's start by taking a good look around, shall we?"
+      "EN": "OverlordRHODES has unleashed WWE Superstars!"
     }
   },
   "TID_SPECIAL_REENG_TUTORIAL_8": {
-    "See you later on the pitch!": {
+    "Some are friendly, but others\u2026 not so much. So, watch out!": {
       "TID": "TID_SPECIAL_REENG_TUTORIAL_8",
-      "EN": "See you later on the pitch!"
+      "EN": "Some are friendly, but others\u2026 not so much. So, watch out!"
     }
   },
   "TID_CHALLENGE_TITLE_HARD_MODE": {
@@ -45892,28 +45892,10 @@
       "EN": "Wizard Vendor"
     }
   },
-  "TID_GOBLINMACHINE": {
-    "Goblin Machine": {
-      "TID": "TID_GOBLINMACHINE",
-      "EN": "Goblin Machine"
-    }
-  },
   "TID_STEAMPUNK_BATTLE_COPTER": {
     "SteamPunk Copter": {
       "TID": "TID_STEAMPUNK_BATTLE_COPTER",
       "EN": "SteamPunk Copter"
-    }
-  },
-  "TID_HOTROD_BATTLE_COPTER": {
-    "Hotrod Copter": {
-      "TID": "TID_HOTROD_BATTLE_COPTER",
-      "EN": "Hotrod Copter"
-    }
-  },
-  "TID_STEAMPUNK_BATTLE_MACHINE": {
-    "Steampunk Machine": {
-      "TID": "TID_STEAMPUNK_BATTLE_MACHINE",
-      "EN": "Steampunk Machine"
     }
   },
   "TID_SQUAD_KING": {
@@ -47494,6 +47476,24 @@
       "EN": "Train All"
     }
   },
+  "TID_ARMY_TAB_ARMY": {
+    "Army": {
+      "TID": "TID_ARMY_TAB_ARMY",
+      "EN": "Army"
+    }
+  },
+  "TID_ARMY_TAB_RESERVE": {
+    "Reserve": {
+      "TID": "TID_ARMY_TAB_RESERVE",
+      "EN": "Reserve"
+    }
+  },
+  "TID_ARMY_TAB_PRESETS": {
+    "Army Recipes": {
+      "TID": "TID_ARMY_TAB_PRESETS",
+      "EN": "Army Recipes"
+    }
+  },
   "TID_SKIP_CHEST_OPEN": {
     "Skip Chest opening": {
       "TID": "TID_SKIP_CHEST_OPEN",
@@ -47710,6 +47710,12 @@
       "EN": "Select Equipment"
     }
   },
+  "TID_ARMY_LOADOUT_NO_SPACE": {
+    "Not enough space in army": {
+      "TID": "TID_ARMY_LOADOUT_NO_SPACE",
+      "EN": "Not enough space in army"
+    }
+  },
   "TID_SCENERY_CLASHOWEEN2024": {
     "Doomed Scenery": {
       "TID": "TID_SCENERY_CLASHOWEEN2024",
@@ -47735,9 +47741,9 @@
     }
   },
   "TID_TRAINING_TAB_TITLE_PRESETS": {
-    "Army Presets": {
+    "Army Recipes": {
       "TID": "TID_TRAINING_TAB_TITLE_PRESETS",
-      "EN": "Army Presets"
+      "EN": "Army Recipes"
     }
   },
   "TID_GOLD_SHOP_PACK_2": {
@@ -48821,15 +48827,15 @@
     }
   },
   "TID_CHARACTER_FIREMITE": {
-    "WIP": {
+    "Firemite": {
       "TID": "TID_CHARACTER_FIREMITE",
-      "EN": "WIP"
+      "EN": "Firemite"
     }
   },
   "TID_CHARACTER_INFO_FIREMITE": {
-    "WIP": {
+    "Speedy, curious little fellows with low health and a burning desire to explore Buildings!  All they want is a warm place to hide, but they leave pools of fire where they visit, slowly damaging their target over time.": {
       "TID": "TID_CHARACTER_INFO_FIREMITE",
-      "EN": "WIP"
+      "EN": "Speedy, curious little fellows with low health and a burning desire to explore Buildings!  All they want is a warm place to hide, but they leave pools of fire where they visit, slowly damaging their target over time."
     }
   },
   "TID_SIEGE_MACHINE_INVISIBLE": {
@@ -49313,9 +49319,9 @@
     }
   },
   "TID_OBSTACLE_APRIL25": {
-    "WIP\uff1athat april 25 obstacle": {
+    "Money in the Bank": {
       "TID": "TID_OBSTACLE_APRIL25",
-      "EN": "WIP\uff1athat april 25 obstacle"
+      "EN": "Money in the Bank"
     }
   },
   "TID_BUTTON_OPEN_LABORATORY": {
@@ -49546,6 +49552,12 @@
       "EN": "Haptic Feedback"
     }
   },
+  "TID_ARMY_PRESET_LOADED": {
+    "Recipe <army> set as active army!": {
+      "TID": "TID_ARMY_PRESET_LOADED",
+      "EN": "Recipe <army> set as active army!"
+    }
+  },
   "TID_SETTINGS_LEGENDARY_LOADING": {
     "Show Legendary Scenery animation in Matchmaking": {
       "TID": "TID_SETTINGS_LEGENDARY_LOADING",
@@ -49576,10 +49588,70 @@
       "EN": "Shooting Range"
     }
   },
+  "TID_BUTTON_ARMY_PRESET_SAVE_HERE": {
+    "Save Army": {
+      "TID": "TID_BUTTON_ARMY_PRESET_SAVE_HERE",
+      "EN": "Save Army"
+    }
+  },
+  "TID_CHARACTER_SUPER_YETI": {
+    "Super Yeti": {
+      "TID": "TID_CHARACTER_SUPER_YETI",
+      "EN": "Super Yeti"
+    }
+  },
+  "TID_CHARACTER_INFO_SUPER_YETI": {
+    "This mysterious masked Yeti is charged up! His electrical little buddies spring into action when he takes damage and zap the closest Building to spark a devastating chain reaction!": {
+      "TID": "TID_CHARACTER_INFO_SUPER_YETI",
+      "EN": "This mysterious masked Yeti is charged up! His electrical little buddies spring into action when he takes damage and zap the closest Building to spark a devastating chain reaction!"
+    }
+  },
   "TID_UNABLE_TO_USE_GEARUP_FOR_MERGE": {
     "Cannot use Geared Up defenses for this merge.": {
       "TID": "TID_UNABLE_TO_USE_GEARUP_FOR_MERGE",
       "EN": "Cannot use Geared Up defenses for this merge."
+    }
+  },
+  "TID_CHARACTER_ELECTROMITE": {
+    "Electromite": {
+      "TID": "TID_CHARACTER_ELECTROMITE",
+      "EN": "Electromite"
+    }
+  },
+  "TID_CHARACTER_ELECTROMITE_INFO": {
+    "Sparky little guys that spring into action when the Super Yeti is hurt! They zap the closest Building and cause a shocking chain reaction!": {
+      "TID": "TID_CHARACTER_ELECTROMITE_INFO",
+      "EN": "Sparky little guys that spring into action when the Super Yeti is hurt! They zap the closest Building and cause a shocking chain reaction!"
+    }
+  },
+  "TID_CHARACTER_SUPER_DRAGON_RIDER": {
+    "WIP Super Dragon Rider": {
+      "TID": "TID_CHARACTER_SUPER_DRAGON_RIDER",
+      "EN": "WIP Super Dragon Rider"
+    }
+  },
+  "TID_CHARACTER_SUPER_DRAGON_RIDER_INFO": {
+    "WIP Super Dragon Rider splits into Dragonless Rider (Minion placeholder) and Riderless Dragon (Dragon placeholder). Dragonless Rider targets anything and Riderless Dragon targets defenses": {
+      "TID": "TID_CHARACTER_SUPER_DRAGON_RIDER_INFO",
+      "EN": "WIP Super Dragon Rider splits into Dragonless Rider (Minion placeholder) and Riderless Dragon (Dragon placeholder). Dragonless Rider targets anything and Riderless Dragon targets defenses"
+    }
+  },
+  "TID_PRESET_ALREADY_LOADED": {
+    "Recipe Already Loaded": {
+      "TID": "TID_PRESET_ALREADY_LOADED",
+      "EN": "Recipe Already Loaded"
+    }
+  },
+  "TID_PRESET_CANT_LOAD_EMPTY": {
+    "Can\u2019t load empty recipe": {
+      "TID": "TID_PRESET_CANT_LOAD_EMPTY",
+      "EN": "Can\u2019t load empty recipe"
+    }
+  },
+  "TID_PRESET_CANT_SHARE_EMPTY": {
+    "Can\u2019t share empty recipe": {
+      "TID": "TID_PRESET_CANT_SHARE_EMPTY",
+      "EN": "Can\u2019t share empty recipe"
     }
   },
   "TID_LNY25_PRINCE": {
@@ -49612,6 +49684,78 @@
       "EN": "Snake Champion"
     }
   },
+  "TID_MILITARY_PRINCE": {
+    "Minion General": {
+      "TID": "TID_MILITARY_PRINCE",
+      "EN": "Minion General"
+    }
+  },
+  "TID_MILITARY_WARDEN": {
+    "Jetpack Warden": {
+      "TID": "TID_MILITARY_WARDEN",
+      "EN": "Jetpack Warden"
+    }
+  },
+  "TID_MILITARY_QUEEN": {
+    "Quickfire Queen": {
+      "TID": "TID_MILITARY_QUEEN",
+      "EN": "Quickfire Queen"
+    }
+  },
+  "TID_MILITARY_KING": {
+    "Combat King": {
+      "TID": "TID_MILITARY_KING",
+      "EN": "Combat King"
+    }
+  },
+  "TID_MILITARY_CHAMPION": {
+    "Sniper Champion": {
+      "TID": "TID_MILITARY_CHAMPION",
+      "EN": "Sniper Champion"
+    }
+  },
+  "TID_CHARACTER_FURNACE": {
+    "Furnace": {
+      "TID": "TID_CHARACTER_FURNACE",
+      "EN": "Furnace"
+    }
+  },
+  "TID_CHARACTER_INFO_FURNACE": {
+    "The Furnace doesn\u2019t move, but it does spawn Firemites over time that target Buildings. These curious little guys leave pools of fire where they visit!": {
+      "TID": "TID_CHARACTER_INFO_FURNACE",
+      "EN": "The Furnace doesn\u2019t move, but it does spawn Firemites over time that target Buildings. These curious little guys leave pools of fire where they visit!"
+    }
+  },
+  "TID_TAX_COLLECTOR": {
+    "Debt Collector": {
+      "TID": "TID_TAX_COLLECTOR",
+      "EN": "Debt Collector"
+    }
+  },
+  "TID_CHARACTER_INFO_TAX_COLLECTOR": {
+    "Greedy fingers! The Debt Collector targets resource Buildings and loots way more than a regular Goblin. Additional Loot is not taken from the Defender, rather, it is generated by the Debt Collector himself!": {
+      "TID": "TID_CHARACTER_INFO_TAX_COLLECTOR",
+      "EN": "Greedy fingers! The Debt Collector targets resource Buildings and loots way more than a regular Goblin. Additional Loot is not taken from the Defender, rather, it is generated by the Debt Collector himself!"
+    }
+  },
+  "TID_EXTRA_LOOT_STOLEN_PERCENTAGE": {
+    "Extra Loot: <number>%": {
+      "TID": "TID_EXTRA_LOOT_STOLEN_PERCENTAGE",
+      "EN": "Extra Loot: <number>%"
+    }
+  },
+  "TID_GEAR_TITLE_TURBO_START": {
+    "Noble Iron": {
+      "TID": "TID_GEAR_TITLE_TURBO_START",
+      "EN": "Noble Iron"
+    }
+  },
+  "TID_GEAR_INFO_TURBO_START": {
+    "Increases the speed, range, and power of the Minion Prince\u2019s first few attacks": {
+      "TID": "TID_GEAR_INFO_TURBO_START",
+      "EN": "Increases the speed, range, and power of the Minion Prince\u2019s first few attacks"
+    }
+  },
   "TID_VILLAGER_STATUS_READY_MALE": {
     "Ready to work!": {
       "TID": "TID_VILLAGER_STATUS_READY_MALE",
@@ -49624,16 +49768,988 @@
       "EN": "Ready to work!"
     }
   },
-  "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE": {
-    "Available until Town Hall 7": {
-      "TID": "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE",
-      "EN": "Available until Town Hall 7"
+  "TID_SUPER_YETI_ABILITY_NAME": {
+    "Shock and Awe": {
+      "TID": "TID_SUPER_YETI_ABILITY_NAME",
+      "EN": "Shock and Awe"
+    }
+  },
+  "TID_SUPER_YETI_ABILITY_HELP": {
+    "Electromites cause a shocking chain reaction when Super Yeti is damaged.": {
+      "TID": "TID_SUPER_YETI_ABILITY_HELP",
+      "EN": "Electromites cause a shocking chain reaction when Super Yeti is damaged."
+    }
+  },
+  "TID_PET_SNEEZY": {
+    "Sneezy": {
+      "TID": "TID_PET_SNEEZY",
+      "EN": "Sneezy"
+    }
+  },
+  "TID_PET_SNEEZY_INFO": {
+    "Her nose is blocked and loaded! Sneezy hangs behind her Hero due to allergies and sneezes tanky air Boogers that target Buildings. She goes on the attack when her Hero falls!": {
+      "TID": "TID_PET_SNEEZY_INFO",
+      "EN": "Her nose is blocked and loaded! Sneezy hangs behind her Hero due to allergies and sneezes tanky air Boogers that target Buildings. She goes on the attack when her Hero falls!"
+    }
+  },
+  "TID_PET_ABILITY_SNEEZY": {
+    "ACHOO!": {
+      "TID": "TID_PET_ABILITY_SNEEZY",
+      "EN": "ACHOO!"
+    }
+  },
+  "TID_PET_ABILITY_INFO_SNEEZY": {
+    "Sneezes out supporting air Troops and attacks when her Hero falls": {
+      "TID": "TID_PET_ABILITY_INFO_SNEEZY",
+      "EN": "Sneezes out supporting air Troops and attacks when her Hero falls"
+    }
+  },
+  "TID_PET_SNEEZY_INFO_SHORT": {
+    "Sneezes out air Troops to soak up damage. ACHOO!": {
+      "TID": "TID_PET_SNEEZY_INFO_SHORT",
+      "EN": "Sneezes out air Troops to soak up damage. ACHOO!"
+    }
+  },
+  "TID_SNEEZY_SPAWN": {
+    "Booger": {
+      "TID": "TID_SNEEZY_SPAWN",
+      "EN": "Booger"
+    }
+  },
+  "TID_CHARACTER_INFO_SNEEZY_SPAWN": {
+    "Sinister Boogers fired straight from Sneezy\u2019s loaded nostrils! These tanky air Troops soak up damage and target Buildings. Just keep away from tissues!": {
+      "TID": "TID_CHARACTER_INFO_SNEEZY_SPAWN",
+      "EN": "Sinister Boogers fired straight from Sneezy\u2019s loaded nostrils! These tanky air Troops soak up damage and target Buildings. Just keep away from tissues!"
+    }
+  },
+  "TID_CHARACTER_APRIL25GTG": {
+    "Giant Giant": {
+      "TID": "TID_CHARACTER_APRIL25GTG",
+      "EN": "Giant Giant"
+    }
+  },
+  "TID_CHARACTER_INFO_APRIL25GTG": {
+    "With the might of 10 Giants, the Giant Giant clobbers Defenses with massive splash damage. Uh-oh! If he loses half of his max health, he\u2019ll rage out with increased speed and power.": {
+      "TID": "TID_CHARACTER_INFO_APRIL25GTG",
+      "EN": "With the might of 10 Giants, the Giant Giant clobbers Defenses with massive splash damage. Uh-oh! If he loses half of his max health, he\u2019ll rage out with increased speed and power."
+    }
+  },
+  "TID_CHARACTER_APRIL25TBRM": {
+    "K.A.N.E": {
+      "TID": "TID_CHARACTER_APRIL25TBRM",
+      "EN": "K.A.N.E"
+    }
+  },
+  "TID_CHARACTER_INFO_APRIL25TBRM": {
+    "This tough Troop does what he wants! K.A.N.E. sees red, and goes straight for the Town Hall! He pummels ground and air units that get in his way with splash-damaging slams. When defeated, he is reborn in flames with increased damage and a fierce fiery aura.": {
+      "TID": "TID_CHARACTER_INFO_APRIL25TBRM",
+      "EN": "This tough Troop does what he wants! K.A.N.E. sees red, and goes straight for the Town Hall! He pummels ground and air units that get in his way with splash-damaging slams. When defeated, he is reborn in flames with increased damage and a fierce fiery aura."
+    }
+  },
+  "TID_CHARACTER_APRIL25BLTM": {
+    "The Disarmer": {
+      "TID": "TID_CHARACTER_APRIL25BLTM",
+      "EN": "The Disarmer"
+    }
+  },
+  "TID_CHARACTER_INFO_APRIL25BLTM": {
+    "She is THE MAN! The Disarmer targets Defenses with spiteful blows of her bat and makes easy work of Walls by jumping right over them! She must be put down 3 times before she\u2019s out. Talk about tough!": {
+      "TID": "TID_CHARACTER_INFO_APRIL25BLTM",
+      "EN": "She is THE MAN! The Disarmer targets Defenses with spiteful blows of her bat and makes easy work of Walls by jumping right over them! She must be put down 3 times before she\u2019s out. Talk about tough!"
+    }
+  },
+  "TID_CHARACTER_APRIL25RRBL": {
+    "YEETer": {
+      "TID": "TID_CHARACTER_APRIL25RRBL",
+      "EN": "YEETer"
+    }
+  },
+  "TID_CHARACTER_INFO_APRIL25RRBL": {
+    "With huge range, YEETer hurls 4 loyal tribe members at the start of battle that attack everything, before going back to his trusty spears. Say it loud now, YEET!": {
+      "TID": "TID_CHARACTER_INFO_APRIL25RRBL",
+      "EN": "With huge range, YEETer hurls 4 loyal tribe members at the start of battle that attack everything, before going back to his trusty spears. Say it loud now, YEET!"
+    }
+  },
+  "TID_APRIL25_GTG_ABILITY_NAME": {
+    "Giant Rage": {
+      "TID": "TID_APRIL25_GTG_ABILITY_NAME",
+      "EN": "Giant Rage"
+    }
+  },
+  "TID_APRIL25_GTG_ABILITY_HELP": {
+    "Giant Giant rages out with increased speed and damage after losing half of his max health": {
+      "TID": "TID_APRIL25_GTG_ABILITY_HELP",
+      "EN": "Giant Giant rages out with increased speed and damage after losing half of his max health"
+    }
+  },
+  "TID_APRIL25_TBRM_ABILITYNAME": {
+    "Born In Fire": {
+      "TID": "TID_APRIL25_TBRM_ABILITYNAME",
+      "EN": "Born In Fire"
+    }
+  },
+  "TID_APRIL25_TBRM_ABILITYINFO": {
+    "Goes straight for the Town Hall, and is reborn in flames when defeated with increased damage and a fiery aura!": {
+      "TID": "TID_APRIL25_TBRM_ABILITYINFO",
+      "EN": "Goes straight for the Town Hall, and is reborn in flames when defeated with increased damage and a fiery aura!"
+    }
+  },
+  "TID_APRIL25_BLTM_ABILITYNAME": {
+    "Big Time": {
+      "TID": "TID_APRIL25_BLTM_ABILITYNAME",
+      "EN": "Big Time"
+    }
+  },
+  "TID_APRIL25_BLTM_ABILITYINFO": {
+    "Speed and damage are boosted for the first 20 seconds, and needs to be defeated 3 times to be out": {
+      "TID": "TID_APRIL25_BLTM_ABILITYINFO",
+      "EN": "Speed and damage are boosted for the first 20 seconds, and needs to be defeated 3 times to be out"
     }
   },
   "TID_STARTER_PASS": {
     "Starter Pass": {
       "TID": "TID_STARTER_PASS",
       "EN": "Starter Pass"
+    }
+  },
+  "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE": {
+    "Available until Town Hall 7": {
+      "TID": "TID_STARTER_PASS_SHOP_ITEM_SUBTITLE",
+      "EN": "Available until Town Hall 7"
+    }
+  },
+  "TID_BUTTON_USE_PRESET": {
+    "Use": {
+      "TID": "TID_BUTTON_USE_PRESET",
+      "EN": "Use"
+    }
+  },
+  "TID_BUTTON_ADD_PRESET": {
+    "Save army as new recipe": {
+      "TID": "TID_BUTTON_ADD_PRESET",
+      "EN": "Save army as new recipe"
+    }
+  },
+  "TID_ARMY_QUICKSAVE_CONFIRM": {
+    "Saved current army to <recipe>": {
+      "TID": "TID_ARMY_QUICKSAVE_CONFIRM",
+      "EN": "Saved current army to <recipe>"
+    }
+  },
+  "TID_ERROR_CANT_SAVE_EMPTY_ARMY": {
+    "Can't save empty army": {
+      "TID": "TID_ERROR_CANT_SAVE_EMPTY_ARMY",
+      "EN": "Can't save empty army"
+    }
+  },
+  "TID_PRESET_CANT_LOAD_MISSING_HEROES": {
+    "The recipe has not all hero slots assigned!": {
+      "TID": "TID_PRESET_CANT_LOAD_MISSING_HEROES",
+      "EN": "The recipe has not all hero slots assigned!"
+    }
+  },
+  "TID_REQUEST_NOT_IN_ALLIANCE": {
+    "You need to join a Clan to get reinforcements": {
+      "TID": "TID_REQUEST_NOT_IN_ALLIANCE",
+      "EN": "You need to join a Clan to get reinforcements"
+    }
+  },
+  "TID_BUTTON_TAB_LOAD_ARMY": {
+    "Use Army": {
+      "TID": "TID_BUTTON_TAB_LOAD_ARMY",
+      "EN": "Use Army"
+    }
+  },
+  "TID_BUTTON_TRAINING_CREATE_NEW_PRESET": {
+    "Create New": {
+      "TID": "TID_BUTTON_TRAINING_CREATE_NEW_PRESET",
+      "EN": "Create New"
+    }
+  },
+  "TID_EDIT_ARMY_RECIPE_HEADER": {
+    "Editing recipe <army>": {
+      "TID": "TID_EDIT_ARMY_RECIPE_HEADER",
+      "EN": "Editing recipe <army>"
+    }
+  },
+  "TID_BOOST_HEALTH_PERCENTAGE": {
+    "Health increase: <number>%": {
+      "TID": "TID_BOOST_HEALTH_PERCENTAGE",
+      "EN": "Health increase: <number>%"
+    }
+  },
+  "TID_NERF_HEALTH_PERCENTAGE": {
+    "Health decrease: <number>%": {
+      "TID": "TID_NERF_HEALTH_PERCENTAGE",
+      "EN": "Health decrease: <number>%"
+    }
+  },
+  "TID_LOADOUT_CC_DONATION_REQUEST_ACTIVE": {
+    "You can\u2019t edit your preferred Clan Castle Troops while having an active donation request!": {
+      "TID": "TID_LOADOUT_CC_DONATION_REQUEST_ACTIVE",
+      "EN": "You can\u2019t edit your preferred Clan Castle Troops while having an active donation request!"
+    }
+  },
+  "TID_SKIN_FEATURE_LIST_TITLE": {
+    "Includes:": {
+      "TID": "TID_SKIN_FEATURE_LIST_TITLE",
+      "EN": "Includes:"
+    }
+  },
+  "TID_LOCAL_NOTIFICATION_SUPERCHARGE_READY": {
+    "Supercharged! <item> upgraded to charge level <level>": {
+      "TID": "TID_LOCAL_NOTIFICATION_SUPERCHARGE_READY",
+      "EN": "Supercharged! <item> upgraded to charge level <level>"
+    }
+  },
+  "TID_TUTORIAL_TRAIN_3": {
+    "That's it! Now, unleash those Barbarians and kick even more green butt!": {
+      "TID": "TID_TUTORIAL_TRAIN_3",
+      "EN": "That's it! Now, unleash those Barbarians and kick even more green butt!"
+    }
+  },
+  "TID_TUTORIAL_TRAIN_BARBARIANS_HINT": {
+    "Train <number> Barbarians": {
+      "TID": "TID_TUTORIAL_TRAIN_BARBARIANS_HINT",
+      "EN": "Train <number> Barbarians"
+    }
+  },
+  "TID_ARMY_TRAINING_RENAME_LOADOUT_POPUP_TITLE": {
+    "Rename Army Recipe": {
+      "TID": "TID_ARMY_TRAINING_RENAME_LOADOUT_POPUP_TITLE",
+      "EN": "Rename Army Recipe"
+    }
+  },
+  "TID_POPUP_NOT_ENOUGH_RESOURCE_TITLE": {
+    "Not enough resources!": {
+      "TID": "TID_POPUP_NOT_ENOUGH_RESOURCE_TITLE",
+      "EN": "Not enough resources!"
+    }
+  },
+  "TID_SPELL_FACTORY_VOUCHER_CLAIM_FAILED_CONDITIONS_NOT_MET": {
+    "Not eligible to claim voucher": {
+      "TID": "TID_SPELL_FACTORY_VOUCHER_CLAIM_FAILED_CONDITIONS_NOT_MET",
+      "EN": "Not eligible to claim voucher"
+    }
+  },
+  "TID_SCENERY_ACTION_HEROES": {
+    "Military Scenery": {
+      "TID": "TID_SCENERY_ACTION_HEROES",
+      "EN": "Military Scenery"
+    }
+  },
+  "TID_GEAR_DARK_CROWN": {
+    "Dark Crown": {
+      "TID": "TID_GEAR_DARK_CROWN",
+      "EN": "Dark Crown"
+    }
+  },
+  "TID_GEAR_INFO_DARK_CROWN": {
+    "Boosts health and damage a total of 3 times when allies are defeated": {
+      "TID": "TID_GEAR_INFO_DARK_CROWN",
+      "EN": "Boosts health and damage a total of 3 times when allies are defeated"
+    }
+  },
+  "TID_GEAR_ACTION_FIGURE": {
+    "Action Figure": {
+      "TID": "TID_GEAR_ACTION_FIGURE",
+      "EN": "Action Figure"
+    }
+  },
+  "TID_GEAR_INFO_ACTION_FIGURE": {
+    "Summons Giant Giant to fight by the Archer Queen\u2019s side": {
+      "TID": "TID_GEAR_INFO_ACTION_FIGURE",
+      "EN": "Summons Giant Giant to fight by the Archer Queen\u2019s side"
+    }
+  },
+  "TID_BP_PERK_CLAN_CASTLE_REQUEST_COOLDOWN": {
+    "Request Time Reduction": {
+      "TID": "TID_BP_PERK_CLAN_CASTLE_REQUEST_COOLDOWN",
+      "EN": "Request Time Reduction"
+    }
+  },
+  "TID_BP_PERK_CLAN_CASTLE_REQUEST_COOLDOWN_DESC": {
+    "Clan Castle Troop request wait time is reduced by <num>%": {
+      "TID": "TID_BP_PERK_CLAN_CASTLE_REQUEST_COOLDOWN_DESC",
+      "EN": "Clan Castle Troop request wait time is reduced by <num>%"
+    }
+  },
+  "TID_DECO_APRIL_2025": {
+    "WWE Title": {
+      "TID": "TID_DECO_APRIL_2025",
+      "EN": "WWE Title"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_TITLE": {
+    "Clan Event": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_TITLE",
+      "EN": "Clan Event"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_SUBTITLE": {
+    "Earn Event Currency with your Clan!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_SUBTITLE",
+      "EN": "Earn Event Currency with your Clan!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_1": {
+    "Earn Gold with your Clan from attacks, collectors, and the Loot Cart, and you'll earn the same amount in Event Currency.": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_1",
+      "EN": "Earn Gold with your Clan from attacks, collectors, and the Loot Cart, and you'll earn the same amount in Event Currency."
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_2": {
+    "Contribute collected Event Currency with your Clan to earn shared rewards!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_2",
+      "EN": "Contribute collected Event Currency with your Clan to earn shared rewards!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_3": {
+    "Complete the reward track with your Clan and unlock the final reward!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_INFO_TEXT_3",
+      "EN": "Complete the reward track with your Clan and unlock the final reward!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_TOP_CONTRIBUTORS": {
+    "Top Contributors": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_TOP_CONTRIBUTORS",
+      "EN": "Top Contributors"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_AMOUNT_LABEL": {
+    "Collected": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_AMOUNT_LABEL",
+      "EN": "Collected"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_START_COUNTDOWN": {
+    "Event starts in:": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_START_COUNTDOWN",
+      "EN": "Event starts in:"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_END_COUNTDOWN": {
+    "Time left to collect rewards:": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_END_COUNTDOWN",
+      "EN": "Time left to collect rewards:"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_RESOURCE": {
+    "Clan Event Currency": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_RESOURCE",
+      "EN": "Clan Event Currency"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_NOT_IN_CLAN": {
+    "Join a Clan to participate in the Event!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_NOT_IN_CLAN",
+      "EN": "Join a Clan to participate in the Event!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_WRONG_CLAN": {
+    "Already participating in the Event in a different Clan!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_WRONG_CLAN",
+      "EN": "Already participating in the Event in a different Clan!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_REWARD_CLAIM_FAILED": {
+    "Contribute at least once to earn rewards": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_REWARD_CLAIM_FAILED",
+      "EN": "Contribute at least once to earn rewards"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_BUTTON_CONTRIBUTE": {
+    "Contribute": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_BUTTON_CONTRIBUTE",
+      "EN": "Contribute"
+    }
+  },
+  "TID_DECO_APRIL_GOBLINS_2025": {
+    "Rumbling Goblins": {
+      "TID": "TID_DECO_APRIL_GOBLINS_2025",
+      "EN": "Rumbling Goblins"
+    }
+  },
+  "TID_DECO_COC_GIANT_2025": {
+    "Golden Giant": {
+      "TID": "TID_DECO_COC_GIANT_2025",
+      "EN": "Golden Giant"
+    }
+  },
+  "TID_POPUP_CONFIRM_USE_RECIPE_TITLE": {
+    "Use Army Recipe?": {
+      "TID": "TID_POPUP_CONFIRM_USE_RECIPE_TITLE",
+      "EN": "Use Army Recipe?"
+    }
+  },
+  "TID_POPUP_CONFIRM_USE_RECIPE_TEXT_DONATION": {
+    "The recipe\u2019s Clan Castle will not be used because you have an ongoing donation request": {
+      "TID": "TID_POPUP_CONFIRM_USE_RECIPE_TEXT_DONATION",
+      "EN": "The recipe\u2019s Clan Castle will not be used because you have an ongoing donation request"
+    }
+  },
+  "TID_POPUP_CONFIRM_USE_RECIPE_TEXT_UNITS": {
+    "The recipe\u2019s Clan Castle will not be used because you already have Reinforcements": {
+      "TID": "TID_POPUP_CONFIRM_USE_RECIPE_TEXT_UNITS",
+      "EN": "The recipe\u2019s Clan Castle will not be used because you already have Reinforcements"
+    }
+  },
+  "TID_OVERVIEW_REINFORCEMENTS_TITLE": {
+    "Reinforcements": {
+      "TID": "TID_OVERVIEW_REINFORCEMENTS_TITLE",
+      "EN": "Reinforcements"
+    }
+  },
+  "TID_BUTTON_SAVE_CURRENT_RECIPE": {
+    "Save current recipe": {
+      "TID": "TID_BUTTON_SAVE_CURRENT_RECIPE",
+      "EN": "Save current recipe"
+    }
+  },
+  "TID_BUTTON_TRAINING_ADD_CC": {
+    "Add": {
+      "TID": "TID_BUTTON_TRAINING_ADD_CC",
+      "EN": "Add"
+    }
+  },
+  "TID_INFO_FRIENDLY_FREE_FRIENDLY_CC": {
+    "Reinforcements are free for Friendly Attacks!": {
+      "TID": "TID_INFO_FRIENDLY_FREE_FRIENDLY_CC",
+      "EN": "Reinforcements are free for Friendly Attacks!"
+    }
+  },
+  "TID_ARMY_PRESET_LOADED_FRIENDLY_ARMY": {
+    "Recipe <army> set as friendly army!": {
+      "TID": "TID_ARMY_PRESET_LOADED_FRIENDLY_ARMY",
+      "EN": "Recipe <army> set as friendly army!"
+    }
+  },
+  "TID_ARMY_IMPORT_CONFIRM": {
+    "Saved shared army to <recipe>": {
+      "TID": "TID_ARMY_IMPORT_CONFIRM",
+      "EN": "Saved shared army to <recipe>"
+    }
+  },
+  "TID_ARMY_LOADOUT_COPIED_TO_DEVICE_CLIPBOARD": {
+    "Army copied to device clipboard!": {
+      "TID": "TID_ARMY_LOADOUT_COPIED_TO_DEVICE_CLIPBOARD",
+      "EN": "Army copied to device clipboard!"
+    }
+  },
+  "TID_SAVING_CHANGES": {
+    "Saving changes": {
+      "TID": "TID_SAVING_CHANGES",
+      "EN": "Saving changes"
+    }
+  },
+  "TID_POPUP_CONFIRM_DELETE_RECIPE": {
+    "Delete recipe?": {
+      "TID": "TID_POPUP_CONFIRM_DELETE_RECIPE",
+      "EN": "Delete recipe?"
+    }
+  },
+  "TID_POPUP_CONFIRM_DELETE_RECIPE_TEXT": {
+    "Are you sure you want to delete this recipe?": {
+      "TID": "TID_POPUP_CONFIRM_DELETE_RECIPE_TEXT",
+      "EN": "Are you sure you want to delete this recipe?"
+    }
+  },
+  "TID_ARMY_SLOT_DEFAULT_IMPORTED_NAME": {
+    "Imported Army <num>": {
+      "TID": "TID_ARMY_SLOT_DEFAULT_IMPORTED_NAME",
+      "EN": "Imported Army <num>"
+    }
+  },
+  "TID_HERO_TAVERN_UNDER_CONSTRUCTION": {
+    "Hero Hall is under construction": {
+      "TID": "TID_HERO_TAVERN_UNDER_CONSTRUCTION",
+      "EN": "Hero Hall is under construction"
+    }
+  },
+  "TID_FINISH_HERO_TAVERN": {
+    "Finish Hero Hall": {
+      "TID": "TID_FINISH_HERO_TAVERN",
+      "EN": "Finish Hero Hall"
+    }
+  },
+  "TID_ARMY_LOADOUT_SHARED_TO_CHAT": {
+    "Army shared to chat!": {
+      "TID": "TID_ARMY_LOADOUT_SHARED_TO_CHAT",
+      "EN": "Army shared to chat!"
+    }
+  },
+  "TID_ARMY_LOADOUT_UNLOCK_WITH_TH_LEVEL": {
+    "Army Recipes unlock at Town Hall level <number>!": {
+      "TID": "TID_ARMY_LOADOUT_UNLOCK_WITH_TH_LEVEL",
+      "EN": "Army Recipes unlock at Town Hall level <number>!"
+    }
+  },
+  "TID_BUTTON_ATTACK_COOLDOWN": {
+    "Attack available in:": {
+      "TID": "TID_BUTTON_ATTACK_COOLDOWN",
+      "EN": "Attack available in:"
+    }
+  },
+  "TID_INFO_ATTACK_COOLDOWN": {
+    "Your Troops are still fighting! Please wait a moment for their battle to finish.": {
+      "TID": "TID_INFO_ATTACK_COOLDOWN",
+      "EN": "Your Troops are still fighting! Please wait a moment for their battle to finish."
+    }
+  },
+  "TID_INFO_DAMAGE_MULTIPLIER_TARGET": {
+    "Extra Damage to:": {
+      "TID": "TID_INFO_DAMAGE_MULTIPLIER_TARGET",
+      "EN": "Extra Damage to:"
+    }
+  },
+  "TID_INFO_DAMAGE_MULTIPLIER_TARGET_TEXT": {
+    "(Damage x<number>)": {
+      "TID": "TID_INFO_DAMAGE_MULTIPLIER_TARGET_TEXT",
+      "EN": "(Damage x<number>)"
+    }
+  },
+  "TID_APRIL25_RRBL_ABILITYNAME": {
+    "Tribal Throw": {
+      "TID": "TID_APRIL25_RRBL_ABILITYNAME",
+      "EN": "Tribal Throw"
+    }
+  },
+  "TID_APRIL25_RRBL_ABILITYINFO": {
+    "YEETer throws 4 loyal tribe members from long range at the start of battle that attack everything!": {
+      "TID": "TID_APRIL25_RRBL_ABILITYINFO",
+      "EN": "YEETer throws 4 loyal tribe members from long range at the start of battle that attack everything!"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_TITLE": {
+    "Multi-Archer Tower Terminator": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_TITLE",
+      "EN": "Multi-Archer Tower Terminator"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER": {
+    "Destroy <number> Multi-Archer Towers in Multiplayer Battles": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER",
+      "EN": "Destroy <number> Multi-Archer Towers in Multiplayer Battles"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_COMPLETED": {
+    "Total Multi-Archer Towers Destroyed: <value>": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_COMPLETED",
+      "EN": "Total Multi-Archer Towers Destroyed: <value>"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_TITLE": {
+    "Ricochet Cannon Crusher": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_TITLE",
+      "EN": "Ricochet Cannon Crusher"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON": {
+    "Destroy <number> Ricochet Cannons in Multiplayer Battles": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON",
+      "EN": "Destroy <number> Ricochet Cannons in Multiplayer Battles"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_COMPLETED": {
+    "Total Ricochet Cannons Destroyed: <value>": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_COMPLETED",
+      "EN": "Total Ricochet Cannons Destroyed: <value>"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_TITLE": {
+    "Firespitter Finisher": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_TITLE",
+      "EN": "Firespitter Finisher"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_FIRESPITTER": {
+    "Destroy <number> Firespitters in Multiplayer Battles": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER",
+      "EN": "Destroy <number> Firespitters in Multiplayer Battles"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_COMPLETED": {
+    "Total Firespitters Destroyed: <value>": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_COMPLETED",
+      "EN": "Total Firespitters Destroyed: <value>"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_TITLE": {
+    "Multi-Gear Tower Trampler": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_TITLE",
+      "EN": "Multi-Gear Tower Trampler"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER": {
+    "Destroy <number> Multi-Gear Towers in Multiplayer Battles": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER",
+      "EN": "Destroy <number> Multi-Gear Towers in Multiplayer Battles"
+    }
+  },
+  "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_COMPLETED": {
+    "Total Multi-Gear Towers Destroyed: <value>": {
+      "TID": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_COMPLETED",
+      "EN": "Total Multi-Gear Towers Destroyed: <value>"
+    }
+  },
+  "TID_CREATOR_FOUNTAIN_DECO": {
+    "Creator Fountain": {
+      "TID": "TID_CREATOR_FOUNTAIN_DECO",
+      "EN": "Creator Fountain"
+    }
+  },
+  "TID_CHARACTER_INFO_FURNACE_SHORT": {
+    "Spits out curious Firemites that burn Buildings!": {
+      "TID": "TID_CHARACTER_INFO_FURNACE_SHORT",
+      "EN": "Spits out curious Firemites that burn Buildings!"
+    }
+  },
+  "TID_CHARACTER_TRIBAL_TAG_TEAM": {
+    "Tribal Tag Team": {
+      "TID": "TID_CHARACTER_TRIBAL_TAG_TEAM",
+      "EN": "Tribal Tag Team"
+    }
+  },
+  "TID_CHARACTER_TRIBAL_TAG_TEAM_INFO": {
+    "You don't need size when you've got strength in numbers! This close-quarters quartet are thrown into battle by YEETer when he is deployed and clobber anything they can get their mini but mighty hands on!": {
+      "TID": "TID_CHARACTER_TRIBAL_TAG_TEAM_INFO",
+      "EN": "You don't need size when you've got strength in numbers! This close-quarters quartet are thrown into battle by YEETer when he is deployed and clobber anything they can get their mini but mighty hands on!"
+    }
+  },
+  "TID_DECO_APRIL_2025_SUPERDECO": {
+    "Surprise Wheel": {
+      "TID": "TID_DECO_APRIL_2025_SUPERDECO",
+      "EN": "Surprise Wheel"
+    }
+  },
+  "TID_DECO_JAPAN_2025": {
+    "Sacred Gate": {
+      "TID": "TID_DECO_JAPAN_2025",
+      "EN": "Sacred Gate"
+    }
+  },
+  "TID_CLAN_EVENT_CURRENCY_REQUIREMENT": {
+    "Your Clan needs to contribute <num> more Event Currency to earn this reward.": {
+      "TID": "TID_CLAN_EVENT_CURRENCY_REQUIREMENT",
+      "EN": "Your Clan needs to contribute <num> more Event Currency to earn this reward."
+    }
+  },
+  "TID_CLAN_EVENT_LEADERBOARD_INFO": {
+    "Collect Gold with your Clan from attacks, collectors, and the Loot Cart, and you'll earn the same amount in Event Currency during the Event. Contribute Event Currency with your Clan to unlock shared rewards!": {
+      "TID": "TID_CLAN_EVENT_LEADERBOARD_INFO",
+      "EN": "Collect Gold with your Clan from attacks, collectors, and the Loot Cart, and you'll earn the same amount in Event Currency during the Event. Contribute Event Currency with your Clan to unlock shared rewards!"
+    }
+  },
+  "TID_OPEN_CLAN_PROGRESS_EVENT": {
+    "Go!": {
+      "TID": "TID_OPEN_CLAN_PROGRESS_EVENT",
+      "EN": "Go!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_INFO": {
+    "Collect Gold with your Clan from attacks, collectors, and the Loot Cart, and contribute Event Currency to unlock shared rewards!": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_INFO",
+      "EN": "Collect Gold with your Clan from attacks, collectors, and the Loot Cart, and contribute Event Currency to unlock shared rewards!"
+    }
+  },
+  "TID_BUILDING_CLASS_ANY_BUILDING": {
+    "Buildings": {
+      "TID": "TID_BUILDING_CLASS_ANY_BUILDING",
+      "EN": "Buildings"
+    }
+  },
+  "TID_CLAN_EVENT_LEADERBOARD_TITLE_ALT": {
+    "Starting soon": {
+      "TID": "TID_CLAN_EVENT_LEADERBOARD_TITLE_ALT",
+      "EN": "Starting soon"
+    }
+  },
+  "TID_BOOST_MAX_DAMAGE_PERCENTAGE": {
+    "Max damage increase: <number>%": {
+      "TID": "TID_BOOST_MAX_DAMAGE_PERCENTAGE",
+      "EN": "Max damage increase: <number>%"
+    }
+  },
+  "TID_BOOST_MAX_HEALTH_PERCENTAGE": {
+    "Max health increase: <number>%": {
+      "TID": "TID_BOOST_MAX_HEALTH_PERCENTAGE",
+      "EN": "Max health increase: <number>%"
+    }
+  },
+  "TID_ARMY_OVERVIEW_HINT_SIEGE_BUILD_WORKSHOP": {
+    "Build the Workshop to unlock Siege Machines": {
+      "TID": "TID_ARMY_OVERVIEW_HINT_SIEGE_BUILD_WORKSHOP",
+      "EN": "Build the Workshop to unlock Siege Machines"
+    }
+  },
+  "TID_ARMY_OVERVIEW_HINT_SPELLS_BUILD_SPELLFACTORY": {
+    "Build the Spell Factory to unlock Spells": {
+      "TID": "TID_ARMY_OVERVIEW_HINT_SPELLS_BUILD_SPELLFACTORY",
+      "EN": "Build the Spell Factory to unlock Spells"
+    }
+  },
+  "TID_ATTACK_WARNING_NO_HEROES_ASSIGNED": {
+    "Your army is missing Heroes": {
+      "TID": "TID_ATTACK_WARNING_NO_HEROES_ASSIGNED",
+      "EN": "Your army is missing Heroes"
+    }
+  },
+  "TID_SELECT_WAR_TARGET_TO_ATTACK": {
+    "Choose a target to attack!": {
+      "TID": "TID_SELECT_WAR_TARGET_TO_ATTACK",
+      "EN": "Choose a target to attack!"
+    }
+  },
+  "TID_ATTACK_WARNING_NO_HEROES_ASSIGNED_TEXT": {
+    "There's room for more Heroes in your army. Do you want to add more Heroes?": {
+      "TID": "TID_ATTACK_WARNING_NO_HEROES_ASSIGNED_TEXT",
+      "EN": "There's room for more Heroes in your army. Do you want to add more Heroes?"
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_ENTER_AGE_ALTERNATE_PATH": {
+    "A new Chief enters the arena!": {
+      "TID": "TID_SPECIAL_TUTORIAL_ENTER_AGE_ALTERNATE_PATH",
+      "EN": "A new Chief enters the arena!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_4": {
+    "Show me your moves! Place the Cannon and protect the Town Hall!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_4",
+      "EN": "Show me your moves! Place the Cannon and protect the Town Hall!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_5": {
+    "Chief! You can spend Gems to speed things up!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_5",
+      "EN": "Chief! You can spend Gems to speed things up!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_DEFEND_2": {
+    "And the crowd goes wild! Nice fighting, Chief.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_DEFEND_2",
+      "EN": "And the crowd goes wild! Nice fighting, Chief."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_DEFEND_4": {
+    "Even your Buildings won\u2019t stay down and out! They magically repair themselves!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_DEFEND_4",
+      "EN": "Even your Buildings won\u2019t stay down and out! They magically repair themselves!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_ATTACK_NPC_1": {
+    "The Wizards from the Ivory Gym are tagging in! Let\u2019s TAP OUT a Goblin camp!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_ATTACK_NPC_1",
+      "EN": "The Wizards from the Ivory Gym are tagging in! Let\u2019s TAP OUT a Goblin camp!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_WORKER_1": {
+    "Nice moves! Let\u2019s get this Village into fighting shape.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_WORKER_1",
+      "EN": "Nice moves! Let\u2019s get this Village into fighting shape."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_WORKER_2": {
+    "Hire a second Builder so you can start two constructions simultaneously.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_WORKER_2",
+      "EN": "Hire a second Builder so you can start two constructions simultaneously."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_1": {
+    "Elixir is used to construct and upgrade Buildings, and it's used to upgrade Troops.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_1",
+      "EN": "Elixir is used to construct and upgrade Buildings, and it's used to upgrade Troops."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_2": {
+    "You can pump Elixir from underground. Let's do it!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_2",
+      "EN": "You can pump Elixir from underground. Let's do it!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_STORAGE_1": {
+    "The collector can only store a small amount of Elixir.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_STORAGE_1",
+      "EN": "The collector can only store a small amount of Elixir."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_STORAGE_2": {
+    "Let's build an Elixir Storage so we can stockpile the stuff!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_ELIXIR_STORAGE_2",
+      "EN": "Let's build an Elixir Storage so we can stockpile the stuff!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_GOLD_STORAGE_1": {
+    "We also need a safe place to store our Gold reserves.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_GOLD_STORAGE_1",
+      "EN": "We also need a safe place to store our Gold reserves."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_GOLD_STORAGE_2": {
+    "Build a Gold Storage so we can hoard the shiny stuff! MWAHA!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_GOLD_STORAGE_2",
+      "EN": "Build a Gold Storage so we can hoard the shiny stuff! MWAHA!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_BARRACK_1": {
+    "We need an army to fight those Goblins. Let\u2019s build a Barracks.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_BARRACK_1",
+      "EN": "We need an army to fight those Goblins. Let\u2019s build a Barracks."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_TRAIN_1": {
+    "Let\u2019s train some Troops!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_TRAIN_1",
+      "EN": "Let\u2019s train some Troops!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_TRAIN_3": {
+    "That's it! Now, unleash those Barbarians and kick even more green butt!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_TRAIN_3",
+      "EN": "That's it! Now, unleash those Barbarians and kick even more green butt!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_CHANGE_NAME": {
+    "You\u2019re one tough contender, Chief! What will the history books call you?": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_CHANGE_NAME",
+      "EN": "You\u2019re one tough contender, Chief! What will the history books call you?"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_TOWN_HALL_1": {
+    "With all this Gold, we can upgrade the Town Hall, which will unlock new Buildings in the Shop.": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_TOWN_HALL_1",
+      "EN": "With all this Gold, we can upgrade the Town Hall, which will unlock new Buildings in the Shop."
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_TOWN_HALL_2": {
+    "Keep upgrading, and those friendly\u2026 or\u2026 not so friendly Superstars will turn up soon!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_TOWN_HALL_2",
+      "EN": "Keep upgrading, and those friendly\u2026 or\u2026 not so friendly Superstars will turn up soon!"
+    }
+  },
+  "TID_SPECIAL_FTUE_TUTORIAL_BUILDER_MENU": {
+    "Here you can find suggestions for what to build or upgrade next!": {
+      "TID": "TID_SPECIAL_FTUE_TUTORIAL_BUILDER_MENU",
+      "EN": "Here you can find suggestions for what to build or upgrade next!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_9": {
+    "Check out your Army, one of those Superstars may already be here!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_9",
+      "EN": "Check out your Army, one of those Superstars may already be here!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_10": {
+    "Let the action commence!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_10",
+      "EN": "Let the action commence!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_LOOTCART_1": {
+    "Looks like someone's left their Loot behind.": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_LOOTCART_1",
+      "EN": "Looks like someone's left their Loot behind."
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_LOOTCART_2": {
+    "It'd be a shame not to spend it on upgrades!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_LOOTCART_2",
+      "EN": "It'd be a shame not to spend it on upgrades!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_BUILDER_1": {
+    "The Builder has been busy while you were away.": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_BUILDER_1",
+      "EN": "The Builder has been busy while you were away."
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_BUILDER_2": {
+    "What a nice guy!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_BUILDER_2",
+      "EN": "What a nice guy!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_BUILDER_3": {
+    "He also has ideas for what to make next.": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_BUILDER_3",
+      "EN": "He also has ideas for what to make next."
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_BUILDER_4": {
+    "Check his list if you need ideas!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_BUILDER_4",
+      "EN": "Check his list if you need ideas!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_1": {
+    "Lots of crashes and bashes coming from the Laboratory.": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_1",
+      "EN": "Lots of crashes and bashes coming from the Laboratory."
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_2": {
+    "Let's see what those crazy Wizards have been up to!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_2",
+      "EN": "Let's see what those crazy Wizards have been up to!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_3": {
+    "We could start another research right away if we have the resources!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_LAB_UPGRADES_3",
+      "EN": "We could start another research right away if we have the resources!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_ATTACK_1": {
+    "Your Troops welcome your arrival, Chief.": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_ATTACK_1",
+      "EN": "Your Troops welcome your arrival, Chief."
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_ATTACK_2": {
+    "And they're ready to fight!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_ATTACK_2",
+      "EN": "And they're ready to fight!"
+    }
+  },
+  "TID_SPECIAL_REENG_TUTORIAL_ATTACK_3": {
+    "Let's train a strong Army!": {
+      "TID": "TID_SPECIAL_REENG_TUTORIAL_ATTACK_3",
+      "EN": "Let's train a strong Army!"
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_1": {
+    "Starter Challenges will give you the experience needed to be a true champ!": {
+      "TID": "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_1",
+      "EN": "Starter Challenges will give you the experience needed to be a true champ!"
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_2": {
+    "Complete a challenge to earn points.": {
+      "TID": "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_2",
+      "EN": "Complete a challenge to earn points."
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_3": {
+    "Earn enough points and you\u2019ll unlock rewards!": {
+      "TID": "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_3",
+      "EN": "Earn enough points and you\u2019ll unlock rewards!"
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_4": {
+    "Unlock more Starter Challenges by upgrading your Town Hall.": {
+      "TID": "TID_SPECIAL_TUTORIAL_STARTER_CHALLENGE_4",
+      "EN": "Unlock more Starter Challenges by upgrading your Town Hall."
+    }
+  },
+  "TID_SPECIAL_TUTORIAL_ATTACK_NPC_BUTTON": {
+    "Attack!": {
+      "TID": "TID_SPECIAL_TUTORIAL_ATTACK_NPC_BUTTON",
+      "EN": "Attack!"
+    }
+  },
+  "TID_CLAN_PROGRESS_EVENT_MAX_CONTRIBUTORS": {
+    "This Clan has reached the maximum number of Contributors.": {
+      "TID": "TID_CLAN_PROGRESS_EVENT_MAX_CONTRIBUTORS",
+      "EN": "This Clan has reached the maximum number of Contributors."
     }
   }
 }

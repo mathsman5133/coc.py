@@ -10,7 +10,6 @@ from .utils import UnitStat
 
 TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
 SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json"))
-ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/troop_ids.json"))
 
 
 class Troop(DataContainer):
@@ -44,8 +43,6 @@ class Troop(DataContainer):
         The amount of resources required to train this troop.
     training_resource: :class:`Resource`
         The type of resource used to train this troop.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this troop.
     is_elixir_troop: :class:`bool`
         Whether this troop is a regular troop from the Barracks
     is_dark_troop: :class:`bool`
@@ -89,7 +86,6 @@ class Troop(DataContainer):
     upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "TimeDelta"
 
     cooldown: "TimeDelta"
     duration: "TimeDelta"
@@ -172,13 +168,11 @@ class TroopHolder(DataContainerHolder):
             troop_data = orjson.loads(fp.read())
         with open(SUPER_TROOPS_FILE_PATH, 'rb') as fp:
             super_troop_data = orjson.loads(fp.read())
-        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
-            army_link_ids: dict = orjson.loads(fp.read())
 
         super_data: dict = {v["Replacement"]: v for item in super_troop_data.values() for v in item.values()}
 
-        id = 1000  # fallback ID for builder base troops
-        for supercell_name, troop_meta in troop_data.items(): #type: str, dict
+          # fallback ID for builder base troops
+        for ID, (supercell_name, troop_meta) in enumerate(troop_data.items()): #type: int, str, dict
 
             if troop_meta.get("Deprecated") or troop_meta.get("1", {}).get("Deprecated"):
                 continue
@@ -197,13 +191,11 @@ class TroopHolder(DataContainerHolder):
 
             new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
             # hacky way to prevent builder base baby dragon from taking spot of home village one
-            troop_id = army_link_ids.get(f"BB_{troop_name}" if troop_meta.get("VillageType") else troop_name, id)
-            if troop_id == id:
-                id += 1
+            #troop_id = army_link_ids.get(f"BB_{troop_name}" if troop_meta.get("VillageType") else troop_name, id)
 
             new_troop._load_json_meta(
                 troop_meta,
-                id=troop_id,
+                id=ID,
                 name=troop_name,
                 lab_to_townhall=lab_to_townhall,
             )

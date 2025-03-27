@@ -310,11 +310,11 @@ class EquipmentHolder(DataContainerHolder):
     data_object = Equipment
 
     def _load_json(self, english_aliases, lab_to_townhall):
-        id = 3000
+
         with open(EQUIPMENT_FILE_PATH, 'rb') as fp:
             equipment_data = orjson.loads(fp.read())
 
-        for supercell_name, equipment_meta in equipment_data.items():
+        for ID, (supercell_name, equipment_meta) in enumerate(equipment_data.items()):
             if not equipment_meta.get("TID"):
                 continue
 
@@ -325,11 +325,10 @@ class EquipmentHolder(DataContainerHolder):
             new_equipment: Type[Equipment] = type('Equipment', Equipment.__bases__, dict(Equipment.__dict__))
             new_equipment._load_json_meta(
                 equipment_meta,
-                id=id,
+                id=ID,
                 name=english_aliases[equipment_meta.get("TID")],
                 smithy_to_townhall=lab_to_townhall,
             )
-            id += 1
             self.items.append(new_equipment)
             self.item_lookup[new_equipment.name] = new_equipment
 

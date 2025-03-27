@@ -7,6 +7,18 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.10
+------
+
+Changes:
+~~~~~~~~
+- `parse_army_link` updated for "Army Recipes". Returns an :class:`coc.ArmyRecipe`
+
+Removals:
+~~~~~~~~~
+- Removal of `create_army_link`
+
+
 v3.9.1
 ------
 
