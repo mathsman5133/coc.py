@@ -34,7 +34,7 @@ import orjson
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
+from .miscmodels import ArmyRecipe, BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
 from .hero import HeroHolder, PetHolder, EquipmentHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
@@ -2437,7 +2437,7 @@ class Client:
         data = await self.http.get_current_goldpass_season(**{**self._defaults, **kwargs})
         return cls(data=data)
 
-    def parse_army_link(self, link: str):
+    def parse_army_link(self, link: str) -> ArmyRecipe:
         """Transform an army link from in-game into a list of troops and spells.
 
         .. note::
@@ -2481,87 +2481,11 @@ class Client:
         if not (self._troop_holder.loaded and self._spell_holder.loaded):
             raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
 
-        troops, spells = parse_army_link(link)
-
-        lookup_troops = {t.id: t for t in self._troop_holder.items}
-        lookup_spells = {s.id: s for s in self._spell_holder.items}
-
-        return [(lookup_troops.get(t_id, self._troop_holder.get('Barbarian')), qty) for t_id, qty in troops], \
-               [(lookup_spells.get(s_id, s_id), qty) for s_id, qty in spells]
-
-    def create_army_link(self, **kwargs):
-        r"""Transform troops and spells into an in-game army share link.
-
-        .. note::
-
-            You must have Troop and Spell game metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        Example
-        -------
-
-        .. code-block:: python3
-
-            link = client.create_army_link(
-                        barbarian=10,
-                        archer=20,
-                        hog_rider=30,
-                        healing_spell=3,
-                        poison_spell=2,
-                        rage_spell=2
-                    )
-            print(link)  # prints https://link.clashofclans.com/en?action=CopyArmy&army=u0x10-1x20-11x30s1x3-9x2-2x2
+        recipe = parse_army_link(link)
 
 
-        Parameters
-        ----------
-        \*\*kwargs
-            Troop name to quantity mapping. See the example for more info.
-            The troop name must match in-game **exactly**, and is case-insensitive.
-            Replace spaces (" ") with an underscore.
-            The quantity must be an integer.
+        return ArmyRecipe(self, recipe)
 
-        Raises
-        ------
-        RuntimeError
-            Troop and Spell game metadata must be loaded to use this feature.
-
-        Returns
-        --------
-        :class:`str`
-            The army share link.
-
-        """
-
-        base = "https://link.clashofclans.com/en?action=CopyArmy&army="
-
-        if not (self._troop_holder.loaded and self._spell_holder.loaded):
-            raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
-
-        troops, spells = [], []
-        for key, value in kwargs.items():
-            if not isinstance(value, int):
-                raise TypeError("Expected value to be of type integer.")
-
-            key = key.replace("_", " ")
-
-            troop = self._troop_holder.get(key)
-            if troop:
-                troops.append((troop, value))
-            else:
-                spell = self._spell_holder.get(key)
-                if spell:
-                    spells.append((spell, value))
-                else:
-                    raise ValueError("I couldn't find the troop or spell called '{}'.".format(key))
-
-        if troops:
-            base += "u" + "-".join("{qty}x{id}".format(qty=qty, id=troop.id - 4_000_000) for troop, qty in troops)
-            
-        if spells:
-            base += "s" + "-".join("{qty}x{id}".format(qty=qty, id=spell.id - 26_000_000) for spell, qty in spells)
-
-        return base
 
     def get_troop(
         self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
@@ -2637,6 +2561,7 @@ class Client:
         else:
             return troop
 
+
     def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
         """Get an uninitiated Spell object with the given name.
 
@@ -2707,6 +2632,7 @@ class Client:
             return spell(data, townhall=townhall)
         else:
             return spell
+
 
     def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
         """Get an uninitiated Hero object with the given name.
@@ -2779,6 +2705,7 @@ class Client:
         else:
             return hero
 
+
     def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
         """Get an uninitiated Pet object with the given name.
 
@@ -2848,6 +2775,7 @@ class Client:
             return pet(data, townhall=townhall)
         else:
             return pet
+
 
     def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
         """Get an uninitiated Equipment object with the given name.

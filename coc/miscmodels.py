@@ -22,11 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from datetime import datetime
-from typing import Any, Type, TypeVar, Optional
+from typing import Any, Type, TypeVar, Optional, TYPE_CHECKING
 
-import coc
 from .enums import ExtendedEnum, PlayerHouseElementType
 from .utils import from_timestamp
+
+if TYPE_CHECKING:
+    from .hero import Hero, Pet, Equipment
+    from .spell import Spell
+    from .troop import Troop
 
 T = TypeVar("T")
 
@@ -712,3 +716,60 @@ class PlayerHouseElement:
         return (isinstance(other, PlayerHouseElement)
                 and self.id == other.id
                 and self.type == other.type)
+
+
+class IDLookups:
+    def __init__(self, client):
+        self.troops = {t.id: t for t in client._troop_holder.items}
+        self.spells = {s.id: s for s in client._spell_holder.items}
+        self.heroes = {h.id: h for h in client._hero_holder.items}
+        self.pets = {p.id: p  for p in client._pet_holder.items}
+        self.equipment = {e.id: e for e in client._equipment_holder.items}
+
+
+class HeroLoadout:
+    def __init__(self, loadout: tuple, lookup: IDLookups):
+        self._lookup = lookup
+
+        self.hero: 'Hero'  = self._lookup.heroes.get(loadout[0], self._lookup.heroes.get(0))
+        self.pet: Optional['Pet']  = self._lookup.pets.get(loadout[1], self._lookup.pets.get(0)) if loadout[1] else None
+        self.equipment: list['Equipment'] = []
+        for e in loadout[2:]:
+            if e:
+                self.equipment.append(self._lookup.equipment.get(e, self._lookup.equipment.get(0)))
+
+
+class ArmyRecipe:
+    def __init__(self, client, recipe: tuple):
+        self._client = client
+        self._lookup = IDLookups(client)
+
+        self.__hero_loadout = recipe[0]
+        self.__troops = recipe[1]
+        self.__spells = recipe[2]
+        self.__castle_troops = recipe[3]
+        self.__castle_spells = recipe[4]
+
+    @property
+    def heroes_loadout(self) -> list[HeroLoadout] :
+        return [HeroLoadout(loadout, self._lookup) for loadout in self.__hero_loadout]
+
+    @property
+    def troops(self) -> tuple['Troop', int]:
+        return [(self._lookup.troops.get(t_id, self._lookup.troops.get(0)), qty)
+                for t_id, qty in self.__troops]
+
+    @property
+    def spells(self) -> tuple['Spell', int]:
+        return [(self._lookup.spells.get(t_id, self._lookup.spells.get(0)), qty)
+                for t_id, qty in self.__spells]
+
+    @property
+    def clan_castle_troops(self) -> tuple['Troop', int]:
+        return [(self._lookup.troops.get(t_id, self._lookup.troops.get(0)), qty)
+                for t_id, qty in self.__castle_troops]
+
+    @property
+    def clan_castle_spells(self)-> tuple['Spell', int]:
+        return [(self._lookup.spells.get(t_id, self._lookup.spells.get(0)), qty)
+                for t_id, qty in self.__castle_spells]
