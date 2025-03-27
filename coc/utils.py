@@ -34,7 +34,6 @@ from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeV
 
 
 TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
-ARMY_LINK_SEPERATOR = re.compile(r"u(?P<units>[\d+x-]+)|s(?P<spells>[\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -186,12 +185,13 @@ def corrected_tag() -> Callable[[Callable[..., T]], Callable[..., T]]:
     return deco
 
 
-def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
-    """Parse an army link into (Troop ID, Quantity) pairs for troops and spells.
+def parse_army_link(link: str) -> Tuple[List[Tuple[int, int | None, int | None, int | None]],
+                            List[Tuple[int, int]], List[Tuple[int, int]], List[Tuple[int, int]], List[Tuple[int, int]]]:
+    """Parse an army link into hero, equipment & pet id combos, clan castle combinations, and troops and spells.
 
-    .. note::
+    . note::
 
-        For general usage, consider :meth:`Client.parse_army_link` instead, as it will return Troop and Spell objects.
+        For general usage, consider :meth:`Client.parse_army_link` instead, as it will return Hero, Pet, Equipment, Troop and Spell objects.
 
     Parameters
     ----------
@@ -200,15 +200,62 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
 
     Returns
     -------
-    List[Tuple[int, int]], List[Tuple[int, int]]
-        2 lists containing (troop_id, quantity) pairs. See :meth:`Client.parse_army_link` for a detailed example.
+    Tuple[List[Tuple[int, int | None, int | None, int | None]],
+                            List[Tuple[int, int]], List[Tuple[int, int]], List[Tuple[int, int]], List[Tuple[int, int]]]
+        5 lists containing hero, equipment and pet id combos plus (troop_id, quantity) pairs for army and clan castle.
+        See :meth:`Client.parse_army_link` for a detailed example.
 
     """
-    matches = ARMY_LINK_SEPERATOR.finditer(link)
 
-    units, spells = [], []
-    for match in matches:
-        if match.group("units"):
+    ARMY_LINK_SEPARATOR = re.compile(
+        r"h(?P<heroes>[^idus]+)"
+        r"|i(?P<castle_troops>[\d+x-]+)"
+        r"|d(?P<castle_spells>[\d+x-]+)"
+        r"|u(?P<units>[\d+x-]+)"
+        r"|s(?P<spells>[\d+x-]+)"
+    )
+
+    # Regex to parse an individual hero entry.
+    # - hero_id is required.
+    # - pet_id (prefixed by "p") is optional.
+    # - Equipment (prefixed by "e") is optional; if present, eq1 is required, eq2 (after an underscore) is optional.
+    hero_pattern = re.compile(
+        r"(?P<hero_id>\d+)"
+        r"(?:m\d+)?"
+        r"(?:p(?P<pet_id>\d+))?"
+        r"(?:e(?P<eq1>\d+)(?:_(?P<eq2>\d+))?)?"
+    )
+
+
+    heroes = []
+    castle_troops = []
+    castle_spells = []
+    units = []
+    spells = []
+
+    # Iterate over all section matches.
+    for match in ARMY_LINK_SEPARATOR.finditer(link):
+        if match.group("heroes"):
+            hero_entries = match.group("heroes").split('-')
+            for hero in hero_entries:
+                m = hero_pattern.fullmatch(hero)
+                if m:
+                    hero_id = int(m.group("hero_id"))
+                    pet_id = int(m.group("pet_id")) if m.group("pet_id") else None
+                    eq1 = int(m.group("eq1")) if m.group("eq1") else None
+                    eq2 = int(m.group("eq2")) if m.group("eq2") else None
+                    heroes.append((hero_id, pet_id, eq1, eq2))
+        elif match.group("castle_troops"):
+            castle_troops = [
+                (int(split[1]), int(split[0]))
+                for split in (troop.split('x') for troop in match.group("castle_troops").split('-'))
+            ]
+        elif match.group("castle_spells"):
+            castle_spells = [
+                (int(split[1]), int(split[0]))
+                for split in (spell.split('x') for spell in match.group("castle_spells").split('-'))
+            ]
+        elif match.group("units"):
             units = [
                 (int(split[1]), int(split[0]))
                 for split in (troop.split('x') for troop in match.group("units").split('-'))
@@ -219,7 +266,9 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
                 for split in (spell.split('x') for spell in match.group("spells").split('-'))
             ]
 
-    return units, spells
+    return heroes, units, spells, castle_troops, castle_spells
+
+
 
 
 def maybe_sort(
