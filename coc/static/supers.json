@@ -206,5 +206,19 @@
       "ResourceCost": 25000,
       "TrialNPC": "SUPER_HOG_INTRO"
     }
+  },
+  "SuperYeti": {
+    "Yeti": {
+      "Name": "SuperYeti",
+      "Original": "Yeti",
+      "MinOriginalLevel": 2,
+      "Replacement": "SuperYeti",
+      "DurationH": 72,
+      "CooldownH": 72,
+      "Resource": "DarkElixir",
+      "ResourceCost": 25000,
+      "TrialNPC": "SUPER_YETI_INTRO",
+      "EnabledByCalendar": true
+    }
   }
 }
