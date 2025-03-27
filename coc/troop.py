@@ -43,8 +43,6 @@ class Troop(DataContainer):
         The amount of resources required to train this troop.
     training_resource: :class:`Resource`
         The type of resource used to train this troop.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this troop.
     is_elixir_troop: :class:`bool`
         Whether this troop is a regular troop from the Barracks
     is_dark_troop: :class:`bool`
@@ -88,7 +86,6 @@ class Troop(DataContainer):
     upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "TimeDelta"
 
     cooldown: "TimeDelta"
     duration: "TimeDelta"

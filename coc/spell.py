@@ -30,8 +30,6 @@ class Spell(DataContainer):
         The amount of resources required to train this spell.
     training_resource: :class:`Resource`
         The type of resource used to train this spell.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this spell.
     is_elixir_spell: :class:`bool`
         Whether this spell is a regular spell from the Barracks
     is_dark_spell: :class:`bool`
@@ -61,7 +59,6 @@ class Spell(DataContainer):
     upgrade_time: "TimeDelta"
     training_cost: int
     training_resource: "Resource"
-    training_time: "TimeDelta"
 
     is_elixir_spell: bool = False
     is_dark_spell: bool = False

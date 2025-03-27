@@ -286,8 +286,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls._is_home_village = False if json_meta.get("VillageType") else True
         cls.village = "home" if cls._is_home_village else "builderBase"
 
-        cls.training_time = TimeDelta(seconds=json_meta.get("TrainingTime"))
-
         # only heroes
         cls.ability_time = try_enum(UnitStat, [json_meta.get(level).get("AbilityTime") for level in levels_available])
         cls.ability_troop_count = try_enum(UnitStat, [json_meta.get(level).get("AbilitySummonTroopCount") for level in levels_available])
