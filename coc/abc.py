@@ -349,8 +349,7 @@ class DataContainerHolder:
         with open(self.FILE_PATH, 'rb') as fp:
             data = orjson.loads(fp.read())
 
-        id = 2000
-        for c, [supercell_name, meta] in enumerate(data.items()):
+        for ID, [supercell_name, meta] in enumerate(data.items()):
 
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
@@ -379,11 +378,10 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=id,
+                id=ID,
                 name=english_aliases[meta.get("TID")],
                 lab_to_townhall=lab_to_townhall,
             )
-            id += 1
             self.items.append(new_item)
             self.item_lookup[new_item.name] = new_item
 
