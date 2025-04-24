@@ -173,14 +173,16 @@ def process_csv(data, file_path, save_name):
 
         base_level = all_levels[0]
         base_cols = list(levels_dict[base_level].keys())
+        
+        # Cover edge cases where some troops only have UpgradeTimeM and UpgradeTimeS if it is added
+        do_not_promote = {"UpgradeTimeH", "UpgradeTimeM", "UpgradeTimeS"}
 
         for col in base_cols:
             # check if col is present in other levels
-            found_elsewhere = False
-            for lvl in all_levels[1:]:
-                if col in levels_dict[lvl]:
-                    found_elsewhere = True
-                    break
+            if col in do_not_promote:
+                continue
+
+            found_elsewhere = any(col in levels_dict[lvl] for lvl in all_levels[1:])
             # if not found in other levels => move it up
             if not found_elsewhere:
                 if col not in levels_dict:

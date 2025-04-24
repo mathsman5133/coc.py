@@ -278,9 +278,15 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
         cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
         upgrade_times = [
-            TimeDelta(hours=json_meta.get(level, {}).get("UpgradeTimeH"))
+            TimeDelta(
+                hours=json_meta.get(level, {}).get("UpgradeTimeH", 0),
+                minutes=json_meta.get(level, {}).get("UpgradeTimeM", 0)
+            )
             for level in levels_available
-            if json_meta.get(level, {}).get("UpgradeTimeH") is not None
+            if (
+                json_meta.get(level, {}).get("UpgradeTimeH") is not None
+                or json_meta.get(level, {}).get("UpgradeTimeM") is not None
+            )
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
 
