@@ -206,6 +206,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
         cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
         cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("Hitpoints") for level in levels_available])
+        cls.max_level = len(levels_available)
 
         # get production building
         production_building = json_meta.get("ProductionBuilding")
