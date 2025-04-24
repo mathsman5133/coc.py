@@ -206,6 +206,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
         cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
         cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("Hitpoints") for level in levels_available])
+        cls.max_level = len(levels_available)
 
         # get production building
         production_building = json_meta.get("ProductionBuilding")
@@ -277,9 +278,15 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
         cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
         upgrade_times = [
-            TimeDelta(hours=json_meta.get(level, {}).get("UpgradeTimeH"))
+            TimeDelta(
+                hours=json_meta.get(level, {}).get("UpgradeTimeH", 0),
+                minutes=json_meta.get(level, {}).get("UpgradeTimeM", 0)
+            )
             for level in levels_available
-            if json_meta.get(level, {}).get("UpgradeTimeH") is not None
+            if (
+                json_meta.get(level, {}).get("UpgradeTimeH") is not None
+                or json_meta.get(level, {}).get("UpgradeTimeM") is not None
+            )
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
 
