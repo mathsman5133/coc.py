@@ -16,6 +16,9 @@ import csv
 import os
 import zipfile
 from collections import defaultdict
+import requests
+from bs4 import BeautifulSoup
+from apk_source import get_direct_apk_url
 
 TARGETS = [
     ("logic/buildings.csv", "buildings.csv"),
@@ -29,23 +32,59 @@ TARGETS = [
     ("localization/texts.csv", "texts_EN.csv"),
 ]
 
-APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
+APK_URL = get_direct_apk_url()
 
 def get_fingerprint():
-    async def download():
-        async with aiohttp.request('GET', APK_URL) as fp:
-            c = await fp.read()
-        return c
+    apk_url = get_direct_apk_url()
+    print(f"[+] Getting download page: {apk_url}")
 
-    data = asyncio.run(download())
+    # create a session to handle cookies and redirects
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    })
 
+    # get the download page
+    resp = session.get(apk_url)
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    
+    # find the direct download link 
+    download_link = soup.select_one('p:-soup-contains("Your download will start") a')
+    if not download_link:
+        raise Exception("ERROR: Could not find direct download link on page")
+        
+    # get the relative URL and make it absolute
+    relative_url = download_link.get('href')
+    direct_url = f"https://www.apkmirror.com{relative_url}"
+    print(f"[+] Found direct download URL: {direct_url}")
+    
+    # download the APK using the direct URL
+    print("[+] Downloading APK file...")
+    response = session.get(direct_url, stream=True)
+    
+    if not response.headers.get('content-type', '').startswith('application/'):
+        raise Exception("ERROR: Response is not an APK file")
+
+    # save the APK file
     with open("apk.zip", "wb") as f:
-        f.write(data)
-    zf = zipfile.ZipFile("apk.zip")
-    with zf.open('assets/fingerprint.json') as fp:
-        fingerprint = json.loads(fp.read())['sha']
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
 
-    os.unlink("apk.zip")
+    # unzip and extract fingerprint.json
+    try:
+        with zipfile.ZipFile("apk.zip", "r") as zf:
+            with zf.open("assets/fingerprint.json") as fp:
+                fingerprint = json.loads(fp.read())["sha"]
+                print(f"[+] Successfully extracted fingerprint: {fingerprint}")
+    except zipfile.BadZipFile:
+        raise Exception("ERROR: Downloaded file is not a valid APK (ZIP) file")
+    finally:
+        # clean up the APK file
+        if os.path.exists("apk.zip"):
+            os.remove("apk.zip")
+
     return fingerprint
 
 # Hard-code or fallback
@@ -190,7 +229,7 @@ def process_csv(data, file_path, save_name):
                     final_data[troop_name][col] = levels_dict[base_level][col]
                 # remove from base_level
                 del levels_dict[base_level][col]
-
+                
     # 4) Write final JSON
     import json
     with open(f"{save_name}.json", "w", encoding="utf-8") as jf:
