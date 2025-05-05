@@ -283,10 +283,6 @@ class DataContainer(metaclass=DataContainerMetaClass):
                 minutes=json_meta.get(level, {}).get("UpgradeTimeM", 0)
             )
             for level in levels_available
-            if (
-                json_meta.get(level, {}).get("UpgradeTimeH") is not None
-                or json_meta.get(level, {}).get("UpgradeTimeM") is not None
-            )
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
 
