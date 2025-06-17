@@ -520,4 +520,4 @@ For more information on custom class support, please see :ref:`custom_classes`.
 
 Discord Links Extension
 -----------------------
-For more information on the new discord links extension, please see `links_extension`.
+For more information on the new discord links extension, please see :ref:`links_extension`.

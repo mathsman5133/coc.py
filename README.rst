@@ -26,7 +26,7 @@ Getting Started
 
 Installing
 -----------
-**Python 3.9 or higher is required**
+**Python 3.7 or higher is required**
 
 .. code:: sh
 
@@ -55,18 +55,18 @@ This example will get a player with a certain tag, and search for 5 clans with a
         async with coc.Client() as coc_client:
             try:
                 await coc_client.login("email", "password")
-            except coc.InvalidCredentials as error:
+            except coc.invalidcredentials as error:
                 exit(error)
 
-            player = await coc_client.get_player("tag")
+            player = await client.get_player("tag")
             print(f"{player.name} has {player.trophies} trophies!")
 
-            clans = await coc_client.search_clans(name="best clan ever", limit=5)
+            clans = await client.search_clans(name="best clan ever", limit=5)
             for clan in clans:
                 print(f"{clan.name} ({clan.tag}) has {clan.member_count} members")
 
             try:
-                war = await coc_client.get_current_war("#clantag")
+                war = await client.get_current_war("#clantag")
                 print(f"{war.clan_tag} is currently in {war.state} state.")
             except coc.privatewarlog:
                 print("uh oh, they have a private war log!")

@@ -210,12 +210,12 @@ def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, i
     for match in matches:
         if match.group("units"):
             units = [
-                (int(split[1]), int(split[0]))
+                (4_000_000 + int(split[1]), int(split[0]))
                 for split in (troop.split('x') for troop in match.group("units").split('-'))
             ]
         elif match.group("spells"):
             spells = [
-                (int(split[1]), int(split[0]))
+                (26_000_000 + int(split[1]), int(split[0]))
                 for split in (spell.split('x') for spell in match.group("spells").split('-'))
             ]
 
@@ -390,14 +390,10 @@ def get_clan_games_start(time: Optional[datetime] = None) -> datetime:
     if time is None:
         time = datetime.utcnow()
     month = time.month
-    year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
-    if time > this_months_cg_end and month < 12:
+    if time > this_months_cg_end:
         month += 1
-    elif time > this_months_cg_end:  # we're at the end of December
-        month = 1
-        year += 1
-    return datetime(year=year, month=month, day=22, hour=8, minute=0, second=0)
+    return datetime(year=time.year, month=month, day=22, hour=8, minute=0, second=0)
 
 
 def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
@@ -423,14 +419,10 @@ def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
     if time is None:
         time = datetime.utcnow()
     month = time.month
-    year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
-    if time > this_months_cg_end and month < 12:
+    if time > this_months_cg_end:
         month += 1
-    elif time > this_months_cg_end:  # we're in December
-        month = 1
-        year += 1
-    return datetime(year=year, month=month, day=28, hour=8, minute=0, second=0)
+    return datetime(year=time.year, month=month, day=28, hour=8, minute=0, second=0)
 
 
 def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:

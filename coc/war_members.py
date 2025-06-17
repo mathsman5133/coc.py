@@ -52,9 +52,6 @@ class ClanWarMember(BasePlayer):
         :class:`ClanWar`: The current war this member is in.
     clan:
         :class:`WarClan`: The member's clan.
-    attack_cls: :class:`coc.WarAttack`
-        The type which the attacks in :attr:`ClanWarMember.attacks` will be of.
-        Ensure any overriding of this inherits from :class:`coc.WarAttack`.
     """
 
     __slots__ = (
@@ -68,18 +65,16 @@ class ClanWarMember(BasePlayer):
         "map_position",
         "war",
         "clan",
-        "attack_cls",
         "_client",
         "_attacks",
     )
 
-    def __init__(self, *, data, client, war, clan, **kwargs):
+    def __init__(self, *, data, client, war, clan):
         super().__init__(data=data, client=client)
         self._client = client
         self._attacks = []
         self.war = war  # type: ClanWar
         self.clan = clan  # type: WarClan
-        self.attack_cls = kwargs.pop('attack_cls', WarAttack)
         self._from_data(data)
 
     def _from_data(self, data):
@@ -92,7 +87,7 @@ class ClanWarMember(BasePlayer):
         self.defense_count: int = data_get("opponentAttacks")
 
         self.__iter_attacks = (
-            self.attack_cls(data=adata, client=self._client, war=self.war) for adata in data_get("attacks", [])
+            WarAttack(data=adata, client=self._client, war=self.war) for adata in data_get("attacks", [])
         )
 
         self._best_opponent_attacker: str = data_get("bestOpponentAttack", {}).get("attackerTag")

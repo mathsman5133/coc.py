@@ -82,11 +82,8 @@ class _ValidateEvent:
         if self.cls.event_type == "client":
             return self.cls.__getattr__(self.cls, item)
 
-        if "versus" in item:
-            item = item.replace("versus", "builder_base")
-
         # handle member_x events:
-        if "member_" in item and item != "member_count":
+        if "member_" in item:
             item = item.replace("member_", "")
             nested = True
         else:
@@ -278,32 +275,6 @@ class PlayerEvents:
         return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
 
     @classmethod
-    def equipment_change(cls, tags=None, custom_class=None, retry_interval=None):
-        """Event for when a player has upgraded or unlocked an equipment."""
-
-        async def wrapped(cached_player, player, callback):
-            equipment_upgrades = (n for n in player.equipment if n not in set(cached_player.equipment))
-            for equipment in equipment_upgrades:
-                await callback(cached_player, player, equipment)
-
-        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
-
-    @classmethod
-    def active_equipment_change(cls, tags=None, custom_class=None, retry_interval=None):
-        """Event for when a player has changed their active equipment."""
-
-        async def wrapped(cached_player, player, callback):
-            for hero in player.heroes:
-                cached_hero = cached_player.get_hero(hero.name)
-                if not cached_hero:
-                    continue
-                for equipment in hero.equipment:
-                    if cached_hero and equipment not in cached_hero.equipment:
-                        await callback(cached_player, player, hero, equipment)
-
-        return _ValidateEvent.shortcut_register(wrapped, tags, custom_class, retry_interval, PlayerEvents.event_type)
-
-    @classmethod
     def joined_clan(cls, tags=None, custom_class=None, retry_interval=None):
         """Event for when a player has joined a new clan."""
 
@@ -385,7 +356,7 @@ class WarEvents:
 
         async def wrapped(cached_war: ClanWar, war: ClanWar, callback):
             if cached_war.preparation_start_time and war.preparation_start_time \
-                    and cached_war.preparation_start_time.time != war.preparation_start_time.time:
+                    and cached_war.preparation_start_time.timestamp != war.preparation_start_time.time:
                 await callback(war)
             elif war.preparation_start_time and not cached_war.preparation_start_time:
                 # no war on endpoint, so new war is for sure new
@@ -428,9 +399,9 @@ class EventsClient(Client):
         self.player_retry_interval = 0
         self.war_retry_interval = 0
 
-        self.clan_cls = self.objects_cls['Clan']
-        self.player_cls = self.objects_cls['Player']
-        self.war_cls = self.objects_cls['ClanWar']
+        self.clan_cls = Clan
+        self.player_cls = Player
+        self.war_cls = ClanWar
 
         self.clan_loops_run = 0
         self.player_loops_run = 0
@@ -816,7 +787,7 @@ class EventsClient(Client):
             age = 0
             while self.loop.is_running():
                 try:
-                    [raid_log_entry] = await self.get_raid_log("#2PP", limit=1)
+                    [raid_log_entry] = await self.get_raidlog("#2PP", limit=1)
                     raid_log_entry: coc.raid.RaidLogEntry
                 except Maintenance:
                     await asyncio.sleep(15)

@@ -12,13 +12,11 @@ Badge
     :members:
     :private-members:
 
-
 Icon
 ^^^^
 .. autoclass:: Icon()
     :members:
     :private-members:
-
 
 Time
 ~~~~
@@ -35,14 +33,13 @@ TimeDelta
 .. autoclass:: TimeDelta()
     :members:
     :private-members:
-   
 
 Location
 ~~~~~~~~
 .. autoclass:: Location()
     :members:
     :private-members:
-    
+
 Enumerations
 ~~~~~~~~~~~~
 
@@ -128,10 +125,8 @@ ordered as they appear in-game.
 
 .. data:: coc.HERO_PETS_ORDER
 
-
 All achievements
 ^^^^^^^^^^^^^^^^
 ordered as they appear in-game.
 
 .. data:: coc.ACHIEVEMENT_ORDER
-

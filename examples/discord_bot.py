@@ -128,7 +128,7 @@ async def member_stat(ctx, player_tag):
         f"`{'War Stars:':<15}` `{player.war_stars:<15}`\n"
         f"`{'Attack Wins:':<15}` `{player.attack_wins:<15}`\n"
         f"`{'Defense Wins:':<15}` `{player.defense_wins:<15}`\n"
-        f"`{'Capital Contrib':<15}` `{player.clan_capital_contributions:<15}`\n"
+        f"`{'Castle Contrib':<15}` `{player.clan_capital_contributions:<15}`\n"
     )
     e = discord.Embed(colour=discord.Colour.green(),
                       description=frame)
@@ -144,7 +144,7 @@ async def clan_info(ctx, clan_tag):
         return
 
     try:
-        clan: coc.Clan = await ctx.bot.coc_client.get_clan(clan_tag)
+        clan = await ctx.bot.coc_client.get_clan(clan_tag)
     except coc.NotFound:
         await ctx.send("This clan doesn't exist!")
         return
@@ -167,8 +167,8 @@ async def clan_info(ctx, clan_tag):
     e.add_field(name="Clan Type", value=clan.type, inline=False)
     e.add_field(name="Location", value=clan.location, inline=False)
     e.add_field(name="Total Clan Trophies", value=clan.points, inline=False)
-    e.add_field(name="Total Clan Builder Base Trophies",
-                value=clan.builder_base_points, inline=False)
+    e.add_field(name="Total Clan Versus Trophies",
+                value=clan.versus_points, inline=False)
     e.add_field(name="WarLog Type", value=log, inline=False)
     e.add_field(name="Required Trophies",
                 value=clan.required_trophies, inline=False)
@@ -210,7 +210,7 @@ async def clan_member(ctx, clan_tag):
 
     member = ""
     for i, a in enumerate(clan.members, start=1):
-        member += f"`{i}.` {a.name} (th{a.town_hall})\n"
+        member += f"`{i}.` {a.name}\n"
 
     embed = discord.Embed(colour=discord.Colour.red(),
                           title=f"Members of {clan.name}", description=member)

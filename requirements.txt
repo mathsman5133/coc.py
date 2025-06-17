@@ -1,3 +1,2 @@
 aiohttp
-orjson
-zstandard
+ujson

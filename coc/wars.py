@@ -28,7 +28,7 @@ import itertools
 
 from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
-from .enums import BattleModifier, WarResult, WarRound, WarState
+from .enums import WarRound
 from .iterators import LeagueWarIterator
 from .miscmodels import try_enum, Timestamp
 from .utils import cached_property, get
@@ -51,7 +51,7 @@ class ClanWar:
     opponent:
         :class:`WarClan`: The opposition clan.
     state:
-        :class:`WarState`: The clan's current war state.
+        :class:`str`: The clan's current war state.
     preparation_start_time:
         :class:`Timestamp`: The :class:`Timestamp` that preparation day started at.
     start_time:
@@ -66,11 +66,6 @@ class ClanWar:
         :class:`ClanWarLeagueGroup`: The war's league group. This is ``None`` unless this is a Clan League War.
     attacks_per_member:
         :class:`int`: The number of attacks each member has this war.
-    battle_modifier:
-        :class:`BattleModifier`: The battle modifier for this war.
-    clan_cls: :class:`WarClan`
-        the type `war.clan` and `war.opponent` will be of.
-        Ensure any overriding of this inherits from :class:`coc.WarClan`.
     """
 
     __slots__ = (
@@ -86,10 +81,8 @@ class ClanWar:
         "opponent",
         "league_group",
         "attacks_per_member",
-        "clan_cls",
         "_response_retry",
-        "_raw_data",
-        "battle_modifier",
+        "_raw_data"
     )
 
     def __init__(self, *, data, client, **kwargs):
@@ -97,7 +90,6 @@ class ClanWar:
         self._client = client
         self._raw_data = data if client and client.raw_attribute else None
         self.clan_tag = kwargs.pop("clan_tag", None)
-        self.clan_cls = kwargs.pop('clan_cls', WarClan)
         self._from_data(data)
 
         self.clan_tag = self.clan and self.clan.tag or self.clan_tag
@@ -106,13 +98,12 @@ class ClanWar:
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.state: WarState = try_enum(WarState, data=data_get("state"))
+        self.state: str = data_get("state")
         self.preparation_start_time = try_enum(Timestamp, data=data_get(
             "preparationStartTime"))
         self.start_time = try_enum(Timestamp, data=data_get("startTime"))
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.war_tag: str = data_get("tag")
-        self.battle_modifier: BattleModifier = try_enum(BattleModifier, data=data_get('battleModifier', 'none'))
         if data_get("attacksPerMember") is None or self.is_cwl:
             self.attacks_per_member: int = 1
         else:
@@ -126,14 +117,14 @@ class ClanWar:
         # depending on the way the game stores it internally. This isn't very helpful as we always want it
         # from the perspective of the tag we provided, so switch them around if it isn't correct.
         if clan_data and clan_data.get("tag", self.clan_tag) == self.clan_tag:
-            self.clan = try_enum(self.clan_cls, data=clan_data, client=self._client,
+            self.clan = try_enum(WarClan, data=clan_data, client=self._client,
                                  war=self)
-            self.opponent = try_enum(self.clan_cls, data=data_get("opponent"),
+            self.opponent = try_enum(WarClan, data=data_get("opponent"),
                                      client=self._client, war=self)
         else:
-            self.clan = try_enum(self.clan_cls, data=data_get("opponent"),
+            self.clan = try_enum(WarClan, data=data_get("opponent"),
                                  client=self._client, war=self)
-            self.opponent = try_enum(self.clan_cls, data=clan_data,
+            self.opponent = try_enum(WarClan, data=clan_data,
                                      client=self._client, war=self)
 
     @property
@@ -323,7 +314,7 @@ class ClanWarLogEntry:
     Attributes
     ----------
     result:
-        :class:`WarResult`: The result of the war - ``win``, ``lose`` or ``tie``
+        :class:`str`: The result of the war - ``win`` or ``loss``
     end_time:
         :class:`Timestamp`: The :class:`Timestamp` that the war ended at.
     team_size:
@@ -334,13 +325,11 @@ class ClanWarLogEntry:
         :class:`WarClan`: The opposition clan.
     attacks_per_member:
         :class:`int`: The number of attacks each member had this war.
-    battle_modifier:
-        :class:`BattleModifier`: The battle modifier for this war.
     """
 
     __slots__ = (
         "result", "end_time", "team_size", "clan", "opponent", "_client",
-        "attacks_per_member", "battle_modifier", "_raw_data", "_response_retry")
+        "attacks_per_member", "_raw_data", "_response_retry")
 
     def __init__(self, *, data, client, **kwargs):
         self._client = client
@@ -362,13 +351,12 @@ class ClanWarLogEntry:
     def _from_data(self, data: dict) -> None:
         data_get = data.get
 
-        self.result: WarResult = try_enum(WarResult, data=data_get("result"))
+        self.result: str = data_get("result")
         self.end_time = try_enum(Timestamp, data=data_get("endTime"))
         self.team_size: int = data_get("teamSize")
 
         self.clan = self._fake_load_clan(data_get("clan"))
         self.opponent = self._fake_load_clan(data_get("opponent"))
-        self.battle_modifier: BattleModifier = try_enum(BattleModifier, data=data_get('battleModifier', 'none'))
 
         if data_get("attacksPerMember") is None and self.is_league_entry:
             self.attacks_per_member: int = 1

@@ -30,12 +30,6 @@ class ClanEvents:
     def points(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def versus_points(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
-
-    @classmethod
-    def builder_base_points(cls,
-                            tags: Iterable = None,
-                            custom_class: _ClanType = Clan,
-                            retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def member_count(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
@@ -83,18 +77,7 @@ class ClanEvents:
     @classmethod
     def member_versus_trophies(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
-    def member_builder_base_trophies(cls,
-                                     tags: Iterable = None,
-                                     custom_class: _ClanType = Clan,
-                                     retry_interval: int = None) -> _EventDecoratorReturn: ...
-    @classmethod
     def member_versus_rank(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
-
-    @classmethod
-    def member_builder_base_rank(cls,
-                                 tags: Iterable = None,
-                                 custom_class: _ClanType = Clan,
-                                 retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def member_donations(cls, tags: Iterable = None, custom_class: _ClanType = Clan, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
@@ -112,12 +95,6 @@ class PlayerEvents:
     def trophies(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def versus_trophies(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
-
-    @classmethod
-    def builder_base_trophies(cls,
-                              tags: Iterable = None,
-                              custom_class: _PlayerType = Player,
-                              retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def clan_rank(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
@@ -145,18 +122,9 @@ class PlayerEvents:
     @classmethod
     def versus_attack_wins(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
-    def best_builder_base_trophies(cls,
-                                   tags: Iterable = None,
-                                   custom_class: _PlayerType = Player,
-                                   retry_interval: int = None) -> _EventDecoratorReturn: ...
-    @classmethod
     def legend_statistics(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
     @classmethod
     def labels(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
-    @classmethod
-    def equipment_change(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
-    @classmethod
-    def active_equipment_change(cls, tags: Iterable = None, custom_class: _PlayerType = Player, retry_interval: int = None) -> _EventDecoratorReturn: ...
 
 class WarEvents:
     event_type: str

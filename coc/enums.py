@@ -24,49 +24,7 @@ SOFTWARE.
 from enum import Enum
 
 
-class ExtendedEnum(Enum):
-    """An Enum class that allows for the `__str__` method to be implemented."""
-    def __str__(self):
-        return self.in_game_name
-
-    def __eq__(self, other):
-        """Check if the enum is equal to another enum or a string."""
-        if isinstance(other, Enum):
-            return self.value == other.value
-        elif isinstance(other, str):
-            return str(self.name) == other or str(self.value) == other
-        return False
-
-    @property
-    def in_game_name(self) -> str:
-        raise NotImplementedError
-
-    @classmethod
-    def values(cls):
-        return list(map(lambda c: c.value, cls))
-
-    @classmethod
-    def names(cls):
-        return list(map(lambda c: c.name, cls))
-
-
-class PlayerHouseElementType(ExtendedEnum):
-    """Enum to map the type of element of the player house."""
-
-    ground = "ground"
-    roof = "roof"
-    foot = "foot"  # API docs say this exists, but unable to find it anywhere. Looks like this means `walls`
-    deco = "decoration"
-    walls = "walls"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the element type."""
-        lookup = {"ground": "Ground", "roof": "Roof", "foot": "Foot", "decoration": "Decoration", "walls": "Walls"}
-        return lookup[self.value]
-
-
-class Role(ExtendedEnum):
+class Role(Enum):
     """Enum to map a player's role in the clan."""
 
     member = "member"
@@ -74,14 +32,17 @@ class Role(ExtendedEnum):
     co_leader = "coLeader"
     leader = "leader"
 
+    def __str__(self):
+        return self.in_game_name
+
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
-        lookup = {"member": "Member", "admin": "Elder", "coLeader": "Co-Leader", "leader": "Leader"}
-        return lookup[self.value]
+        lookup = {Role.member: "Member", Role.elder: "Elder", Role.co_leader: "Co-Leader", Role.leader: "Leader"}
+        return lookup[self]
 
 
-class WarRound(ExtendedEnum):
+class WarRound(Enum):
     previous_war = 0
     current_war = 1
     current_preparation = 2
@@ -89,72 +50,15 @@ class WarRound(ExtendedEnum):
     def __str__(self):
         return self.name
 
-    @property
-    def in_game_name(self) -> str:
-        lookup = ["Previous War", "Current War", "Current Preparation"]
-        return lookup[self.value]
 
-
-class BattleModifier(ExtendedEnum):
-    """Enum to map the type of battle modifiers."""
-    none = "none"
-    hard_mode = "hardMode"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the battle modifier."""
-        lookup = {"none": "None", "hardMode": "Hard Mode"}
-        return lookup[self.value]
-
-
-class WarState(ExtendedEnum):
-    """Enum to map the state of the war.
-    Compared to the api docs a few states are missing, but those were never observed in the wild."""
-    not_in_war = "notInWar"
-    preparation = "preparation"
-    in_war = "inWar"
-    war_ended = "warEnded"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the war state."""
-        lookup = {"notInWar": "Not in War", "preparation": "Preparation", "inWar": "In War", "warEnded": "War Ended"}
-        return lookup[self.value]
-
-
-class WarResult(ExtendedEnum):
-    """Enum to map the result of the war"""
-    win = "win"
-    lose = "lose"
-    tie = "tie"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the war state."""
-        lookup = {"win": "Win", "lose": "Lose", "tie": "Tie"}
-        return lookup[self.value]
-
-
-class Resource(ExtendedEnum):
+class Resource(Enum):
     elixir = "Elixir"
     builder_elixir = "Elixir2"
     dark_elixir = "DarkElixir"
     gold = "Gold"
-    builder_gold = "Gold2"
-    shiny_ore = "CommonOre"
-    glowy_ore = "RareOre"
-    starry_ore = "EpicOre"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the resource."""
-        lookup = {"Elixir": "Elixir", "Elixir2": "Builder Elixir",
-                  "DarkElixir": "Dark Elixir", "Gold": "Gold", "Gold2": "Builder Gold",
-                  "CommonOre": "Shiny Ore", "RareOre": "Glowy Ore", "EpicOre": "Starry Ore"}
-        return lookup[self.value]
 
 
-ELIXIR_TROOP_ORDER = [
+HOME_TROOP_ORDER = [
     "Barbarian",
     "Archer",
     "Giant",
@@ -171,12 +75,6 @@ ELIXIR_TROOP_ORDER = [
     "Yeti",
     "Dragon Rider",
     "Electro Titan",
-    "Root Rider",
-    "Thrower"
-]
-
-
-DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
     "Hog Rider",
     "Valkyrie",
@@ -186,8 +84,6 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Bowler",
     "Ice Golem",
     "Headhunter",
-    "Apprentice Warden",
-    "Druid",
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -198,7 +94,6 @@ SIEGE_MACHINE_ORDER = [
     "Log Launcher",
     "Flame Flinger",
     "Battle Drill",
-    "Troop Launcher"
 ]
 
 SUPER_TROOP_ORDER = [
@@ -217,11 +112,9 @@ SUPER_TROOP_ORDER = [
     "Ice Hound",
     "Super Bowler",
     "Super Miner",
-    "Super Hog Rider",
 ]
 
-HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
-HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
+HOME_TROOP_ORDER = HOME_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
 
 BUILDER_TROOPS_ORDER = [
@@ -234,13 +127,11 @@ BUILDER_TROOPS_ORDER = [
     "Cannon Cart",
     "Night Witch",
     "Drop Ship",
-    "Power P.E.K.K.A",
+    "Super P.E.K.K.A",
     "Hog Glider",
-    "Electrofire Wizard",
 ]
 
-
-ELIXIR_SPELL_ORDER = [
+SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
     "Rage Spell",
@@ -249,25 +140,14 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
-    "Revive Spell"
-]
-
-
-DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
     "Haste Spell",
     "Skeleton Spell",
     "Bat Spell",
-    "Overgrowth Spell",
 ]
 
-
-SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
-
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Minion Prince", "Grand Warden", "Royal Champion"]
-BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
-HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
+HERO_ORDER = ["Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion", "Battle Machine"]
 
 PETS_ORDER = [
     "L.A.S.S.I",
@@ -278,39 +158,6 @@ PETS_ORDER = [
     "Diggy",
     "Poison Lizard",
     "Phoenix",
-    "Spirit Fox",
-    "Angry Jelly",
-]
-
-EQUIPMENT = [
-    "Barbarian Puppet",
-    "Rage Vial",
-    "Archer Puppet",
-    "Invisibility Vial",
-    "Eternal Tome",
-    "Life Gem",
-    "Seeking Shield",
-    "Royal Gem",
-    "Earthquake Boots",
-    "Vampstache",
-    "Giant Arrow",
-    "Healer Puppet",
-    "Rage Gem",
-    "Healing Tome",
-    "Giant Gauntlet",
-    "Frozen Arrow",
-    "Hog Rider Puppet",
-    "Haste Vial",
-    "Fireball",
-    "Spiky Ball",
-    "Rocket Spear",
-    "Lavaloon Puppet",
-    "Magic Mirror",
-    "Henchmen Puppet",
-    "Dark Orb",
-    "Electro Boots",
-    "Snake Bracelet",
-    "Metal Pants"
 ]
 
 ACHIEVEMENT_ORDER = [
@@ -346,15 +193,10 @@ ACHIEVEMENT_ORDER = [
     "Firefighter",
     "Anti-Artillery",
     "Shattered and Scattered",
-    "Counterspell",
-    "Monolith Masher",
     "Get those Goblins!",
     "Get those other Goblins!",
-    "Get even more Goblins!",
     "Dragon Slayer",
-    "Ungrateful Child",
     "Superb Work",
-    "Supercharger",
 
     # Builder Base
     "Master Engineering",

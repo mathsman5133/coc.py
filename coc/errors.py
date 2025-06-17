@@ -53,14 +53,8 @@ class HTTPException(ClashOfClansException):
     __slots__ = ("response", "status", "message", "reason", "_data")
 
     def _from_response(self, response, data):
-        if isinstance(response, int):
-            self.status = response
-            self.response = None
-        elif isinstance(response, ClientResponse):
-            self.response = response
-            self.status = response.status
-        else:
-            self.response = self.status = None
+        self.response = response
+        self.status = response.status
 
         if isinstance(data, dict):
             self.reason = data.get("reason", "Unknown")
@@ -79,7 +73,7 @@ class HTTPException(ClashOfClansException):
         super().__init__(fmt.format(self))
 
     def __init__(self, response=None, data=None):
-        if isinstance(response, (ClientResponse, int)):
+        if isinstance(response, ClientResponse):
             self._from_response(response, data)
         else:
             self.response = None

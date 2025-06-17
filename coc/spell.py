@@ -1,5 +1,3 @@
-import orjson
-
 from typing import Type, Dict, List
 from pathlib import Path
 
@@ -7,8 +5,8 @@ from .abc import DataContainer, DataContainerHolder
 from .enums import Resource
 from .miscmodels import TimeDelta
 
+
 SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
-ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spell_ids.json"))
 
 
 class Spell(DataContainer):
@@ -69,13 +67,13 @@ class Spell(DataContainer):
     is_dark_spell: bool = False
     is_loaded: bool = False
 
-    def __repr__(self):
+    def __repr__(cls):
         attrs = [
-            ("name", self.name),
-            ("id", self.id),
+            ("name", cls.name),
+            ("id", cls.id),
         ]
         return "<%s %s>" % (
-            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+            cls.__name__, " ".join("%s=%r" % t for t in attrs),)
 
     @property
     def is_max_for_townhall(self):
@@ -92,7 +90,7 @@ class Spell(DataContainer):
         #    and for troop level above, it requires a higher TH than we currently have.
         #    Maybe there's a better way to go about doing this.
         return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
-             < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
+                    < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
 
     @classmethod
     def get_max_level_for_townhall(cls, townhall):
@@ -125,47 +123,3 @@ class SpellHolder(DataContainerHolder):
 
     FILE_PATH = SPELLS_FILE_PATH
     data_object = Spell
-
-    def _load_json(self, english_aliases, lab_to_townhall):
-        with open(SPELLS_FILE_PATH, 'rb') as fp:
-            spell_data = orjson.loads(fp.read())
-        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
-            army_link_ids = orjson.loads(fp.read())
-
-        id = 2000  # fallback ID for non-standard spells
-        for supercell_name, spell_meta in spell_data.items():
-
-            if not spell_meta.get("TID"):
-                continue
-
-            # ignore deprecated content
-            if spell_meta.get("Deprecated") or  spell_meta.get("DisableProduction"):
-                continue
-
-            spell_name = english_aliases[spell_meta.get("TID")]
-            new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
-            spell_id = army_link_ids.get(spell_name, id)
-            if spell_id == id:
-                id += 1
-
-            new_spell._load_json_meta(
-                spell_meta,
-                id=spell_id,
-                name=spell_name,
-                lab_to_townhall=lab_to_townhall,
-            )
-            self.items.append(new_spell)
-            self.item_lookup[(new_spell.name, new_spell._is_home_village)] = new_spell
-
-        self.loaded = True
-
-    def load(self, data, townhall: int, default: "Spell" = Spell, load_game_data: bool = None) -> Spell:
-        if load_game_data is True:
-            try:
-                spell = self.item_lookup[(data["name"], True)]
-            except KeyError:
-                spell = default
-        else:
-            spell = default
-
-        return spell(data=data, townhall=townhall)

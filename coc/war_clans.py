@@ -66,11 +66,6 @@ class WarClan(BaseClan):
         :class:`int`: Total attacks used by clan this war.
     max_stars:
         :class:`int`: Total possible stars achievable.
-    total_attacks:
-        :class:`int`: Total possible number of attacks usable by clan this war
-    member_cls: :class:`coc.ClanMember`
-        The type which the members found in :attr:`Clan.members` will be of.
-        Ensure any overriding of this inherits from :class:`coc.ClanMember`.
     """
 
     __slots__ = (
@@ -81,7 +76,6 @@ class WarClan(BaseClan):
         "exp_earned",
         "max_stars",
         "total_attacks",
-        "member_cls",
         "_war",
         "_client",
 
@@ -92,10 +86,9 @@ class WarClan(BaseClan):
         "_cs_members",
     )
 
-    def __init__(self, *, data, client, war, **kwargs):
+    def __init__(self, *, data, client, war):
         self._war = war
         self._members = {}
-        self.member_cls = kwargs.pop('member_cls', ClanWarMember)
 
         super().__init__(data=data, client=client)
         self._from_data(data)
@@ -117,7 +110,7 @@ class WarClan(BaseClan):
             self.total_attacks: int = (data_get("teamSize") or 0) * 3
 
         self._iter_members = (
-            self.member_cls(data=mdata, client=self._client, war=self._war, clan=self)
+            ClanWarMember(data=mdata, client=self._client, war=self._war, clan=self)
             for mdata in data_get("members", [])
         )
 

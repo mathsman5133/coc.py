@@ -37,6 +37,12 @@ class TestClanMember(unittest.TestCase):
             member = ClanMember(data=case, client=self.client)
             self.assertEqual(member.trophies, case.get("trophies"))
 
+    def test_versus_trophies(self):
+        data = [{"versusTrophies": 4433}, {"versusTrophies": 0}, {}]
+        for case in data:
+            member = ClanMember(data=case, client=self.client)
+            self.assertEqual(member.versus_trophies, case.get("versusTrophies"))
+
     def test_clan_rank(self):
         data = [{"clanRank": 34}, {"clanRank": 1}, {}]
         for case in data:
@@ -134,6 +140,17 @@ class TestPlayers(unittest.TestCase):
             player = Player(data=case, client=self.client)
             self.assertEqual(player.builder_hall, case.get("builderHallLevel", 0))
 
+    def test_best_versus_trophies(self):
+        data = [{"bestVersusTrophies": 4467}, {"bestVersusTrophies": 0}, {}]
+        for case in data:
+            player = Player(data=case, client=self.client)
+            self.assertEqual(player.best_versus_trophies, case.get("bestVersusTrophies"))
+
+    def test_versus_attack_wins(self):
+        data = [{"versusBattleWins": 1234}, {"versusBattleWins": 0}, {}]
+        for case in data:
+            player = Player(data=case, client=self.client)
+            self.assertEqual(player.versus_attack_wins, case.get("versusBattleWins"))
 
     def test_legend_statistics(self):
         data = {
