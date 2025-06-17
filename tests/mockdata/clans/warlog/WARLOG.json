@@ -1,0 +1,112 @@
+{
+  "body": {
+    "items": [
+      {
+        "result": "win",
+        "endTime": "20230528T153000.000Z",
+        "teamSize": 25,
+        "attacksPerMember": 2,
+        "clan": {
+          "tag": "#29Y8PRCJR",
+          "name": "U.S.A FREEDOM",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png"
+          },
+          "clanLevel": 20,
+          "attacks": 42,
+          "stars": 56,
+          "destructionPercentage": 79.6,
+          "expEarned": 382
+        },
+        "opponent": {
+          "tag": "#LLLLVGRR",
+          "name": "Bandung city",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/1M9AgLDPMr24ikHRTXIJ9g3LQgAHebetLkEHwGmPB5g.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/1M9AgLDPMr24ikHRTXIJ9g3LQgAHebetLkEHwGmPB5g.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/1M9AgLDPMr24ikHRTXIJ9g3LQgAHebetLkEHwGmPB5g.png"
+          },
+          "clanLevel": 18,
+          "stars": 44,
+          "destructionPercentage": 63.56
+        }
+      },
+      {
+        "result": "lose",
+        "endTime": "20230524T210057.000Z",
+        "teamSize": 20,
+        "attacksPerMember": 2,
+        "clan": {
+          "tag": "#29Y8PRCJR",
+          "name": "U.S.A FREEDOM",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png"
+          },
+          "clanLevel": 20,
+          "attacks": 37,
+          "stars": 40,
+          "destructionPercentage": 70.2,
+          "expEarned": 279
+        },
+        "opponent": {
+          "tag": "#G20JR0U8",
+          "name": "+Revolution+",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/mhx5cSZNFbfMIqquO902b6tjyTg1nE-PdhDqdrlshck.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/mhx5cSZNFbfMIqquO902b6tjyTg1nE-PdhDqdrlshck.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/mhx5cSZNFbfMIqquO902b6tjyTg1nE-PdhDqdrlshck.png"
+          },
+          "clanLevel": 24,
+          "stars": 48,
+          "destructionPercentage": 86.65
+        }
+      },
+      {
+        "result": "win",
+        "endTime": "20230522T212419.000Z",
+        "teamSize": 20,
+        "attacksPerMember": 2,
+        "clan": {
+          "tag": "#29Y8PRCJR",
+          "name": "U.S.A FREEDOM",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/Z8Z1Er0uyqqaTAyDqsIh21SoIfs9WWFvmUgw8vH8jcw.png"
+          },
+          "clanLevel": 20,
+          "attacks": 35,
+          "stars": 48,
+          "destructionPercentage": 90.1,
+          "expEarned": 329
+        },
+        "opponent": {
+          "tag": "#2UYP9LYJ",
+          "name": "ActaWarsNL",
+          "badgeUrls": {
+            "small": "https://api-assets.clashofclans.com/badges/70/Pdmwn85Eyv5HOKjSuLJHc03pvCF7XDML1ycP-J-LfYQ.png",
+            "large": "https://api-assets.clashofclans.com/badges/512/Pdmwn85Eyv5HOKjSuLJHc03pvCF7XDML1ycP-J-LfYQ.png",
+            "medium": "https://api-assets.clashofclans.com/badges/200/Pdmwn85Eyv5HOKjSuLJHc03pvCF7XDML1ycP-J-LfYQ.png"
+          },
+          "clanLevel": 26,
+          "stars": 48,
+          "destructionPercentage": 89.75
+        }
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "after": "eyJwb3MiOjN9"
+      }
+    }
+  },
+  "headers": {
+    "cache-control": "max-age=120",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

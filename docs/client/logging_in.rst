@@ -4,9 +4,11 @@ Logging In
 ==========
 A coc.py client instance can be created directly by :class:`Client`. The instance can then be logged in with the methods
 
-.. autofunction:: coc.Client.login
+.. automethod:: coc.Client.login
+	:noindex:
 
-.. autofunction:: coc.Client.login_with_tokens
+.. automethod:: coc.Client.login_with_tokens
+	:noindex:
 
 
 Example
@@ -18,7 +20,7 @@ Example
 
     async def main():
         async with coc.Client(key_names="keys for my windows pc", key_count=5) as coc_client:
-            await coc_client.login("email","password)
+            await coc_client.login("email","password")
             # do stuff
 
     if __name__ == "__main__":
@@ -31,7 +33,7 @@ Example
 
     async def main():
         coc_client= coc.Client(key_names="keys for my windows pc", key_count=5)
-        await coc_client.login("email","password)
+        await coc_client.login("email","password")
         # do stuff
         await coc_client.close()
 

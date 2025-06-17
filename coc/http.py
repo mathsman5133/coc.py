@@ -29,11 +29,13 @@ from collections import deque
 from datetime import datetime
 from itertools import cycle
 from time import process_time, perf_counter
+from typing import Optional
 from urllib.parse import urlencode
 from base64 import b64decode as base64_b64decode
 from json import loads as json_loads
 
 import aiohttp
+import orjson
 
 from .errors import (
     HTTPException,
@@ -51,10 +53,10 @@ KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 stats_url_matcher = re.compile(r"%23[\da-zA-Z]+|\d{8,}|global")
 
 
-async def json_or_text(response):
+async def json_or_text(response: aiohttp.ClientResponse):
     """Parses an aiohttp response into a the string or json response."""
     try:
-        ret = await response.json()
+        ret = await response.json(loads=orjson.loads)
     except aiohttp.ContentTypeError:
         ret = await response.text(encoding="utf-8")
 
@@ -74,6 +76,7 @@ class BasicThrottler:
         self.sleep_time = sleep_time
         self.last_run = None
         self.lock = asyncio.Lock()
+        LOG.debug("BasicThrottler initialized with sleeptime %s", self.sleep_time)
 
     async def __aenter__(self):
         async with self.lock:
@@ -108,6 +111,8 @@ class BatchThrottler:
         self.retry_interval = retry_interval
 
         self._task_logs = deque()
+        LOG.debug("BatchThrottler initialized with rate_limit %s, per %s, retry_interval %s", self.rate_limit, self.per,
+                  self. retry_interval)
 
     async def __aenter__(self):
         while True:
@@ -140,10 +145,9 @@ class BatchThrottler:
 
 class Route:
     """Helper class to create endpoint URLs."""
+    ignored_kwargs = ['lookup_cache', 'update_cache', 'ignore_cached_errors']
 
-    BASE = "https://api.clashofclans.com/v1"
-
-    def __init__(self, method: str, path: str, **kwargs: dict):
+    def __init__(self, method: str, base: str, path: str, **kwargs: dict):
         """
         The class is used to create the final URL used to fetch the data
         from the API. The parameters that are passed to the API are all in
@@ -154,6 +158,8 @@ class Route:
         ----------
         method:
             :class:`str`: HTTP method used for the HTTP request
+        base:
+            :class:`str`: Base URL used for the HTTP request
         path:
             :class:`str`: URL path used for the HTTP request
         kwargs:
@@ -165,10 +171,19 @@ class Route:
 
         self.method = method
         self.path = path
-        url = self.BASE + self.path
+        self.base = base
+
+        url = self.base + self.path
 
         if kwargs:
-            self.url = "{}?{}".format(url, urlencode({k: v for k, v in kwargs.items() if v is not None}))
+            url_params = {}
+            for k, v in kwargs.items():
+                if v is None:
+                    continue
+                if k in self.ignored_kwargs:
+                    continue
+                url_params[k] = v
+            self.url = "{}?{}".format(url, urlencode(url_params))
         else:
             self.url = url
 
@@ -193,8 +208,18 @@ class HTTPClient:
             throttle_limit,
             throttler=BasicThrottler,
             cache_max_size=10000,
-            stats_max_size=1000
+            stats_max_size=1000,
+            base_url="https://api.clashofclans.com/v1",
+            ip=None,
+            lookup_cache=True,
+            update_cache=True,
+            ignore_cached_errors=None,
     ):
+        self.aiohttp_request_kwargs = ['params', 'data', 'json', 'cookies', 'headers', 'skip_auto_headers',
+                                       'auth', 'allow_redirects', 'max_redirects', 'compress', 'chunked', 'expect100',
+                                       'raise_for_status', 'read_until_eof', 'proxy', 'proxy_auth', 'timeout',
+                                       'ssl', 'server_hostname', 'proxy_headers', 'trace_request_ctx', 'read_bufsize',
+                                       'auto_decompress', 'max_line_size', 'max_field_size']
         self.client = client
         self.loop = loop
         self.email = email
@@ -204,13 +229,21 @@ class HTTPClient:
         self.key_scopes = key_scopes
         self.throttle_limit = throttle_limit
         per_second = key_count * throttle_limit
-
-        self.__session = None
+        self.lookup_cache = lookup_cache
+        self.update_cache = update_cache
+        self.ignore_cached_errors = ignore_cached_errors or []
+        self.__session: Optional[aiohttp.ClientSession] = None
         self.__lock = asyncio.Semaphore(per_second)
         self.cache = cache_max_size and FIFO(cache_max_size)
         self._cache_remove_count = 0
         self.stats = stats_max_size and HTTPStats(max_size=stats_max_size)
-
+        if base_url and isinstance(base_url, str) and len(base_url) > 0:
+            if base_url.endswith("/"):
+                base_url = base_url[:-1]
+            self.base_url = base_url
+        else:
+            raise ValueError("base_url must be a string and not empty.")
+        self.ip = ip
         if issubclass(throttler, BasicThrottler):
             self.__throttle = throttler(1 / per_second)
         elif issubclass(throttler, BatchThrottler):
@@ -250,6 +283,7 @@ class HTTPClient:
         headers = {
             "Accept"       : "application/json",
             "authorization": "Bearer {}".format(next(self.keys)),
+            "Accept-Encoding": "gzip, deflate",
         }
         kwargs["headers"] = headers
 
@@ -258,18 +292,37 @@ class HTTPClient:
 
         cache_control_key = route.url
         cache = self.cache
+        lookup_cache = kwargs.pop("lookup_cache", self.lookup_cache)
+        update_cache = kwargs.pop("update_cache", self.update_cache)
+        ignore_cached_errors = kwargs.pop("ignore_cached_errors", self.ignore_cached_errors)
         # the cache will be cleaned once it becomes stale / a new object is available from the api.
-        if isinstance(cache, FIFO) and not self.client.realtime and not kwargs.get("ignore_cache", False):
+        if isinstance(cache, FIFO) and (lookup_cache or (lookup_cache is None and 'realtime' not in url)):
             try:
-                return cache[cache_control_key]
+                data = cache[cache_control_key]
+                status_code = data.get("status_code")
+                if data.get("timestamp") and data.get("timestamp") + data.get("_response_retry", 0) < datetime.utcnow().timestamp():
+                    self._cache_remove(cache_control_key)
+                elif not status_code or 200 <= status_code < 300:
+                    return data
+                # ignore status cached errors if wanted
+                elif isinstance(ignore_cached_errors, list) and status_code in ignore_cached_errors:
+                    pass
+                elif status_code == 400:
+                    raise InvalidArgument(400, data)
+                elif status_code == 403:
+                    raise Forbidden(403, data)
+                elif status_code == 404:
+                    raise NotFound(404, data)
+                elif status_code == 503:
+                    raise Maintenance(503, data)
             except KeyError:
                 pass
-
+        request_kwargs = {k: v for k, v in kwargs.items() if k in self.aiohttp_request_kwargs}
         for tries in range(5):
             try:
                 async with self.__lock, self.__throttle:
                     start = perf_counter()
-                    async with self.__session.request(method, url, **kwargs) as response:
+                    async with self.__session.request(method, url, **request_kwargs) as response:
 
                         perf = (perf_counter() - start) * 1000
                         log_info = {"method": method, "url": url, "perf_counter": perf, "status": response.status}
@@ -277,13 +330,16 @@ class HTTPClient:
                             self.stats[route.stats_key] = perf
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
-                        data = await json_or_text(response)
-
+                        data = (await json_or_text(response)) or {}
+                        data["status_code"] = response.status
+                        data["timestamp"] = datetime.utcnow().timestamp()
                         try:
                             # set a callback to remove the item from cache once it's stale.
-                            delta = int(response.headers["Cache-Control"].strip("max-age="))
-                            data["_response_retry"] = delta
-                            if isinstance(cache, FIFO) and not self.client.realtime:
+                            delta = int(response.headers["Cache-Control"].strip("max-age=").strip("public max-age="))
+                            # encounter for changed description in cache control header. for realtime it is always
+                            # 600 but that is not true. Correct is 0
+                            data["_response_retry"] = delta if 'realtime' not in url else 0
+                            if isinstance(cache, FIFO) and (update_cache or (update_cache is None and 'realtime' not in url)):
                                 self.cache[cache_control_key] = data
                                 LOG.debug("Cache-Control max age: %s seconds, key: %s", delta, cache_control_key)
                                 self.loop.call_later(delta, self._cache_remove, cache_control_key)
@@ -334,6 +390,9 @@ class HTTPClient:
                             await asyncio.sleep(tries * 2 + 1)
                             continue
 
+                        # catch any stray status codes
+                        raise HTTPException(response, data)
+
             except asyncio.TimeoutError:
                 # api timed out, retry again
                 if tries > 3:
@@ -341,7 +400,6 @@ class HTTPClient:
 
                 await asyncio.sleep(tries * 2 + 1)
                 continue
-            raise
 
         else:
             if response.status in (500, 502, 504):
@@ -357,90 +415,112 @@ class HTTPClient:
     # clans
 
     def search_clans(self, **kwargs):
-        return self.request(Route("GET", "/clans", **kwargs))
+        return self.request(Route("GET", self.base_url, "/clans", **kwargs), **kwargs)
 
-    def get_clan(self, tag):
-        return self.request(Route("GET", "/clans/{}".format(tag)))
+    def get_clan(self, tag, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clans/{}".format(tag)), **kwargs)
 
     def get_clan_members(self, tag, **kwargs):
-        return self.request(Route("GET", "/clans/{}/members".format(tag), **kwargs))
+        return self.request(Route("GET", self.base_url, "/clans/{}/members".format(tag), **kwargs), **kwargs)
 
-    def get_clan_warlog(self, tag, **kwargs):
-        return self.request(Route("GET", "/clans/{}/warlog".format(tag), **kwargs))
+    def get_clan_war_log(self, tag, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clans/{}/warlog".format(tag), **kwargs), **kwargs)
 
-    def get_clan_current_war(self, tag, realtime=None):
-        return self.request(Route("GET", "/clans/{}/currentwar".format(tag) + (
+    def get_clan_current_war(self, tag, realtime=None, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clans/{}/currentwar".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
-                                         else '')))
+                                         else '')), **kwargs)
 
-    def get_clan_war_league_group(self, tag, realtime=None):
-        return self.request(Route("GET", "/clans/{}/currentwar/leaguegroup".format(tag) + (
+    def get_clan_war_league_group(self, tag, realtime=None, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clans/{}/currentwar/leaguegroup".format(tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
-                                         else '')))
+                                         else '')), **kwargs)
 
-    def get_cwl_wars(self, war_tag, realtime = None):
-        return self.request(Route("GET", "/clanwarleagues/wars/{}".format(war_tag) + (
+    def get_cwl_wars(self, war_tag, realtime=None, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clanwarleagues/wars/{}".format(war_tag) + (
                                          '?realtime=true' if realtime or (realtime is None and self.client.realtime)
-                                         else '')))
+                                         else '')), **kwargs)
 
-    def get_clan_raidlog(self, tag, **kwargs):
-        return self.request(Route("GET", "/clans/{}/capitalraidseasons".format(tag), **kwargs))
+    def get_clan_raid_log(self, tag, **kwargs):
+        return self.request(Route("GET", self.base_url, "/clans/{}/capitalraidseasons".format(tag), **kwargs), **kwargs)
 
     # locations
 
     def search_locations(self, **kwargs):
-        return self.request(Route("GET", "/locations", **kwargs))
+        return self.request(Route("GET", self.base_url, "/locations", **kwargs), **kwargs)
 
-    def get_location(self, location_id):
-        return self.request(Route("GET", "/locations/{}".format(location_id)))
+    def get_location(self, location_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/locations/{}".format(location_id)), **kwargs)
 
     def get_location_clans(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/clans".format(location_id), **kwargs))
+        return self.request(Route("GET", self.base_url, "/locations/{}/rankings/clans".format(location_id), **kwargs), **kwargs)
 
     def get_location_players(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/players".format(location_id), **kwargs))
+        return self.request(Route("GET", self.base_url, "/locations/{}/rankings/players".format(location_id), **kwargs), **kwargs)
 
-    def get_location_clans_versus(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/clans-versus".format(location_id), **kwargs))
+    def get_location_clans_builder_base(self, location_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/locations/{}/rankings/clans-builder-base".format(location_id), **kwargs),
+                            **kwargs)
 
     def get_location_clans_capital(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/capitals".format(location_id), **kwargs))
+        return self.request(Route("GET", self.base_url, "/locations/{}/rankings/capitals".format(location_id), **kwargs), **kwargs)
 
-    def get_location_players_versus(self, location_id, **kwargs):
-        return self.request(Route("GET", "/locations/{}/rankings/players-versus".format(location_id), **kwargs))
+    def get_location_players_builder_base(self, location_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/locations/{}/rankings/players-builder-base".format(location_id), **kwargs),
+                            **kwargs)
 
     # leagues
 
     def search_leagues(self, **kwargs):
-        return self.request(Route("GET", "/leagues", **kwargs))
+        return self.request(Route("GET", self.base_url, "/leagues", **kwargs), **kwargs)
 
-    def get_league(self, league_id):
-        return self.request(Route("GET", "/leagues/{}".format(league_id)))
+    def search_capital_leagues(self, **kwargs):
+        return self.request(Route("GET", self.base_url, "/capitalleagues", **kwargs), **kwargs)
+
+    def search_war_leagues(self, **kwargs):
+        return self.request(Route("GET", self.base_url, "/warleagues", **kwargs), **kwargs)
+
+    def search_builder_base_leagues(self, **kwargs):
+        return self.request(Route("GET", self.base_url, "/builderbaseleagues", **kwargs), **kwargs)
+
+    def get_league(self, league_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/leagues/{}".format(league_id)), **kwargs)
+
+    def get_capital_league(self, league_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/capitalleagues/{}".format(league_id)), **kwargs)
+
+    def get_war_league(self, league_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/warleagues/{}".format(league_id)), **kwargs)
+
+    def get_builder_base_league(self, league_id, **kwargs):
+        return self.request(Route("GET", self.base_url, "/builderbaseleagues/{}".format(league_id)), **kwargs)
 
     def get_league_seasons(self, league_id, **kwargs):
-        return self.request(Route("GET", "/leagues/{}/seasons".format(league_id), **kwargs))
+        return self.request(Route("GET", self.base_url, "/leagues/{}/seasons".format(league_id), **kwargs), **kwargs)
 
     def get_league_season_info(self, league_id, season_id, **kwargs):
-        return self.request(Route("GET", "/leagues/{}/seasons/{}".format(league_id, season_id), **kwargs))
+        return self.request(Route("GET", self.base_url, "/leagues/{}/seasons/{}".format(league_id, season_id), **kwargs),
+                            **kwargs)
 
     # players
 
-    def get_player(self, player_tag):
-        return self.request(Route("GET", "/players/{}".format(player_tag)))
+    def get_player(self, player_tag, **kwargs):
+        return self.request(Route("GET", self.base_url, "/players/{}".format(player_tag)), **kwargs)
 
-    def verify_player_token(self, player_tag, token):
-        return self.request(Route("POST", "/players/{}/verifytoken".format(player_tag)), json={"token": token})
+    def verify_player_token(self, player_tag, token, **kwargs):
+        return self.request(Route("POST", self.base_url, "/players/{}/verifytoken".format(player_tag)),
+                            json={"token": token}, **kwargs)
 
     # labels
 
     def get_clan_labels(self, **kwargs):
-        return self.request(Route("GET", "/labels/clan", **kwargs))
+        return self.request(Route("GET", self.base_url, "/labels/clan", **kwargs), **kwargs)
 
     def get_player_labels(self, **kwargs):
-        return self.request(Route("GET", "/labels/players", **kwargs))
+        return self.request(Route("GET", self.base_url, "/labels/players", **kwargs), **kwargs)
 
-    def get_current_goldpass_season(self):
-        return self.request(Route("GET", "/goldpass/seasons/current"))
+    def get_current_goldpass_season(self, **kwargs):
+        return self.request(Route("GET", self.base_url, "/goldpass/seasons/current"), **kwargs)
 
     # key updating management
 
@@ -459,19 +539,27 @@ class HTTPClient:
 
             LOG.info("Successfully logged into the developer site.")
 
-            resp_paylaod = await resp.json()
-            ip = json_loads(base64_b64decode(resp_paylaod["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
-
+            resp_payload = await resp.json()
+            if not self.ip:
+                ip = json_loads(base64_b64decode(resp_payload["temporaryAPIToken"].split(".")[1] + "====").decode("utf-8"))["limits"][1]["cidrs"][0].split("/")[0]
+            else:
+                ip = self.ip
             LOG.info("Found IP address to be %s", ip)
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
             keys = (await resp.json())["keys"]
-            self._keys.extend(key["key"] for key in keys if key["name"] == self.key_names and ip in key["cidrRanges"])
+            for key in keys:
+                LOG.debug(f"Key {key}")
+                if key["name"] != self.key_names or ip not in key["cidrRanges"]:
+                    continue
+                self._keys.append(key["key"])
+                if len(self._keys) == self.key_count:
+                    break
 
             LOG.info("Retrieved %s valid keys from the developer site.", len(self._keys))
 
             if len(self._keys) < self.key_count:
-                for key in keys:
+                for key in keys[:]:
                     if key["name"] != self.key_names or ip in key["cidrRanges"]:
                         continue
                     LOG.info(

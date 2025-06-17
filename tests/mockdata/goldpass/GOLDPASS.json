@@ -1,0 +1,11 @@
+{
+  "body": {
+    "startTime": "20230601T080100.000Z",
+    "endTime": "20230701T080000.000Z"
+  },
+  "headers": {
+    "cache-control": "max-age=60",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "response_code": 200
+}

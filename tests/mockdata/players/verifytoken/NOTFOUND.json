@@ -1,0 +1,11 @@
+{
+  "body": {
+    "reason": "notFound",
+    "message": "Not found with tag 2PP"
+  },
+  "headers": {
+    "cache-control": "public max-age=600",
+    "content-type": "application/json"
+  },
+  "response_code": 404
+}

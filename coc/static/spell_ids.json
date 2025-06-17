@@ -1,0 +1,19 @@
+{
+    "Lightning Spell": "0",
+    "Healing Spell": "1",
+    "Rage Spell": "2",
+    "Jump Spell": "3",
+    "Freeze Spell": "5",
+    "Poison Spell": "9",
+    "Earthquake Spell": "10",
+    "Haste Spell": "11",
+    "Clone Spell": "16",
+    "Skeleton Spell": "17",
+    "Bat Spell": "28",
+    "Invisibility Spell": "35",
+    "Recall Spell": "53",
+    "Santa's Surprise": "4",
+    "Birthday Boom": "22",
+    "Overgrowth Spell": "70",
+    "Revive Spell" : "98"
+}

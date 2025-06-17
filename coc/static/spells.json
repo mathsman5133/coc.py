@@ -1,1 +1,5328 @@
-{"AreaStun": {"DisableProduction": [true], "ImmunityOtherCharacters": [true], "ImmunitySiegeMachines": [true], "ImmunityStorages": [true], "ImmunityWalls": [true], "NumberOfHits": [1], "Radius": [200], "StunTimeMS": [5000]}, "Artillery Center": {"Damage": [300, 350, 400, 450, 500], "DisableProduction": [true, true, true, true, true], "HitEffect": ["Artillery Hit", "Artillery Hit", "Artillery Hit", "Artillery Hit", "Artillery Hit"], "NumberOfHits": [1, 1, 1, 1, 1], "Radius": [75, 75, 75, 75, 75], "TimeBetweenHitsMS": [150, 150, 150, 150, 150]}, "Birthday2017": {"ChargingTimeMS": [150], "Damage": [500], "DisableDonate": [true], "EnabledByCalendar": [true], "HitEffect": ["Birthday Spell Hit"], "HitTimeMS": [1750], "HousingSpace": [2], "IconExportName": ["icon_spell_birthday"], "InfoTID": ["TID_BIRTHDAY_SPELL_INFO"], "LaboratoryLevel": [1], "NumberOfHits": [1], "PauseCombatComponentsMs": [2000], "ProductionBuilding": ["Spell Forge"], "Radius": [250], "ScaleByTH": [true], "SpellForgeLevel": [1], "TID": ["TID_BIRTHDAY_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [360], "UpgradeResource": ["Elixir"]}, "BoostDefences": {"BoostTimeMS": [500, 500], "ChargingTimeMS": [300, 300], "DisableProduction": [true, true], "HitTimeMS": [300, 300], "HousingSpace": [2, 2], "LaboratoryLevel": [1, 1], "NumberOfHits": [9999, 9999], "ProductionBuilding": ["Spell Forge", "Spell Forge"], "Radius": [400, 400], "RandomRadiusAffectsOnlyGfx": [true, true], "SpellForgeLevel": [1, 1], "TID": ["TID_BOOSTDEFENCES_SPELL", "TID_BOOSTDEFENCES_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300], "TrainingTime": [2700, 2700], "UpgradeResource": ["Elixir", "Elixir"]}, "DrillerSurfacing": {"DestroyWalls": [true], "DisableProduction": [true], "ImmunityOtherCharacters": [true], "ImmunitySiegeMachines": [true], "ImmunityStorages": [true], "ImmunityWalls": [true], "NumberOfHits": [1], "Radius": [150], "StunTimeMS": [2000]}, "Duplicate": {"ChargingTimeMS": [300, 300, 300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800], "DonateCost": [15, 15, 15, 15, 15, 15, 15], "DuplicateHousing": [22, 24, 26, 28, 30, 34, 38], "DuplicateLifetime": [30000, 30000, 30000, 30000, 30000, 30000, 30000], "HitTimeMS": [400, 400, 400, 400, 400, 400, 400], "HousingSpace": [3, 3, 3, 3, 3, 3, 3], "IconExportName": ["icon_spell_clone", "icon_spell_clone", "icon_spell_clone", "icon_spell_clone", "icon_spell_clone", "icon_spell_clone", "icon_spell_clone"], "InfoTID": ["TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO", "TID_DUPLICATE_SPELL_INFO"], "LaboratoryLevel": [1, 8, 8, 9, 9, 11, 12], "NumberOfHits": [60, 60, 60, 60, 60, 60, 60], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [350, 350, 350, 350, 350, 350, 350], "RandomRadius": [200, 200, 200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true], "SpellForgeLevel": [5, 5, 5, 5, 5, 5, 5], "StrengthWeight": [300, 330, 360, 360, 360, 330, 310], "TID": ["TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL", "TID_DUPLICATE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300, 300], "TrainingTime": [540, 540, 540, 540, 540, 540, 540], "UpgradeCost": [2100000, 3400000, 4200000, 5600000, 9000000, 15500000, 15500000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [42, 84, 96, 168, 270, 378, 378]}, "Earthquake": {"BuildingDamagePermil": [29, 34, 42, 50, 58], "ChargingTimeMS": [300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5], "HitTimeMS": [400, 400, 400, 400, 400], "HousingSpace": [1, 1, 1, 1, 1], "IconExportName": ["icon_spell_earthquake", "icon_spell_earthquake", "icon_spell_earthquake", "icon_spell_earthquake", "icon_spell_earthquake"], "ImmunityOtherCharacters": [true, true, true, true, true], "ImmunitySiegeMachines": [true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true], "InfoTID": ["TID_EARTHQUAKE_INFO", "TID_EARTHQUAKE_INFO", "TID_EARTHQUAKE_INFO", "TID_EARTHQUAKE_INFO", "TID_EARTHQUAKE_INFO"], "LaboratoryLevel": [1, 6, 7, 8, 9], "NumberOfHits": [5, 5, 5, 5, 5], "PreferredTarget": ["Wall", "Wall", "Wall", "Wall", "Wall"], "PreferredTargetDamageMod": [5, 5, 5, 5, 5], "ProductionBuilding": ["Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory"], "Radius": [350, 380, 410, 440, 470], "RandomRadius": [200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "SpellForgeLevel": [2, 2, 2, 2, 2], "StrengthWeight": [150, 145, 140, 135, 130], "TID": ["TID_EARTHQUAKE", "TID_EARTHQUAKE", "TID_EARTHQUAKE", "TID_EARTHQUAKE", "TID_EARTHQUAKE"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS", "TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS", "TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS", "TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS", "TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS"], "TimeBetweenHitsMS": [400, 400, 400, 400, 400], "TrainingTime": [180, 180, 180, 180, 180], "UpgradeCost": [15000, 30000, 51000, 84000, 84000], "UpgradeResource": ["DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir"], "UpgradeTimeH": [18, 36, 102, 186, 186]}, "ElectroDragonDie": {"ChargingTimeMS": [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000], "Damage": [50, 55, 60, 65, 75, 85, 95, 105, 115], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800, 800, 800], "DisableProduction": [true, true, true, true, true, true, true, true, true], "HitEffect": ["Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit"], "HitTimeMS": [1100, 1100, 1100, 1100, 1100, 1100, 1100, 1100, 1100], "NumberOfHits": [6, 6, 6, 6, 6, 6, 6, 6, 6], "Radius": [200, 200, 200, 200, 200, 200, 200, 200, 200], "RandomRadius": [250, 250, 250, 250, 250, 250, 250, 250, 250], "TimeBetweenHitsMS": [400, 400, 400, 400, 400, 400, 400, 400, 400]}, "ElectroTitanDamageAura": {"AffectsSiegeMachines": [true, true, true], "Damage": [30, 40, 50], "DisableProduction": [true, true, true], "HeroDamageMultiplier": [25, 25, 25], "HitTimeMS": [400, 400, 400], "ImmunityWalls": [true, true, true], "NumberOfHits": [4000, 4000, 4000], "Radius": [350, 350, 350], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [400, 400, 400]}, "EliteValkyrieRage": {"BoostTimeMS": [1000], "ChargingTimeMS": [300], "DeployTimeMS": [800], "DisableProduction": [true], "HitTimeMS": [400], "NumberOfHits": [60], "Radius": [400], "RandomRadius": [400], "RandomRadiusAffectsOnlyGfx": [true], "TimeBetweenHitsMS": [300]}, "FireSpiritExplosion": {"BoostDefenders": [true, true, true, true], "BoostTimeMS": [500, 500, 500, 500], "ChargingTimeMS": [300, 300, 300, 300], "Damage": [1, 1, 1, 1], "DisableProduction": [true, true, true, true], "HitTimeMS": [500, 500, 500, 500], "NumberOfHits": [75, 75, 75, 75], "PoisonDPS": [80, 95, 105, 120], "PoisonIncreaseSlowly": [true, true, true, true], "PreferredTarget": ["Wall", "Wall", "Wall", "Wall"], "PreferredTargetDamageMod": [25, 25, 25, 25], "Radius": [250, 250, 250, 250], "RandomRadiusAffectsOnlyGfx": [true, true, true, true], "TimeBetweenHitsMS": [400, 400, 400, 400]}, "Freeze": {"AffectsSiegeMachines": [true, true, true, true, true, true, true], "ChargingTimeMS": [300, 300, 300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5, 5, 5], "FreezeTimeMS": [2500, 3000, 3500, 4000, 4500, 5000, 5500], "HitTimeMS": [400, 400, 400, 400, 400, 400, 400], "HousingSpace": [1, 1, 1, 1, 1, 1, 1], "IconExportName": ["icon_spell_freeze", "icon_spell_freeze", "icon_spell_freeze", "icon_spell_freeze", "icon_spell_freeze", "icon_spell_freeze", "icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO", "TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [7, 7, 8, 8, 8, 9, 10], "NumberOfHits": [1, 1, 1, 1, 1, 1, 1], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [350, 350, 350, 350, 350, 350, 350], "RandomRadius": [400, 400, 400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true], "SpellForgeLevel": [4, 4, 4, 4, 4, 4, 4], "StrengthWeight": [1000, 1150, 1300, 1450, 1600, 1750, 1900], "TID": ["TID_FREEZE_SPELL", "TID_FREEZE_SPELL", "TID_FREEZE_SPELL", "TID_FREEZE_SPELL", "TID_FREEZE_SPELL", "TID_FREEZE_SPELL", "TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180, 180, 180, 180, 180, 180, 180], "UpgradeCost": [1200000, 1700000, 3000000, 4200000, 6000000, 7700000, 7700000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [36, 62, 102, 144, 186, 198, 198]}, "FreezeTrap": {"AffectsSiegeMachines": [true], "ChargingTimeMS": [300], "DisableDonate": [true], "DisableProduction": [true], "EnabledByCalendar": [true], "FreezeTimeMS": [5000], "HitTimeMS": [10], "NumberOfHits": [1], "Radius": [350], "RandomRadius": [400], "RandomRadiusAffectsOnlyGfx": [true], "ScaleByTH": [true]}, "Growth": {"DisableProduction": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true], "HitTimeMS": [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300], "NumberOfHits": [4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000], "Radius": [900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900], "RandomRadius": [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]}, "Haste": {"BoostTimeMS": [1000, 1000, 1000, 1000, 1000, 1000], "ChargingTimeMS": [300, 300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800, 800], "DonateCost": [10, 10, 10, 10, 10, 10], "HitTimeMS": [400, 400, 400, 400, 400, 400], "HousingSpace": [2, 2, 2, 2, 2, 2], "IconExportName": ["icon_spell_rage", "icon_spell_rage", "icon_spell_rage", "icon_spell_rage", "icon_spell_rage", "icon_spell_rage"], "InfoTID": ["TID_HASTE_INFO", "TID_HASTE_INFO", "TID_HASTE_INFO", "TID_HASTE_INFO", "TID_HASTE_INFO", "TID_HASTE_INFO"], "LaboratoryLevel": [3, 3, 4, 5, 6, 10], "NumberOfHits": [60, 60, 60, 60, 60, 60], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [500, 500, 500, 500, 500, 500], "RandomRadius": [400, 400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true], "SpellForgeLevel": [3, 3, 3, 3, 3, 3], "StrengthWeight": [100, 95, 90, 85, 80, 95], "TID": ["TID_HASTE", "TID_HASTE", "TID_HASTE", "TID_HASTE", "TID_HASTE", "TID_HASTE"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300], "TrainingTime": [360, 360, 360, 360, 360, 360], "UpgradeCost": [400000, 800000, 1600000, 2400000, 7700000, 7700000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [12, 24, 48, 96, 192, 192]}, "HealingWave": {"ChargingTimeMS": [300, 300, 300, 300, 300, 300, 300, 300, 300], "Damage": [-15, -20, -25, -30, -35, -40, -45, -50, -55], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800, 800, 800], "DonateCost": [10, 10, 10, 10, 10, 10, 10, 10, 10], "HeroDamageMultiplier": [55, 55, 55, 55, 55, 55, 55, 55, 55], "HitEffect": ["Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell"], "HitTimeMS": [400, 400, 400, 400, 400, 400, 400, 400, 400], "HousingSpace": [2, 2, 2, 2, 2, 2, 2, 2, 2], "IconExportName": ["icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing", "icon_spell_healing"], "InfoTID": ["TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO", "TID_HEALING_WAVE_INFO"], "LaboratoryLevel": [2, 2, 4, 5, 6, 7, 8, 11, 13], "NumberOfHits": [40, 40, 40, 40, 40, 40, 40, 40, 40], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [500, 500, 500, 500, 500, 500, 500, 500, 500], "RandomRadius": [200, 200, 200, 200, 200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true], "SpellForgeLevel": [2, 2, 2, 2, 2, 2, 2, 2, 2], "StrengthWeight": [230, 215, 200, 190, 180, 170, 170, 200, 200], "TID": ["TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE", "TID_HEALING_WAVE"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300, 300, 300, 300], "TrainingTime": [360, 360, 360, 360, 360, 360, 360, 360, 360], "UpgradeCost": [75000, 150000, 300000, 900000, 1800000, 3000000, 10500000, 17000000, 17000000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [5, 10, 20, 36, 96, 144, 288, 408, 408]}, "IceBreakerSplinters": {"AffectsSiegeMachines": [true, true, true], "Damage": [300, 390, 450], "DisableProduction": [true, true, true], "HitEffect": ["Ice Breaker Hit lvl1", "Ice Breaker Hit lvl1", "Ice Breaker Hit lvl1"], "NumberOfHits": [1, 1, 1], "Radius": [500, 500, 500], "RandomRadiusAffectsOnlyGfx": [true, true, true]}, "IceGolemFreeze": {"AffectsSiegeMachines": [true, true, true, true, true, true], "ChargingTimeMS": [300, 300, 300, 300, 300, 300], "DisableProduction": [true, true, true, true, true, true], "FreezeTimeMS": [4000, 4750, 5500, 6250, 7000, 7500], "HitTimeMS": [400, 400, 400, 400, 400, 400], "NumberOfHits": [1, 1, 1, 1, 1, 1], "Radius": [750, 750, 750, 750, 750, 750], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true]}, "IceGolemFreeze_DEF": {"AffectsSiegeMachines": [true, true, true, true, true, true], "ChargingTimeMS": [300, 300, 300, 300, 300, 300], "DisableProduction": [true, true, true, true, true, true], "FreezeTimeMS": [2000, 2250, 2500, 2750, 3000, 3250], "HitTimeMS": [400, 400, 400, 400, 400, 400], "NumberOfHits": [1, 1, 1, 1, 1, 1], "Radius": [550, 550, 550, 550, 550, 550], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true]}, "IceHoundFreeze": {"AffectsSiegeMachines": [true, true], "ChargingTimeMS": [300, 300], "DisableProduction": [true, true], "FreezeTimeMS": [3500, 4250], "HitTimeMS": [400, 400], "NumberOfHits": [1, 1], "Radius": [650, 650], "RandomRadiusAffectsOnlyGfx": [true, true]}, "Invisibility": {"ChargingTimeMS": [300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800], "DonateCost": [5, 5, 5, 5], "HitTimeMS": [400, 400, 400, 400], "HousingSpace": [1, 1, 1, 1], "IconExportName": ["icon_spell_invisibility", "icon_spell_invisibility", "icon_spell_invisibility", "icon_spell_invisibility"], "ImmunitySiegeMachines": [true, true, true, true], "ImmunityWalls": [true, true, true, true], "InfoTID": ["TID_INVISIBILITY_SPELL_INFO", "TID_INVISIBILITY_SPELL_INFO", "TID_INVISIBILITY_SPELL_INFO", "TID_INVISIBILITY_SPELL_INFO"], "LaboratoryLevel": [1, 9, 10, 11], "NumberOfHits": [15, 16, 17, 18], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [400, 400, 400, 400], "RandomRadius": [200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true], "SpellForgeLevel": [6, 6, 6, 6], "StrengthWeight": [210, 215, 220, 225], "TID": ["TID_INVISIBILITY_SPELL", "TID_INVISIBILITY_SPELL", "TID_INVISIBILITY_SPELL", "TID_INVISIBILITY_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [250, 250, 250, 250], "TrainingTime": [180, 180, 180, 180], "UpgradeCost": [5600000, 8400000, 11300000, 11300000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [132, 192, 282, 282]}, "InvisibilityST": {"ChargingTimeMS": [300], "DisableProduction": [true], "DonateCost": [5], "HitTimeMS": [400], "HousingSpace": [1], "IconExportName": ["icon_spell_invisibility"], "ImmunitySiegeMachines": [true], "ImmunityWalls": [true], "InfoTID": ["TID_INVISIBILITY_SPELL_INFO"], "LaboratoryLevel": [1], "NumberOfHits": [18], "ProductionBuilding": ["Spell Forge"], "Radius": [450], "RandomRadius": [200], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [1], "StrengthWeight": [225], "TID": ["TID_INVISIBILITY_SPELL_TOWER"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [250], "TrainingTime": [180], "UpgradeCost": [8000000], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [192]}, "Jump": {"ChargingTimeMS": [300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800], "DonateCost": [10, 10, 10, 10, 10], "HitTimeMS": [400, 400, 400, 400, 400], "HousingSpace": [2, 2, 2, 2, 2], "IconExportName": ["icon_spell_jump", "icon_spell_jump", "icon_spell_jump", "icon_spell_jump", "icon_spell_jump"], "InfoTID": ["TID_JUMP_SPELL_INFO", "TID_JUMP_SPELL_INFO", "TID_JUMP_SPELL_INFO", "TID_JUMP_SPELL_INFO", "TID_JUMP_SPELL_INFO"], "JumpBoostMS": [400, 400, 400, 400, 400], "LaboratoryLevel": [4, 5, 8, 11, 13], "NumberOfHits": [66, 133, 199, 266, 333], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [350, 350, 350, 350, 350], "RandomRadius": [400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "SpellForgeLevel": [4, 4, 4, 4, 4], "StrengthWeight": [250, 170, 130, 110, 90], "TID": ["TID_JUMP_SPELL", "TID_JUMP_SPELL", "TID_JUMP_SPELL", "TID_JUMP_SPELL", "TID_JUMP_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300], "TrainingTime": [360, 360, 360, 360, 360], "UpgradeCost": [2000000, 3400000, 9000000, 16500000, 16500000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [96, 144, 270, 396, 396]}, "LighningStorm": {"Damage": [150, 180, 210, 240, 270, 320, 400, 480, 560, 600], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "FreezeTimeMS": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "HitEffect": ["Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit", "Lightning Spell Hit"], "HitTimeMS": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "HousingSpace": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "IconExportName": ["icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning"], "ImmunityStorages": [true, true, true, true, true, true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true, true, true, true, true, true], "InfoTID": ["TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO"], "LaboratoryLevel": [1, 1, 2, 3, 6, 7, 8, 9, 10, 13], "NumberOfHits": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [200, 200, 200, 200, 200, 200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true, true], "SpellForgeLevel": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "StrengthWeight": [30, 30, 30, 30, 30, 27, 24, 22, 20, 22], "TID": ["TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM"], "TargetInfoString": ["TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY"], "TimeBetweenHitsMS": [400, 400, 400, 400, 400, 400, 400, 400, 400, 400], "TrainingTime": [180, 180, 180, 180, 180, 180, 180, 180, 180, 180], "UpgradeCost": [50000, 100000, 200000, 600000, 1500000, 2500000, 4200000, 7000000, 16000000, 16000000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [4, 8, 12, 24, 96, 144, 174, 216, 384, 384]}, "MiniGrowth": {"DisableProduction": [true], "HitTimeMS": [300], "NumberOfHits": [40], "Radius": [350], "RandomRadius": [200], "RandomRadiusAffectsOnlyGfx": [true], "TimeBetweenHitsMS": [300]}, "Mortar2Poison": {"AffectsSiegeMachines": [true, true, true, true, true, true, true, true, true], "BoostDefenders": [true, true, true, true, true, true, true, true, true], "BoostTimeMS": [500, 500, 500, 500, 500, 500, 500, 500, 500], "ChargingTimeMS": [300, 300, 300, 300, 300, 300, 300, 300, 300], "DisableProduction": [true, true, true, true, true, true, true, true, true], "HeroDamageMultiplier": [5, 5, 5, 5, 5, 5, 5, 5, 5], "HitTimeMS": [500, 500, 500, 500, 500, 500, 500, 500, 500], "ImmunityOtherBuildings": [true, true, true, true, true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true, true, true, true, true], "ImmunityWalls": [true, true, true, true, true, true, true, true, true], "NumberOfHits": [50, 50, 50, 50, 50, 50, 50, 50, 50], "PoisonDPS": [160, 165, 170, 175, 180, 185, 190, 195, 200], "PoisonIncreaseSlowly": [true, true, true, true, true, true, true, true, true], "Radius": [300, 300, 300, 300, 300, 300, 300, 300, 300], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true], "TimeBetweenHitsMS": [400, 400, 400, 400, 400, 400, 400, 400, 400], "VillageType": [1, 1, 1, 1, 1, 1, 1, 1, 1]}, "PhoenixImmortality": {"DisableProduction": [true, true, true], "NumberOfHits": [1, 1, 1], "ShieldTime": [6500, 7500, 8500]}, "Poison": {"BoostDefenders": [true, true, true, true, true, true, true, true, true], "BoostTimeMS": [500, 500, 500, 500, 500, 500, 500, 500, 500], "ChargingTimeMS": [300, 300, 300, 300, 300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5, 5, 5, 5, 5], "HeroDamageMultiplier": [5, 5, 5, 5, 5, 5, 5, 5, 5], "HitTimeMS": [400, 400, 400, 400, 400, 400, 400, 400, 400], "HousingSpace": [1, 1, 1, 1, 1, 1, 1, 1, 1], "IconExportName": ["icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic", "icon_spell_toxic"], "ImmunityOtherBuildings": [true, true, true, true, true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true, true, true, true, true], "ImmunityWalls": [true, true, true, true, true, true, true, true, true], "InfoTID": ["TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO", "TID_POISON_CLOUD_INFO"], "LaboratoryLevel": [1, 6, 7, 8, 9, 10, 11, 12, 13], "NumberOfHits": [40, 40, 40, 40, 40, 40, 40, 40, 40], "PoisonAffectAir": [true, true, true, true, true, true, true, true, true], "PoisonDPS": [90, 115, 145, 180, 220, 260, 280, 300, 320], "PoisonIncreaseSlowly": [true, true, true, true, true, true, true, true, true], "ProductionBuilding": ["Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory"], "Radius": [400, 400, 400, 400, 400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true], "SpellForgeLevel": [1, 1, 1, 1, 1, 1, 1, 1, 1], "StrengthWeight": [-160, -170, -190, -210, -230, -250, -270, -275, -280], "TID": ["TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD", "TID_POISON_CLOUD"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [400, 400, 400, 400, 400, 400, 400, 400, 400], "TrainingTime": [180, 180, 180, 180, 180, 180, 180, 180, 180], "UpgradeCost": [12000, 25000, 43000, 70000, 123000, 195000, 285000, 320000, 320000], "UpgradeResource": ["DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir"], "UpgradeTimeH": [8, 24, 62, 150, 186, 282, 402, 420, 420]}, "PoisonLizardAttack": {"BoostDefenders": [true, true, true], "BoostTimeMS": [500, 500, 500], "DisableProduction": [true, true, true], "ImmunityOtherBuildings": [true, true, true], "ImmunityStorages": [true, true, true], "ImmunityTH_CC": [true, true, true], "ImmunityWalls": [true, true, true], "NumberOfHits": [40, 40, 40], "PoisonAffectAir": [true, true, true], "PoisonDPS": [80, 100, 120], "Radius": [400, 400, 400], "TimeBetweenHitsMS": [400, 400, 400]}, "PoisonST": {"BoostDefenders": [true], "BoostTimeMS": [500], "DisableProduction": [true], "DonateCost": [5], "HeroDamageMultiplier": [20], "HousingSpace": [1], "IconExportName": ["icon_spell_toxic"], "ImmunityOtherBuildings": [true], "ImmunityStorages": [true], "ImmunityTH_CC": [true], "ImmunityWalls": [true], "InfoTID": ["TID_POISON_CLOUD_INFO"], "LaboratoryLevel": [1], "NumberOfHits": [30], "PoisonAffectAir": [true], "PoisonDPS": [60], "ProductionBuilding": ["Mini Spell Factory"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [1], "StrengthWeight": [-160], "TID": ["TID_POISON_CLOUD_TOWER"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [400], "TrainingTime": [180], "UpgradeCost": [12000], "UpgradeResource": ["DarkElixir"], "UpgradeTimeH": [8]}, "ProtoSpell2": {"ChargingTimeMS": [300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800], "DisableProduction": [true, true, true, true, true], "HitEffect": ["Heal spell", "Heal spell", "Heal spell", "Heal spell", "Heal spell"], "HitTimeMS": [400, 400, 400, 400, 400], "HousingSpace": [3, 3, 3, 3, 3], "IconExportName": ["icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning", "icon_spell_lightning"], "InfoTID": ["TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO", "TID_LIGHTNING_STORM_INFO"], "LaboratoryLevel": [1, 9, 9, 10, 10], "NumberOfHits": [1, 1, 1, 1, 1], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [500, 500, 500, 500, 500], "RandomRadius": [200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "SpellForgeLevel": [5, 5, 5, 5, 5], "StrengthWeight": [230, 230, 230, 230, 230], "TID": ["TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM", "TID_LIGHTNING_STORM"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300], "TrainingTime": [360, 360, 360, 360, 360], "UpgradeCost": [4000000, 6000000, 9000000, 12000000, 12000000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [72, 96, 156, 336, 336]}, "RageST": {"BoostTimeMS": [1000], "ChargingTimeMS": [300], "DisableProduction": [true], "DonateCost": [10], "HitTimeMS": [400], "HousingSpace": [2], "IconExportName": ["icon_spell_rage"], "InfoTID": ["TID_HASTE_INFO"], "LaboratoryLevel": [1], "NumberOfHits": [60], "ProductionBuilding": ["Spell Forge"], "Radius": [600], "RandomRadius": [400], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [1], "StrengthWeight": [100], "TID": ["TID_HASTE_TOWER"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300], "TrainingTime": [360], "UpgradeCost": [400000], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [12]}, "RamRiderDestroyWalls": {"DestroyWalls": [true], "DisableProduction": [true], "HitTimeMS": [300], "InfoTID": ["TID_RAM_RIDER_ABILITY_INFO"], "NumberOfHits": [4000], "Radius": [100], "RandomRadiusAffectsOnlyGfx": [true], "TID": ["TID_RAM_RIDER_ABILITY_TITLE"], "TimeBetweenHitsMS": [100]}, "Recall": {"DeployTimeMS": [800, 800, 800, 800], "DonateCost": [10, 10, 10, 10], "HitTimeMS": [100, 100, 100, 100], "HousingSpace": [2, 2, 2, 2], "IconExportName": ["icon_spell_recall", "icon_spell_recall", "icon_spell_recall", "icon_spell_recall"], "InfoTID": ["TID_SPELL_RECALL_INFO", "TID_SPELL_RECALL_INFO", "TID_SPELL_RECALL_INFO", "TID_SPELL_RECALL_INFO"], "LaboratoryLevel": [1, 11, 12, 13], "NumberOfHits": [1, 1, 1, 1], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [500, 500, 500, 500], "RandomRadius": [200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true], "RecallHousing": [72, 78, 84, 90], "SpellForgeLevel": [7, 7, 7, 7], "StrengthWeight": [120, 130, 140, 150], "TID": ["TID_SPELL_RECALL", "TID_SPELL_RECALL", "TID_SPELL_RECALL", "TID_SPELL_RECALL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [100, 100, 100, 100], "TrainingTime": [360, 360, 360, 360], "UpgradeCost": [7500000, 14000000, 17500000, 17500000], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir"], "UpgradeTimeH": [276, 372, 420, 420]}, "Shield": {"AffectsSiegeMachines": [true, true, true, true, true, true, true, true, true, true, true, true], "DisableProduction": [true, true, true, true, true, true, true, true, true, true, true, true], "ImmunityOtherBuildings": [true, true, true, true, true, true, true, true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true, true, true, true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true, true, true, true, true, true, true, true], "ImmunityWalls": [true, true, true, true, true, true, true, true, true, true, true, true], "NumberOfHits": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "Radius": [900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true, true, true, true, true, true, true, true], "ShieldTime": [3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 8750], "TargetInfoString": ["TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY", "TID_PREFERRED_TARGET_ANY"]}, "ShrinkTrap": {"AffectsSiegeMachines": [true], "ChargingTimeMS": [300], "DisableProduction": [true], "HitTimeMS": [1000], "NumberOfHits": [75], "Radius": [400], "RandomRadius": [400], "RandomRadiusAffectsOnlyGfx": [true], "ScaleByTH": [true], "ShrinkHitpointsRatio": [50], "ShrinkReduceSpeedRatio": [-50], "TimeBetweenHitsMS": [250]}, "Slow": {"BoostTimeMS": [500, 500], "ChargingTimeMS": [300, 300], "DisableProduction": [true, true], "HitTimeMS": [300, 300], "HousingSpace": [2, 2], "LaboratoryLevel": [1, 1], "NumberOfHits": [9999, 9999], "ProductionBuilding": ["Spell Forge", "Spell Forge"], "Radius": [500, 500], "RandomRadiusAffectsOnlyGfx": [true, true], "SpellForgeLevel": [1, 1], "TID": ["TID_SLOW_SPELL", "TID_SLOW_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [300, 300], "TrainingTime": [2700, 2700], "UpgradeResource": ["Elixir", "Elixir"]}, "SpawnBats": {"DeployTimeMS": [800, 800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5, 5], "HousingSpace": [1, 1, 1, 1, 1, 1], "IconExportName": ["icon_spell_bats", "icon_spell_bats", "icon_spell_bats", "icon_spell_bats", "icon_spell_bats", "icon_spell_bats"], "InfoTID": ["TID_SPELL_BATS_INFO", "TID_SPELL_BATS_INFO", "TID_SPELL_BATS_INFO", "TID_SPELL_BATS_INFO", "TID_SPELL_BATS_INFO", "TID_SPELL_BATS_INFO"], "LaboratoryLevel": [1, 8, 8, 9, 10, 13], "NumberOfHits": [1, 1, 1, 1, 1, 1], "ProductionBuilding": ["Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory"], "Radius": [225, 225, 225, 225, 225, 225], "RandomRadius": [200, 200, 200, 200, 200, 200], "SpawnDuration": [4200, 5400, 6600, 9600, 12600, 13200], "SpellForgeLevel": [5, 5, 5, 5, 5, 5], "StrengthWeight": [460, 470, 480, 500, 520, 560], "SummonTroop": ["SpellBat", "SpellBat", "SpellBat", "SpellBat", "SpellBat", "SpellBat"], "TID": ["TID_SPELL_BATS", "TID_SPELL_BATS", "TID_SPELL_BATS", "TID_SPELL_BATS", "TID_SPELL_BATS", "TID_SPELL_BATS"], "TargetInfoString": ["TID_BUILDING_CLASS_DEFENSE", "TID_BUILDING_CLASS_DEFENSE", "TID_BUILDING_CLASS_DEFENSE", "TID_BUILDING_CLASS_DEFENSE", "TID_BUILDING_CLASS_DEFENSE", "TID_BUILDING_CLASS_DEFENSE"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300], "TrainingTime": [180, 180, 180, 180, 180, 180], "UpgradeCost": [26000, 51000, 70000, 105000, 330000, 330000], "UpgradeResource": ["DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir"], "UpgradeTimeH": [42, 84, 126, 150, 432, 432]}, "SpawnSkele": {"DeployTimeMS": [800, 800, 800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5, 5, 5], "HousingSpace": [1, 1, 1, 1, 1, 1, 1], "IconExportName": ["icon_spell_skeleton", "icon_spell_skeleton", "icon_spell_skeleton", "icon_spell_skeleton", "icon_spell_skeleton", "icon_spell_skeleton", "icon_spell_skeleton"], "InfoTID": ["TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO", "TID_CREATE_SKELETONS_SPELL_INFO"], "LaboratoryLevel": [1, 8, 8, 9, 10, 10, 11], "NumberOfHits": [1, 1, 1, 1, 1, 1, 1], "ProductionBuilding": ["Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory"], "Radius": [225, 225, 225, 225, 225, 225, 225], "RandomRadius": [200, 200, 200, 200, 200, 200, 200], "SpawnDuration": [12000, 13000, 14000, 15000, 16000, 17000, 18000], "SpellForgeLevel": [4, 4, 4, 4, 4, 4, 4], "StrengthWeight": [460, 470, 480, 500, 520, 540, 560], "SummonTroop": ["ShieldedSkeleton", "ShieldedSkeleton", "ShieldedSkeleton", "ShieldedSkeleton", "ShieldedSkeleton", "ShieldedSkeleton", "ShieldedSkeleton"], "TID": ["TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL", "TID_CREATE_SKELETONS_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND", "TID_INFO_TARGET_TYPE_GROUND"], "TimeBetweenHitsMS": [300, 300, 300, 300, 300, 300, 300], "TrainingTime": [180, 180, 180, 180, 180, 180, 180], "UpgradeCost": [22000, 34000, 50000, 87000, 105000, 187000, 345000], "UpgradeResource": ["DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir"], "UpgradeTimeH": [32, 62, 102, 144, 174, 270, 444]}, "SpeedUp": {"BoostTimeMS": [1000, 1000, 1000, 1000, 1000], "ChargingTimeMS": [300, 300, 300, 300, 300], "DeployTimeMS": [800, 800, 800, 800, 800], "DonateCost": [5, 5, 5, 5, 5], "HitTimeMS": [400, 400, 400, 400, 400], "HousingSpace": [1, 1, 1, 1, 1], "IconExportName": ["icon_spell_speedup", "icon_spell_speedup", "icon_spell_speedup", "icon_spell_speedup", "icon_spell_speedup"], "InfoTID": ["TID_SPEEDUP_INFO", "TID_SPEEDUP_INFO", "TID_SPEEDUP_INFO", "TID_SPEEDUP_INFO", "TID_SPEEDUP_INFO"], "LaboratoryLevel": [1, 7, 8, 8, 9], "NumberOfHits": [40, 60, 80, 100, 120], "ProductionBuilding": ["Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory", "Mini Spell Factory"], "Radius": [400, 400, 400, 400, 400], "RandomRadius": [200, 200, 200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "SpellForgeLevel": [3, 3, 3, 3, 3], "StrengthWeight": [200, 200, 180, 180, 180], "TID": ["TID_SPEEDUP", "TID_SPEEDUP", "TID_SPEEDUP", "TID_SPEEDUP", "TID_SPEEDUP"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [250, 250, 250, 250, 250], "TrainingTime": [180, 180, 180, 180, 180], "UpgradeCost": [20000, 34000, 60000, 77000, 77000], "UpgradeResource": ["DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir", "DarkElixir"], "UpgradeTimeH": [36, 62, 120, 186, 186]}, "TH13Freeze": {"AffectsSiegeMachines": [true, true, true, true, true], "DisableProduction": [true, true, true, true, true], "FreezePercent": [50, 50, 50, 50, 50], "FreezeTimeMS": [0, 0, 4000, 6000, 8000], "HitTimeMS": [400, 400, 400, 400, 400], "NumberOfHits": [1, 1, 1, 1, 1], "Radius": [500, 500, 500, 500, 500], "RandomRadius": [500, 500, 500, 500, 500], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true]}, "TH14Poison": {"AffectsSiegeMachines": [true, true, true, true, true], "BoostDefenders": [true, true, true, true, true], "BoostTimeMS": [500, 500, 500, 500, 500], "DisableProduction": [true, true, true, true, true], "HeroDamageMultiplier": [100, 100, 100, 100, 100], "HitTimeMS": [400, 400, 400, 400, 400], "ImmunityOtherBuildings": [true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true], "ImmunityWalls": [true, true, true, true, true], "NumberOfHits": [40, 40, 40, 40, 40], "PoisonAffectAir": [true, true, true, true, true], "PoisonDPS": [100, 120, 140, 160, 180], "Radius": [400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "TimeBetweenHitsMS": [400, 400, 400, 400, 400]}, "TH15Poison": {"AffectsSiegeMachines": [true, true, true, true, true], "BoostDefenders": [true, true, true, true, true], "BoostTimeMS": [500, 500, 500, 500, 500], "DisableProduction": [true, true, true, true, true], "HeroDamageMultiplier": [100, 100, 100, 100, 100], "HitTimeMS": [400, 400, 400, 400, 400], "ImmunityOtherBuildings": [true, true, true, true, true], "ImmunityStorages": [true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true], "ImmunityWalls": [true, true, true, true, true], "NumberOfHits": [40, 40, 40, 40, 40], "PoisonAffectAir": [true, true, true, true, true], "PoisonDPS": [180, 180, 180, 180, 180], "Radius": [400, 400, 400, 400, 400], "RandomRadiusAffectsOnlyGfx": [true, true, true, true, true], "TimeBetweenHitsMS": [400, 400, 400, 400, 400]}, "TornadoTrap": {"ChargingTimeMS": [300, 300, 300], "Damage": [1, 1, 1], "DisableProduction": [true, true, true], "HitTimeMS": [375, 375, 375], "NumberOfHits": [39, 47, 55], "Radius": [400, 400, 400], "RandomRadius": [200, 200, 200], "RandomRadiusAffectsOnlyGfx": [true, true, true], "TimeBetweenHitsMS": [128, 128, 128]}, "TroopHaste": {"BoostTimeMS": [4000], "ChargingTimeMS": [300], "DeployTimeMS": [800], "DisableProduction": [true], "HitTimeMS": [400], "NumberOfHits": [1], "Radius": [400], "RandomRadius": [200], "RandomRadiusAffectsOnlyGfx": [true], "TimeBetweenHitsMS": [250]}, "TroopImmortality": {"DisableProduction": [true, true, true], "NumberOfHits": [1, 1, 1], "ShieldTime": [6000, 7000, 8000]}, "TroopRage": {"BoostTimeMS": [4000, 8000, 12000, 16000, 20000], "DisableProduction": [true, true, true, true, true], "NumberOfHits": [1, 1, 1, 1, 1]}, "Unused1": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused3": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused4": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused5": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused6": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused7": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused8": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "Unused9": {"AffectsSiegeMachines": [true], "Damage": [390], "DisableProduction": [true], "HitEffect": ["Ice Breaker Hit lvl1"], "HousingSpace": [1], "IconExportName": ["icon_spell_freeze"], "InfoTID": ["TID_FREEZE_SPELL_INFO"], "LaboratoryLevel": [8], "NumberOfHits": [1], "ProductionBuilding": ["Spell Forge"], "Radius": [500], "RandomRadiusAffectsOnlyGfx": [true], "SpellForgeLevel": [4], "StrengthWeight": [1000], "TID": ["TID_FREEZE_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TrainingTime": [180], "UpgradeResource": ["Elixir"], "UpgradeTimeH": [72]}, "xmas": {"ChargingTimeMS": [4500], "Damage": [300], "DeployTimeMS": [800], "DisableProduction": [true], "HitEffect": ["xmas boom"], "HitTimeMS": [6000], "HousingSpace": [2], "IconExportName": ["icon_spell_xmas"], "InfoTID": ["TID_XMAS_SPELL_INFO"], "LaboratoryLevel": [1], "NumberOfHits": [5], "ProductionBuilding": ["Spell Forge"], "Radius": [100], "RandomRadius": [400], "ScaleByTH": [true], "SpellForgeLevel": [1], "TID": ["TID_XMAS_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [100], "TrainingTime": [90000], "UpgradeResource": ["Elixir"]}, "xmas2013": {"ChargingTimeMS": [4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500], "Damage": [150, 160, 170, 180, 190, 200, 220, 240, 260, 280, 300], "DisableDonate": [true, true, true, true, true, true, true, true, true, true, true], "EnabledByCalendar": [true, true, true, true, true, true, true, true, true, true, true], "HitEffect": ["xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom", "xmas boom"], "HitTimeMS": [6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000], "HousingSpace": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], "IconExportName": ["icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas", "icon_spell_xmas"], "ImmunityStorages": [true, true, true, true, true, true, true, true, true, true, true], "ImmunityTH_CC": [true, true, true, true, true, true, true, true, true, true, true], "InfoTID": ["TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO", "TID_XMAS_SPELL_INFO"], "LaboratoryLevel": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "NumberOfHits": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "ProductionBuilding": ["Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge", "Spell Forge"], "Radius": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "RandomRadius": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "SpellForgeLevel": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "TID": ["TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL", "TID_XMAS_SPELL"], "TargetInfoString": ["TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR", "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"], "TimeBetweenHitsMS": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100], "TrainingTime": [360, 360, 360, 360, 360, 360, 360, 360, 360, 360, 360], "UpgradeLevelByTH": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "UpgradeResource": ["Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir", "Elixir"]}}
+{
+  "LighningStorm": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 4,
+      "UpgradeCost": 50000,
+      "Damage": 150,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 700,
+      "FreezeOuterTimeMS": 100
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 8,
+      "UpgradeCost": 100000,
+      "Damage": 180,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 800,
+      "FreezeOuterTimeMS": 100
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 2,
+      "UpgradeTimeH": 12,
+      "UpgradeCost": 200000,
+      "Damage": 210,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 900,
+      "FreezeOuterTimeMS": 100
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 3,
+      "UpgradeTimeH": 24,
+      "UpgradeCost": 600000,
+      "Damage": 240,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1000,
+      "FreezeOuterTimeMS": 100
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 6,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 1500000,
+      "Damage": 270,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1300,
+      "FreezeOuterTimeMS": 100
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 72,
+      "UpgradeCost": 2500000,
+      "Damage": 320,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1400,
+      "FreezeOuterTimeMS": 100
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 4200000,
+      "Damage": 400,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1500,
+      "FreezeOuterTimeMS": 100
+    },
+    "8": {
+      "Level": 8,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 144,
+      "UpgradeCost": 6300000,
+      "Damage": 480,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1600,
+      "FreezeOuterTimeMS": 100
+    },
+    "9": {
+      "Level": 9,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 216,
+      "UpgradeCost": 10000000,
+      "Damage": 560,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 1700,
+      "FreezeOuterTimeMS": 100
+    },
+    "10": {
+      "Level": 10,
+      "LaboratoryLevel": 13,
+      "UpgradeTimeH": 264,
+      "UpgradeCost": 13500000,
+      "Damage": 600,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 2000,
+      "FreezeOuterTimeMS": 100
+    },
+    "11": {
+      "Level": 11,
+      "LaboratoryLevel": 14,
+      "UpgradeTimeH": 336,
+      "UpgradeCost": 18500000,
+      "Damage": 640,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 2100,
+      "FreezeOuterTimeMS": 100
+    },
+    "12": {
+      "Level": 12,
+      "LaboratoryLevel": 15,
+      "Damage": 680,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "FreezeTimeMS": 100,
+      "StrengthWeight": 2200,
+      "FreezeOuterTimeMS": 100
+    },
+    "Name": "LighningStorm",
+    "TID": "TID_LIGHTNING_STORM",
+    "InfoTID": "TID_LIGHTNING_STORM_INFO",
+    "SpellForgeLevel": 1,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 100,
+    "UpgradeResource": "Elixir",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_lightning",
+    "BigPicture": "icon_spell_lightning",
+    "PreDeployEffect": "Lightning predeploy",
+    "DeployEffect": "Lightning area small",
+    "ChargingEffect": "Lightning Spell",
+    "HitEffect": "Lightning Spell Hit",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "PreviewScenario": "SpellLightning"
+  },
+  "HealingWave": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 2,
+      "UpgradeTimeH": 5,
+      "UpgradeCost": 75000,
+      "Damage": -15,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 900
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 2,
+      "UpgradeTimeH": 10,
+      "UpgradeCost": 150000,
+      "Damage": -20,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1000
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 4,
+      "UpgradeTimeH": 20,
+      "UpgradeCost": 300000,
+      "Damage": -25,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1100
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 5,
+      "UpgradeTimeH": 36,
+      "UpgradeCost": 900000,
+      "Damage": -30,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1200
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 6,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 1800000,
+      "Damage": -35,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1300
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 72,
+      "UpgradeCost": 3000000,
+      "Damage": -40,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1400
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 6000000,
+      "Damage": -45,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1500
+    },
+    "8": {
+      "Level": 8,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 216,
+      "UpgradeCost": 11000000,
+      "Damage": -50,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1800
+    },
+    "9": {
+      "Level": 9,
+      "LaboratoryLevel": 13,
+      "UpgradeTimeH": 288,
+      "UpgradeCost": 14000000,
+      "Damage": -55,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 2000
+    },
+    "10": {
+      "Level": 10,
+      "LaboratoryLevel": 14,
+      "UpgradeTimeH": 360,
+      "UpgradeCost": 19000000,
+      "Damage": -60,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 2100
+    },
+    "11": {
+      "Level": 11,
+      "LaboratoryLevel": 15,
+      "Damage": -65,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 2200
+    },
+    "Name": "HealingWave",
+    "TID": "TID_HEALING_WAVE",
+    "InfoTID": "TID_HEALING_WAVE_INFO",
+    "SpellForgeLevel": 2,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_healing",
+    "BigPicture": "icon_spell_healing",
+    "PreDeployEffect": "Heal predeploy",
+    "DeployEffect": "Heal area",
+    "DeployEffect2": "Heal area top",
+    "HitEffect": "Heal spell",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "HeroDamageMultiplier": 55,
+    "PreviewScenario": "SpellHeal"
+  },
+  "Haste": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 3,
+      "UpgradeTimeH": 12,
+      "UpgradeCost": 400000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 20,
+      "SpeedBoost2": 10,
+      "DamageBoostPercent": 130,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 900
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 3,
+      "UpgradeTimeH": 24,
+      "UpgradeCost": 800000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 22,
+      "SpeedBoost2": 11,
+      "DamageBoostPercent": 140,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1000
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 4,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 1600000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 24,
+      "SpeedBoost2": 12,
+      "DamageBoostPercent": 150,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1100
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 5,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 2400000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 26,
+      "SpeedBoost2": 13,
+      "DamageBoostPercent": 160,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1200
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 6,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 5000000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 28,
+      "SpeedBoost2": 14,
+      "DamageBoostPercent": 170,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1300
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 10,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 30,
+      "SpeedBoost2": 15,
+      "DamageBoostPercent": 180,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1700
+    },
+    "Name": "Haste",
+    "TID": "TID_HASTE",
+    "InfoTID": "TID_HASTE_INFO",
+    "SpellForgeLevel": 3,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_rage",
+    "BigPicture": "icon_spell_rage",
+    "PreDeployEffect": "Rage predeploy",
+    "DeployEffect": "Rage deploy",
+    "DeployEffect2": "Rage deploy top",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "PreviewScenario": "SpellRage"
+  },
+  "Jump": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 4,
+      "UpgradeTimeH": 36,
+      "UpgradeCost": 1000000,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 66,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Jump predeploy",
+      "DeployEffect": "Jump deploy lvl1",
+      "DeployEffect2": "Jump deploy top lvl1",
+      "StrengthWeight": 1200
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 5,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 2000000,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 133,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Jump predeploy",
+      "DeployEffect": "Jump deploy lvl2",
+      "DeployEffect2": "Jump deploy top lvl2",
+      "StrengthWeight": 1300
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 5000000,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 199,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Jump predeploy",
+      "DeployEffect": "Jump deploy lvl3",
+      "DeployEffect2": "Jump deploy top lvl3",
+      "StrengthWeight": 1400
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 156,
+      "UpgradeCost": 8000000,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 266,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Jump predeploy",
+      "DeployEffect": "Jump deploy lvl4",
+      "DeployEffect2": "Jump deploy top lvl4",
+      "StrengthWeight": 1700
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 13,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 333,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Jump predeploy",
+      "DeployEffect": "Jump deploy lvl5",
+      "DeployEffect2": "Jump deploy top lvl5",
+      "StrengthWeight": 1900
+    },
+    "Name": "Jump",
+    "TID": "TID_JUMP_SPELL",
+    "InfoTID": "TID_JUMP_SPELL_INFO",
+    "SpellForgeLevel": 4,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_jump",
+    "BigPicture": "icon_spell_jump",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND",
+    "PreviewScenario": "SpellJump"
+  },
+  "xmas": {
+    "1": {
+      "Name": "xmas",
+      "Level": 1,
+      "TID": "TID_XMAS_SPELL",
+      "InfoTID": "TID_XMAS_SPELL_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 90000,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 4500,
+      "HitTimeMS": 6000,
+      "UpgradeResource": "Elixir",
+      "Damage": 300,
+      "Radius": 100,
+      "NumberOfHits": 5,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 100,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_xmas",
+      "BigPicture": "icon_spell_xmas",
+      "PreDeployEffect": "xmas predeploy",
+      "DeployEffect": "xmas Red Smoke",
+      "DeployEffect2Delay": 2500,
+      "DeployEffect2": "xmas test",
+      "ChargingEffect": "xmas Drop Bombs",
+      "HitEffect": "xmas boom",
+      "RandomRadiusAffectsOnlyGfx": false,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "DamageTHPercent": 70,
+      "ScaleByTH": true
+    }
+  },
+  "Freeze": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 36,
+      "UpgradeCost": 1200000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 2500,
+      "StrengthWeight": 1100,
+      "FreezeOuterTimeMS": 2250
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 1700000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 3000,
+      "StrengthWeight": 1200,
+      "FreezeOuterTimeMS": 2700
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 60,
+      "UpgradeCost": 3000000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl3",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 3500,
+      "StrengthWeight": 1300,
+      "FreezeOuterTimeMS": 3150
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 72,
+      "UpgradeCost": 4200000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl4",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 4000,
+      "StrengthWeight": 1400,
+      "FreezeOuterTimeMS": 3600
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 6000000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl5",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 4500,
+      "StrengthWeight": 1500,
+      "FreezeOuterTimeMS": 4050
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 144,
+      "UpgradeCost": 7000000,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl6",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 5000,
+      "StrengthWeight": 1600,
+      "FreezeOuterTimeMS": 4500
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 10,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_Spells_Freeze_IceSurface_lvl7",
+      "DeployEffect2": "ps_Spells_Freeze_Impact",
+      "FreezeTimeMS": 5500,
+      "StrengthWeight": 1700,
+      "FreezeOuterTimeMS": 4950
+    },
+    "Name": "Freeze",
+    "TID": "TID_FREEZE_SPELL",
+    "InfoTID": "TID_FREEZE_SPELL_INFO",
+    "SpellForgeLevel": 4,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_freeze",
+    "BigPicture": "icon_spell_freeze",
+    "PreDeployEffect": "Freeze predeploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "AffectsSiegeMachines": true,
+    "PreviewScenario": "SpellFreeze"
+  },
+  "xmas2013": {
+    "1": {
+      "Level": 1,
+      "Damage": 180,
+      "UpgradeLevelByTH": 6
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 190,
+      "UpgradeLevelByTH": 7
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 200,
+      "UpgradeLevelByTH": 8
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 210,
+      "UpgradeLevelByTH": 9
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 230,
+      "UpgradeLevelByTH": 10
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 260,
+      "UpgradeLevelByTH": 11
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 280,
+      "UpgradeLevelByTH": 12
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 300,
+      "UpgradeLevelByTH": 13
+    },
+    "9": {
+      "Level": 9,
+      "Damage": 330,
+      "UpgradeLevelByTH": 14
+    },
+    "10": {
+      "Level": 10,
+      "Damage": 350,
+      "UpgradeLevelByTH": 15
+    },
+    "11": {
+      "Level": 11,
+      "Damage": 370,
+      "UpgradeLevelByTH": 16
+    },
+    "12": {
+      "Level": 12,
+      "Damage": 390,
+      "UpgradeLevelByTH": 17
+    },
+    "Name": "xmas2013",
+    "TID": "TID_XMAS_SPELL",
+    "InfoTID": "TID_XMAS_SPELL_INFO",
+    "SpellForgeLevel": 1,
+    "LaboratoryLevel": 1,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 4500,
+    "HitTimeMS": 6000,
+    "UpgradeResource": "Elixir",
+    "Radius": 150,
+    "NumberOfHits": 5,
+    "RandomRadius": 100,
+    "TimeBetweenHitsMS": 100,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_xmas",
+    "BigPicture": "icon_spell_xmas",
+    "DeployEffect": "xmas Red Smoke",
+    "DeployEffect2Delay": 2500,
+    "DeployEffect2": "xmas test",
+    "ChargingEffect": "xmas Drop Bombs",
+    "HitEffect": "xmas boom",
+    "RandomRadiusAffectsOnlyGfx": false,
+    "SpawnObstacle": "Xmas TombStone",
+    "NumObstacles": 5,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "DisableDonate": true,
+    "EnabledByCalendar": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "PreviewScenario": "SpellSantaSurprise"
+  },
+  "Slow": {
+    "1": {
+      "Level": 1,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 2700,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 300,
+      "UpgradeTimeH": 0,
+      "UpgradeCost": 0,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -30,
+      "SpeedBoost2": -30,
+      "DamageBoostPercent": -30,
+      "Radius": 500,
+      "NumberOfHits": 9999,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300
+    },
+    "2": {
+      "Level": 2,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 2700,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 300,
+      "UpgradeTimeH": 0,
+      "UpgradeCost": 0,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -40,
+      "SpeedBoost2": -40,
+      "DamageBoostPercent": -40,
+      "Radius": 500,
+      "NumberOfHits": 9999,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300
+    },
+    "Name": "Slow",
+    "TID": "TID_SLOW_SPELL",
+    "DisableProduction": true,
+    "UpgradeResource": "Elixir",
+    "DeployEffect": "Totem Slow",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+  },
+  "BoostDefences": {
+    "1": {
+      "Level": 1,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 2700,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 300,
+      "BoostTimeMS": 500,
+      "BuildingDamageBoostPercent": 50,
+      "Radius": 400,
+      "NumberOfHits": 9999,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300
+    },
+    "2": {
+      "Level": 2,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 2700,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 300,
+      "BoostTimeMS": 500,
+      "BuildingDamageBoostPercent": 75,
+      "Radius": 400,
+      "NumberOfHits": 9999,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300
+    },
+    "Name": "BoostDefences",
+    "TID": "TID_BOOSTDEFENCES_SPELL",
+    "DisableProduction": true,
+    "UpgradeTimeH": 0,
+    "UpgradeResource": "Elixir",
+    "UpgradeCost": 0,
+    "DeployEffect": "Totem Slow",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+  },
+  "Poison": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 8,
+      "UpgradeCost": 5000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -26,
+      "SpeedBoost2": -26,
+      "StrengthWeight": 1200,
+      "PoisonDPS": 90,
+      "AttackSpeedBoost": -35
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 6,
+      "UpgradeTimeH": 24,
+      "UpgradeCost": 10000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -30,
+      "SpeedBoost2": -30,
+      "StrengthWeight": 1300,
+      "PoisonDPS": 115,
+      "AttackSpeedBoost": -40
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 21500,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -34,
+      "SpeedBoost2": -34,
+      "StrengthWeight": 1400,
+      "PoisonDPS": 145,
+      "AttackSpeedBoost": -45
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 35000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -38,
+      "SpeedBoost2": -38,
+      "StrengthWeight": 1500,
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 55000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -40,
+      "SpeedBoost2": -40,
+      "StrengthWeight": 1600,
+      "PoisonDPS": 220,
+      "AttackSpeedBoost": -55
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 144,
+      "UpgradeCost": 77500,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -42,
+      "SpeedBoost2": -42,
+      "StrengthWeight": 1700,
+      "PoisonDPS": 260,
+      "AttackSpeedBoost": -60
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 216,
+      "UpgradeCost": 100000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -44,
+      "SpeedBoost2": -44,
+      "StrengthWeight": 1800,
+      "PoisonDPS": 280,
+      "AttackSpeedBoost": -65
+    },
+    "8": {
+      "Level": 8,
+      "LaboratoryLevel": 12,
+      "UpgradeTimeH": 240,
+      "UpgradeCost": 135000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -46,
+      "SpeedBoost2": -46,
+      "StrengthWeight": 1900,
+      "PoisonDPS": 300,
+      "AttackSpeedBoost": -68
+    },
+    "9": {
+      "Level": 9,
+      "LaboratoryLevel": 13,
+      "UpgradeTimeH": 288,
+      "UpgradeCost": 175000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -48,
+      "SpeedBoost2": -48,
+      "StrengthWeight": 2000,
+      "PoisonDPS": 320,
+      "AttackSpeedBoost": -70
+    },
+    "10": {
+      "Level": 10,
+      "LaboratoryLevel": 14,
+      "UpgradeTimeH": 348,
+      "UpgradeCost": 280000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "StrengthWeight": 2100,
+      "PoisonDPS": 340,
+      "AttackSpeedBoost": -72
+    },
+    "11": {
+      "Level": 11,
+      "LaboratoryLevel": 15,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -51,
+      "SpeedBoost2": -51,
+      "StrengthWeight": 2200,
+      "PoisonDPS": 360,
+      "AttackSpeedBoost": -73
+    },
+    "Name": "Poison",
+    "TID": "TID_POISON_CLOUD",
+    "InfoTID": "TID_POISON_CLOUD_INFO",
+    "SpellForgeLevel": 1,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "DarkElixir",
+    "Radius": 400,
+    "NumberOfHits": 40,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_toxic",
+    "BigPicture": "icon_spell_toxic",
+    "PreDeployEffect": "toxic_Predeploy",
+    "DeployEffect": "Toxic deploy ground halloween",
+    "DeployEffect2": "Toxic deploy halloween",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "HeroDamageMultiplier": 5,
+    "PoisonIncreaseSlowly": true,
+    "BoostLinkedToPoison": true,
+    "PoisonAffectAir": true,
+    "BoostDefenders": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true,
+    "PreviewScenario": "SpellPoison"
+  },
+  "Earthquake": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 18,
+      "UpgradeCost": 6000,
+      "BuildingDamagePermil": 29,
+      "Radius": 350,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "EarthQuake_deploy_ground_0",
+      "DeployEffect2": "EarthQuake_deploy_0",
+      "StrengthWeight": 1200
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 6,
+      "UpgradeTimeH": 36,
+      "UpgradeCost": 12000,
+      "BuildingDamagePermil": 34,
+      "Radius": 380,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "EarthQuake_deploy_ground",
+      "DeployEffect2": "EarthQuake_deploy",
+      "StrengthWeight": 1300
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 102,
+      "UpgradeCost": 25500,
+      "BuildingDamagePermil": 42,
+      "Radius": 410,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "EarthQuake_deploy_ground_2",
+      "DeployEffect2": "EarthQuake_deploy_2",
+      "StrengthWeight": 1400
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 42000,
+      "BuildingDamagePermil": 50,
+      "Radius": 440,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "EarthQuake_deploy_ground_3",
+      "DeployEffect2": "EarthQuake_deploy_3",
+      "StrengthWeight": 1500
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 9,
+      "BuildingDamagePermil": 58,
+      "Radius": 470,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "EarthQuake_deploy_ground_4",
+      "DeployEffect2": "EarthQuake_deploy_4",
+      "StrengthWeight": 1600
+    },
+    "Name": "Earthquake",
+    "TID": "TID_EARTHQUAKE",
+    "InfoTID": "TID_EARTHQUAKE_INFO",
+    "SpellForgeLevel": 2,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "DarkElixir",
+    "NumberOfHits": 5,
+    "RandomRadius": 200,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_earthquake",
+    "BigPicture": "icon_spell_earthquake",
+    "PreDeployEffect": "Earthquake_Predeploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_BUILDINGS_AND_WALLS",
+    "PreferredTarget": "Wall",
+    "PreferredTargetDamageMod": 5,
+    "ImmunitySiegeMachines": true,
+    "ImmunityOtherCharacters": true,
+    "ImmunityStorages": true,
+    "PreviewScenario": "SpellQuake"
+  },
+  "SpeedUp": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 36,
+      "UpgradeCost": 8000,
+      "SpeedBoost": 28,
+      "SpeedBoost2": 14,
+      "NumberOfHits": 40,
+      "DeployEffect": "Speedup_deploy_lvl1",
+      "DeployEffect2": "Speedup_deploy_top_lvl1",
+      "StrengthWeight": 1200
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 7,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 17000,
+      "SpeedBoost": 34,
+      "SpeedBoost2": 17,
+      "NumberOfHits": 60,
+      "DeployEffect": "Speedup_deploy_lvl2",
+      "DeployEffect2": "Speedup_deploy_top_lvl2",
+      "StrengthWeight": 1300
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 30000,
+      "SpeedBoost": 40,
+      "SpeedBoost2": 20,
+      "NumberOfHits": 80,
+      "DeployEffect": "Speedup_deploy_lvl3",
+      "DeployEffect2": "Speedup_deploy_top_lvl3",
+      "StrengthWeight": 1400
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 108,
+      "UpgradeCost": 38500,
+      "SpeedBoost": 46,
+      "SpeedBoost2": 23,
+      "NumberOfHits": 100,
+      "DeployEffect": "Speedup_deploy_lvl4",
+      "DeployEffect2": "Speedup_deploy_top_lvl4",
+      "StrengthWeight": 1500
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 300,
+      "UpgradeCost": 200000,
+      "SpeedBoost": 52,
+      "SpeedBoost2": 26,
+      "NumberOfHits": 120,
+      "DeployEffect": "Speedup_deploy_lvl5",
+      "DeployEffect2": "Speedup_deploy_top_lvl5",
+      "StrengthWeight": 1600
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 15,
+      "SpeedBoost": 56,
+      "SpeedBoost2": 28,
+      "NumberOfHits": 120,
+      "DeployEffect": "Speedup_deploy_lvl5",
+      "DeployEffect2": "Speedup_deploy_top_lvl5",
+      "StrengthWeight": 2200
+    },
+    "Name": "SpeedUp",
+    "TID": "TID_SPEEDUP",
+    "InfoTID": "TID_SPEEDUP_INFO",
+    "SpellForgeLevel": 3,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "DarkElixir",
+    "BoostTimeMS": 1000,
+    "Radius": 400,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 250,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_speedup",
+    "BigPicture": "icon_spell_speedup",
+    "PreDeployEffect": "speedup_Predeploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "PreviewScenario": "SpellBooster"
+  },
+  "Shield": {
+    "1": {
+      "Level": 1,
+      "NumberOfHits": 1,
+      "ShieldTime": 3000
+    },
+    "2": {
+      "Level": 2,
+      "NumberOfHits": 1,
+      "ShieldTime": 3250
+    },
+    "3": {
+      "Level": 3,
+      "NumberOfHits": 1,
+      "ShieldTime": 4000
+    },
+    "4": {
+      "Level": 4,
+      "NumberOfHits": 1,
+      "ShieldTime": 4250
+    },
+    "5": {
+      "Level": 5,
+      "NumberOfHits": 1,
+      "ShieldTime": 4500
+    },
+    "6": {
+      "Level": 6,
+      "NumberOfHits": 1,
+      "ShieldTime": 5250
+    },
+    "7": {
+      "Level": 7,
+      "NumberOfHits": 1,
+      "ShieldTime": 5500
+    },
+    "8": {
+      "Level": 8,
+      "NumberOfHits": 1,
+      "ShieldTime": 5750
+    },
+    "9": {
+      "Level": 9,
+      "NumberOfHits": 1,
+      "ShieldTime": 6500
+    },
+    "10": {
+      "Level": 10,
+      "NumberOfHits": 1,
+      "ShieldTime": 6600
+    },
+    "11": {
+      "Level": 11,
+      "NumberOfHits": 1,
+      "ShieldTime": 6700
+    },
+    "12": {
+      "Level": 12,
+      "NumberOfHits": 1,
+      "ShieldTime": 7000
+    },
+    "13": {
+      "Level": 13,
+      "NumberOfHits": 1,
+      "ShieldTime": 7100
+    },
+    "14": {
+      "Level": 14,
+      "NumberOfHits": 1,
+      "ShieldTime": 7200
+    },
+    "15": {
+      "Level": 15,
+      "NumberOfHits": 1,
+      "ShieldTime": 7500
+    },
+    "16": {
+      "Level": 16,
+      "NumberOfHits": 1,
+      "ShieldTime": 7600
+    },
+    "17": {
+      "Level": 17,
+      "NumberOfHits": 1,
+      "ShieldTime": 7700
+    },
+    "18": {
+      "Level": 18,
+      "NumberOfHits": 1,
+      "ShieldTime": 8000
+    },
+    "Name": "Shield",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 900,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "DeployEffect": "GrandWarden Shield",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "ScaleDeployEffects": true,
+    "ShieldProtectionPercent": 100,
+    "AffectsSiegeMachines": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "Growth": {
+    "1": {
+      "Level": 1,
+      "ExtraHealthPermil": 400,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 510
+    },
+    "2": {
+      "Level": 2,
+      "ExtraHealthPermil": 500,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 600
+    },
+    "3": {
+      "Level": 3,
+      "ExtraHealthPermil": 600,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 690
+    },
+    "4": {
+      "Level": 4,
+      "ExtraHealthPermil": 700,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 780
+    },
+    "5": {
+      "Level": 5,
+      "ExtraHealthPermil": 800,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 870
+    },
+    "6": {
+      "Level": 6,
+      "ExtraHealthPermil": 900,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 960
+    },
+    "7": {
+      "Level": 7,
+      "ExtraHealthPermil": 1000,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 1050
+    },
+    "Name": "Growth",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 300,
+    "Damage": 0,
+    "Radius": 900,
+    "NumberOfHits": 4000,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "Growth aura",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "ScaleDeployEffects": true,
+    "EnemyDeployEffect": "Enemy growth aura"
+  },
+  "Artillery Center": {
+    "1": {
+      "Level": 1,
+      "Damage": 225
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 250
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 275
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 350
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 425
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 475
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 525
+    },
+    "Name": "Artillery Center",
+    "DisableProduction": true,
+    "Radius": 75,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 150,
+    "HitEffect": "Artillery Hit",
+    "RandomRadiusAffectsOnlyGfx": false
+  },
+  "MiniGrowth": {
+    "1": {
+      "Name": "MiniGrowth",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 300,
+      "Radius": 350,
+      "NumberOfHits": 40,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "Toxic deploy ground",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ExtraHealthPermil": 10,
+      "ExtraHealthMin": 0,
+      "ExtraHealthMax": 50
+    }
+  },
+  "Duplicate": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 24,
+      "UpgradeCost": 1500000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1200,
+      "DuplicateHousing": 22
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 2500000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1300,
+      "DuplicateHousing": 24
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 60,
+      "UpgradeCost": 3000000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1400,
+      "DuplicateHousing": 26
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 84,
+      "UpgradeCost": 4000000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1500,
+      "DuplicateHousing": 28
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 5000000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1600,
+      "DuplicateHousing": 30
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 144,
+      "UpgradeCost": 8000000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1800,
+      "DuplicateHousing": 34
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 12,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 9000000,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 1900,
+      "DuplicateHousing": 38
+    },
+    "8": {
+      "Level": 8,
+      "LaboratoryLevel": 13,
+      "TimeBetweenHitsMS": 300,
+      "StrengthWeight": 2000,
+      "DuplicateHousing": 42
+    },
+    "Name": "Duplicate",
+    "TID": "TID_DUPLICATE_SPELL",
+    "InfoTID": "TID_DUPLICATE_SPELL_INFO",
+    "SpellForgeLevel": 5,
+    "DonateCost": 15,
+    "HousingSpace": 3,
+    "TrainingTime": 540,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "Radius": 350,
+    "NumberOfHits": 60,
+    "RandomRadius": 200,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_clone",
+    "BigPicture": "icon_spell_clone",
+    "PreDeployEffect": "Clone_Predeploy",
+    "DeployEffect": "Clone deploy",
+    "DeployEffect2": "Clone deploy top",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "DuplicateLifetime": 30000,
+    "PreviewScenario": "SpellBooster"
+  },
+  "SpawnSkele": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 24,
+      "UpgradeCost": 11000,
+      "DeployEffect": "SkeleSpell Summon1",
+      "StrengthWeight": 1200,
+      "UnitsToSpawn": 12,
+      "SpawnDuration": 12000
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 48,
+      "UpgradeCost": 17000,
+      "DeployEffect": "SkeleSpell Summon2",
+      "StrengthWeight": 1300,
+      "UnitsToSpawn": 13,
+      "SpawnDuration": 13000
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 72,
+      "UpgradeCost": 25000,
+      "DeployEffect": "SkeleSpell Summon3",
+      "StrengthWeight": 1400,
+      "UnitsToSpawn": 14,
+      "SpawnDuration": 14000
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 84,
+      "UpgradeCost": 40000,
+      "DeployEffect": "SkeleSpell Summon4",
+      "StrengthWeight": 1500,
+      "UnitsToSpawn": 15,
+      "SpawnDuration": 15000
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 50000,
+      "DeployEffect": "SkeleSpell Summon5",
+      "StrengthWeight": 1600,
+      "UnitsToSpawn": 16,
+      "SpawnDuration": 16000
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 120,
+      "UpgradeCost": 75000,
+      "DeployEffect": "SkeleSpell Summon6",
+      "StrengthWeight": 1700,
+      "UnitsToSpawn": 17,
+      "SpawnDuration": 17000
+    },
+    "7": {
+      "Level": 7,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 135000,
+      "DeployEffect": "SkeleSpell Summon7",
+      "StrengthWeight": 1800,
+      "UnitsToSpawn": 18,
+      "SpawnDuration": 18000
+    },
+    "8": {
+      "Level": 8,
+      "LaboratoryLevel": 13,
+      "DeployEffect": "SkeleSpell Summon8",
+      "StrengthWeight": 2000,
+      "UnitsToSpawn": 19,
+      "SpawnDuration": 19000
+    },
+    "Name": "SpawnSkele",
+    "TID": "TID_CREATE_SKELETONS_SPELL",
+    "InfoTID": "TID_CREATE_SKELETONS_SPELL_INFO",
+    "SpellForgeLevel": 4,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "UpgradeResource": "DarkElixir",
+    "Radius": 225,
+    "NumberOfHits": 1,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_skeleton",
+    "BigPicture": "icon_spell_skeleton",
+    "PreDeployEffect": "skele_Predeploy",
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND",
+    "SummonTroop": "ShieldedSkeleton",
+    "SpawnUpgradeLevel": 1,
+    "SpawnFirstGroupSize": 3,
+    "PreviewScenario": "SpellSkeleton"
+  },
+  "FreezeTrap": {
+    "1": {
+      "Name": "FreezeTrap",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 10,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "Freeze deploy lvl1",
+      "DeployEffect2": "Freeze deploy2 lvl1",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "FreezeTimeMS": 5000,
+      "DisableDonate": true,
+      "ScaleByTH": true,
+      "EnabledByCalendar": true,
+      "FreezeOuterTimeMS": 4500,
+      "AffectsSiegeMachines": true
+    }
+  },
+  "Mortar2Poison": {
+    "1": {
+      "Level": 1,
+      "Damage": 6
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 7
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 8
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 9
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 10
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 11
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 12
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 13
+    },
+    "9": {
+      "Level": 9,
+      "Damage": 14
+    },
+    "10": {
+      "Level": 10,
+      "Damage": 15
+    },
+    "Name": "Mortar2Poison",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 500,
+    "BoostTimeMS": 500,
+    "Radius": 250,
+    "NumberOfHits": 50,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "DeployEffect": "Multi Mortar Ground Effects",
+    "DeployEffect2": "Multi Mortar Area Effects",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "VillageType": 1,
+    "AffectsSiegeMachines": true,
+    "BoostDefenders": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "TroopRage": {
+    "1": {
+      "Level": 1,
+      "BoostTimeMS": 6000
+    },
+    "2": {
+      "Level": 2,
+      "BoostTimeMS": 8000
+    },
+    "3": {
+      "Level": 3,
+      "BoostTimeMS": 10000
+    },
+    "4": {
+      "Level": 4,
+      "BoostTimeMS": 12000
+    },
+    "5": {
+      "Level": 5,
+      "BoostTimeMS": 14000
+    },
+    "6": {
+      "Level": 6,
+      "BoostTimeMS": 16000
+    },
+    "7": {
+      "Level": 7,
+      "BoostTimeMS": 18000
+    },
+    "8": {
+      "Level": 8,
+      "BoostTimeMS": 20000
+    },
+    "9": {
+      "Level": 9,
+      "BoostTimeMS": 22000
+    },
+    "Name": "TroopRage",
+    "DisableProduction": true,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "SpeedBoost": 16,
+    "SpeedBoost2": 16,
+    "DamageBoostPercent": 70,
+    "NumberOfHits": 1,
+    "TimeBetweenHitsMS": 0
+  },
+  "ShrinkTrap": {
+    "1": {
+      "Name": "ShrinkTrap",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 1000,
+      "SpeedBoost2": 0,
+      "Radius": 400,
+      "NumberOfHits": 75,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 250,
+      "DeployEffect": "Shrink deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ShrinkReduceSpeedRatio": -50,
+      "ShrinkHitpointsRatio": 50,
+      "ScaleByTH": true,
+      "AffectsSiegeMachines": true
+    }
+  },
+  "Birthday2017": {
+    "1": {
+      "Name": "Birthday2017",
+      "Level": 1,
+      "TID": "TID_BIRTHDAY_SPELL",
+      "InfoTID": "TID_BIRTHDAY_SPELL_INFO",
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "HousingSpace": 2,
+      "TrainingTime": 360,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 150,
+      "HitTimeMS": 1750,
+      "UpgradeResource": "Elixir",
+      "SpeedBoost2": 0,
+      "Damage": 500,
+      "Radius": 250,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_birthday",
+      "BigPicture": "icon_spell_birthday",
+      "PreDeployEffect": "Birthday predeploy",
+      "DeployEffect": "BirthdaySpell Summon2",
+      "DeployEffect2": "BirthdaySpell Summon1",
+      "ChargingEffect": "Birthday Hit",
+      "HitEffect": "Birthday Spell Hit",
+      "RandomRadiusAffectsOnlyGfx": false,
+      "SpawnObstacle": "Birthday TombStone",
+      "NumObstacles": 3,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "DamageTHPercent": 70,
+      "DisableDonate": true,
+      "ScaleByTH": true,
+      "EnabledByCalendar": true,
+      "PauseCombatComponentsMs": 2000
+    }
+  },
+  "IceGolemFreeze": {
+    "1": {
+      "Level": 1,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 4000,
+      "FreezeOuterTimeMS": 3000
+    },
+    "2": {
+      "Level": 2,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 4750,
+      "FreezeOuterTimeMS": 3563
+    },
+    "3": {
+      "Level": 3,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl3",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 5500,
+      "FreezeOuterTimeMS": 4125
+    },
+    "4": {
+      "Level": 4,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl4",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 6250,
+      "FreezeOuterTimeMS": 4688
+    },
+    "5": {
+      "Level": 5,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl5",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 7000,
+      "FreezeOuterTimeMS": 5250
+    },
+    "6": {
+      "Level": 6,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl6",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 7500,
+      "FreezeOuterTimeMS": 5625
+    },
+    "7": {
+      "Level": 7,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl7",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 8000,
+      "FreezeOuterTimeMS": 5950
+    },
+    "8": {
+      "Level": 8,
+      "SpeedBoost2": 0,
+      "Radius": 750,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_lvl8",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 8500,
+      "FreezeOuterTimeMS": 6275
+    },
+    "Name": "IceGolemFreeze",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "AffectsSiegeMachines": true
+  },
+  "ElectroDragonDie": {
+    "1": {
+      "Level": 1,
+      "Damage": 50,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 55,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 60,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 65,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 75,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 85,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 95,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 105,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "9": {
+      "Level": 9,
+      "Damage": 115,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "10": {
+      "Level": 10,
+      "Damage": 125,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "11": {
+      "Level": 11,
+      "Damage": 135,
+      "Radius": 200,
+      "NumberOfHits": 6,
+      "RandomRadius": 250,
+      "TimeBetweenHitsMS": 400
+    },
+    "Name": "ElectroDragonDie",
+    "DisableProduction": true,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 1000,
+    "HitTimeMS": 1100,
+    "DeployEffect": "Lightning area",
+    "ChargingEffect": "Lightning Spell",
+    "HitEffect": "Lightning Spell Hit",
+    "RandomRadiusAffectsOnlyGfx": false
+  },
+  "TornadoTrap": {
+    "1": {
+      "Level": 1,
+      "Damage": 1,
+      "NumberOfHits": 39,
+      "DeployEffect": "Tornado deploy1",
+      "TornadoForce1": 400,
+      "TornadoForce2": 300,
+      "TornadoForce3": 200,
+      "TornadoForce4": 100,
+      "TornadoForce5": 100,
+      "TornadoForceAir1": 500,
+      "TornadoForceAir2": 400,
+      "TornadoForceAir3": 300,
+      "TornadoForceAir4": 200,
+      "TornadoForceAir5": 150,
+      "TornadoRotationSpeed": -180,
+      "TornadoSpeedTowardsCenter": 75,
+      "TornadoInnerRadius": 70,
+      "TornadoInnerForcePercent": 100,
+      "TornadoOuterForcePercent": 65
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 1,
+      "NumberOfHits": 47,
+      "DeployEffect": "Tornado deploy2",
+      "TornadoForce1": 400,
+      "TornadoForce2": 300,
+      "TornadoForce3": 200,
+      "TornadoForce4": 100,
+      "TornadoForce5": 100,
+      "TornadoForceAir1": 500,
+      "TornadoForceAir2": 400,
+      "TornadoForceAir3": 300,
+      "TornadoForceAir4": 200,
+      "TornadoForceAir5": 150,
+      "TornadoRotationSpeed": -180,
+      "TornadoSpeedTowardsCenter": 75,
+      "TornadoInnerRadius": 70,
+      "TornadoInnerForcePercent": 100,
+      "TornadoOuterForcePercent": 65
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 1,
+      "NumberOfHits": 55,
+      "DeployEffect": "Tornado deploy3",
+      "TornadoForce1": 400,
+      "TornadoForce2": 300,
+      "TornadoForce3": 200,
+      "TornadoForce4": 100,
+      "TornadoForce5": 100,
+      "TornadoForceAir1": 500,
+      "TornadoForceAir2": 400,
+      "TornadoForceAir3": 300,
+      "TornadoForceAir4": 200,
+      "TornadoForceAir5": 150,
+      "TornadoRotationSpeed": -180,
+      "TornadoSpeedTowardsCenter": 75,
+      "TornadoInnerRadius": 70,
+      "TornadoInnerForcePercent": 100,
+      "TornadoOuterForcePercent": 65
+    },
+    "Name": "TornadoTrap",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 375,
+    "Radius": 400,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 128,
+    "RandomRadiusAffectsOnlyGfx": true
+  },
+  "TroopHaste": {
+    "1": {
+      "Name": "TroopHaste",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "BoostTimeMS": 4000,
+      "SpeedBoost": 52,
+      "SpeedBoost2": 26,
+      "Radius": 400,
+      "NumberOfHits": 1,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 250,
+      "PreDeployEffect": "speedup_Predeploy",
+      "DeployEffect": "Speedup_deploy_lvl1",
+      "DeployEffect2": "Speedup_deploy_top_lvl1",
+      "RandomRadiusAffectsOnlyGfx": true
+    }
+  },
+  "ProtoSpell2": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 72,
+      "UpgradeCost": 4000000
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 6000000
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 156,
+      "UpgradeCost": 9000000
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 336,
+      "UpgradeCost": 12000000
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 10
+    },
+    "Name": "ProtoSpell2",
+    "TID": "TID_LIGHTNING_STORM",
+    "InfoTID": "TID_LIGHTNING_STORM_INFO",
+    "DisableProduction": true,
+    "SpellForgeLevel": 5,
+    "HousingSpace": 3,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "Radius": 500,
+    "NumberOfHits": 1,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_lightning",
+    "BigPicture": "icon_spell_lightning",
+    "PreDeployEffect": "Heal predeploy",
+    "DeployEffect": "GrandWarden Shield",
+    "DeployEffect2": "Heal area top",
+    "HitEffect": "Heal spell",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+  },
+  "SpawnBats": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 30,
+      "UpgradeCost": 13000,
+      "DeployEffect": "BatSpell Summon1",
+      "StrengthWeight": 1300,
+      "UnitsToSpawn": 7,
+      "SpawnDuration": 4200
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 56,
+      "UpgradeCost": 25500,
+      "DeployEffect": "BatSpell Summon2",
+      "StrengthWeight": 1400,
+      "UnitsToSpawn": 9,
+      "SpawnDuration": 5400
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 8,
+      "UpgradeTimeH": 84,
+      "UpgradeCost": 35000,
+      "DeployEffect": "BatSpell Summon3",
+      "StrengthWeight": 1500,
+      "UnitsToSpawn": 11,
+      "SpawnDuration": 6600
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 108,
+      "UpgradeCost": 47500,
+      "DeployEffect": "BatSpell Summon4",
+      "StrengthWeight": 1600,
+      "UnitsToSpawn": 16,
+      "SpawnDuration": 9600
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 204,
+      "UpgradeCost": 140000,
+      "DeployEffect": "BatSpell Summon5",
+      "StrengthWeight": 1700,
+      "UnitsToSpawn": 21,
+      "SpawnDuration": 12600
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 13,
+      "DeployEffect": "BatSpell Summon6",
+      "StrengthWeight": 2000,
+      "UnitsToSpawn": 22,
+      "SpawnDuration": 13200
+    },
+    "Name": "SpawnBats",
+    "TID": "TID_SPELL_BATS",
+    "InfoTID": "TID_SPELL_BATS_INFO",
+    "SpellForgeLevel": 5,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "UpgradeResource": "DarkElixir",
+    "BoostTimeMS": 0,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Damage": 0,
+    "Radius": 225,
+    "NumberOfHits": 1,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_bats",
+    "BigPicture": "icon_spell_bats",
+    "PreDeployEffect": "bat_Predeploy",
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_BUILDING_CLASS_DEFENSE",
+    "SummonTroop": "SpellBat",
+    "SpawnUpgradeLevel": 1,
+    "SpawnFirstGroupSize": 1,
+    "PreviewScenario": "SpellBat"
+  },
+  "IceGolemFreeze_DEF": {
+    "1": {
+      "Level": 1,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 2000,
+      "FreezeOuterTimeMS": 1650
+    },
+    "2": {
+      "Level": 2,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 2250,
+      "FreezeOuterTimeMS": 1856
+    },
+    "3": {
+      "Level": 3,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl3",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 2500,
+      "FreezeOuterTimeMS": 2063
+    },
+    "4": {
+      "Level": 4,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl4",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 2750,
+      "FreezeOuterTimeMS": 2269
+    },
+    "5": {
+      "Level": 5,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl5",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 3000,
+      "FreezeOuterTimeMS": 2475
+    },
+    "6": {
+      "Level": 6,
+      "Radius": 550,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icegolem_Freeze_IceSurface_DEF_lvl6",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 3250,
+      "FreezeOuterTimeMS": 2681
+    },
+    "Name": "IceGolemFreeze_DEF",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "AffectsSiegeMachines": true
+  },
+  "IceBreakerSplinters": {
+    "1": {
+      "Level": 1,
+      "Damage": 300,
+      "MinDamage": 100
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 360,
+      "MinDamage": 120
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 420,
+      "MinDamage": 140
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 440,
+      "MinDamage": 150
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 460,
+      "MinDamage": 160
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 480,
+      "MinDamage": 170
+    },
+    "Name": "IceBreakerSplinters",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 500,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "HitEffect": "Ice Breaker Hit lvl1",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ConeAngle": 90,
+    "MinRadius": 100,
+    "AffectsSiegeMachines": true
+  },
+  "BatRage": {
+    "1": {
+      "Name": "BatRage",
+      "Level": 1,
+      "DisableProduction": true,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "BoostTimeMS": 4000,
+      "SpeedBoost": 60,
+      "SpeedBoost2": 60,
+      "DamageBoostPercent": 200,
+      "NumberOfHits": 1,
+      "TimeBetweenHitsMS": 0
+    }
+  },
+  "TH13Freeze": {
+    "1": {
+      "Level": 1,
+      "FreezeTimeMS": 0,
+      "FreezeOuterTimeMS": 0
+    },
+    "2": {
+      "Level": 2,
+      "FreezeTimeMS": 0,
+      "FreezeOuterTimeMS": 0
+    },
+    "3": {
+      "Level": 3,
+      "DeployEffect": "Slowdown deploy lvl1",
+      "DeployEffect2": "Slowdown deploy2 lvl1",
+      "FreezeTimeMS": 4000,
+      "FreezeOuterTimeMS": 4000
+    },
+    "4": {
+      "Level": 4,
+      "DeployEffect": "Slowdown deploy lvl1",
+      "DeployEffect2": "Slowdown deploy2 lvl1",
+      "FreezeTimeMS": 6000,
+      "FreezeOuterTimeMS": 6000
+    },
+    "5": {
+      "Level": 5,
+      "DeployEffect": "Slowdown deploy lvl1",
+      "DeployEffect2": "Slowdown deploy2 lvl1",
+      "FreezeTimeMS": 8000,
+      "FreezeOuterTimeMS": 8000
+    },
+    "Name": "TH13Freeze",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 400,
+    "Radius": 500,
+    "NumberOfHits": 1,
+    "RandomRadius": 500,
+    "TimeBetweenHitsMS": 0,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "FreezePercent": 50,
+    "AffectsSiegeMachines": true
+  },
+  "ElectroTitanDamageAura": {
+    "1": {
+      "Level": 1,
+      "Damage": 30,
+      "DeployEffect": "E_titanAreaDamage"
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 40,
+      "DeployEffect": "E_titanAreaDamage"
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 50,
+      "DeployEffect": "E_titanAreaDamage"
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 55,
+      "DeployEffect": "E_titanAreaDamage"
+    },
+    "Name": "ElectroTitanDamageAura",
+    "DisableProduction": true,
+    "HitTimeMS": 400,
+    "Radius": 350,
+    "NumberOfHits": 4000,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "StrengthWeight": 0,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "HeroDamageMultiplier": 25,
+    "ScaleDeployEffects": true,
+    "AffectsSiegeMachines": true,
+    "ImmunityWalls": true
+  },
+  "EliteValkyrieRage": {
+    "1": {
+      "Name": "EliteValkyrieRage",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 26,
+      "SpeedBoost2": 13,
+      "DamageBoostPercent": 160,
+      "Radius": 400,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "PreDeployEffect": "Rage predeploy",
+      "DeployEffect": "Elite Valkyrie Rage deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "EnemyDeployEffect": "Elite Valkyrie Rage deploy enemy"
+    }
+  },
+  "Invisibility": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 96,
+      "UpgradeCost": 5000000,
+      "NumberOfHits": 14,
+      "DeployEffect": "Invisibility area lvl1",
+      "StrengthWeight": 1500
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 9,
+      "UpgradeTimeH": 108,
+      "UpgradeCost": 6000000,
+      "NumberOfHits": 15,
+      "DeployEffect": "Invisibility area lvl2",
+      "StrengthWeight": 1600
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 7000000,
+      "NumberOfHits": 16,
+      "DeployEffect": "Invisibility area lvl3",
+      "StrengthWeight": 1700
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 11,
+      "NumberOfHits": 17,
+      "DeployEffect": "Invisibility area lvl4",
+      "StrengthWeight": 1800
+    },
+    "Name": "Invisibility",
+    "TID": "TID_INVISIBILITY_SPELL",
+    "InfoTID": "TID_INVISIBILITY_SPELL_INFO",
+    "SpellForgeLevel": 6,
+    "DonateCost": 5,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "Radius": 400,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 250,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_invisibility",
+    "BigPicture": "icon_spell_invisibility",
+    "PreDeployEffect": "Invisibility_Predeploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "InvisibilityTime": 600,
+    "ImmunitySiegeMachines": true,
+    "ImmunityWalls": true,
+    "PreviewScenario": "SpellInvisibility"
+  },
+  "IceHoundFreeze": {
+    "1": {
+      "Level": 1,
+      "Radius": 650,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icehound_Freeze_IceSurface_lvl1",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 3500,
+      "FreezeOuterTimeMS": 3019
+    },
+    "2": {
+      "Level": 2,
+      "Radius": 650,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "ps_chr_icehound_Freeze_IceSurface_lvl2",
+      "DeployEffect2": "ps_chr_icegolem_Freeze_explode",
+      "FreezeTimeMS": 4250,
+      "FreezeOuterTimeMS": 3666
+    },
+    "Name": "IceHoundFreeze",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "AffectsSiegeMachines": true
+  },
+  "TH14Poison": {
+    "1": {
+      "Level": 1,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -30,
+      "SpeedBoost2": -30,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 100,
+      "AttackSpeedBoost": -30
+    },
+    "2": {
+      "Level": 2,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -35,
+      "SpeedBoost2": -35,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 120,
+      "AttackSpeedBoost": -35
+    },
+    "3": {
+      "Level": 3,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -40,
+      "SpeedBoost2": -40,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 140,
+      "AttackSpeedBoost": -40
+    },
+    "4": {
+      "Level": 4,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -45,
+      "SpeedBoost2": -45,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 160,
+      "AttackSpeedBoost": -45
+    },
+    "5": {
+      "Level": 5,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "Name": "TH14Poison",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 400,
+    "Radius": 400,
+    "NumberOfHits": 30,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "HeroDamageMultiplier": 100,
+    "PoisonIncreaseSlowly": false,
+    "BoostLinkedToPoison": true,
+    "PoisonAffectAir": true,
+    "AffectsSiegeMachines": true,
+    "BoostDefenders": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "FireSpiritExplosion": {
+    "1": {
+      "Level": 1,
+      "Damage": 1,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "PoisonDPS": 80
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 1,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "PoisonDPS": 95
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 1,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "PoisonDPS": 105
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 1,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "PoisonDPS": 120
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 1,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "PoisonDPS": 130
+    },
+    "Name": "FireSpiritExplosion",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 500,
+    "BoostTimeMS": 500,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Radius": 250,
+    "NumberOfHits": 75,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "PreferredTarget": "Wall",
+    "PreferredTargetDamageMod": 25,
+    "PoisonIncreaseSlowly": true,
+    "BoostLinkedToPoison": false,
+    "PoisonAffectAir": false,
+    "BoostDefenders": true
+  },
+  "PhoenixImmortality": {
+    "1": {
+      "Level": 1,
+      "ImmortalTime": 6500,
+      "ShieldTime": 6500,
+      "ShieldProtectionPercent": 100
+    },
+    "2": {
+      "Level": 2,
+      "ImmortalTime": 7500,
+      "ShieldTime": 7500,
+      "ShieldProtectionPercent": 100
+    },
+    "3": {
+      "Level": 3,
+      "ImmortalTime": 8500,
+      "ShieldTime": 8500,
+      "ShieldProtectionPercent": 100
+    },
+    "Name": "PhoenixImmortality",
+    "DisableProduction": true,
+    "Radius": 0,
+    "NumberOfHits": 1
+  },
+  "TroopImmortality": {
+    "1": {
+      "Level": 1,
+      "ImmortalTime": 6000,
+      "ShieldTime": 6000,
+      "ShieldProtectionPercent": 100
+    },
+    "2": {
+      "Level": 2,
+      "ImmortalTime": 7000,
+      "ShieldTime": 7000,
+      "ShieldProtectionPercent": 100
+    },
+    "3": {
+      "Level": 3,
+      "ImmortalTime": 8000,
+      "ShieldTime": 8000,
+      "ShieldProtectionPercent": 100
+    },
+    "Name": "TroopImmortality",
+    "DisableProduction": true,
+    "Radius": 0,
+    "NumberOfHits": 1
+  },
+  "AreaStun": {
+    "1": {
+      "Name": "AreaStun",
+      "Level": 1,
+      "DisableProduction": true,
+      "Radius": 200,
+      "NumberOfHits": 1,
+      "DeployEffect": "Bomber Big Hit",
+      "StunTimeMS": 5000,
+      "ImmunitySiegeMachines": true,
+      "ImmunityOtherCharacters": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true
+    }
+  },
+  "DrillerSurfacing": {
+    "1": {
+      "Name": "DrillerSurfacing",
+      "Level": 1,
+      "DisableProduction": true,
+      "Radius": 150,
+      "NumberOfHits": 1,
+      "DeployEffect": "Bomber Big Hit",
+      "StunTimeMS": 2000,
+      "ImmunitySiegeMachines": true,
+      "ImmunityOtherCharacters": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true,
+      "DestroyWalls": true
+    }
+  },
+  "TH15Poison": {
+    "1": {
+      "Level": 1,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "2": {
+      "Level": 2,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "3": {
+      "Level": 3,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "4": {
+      "Level": 4,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "5": {
+      "Level": 5,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -50,
+      "SpeedBoost2": -50,
+      "DeployEffect": "Toxic deploy ground TH",
+      "DeployEffect2": "Toxic deploy TH",
+      "PoisonDPS": 180,
+      "AttackSpeedBoost": -50
+    },
+    "Name": "TH15Poison",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 400,
+    "Radius": 400,
+    "NumberOfHits": 30,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "HeroDamageMultiplier": 100,
+    "PoisonIncreaseSlowly": false,
+    "BoostLinkedToPoison": true,
+    "PoisonAffectAir": true,
+    "AffectsSiegeMachines": true,
+    "BoostDefenders": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "PoisonST": {
+    "1": {
+      "Name": "PoisonST",
+      "Level": 1,
+      "TID": "TID_POISON_CLOUD_TOWER",
+      "InfoTID": "TID_POISON_CLOUD_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "DonateCost": 5,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "UpgradeTimeH": 8,
+      "UpgradeResource": "DarkElixir",
+      "UpgradeCost": 12000,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -35,
+      "SpeedBoost2": -35,
+      "Radius": 500,
+      "NumberOfHits": 30,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_toxic",
+      "BigPicture": "icon_spell_toxic",
+      "DeployEffect": "Toxic deploy ground halloween ST",
+      "DeployEffect2": "Toxic deploy halloween ST",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ProductionBuilding": "Mini Spell Factory",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "HeroDamageMultiplier": 20,
+      "PoisonDPS": 60,
+      "PoisonIncreaseSlowly": false,
+      "AttackSpeedBoost": -25,
+      "BoostLinkedToPoison": true,
+      "PoisonAffectAir": true,
+      "BoostDefenders": true,
+      "ImmunityTH_CC": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true,
+      "ImmunityOtherBuildings": true
+    }
+  },
+  "SuperHogRiderSummonHog": {
+    "1": {
+      "Level": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "SpawnUpgradeLevel": 10
+    },
+    "Name": "SuperHogRiderSummonHog",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "DeployEffect": "SuperBoar Deploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Riderless Hog",
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
+  },
+  "RageST": {
+    "1": {
+      "Name": "RageST",
+      "Level": 1,
+      "TID": "TID_HASTE_TOWER",
+      "InfoTID": "TID_HASTE_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "DonateCost": 10,
+      "HousingSpace": 2,
+      "TrainingTime": 360,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "UpgradeTimeH": 12,
+      "UpgradeResource": "Elixir",
+      "UpgradeCost": 400000,
+      "BoostTimeMS": 1000,
+      "SpeedBoost": 30,
+      "SpeedBoost2": 15,
+      "DamageBoostPercent": 60,
+      "BuildingDamageBoostPercent": 60,
+      "Radius": 500,
+      "NumberOfHits": 60,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_rage",
+      "BigPicture": "icon_spell_rage",
+      "DeployEffect": "Rage deploy ST",
+      "DeployEffect2": "Rage deploy top",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+    }
+  },
+  "SuperHogRiderSummonRider": {
+    "1": {
+      "Level": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "SpawnUpgradeLevel": 10
+    },
+    "Name": "SuperHogRiderSummonRider",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Hogless Rider",
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
+  },
+  "InvisibilityST": {
+    "1": {
+      "Name": "InvisibilityST",
+      "Level": 1,
+      "TID": "TID_INVISIBILITY_SPELL_TOWER",
+      "InfoTID": "TID_INVISIBILITY_SPELL_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "DonateCost": 5,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "UpgradeTimeH": 192,
+      "UpgradeResource": "Elixir",
+      "UpgradeCost": 8000000,
+      "BoostTimeMS": 0,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 0,
+      "Radius": 450,
+      "NumberOfHits": 18,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 250,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_invisibility",
+      "BigPicture": "icon_spell_invisibility",
+      "DeployEffect": "Invisibility ST",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "InvisibilityTime": 600,
+      "ImmunitySiegeMachines": true,
+      "ImmunityWalls": true
+    }
+  },
+  "GraveGolemSummonBigBoy": {
+    "1": {
+      "Level": 1,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 10
+    },
+    "11": {
+      "Level": 11,
+      "UnitsToSpawn": 4,
+      "SpawnUpgradeLevel": 11
+    },
+    "Name": "GraveGolemSummonBigBoy",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 200,
+    "NumberOfHits": 1,
+    "RandomRadius": 150,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "Warlock Summon",
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Witch Golem Big Boy",
+    "SpawnDuration": 600,
+    "SpawnFirstGroupSize": 0
+  },
+  "HogWizardDamageAura": {
+    "1": {
+      "Name": "HogWizardDamageAura",
+      "Level": 1,
+      "DisableProduction": true,
+      "HitTimeMS": 400,
+      "Damage": 3,
+      "Radius": 120,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "HogWizardFlameEffect",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "HeroDamageMultiplier": 25,
+      "AffectsSiegeMachines": true,
+      "ImmunityWalls": true
+    }
+  },
+  "BagOfFrostmitesSpawn": {
+    "1": {
+      "Level": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "SpawnUpgradeLevel": 10
+    },
+    "11": {
+      "Level": 11,
+      "SpawnUpgradeLevel": 11
+    },
+    "Name": "BagOfFrostmitesSpawn",
+    "DisableProduction": true,
+    "HitTimeMS": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "SummonTroop": "FrostmiteSpawner",
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 1
+  },
+  "COOKIEAura": {
+    "1": {
+      "Name": "COOKIEAura",
+      "Level": 1,
+      "DisableProduction": true,
+      "HitTimeMS": 400,
+      "Damage": 3,
+      "Radius": 120,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "HeroDamageMultiplier": 25,
+      "AffectsSiegeMachines": true,
+      "ImmunityWalls": true
+    }
+  },
+  "Recall": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 7500000,
+      "StrengthWeight": 1700,
+      "RecallHousing": 83
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 11,
+      "UpgradeTimeH": 276,
+      "UpgradeCost": 8000000,
+      "StrengthWeight": 1800,
+      "RecallHousing": 89
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 12,
+      "UpgradeTimeH": 288,
+      "UpgradeCost": 9000000,
+      "StrengthWeight": 1900,
+      "RecallHousing": 95
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 13,
+      "UpgradeTimeH": 312,
+      "UpgradeCost": 13000000,
+      "StrengthWeight": 2000,
+      "RecallHousing": 101
+    },
+    "5": {
+      "Level": 5,
+      "LaboratoryLevel": 14,
+      "UpgradeTimeH": 360,
+      "UpgradeCost": 21000000,
+      "StrengthWeight": 2100,
+      "RecallHousing": 107
+    },
+    "6": {
+      "Level": 6,
+      "LaboratoryLevel": 15,
+      "StrengthWeight": 2200,
+      "RecallHousing": 113
+    },
+    "Name": "Recall",
+    "TID": "TID_SPELL_RECALL",
+    "InfoTID": "TID_SPELL_RECALL_INFO",
+    "SpellForgeLevel": 7,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 100,
+    "UpgradeResource": "Elixir",
+    "BoostTimeMS": 0,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Damage": 0,
+    "Radius": 500,
+    "NumberOfHits": 1,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 100,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_recall",
+    "BigPicture": "icon_spell_recall",
+    "PreDeployEffect": "Recall_Predeploy",
+    "DeployEffect": "RecallDeployAuraGround",
+    "DeployEffect2": "RecallDeployAuraTop",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "PreviewScenario": "SpellRecall"
+  },
+  "GrandWardenRangeRing": {
+    "1": {
+      "Name": "GrandWardenRangeRing",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 300,
+      "Damage": 0,
+      "Radius": 900,
+      "NumberOfHits": 4000,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 1000,
+      "DeployEffect": "GWRangeRing",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "EnemyDeployEffect": "EmptyEffect"
+    }
+  },
+  "PoisonLizardAttack": {
+    "1": {
+      "Level": 1,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -26,
+      "SpeedBoost2": -26,
+      "PoisonDPS": 80,
+      "AttackSpeedBoost": -35
+    },
+    "2": {
+      "Level": 2,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -34,
+      "SpeedBoost2": -34,
+      "PoisonDPS": 100,
+      "AttackSpeedBoost": -45
+    },
+    "3": {
+      "Level": 3,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -38,
+      "SpeedBoost2": -38,
+      "PoisonDPS": 120,
+      "AttackSpeedBoost": -50
+    },
+    "Name": "PoisonLizardAttack",
+    "DisableProduction": true,
+    "Radius": 400,
+    "NumberOfHits": 40,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "PoisonIncreaseSlowly": false,
+    "BoostLinkedToPoison": true,
+    "PoisonAffectAir": true,
+    "BoostDefenders": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "RamRiderDestroyWalls": {
+    "1": {
+      "Name": "RamRiderDestroyWalls",
+      "Level": 1,
+      "TID": "TID_RAM_RIDER_ABILITY_TITLE",
+      "InfoTID": "TID_RAM_RIDER_ABILITY_INFO",
+      "DisableProduction": true,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 300,
+      "BoostTimeMS": 0,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 0,
+      "Radius": 100,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 100,
+      "RandomRadiusAffectsOnlyGfx": true,
+      "DestroyWalls": true
+    }
+  },
+  "Unused10": {
+    "1": {
+      "Name": "Unused10",
+      "Level": 1,
+      "TID": "TID_FREEZE_SPELL",
+      "InfoTID": "TID_FREEZE_SPELL_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 4,
+      "LaboratoryLevel": 8,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "UpgradeTimeH": 72,
+      "UpgradeResource": "Elixir",
+      "UpgradeCost": 0,
+      "BoostTimeMS": 0,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 390,
+      "Radius": 500,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_freeze",
+      "BigPicture": "icon_spell_freeze",
+      "HitEffect": "Ice Breaker Hit lvl1",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "ConeAngle": 90,
+      "MinRadius": 100,
+      "MinDamage": 130,
+      "AffectsSiegeMachines": true
+    }
+  },
+  "Unused11": {
+    "1": {
+      "Name": "Unused11",
+      "Level": 1,
+      "TID": "TID_FREEZE_SPELL",
+      "InfoTID": "TID_FREEZE_SPELL_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 4,
+      "LaboratoryLevel": 8,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "UpgradeTimeH": 72,
+      "UpgradeResource": "Elixir",
+      "UpgradeCost": 0,
+      "BoostTimeMS": 0,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 390,
+      "Radius": 500,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_freeze",
+      "BigPicture": "icon_spell_freeze",
+      "HitEffect": "Ice Breaker Hit lvl1",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "ConeAngle": 90,
+      "MinRadius": 100,
+      "MinDamage": 130,
+      "AffectsSiegeMachines": true
+    }
+  },
+  "Baby Dragon Flaming Sneeze": {
+    "1": {
+      "Level": 1,
+      "Damage": 100,
+      "MinDamage": 80
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 160,
+      "MinDamage": 128
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 275,
+      "MinDamage": 220
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 400,
+      "MinDamage": 320
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 550,
+      "MinDamage": 440
+    },
+    "Name": "Baby Dragon Flaming Sneeze",
+    "DisableProduction": true,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "BoostTimeMS": 0,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Radius": 750,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "DisableDonate": true,
+    "VillageType": 1,
+    "ConeAngle": 90,
+    "AffectsSiegeMachines": true
+  },
+  "Power PEKKA Overcharge": {
+    "1": {
+      "Level": 1,
+      "Damage": 920
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 1060
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 1200
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 1350
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 1500
+    },
+    "Name": "Power PEKKA Overcharge",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 250,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "DeployEffect": "Pekka_Shockwave_Stomp",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "FreezeTimeMS": 100,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "VillageType": 1,
+    "FreezeOuterTimeMS": 100
+  },
+  "Drop Ship Skeleton Bomb": {
+    "1": {
+      "Level": 1,
+      "Damage": 600,
+      "UnitsToSpawn": 5
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 700,
+      "UnitsToSpawn": 6
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 800,
+      "UnitsToSpawn": 7
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 900,
+      "UnitsToSpawn": 8
+    },
+    "Name": "Drop Ship Skeleton Bomb",
+    "DisableProduction": true,
+    "DeployTimeMS": 850,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 225,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 100,
+    "PreDeployEffect": "Skeleton_Dropship_Bomb_Barrel_Predeploy",
+    "HitEffect": "Skeleton Dropship Bomb Hit",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Balloon Skeleton",
+    "SpawnUpgradeLevel": 1,
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0,
+    "VillageType": 1,
+    "DestroyWalls": true
+  },
+  "Night Witch Bat Swarm": {
+    "1": {
+      "Level": 1,
+      "Damage": 0,
+      "UnitsToSpawn": 7,
+      "SpawnDuration": 420
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 0,
+      "UnitsToSpawn": 8,
+      "SpawnDuration": 480
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 0,
+      "UnitsToSpawn": 9,
+      "SpawnDuration": 540
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 0,
+      "UnitsToSpawn": 10,
+      "SpawnDuration": 600
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 0,
+      "UnitsToSpawn": 11,
+      "SpawnDuration": 660
+    },
+    "Name": "Night Witch Bat Swarm",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 250,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 64,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Bat Enraged",
+    "SpawnUpgradeLevel": 1,
+    "SpawnFirstGroupSize": 0,
+    "VillageType": 1
+  },
+  "Cannon Cart Mortar Mode Splash": {
+    "1": {
+      "Level": 1,
+      "Damage": 150,
+      "MinDamage": 50
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 170,
+      "MinDamage": 57
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 195,
+      "MinDamage": 65
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 225,
+      "MinDamage": 75
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 255,
+      "MinDamage": 85
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 285,
+      "MinDamage": 95
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 325,
+      "MinDamage": 108
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 360,
+      "MinDamage": 120
+    },
+    "Name": "Cannon Cart Mortar Mode Splash",
+    "DisableProduction": true,
+    "Radius": 180,
+    "NumberOfHits": 1,
+    "VillageType": 1
+  },
+  "Apprentice Growth": {
+    "1": {
+      "Level": 1,
+      "ExtraHealthPermil": 200
+    },
+    "2": {
+      "Level": 2,
+      "ExtraHealthPermil": 220
+    },
+    "3": {
+      "Level": 3,
+      "ExtraHealthPermil": 240
+    },
+    "4": {
+      "Level": 4,
+      "ExtraHealthPermil": 260
+    },
+    "Name": "Apprentice Growth",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 300,
+    "Damage": 0,
+    "Radius": 700,
+    "NumberOfHits": 4000,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "Apprentice Growth aura",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "EnemyDeployEffect": "Enemy Apprentice growth aura"
+  },
+  "PetJump": {
+    "1": {
+      "Name": "PetJump",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 400,
+      "JumpHousingLimit": 100,
+      "JumpBoostMS": 400,
+      "Radius": 350,
+      "NumberOfHits": 33,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "Jump deploy top pet",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND"
+    }
+  },
+  "PetSpeedUp": {
+    "1": {
+      "Name": "PetSpeedUp",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 400,
+      "BoostTimeMS": 500,
+      "SpeedBoost": 16,
+      "SpeedBoost2": 8,
+      "Radius": 900,
+      "NumberOfHits": 4000,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "Growth aura",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "AttackSpeedBoost": 10,
+      "ScaleDeployEffects": true
+    }
+  },
+  "FireSpiritBurn": {
+    "1": {
+      "Name": "FireSpiritBurn",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 500,
+      "BoostTimeMS": 500,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 8,
+      "Radius": 80,
+      "NumberOfHits": 25,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "FireSpiritEmbers",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "PoisonDPS": 125,
+      "PoisonIncreaseSlowly": false,
+      "BoostLinkedToPoison": false,
+      "PoisonAffectAir": false,
+      "BoostDefenders": true,
+      "ImmunityWalls": true
+    }
+  },
+  "TreantWallDamageAura": {
+    "1": {
+      "Name": "TreantWallDamageAura",
+      "Level": 1,
+      "DisableProduction": true,
+      "HitTimeMS": 500,
+      "Damage": 4000,
+      "Radius": 75,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "HeroDamageMultiplier": 25,
+      "ScaleDeployEffects": true,
+      "AffectsSiegeMachines": true,
+      "ImmunitySiegeMachines": true,
+      "ImmunityOtherCharacters": true,
+      "ImmunityTH_CC": true,
+      "ImmunityStorages": true,
+      "ImmunityOtherBuildings": true,
+      "HideImmunityVFX": true
+    }
+  },
+  "SiegeInvisibility": {
+    "1": {
+      "Name": "SiegeInvisibility",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 400,
+      "Radius": 600,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "Invisibility area Siege",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "InvisibilityTime": 600,
+      "ImmunitySiegeMachines": true,
+      "ImmunityTH_CC": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true,
+      "ImmunityOtherBuildings": true
+    }
+  },
+  "Overgrowth": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 62500,
+      "DeployEffect2": "entangle_spell_circle_radius",
+      "FreezeTimeMS": 22000,
+      "StrengthWeight": 1600,
+      "ShieldTime": 22000,
+      "InvisibilityTime": 22000,
+      "FreezeOuterTimeMS": 22000
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 10,
+      "UpgradeTimeH": 288,
+      "UpgradeCost": 125000,
+      "DeployEffect2": "entangle_spell_circle_radius_lvl2",
+      "FreezeTimeMS": 23000,
+      "StrengthWeight": 1700,
+      "ShieldTime": 23000,
+      "InvisibilityTime": 23000,
+      "FreezeOuterTimeMS": 23000
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 12,
+      "UpgradeTimeH": 312,
+      "UpgradeCost": 175000,
+      "DeployEffect2": "entangle_spell_circle_radius_lvl3",
+      "FreezeTimeMS": 24000,
+      "StrengthWeight": 1900,
+      "ShieldTime": 24000,
+      "InvisibilityTime": 24000,
+      "FreezeOuterTimeMS": 24000
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 14,
+      "DeployEffect2": "entangle_spell_circle_radius_lvl4",
+      "FreezeTimeMS": 25000,
+      "StrengthWeight": 2100,
+      "ShieldTime": 25000,
+      "InvisibilityTime": 25000,
+      "FreezeOuterTimeMS": 25000
+    },
+    "Name": "Overgrowth",
+    "TID": "TID_SPELL_OVERGROWTH",
+    "InfoTID": "TID_SPELL_OVERGROWTH_INFO",
+    "SpellForgeLevel": 6,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "DarkElixir",
+    "Radius": 600,
+    "NumberOfHits": 1,
+    "RandomRadius": 400,
+    "TimeBetweenHitsMS": 0,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_overgrowth",
+    "BigPicture": "icon_spell_overgrowth",
+    "PreDeployEffect": "Entangle_predeploy",
+    "DeployEffect": "Entangle_area_deploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Mini Spell Factory",
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND",
+    "ShieldProtectionPercent": 100,
+    "BoostDefenders": true,
+    "ImmunitySiegeMachines": true,
+    "ImmunityOtherCharacters": true,
+    "ImmunityWalls": true,
+    "PreviewScenario": "SpellOvergrowth",
+    "TombStone": "OvergrowthGrass",
+    "NumTombStones": 40,
+    "Overgrowth": true
+  },
+  "GWHeroicTorchSpell": {
+    "1": {
+      "Level": 1,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "DeployEffect": "HeroicJumpEffect",
+      "GivenSpecialAbilityLevel": 10
+    },
+    "Name": "GWHeroicTorchSpell",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 900,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "ScaleDeployEffects": true,
+    "GiveSpecialAbility": "GWHeroicTorchGivenAbility",
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "Blizzard": {
+    "1": {
+      "Name": "Blizzard",
+      "Level": 1,
+      "TID": "TID_SPELL_FROST",
+      "InfoTID": "TID_SPELL_FROST_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 5,
+      "LaboratoryLevel": 1,
+      "DonateCost": 10,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "UpgradeTimeH": 42,
+      "UpgradeResource": "DarkElixir",
+      "UpgradeCost": 26000,
+      "Damage": 5,
+      "Radius": 500,
+      "NumberOfHits": 67,
+      "RandomRadius": 400,
+      "TimeBetweenHitsMS": 300,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_cc_frost",
+      "BigPicture": "icon_spell_freeze",
+      "PreDeployEffect": "Capital Frost Predeploy",
+      "DeployEffect": "Blizzard",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "FreezeTimeMS": 500,
+      "ProductionBuilding": "Mini Spell Factory",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "ScaleDeployEffects": true,
+      "FreezeOuterTimeMS": 500,
+      "FreezePercent": 70,
+      "AffectsSiegeMachines": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true
+    }
+  },
+  "BagOfFrostmites": {
+    "1": {
+      "Level": 1,
+      "DeployEffect": "BagOfFrostmitesEffect",
+      "FreezeTimeMS": 1500,
+      "UnitsToSpawn": 8,
+      "SpawnDuration": 4000,
+      "UpgradeLevelByTH": 6,
+      "FreezeOuterTimeMS": 1000
+    },
+    "2": {
+      "Level": 2,
+      "DeployEffect": "BagOfFrostmitesEffect2",
+      "FreezeTimeMS": 1700,
+      "UnitsToSpawn": 9,
+      "SpawnDuration": 4700,
+      "UpgradeLevelByTH": 7,
+      "FreezeOuterTimeMS": 1200
+    },
+    "3": {
+      "Level": 3,
+      "DeployEffect": "BagOfFrostmitesEffect3",
+      "FreezeTimeMS": 1900,
+      "UnitsToSpawn": 10,
+      "SpawnDuration": 5400,
+      "UpgradeLevelByTH": 8,
+      "FreezeOuterTimeMS": 1400
+    },
+    "4": {
+      "Level": 4,
+      "DeployEffect": "BagOfFrostmitesEffect4",
+      "FreezeTimeMS": 2100,
+      "UnitsToSpawn": 11,
+      "SpawnDuration": 6100,
+      "UpgradeLevelByTH": 9,
+      "FreezeOuterTimeMS": 1600
+    },
+    "5": {
+      "Level": 5,
+      "DeployEffect": "BagOfFrostmitesEffect5",
+      "FreezeTimeMS": 2300,
+      "UnitsToSpawn": 12,
+      "SpawnDuration": 6800,
+      "UpgradeLevelByTH": 10,
+      "FreezeOuterTimeMS": 1800
+    },
+    "6": {
+      "Level": 6,
+      "DeployEffect": "BagOfFrostmitesEffect6",
+      "FreezeTimeMS": 2500,
+      "UnitsToSpawn": 13,
+      "SpawnDuration": 7500,
+      "UpgradeLevelByTH": 11,
+      "FreezeOuterTimeMS": 2000
+    },
+    "7": {
+      "Level": 7,
+      "DeployEffect": "BagOfFrostmitesEffect7",
+      "FreezeTimeMS": 2700,
+      "UnitsToSpawn": 14,
+      "SpawnDuration": 8000,
+      "UpgradeLevelByTH": 12,
+      "FreezeOuterTimeMS": 2200
+    },
+    "8": {
+      "Level": 8,
+      "DeployEffect": "BagOfFrostmitesEffect8",
+      "FreezeTimeMS": 2900,
+      "UnitsToSpawn": 15,
+      "SpawnDuration": 8500,
+      "UpgradeLevelByTH": 13,
+      "FreezeOuterTimeMS": 2400
+    },
+    "9": {
+      "Level": 9,
+      "DeployEffect": "BagOfFrostmitesEffect9",
+      "FreezeTimeMS": 3100,
+      "UnitsToSpawn": 16,
+      "SpawnDuration": 9000,
+      "UpgradeLevelByTH": 14,
+      "FreezeOuterTimeMS": 2600
+    },
+    "10": {
+      "Level": 10,
+      "DeployEffect": "BagOfFrostmitesEffect10",
+      "FreezeTimeMS": 3300,
+      "UnitsToSpawn": 16,
+      "SpawnDuration": 9000,
+      "UpgradeLevelByTH": 15,
+      "FreezeOuterTimeMS": 2800
+    },
+    "11": {
+      "Level": 11,
+      "DeployEffect": "BagOfFrostmitesEffect11",
+      "FreezeTimeMS": 3500,
+      "UnitsToSpawn": 16,
+      "SpawnDuration": 9000,
+      "UpgradeLevelByTH": 16,
+      "FreezeOuterTimeMS": 3000
+    },
+    "Name": "BagOfFrostmites",
+    "TID": "TID_SPELL_BAG_OF_FROSTMITES",
+    "InfoTID": "TID_SPELL_BAG_OF_FROSTMITES_INFO",
+    "SpellForgeLevel": 1,
+    "LaboratoryLevel": 1,
+    "DonateCost": 10,
+    "HousingSpace": 1,
+    "TrainingTime": 180,
+    "DeployTimeMS": 300,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 300,
+    "UpgradeResource": "Elixir",
+    "BoostTimeMS": 0,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Damage": 0,
+    "Radius": 350,
+    "NumberOfHits": 1,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_frostmitebag",
+    "BigPicture": "icon_spell_frostmitebag",
+    "PreDeployEffect": "Frostmites Spell Predeploy",
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "BouncingFrostmite",
+    "SpawnUpgradeLevel": 1,
+    "SpawnFirstGroupSize": 1,
+    "DisableDonate": true,
+    "EnabledByCalendar": true,
+    "PreviewScenario": "SpellFrostmites"
+  },
+  "TroopCatapultSummonTroop": {
+    "1": {
+      "Name": "TroopCatapultSummonTroop",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "Damage": 0,
+      "Radius": 0,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "SuperBoar Deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 1,
+      "SpawnDuration": 0,
+      "SpawnFirstGroupSize": 0
+    }
+  },
+  "LavaloonSpawnPup": {
+    "1": {
+      "Level": 1,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 10
+    },
+    "11": {
+      "Level": 11,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 11
+    },
+    "Name": "LavaloonSpawnPup",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "HitEffect": "LavaloonAttackEffect",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "SummonTroop": "Lavaloon Pup",
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
+  },
+  "Firecracker Explosion": {
+    "1": {
+      "Level": 1,
+      "Damage": 90,
+      "MinDamage": 20
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 117,
+      "MinDamage": 26
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 144,
+      "MinDamage": 32
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 171,
+      "MinDamage": 38
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 198,
+      "MinDamage": 44
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 225,
+      "MinDamage": 50
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 261,
+      "MinDamage": 58
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 279,
+      "MinDamage": 62
+    },
+    "9": {
+      "Level": 9,
+      "Damage": 306,
+      "MinDamage": 68
+    },
+    "10": {
+      "Level": 10,
+      "Damage": 342,
+      "MinDamage": 76
+    },
+    "11": {
+      "Level": 11,
+      "Damage": 360,
+      "MinDamage": 80
+    },
+    "12": {
+      "Level": 12,
+      "Damage": 378,
+      "MinDamage": 84
+    },
+    "Name": "Firecracker Explosion",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Radius": 500,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "HitEffect": "Ice Breaker Hit lvl1",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ConeAngle": 90,
+    "AffectsSiegeMachines": true
+  },
+  "EarthquakeBoots": {
+    "1": {
+      "Level": 1,
+      "BuildingDamagePermil": 20
+    },
+    "2": {
+      "Level": 2,
+      "BuildingDamagePermil": 40
+    },
+    "3": {
+      "Level": 3,
+      "BuildingDamagePermil": 60
+    },
+    "4": {
+      "Level": 4,
+      "BuildingDamagePermil": 68
+    },
+    "5": {
+      "Level": 5,
+      "BuildingDamagePermil": 72
+    },
+    "6": {
+      "Level": 6,
+      "BuildingDamagePermil": 76
+    },
+    "7": {
+      "Level": 7,
+      "BuildingDamagePermil": 80
+    },
+    "Name": "EarthquakeBoots",
+    "TID": "TID_EARTHQUAKE",
+    "InfoTID": "TID_EARTHQUAKE_INFO",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "Radius": 800,
+    "NumberOfHits": 5,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "DeployEffect": "Earthquake Boots Deploy",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "DestroyWalls": true
+  },
+  "FireBallExplosion": {
+    "1": {
+      "Name": "FireBallExplosion",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 500,
+      "BoostTimeMS": 500,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 20,
+      "Radius": 600,
+      "NumberOfHits": 75,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "Catapult Ground Effects",
+      "DeployEffect2": "Multi Mortar Area Effects",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "PoisonDPS": 80,
+      "PoisonIncreaseSlowly": true,
+      "BoostLinkedToPoison": false,
+      "PoisonAffectAir": false,
+      "BoostDefenders": true
+    }
+  },
+  "RageAura": {
+    "1": {
+      "Level": 1,
+      "DamageBoostPercent": 15
+    },
+    "2": {
+      "Level": 2,
+      "DamageBoostPercent": 20
+    },
+    "3": {
+      "Level": 3,
+      "DamageBoostPercent": 25
+    },
+    "4": {
+      "Level": 4,
+      "DamageBoostPercent": 30
+    },
+    "5": {
+      "Level": 5,
+      "DamageBoostPercent": 35
+    },
+    "6": {
+      "Level": 6,
+      "DamageBoostPercent": 45
+    },
+    "7": {
+      "Level": 7,
+      "DamageBoostPercent": 50
+    },
+    "Name": "RageAura",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 300,
+    "BoostTimeMS": 1000,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "Radius": 900,
+    "NumberOfHits": 4000,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "GWRageAuraEffect",
+    "DeployEffect2": "GWRageAuraEffectTop",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+  },
+  "QueenFreeze": {
+    "1": {
+      "Name": "QueenFreeze",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "Radius": 50,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "FreezeArrowEffect",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "FreezeTimeMS": 800,
+      "AffectsSiegeMachines": true
+    }
+  },
+  "ElectrifiedShield": {
+    "1": {
+      "Name": "ElectrifiedShield",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 100,
+      "Damage": 150,
+      "Radius": 350,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "ChargingEffect": "Lightning Spell",
+      "HitEffect": "ElectrifiedShieldHit",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "FreezeTimeMS": 100
+    }
+  },
+  "BarbarianKingDestroyWalls": {
+    "1": {
+      "Name": "BarbarianKingDestroyWalls",
+      "Level": 1,
+      "TID": "TID_RAM_RIDER_ABILITY_TITLE",
+      "InfoTID": "TID_RAM_RIDER_ABILITY_INFO",
+      "DisableProduction": true,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 300,
+      "BoostTimeMS": 0,
+      "SpeedBoost": 0,
+      "SpeedBoost2": 0,
+      "Damage": 0,
+      "Radius": 200,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 100,
+      "RandomRadiusAffectsOnlyGfx": true,
+      "DestroyWalls": true
+    }
+  },
+  "HealAura": {
+    "1": {
+      "Level": 1,
+      "Damage": -18
+    },
+    "2": {
+      "Level": 2,
+      "Damage": -21
+    },
+    "3": {
+      "Level": 3,
+      "Damage": -24
+    },
+    "4": {
+      "Level": 4,
+      "Damage": -30
+    },
+    "5": {
+      "Level": 5,
+      "Damage": -36
+    },
+    "6": {
+      "Level": 6,
+      "Damage": -42
+    },
+    "7": {
+      "Level": 7,
+      "Damage": -45
+    },
+    "Name": "HealAura",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 300,
+    "ExecuteHealthPermil": -60,
+    "Radius": 900,
+    "NumberOfHits": 4000,
+    "RandomRadius": 200,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "GWHealAuraEffect",
+    "DeployEffect2": "GWHealAuraEffectTop",
+    "HitEffect": "Heal spell",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR"
+  },
+  "Yellow Card": {
+    "1": {
+      "Name": "Yellow Card",
+      "Level": 1,
+      "TID": "TID_SPELL_YELLOW_CARD",
+      "InfoTID": "TID_SPELL_YELLOW_CARD_INFO",
+      "SpellForgeLevel": 1,
+      "LaboratoryLevel": 1,
+      "DonateCost": 10,
+      "HousingSpace": 1,
+      "TrainingTime": 180,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "UpgradeResource": "Elixir",
+      "Radius": 0,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_suspension",
+      "BigPicture": "icon_spell_suspension",
+      "PreDeployEffect": "Referee Whistle Effect",
+      "DeployEffect": "Yellow Card Effect",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "FreezeTimeMS": 15000,
+      "ProductionBuilding": "Spell Forge",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_DEFENSES_AND_HEROES",
+      "DisableDonate": true,
+      "EnabledByCalendar": true,
+      "UpgradeLevelByTH": 6,
+      "InvisibilityTime": 15000,
+      "FreezeOuterTimeMS": 15000,
+      "BoostDefenders": true,
+      "ImmunitySiegeMachines": true,
+      "ImmunityWalls": true,
+      "PreviewScenario": "SpellYellowCard",
+      "TargetingRadius": 300,
+      "TargetedProjectile": "Yellow Card Projectile",
+      "TargetedAgainEffect": "Red Card Effect"
+    }
+  },
+  "GWPhoenixStickSpell": {
+    "1": {
+      "Level": 1,
+      "ImmortalTime": 1750
+    },
+    "2": {
+      "Level": 2,
+      "ImmortalTime": 2000
+    },
+    "3": {
+      "Level": 3,
+      "ImmortalTime": 2250
+    },
+    "4": {
+      "Level": 4,
+      "ImmortalTime": 2500
+    },
+    "5": {
+      "Level": 5,
+      "ImmortalTime": 2750
+    },
+    "6": {
+      "Level": 6,
+      "ImmortalTime": 3000
+    },
+    "7": {
+      "Level": 7,
+      "ImmortalTime": 3250
+    },
+    "8": {
+      "Level": 8,
+      "ImmortalTime": 3500
+    },
+    "9": {
+      "Level": 9,
+      "ImmortalTime": 3750
+    },
+    "10": {
+      "Level": 10,
+      "ImmortalTime": 4000
+    },
+    "Name": "GWPhoenixStickSpell",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "BoostTimeMS": 0,
+    "SpeedBoost": 0,
+    "SpeedBoost2": 0,
+    "JumpHousingLimit": 0,
+    "JumpBoostMS": 0,
+    "Radius": 900,
+    "NumberOfHits": 4000,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 300,
+    "DeployEffect": "ImmortalArea",
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "ShieldTime": 0,
+    "ShieldProtectionPercent": 0,
+    "AffectsSiegeMachines": true,
+    "ImmunityTH_CC": true,
+    "ImmunityStorages": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true
+  },
+  "BattleDruidHeal": {
+    "1": {
+      "Name": "BattleDruidHeal",
+      "Level": 1,
+      "TID": "TID_HEALING_WAVE",
+      "InfoTID": "TID_HEALING_WAVE_INFO",
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 400,
+      "Damage": -25,
+      "Radius": 350,
+      "NumberOfHits": 20,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_healing",
+      "BigPicture": "icon_spell_healing",
+      "DeployEffect": "BattleDruidHealingEffect",
+      "RandomRadiusAffectsOnlyGfx": true
+    }
+  },
+  "RCDamageAura": {
+    "1": {
+      "Level": 1,
+      "Damage": 53,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "2": {
+      "Level": 2,
+      "Damage": 56,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "3": {
+      "Level": 3,
+      "Damage": 59,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "4": {
+      "Level": 4,
+      "Damage": 62,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "5": {
+      "Level": 5,
+      "Damage": 65,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "6": {
+      "Level": 6,
+      "Damage": 68,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "7": {
+      "Level": 7,
+      "Damage": 71,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "8": {
+      "Level": 8,
+      "Damage": 74,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "9": {
+      "Level": 9,
+      "Damage": 77,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "10": {
+      "Level": 10,
+      "Damage": 80,
+      "DeployEffect": "HeroGear_RC_ElectroBoots"
+    },
+    "Name": "RCDamageAura",
+    "DisableProduction": true,
+    "HitTimeMS": 400,
+    "Radius": 450,
+    "NumberOfHits": 4000,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 400,
+    "StrengthWeight": 0,
+    "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+    "HeroDamageMultiplier": 25,
+    "ScaleDeployEffects": true,
+    "AffectsSiegeMachines": true,
+    "ImmunityWalls": true
+  },
+  "GWLavaloonSpawnPup": {
+    "1": {
+      "Level": 1,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 10
+    },
+    "11": {
+      "Level": 11,
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 11
+    },
+    "Name": "GWLavaloonSpawnPup",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "HitEffect": "LavaloonAttackEffect",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "SummonTroop": "GW equipment Lavaloon Pup",
+    "SpawnDuration": 0,
+    "SpawnFirstGroupSize": 0
+  },
+  "IceMinionFreeze": {
+    "1": {
+      "Level": 1,
+      "Radius": 450,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "IceMinionFreeze deploy lvl1",
+      "DeployEffect2": "IceMinion Freeze Deploy2",
+      "FreezeTimeMS": 1500,
+      "FreezeOuterTimeMS": 863
+    },
+    "2": {
+      "Level": 2,
+      "Radius": 450,
+      "NumberOfHits": 1,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 0,
+      "DeployEffect": "IceMinionFreeze deploy lvl2",
+      "DeployEffect2": "IceMinion Freeze Deploy2",
+      "FreezeTimeMS": 2500,
+      "FreezeOuterTimeMS": 1294
+    },
+    "Name": "IceMinionFreeze",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "RandomRadiusAffectsOnlyGfx": true
+  },
+  "Commander Aura": {
+    "1": {
+      "Name": "Commander Aura",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 300,
+      "Damage": 0,
+      "Radius": 500,
+      "NumberOfHits": 4000,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "Apprentice Growth aura",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "AffectsSiegeMachines": false,
+      "MasterAura": true
+    }
+  },
+  "TroopCatapultSummonTroopNew": {
+    "1": {
+      "Level": 1,
+      "UnitsToSpawn": "1;2;3;1",
+      "SpawnUpgradeLevel": "9;9;9;9"
+    },
+    "2": {
+      "Level": 2,
+      "UnitsToSpawn": "1;2;3;2",
+      "SpawnUpgradeLevel": "10;10;10;10"
+    },
+    "3": {
+      "Level": 3,
+      "UnitsToSpawn": "1;2;4;2",
+      "SpawnUpgradeLevel": "11;11;11;11"
+    },
+    "4": {
+      "Level": 4,
+      "UnitsToSpawn": "1;2;4;2",
+      "SpawnUpgradeLevel": "12;12;12;12"
+    },
+    "Name": "TroopCatapultSummonTroopNew",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "RandomRadiusAffectsOnlyGfx": true,
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "Giant;Barbarian;Archer;Wall Breaker",
+    "SpawnDuration": "200;1000;1500;1200",
+    "SpawnFirstGroupSize": "1;1;1;1"
+  },
+  "TorchThrowerB": {
+    "1": {
+      "Name": "TorchThrowerB",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 500,
+      "Damage": 60,
+      "Radius": 250,
+      "NumberOfHits": 25,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "TorchThrowerB",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "ImmunityWalls": true
+    }
+  },
+  "Destroyer": {
+    "1": {
+      "Name": "Destroyer",
+      "Level": 1,
+      "DisableProduction": true,
+      "HitTimeMS": 400,
+      "Damage": 120,
+      "Radius": 500,
+      "NumberOfHits": 4000,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "E_titanAreaDamage",
+      "StrengthWeight": 0,
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "ScaleDeployEffects": true,
+      "AffectsSiegeMachines": true,
+      "ImmunityWalls": true
+    }
+  },
+  "Unused12": {
+    "1": {
+      "Name": "Unused12",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "Radius": 150,
+      "NumberOfHits": 1,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "SuperBoar Deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+      "SummonTroop": "Barbarian",
+      "UnitsToSpawn": 2,
+      "SpawnUpgradeLevel": 10,
+      "SpawnDuration": 1000,
+      "SpawnFirstGroupSize": 1
+    }
+  },
+  "Unused13": {
+    "1": {
+      "Name": "Unused13",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 500,
+      "Radius": 150,
+      "NumberOfHits": 1,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "SuperBoar Deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+      "SummonTroop": "Archer",
+      "UnitsToSpawn": 3,
+      "SpawnUpgradeLevel": 10,
+      "SpawnDuration": 1500,
+      "SpawnFirstGroupSize": 1
+    }
+  },
+  "Unused14": {
+    "1": {
+      "Name": "Unused14",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 500,
+      "Radius": 150,
+      "NumberOfHits": 1,
+      "RandomRadius": 200,
+      "TimeBetweenHitsMS": 300,
+      "DeployEffect": "SuperBoar Deploy",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+      "SummonTroop": "Wall Breaker",
+      "UnitsToSpawn": 1,
+      "SpawnUpgradeLevel": 10,
+      "SpawnDuration": 1200,
+      "SpawnFirstGroupSize": 1
+    }
+  },
+  "Resurrect": {
+    "1": {
+      "Name": "Resurrect",
+      "Level": 1,
+      "TID": "TID_SPELL_RESURRECT",
+      "InfoTID": "TID_SPELL_RESURRECT_INFO",
+      "DisableProduction": true,
+      "SpellForgeLevel": 6,
+      "LaboratoryLevel": 1,
+      "DonateCost": 10,
+      "HousingSpace": 2,
+      "TrainingTime": 360,
+      "DeployTimeMS": 100,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "UpgradeTimeH": 240,
+      "UpgradeResource": "DarkElixir",
+      "UpgradeCost": 125000,
+      "Radius": 500,
+      "NumberOfHits": 40,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 300,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_unit_pet_phoenix",
+      "BigPicture": "icon_spell_healing",
+      "PreDeployEffect": "Heal predeploy",
+      "DeployEffect": "ResurrectSpell",
+      "StrengthWeight": 1600,
+      "ProductionBuilding": "Mini Spell Factory",
+      "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+      "ImmortalTime": 3000,
+      "AffectsSiegeMachines": true,
+      "ImmunityTH_CC": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true,
+      "ImmunityOtherBuildings": true,
+      "PreviewScenario": "SpellResurrect"
+    }
+  },
+  "Revive": {
+    "1": {
+      "Level": 1,
+      "LaboratoryLevel": 1,
+      "UpgradeTimeH": 240,
+      "UpgradeCost": 18000000,
+      "ResurrectHitpointPercentage": 60
+    },
+    "2": {
+      "Level": 2,
+      "LaboratoryLevel": 13,
+      "UpgradeTimeH": 336,
+      "UpgradeCost": 20000000,
+      "ResurrectHitpointPercentage": 65
+    },
+    "3": {
+      "Level": 3,
+      "LaboratoryLevel": 14,
+      "UpgradeTimeH": 384,
+      "UpgradeCost": 22000000,
+      "ResurrectHitpointPercentage": 70
+    },
+    "4": {
+      "Level": 4,
+      "LaboratoryLevel": 15,
+      "ResurrectHitpointPercentage": 75
+    },
+    "Name": "Revive",
+    "TID": "TID_SPELL_REVIVE",
+    "InfoTID": "TID_SPELL_REVIVE_INFO",
+    "SpellForgeLevel": 8,
+    "DonateCost": 10,
+    "HousingSpace": 2,
+    "TrainingTime": 360,
+    "DeployTimeMS": 800,
+    "ChargingTimeMS": 300,
+    "HitTimeMS": 400,
+    "UpgradeResource": "Elixir",
+    "Radius": 0,
+    "NumberOfHits": 1,
+    "RandomRadius": 0,
+    "TimeBetweenHitsMS": 0,
+    "IconSWF": "sc/ui.sc",
+    "IconExportName": "icon_spell_hero_revive",
+    "BigPicture": "icon_spell_hero_revive",
+    "PreDeployEffect": "hero_revive_bottle_effect",
+    "DeployEffect": "hero_revive_top_layer",
+    "DeployEffect2": "hero_revive_ground_layer",
+    "RandomRadiusAffectsOnlyGfx": true,
+    "ProductionBuilding": "Spell Forge",
+    "TargetInfoString": "TID_PLAYER_PROFILE_HEROES",
+    "ImmunitySiegeMachines": true,
+    "ImmunityTH_CC": true,
+    "ImmunityWalls": true,
+    "ImmunityOtherBuildings": true,
+    "PreviewScenario": "SpellRevive",
+    "TargetingRadius": 800,
+    "TargetedProjectile": "Hero Revive Projectile"
+  },
+  "TH17WeaponAreaDamage": {
+    "1": {
+      "Name": "TH17WeaponAreaDamage",
+      "Level": 1,
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 0,
+      "BoostTimeMS": 500,
+      "Radius": 250,
+      "NumberOfHits": 17,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "DeployEffect": "TH17AreaDmgEffect",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "PoisonDPS": 75,
+      "PoisonIncreaseSlowly": false,
+      "BoostLinkedToPoison": true,
+      "PoisonAffectAir": true,
+      "AffectsSiegeMachines": true,
+      "BoostDefenders": true,
+      "ImmunityTH_CC": true,
+      "ImmunityStorages": true,
+      "ImmunityWalls": true,
+      "ImmunityOtherBuildings": true
+    }
+  },
+  "BarbKingEquipSpawn": {
+    "1": {
+      "Level": 1,
+      "SpawnUpgradeLevel": 1
+    },
+    "2": {
+      "Level": 2,
+      "SpawnUpgradeLevel": 2
+    },
+    "3": {
+      "Level": 3,
+      "SpawnUpgradeLevel": 3
+    },
+    "4": {
+      "Level": 4,
+      "SpawnUpgradeLevel": 4
+    },
+    "5": {
+      "Level": 5,
+      "SpawnUpgradeLevel": 5
+    },
+    "6": {
+      "Level": 6,
+      "SpawnUpgradeLevel": 6
+    },
+    "7": {
+      "Level": 7,
+      "SpawnUpgradeLevel": 7
+    },
+    "8": {
+      "Level": 8,
+      "SpawnUpgradeLevel": 8
+    },
+    "9": {
+      "Level": 9,
+      "SpawnUpgradeLevel": 9
+    },
+    "10": {
+      "Level": 10,
+      "SpawnUpgradeLevel": 10
+    },
+    "Name": "BarbKingEquipSpawn",
+    "DisableProduction": true,
+    "DeployTimeMS": 0,
+    "ChargingTimeMS": 0,
+    "HitTimeMS": 0,
+    "Damage": 0,
+    "Radius": 200,
+    "NumberOfHits": 1,
+    "RandomRadius": 150,
+    "TimeBetweenHitsMS": 0,
+    "DeployEffect": "Snake Summon",
+    "TargetInfoString": "TID_PREFERRED_TARGET_ANY",
+    "SummonTroop": "BarbKingEquipSnake",
+    "UnitsToSpawn": 1,
+    "SpawnDuration": 100,
+    "SpawnFirstGroupSize": 1
+  },
+  "MassDestruction": {
+    "1": {
+      "Name": "MassDestruction",
+      "Level": 1,
+      "TID": "TID_SPELL_MASS_DESTRUCTION",
+      "InfoTID": "TID_SPELL_MASS_DESTRUCTION",
+      "DisableProduction": true,
+      "DeployTimeMS": 800,
+      "ChargingTimeMS": 300,
+      "HitTimeMS": 400,
+      "Damage": 500,
+      "Radius": 9000,
+      "NumberOfHits": 100,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 200,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_earthquake",
+      "BigPicture": "icon_spell_earthquake",
+      "PreDeployEffect": "Earthquake_Predeploy",
+      "DeployEffect": "EarthQuake_deploy_ground_0",
+      "DeployEffect2": "EarthQuake_deploy_0",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "StrengthWeight": 1200,
+      "UpgradeLevelByTH": 1
+    }
+  },
+  "MinionGiantPoison": {
+    "1": {
+      "Name": "MinionGiantPoison",
+      "Level": 1,
+      "TID": "TID_POISON_CLOUD",
+      "InfoTID": "TID_POISON_CLOUD_INFO",
+      "DisableProduction": true,
+      "DeployTimeMS": 0,
+      "ChargingTimeMS": 0,
+      "HitTimeMS": 400,
+      "BoostTimeMS": 500,
+      "SpeedBoost": -38,
+      "SpeedBoost2": -38,
+      "Radius": 600,
+      "NumberOfHits": 40,
+      "RandomRadius": 0,
+      "TimeBetweenHitsMS": 400,
+      "IconSWF": "sc/ui.sc",
+      "IconExportName": "icon_spell_toxic",
+      "BigPicture": "icon_spell_toxic",
+      "DeployEffect": "ToxicGroundMinion",
+      "DeployEffect2": "ToxicDeployMinion",
+      "RandomRadiusAffectsOnlyGfx": true,
+      "StrengthWeight": 1200,
+      "ProductionBuilding": "Mini Spell Factory",
+      "TargetInfoString": "TID_INFO_TARGET_TYPE_GROUND_AND_AIR",
+      "PoisonDPS": 70,
+      "PoisonIncreaseSlowly": false,
+      "AttackSpeedBoost": -50,
+      "BoostLinkedToPoison": true,
+      "PoisonAffectAir": true,
+      "BoostDefenders": true,
+      "ImmunityWalls": true
+    }
+  }
+}

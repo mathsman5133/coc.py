@@ -24,6 +24,8 @@ SOFTWARE.
 from datetime import datetime
 from typing import Any, Type, TypeVar, Optional
 
+import coc
+from .enums import ExtendedEnum, PlayerHouseElementType
 from .utils import from_timestamp
 
 T = TypeVar("T")
@@ -31,6 +33,8 @@ T = TypeVar("T")
 
 def try_enum(_class: Type[T], data: Any, **kwargs) -> Optional[T]:
     """Helper function to create a class from the given data."""
+    if issubclass(_class, ExtendedEnum):
+        return data and _class(data)
     return data and _class(data=data, **kwargs)
 
 
@@ -240,7 +244,37 @@ class Location:
         self.localised_name: str = data_get("localizedName")
 
 
-class League:
+class BaseLeague:
+    """Represents a basic league.
+
+    Attributes
+    -----------
+    id: :class:`int`: The league's unique ID
+    name: :class:`str`: The league's name, as it appears in-game."""
+
+    __slots__ = (
+        "id",
+        "name",
+        "_client"
+    )
+
+    def __init__(self, *, data, client=None):
+        # pylint: disable=invalid-name
+        self.id: int = data["id"]
+        self.name: str = data["name"]
+        self._client = client
+
+    def __repr__(self):
+        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
+
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return isinstance(self, other.__class__) and other.id == self.id
+
+
+class League(BaseLeague):
     """Represents a Clash of Clans League
 
     Attributes
@@ -249,21 +283,12 @@ class League:
         :class:`int`: The league ID.
     name:
         :class:`str`: The league name.
-    localised_name:
-        :class:`str`: A localised name of the location. The extent of the use of this is unknown at present.
-    localised_short_name:
-        :class:`str`: A localised short name of the location. The extent of the use of this is unknown at present.
     icon:
         :class:`Icon`: The league's icon.
     """
 
     __slots__ = (
-        "id",
-        "name",
-        "localised_short_name",
-        "localised_name",
         "icon",
-        "_client",
     )
 
     def __str__(self):
@@ -277,17 +302,12 @@ class League:
         return isinstance(other, self.__class__) and self.id == other.id
 
     def __init__(self, *, data, client):
-        self._client = client
+        super().__init__(data=data, client=client)
         self._from_data(data)
 
     def _from_data(self, data: dict) -> None:
         # pylint: disable=invalid-name
         data_get = data.get
-
-        self.id: int = data_get("id")
-        self.name: str = data_get("name")
-        self.localised_name: str = data_get("localizedName")
-        self.localised_short_name: str = data_get("localizedShortName")
         self.icon = try_enum(Icon, data=data_get("iconUrls"), client=self._client)
 
 
@@ -325,13 +345,14 @@ class LegendStatistics:
         :class:`Season`: Legend statistics for the previous season.
     best_season:
         :class:`Season`: Legend statistics for the player's best season.
-    previous_versus_season:
-        :class:`Season`: Legend statistics for the previous versus season.
-    best_versus_season:
-        :class:`Season`: Legend statistics for the player's best versus season.
+    previous_builder_base_season:
+        :class:`Season`: Legend statistics for the previous builder base season.
+    best_builder_base_season:
+        :class:`Season`: Legend statistics for the player's best builder base season.
     """
 
-    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season", "previous_versus_season", "best_versus_season")
+    __slots__ = ("legend_trophies", "current_season", "previous_season", "best_season", "previous_builder_base_season",
+                 "best_builder_base_season")
 
     def __repr__(self):
         attrs = [
@@ -344,9 +365,9 @@ class LegendStatistics:
             isinstance(other, self.__class__)
             and self.best_season == other.best_season
             and self.current_season == other.current_season
-            and self.best_versus_season == other.best_versus_season
+            and self.best_builder_base_season == other.best_builder_base_season
             and self.previous_season == other.previous_season
-            and self.previous_versus_season == self.previous_versus_season
+            and self.previous_builder_base_season == self.previous_builder_base_season
         )
 
     def __init__(self, *, data):
@@ -354,8 +375,8 @@ class LegendStatistics:
         self.current_season = try_enum(Season, data=data.get("currentSeason"))
         self.previous_season = try_enum(Season, data=data.get("previousSeason"))
         self.best_season = try_enum(Season, data=data.get("bestSeason"))
-        self.previous_versus_season = try_enum(Season, data=data.get("previousVersusSeason"))
-        self.best_versus_season = try_enum(Season, data=data.get("bestVersusSeason"))
+        self.previous_builder_base_season = try_enum(Season, data=data.get("previousBuilderBaseSeason"))
+        self.best_builder_base_season = try_enum(Season, data=data.get("bestBuilderBaseSeason"))
 
 
 class Badge:
@@ -369,11 +390,9 @@ class Badge:
         :class:`str` - URL for a medium sized badge (200x200).
     large:
         :class:`str` - URL for a large sized badge (512x512).
-    url:
-        :class:`str` - Medium, the default URL badge size.
     """
 
-    __slots__ = ("small", "medium", "large", "url", "_client")
+    __slots__ = ("small", "medium", "large", "_client")
 
     def __repr__(self):
         attrs = [
@@ -388,7 +407,11 @@ class Badge:
         self.medium: str = data.get("medium")
         self.large: str = data.get("large")
 
-        self.url: str = self.medium
+    @property
+    def url(self) -> str:
+        """:class:`str`: the default icon URL. Returns the medium-sized icon URL if available.
+        Falls back to small and large (in that order) if not"""
+        return self.medium or self.small or self.large
 
     async def save(self, filepath, size=None) -> int:
         """
@@ -417,7 +440,7 @@ class Badge:
         if size and size in sizes.keys():
             url = sizes[size]
         else:
-            url = self.medium
+            url = self.url
 
         data = await self._client.http.get_data_from_url(url)
 
@@ -436,11 +459,9 @@ class Icon:
         :class:`str`: URL for a small sized icon (72x72).
     medium:
         :class:`str`: URL for a medium sized icon (288x288).
-    url:
-        :class:`str`: ``small``, the default URL icon size
     """
 
-    __slots__ = ("small", "medium", "tiny", "url", "_client")
+    __slots__ = ("small", "medium", "tiny", "_client")
 
     def __repr__(self):
         attrs = [
@@ -455,7 +476,11 @@ class Icon:
         self.small: str = data.get("small")
         self.medium: str = data.get("medium")
 
-        self.url: str = self.medium
+    @property
+    def url(self) -> str:
+        """:class:`str`: the default icon URL. Returns the medium-sized icon URL if available.
+        Falls back to small and tiny (in that order) if not"""
+        return self.medium or self.small or self.tiny
 
     async def save(self, filepath: str, size: Optional[str] = None) -> int:
         """
@@ -484,7 +509,7 @@ class Icon:
         if size and size in sizes.keys():
             url = sizes[size]
         else:
-            url = self.medium
+            url = self.url
 
         data = await self._client.http.get_data_from_url(url)
 
@@ -610,33 +635,6 @@ class CapitalDistrict:
         self.hall_level: int = data.get("districtHallLevel")
 
 
-class WarLeague:
-    """Represents a clan's CWL league.
-
-    Attributes
-    -----------
-    id: :class:`int`: The league's unique ID
-    name: :class:`str`: The league's name, as it appears in-game."""
-
-    __slots__ = (
-        "id",
-        "name",
-    )
-
-    def __init__(self, *, data):
-        # pylint: disable=invalid-name
-        self.id: int = data["id"]
-        self.name: str = data["name"]
-
-    def __repr__(self):
-        return "<%s id=%s name=%s>" % (self.__class__.__name__, self.id, self.name)
-
-    def __str__(self):
-        return self.name
-
-    def __eq__(self, other):
-        return isinstance(self, other.__class__) and other.id == self.id
-
 
 class ChatLanguage:
     """Represents a clan's chat language.
@@ -693,3 +691,24 @@ class GoldPassSeason:
                 and self.start_time == other.start_time
                 and self.end_time == other.end_time)
 
+
+class PlayerHouseElement:
+    """Represents an element of a player house.
+
+    Attributes
+    ----------
+    id:
+        :class:`int`: The id of the house element
+    type:
+        :class:`PlayerHouseElementType`: The type of the house element
+    """
+    __slots__ = ("id", "type")
+
+    def __init__(self, *, data):
+        self.id = data.get("id")
+        self.type = data.get("type") and PlayerHouseElementType(value=data["type"])
+
+    def __eq__(self, other):
+        return (isinstance(other, PlayerHouseElement)
+                and self.id == other.id
+                and self.type == other.type)

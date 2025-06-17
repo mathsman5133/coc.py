@@ -2,5 +2,5 @@ sphinx
 sphinxcontrib_trio
 autodocsumm
 sphinx_rtd_theme
-ujson
+orjson
 aiohttp

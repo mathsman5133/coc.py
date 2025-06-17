@@ -15,6 +15,7 @@ Hero
 .. autoclass:: Hero()
     :members:
     :private-members:
+    
 
 Pet
 ~~~
@@ -28,6 +29,7 @@ Spell
 .. autoclass:: Spell()
     :members:
     :private-members:
+    
 
 Resource
 ~~~~~~~~
@@ -42,5 +44,4 @@ Resource
     .. py:attribute:: dark_elixir
 
     .. py:attribute:: builder_elixir
-
 

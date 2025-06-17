@@ -24,7 +24,7 @@ SOFTWARE.
 from typing import Optional, List, TYPE_CHECKING
 
 
-from .miscmodels import try_enum, Achievement, Label, League, LegendStatistics
+from .miscmodels import BaseLeague, PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
     HERO_ORDER,
@@ -36,9 +36,10 @@ from .enums import (
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
+    EQUIPMENT,
 )
 from .abc import BasePlayer
-from .hero import Hero, Pet
+from .hero import Hero, Equipment, Pet
 from .player_clan import PlayerClan
 from .spell import Spell
 from .troop import Troop
@@ -67,18 +68,22 @@ class ClanMember(BasePlayer):
         The member's experience level.
     league: :class:`League`
         The member's current league.
+    builder_base_league: :class:`BaseLeague`
+        The member's current builder base league.
     trophies: :class:`int`
         The member's trophy count.
-    versus_trophies: :class:`int`
-        The member's versus trophy count.
+    builder_base_trophies: :class:`int`
+        The member's builder base trophy count.
+    town_hall: :class:`int`
+        The player's town hall level. In case the player hasn't logged in since 2019, this will be `0`.
     clan_rank: :class:`int`
         The member's rank in the clan.
     clan_previous_rank: :class:`int`
         The member's rank before the last leaderboard change
         (ie if Bob overtakes Jim in trophies, and they switch ranks on the leaderboard,
         and you want to find out their previous rankings, this will help.).
-    versus_rank: :class:`int`
-        The member's rank in the clan based on versus trophies.
+    builder_base_rank: :class:`int`
+        The member's rank in the clan based on builder base trophies.
     donations: :class:`int`
         The member's donation count for this season.
     received: :class:`int`
@@ -87,8 +92,11 @@ class ClanMember(BasePlayer):
         The class to use to create the :attr:`ClanMember.clan` attribute.
         Ensure any overriding of this inherits from :class:`coc.Clan` or :class:`coc.PlayerClan`.
     league_cls: :class:`coc.League`
-        The class to use to create the :attr:`Clanmember.league` attribute.
+        The class to use to create the :attr:`ClanMember.league` attribute.
         Ensure any overriding of this inherits from :class:`coc.League`.
+    builder_base_league_cls: :class:`coc.League`
+        The class to use to create the :attr:`ClanMember.builder_base_league` attribute.
+        Ensure any overriding of this inherits from :class:`coc.BaseLeague`.
     """
 
     __slots__ = (
@@ -97,15 +105,22 @@ class ClanMember(BasePlayer):
         "role",
         "exp_level",
         "league",
+        "builder_base_league",
         "trophies",
-        "versus_trophies",
+        "builder_base_trophies",
         "clan_rank",
         "clan_previous_rank",
-        "versus_rank",
+        "builder_base_rank",
         "donations",
         "received",
         "clan_cls",
         "league_cls",
+        "builder_base_league_cls",
+        "_player_house_elements",
+        "player_house_element_cls",
+        "_iter_player_house_elements",
+        "_cs_player_house_elements",
+        "town_hall",
     )
 
     def __init__(self, *, data, client, clan=None, **_):
@@ -113,6 +128,9 @@ class ClanMember(BasePlayer):
         self._client = client
         self.clan_cls = PlayerClan
         self.league_cls = League
+        self.builder_base_league_cls = BaseLeague
+        self.player_house_element_cls = PlayerHouseElement
+
         self._from_data(data)
         if clan:
             self.clan = clan
@@ -122,16 +140,22 @@ class ClanMember(BasePlayer):
 
         self.exp_level: int = data_get("expLevel")
         self.trophies: int = data_get("trophies")
-        self.versus_trophies: int = data_get("versusTrophies")
+        self.builder_base_trophies: int = data_get("builderBaseTrophies")
         self.clan_rank: int = data_get("clanRank")
         self.clan_previous_rank: int = data_get("previousClanRank")
-        self.versus_rank: int = data.get("versusRank")
+        self.builder_base_rank: int = data.get("builderBaseRank")
         self.donations: int = data_get("donations")
         self.received: int = data_get("donationsReceived")
-
+        player_house_element_cls = self.player_house_element_cls
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.builder_base_league = try_enum(self.builder_base_league_cls,
+                                            data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
+                                            client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
+        self.town_hall: int = data_get("townHallLevel")
+        self._iter_player_house_elements = (player_house_element_cls(data=adata)
+                                            for adata in data_get("playerHouse", {}).get("elements", []))
 
     async def get_detailed_clan(self) -> Optional["Clan"]:
         """Get clan details for the player's clan. If the player's clan is ``None``,this will return ``None``.
@@ -146,18 +170,24 @@ class ClanMember(BasePlayer):
         """
         return self.clan and await self._client.get_clan(self.clan.tag)
 
+    @cached_property("_cs_player_house_elements")
+    def player_house_elements(self) -> List[PlayerHouseElement]:
+        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`\s that the player has."""
+        return list(self._iter_player_house_elements)
+
 
 class RankedPlayer(ClanMember):
-    """Represents a leaderboard-ranked player.
+    """
+    Represents a leaderboard-ranked player.
 
     Attributes
     ----------
     attack_wins: :class:`int`
-        The player's number of attack wins. If retrieving info for versus leader-boards, this will be ``None``.
+        The player's number of attack wins. If retrieving info for builder base leader-boards, this will be ``None``.
     defense_wins: :class:`int`
-        The player's number of defense wins. If retrieving info for versus leader-boards, this will be ``None``.
-    versus_trophies: :class:`int`
-        The player's versus trophy count. If retrieving info for regular leader-boards, this will be ``None``.
+        The player's number of defense wins. If retrieving info for builder base leader-boards, this will be ``None``.
+    builder_base_trophies: :class:`int`
+        The player's builder base trophy count. If retrieving info for regular leader-boards, this will be ``None``.
     rank: :class:`int`
         The player's rank in the clan leaderboard.
     previous_rank: :class:`int`
@@ -166,7 +196,7 @@ class RankedPlayer(ClanMember):
         and you want to find out their previous rankings, this will help.).
     """
 
-    __slots__ = ("attack_wins", "defense_wins", "versus_trophies", "rank", "previous_rank")
+    __slots__ = ("attack_wins", "defense_wins", "builder_base_trophies", "rank", "previous_rank")
 
     def _from_data(self, data: dict) -> None:
         super()._from_data(data)
@@ -174,18 +204,20 @@ class RankedPlayer(ClanMember):
         data_get = data.get
         self.attack_wins: int = data_get("attackWins")
         self.defense_wins: int = data_get("defenseWins")
-        self.versus_trophies: int = data_get("versusTrophies")
+        self.builder_base_trophies: int = data_get("builderBaseTrophies")
         self.rank: int = data_get("rank")
         self.previous_rank: int = data_get("previousRank")
 
 
 class Player(ClanMember):
-    """Represents a Clash of Clans Player.
+    """
+    Represents a Clash of Clans Player.
 
     Attributes
     ----------
     achievement_cls: :class:`Achievement`
-        The constructor used to create the :attr:`Player.achievements` list. This must inherit from :class:`Achievement`.
+        The constructor used to create the :attr:`Player.achievements` list.
+        This must inherit from :class:`Achievement`.
     hero_cls: :class:`Hero`
         The constructor used to create the :attr:`Player.heroes` list. This must inherit from :class:`Hero`.
     label_cls: :class:`Label`
@@ -194,6 +226,8 @@ class Player(ClanMember):
         The constructor used to create the :attr:`Player.spells` list. This must inherit from :class:`Spell`.
     troop_cls: :class:`Troop`
         The constructor used to create the :attr:`Player.troops` list. This must inherit from :class:`Troop`.
+    equipment_cls: :class:`Equipment`
+        The constructor used to create the :attr:`Player.equipment` list. This must inherit from :class:`Equipment`.
     attack_wins: :class:`int`
         The number of attacks the player has won this season.
     defense_wins: :class:`int`
@@ -202,16 +236,12 @@ class Player(ClanMember):
         The player's best recorded trophies for the home base.
     war_stars: :class:`int`
         The player's total war stars.
-    town_hall: :class:`int`
-        The player's town hall level.
     town_hall_weapon: Optional[:class:`int`]
         The player's town hall weapon level, or ``None`` if it doesn't exist.
     builder_hall: :class:`int`
         The player's builder hall level, or 0 if it hasn't been unlocked.
-    best_versus_trophies: :class:`int`
-        The player's best versus trophy count.
-    versus_attack_wins: :class:`int`
-        The number of versus attacks the player has won
+    best_builder_base_trophies: :class:`int`
+        The player's best builder base trophy count.
     clan_capital_contributions: :class:`int`
         The player's total contribution to clan capitals
     legend_statistics: Optional[:class:`LegendStatistics`]
@@ -227,17 +257,16 @@ class Player(ClanMember):
         "defense_wins",
         "best_trophies",
         "war_stars",
-        "town_hall",
         "town_hall_weapon",
         "builder_hall",
-        "best_versus_trophies",
-        "versus_attack_wins",
+        "best_builder_base_trophies",
         "clan_capital_contributions",
         "legend_statistics",
         "war_opted_in",
         "_achievements",
         "_heroes",
         "_pets",
+        "_equipment",
         "_labels",
         "_spells",
         "_home_troops",
@@ -249,6 +278,7 @@ class Player(ClanMember):
         "spell_cls",
         "troop_cls",
         "pet_cls",
+        "equipment_cls",
 
         "_iter_achievements",
         "_iter_heroes",
@@ -256,6 +286,7 @@ class Player(ClanMember):
         "_iter_spells",
         "_iter_troops",
         "_iter_pets",
+        "_iter_equipment",
 
         "_cs_labels",
         "_cs_achievements",
@@ -267,6 +298,7 @@ class Player(ClanMember):
         "_cs_super_troops",
         "_cs_heroes",
         "_cs_spells",
+        "_cs_equipment",
 
         "_game_files_loaded",
         "_load_game_data",
@@ -282,7 +314,8 @@ class Player(ClanMember):
         self._home_troops: dict = {}
         self._builder_troops: dict = {}
         self._super_troops: list = []
-        self._pets = None # type: Optional[dict]
+        self._pets = None  # type: Optional[dict]
+        self._equipment: Optional[dict] = None
 
         self.achievement_cls = Achievement
         self.hero_cls = Hero
@@ -290,6 +323,7 @@ class Player(ClanMember):
         self.spell_cls = Spell
         self.troop_cls = Troop
         self.pet_cls = Pet
+        self.equipment_cls = Equipment
 
         if self._client and self._client._troop_holder.loaded:
             self._game_files_loaded = True
@@ -313,11 +347,9 @@ class Player(ClanMember):
         self.defense_wins: int = data_get("defenseWins")
         self.best_trophies: int = data_get("bestTrophies")
         self.war_stars: int = data_get("warStars")
-        self.town_hall: int = data_get("townHallLevel")
         self.town_hall_weapon: int = data_get("townHallWeaponLevel")
         self.builder_hall: int = data_get("builderHallLevel", 0)
-        self.best_versus_trophies: int = data_get("bestVersusTrophies")
-        self.versus_attack_wins: int = data_get("versusBattleWins")
+        self.best_builder_base_trophies: int = data_get("bestBuilderBaseTrophies")
         self.clan_capital_contributions: int = data_get("clanCapitalContributions")
         self.legend_statistics = try_enum(LegendStatistics, data=data_get("legendStatistics"))
 
@@ -330,14 +362,17 @@ class Player(ClanMember):
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
         troop_loader = self._client._troop_holder.load if self._client else None
-        hero_loader =  self._client._hero_holder.load if self._client else None
+        hero_loader = self._client._hero_holder.load if self._client else None
         spell_loader = self._client._spell_holder.load if self._client else None
         pet_loader = self._client._pet_holder.load if self._client else None
+        equipment_loader = self._client._equipment_holder.load if self._client else None
 
         if self._game_files_loaded:
             pet_lookup = [p.name for p in self._client._pet_holder.items]
+            equipment_lookup = [e.name for e in self._client._equipment_holder.items]
         else:
             pet_lookup = PETS_ORDER
+            equipment_lookup = EQUIPMENT
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
@@ -377,6 +412,15 @@ class Player(ClanMember):
             ) for tdata in data_get("troops", []) if tdata["name"] in pet_lookup
         )
 
+        self._iter_equipment = (
+            equipment_loader(
+                data=edata,
+                townhall=self.town_hall,
+                default=self.equipment_cls,
+                load_game_data=self._load_game_data,
+            ) for edata in data_get('heroEquipment', []) if edata['name'] in equipment_lookup
+        )
+
     def _inject_clan_member(self, member):
         if member:
             self.clan_rank = getattr(member, "clan_rank", None)
@@ -403,11 +447,11 @@ class Player(ClanMember):
         #     return True
 
         holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder,
-                   self._client._pet_holder)
+                   self._client._pet_holder, self._client._equipment_holder)
         if not all(holder.loaded for holder in holders):
             self._client._load_holders()
 
-        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets), holders):
+        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets, self.equipment), holders):
             for item in items:
                 if not item.is_loaded:
                     if isinstance(item, Troop):
@@ -418,7 +462,7 @@ class Player(ClanMember):
 
     @cached_property("_cs_labels")
     def labels(self) -> List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`\s that the player has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
@@ -503,7 +547,7 @@ class Player(ClanMember):
     def home_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's home-base :class:`Troop`.
 
-        This will return troops in the order found in both barracks and labatory in-game.
+        This will return troops in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Elixir Troops (Barbarian, Balloon, etc.)
@@ -522,7 +566,7 @@ class Player(ClanMember):
     def builder_troops(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's builder-base :class:`Troop`.
 
-        This will return troops in the order found in both barracks and labatory in-game.
+        This will return troops in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Builder troops
@@ -538,7 +582,7 @@ class Player(ClanMember):
     def siege_machines(self) -> List[Troop]:
         """List[:class:`Troop`]: A :class:`List` of the player's siege-machine :class:`Troop`.
 
-        This will return siege machines in the order found in both barracks and labatory in-game.
+        This will return siege machines in the order found in both barracks and laboratory in-game.
 
         This includes:
         - Siege machines only.
@@ -557,7 +601,9 @@ class Player(ClanMember):
         - Hero pets only.
         """
         order = {k: v for v, k in enumerate(PETS_ORDER)}
-        return list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
+        pets = list(sorted(self._iter_pets, key=lambda t: order.get(t.name, 0)))
+        self._pets = {p.name: p for p in pets}
+        return pets
 
     def get_pet(self, name: str, default_value=None) -> Optional[Pet]:
         """Gets the pet with the given name.
@@ -576,10 +622,47 @@ class Player(ClanMember):
 
         """
         if not self._pets:
-            _ = self._pets
+            _ = self.pets
 
         try:
             return self._pets[name]
+        except KeyError:
+            return default_value
+
+    @cached_property('_cs_equipment')
+    def equipment(self) -> List[Equipment]:
+        """List[:class:`Equipment`]: A :class:`List` of the player's hero equipment.
+
+        This will return hero equipment in the order it is in the player's profile
+
+        This includes:
+        - Hero equipment only.
+        """
+        order = {k: v for v, k in enumerate(EQUIPMENT)}
+        equipment = list(sorted(self._iter_equipment, key=lambda t: order.get(t.name, 0)))
+        self._equipment = {e.name: e for e in equipment}
+        return equipment
+
+    def get_equipment(self, name: str, default_value=None) -> Optional[Equipment]:
+        """Gets the hero equipment with the given name.
+
+        Parameters
+        -----------
+        name: :class:`str`
+            The name of a hero equipment as found in-game.
+        default_value:
+            The default value to return if a hero equipment with ``name`` is not found. Defaults to ``None``.
+
+        Returns
+        --------
+        Optional[:class:`Equipment`]
+            The returned hero equipment or the ``default_value`` if not found, which defaults to ``None``.
+        """
+        if not self._equipment:
+            _ = self.equipment
+
+        try:
+            return self._equipment[name]
         except KeyError:
             return default_value
 
@@ -616,7 +699,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Troop`]
-            The returned troop or the ``default_value`` if not found, which defaults to ``None``..
+            The returned troop or the ``default_value`` if not found, which defaults to ``None``.
         """
         _ = self.troops
 
@@ -638,7 +721,7 @@ class Player(ClanMember):
     def heroes(self) -> List[Hero]:
         """List[:class:`Hero`]: A :class:`List` of the player's :class:`Hero`.
 
-        This will return heroes in the order found in the store and labatory in-game.
+        This will return heroes in the order found in the store and laboratory in-game.
         """
         heroes_dict = {h.name: h for h in self._iter_heroes}
         sorted_heroes = {}
@@ -680,15 +763,15 @@ class Player(ClanMember):
     def spells(self) -> List[Spell]:
         """List[:class:`Spell`]: A :class:`List` of the player's :class:`Spell` ordered as they appear in-game.
 
-        This will return spells in the order found in both spell factory and labatory in-game.
+        This will return spells in the order found in both spell factory and laboratory in-game.
         """
         self._spells = {s.name: s for s in self._iter_spells}
         dict_spells = self._spells
         order = {k: v for v, k in enumerate(SPELL_ORDER)}
 
         return list(sorted(
-                    dict_spells.values(),
-                    key=lambda s: order.get(s.name, 0)))
+                dict_spells.values(),
+                key=lambda s: order.get(s.name, 0)))
 
     def get_spell(self, name: str, default_value=None) -> Optional[Spell]:
         """Gets the spell with the given name.
@@ -703,7 +786,7 @@ class Player(ClanMember):
         Returns
         --------
         Optional[:class:`Spell`]
-            The returned spell or the ``default_value`` if not found, which defaults to ``None``..
+            The returned spell or the ``default_value`` if not found, which defaults to ``None``.
         """
         if not self._spells:
             _ = self.spells

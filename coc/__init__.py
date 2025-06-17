@@ -22,13 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "2.3.1"
+__version__ = "3.9.1"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan
 from .client import Client
 from .events import PlayerEvents, ClanEvents, WarEvents, EventsClient, ClientEvents
 from .enums import (
+    PlayerHouseElementType,
     Resource,
     Role,
     WarRound,
@@ -36,8 +37,12 @@ from .enums import (
     BUILDER_TROOPS_ORDER,
     HERO_ORDER,
     PETS_ORDER,
+    ELIXIR_TROOP_ORDER,
+    DARK_ELIXIR_TROOP_ORDER,
     HOME_TROOP_ORDER,
     SIEGE_MACHINE_ORDER,
+    ELIXIR_SPELL_ORDER,
+    DARK_ELIXIR_SPELL_ORDER,
     SPELL_ORDER,
     SUPER_TROOP_ORDER,
     UNRANKED_LEAGUE_DATA,
@@ -53,8 +58,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
-from .login import login, login_with_keys
-from .hero import Hero, Pet
+from .hero import Equipment, Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
@@ -73,10 +77,11 @@ from .miscmodels import (
     LegendStatistics,
     LoadGameData,
     Location,
+    PlayerHouseElement,
     Timestamp,
     TimeDelta,
     Label,
-    WarLeague,
+    BaseLeague
 )
 from .players import Player, ClanMember, RankedPlayer
 from .player_clan import PlayerClan

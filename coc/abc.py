@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import ujson
+import orjson
 from pathlib import Path
 from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
 
@@ -171,6 +171,12 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
         self._townhall = townhall
 
+        # copies for a static hash
+        self.__name = data['name']
+        self.__level = data['level']
+        self.__village = data['village']
+        self.__is_active = data.get("superTroopIsActive")
+
     def __repr__(self):
         attrs = [
             ("name", self.name),
@@ -180,20 +186,29 @@ class DataContainer(metaclass=DataContainerMetaClass):
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
 
+    def __eq__(self, other):
+        return self.name == other.name and self.level == other.level \
+            and self.village == other.village and self.is_active == other.is_active
+
+    def __hash__(self):
+        return hash((self.__name, self.__level, self.__village, self.__is_active))
+
+
     @classmethod
-    def _load_json_meta(cls, troop_meta, id, name, lab_to_townhall):
+    def _load_json_meta(cls, json_meta: dict, id, name: str, lab_to_townhall):
         cls.id = int(id)
         cls.name = name
         cls.lab_to_townhall = lab_to_townhall
 
-        cls.range = try_enum(UnitStat, troop_meta.get("AttackRange"))
-        cls.dps = try_enum(UnitStat, troop_meta.get("DPS"))
-        cls.ground_target = _get_maybe_first(troop_meta, "GroundTargets",
-                                             default=True)
-        cls.hitpoints = try_enum(UnitStat, troop_meta.get("Hitpoints"))
+        levels_available = [key for key in json_meta.keys() if key.isnumeric()]
+
+        cls.ground_target = json_meta.get("GroundTargets", True)
+        cls.range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
+        cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
+        cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("Hitpoints") for level in levels_available])
 
         # get production building
-        production_building = troop_meta.get("ProductionBuilding", [None])[0]
+        production_building = json_meta.get("ProductionBuilding")
         if production_building == "Barrack":
             cls.is_elixir_troop = True
         elif production_building == "Dark Elixir Barrack":
@@ -208,80 +223,84 @@ class DataContainer(metaclass=DataContainerMetaClass):
             production_building = "Pet Shop"
 
         # load buildings
-        with open(BUILDING_FILE_PATH) as fp:
-            buildings = ujson.load(fp)
+        with open(BUILDING_FILE_PATH, 'rb') as fp:
+            buildings = orjson.loads(fp.read())
 
         # without production_building, it is a hero
         if not production_building:
-            laboratory_levels = troop_meta.get("LaboratoryLevel")
+            laboratory_levels = [json_meta.get(level).get("LaboratoryLevel") for level in levels_available]
         else:
-            # it is a troop or spell or siege
             prod_unit = buildings.get(production_building)
             if production_building in ("SiegeWorkshop", "Spell Forge", "Mini Spell Factory",
                                        "Dark Elixir Barrack", "Barrack", "Barrack2"):
-                min_prod_unit_level = troop_meta.get("BarrackLevel", [None, ])[0]
+                min_prod_unit_level = json_meta.get("BarrackLevel", None)
                 # there are some special troops, which have no BarrackLevel attribute
                 if not min_prod_unit_level:
-                    laboratory_levels = troop_meta.get("LaboratoryLevel")
+                    laboratory_levels = [json_meta.get(level).get("LaboratoryLevel") for level in levels_available]
                 else:
-                    # get the min th level were we can unlock by the required level of the production building
-                    min_th_level = [th for i, th in
-                                    enumerate(prod_unit["TownHallLevel"], start=1)
-                                    if i == min_prod_unit_level]
+                    #get the townhall level of the spot where prod building level is equal to the one of the unit
+                    min_th_level = prod_unit.get(str(min_prod_unit_level)).get("TownHallLevel", 0)
                     # map the min th level to a lab level
-                    [first_lab_level] = [lab_level for lab_level, th_level in
-                                         lab_to_townhall.items()
-                                         if th_level in min_th_level]
+                    [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items() if th_level == min_th_level]
                     # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
                     # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
                     laboratory_levels = []
-                    for lab_level in troop_meta.get("LaboratoryLevel"):
+                    for lab_level in [json_meta.get(level).get("LaboratoryLevel", 1) for level in levels_available]:
                         laboratory_levels.append(max(lab_level, first_lab_level))
+
+
+
+
             elif production_building == "Pet Shop":
-                min_prod_unit_level = troop_meta.get("LaboratoryLevel", [None, ])[0]
-                # there are some special troops, which have no BarrackLevel attribute
+                min_prod_unit_level = json_meta.get("1").get("LaboratoryLevel")
 
                 # get the min th level were we can unlock by the required level of the production building
-                min_th_level = [th for i, th in
-                                enumerate(prod_unit["TownHallLevel"], start=1)
-                                if i == min_prod_unit_level]
+                min_th_level = prod_unit.get(str(min_prod_unit_level)).get("TownHallLevel", 0)
+
                 # map the min th level to a lab level
-                [first_lab_level] = [lab_level for lab_level, th_level in
-                                     lab_to_townhall.items()
-                                     if th_level in min_th_level]
+                [first_lab_level] = [lab_level for lab_level, th_level in lab_to_townhall.items() if th_level == min_th_level]
                 # the first_lab_level is the lowest possible (there are some inconsistencies with siege machines)
                 # To handle them properly, replacing all lab_level lower than first_lab_level with first_lab_level
                 laboratory_levels = []
-                for lab_level in troop_meta.get("LaboratoryLevel"):
+                for lab_level in [json_meta.get(level).get("LaboratoryLevel") for level in levels_available]:
                     laboratory_levels.append(max(lab_level, first_lab_level))
+
             else:
                 return
 
         cls.lab_level = try_enum(UnitStat, laboratory_levels)
-        cls.housing_space = _get_maybe_first(troop_meta, "HousingSpace", default=0)
-        cls.speed = try_enum(UnitStat, troop_meta.get("Speed"))
+        cls.housing_space = json_meta.get("HousingSpace", 0)
+
+        cls.speed = try_enum(UnitStat, [json_meta.get(level).get("Speed") for level in levels_available])
         cls.level = cls.dps and UnitStat(range(1, len(cls.dps) + 1))
 
-        # all 3
-        cls.upgrade_cost = try_enum(UnitStat, troop_meta.get("UpgradeCost"))
-        cls.upgrade_resource = Resource(value=troop_meta["UpgradeResource"][0])
-        cls.upgrade_time = try_enum(UnitStat,
-                                    [TimeDelta(hours=hours) for hours in
-                                     troop_meta.get("UpgradeTimeH", [])])
-        cls._is_home_village = False if troop_meta.get("VillageType") else True
+        cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
+        cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
+        upgrade_times = [
+            TimeDelta(hours=json_meta.get(level, {}).get("UpgradeTimeH"))
+            for level in levels_available
+            if json_meta.get(level, {}).get("UpgradeTimeH") is not None
+        ]
+        cls.upgrade_time = try_enum(UnitStat, upgrade_times)
+
+        cls._is_home_village = False if json_meta.get("VillageType") else True
         cls.village = "home" if cls._is_home_village else "builderBase"
 
-        # spells and troops
-        cls.training_cost = try_enum(UnitStat, troop_meta.get("TrainingCost"))
-        cls.training_time = try_enum(UnitStat, troop_meta.get("TrainingTime"))
+        cls.training_time = TimeDelta(seconds=json_meta.get("TrainingTime"))
 
         # only heroes
-        cls.ability_time = try_enum(UnitStat, troop_meta.get("AbilityTime"))
-        cls.ability_troop_count = try_enum(UnitStat, troop_meta.get("AbilitySummonTroopCount"))
-        cls.required_th_level = try_enum(UnitStat, troop_meta.get("RequiredTownHallLevel") or laboratory_levels)
-        cls.regeneration_time = try_enum(
-            UnitStat, [TimeDelta(minutes=value) for value in troop_meta.get("RegenerationTimeMinutes", [])]
-        )
+        cls.ability_time = try_enum(UnitStat, [json_meta.get(level).get("AbilityTime") for level in levels_available])
+        cls.ability_troop_count = try_enum(UnitStat, [json_meta.get(level).get("AbilitySummonTroopCount") for level in levels_available])
+
+        required_townhall_levels = [json_meta.get(level).get("RequiredTownHallLevel") for level in levels_available]
+        cls.required_th_level = try_enum(UnitStat, required_townhall_levels if any(required_townhall_levels) else laboratory_levels)
+
+        regeneration_times = [
+            TimeDelta(minutes=json_meta.get(level, {}).get("RegenerationTimeMinutes"))
+            for level in levels_available
+            if json_meta.get(level, {}).get("RegenerationTimeMinutes") is not None
+        ]
+        cls.regeneration_time = try_enum(UnitStat, regeneration_times)
 
         cls.is_loaded = True
         return cls
@@ -326,11 +345,13 @@ class DataContainerHolder:
     def __init__(self):
         self.loaded = False
 
-    def _load_json(self, object_ids, english_aliases, lab_to_townhall):
-        with open(self.FILE_PATH) as fp:
-            data = ujson.load(fp)
+    def _load_json(self, english_aliases, lab_to_townhall):
+        with open(self.FILE_PATH, 'rb') as fp:
+            data = orjson.loads(fp.read())
 
+        id = 2000
         for c, [supercell_name, meta] in enumerate(data.items()):
+
             # Not interested if it doesn't have a TID, since it likely isn't a real troop.
             if not meta.get("TID"):
                 continue
@@ -340,8 +361,16 @@ class DataContainerHolder:
                 continue
 
             # SC game files have "DisableProduction" true for all pet objects, which we want
-            if "DisableProduction" in meta and "pets" not in str(
-                    self.FILE_PATH):
+            if meta.get("DisableProduction") and "pets" not in str(self.FILE_PATH):
+                continue
+
+            # ignore deprecated content
+            if meta.get("Deprecated"):
+                continue
+
+            #hacky but the aliases convert so that isnt great
+            IGNORED_PETS = ["Unused", "PhoenixEgg"]
+            if "pets" in str(self.FILE_PATH) and supercell_name in IGNORED_PETS:
                 continue
 
             # A bit of a hacky way to create a "copy" of a new Troop object that hasn't been initiated yet.
@@ -350,11 +379,11 @@ class DataContainerHolder:
                             dict(self.data_object.__dict__))
             new_item._load_json_meta(
                 meta,
-                id=object_ids.get(supercell_name, c),
-                name=english_aliases[meta["TID"][0]][0],
+                id=id,
+                name=english_aliases[meta.get("TID")],
                 lab_to_townhall=lab_to_townhall,
             )
-
+            id += 1
             self.items.append(new_item)
             self.item_lookup[new_item.name] = new_item
 

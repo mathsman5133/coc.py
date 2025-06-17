@@ -29,13 +29,13 @@ from itertools import cycle
 from pathlib import Path
 from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CHECKING
 
-import ujson
+import orjson
 
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import GoldPassSeason, Label, League, Location, LoadGameData
-from .hero import HeroHolder, PetHolder
+from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
+from .hero import HeroHolder, PetHolder, EquipmentHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
@@ -50,10 +50,10 @@ from .spell import SpellHolder
 from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
-from.entry_logs import ClanWarLog, RaidLog
+from .entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
-    from .hero import Hero, Pet
+    from .hero import Hero, Pet, Equipment
     from .spell import Spell
     from .troop import Troop
 
@@ -63,7 +63,6 @@ LOG = logging.getLogger(__name__)
 LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
-OBJECT_IDS_PATH = Path(__file__).parent.joinpath(Path("static/object_ids.json"))
 ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
 BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
 
@@ -143,6 +142,35 @@ class Client:
         for later use or are interested in new things that coc.py does not support otherwise yet. But because this
         increases the memory footprint and is not needed for most use cases, this defaults to ``False``.
 
+    base_url: :class:`str`
+        The base URL to use for API requests. Defaults to "https://api.clashofclans.com/v1"
+
+    ip: :class:`str`
+        The IP address to use for API requests. Defaults to None, which means the IP address will be automatically
+        detected.
+        
+    lookup_cache: :class:`bool`
+        Flag for controlling the cache usage before an actual API request is made. Defaults to True, which means the cache lookup is done
+    
+    update_cache: :class:`bool`
+        Flag for controlling if the cache is updated after an API request was made. Defaults to True, which means the cache is updated
+        after an API request.
+    
+    ignore_cached_errors: :class:`list[int]`
+        In case of a cache lookup and a cached entry exists, ignore the cached data if the status code of the response is in the list.
+    
+    player_cls: :class:`Type[Player]`
+        Class to be used for player objects. Defaults to :class:`Player`.
+    
+    member_cls: :class:`Type[ClanMember]`
+        Class to be used for clan member objects. Defaults to :class:`ClanMember`.
+    
+    ranke
+    
+    clan_cls: :class:`Type[Clan]`
+        Class to be used for clan objects. Defaults to :class:`Clan`.
+    
+
     Attributes
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
@@ -150,6 +178,8 @@ class Client:
     """
 
     __slots__ = (
+        "base_url",
+        "ip",
         "loop",
         "correct_key_count",
         "key_names",
@@ -166,14 +196,18 @@ class Client:
         "_ready",
         "correct_tags",
         "load_game_data",
+        "lookup_cache",
+        "update_cache",
+        "ignore_cached_errors",
         "_players",
         "_clans",
         "_wars",
-
+        "objects_cls",
         "_troop_holder",
         "_spell_holder",
         "_hero_holder",
         "_pet_holder",
+        "_equipment_holder"
     )
 
     def __init__(
@@ -181,7 +215,7 @@ class Client:
         *,
         key_count: int = 1,
         key_names: str = "Created with coc.py Client",
-        throttle_limit: int = 10,
+        throttle_limit: int = 30,
         loop: asyncio.AbstractEventLoop = None,
         correct_tags: bool = True,
         throttler: Type[Union[BasicThrottler, BatchThrottler]] = BasicThrottler,
@@ -192,6 +226,11 @@ class Client:
         load_game_data: LoadGameData = LoadGameData(default=True),
         realtime=False,
         raw_attribute=False,
+        base_url: str = "https://api.clashofclans.com/v1",
+        ip: Optional[str] = None,
+        lookup_cache: Optional[bool] = True,
+        update_cache: Optional[bool] = True,
+        ignore_cached_errors: Union[List[int], None] = None,
         **kwargs,
     ):
 
@@ -210,24 +249,85 @@ class Client:
         self.timeout = timeout
         self.cache_max_size = cache_max_size
         self.stats_max_size = stats_max_size
+        
+        self.lookup_cache = lookup_cache
+        self.update_cache = update_cache
+        self.ignore_cached_errors = ignore_cached_errors
 
-        self.http = None  # set in method login()
+        self.http: Optional[HTTPClient] = None  # set in method login()
         self.realtime = realtime
         self.raw_attribute = raw_attribute
         self.correct_tags = correct_tags
         self.load_game_data = load_game_data
-
+        self.base_url = base_url
+        self.ip = ip
+        
+        self.objects_cls = {"Player": Player, "Clan": Clan, "ClanWar": ClanWar,
+                            "RankedPlayer": RankedPlayer, "RankedClan": RankedClan,
+                            "ClanMember": ClanMember, "ClanWarLogEntry": ClanWarLogEntry, "RaidLogEntry": RaidLogEntry,
+                            "ClanWarLeagueGroup": ClanWarLeagueGroup, "Location": Location,
+                            "League": League, "BaseLeague": BaseLeague, "GoldPassSeason": GoldPassSeason,
+                            "Label": Label}
+        
         # cache
         self._players = {}
         self._clans = {}
         self._wars = {}
 
+    @property
+    def _defaults(self):
+        return {
+            "lookup_cache": self.lookup_cache,
+            "update_cache": self.update_cache,
+            "ignore_cached_errors": self.ignore_cached_errors,
+            "realtime": self.realtime,
+        }
+
     async def __aenter__(self):
-        self.__init__()
         return self
 
     async def __aexit__(self, *args):
         await self.close()
+        
+    def set_object_cls(self, name: str, cls):
+        """Set a custom class type for a given object name. The method ensures that the
+        provided class is a valid subclass of a predefined default class. It updates
+        the internal mapping of object classes to the new custom class.
+        
+        .. note::
+        
+            This affects only the return type of Client methods returning the object.
+            For example changing the ClanMember class to a custom class will affect 'get_clan_members', but not the clan members
+            of a clan object obtained by calling `get_clan` or `get_clans` methods.
+
+        Parameters
+        -----------
+        name: str
+            The name of the object whose class type is to be set. It must be one of
+            the predefined object types such as "Player", "Clan", etc.
+        cls:
+            The custom class type to be associated with the given object name. The
+            class must be a subclass of the corresponding default class type.
+
+        Raises
+        -------
+        ValueError
+            If the provided object name is not supported.
+        TypeError
+            If the provided class is not a subclass of the default class for the given
+            object name.
+        """
+        default_cls = {"Player": Player, "Clan": Clan, "ClanWar": ClanWar,
+                       "RankedPlayer": RankedPlayer, "RankedClan": RankedClan,
+                       "ClanMember": ClanMember, "ClanWarLogEntry": ClanWarLogEntry, "RaidLogEntry": RaidLogEntry,
+                       "ClanWarLeagueGroup": ClanWarLeagueGroup, "Location": Location,
+                       "League": League, "BaseLeague": BaseLeague, "GoldPassSeason": GoldPassSeason,
+                       "Label": Label}
+        if name not in default_cls:
+            raise ValueError(f"Setting a cls with the name {name} is not supported.")
+        if not issubclass(cls, default_cls[name]):
+            raise TypeError(f"The cls {cls} must be a subclass of {default_cls[name]}")
+        self.objects_cls[name] = cls
 
     def _create_client(self, email, password):
         return HTTPClient(
@@ -242,37 +342,53 @@ class Client:
             throttler=self.throttler,
             cache_max_size=self.cache_max_size,
             stats_max_size=self.stats_max_size,
+            base_url=self.base_url,
+            ip=self.ip,
+            lookup_cache=self.lookup_cache,
+            update_cache=self.update_cache,
+            ignore_cached_errors=self.ignore_cached_errors,
         )
 
     def _load_holders(self):
-        with open(OBJECT_IDS_PATH) as fp:
-            object_ids = {v: k for k, v in ujson.load(fp).items()}
+        with open(ENGLISH_ALIAS_PATH, 'rb') as fp:
+            english_aliases = orjson.loads(fp.read())
 
-        with open(ENGLISH_ALIAS_PATH) as fp:
-            english_aliases = ujson.load(fp)
+        with open(BUILDING_FILE_PATH, 'rb') as fp:
+            buildings = orjson.loads(fp.read())
 
-        with open(BUILDING_FILE_PATH) as fp:
-            buildings = ujson.load(fp)
+        english_aliases = {
+            v["TID"]: v.get("EN", None)
+            for outer_dict in english_aliases.values()
+            for v in outer_dict.values()
+        }
+
+        # defaults for if loading fails
+        lab_to_townhall = {i - 2: i for i in range(1, 17)}
+        smithy_to_townhall = {i - 7: i for i in range(8, 17)}
 
         for supercell_name, data in buildings.items():
             if supercell_name == "Laboratory":
-                lab_to_townhall = {index: th_level for index, th_level in enumerate(data["TownHallLevel"], start=1)}
+                lab_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
+                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
                 # there are troops with no lab ...
                 lab_to_townhall[-1] = 1
                 lab_to_townhall[0] = 2
-                break
-        else:
-            # if the files failed to load, fallback to the old formula of lab level = TH level - 2
-            lab_to_townhall = {i-2: i for i in range(1, 15)}
+            elif supercell_name =='Smithy':
+                smithy_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
+                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
 
+        # load holders tied to the lab
         for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
-            holder._load_json(object_ids, english_aliases, lab_to_townhall)
+            holder._load_json(english_aliases, lab_to_townhall)
+        # load holders tied to the smithy
+        self._equipment_holder._load_json(english_aliases, smithy_to_townhall)
 
     def _create_holders(self):
-        self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder = TroopHolder(), \
-                                                                                      SpellHolder(), \
-                                                                                      HeroHolder(), \
-                                                                                      PetHolder()
+        self._troop_holder = TroopHolder()
+        self._spell_holder = SpellHolder()
+        self._hero_holder = HeroHolder()
+        self._pet_holder = PetHolder()
+        self._equipment_holder = EquipmentHolder()
 
         if not self.load_game_data.never:
             self._load_holders()
@@ -312,10 +428,10 @@ class Client:
 
 
         """
+        self.correct_key_count = len(keys)
         self.http = http = self._create_client(None, None)
         http._keys = keys
         http.keys = cycle(http._keys)
-        http.key_count = len(keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
         self._create_holders()
 
@@ -329,10 +445,10 @@ class Client:
         tokens: list[str]
             Tokens as found from https://developer.clashofclans.com under "My account" -> <your key> -> "token".
         """
+        self.correct_key_count = len(tokens)
         self.http = http = self._create_client(None, None)
         http._keys = tokens
         http.keys = cycle(http._keys)
-        http.key_count = len(tokens)
         await http.create_session(self.connector, self.timeout)
         self._create_holders()
 
@@ -367,10 +483,11 @@ class Client:
         max_members: int = None,
         min_clan_points: int = None,
         min_clan_level: int = None,
+        label_ids: List[Union[Label, int]] = [],
         limit: int = None,
         before: str = None,
         after: str = None,
-        cls: Type[Clan] = Clan,
+        cls: Type[Clan] = None,
         **kwargs,
     ) -> List[Clan]:
         """Search all clans by name and/or filtering the results using various criteria.
@@ -394,8 +511,12 @@ class Client:
             The minumum clan points.
         min_clan_level : int, optional
             The minimum clan level.
+        label_ids: :class:`List`[Union[:class:`coc.Label`, :class:`int`]]
+            List of Labels or Label ids
         limit : int
             The number of clans to search for.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -418,6 +539,8 @@ class Client:
             name or war_frequency or location_id or min_members or max_members or min_clan_points or min_clan_level
         ):
             raise RuntimeError("At least one filtering parameter must be passed.")
+        if cls is None:
+            cls = self.objects_cls['Clan']
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
@@ -429,14 +552,17 @@ class Client:
             maxMembers=max_members,
             minClanPoints=min_clan_points,
             minClanLevel=min_clan_level,
+            label_ids=",".join([str(x.id) if isinstance(x, Label) else str(x) for x in label_ids
+                                if isinstance(x, (Label, int,))]),
             limit=limit,
             before=before,
             after=after,
+            **{**self._defaults, **kwargs}
         )
-
         return [cls(data=n, client=self, **kwargs) for n in data.get("items", [])]
 
-    async def get_clan(self, tag: str, cls: Type[Clan] = Clan, **kwargs) -> Clan:
+
+    async def get_clan(self, tag: str, cls: Type[Clan] = None, **kwargs) -> Clan:
         """Get information about a single clan by clan tag.
 
         Clan tags can be found using clan search operation.
@@ -445,6 +571,9 @@ class Client:
         -----------
         tag : str
             The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -466,16 +595,21 @@ class Client:
         :class:`Clan`
             The clan with provided tag.
         """
+        if cls is None:
+            cls = self.objects_cls['Clan']
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
         if self.correct_tags:
             tag = correct_tag(tag)
 
-        data = await self.http.get_clan(tag)
+        data = await self.http.get_clan(tag,
+                                        lookup_cache=kwargs.get("lookup_cache", self.lookup_cache),
+                                        update_cache=kwargs.get("update_cache", self.update_cache),
+                                        ignore_cached_errors=kwargs.get("ignore_cached_errors", self.ignore_cached_errors))
         return cls(data=data, client=self, **kwargs)
 
-    def get_clans(self, tags: Iterable[str], cls: Type[Clan] = Clan, **kwargs) -> AsyncIterator[Clan]:
+    def get_clans(self, tags: Iterable[str], cls: Type[Clan] = None, **kwargs) -> AsyncIterator[Clan]:
         """Get information about multiple clans by clan tag.
         Refer to `Client.get_clan` for more information.
 
@@ -495,6 +629,9 @@ class Client:
         tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -506,12 +643,16 @@ class Client:
         :class:`Clan`
             A clan matching one of the tags requested.
         """
+        if cls is None:
+            cls = self.objects_cls['Clan']
         if not issubclass(cls, Clan):
             raise TypeError("cls must be a subclass of Clan.")
 
-        return ClanIterator(self, tags, cls, **kwargs)
+        return ClanIterator(self, tags, cls, **{**self._defaults, **kwargs})
 
-    async def get_members(self, clan_tag: str, cls: Type[ClanMember] = ClanMember, **kwargs) -> List[ClanMember]:
+
+    async def get_members(self, clan_tag: str, *, limit: int = 0, after: str = "", before: str = "",
+                          cls: Type[ClanMember] = None, **kwargs) -> List[ClanMember]:
         """List clan members.
 
         This is equivilant to ``(await Client.get_clan('tag')).members``.
@@ -520,6 +661,17 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
+        cls:
+            Target class to use to model that data returned
+        limit:
+            class:`int`: Number of members to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
+
 
         Raises
         -------
@@ -541,21 +693,38 @@ class Client:
         List[:class:`ClanMember`]
             A list of members in the clan.
         """
+        if cls is None:
+            cls = self.objects_cls['ClanMember']
         if not issubclass(cls, ClanMember):
             raise TypeError("cls must be a subclass of ClanMember.")
 
         if self.correct_tags:
             clan_tag = correct_tag(clan_tag)
 
-        data = await self.http.get_clan(clan_tag)
-        return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("memberList", [])]
+        args = {}
+        if limit:
+            args['limit'] = limit
+        if after:
+            args['after'] = after
+        if before:
+            args['before'] = before
+        args['lookup_cache'] = kwargs.get("lookup_cache", self.lookup_cache)
+        args['update_cache'] = kwargs.get("update_cache", self.update_cache)
+        args['ignore_cached_errors'] = kwargs.get("ignore_cached_errors", self.ignore_cached_errors)
 
-    async def get_warlog(
+        data = await self.http.get_clan_members(clan_tag, **args)
+        return [cls(data=mdata, client=self, **kwargs) for mdata in data.get("items", [])]
+
+    async def get_war_log(
         self,
         clan_tag: str,
-        cls: Type[ClanWarLogEntry] = ClanWarLogEntry,
+        cls: Type[ClanWarLogEntry] = None,
         page: bool = False,
-        limit: int = 0
+        *,
+        limit: int = 0,
+        after: str = "",
+        before: str = "",
+        **kwargs
     ) -> ClanWarLog:
         """
         Retrieve a clan's clan war log. By default, this will return
@@ -576,11 +745,11 @@ class Client:
 
         Parameters
         -----------
-        cls:
-            Target class to use to model that data returned
-
         clan_tag:
             class:`str`: The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         page:
             class:`bool`: Enable fetching logs while only holding the
@@ -590,6 +759,12 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -616,7 +791,8 @@ class Client:
         """
         if limit < 0:
             raise ValueError("Limit cannot be negative")
-
+        if cls is None:
+            cls = self.objects_cls['ClanWarLogEntry']
         if not issubclass(cls, ClanWarLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
@@ -627,23 +803,32 @@ class Client:
         # set limit to a new default of 10
         if page:
             limit = limit if limit else 10
+            
+        
 
         try:
             return await ClanWarLog.init_cls(client=self,
                                              clan_tag=clan_tag,
                                              page=page,
                                              limit=limit,
-                                             model=cls)
+                                             model=cls,
+                                             after=after,
+                                             before=before,
+                                             **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
-    async def get_raidlog(
+    async def get_raid_log(
             self,
             clan_tag: str,
-            cls: Type[RaidLogEntry] = RaidLogEntry,
+            cls: Type[RaidLogEntry] = None,
             page: bool = False,
-            limit: int = 0
+            *,
+            limit: int = 0,
+            after: str = "",
+            before: str = "",
+            **kwargs
     ) -> RaidLog:
         """
         Retrieve a clan's Capital Raid Log. By default, this will return
@@ -657,11 +842,11 @@ class Client:
 
         Parameters
         -----------
-        cls:
-            Target class to use to model that data returned
-
         clan_tag:
             class:`str`: The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         page:
             class:`bool`: Enable fetching logs while only holding the
@@ -671,6 +856,12 @@ class Client:
 
         limit:
             class:`int`: Number of logs to retrieve
+
+        after:
+            class:`str`: Pagination string to get page after
+
+        before:
+            class:`str`: Pagination string to get page before
 
         Raises
         ------
@@ -698,7 +889,8 @@ class Client:
 
         if limit < 0:
             raise ValueError("Limit cannot be negative")
-
+        if cls is None:
+            cls = self.objects_cls['RaidLogEntry']
         if not issubclass(cls, RaidLogEntry):
             raise TypeError("cls must be a subclass of ClanWarLogEntry.")
 
@@ -715,12 +907,16 @@ class Client:
                                           clan_tag=clan_tag,
                                           page=page,
                                           limit=limit,
-                                          model=cls)
+                                          model=cls,
+                                          after=after,
+                                          before=before,
+                                          **{**self._defaults, **kwargs}
+                                          )
         except Forbidden as exception:
             raise PrivateWarLog(exception.response,
                                 exception.reason) from exception
 
-    async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
+    async def get_clan_war(self, clan_tag: str, cls: Type[ClanWar] = None, **kwargs) -> ClanWar:
         """
         Retrieve information about clan's current clan war
 
@@ -738,7 +934,7 @@ class Client:
             No clan was found with the supplied tag.
 
         PrivateWarLog
-            The clan's warlog is private.
+            The clan's war log is private.
 
         Maintenance
             The API is currently in maintenance.
@@ -753,6 +949,8 @@ class Client:
             The clan's current war.
 
         """
+        if cls is None:
+            cls = self.objects_cls['ClanWar']
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
@@ -760,18 +958,13 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_clan_current_war(clan_tag, realtime=realtime)
+            data = await self.http.get_clan_current_war(clan_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
         return cls(data=data, client=self, clan_tag=clan_tag, **kwargs)
 
-    def get_clan_wars(self, clan_tags: Iterable[str], cls: Type[ClanWar] = ClanWar, **kwargs) -> AsyncIterator[ClanWar]:
+    def get_clan_wars(self, clan_tags: Iterable[str], cls: Type[ClanWar] = None, **kwargs) -> AsyncIterator[ClanWar]:
         """
         Retrieve information multiple clan's current clan wars
 
@@ -801,6 +994,9 @@ class Client:
         clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -824,15 +1020,17 @@ class Client:
         :class:`ClanWar`
             A war matching one of the tags requested.
         """
+        if cls is None:
+            cls = self.objects_cls['ClanWar']
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return ClanWarIterator(self, clan_tags, cls=cls, **kwargs)
+        return ClanWarIterator(self, clan_tags, cls=cls, **{**self._defaults, **kwargs})
 
     async def get_league_group(
         self,
         clan_tag: str,
-        cls: Type[ClanWarLeagueGroup] = ClanWarLeagueGroup,
+        cls: Type[ClanWarLeagueGroup] = None,
         **kwargs
     ) -> ClanWarLeagueGroup:
         """Retrieve information about clan's current clan war league group.
@@ -841,6 +1039,9 @@ class Client:
         -----------
         clan_tag : str
             The clan tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -864,6 +1065,8 @@ class Client:
         :class:`ClanWarLeagueGroup`
             The clan's war league group.
         """
+        if cls is None:
+            cls = self.objects_cls['ClanWarLeagueGroup']
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWarLeagueGroup):
             raise TypeError("cls must be a subclass of ClanWarLeagueGroup.")
@@ -872,12 +1075,7 @@ class Client:
             clan_tag = correct_tag(clan_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_clan_war_league_group(clan_tag, realtime=realtime)
+            data = await self.http.get_clan_war_league_group(clan_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
         except asyncio.TimeoutError:
@@ -888,7 +1086,7 @@ class Client:
 
         return cls(data=data, client=self, **kwargs)
 
-    async def get_league_war(self, war_tag: str, cls: Type[ClanWar] = ClanWar, **kwargs) -> ClanWar:
+    async def get_league_war(self, war_tag: str, cls: Type[ClanWar] = None, **kwargs) -> ClanWar:
         """
         Retrieve information about a clan war league war.
 
@@ -896,6 +1094,9 @@ class Client:
         -----------
         war_tag : str
             The league war tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -915,8 +1116,10 @@ class Client:
         Returns
         --------
         :class:`ClanWar`
-            The league war assosiated with the war tag
+            The league war associated with the war tag
         """
+        if cls is None:
+            cls = self.objects_cls['ClanWar']
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of LeagueWar.")
@@ -925,12 +1128,7 @@ class Client:
             war_tag = correct_tag(war_tag)
 
         try:
-            realtime = kwargs.get("realtime")
-        except KeyError:
-            realtime = None
-
-        try:
-            data = await self.http.get_cwl_wars(war_tag, realtime=realtime)
+            data = await self.http.get_cwl_wars(war_tag, **{**self._defaults, **kwargs})
         except Forbidden as exception:
             raise PrivateWarLog(exception.response, exception.reason) from exception
 
@@ -941,7 +1139,7 @@ class Client:
         self,
         war_tags: Iterable[str],
         clan_tag: str = None,
-        cls: Type[ClanWar] = ClanWar,
+        cls: Type[ClanWar] = None,
         **kwargs
     ) -> AsyncIterator[ClanWar]:
         """
@@ -964,6 +1162,8 @@ class Client:
             An iterable of war tags to search for.
         clan_tag: :class:`str`
             An optional clan tag. If present, this will only return wars which belong to this clan.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -975,16 +1175,18 @@ class Client:
         :class:`ClanWar`
             A war matching one of the tags requested.
         """
+        if cls is None:
+            cls = self.objects_cls['ClanWar']
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
 
-        return LeagueWarIterator(self, war_tags, clan_tag, cls, **kwargs)
+        return LeagueWarIterator(self, war_tags, clan_tag, cls, **{**self._defaults, **kwargs})
 
     async def get_current_war(
         self,
         clan_tag: str,
         cwl_round: WarRound = WarRound.current_war,
-        cls: Type[ClanWar] = ClanWar,
+        cls: Type[ClanWar] = None,
         **kwargs
     ) -> Optional[ClanWar]:
         """Retrieve a clan's current war.
@@ -1015,6 +1217,9 @@ class Client:
             ``coc.WarRound.current_war`` or ``coc.WarRound.preparation``.
             This defaults to ``coc.WarRound.current_war``.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         -------
         TypeError
@@ -1042,6 +1247,9 @@ class Client:
 
             If you pass in a :class:`WarRound` and that round doesn't exist (yet), this will return ``None``.
         """
+        kwargs = {**self._defaults, **kwargs}
+        if cls is None:
+            cls = self.objects_cls['ClanWar']
         # pylint: disable=protected-access
         if not issubclass(cls, ClanWar):
             raise TypeError("cls must be a subclass of ClanWar.")
@@ -1058,7 +1266,7 @@ class Client:
             return get_war
 
         try:
-            league_group = await self.get_league_group(clan_tag,**kwargs)
+            league_group = await self.get_league_group(clan_tag, **kwargs)
         except (NotFound, GatewayError) as exception:
             # either they're not in cwl (NotFound)
             # or it's an API bug where league group endpoint will timeout when the clan is searching (GatewayError)
@@ -1066,18 +1274,33 @@ class Client:
                 raise PrivateWarLog(exception.response, exception.reason) from exception
             return get_war
 
-        is_prep = league_group.state == "preparation"
-
+        if league_group.state == "notInWar" or league_group.state == "groupNotFound":
+            return None
+        last_round_active = league_group.number_of_rounds == len(league_group.rounds)
+        if last_round_active and league_group.state != "ended":
+            # there are the supposed number of rounds, but without any call we are unable to know if the last round is
+            # currently in preparation or already in war
+            async for war in self.get_league_wars(league_group.rounds[-1], cls=cls, **kwargs):
+                if war.state == 'inWar':
+                    # last round is already in war
+                    last_round_active = True
+                    break
+                elif war.state == 'preparation':
+                    # last round is still in preparation
+                    last_round_active = False
+                    break
         if cwl_round is WarRound.current_war and league_group.state == "preparation":
             return None  # for round 1 and 15min prep between rounds this is a shortcut.
         elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
-        elif cwl_round is WarRound.previous_war and len(league_group.rounds) == 1:
-            return None  # no previous war for first rounds.
-        elif cwl_round is WarRound.current_war and league_group.state == "ended":
-            round_tags = league_group.rounds[-1] # for the end of CWL current_war should give the last war
-        elif cwl_round is WarRound.previous_war and is_prep:
-            round_tags = league_group.rounds[-2]
+        elif cwl_round is WarRound.current_war and len(league_group.rounds) < 2:
+            round_tags = league_group.rounds[-1] # for the first round during prep already return round 1
+        elif cwl_round is WarRound.current_war and (last_round_active or league_group.state == "ended"):
+            round_tags = league_group.rounds[-1]  # for the end of CWL current_war should give the last war
+        elif cwl_round is WarRound.previous_war and (last_round_active or league_group.state == "ended"):
+            round_tags = league_group.rounds[-2]  # for the end of CWL previous_war should give the second last war
+        elif cwl_round is WarRound.previous_war and len(league_group.rounds) < 3:
+            return None  # no previous war for two rounds.
         elif cwl_round is WarRound.previous_war:
             round_tags = league_group.rounds[-3]
         elif cwl_round is WarRound.current_war:
@@ -1101,7 +1324,7 @@ class Client:
     def get_current_wars(
         self,
         clan_tags: Iterable[str],
-        cls: Type[ClanWar] = ClanWar,
+        cls: Type[ClanWar] = None,
         **kwargs
     ) -> AsyncIterator[ClanWar]:
         """Retrieve information multiple clan's current wars.
@@ -1135,6 +1358,9 @@ class Client:
         clan_tags : Iterable[:class:`str`]
             An iterable of clan tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -1147,13 +1373,15 @@ class Client:
         """
         if not isinstance(clan_tags, Iterable):
             raise TypeError("Tags are not an iterable.")
+        if cls is None:
+            cls = self.objects_cls.get("ClanWar")
         if not issubclass(cls, ClanWar):
-            raise TypeError("cls must be a subclass of either ClanWar.")
+            raise TypeError("cls must be a subclass of ClanWar.")
 
-        return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **kwargs)
+        return CurrentWarIterator(client=self, tags=clan_tags, cls=cls, **{**self._defaults, **kwargs})
 
-    # locations
-    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None) -> List[Location]:
+    async def search_locations(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Location] = None,
+                               **kwargs) -> List[Location]:
         """List all available locations
 
         Parameters
@@ -1164,6 +1392,8 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -1179,17 +1409,23 @@ class Client:
         List[:class:`Location`]
             The requested locations.
         """
-        data = await self.http.search_locations(limit=limit, before=before, after=after)
+        if cls is None:
+            cls = self.objects_cls['Location']
+        if not issubclass(cls, Location):
+            raise TypeError("cls must be a subclass of Location.")
+        data = await self.http.search_locations(limit=limit, before=before, after=after, **{**self._defaults, **kwargs})
 
-        return [Location(data=n) for n in data["items"]]
+        return [cls(data=n) for n in data["items"]]
 
-    async def get_location(self, location_id: int) -> Location:
+    async def get_location(self, location_id: int, cls: Type[Location] = None, **kwargs) -> Location:
         """Get information about specific location
 
         Parameters
         -----------
         location_id : int
             The Location ID to search for.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -1208,10 +1444,14 @@ class Client:
         :class:`Location`
             The requested location.
         """
-        data = await self.http.get_location(location_id)
-        return Location(data=data)
+        if cls is None:
+            cls = self.objects_cls['Location']
+        if not issubclass(cls, Location):
+            raise TypeError("cls must be a subclass of Location.")
+        data = await self.http.get_location(location_id, **{**self._defaults, **kwargs})
+        return cls(data=data)
 
-    async def get_location_named(self, location_name: str) -> Optional[Location]:
+    async def get_location_named(self, location_name: str, cls: Type[Location] = None, **kwargs) -> Optional[Location]:
         """Get a location by name.
 
         This is equivalent to:
@@ -1226,19 +1466,27 @@ class Client:
         -----------
         location_name : str
             The location name to search for
+        cls:
+            Target class to use to model that data returned
 
         Returns
         --------
         :class:`Location`
             The first location matching the location name.
         """
-        data = await self.http.search_locations(limit=None, before=None, after=None)
-        locations = [Location(data=n) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['Location']
+        if not issubclass(cls, Location):
+            raise TypeError("cls must be a subclass of Location.")
+        data = await self.http.search_locations(limit=None, before=None, after=None, **{**self._defaults, **kwargs})
+        locations = [cls(data=n) for n in data["items"]]
 
         return get(locations, name=location_name)
 
     async def get_location_clans(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+            self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = None,
+            **kwargs
     ) -> List[RankedClan]:
         """Get clan rankings for a specific location
 
@@ -1252,9 +1500,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1267,12 +1520,18 @@ class Client:
         List[:class:`RankedClan`]
             The top clans for the requested location.
         """
-
-        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['RankedClan']
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
+        data = await self.http.get_location_clans(location_id, limit=limit, before=before, after=after,
+                                                  **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_clans_capital(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+            self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = None,
+            **kwargs
     ) -> List[RankedClan]:
         """Get clan capital rankings for a specific location
 
@@ -1286,9 +1545,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1301,12 +1565,18 @@ class Client:
         List[:class:`RankedClan`]
             The top clans for the requested location.
         """
-
-        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['RankedClan']
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
+        data = await self.http.get_location_clans_capital(location_id, limit=limit, before=before, after=after,
+                                                          **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
     async def get_location_players(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+            self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = None,
+            **kwargs
     ) -> List[RankedPlayer]:
         """Get player rankings for a specific location
 
@@ -1320,9 +1590,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedPlayer`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1335,13 +1610,19 @@ class Client:
         List[:class:`RankedPlayer`]
             The top players for the requested location.
         """
-        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['RankedPlayer']
+        if not issubclass(cls, RankedPlayer):
+            raise TypeError("cls must be a subclass of RankedPlayer.")
+        data = await self.http.get_location_players(location_id, limit=limit, before=before, after=after,
+                                                    **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_clans_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    async def get_location_clans_builder_base(
+            self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedClan] = None, **kwargs
     ) -> List[RankedClan]:
-        """Get clan versus rankings for a specific location
+        """Get clan builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1353,9 +1634,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedClan`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1366,15 +1652,21 @@ class Client:
         Returns
         --------
         List[:class:`RankedClan`]
-            The top versus-clans for the requested location.
+            The top builder base-clans for the requested location.
         """
-        data = await self.http.get_location_clans_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedClan(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['RankedClan']
+        if not issubclass(cls, RankedClan):
+            raise TypeError("cls must be a subclass of RankedClan.")
+        data = await self.http.get_location_clans_builder_base(location_id, limit=limit, before=before, after=after,
+                                                               **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_location_players_versus(
-        self, location_id: int = "global", *, limit: int = None, before: str = None, after: str = None
+    async def get_location_players_builder_base(
+            self, location_id: int = "global", *, limit: int = None,
+            before: str = None, after: str = None, cls: Type[RankedPlayer] = None, **kwargs
     ) -> List[RankedPlayer]:
-        """Get player versus rankings for a specific location
+        """Get player builder base rankings for a specific location
 
         Parameters
         -----------
@@ -1386,9 +1678,14 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
+        TypeError
+            The ``cls`` parameter must be a subclass of :class:`RankedPlayer`.
+
         Maintenance
             The API is currently in maintenance.
 
@@ -1399,14 +1696,19 @@ class Client:
         Returns
         --------
         List[:class:`RankedPlayer`]
-            The top versus players for the requested location.
+            The top builder base players for the requested location.
         """
-        data = await self.http.get_location_players_versus(location_id, limit=limit, before=before, after=after)
-        return [RankedPlayer(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['RankedPlayer']
+        if not issubclass(cls, RankedPlayer):
+            raise TypeError("cls must be a subclass of RankedPlayer.")
+        data = await self.http.get_location_players_builder_base(location_id, limit=limit, before=before, after=after,
+                                                                 **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
     # leagues
-
-    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None) -> List[League]:
+    async def search_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[League] = None,
+                             **kwargs) -> List[League]:
         """Get list of leagues.
 
         Parameters
@@ -1433,10 +1735,14 @@ class Client:
         List[:class:`League`]
             The requested leagues.
         """
-        data = await self.http.search_leagues(limit=limit, before=before, after=after)
-        return [League(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['League']
+        if not issubclass(cls, League):
+            raise TypeError("cls must be a subclass of League.")
+        data = await self.http.search_leagues(limit=limit, before=before, after=after, **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_league(self, league_id: int) -> League:
+    async def get_league(self, league_id: int, cls: Type[League] = None, **kwargs) -> League:
         """
         Get league information
 
@@ -1462,13 +1768,17 @@ class Client:
         :class:`League`
             The league with the requested ID
         """
-        data = await self.http.get_league(league_id)
-        return League(data=data, client=self)
+        if cls is None:
+            cls = self.objects_cls['League']
+        if not issubclass(cls, League):
+            raise TypeError("cls must be a subclass of League.")
+        data = await self.http.get_league(league_id, **{**self._defaults, **kwargs})
+        return cls(data=data, client=self)
 
-    async def get_league_named(self, league_name: str) -> Optional[League]:
-        """Get a location by name.
+    async def get_league_named(self, league_name: str, cls: Type[League] = None, **kwargs) -> Optional[League]:
+        """Get a league by name.
 
-        This is somewhat equivilant to
+        This is somewhat equivalent to
 
         .. code-block:: python3
 
@@ -1480,6 +1790,8 @@ class Client:
         -----------
         league_name : str
             The league name to search for
+        cls:
+            Target class to use to model that data returned
 
         Raises
         ------
@@ -1492,27 +1804,357 @@ class Client:
         Returns
         --------
         :class:`League`
-            The first location matching the location name. Could be ``None`` if not found.
+            The first league matching the league name. Could be ``None`` if not found.
         """
-        return get(await self.search_leagues(), name=league_name)
+        if cls is None:
+            cls = self.objects_cls['League']
+        if not issubclass(cls, League):
+            raise TypeError("cls must be a subclass of League.")
+        return get(await self.search_leagues(cls=cls, **{**self._defaults, **kwargs}), name=league_name)
 
-    async def get_seasons(self, league_id: int = 29000021) -> List[str]:
+    async def search_builder_base_leagues(self, *, limit: int = None, before: str = None, after: str = None,
+                                          cls: Type[BaseLeague] = None, **kwargs)-> List[BaseLeague]:
+        """Get list of builder base leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`BaseLeague`]
+            The requested leagues.
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.search_builder_base_leagues(limit=limit, before=before, after=after,
+                                                           **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
+
+    async def get_builder_base_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
+        """
+        Get builder base league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The league with the requested ID
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.get_builder_base_league(league_id, **{**self._defaults, **kwargs})
+        return cls(data=data, client=self)
+
+    async def get_builder_base_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
+        """Get a builder base league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_builder_base_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The builder base league name to search for
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        return get(await self.search_builder_base_leagues(cls=cls, **{**self._defaults, **kwargs}), name=league_name)
+
+    async def search_war_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
+                                 **kwargs) -> List[BaseLeague]:
+        """Get list of war leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned.
+
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`BaseLeague`]
+            The requested leagues.
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.search_war_leagues(limit=limit, before=before, after=after, **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
+
+    async def get_war_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
+        """
+        Get war league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The league with the requested ID
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.get_war_league(league_id, **{**self._defaults, **kwargs})
+        return cls(data=data, client=self)
+
+    async def get_war_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
+        """Get a war league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_war_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The war league name to search for
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        return get(await self.search_war_leagues(cls=cls, **{**self._defaults, **kwargs}), name=league_name)
+
+    async def search_capital_leagues(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[BaseLeague] = None,
+                                     **kwargs) -> List[BaseLeague]:
+        """Get list of capital leagues.
+
+        Parameters
+        -----------
+        limit : int
+            Number of items to fetch. Defaults to ``None`` (all leagues).
+        before : str, optional
+            For use with paging. Not implemented yet.
+        after: str, optional
+            For use with paging. Not implemented yet.
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+
+        Returns
+        --------
+        List[:class:`BaseLeague`]
+            The requested leagues.
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.search_capital_leagues(limit=limit, before=before, after=after,
+                                                      **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
+
+    async def get_capital_league(self, league_id: int, cls: Type[BaseLeague] = None, **kwargs) -> BaseLeague:
+        """
+        Get capital league information
+
+        Parameters
+        -----------
+        league_id : str
+            The League ID to search for.
+        cls:
+            Target class to use to model that data returned.
+        
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        NotFound
+            No league was found with the supplied league ID.
+
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The league with the requested ID
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        data = await self.http.get_capital_league(league_id, **{**self._defaults, **kwargs})
+        return cls(data=data, client=self)
+
+    async def get_capital_league_named(self, league_name: str, cls: Type[BaseLeague] = None, **kwargs) -> Optional[BaseLeague]:
+        """Get a capital league by name.
+
+        This is somewhat equivalent to
+
+        .. code-block:: python3
+
+            leagues = await client.search_capital_leagues(limit=None)
+            return utils.get(leagues, name=league_name)
+
+
+        Parameters
+        -----------
+        league_name : str
+            The capital league name to search for
+        cls:
+            Target class to use to model that data returned.
+
+        Raises
+        ------
+        Maintenance
+            The API is currently in maintenance.
+
+        GatewayError
+            The API hit an unexpected gateway exception.
+
+        Returns
+        --------
+        :class:`BaseLeague`
+            The first league matching the league name. Could be ``None`` if not found.
+        """
+        if cls is None:
+            cls = self.objects_cls['BaseLeague']
+        if not issubclass(cls, BaseLeague):
+            raise TypeError("cls must be a subclass of BaseLeague.")
+        return get(await self.search_capital_leagues(cls=cls, **{**self._defaults, **kwargs}), name=league_name)
+
+    async def get_seasons(self, league_id: int = 29000022, **kwargs) -> List[str]:
         """Get league seasons.
 
         .. note::
 
-            League season information is available only for Legend League, with a league ID 29000021.
+            League season information is available only for Legend League, with a league ID 29000022.
 
 
         Parameters
         -----------
         league_id : str
             The League ID to search for. Defaults to the only league you can get season information for, legends.
+        cls:
+            Target class to use to model that data returned.
 
         Raises
         ------
         InvalidArgument
-            An invalid league_id was supplied. Currently the only league supported is legends.
+            An invalid league_id was supplied. Currently, the only league supported is legends.
 
         Maintenance
             The API is currently in maintenance.
@@ -1525,15 +2167,15 @@ class Client:
         List[str]
             The legend season IDs, in the form ``YYYY-MM``, ie. ``2020-04``.
         """
-        data = await self.http.get_league_seasons(league_id)
+        data = await self.http.get_league_seasons(league_id, **{**self._defaults, **kwargs})
         return [entry["id"] for entry in data["items"]]
 
-    async def get_season_rankings(self, league_id: int, season_id: int) -> List[RankedPlayer]:
+    async def get_season_rankings(self, league_id: int, season_id: str, cls: Type[RankedPlayer] = None, **kwargs) -> List[RankedPlayer]:
         """Get league season rankings.
 
         .. note::
 
-            League season information is available only for Legend League, with a league ID 29000021.
+            League season information is available only for Legend League, with a league ID 29000022.
 
 
         Parameters
@@ -1542,11 +2184,13 @@ class Client:
             The League ID to search for.
         season_id : str
             The Season ID to search for.
-
+        cls:
+            Target class to use to model that data returned.
+        
         Raises
         ------
         InvalidArgument
-            An invalid league_id or season_id was supplied. Currently the only league supported is legends.
+            An invalid league_id or season_id was supplied. Currently, the only league supported is legends.
 
         Maintenance
             The API is currently in maintenance.
@@ -1560,10 +2204,15 @@ class Client:
         List[:class:`RankedPlayer`]
             Top players for the requested season and league.
         """
-        data = await self.http.get_league_season_info(league_id, season_id)
-        return [RankedPlayer(data=n, client=self) for n in data.get("items", [])]
+        if cls is None:
+            cls = self.objects_cls['RankedPlayer']
+        if not issubclass(cls, RankedPlayer):
+            raise TypeError("cls must be a subclass of RankedPlayer.")
+        data = await self.http.get_league_season_info(league_id, season_id, **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data.get("items", [])]
 
-    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None) -> List[Label]:
+    async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Label] = None, **kwargs
+                              ) -> List[Label]:
         """Fetch all possible clan labels.
 
         Parameters
@@ -1574,7 +2223,9 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
-
+        cls:
+            Target class to use to model that data returned.#
+        
         Raises
         ------
         Maintenance
@@ -1589,10 +2240,15 @@ class Client:
         List[:class:`Label`]
             A list of all possible clan labels.
         """
-        data = await self.http.get_clan_labels(limit=limit, before=before, after=after)
-        return [Label(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['Label']
+        if not issubclass(cls, Label):
+            raise TypeError("cls must be a subclass of Label.")
+        data = await self.http.get_clan_labels(limit=limit, before=before, after=after, **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
-    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None) -> List[Label]:
+    async def get_player_labels(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Label] = None, **kwargs
+                                ) -> List[Label]:
         """Fetch all possible player labels.
 
         Parameters
@@ -1603,7 +2259,9 @@ class Client:
             For use with paging. Not implemented yet.
         after: str, optional
             For use with paging. Not implemented yet.
-
+        cls:
+            Target class to use to model that data returned.
+        
         Raises
         ------
         Maintenance
@@ -1618,12 +2276,16 @@ class Client:
         List[:class:`Label`]
             A list of all possible player labels.
         """
-        data = await self.http.get_player_labels(limit=limit, before=before, after=after)
-        return [Label(data=n, client=self) for n in data["items"]]
+        if cls is None:
+            cls = self.objects_cls['Label']
+        if not issubclass(cls, Label):
+            raise TypeError("cls must be a subclass of Label.")
+        data = await self.http.get_player_labels(limit=limit, before=before, after=after, **{**self._defaults, **kwargs})
+        return [cls(data=n, client=self) for n in data["items"]]
 
     # players
-
-    async def get_player(self, player_tag: str, cls: Type[Player] = Player, load_game_data: bool = None, **kwargs) -> Player:
+    async def get_player(self, player_tag: str, cls: Type[Player] = Player,
+                         load_game_data: bool = None, **kwargs) -> Player:
         """Get information about a single player by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1631,6 +2293,9 @@ class Client:
         ----------
         player_tag : str
             The player tag to search for.
+
+        cls:
+            Target class to use to model that data returned
 
         Raises
         -------
@@ -1652,6 +2317,8 @@ class Client:
         :class:`Player`
             The player with the tag.
         """
+        if cls is None:
+            cls = self.objects_cls['Player']
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
         if load_game_data and not isinstance(load_game_data, bool):
@@ -1661,9 +2328,10 @@ class Client:
             player_tag = correct_tag(player_tag)
 
         data = await self.http.get_player(player_tag)
-        return cls(data=data, client=self, load_game_data=load_game_data, **kwargs)
+        return cls(data=data, client=self, load_game_data=load_game_data, **{**self._defaults, **kwargs})
 
-    def get_players(self, player_tags: Iterable[str], cls: Type[Player] = Player, load_game_data: bool = None, **kwargs) -> AsyncIterator[Player]:
+    def get_players(self, player_tags: Iterable[str], cls: Type[Player] = None, load_game_data: bool = None, **kwargs) -> AsyncIterator[
+        Player]:
         """Get information about a multiple players by player tag.
         Player tags can be found either in game or by from clan member lists.
 
@@ -1683,6 +2351,9 @@ class Client:
         player_tags : Iterable[:class:`str`]
             An iterable of player tags to search for.
 
+        cls:
+            Target class to use to model that data returned
+
         Raises
         ------
         TypeError
@@ -1693,14 +2364,16 @@ class Client:
         :class:`Player`
             A player matching one of the tags requested.
         """
+        if cls is None:
+            cls = self.objects_cls['Player']
         if not issubclass(cls, Player):
             raise TypeError("cls must be a subclass of Player.")
         if load_game_data and not isinstance(load_game_data, bool):
             raise TypeError("load_game_data must be either True or False.")
 
-        return PlayerIterator(self, player_tags, cls=cls, load_game_data=load_game_data, **kwargs)
+        return PlayerIterator(self, player_tags, cls=cls, load_game_data=load_game_data, **{**self._defaults, **kwargs} )
 
-    async def verify_player_token(self, player_tag: str, token: str) -> bool:
+    async def verify_player_token(self, player_tag: str, token: str, **kwargs) -> bool:
         """Verify player API token that can be found from the game settings.
 
         This can be used to check that players own the game accounts they claim to own
@@ -1733,11 +2406,17 @@ class Client:
         if self.correct_tags:
             player_tag = correct_tag(player_tag)
 
-        data = await self.http.verify_player_token(player_tag, token)
+        data = await self.http.verify_player_token(player_tag, token, lookup_cache=False, update_cache=False,
+                                                   ignore_cached_errors=kwargs.get('ignore_cached_errors', self.ignore_cached_errors))
         return data and data["status"] == "ok" or False
 
-    async def get_current_goldpass_season(self) -> GoldPassSeason:
+    async def get_current_goldpass_season(self, cls: Type[GoldPassSeason] = None, **kwargs) -> GoldPassSeason:
         """Get the current gold pass season
+        
+        Parameters
+        ----------
+        cls:
+            Target class to use to model that data returned.
 
         Raises
         ------
@@ -1751,8 +2430,12 @@ class Client:
         --------
         :class:`GoldPassSeason`
             The gold pass season object of the current season"""
-        data = await self.http.get_current_goldpass_season()
-        return GoldPassSeason(data=data)
+        if cls is None:
+            cls = self.objects_cls['GoldPassSeason']
+        if not issubclass(cls, GoldPassSeason):
+            raise TypeError("cls must be a subclass of GoldPassSeason.")
+        data = await self.http.get_current_goldpass_season(**{**self._defaults, **kwargs})
+        return cls(data=data)
 
     def parse_army_link(self, link: str):
         """Transform an army link from in-game into a list of troops and spells.
@@ -2010,7 +2693,7 @@ class Client:
         if not self._spell_holder.loaded:
             raise RuntimeError("Spell metadata must be loaded to use this feature.")
 
-        spell = self._spell_holder.get(name)
+        spell = self._spell_holder.get((name, True))
         if spell is None:
             return None
         elif level is not None:
@@ -2114,7 +2797,7 @@ class Client:
 
         .. code-block:: python3
 
-            troop = client.get_pet("Electro Owl")
+            pet = client.get_pet("Electro Owl")
 
             for level, cost in enumerate(pet.upgrade_cost, start=1):
                 print(f"{pet.name} has an upgrade cost of {cost} at Lv{level}")
@@ -2165,3 +2848,74 @@ class Client:
             return pet(data, townhall=townhall)
         else:
             return pet
+
+    def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
+        """Get an uninitiated Equipment object with the given name.
+
+        .. note::
+
+            You must have Equipment metadata loaded in order to use this method.
+            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+
+        .. note::
+
+            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
+
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            gear = client.get_equipment("Dark Orb")
+
+            for level, cost in enumerate(gear.upgrade_cost, start=1):
+                print(f"{gear.name} has an upgrade cost of {cost} at Lv{level}")
+
+
+        Parameters
+        ----------
+        name: str
+            The equipment name, which must match in-game **exactly**, but is case-insensitive.
+
+        level: Optional[int]
+            The level to pass into the construction of the :class:`Equipment` object. If this is present this will return an
+            :ref:`initiated_objects`.
+
+        townhall: Optional[int]
+            The TH level to pass into the construction of the :class:`Equipment` object. If this is ``None``,
+            this will default to the TH level the ``level`` parameter is unlocked at.
+
+        Raises
+        ------
+        RuntimeError
+            Pet game metadata must be loaded to use this feature.
+
+        Returns
+        --------
+        :class:`Equipment`
+            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
+            otherwise, this will return an :ref:`uninitiated_objects`
+
+            If the equipment is not found, this will return ``None``.
+
+
+        """
+        if not self._equipment_holder.is_loaded:
+            raise RuntimeError("Equipment metadata must be loaded to use this feature.")
+
+        equipment = self._equipment_holder.get(name)
+        if equipment is None:
+            return None
+        elif level is not None:
+            data = {
+                "name": equipment.name,
+                "level": level,
+                "maxLevel": equipment.levels_available[-1],
+                "village": "home"
+            }
+            #really hacky, need to find out why
+            townhall = townhall or equipment.smithy_to_townhall[equipment._json_meta.get(str(level)).get("RequiredBlacksmithLevel")]
+            return equipment(data, townhall=townhall)
+        else:
+            return equipment
