@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Type, TypeVar, Optional
 
 import coc
@@ -558,7 +558,7 @@ class Timestamp:
     @property
     def now(self) -> datetime:
         """:class:`datetime`: Returns the time of the timestamp as a datetime object in UTC."""
-        return datetime.utcnow()
+        return datetime.now(tz=timezone.utc).replace(tzinfo=None)
 
     @property
     def seconds_until(self) -> int:
