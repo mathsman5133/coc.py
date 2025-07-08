@@ -249,7 +249,8 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
-    "Revive Spell"
+    "Revive Spell",
+    "Ice Block Spell"
 ]
 
 
@@ -310,7 +311,8 @@ EQUIPMENT = [
     "Dark Orb",
     "Electro Boots",
     "Snake Bracelet",
-    "Metal Pants"
+    "Metal Pants",
+    "Noble Iron"
 ]
 
 ACHIEVEMENT_ORDER = [
