@@ -136,6 +136,11 @@ class ClanWar:
             self.opponent = try_enum(self.clan_cls, data=clan_data,
                                      client=self._client, war=self)
 
+    def __eq__(self, other):
+        return {self.clan.tag, self.opponent.tag} == {other.clan.tag, other.opponent.tag} and \
+            self.preparation_start_time == other.preparation_start_time
+
+
     @property
     def attacks(self) -> List[WarAttack]:
         """List[:class:`WarAttack`]: Returns all attacks this war, sorted by attack order."""
