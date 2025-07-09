@@ -137,6 +137,8 @@ class ClanWar:
                                      client=self._client, war=self)
 
     def __eq__(self, other):
+        if not isinstance(other, ClanWar):
+            return NotImplemented
         return {self.clan.tag, self.opponent.tag} == {other.clan.tag, other.opponent.tag} and \
             self.preparation_start_time == other.preparation_start_time
 
