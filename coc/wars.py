@@ -101,7 +101,7 @@ class ClanWar:
         self._from_data(data)
 
         self.clan_tag = self.clan and self.clan.tag or self.clan_tag
-        self.league_group = kwargs.pop("league_group", None)
+        self.league_group: ClanWarLeagueGroup | None = kwargs.pop("league_group", None)
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
