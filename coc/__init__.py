@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = "3.9.1"
+__version__ = "3.9.2"
 
 from .abc import BasePlayer, BaseClan
 from .clans import RankedClan, Clan

@@ -7,7 +7,7 @@ name = "coc.py"
 authors = [{ name = "mathsman5133" }]
 maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuchenmampfer" },
     { name = "lukasthaler"}, { name = "doluk"}]
-version = "3.9.1"
+version = "3.9.2"
 description = "A python wrapper for the Clash of Clans API"
 requires-python = ">=3.9.0"
 readme = "README.rst"

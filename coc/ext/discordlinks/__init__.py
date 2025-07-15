@@ -7,7 +7,7 @@ import typing
 import json
 
 from collections import namedtuple
-from datetime import datetime
+from datetime import datetime, timezone
 
 import aiohttp
 
@@ -39,7 +39,7 @@ def extract_expiry_from_jwt_token(token):
     dict_payload = json.loads(bytes_payload)
     try:
         expiry = dict_payload["exp"]
-        return datetime.fromtimestamp(expiry)
+        return datetime.fromtimestamp(expiry, tz=timezone.utc)
     except KeyError:
         return None
 
@@ -132,7 +132,7 @@ class DiscordLinkClient:
                 return await self._request(method, url, **kwargs)
 
     async def _get_key(self):
-        if not self.key or (self.key.expires_at and (self.key.expires_at < datetime.utcnow())):
+        if not self.key or (self.key.expires_at and (self.key.expires_at < datetime.now(tz=timezone.utc))):
             await self._refresh_key()
 
         return self.key.token

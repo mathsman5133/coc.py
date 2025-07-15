@@ -7,6 +7,18 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.9.2
+------
+
+Changes:
+~~~~~~~~
+- Removal of calls to `datetime.datetime.utcnow()` in favor of `datetime.datetime.now()` to avoid issues with timezones and prevent DeprecationWarnings.
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug occuring when the CoC API returns a text response instead of a json response.
+
+
 v3.9.1
 ------
 
