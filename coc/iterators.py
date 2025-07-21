@@ -117,6 +117,58 @@ class TaggedIterator(_AsyncIterator):
         except asyncio.QueueEmpty:
             raise StopAsyncIteration
 
+class SeasonIterator(_AsyncIterator):
+    """Iterator for paginated Legend League season rankings."""
+
+    def __init__(self, client, league_id: int, season_id: str, cls, limit=100, **kwargs):
+        self.client = client
+        self.league_id = league_id
+        self.season_id = season_id
+        self.cls = cls
+        self.limit = limit
+        self.kwargs = kwargs
+
+        self.buffer: list = []
+        self.after: str | None = None
+        self.exhausted = False
+
+    async def _fetch_next_page(self):
+        if self.exhausted:
+            raise StopAsyncIteration
+
+        params = {
+            **self.kwargs,
+            "limit": self.limit
+        }
+        if self.after:
+            params["after"] = self.after
+
+        data = await self.client.http.get_league_season_info(
+            self.league_id, self.season_id, **params
+        )
+
+        self.buffer = [
+            self.cls(data=item, client=self.client)
+            for item in data.get("items", [])
+        ]
+
+        # Get pagination cursor
+        try:
+            self.after = data["paging"]["cursors"]["after"]
+        except KeyError:
+            self.exhausted = True
+            self.after = None
+
+        if not self.buffer:
+            self.exhausted = True
+            raise StopAsyncIteration
+
+    async def _next(self):
+        while not self.buffer:
+            await self._fetch_next_page()
+
+        return self.buffer.pop(0)
+
 
 class ClanIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_clans`"""
@@ -175,7 +227,6 @@ class LeagueWarIterator(TaggedIterator):
             return await self._next()
         else:
             return war
-
 
 class CurrentWarIterator(TaggedIterator):
     """Iterator for use with :meth:`~coc.Client.get_current_wars`"""

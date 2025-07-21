@@ -43,6 +43,7 @@ from .iterators import (
     ClanWarIterator,
     LeagueWarIterator,
     CurrentWarIterator,
+    SeasonIterator
 )
 from .players import Player, ClanMember, RankedPlayer
 from .raid import RaidLogEntry
@@ -148,28 +149,28 @@ class Client:
     ip: :class:`str`
         The IP address to use for API requests. Defaults to None, which means the IP address will be automatically
         detected.
-        
+
     lookup_cache: :class:`bool`
         Flag for controlling the cache usage before an actual API request is made. Defaults to True, which means the cache lookup is done
-    
+
     update_cache: :class:`bool`
         Flag for controlling if the cache is updated after an API request was made. Defaults to True, which means the cache is updated
         after an API request.
-    
+
     ignore_cached_errors: :class:`list[int]`
         In case of a cache lookup and a cached entry exists, ignore the cached data if the status code of the response is in the list.
-    
+
     player_cls: :class:`Type[Player]`
         Class to be used for player objects. Defaults to :class:`Player`.
-    
+
     member_cls: :class:`Type[ClanMember]`
         Class to be used for clan member objects. Defaults to :class:`ClanMember`.
-    
+
     ranke
-    
+
     clan_cls: :class:`Type[Clan]`
         Class to be used for clan objects. Defaults to :class:`Clan`.
-    
+
 
     Attributes
     ----------
@@ -249,7 +250,7 @@ class Client:
         self.timeout = timeout
         self.cache_max_size = cache_max_size
         self.stats_max_size = stats_max_size
-        
+
         self.lookup_cache = lookup_cache
         self.update_cache = update_cache
         self.ignore_cached_errors = ignore_cached_errors
@@ -261,14 +262,14 @@ class Client:
         self.load_game_data = load_game_data
         self.base_url = base_url
         self.ip = ip
-        
+
         self.objects_cls = {"Player": Player, "Clan": Clan, "ClanWar": ClanWar,
                             "RankedPlayer": RankedPlayer, "RankedClan": RankedClan,
                             "ClanMember": ClanMember, "ClanWarLogEntry": ClanWarLogEntry, "RaidLogEntry": RaidLogEntry,
                             "ClanWarLeagueGroup": ClanWarLeagueGroup, "Location": Location,
                             "League": League, "BaseLeague": BaseLeague, "GoldPassSeason": GoldPassSeason,
                             "Label": Label}
-        
+
         # cache
         self._players = {}
         self._clans = {}
@@ -288,14 +289,14 @@ class Client:
 
     async def __aexit__(self, *args):
         await self.close()
-        
+
     def set_object_cls(self, name: str, cls):
         """Set a custom class type for a given object name. The method ensures that the
         provided class is a valid subclass of a predefined default class. It updates
         the internal mapping of object classes to the new custom class.
-        
+
         .. note::
-        
+
             This affects only the return type of Client methods returning the object.
             For example changing the ClanMember class to a custom class will affect 'get_clan_members', but not the clan members
             of a clan object obtained by calling `get_clan` or `get_clans` methods.
@@ -803,8 +804,8 @@ class Client:
         # set limit to a new default of 10
         if page:
             limit = limit if limit else 10
-            
-        
+
+
 
         try:
             return await ClanWarLog.init_cls(client=self,
@@ -2074,7 +2075,7 @@ class Client:
             The League ID to search for.
         cls:
             Target class to use to model that data returned.
-        
+
         Raises
         ------
         Maintenance
@@ -2170,7 +2171,7 @@ class Client:
         data = await self.http.get_league_seasons(league_id, **{**self._defaults, **kwargs})
         return [entry["id"] for entry in data["items"]]
 
-    async def get_season_rankings(self, league_id: int, season_id: str, cls: Type[RankedPlayer] = None, **kwargs) -> List[RankedPlayer]:
+    async def get_season_rankings(self, league_id: int, season_id: str, cls: Type[RankedPlayer] = None, **kwargs) -> AsyncIterator[RankedPlayer]:
         """Get league season rankings.
 
         .. note::
@@ -2186,7 +2187,7 @@ class Client:
             The Season ID to search for.
         cls:
             Target class to use to model that data returned.
-        
+
         Raises
         ------
         InvalidArgument
@@ -2208,8 +2209,8 @@ class Client:
             cls = self.objects_cls['RankedPlayer']
         if not issubclass(cls, RankedPlayer):
             raise TypeError("cls must be a subclass of RankedPlayer.")
-        data = await self.http.get_league_season_info(league_id, season_id, **{**self._defaults, **kwargs})
-        return [cls(data=n, client=self) for n in data.get("items", [])]
+        return SeasonIterator(client=self, league_id=league_id, season_id=season_id, cls=cls, **{**self._defaults, **kwargs})
+
 
     async def get_clan_labels(self, *, limit: int = None, before: str = None, after: str = None, cls: Type[Label] = None, **kwargs
                               ) -> List[Label]:
