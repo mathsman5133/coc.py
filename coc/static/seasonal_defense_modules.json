@@ -1,235 +1,1405 @@
 {
   "HookTowerHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7000000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "HookTowerHPModule",
     "SpecialAbility": "HookTowerHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_HP",
     "HintPriority": 75
   },
   "HookTowerAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6500000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9500000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "HookTowerAttackModule",
     "SpecialAbility": "HookTowerAttackAbility",
     "StatType": "AttackSpeed",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_ATTACK",
     "HintPriority": 75
   },
   "HookTowerEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 25000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 30000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 35000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 40000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 55000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 70000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 85000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 100000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "HookTowerEffectModule",
     "SpecialAbility": "HookTowerEffectAbility",
     "StatType": "StunTime",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_EFFECT",
     "HintPriority": 75
   },
   "LazyLaserHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7000000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "LazyLaserHPModule",
     "SpecialAbility": "LazyLaserHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_HP",
     "HintPriority": 75
   },
   "LazyLaserAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6500000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9500000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "LazyLaserAttackModule",
     "SpecialAbility": "LazyLaserAttackAbility",
     "StatType": "DamagePerSecond",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_ATTACK",
     "HintPriority": 75
   },
   "LazyLaserEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 25000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 30000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 35000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 40000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 55000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 70000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 85000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 100000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "LazyLaserEffectModule",
     "SpecialAbility": "LazyLaserEffectAbility",
     "StatType": "AttackRange",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_EFFECT",
     "HintPriority": 75
   },
   "LogLobberHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3000000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3500000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4500000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "LogLobberHPModule",
     "SpecialAbility": "LogLobberHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_HP",
     "HintPriority": 75
   },
   "LogLobberAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 35000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 45000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 55000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 65000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 75000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 85000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 95000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 105000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "LogLobberAttackModule",
     "SpecialAbility": "LogLobberAttackAbility",
     "StatType": "DamageShockWave",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_ATTACK",
     "HintPriority": 75
   },
   "LogLobberEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6500000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9500000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "LogLobberEffectModule",
     "SpecialAbility": "LogLobberEffectAbility",
     "StatType": "AttackRange",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_EFFECT",
     "HintPriority": 75
   },
   "FlameSpinnerHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3000000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3500000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4500000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "FlameSpinnerHPModule",
     "SpecialAbility": "FlameSpinnerHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_HP",
     "HintPriority": 75
   },
   "FlameSpinnerAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 35000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 45000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 55000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 65000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 75000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 85000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 95000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 105000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "FlameSpinnerAttackModule",
     "SpecialAbility": "FlameSpinnerAttackAbility",
     "StatType": "DamagePerHit",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_ATTACK",
     "HintPriority": 75
   },
   "FlameSpinnerEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6500000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9500000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "FlameSpinnerEffectModule",
     "SpecialAbility": "FlameSpinnerEffectAbility",
     "StatType": "BurstCount",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_EFFECT",
     "HintPriority": 75
   },
   "CrusherMortarHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 45000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 60000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 75000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 90000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 95000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 100000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 105000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 110000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "CrusherMortarHPModule",
     "SpecialAbility": "CrusherMortarHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_HP",
     "HintPriority": 75
   },
   "CrusherMortarAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3000000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3500000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4500000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "CrusherMortarAttackModule",
     "SpecialAbility": "CrusherMortarAttackAbility",
     "StatType": "DamagePerSecond",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_ATTACK",
     "HintPriority": 75
   },
   "CrusherMortarEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7000000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "CrusherMortarEffectModule",
     "SpecialAbility": "CrusherMortarEffectAbility",
     "StatType": "DamageRadius",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_EFFECT",
     "HintPriority": 75
   },
   "SunBeamHPModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 45000
+    },
+    "3": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 60000
+    },
+    "4": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 75000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 90000
+    },
+    "6": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 95000
+    },
+    "7": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 100000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 105000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 110000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 115000
+    },
     "Name": "SunBeamHPModule",
     "SpecialAbility": "SunBeamHPAbility",
     "StatType": "HitPoints",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "DarkElixir",
-    "BuildCost": 115000,
     "TID": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_HP",
     "HintPriority": 75
   },
   "SunBeamAttackModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3000000
+    },
+    "3": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 3500000
+    },
+    "4": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "5": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 14,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4500000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 16,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7500000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 20,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 22,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10500000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "SunBeamAttackModule",
     "SpecialAbility": "SunBeamAttackAbility",
     "StatType": "DamagePerSecond",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Elixir",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_ATTACK",
     "HintPriority": 75
   },
   "SunBeamEffectModule": {
+    "1": {
+      "BuildTimeD": 0,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 0
+    },
+    "2": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 4000000
+    },
+    "3": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 5000000
+    },
+    "4": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 6000000
+    },
+    "5": {
+      "BuildTimeD": 1,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 7000000
+    },
+    "6": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 8000000
+    },
+    "7": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 6,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 9000000
+    },
+    "8": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 12,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 10000000
+    },
+    "9": {
+      "BuildTimeD": 2,
+      "BuildTimeH": 18,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 11000000
+    },
+    "10": {
+      "BuildTimeD": 3,
+      "BuildTimeH": 0,
+      "BuildTimeM": 0,
+      "BuildTimeS": 0,
+      "BuildCost": 12000000
+    },
     "Name": "SunBeamEffectModule",
     "SpecialAbility": "SunBeamEffectAbility",
     "StatType": "AttackRange",
-    "BuildTimeD": 3,
-    "BuildTimeH": 0,
-    "BuildTimeM": 0,
-    "BuildTimeS": 0,
     "BuildResource": "Gold",
-    "BuildCost": 12000000,
     "TID": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_EFFECT",
     "HintPriority": 75
   }

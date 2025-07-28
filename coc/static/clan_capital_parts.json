@@ -1,4 +1,105 @@
 {
+  "PlayerHouse_Ground_Fence01": {
+    "Name": "PlayerHouse_Ground_Fence01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_fence01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground",
+    "CapitalRepLevelUnlock": 1,
+    "UiSortingNumber": 200
+  },
+  "PlayerHouse_Ground_Terrace01": {
+    "Name": "PlayerHouse_Ground_Terrace01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_terrace01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground",
+    "CapitalRepLevelUnlock": 10,
+    "UiSortingNumber": 200
+  },
+  "PlayerHouse_Ground_Stones01": {
+    "Name": "PlayerHouse_Ground_Stones01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_stones01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground",
+    "CapitalRepLevelUnlock": 25,
+    "UiSortingNumber": 200
+  },
+  "PlayerHouse_Ground_Stones02": {
+    "Name": "PlayerHouse_Ground_Stones02",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_stones02",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground"
+  },
+  "PlayerHouse_Ground_Gold01": {
+    "Name": "PlayerHouse_Ground_Gold01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_gold01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground",
+    "CapitalRepLevelUnlock": 75,
+    "UiSortingNumber": 200
+  },
+  "PlayerHouse_Ground_Winter01": {
+    "Name": "PlayerHouse_Ground_Winter01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_winter01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground"
+  },
+  "PlayerHouse_Ground_Clashmas01": {
+    "Name": "PlayerHouse_Ground_Clashmas01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_clashmas01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground",
+    "UiSortingNumber": 100
+  },
+  "PlayerHouse_Ground_Grass01": {
+    "Name": "PlayerHouse_Ground_Grass01",
+    "TID": "TID_PART_HOUSE_GROUND",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/ground_grass01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Ground"
+  },
+  "PlayerHouse_Roof_Classic01": {
+    "Name": "PlayerHouse_Roof_Classic01",
+    "TID": "TID_PART_HOUSE_ROOF",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/roof_classic01",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Roof",
+    "CapitalRepLevelUnlock": 1,
+    "UiSortingNumber": 199
+  },
+  "PlayerHouse_Roof_Classic02": {
+    "Name": "PlayerHouse_Roof_Classic02",
+    "TID": "TID_PART_HOUSE_ROOF",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/roof_classic02",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Roof",
+    "CapitalRepLevelUnlock": 1,
+    "UiSortingNumber": 199
+  },
+  "PlayerHouse_Roof_Classic03": {
+    "Name": "PlayerHouse_Roof_Classic03",
+    "TID": "TID_PART_HOUSE_ROOF",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/roof_classic03",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Roof",
+    "CapitalRepLevelUnlock": 3,
+    "UiSortingNumber": 200
+  },
+  "PlayerHouse_Roof_Classic04": {
+    "Name": "PlayerHouse_Roof_Classic04",
+    "TID": "TID_PART_HOUSE_ROOF",
+    "Sprite": "sc/buildings_cc.sc#playerhouse_parts/roof_classic04",
+    "Layout": "CcPlayerHouse",
+    "LayoutSlot": "Roof",
+    "CapitalRepLevelUnlock": 1,
+    "UiSortingNumber": 199
+  },
   "DEPRECATED_PlayerHouse_Roof_Classic05": {
     "Name": "DEPRECATED_PlayerHouse_Roof_Classic05",
     "Deprecated": true,

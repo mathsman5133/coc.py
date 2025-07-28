@@ -15,6 +15,7 @@ import lzma
 import csv
 import os
 import zipfile
+import re
 from collections import defaultdict
 
 TARGETS = [
@@ -110,10 +111,14 @@ def process_csv(data, file_path, save_name):
     """
     1. Decompress data -> raw CSV
     2. Write raw CSV to disk
-    3. Parse disk CSV -> final_data
-    4. Post-process, flatten single-level troops
-    5. Write out JSON
-    6. Delete the CSV file
+    3. Parse disk CSV -> final_data with levels:
+       - If columns[1] is an int-type (e.g. “Level”), use that for your level keys.
+       - Otherwise auto-enumerate each row under the same troop as levels “1”, “2”, …
+    4. Post-process:
+       - Promote any column that only appears in level “1” up to troop-level.
+       - If a troop ends up with only one level, flatten it.
+    5. Write out JSON with (troop → levels + troop-level props).
+    6. Delete the CSV file.
     """
     decompressed_data, _ = decompress(data)
 
@@ -121,77 +126,104 @@ def process_csv(data, file_path, save_name):
     with open(file_path, "wb") as f:
         f.write(decompressed_data)
 
-    # 2) Read & parse it
-    with open(file_path, encoding='utf-8') as csvf:
+    # 2) Load rows and grab the header + type row
+    with open(file_path, encoding="utf-8") as csvf:
         rows = list(csv.reader(csvf))
-
     if len(rows) < 2:
         with open(f"{save_name}.json", "w", encoding="utf-8") as jf:
             jf.write("{}")
-        # delete the csv before returning
-        try:
-            os.remove(file_path)
-        except OSError as e:
-            logging.warning(f"Could not delete {file_path}: {e}")
+        os.remove(file_path)
         return
 
-    columns = rows[0]
-    final_data = {}
-    current_troop = None
-    current_level = None
+    columns   = rows[0]
+    types_row = rows[1]
 
-    # 3) Build final_data
+    # detect if col[1] really is a numeric level
+    is_numeric_level = (
+        types_row[1].lower() == "int"
+        or "level" in columns[1].lower()
+    )
+
+    final_data     = {}
+    current_troop  = None
+    level_counter  = None
+    current_level  = None
+
+    # 3) Parse & build final_data
     for row in rows[2:]:
-        if not row:
+        if not any(cell.strip() for cell in row):
             continue
+
+        # new troop?
         if row[0].strip():
             current_troop = row[0].strip()
-        if len(row) > 1 and row[1].strip():
-            current_level = row[1].strip()
-        if not (current_troop and current_level):
+            final_data[current_troop] = {}
+            # reset counters
+            if not is_numeric_level:
+                level_counter = 1
+            current_level = None
+
+        if current_troop is None:
             continue
 
-        troop_dict = final_data.setdefault(current_troop, {})
-        level_dict = troop_dict.setdefault(current_level, {})
+        # pick level key
+        if is_numeric_level:
+            # existing behavior: use col[1]
+            if len(row) > 1 and row[1].strip():
+                current_level = row[1].strip()
+            if not current_level:
+                continue
+            lvl_key = current_level
+        else:
+            # auto-enumerate each data-row
+            lvl_key = str(level_counter)
+            level_counter += 1
 
+        # grab/create dict for this level
+        level_dict = final_data[current_troop].setdefault(lvl_key, {})
+
+        # fill in columns
         for idx, col_name in enumerate(columns):
-            if idx < len(row):
-                val = row[idx].strip()
-                if not val:
-                    continue
-                if val.lower() == "true":
-                    conv = True
-                elif val.lower() == "false":
-                    conv = False
-                elif val.isdigit() or (val.startswith("-") and val[1:].isdigit()):
-                    conv = int(val)
-                else:
-                    conv = val
-                level_dict[col_name] = conv
+            if idx >= len(row):
+                break
+            val = row[idx].strip()
+            if val == "":
+                continue
+            low = val.lower()
+            if low == "true":
+                conv = True
+            elif low == "false":
+                conv = False
+            elif val.isdigit() or (val.startswith("-") and val[1:].isdigit()):
+                conv = int(val)
+            else:
+                conv = val
+            level_dict[col_name] = conv
 
-    # 4) Promote base-only columns
+    # 4a) Promote any base-level-only columns up to troop-level
     for troop, levels in list(final_data.items()):
-        lvls = sorted(levels.keys(), key=lambda x: int(x) if x.isdigit() else 999999)
-        if len(lvls) > 1:
-            base = lvls[0]
-            for col in list(levels[base].keys()):
-                if not any(col in levels[l] for l in lvls[1:]):
-                    final_data[troop][col] = levels[base][col]
-                    del levels[base][col]
+        lvl_keys = sorted(levels.keys(), key=lambda x: int(x) if x.isdigit() else 999999)
+        if len(lvl_keys) <= 1:
+            continue
+        base = lvl_keys[0]
+        for col in list(levels[base].keys()):
+            if not any(col in levels[l] for l in lvl_keys[1:]):
+                final_data[troop][col] = levels[base][col]
+                del levels[base][col]
 
-    # 5) Flatten single-level troops
+    # 4b) Flatten troops with exactly one level
     for troop in list(final_data.keys()):
         levels = final_data[troop]
         if isinstance(levels, dict) and len(levels) == 1:
-            only, data_dict = next(iter(levels.items()))
+            only_lvl, data_dict = next(iter(levels.items()))
             if isinstance(data_dict, dict):
                 final_data[troop] = data_dict
 
-    # 6) Write JSON
+    # 5) Write final JSON
     with open(f"{save_name}.json", "w", encoding="utf-8") as jf:
-        jf.write(json.dumps(final_data, indent=2))
+        json.dump(final_data, jf, indent=2)
 
-    # ---- new: delete the CSV file ----
+    # 6) Delete the CSV
     try:
         os.remove(file_path)
     except OSError as e:
@@ -256,6 +288,15 @@ def master_json():
     with open(f"skins.json", "r", encoding="utf-8") as f:
         full_skin_data: dict = json.load(f)
 
+    with open(f"supercharges.json", "r", encoding="utf-8") as f:
+        full_supercharges_data: dict = json.load(f)
+
+    with open(f"seasonal_defense_archetypes.json", "r", encoding="utf-8") as f:
+        full_seasonal_defenses: dict = json.load(f)
+
+    with open(f"seasonal_defense_modules.json", "r", encoding="utf-8") as f:
+        full_seasonal_modules: dict = json.load(f)
+
     new_translation_data = {}
     for translation_key, translation_data in full_translation_data.items():
         new_translation_data[translation_key] = {"EN" : translation_data.get("EN")}
@@ -270,6 +311,12 @@ def master_json():
         resource_TID = f'TID_{building_data.get("BuildResource")}'.upper()
         village_type = building_data.get("VillageType", 0)
 
+        superchargeable = False
+        for supercharge_data in full_supercharges_data.values():
+            if supercharge_data.get("Name") == building_name:
+                superchargeable = True
+                break
+
         hold_data = {
             "_id" : _id,
             "name": new_translation_data.get(building_data.get("TID")).get("EN"),
@@ -282,6 +329,7 @@ def master_json():
             "upgrade_resource": new_translation_data.get(resource_TID, {}).get("EN"),
             "village_type": "home" if not village_type else "builder_base",
             "width" : building_data.get("Width"),
+            "superchargeable" : superchargeable,
             "levels" : []
         }
         for level, level_data in building_data.items():
@@ -301,6 +349,103 @@ def master_json():
             })
 
         new_building_data.append(hold_data)
+
+    #SUPERCHARGE JSON BUILD
+    new_supercharge_data = []
+    for supercharge_name, supercharge_data in full_supercharges_data.items():
+        target = supercharge_data.get("TargetBuilding")
+        name = new_translation_data.get(full_building_data.get(target).get("TID")).get("EN")
+
+        resource = supercharge_data.get("BuildResource")
+        resource = resource if resource != "DarkElixir" else "Dark_Elixir"
+        resource_TID = f'TID_{resource}'.upper()
+
+        hold_data = {
+            "name" : f"{name} Supercharge",
+            "target_building": name,
+            "required_townhall_level": supercharge_data.get("RequiredTownHallLevel"),
+            "upgrade_resource": new_translation_data.get(resource_TID).get("EN"),
+            "levels" : []
+        }
+        for level, level_data in supercharge_data.items():
+            if not isinstance(level_data, dict):
+                continue
+            upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
+            upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
+            upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
+            upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+
+            DPS = level_data.get("DPS")
+            #if the level doesnt have a DPS & there is no hitpoints for this row, that means it is a DPS upgrade
+            #unless it is a resource pump, but we dont handle those anyways
+            if not DPS and not level_data.get("Hitpoints"):
+                DPS = supercharge_data.get("DPS")
+            hold_data["levels"].append({
+                "level": int(level),
+                "upgrade_cost": level_data.get("BuildCost"),
+                "upgrade_time": upgrade_time_seconds,
+                "hitpoints_buff": level_data.get("Hitpoints"),
+                "dps_buff": DPS,
+            })
+        new_supercharge_data.append(hold_data)
+
+    #SEASONAL DEFENSE JSON BUILD
+    new_seasonal_defense_data = []
+    for seasonal_def_name, seasonal_def_data in full_seasonal_defenses.items():
+        spaced_name = re.sub(r'([A-Z])', r' \1', seasonal_def_name).strip().replace(" ", "_")
+        name_TID = f"TID_BUILDING_{spaced_name}".upper()
+        info_TID = f"TID_BUILDING_{spaced_name}_INFO".upper()
+
+        #may be an unreleased season def
+        if not new_translation_data.get(name_TID):
+            continue
+
+        hold_data = {
+            "name": new_translation_data.get(name_TID).get("EN"),
+            "info": new_translation_data.get(info_TID).get("EN"),
+            "TID" : {
+                "name": name_TID,
+                "info": info_TID,
+            },
+            "module_1": {},
+            "module_2": {},
+            "module_3": {},
+        }
+        for count, module in enumerate(seasonal_def_data.get("Modules").split(";"), 1):
+            module_data = full_seasonal_modules.get(module)
+
+            resource = module_data.get("BuildResource")
+            resource = resource if resource != "DarkElixir" else "Dark_Elixir"
+            resource_TID = f'TID_{resource}'.upper()
+
+            hold_data[f"module_{count}"] = {
+                "name": new_translation_data.get(module_data.get("TID")).get("EN"),
+                "TID" : {
+                    "name" : module_data.get("TID"),
+                },
+                "upgrade_resource": new_translation_data.get(resource_TID).get("EN"),
+                "levels" : []
+            }
+            for level, level_data in module_data.items():
+                if not isinstance(level_data, dict):
+                    continue
+                upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
+                upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
+                upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
+                upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+
+                ability_data = full_abilities_data.get(module_data.get("SpecialAbility")).get(level)
+                ability_data.pop("ActivateFromGameSystem", None)
+                ability_data.pop("DeactivateFromGameSystem", None)
+                ability_data.pop("Level", None)
+
+                hold_data[f"module_{count}"]["levels"].append({
+                    "level": int(level),
+                    "upgrade_cost": level_data.get("BuildCost"),
+                    "upgrade_time": upgrade_time_seconds,
+                    "ability_data": ability_data
+                })
+        new_seasonal_defense_data.append(hold_data)
 
     #TROOP JSON BUILD
     lab_data = next((item for item in new_building_data if item["name"] == "Laboratory")).get("levels")
@@ -731,6 +876,8 @@ def master_json():
 
     master_data = {
         "buildings": new_building_data,
+        "supercharges": new_supercharge_data,
+        "seasonal_defenses": new_seasonal_defense_data,
         "traps" : new_trap_data,
         "troops": new_troop_data,
         "heroes": new_hero_data,
@@ -777,5 +924,5 @@ def main():
             process_csv(data=data, file_path=target_save, save_name=target_save.split(".")[0])
 
 if __name__ == "__main__":
-    main()
-    #master_json()
+    #main()
+    master_json()

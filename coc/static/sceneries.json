@@ -12,6 +12,32 @@
     "Thumbnail": "image/background_icons/village_bgr_image.sctx"
   },
   "BBDefault": {
+    "1": {
+      "VillageObjectLocator": "StageGateNext:gate_next_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "StageGatePrev:gate_prev_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 5
+    },
+    "3": {
+      "VillageObjectLocator": "Shipyard2:ship_location",
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 5
+    },
+    "4": {
+      "VillageObjectLocator": "Rowboat2:boat_location",
+      "ParallaxLayer": "foreground_4",
+      "ParallaxStrength": 20
+    },
+    "5": {
+      "VillageObjectLocator": "BB_harbor:harbor_location"
+    },
+    "6": {
+      "VillageObjectLocator": "LootCartBB:loot_cart_bb_location"
+    },
     "Name": "BBDefault",
     "HomeType": "BB",
     "DefaultBackground": true,
@@ -22,9 +48,6 @@
     "TopLayer": "fireflies_above",
     "Icon": "image/background_icons/scenery_builderbase_stage01.sctx",
     "Thumbnail": "image/background_icons/bb_stage1_bgr_image.sctx",
-    "VillageObjectLocator": "LootCartBB:loot_cart_bb_location",
-    "ParallaxLayer": "foreground_4",
-    "ParallaxStrength": 20,
     "NightMode": true
   },
   "WarDefault": {
@@ -101,6 +124,18 @@
     "Music": "music/regular_jungle_dl_opt.ogg"
   },
   "EpicJungle": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "EpicJungle",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_EPIC_JUNGLE",
@@ -108,7 +143,6 @@
     "Foreground": "Player_Background",
     "Icon": "image/background_icons/scenery_epic_jungle_dl_opt.sctx",
     "Thumbnail": "image/background_icons/epic_jungle_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/Epic_Jungle_Scenery_Amb_Music_dl_opt.ogg"
   },
   "WarMake": {
@@ -133,6 +167,14 @@
     "Music": "music/9th_Anniversay_Scenery_Music_dl_opt.ogg"
   },
   "SpookyVillage": {
+    "1": {
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -15
+    },
+    "2": {
+      "ParallaxLayer": "foreground",
+      "ParallaxStrength": 15
+    },
     "Name": "SpookyVillage",
     "HomeType": "HOME",
     "TID": "TID_PUMPKIN_GRAVEYARD_SCENERY",
@@ -143,11 +185,17 @@
     "Icon": "image/background_icons/spooky_scenery_dl_opt.sctx",
     "Thumbnail": "image/background_icons/spooky_bgr_image_dl_opt.sctx",
     "MakeCreator": "Naji Kadalayi",
-    "ParallaxLayer": "foreground",
-    "ParallaxStrength": 15,
     "Music": "music/clash_halloween_scenery_01_dl_opt.ogg"
   },
   "SnowDay": {
+    "1": {
+      "ParallaxLayer": "foreground",
+      "ParallaxStrength": 25
+    },
+    "2": {
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
     "Name": "SnowDay",
     "HomeType": "HOME",
     "TID": "TID_SNOWED_IN_SCENERY",
@@ -157,11 +205,21 @@
     "BuildingBasesSWF": "sc/scenery_bases_snowedin_dl_opt.sc",
     "Icon": "image/background_icons/scenery_snowed_in_dl_opt.sctx",
     "Thumbnail": "image/background_icons/snowed_in_image_dl_opt.sctx",
-    "ParallaxLayer": "background",
-    "ParallaxStrength": -5,
     "Music": "music/clash_winter_scenery_01_dl_opt.ogg"
   },
   "TigerMountain": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "TigerMountain",
     "HomeType": "HOME",
     "TID": "TID_TIGER_MOUNTAIN_SCENERY",
@@ -171,7 +229,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_cny2022_dl_opt.sc",
     "Icon": "image/background_icons/scenery_lunar_ny_22_dl_opt.sctx",
     "Thumbnail": "image/background_icons/lny2022_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/Tiger_Mountain_Scenery_Amb_Music_dl_opt.ogg"
   },
   "Pixel": {
@@ -200,6 +257,18 @@
     "ParallaxStrength": 25
   },
   "Shadow": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Shadow",
     "HomeType": "HOME",
     "TID": "TID_SHADOW_SCENERY",
@@ -209,7 +278,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_shadow_dl_opt.sc",
     "Icon": "image/background_icons/scenery_shadow_dl_opt.sctx",
     "Thumbnail": "image/background_icons/shadow_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground",
     "ParallaxStrength": 15,
     "Music": "music/Shadow_Scenery_Ambience_Plus_Music_dl_opt.ogg"
@@ -240,6 +308,18 @@
     "ParallaxStrength": 25
   },
   "10thAnniversary": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "10thAnniversary",
     "HomeType": "HOME",
     "TID": "TID_10TH_CLASHIVERSARY_SCENERY",
@@ -247,10 +327,25 @@
     "Foreground": "Player_Background",
     "Icon": "image/background_icons/scenery_10y_dl_opt.sctx",
     "Thumbnail": "image/background_icons/10yanniversary_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/10th_Anniversay_Scenery_Music_dl_opt.ogg"
   },
   "ClashFest": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground",
+      "ParallaxStrength": 5
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 10
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "ClashFest",
     "HomeType": "HOME",
     "TID": "TID_CLASHFEST_SCENERY",
@@ -259,9 +354,6 @@
     "BaseSWF": "sc/scenery_gamearea_clashfest_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashfest_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashfest_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground2",
-    "ParallaxStrength": 10,
     "Music": "music/Clash_Festival_Scenery_Mix_dl_opt.ogg"
   },
   "Magic": {
@@ -278,6 +370,22 @@
     "Music": "music/magical_scenery_amb_music_dl_opt.ogg"
   },
   "EpicMagic": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 5
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "EpicMagic",
     "HomeType": "HOME",
     "TID": "TID_EPIC_MAGIC_SCENERY",
@@ -286,12 +394,35 @@
     "BaseSWF": "sc/scenery_gamearea_clashfest_dl_opt.sc",
     "Icon": "image/background_icons/scenery_th15_epic_dl_opt.sctx",
     "Thumbnail": "image/background_icons/th15_epic_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground2",
-    "ParallaxStrength": 5,
     "Music": "music/magical_scenery_amb_music_dl_opt.ogg"
   },
   "CapitalCore": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 4
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "CapitalCore",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -301,12 +432,35 @@
     "Foreground": "Player_Background",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_core_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_core_bgr_image.sctx"
   },
   "Capital_layout_2a": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2a",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -316,12 +470,35 @@
     "Foreground": "Player_Background_layout2a",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2b": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2b",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -331,12 +508,35 @@
     "Foreground": "Player_Background_layout2b",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2c": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2c",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -346,12 +546,35 @@
     "Foreground": "Player_Background_layout2c",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "CapitalCore_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 4
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "CapitalCore_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -361,12 +584,35 @@
     "Foreground": "Enemy_Background",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_core_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_core_bgr_image.sctx"
   },
   "Capital_layout_2d": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2d",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -376,12 +622,35 @@
     "Foreground": "Player_Background_layout2d",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2a_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2a_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -391,12 +660,35 @@
     "Foreground": "Enemy_Background_layout2a",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2b_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2b_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -406,12 +698,35 @@
     "Foreground": "Enemy_Background_layout2b",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2c_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2c_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -421,12 +736,35 @@
     "Foreground": "Enemy_Background_layout2c",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2d_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2d_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -436,12 +774,33 @@
     "Foreground": "Enemy_Background_layout2d",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Spooky2022": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10
+    },
     "Name": "Spooky2022",
     "HomeType": "HOME",
     "TID": "TID_SPOOKY2022_SCENERY",
@@ -451,12 +810,33 @@
     "BuildingBasesSWF": "sc/scenery_bases_spooky2022_dl_opt.sc",
     "Icon": "image/background_icons/scenery_spooky2022_dl_opt.sctx",
     "Thumbnail": "image/background_icons/spooky2022_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/spooky_scenery_2022_ambandmusic_dl_opt.ogg"
   },
   "clashmas_2022": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10
+    },
     "Name": "clashmas_2022",
     "HomeType": "HOME",
     "TID": "TID_JOLLY_SCENERY",
@@ -466,12 +846,21 @@
     "BuildingBasesSWF": "sc/scenery_bases_clashmas_2022_dl_opt.sc",
     "Icon": "image/background_icons/scenery_jollyscenery_dl_opt.sctx",
     "Thumbnail": "image/background_icons/jolly_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/jolly_scenery_music_plus_amb_dl_opt.ogg"
   },
   "Lny2023": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Lny2023",
     "HomeType": "HOME",
     "TID": "TID_MAGIC_THEATRE_SCENERY",
@@ -481,11 +870,28 @@
     "BuildingBasesSWF": "sc/scenery_bases_lny2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_lny2023_dl_opt.sctx",
     "Thumbnail": "image/background_icons/lny2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground0",
     "Music": "music/LNY_2023_Scenery_ambience_and_music_dl_opt.ogg"
   },
   "Colorfest_2023": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": 0
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 20
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Colorfest_2023",
     "HomeType": "HOME",
     "TID": "TID_PAINTER_SCENERY",
@@ -495,12 +901,35 @@
     "BuildingBasesSWF": "sc/scenery_bases_colorfest2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_color2023_dl_opt.sctx",
     "Thumbnail": "image/background_icons/color_fest2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground_2",
-    "ParallaxStrength": 20,
     "Music": "music/painter_scnenery_amb_plus_music_01_dl_opt.ogg"
   },
   "BB_Stage2": {
+    "1": {
+      "VillageObjectLocator": "StageGateNext:gate_next_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 7
+    },
+    "2": {
+      "VillageObjectLocator": "StageGatePrev:gate_prev_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 7
+    },
+    "3": {
+      "VillageObjectLocator": "Shipyard2:ship_location",
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 15
+    },
+    "4": {
+      "VillageObjectLocator": "Rowboat2:boat_location",
+      "ParallaxLayer": "foreground_4",
+      "ParallaxStrength": 15
+    },
+    "5": {
+      "VillageObjectLocator": "BB_harbor:harbor_location"
+    },
+    "6": {
+      "VillageObjectLocator": "LootCartBB:loot_cart_bb_location"
+    },
     "Name": "BB_Stage2",
     "HomeType": "BB",
     "FreeBackground": true,
@@ -512,9 +941,6 @@
     "BuildingBasesSWF": "sc/bb_scenery_bases_cave.sc",
     "Icon": "image/background_icons/scenery_builderbase_stage02.sctx",
     "Thumbnail": "image/background_icons/bb_stage2_bgr_image.sctx",
-    "VillageObjectLocator": "LootCartBB:loot_cart_bb_location",
-    "ParallaxLayer": "foreground_4",
-    "ParallaxStrength": 15,
     "NightMode": true
   },
   "BBVillageBackground": {
@@ -523,6 +949,18 @@
     "EnabledByCalendar": true
   },
   "DarkAges": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "DarkAges",
     "HomeType": "HOME",
     "TID": "TID_DARK_AGES_SCENERY",
@@ -532,12 +970,35 @@
     "BuildingBasesSWF": "sc/scenery_bases_darkages2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_darkages2023_dl_opt.sctx",
     "Thumbnail": "image/background_icons/darkages23_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "background",
     "ParallaxStrength": 0,
     "Music": "music/Dark_Ages_Scenery_Ambience_and_music_dl_opt.ogg"
   },
   "BooksOfClash01": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10
+    },
     "Name": "BooksOfClash01",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_BOOKS_OF_CLASH",
@@ -547,9 +1008,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_booksofclash01_dl_opt.sc",
     "Icon": "image/background_icons/scenery_books_of_clash_01_dl_opt.sctx",
     "Thumbnail": "image/background_icons/book_of_clash_01_bgr_image.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/clash_comic_book_scenery_music_dl_opt.ogg"
   },
   "League_23": {
@@ -565,6 +1023,30 @@
     "Music": "music/clash_league_scenery_music_dl_opt.ogg"
   },
   "Goblin_Cave": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 20
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10
+    },
     "Name": "Goblin_Cave",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_GOBLIN_CAVES",
@@ -574,12 +1056,35 @@
     "BuildingBasesSWF": "sc/scenery_bases_goblincaves_dl_opt.sc",
     "Icon": "image/background_icons/scenery_goblin_cave_dl_opt.sctx",
     "Thumbnail": "image/background_icons/goblin_cave_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/Goblin_Scenery_Music_Ambience_dl_opt.ogg"
   },
   "Capital_layout_2c_1": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2c_1",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -589,12 +1094,35 @@
     "Foreground": "Player_Background_layout2c_1",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Capital_layout_2c_1_Raid": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -20,
+      "ClanBadgeClip": "clan_pattern"
+    },
+    "2": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10,
+      "ClanBadgeClip": "banner"
+    },
+    "3": {
+      "ParallaxLayer": "background_3",
+      "ParallaxStrength": -5
+    },
+    "4": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "5": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "6": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 12
+    },
     "Name": "Capital_layout_2c_1_Raid",
     "HomeType": "CAPITAL",
     "DefaultBackground": true,
@@ -604,12 +1132,33 @@
     "Foreground": "Enemy_Background_layout2c_1",
     "BaseSWF": "sc/background_cc_gamearea.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 12,
-    "ClanBadgeClip": "banner"
+    "Thumbnail": "image/background_icons/clan_capital_layout2_1_bgr_image.sctx"
   },
   "Chess": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10
+    },
     "Name": "Chess",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_CHESS",
@@ -619,12 +1168,35 @@
     "BuildingBasesSWF": "sc/scenery_bases_chess_2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_chess2023_dl_opt.sctx",
     "Thumbnail": "image/background_icons/chess2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/chess_scenery_music_dl_opt.ogg"
   },
   "BB_CrystalCaverns": {
+    "1": {
+      "VillageObjectLocator": "StageGateNext:gate_next_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "StageGatePrev:gate_prev_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "3": {
+      "VillageObjectLocator": "Shipyard2:ship_location",
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 15
+    },
+    "4": {
+      "VillageObjectLocator": "Rowboat2:boat_location",
+      "ParallaxLayer": "foreground_4",
+      "ParallaxStrength": 15
+    },
+    "5": {
+      "VillageObjectLocator": "BB_harbor:harbor_location"
+    },
+    "6": {
+      "VillageObjectLocator": "LootCartBB:loot_cart_bb_location"
+    },
     "Name": "BB_CrystalCaverns",
     "HomeType": "BB",
     "TID": "TID_SCENERY_CRYSTAL_CAVERNS",
@@ -634,12 +1206,33 @@
     "BuildingBasesSWF": "sc/bb_scenery_bases_cave.sc",
     "Icon": "image/background_icons/scenery_bb_crystal_caverns_dl_opt.sctx",
     "Thumbnail": "image/background_icons/bb_crystal_caverns_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "LootCartBB:loot_cart_bb_location",
-    "ParallaxLayer": "foreground_4",
-    "ParallaxStrength": 15,
     "NightMode": true
   },
   "Clashiversary_2023": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "background",
+      "ParallaxStrength": 0
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 15
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 20
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -5
+    },
+    "5": {
+      "ParallaxLayer": "background_2",
+      "ParallaxStrength": -10
+    },
     "Name": "Clashiversary_2023",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_FUTURE",
@@ -649,12 +1242,25 @@
     "BuildingBasesSWF": "sc/scenery_bases_clashiversary2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashiversary_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashiversary2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background_2",
-    "ParallaxStrength": -10,
     "Music": "music/clashiversary_2023_dl_opt.ogg"
   },
   "Ghost2023": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 10
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Ghost2023",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_GHOST",
@@ -664,9 +1270,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_ghost2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_ghost23_dl_opt.sctx",
     "Thumbnail": "image/background_icons/ghost2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground_1",
-    "ParallaxStrength": 10,
     "Music": "music/CoC_Ghost_Scenery_dl_opt.ogg"
   },
   "NPCDefault2": {
@@ -682,6 +1285,22 @@
     "Thumbnail": "image/background_icons/village_bgr_image.sctx"
   },
   "NPCDefault3": {
+    "1": {
+      "ParallaxLayer": "background",
+      "ParallaxStrength": 0
+    },
+    "2": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "3": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "4": {
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 20
+    },
     "Name": "NPCDefault3",
     "HomeType": "NPC",
     "DefaultBackground": true,
@@ -691,11 +1310,21 @@
     "Foreground": "new_background_npc_03",
     "BuildingBasesSWF": "sc/background_npc_scenery3_bases.sc",
     "Icon": "image/background_icons/scenery_homevillage.sctx",
-    "Thumbnail": "image/background_icons/village_bgr_image.sctx",
-    "ParallaxLayer": "foreground_3",
-    "ParallaxStrength": 20
+    "Thumbnail": "image/background_icons/village_bgr_image.sctx"
   },
   "Champion_2023": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -10
+    },
+    "2": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "3": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 15
+    },
     "Name": "Champion_2023",
     "HomeType": "WAR",
     "TID": "TID_SCENERY_CHAMPION",
@@ -705,11 +1334,25 @@
     "BuildingBasesSWF": "sc/scenery_war_bases_champion23_dl_opt.sc",
     "Icon": "image/background_icons/scenery_war_champion23_dl_opt.sctx",
     "Thumbnail": "image/background_icons/war_champion23_bgr_image_dl_opt.sctx",
-    "ParallaxLayer": "foreground_2",
-    "ParallaxStrength": 15,
     "Music": "music/Champion_Scenery_Music_Ambience_dl_opt.ogg"
   },
   "Gingerbread": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 20
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Gingerbread",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_GINGERBREAD",
@@ -719,12 +1362,35 @@
     "BuildingBasesSWF": "sc/scenery_bases_clashmas_2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashmas2023_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashmas2023_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground1",
-    "ParallaxStrength": 10,
     "Music": "music/Gingerbread_Clashmas23_Music_and_Ambience_dl_opt.ogg"
   },
   "Ofthenorth": {
+    "1": {
+      "VillageObjectLocator": "StageGateNext:gate_next_location",
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "StageGatePrev:gate_prev_location",
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 10
+    },
+    "3": {
+      "VillageObjectLocator": "Shipyard2:ship_location",
+      "ParallaxLayer": "foreground_3",
+      "ParallaxStrength": 15
+    },
+    "4": {
+      "VillageObjectLocator": "Rowboat2:boat_location",
+      "ParallaxLayer": "foreground_4",
+      "ParallaxStrength": 15
+    },
+    "5": {
+      "VillageObjectLocator": "BB_harbor:harbor_location"
+    },
+    "6": {
+      "VillageObjectLocator": "LootCartBB:loot_cart_bb_location"
+    },
     "Name": "Ofthenorth",
     "HomeType": "BB",
     "TID": "TID_SCENERY_OFTHENORTH",
@@ -733,12 +1399,21 @@
     "BuildingBasesSWF": "sc/bb_scenery_bases_ofthenorth_dl_opt.sc",
     "Icon": "image/background_icons/scenery_builderbase_ofthenorth.sctx",
     "Thumbnail": "image/background_icons/bb_ofthenorth_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "LootCartBB:loot_cart_bb_location",
-    "ParallaxLayer": "foreground_4",
-    "ParallaxStrength": 15,
     "NightMode": true
   },
   "Lny2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Lny2024",
     "HomeType": "HOME",
     "TID": "TID_DRAGON_PALACE_SCENERY",
@@ -748,13 +1423,50 @@
     "BuildingBasesSWF": "sc/scenery_bases_lny2024_dl_opt.sc",
     "Icon": "image/background_icons/scenery_lny2024_dl_opt.sctx",
     "Thumbnail": "image/background_icons/lny2024_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 15,
     "Music": "music/LNY_2024_scenery_music_dl_opt.ogg",
     "Component": "snowfall;sine;plankton;9;400;0;-10;30;60"
   },
   "space2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground4",
+      "ParallaxStrength": 20
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "foreground3",
+      "ParallaxStrength": 15
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 10
+    },
+    "5": {
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 5
+    },
+    "6": {
+      "ParallaxLayer": "background4",
+      "ParallaxStrength": -20
+    },
+    "7": {
+      "ParallaxLayer": "background3",
+      "ParallaxStrength": -15
+    },
+    "8": {
+      "ParallaxLayer": "background2",
+      "ParallaxStrength": -10
+    },
+    "9": {
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -5
+    },
     "Name": "space2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_SPACE",
@@ -764,13 +1476,22 @@
     "BuildingBasesSWF": "sc/scenery_bases_space_dl_opt.sc",
     "Icon": "image/background_icons/space_scenery_dl_opt.sctx",
     "Thumbnail": "image/background_icons/space_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/spacescenery_ambience_and_music_dl_opt.ogg",
-    "Component": "hideclip;combat;foreground1,foreground2,foreground3,foreground4,trucks_and_bikes",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -5
+    "Component": "hideclip;combat;foreground1,foreground2,foreground3,foreground4,trucks_and_bikes"
   },
   "Egypt2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Egypt2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_EGYPT",
@@ -780,10 +1501,21 @@
     "BuildingBasesSWF": "sc/scenery_bases_egypt2024_dl_opt.sc",
     "Icon": "image/background_icons/scenery_egypt2024_dl_opt.sctx",
     "Thumbnail": "image/background_icons/egypt2024_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/egypt2024_Scenery_Amb_Music_dl_opt.ogg"
   },
   "Clashball2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Clashball2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_CLASHBALL",
@@ -792,11 +1524,22 @@
     "BaseSWF": "sc/scenery_gamearea_clashball_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashball_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashball_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/Haaland2024_scenery_ambience_music_dl_opt.ogg",
     "MaxZoom": 10000
   },
   "WildWest2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "WildWest2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_WILDWEST",
@@ -806,11 +1549,26 @@
     "BuildingBasesSWF": "sc/scenery_bases_wildwest_dl_opt.sc",
     "Icon": "image/background_icons/scenery_wildwest_dl_opt.sctx",
     "Thumbnail": "image/background_icons/wildwest_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/wildwest_scenery_ambience_music_dl_opt.ogg",
     "MaxZoom": 10000
   },
   "ClashGames": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -5
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "background2",
+      "ParallaxStrength": -20
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "ClashGames",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_CLASHGAMES",
@@ -819,13 +1577,22 @@
     "BaseSWF": "sc/scenery_gamearea_clashgames_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashgames_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashgames_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background2",
-    "ParallaxStrength": -20,
     "Music": "music/clashgames24_scenery_ambience_music_dl_opt.ogg",
     "MaxZoom": 10000
   },
   "Anime2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Anime2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_ANIME",
@@ -835,10 +1602,21 @@
     "BuildingBasesSWF": "sc/scenery_bases_anime_2024_dl_opt.sc",
     "Icon": "image/background_icons/sceney_anime2024_dl_opt.sctx",
     "Thumbnail": "image/background_icons/anime2024_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/Anime2024_scenery_ambience_music_dl_opt.ogg"
   },
   "Mashup": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Mashup",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_MASHUP",
@@ -847,10 +1625,65 @@
     "BaseSWF": "sc/scenery_gamearea_mashup_dl_opt.sc",
     "Icon": "image/background_icons/scenery_mashup_dl_opt.sctx",
     "Thumbnail": "image/background_icons/mashup_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "Music": "music/Haaland2024_scenery_ambience_music_dl_opt.ogg"
   },
   "TTRPG": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 15,
+      "ClickableTriggerInstanceName": "clickable_a",
+      "ClickableSpawnInstanceName": "clickable_spawn_a",
+      "ClickableSWF": "sc/scenery_clickable_ttrpg_dl_opt.sc",
+      "ClickableExportName": "ttrpg_clickable_a",
+      "ClickableSfx": "sfx/Cine_TTRPG_ArcherQueen_dl_opt.ogg",
+      "ClickableSfxVolume": 100
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10,
+      "ClickableTriggerInstanceName": "clickable_b",
+      "ClickableSpawnInstanceName": "clickable_spawn_b",
+      "ClickableSWF": "sc/scenery_clickable_ttrpg_dl_opt.sc",
+      "ClickableExportName": "ttrpg_clickable_b",
+      "ClickableSfx": "sfx/Cine_TTRPG_BarbKing_dl_opt.ogg",
+      "ClickableSfxVolume": 100
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ParallaxLayer": "cloudslargea",
+      "ParallaxStrength": -20,
+      "ClickableTriggerInstanceName": "clickable_c",
+      "ClickableSpawnInstanceName": "clickable_spawn_c",
+      "ClickableSWF": "sc/scenery_clickable_ttrpg_dl_opt.sc",
+      "ClickableExportName": "ttrpg_clickable_c",
+      "ClickableSfx": "sfx/Cine_TTRPG_RoyalChamp_dl_opt.ogg",
+      "ClickableSfxVolume": 100
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ParallaxLayer": "cloudslargeb",
+      "ParallaxStrength": -25,
+      "ClickableTriggerInstanceName": "clickable_d",
+      "ClickableSpawnInstanceName": "clickable_spawn_d",
+      "ClickableSWF": "sc/scenery_clickable_ttrpg_dl_opt.sc",
+      "ClickableExportName": "ttrpg_clickable_d",
+      "ClickableSfx": "sfx/Cine_TTRPG_GrandWarden_dl_opt.ogg",
+      "ClickableSfxVolume": 100
+    },
+    "5": {
+      "ParallaxLayer": "cloudssmalla",
+      "ParallaxStrength": -30
+    },
+    "6": {
+      "ParallaxLayer": "cloudssmallb",
+      "ParallaxStrength": -30
+    },
+    "7": {
+      "ParallaxLayer": "background2",
+      "ParallaxStrength": -40
+    },
     "Name": "TTRPG",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_TTRPG",
@@ -862,24 +1695,27 @@
     "IconAnimSWF": "sc/scenery_icon_ttrpg_dl_opt.sc",
     "IconAnimExportName": "icon_anim",
     "Thumbnail": "image/background_icons/ttrpg_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background2",
-    "ParallaxStrength": -40,
     "Music": "music/Amb_TTRPG_Bed_and_Music_dl_opt.ogg",
     "MaxZoom": 26616,
     "IsLarge": true,
     "MinZoomAtEdge": 5000,
     "EnterAnimSWF": "sc/scenery_intro_ttrpg_dl_opt.sc",
     "EnterAnimExportName": "ttrpg_intro_anim",
-    "EnterAnimEffectName": "TTRPG_Transition",
-    "ClickableTriggerInstanceName": "clickable_d",
-    "ClickableSpawnInstanceName": "clickable_spawn_d",
-    "ClickableSWF": "sc/scenery_clickable_ttrpg_dl_opt.sc",
-    "ClickableExportName": "ttrpg_clickable_d",
-    "ClickableSfx": "sfx/Cine_TTRPG_GrandWarden_dl_opt.ogg",
-    "ClickableSfxVolume": 100
+    "EnterAnimEffectName": "TTRPG_Transition"
   },
   "Clashoween2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Clashoween2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_CLASHOWEEN2024",
@@ -889,12 +1725,23 @@
     "BuildingBasesSWF": "sc/scenery_bases_clashoween24_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashoween24_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashoween24_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 20,
     "Music": "music/Amb_Clashoween24_Bed_and_Music_dl_opt.ogg"
   },
   "TH17Scenery": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "TH17Scenery",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_TH17",
@@ -904,12 +1751,23 @@
     "BuildingBasesSWF": "sc/scenery_bases_th17_dl_opt.sc",
     "Icon": "image/background_icons/scenery_th17_dl_opt.sctx",
     "Thumbnail": "image/background_icons/th17_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 10,
     "Music": "music/Amb_TH17_Bed_and_Music_dl_opt.ogg"
   },
   "WarMachine": {
+    "1": {
+      "ParallaxLayer": "background_1",
+      "ParallaxStrength": -10
+    },
+    "2": {
+      "ParallaxLayer": "foreground_1",
+      "ParallaxStrength": 5
+    },
+    "3": {
+      "ParallaxLayer": "foreground_2",
+      "ParallaxStrength": 15
+    },
     "Name": "WarMachine",
     "HomeType": "WAR",
     "TID": "TID_SCENERY_WAR_MACHINE",
@@ -919,11 +1777,21 @@
     "BuildingBasesSWF": "sc/scenery_bases_war_machine_dl_opt.sc",
     "Icon": "image/background_icons/scenery_war_machine_dl_opt.sctx",
     "Thumbnail": "image/background_icons/war_machine_bgr_image_dl_opt.sctx",
-    "ParallaxLayer": "foreground_2",
-    "ParallaxStrength": 15,
     "Music": "music/Amb_WarMachine_Bed_and_Music_dl_opt.ogg"
   },
   "Clashmas2024": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Clashmas2024",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_CLASHMAS2024",
@@ -933,12 +1801,23 @@
     "BuildingBasesSWF": "sc/scenery_bases_chess_2023_dl_opt.sc",
     "Icon": "image/background_icons/scenery_clashmas24_dl_opt.sctx",
     "Thumbnail": "image/background_icons/clashmas24_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 15,
     "Music": "music/Amb_Clashmas24_Bed_and_Music_dl_opt.ogg"
   },
   "FireAndIce": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "FireAndIce",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_FIRE_ICE",
@@ -948,7 +1827,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_fireandice_dl_opt.sc",
     "Icon": "image/background_icons/scenery_fireandice_dl_opt.sctx",
     "Thumbnail": "image/background_icons/fireandice_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 15,
     "Music": "music/Amb_FireIce_Bed_and_Music_dl_opt.ogg"
@@ -958,6 +1836,54 @@
     "EnabledByCalendar": true
   },
   "Lny2025": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 15,
+      "ClickableTriggerInstanceName": "clickable_a",
+      "ClickableSpawnInstanceName": "clickable_spawn_a",
+      "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
+      "ClickableExportName": "lny2025_clickable_a",
+      "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
+      "ClickableSfxVolume": 50
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "background1",
+      "ParallaxStrength": -10,
+      "ClickableTriggerInstanceName": "clickable_b",
+      "ClickableSpawnInstanceName": "clickable_spawn_b",
+      "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
+      "ClickableExportName": "lny2025_clickable_b",
+      "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
+      "ClickableSfxVolume": 50
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location",
+      "ClickableTriggerInstanceName": "clickable_c",
+      "ClickableSpawnInstanceName": "clickable_spawn_c",
+      "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
+      "ClickableExportName": "lny2025_clickable_c",
+      "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
+      "ClickableSfxVolume": 50
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location",
+      "ClickableTriggerInstanceName": "clickable_d",
+      "ClickableSpawnInstanceName": "clickable_spawn_d",
+      "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
+      "ClickableExportName": "lny2025_clickable_d",
+      "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
+      "ClickableSfxVolume": 50
+    },
+    "5": {
+      "ClickableTriggerInstanceName": "clickable_e",
+      "ClickableSpawnInstanceName": "clickable_spawn_e",
+      "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
+      "ClickableExportName": "lny2025_clickable_e",
+      "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
+      "ClickableSfxVolume": 50
+    },
     "Name": "Lny2025",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_LNY2025",
@@ -969,9 +1895,6 @@
     "IconAnimSWF": "sc/scenery_icon_lny2025_dl_opt.sc",
     "IconAnimExportName": "icon_anim",
     "Thumbnail": "image/background_icons/lny2025_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "background1",
-    "ParallaxStrength": -10,
     "Music": "music/Amb_LNY25_Bed_and_Music_dl_opt.ogg",
     "Component": "hideclip;combat;troops_playarea",
     "MaxZoom": 26616,
@@ -979,15 +1902,21 @@
     "MinZoomAtEdge": 5000,
     "EnterAnimSWF": "sc/scenery_intro_lny2025_dl_opt.sc",
     "EnterAnimExportName": "LNY_intro_anim",
-    "EnterAnimEffectName": "LNY25_Transition",
-    "ClickableTriggerInstanceName": "clickable_e",
-    "ClickableSpawnInstanceName": "clickable_spawn_e",
-    "ClickableSWF": "sc/scenery_clickable_lny2025_dl_opt.sc",
-    "ClickableExportName": "lny2025_clickable_e",
-    "ClickableSfx": "sfx/Cine_LNY25_ScrollOpen.ogg",
-    "ClickableSfxVolume": 50
+    "EnterAnimEffectName": "LNY25_Transition"
   },
   "ActionHeroes": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "ActionHeroes",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_ACTION_HEROES",
@@ -997,12 +1926,27 @@
     "BuildingBasesSWF": "sc/scenery_bases_action_dl_opt.sc",
     "Icon": "image/background_icons/scenery_action_dl_opt.sctx",
     "Thumbnail": "image/background_icons/action_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground1",
     "ParallaxStrength": 15,
     "Music": "music/Amb_Military_Bed_and_Music_dl_opt.ogg"
   },
   "April2025": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 20
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "April2025",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_APRIL25",
@@ -1012,12 +1956,25 @@
     "BuildingBasesSWF": "sc/scenery_bases_april25_dl_opt.sc",
     "Icon": "image/background_icons/scenery_april25_dl_opt.sctx",
     "Thumbnail": "image/background_icons/april25_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground2",
-    "ParallaxStrength": 20,
     "Music": "music/Amb_April25_Bed_and_Music_dl_opt.ogg"
   },
   "Japan2025": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location",
+      "ParallaxLayer": "foreground1",
+      "ParallaxStrength": 10
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location",
+      "ParallaxLayer": "foreground2",
+      "ParallaxStrength": 20
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "Japan2025",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_JAPAN25",
@@ -1027,14 +1984,23 @@
     "BuildingBasesSWF": "sc/scenery_bases_japan25_dl_opt.sc",
     "Icon": "image/background_icons/scenery_japan25_dl_opt.sctx",
     "Thumbnail": "image/background_icons/japan25_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
-    "ParallaxLayer": "foreground2",
-    "ParallaxStrength": 20,
     "Music": "music/Amb_Japan25_Bed_and_Music_dl_opt.ogg",
     "MaxZoom": 26616,
     "MinZoomAtEdge": 5000
   },
   "DarkDays": {
+    "1": {
+      "VillageObjectLocator": "Shipyard:ship_location"
+    },
+    "2": {
+      "VillageObjectLocator": "Rowboat:boat_location"
+    },
+    "3": {
+      "VillageObjectLocator": "BalloonBus:air_ship_location"
+    },
+    "4": {
+      "VillageObjectLocator": "Forge:forge_location"
+    },
     "Name": "DarkDays",
     "HomeType": "HOME",
     "TID": "TID_SCENERY_DARK_DAYS",
@@ -1044,7 +2010,6 @@
     "BuildingBasesSWF": "sc/scenery_bases_darkdays_dl_opt.sc",
     "Icon": "image/background_icons/scenery_darkdays_dl_opt.sctx",
     "Thumbnail": "image/background_icons/darkdays_bgr_image_dl_opt.sctx",
-    "VillageObjectLocator": "Forge:forge_location",
     "ParallaxLayer": "foreground_01",
     "ParallaxStrength": 30,
     "Music": "music/Amb_DarkDays_Bed_and_Music_dl_opt.ogg",

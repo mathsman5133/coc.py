@@ -12,6 +12,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -131,6 +132,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -282,6 +284,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -425,6 +428,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -584,6 +588,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -727,6 +732,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -886,6 +892,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1045,6 +1052,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1180,6 +1188,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1363,6 +1372,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1546,6 +1556,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": null,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1705,6 +1716,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1856,6 +1868,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -1991,6 +2004,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2142,6 +2156,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2261,6 +2276,7 @@
       "upgrade_resource": null,
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2332,6 +2348,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2475,6 +2492,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2554,6 +2572,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2665,6 +2684,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2760,6 +2780,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2871,6 +2892,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -2982,6 +3004,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3085,6 +3108,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3156,6 +3180,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3227,6 +3252,7 @@
       "upgrade_resource": null,
       "village_type": "home",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3298,6 +3324,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3409,6 +3436,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": null,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3504,6 +3532,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3599,6 +3628,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3694,6 +3724,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3789,6 +3820,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3884,6 +3916,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -3979,6 +4012,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4074,6 +4108,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4185,6 +4220,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4280,6 +4316,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -4294,6 +4331,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4389,6 +4427,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4484,6 +4523,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4579,6 +4619,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4674,6 +4715,7 @@
       "upgrade_resource": "Gems",
       "village_type": "builder_base",
       "width": 2,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -4688,6 +4730,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4783,6 +4826,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -4797,6 +4841,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4892,6 +4937,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -4987,6 +5033,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5082,6 +5129,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -5096,6 +5144,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5191,6 +5240,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5286,6 +5336,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5381,6 +5432,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5476,6 +5528,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5571,6 +5624,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5650,6 +5704,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5745,6 +5800,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -5759,6 +5815,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5814,6 +5871,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5877,6 +5935,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -5980,6 +6039,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6067,6 +6127,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6170,6 +6231,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 2,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6209,6 +6271,7 @@
       "upgrade_resource": null,
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6256,6 +6319,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 4,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6351,6 +6415,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6382,6 +6447,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -6396,6 +6462,7 @@
       "upgrade_resource": "Builder Gold",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6451,6 +6518,7 @@
       "upgrade_resource": "Builder Elixir",
       "village_type": "builder_base",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6514,6 +6582,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -6528,6 +6597,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6567,6 +6637,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6606,6 +6677,7 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": [
         {
           "level": 1,
@@ -6637,6 +6709,7 @@
       "upgrade_resource": "Elixir",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": []
     },
     {
@@ -6651,7 +6724,1832 @@
       "upgrade_resource": "Gold",
       "village_type": "home",
       "width": 3,
+      "superchargeable": false,
       "levels": []
+    }
+  ],
+  "supercharges": [
+    {
+      "name": "Elixir Collector Supercharge",
+      "target_building": "Elixir Collector",
+      "required_townhall_level": 16,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 1700000,
+          "upgrade_time": 172800,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 1500000,
+          "upgrade_time": 259200,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 3,
+          "upgrade_cost": 1300000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": 50,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Gold Mine Supercharge",
+      "target_building": "Gold Mine",
+      "required_townhall_level": 16,
+      "upgrade_resource": "Elixir",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 1700000,
+          "upgrade_time": 172800,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 1500000,
+          "upgrade_time": 259200,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 3,
+          "upgrade_cost": 1300000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": 50,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Dark Elixir Drill Supercharge",
+      "target_building": "Dark Elixir Drill",
+      "required_townhall_level": 16,
+      "upgrade_resource": "Elixir",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 5100000,
+          "upgrade_time": 259200,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 4500000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": null,
+          "dps_buff": null
+        },
+        {
+          "level": 3,
+          "upgrade_cost": 3900000,
+          "upgrade_time": 432000,
+          "hitpoints_buff": 50,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Hidden Tesla Supercharge",
+      "target_building": "Hidden Tesla",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": null,
+          "dps_buff": 5
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 6000000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": 50,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Inferno Tower Supercharge",
+      "target_building": "Inferno Tower",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 11000000,
+          "upgrade_time": 388800,
+          "hitpoints_buff": null,
+          "dps_buff": 10
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 6500000,
+          "upgrade_time": 561600,
+          "hitpoints_buff": 200,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Scattershot Supercharge",
+      "target_building": "Scattershot",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 11000000,
+          "upgrade_time": 432000,
+          "hitpoints_buff": null,
+          "dps_buff": 3
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 7000000,
+          "upgrade_time": 604800,
+          "hitpoints_buff": 150,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Builder's Hut Supercharge",
+      "target_building": "Builder's Hut",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": null,
+          "dps_buff": 7
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 5000000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": 50,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "X-Bow Supercharge",
+      "target_building": "X-Bow",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 388800,
+          "hitpoints_buff": null,
+          "dps_buff": 10
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 6250000,
+          "upgrade_time": 561600,
+          "hitpoints_buff": 100,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Mortar Supercharge",
+      "target_building": "Mortar",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 7500000,
+          "upgrade_time": 302400,
+          "hitpoints_buff": null,
+          "dps_buff": 3
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 5000000,
+          "upgrade_time": 475200,
+          "hitpoints_buff": 75,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Firespitter Supercharge",
+      "target_building": "Firespitter",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 12000000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": null,
+          "dps_buff": 2
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 604800,
+          "hitpoints_buff": 250,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Air Defense Supercharge",
+      "target_building": "Air Defense",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": null,
+          "dps_buff": 20
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 6000000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": null,
+          "dps_buff": 40
+        }
+      ]
+    },
+    {
+      "name": "Bomb Tower Supercharge",
+      "target_building": "Bomb Tower",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 10000000,
+          "upgrade_time": 345600,
+          "hitpoints_buff": null,
+          "dps_buff": 5
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 6000000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": 100,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Wizard Tower Supercharge",
+      "target_building": "Wizard Tower",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 8000000,
+          "upgrade_time": 302400,
+          "hitpoints_buff": null,
+          "dps_buff": 4
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 4000000,
+          "upgrade_time": 475200,
+          "hitpoints_buff": 75,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Multi-Archer Tower Supercharge",
+      "target_building": "Multi-Archer Tower",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 11500000,
+          "upgrade_time": 475200,
+          "hitpoints_buff": null,
+          "dps_buff": 5
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 8000000,
+          "upgrade_time": 561600,
+          "hitpoints_buff": 100,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Ricochet Cannon Supercharge",
+      "target_building": "Ricochet Cannon",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 11500000,
+          "upgrade_time": 475200,
+          "hitpoints_buff": null,
+          "dps_buff": 8
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 8000000,
+          "upgrade_time": 561600,
+          "hitpoints_buff": 150,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Multi-Gear Tower Supercharge",
+      "target_building": "Multi-Gear Tower",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Gold",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 11500000,
+          "upgrade_time": 518400,
+          "hitpoints_buff": null,
+          "dps_buff": 10
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 8000000,
+          "upgrade_time": 604800,
+          "hitpoints_buff": 150,
+          "dps_buff": null
+        }
+      ]
+    },
+    {
+      "name": "Monolith Supercharge",
+      "target_building": "Monolith",
+      "required_townhall_level": 17,
+      "upgrade_resource": "Dark Elixir",
+      "levels": [
+        {
+          "level": 1,
+          "upgrade_cost": 150000,
+          "upgrade_time": 432000,
+          "hitpoints_buff": null,
+          "dps_buff": 10
+        },
+        {
+          "level": 2,
+          "upgrade_cost": 130000,
+          "upgrade_time": 604800,
+          "hitpoints_buff": 202,
+          "dps_buff": null
+        }
+      ]
+    }
+  ],
+  "seasonal_defenses": [
+    {
+      "name": "Hook Tower",
+      "info": "The Master Builder won\u2019t mind that we borrowed rope from his boat, will he?\\n\\nThe Hook Tower pulls in enemies from afar and stuns them. Sadly, Siege Machines are a bit too heavy!",
+      "TID": {
+        "name": "TID_BUILDING_HOOK_TOWER",
+        "info": "TID_BUILDING_HOOK_TOWER_INFO"
+      },
+      "module_1": {
+        "name": "Hook Tower HP Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_HP"
+        },
+        "upgrade_resource": "Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "HealthOverride": 500
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "HealthOverride": 1000
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "HealthOverride": 1500
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "HealthOverride": 2000
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 7000000,
+            "upgrade_time": 151200,
+            "ability_data": {
+              "HealthOverride": 2500
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "HealthOverride": 3000
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 194400,
+            "ability_data": {
+              "HealthOverride": 3500
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "HealthOverride": 4000
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "HealthOverride": 4500
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "HealthOverride": 5000
+            }
+          }
+        ]
+      },
+      "module_2": {
+        "name": "Hook Tower Atk Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_ATTACK"
+        },
+        "upgrade_resource": "Gold",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "AttackSpeed": 7100,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 43200,
+            "ability_data": {
+              "AttackSpeed": 6900,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 6500000,
+            "upgrade_time": 57600,
+            "ability_data": {
+              "AttackSpeed": 6700,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 72000,
+            "ability_data": {
+              "AttackSpeed": 6500,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 9500000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "AttackSpeed": 6300,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "AttackSpeed": 6100,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "AttackSpeed": 5900,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "AttackSpeed": 5700,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11500000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "AttackSpeed": 5500,
+              "Damage": 1
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "AttackSpeed": 5300,
+              "Damage": 1
+            }
+          }
+        ]
+      },
+      "module_3": {
+        "name": "Hook Tower Effect Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_HOOK_TOWER_MODULE_EFFECT"
+        },
+        "upgrade_resource": "Dark Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "StunOnHitTime": 2700
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 25000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "StunOnHitTime": 2800
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 30000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "StunOnHitTime": 2900
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 35000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "StunOnHitTime": 3000
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 40000,
+            "upgrade_time": 223200,
+            "ability_data": {
+              "StunOnHitTime": 3100
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 55000,
+            "upgrade_time": 230400,
+            "ability_data": {
+              "StunOnHitTime": 3200
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 70000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "StunOnHitTime": 3300
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 85000,
+            "upgrade_time": 244800,
+            "ability_data": {
+              "StunOnHitTime": 3400
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 100000,
+            "upgrade_time": 252000,
+            "ability_data": {
+              "StunOnHitTime": 3500
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 115000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "StunOnHitTime": 3600
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Sun Beam",
+      "info": "Sun Beam has long range and its damage depends on distance to the target.",
+      "TID": {
+        "name": "TID_BUILDING_SUN_BEAM",
+        "info": "TID_BUILDING_SUN_BEAM_INFO"
+      },
+      "module_1": {
+        "name": "Sun Beam HP Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_HP"
+        },
+        "upgrade_resource": "Dark Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "HealthOverride": 2000
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 45000,
+            "upgrade_time": 43200,
+            "ability_data": {
+              "HealthOverride": 2300
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 60000,
+            "upgrade_time": 57600,
+            "ability_data": {
+              "HealthOverride": 2600
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 75000,
+            "upgrade_time": 72000,
+            "ability_data": {
+              "HealthOverride": 2900
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 90000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "HealthOverride": 3200
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 95000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "HealthOverride": 3500
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 100000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "HealthOverride": 3800
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 105000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "HealthOverride": 4100
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 110000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "HealthOverride": 4400
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 115000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "HealthOverride": 4700
+            }
+          }
+        ]
+      },
+      "module_2": {
+        "name": "Sun Beam Atk Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_ATTACK"
+        },
+        "upgrade_resource": "Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 275
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 3000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 300
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 3500000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 325
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 350
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 4500000,
+            "upgrade_time": 223200,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 375
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 230400,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 400
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 7500000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 425
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 244800,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 450
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 252000,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 475
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "AttackSpeed": 1600,
+              "DPS": 500
+            }
+          }
+        ]
+      },
+      "module_3": {
+        "name": "Sun Beam Effect Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_EFFECT"
+        },
+        "upgrade_resource": "Gold",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "Projectile": "SunBeam1"
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "Projectile": "SunBeam2"
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "Projectile": "SunBeam3"
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "Projectile": "SunBeam4"
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 7000000,
+            "upgrade_time": 151200,
+            "ability_data": {
+              "Projectile": "SunBeam5"
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "Projectile": "SunBeam6"
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 194400,
+            "ability_data": {
+              "Projectile": "SunBeam7"
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "Projectile": "SunBeam8"
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "Projectile": "SunBeam9"
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "Projectile": "SunBeam10"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Flame Spinner",
+      "info": "Fear the relentless rotating of a repurposed cooking oven!\\n\\nWithout ever getting dizzy, the Flame Spinner creates an endless whirlwind of fire that damages nearby ground and air enemies.",
+      "TID": {
+        "name": "TID_BUILDING_FLAME_SPINNER",
+        "info": "TID_BUILDING_FLAME_SPINNER_INFO"
+      },
+      "module_1": {
+        "name": "Flame Spinner HP Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_HP"
+        },
+        "upgrade_resource": "Gold",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "HealthOverride": 600
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 3000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "HealthOverride": 1200
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 3500000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "HealthOverride": 1800
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "HealthOverride": 2400
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 4500000,
+            "upgrade_time": 223200,
+            "ability_data": {
+              "HealthOverride": 3000
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 230400,
+            "ability_data": {
+              "HealthOverride": 3600
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 7500000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "HealthOverride": 4200
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 244800,
+            "ability_data": {
+              "HealthOverride": 4800
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 252000,
+            "ability_data": {
+              "HealthOverride": 5400
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "HealthOverride": 6000
+            }
+          }
+        ]
+      },
+      "module_2": {
+        "name": "Flame Spinner Atk Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_ATTACK"
+        },
+        "upgrade_resource": "Dark Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 220
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 35000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 240
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 45000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 260
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 55000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 280
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 65000,
+            "upgrade_time": 151200,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 300
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 75000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 320
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 85000,
+            "upgrade_time": 194400,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 340
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 95000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 360
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 105000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 380
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 115000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "AttackSpeed": 4000,
+              "Damage": 400
+            }
+          }
+        ]
+      },
+      "module_3": {
+        "name": "Flame Spinner Effect Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_FLAME_SPINNER_MODULE_EFFECT"
+        },
+        "upgrade_resource": "Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "BurstCount": 19,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 43200,
+            "ability_data": {
+              "BurstCount": 20,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 6500000,
+            "upgrade_time": 57600,
+            "ability_data": {
+              "BurstCount": 21,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 72000,
+            "ability_data": {
+              "BurstCount": 22,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 9500000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "BurstCount": 23,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "BurstCount": 24,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "BurstCount": 25,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "BurstCount": 26,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11500000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "BurstCount": 27,
+              "BurstDelay": 256
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "BurstCount": 28,
+              "BurstDelay": 256
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Crusher Mortar",
+      "info": "Bowlers from all around line up to get this thing\u2019s autograph! The Crusher Mortar\u2019s spiky boulders land with the grace of Golems, before bouncing around for extra collateral damage. Protective headwear is recommended!",
+      "TID": {
+        "name": "TID_BUILDING_CRUSHER_MORTAR",
+        "info": "TID_BUILDING_CRUSHER_MORTAR_INFO"
+      },
+      "module_1": {
+        "name": "Crusher Mortar HP Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_HP"
+        },
+        "upgrade_resource": "Dark Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "HealthOverride": 400
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 45000,
+            "upgrade_time": 43200,
+            "ability_data": {
+              "HealthOverride": 900
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 60000,
+            "upgrade_time": 57600,
+            "ability_data": {
+              "HealthOverride": 1400
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 75000,
+            "upgrade_time": 72000,
+            "ability_data": {
+              "HealthOverride": 1900
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 90000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "HealthOverride": 2400
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 95000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "HealthOverride": 2900
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 100000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "HealthOverride": 3400
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 105000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "HealthOverride": 3900
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 110000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "HealthOverride": 4400
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 115000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "HealthOverride": 4900
+            }
+          }
+        ]
+      },
+      "module_2": {
+        "name": "Crusher Mortar Atk Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_ATTACK"
+        },
+        "upgrade_resource": "Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 195
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 3000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 200
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 3500000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 205
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 210
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 4500000,
+            "upgrade_time": 223200,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 215
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 230400,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 220
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 7500000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 225
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 244800,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 230
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 252000,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 235
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "AttackSpeed": 1800,
+              "DPS": 240
+            }
+          }
+        ]
+      },
+      "module_3": {
+        "name": "Crusher Mortar Effect Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_CRUSHER_MORTAR_MODULE_EFFECT"
+        },
+        "upgrade_resource": "Gold",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "DamageRadius": 70
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "DamageRadius": 90
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "DamageRadius": 110
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "DamageRadius": 130
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 7000000,
+            "upgrade_time": 151200,
+            "ability_data": {
+              "DamageRadius": 150
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "DamageRadius": 170
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 194400,
+            "ability_data": {
+              "DamageRadius": 190
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "DamageRadius": 210
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "DamageRadius": 230
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "DamageRadius": 250
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Lazy Laser",
+      "info": "Long range laser which initially does very small damage but over time the damage ramps up to be very high.",
+      "TID": {
+        "name": "TID_BUILDING_LAZY_LASER",
+        "info": "TID_BUILDING_LAZY_LASER_INFO"
+      },
+      "module_1": {
+        "name": "Lazy Laser HP Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_HP"
+        },
+        "upgrade_resource": "Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "HealthOverride": 2000
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 4000000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "HealthOverride": 2300
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "HealthOverride": 2600
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 6000000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "HealthOverride": 2900
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 7000000,
+            "upgrade_time": 151200,
+            "ability_data": {
+              "HealthOverride": 3200
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "HealthOverride": 3500
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 9000000,
+            "upgrade_time": 194400,
+            "ability_data": {
+              "HealthOverride": 3800
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "HealthOverride": 4100
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "HealthOverride": 4400
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "HealthOverride": 4700
+            }
+          }
+        ]
+      },
+      "module_2": {
+        "name": "Lazy Laser Atk Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_ATTACK"
+        },
+        "upgrade_resource": "Gold",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "DPS": 40
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 5000000,
+            "upgrade_time": 43200,
+            "ability_data": {
+              "DPS": 41
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 6500000,
+            "upgrade_time": 57600,
+            "ability_data": {
+              "DPS": 42
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 8000000,
+            "upgrade_time": 72000,
+            "ability_data": {
+              "DPS": 43
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 9500000,
+            "upgrade_time": 86400,
+            "ability_data": {
+              "DPS": 44
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 10000000,
+            "upgrade_time": 108000,
+            "ability_data": {
+              "DPS": 45
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 10500000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "DPS": 46
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 11000000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "DPS": 47
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 11500000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "DPS": 48
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 12000000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "DPS": 49
+            }
+          }
+        ]
+      },
+      "module_3": {
+        "name": "Lazy Laser Effect Module",
+        "TID": {
+          "name": "TID_SEAONAL_DEFENSE_LAZY_LASER_MODULE_EFFECT"
+        },
+        "upgrade_resource": "Dark Elixir",
+        "levels": [
+          {
+            "level": 1,
+            "upgrade_cost": 0,
+            "upgrade_time": 0,
+            "ability_data": {
+              "AttackRange": 1500
+            }
+          },
+          {
+            "level": 2,
+            "upgrade_cost": 25000,
+            "upgrade_time": 129600,
+            "ability_data": {
+              "AttackRange": 1550
+            }
+          },
+          {
+            "level": 3,
+            "upgrade_cost": 30000,
+            "upgrade_time": 172800,
+            "ability_data": {
+              "AttackRange": 1600
+            }
+          },
+          {
+            "level": 4,
+            "upgrade_cost": 35000,
+            "upgrade_time": 216000,
+            "ability_data": {
+              "AttackRange": 1650
+            }
+          },
+          {
+            "level": 5,
+            "upgrade_cost": 40000,
+            "upgrade_time": 223200,
+            "ability_data": {
+              "AttackRange": 1700
+            }
+          },
+          {
+            "level": 6,
+            "upgrade_cost": 55000,
+            "upgrade_time": 230400,
+            "ability_data": {
+              "AttackRange": 1750
+            }
+          },
+          {
+            "level": 7,
+            "upgrade_cost": 70000,
+            "upgrade_time": 237600,
+            "ability_data": {
+              "AttackRange": 1800
+            }
+          },
+          {
+            "level": 8,
+            "upgrade_cost": 85000,
+            "upgrade_time": 244800,
+            "ability_data": {
+              "AttackRange": 1850
+            }
+          },
+          {
+            "level": 9,
+            "upgrade_cost": 100000,
+            "upgrade_time": 252000,
+            "ability_data": {
+              "AttackRange": 1900
+            }
+          },
+          {
+            "level": 10,
+            "upgrade_cost": 115000,
+            "upgrade_time": 259200,
+            "ability_data": {
+              "AttackRange": 1950
+            }
+          }
+        ]
+      }
     }
   ],
   "traps": [
@@ -44745,57 +46643,75 @@
   ],
   "capital_house_parts": [
     {
-      "_id": 82000001,
-      "name": "Clan House Roof",
+      "_id": 82000000,
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000001,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000002,
-      "name": "Clan House Roof",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000003,
-      "name": "Clan House Roof",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000004,
-      "name": "Clan House Roof",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000005,
-      "name": "Clan House Roof",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000006,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000007,
-      "name": "Clan House Roof",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Roof",
+      "slot_type": "Ground",
       "pass_reward": false
     },
     {
@@ -44827,15 +46743,6 @@
     },
     {
       "_id": 82000011,
-      "name": "Clan House Roof",
-      "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
-      },
-      "slot_type": "Roof",
-      "pass_reward": false
-    },
-    {
-      "_id": 82000012,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
@@ -44881,15 +46788,6 @@
     },
     {
       "_id": 82000017,
-      "name": "Clan House Roof",
-      "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
-      },
-      "slot_type": "Roof",
-      "pass_reward": false
-    },
-    {
-      "_id": 82000018,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
@@ -45052,87 +46950,114 @@
     },
     {
       "_id": 82000036,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000037,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000038,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000039,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000040,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000041,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000042,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000043,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000044,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": false
     },
     {
       "_id": 82000045,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000046,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000047,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000048,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
@@ -45141,102 +47066,84 @@
       "pass_reward": false
     },
     {
-      "_id": 82000046,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": false
-    },
-    {
-      "_id": 82000047,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": false
-    },
-    {
-      "_id": 82000048,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": false
-    },
-    {
       "_id": 82000049,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000050,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000051,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000052,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000053,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000054,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000055,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
       "_id": 82000056,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000057,
+      "name": "Clan House Walls",
+      "TID": {
+        "name": "TID_PART_HOUSE_FOOT"
+      },
+      "slot_type": "Foot",
       "pass_reward": false
     },
     {
@@ -45259,47 +47166,47 @@
     },
     {
       "_id": 82000060,
-      "name": "Clan House Walls",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Ground",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
       "_id": 82000061,
-      "name": "Clan House Walls",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Ground",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
       "_id": 82000062,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
       "_id": 82000063,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
       "_id": 82000064,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
@@ -45313,20 +47220,20 @@
     },
     {
       "_id": 82000066,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
       "_id": 82000067,
-      "name": "Clan House Walls",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Foot",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
@@ -45339,21 +47246,12 @@
       "pass_reward": false
     },
     {
-      "_id": 82000069,
-      "name": "Clan House Roof",
-      "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
-      },
-      "slot_type": "Roof",
-      "pass_reward": false
-    },
-    {
       "_id": 82000070,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": false
     },
     {
@@ -45367,29 +47265,29 @@
     },
     {
       "_id": 82000072,
-      "name": "Clan House Ground",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
+        "name": "TID_PART_HOUSE_FOOT"
       },
       "slot_type": "Ground",
       "pass_reward": false
     },
     {
       "_id": 82000073,
+      "name": "Clan House Walls",
+      "TID": {
+        "name": "TID_PART_HOUSE_FOOT"
+      },
+      "slot_type": "Ground",
+      "pass_reward": false
+    },
+    {
+      "_id": 82000074,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
       },
       "slot_type": "Roof",
-      "pass_reward": false
-    },
-    {
-      "_id": 82000074,
-      "name": "Clan House Ground",
-      "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
-      },
-      "slot_type": "Ground",
       "pass_reward": false
     },
     {
@@ -45399,16 +47297,16 @@
         "name": "TID_PART_HOUSE_ROOF"
       },
       "slot_type": "Roof",
-      "pass_reward": true
+      "pass_reward": false
     },
     {
       "_id": 82000076,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
-      "pass_reward": true
+      "slot_type": "Roof",
+      "pass_reward": false
     },
     {
       "_id": 82000077,
@@ -45417,52 +47315,52 @@
         "name": "TID_PART_HOUSE_DECO"
       },
       "slot_type": "Deco",
-      "pass_reward": true
+      "pass_reward": false
     },
     {
       "_id": 82000078,
-      "name": "Clan House Ground",
-      "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
-      },
-      "slot_type": "Ground",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000079,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
       },
       "slot_type": "Roof",
-      "pass_reward": true
+      "pass_reward": false
     },
     {
-      "_id": 82000080,
+      "_id": 82000079,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
       },
       "slot_type": "Foot",
-      "pass_reward": true
+      "pass_reward": false
     },
     {
-      "_id": 82000081,
+      "_id": 82000080,
       "name": "Clan House Decoration",
       "TID": {
         "name": "TID_PART_HOUSE_DECO"
       },
       "slot_type": "Deco",
-      "pass_reward": true
+      "pass_reward": false
+    },
+    {
+      "_id": 82000081,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": false
     },
     {
       "_id": 82000082,
-      "name": "Clan House Ground",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Ground",
-      "pass_reward": true
+      "slot_type": "Roof",
+      "pass_reward": false
     },
     {
       "_id": 82000083,
@@ -45471,60 +47369,60 @@
         "name": "TID_PART_HOUSE_DECO"
       },
       "slot_type": "Deco",
-      "pass_reward": true
+      "pass_reward": false
     },
     {
       "_id": 82000084,
-      "name": "Clan House Decoration",
+      "name": "Clan House Ground",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_GROUND"
       },
-      "slot_type": "Deco",
-      "pass_reward": true
+      "slot_type": "Ground",
+      "pass_reward": false
     },
     {
       "_id": 82000085,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000086,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
       },
       "slot_type": "Roof",
-      "pass_reward": true
+      "pass_reward": false
+    },
+    {
+      "_id": 82000086,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
+      "pass_reward": false
     },
     {
       "_id": 82000087,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": true
     },
     {
       "_id": 82000088,
-      "name": "Clan House Roof",
-      "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
-      },
-      "slot_type": "Roof",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000089,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
       },
       "slot_type": "Foot",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000089,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
       "pass_reward": true
     },
     {
@@ -45538,24 +47436,6 @@
     },
     {
       "_id": 82000091,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000092,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000093,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
@@ -45564,12 +47444,30 @@
       "pass_reward": true
     },
     {
-      "_id": 82000094,
+      "_id": 82000092,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
       },
       "slot_type": "Foot",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000093,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000094,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
       "pass_reward": true
     },
     {
@@ -45583,11 +47481,11 @@
     },
     {
       "_id": 82000096,
-      "name": "Clan House Roof",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Roof",
+      "slot_type": "Deco",
       "pass_reward": true
     },
     {
@@ -45610,15 +47508,6 @@
     },
     {
       "_id": 82000099,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000100,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
@@ -45627,21 +47516,30 @@
       "pass_reward": true
     },
     {
-      "_id": 82000101,
-      "name": "Clan House Ground",
-      "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
-      },
-      "slot_type": "Ground",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000102,
+      "_id": 82000100,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
       },
       "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000101,
+      "name": "Clan House Walls",
+      "TID": {
+        "name": "TID_PART_HOUSE_FOOT"
+      },
+      "slot_type": "Foot",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000102,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
       "pass_reward": true
     },
     {
@@ -45655,24 +47553,15 @@
     },
     {
       "_id": 82000104,
-      "name": "Clan House Walls",
+      "name": "Clan House Decoration",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_DECO"
       },
-      "slot_type": "Foot",
+      "slot_type": "Deco",
       "pass_reward": true
     },
     {
       "_id": 82000105,
-      "name": "Clan House Ground",
-      "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
-      },
-      "slot_type": "Ground",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000106,
       "name": "Clan House Roof",
       "TID": {
         "name": "TID_PART_HOUSE_ROOF"
@@ -45681,12 +47570,21 @@
       "pass_reward": true
     },
     {
-      "_id": 82000107,
+      "_id": 82000106,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
       },
       "slot_type": "Foot",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000107,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
       "pass_reward": true
     },
     {
@@ -45709,29 +47607,29 @@
     },
     {
       "_id": 82000110,
-      "name": "Clan House Walls",
+      "name": "Clan House Roof",
       "TID": {
-        "name": "TID_PART_HOUSE_FOOT"
+        "name": "TID_PART_HOUSE_ROOF"
       },
-      "slot_type": "Foot",
+      "slot_type": "Roof",
       "pass_reward": true
     },
     {
       "_id": 82000111,
-      "name": "Clan House Ground",
-      "TID": {
-        "name": "TID_PART_HOUSE_GROUND"
-      },
-      "slot_type": "Ground",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000112,
       "name": "Clan House Decoration",
       "TID": {
         "name": "TID_PART_HOUSE_DECO"
       },
       "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000112,
+      "name": "Clan House Walls",
+      "TID": {
+        "name": "TID_PART_HOUSE_FOOT"
+      },
+      "slot_type": "Foot",
       "pass_reward": true
     },
     {
@@ -45790,11 +47688,11 @@
     },
     {
       "_id": 82000119,
-      "name": "Clan House Decoration",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_DECO"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Deco",
+      "slot_type": "Foot",
       "pass_reward": true
     },
     {
@@ -45817,56 +47715,56 @@
     },
     {
       "_id": 82000122,
-      "name": "Clan House Roof",
+      "name": "Clan House Walls",
       "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
+        "name": "TID_PART_HOUSE_FOOT"
       },
-      "slot_type": "Roof",
+      "slot_type": "Foot",
       "pass_reward": true
     },
     {
       "_id": 82000123,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000124,
-      "name": "Clan House Roof",
-      "TID": {
-        "name": "TID_PART_HOUSE_ROOF"
-      },
-      "slot_type": "Roof",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000125,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000126,
-      "name": "Clan House Decoration",
-      "TID": {
-        "name": "TID_PART_HOUSE_DECO"
-      },
-      "slot_type": "Deco",
-      "pass_reward": true
-    },
-    {
-      "_id": 82000127,
       "name": "Clan House Ground",
       "TID": {
         "name": "TID_PART_HOUSE_GROUND"
       },
       "slot_type": "Ground",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000124,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000125,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000126,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000127,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
       "pass_reward": true
     },
     {
@@ -45907,6 +47805,78 @@
     },
     {
       "_id": 82000132,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000133,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000134,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000135,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000136,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000137,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000138,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000139,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000140,
       "name": "Clan House Walls",
       "TID": {
         "name": "TID_PART_HOUSE_FOOT"
@@ -45915,7 +47885,43 @@
       "pass_reward": true
     },
     {
-      "_id": 82000133,
+      "_id": 82000141,
+      "name": "Clan House Ground",
+      "TID": {
+        "name": "TID_PART_HOUSE_GROUND"
+      },
+      "slot_type": "Ground",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000142,
+      "name": "Clan House Roof",
+      "TID": {
+        "name": "TID_PART_HOUSE_ROOF"
+      },
+      "slot_type": "Roof",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000143,
+      "name": "Clan House Decoration",
+      "TID": {
+        "name": "TID_PART_HOUSE_DECO"
+      },
+      "slot_type": "Deco",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000144,
+      "name": "Clan House Walls",
+      "TID": {
+        "name": "TID_PART_HOUSE_FOOT"
+      },
+      "slot_type": "Foot",
+      "pass_reward": true
+    },
+    {
+      "_id": 82000145,
       "name": "Clan House Ground",
       "TID": {
         "name": "TID_PART_HOUSE_GROUND"

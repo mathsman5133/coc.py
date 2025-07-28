@@ -99,6 +99,14 @@
     "BloomThreshold": 100
   },
   "ArcherQueenDefault": {
+    "1": {
+      "CelebrateSfx": "sfx/archer_queen_scream_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
+    "2": {
+      "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "ArcherQueenDefault",
     "Character": "Archer Queen",
     "IsDefaultSkin": true,
@@ -113,8 +121,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Archer Queen Deploy",
     "AttackEffect": "ArcherQueen Attack",
     "DieEffect": "Archer Queen Die",
@@ -614,6 +620,14 @@
     "BloomThreshold": 100
   },
   "GladiatorQueen": {
+    "1": {
+      "CelebrateSfx": "sfx/archer_queen_scream_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
+    "2": {
+      "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "GladiatorQueen",
     "Character": "Archer Queen",
     "IsDefaultSkin": false,
@@ -627,8 +641,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Archer Queen Deploy",
     "AttackEffect": "ArcherQueen Attack",
     "DieEffect": "Archer Queen Die",
@@ -664,6 +676,14 @@
     "BloomThreshold": 100
   },
   "ValkyrieQueen": {
+    "1": {
+      "CelebrateSfx": "sfx/archer_queen_scream_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
+    "2": {
+      "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "ValkyrieQueen",
     "Character": "Archer Queen",
     "IsDefaultSkin": false,
@@ -677,8 +697,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Archer Queen Deploy",
     "AttackEffect": "ArcherQueen Attack",
     "DieEffect": "Archer Queen Die",
@@ -714,6 +732,14 @@
     "BloomThreshold": 100
   },
   "AutumnQueen": {
+    "1": {
+      "CelebrateSfx": "sfx/archer_queen_scream_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
+    "2": {
+      "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "AutumnQueen",
     "Character": "Archer Queen",
     "IsDefaultSkin": false,
@@ -728,8 +754,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Archer Queen Deploy",
     "AttackEffect": "ArcherQueen Attack",
     "DieEffect": "Archer Queen Die",
@@ -766,6 +790,14 @@
     "BloomThreshold": 100
   },
   "IceQueen": {
+    "1": {
+      "CelebrateSfx": "sfx/archer_queen_scream_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
+    "2": {
+      "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "IceQueen",
     "Character": "Archer Queen",
     "IsDefaultSkin": false,
@@ -780,8 +812,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/archer_queen_deploy_01.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Archer Queen Deploy",
     "AttackEffect": "ArcherQueen Attack",
     "DieEffect": "Archer Queen Die",
@@ -2392,6 +2422,14 @@
     "BloomThreshold": 100
   },
   "RogueKing": {
+    "1": {
+      "CelebrateSfx": "sfx/barbarian_king_scream_01.ogg",
+      "CelebrateSfxVolume": 80
+    },
+    "2": {
+      "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "RogueKing",
     "Character": "Barbarian King",
     "IsDefaultSkin": false,
@@ -2406,8 +2444,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Barbarian King Deploy",
     "AttackEffect": "Barbarian King Attack",
     "DieEffect": "Barbarian King Die",
@@ -2443,6 +2479,14 @@
     "BloomThreshold": 100
   },
   "SavageKing": {
+    "1": {
+      "CelebrateSfx": "sfx/barbarian_king_scream_01.ogg",
+      "CelebrateSfxVolume": 80
+    },
+    "2": {
+      "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "SavageKing",
     "Character": "Barbarian King",
     "IsDefaultSkin": false,
@@ -2457,8 +2501,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Barbarian King Deploy",
     "AttackEffect": "Barbarian King Attack",
     "DieEffect": "Barbarian King Die",
@@ -2495,6 +2537,14 @@
     "BloomThreshold": 100
   },
   "JungleKing": {
+    "1": {
+      "CelebrateSfx": "sfx/barbarian_king_scream_01.ogg",
+      "CelebrateSfxVolume": 80
+    },
+    "2": {
+      "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
+      "CelebrateSfxVolume": 90
+    },
     "Name": "JungleKing",
     "Character": "Barbarian King",
     "IsDefaultSkin": false,
@@ -2509,8 +2559,6 @@
     "CameraDistance": 10000,
     "ViewportWidth": 225,
     "ViewportHeight": 225,
-    "CelebrateSfx": "sfx/barbarian_king_deploy.ogg",
-    "CelebrateSfxVolume": 90,
     "DeployEffect": "Barbarian King Deploy",
     "AttackEffect": "Barbarian King Attack",
     "DieEffect": "Barbarian King Die",
@@ -6695,6 +6743,16 @@
     "BloomThreshold": 100
   },
   "AnimeWarden": {
+    "1": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime_game",
+      "ShadowAlpha": 0
+    },
+    "2": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime",
+      "ShadowAlpha": 0
+    },
     "Name": "AnimeWarden",
     "Character": "Grand Warden",
     "IsDefaultSkin": false,
@@ -6731,9 +6789,6 @@
     "FeatureExtraAnimations": false,
     "FeatureExtraEffects": false,
     "FeatureExtraSounds": false,
-    "ShadowSWF": "sc/buildings.sc",
-    "ShadowExportName": "skin_shadow_anime",
-    "ShadowAlpha": 0,
     "OutlineSize": 25,
     "PortraitCameraPosition": "0;3000;3800",
     "PortraitCameraLookAt": "0;2000;0",
@@ -7619,6 +7674,16 @@
     "BloomThreshold": 100
   },
   "AnimeQueen": {
+    "1": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime_game",
+      "ShadowAlpha": 0
+    },
+    "2": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime",
+      "ShadowAlpha": 0
+    },
     "Name": "AnimeQueen",
     "Character": "Archer Queen",
     "IsDefaultSkin": false,
@@ -7656,9 +7721,6 @@
     "FeatureExtraAnimations": false,
     "FeatureExtraEffects": false,
     "FeatureExtraSounds": false,
-    "ShadowSWF": "sc/buildings.sc",
-    "ShadowExportName": "skin_shadow_anime",
-    "ShadowAlpha": 0,
     "OutlineSize": 25,
     "PortraitCameraPosition": "0;1450;3800",
     "PortraitCameraLookAt": "-100;1300;0",
@@ -8764,6 +8826,16 @@
     "BloomThreshold": 0
   },
   "AnimeChampion": {
+    "1": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime_game",
+      "ShadowAlpha": 0
+    },
+    "2": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime",
+      "ShadowAlpha": 0
+    },
     "Name": "AnimeChampion",
     "Character": "Warrior Princess",
     "IsDefaultSkin": false,
@@ -8800,9 +8872,6 @@
     "FeatureExtraAnimations": false,
     "FeatureExtraEffects": false,
     "FeatureExtraSounds": false,
-    "ShadowSWF": "sc/buildings.sc",
-    "ShadowExportName": "skin_shadow_anime",
-    "ShadowAlpha": 0,
     "OutlineSize": 25,
     "PortraitCameraPosition": "0;1450;3800",
     "PortraitCameraLookAt": "0;1700;0",
@@ -9539,6 +9608,16 @@
     "BloomThreshold": 100
   },
   "AnimeKing": {
+    "1": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime_game",
+      "ShadowAlpha": 0
+    },
+    "2": {
+      "ShadowSWF": "sc/buildings.sc",
+      "ShadowExportName": "skin_shadow_anime",
+      "ShadowAlpha": 0
+    },
     "Name": "AnimeKing",
     "Character": "Barbarian King",
     "IsDefaultSkin": false,
@@ -9574,9 +9653,6 @@
     "FeatureExtraAnimations": false,
     "FeatureExtraEffects": false,
     "FeatureExtraSounds": false,
-    "ShadowSWF": "sc/buildings.sc",
-    "ShadowExportName": "skin_shadow_anime",
-    "ShadowAlpha": 0,
     "OutlineSize": 25,
     "PortraitCameraPosition": "0;1500;4300",
     "PortraitCameraLookAt": "-200;1600;0",

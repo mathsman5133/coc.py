@@ -2423,6 +2423,26 @@
     "IsFadedAndPassableInCombat": true
   },
   "Anime_FORTUNE_TELLER": {
+    "1": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce"
+    },
+    "2": {
+      "IdleAnimStart": "idle_start2",
+      "IdleAnimEnd": "idle_end2",
+      "IdleAnimType": "PlayOnce"
+    },
+    "3": {
+      "IdleAnimStart": "idle_start3",
+      "IdleAnimEnd": "idle_end3",
+      "IdleAnimType": "PlayOnce"
+    },
+    "4": {
+      "IdleAnimStart": "idle_start4",
+      "IdleAnimEnd": "idle_end4",
+      "IdleAnimType": "PlayOnce"
+    },
     "Name": "Anime_FORTUNE_TELLER",
     "TID": "TID_DECO_ANIME_FORTUNETELLER",
     "SWF": "sc/buildings.sc",
@@ -2437,9 +2457,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Random",
-    "IdleAnimStart": "idle_start4",
-    "IdleAnimEnd": "idle_end4",
-    "IdleAnimType": "PlayOnce",
     "TapAnimStart": "tap_start",
     "TapAnimEnd": "tap_end",
     "TapEffect": "Deco Anime FortuneTeller Tap"
@@ -2493,6 +2510,46 @@
     "IsFadedAndPassableInCombat": true
   },
   "Anime_giant_school_girl": {
+    "1": {
+      "IdleAnimStart": "tape_end_01",
+      "IdleAnimEnd": "tape_end_01",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tape_end_01",
+      "TapEffect": "Deco Anime Giant Schoolgirl Tap"
+    },
+    "2": {
+      "IdleAnimStart": "tap_end_02",
+      "IdleAnimEnd": "tap_end_02",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco Anime Giant Schoolgirl Tap"
+    },
+    "3": {
+      "IdleAnimStart": "tap_end_03",
+      "IdleAnimEnd": "tap_end_03",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco Anime Giant Schoolgirl Tap"
+    },
+    "4": {
+      "IdleAnimStart": "tap_end_04",
+      "IdleAnimEnd": "tap_end_04",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_end_04",
+      "TapEffect": "Deco Anime Giant Schoolgirl Tap"
+    },
+    "5": {
+      "IdleAnimStart": "tap_end_05",
+      "IdleAnimEnd": "tap_end_05",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_end_05",
+      "TapEffect": "Deco Anime Giant Schoolgirl Tap"
+    },
     "Name": "Anime_giant_school_girl",
     "TID": "TID_DECO_ANIME_GIANT_SCHOOL_GIRL",
     "SWF": "sc/buildings.sc",
@@ -2507,12 +2564,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "tap_end_05",
-    "IdleAnimEnd": "tap_end_05",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_05",
-    "TapAnimEnd": "tap_end_05",
-    "TapEffect": "Deco Anime Giant Schoolgirl Tap",
     "PreviewStart": "tap_start_01",
     "PreviewEnd": "tap_end_05",
     "AttackLabel": "tap_start_01"
@@ -2614,6 +2665,30 @@
     "IsFadedAndPassableInCombat": true
   },
   "ClashGames_goblindive": {
+    "1": {
+      "IdleAnimStart": "tap_end_01",
+      "IdleAnimEnd": "tap_end_01",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco Clashgames GoblinDive Tap"
+    },
+    "2": {
+      "IdleAnimStart": "tap_end_02",
+      "IdleAnimEnd": "tap_end_02",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco Clashgames GoblinDive Tap"
+    },
+    "3": {
+      "IdleAnimStart": "tap_end_03",
+      "IdleAnimEnd": "tap_end_03",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco Clashgames GoblinDive Tap"
+    },
     "Name": "ClashGames_goblindive",
     "TID": "TID_DECO_CLASHGAMES_GOBLINDIVE",
     "SWF": "sc/buildings.sc",
@@ -2629,12 +2704,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "tap_end_03",
-    "IdleAnimEnd": "tap_end_03",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_03",
-    "TapAnimEnd": "tap_end_03",
-    "TapEffect": "Deco Clashgames GoblinDive Tap",
     "PreviewStart": "tap_start_01",
     "PreviewEnd": "tap_end_01"
   },
@@ -2671,6 +2740,166 @@
     "IsFadedAndPassableInCombat": true
   },
   "TTRPG_superdeco_d20": {
+    "1": {
+      "IdleAnimStart": "tap_end_01",
+      "IdleAnimEnd": "tap_end_01",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "2": {
+      "IdleAnimStart": "tap_end_02",
+      "IdleAnimEnd": "tap_end_02",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "3": {
+      "IdleAnimStart": "tap_end_03",
+      "IdleAnimEnd": "tap_end_03",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "4": {
+      "IdleAnimStart": "tap_end_04",
+      "IdleAnimEnd": "tap_end_04",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_end_04",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "5": {
+      "IdleAnimStart": "tap_end_05",
+      "IdleAnimEnd": "tap_end_05",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_end_05",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "6": {
+      "IdleAnimStart": "tap_end_06",
+      "IdleAnimEnd": "tap_end_06",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_06",
+      "TapAnimEnd": "tap_end_06",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "7": {
+      "IdleAnimStart": "tap_end_07",
+      "IdleAnimEnd": "tap_end_07",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_07",
+      "TapAnimEnd": "tap_end_07",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "8": {
+      "IdleAnimStart": "tap_end_08",
+      "IdleAnimEnd": "tap_end_08",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_08",
+      "TapAnimEnd": "tap_end_08",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "9": {
+      "IdleAnimStart": "tap_end_09",
+      "IdleAnimEnd": "tap_end_09",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_09",
+      "TapAnimEnd": "tap_end_09",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "10": {
+      "IdleAnimStart": "tap_end_10",
+      "IdleAnimEnd": "tap_end_10",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_10",
+      "TapAnimEnd": "tap_end_10",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "11": {
+      "IdleAnimStart": "tap_end_11",
+      "IdleAnimEnd": "tap_end_11",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_11",
+      "TapAnimEnd": "tap_end_11",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "12": {
+      "IdleAnimStart": "tap_end_12",
+      "IdleAnimEnd": "tap_end_12",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_12",
+      "TapAnimEnd": "tap_end_12",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "13": {
+      "IdleAnimStart": "tap_end_13",
+      "IdleAnimEnd": "tap_end_13",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_13",
+      "TapAnimEnd": "tap_end_13",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "14": {
+      "IdleAnimStart": "tap_end_14",
+      "IdleAnimEnd": "tap_end_14",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_14",
+      "TapAnimEnd": "tap_end_14",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "15": {
+      "IdleAnimStart": "tap_end_15",
+      "IdleAnimEnd": "tap_end_15",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_15",
+      "TapAnimEnd": "tap_end_15",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "16": {
+      "IdleAnimStart": "tap_end_16",
+      "IdleAnimEnd": "tap_end_16",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_16",
+      "TapAnimEnd": "tap_end_16",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "17": {
+      "IdleAnimStart": "tap_end_17",
+      "IdleAnimEnd": "tap_end_17",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_17",
+      "TapAnimEnd": "tap_end_17",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "18": {
+      "IdleAnimStart": "tap_end_18",
+      "IdleAnimEnd": "tap_end_18",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_18",
+      "TapAnimEnd": "tap_end_18",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "19": {
+      "IdleAnimStart": "tap_end_19",
+      "IdleAnimEnd": "tap_end_19",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_19",
+      "TapAnimEnd": "tap_end_19",
+      "TapEffect": "Deco TTRPG D20 Tap"
+    },
+    "20": {
+      "IdleAnimStart": "tap_end_20",
+      "IdleAnimEnd": "tap_end_20",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_20",
+      "TapAnimEnd": "tap_end_20",
+      "TapEffect": "Deco TTRPG D20 Tap Nat20"
+    },
     "Name": "TTRPG_superdeco_d20",
     "TID": "TID_DECO_TTRPG_SUPERDECO_D20",
     "SWF": "sc/buildings.sc",
@@ -2685,13 +2914,7 @@
     "NotInShop": true,
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
-    "IdleSelection": "Tap",
-    "IdleAnimStart": "tap_end_20",
-    "IdleAnimEnd": "tap_end_20",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_20",
-    "TapAnimEnd": "tap_end_20",
-    "TapEffect": "Deco TTRPG D20 Tap Nat20"
+    "IdleSelection": "Tap"
   },
   "TTRPG_mimic_chest": {
     "Name": "TTRPG_mimic_chest",
@@ -2742,6 +2965,62 @@
     "IsFadedAndPassableInCombat": true
   },
   "Clashoween2024_superdeco_cauldron": {
+    "1": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_start_02",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "2": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_start_03",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "3": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_start_04",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "4": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_start_05",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "5": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_start_06",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "6": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_06",
+      "TapAnimEnd": "tap_end_06",
+      "TapEffect": "Deco Clashoween24 Cauldron Drop"
+    },
+    "7": {
+      "IdleAnimStart": "Cauldron_idle",
+      "IdleAnimEnd": "Cauldron_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "react_vomit",
+      "TapAnimEnd": "react_vomit_end",
+      "TapEffect": "Deco Clashoween24 Cauldron Vomit"
+    },
     "Name": "Clashoween2024_superdeco_cauldron",
     "TID": "TID_DECO_CLASHOWEEN_2024_SUPERDECO_CAULDRON",
     "SWF": "sc/buildings.sc",
@@ -2756,15 +3035,33 @@
     "NotInShop": true,
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
-    "IdleSelection": "Tap",
-    "IdleAnimStart": "Cauldron_idle",
-    "IdleAnimEnd": "Cauldron_idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "react_vomit",
-    "TapAnimEnd": "react_vomit_end",
-    "TapEffect": "Deco Clashoween24 Cauldron Vomit"
+    "IdleSelection": "Tap"
   },
   "Superdeco_mochapot": {
+    "1": {
+      "IdleAnimStart": "Mochapot_idle",
+      "IdleAnimEnd": "Mochapot_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco Clashoween24 CoffeePot"
+    },
+    "2": {
+      "IdleAnimStart": "Mochapot_idle",
+      "IdleAnimEnd": "Mochapot_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco Clashoween24 CoffeePot"
+    },
+    "3": {
+      "IdleAnimStart": "Mochapot_idle",
+      "IdleAnimEnd": "Mochapot_idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco Clashoween24 CoffeePot"
+    },
     "Name": "Superdeco_mochapot",
     "TID": "TID_DECO_SUPERDECO_MOCHAPOT",
     "SWF": "sc/buildings.sc",
@@ -2779,13 +3076,7 @@
     "NotInShop": true,
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
-    "IdleSelection": "Tap",
-    "IdleAnimStart": "Mochapot_idle",
-    "IdleAnimEnd": "Mochapot_idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_03",
-    "TapAnimEnd": "tap_end_03",
-    "TapEffect": "Deco Clashoween24 CoffeePot"
+    "IdleSelection": "Tap"
   },
   "Diwali_Statue_Event_Deco_2x2": {
     "Name": "Diwali_Statue_Event_Deco_2x2",
@@ -2944,6 +3235,86 @@
     "TapEffect": "Deco Fire Ice Tap Sauna"
   },
   "Lny_2025_superdeco_fortunecookie": {
+    "1": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_01_start",
+      "TapAnimEnd": "message_01_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "2": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_02_start",
+      "TapAnimEnd": "message_02_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "3": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_03_start",
+      "TapAnimEnd": "message_03_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "4": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_04_start",
+      "TapAnimEnd": "message_04_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "5": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_05_start",
+      "TapAnimEnd": "message_05_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "6": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_06_start",
+      "TapAnimEnd": "message_06_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "7": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_07_start",
+      "TapAnimEnd": "message_07_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "8": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_08_start",
+      "TapAnimEnd": "message_08_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "9": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_09_start",
+      "TapAnimEnd": "message_09_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
+    "10": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "message_10_start",
+      "TapAnimEnd": "message_10_end",
+      "TapEffect": "Deco LNY25 Tap Cookies"
+    },
     "Name": "Lny_2025_superdeco_fortunecookie",
     "TID": "TID_DECO_LNY_2025_COOKIE",
     "SWF": "sc/buildings.sc",
@@ -2958,15 +3329,73 @@
     "NotInShop": true,
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
-    "IdleSelection": "Tap",
-    "IdleAnimStart": "idle_start",
-    "IdleAnimEnd": "idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "message_10_start",
-    "TapAnimEnd": "message_10_end",
-    "TapEffect": "Deco LNY25 Tap Cookies"
+    "IdleSelection": "Tap"
   },
   "Military_2025_super_deco_range": {
+    "1": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_01_start",
+      "TapAnimEnd": "hit_01_end",
+      "TapEffect": "Deco Military Tap GoblinRange 01"
+    },
+    "2": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_02_start",
+      "TapAnimEnd": "hit_02_end",
+      "TapEffect": "Deco Military Tap GoblinRange 02"
+    },
+    "3": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_03_start",
+      "TapAnimEnd": "hit_03_end",
+      "TapEffect": "Deco Military Tap GoblinRange 03"
+    },
+    "4": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_04_start",
+      "TapAnimEnd": "hit_04_end",
+      "TapEffect": "Deco Military Tap GoblinRange 04"
+    },
+    "5": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_05_start",
+      "TapAnimEnd": "hit_05_end",
+      "TapEffect": "Deco Military Tap GoblinRange 05"
+    },
+    "6": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_06_start",
+      "TapAnimEnd": "hit_06_end",
+      "TapEffect": "Deco Military Tap GoblinRange 06"
+    },
+    "7": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_07_start",
+      "TapAnimEnd": "hit_07_end",
+      "TapEffect": "Deco Military Tap GoblinRange 07"
+    },
+    "8": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "hit_08_start",
+      "TapAnimEnd": "hit_08_end",
+      "TapEffect": "Deco Military Tap GoblinRange 08"
+    },
     "Name": "Military_2025_super_deco_range",
     "TID": "TID_DECO_MILITARY_2025_SUPERDECO_RANGE",
     "SWF": "sc/buildings.sc",
@@ -2982,12 +3411,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "idle_start",
-    "IdleAnimEnd": "idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "hit_08_start",
-    "TapAnimEnd": "hit_08_end",
-    "TapEffect": "Deco Military Tap GoblinRange 08",
     "PreviewStart": "hit_01_start",
     "PreviewEnd": "hit_08_end"
   },
@@ -3063,6 +3486,70 @@
     "TapEffect": "Deco_Tap_CreatorFountain"
   },
   "April_2025_super_deco": {
+    "1": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_01_start",
+      "TapAnimEnd": "click_01_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 05"
+    },
+    "2": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_02_start",
+      "TapAnimEnd": "click_02_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 06"
+    },
+    "3": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_03_start",
+      "TapAnimEnd": "click_03_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 07"
+    },
+    "4": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_04_start",
+      "TapAnimEnd": "click_04_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 08"
+    },
+    "5": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_05_start",
+      "TapAnimEnd": "click_05_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 01"
+    },
+    "6": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_06_start",
+      "TapAnimEnd": "click_06_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 02"
+    },
+    "7": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_07_start",
+      "TapAnimEnd": "click_07_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 03"
+    },
+    "8": {
+      "IdleAnimStart": "idle",
+      "IdleAnimEnd": "idle",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_08_start",
+      "TapAnimEnd": "click_08_end",
+      "TapEffect": "Deco Tap Apr25_Wheel 04"
+    },
     "Name": "April_2025_super_deco",
     "TID": "TID_DECO_APRIL_2025_SUPERDECO",
     "SWF": "sc/april25.sc",
@@ -3078,12 +3565,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "idle",
-    "IdleAnimEnd": "idle",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "click_08_start",
-    "TapAnimEnd": "click_08_end",
-    "TapEffect": "Deco Tap Apr25_Wheel 04",
     "PreviewStart": "click_01_start",
     "PreviewEnd": "click_08_end"
   },
@@ -3104,6 +3585,30 @@
     "IsFadedAndPassableInCombat": true
   },
   "DarkDays_2025_super_deco": {
+    "1": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_01_start",
+      "TapAnimEnd": "click_01_end",
+      "TapEffect": "Deco_Tap_DarkDays_Piano_01"
+    },
+    "2": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_02_start",
+      "TapAnimEnd": "click_02_end",
+      "TapEffect": "Deco_Tap_DarkDays_Piano_02"
+    },
+    "3": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "click_03_start",
+      "TapAnimEnd": "click_03_end",
+      "TapEffect": "Deco_Tap_DarkDays_Piano_03"
+    },
     "Name": "DarkDays_2025_super_deco",
     "TID": "TID_DECO_DARKDAYS_2025_SUPERDECO",
     "SWF": "sc/buildings.sc",
@@ -3119,12 +3624,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "idle_start",
-    "IdleAnimEnd": "idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "click_03_start",
-    "TapAnimEnd": "click_03_end",
-    "TapEffect": "Deco_Tap_DarkDays_Piano_03",
     "PreviewStart": "click_01_start",
     "PreviewEnd": "click_02_end"
   },
@@ -3161,6 +3660,62 @@
     "IsFadedAndPassableInCombat": true
   },
   "clasharama_ep01_super_deco": {
+    "1": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "2": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "3": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "4": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_end_04",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "5": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_end_05",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "6": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_06",
+      "TapAnimEnd": "tap_end_06",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
+    "7": {
+      "IdleAnimStart": "idle_start",
+      "IdleAnimEnd": "idle_end",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_07",
+      "TapAnimEnd": "tap_end_07",
+      "TapEffect": "Deco_Tap_Clasharama_Sculpture"
+    },
     "Name": "clasharama_ep01_super_deco",
     "TID": "TID_DECO_CLASHARAMA_EP01_SUPERDECO",
     "SWF": "sc/buildings.sc",
@@ -3177,16 +3732,90 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "idle_start",
-    "IdleAnimEnd": "idle_end",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_07",
-    "TapAnimEnd": "tap_end_07",
-    "TapEffect": "Deco_Tap_Clasharama_Sculpture",
     "PreviewStart": "tap_start_01",
     "PreviewEnd": "tap_end_01"
   },
   "clasharama_ep02_super_deco_paint": {
+    "1": {
+      "IdleAnimStart": "tap_end_01",
+      "IdleAnimEnd": "tap_end_01",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_01_Dragon"
+    },
+    "2": {
+      "IdleAnimStart": "tap_end_02",
+      "IdleAnimEnd": "tap_end_02",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_03_Builder"
+    },
+    "3": {
+      "IdleAnimStart": "tap_end_03",
+      "IdleAnimEnd": "tap_end_03",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_02_Pekka"
+    },
+    "4": {
+      "IdleAnimStart": "tap_end_04",
+      "IdleAnimEnd": "tap_end_04",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_end_04",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_04_Tree"
+    },
+    "5": {
+      "IdleAnimStart": "tap_end_05",
+      "IdleAnimEnd": "tap_end_05",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_end_05",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_01_Dragon"
+    },
+    "6": {
+      "IdleAnimStart": "tap_end_06",
+      "IdleAnimEnd": "tap_end_06",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_06",
+      "TapAnimEnd": "tap_end_06",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_03_Builder"
+    },
+    "7": {
+      "IdleAnimStart": "tap_end_07",
+      "IdleAnimEnd": "tap_end_07",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_07",
+      "TapAnimEnd": "tap_end_07",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_02_Pekka"
+    },
+    "8": {
+      "IdleAnimStart": "tap_end_08",
+      "IdleAnimEnd": "tap_end_08",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_08",
+      "TapAnimEnd": "tap_end_08",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_04_Tree"
+    },
+    "9": {
+      "IdleAnimStart": "tap_end_09",
+      "IdleAnimEnd": "tap_end_09",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_09",
+      "TapAnimEnd": "tap_end_09",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_01_Dragon"
+    },
+    "10": {
+      "IdleAnimStart": "tap_end_10",
+      "IdleAnimEnd": "tap_end_10",
+      "IdleAnimType": "PlayOnce",
+      "TapAnimStart": "tap_start_10",
+      "TapAnimEnd": "tap_end_10",
+      "TapEffect": "Deco_Tap_Clasharama_Painting_01_Dragon"
+    },
     "Name": "clasharama_ep02_super_deco_paint",
     "TID": "TID_DECO_CLASHARAMA_EP02_SUPERDECO_PAINT",
     "SWF": "sc/buildings.sc",
@@ -3202,16 +3831,114 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "tap_end_10",
-    "IdleAnimEnd": "tap_end_10",
-    "IdleAnimType": "PlayOnce",
-    "TapAnimStart": "tap_start_10",
-    "TapAnimEnd": "tap_end_10",
-    "TapEffect": "Deco_Tap_Clasharama_Painting_01_Dragon",
     "PreviewStart": "preview_start",
     "PreviewEnd": "preview_end"
   },
   "CyberClash_superdeco_holoprojector": {
+    "1": {
+      "IdleAnimStart": "tap_end_13",
+      "IdleAnimEnd": "tap_end_13",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_13",
+      "TapAnimEnd": "tap_end_13",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_01"
+    },
+    "2": {
+      "IdleAnimStart": "tap_end_01",
+      "IdleAnimEnd": "tap_end_01",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_01",
+      "TapAnimEnd": "tap_end_01",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_02"
+    },
+    "3": {
+      "IdleAnimStart": "tap_end_02",
+      "IdleAnimEnd": "tap_end_02",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_02",
+      "TapAnimEnd": "tap_end_02",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_03"
+    },
+    "4": {
+      "IdleAnimStart": "tap_end_03",
+      "IdleAnimEnd": "tap_end_03",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_03",
+      "TapAnimEnd": "tap_end_03",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_04"
+    },
+    "5": {
+      "IdleAnimStart": "tap_end_04",
+      "IdleAnimEnd": "tap_end_04",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_04",
+      "TapAnimEnd": "tap_end_04",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_02"
+    },
+    "6": {
+      "IdleAnimStart": "tap_end_05",
+      "IdleAnimEnd": "tap_end_05",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_05",
+      "TapAnimEnd": "tap_end_05",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_03"
+    },
+    "7": {
+      "IdleAnimStart": "tap_end_06",
+      "IdleAnimEnd": "tap_end_06",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_06",
+      "TapAnimEnd": "tap_end_06",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_04"
+    },
+    "8": {
+      "IdleAnimStart": "tap_end_07",
+      "IdleAnimEnd": "tap_end_07",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_07",
+      "TapAnimEnd": "tap_end_07",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_02"
+    },
+    "9": {
+      "IdleAnimStart": "tap_end_08",
+      "IdleAnimEnd": "tap_end_08",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_08",
+      "TapAnimEnd": "tap_end_08",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_03"
+    },
+    "10": {
+      "IdleAnimStart": "tap_end_09",
+      "IdleAnimEnd": "tap_end_09",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_09",
+      "TapAnimEnd": "tap_end_09",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_04"
+    },
+    "11": {
+      "IdleAnimStart": "tap_end_10",
+      "IdleAnimEnd": "tap_end_10",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_10",
+      "TapAnimEnd": "tap_end_10",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_02"
+    },
+    "12": {
+      "IdleAnimStart": "tap_end_11",
+      "IdleAnimEnd": "tap_end_11",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_11",
+      "TapAnimEnd": "tap_end_11",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_03"
+    },
+    "13": {
+      "IdleAnimStart": "tap_end_12",
+      "IdleAnimEnd": "tap_end_12",
+      "IdleAnimType": "Loop",
+      "TapAnimStart": "tap_start_12",
+      "TapAnimEnd": "tap_end_12",
+      "TapEffect": "Deco_Tap_Cyberpunk_Hologram_04"
+    },
     "Name": "CyberClash_superdeco_holoprojector",
     "TID": "TID_DECO_CYBERCLASH_HOLOPROJECTOR",
     "SWF": "sc/buildings.sc",
@@ -3227,12 +3954,6 @@
     "BPReward": true,
     "IsFadedAndPassableInCombat": true,
     "IdleSelection": "Tap",
-    "IdleAnimStart": "tap_end_12",
-    "IdleAnimEnd": "tap_end_12",
-    "IdleAnimType": "Loop",
-    "TapAnimStart": "tap_start_12",
-    "TapAnimEnd": "tap_end_12",
-    "TapEffect": "Deco_Tap_Cyberpunk_Hologram_04",
     "PreviewStart": "tap_start_13",
     "PreviewEnd": "tap_end_13"
   },
