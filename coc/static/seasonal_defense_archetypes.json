@@ -1,0 +1,38 @@
+{
+  "HookTower": {
+    "Name": "HookTower",
+    "SpecialAbility": "SeasonalDefenseHookTower",
+    "Modules": "HookTowerHPModule;HookTowerAttackModule;HookTowerEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  },
+  "SunBeam": {
+    "Name": "SunBeam",
+    "SpecialAbility": "SeasonalDefenseSunBeam",
+    "Modules": "SunBeamHPModule;SunBeamAttackModule;SunBeamEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  },
+  "LogLobber": {
+    "Name": "LogLobber",
+    "SpecialAbility": "SeasonalDefenseLogLobber",
+    "Modules": "LogLobberHPModule;LogLobberAttackModule;LogLobberEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  },
+  "FlameSpinner": {
+    "Name": "FlameSpinner",
+    "SpecialAbility": "SeasonalDefenseFlameSpinner",
+    "Modules": "FlameSpinnerHPModule;FlameSpinnerAttackModule;FlameSpinnerEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  },
+  "CrusherMortar": {
+    "Name": "CrusherMortar",
+    "SpecialAbility": "SeasonalDefenseCrusherMortar",
+    "Modules": "CrusherMortarHPModule;CrusherMortarAttackModule;CrusherMortarEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  },
+  "LazyLaser": {
+    "Name": "LazyLaser",
+    "SpecialAbility": "SeasonalDefenseLazyLaser",
+    "Modules": "LazyLaserHPModule;LazyLaserAttackModule;LazyLaserEffectModule",
+    "TotalModuleLevelThresholds": "9;18;27"
+  }
+}
