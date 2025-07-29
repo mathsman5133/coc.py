@@ -6,17 +6,14 @@ If new files need to be added, then place them in the TARGETS list.
 import aiohttp
 import asyncio
 import json
-import traceback
 import urllib
 import urllib.request
 import logging
-import zstandard
-import lzma
 import csv
 import os
 import zipfile
 import re
-from collections import defaultdict
+import zlib
 
 TARGETS = [
     ("logic/buildings.csv", "buildings.csv"),
@@ -37,8 +34,14 @@ TARGETS = [
     ("logic/building_parts.csv", "clan_capital_parts.csv"),
     ("logic/skins.csv", "skins.csv"),
     ("logic/village_backgrounds.csv", "sceneries.csv"),
-    ("localization/texts.csv", "translations/texts_EN.csv"),
+    ("localization/texts.csv", "texts_EN.csv"),
 ]
+
+#keeping should only be needed for debugging
+KEEP_CSV = False
+KEEP_JSON = False
+BASE_PATH = ""
+MANUAL_FINGERPRINT = ""
 
 supported_languages = [
     "ar", "cn", "cnt", "de", "es", "fa", "fi", "fr", "id", "it", "jp", "kr",
@@ -46,7 +49,7 @@ supported_languages = [
 ]
 
 for language in supported_languages:
-    TARGETS.append((f"localization/{language}.csv", f"translations/texts_{language}.csv"))
+    TARGETS.append((f"localization/{language}.csv", f"texts_{language}.csv"))
 
 APK_URL = "https://d.apkpure.net/b/APK/com.supercell.clashofclans?version=latest"
 
@@ -224,10 +227,11 @@ def process_csv(data, file_path, save_name):
         json.dump(final_data, jf, indent=2)
 
     # 6) Delete the CSV
-    try:
-        os.remove(file_path)
-    except OSError as e:
-        logging.warning(f"Could not delete {file_path}: {e}")
+    if not KEEP_CSV:
+        try:
+            os.remove(file_path)
+        except OSError as e:
+            logging.warning(f"Could not delete {file_path}: {e}")
 
 
 def check_header(data):
@@ -241,15 +245,23 @@ def check_header(data):
         return "decoded csv"
     raise Exception("Unknown header")
 
+#We use this to give a few things an id that will always be the same, using their name
+def string_to_number(s: str) -> int:
+    """
+    Deterministically map any string to a 32-bit unsigned integer (≤10 digits).
+    """
+    # compute CRC32, then mask to unsigned
+    return zlib.crc32(s.encode('utf-8')) & 0xFFFFFFFF
+
 
 def master_json():
 
-    with open(f"translations/texts_EN.json", "r", encoding="utf-8") as f:
+    with open(f"texts_EN.json", "r", encoding="utf-8") as f:
         full_translation_data: dict = json.load(f)
 
     other_translations = []
     for language in supported_languages:
-        with open(f"translations/texts_{language}.json", "r", encoding="utf-8") as f:
+        with open(f"texts_{language}.json", "r", encoding="utf-8") as f:
             other_translations.append((language, json.load(f)))
 
     with open(f"buildings.json", "r", encoding="utf-8") as f:
@@ -361,6 +373,7 @@ def master_json():
         resource_TID = f'TID_{resource}'.upper()
 
         hold_data = {
+            "_id" : string_to_number(name),
             "name" : f"{name} Supercharge",
             "target_building": name,
             "required_townhall_level": supercharge_data.get("RequiredTownHallLevel"),
@@ -401,6 +414,7 @@ def master_json():
             continue
 
         hold_data = {
+            "_id": string_to_number(new_translation_data.get(name_TID).get("EN")),
             "name": new_translation_data.get(name_TID).get("EN"),
             "info": new_translation_data.get(info_TID).get("EN"),
             "TID" : {
@@ -725,13 +739,14 @@ def master_json():
 
         new_equipment_data.append(hold_data)
 
-
     #TRAP JSON BUILD
     new_trap_data = []
     for _id, (trap_name, trap_data) in enumerate(full_trap_data.items(), 12000000):
         if trap_data.get("Disabled", False) or trap_data.get("EnabledByCalendar", False):
             continue
         resource_TID = f'TID_{trap_data.get("BuildResource")}'.upper()
+        village_type = building_data.get("VillageType", 0)
+
         hold_data = {
             "_id": _id,
             "name": new_translation_data.get(trap_data.get("TID")).get("EN"),
@@ -745,6 +760,7 @@ def master_json():
             "ground_trigger": trap_data.get("GroundTrigger", False),
             "damage_radius": trap_data.get("DamageRadius"),
             "trigger_radius": trap_data.get("TriggerRadius"),
+            "village_type": "home" if not village_type else "builder_base",
 
             "upgrade_resource": new_translation_data.get(resource_TID).get("EN"),
             "levels" : []
@@ -795,13 +811,19 @@ def master_json():
     for _id, (part_name, part_data) in enumerate(full_capital_part_data.items(), 82000000):
         if part_data.get("Deprecated", False):
             continue
-
+        name = part_name.replace("PlayerHouse_", "").replace("_", " ").title()
+        nums = 0
+        for phrase in ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]:
+            if phrase in name:
+                name = name.replace(phrase, "")
+                nums = int(phrase)
+        name = name.split(" ", 1)
+        name = f"{name[1]} {name[0]}"
+        if nums:
+            name = f"{name} {nums}"
         new_capital_part_data.append({
             "_id": _id,
-            "name": new_translation_data.get(part_data.get("TID")).get("EN"),
-            "TID": {
-                "name": part_data.get("TID"),
-            },
+            "name": name.title(),
             "slot_type": part_data.get("LayoutSlot"),
             "pass_reward": part_data.get("BattlePassReward", False),
         })
@@ -889,16 +911,27 @@ def master_json():
         "skins": new_skins_data,
         "capital_house_parts": new_capital_part_data,
     }
-    with open(f"static_data.json", "w", encoding="utf-8") as jf:
+    with open(f"{BASE_PATH}static_data.json", "w", encoding="utf-8") as jf:
         jf.write(json.dumps(master_data, indent=2))
 
-    with open(f"translations.json", "w", encoding="utf-8") as jf:
+    with open(f"{BASE_PATH}translations.json", "w", encoding="utf-8") as jf:
         jf.write(json.dumps(new_translation_data, indent=2))
+
+    for _, file_path in TARGETS:
+        # 6) Delete the extra jsons
+        if KEEP_JSON:
+            continue
+        try:
+            file_path = file_path.replace("csv", "json")
+            os.remove(file_path)
+        except OSError as e:
+            logging.warning(f"Could not delete {file_path}: {e}")
 
 
 def main():
-    # Hard-code or fallback
-    FINGERPRINT = get_fingerprint()
+    FINGERPRINT = MANUAL_FINGERPRINT
+    if not FINGERPRINT:
+        FINGERPRINT = get_fingerprint()
     BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
     for target_file, target_save in TARGETS:
         target_save = target_file if target_save is None else target_save
@@ -923,6 +956,7 @@ def main():
             # treat as compressed
             process_csv(data=data, file_path=target_save, save_name=target_save.split(".")[0])
 
+
 if __name__ == "__main__":
-    #main()
+    main()
     master_json()
