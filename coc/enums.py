@@ -218,6 +218,7 @@ SUPER_TROOP_ORDER = [
     "Super Bowler",
     "Super Miner",
     "Super Hog Rider",
+    "Super Yeti"
 ]
 
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
