@@ -9,7 +9,7 @@ maintainers = [{ name = "majordoobie" }, { name = "MagicTheDev" }, { name = "Kuc
     { name = "lukasthaler"}, { name = "doluk"}]
 version = "3.9.1"
 description = "A python wrapper for the Clash of Clans API"
-requires-python = ">=3.9.0"
+requires-python = ">=3.10.0"
 readme = "README.rst"
 license = { text = "MIT" }
 keywords = ["coc", "clash of clans", "coc.py", "clash api"]

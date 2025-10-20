@@ -148,7 +148,7 @@ class ClanMember(BasePlayer):
         self.received: int = data_get("donationsReceived")
         player_house_element_cls = self.player_house_element_cls
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
-        self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.league = try_enum(self.league_cls, data=data_get("leagueTier") or UNRANKED_LEAGUE_DATA, client=self._client)
         self.builder_base_league = try_enum(self.builder_base_league_cls,
                                             data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
                                             client=self._client)

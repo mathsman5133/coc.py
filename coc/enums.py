@@ -137,21 +137,14 @@ class WarResult(ExtendedEnum):
 
 class Resource(ExtendedEnum):
     elixir = "Elixir"
-    builder_elixir = "Elixir2"
-    dark_elixir = "DarkElixir"
+    builder_elixir = "Builder Elixir"
+    dark_elixir = "Dark Elixir"
     gold = "Gold"
-    builder_gold = "Gold2"
-    shiny_ore = "CommonOre"
-    glowy_ore = "RareOre"
-    starry_ore = "EpicOre"
-
-    @property
-    def in_game_name(self) -> str:
-        """Get a neat client-facing string value for the resource."""
-        lookup = {"Elixir": "Elixir", "Elixir2": "Builder Elixir",
-                  "DarkElixir": "Dark Elixir", "Gold": "Gold", "Gold2": "Builder Gold",
-                  "CommonOre": "Shiny Ore", "RareOre": "Glowy Ore", "EpicOre": "Starry Ore"}
-        return lookup[self.value]
+    builder_gold = "Builder Gold"
+    shiny_ore = "Shiny Ore"
+    glowy_ore = "Glowy Ore"
+    starry_ore = "Starry Ore"
+    gems = "gems"
 
 
 ELIXIR_TROOP_ORDER = [
