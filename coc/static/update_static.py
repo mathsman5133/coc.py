@@ -301,17 +301,24 @@ class StaticUpdater:
 
         new_building_data = []
 
+        #fill in ids, make it easier
+        for _id, (building_name, building_data) in enumerate(self.full_building_data.items(), 1000000):
+            building_data["_id"] = _id
+
         for _id, (building_name, building_data) in enumerate(self.full_building_data.items(), 1000000):
             if building_data.get("BuildingClass") in ["Npc", "NonFunctional",
                                                       "Npc Town Hall"] or "Unused" in building_name:
                 continue
             village_type = building_data.get("VillageType", 0)
-            building_data["_id"] = _id #later on we need this id in this data
             superchargeable = False
             for supercharge_data in self.full_supercharges_data.values():
                 if supercharge_data.get("Name") == building_name:
                     superchargeable = True
                     break
+
+            #for merged buildings, move the requirement to level 1 since that is when the requirement is actually needed
+            if building_data.get("MergeRequirement") is not None:
+                building_data["1"]["MergeRequirement"] = building_data.get("MergeRequirement")
 
             hold_data = {
                 "_id": _id,
@@ -328,21 +335,47 @@ class StaticUpdater:
                 "superchargeable": superchargeable,
                 "levels": []
             }
+
+            if building_data.get("GearUpLevelRequirement"):
+                hold_data["gear_up"] = {
+                    "level_required": building_data.get("GearUpLevelRequirement"),
+                    "resource": self._parse_resource(resource=building_data.get("GearUpResource")),
+                    "building_id": self.full_building_data.get(building_data.get("GearUpBuilding")).get("_id")
+                }
+
             for level, level_data in building_data.items():
                 if not isinstance(level_data, dict):
                     continue
+
                 upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
                 upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
                 upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
                 upgrade_time_seconds += level_data.get("BuildTimeS", 0)
-                hold_data["levels"].append({
+
+                hold_level_data = {
                     "level": level_data.get("BuildingLevel"),
                     "upgrade_cost": level_data.get("BuildCost"),
                     "upgrade_time": upgrade_time_seconds,
                     "required_townhall": level_data.get("TownHallLevel"),
                     "hitpoints": level_data.get("Hitpoints"),
-                    "dps": level_data.get("DPS"),
-                })
+                    "dps": level_data.get("DPS") or level_data.get("Damage"),
+                }
+                if merge_requirement := level_data.get("MergeRequirement"):
+                    merge_list = []
+                    buildings = merge_requirement.split(";")
+                    for building in buildings:
+                        name, level, geared_up = building.split(":")
+                        merge_building_data = self.full_building_data.get(name)
+                        merge_list.append({
+                            "name": self._translate(tid=merge_building_data.get("TID")),
+                            "_id": merge_building_data.get("_id"),
+                            "geared_up": True if geared_up == "1" else False,
+                            "level": int(level)
+                        })
+
+                    hold_level_data["merge_requirement"] = merge_list
+
+                hold_data["levels"].append(hold_level_data)
 
             new_building_data.append(hold_data)
 

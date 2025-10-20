@@ -801,6 +801,14 @@
           "required_townhall": 16,
           "hitpoints": 10400,
           "dps": null,
+          "merge_requirement": [
+            {
+              "name": "Eagle Artillery",
+              "_id": 1000031,
+              "geared_up": false,
+              "level": 7
+            }
+          ],
           "unlocks": [
             {
               "name": "Archer Tower",
@@ -1922,7 +1930,12 @@
           "hitpoints": 2250,
           "dps": 160
         }
-      ]
+      ],
+      "gear_up": {
+        "level_required": 3,
+        "resource": "Gold",
+        "building_id": 1000041
+      }
     },
     {
       "_id": 1000009,
@@ -2106,7 +2119,12 @@
           "hitpoints": 1800,
           "dps": 145
         }
-      ]
+      ],
+      "gear_up": {
+        "level_required": 5,
+        "resource": "Gold",
+        "building_id": 1000048
+      }
     },
     {
       "_id": 1000010,
@@ -2706,7 +2724,12 @@
           "hitpoints": 2450,
           "dps": 66
         }
-      ]
+      ],
+      "gear_up": {
+        "level_required": 7,
+        "resource": "Gold",
+        "building_id": 1000045
+      }
     },
     {
       "_id": 1000014,
@@ -3824,7 +3847,7 @@
           "upgrade_time": 345600,
           "required_townhall": 11,
           "hitpoints": 4000,
-          "dps": null
+          "dps": 20
         },
         {
           "level": 2,
@@ -3832,7 +3855,7 @@
           "upgrade_time": 432000,
           "required_townhall": 11,
           "hitpoints": 4400,
-          "dps": null
+          "dps": 25
         },
         {
           "level": 3,
@@ -3840,7 +3863,7 @@
           "upgrade_time": 604800,
           "required_townhall": 12,
           "hitpoints": 4800,
-          "dps": null
+          "dps": 30
         },
         {
           "level": 4,
@@ -3848,7 +3871,7 @@
           "upgrade_time": 648000,
           "required_townhall": 13,
           "hitpoints": 5200,
-          "dps": null
+          "dps": 35
         },
         {
           "level": 5,
@@ -3856,7 +3879,7 @@
           "upgrade_time": 691200,
           "required_townhall": 14,
           "hitpoints": 5600,
-          "dps": null
+          "dps": 40
         },
         {
           "level": 6,
@@ -3864,7 +3887,7 @@
           "upgrade_time": 777600,
           "required_townhall": 15,
           "hitpoints": 5900,
-          "dps": null
+          "dps": 45
         },
         {
           "level": 7,
@@ -3872,7 +3895,7 @@
           "upgrade_time": 820800,
           "required_townhall": 16,
           "hitpoints": 6200,
-          "dps": null
+          "dps": 50
         }
       ]
     },
@@ -5122,7 +5145,7 @@
           "upgrade_time": 600,
           "required_townhall": 2,
           "hitpoints": 600,
-          "dps": null
+          "dps": 50
         },
         {
           "level": 2,
@@ -5130,7 +5153,7 @@
           "upgrade_time": 3600,
           "required_townhall": 3,
           "hitpoints": 690,
-          "dps": null
+          "dps": 55
         },
         {
           "level": 3,
@@ -5138,7 +5161,7 @@
           "upgrade_time": 10800,
           "required_townhall": 3,
           "hitpoints": 800,
-          "dps": null
+          "dps": 61
         },
         {
           "level": 4,
@@ -5146,7 +5169,7 @@
           "upgrade_time": 43200,
           "required_townhall": 4,
           "hitpoints": 910,
-          "dps": null
+          "dps": 67
         },
         {
           "level": 5,
@@ -5154,7 +5177,7 @@
           "upgrade_time": 86400,
           "required_townhall": 5,
           "hitpoints": 1050,
-          "dps": null
+          "dps": 74
         },
         {
           "level": 6,
@@ -5162,7 +5185,7 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 81
         },
         {
           "level": 7,
@@ -5170,7 +5193,7 @@
           "upgrade_time": 345600,
           "required_townhall": 7,
           "hitpoints": 1450,
-          "dps": null
+          "dps": 89
         },
         {
           "level": 8,
@@ -5178,7 +5201,7 @@
           "upgrade_time": 518400,
           "required_townhall": 8,
           "hitpoints": 1700,
-          "dps": null
+          "dps": 98
         },
         {
           "level": 9,
@@ -5186,7 +5209,7 @@
           "upgrade_time": 691200,
           "required_townhall": 9,
           "hitpoints": 1950,
-          "dps": null
+          "dps": 108
         },
         {
           "level": 10,
@@ -5194,7 +5217,7 @@
           "upgrade_time": 864000,
           "required_townhall": 10,
           "hitpoints": 2200,
-          "dps": null
+          "dps": 120
         }
       ]
     },
@@ -5233,7 +5256,7 @@
           "upgrade_time": 1800,
           "required_townhall": 3,
           "hitpoints": 300,
-          "dps": null
+          "dps": 36
         },
         {
           "level": 2,
@@ -5241,7 +5264,7 @@
           "upgrade_time": 10800,
           "required_townhall": 3,
           "hitpoints": 350,
-          "dps": null
+          "dps": 40
         },
         {
           "level": 3,
@@ -5249,7 +5272,7 @@
           "upgrade_time": 18000,
           "required_townhall": 3,
           "hitpoints": 400,
-          "dps": null
+          "dps": 44
         },
         {
           "level": 4,
@@ -5257,7 +5280,7 @@
           "upgrade_time": 36000,
           "required_townhall": 4,
           "hitpoints": 460,
-          "dps": null
+          "dps": 48
         },
         {
           "level": 5,
@@ -5265,7 +5288,7 @@
           "upgrade_time": 86400,
           "required_townhall": 5,
           "hitpoints": 550,
-          "dps": null
+          "dps": 53
         },
         {
           "level": 6,
@@ -5273,7 +5296,7 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 650,
-          "dps": null
+          "dps": 58
         },
         {
           "level": 7,
@@ -5281,7 +5304,7 @@
           "upgrade_time": 345600,
           "required_townhall": 7,
           "hitpoints": 750,
-          "dps": null
+          "dps": 64
         },
         {
           "level": 8,
@@ -5289,7 +5312,7 @@
           "upgrade_time": 518400,
           "required_townhall": 8,
           "hitpoints": 850,
-          "dps": null
+          "dps": 70
         },
         {
           "level": 9,
@@ -5297,7 +5320,7 @@
           "upgrade_time": 691200,
           "required_townhall": 9,
           "hitpoints": 1000,
-          "dps": null
+          "dps": 77
         },
         {
           "level": 10,
@@ -5305,7 +5328,7 @@
           "upgrade_time": 864000,
           "required_townhall": 10,
           "hitpoints": 1150,
-          "dps": null
+          "dps": 85
         }
       ]
     },
@@ -5329,7 +5352,7 @@
           "upgrade_time": 60,
           "required_townhall": 1,
           "hitpoints": 500,
-          "dps": null
+          "dps": 56
         },
         {
           "level": 2,
@@ -5337,7 +5360,7 @@
           "upgrade_time": 300,
           "required_townhall": 3,
           "hitpoints": 575,
-          "dps": null
+          "dps": 62
         },
         {
           "level": 3,
@@ -5345,7 +5368,7 @@
           "upgrade_time": 7200,
           "required_townhall": 3,
           "hitpoints": 660,
-          "dps": null
+          "dps": 68
         },
         {
           "level": 4,
@@ -5353,7 +5376,7 @@
           "upgrade_time": 28800,
           "required_townhall": 4,
           "hitpoints": 760,
-          "dps": null
+          "dps": 75
         },
         {
           "level": 5,
@@ -5361,7 +5384,7 @@
           "upgrade_time": 86400,
           "required_townhall": 5,
           "hitpoints": 875,
-          "dps": null
+          "dps": 82
         },
         {
           "level": 6,
@@ -5369,7 +5392,7 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 1050,
-          "dps": null
+          "dps": 90
         },
         {
           "level": 7,
@@ -5377,7 +5400,7 @@
           "upgrade_time": 345600,
           "required_townhall": 7,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 99
         },
         {
           "level": 8,
@@ -5385,7 +5408,7 @@
           "upgrade_time": 518400,
           "required_townhall": 8,
           "hitpoints": 1450,
-          "dps": null
+          "dps": 109
         },
         {
           "level": 9,
@@ -5393,7 +5416,7 @@
           "upgrade_time": 691200,
           "required_townhall": 9,
           "hitpoints": 1650,
-          "dps": null
+          "dps": 120
         },
         {
           "level": 10,
@@ -5401,7 +5424,7 @@
           "upgrade_time": 777600,
           "required_townhall": 10,
           "hitpoints": 1850,
-          "dps": null
+          "dps": 132
         }
       ]
     },
@@ -5425,7 +5448,7 @@
           "upgrade_time": 28800,
           "required_townhall": 5,
           "hitpoints": 500,
-          "dps": null
+          "dps": 45
         },
         {
           "level": 2,
@@ -5433,7 +5456,7 @@
           "upgrade_time": 43200,
           "required_townhall": 5,
           "hitpoints": 575,
-          "dps": null
+          "dps": 45
         },
         {
           "level": 3,
@@ -5441,7 +5464,7 @@
           "upgrade_time": 86400,
           "required_townhall": 5,
           "hitpoints": 660,
-          "dps": null
+          "dps": 50
         },
         {
           "level": 4,
@@ -5449,7 +5472,7 @@
           "upgrade_time": 172800,
           "required_townhall": 5,
           "hitpoints": 760,
-          "dps": null
+          "dps": 55
         },
         {
           "level": 5,
@@ -5457,7 +5480,7 @@
           "upgrade_time": 259200,
           "required_townhall": 5,
           "hitpoints": 875,
-          "dps": null
+          "dps": 60
         },
         {
           "level": 6,
@@ -5465,7 +5488,7 @@
           "upgrade_time": 432000,
           "required_townhall": 6,
           "hitpoints": 1050,
-          "dps": null
+          "dps": 66
         },
         {
           "level": 7,
@@ -5473,7 +5496,7 @@
           "upgrade_time": 604800,
           "required_townhall": 7,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 73
         },
         {
           "level": 8,
@@ -5481,7 +5504,7 @@
           "upgrade_time": 777600,
           "required_townhall": 8,
           "hitpoints": 1450,
-          "dps": null
+          "dps": 80
         },
         {
           "level": 9,
@@ -5489,7 +5512,7 @@
           "upgrade_time": 950400,
           "required_townhall": 9,
           "hitpoints": 1650,
-          "dps": null
+          "dps": 88
         },
         {
           "level": 10,
@@ -5497,7 +5520,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 1850,
-          "dps": null
+          "dps": 88
         }
       ]
     },
@@ -5743,7 +5766,7 @@
           "upgrade_time": 900,
           "required_townhall": 3,
           "hitpoints": 400,
-          "dps": null
+          "dps": 19
         },
         {
           "level": 2,
@@ -5751,7 +5774,7 @@
           "upgrade_time": 7200,
           "required_townhall": 3,
           "hitpoints": 460,
-          "dps": null
+          "dps": 21
         },
         {
           "level": 3,
@@ -5759,7 +5782,7 @@
           "upgrade_time": 14400,
           "required_townhall": 3,
           "hitpoints": 530,
-          "dps": null
+          "dps": 23
         },
         {
           "level": 4,
@@ -5767,7 +5790,7 @@
           "upgrade_time": 43200,
           "required_townhall": 4,
           "hitpoints": 610,
-          "dps": null
+          "dps": 25
         },
         {
           "level": 5,
@@ -5775,7 +5798,7 @@
           "upgrade_time": 86400,
           "required_townhall": 5,
           "hitpoints": 700,
-          "dps": null
+          "dps": 27
         },
         {
           "level": 6,
@@ -5783,7 +5806,7 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 850,
-          "dps": null
+          "dps": 30
         },
         {
           "level": 7,
@@ -5791,7 +5814,7 @@
           "upgrade_time": 345600,
           "required_townhall": 7,
           "hitpoints": 1000,
-          "dps": null
+          "dps": 33
         },
         {
           "level": 8,
@@ -5799,7 +5822,7 @@
           "upgrade_time": 518400,
           "required_townhall": 8,
           "hitpoints": 1150,
-          "dps": null
+          "dps": 36
         },
         {
           "level": 9,
@@ -5807,7 +5830,7 @@
           "upgrade_time": 691200,
           "required_townhall": 9,
           "hitpoints": 1300,
-          "dps": null
+          "dps": 40
         },
         {
           "level": 10,
@@ -5815,7 +5838,7 @@
           "upgrade_time": 777600,
           "required_townhall": 10,
           "hitpoints": 1500,
-          "dps": null
+          "dps": 44
         }
       ]
     },
@@ -5935,7 +5958,7 @@
           "upgrade_time": 172800,
           "required_townhall": 8,
           "hitpoints": 700,
-          "dps": null
+          "dps": 380
         },
         {
           "level": 2,
@@ -5943,7 +5966,7 @@
           "upgrade_time": 259200,
           "required_townhall": 8,
           "hitpoints": 800,
-          "dps": null
+          "dps": 418
         },
         {
           "level": 3,
@@ -5951,7 +5974,7 @@
           "upgrade_time": 345600,
           "required_townhall": 8,
           "hitpoints": 950,
-          "dps": null
+          "dps": 460
         },
         {
           "level": 4,
@@ -5959,7 +5982,7 @@
           "upgrade_time": 432000,
           "required_townhall": 8,
           "hitpoints": 1100,
-          "dps": null
+          "dps": 506
         },
         {
           "level": 5,
@@ -5967,7 +5990,7 @@
           "upgrade_time": 518400,
           "required_townhall": 8,
           "hitpoints": 1300,
-          "dps": null
+          "dps": 556
         },
         {
           "level": 6,
@@ -5975,7 +5998,7 @@
           "upgrade_time": 604800,
           "required_townhall": 8,
           "hitpoints": 1500,
-          "dps": null
+          "dps": 612
         },
         {
           "level": 7,
@@ -5983,7 +6006,7 @@
           "upgrade_time": 691200,
           "required_townhall": 8,
           "hitpoints": 1700,
-          "dps": null
+          "dps": 673
         },
         {
           "level": 8,
@@ -5991,7 +6014,7 @@
           "upgrade_time": 864000,
           "required_townhall": 8,
           "hitpoints": 1900,
-          "dps": null
+          "dps": 741
         },
         {
           "level": 9,
@@ -5999,7 +6022,7 @@
           "upgrade_time": 950400,
           "required_townhall": 9,
           "hitpoints": 2150,
-          "dps": null
+          "dps": 816
         },
         {
           "level": 10,
@@ -6007,7 +6030,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 2400,
-          "dps": null
+          "dps": 896
         }
       ]
     },
@@ -6046,7 +6069,7 @@
           "upgrade_time": 21600,
           "required_townhall": 4,
           "hitpoints": 1000,
-          "dps": null
+          "dps": 270
         },
         {
           "level": 2,
@@ -6054,7 +6077,7 @@
           "upgrade_time": 43200,
           "required_townhall": 4,
           "hitpoints": 1100,
-          "dps": null
+          "dps": 297
         },
         {
           "level": 3,
@@ -6062,7 +6085,7 @@
           "upgrade_time": 86400,
           "required_townhall": 4,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 327
         },
         {
           "level": 4,
@@ -6070,7 +6093,7 @@
           "upgrade_time": 172800,
           "required_townhall": 4,
           "hitpoints": 1400,
-          "dps": null
+          "dps": 359
         },
         {
           "level": 5,
@@ -6078,7 +6101,7 @@
           "upgrade_time": 259200,
           "required_townhall": 5,
           "hitpoints": 1600,
-          "dps": null
+          "dps": 395
         },
         {
           "level": 6,
@@ -6086,7 +6109,7 @@
           "upgrade_time": 432000,
           "required_townhall": 6,
           "hitpoints": 1850,
-          "dps": null
+          "dps": 435
         },
         {
           "level": 7,
@@ -6094,7 +6117,7 @@
           "upgrade_time": 604800,
           "required_townhall": 7,
           "hitpoints": 2100,
-          "dps": null
+          "dps": 478
         },
         {
           "level": 8,
@@ -6102,7 +6125,7 @@
           "upgrade_time": 691200,
           "required_townhall": 8,
           "hitpoints": 2350,
-          "dps": null
+          "dps": 526
         },
         {
           "level": 9,
@@ -6110,7 +6133,7 @@
           "upgrade_time": 864000,
           "required_townhall": 9,
           "hitpoints": 2600,
-          "dps": null
+          "dps": 579
         },
         {
           "level": 10,
@@ -6118,7 +6141,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 2900,
-          "dps": null
+          "dps": 637
         }
       ]
     },
@@ -6142,7 +6165,7 @@
           "upgrade_time": 7200,
           "required_townhall": 3,
           "hitpoints": 1000,
-          "dps": null
+          "dps": 440
         },
         {
           "level": 2,
@@ -6150,7 +6173,7 @@
           "upgrade_time": 18000,
           "required_townhall": 3,
           "hitpoints": 1100,
-          "dps": null
+          "dps": 484
         },
         {
           "level": 3,
@@ -6158,7 +6181,7 @@
           "upgrade_time": 43200,
           "required_townhall": 3,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 532
         },
         {
           "level": 4,
@@ -6166,7 +6189,7 @@
           "upgrade_time": 86400,
           "required_townhall": 4,
           "hitpoints": 1400,
-          "dps": null
+          "dps": 586
         },
         {
           "level": 5,
@@ -6174,7 +6197,7 @@
           "upgrade_time": 172800,
           "required_townhall": 5,
           "hitpoints": 1600,
-          "dps": null
+          "dps": 644
         },
         {
           "level": 6,
@@ -6182,7 +6205,7 @@
           "upgrade_time": 345600,
           "required_townhall": 6,
           "hitpoints": 1850,
-          "dps": null
+          "dps": 709
         },
         {
           "level": 7,
@@ -6190,7 +6213,7 @@
           "upgrade_time": 518400,
           "required_townhall": 7,
           "hitpoints": 2100,
-          "dps": null
+          "dps": 779
         },
         {
           "level": 8,
@@ -6198,7 +6221,7 @@
           "upgrade_time": 691200,
           "required_townhall": 8,
           "hitpoints": 2350,
-          "dps": null
+          "dps": 857
         },
         {
           "level": 9,
@@ -6206,7 +6229,7 @@
           "upgrade_time": 864000,
           "required_townhall": 9,
           "hitpoints": 2600,
-          "dps": null
+          "dps": 943
         },
         {
           "level": 10,
@@ -6214,7 +6237,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 2900,
-          "dps": null
+          "dps": 1037
         }
       ]
     },
@@ -6238,7 +6261,7 @@
           "upgrade_time": 86400,
           "required_townhall": 6,
           "hitpoints": 800,
-          "dps": null
+          "dps": 15
         },
         {
           "level": 2,
@@ -6246,7 +6269,7 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 950,
-          "dps": null
+          "dps": 17
         },
         {
           "level": 3,
@@ -6254,7 +6277,7 @@
           "upgrade_time": 259200,
           "required_townhall": 6,
           "hitpoints": 1100,
-          "dps": null
+          "dps": 19
         },
         {
           "level": 4,
@@ -6262,7 +6285,7 @@
           "upgrade_time": 345600,
           "required_townhall": 6,
           "hitpoints": 1300,
-          "dps": null
+          "dps": 21
         },
         {
           "level": 5,
@@ -6270,7 +6293,7 @@
           "upgrade_time": 432000,
           "required_townhall": 6,
           "hitpoints": 1500,
-          "dps": null
+          "dps": 23
         },
         {
           "level": 6,
@@ -6278,7 +6301,7 @@
           "upgrade_time": 518400,
           "required_townhall": 6,
           "hitpoints": 1700,
-          "dps": null
+          "dps": 25
         },
         {
           "level": 7,
@@ -6286,7 +6309,7 @@
           "upgrade_time": 691200,
           "required_townhall": 7,
           "hitpoints": 1900,
-          "dps": null
+          "dps": 27
         },
         {
           "level": 8,
@@ -6294,7 +6317,7 @@
           "upgrade_time": 864000,
           "required_townhall": 8,
           "hitpoints": 2100,
-          "dps": null
+          "dps": 30
         },
         {
           "level": 9,
@@ -6302,7 +6325,7 @@
           "upgrade_time": 950400,
           "required_townhall": 9,
           "hitpoints": 2350,
-          "dps": null
+          "dps": 33
         },
         {
           "level": 10,
@@ -6310,7 +6333,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 2600,
-          "dps": null
+          "dps": 36
         }
       ]
     },
@@ -6334,7 +6357,7 @@
           "upgrade_time": 86400,
           "required_townhall": 7,
           "hitpoints": 700,
-          "dps": null
+          "dps": 205
         },
         {
           "level": 2,
@@ -6342,7 +6365,7 @@
           "upgrade_time": 172800,
           "required_townhall": 7,
           "hitpoints": 800,
-          "dps": null
+          "dps": 226
         },
         {
           "level": 3,
@@ -6350,7 +6373,7 @@
           "upgrade_time": 259200,
           "required_townhall": 7,
           "hitpoints": 950,
-          "dps": null
+          "dps": 248
         },
         {
           "level": 4,
@@ -6358,7 +6381,7 @@
           "upgrade_time": 345600,
           "required_townhall": 7,
           "hitpoints": 1100,
-          "dps": null
+          "dps": 273
         },
         {
           "level": 5,
@@ -6366,7 +6389,7 @@
           "upgrade_time": 432000,
           "required_townhall": 7,
           "hitpoints": 1300,
-          "dps": null
+          "dps": 300
         },
         {
           "level": 6,
@@ -6374,7 +6397,7 @@
           "upgrade_time": 518400,
           "required_townhall": 7,
           "hitpoints": 1500,
-          "dps": null
+          "dps": 330
         },
         {
           "level": 7,
@@ -6382,7 +6405,7 @@
           "upgrade_time": 691200,
           "required_townhall": 7,
           "hitpoints": 1700,
-          "dps": null
+          "dps": 363
         },
         {
           "level": 8,
@@ -6390,7 +6413,7 @@
           "upgrade_time": 864000,
           "required_townhall": 8,
           "hitpoints": 1900,
-          "dps": null
+          "dps": 399
         },
         {
           "level": 9,
@@ -6398,7 +6421,7 @@
           "upgrade_time": 950400,
           "required_townhall": 9,
           "hitpoints": 2150,
-          "dps": null
+          "dps": 439
         },
         {
           "level": 10,
@@ -6406,7 +6429,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 2400,
-          "dps": null
+          "dps": 483
         }
       ]
     },
@@ -6606,7 +6629,7 @@
           "upgrade_time": 172800,
           "required_townhall": 9,
           "hitpoints": 500,
-          "dps": null
+          "dps": 50
         },
         {
           "level": 2,
@@ -6614,7 +6637,7 @@
           "upgrade_time": 259200,
           "required_townhall": 9,
           "hitpoints": 575,
-          "dps": null
+          "dps": 55
         },
         {
           "level": 3,
@@ -6622,7 +6645,7 @@
           "upgrade_time": 345600,
           "required_townhall": 9,
           "hitpoints": 660,
-          "dps": null
+          "dps": 61
         },
         {
           "level": 4,
@@ -6630,7 +6653,7 @@
           "upgrade_time": 432000,
           "required_townhall": 9,
           "hitpoints": 760,
-          "dps": null
+          "dps": 67
         },
         {
           "level": 5,
@@ -6638,7 +6661,7 @@
           "upgrade_time": 518400,
           "required_townhall": 9,
           "hitpoints": 875,
-          "dps": null
+          "dps": 73
         },
         {
           "level": 6,
@@ -6646,7 +6669,7 @@
           "upgrade_time": 604800,
           "required_townhall": 9,
           "hitpoints": 1050,
-          "dps": null
+          "dps": 81
         },
         {
           "level": 7,
@@ -6654,7 +6677,7 @@
           "upgrade_time": 691200,
           "required_townhall": 9,
           "hitpoints": 1250,
-          "dps": null
+          "dps": 89
         },
         {
           "level": 8,
@@ -6662,7 +6685,7 @@
           "upgrade_time": 864000,
           "required_townhall": 9,
           "hitpoints": 1450,
-          "dps": null
+          "dps": 97
         },
         {
           "level": 9,
@@ -6670,7 +6693,7 @@
           "upgrade_time": 950400,
           "required_townhall": 9,
           "hitpoints": 1650,
-          "dps": null
+          "dps": 107
         },
         {
           "level": 10,
@@ -6678,7 +6701,7 @@
           "upgrade_time": 1036800,
           "required_townhall": 10,
           "hitpoints": 1850,
-          "dps": null
+          "dps": 118
         }
       ]
     },
@@ -7647,7 +7670,21 @@
           "upgrade_time": 1296000,
           "required_townhall": 17,
           "hitpoints": 4000,
-          "dps": 300
+          "dps": 300,
+          "merge_requirement": [
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "geared_up": true,
+              "level": 21
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "geared_up": true,
+              "level": 21
+            }
+          ]
         },
         {
           "level": 2,
@@ -7829,7 +7866,21 @@
           "upgrade_time": 604800,
           "required_townhall": 16,
           "hitpoints": 5000,
-          "dps": null
+          "dps": 60,
+          "merge_requirement": [
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "geared_up": false,
+              "level": 21
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "geared_up": false,
+              "level": 21
+            }
+          ]
         },
         {
           "level": 2,
@@ -7837,7 +7888,7 @@
           "upgrade_time": 691200,
           "required_townhall": 16,
           "hitpoints": 5200,
-          "dps": null
+          "dps": 65
         },
         {
           "level": 3,
@@ -7845,7 +7896,7 @@
           "upgrade_time": 1339200,
           "required_townhall": 17,
           "hitpoints": 5400,
-          "dps": null
+          "dps": 70
         }
       ]
     },
@@ -7869,7 +7920,21 @@
           "upgrade_time": 604800,
           "required_townhall": 16,
           "hitpoints": 5400,
-          "dps": 360
+          "dps": 360,
+          "merge_requirement": [
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "geared_up": false,
+              "level": 21
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "geared_up": false,
+              "level": 21
+            }
+          ]
         },
         {
           "level": 2,
