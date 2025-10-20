@@ -140,7 +140,59 @@
           "upgrade_time": 0,
           "required_townhall": 0,
           "hitpoints": 400,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Army Camp",
+              "_id": 1000000,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Storage",
+              "_id": 1000003,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000005,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Barracks",
+              "_id": 1000006,
+              "quantity": 1
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 1
+            },
+            {
+              "name": "Clan Castle",
+              "_id": 1000014,
+              "quantity": 1
+            },
+            {
+              "name": "Builder's Hut",
+              "_id": 1000015,
+              "quantity": 5
+            },
+            {
+              "name": "B.O.B's Hut",
+              "_id": 1000064,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 2,
@@ -148,7 +200,34 @@
           "upgrade_time": 10,
           "required_townhall": 1,
           "hitpoints": 800,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 3,
@@ -156,7 +235,49 @@
           "upgrade_time": 1800,
           "required_townhall": 2,
           "hitpoints": 1600,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Army Camp",
+              "_id": 1000000,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Storage",
+              "_id": 1000003,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000005,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Mortar",
+              "_id": 1000013,
+              "quantity": 1
+            },
+            {
+              "name": "Laboratory",
+              "_id": 1000007,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 4,
@@ -164,7 +285,34 @@
           "upgrade_time": 10800,
           "required_townhall": 3,
           "hitpoints": 2000,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Air Defense",
+              "_id": 1000012,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 5,
@@ -172,7 +320,49 @@
           "upgrade_time": 21600,
           "required_townhall": 4,
           "hitpoints": 2400,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Army Camp",
+              "_id": 1000000,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Wizard Tower",
+              "_id": 1000011,
+              "quantity": 1
+            },
+            {
+              "name": "Spell Factory",
+              "_id": 1000020,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 6,
@@ -180,7 +370,44 @@
           "upgrade_time": 43200,
           "required_townhall": 5,
           "hitpoints": 2800,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Wizard Tower",
+              "_id": 1000011,
+              "quantity": 1
+            },
+            {
+              "name": "Air Defense",
+              "_id": 1000012,
+              "quantity": 1
+            },
+            {
+              "name": "Mortar",
+              "_id": 1000013,
+              "quantity": 1
+            },
+            {
+              "name": "Air Sweeper",
+              "_id": 1000028,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 7,
@@ -188,7 +415,64 @@
           "upgrade_time": 64800,
           "required_townhall": 6,
           "hitpoints": 3300,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Army Camp",
+              "_id": 1000000,
+              "quantity": 1
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 2
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 50
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Air Defense",
+              "_id": 1000012,
+              "quantity": 1
+            },
+            {
+              "name": "Mortar",
+              "_id": 1000013,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000019,
+              "quantity": 2
+            },
+            {
+              "name": "Dark Elixir Drill",
+              "_id": 1000023,
+              "quantity": 1
+            },
+            {
+              "name": "Dark Elixir Storage",
+              "_id": 1000024,
+              "quantity": 1
+            },
+            {
+              "name": "Dark Barracks",
+              "_id": 1000026,
+              "quantity": 1
+            },
+            {
+              "name": "Hero Hall",
+              "_id": 1000071,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 8,
@@ -196,7 +480,64 @@
           "upgrade_time": 86400,
           "required_townhall": 7,
           "hitpoints": 3900,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Storage",
+              "_id": 1000003,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000005,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 50
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Wizard Tower",
+              "_id": 1000011,
+              "quantity": 1
+            },
+            {
+              "name": "Mortar",
+              "_id": 1000013,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000019,
+              "quantity": 1
+            },
+            {
+              "name": "Dark Spell Factory",
+              "_id": 1000029,
+              "quantity": 1
+            },
+            {
+              "name": "Dark Elixir Drill",
+              "_id": 1000023,
+              "quantity": 1
+            },
+            {
+              "name": "Bomb Tower",
+              "_id": 1000032,
+              "quantity": 1
+            },
+            {
+              "name": "Blacksmith",
+              "_id": 1000070,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 9,
@@ -204,7 +545,74 @@
           "upgrade_time": 172800,
           "required_townhall": 8,
           "hitpoints": 4600,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Storage",
+              "_id": 1000003,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000005,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Collector",
+              "_id": 1000002,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000004,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Wizard Tower",
+              "_id": 1000011,
+              "quantity": 1
+            },
+            {
+              "name": "Air Defense",
+              "_id": 1000012,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000019,
+              "quantity": 1
+            },
+            {
+              "name": "X-Bow",
+              "_id": 1000021,
+              "quantity": 2
+            },
+            {
+              "name": "Dark Elixir Drill",
+              "_id": 1000023,
+              "quantity": 1
+            },
+            {
+              "name": "Air Sweeper",
+              "_id": 1000028,
+              "quantity": 1
+            },
+            {
+              "name": "Helper Hut",
+              "_id": 1000093,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 10,
@@ -212,7 +620,39 @@
           "upgrade_time": 259200,
           "required_townhall": 9,
           "hitpoints": 5500,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "X-Bow",
+              "_id": 1000021,
+              "quantity": 1
+            },
+            {
+              "name": "Inferno Tower",
+              "_id": 1000027,
+              "quantity": 2
+            },
+            {
+              "name": "Bomb Tower",
+              "_id": 1000032,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 11,
@@ -220,7 +660,39 @@
           "upgrade_time": 432000,
           "required_townhall": 10,
           "hitpoints": 6800,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Cannon",
+              "_id": 1000008,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Wizard Tower",
+              "_id": 1000011,
+              "quantity": 1
+            },
+            {
+              "name": "X-Bow",
+              "_id": 1000021,
+              "quantity": 1
+            },
+            {
+              "name": "Eagle Artillery",
+              "_id": 1000031,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 12,
@@ -228,7 +700,24 @@
           "upgrade_time": 518400,
           "required_townhall": 11,
           "hitpoints": 7500,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000019,
+              "quantity": 1
+            },
+            {
+              "name": "Inferno Tower",
+              "_id": 1000027,
+              "quantity": 1
+            },
+            {
+              "name": "Workshop",
+              "_id": 1000059,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 13,
@@ -236,7 +725,14 @@
           "upgrade_time": 604800,
           "required_townhall": 12,
           "hitpoints": 8200,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Scattershot",
+              "_id": 1000067,
+              "quantity": 2
+            }
+          ]
         },
         {
           "level": 14,
@@ -244,7 +740,19 @@
           "upgrade_time": 648000,
           "required_townhall": 13,
           "hitpoints": 8900,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000010,
+              "quantity": 25
+            },
+            {
+              "name": "Pet House",
+              "_id": 1000068,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 15,
@@ -252,7 +760,19 @@
           "upgrade_time": 691200,
           "required_townhall": 14,
           "hitpoints": 9600,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Spell Tower",
+              "_id": 1000072,
+              "quantity": 2
+            },
+            {
+              "name": "Monolith",
+              "_id": 1000077,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 16,
@@ -260,7 +780,19 @@
           "upgrade_time": 777600,
           "required_townhall": 15,
           "hitpoints": 10000,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Multi-Archer Tower",
+              "_id": 1000084,
+              "quantity": 2
+            },
+            {
+              "name": "Ricochet Cannon",
+              "_id": 1000085,
+              "quantity": 2
+            }
+          ]
         },
         {
           "level": 17,
@@ -268,7 +800,39 @@
           "upgrade_time": 864000,
           "required_townhall": 16,
           "hitpoints": 10400,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Archer Tower",
+              "_id": 1000009,
+              "quantity": 1
+            },
+            {
+              "name": "Multi-Archer Tower",
+              "_id": 1000084,
+              "quantity": 1
+            },
+            {
+              "name": "Ricochet Cannon",
+              "_id": 1000085,
+              "quantity": 1
+            },
+            {
+              "name": "Firespitter",
+              "_id": 1000089,
+              "quantity": 2
+            },
+            {
+              "name": "Multi-Gear Tower",
+              "_id": 1000079,
+              "quantity": 1
+            },
+            {
+              "name": "Crafting Station",
+              "_id": 1000097,
+              "quantity": 1
+            }
+          ]
         }
       ]
     },
@@ -3540,7 +4104,44 @@
           "upgrade_time": 0,
           "required_townhall": null,
           "hitpoints": 650,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 10
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Star Laboratory",
+              "_id": 1000046,
+              "quantity": 1
+            },
+            {
+              "name": "Builder Barracks",
+              "_id": 1000040,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 2,
@@ -3548,7 +4149,29 @@
           "upgrade_time": 5,
           "required_townhall": null,
           "hitpoints": 800,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 10
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 3,
@@ -3556,7 +4179,54 @@
           "upgrade_time": 3600,
           "required_townhall": null,
           "hitpoints": 975,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Storage",
+              "_id": 1000036,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000038,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 30
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Crusher",
+              "_id": 1000055,
+              "quantity": 1
+            },
+            {
+              "name": "Gem Mine",
+              "_id": 1000058,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 4,
@@ -3564,7 +4234,39 @@
           "upgrade_time": 86400,
           "required_townhall": null,
           "hitpoints": 1150,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Clock Tower",
+              "_id": 1000039,
+              "quantity": 1
+            },
+            {
+              "name": "Guard Post",
+              "_id": 1000051,
+              "quantity": 1
+            },
+            {
+              "name": "Air Bombs",
+              "_id": 1000054,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 5,
@@ -3572,7 +4274,34 @@
           "upgrade_time": 172800,
           "required_townhall": null,
           "hitpoints": 1350,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 25
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            },
+            {
+              "name": "Multi Mortar",
+              "_id": 1000045,
+              "quantity": 1
+            },
+            {
+              "name": "Battle Machine",
+              "_id": 1000053,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 6,
@@ -3580,7 +4309,69 @@
           "upgrade_time": 259200,
           "required_townhall": null,
           "hitpoints": 1600,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Storage",
+              "_id": 1000036,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000038,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Crusher",
+              "_id": 1000055,
+              "quantity": 1
+            },
+            {
+              "name": "Roaster",
+              "_id": 1000056,
+              "quantity": 1
+            },
+            {
+              "name": "Reinforcement Camp",
+              "_id": 1000049,
+              "quantity": 1
+            },
+            {
+              "name": "Healing Hut",
+              "_id": 1000082,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 7,
@@ -3588,7 +4379,39 @@
           "upgrade_time": 345600,
           "required_townhall": null,
           "hitpoints": 1850,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Giant Cannon",
+              "_id": 1000057,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 8,
@@ -3596,7 +4419,44 @@
           "upgrade_time": 432000,
           "required_townhall": null,
           "hitpoints": 2150,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            },
+            {
+              "name": "Mega Tesla",
+              "_id": 1000052,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Battle Copter",
+              "_id": 1000080,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 9,
@@ -3604,7 +4464,34 @@
           "upgrade_time": 518400,
           "required_townhall": null,
           "hitpoints": 2450,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Lava Launcher",
+              "_id": 1000063,
+              "quantity": 1
+            },
+            {
+              "name": "B.O.B Control",
+              "_id": 1000065,
+              "quantity": 1
+            },
+            {
+              "name": "Reinforcement Camp",
+              "_id": 1000049,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 10,
@@ -3612,7 +4499,14 @@
           "upgrade_time": 604800,
           "required_townhall": null,
           "hitpoints": 2750,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "X-Bow",
+              "_id": 1000081,
+              "quantity": 1
+            }
+          ]
         }
       ]
     },
@@ -6327,7 +7221,44 @@
           "upgrade_time": 0,
           "required_townhall": 6,
           "hitpoints": 650,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 10
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Star Laboratory",
+              "_id": 1000046,
+              "quantity": 1
+            },
+            {
+              "name": "Builder Barracks",
+              "_id": 1000040,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 2,
@@ -6335,7 +7266,29 @@
           "upgrade_time": 86400,
           "required_townhall": 6,
           "hitpoints": 800,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 10
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 3,
@@ -6343,7 +7296,54 @@
           "upgrade_time": 172800,
           "required_townhall": 6,
           "hitpoints": 975,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Storage",
+              "_id": 1000036,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000038,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 30
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Crusher",
+              "_id": 1000055,
+              "quantity": 1
+            },
+            {
+              "name": "Gem Mine",
+              "_id": 1000058,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 4,
@@ -6351,7 +7351,39 @@
           "upgrade_time": 259200,
           "required_townhall": 6,
           "hitpoints": 1150,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 25
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Clock Tower",
+              "_id": 1000039,
+              "quantity": 1
+            },
+            {
+              "name": "Guard Post",
+              "_id": 1000051,
+              "quantity": 1
+            },
+            {
+              "name": "Air Bombs",
+              "_id": 1000054,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 5,
@@ -6359,7 +7391,34 @@
           "upgrade_time": 345600,
           "required_townhall": 6,
           "hitpoints": 1350,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 25
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            },
+            {
+              "name": "Multi Mortar",
+              "_id": 1000045,
+              "quantity": 1
+            },
+            {
+              "name": "Battle Machine",
+              "_id": 1000053,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 6,
@@ -6367,7 +7426,69 @@
           "upgrade_time": 432000,
           "required_townhall": 6,
           "hitpoints": 1600,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Elixir Storage",
+              "_id": 1000036,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Storage",
+              "_id": 1000038,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Archer Tower",
+              "_id": 1000048,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Crusher",
+              "_id": 1000055,
+              "quantity": 1
+            },
+            {
+              "name": "Roaster",
+              "_id": 1000056,
+              "quantity": 1
+            },
+            {
+              "name": "Reinforcement Camp",
+              "_id": 1000049,
+              "quantity": 1
+            },
+            {
+              "name": "Healing Hut",
+              "_id": 1000082,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 7,
@@ -6375,7 +7496,39 @@
           "upgrade_time": 604800,
           "required_townhall": 7,
           "hitpoints": 1850,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Cannon",
+              "_id": 1000044,
+              "quantity": 1
+            },
+            {
+              "name": "Army Camp",
+              "_id": 1000042,
+              "quantity": 1
+            },
+            {
+              "name": "Hidden Tesla",
+              "_id": 1000043,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Giant Cannon",
+              "_id": 1000057,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 8,
@@ -6383,7 +7536,44 @@
           "upgrade_time": 777600,
           "required_townhall": 8,
           "hitpoints": 2150,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Elixir Collector",
+              "_id": 1000035,
+              "quantity": 1
+            },
+            {
+              "name": "Gold Mine",
+              "_id": 1000037,
+              "quantity": 1
+            },
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Double Cannon",
+              "_id": 1000041,
+              "quantity": 1
+            },
+            {
+              "name": "Mega Tesla",
+              "_id": 1000052,
+              "quantity": 1
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Battle Copter",
+              "_id": 1000080,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 9,
@@ -6391,7 +7581,34 @@
           "upgrade_time": 864000,
           "required_townhall": 9,
           "hitpoints": 2450,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "Wall",
+              "_id": 1000033,
+              "quantity": 20
+            },
+            {
+              "name": "Firecrackers",
+              "_id": 1000050,
+              "quantity": 1
+            },
+            {
+              "name": "Lava Launcher",
+              "_id": 1000063,
+              "quantity": 1
+            },
+            {
+              "name": "B.O.B Control",
+              "_id": 1000065,
+              "quantity": 1
+            },
+            {
+              "name": "Reinforcement Camp",
+              "_id": 1000049,
+              "quantity": 1
+            }
+          ]
         },
         {
           "level": 10,
@@ -6399,7 +7616,14 @@
           "upgrade_time": 950400,
           "required_townhall": 10,
           "hitpoints": 2750,
-          "dps": null
+          "dps": null,
+          "unlocks": [
+            {
+              "name": "X-Bow",
+              "_id": 1000081,
+              "quantity": 1
+            }
+          ]
         }
       ]
     },
@@ -6728,1012 +7952,6 @@
       "levels": []
     }
   ],
-  "hall_unlocks": {
-    "townhall": [
-      {
-        "level": 1,
-        "buildings_unlocked": [
-          {
-            "name": "Army Camp",
-            "_id": 1000000,
-            "quantity": 1
-          },
-          {
-            "name": "Elixir Storage",
-            "_id": 1000003,
-            "quantity": 1
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000005,
-            "quantity": 1
-          },
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 1
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 1
-          },
-          {
-            "name": "Barracks",
-            "_id": 1000006,
-            "quantity": 1
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 1
-          },
-          {
-            "name": "Clan Castle",
-            "_id": 1000014,
-            "quantity": 1
-          },
-          {
-            "name": "Builder's Hut",
-            "_id": 1000015,
-            "quantity": 5
-          },
-          {
-            "name": "B.O.B's Hut",
-            "_id": 1000064,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 2
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 2
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 2
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 25
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 3,
-        "buildings_unlocked": [
-          {
-            "name": "Army Camp",
-            "_id": 1000000,
-            "quantity": 2
-          },
-          {
-            "name": "Elixir Storage",
-            "_id": 1000003,
-            "quantity": 2
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000005,
-            "quantity": 2
-          },
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 3
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 3
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 50
-          },
-          {
-            "name": "Mortar",
-            "_id": 1000013,
-            "quantity": 1
-          },
-          {
-            "name": "Laboratory",
-            "_id": 1000007,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 4,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 4
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 4
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 75
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 2
-          },
-          {
-            "name": "Air Defense",
-            "_id": 1000012,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 5,
-        "buildings_unlocked": [
-          {
-            "name": "Army Camp",
-            "_id": 1000000,
-            "quantity": 3
-          },
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 5
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 5
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 3
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 100
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 3
-          },
-          {
-            "name": "Wizard Tower",
-            "_id": 1000011,
-            "quantity": 1
-          },
-          {
-            "name": "Spell Factory",
-            "_id": 1000020,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 6,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 6
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 6
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 125
-          },
-          {
-            "name": "Wizard Tower",
-            "_id": 1000011,
-            "quantity": 2
-          },
-          {
-            "name": "Air Defense",
-            "_id": 1000012,
-            "quantity": 2
-          },
-          {
-            "name": "Mortar",
-            "_id": 1000013,
-            "quantity": 2
-          },
-          {
-            "name": "Air Sweeper",
-            "_id": 1000028,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 7,
-        "buildings_unlocked": [
-          {
-            "name": "Army Camp",
-            "_id": 1000000,
-            "quantity": 4
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 5
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 175
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 4
-          },
-          {
-            "name": "Air Defense",
-            "_id": 1000012,
-            "quantity": 3
-          },
-          {
-            "name": "Mortar",
-            "_id": 1000013,
-            "quantity": 3
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000019,
-            "quantity": 2
-          },
-          {
-            "name": "Dark Elixir Drill",
-            "_id": 1000023,
-            "quantity": 1
-          },
-          {
-            "name": "Dark Elixir Storage",
-            "_id": 1000024,
-            "quantity": 1
-          },
-          {
-            "name": "Dark Barracks",
-            "_id": 1000026,
-            "quantity": 1
-          },
-          {
-            "name": "Hero Hall",
-            "_id": 1000071,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 8,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Storage",
-            "_id": 1000003,
-            "quantity": 3
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000005,
-            "quantity": 3
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 225
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 5
-          },
-          {
-            "name": "Wizard Tower",
-            "_id": 1000011,
-            "quantity": 3
-          },
-          {
-            "name": "Mortar",
-            "_id": 1000013,
-            "quantity": 4
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000019,
-            "quantity": 3
-          },
-          {
-            "name": "Dark Spell Factory",
-            "_id": 1000029,
-            "quantity": 1
-          },
-          {
-            "name": "Dark Elixir Drill",
-            "_id": 1000023,
-            "quantity": 2
-          },
-          {
-            "name": "Bomb Tower",
-            "_id": 1000032,
-            "quantity": 1
-          },
-          {
-            "name": "Blacksmith",
-            "_id": 1000070,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 9,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Storage",
-            "_id": 1000003,
-            "quantity": 4
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000005,
-            "quantity": 4
-          },
-          {
-            "name": "Elixir Collector",
-            "_id": 1000002,
-            "quantity": 7
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000004,
-            "quantity": 7
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 250
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 6
-          },
-          {
-            "name": "Wizard Tower",
-            "_id": 1000011,
-            "quantity": 4
-          },
-          {
-            "name": "Air Defense",
-            "_id": 1000012,
-            "quantity": 4
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000019,
-            "quantity": 4
-          },
-          {
-            "name": "X-Bow",
-            "_id": 1000021,
-            "quantity": 2
-          },
-          {
-            "name": "Dark Elixir Drill",
-            "_id": 1000023,
-            "quantity": 3
-          },
-          {
-            "name": "Air Sweeper",
-            "_id": 1000028,
-            "quantity": 2
-          },
-          {
-            "name": "Helper Hut",
-            "_id": 1000093,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 10,
-        "buildings_unlocked": [
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 6
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 275
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 7
-          },
-          {
-            "name": "X-Bow",
-            "_id": 1000021,
-            "quantity": 3
-          },
-          {
-            "name": "Inferno Tower",
-            "_id": 1000027,
-            "quantity": 2
-          },
-          {
-            "name": "Bomb Tower",
-            "_id": 1000032,
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "level": 11,
-        "buildings_unlocked": [
-          {
-            "name": "Cannon",
-            "_id": 1000008,
-            "quantity": 7
-          },
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 300
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 8
-          },
-          {
-            "name": "Wizard Tower",
-            "_id": 1000011,
-            "quantity": 5
-          },
-          {
-            "name": "X-Bow",
-            "_id": 1000021,
-            "quantity": 4
-          },
-          {
-            "name": "Eagle Artillery",
-            "_id": 1000031,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 12,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 300
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000019,
-            "quantity": 5
-          },
-          {
-            "name": "Inferno Tower",
-            "_id": 1000027,
-            "quantity": 3
-          },
-          {
-            "name": "Workshop",
-            "_id": 1000059,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 13,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 300
-          },
-          {
-            "name": "Scattershot",
-            "_id": 1000067,
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "level": 14,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 325
-          },
-          {
-            "name": "Pet House",
-            "_id": 1000068,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 15,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 325
-          },
-          {
-            "name": "Spell Tower",
-            "_id": 1000072,
-            "quantity": 2
-          },
-          {
-            "name": "Monolith",
-            "_id": 1000077,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 16,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 325
-          },
-          {
-            "name": "Multi-Archer Tower",
-            "_id": 1000084,
-            "quantity": 2
-          },
-          {
-            "name": "Ricochet Cannon",
-            "_id": 1000085,
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "level": 17,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000010,
-            "quantity": 325
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000009,
-            "quantity": 9
-          },
-          {
-            "name": "Multi-Archer Tower",
-            "_id": 1000084,
-            "quantity": 3
-          },
-          {
-            "name": "Ricochet Cannon",
-            "_id": 1000085,
-            "quantity": 3
-          },
-          {
-            "name": "Firespitter",
-            "_id": 1000089,
-            "quantity": 2
-          },
-          {
-            "name": "Multi-Gear Tower",
-            "_id": 1000079,
-            "quantity": 1
-          },
-          {
-            "name": "Crafting Station",
-            "_id": 1000097,
-            "quantity": 1
-          }
-        ]
-      }
-    ],
-    "builderhall": [
-      {
-        "level": 1,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000035,
-            "quantity": 1
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000037,
-            "quantity": 1
-          },
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 10
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000044,
-            "quantity": 1
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 1
-          },
-          {
-            "name": "Star Laboratory",
-            "_id": 1000046,
-            "quantity": 1
-          },
-          {
-            "name": "Builder Barracks",
-            "_id": 1000040,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 20
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000048,
-            "quantity": 1
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 2
-          },
-          {
-            "name": "Double Cannon",
-            "_id": 1000041,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 3,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Storage",
-            "_id": 1000036,
-            "quantity": 1
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000038,
-            "quantity": 1
-          },
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 50
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000044,
-            "quantity": 2
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 3
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000043,
-            "quantity": 1
-          },
-          {
-            "name": "Firecrackers",
-            "_id": 1000050,
-            "quantity": 1
-          },
-          {
-            "name": "Crusher",
-            "_id": 1000055,
-            "quantity": 1
-          },
-          {
-            "name": "Gem Mine",
-            "_id": 1000058,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 4,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 75
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000048,
-            "quantity": 2
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 4
-          },
-          {
-            "name": "Clock Tower",
-            "_id": 1000039,
-            "quantity": 1
-          },
-          {
-            "name": "Guard Post",
-            "_id": 1000051,
-            "quantity": 1
-          },
-          {
-            "name": "Air Bombs",
-            "_id": 1000054,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 5,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 100
-          },
-          {
-            "name": "Double Cannon",
-            "_id": 1000041,
-            "quantity": 2
-          },
-          {
-            "name": "Multi Mortar",
-            "_id": 1000045,
-            "quantity": 1
-          },
-          {
-            "name": "Battle Machine",
-            "_id": 1000053,
-            "quantity": 1
-          },
-          {
-            "name": "Firecrackers",
-            "_id": 1000050,
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "level": 6,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000035,
-            "quantity": 2
-          },
-          {
-            "name": "Elixir Storage",
-            "_id": 1000036,
-            "quantity": 2
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000037,
-            "quantity": 2
-          },
-          {
-            "name": "Gold Storage",
-            "_id": 1000038,
-            "quantity": 2
-          },
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 120
-          },
-          {
-            "name": "Archer Tower",
-            "_id": 1000048,
-            "quantity": 3
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 5
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000043,
-            "quantity": 2
-          },
-          {
-            "name": "Crusher",
-            "_id": 1000055,
-            "quantity": 2
-          },
-          {
-            "name": "Roaster",
-            "_id": 1000056,
-            "quantity": 1
-          },
-          {
-            "name": "Reinforcement Camp",
-            "_id": 1000049,
-            "quantity": 1
-          },
-          {
-            "name": "Healing Hut",
-            "_id": 1000082,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 7,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 140
-          },
-          {
-            "name": "Cannon",
-            "_id": 1000044,
-            "quantity": 3
-          },
-          {
-            "name": "Army Camp",
-            "_id": 1000042,
-            "quantity": 6
-          },
-          {
-            "name": "Hidden Tesla",
-            "_id": 1000043,
-            "quantity": 3
-          },
-          {
-            "name": "Firecrackers",
-            "_id": 1000050,
-            "quantity": 3
-          },
-          {
-            "name": "Giant Cannon",
-            "_id": 1000057,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 8,
-        "buildings_unlocked": [
-          {
-            "name": "Elixir Collector",
-            "_id": 1000035,
-            "quantity": 3
-          },
-          {
-            "name": "Gold Mine",
-            "_id": 1000037,
-            "quantity": 3
-          },
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 160
-          },
-          {
-            "name": "Double Cannon",
-            "_id": 1000041,
-            "quantity": 3
-          },
-          {
-            "name": "Mega Tesla",
-            "_id": 1000052,
-            "quantity": 1
-          },
-          {
-            "name": "Firecrackers",
-            "_id": 1000050,
-            "quantity": 4
-          },
-          {
-            "name": "Battle Copter",
-            "_id": 1000080,
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "level": 9,
-        "buildings_unlocked": [
-          {
-            "name": "Wall",
-            "_id": 1000033,
-            "quantity": 180
-          },
-          {
-            "name": "Firecrackers",
-            "_id": 1000050,
-            "quantity": 5
-          },
-          {
-            "name": "Lava Launcher",
-            "_id": 1000063,
-            "quantity": 1
-          },
-          {
-            "name": "B.O.B Control",
-            "_id": 1000065,
-            "quantity": 1
-          },
-          {
-            "name": "Reinforcement Camp",
-            "_id": 1000049,
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "level": 10,
-        "buildings_unlocked": [
-          {
-            "name": "X-Bow",
-            "_id": 1000081,
-            "quantity": 1
-          }
-        ]
-      }
-    ]
-  },
   "supercharges": [
     {
       "_id": "Elixir Collector",

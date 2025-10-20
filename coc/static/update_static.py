@@ -364,6 +364,18 @@ class StaticUpdater:
         self.bb_lab_to_townhall = {spot: level_data.get("required_townhall") for spot, level_data in
                               enumerate(bb_lab_data, 1)}
 
+        townhall_unlocks, builderhall_unlocks = self._parse_hall_data()
+
+        for building in new_building_data:
+            unlocks = []
+            if building["type"] == "Town Hall":
+                unlocks = townhall_unlocks
+            elif building["type"] == "Town Hall2":
+                unlocks = builderhall_unlocks
+
+            for unlock_data in unlocks:
+                building["levels"][(unlock_data["level"] - 1)]["unlocks"] = unlock_data["buildings_unlocked"]
+
         return new_building_data
 
     def _parse_supercharge_data(self):
@@ -1091,6 +1103,8 @@ class StaticUpdater:
     def _parse_hall_data(self):
         builderhall_data = []
         townhall_data = []
+        id_quantity_map = {}
+
         for _id, (hall_level, hall_data) in enumerate(self.full_townhall_data.items(), 1):
             builderhall_unlocks = []
             townhall_unlocks = []
@@ -1099,23 +1113,37 @@ class StaticUpdater:
                 if not building_data:
                     continue
                 village_type = building_data.get("VillageType", 0)
+                id = building_data.get("_id")
+                quantity = data
+
+                current_quantity = id_quantity_map.get(id, 0)
+                new_quantity = quantity - current_quantity
+
+                if not new_quantity:
+                    continue
+
+                if id not in id_quantity_map:
+                    id_quantity_map[id] = new_quantity
+                else:
+                    id_quantity_map[id] += new_quantity
+
                 if not village_type: #is home village
                     townhall_unlocks.append({
                         "name": self._translate(tid=building_data.get("TID")),
-                        "_id": building_data.get("_id"),
-                        "quantity": data
+                        "_id": id,
+                        "quantity": new_quantity
                     })
                 else:
                     builderhall_unlocks.append({
                         "name": self._translate(tid=building_data.get("TID")),
-                        "_id": building_data.get("_id"),
-                        "quantity": data
+                        "_id": id,
+                        "quantity": new_quantity
                     })
             townhall_data.append({"level": _id, "buildings_unlocked": townhall_unlocks})
             if builderhall_unlocks:
                 builderhall_data.append({"level": _id, "buildings_unlocked": builderhall_unlocks})
 
-        return {"townhall" : townhall_data, "builderhall": builderhall_data}
+        return townhall_data, builderhall_data
 
 
     def create_master_json(self):
@@ -1124,7 +1152,6 @@ class StaticUpdater:
 
         master_data = {
             "buildings": self._parse_building_data(),
-            "hall_unlocks": self._parse_hall_data(),
             "supercharges": self._parse_supercharge_data(),
             "seasonal_defenses": self._parse_seasonal_defense_data(),
             "traps" : self._parse_trap_data(),
