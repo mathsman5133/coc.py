@@ -6,7 +6,7 @@
       "Hitpoints": 2700,
       "TrainingCost": 1,
       "UpgradeTimeH": 24,
-      "UpgradeCost": 67500,
+      "UpgradeCost": 20000,
       "DPS": 150,
       "StrengthWeight": 10000
     },
@@ -16,7 +16,7 @@
       "Hitpoints": 2800,
       "TrainingCost": 2,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 75000,
+      "UpgradeCost": 30000,
       "DPS": 160,
       "StrengthWeight": 11000
     },
@@ -26,7 +26,7 @@
       "Hitpoints": 2900,
       "TrainingCost": 3,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 82500,
+      "UpgradeCost": 40000,
       "DPS": 170,
       "StrengthWeight": 12000
     },
@@ -36,7 +36,7 @@
       "Hitpoints": 3000,
       "TrainingCost": 4,
       "UpgradeTimeH": 60,
-      "UpgradeCost": 90000,
+      "UpgradeCost": 50000,
       "DPS": 180,
       "StrengthWeight": 13000
     },
@@ -46,7 +46,7 @@
       "Hitpoints": 3100,
       "TrainingCost": 5,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 97500,
+      "UpgradeCost": 60000,
       "DPS": 190,
       "StrengthWeight": 14000
     },
@@ -56,7 +56,7 @@
       "Hitpoints": 3200,
       "TrainingCost": 6,
       "UpgradeTimeH": 84,
-      "UpgradeCost": 105000,
+      "UpgradeCost": 70000,
       "DPS": 200,
       "StrengthWeight": 15000
     },
@@ -66,7 +66,7 @@
       "Hitpoints": 3300,
       "TrainingCost": 7,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 112500,
+      "UpgradeCost": 80000,
       "DPS": 210,
       "StrengthWeight": 16000
     },
@@ -76,7 +76,7 @@
       "Hitpoints": 3400,
       "TrainingCost": 8,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 120000,
+      "UpgradeCost": 90000,
       "DPS": 220,
       "StrengthWeight": 17000
     },
@@ -86,7 +86,7 @@
       "Hitpoints": 3500,
       "TrainingCost": 9,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 127500,
+      "UpgradeCost": 100000,
       "DPS": 230,
       "StrengthWeight": 18000
     },
@@ -96,7 +96,7 @@
       "Hitpoints": 3600,
       "TrainingCost": 10,
       "UpgradeTimeH": 132,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 110000,
       "DPS": 240,
       "StrengthWeight": 19000
     },
@@ -106,7 +106,7 @@
       "Hitpoints": 3700,
       "TrainingCost": 11,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 142500,
+      "UpgradeCost": 120000,
       "DPS": 250,
       "StrengthWeight": 19500
     },
@@ -116,7 +116,7 @@
       "Hitpoints": 3800,
       "TrainingCost": 12,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 150000,
+      "UpgradeCost": 130000,
       "DPS": 260,
       "StrengthWeight": 20000
     },
@@ -126,7 +126,7 @@
       "Hitpoints": 3900,
       "TrainingCost": 13,
       "UpgradeTimeH": 168,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 140000,
       "DPS": 270,
       "StrengthWeight": 20500
     },
@@ -136,7 +136,7 @@
       "Hitpoints": 4000,
       "TrainingCost": 14,
       "UpgradeTimeH": 180,
-      "UpgradeCost": 165000,
+      "UpgradeCost": 150000,
       "DPS": 280,
       "StrengthWeight": 21000
     },
@@ -163,6 +163,8 @@
     "IconExportName": "icon_unit_pet_barksy",
     "BigPicture": "unit_pet_lassi_big",
     "BigPictureSWF": "sc/info_pet_lassi.sc",
+    "ArmyTrainingPicture": "hero_art_pet_lassi",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "DeployEffect": "Barky Deploy",
     "AttackEffect": "Barky Attack",
     "HitEffect": "Miner Hit",
@@ -183,7 +185,9 @@
     "SpecialAbilitiesLevel": 1,
     "LeashLength": 200,
     "DefaultSkin": "PetLassiDefault",
-    "PreviewScenario": "Pet1"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet1",
+    "CantBeEjected": true
   },
   "Bulldozer": {
     "1": {
@@ -192,7 +196,7 @@
       "Hitpoints": 3750,
       "TrainingCost": 1,
       "UpgradeTimeH": 24,
-      "UpgradeCost": 90000,
+      "UpgradeCost": 40000,
       "DPS": 60,
       "StrengthWeight": 10000,
       "DamageMultiplierPercent": 2000,
@@ -204,7 +208,7 @@
       "Hitpoints": 4000,
       "TrainingCost": 2,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 97500,
+      "UpgradeCost": 50000,
       "DPS": 64,
       "StrengthWeight": 11000,
       "DamageMultiplierPercent": 2000,
@@ -216,7 +220,7 @@
       "Hitpoints": 4250,
       "TrainingCost": 3,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 105000,
+      "UpgradeCost": 60000,
       "DPS": 68,
       "StrengthWeight": 12000,
       "DamageMultiplierPercent": 2000,
@@ -228,7 +232,7 @@
       "Hitpoints": 4500,
       "TrainingCost": 4,
       "UpgradeTimeH": 60,
-      "UpgradeCost": 112500,
+      "UpgradeCost": 70000,
       "DPS": 72,
       "StrengthWeight": 13000,
       "DamageMultiplierPercent": 2000,
@@ -240,7 +244,7 @@
       "Hitpoints": 4750,
       "TrainingCost": 5,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 120000,
+      "UpgradeCost": 80000,
       "DPS": 76,
       "StrengthWeight": 14000,
       "DamageMultiplierPercent": 2000,
@@ -252,7 +256,7 @@
       "Hitpoints": 4950,
       "TrainingCost": 6,
       "UpgradeTimeH": 84,
-      "UpgradeCost": 127500,
+      "UpgradeCost": 90000,
       "DPS": 80,
       "StrengthWeight": 15000,
       "DamageMultiplierPercent": 2000,
@@ -264,7 +268,7 @@
       "Hitpoints": 5100,
       "TrainingCost": 7,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 100000,
       "DPS": 84,
       "StrengthWeight": 16000,
       "DamageMultiplierPercent": 2000,
@@ -276,7 +280,7 @@
       "Hitpoints": 5250,
       "TrainingCost": 8,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 142500,
+      "UpgradeCost": 110000,
       "DPS": 88,
       "StrengthWeight": 17000,
       "DamageMultiplierPercent": 2000,
@@ -288,7 +292,7 @@
       "Hitpoints": 5400,
       "TrainingCost": 9,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 150000,
+      "UpgradeCost": 120000,
       "DPS": 92,
       "StrengthWeight": 18000,
       "DamageMultiplierPercent": 2000,
@@ -300,7 +304,7 @@
       "Hitpoints": 5550,
       "TrainingCost": 10,
       "UpgradeTimeH": 132,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 130000,
       "DPS": 96,
       "StrengthWeight": 19000,
       "DamageMultiplierPercent": 2000,
@@ -312,7 +316,7 @@
       "Hitpoints": 5700,
       "TrainingCost": 11,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 165000,
+      "UpgradeCost": 140000,
       "DPS": 100,
       "StrengthWeight": 20000,
       "DamageMultiplierPercent": 2000,
@@ -324,7 +328,7 @@
       "Hitpoints": 5850,
       "TrainingCost": 12,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 172500,
+      "UpgradeCost": 150000,
       "DPS": 104,
       "StrengthWeight": 21000,
       "DamageMultiplierPercent": 2000,
@@ -336,7 +340,7 @@
       "Hitpoints": 6000,
       "TrainingCost": 13,
       "UpgradeTimeH": 168,
-      "UpgradeCost": 180000,
+      "UpgradeCost": 160000,
       "DPS": 108,
       "StrengthWeight": 22000,
       "DamageMultiplierPercent": 2000,
@@ -348,7 +352,7 @@
       "Hitpoints": 6150,
       "TrainingCost": 14,
       "UpgradeTimeH": 180,
-      "UpgradeCost": 187500,
+      "UpgradeCost": 170000,
       "DPS": 112,
       "StrengthWeight": 23000,
       "DamageMultiplierPercent": 2000,
@@ -379,6 +383,8 @@
     "IconExportName": "icon_unit_pet_bulldozer",
     "BigPicture": "unit_pet_mightyyak_big",
     "BigPictureSWF": "sc/info_pet_mightyyak.sc",
+    "ArmyTrainingPicture": "hero_art_pet_yak",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "DeployEffect": "Bulldozer Deploy",
     "AttackEffect": "Bulldozer Attack",
     "HitEffect": "Golem Hit",
@@ -402,9 +408,11 @@
     "SpecialAbilitiesLevel": 1,
     "LeashLength": 581,
     "DefaultSkin": "PetYakDefault",
+    "SpawnDelay": 100,
     "HeroDeathAbilityType": "BoostSelf",
     "HeroDeathAbilitySpell": "TroopRage",
-    "PreviewScenario": "Pet3"
+    "PreviewScenario": "Pet3",
+    "CantBeEjected": true
   },
   "Electrowl": {
     "1": {
@@ -413,7 +421,7 @@
       "Hitpoints": 1600,
       "TrainingCost": 1,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 86250,
+      "UpgradeCost": 30000,
       "DPS": 100,
       "StrengthWeight": 10000
     },
@@ -423,7 +431,7 @@
       "Hitpoints": 1700,
       "TrainingCost": 2,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 97500,
+      "UpgradeCost": 45000,
       "DPS": 105,
       "StrengthWeight": 11000
     },
@@ -433,7 +441,7 @@
       "Hitpoints": 1800,
       "TrainingCost": 3,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 105000,
+      "UpgradeCost": 60000,
       "DPS": 110,
       "StrengthWeight": 12000
     },
@@ -443,7 +451,7 @@
       "Hitpoints": 1900,
       "TrainingCost": 4,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 116250,
+      "UpgradeCost": 75000,
       "DPS": 115,
       "StrengthWeight": 13000
     },
@@ -453,7 +461,7 @@
       "Hitpoints": 2000,
       "TrainingCost": 5,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 123750,
+      "UpgradeCost": 90000,
       "DPS": 120,
       "StrengthWeight": 14000
     },
@@ -463,7 +471,7 @@
       "Hitpoints": 2100,
       "TrainingCost": 6,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 105000,
       "DPS": 125,
       "StrengthWeight": 15000
     },
@@ -472,8 +480,8 @@
       "LaboratoryLevel": 2,
       "Hitpoints": 2200,
       "TrainingCost": 7,
-      "UpgradeTimeH": 142,
-      "UpgradeCost": 142500,
+      "UpgradeTimeH": 132,
+      "UpgradeCost": 120000,
       "DPS": 130,
       "StrengthWeight": 16000
     },
@@ -483,7 +491,7 @@
       "Hitpoints": 2300,
       "TrainingCost": 8,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 153750,
+      "UpgradeCost": 135000,
       "DPS": 135,
       "StrengthWeight": 17000
     },
@@ -493,7 +501,7 @@
       "Hitpoints": 2400,
       "TrainingCost": 9,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 161250,
+      "UpgradeCost": 150000,
       "DPS": 140,
       "StrengthWeight": 18000
     },
@@ -503,7 +511,7 @@
       "Hitpoints": 2500,
       "TrainingCost": 10,
       "UpgradeTimeH": 168,
-      "UpgradeCost": 172500,
+      "UpgradeCost": 165000,
       "DPS": 145,
       "StrengthWeight": 19000
     },
@@ -513,7 +521,7 @@
       "Hitpoints": 2600,
       "TrainingCost": 11,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 187500,
+      "UpgradeCost": 180000,
       "DPS": 150,
       "StrengthWeight": 20000
     },
@@ -523,7 +531,7 @@
       "Hitpoints": 2700,
       "TrainingCost": 12,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 198750,
+      "UpgradeCost": 195000,
       "DPS": 155,
       "StrengthWeight": 21000
     },
@@ -533,7 +541,7 @@
       "Hitpoints": 2800,
       "TrainingCost": 13,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 213750,
+      "UpgradeCost": 210000,
       "DPS": 160,
       "StrengthWeight": 22000
     },
@@ -570,6 +578,8 @@
     "IconExportName": "icon_unit_pet_electrowl",
     "BigPicture": "unit_pet_electro_owl_big",
     "BigPictureSWF": "sc/info_pet_electro_owl.sc",
+    "ArmyTrainingPicture": "hero_art_pet_owl",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "DeployEffect": "Laser Owl Deploy",
     "AttackEffect": "Laser Owl Attack",
     "HitEffect": "Mega Tesla Hit",
@@ -596,7 +606,9 @@
     "SpecialAbilitiesLevel": 1,
     "LeashLength": 0,
     "DefaultSkin": "PetEowlDefault",
-    "PreviewScenario": "Pet2"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet2",
+    "CantBeEjected": true
   },
   "Unipony": {
     "1": {
@@ -605,7 +617,7 @@
       "Hitpoints": 1400,
       "TrainingCost": 1,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 50000,
       "DPS": -50,
       "StrengthWeight": 10000,
       "HeroDamageMultiplier": 100
@@ -616,7 +628,7 @@
       "Hitpoints": 1450,
       "TrainingCost": 2,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 142500,
+      "UpgradeCost": 65000,
       "DPS": -53,
       "StrengthWeight": 11000,
       "HeroDamageMultiplier": 100
@@ -627,7 +639,7 @@
       "Hitpoints": 1500,
       "TrainingCost": 3,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 150000,
+      "UpgradeCost": 80000,
       "DPS": -56,
       "StrengthWeight": 12000,
       "HeroDamageMultiplier": 100
@@ -638,7 +650,7 @@
       "Hitpoints": 1550,
       "TrainingCost": 4,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 95000,
       "DPS": -58,
       "StrengthWeight": 13000,
       "HeroDamageMultiplier": 100
@@ -649,7 +661,7 @@
       "Hitpoints": 1600,
       "TrainingCost": 5,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 165000,
+      "UpgradeCost": 110000,
       "DPS": -60,
       "StrengthWeight": 14000,
       "HeroDamageMultiplier": 100
@@ -660,7 +672,7 @@
       "Hitpoints": 1675,
       "TrainingCost": 6,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 172500,
+      "UpgradeCost": 125000,
       "DPS": -62,
       "StrengthWeight": 15000,
       "HeroDamageMultiplier": 100
@@ -670,8 +682,8 @@
       "LaboratoryLevel": 4,
       "Hitpoints": 1725,
       "TrainingCost": 7,
-      "UpgradeTimeH": 142,
-      "UpgradeCost": 180000,
+      "UpgradeTimeH": 132,
+      "UpgradeCost": 140000,
       "DPS": -64,
       "StrengthWeight": 16000,
       "HeroDamageMultiplier": 100
@@ -682,7 +694,7 @@
       "Hitpoints": 1800,
       "TrainingCost": 8,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 187500,
+      "UpgradeCost": 155000,
       "DPS": -66,
       "StrengthWeight": 17000,
       "HeroDamageMultiplier": 100
@@ -693,7 +705,7 @@
       "Hitpoints": 1875,
       "TrainingCost": 9,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 195000,
+      "UpgradeCost": 170000,
       "DPS": -68,
       "StrengthWeight": 18000,
       "HeroDamageMultiplier": 100
@@ -703,8 +715,63 @@
       "LaboratoryLevel": 4,
       "Hitpoints": 1950,
       "TrainingCost": 10,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 200000,
       "DPS": -70,
       "StrengthWeight": 19000,
+      "HeroDamageMultiplier": 100
+    },
+    "11": {
+      "TroopLevel": 11,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 2025,
+      "TrainingCost": 11,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 230000,
+      "DPS": -71,
+      "StrengthWeight": 20000,
+      "HeroDamageMultiplier": 100
+    },
+    "12": {
+      "TroopLevel": 12,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 2100,
+      "TrainingCost": 12,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 260000,
+      "DPS": -72,
+      "StrengthWeight": 21000,
+      "HeroDamageMultiplier": 100
+    },
+    "13": {
+      "TroopLevel": 13,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 2175,
+      "TrainingCost": 13,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 290000,
+      "DPS": -73,
+      "StrengthWeight": 22000,
+      "HeroDamageMultiplier": 100
+    },
+    "14": {
+      "TroopLevel": 14,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 2250,
+      "TrainingCost": 14,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 320000,
+      "DPS": -74,
+      "StrengthWeight": 23000,
+      "HeroDamageMultiplier": 100
+    },
+    "15": {
+      "TroopLevel": 15,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 2325,
+      "TrainingCost": 15,
+      "DPS": -75,
+      "StrengthWeight": 24000,
       "HeroDamageMultiplier": 100
     },
     "Name": "Unipony",
@@ -723,6 +790,8 @@
     "IconExportName": "icon_unit_pet_unipony",
     "BigPicture": "unit_pet_unicorn_big",
     "BigPictureSWF": "sc/info_pet_unicorn.sc",
+    "ArmyTrainingPicture": "hero_art_pet_unicorn",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "Projectile": "UnicornHealEnergy",
     "DeployEffect": "Pony Deploy",
     "AttackEffect": "Pony Attack",
@@ -744,7 +813,9 @@
     "SpecialAbilitiesLevel": 1,
     "LeashLength": 0,
     "DefaultSkin": "PetUnicornDefault",
-    "PreviewScenario": "Pet2"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet2",
+    "CantBeEjected": true
   },
   "Phoenix": {
     "1": {
@@ -753,10 +824,10 @@
       "Hitpoints": 3120,
       "TrainingCost": 1,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 146250,
+      "UpgradeCost": 80000,
       "DPS": 178,
       "StrengthWeight": 15000,
-      "SpecialAbilitiesLevel": 1
+      "SpecialAbilitiesLevel": "1;1"
     },
     "2": {
       "TroopLevel": 2,
@@ -764,10 +835,10 @@
       "Hitpoints": 3240,
       "TrainingCost": 2,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 153750,
+      "UpgradeCost": 95000,
       "DPS": 186,
       "StrengthWeight": 16000,
-      "SpecialAbilitiesLevel": 1
+      "SpecialAbilitiesLevel": "1;1"
     },
     "3": {
       "TroopLevel": 3,
@@ -775,10 +846,10 @@
       "Hitpoints": 3360,
       "TrainingCost": 3,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 110000,
       "DPS": 194,
       "StrengthWeight": 17000,
-      "SpecialAbilitiesLevel": 1
+      "SpecialAbilitiesLevel": "1;1"
     },
     "4": {
       "TroopLevel": 4,
@@ -786,10 +857,10 @@
       "Hitpoints": 3480,
       "TrainingCost": 4,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 165000,
+      "UpgradeCost": 125000,
       "DPS": 202,
       "StrengthWeight": 18000,
-      "SpecialAbilitiesLevel": 1
+      "SpecialAbilitiesLevel": "1;1"
     },
     "5": {
       "TroopLevel": 5,
@@ -797,10 +868,10 @@
       "Hitpoints": 3600,
       "TrainingCost": 5,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 168750,
+      "UpgradeCost": 140000,
       "DPS": 210,
       "StrengthWeight": 19000,
-      "SpecialAbilitiesLevel": 2
+      "SpecialAbilitiesLevel": "2;1"
     },
     "6": {
       "TroopLevel": 6,
@@ -808,21 +879,21 @@
       "Hitpoints": 3720,
       "TrainingCost": 6,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 176250,
+      "UpgradeCost": 155000,
       "DPS": 218,
       "StrengthWeight": 20000,
-      "SpecialAbilitiesLevel": 2
+      "SpecialAbilitiesLevel": "2;1"
     },
     "7": {
       "TroopLevel": 7,
       "LaboratoryLevel": 8,
       "Hitpoints": 3840,
       "TrainingCost": 7,
-      "UpgradeTimeH": 142,
-      "UpgradeCost": 180000,
+      "UpgradeTimeH": 132,
+      "UpgradeCost": 170000,
       "DPS": 226,
       "StrengthWeight": 21000,
-      "SpecialAbilitiesLevel": 2
+      "SpecialAbilitiesLevel": "2;1"
     },
     "8": {
       "TroopLevel": 8,
@@ -830,10 +901,10 @@
       "Hitpoints": 3960,
       "TrainingCost": 8,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 187500,
+      "UpgradeCost": 180000,
       "DPS": 234,
       "StrengthWeight": 22000,
-      "SpecialAbilitiesLevel": 2
+      "SpecialAbilitiesLevel": "2;1"
     },
     "9": {
       "TroopLevel": 9,
@@ -841,10 +912,10 @@
       "Hitpoints": 4080,
       "TrainingCost": 9,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 191250,
+      "UpgradeCost": 190000,
       "DPS": 242,
       "StrengthWeight": 23000,
-      "SpecialAbilitiesLevel": 2
+      "SpecialAbilitiesLevel": "2;1"
     },
     "10": {
       "TroopLevel": 10,
@@ -853,7 +924,7 @@
       "TrainingCost": 10,
       "DPS": 250,
       "StrengthWeight": 24000,
-      "SpecialAbilitiesLevel": 3
+      "SpecialAbilitiesLevel": "3;1"
     },
     "Name": "Phoenix",
     "TID": "TID_PET_PHOENIX",
@@ -871,6 +942,8 @@
     "IconExportName": "icon_unit_pet_phoenix",
     "BigPicture": "unit_pet_phoenix_big",
     "BigPictureSWF": "sc/info_pet_phoenix.sc",
+    "ArmyTrainingPicture": "hero_art_pet_phoenix",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "Projectile": "PhoenixProjectile",
     "DeployEffect": "Phoenix Deploy",
     "AttackEffect": "Phoenix Attack",
@@ -883,18 +956,19 @@
     "IsJumper": false,
     "MovementOffsetSpeed": 15,
     "DisableProduction": true,
-    "SecondaryTroop": "PhoenixEgg",
     "SpawnIdle": 576,
     "TargetedEffectOffset": 60,
     "FriendlyGroupWeight": 300,
     "EnemyGroupWeight": 400,
     "TriggersTraps": true,
-    "SpecialAbilities": "PhoenixSpawnAbility",
+    "SpecialAbilities": "PhoenixSpawnAbility;SpawnPhoenixEggAbility",
     "LeashLength": 0,
     "DefaultSkin": "PetPhoenixDefault",
+    "SpawnDelay": 400000,
     "PreferMasterTarget": true,
     "SummonsInheritMaster": true,
-    "PreviewScenario": "PetPhoenix"
+    "PreviewScenario": "PetPhoenix",
+    "CantBeEjected": true
   },
   "PhoenixEgg": {
     "1": {
@@ -1003,6 +1077,8 @@
     "IconExportName": "icon_unit_pet_phoenix",
     "BigPicture": "unit_pet_phoenix_big",
     "BigPictureSWF": "sc/info_pet_phoenix.sc",
+    "ArmyTrainingPicture": "hero_art_pet_phoenix",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "AltProjectile": "PhoenixResurrect",
     "DeployEffect": "Phoenix_Egg_Deploy",
     "AttackEffect": "Phoenix_Egg_Attack",
@@ -1022,16 +1098,16 @@
     "FriendlyGroupWeight": 0,
     "EnemyGroupWeight": 0,
     "TriggersTraps": false,
-    "SpecialAbilityLevel": 1,
-    "SpecialAbilityName": "TID_PET_PHOENIX_ABILITY",
-    "SpecialAbilityInfo": "TID_PET_PHOENIX_ABILITY_INFO",
-    "SpecialAbilityType": "PhoenixEgg",
     "DoesNotOpenCC": true,
+    "SpecialAbilities": "PhoenixEggInvulnerableAbility",
+    "SpecialAbilitiesLevel": 1,
     "LeashLength": 0,
     "DefaultSkin": "PetPhoenixEggDefault",
+    "SpawnDelay": 100,
     "HeroDeathAbilityType": "ResurrectHero",
     "HeroDeathAbilitySpell": "TroopImmortality",
-    "RecallWithMaster": true
+    "RecallWithMaster": true,
+    "CantBeEjected": true
   },
   "Stork": {
     "1": {
@@ -1073,11 +1149,10 @@
       "TargetedEffectOffset": 60,
       "FriendlyGroupWeight": 300,
       "EnemyGroupWeight": 400,
-      "SpecialAbilityAttribute": 1,
-      "SpecialAbilitySpell": "AreaStun",
-      "SpecialAbilityIcon": "icon_unit_siege_machine_ram_ability",
       "LeashLength": 0,
-      "CarriesMaster": true
+      "SpawnDelay": 100,
+      "CarriesMaster": true,
+      "CantBeEjected": true
     }
   },
   "Poison Lizard": {
@@ -1087,11 +1162,10 @@
       "Hitpoints": 1250,
       "TrainingCost": 1,
       "UpgradeTimeH": 24,
-      "UpgradeCost": 120000,
+      "UpgradeCost": 60000,
       "DPS": 181,
       "StrengthWeight": 15000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 1
+      "SpecialAbilitiesLevel": 1
     },
     "2": {
       "TroopLevel": 2,
@@ -1099,11 +1173,10 @@
       "Hitpoints": 1300,
       "TrainingCost": 2,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 123750,
+      "UpgradeCost": 75000,
       "DPS": 192,
       "StrengthWeight": 16000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 1
+      "SpecialAbilitiesLevel": 1
     },
     "3": {
       "TroopLevel": 3,
@@ -1111,11 +1184,10 @@
       "Hitpoints": 1350,
       "TrainingCost": 3,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 127500,
+      "UpgradeCost": 90000,
       "DPS": 203,
       "StrengthWeight": 17000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 1
+      "SpecialAbilitiesLevel": 1
     },
     "4": {
       "TroopLevel": 4,
@@ -1123,11 +1195,10 @@
       "Hitpoints": 1400,
       "TrainingCost": 4,
       "UpgradeTimeH": 60,
-      "UpgradeCost": 131250,
+      "UpgradeCost": 100000,
       "DPS": 214,
       "StrengthWeight": 18000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 1
+      "SpecialAbilitiesLevel": 1
     },
     "5": {
       "TroopLevel": 5,
@@ -1135,11 +1206,10 @@
       "Hitpoints": 1450,
       "TrainingCost": 5,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 110000,
       "DPS": 225,
       "StrengthWeight": 19000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2
+      "SpecialAbilitiesLevel": 2
     },
     "6": {
       "TroopLevel": 6,
@@ -1147,11 +1217,10 @@
       "Hitpoints": 1500,
       "TrainingCost": 6,
       "UpgradeTimeH": 84,
-      "UpgradeCost": 138750,
+      "UpgradeCost": 120000,
       "DPS": 236,
-      "StrengthWeight": 20000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2
+      "StrengthWeight": 19500,
+      "SpecialAbilitiesLevel": 2
     },
     "7": {
       "TroopLevel": 7,
@@ -1159,11 +1228,10 @@
       "Hitpoints": 1550,
       "TrainingCost": 7,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 142500,
+      "UpgradeCost": 130000,
       "DPS": 247,
-      "StrengthWeight": 21000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2
+      "StrengthWeight": 20000,
+      "SpecialAbilitiesLevel": 2
     },
     "8": {
       "TroopLevel": 8,
@@ -1171,11 +1239,10 @@
       "Hitpoints": 1600,
       "TrainingCost": 8,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 146250,
+      "UpgradeCost": 140000,
       "DPS": 258,
-      "StrengthWeight": 22000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2
+      "StrengthWeight": 20500,
+      "SpecialAbilitiesLevel": 2
     },
     "9": {
       "TroopLevel": 9,
@@ -1185,19 +1252,72 @@
       "UpgradeTimeH": 120,
       "UpgradeCost": 150000,
       "DPS": 269,
-      "StrengthWeight": 23000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2
+      "StrengthWeight": 21000,
+      "SpecialAbilitiesLevel": 2
     },
     "10": {
       "TroopLevel": 10,
       "LaboratoryLevel": 7,
       "Hitpoints": 1700,
       "TrainingCost": 10,
+      "UpgradeTimeH": 144,
+      "UpgradeCost": 180000,
       "DPS": 280,
+      "StrengthWeight": 21500,
+      "SpecialAbilitiesLevel": 3
+    },
+    "11": {
+      "TroopLevel": 11,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 1750,
+      "TrainingCost": 11,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 200000,
+      "DPS": 291,
+      "StrengthWeight": 22000,
+      "SpecialAbilitiesLevel": 3
+    },
+    "12": {
+      "TroopLevel": 12,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 1800,
+      "TrainingCost": 12,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 220000,
+      "DPS": 302,
+      "StrengthWeight": 22500,
+      "SpecialAbilitiesLevel": 3
+    },
+    "13": {
+      "TroopLevel": 13,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 1850,
+      "TrainingCost": 13,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 240000,
+      "DPS": 313,
+      "StrengthWeight": 23000,
+      "SpecialAbilitiesLevel": 3
+    },
+    "14": {
+      "TroopLevel": 14,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 1900,
+      "TrainingCost": 14,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 260000,
+      "DPS": 324,
+      "StrengthWeight": 23500,
+      "SpecialAbilitiesLevel": 3
+    },
+    "15": {
+      "TroopLevel": 15,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 1950,
+      "TrainingCost": 15,
+      "DPS": 335,
       "StrengthWeight": 24000,
-      "SpecialAbilityLevel": 3,
-      "SpecialAbilityAttribute": 3
+      "SpecialAbilitiesLevel": 4
     },
     "Name": "Poison Lizard",
     "TID": "TID_PET_POISON_LIZARD",
@@ -1215,6 +1335,8 @@
     "IconExportName": "icon_unit_pet_poison_lizard",
     "BigPicture": "unit_pet_poison_lizard_big",
     "BigPictureSWF": "sc/info_pet_poison_lizard.sc",
+    "ArmyTrainingPicture": "hero_art_pet_lizard",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "Projectile": "fireIguanaProto",
     "DeployEffect": "Poison Lizard Deploy",
     "AttackEffect": "Poison Lizard Attack",
@@ -1231,17 +1353,16 @@
     "FriendlyGroupWeight": 300,
     "EnemyGroupWeight": 400,
     "TriggersTraps": false,
-    "SpecialAbilityName": "TID_PET_POISON_LIZARD_ABILITY",
-    "SpecialAbilityInfo": "TID_PET_POISON_LIZARD_ABILITY_INFO",
-    "SpecialAbilityType": "PoisonTarget",
-    "SpecialAbilityAttribute2": 3000,
-    "SpecialAbilitySpell": "PoisonLizardAttack",
     "HeroDamageMultiplier": 100,
     "PreferHeroes": true,
+    "SpecialAbilities": "LizardPetPoison",
     "LeashLength": 400,
     "DefaultSkin": "PetPoisonIguanaDefault",
+    "SpawnDelay": 100,
     "PreferMasterTarget": true,
-    "PreviewScenario": "PetPoisonLizard"
+    "PreviewScenario": "PetPoisonLizard",
+    "StatBars": "HitPoints;DamagePerSecond;PreferredTargetType;DamageType;TargetType;HousingSpace;MovementSpeed;DamagePoison;SpeedDecrease;AttackSpeed",
+    "CantBeEjected": true
   },
   "Diggy": {
     "1": {
@@ -1250,12 +1371,10 @@
       "Hitpoints": 3650,
       "TrainingCost": 1,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 138750,
+      "UpgradeCost": 90000,
       "DPS": 105,
       "StrengthWeight": 15000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 2000,
-      "SpecialAbilityEffect": "Stun_Building_2s"
+      "SpecialAbilitiesLevel": 1
     },
     "2": {
       "TroopLevel": 2,
@@ -1263,12 +1382,10 @@
       "Hitpoints": 3800,
       "TrainingCost": 2,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 146250,
+      "UpgradeCost": 105000,
       "DPS": 110,
       "StrengthWeight": 16000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 2000,
-      "SpecialAbilityEffect": "Stun_Building_2s"
+      "SpecialAbilitiesLevel": 1
     },
     "3": {
       "TroopLevel": 3,
@@ -1276,12 +1393,10 @@
       "Hitpoints": 3950,
       "TrainingCost": 3,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 150000,
+      "UpgradeCost": 120000,
       "DPS": 115,
       "StrengthWeight": 17000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 2000,
-      "SpecialAbilityEffect": "Stun_Building_2s"
+      "SpecialAbilitiesLevel": 1
     },
     "4": {
       "TroopLevel": 4,
@@ -1289,12 +1404,10 @@
       "Hitpoints": 4100,
       "TrainingCost": 4,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 130000,
       "DPS": 120,
       "StrengthWeight": 18000,
-      "SpecialAbilityLevel": 1,
-      "SpecialAbilityAttribute": 2000,
-      "SpecialAbilityEffect": "Stun_Building_2s"
+      "SpecialAbilitiesLevel": 1
     },
     "5": {
       "TroopLevel": 5,
@@ -1302,12 +1415,10 @@
       "Hitpoints": 4250,
       "TrainingCost": 5,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 161250,
+      "UpgradeCost": 140000,
       "DPS": 125,
       "StrengthWeight": 19000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2500,
-      "SpecialAbilityEffect": "Stun_Building_2_5s"
+      "SpecialAbilitiesLevel": 2
     },
     "6": {
       "TroopLevel": 6,
@@ -1315,25 +1426,21 @@
       "Hitpoints": 4400,
       "TrainingCost": 6,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 168750,
+      "UpgradeCost": 150000,
       "DPS": 130,
       "StrengthWeight": 20000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2500,
-      "SpecialAbilityEffect": "Stun_Building_2_5s"
+      "SpecialAbilitiesLevel": 2
     },
     "7": {
       "TroopLevel": 7,
       "LaboratoryLevel": 6,
       "Hitpoints": 4550,
       "TrainingCost": 7,
-      "UpgradeTimeH": 142,
-      "UpgradeCost": 172500,
+      "UpgradeTimeH": 132,
+      "UpgradeCost": 160000,
       "DPS": 135,
       "StrengthWeight": 21000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2500,
-      "SpecialAbilityEffect": "Stun_Building_2_5s"
+      "SpecialAbilitiesLevel": 2
     },
     "8": {
       "TroopLevel": 8,
@@ -1341,12 +1448,10 @@
       "Hitpoints": 4700,
       "TrainingCost": 8,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 180000,
+      "UpgradeCost": 170000,
       "DPS": 140,
       "StrengthWeight": 22000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2500,
-      "SpecialAbilityEffect": "Stun_Building_2_5s"
+      "SpecialAbilitiesLevel": 2
     },
     "9": {
       "TroopLevel": 9,
@@ -1354,12 +1459,10 @@
       "Hitpoints": 4850,
       "TrainingCost": 9,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 183750,
+      "UpgradeCost": 180000,
       "DPS": 145,
       "StrengthWeight": 23000,
-      "SpecialAbilityLevel": 2,
-      "SpecialAbilityAttribute": 2500,
-      "SpecialAbilityEffect": "Stun_Building_2_5s"
+      "SpecialAbilitiesLevel": 2
     },
     "10": {
       "TroopLevel": 10,
@@ -1368,9 +1471,7 @@
       "TrainingCost": 10,
       "DPS": 150,
       "StrengthWeight": 24000,
-      "SpecialAbilityLevel": 3,
-      "SpecialAbilityAttribute": 3000,
-      "SpecialAbilityEffect": "Stun_Building_3s"
+      "SpecialAbilitiesLevel": 3
     },
     "Name": "Diggy",
     "TID": "TID_PET_DIGGY",
@@ -1387,6 +1488,8 @@
     "IconExportName": "icon_unit_pet_diggy",
     "BigPicture": "unit_pet_diggy_big",
     "BigPictureSWF": "sc/info_pet_diggy.sc",
+    "ArmyTrainingPicture": "hero_art_pet_diggy",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "DeployEffect": "Diggy Deploy",
     "AttackEffect": "Diggy Attack",
     "HitEffect": "Diggy Hit",
@@ -1407,15 +1510,16 @@
     "UndergroundEffect": "Diggy Move",
     "BecomesTargetableEffect": "Diggy Appear",
     "HideEffect": "Diggy Hide",
-    "SpecialAbilityName": "TID_PET_DIGGY_ABILITY",
-    "SpecialAbilityInfo": "TID_PET_DIGGY_ABILITY_INFO",
-    "SpecialAbilityType": "StunTargetOnSurfacing",
+    "SpecialAbilities": "DiggyStunOnSurface",
     "LeashLength": 0,
     "DefaultSkin": "PetDiggyDefault",
+    "SpawnDelay": 100,
     "HeroDeathAbilityLevel": 1,
     "HeroDeathAbilityType": "SwitchHero",
     "PreferMasterTarget": true,
-    "PreviewScenario": "Pet1"
+    "PreviewScenario": "Pet1",
+    "StatBars": "HitPoints;DamagePerSecond;PreferredTargetType;DamageType;TargetType;HousingSpace;MovementSpeed;StunTime",
+    "CantBeEjected": true
   },
   "Frosty": {
     "1": {
@@ -1424,7 +1528,7 @@
       "Hitpoints": 2350,
       "TrainingCost": 1,
       "UpgradeTimeH": 36,
-      "UpgradeCost": 135000,
+      "UpgradeCost": 70000,
       "DPS": 94,
       "SummonTroopCount": 1,
       "SummonLimit": 4,
@@ -1436,7 +1540,7 @@
       "Hitpoints": 2450,
       "TrainingCost": 2,
       "UpgradeTimeH": 48,
-      "UpgradeCost": 142500,
+      "UpgradeCost": 85000,
       "DPS": 98,
       "SummonTroopCount": 1,
       "SummonLimit": 4,
@@ -1448,7 +1552,7 @@
       "Hitpoints": 2550,
       "TrainingCost": 3,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 146250,
+      "UpgradeCost": 100000,
       "DPS": 102,
       "SummonTroopCount": 1,
       "SummonLimit": 4,
@@ -1460,7 +1564,7 @@
       "Hitpoints": 2650,
       "TrainingCost": 4,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 150000,
+      "UpgradeCost": 115000,
       "DPS": 106,
       "SummonTroopCount": 1,
       "SummonLimit": 4,
@@ -1472,7 +1576,7 @@
       "Hitpoints": 2800,
       "TrainingCost": 5,
       "UpgradeTimeH": 108,
-      "UpgradeCost": 157500,
+      "UpgradeCost": 130000,
       "DPS": 110,
       "SummonTroopCount": 2,
       "SummonLimit": 8,
@@ -1484,23 +1588,23 @@
       "Hitpoints": 2900,
       "TrainingCost": 6,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 161250,
+      "UpgradeCost": 145000,
       "DPS": 114,
       "SummonTroopCount": 2,
       "SummonLimit": 8,
-      "StrengthWeight": 20000
+      "StrengthWeight": 19500
     },
     "7": {
       "TroopLevel": 7,
       "LaboratoryLevel": 5,
       "Hitpoints": 3000,
       "TrainingCost": 7,
-      "UpgradeTimeH": 142,
-      "UpgradeCost": 168750,
+      "UpgradeTimeH": 132,
+      "UpgradeCost": 160000,
       "DPS": 118,
       "SummonTroopCount": 2,
       "SummonLimit": 8,
-      "StrengthWeight": 21000
+      "StrengthWeight": 20000
     },
     "8": {
       "TroopLevel": 8,
@@ -1508,11 +1612,11 @@
       "Hitpoints": 3100,
       "TrainingCost": 8,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 172500,
+      "UpgradeCost": 170000,
       "DPS": 122,
       "SummonTroopCount": 2,
       "SummonLimit": 8,
-      "StrengthWeight": 22000
+      "StrengthWeight": 20500
     },
     "9": {
       "TroopLevel": 9,
@@ -1524,16 +1628,76 @@
       "DPS": 126,
       "SummonTroopCount": 2,
       "SummonLimit": 8,
-      "StrengthWeight": 23000
+      "StrengthWeight": 21000
     },
     "10": {
       "TroopLevel": 10,
       "LaboratoryLevel": 5,
       "Hitpoints": 3300,
       "TrainingCost": 10,
+      "UpgradeTimeH": 168,
+      "UpgradeCost": 200000,
       "DPS": 130,
       "SummonTroopCount": 2,
       "SummonLimit": 10,
+      "StrengthWeight": 21500
+    },
+    "11": {
+      "TroopLevel": 11,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 3400,
+      "TrainingCost": 11,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 230000,
+      "DPS": 134,
+      "SummonTroopCount": 2,
+      "SummonLimit": 10,
+      "StrengthWeight": 22000
+    },
+    "12": {
+      "TroopLevel": 12,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 3500,
+      "TrainingCost": 12,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 260000,
+      "DPS": 138,
+      "SummonTroopCount": 2,
+      "SummonLimit": 10,
+      "StrengthWeight": 22500
+    },
+    "13": {
+      "TroopLevel": 13,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 3600,
+      "TrainingCost": 13,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 290000,
+      "DPS": 142,
+      "SummonTroopCount": 2,
+      "SummonLimit": 10,
+      "StrengthWeight": 23000
+    },
+    "14": {
+      "TroopLevel": 14,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 3700,
+      "TrainingCost": 14,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 320000,
+      "DPS": 146,
+      "SummonTroopCount": 2,
+      "SummonLimit": 10,
+      "StrengthWeight": 23500
+    },
+    "15": {
+      "TroopLevel": 15,
+      "LaboratoryLevel": 11,
+      "Hitpoints": 3800,
+      "TrainingCost": 15,
+      "DPS": 150,
+      "SummonTroopCount": 3,
+      "SummonLimit": 12,
       "StrengthWeight": 24000
     },
     "Name": "Frosty",
@@ -1551,6 +1715,8 @@
     "IconExportName": "icon_unit_pet_frosty",
     "BigPicture": "unit_pet_frosty_big",
     "BigPictureSWF": "sc/info_pet_frosty.sc",
+    "ArmyTrainingPicture": "hero_art_pet_frosty",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "Projectile": "Frosty_projectile",
     "DeployEffect": "Frosty Deploy",
     "AttackEffect": "Frosty Attack",
@@ -1578,7 +1744,9 @@
     "SpecialAbilitiesLevel": 1,
     "LeashLength": 100,
     "DefaultSkin": "PetFrostyDefault",
-    "PreviewScenario": "Pet1"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet1",
+    "CantBeEjected": true
   },
   "Phase Fennec": {
     "1": {
@@ -1587,7 +1755,7 @@
       "Hitpoints": 1900,
       "TrainingCost": 1,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 168750,
+      "UpgradeCost": 150000,
       "DPS": 108,
       "StrengthWeight": 15000,
       "SpecialAbilitiesLevel": 1
@@ -1598,7 +1766,7 @@
       "Hitpoints": 2000,
       "TrainingCost": 2,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 176250,
+      "UpgradeCost": 160000,
       "DPS": 116,
       "StrengthWeight": 16000,
       "SpecialAbilitiesLevel": 1
@@ -1609,7 +1777,7 @@
       "Hitpoints": 2100,
       "TrainingCost": 3,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 183750,
+      "UpgradeCost": 170000,
       "DPS": 124,
       "StrengthWeight": 17000,
       "SpecialAbilitiesLevel": 1
@@ -1620,7 +1788,7 @@
       "Hitpoints": 2200,
       "TrainingCost": 4,
       "UpgradeTimeH": 132,
-      "UpgradeCost": 191250,
+      "UpgradeCost": 180000,
       "DPS": 132,
       "StrengthWeight": 18000,
       "SpecialAbilitiesLevel": 1
@@ -1631,7 +1799,7 @@
       "Hitpoints": 2300,
       "TrainingCost": 5,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 198750,
+      "UpgradeCost": 190000,
       "DPS": 140,
       "StrengthWeight": 19000,
       "SpecialAbilitiesLevel": 2
@@ -1642,7 +1810,7 @@
       "Hitpoints": 2400,
       "TrainingCost": 6,
       "UpgradeTimeH": 156,
-      "UpgradeCost": 206250,
+      "UpgradeCost": 200000,
       "DPS": 148,
       "StrengthWeight": 20000,
       "SpecialAbilitiesLevel": 2
@@ -1653,7 +1821,7 @@
       "Hitpoints": 2500,
       "TrainingCost": 7,
       "UpgradeTimeH": 168,
-      "UpgradeCost": 213750,
+      "UpgradeCost": 210000,
       "DPS": 156,
       "StrengthWeight": 21000,
       "SpecialAbilitiesLevel": 2
@@ -1664,7 +1832,7 @@
       "Hitpoints": 2600,
       "TrainingCost": 8,
       "UpgradeTimeH": 180,
-      "UpgradeCost": 221250,
+      "UpgradeCost": 220000,
       "DPS": 164,
       "StrengthWeight": 22000,
       "SpecialAbilitiesLevel": 2
@@ -1675,7 +1843,7 @@
       "Hitpoints": 2700,
       "TrainingCost": 9,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 236250,
+      "UpgradeCost": 230000,
       "DPS": 172,
       "StrengthWeight": 23000,
       "SpecialAbilitiesLevel": 2
@@ -1704,6 +1872,8 @@
     "IconExportName": "icon_unit_pet_phasefennec",
     "BigPicture": "unit_pet_phasefennec_big",
     "BigPictureSWF": "sc/info_pet_phasefennec.sc",
+    "ArmyTrainingPicture": "hero_art_pet_fox",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "Projectile": "Fennec_projectile",
     "DeployEffect": "Barky Fennec Deploy",
     "AttackEffect": "Barky Fennec Attack",
@@ -1724,7 +1894,9 @@
     "SpecialAbilities": "PhaseFennecInvis",
     "LeashLength": 200,
     "DefaultSkin": "PetFennecDefault",
-    "PreviewScenario": "Pet2"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet2",
+    "CantBeEjected": true
   },
   "Angry Jelly": {
     "1": {
@@ -1733,7 +1905,7 @@
       "Hitpoints": 1450,
       "TrainingCost": 1,
       "UpgradeTimeH": 72,
-      "UpgradeCost": 168750,
+      "UpgradeCost": 150000,
       "DPS": 112,
       "StrengthWeight": 15000,
       "SpecialAbilitiesLevel": 1
@@ -1744,7 +1916,7 @@
       "Hitpoints": 1525,
       "TrainingCost": 2,
       "UpgradeTimeH": 96,
-      "UpgradeCost": 176250,
+      "UpgradeCost": 160000,
       "DPS": 121,
       "StrengthWeight": 16000,
       "SpecialAbilitiesLevel": 1
@@ -1755,7 +1927,7 @@
       "Hitpoints": 1600,
       "TrainingCost": 3,
       "UpgradeTimeH": 120,
-      "UpgradeCost": 183750,
+      "UpgradeCost": 170000,
       "DPS": 130,
       "StrengthWeight": 17000,
       "SpecialAbilitiesLevel": 1
@@ -1766,7 +1938,7 @@
       "Hitpoints": 1675,
       "TrainingCost": 4,
       "UpgradeTimeH": 144,
-      "UpgradeCost": 191250,
+      "UpgradeCost": 180000,
       "DPS": 139,
       "StrengthWeight": 18000,
       "SpecialAbilitiesLevel": 1
@@ -1777,7 +1949,7 @@
       "Hitpoints": 1750,
       "TrainingCost": 5,
       "UpgradeTimeH": 168,
-      "UpgradeCost": 198750,
+      "UpgradeCost": 190000,
       "DPS": 148,
       "StrengthWeight": 19000,
       "SpecialAbilitiesLevel": 2
@@ -1788,7 +1960,7 @@
       "Hitpoints": 1825,
       "TrainingCost": 6,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 206250,
+      "UpgradeCost": 200000,
       "DPS": 157,
       "StrengthWeight": 20000,
       "SpecialAbilitiesLevel": 2
@@ -1799,7 +1971,7 @@
       "Hitpoints": 1900,
       "TrainingCost": 7,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 213750,
+      "UpgradeCost": 210000,
       "DPS": 166,
       "StrengthWeight": 21000,
       "SpecialAbilitiesLevel": 2
@@ -1810,7 +1982,7 @@
       "Hitpoints": 1975,
       "TrainingCost": 8,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 221250,
+      "UpgradeCost": 220000,
       "DPS": 175,
       "StrengthWeight": 22000,
       "SpecialAbilitiesLevel": 2
@@ -1821,7 +1993,7 @@
       "Hitpoints": 2050,
       "TrainingCost": 9,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 236250,
+      "UpgradeCost": 230000,
       "DPS": 184,
       "StrengthWeight": 23000,
       "SpecialAbilitiesLevel": 2
@@ -1850,6 +2022,8 @@
     "IconExportName": "icon_unit_pet_rage_jelly",
     "BigPicture": "unit_pet_rage_jelly_big",
     "BigPictureSWF": "sc/info_pet_rage_jelly.sc",
+    "ArmyTrainingPicture": "hero_art_pet_jelly",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
     "PreferedTargetBuildingClass": "Defense",
     "DeployEffect": "RageJelly Deploy",
     "AttackEffect": "RageJelly Attack",
@@ -1870,7 +2044,9 @@
     "SpecialAbilities": "AngryJellyAbility",
     "LeashLength": 400,
     "DefaultSkin": "RageJellyDefault",
-    "PreviewScenario": "Pet1"
+    "SpawnDelay": 100,
+    "PreviewScenario": "Pet1",
+    "CantBeEjected": true
   },
   "JumpAuraPet": {
     "1": {
@@ -1914,11 +2090,11 @@
       "FriendlyGroupWeight": 300,
       "EnemyGroupWeight": 400,
       "TriggersTraps": true,
-      "SpecialAbilityName": "TID_PET_ABILITY_BARKY",
-      "SpecialAbilityInfo": "TID_PET_ABILITY_INFO_BARKY",
       "SpecialAbilities": "JumpPetJumpAbility",
       "SpecialAbilitiesLevel": 1,
-      "LeashLength": 200
+      "LeashLength": 200,
+      "SpawnDelay": 100,
+      "CantBeEjected": true
     }
   },
   "SpeedupPet": {
@@ -1965,9 +2141,9 @@
       "FriendlyGroupWeight": 300,
       "EnemyGroupWeight": 400,
       "TriggersTraps": false,
-      "SpecialAbilityName": "TID_PET_ABILITY_ELECTROWL",
-      "SpecialAbilityInfo": "TID_PET_ABILITY_INFO_ELECTROWL",
-      "LeashLength": 0
+      "LeashLength": 0,
+      "SpawnDelay": 100,
+      "CantBeEjected": true
     }
   },
   "Turtle": {
@@ -2012,10 +2188,10 @@
       "FriendlyGroupWeight": 300,
       "EnemyGroupWeight": 400,
       "TriggersTraps": true,
-      "SpecialAbilityName": "TID_PET_ABILITY_ELECTROWL",
-      "SpecialAbilityInfo": "TID_PET_ABILITY_INFO_ELECTROWL",
       "LeashLength": 200,
-      "PreviewScenario": "Pet1"
+      "SpawnDelay": 100,
+      "PreviewScenario": "Pet1",
+      "CantBeEjected": true
     }
   },
   "AirSplitPetSpawnRemoved": {
@@ -2032,9 +2208,7 @@
       "TrainingTime": 9999,
       "TrainingResource": "DarkElixir",
       "TrainingCost": 1,
-      "UpgradeTimeH": 72,
       "UpgradeResource": "DarkElixir",
-      "UpgradeCost": 135000,
       "DonateCost": 20,
       "AttackRange": 80,
       "AttackSpeed": 1400,
@@ -2061,144 +2235,171 @@
       "FriendlyGroupWeight": 300,
       "EnemyGroupWeight": 400,
       "TriggersTraps": true,
-      "SpecialAbilityName": "TID_PET_ABILITY_ELECTROWL",
-      "SpecialAbilityInfo": "TID_PET_ABILITY_INFO_ELECTROWL",
-      "LeashLength": 350
+      "LeashLength": 350,
+      "SpawnDelay": 100,
+      "CantBeEjected": true
     }
   },
   "AirSpawnerPet": {
     "1": {
       "TroopLevel": 1,
+      "LaboratoryLevel": 11,
       "Hitpoints": 3300,
       "TrainingCost": 1,
-      "UpgradeTimeH": 72,
-      "UpgradeCost": 168750,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 200000,
+      "DPS": 270,
       "StrengthWeight": 15000,
-      "SpecialAbilitiesLevel": 1
+      "HeroDeathAbilityLevel": 1
     },
     "2": {
       "TroopLevel": 2,
+      "LaboratoryLevel": 11,
       "Hitpoints": 3450,
       "TrainingCost": 2,
-      "UpgradeTimeH": 96,
-      "UpgradeCost": 176250,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 220000,
+      "DPS": 290,
       "StrengthWeight": 16000,
-      "SpecialAbilitiesLevel": 2
+      "HeroDeathAbilityLevel": 1
     },
     "3": {
       "TroopLevel": 3,
+      "LaboratoryLevel": 11,
       "Hitpoints": 3600,
       "TrainingCost": 3,
-      "UpgradeTimeH": 120,
-      "UpgradeCost": 183750,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 240000,
+      "DPS": 310,
       "StrengthWeight": 17000,
-      "SpecialAbilitiesLevel": 3
+      "HeroDeathAbilityLevel": 1
     },
     "4": {
       "TroopLevel": 4,
+      "LaboratoryLevel": 11,
       "Hitpoints": 3750,
       "TrainingCost": 4,
-      "UpgradeTimeH": 144,
-      "UpgradeCost": 191250,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 260000,
+      "DPS": 330,
       "StrengthWeight": 18000,
-      "SpecialAbilitiesLevel": 4
+      "HeroDeathAbilityLevel": 1
     },
     "5": {
       "TroopLevel": 5,
+      "LaboratoryLevel": 11,
       "Hitpoints": 3900,
       "TrainingCost": 5,
-      "UpgradeTimeH": 168,
-      "UpgradeCost": 198750,
+      "UpgradeTimeH": 192,
+      "UpgradeCost": 280000,
+      "DPS": 350,
       "StrengthWeight": 19000,
-      "SpecialAbilitiesLevel": 5
+      "HeroDeathAbilityLevel": 1
     },
     "6": {
       "TroopLevel": 6,
+      "LaboratoryLevel": 11,
       "Hitpoints": 4050,
       "TrainingCost": 6,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 206250,
+      "UpgradeCost": 300000,
+      "DPS": 370,
       "StrengthWeight": 20000,
-      "SpecialAbilitiesLevel": 6
+      "HeroDeathAbilityLevel": 1
     },
     "7": {
       "TroopLevel": 7,
+      "LaboratoryLevel": 11,
       "Hitpoints": 4200,
       "TrainingCost": 7,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 213750,
+      "UpgradeCost": 320000,
+      "DPS": 390,
       "StrengthWeight": 21000,
-      "SpecialAbilitiesLevel": 7
+      "HeroDeathAbilityLevel": 1
     },
     "8": {
       "TroopLevel": 8,
+      "LaboratoryLevel": 11,
       "Hitpoints": 4350,
       "TrainingCost": 8,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 221250,
+      "UpgradeCost": 340000,
+      "DPS": 410,
       "StrengthWeight": 22000,
-      "SpecialAbilitiesLevel": 8
+      "HeroDeathAbilityLevel": 1
     },
     "9": {
       "TroopLevel": 9,
+      "LaboratoryLevel": 11,
       "Hitpoints": 4500,
       "TrainingCost": 9,
       "UpgradeTimeH": 192,
-      "UpgradeCost": 236250,
+      "UpgradeCost": 360000,
+      "DPS": 430,
       "StrengthWeight": 23000,
-      "SpecialAbilitiesLevel": 9
+      "HeroDeathAbilityLevel": 1
     },
     "10": {
       "TroopLevel": 10,
+      "LaboratoryLevel": 11,
       "Hitpoints": 4650,
       "TrainingCost": 10,
+      "DPS": 450,
       "StrengthWeight": 24000,
-      "SpecialAbilitiesLevel": 10
+      "HeroDeathAbilityLevel": 1
     },
     "Name": "AirSpawnerPet",
-    "Deprecated": true,
-    "TID": "TID_PET_RANGEDATTACKER",
-    "InfoTID": "TID_PET_RANGEDATTACKER_INFO",
+    "TID": "TID_PET_SNEEZY",
+    "InfoTID": "TID_PET_SNEEZY_INFO",
     "HousingSpace": 20,
-    "LaboratoryLevel": 11,
-    "Speed": 150,
+    "Speed": 300,
     "TrainingTime": 999,
     "TrainingResource": "DarkElixir",
     "UpgradeResource": "DarkElixir",
     "DonateCost": 20,
-    "AttackRange": 500,
-    "AttackSpeed": 1500,
-    "DPS": 0,
+    "AttackRange": 250,
+    "AttackSpeed": 800,
     "IconSWF": "sc/ui.sc",
-    "IconExportName": "icon_unit_pet_spiritjellyfish",
-    "BigPicture": "unit_pet_electro_owl_big",
-    "BigPictureSWF": "sc/info_pet_electro_owl.sc",
-    "Projectile": "gargoyle_projectile",
+    "IconExportName": "icon_unit_pet_sneezy",
+    "BigPicture": "unit_pet_sneezy_big",
+    "BigPictureSWF": "sc/info_pet_sneezy.sc",
+    "ArmyTrainingPicture": "hero_art_pet_sneezy",
+    "ArmyTrainingPictureSWF": "sc/ui.sc",
+    "Projectile": "pet_sneezy_projectile_ShockWave",
     "PreferedTargetBuildingClass": "Defense",
-    "DeployEffect": "Laser Owl Deploy",
-    "AttackEffect": "Gargoyle Attack",
-    "HitEffect": "Gargoyle Hit",
+    "DeployEffect": "Pet_Sneezy_Deploy",
+    "AttackEffect": "Pet_Sneezy_Attack_SFX",
+    "HitEffect": "Pet_Sneezy_Attack_Hit",
     "IsFlying": true,
     "AirTargets": true,
     "GroundTargets": true,
-    "DieEffect": "Laser Owl Die",
-    "Animation": "AirSplitPetSpawn",
+    "DieEffect": "Pet_Sneezy_Die",
+    "Animation": "AirSplitPet",
     "IsJumper": false,
     "MovementOffsetSpeed": 30,
     "DisableProduction": true,
     "SummonTroop": "AirSpawnerPetSpawn",
     "SummonTroopCount": 1,
+    "SummonTime": 1500,
     "SummonCooldown": 10000,
     "SummonLimit": 2,
+    "SummonDelay": 1000,
     "SpawnIdle": 100,
-    "TargetedEffectOffset": 60,
+    "TargetedEffectOffset": 40,
     "FriendlyGroupWeight": 300,
     "EnemyGroupWeight": 400,
     "TriggersTraps": true,
-    "SpecialAbilityName": "TID_PET_ABILITY_ELECTROWL",
-    "SpecialAbilityInfo": "TID_PET_ABILITY_INFO_ELECTROWL",
     "SpecialAbilities": "FlyingSpawnerTransformAbility",
+    "SpecialAbilitiesLevel": 1,
     "LeashLength": 0,
-    "PreviewScenario": "Pet2"
+    "DefaultSkin": "PetBatDefault",
+    "SpawnDelay": 100,
+    "HeroDeathAbilityType": "BoostSelf",
+    "HeroDeathAbilitySpell": "VisualRage",
+    "RecallWithMaster": true,
+    "PreviewScenario": "Pet2",
+    "StatBars": "HitPoints;DamagePerSecond;MaxSummonedUnitsCount;DamageType;TargetType;PreferredTargetType;HousingSpace;MovementSpeed",
+    "CantBeEjected": true
   }
 }

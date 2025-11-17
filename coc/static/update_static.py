@@ -49,7 +49,8 @@ def get_fingerprint():
     return fingerprint
 
 # Hard-code or fallback
-FINGERPRINT = get_fingerprint()
+#FINGERPRINT = get_fingerprint()
+FINGERPRINT="475cb6a2d13043762034ddd6a198bad23e0782eb"
 BASE_URL = f"https://game-assets.clashofclans.com/{FINGERPRINT}"
 
 def decompress(data):

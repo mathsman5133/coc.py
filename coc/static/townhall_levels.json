@@ -12,8 +12,8 @@
       "WarPrizeCommonOreCap": 0,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 1000,
-      "LegendPrizeElixirCap": 1000,
+      "LegendPrizeGoldCap": 100000,
+      "LegendPrizeElixirCap": 100000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 1,
       "CartLootCapResource": 200000,
@@ -66,7 +66,7 @@
       "AttackCostVillage2": 0,
       "Builder6Home": 1,
       "UnlockStage": 1,
-      "ElixirCartStorageCap": 17500,
+      "ElixirCartStorageCap": 20000,
       "ResourceScalingPercentage": 1,
       "ResourceScalingPercentage2": 5
     }
@@ -84,8 +84,8 @@
       "WarPrizeCommonOreCap": 0,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 2500,
-      "LegendPrizeElixirCap": 2500,
+      "LegendPrizeGoldCap": 200000,
+      "LegendPrizeElixirCap": 200000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 1,
       "CartLootCapResource": 200000,
@@ -124,7 +124,7 @@
       "Double Cannon": 1,
       "Pusher": 1,
       "AttackCostVillage2": 0,
-      "ElixirCartStorageCap": 37500,
+      "ElixirCartStorageCap": 50000,
       "ResourceScalingPercentage": 2,
       "ResourceScalingPercentage2": 10
     }
@@ -142,8 +142,8 @@
       "WarPrizeCommonOreCap": 0,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 6250,
-      "LegendPrizeElixirCap": 6250,
+      "LegendPrizeGoldCap": 300000,
+      "LegendPrizeElixirCap": 300000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 1,
       "CartLootCapResource": 200000,
@@ -193,7 +193,7 @@
       "AttackCostVillage2": 0,
       "Gem Mine": 1,
       "Ejector2": 2,
-      "ElixirCartStorageCap": 62500,
+      "ElixirCartStorageCap": 100000,
       "ResourceScalingPercentage": 3,
       "ResourceScalingPercentage2": 27
     }
@@ -211,8 +211,8 @@
       "WarPrizeCommonOreCap": 0,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 12500,
-      "LegendPrizeElixirCap": 12500,
+      "LegendPrizeGoldCap": 400000,
+      "LegendPrizeElixirCap": 400000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 2,
       "CartLootCapResource": 200000,
@@ -257,7 +257,7 @@
       "MegaAirGroundTrap": 1,
       "AttackCostVillage2": 0,
       "ShrinkTrap": 1,
-      "ElixirCartStorageCap": 87500,
+      "ElixirCartStorageCap": 150000,
       "ResourceScalingPercentage": 5,
       "ResourceScalingPercentage2": 40
     }
@@ -275,8 +275,8 @@
       "WarPrizeCommonOreCap": 0,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 20000,
-      "LegendPrizeElixirCap": 20000,
+      "LegendPrizeGoldCap": 500000,
+      "LegendPrizeElixirCap": 500000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 2,
       "CartLootCapResource": 600000,
@@ -324,7 +324,7 @@
       "AirGroundTrap": 4,
       "AttackCostVillage2": 0,
       "Ejector2": 3,
-      "ElixirCartStorageCap": 150000,
+      "ElixirCartStorageCap": 300000,
       "ResourceScalingPercentage": 8,
       "ResourceScalingPercentage2": 73
     }
@@ -342,8 +342,8 @@
       "WarPrizeCommonOreCap": 100,
       "WarPrizeRareOreCap": 0,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 30000,
-      "LegendPrizeElixirCap": 30000,
+      "LegendPrizeGoldCap": 600000,
+      "LegendPrizeElixirCap": 600000,
       "LegendPrizeDarkElixirCap": 0,
       "WarPrizeAllianceExpCap": 2,
       "CartLootCapResource": 1000000,
@@ -396,7 +396,7 @@
       "UnlockStage": 2,
       "Reinforcement Camp": 1,
       "Recovery Building": 1,
-      "ElixirCartStorageCap": 200000,
+      "ElixirCartStorageCap": 400000,
       "ResourceScalingPercentage": 16,
       "ResourceScalingPercentage2": 87
     }
@@ -414,9 +414,9 @@
       "WarPrizeCommonOreCap": 150,
       "WarPrizeRareOreCap": 10,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 50000,
-      "LegendPrizeElixirCap": 50000,
-      "LegendPrizeDarkElixirCap": 125,
+      "LegendPrizeGoldCap": 700000,
+      "LegendPrizeElixirCap": 700000,
+      "LegendPrizeDarkElixirCap": 6000,
       "WarPrizeAllianceExpCap": 3,
       "CartLootCapResource": 1400000,
       "CartLootReengagementResource": 8000000,
@@ -465,10 +465,11 @@
       "AttackCostVillage2": 0,
       "Ejector2": 4,
       "Giant Cannon": 1,
-      "ElixirCartStorageCap": 250000,
+      "ElixirCartStorageCap": 500000,
       "ResourceScalingPercentage": 30,
       "ResourceScalingPercentage2": 93,
-      "Hero Hall": 1
+      "Hero Hall": 1,
+      "LeagueTier": 1
     }
   },
   "8": {
@@ -484,9 +485,9 @@
       "WarPrizeCommonOreCap": 380,
       "WarPrizeRareOreCap": 15,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 100000,
-      "LegendPrizeElixirCap": 100000,
-      "LegendPrizeDarkElixirCap": 200,
+      "LegendPrizeGoldCap": 750000,
+      "LegendPrizeElixirCap": 750000,
+      "LegendPrizeDarkElixirCap": 6500,
       "WarPrizeAllianceExpCap": 4,
       "CartLootCapResource": 1600000,
       "CartLootReengagementResource": 10000000,
@@ -538,10 +539,11 @@
       "AttackCostVillage2": 0,
       "Ejector2": 5,
       "Battle Copter Altar": 1,
-      "ElixirCartStorageCap": 300000,
+      "ElixirCartStorageCap": 600000,
       "Smithy": 1,
       "ResourceScalingPercentage": 50,
-      "ResourceScalingPercentage2": 100
+      "ResourceScalingPercentage2": 100,
+      "LeagueTier": 2
     }
   },
   "9": {
@@ -557,9 +559,9 @@
       "WarPrizeCommonOreCap": 410,
       "WarPrizeRareOreCap": 18,
       "WarPrizeEpicOreCap": 0,
-      "LegendPrizeGoldCap": 150000,
-      "LegendPrizeElixirCap": 150000,
-      "LegendPrizeDarkElixirCap": 500,
+      "LegendPrizeGoldCap": 800000,
+      "LegendPrizeElixirCap": 800000,
+      "LegendPrizeDarkElixirCap": 7500,
       "WarPrizeAllianceExpCap": 5,
       "CartLootCapResource": 1800000,
       "CartLootReengagementResource": 11500000,
@@ -610,10 +612,11 @@
       "LavaLauncher": 1,
       "Builder6Unlock": 1,
       "Reinforcement Camp": 2,
-      "ElixirCartStorageCap": 350000,
+      "ElixirCartStorageCap": 700000,
       "ResourceScalingPercentage": 65,
       "ResourceScalingPercentage2": 100,
-      "VillagerApprenticeHQ": 1
+      "VillagerApprenticeHQ": 1,
+      "LeagueTier": 3
     }
   },
   "10": {
@@ -629,9 +632,9 @@
       "WarPrizeCommonOreCap": 460,
       "WarPrizeRareOreCap": 21,
       "WarPrizeEpicOreCap": 3,
-      "LegendPrizeGoldCap": 250000,
-      "LegendPrizeElixirCap": 250000,
-      "LegendPrizeDarkElixirCap": 1200,
+      "LegendPrizeGoldCap": 900000,
+      "LegendPrizeElixirCap": 900000,
+      "LegendPrizeDarkElixirCap": 9000,
       "WarPrizeAllianceExpCap": 7,
       "CartLootCapResource": 2000000,
       "CartLootReengagementResource": 13000000,
@@ -671,9 +674,10 @@
       "DuelPrizeResourceCap": 420000,
       "AirGroundTrap": 6,
       "Xbow_BB": 1,
-      "ElixirCartStorageCap": 400000,
+      "ElixirCartStorageCap": 800000,
       "ResourceScalingPercentage": 80,
-      "ResourceScalingPercentage2": 100
+      "ResourceScalingPercentage2": 100,
+      "LeagueTier": 4
     }
   },
   "11": {
@@ -689,9 +693,9 @@
       "WarPrizeCommonOreCap": 560,
       "WarPrizeRareOreCap": 24,
       "WarPrizeEpicOreCap": 3,
-      "LegendPrizeGoldCap": 350000,
-      "LegendPrizeElixirCap": 350000,
-      "LegendPrizeDarkElixirCap": 3250,
+      "LegendPrizeGoldCap": 975000,
+      "LegendPrizeElixirCap": 975000,
+      "LegendPrizeDarkElixirCap": 9750,
       "WarPrizeAllianceExpCap": 9,
       "CartLootCapResource": 2200000,
       "CartLootReengagementResource": 14000000,
@@ -723,7 +727,8 @@
       "PackDarkElixir": 10000,
       "TornadoTrap": 1,
       "ElixirCartStorageCap": 9999990,
-      "ResourceScalingPercentage": 90
+      "ResourceScalingPercentage": 90,
+      "LeagueTier": 6
     }
   },
   "12": {
@@ -739,9 +744,9 @@
       "WarPrizeCommonOreCap": 610,
       "WarPrizeRareOreCap": 27,
       "WarPrizeEpicOreCap": 4,
-      "LegendPrizeGoldCap": 450000,
-      "LegendPrizeElixirCap": 450000,
-      "LegendPrizeDarkElixirCap": 6500,
+      "LegendPrizeGoldCap": 1050000,
+      "LegendPrizeElixirCap": 1050000,
+      "LegendPrizeDarkElixirCap": 10500,
       "WarPrizeAllianceExpCap": 10,
       "CartLootCapResource": 2400000,
       "CartLootReengagementResource": 15000000,
@@ -774,7 +779,8 @@
       "PackDarkElixir": 10000,
       "SiegeWorkshop": 1,
       "ElixirCartStorageCap": 9999991,
-      "ResourceScalingPercentage": 95
+      "ResourceScalingPercentage": 95,
+      "LeagueTier": 8
     }
   },
   "13": {
@@ -790,9 +796,9 @@
       "WarPrizeCommonOreCap": 710,
       "WarPrizeRareOreCap": 30,
       "WarPrizeEpicOreCap": 4,
-      "LegendPrizeGoldCap": 500000,
-      "LegendPrizeElixirCap": 500000,
-      "LegendPrizeDarkElixirCap": 7000,
+      "LegendPrizeGoldCap": 1065000,
+      "LegendPrizeElixirCap": 1065000,
+      "LegendPrizeDarkElixirCap": 10650,
       "WarPrizeAllianceExpCap": 11,
       "CartLootCapResource": 2600000,
       "CartLootReengagementResource": 16000000,
@@ -822,7 +828,8 @@
       "PackDarkElixir": 10000,
       "Scattershot": 2,
       "ElixirCartStorageCap": 9999992,
-      "ResourceScalingPercentage": 100
+      "ResourceScalingPercentage": 100,
+      "LeagueTier": 11
     }
   },
   "14": {
@@ -838,9 +845,9 @@
       "WarPrizeCommonOreCap": 810,
       "WarPrizeRareOreCap": 33,
       "WarPrizeEpicOreCap": 5,
-      "LegendPrizeGoldCap": 550000,
-      "LegendPrizeElixirCap": 550000,
-      "LegendPrizeDarkElixirCap": 7000,
+      "LegendPrizeGoldCap": 1072500,
+      "LegendPrizeElixirCap": 1072500,
+      "LegendPrizeDarkElixirCap": 10725,
       "WarPrizeAllianceExpCap": 12,
       "CartLootCapResource": 2800000,
       "CartLootReengagementResource": 17000000,
@@ -872,7 +879,8 @@
       "PackDarkElixir": 10000,
       "Pet Shop": 1,
       "ElixirCartStorageCap": 9999993,
-      "ResourceScalingPercentage": 100
+      "ResourceScalingPercentage": 100,
+      "LeagueTier": 14
     }
   },
   "15": {
@@ -888,9 +896,9 @@
       "WarPrizeCommonOreCap": 960,
       "WarPrizeRareOreCap": 36,
       "WarPrizeEpicOreCap": 5,
-      "LegendPrizeGoldCap": 600000,
-      "LegendPrizeElixirCap": 600000,
-      "LegendPrizeDarkElixirCap": 7000,
+      "LegendPrizeGoldCap": 1082500,
+      "LegendPrizeElixirCap": 1082500,
+      "LegendPrizeDarkElixirCap": 10825,
       "WarPrizeAllianceExpCap": 13,
       "CartLootCapResource": 3000000,
       "CartLootReengagementResource": 18000000,
@@ -918,7 +926,8 @@
       "Spell Tower": 2,
       "Monolith": 1,
       "ElixirCartStorageCap": 9999994,
-      "ResourceScalingPercentage": 100
+      "ResourceScalingPercentage": 100,
+      "LeagueTier": 17
     }
   },
   "16": {
@@ -934,9 +943,9 @@
       "WarPrizeCommonOreCap": 1110,
       "WarPrizeRareOreCap": 39,
       "WarPrizeEpicOreCap": 6,
-      "LegendPrizeGoldCap": 650000,
-      "LegendPrizeElixirCap": 650000,
-      "LegendPrizeDarkElixirCap": 7000,
+      "LegendPrizeGoldCap": 1086250,
+      "LegendPrizeElixirCap": 1086250,
+      "LegendPrizeDarkElixirCap": 10865,
       "WarPrizeAllianceExpCap": 14,
       "CartLootCapResource": 3200000,
       "CartLootReengagementResource": 19000000,
@@ -964,7 +973,8 @@
       "ElixirCartStorageCap": 9999995,
       "Merged Archer Tower": 2,
       "Merged Cannon": 2,
-      "ResourceScalingPercentage": 100
+      "ResourceScalingPercentage": 100,
+      "LeagueTier": 21
     }
   },
   "17": {
@@ -980,9 +990,9 @@
       "WarPrizeCommonOreCap": 1110,
       "WarPrizeRareOreCap": 39,
       "WarPrizeEpicOreCap": 6,
-      "LegendPrizeGoldCap": 750000,
-      "LegendPrizeElixirCap": 750000,
-      "LegendPrizeDarkElixirCap": 7500,
+      "LegendPrizeGoldCap": 1100000,
+      "LegendPrizeElixirCap": 1100000,
+      "LegendPrizeDarkElixirCap": 11000,
       "WarPrizeAllianceExpCap": 15,
       "CartLootCapResource": 3400000,
       "CartLootReengagementResource": 20000000,
@@ -1016,7 +1026,57 @@
       "Firespitter": 2,
       "ResourceScalingPercentage": 100,
       "GigaBomb": 1,
-      "Merged Archer Cannon": 1
+      "Merged Archer Cannon": 1,
+      "LeagueTier": 25
+    }
+  },
+  "18": {
+    "1700": {
+      "Name": 18,
+      "AttackCost": 1700,
+      "ResourceStorageLootPercentage": 14,
+      "DarkElixirStorageLootPercentage": 5,
+      "ResourceStorageLootCap": 1750000,
+      "DarkElixirStorageLootCap": 10100,
+      "WarPrizeResourceCap": 180000,
+      "WarPrizeDarkElixirCap": 1150,
+      "WarPrizeCommonOreCap": 1110,
+      "WarPrizeRareOreCap": 39,
+      "WarPrizeEpicOreCap": 6,
+      "LegendPrizeGoldCap": 1102500,
+      "LegendPrizeElixirCap": 1102500,
+      "LegendPrizeDarkElixirCap": 11025,
+      "WarPrizeAllianceExpCap": 15,
+      "CartLootCapResource": 3600000,
+      "CartLootReengagementResource": 21000000,
+      "CartLootCapDarkElixir": 6800,
+      "CartLootReengagementDarkElixir": 210000,
+      "ReengagementBuildingBudget": 41040000,
+      "ReengagementHeroBudget": 55000000,
+      "ReengagementWallBudget": 20520000,
+      "ReengagementLabBudget": 41040000,
+      "HeroBoostHours": 120,
+      "PowerBoostHours": 120,
+      "ResourceProductionBoostHours": 120,
+      "StarBonusBoostHours": 120,
+      "Wall": 325,
+      "Wizard Tower": 6,
+      "StrengthMaxTroopTypes": 15,
+      "StrengthMaxSpellTypes": 11,
+      "StrengthMaxSiegeTypes": 3,
+      "TreasuryWarGold": 6000000,
+      "TreasuryWarElixir": 6000000,
+      "TreasuryWarDarkElixir": 32000,
+      "FriendlyCost": 0,
+      "PackElixir": 1000000,
+      "PackGold": 1000000,
+      "PackDarkElixir": 10000,
+      "ElixirCartStorageCap": 9999996,
+      "ResourceScalingPercentage": 100,
+      "SeasonalDefensePlatform": 1,
+      "LeagueTier": 25,
+      "DebrisTower": 1,
+      "Merged Wizard Tower": 2
     }
   }
 }
