@@ -549,7 +549,7 @@ class HTTPClient:
             LOG.info("Found IP address to be %s", ip)
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
-            keys = (await resp.json())["keys"]
+            keys = (await resp.json()).get("keys",{})
             for key in keys:
                 LOG.debug(f"Key {key}")
                 if key["name"] != self.key_names or ip not in key["cidrRanges"]:
