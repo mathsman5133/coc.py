@@ -89,6 +89,7 @@ class Hero(DataContainer):
         self.max_level: int = data["maxLevel"]
         self.village: str = data["village"]
         self.is_active: bool = data.get("superTroopIsActive")
+        self.internal_name: Optional[str] = data.get("internalName", data.get("originalName"))
 
         self._townhall = townhall
 
@@ -261,10 +262,11 @@ class Equipment(DataContainer):
     village: str
 
     @classmethod
-    def _load_json_meta(cls, json_meta, id, name, smithy_to_townhall):
+    def _load_json_meta(cls, json_meta, id, name, smithy_to_townhall, internal_name=None):
         cls.id = int(id)
         cls.name = name
         cls.smithy_to_townhall = smithy_to_townhall
+        cls.internal_name = internal_name or name
 
         cls._json_meta = json_meta
         smithy_levels = json_meta.get("RequiredBlacksmithLevel")
@@ -328,6 +330,7 @@ class EquipmentHolder(DataContainerHolder):
                 id=id,
                 name=english_aliases[equipment_meta.get("TID")],
                 smithy_to_townhall=lab_to_townhall,
+                internal_name=supercell_name
             )
             id += 1
             self.items.append(new_equipment)

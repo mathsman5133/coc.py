@@ -27,9 +27,9 @@ class LogPaginator(ABC):
         self._page = page
         
         self.kwargs = kwargs
-        self.kwargs["lookup_cache"] = kwargs.get("lookup_cache", client.lookup_cache)
-        self.kwargs["update_cache"] = kwargs.get("update_cache", client.update_cache)
-        self.kwargs["ignore_cached_errors"] = kwargs.get("ignore_cached_errors", client.ignore_cached_errors)
+        self.kwargs["lookup_cache"] = kwargs.get("lookup_cache", client.lookup_cache if client else None)
+        self.kwargs["update_cache"] = kwargs.get("update_cache", client.update_cache if client else None)
+        self.kwargs["ignore_cached_errors"] = kwargs.get("ignore_cached_errors", client.ignore_cached_errors if client else None)
 
         self._init_data = json_resp  # Initial data; this is const
         self._init_logs = json_resp.get("items", [])

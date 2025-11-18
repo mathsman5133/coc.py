@@ -250,7 +250,7 @@ class RaidDistrict:
         else:
             self.attacks = []
         if self.destruction != 0 and self.stars == 0:  # attempt to fix an api bug responding with the wrong star count
-            self.stars = max(*[a.stars for a in self.attacks if a], self.stars)
+            self.stars = max([self.stars] + [a.stars for a in self.attacks if a])
 
 
 class RaidClan:

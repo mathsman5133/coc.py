@@ -206,6 +206,7 @@ class TroopHolder(DataContainerHolder):
                 id=troop_id,
                 name=troop_name,
                 lab_to_townhall=lab_to_townhall,
+                internal_name=supercell_name,
             )
             self.items.append(new_troop)
             self.item_lookup[(new_troop.name, new_troop._is_home_village)] = new_troop
