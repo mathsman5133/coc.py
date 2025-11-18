@@ -32,5 +32,7 @@ jobs:
         DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         RUNNING_TESTS: true
       run: |
-        python -m examples.events_example
         python -m examples.war_logs
+    - name: Run unit tests
+      run: |
+        python -m unittest
