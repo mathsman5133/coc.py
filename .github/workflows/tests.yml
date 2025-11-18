@@ -1,12 +1,17 @@
 name: coc.py Workflows
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       max-parallel: 1
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
