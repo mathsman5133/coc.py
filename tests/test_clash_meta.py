@@ -1,8 +1,10 @@
 import unittest
-
+import orjson
 import coc
 
 from coc.utils import UnitStatList
+from coc.enums import HV_TROOP_ORDER
+from coc.troop import TROOPS_FILE_PATH
 
 import tracemalloc
 
@@ -48,6 +50,12 @@ class TroopMeta(unittest.TestCase):
     def setUp(self) -> None:
         self.client = coc.Client()
         self.client._create_holders()
+        
+        ## load the characters data
+        with open(TROOPS_FILE_PATH, "rb") as f:
+            self.raw_troops = orjson.loads(f.read())
+        
+        
         self.troop = self.client.get_troop("Barbarian")
         # self.barb_i = self.client.get_troop("Barbarian", level=12)
 
@@ -61,5 +69,36 @@ class TroopMeta(unittest.TestCase):
             self.troop.level[0]
 
         self.assertEqual(len(self.troop.level), len(self.troop.lab_level))
-        print(self.troop.level, self.troop.dps)
-
+    
+    def test_troops(self):
+        for troop_name in HV_TROOP_ORDER:
+            troop = self.client.get_troop(troop_name)
+            self.assertIs(type(troop), type(coc.Troop))
+            self.assertEqual(troop.name, troop_name)
+            self.assertTrue(troop.is_home_base )
+            # get the raw troop data
+            troop_data = self.raw_troops.get(troop.internal_name)
+            self.assertEqual(troop.is_home_base and troop.is_elixir_troop, troop_data.get("ProductionBuilding") == "Barrack")
+            self.assertEqual(troop.is_home_base and troop.is_dark_troop, troop_data.get("ProductionBuilding") == "Dark Elixir Barrack")
+            self.assertEqual(troop.ground_target, troop_data.get("GroundTargets"))
+            max_level = 0
+            for k, v in troop_data.items():
+                if not isinstance(v, dict):
+                    continue
+                level = v.get("VisualLevel")
+                if not level:
+                    continue
+                max_level = max(max_level, level)
+                level_troop = self.client.get_troop(troop_name, level=level)
+                self.assertEqual(level_troop.name, troop_name, f"{level_troop.name} name is wrong")
+                total_seconds = 0
+                total_seconds += v.get("UpgradeTimeD", 0) * 24 * 60 * 60
+                total_seconds += v.get("UpgradeTimeH", 0) * 60 * 60
+                total_seconds += v.get("UpgradeTimeM", 0) * 60
+                total_seconds += v.get("UpgradeTimeS", 0)
+                self.assertEqual(level_troop.upgrade_cost or 0,
+                                 v.get("UpgradeCost", 0) or 0,
+                                 f"{level_troop.name} upgrade cost level {level} is wrong")
+                self.assertEqual(level_troop.upgrade_time.total_seconds(), total_seconds,
+                                 f"{level_troop.name} upgrade time level {level} is wrong")
+            self.assertEqual(troop.max_level, max_level, f"{troop.name} max level is wrong")
