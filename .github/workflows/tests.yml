@@ -7,6 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       # You can use PyPy versions in python-version.
       # For example, pypy2 and pypy3
       matrix:
