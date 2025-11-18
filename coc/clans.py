@@ -248,7 +248,7 @@ class Clan(BaseClan):
 
     @cached_property("_cs_labels")
     def labels(self) -> typing.List[Label]:
-        """List[:class:`Label`]:A :class:`list` of :class:`Label`s that the clan has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the clan has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_members")
