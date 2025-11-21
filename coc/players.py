@@ -172,7 +172,7 @@ class ClanMember(BasePlayer):
 
     @cached_property("_cs_player_house_elements")
     def player_house_elements(self) -> List[PlayerHouseElement]:
-        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`\s that the player has."""
+        """List[:class:`PlayerHouseElement`]: A :class:`List` of :class:`PlayerHouseElement`s that the player has."""
         return list(self._iter_player_house_elements)
 
 
@@ -462,7 +462,7 @@ class Player(ClanMember):
 
     @cached_property("_cs_labels")
     def labels(self) -> List[Label]:
-        """List[:class:`Label`]: A :class:`List` of :class:`Label`\s that the player has."""
+        """List[:class:`Label`]: A :class:`List` of :class:`Label`s that the player has."""
         return list(self._iter_labels)
 
     @cached_property("_cs_achievements")
