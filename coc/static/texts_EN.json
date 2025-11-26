@@ -49635,5 +49635,29 @@
       "TID": "TID_STARTER_PASS",
       "EN": "Starter Pass"
     }
+  },
+  "TID_CHARACTER_INFO_FURNACE": {
+    "The Furnace doesn’t move, but it does spawn Firemites over time that target Buildings. These curious little guys leave pools of fire where they visit!": {
+      "TID": "TID_CHARACTER_INFO_FURNACE",
+      "EN": "The Furnace doesn’t move, but it does spawn Firemites over time that target Buildings. These curious little guys leave pools of fire where they visit!"
+    }
+  },
+  "TID_FURNACE": {
+    "Furnace": {
+      "TID": "TID_FURNACE",
+      "EN": "Furnace"
+    }
+  },
+  "TID_CHARACTER_INFO_FURNACE_FIREMITE": {
+    "Speedy, curious little fellow with low health and a burning desire to explore Buildings! All they want is a warm place to hide, but they leave pools of fire where they visit, slowly damaging their target over time.": {
+      "TID": "TID_CHARACTER_INFO_FURNACE_FIREMITE",
+      "EN": "Speedy, curious little fellow with low health and a burning desire to explore Buildings! All they want is a warm place to hide, but they leave pools of fire where they visit, slowly damaging their target over time."
+    }
+  },
+  "TID_FURNACE_FIREMITE": {
+    "Furnace Firemite": {
+      "TID": "TID_FURNACE_FIREMITE",
+      "EN": "Firemite"
+    }
   }
 }
