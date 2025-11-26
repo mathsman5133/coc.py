@@ -26,6 +26,7 @@ from enum import Enum
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
+
     def __str__(self):
         return self.in_game_name
 
@@ -62,7 +63,13 @@ class PlayerHouseElementType(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the element type."""
-        lookup = {"ground": "Ground", "roof": "Roof", "foot": "Foot", "decoration": "Decoration", "walls": "Walls"}
+        lookup = {
+            "ground": "Ground",
+            "roof": "Roof",
+            "foot": "Foot",
+            "decoration": "Decoration",
+            "walls": "Walls"
+        }
         return lookup[self.value]
 
 
@@ -77,7 +84,12 @@ class Role(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the role."""
-        lookup = {"member": "Member", "admin": "Elder", "coLeader": "Co-Leader", "leader": "Leader"}
+        lookup = {
+            "member": "Member",
+            "admin": "Elder",
+            "coLeader": "Co-Leader",
+            "leader": "Leader"
+        }
         return lookup[self.value]
 
 
@@ -103,7 +115,10 @@ class BattleModifier(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the battle modifier."""
-        lookup = {"none": "None", "hardMode": "Hard Mode"}
+        lookup = {
+            "none": "None",
+            "hardMode": "Hard Mode"
+        }
         return lookup[self.value]
 
 
@@ -118,7 +133,12 @@ class WarState(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the war state."""
-        lookup = {"notInWar": "Not in War", "preparation": "Preparation", "inWar": "In War", "warEnded": "War Ended"}
+        lookup = {
+            "notInWar": "Not in War",
+            "preparation": "Preparation",
+            "inWar": "In War",
+            "warEnded": "War Ended"
+        }
         return lookup[self.value]
 
 
@@ -131,7 +151,11 @@ class WarResult(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the war state."""
-        lookup = {"win": "Win", "lose": "Lose", "tie": "Tie"}
+        lookup = {
+            "win": "Win",
+            "lose": "Lose",
+            "tie": "Tie"
+        }
         return lookup[self.value]
 
 
@@ -148,9 +172,16 @@ class Resource(ExtendedEnum):
     @property
     def in_game_name(self) -> str:
         """Get a neat client-facing string value for the resource."""
-        lookup = {"Elixir": "Elixir", "Elixir2": "Builder Elixir",
-                  "DarkElixir": "Dark Elixir", "Gold": "Gold", "Gold2": "Builder Gold",
-                  "CommonOre": "Shiny Ore", "RareOre": "Glowy Ore", "EpicOre": "Starry Ore"}
+        lookup = {
+            "Elixir": "Elixir",
+            "Elixir2": "Builder Elixir",
+            "DarkElixir": "Dark Elixir",
+            "Gold": "Gold",
+            "Gold2": "Builder Gold",
+            "CommonOre": "Shiny Ore",
+            "RareOre": "Glowy Ore",
+            "EpicOre": "Starry Ore"
+        }
         return lookup[self.value]
 
 
@@ -188,6 +219,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Headhunter",
     "Apprentice Warden",
     "Druid",
+    "Furnace"
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -265,8 +297,18 @@ DARK_ELIXIR_SPELL_ORDER = [
 
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Minion Prince", "Grand Warden", "Royal Champion"]
-BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
+HOME_BASE_HERO_ORDER = [
+    "Barbarian King",
+    "Archer Queen",
+    "Minion Prince",
+    "Grand Warden",
+    "Royal Champion"
+]
+BUILDER_BASE_HERO_ORDER = [
+    "Battle Machine",
+    "Battle Copter"
+]
+
 HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
 
 PETS_ORDER = [
@@ -280,6 +322,7 @@ PETS_ORDER = [
     "Phoenix",
     "Spirit Fox",
     "Angry Jelly",
+    "Sneezy"
 ]
 
 EQUIPMENT = [
@@ -363,7 +406,7 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
+
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",
