@@ -35,7 +35,6 @@ from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
 from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
-from .hero import HeroHolder, PetHolder, EquipmentHolder
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
@@ -47,8 +46,6 @@ from .iterators import (
 )
 from .players import Player, ClanMember, RankedPlayer
 from .raid import RaidLogEntry
-from .spell import SpellHolder
-from .troop import TroopHolder
 from .utils import correct_tag, get, parse_army_link
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from .entry_logs import ClanWarLog, RaidLog
@@ -64,9 +61,8 @@ LOG = logging.getLogger(__name__)
 LEAGUE_WAR_STATE = "notInWar"
 KEY_MINIMUM, KEY_MAXIMUM = 1, 10
 
-ENGLISH_ALIAS_PATH = Path(__file__).parent.joinpath(Path("static/texts_EN.json"))
-BUILDING_FILE_PATH = Path(__file__).parent.joinpath(Path("static/buildings.json"))
-
+TRANSLATION_PATH = Path(__file__).parent.joinpath(Path("static/translations.json"))
+STATIC_DATA_PATH = Path(__file__).parent.joinpath(Path("static/static_data.json"))
 
 class ClashAccountScopes(Enum):
     """
@@ -208,7 +204,10 @@ class Client:
         "_spell_holder",
         "_hero_holder",
         "_pet_holder",
-        "_equipment_holder"
+        "_equipment_holder",
+        "_static_data",
+        "_translations",
+        "_name_to_id_mapping",
     )
 
     def __init__(
@@ -274,6 +273,10 @@ class Client:
         self._players = {}
         self._clans = {}
         self._wars = {}
+
+        self._translations = {}
+        self._static_data = {}
+        self._name_to_id_mapping = {}
 
     @property
     def _defaults(self):
@@ -351,48 +354,34 @@ class Client:
         )
 
     def _load_holders(self):
-        with open(ENGLISH_ALIAS_PATH, 'rb') as fp:
-            english_aliases = orjson.loads(fp.read())
+        if self.load_game_data.never:
+            return
 
-        with open(BUILDING_FILE_PATH, 'rb') as fp:
-            buildings = orjson.loads(fp.read())
+        with open(TRANSLATION_PATH, 'rb') as fp:
+            self._translations = orjson.loads(fp.read())
 
-        english_aliases = {
-            v["TID"]: v.get("EN", None)
-            for outer_dict in english_aliases.values()
-            for v in outer_dict.values()
-        }
+        with open(STATIC_DATA_PATH, 'rb') as fp:
+            static_data = orjson.loads(fp.read())
+            id_mapped_static_data = {}
 
-        # defaults for if loading fails
-        lab_to_townhall = {i - 2: i for i in range(1, 17)}
-        smithy_to_townhall = {i - 7: i for i in range(8, 17)}
+            for section, items in static_data.items():
+                for item in items:
+                    id_mapped_static_data[item['_id']] = item
+                    self._name_to_id_mapping[(item['name'], section, item.get("village_type"))] = item['_id']
+            self._static_data = id_mapped_static_data
 
-        for supercell_name, data in buildings.items():
-            if supercell_name == "Laboratory":
-                lab_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
-                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
-                # there are troops with no lab ...
-                lab_to_townhall[-1] = 1
-                lab_to_townhall[0] = 2
-            elif supercell_name =='Smithy':
-                smithy_to_townhall = {int(lab_level): level_data.get("TownHallLevel")
-                                   for lab_level, level_data in data.items() if lab_level.isnumeric()}
-
-        # load holders tied to the lab
-        for holder in (self._troop_holder, self._spell_holder, self._hero_holder, self._pet_holder):
-            holder._load_json(english_aliases, lab_to_townhall)
-        # load holders tied to the smithy
-        self._equipment_holder._load_json(english_aliases, smithy_to_townhall)
-
-    def _create_holders(self):
-        self._troop_holder = TroopHolder()
-        self._spell_holder = SpellHolder()
-        self._hero_holder = HeroHolder()
-        self._pet_holder = PetHolder()
-        self._equipment_holder = EquipmentHolder()
-
-        if not self.load_game_data.never:
-            self._load_holders()
+    def _get_static_data(self,
+        item_name: str = None,
+        section: str = None,
+        village: str | None = None,
+        item_id: str = None,
+        bypass: bool = False
+    ):
+        if bypass:
+            return None
+        if item_id:
+            return self._static_data.get(item_id)
+        return self._name_to_id_mapping.get((item_name, section, village))
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
