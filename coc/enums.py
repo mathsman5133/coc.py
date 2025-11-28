@@ -135,16 +135,59 @@ class WarResult(ExtendedEnum):
         return lookup[self.value]
 
 
+class ProductionBuildingType(ExtendedEnum):
+    barracks = "Barracks"
+    dark_barracks = "Dark Barracks"
+    spell_factory = "Spell Factory"
+    dark_spell_factory = "Dark Spell Factory"
+    hero_hall = "Hero Hall"
+    builder_barracks = "Builder Barracks"
+    blacksmith = "Blacksmith"
+    pet_house = "Pet House"
+    workshop = "Workshop"
+    none = "None"
+
 class Resource(ExtendedEnum):
-    elixir = "Elixir"
-    builder_elixir = "Builder Elixir"
-    dark_elixir = "Dark Elixir"
     gold = "Gold"
+    elixir = "Elixir"
+    dark_elixir = "Dark Elixir"
     builder_gold = "Builder Gold"
+    builder_elixir = "Builder Elixir"
+    gems = "Gems"
     shiny_ore = "Shiny Ore"
     glowy_ore = "Glowy Ore"
     starry_ore = "Starry Ore"
-    gems = "gems"
+
+class BuildingType(ExtendedEnum):
+    army = "Army"
+    town_hall = "Town Hall"
+    town_hall_weapon = "Town Hall Weapon"
+    builder_hall = "Town Hall2"
+    resource = "Resource"
+    wall = "Wall"
+    defense = "Defense"
+    worker = "Worker"
+    worker_2 = "Worker2"
+    helper = "Helper"
+
+class VillageType(ExtendedEnum):
+    home = "home"
+    builder_base = "builderBase"
+
+class EquipmentRarity(ExtendedEnum):
+    common = "Common"
+    epic = "Epic"
+
+class SkinTier(ExtendedEnum):
+    default = "Default"
+    standard = "Basic"
+    gold = "Gold"
+    legendary = "Legendary"
+
+class Gender(ExtendedEnum):
+    male = "M"
+    female = "F"
+
 
 
 ELIXIR_TROOP_ORDER = [
@@ -165,7 +208,8 @@ ELIXIR_TROOP_ORDER = [
     "Dragon Rider",
     "Electro Titan",
     "Root Rider",
-    "Thrower"
+    "Thrower",
+    "Meteor Golem"
 ]
 
 
@@ -181,6 +225,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Headhunter",
     "Apprentice Warden",
     "Druid",
+    "Furnace"
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -211,6 +256,7 @@ SUPER_TROOP_ORDER = [
     "Super Bowler",
     "Super Miner",
     "Super Hog Rider",
+    "Super Yeti"
 ]
 
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
@@ -254,6 +300,7 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Skeleton Spell",
     "Bat Spell",
     "Overgrowth Spell",
+    "Totem Spell"
 ]
 
 
@@ -274,6 +321,7 @@ PETS_ORDER = [
     "Phoenix",
     "Spirit Fox",
     "Angry Jelly",
+    "Sneezy"
 ]
 
 EQUIPMENT = [
@@ -305,7 +353,10 @@ EQUIPMENT = [
     "Electro Boots",
     "Snake Bracelet",
     "Metal Pants",
-    "Noble Iron"
+    "Noble Iron",
+    "Dark Crown",
+    "Meteor Staff",
+    "Heroic Torch"
 ]
 
 ACHIEVEMENT_ORDER = [
