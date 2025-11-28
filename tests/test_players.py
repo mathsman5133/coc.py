@@ -21,8 +21,7 @@ class TestClanMember(unittest.TestCase):
 
     def setUp(self) -> None:
         self.client = coc.Client()
-        self.client._create_holders()
-        
+
     def test_exp_level(self):
         data = {"expLevel": 241}
         member = ClanMember(data=data, client=self.client)
@@ -80,9 +79,9 @@ class TestClanMember(unittest.TestCase):
         self.assertIsInstance(member.clan, PlayerClan)
 
     def test_league(self):
-        data = {"league": {"id": 29000022, "name": "Legend League",}}
+        data = {"leagueTier": {"id": 29000022, "name": "Legend League",}}
         member = ClanMember(data=data, client=self.client)
-        league = League(data=data["league"], client=self.client)
+        league = League(data=data["leagueTier"], client=self.client)
         self.assertEqual(member.league, league)
         self.assertIsInstance(member.league, League)
 
@@ -102,7 +101,6 @@ class TestPlayers(unittest.TestCase):
 
     def setUp(self) -> None:
         self.client = coc.Client()
-        self.client._create_holders()
 
     def test_best_trophies(self):
         data = [{"bestTrophies": 5600}, {"bestTrophies": 0}, {}]
@@ -219,7 +217,7 @@ class TestPlayers(unittest.TestCase):
         valid_hero_order = [n for n in HERO_ORDER if n in set(h.name for h in player.heroes)]
 
         for index, hero in enumerate(player.heroes):
-            self.assertIsInstance(hero, (player.hero_cls, coc.abc.DataContainer))
+            self.assertIsInstance(hero, (player.hero_cls, coc.abc.LeveledUnit))
             self.assertEqual(hero.name, valid_hero_order[index])
 
             get_hero = player.get_hero(hero.name)
@@ -233,7 +231,7 @@ class TestPlayers(unittest.TestCase):
         self.assertIsInstance(player.spells, list)
 
         for index, spell in enumerate(player.spells):
-            self.assertIsInstance(spell, (player.spell_cls, coc.abc.DataContainer))
+            self.assertIsInstance(spell, (player.spell_cls, coc.abc.LeveledUnit))
             self.assertEqual(spell.name, SPELL_ORDER[index])
 
 
