@@ -175,13 +175,18 @@ class TimeDelta:
 
     """
     def __init__(self, days=0, hours=0, minutes=0, seconds=0):
-        _days, _hours = divmod(hours, 24)
-        _hours_left, _mins = divmod(minutes, 60)
-
-        self.days = days + _days
-        self.hours = hours + _hours + _hours_left
-        self.minutes = minutes + _mins
-        self.seconds = seconds
+        total_seconds = (
+                (days or 0) * 86400 +
+                (hours or 0) * 3600 +
+                (minutes or 0) * 60 +
+                (seconds or 0)
+        )
+        
+        self._total_seconds = total_seconds
+        
+        self.days, rem = divmod(total_seconds, 86400)
+        self.hours, rem = divmod(rem, 3600)
+        self.minutes, self.seconds = divmod(rem, 60)
 
     def total_seconds(self):
         """Returns the total number of seconds in the time object.
@@ -192,10 +197,13 @@ class TimeDelta:
         -------
         int
             The number of seconds"""
-        return self.days * 24 * 60 * 60 + \
-               self.hours * 60 * 60 + \
-               self.minutes * 60 + \
-               self.seconds
+        return self._total_seconds
+    
+    def __repr__(self):
+        return f"<TimeDelta {self.days}d {self.hours}:{self.minutes}:{self.seconds}s>"
+    
+    def __str__(self):
+        return f"{self.days}d {self.hours}h {self.minutes}m {self.seconds}s"
 
 
 class Location:

@@ -172,7 +172,8 @@ ELIXIR_TROOP_ORDER = [
     "Dragon Rider",
     "Electro Titan",
     "Root Rider",
-    "Thrower"
+    "Thrower",
+    "Meteor Golem"
 ]
 
 
@@ -188,6 +189,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     "Headhunter",
     "Apprentice Warden",
     "Druid",
+    "Furnace"
 ]
 
 SIEGE_MACHINE_ORDER = [
@@ -218,6 +220,7 @@ SUPER_TROOP_ORDER = [
     "Super Bowler",
     "Super Miner",
     "Super Hog Rider",
+    "Super Yeti"
 ]
 
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
@@ -249,7 +252,8 @@ ELIXIR_SPELL_ORDER = [
     "Clone Spell",
     "Invisibility Spell",
     "Recall Spell",
-    "Revive Spell"
+    "Revive Spell",
+    "Totem Spell"
 ]
 
 
@@ -260,6 +264,7 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Skeleton Spell",
     "Bat Spell",
     "Overgrowth Spell",
+    "Ice Block Spell"
 ]
 
 
@@ -280,6 +285,7 @@ PETS_ORDER = [
     "Phoenix",
     "Spirit Fox",
     "Angry Jelly",
+    "Sneezy"
 ]
 
 EQUIPMENT = [
@@ -310,7 +316,13 @@ EQUIPMENT = [
     "Dark Orb",
     "Electro Boots",
     "Snake Bracelet",
-    "Metal Pants"
+    "Metal Pants",
+    "Noble Iron",
+    "Dark Crown",
+    "Meteor Staff",
+    "Heroic Torch"
+
+
 ]
 
 ACHIEVEMENT_ORDER = [

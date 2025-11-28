@@ -161,6 +161,7 @@ class DataContainerMetaClass(type):
 class DataContainer(metaclass=DataContainerMetaClass):
     lab_to_townhall: Dict[int, int]
     name: str
+    internal_name: Optional[str] = None
 
     def __init__(self, data, townhall):
         self.name: str = data["name"]
@@ -168,7 +169,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         self.max_level: int = data["maxLevel"]
         self.village: str = data["village"]
         self.is_active: bool = data.get("superTroopIsActive")
-
+        self.internal_name: Optional[str] = data.get("internalName", data.get("originalName")) or self.internal_name
         self._townhall = townhall
 
         # copies for a static hash
@@ -195,10 +196,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
 
 
     @classmethod
-    def _load_json_meta(cls, json_meta: dict, id, name: str, lab_to_townhall):
+    def _load_json_meta(cls, json_meta: dict, id, name: str, lab_to_townhall, internal_name: str = None):
         cls.id = int(id)
         cls.name = name
         cls.lab_to_townhall = lab_to_townhall
+        cls.internal_name = internal_name or name
 
         levels_available = [key for key in json_meta.keys() if key.isnumeric()]
 
@@ -206,6 +208,7 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
         cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
         cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("Hitpoints") for level in levels_available])
+        cls.max_level = len(levels_available)
 
         # get production building
         production_building = json_meta.get("ProductionBuilding")
@@ -277,9 +280,11 @@ class DataContainer(metaclass=DataContainerMetaClass):
         cls.upgrade_cost = try_enum(UnitStat, [json_meta.get(level).get("UpgradeCost") for level in levels_available])
         cls.upgrade_resource = Resource(value=json_meta.get("UpgradeResource"))
         upgrade_times = [
-            TimeDelta(hours=json_meta.get(level, {}).get("UpgradeTimeH"))
+            TimeDelta(days=json_meta.get(level, {}).get("UpgradeTimeD"),
+                      hours=json_meta.get(level, {}).get("UpgradeTimeH"),
+                      minutes=json_meta.get(level, {}).get("UpgradeTimeM"),
+                      seconds=json_meta.get(level, {}).get("UpgradeTimeS"))
             for level in levels_available
-            if json_meta.get(level, {}).get("UpgradeTimeH") is not None
         ]
         cls.upgrade_time = try_enum(UnitStat, upgrade_times)
 
@@ -382,6 +387,7 @@ class DataContainerHolder:
                 id=id,
                 name=english_aliases[meta.get("TID")],
                 lab_to_townhall=lab_to_townhall,
+                internal_name=supercell_name
             )
             id += 1
             self.items.append(new_item)

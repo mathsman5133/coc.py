@@ -153,6 +153,7 @@ class SpellHolder(DataContainerHolder):
                 id=spell_id,
                 name=spell_name,
                 lab_to_townhall=lab_to_townhall,
+                internal_name=supercell_name,
             )
             self.items.append(new_spell)
             self.item_lookup[(new_spell.name, new_spell._is_home_village)] = new_spell
