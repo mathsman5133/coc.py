@@ -366,9 +366,6 @@ class Player(ClanMember):
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
 
         self._iter_troops = (
-            Troop
-        )
-        self._iter_troops = (
             self.troop_cls(
                 data=tdata,
                 static_data=self._client._get_static_data(
