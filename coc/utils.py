@@ -30,11 +30,10 @@ from collections import deque, UserDict
 from datetime import datetime, timedelta
 from functools import wraps
 from operator import attrgetter
-from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Tuple, Union
+from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Union
 
 
 TAG_VALIDATOR = re.compile(r"^#?[PYLQGRJCUV0289]+$")
-ARMY_LINK_SEPERATOR = re.compile(r"u(?P<units>[\d+x-]+)|s(?P<spells>[\d+x-]+)")
 
 T = TypeVar('T')
 T_co = TypeVar('T_co', covariant=True)
@@ -184,42 +183,6 @@ def corrected_tag() -> Callable[[Callable[..., T]], Callable[..., T]]:
         return wrapper
 
     return deco
-
-
-def parse_army_link(link: str) -> Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]:
-    """Parse an army link into (Troop ID, Quantity) pairs for troops and spells.
-
-    .. note::
-
-        For general usage, consider :meth:`Client.parse_army_link` instead, as it will return Troop and Spell objects.
-
-    Parameters
-    ----------
-    link: str
-        The army link to parse, from in-game.
-
-    Returns
-    -------
-    List[Tuple[int, int]], List[Tuple[int, int]]
-        2 lists containing (troop_id, quantity) pairs. See :meth:`Client.parse_army_link` for a detailed example.
-
-    """
-    matches = ARMY_LINK_SEPERATOR.finditer(link)
-
-    units, spells = [], []
-    for match in matches:
-        if match.group("units"):
-            units = [
-                (int(split[1]), int(split[0]))
-                for split in (troop.split('x') for troop in match.group("units").split('-'))
-            ]
-        elif match.group("spells"):
-            spells = [
-                (int(split[1]), int(split[0]))
-                for split in (spell.split('x') for spell in match.group("spells").split('-'))
-            ]
-
-    return units, spells
 
 
 def maybe_sort(
