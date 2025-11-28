@@ -22,9 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from datetime import datetime
-from typing import Any, Type, TypeVar, Optional
+from typing import Any, Optional, Type, TypeVar
 
-import coc
 from .enums import ExtendedEnum, PlayerHouseElementType
 from .utils import from_timestamp
 
@@ -718,3 +717,6 @@ class TID:
     def __init__(self, data: dict):
         self.name = data["name"]
         self.info = data.get("info", "")
+
+
+
