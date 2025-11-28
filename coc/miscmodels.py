@@ -712,3 +712,9 @@ class PlayerHouseElement:
         return (isinstance(other, PlayerHouseElement)
                 and self.id == other.id
                 and self.type == other.type)
+
+
+class TID:
+    def __init__(self, data: dict):
+        self.name = data["name"]
+        self.info = data.get("info", "")
