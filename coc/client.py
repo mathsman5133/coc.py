@@ -31,6 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 
 import orjson
 
+from .account_data import AccountData, ArmyRecipe
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
@@ -46,7 +47,7 @@ from .iterators import (
 )
 from .players import Player, ClanMember, RankedPlayer
 from .raid import RaidLogEntry
-from .utils import correct_tag, get, parse_army_link
+from .utils import correct_tag, get
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
 from .entry_logs import ClanWarLog, RaidLog
 
@@ -367,7 +368,11 @@ class Client:
             for section, items in static_data.items():
                 for item in items:
                     id_mapped_static_data[item['_id']] = item
-                    self._name_to_id_mapping[(item['name'], section, item.get("village_type"))] = item['_id']
+                    if section == "troops":
+                        self._name_to_id_mapping[(item['name'], section, item.get("village_type"))] = item['_id']
+                    else:
+                        self._name_to_id_mapping[(item['name'], section)] = item['_id']
+
             self._static_data = id_mapped_static_data
 
     def _get_static_data(self,
@@ -381,7 +386,10 @@ class Client:
             return None
         if item_id:
             return self._static_data.get(item_id)
-        return self._name_to_id_mapping.get((item_name, section, village))
+
+        if village:
+            return self._name_to_id_mapping.get((item_name, section, village))
+        return self._name_to_id_mapping.get((item_name, section))
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -2427,7 +2435,7 @@ class Client:
         data = await self.http.get_current_goldpass_season(**{**self._defaults, **kwargs})
         return cls(data=data)
 
-    def parse_army_link(self, link: str):
+    def parse_army_link(self, link: str) -> ArmyRecipe:
         """Transform an army link from in-game into a list of troops and spells.
 
         .. note::
@@ -2471,13 +2479,14 @@ class Client:
         if not (self._troop_holder.loaded and self._spell_holder.loaded):
             raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
 
-        troops, spells = parse_army_link(link)
+        return ArmyRecipe(static_data=self._static_data, link=link)
 
-        lookup_troops = {t.id: t for t in self._troop_holder.items}
-        lookup_spells = {s.id: s for s in self._spell_holder.items}
 
-        return [(lookup_troops.get(t_id, self._troop_holder.get('Barbarian')), qty) for t_id, qty in troops], \
-               [(lookup_spells.get(s_id, s_id), qty) for s_id, qty in spells]
+    def parse_account_data(self, data: dict) -> AccountData:
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
+
+        return AccountData(data=data, client=self)
 
     def create_army_link(self, **kwargs):
         r"""Transform troops and spells into an in-game army share link.
@@ -2554,7 +2563,7 @@ class Client:
         return base
 
     def get_troop(
-        self, name: str, is_home_village: bool = True, level: int = None, townhall: int = None
+        self, name: str, is_home_village: bool = True, level: int = 1
     ) -> Optional[Union[Type["Troop"], "Troop"]]:
         """Get an uninitiated Troop object with the given name.
 
@@ -2609,25 +2618,20 @@ class Client:
             If the troop is not found, this will return ``None``.
 
         """
-        if not self._troop_holder.loaded:
-            raise RuntimeError("Troop metadata must be loaded to use this feature.")
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
 
-        troop = self._troop_holder.get(name, is_home_village)
-        if troop is None:
+        troop_data = self._get_static_data(
+            item_name=name,
+            section="troops",
+            village="home" if is_home_village else "builderBase"
+        )
+        if troop_data is None:
             return None
-        elif level is not None:
-            data = {
-                "name": troop.name,
-                "level": level,
-                "maxLevel": len(troop.lab_level) + 1,
-                "village": "builderBase" if not troop._is_home_village else "home"
-            }
-            townhall = townhall or troop.lab_to_townhall[troop.lab_level[level]]
-            return troop(data, townhall=townhall)
-        else:
-            return troop
+        return Troop(data={}, static_data=troop_data, level=level)
 
-    def get_spell(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Spell"], "Spell"]]:
+
+    def get_spell(self, name: str, level: int = 1) -> Optional[Union[Type["Spell"], "Spell"]]:
         """Get an uninitiated Spell object with the given name.
 
         .. note::
@@ -2680,25 +2684,18 @@ class Client:
 
 
         """
-        if not self._spell_holder.loaded:
-            raise RuntimeError("Spell metadata must be loaded to use this feature.")
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
 
-        spell = self._spell_holder.get((name, True))
-        if spell is None:
+        spell_data = self._get_static_data(
+            item_name=name,
+            section="spells",
+        )
+        if spell_data is None:
             return None
-        elif level is not None:
-            data = {
-                "name": spell.name,
-                "level": level,
-                "maxLevel": len(spell.lab_level) + 1,
-                "village": "home"
-            }
-            townhall = townhall or spell.lab_to_townhall[spell.lab_level[level]]
-            return spell(data, townhall=townhall)
-        else:
-            return spell
+        return Spell(data={}, static_data=spell_data, level=level)
 
-    def get_hero(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Hero"], "Hero"]]:
+    def get_hero(self, name: str, level: int = 1) -> Optional[Union[Type["Hero"], "Hero"]]:
         """Get an uninitiated Hero object with the given name.
 
         .. note::
@@ -2751,25 +2748,18 @@ class Client:
 
 
         """
-        if not self._hero_holder.loaded:
-            raise RuntimeError("Hero metadata must be loaded to use this feature.")
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
 
-        hero = self._hero_holder.get(name)
-        if hero is None:
+        hero_data = self._get_static_data(
+            item_name=name,
+            section="heroes",
+        )
+        if hero_data is None:
             return None
-        elif level is not None:
-            data = {
-                "name": hero.name,
-                "level": level,
-                "maxLevel": len(hero.required_th_level) + 1,
-                "village": "home"
-            }
-            townhall = townhall or hero.required_th_level[level]
-            return hero(data, townhall=townhall)
-        else:
-            return hero
+        return Hero(data={}, static_data=hero_data, level=level)
 
-    def get_pet(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Pet"], "Pet"]]:
+    def get_pet(self, name: str, level: int = 1) -> Optional[Union[Type["Pet"], "Pet"]]:
         """Get an uninitiated Pet object with the given name.
 
         .. note::
@@ -2821,25 +2811,18 @@ class Client:
 
 
         """
-        if not self._pet_holder.loaded:
-            raise RuntimeError("Pet metadata must be loaded to use this feature.")
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
 
-        pet = self._pet_holder.get(name)
-        if pet is None:
+        pet_data = self._get_static_data(
+            item_name=name,
+            section="pets",
+        )
+        if pet_data is None:
             return None
-        elif level is not None:
-            data = {
-                "name": pet.name,
-                "level": level,
-                "maxLevel": len(pet.required_th_level) + 1,
-                "village": "home"
-            }
-            townhall = townhall or pet.required_th_level[level]
-            return pet(data, townhall=townhall)
-        else:
-            return pet
+        return Pet(data={}, static_data=pet_data, level=level)
 
-    def get_equipment(self, name: str, level: int = None, townhall: int = None) -> Optional[Union[Type["Equipment"], "Equipment"]]:
+    def get_equipment(self, name: str, level: int = 1) -> Optional[Union[Type["Equipment"], "Equipment"]]:
         """Get an uninitiated Equipment object with the given name.
 
         .. note::
@@ -2891,21 +2874,13 @@ class Client:
 
 
         """
-        if not self._equipment_holder.is_loaded:
-            raise RuntimeError("Equipment metadata must be loaded to use this feature.")
+        if not self._static_data:
+            raise RuntimeError("Static data must be loaded to use this feature.")
 
-        equipment = self._equipment_holder.get(name)
-        if equipment is None:
+        equipment_data = self._get_static_data(
+            item_name=name,
+            section="equipment",
+        )
+        if equipment_data is None:
             return None
-        elif level is not None:
-            data = {
-                "name": equipment.name,
-                "level": level,
-                "maxLevel": equipment.levels_available[-1],
-                "village": "home"
-            }
-            #really hacky, need to find out why
-            townhall = townhall or equipment.smithy_to_townhall[equipment._json_meta.get(str(level)).get("RequiredBlacksmithLevel")]
-            return equipment(data, townhall=townhall)
-        else:
-            return equipment
+        return Equipment(data={}, static_data=equipment_data, level=level)
