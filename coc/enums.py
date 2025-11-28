@@ -26,6 +26,7 @@ from enum import Enum
 
 class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
+
     def __str__(self):
         return self.in_game_name
 
@@ -147,6 +148,7 @@ class ProductionBuildingType(ExtendedEnum):
     workshop = "Workshop"
     none = "None"
 
+
 class Resource(ExtendedEnum):
     gold = "Gold"
     elixir = "Elixir"
@@ -157,6 +159,7 @@ class Resource(ExtendedEnum):
     shiny_ore = "Shiny Ore"
     glowy_ore = "Glowy Ore"
     starry_ore = "Starry Ore"
+
 
 class BuildingType(ExtendedEnum):
     army = "Army"
@@ -170,13 +173,16 @@ class BuildingType(ExtendedEnum):
     worker_2 = "Worker2"
     helper = "Helper"
 
+
 class VillageType(ExtendedEnum):
     home = "home"
     builder_base = "builderBase"
 
+
 class EquipmentRarity(ExtendedEnum):
     common = "Common"
     epic = "Epic"
+
 
 class SkinTier(ExtendedEnum):
     default = "Default"
@@ -184,10 +190,10 @@ class SkinTier(ExtendedEnum):
     gold = "Gold"
     legendary = "Legendary"
 
+
 class Gender(ExtendedEnum):
     male = "M"
     female = "F"
-
 
 
 ELIXIR_TROOP_ORDER = [
@@ -211,7 +217,6 @@ ELIXIR_TROOP_ORDER = [
     "Thrower",
     "Meteor Golem"
 ]
-
 
 DARK_ELIXIR_TROOP_ORDER = [
     "Minion",
@@ -262,7 +267,6 @@ SUPER_TROOP_ORDER = [
 HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
 HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
 
-
 BUILDER_TROOPS_ORDER = [
     "Raged Barbarian",
     "Sneaky Archer",
@@ -278,7 +282,6 @@ BUILDER_TROOPS_ORDER = [
     "Electrofire Wizard",
 ]
 
-
 ELIXIR_SPELL_ORDER = [
     "Lightning Spell",
     "Healing Spell",
@@ -292,7 +295,6 @@ ELIXIR_SPELL_ORDER = [
     "Ice Block Spell"
 ]
 
-
 DARK_ELIXIR_SPELL_ORDER = [
     "Poison Spell",
     "Earthquake Spell",
@@ -302,7 +304,6 @@ DARK_ELIXIR_SPELL_ORDER = [
     "Overgrowth Spell",
     "Totem Spell"
 ]
-
 
 SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 
@@ -409,17 +410,17 @@ ACHIEVEMENT_ORDER = [
     "Next Generation Model",
     "Un-Build It",
     "Champion Builder",
-    
+
     # Clan Capital
     "Aggressive Capitalism",
     "Most Valuable Clanmate",
 ]
 
 UNRANKED_LEAGUE_DATA = {
-    "id": 29000000,
+    "id": 105000000,
     "name": "Unranked",
     "iconUrls": {
-        "small": "https://api-assets.clashofclans.com/leagues/72/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-        "tiny": "https://api-assets.clashofclans.com/leagues/36/e--YMyIexEQQhE4imLoJcwhYn6Uy8KqlgyY3_kFV6t4.png",
-    },
+        "small": "https://api-assets.clashofclans.com/leaguetiers/125/yyYo5DUFeFBZvmMEQh0ZxvG-1sUOZ_S3kDMB7RllXX0.png",
+        "large": "https://api-assets.clashofclans.com/leaguetiers/326/yyYo5DUFeFBZvmMEQh0ZxvG-1sUOZ_S3kDMB7RllXX0.png"
+    }
 }
