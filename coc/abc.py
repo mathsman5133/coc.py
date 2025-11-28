@@ -21,20 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import orjson
 from pathlib import Path
-from typing import AsyncIterator, Any, Dict, Type, Optional, TYPE_CHECKING
+from typing import AsyncIterator, Type, TYPE_CHECKING
 
-from .enums import PETS_ORDER, Resource
-from .miscmodels import try_enum, Badge, TimeDelta
+from .miscmodels import try_enum, Badge
 from .iterators import PlayerIterator
-from .utils import CaseInsensitiveDict, _get_maybe_first
 
 if TYPE_CHECKING:
     from .players import Player
-
-BUILDING_FILE_PATH = Path(__file__).parent.joinpath(
-    Path("static/buildings.json"))
 
 
 class BaseClan:
@@ -189,6 +183,15 @@ class LevelManager:
 
         if value < 1:
             raise ValueError(f"Level must be greater than 1")
+
+        min_level = 1
+        if self._static_data.get("levels"):
+            min_level = self._static_data["levels"][0].get("level")
+
+        #idk if this is the best thing, but it transparently moves a
+        # lookup for a lv 1 builder base troop to it's "true" level 1
+        if value < min_level:
+            value = min_level
 
         self._level = value
         self._load_level_data()
