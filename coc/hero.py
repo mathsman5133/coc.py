@@ -1,354 +1,155 @@
-import orjson
-
-from typing import TYPE_CHECKING, Dict, List, Optional, Type
-from pathlib import Path
-
-from .abc import DataContainer, DataContainerHolder
-from .miscmodels import try_enum
-from .utils import UnitStat
-
-from .enums import Resource
-
-if TYPE_CHECKING:
-    from .miscmodels import TimeDelta
-
-HERO_FILE_PATH = Path(__file__).parent.joinpath(Path("static/heroes.json"))
-PET_FILE_PATH = Path(__file__).parent.joinpath(Path("static/pets.json"))
-EQUIPMENT_FILE_PATH = Path(__file__).parent.joinpath(Path("static/equipment.json"))
 
 
-class Hero(DataContainer):
-    """
-    Represents a Hero object as returned by the API, optionally
-    filled with game data.
+from .abc import LeveledUnit
+from .miscmodels import TimeDelta, TID
+from .enums import Resource, VillageType, ProductionBuildingType, EquipmentRarity
 
-    Attributes
-    ----------
-    id: :class:`int`
-        The hero's unique ID.
-    name: :class:`str`
-        The hero's name.
-    range: :class:`int`
-        The hero's attack range.
-    dps: :class:`int`
-        The hero's Damage Per Second (DPS).
-    hitpoints: :class:`int`
-        The number of hitpoints the troop has at this level.
-    ground_target: :class:`bool`
-        Whether the hero is ground-targetting. The Grand Warden is classified as ground targetting always.
-    speed: :class:`int`
-        The hero's speed.
-    upgrade_cost: :class:`int`
-        The amount of resources required to upgrade the hero to the next level.
-    upgrade_resource: :class:`Resource`
-        The type of resource used to upgrade this hero.
-    upgrade_time: :class:`TimeDelta`
-        The time taken to upgrade this hero to the next level.
-    ability_time: :class:`int`
-        The number of milliseconds the hero's ability lasts for.
-    required_th_level: :class:`int`
-        The minimum required townhall to unlock this level of the hero.
-    regeneration_time: :class:`TimeDelta`
-        The time required for this hero to regenerate after being "knocked out".
-    equipment: :class:`List[Equipment]`
-        a list of the equipment currently used by this hero
-    is_loaded: :class:`bool`
-        Whether the API data has been loaded for this hero.
-    level: :class:`int`
-        The hero's level
-    max_level: :class:`int`
-        The max level for this hero.
-    village: :class:`str`
-        Either ``home`` or ``builderBase``, indicating which village this hero belongs to.
-    """
-    name: str
-    level: int
-    max_level: int
-    village: str
-    is_active: bool
-    equipment: List["Equipment"]
+class Hero(LeveledUnit):
 
-    id: int
-    range: int
-    dps: int
-    hitpoints: int
-    ground_target: bool
-    speed: int
-    upgrade_cost: int
-    upgrade_resource: "Resource"
-    upgrade_time: "TimeDelta"
-    ability_time: int
-    required_th_level: int
-    regeneration_time: "TimeDelta"
-    is_loaded: bool = False
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+        super().__init__(
+            initial_level=level or data["level"],
+            static_data=static_data
+        )
 
-    def __init__(self, data, townhall):
-        # super().__init__ call fails, hence copy & pasted the parent init
-        self.name: str = data["name"]
-        self.level: int = data["level"]
-        self.max_level: int = data["maxLevel"]
-        self.village: str = data["village"]
-        self.is_active: bool = data.get("superTroopIsActive")
+        if data:
+            self.name: str = data["name"]
+            self.village = VillageType(value=data["village"])
+            self.max_level: int = data["maxLevel"]
 
-        self._townhall = townhall
+        if static_data:
+            self.id: int = static_data["_id"]
+            self.name: str = static_data["name"]
+            self.info: str = static_data["info"]
+            self.TID: TID = TID(data=static_data["TID"])
 
-        # copies for a static hash
-        self.__name = data['name']
-        self.__level = data['level']
-        self.__village = data['village']
-        self.__is_active = data.get("superTroopIsActive")
+            self.production_building = ProductionBuildingType(value=str(static_data["production_building"]))
+            self.production_building_level: int = static_data["production_building_level"] or 0
+            self.upgrade_resource: Resource = Resource(value=static_data["upgrade_resource"])
 
-        # end of copy & pasted init
+            self.is_flying: bool = static_data["is_flying"]
+            self.is_air_targeting: bool = static_data["is_air_targeting"]
+            self.is_ground_targeting: bool = static_data["is_ground_targeting"]
+            self.movement_speed: int = static_data["movement_speed"]
+            self.attack_speed: int = static_data["attack_speed"]
+            self.attack_range: int = static_data["attack_range"]
 
-        equipment = [try_enum(Equipment, equipment, townhall=townhall) for equipment in data.get('equipment', [])]
-        self.equipment = [eq for eq in equipment if eq is not None]
+            self.village = VillageType(value=static_data["village_type"])
+            self.max_level: int = len(static_data["levels"])
 
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("id", self.id),
-        ]
-        return "<%s %s>" % (
-            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+            self._load_level_data()
 
-    @property
-    def is_max_for_townhall(self) -> bool:
-        """:class:`bool`: Returns whether the hero is the max level for the player's townhall level."""
-        if self.is_max:
-            return True
+    def _load_level_data(self):
+        """Load data specific to the current level."""
+        if not self._static_data:
+            return
 
-        return self._townhall < self.__class__.required_th_level[self.level]
+        start_level = self._static_data["levels"][0]["level"]
+        level_data = self._static_data["levels"][self._level - start_level]
 
-    @classmethod
-    def get_max_level_for_townhall(cls, townhall):
-        """Get the maximum level for a hero for a given townhall level.
-
-        Parameters
-        ----------
-        townhall
-            The townhall level to get the maximum hero level for.
-
-        Returns
-        --------
-        :class:`int`
-            The maximum spell level.
-
-        """
-        return max(i for i, th in enumerate(cls.required_th_level, start=1) if th <= townhall)
+        self.hitpoints: int = level_data["hitpoints"]
+        self.dps: int = level_data["dps"]
+        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.upgrade_cost: int = level_data["upgrade_cost"]
+        self.required_hero_tavern_level: int | None = level_data["required_hero_tavern_level"]
+        self.required_townhall: int = level_data["required_townhall"]
 
 
-class HeroHolder(DataContainerHolder):
-    items: List[Type[Hero]] = []
-    item_lookup: Dict[str, Type[Hero]]
+class Pet(LeveledUnit):
 
-    FILE_PATH = HERO_FILE_PATH
-    data_object = Hero
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+        super().__init__(
+            initial_level=level or data["level"],
+            static_data=static_data
+        )
 
+        if data:
+            self.name: str = data["name"]
+            self.village = VillageType(value=["village"])
+            self.max_level: int = data["maxLevel"]
 
-class Pet(DataContainer):
-    """Represents a Pet object as returned by the API, optionally filled with game data.
+        if static_data:
+            self.id: int = static_data["_id"]
+            self.name: str = static_data["name"]
+            self.info: str = static_data["info"]
+            self.TID: TID = TID(data=static_data["TID"])
 
-    Attributes
-    ----------
-    id: :class:`int`
-        The pet's unique ID.
-    name: :class:`str`
-        The pet's name.
-    range: :class:`int`
-        The pet's attack range.
-    dps: :class:`int`
-        The pet's Damage Per Second (DPS).
-    ground_target: :class:`bool`
-        Whether the pet is ground-targetting.
-    hitpoints: :class:`int`
-        The number of hitpoints the troop has at this level.
-    speed: :class:`int`
-        The pet's speed.
-    upgrade_cost: :class:`int`
-        The amount of resources required to upgrade the pet to the next level.
-    upgrade_resource: :class:`Resource`
-        The type of resource used to upgrade this pet.
-    upgrade_time: :class:`TimeDelta`
-        The time taken to upgrade this pet to the next level.
-    is_loaded: :class:`bool`
-        Whether the API data has been loaded for this pet.
-    level: :class:`int`
-        The pet's level
-    max_level: :class:`int`
-        The max level for this pet.
-    village: :class:`str`
-        Either ``home`` or ``builderBase``, indicating which village this pet belongs to.
-    required_th_level: :class:`int`
-        The minimum required townhall to unlock this level of the pet.
-    """
-    name: str
-    level: int
-    max_level: int
-    village: str
-    is_active: bool
+            self.production_building = ProductionBuildingType(value=static_data["production_building"])
+            self.production_building_level: int = static_data["production_building_level"] or 0
+            self.upgrade_resource: Resource = Resource(value=static_data["upgrade_resource"])
 
-    id: int
-    range: int
-    dps: int
-    hitpoints: int
-    ground_target: bool
-    speed: int
-    upgrade_cost: int
-    upgrade_resource: "Resource"
-    upgrade_time: "TimeDelta"
-    is_loaded: bool = False
-    required_th_level: int
+            self.is_flying: bool = static_data["is_flying"]
+            self.is_air_targeting: bool = static_data["is_air_targeting"]
+            self.is_ground_targeting: bool = static_data["is_ground_targeting"]
+            self.movement_speed: int = static_data["movement_speed"]
+            self.attack_speed: int = static_data["attack_speed"]
+            self.attack_range: int = static_data["attack_range"]
 
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("id", self.id),
-        ]
-        return "<%s %s>" % (
-            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+            self.village = VillageType.home
+            self.max_level: int = len(static_data["levels"])
 
-    @property
-    def is_max_for_townhall(self) -> bool:
-        """:class:`bool`: Returns whether the hero pet is the max level for the player's townhall level."""
-        if self.is_max:
-            return True
+            self._load_level_data()
 
-        return self._townhall < self.__class__.required_th_level[self.level]
+    def _load_level_data(self):
+        """Load data specific to the current level."""
+        if not self._static_data:
+            return
 
-    @classmethod
-    def get_max_level_for_townhall(cls, townhall):
-        """Get the maximum level for a hero pet for a given townhall level.
+        level_data = self._static_data["levels"][self._level - 1]
 
-        Parameters
-        ----------
-        townhall
-            The townhall level to get the maximum hero pet level for.
-
-        Returns
-        --------
-        :class:`int`
-            The maximum spell level.
-
-        """
-        return max(i for i, th in enumerate(cls.required_th_level, start=1) if th <= townhall)
+        self.hitpoints: int = level_data["hitpoints"]
+        self.dps: int = level_data["dps"]
+        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.upgrade_cost: int = level_data["upgrade_cost"]
+        self.required_pet_house_level: int | None = level_data["required_pet_house_level"]
+        self.required_townhall: int = level_data["required_townhall"]
 
 
-class PetHolder(DataContainerHolder):
-    items: List[Type[Pet]] = []
-    item_lookup: Dict[str, Type[Pet]]
+class Equipment(LeveledUnit):
 
-    FILE_PATH = PET_FILE_PATH
-    data_object = Pet
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+        super().__init__(
+            initial_level=level or data["level"],
+            static_data=static_data
+        )
 
+        if data:
+            self.name: str = data["name"]
+            self.village = VillageType(value=data["village"])
+            self.max_level: int = data["maxLevel"]
 
-class Equipment(DataContainer):
-    """Represents a hero equipment object as returned by the API
+        if static_data:
+            self.id: int = static_data["_id"]
+            self.name: str = static_data["name"]
+            self.info: str = static_data["info"]
+            self.TID = TID(data=static_data["TID"])
 
-        Attributes
-        ----------
-        name: :class:`str`
-            The equipment's name.
-        level: :class:`int`
-            The equipment's level
-        max_level: :class:`int`
-            The max level for this equipment.
-        village: :class:`str`
-            Either ``home`` or ``builderBase``, indicating which village this equipment belongs to.
-    """
-    name: str
-    level: int
-    max_level: int
-    village: str
+            self.production_building = ProductionBuildingType(value=static_data["production_building"])
+            self.production_building_level: int = static_data["production_building_level"] or 0
 
-    @classmethod
-    def _load_json_meta(cls, json_meta, id, name, smithy_to_townhall):
-        cls.id = int(id)
-        cls.name = name
-        cls.smithy_to_townhall = smithy_to_townhall
+            self.rarity = EquipmentRarity(value=static_data["rarity"])
+            self.hero: str = static_data["hero"]
 
-        cls._json_meta = json_meta
-        smithy_levels = json_meta.get("RequiredBlacksmithLevel")
-        levels_available = [key for key in json_meta.keys() if key.isnumeric()]
-        cls.levels_available = levels_available
+            self.max_level: int = len(static_data["levels"])
+            self.village = VillageType.home
 
-        cls.smithy_level = try_enum(UnitStat, smithy_levels)
-        cls.level = cls.smithy_level and UnitStat(range(1, len(cls.smithy_level) + 1))
-        cls.hero_level = try_enum(UnitStat,
-                                  [json_meta.get(level).get("RequiredCharacterLevel") for level in levels_available])
-        cls.speed = try_enum(UnitStat, [json_meta.get(level).get("Speed") for level in levels_available])
-        cls.hitpoints = try_enum(UnitStat, [json_meta.get(level).get("HitPoints") for level in levels_available])
-        cls.attack_range = try_enum(UnitStat, [json_meta.get(level).get("AttackRange") for level in levels_available])
-        cls.dps = try_enum(UnitStat, [json_meta.get(level).get("DPS") for level in levels_available])
-        cls.heal = try_enum(UnitStat, [json_meta.get(level).get("HealOnActivation") for level in levels_available])
+            self._load_level_data()
 
-        # hacky way to translate internal hero names to English
-        hero = json_meta.get('AllowedCharacters', '').strip(';')
-        hero_map = {"Warrior Princess": "Royal Champion", "Minion Hero": "Minion Prince"}
-        cls.hero = hero_map.get(hero, hero)
+    def _load_level_data(self):
+        """Load data specific to the current level."""
+        if not self._static_data:
+            return
 
-        costs = [(int(el) for el in str(cost).split(';')) for cost in
-                 [json_meta.get(level).get('UpgradeCosts') for level in levels_available] if cost]
+        level_data = self._static_data["levels"][self._level - 1]
 
-        resources = [(Resource(el.strip()) for el in resource.split(';')) for resource in
-                     [json_meta.get(level).get('UpgradeResources', '') for level in levels_available]]
+        self.hitpoints: int = level_data["hitpoints"]
+        self.dps: int = level_data["dps"]
+        self.heal_on_activation: int = level_data["heal_on_activation"]
+        self.required_blacksmith_level: int = level_data["required_blacksmith_level"]
+        self.required_townhall: int = level_data["required_townhall"]
 
-        cls.upgrade_cost = try_enum(UnitStat, [[(c, r) for c, r in zip(cost, resource)]
-                                               for cost, resource in zip(costs, resources)])
+        self.shiny_ore: int = level_data["upgrade_cost"]["shiny_ore"]
+        self.glowy_ore: int = level_data["upgrade_cost"]["glowy_ore"]
+        self.starry_ore: int = level_data["upgrade_cost"]["starry_ore"]
 
-        cls._is_home_village = True  # todo: update with json key if they add builder base equipment
-        cls.village = "home" if cls._is_home_village else "builderBase"
-
-        cls.is_loaded = True
-        return cls
-
-
-class EquipmentHolder(DataContainerHolder):
-    items: List[Type[Equipment]] = []
-    item_lookup: Dict[str, Type[Equipment]]
-
-    FILE_PATH = EQUIPMENT_FILE_PATH
-    data_object = Equipment
-
-    def _load_json(self, english_aliases, lab_to_townhall):
-        id = 3000
-        with open(EQUIPMENT_FILE_PATH, 'rb') as fp:
-            equipment_data = orjson.loads(fp.read())
-
-        for supercell_name, equipment_meta in equipment_data.items():
-            if not equipment_meta.get("TID"):
-                continue
-
-            # ignore deprecated content
-            if equipment_meta.get("Deprecated") or equipment_meta.get("DisableProduction"):
-                continue
-
-            new_equipment: Type[Equipment] = type('Equipment', Equipment.__bases__, dict(Equipment.__dict__))
-            new_equipment._load_json_meta(
-                equipment_meta,
-                id=id,
-                name=english_aliases[equipment_meta.get("TID")],
-                smithy_to_townhall=lab_to_townhall,
-            )
-            id += 1
-            self.items.append(new_equipment)
-            self.item_lookup[new_equipment.name] = new_equipment
-
-        self.is_loaded = True
-
-    def load(self, data, townhall: int, default: "Equipment" = Equipment, load_game_data: bool = None
-             ) -> Equipment:
-        if load_game_data is True:
-            try:
-                equipment = self.item_lookup[data["name"]]
-            except KeyError:
-                equipment = default
-        else:
-            equipment = default
-
-        return equipment(data=data, townhall=townhall)
-
-    def get(self, name, home_village=True) -> Optional[Type[Equipment]]:
-        try:
-            return self.item_lookup[name]
-        except KeyError:
-            return None
+        self.abilities: list[dict] = level_data.get("abilities", [])
