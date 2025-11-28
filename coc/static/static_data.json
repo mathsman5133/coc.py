@@ -1058,7 +1058,33 @@
           "upgrade_time": 345600,
           "required_townhall": 16,
           "hitpoints": 1400,
-          "dps": 0
+          "dps": 0,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 1700000,
+                "upgrade_time": 172800,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 1500000,
+                "upgrade_time": 259200,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 3,
+                "upgrade_cost": 1300000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 50,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -1378,7 +1404,33 @@
           "upgrade_time": 345600,
           "required_townhall": 16,
           "hitpoints": 1400,
-          "dps": 0
+          "dps": 0,
+          "supercharge": {
+            "upgrade_resource": "Elixir",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 1700000,
+                "upgrade_time": 172800,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 1500000,
+                "upgrade_time": 259200,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 3,
+                "upgrade_cost": 1300000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 50,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -2571,7 +2623,26 @@
           "upgrade_time": 734400,
           "required_townhall": 17,
           "hitpoints": 3300,
-          "dps": 110
+          "dps": 110,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 4500000,
+                "upgrade_time": 172800,
+                "hitpoints_buff": 0,
+                "dps_buff": 4
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 2000000,
+                "upgrade_time": 302400,
+                "hitpoints_buff": 75,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -2715,7 +2786,26 @@
           "upgrade_time": 1144800,
           "required_townhall": 18,
           "hitpoints": 2000,
-          "dps": 700
+          "dps": 700,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 6000000,
+                "upgrade_time": 237600,
+                "hitpoints_buff": 0,
+                "dps_buff": 20
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 3000000,
+                "upgrade_time": 367200,
+                "hitpoints_buff": 0,
+                "dps_buff": 40
+              }
+            ]
+          }
         }
       ]
     },
@@ -2867,7 +2957,26 @@
           "upgrade_time": 691200,
           "required_townhall": 17,
           "hitpoints": 2450,
-          "dps": 66
+          "dps": 66,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 4500000,
+                "upgrade_time": 172800,
+                "hitpoints_buff": 0,
+                "dps_buff": 3
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 3000000,
+                "upgrade_time": 302400,
+                "hitpoints_buff": 75,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ],
       "gear_up": {
@@ -3072,7 +3181,26 @@
           "upgrade_time": 820800,
           "required_townhall": 17,
           "hitpoints": 2000,
-          "dps": 165
+          "dps": 165,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 10000000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 0,
+                "dps_buff": 7
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 5000000,
+                "upgrade_time": 518400,
+                "hitpoints_buff": 50,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -3216,7 +3344,26 @@
           "upgrade_time": 777600,
           "required_townhall": 17,
           "hitpoints": 1650,
-          "dps": 180
+          "dps": 180,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 6000000,
+                "upgrade_time": 194400,
+                "hitpoints_buff": 0,
+                "dps_buff": 5
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 4000000,
+                "upgrade_time": 324000,
+                "hitpoints_buff": 50,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -3416,7 +3563,26 @@
           "upgrade_time": 907200,
           "required_townhall": 17,
           "hitpoints": 4800,
-          "dps": 235
+          "dps": 235,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 10000000,
+                "upgrade_time": 388800,
+                "hitpoints_buff": 0,
+                "dps_buff": 10
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 6250000,
+                "upgrade_time": 561600,
+                "hitpoints_buff": 100,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -3520,7 +3686,33 @@
           "upgrade_time": 518400,
           "required_townhall": 16,
           "hitpoints": 1600,
-          "dps": 0
+          "dps": 0,
+          "supercharge": {
+            "upgrade_resource": "Elixir",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 5100000,
+                "upgrade_time": 259200,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 4500000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 0,
+                "dps_buff": 0
+              },
+              {
+                "level": 3,
+                "upgrade_cost": 3900000,
+                "upgrade_time": 432000,
+                "hitpoints_buff": 50,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -3856,7 +4048,26 @@
           "upgrade_time": 1036800,
           "required_townhall": 17,
           "hitpoints": 4800,
-          "dps": 140
+          "dps": 140,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 7000000,
+                "upgrade_time": 237600,
+                "hitpoints_buff": 0,
+                "dps_buff": 10
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 4500000,
+                "upgrade_time": 367200,
+                "hitpoints_buff": 200,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -4192,7 +4403,26 @@
           "upgrade_time": 1123200,
           "required_townhall": 18,
           "hitpoints": 3050,
-          "dps": 122
+          "dps": 122,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 6000000,
+                "upgrade_time": 216000,
+                "hitpoints_buff": 0,
+                "dps_buff": 5
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 3000000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 100,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -7025,7 +7255,26 @@
           "upgrade_time": 907200,
           "required_townhall": 17,
           "hitpoints": 5600,
-          "dps": 185
+          "dps": 185,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 11000000,
+                "upgrade_time": 432000,
+                "hitpoints_buff": 0,
+                "dps_buff": 3
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 7000000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 150,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -7417,7 +7666,26 @@
           "upgrade_time": 1036800,
           "required_townhall": 17,
           "hitpoints": 5656,
-          "dps": 209
+          "dps": 209,
+          "supercharge": {
+            "upgrade_resource": "Dark Elixir",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 150000,
+                "upgrade_time": 432000,
+                "hitpoints_buff": 0,
+                "dps_buff": 10
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 130000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 202,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -7897,7 +8165,26 @@
           "upgrade_time": 1209600,
           "required_townhall": 18,
           "hitpoints": 4350,
-          "dps": 340
+          "dps": 340,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 12000000,
+                "upgrade_time": 518400,
+                "hitpoints_buff": 0,
+                "dps_buff": 10
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 10000000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 150,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -8109,7 +8396,26 @@
           "upgrade_time": 1209600,
           "required_townhall": 18,
           "hitpoints": 5500,
-          "dps": 73
+          "dps": 73,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 12000000,
+                "upgrade_time": 518400,
+                "hitpoints_buff": 0,
+                "dps_buff": 5
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 10000000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 100,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -8171,7 +8477,26 @@
           "upgrade_time": 1166400,
           "required_townhall": 18,
           "hitpoints": 6100,
-          "dps": 412
+          "dps": 412,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 12000000,
+                "upgrade_time": 518400,
+                "hitpoints_buff": 0,
+                "dps_buff": 8
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 10000000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 150,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -8235,7 +8560,26 @@
           "upgrade_time": 993600,
           "required_townhall": 17,
           "hitpoints": 5000,
-          "dps": 49
+          "dps": 49,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 8000000,
+                "upgrade_time": 302400,
+                "hitpoints_buff": 0,
+                "dps_buff": 2
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 6000000,
+                "upgrade_time": 345600,
+                "hitpoints_buff": 250,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     },
@@ -8311,426 +8655,26 @@
           "upgrade_time": 1209600,
           "required_townhall": 18,
           "hitpoints": 6300,
-          "dps": 320
-        }
-      ]
-    }
-  ],
-  "supercharges": [
-    {
-      "_id": 1000002,
-      "name": "Elixir Collector Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 1700000,
-          "upgrade_time": 172800,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 1500000,
-          "upgrade_time": 259200,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 3,
-          "upgrade_cost": 1300000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 50,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000004,
-      "name": "Gold Mine Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Elixir",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 1700000,
-          "upgrade_time": 172800,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 1500000,
-          "upgrade_time": 259200,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 3,
-          "upgrade_cost": 1300000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 50,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000023,
-      "name": "Dark Elixir Drill Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Elixir",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 5100000,
-          "upgrade_time": 259200,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 4500000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 0,
-          "dps_buff": 0
-        },
-        {
-          "level": 3,
-          "upgrade_cost": 3900000,
-          "upgrade_time": 432000,
-          "hitpoints_buff": 50,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000019,
-      "name": "Hidden Tesla Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 6000000,
-          "upgrade_time": 194400,
-          "hitpoints_buff": 0,
-          "dps_buff": 5
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 4000000,
-          "upgrade_time": 324000,
-          "hitpoints_buff": 50,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000027,
-      "name": "Inferno Tower Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 7000000,
-          "upgrade_time": 237600,
-          "hitpoints_buff": 0,
-          "dps_buff": 10
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 4500000,
-          "upgrade_time": 367200,
-          "hitpoints_buff": 200,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000067,
-      "name": "Scattershot Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 11000000,
-          "upgrade_time": 432000,
-          "hitpoints_buff": 0,
-          "dps_buff": 3
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 7000000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 150,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000015,
-      "name": "Builder's Hut Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 10000000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 0,
-          "dps_buff": 7
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 5000000,
-          "upgrade_time": 518400,
-          "hitpoints_buff": 50,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000021,
-      "name": "X-Bow Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 10000000,
-          "upgrade_time": 388800,
-          "hitpoints_buff": 0,
-          "dps_buff": 10
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 6250000,
-          "upgrade_time": 561600,
-          "hitpoints_buff": 100,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000013,
-      "name": "Mortar Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 4500000,
-          "upgrade_time": 172800,
-          "hitpoints_buff": 0,
-          "dps_buff": 3
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 3000000,
-          "upgrade_time": 302400,
-          "hitpoints_buff": 75,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000089,
-      "name": "Firespitter Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 8000000,
-          "upgrade_time": 302400,
-          "hitpoints_buff": 0,
-          "dps_buff": 2
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 6000000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 250,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000012,
-      "name": "Air Defense Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 6000000,
-          "upgrade_time": 237600,
-          "hitpoints_buff": 0,
-          "dps_buff": 20
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 3000000,
-          "upgrade_time": 367200,
-          "hitpoints_buff": 0,
-          "dps_buff": 40
-        }
-      ]
-    },
-    {
-      "_id": 1000032,
-      "name": "Bomb Tower Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 6000000,
-          "upgrade_time": 216000,
-          "hitpoints_buff": 0,
-          "dps_buff": 5
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 3000000,
-          "upgrade_time": 345600,
-          "hitpoints_buff": 100,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000011,
-      "name": "Wizard Tower Supercharge",
-      "required_townhall": 100,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 4500000,
-          "upgrade_time": 172800,
-          "hitpoints_buff": 0,
-          "dps_buff": 4
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 2000000,
-          "upgrade_time": 302400,
-          "hitpoints_buff": 75,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000084,
-      "name": "Multi-Archer Tower Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 12000000,
-          "upgrade_time": 518400,
-          "hitpoints_buff": 0,
-          "dps_buff": 5
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 10000000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 100,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000085,
-      "name": "Ricochet Cannon Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 12000000,
-          "upgrade_time": 518400,
-          "hitpoints_buff": 0,
-          "dps_buff": 8
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 10000000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 150,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000079,
-      "name": "Multi-Gear Tower Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 12000000,
-          "upgrade_time": 518400,
-          "hitpoints_buff": 0,
-          "dps_buff": 10
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 10000000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 150,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000077,
-      "name": "Monolith Supercharge",
-      "required_townhall": 17,
-      "upgrade_resource": "Dark Elixir",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 150000,
-          "upgrade_time": 432000,
-          "hitpoints_buff": 0,
-          "dps_buff": 10
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 130000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 202,
-          "dps_buff": 0
-        }
-      ]
-    },
-    {
-      "_id": 1000102,
-      "name": "Super Wizard Tower Supercharge",
-      "required_townhall": 18,
-      "upgrade_resource": "Gold",
-      "levels": [
-        {
-          "level": 1,
-          "upgrade_cost": 12000000,
-          "upgrade_time": 518400,
-          "hitpoints_buff": 0,
-          "dps_buff": 7
-        },
-        {
-          "level": 2,
-          "upgrade_cost": 14000000,
-          "upgrade_time": 604800,
-          "hitpoints_buff": 150,
-          "dps_buff": 0
+          "dps": 320,
+          "supercharge": {
+            "upgrade_resource": "Gold",
+            "levels": [
+              {
+                "level": 1,
+                "upgrade_cost": 12000000,
+                "upgrade_time": 518400,
+                "hitpoints_buff": 0,
+                "dps_buff": 7
+              },
+              {
+                "level": 2,
+                "upgrade_cost": 14000000,
+                "upgrade_time": 604800,
+                "hitpoints_buff": 150,
+                "dps_buff": 0
+              }
+            ]
+          }
         }
       ]
     }

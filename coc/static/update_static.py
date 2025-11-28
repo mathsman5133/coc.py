@@ -310,9 +310,36 @@ class StaticUpdater:
                 continue
             village_type = building_data.get("VillageType", 0)
             superchargeable = False
+
+            supercharge_level_data = {}
             for supercharge_data in self.full_supercharges_data.values():
                 if supercharge_data.get("TargetBuilding") == building_name:
                     superchargeable = True
+                    hold_data = {
+                        "upgrade_resource": self._parse_resource(resource=supercharge_data.get("BuildResource")),
+                        "levels": []
+                    }
+                    for level, level_data in supercharge_data.items():
+                        if not isinstance(level_data, dict):
+                            continue
+                        upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
+                        upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
+                        upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
+                        upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+
+                        DPS = level_data.get("DPS", 0)
+                        # if the level doesnt have a DPS & there is no hitpoints for this row, that means it is a DPS upgrade
+                        # unless it is a resource pump, but we dont handle those anyways
+                        if not DPS and not level_data.get("Hitpoints"):
+                            DPS = supercharge_data.get("DPS", 0)
+                        hold_data["levels"].append({
+                            "level": int(level),
+                            "upgrade_cost": level_data.get("BuildCost"),
+                            "upgrade_time": upgrade_time_seconds,
+                            "hitpoints_buff": level_data.get("Hitpoints", 0),
+                            "dps_buff": DPS,
+                        })
+                    supercharge_level_data = hold_data
                     break
 
             #for merged buildings, move the requirement to level 1 since that is when the requirement is actually needed
@@ -420,6 +447,9 @@ class StaticUpdater:
 
                 hold_data["levels"].append(hold_level_data)
 
+            if superchargeable:
+                #supercharges are always on the last available level
+                hold_data["levels"][-1]["supercharge"] = supercharge_level_data
             new_building_data.append(hold_data)
 
         lab_data = next((item for item in new_building_data if item["name"] == "Laboratory")).get("levels")
@@ -453,43 +483,6 @@ class StaticUpdater:
                 building["levels"][(unlock_data["level"] - 1)]["unlocks"] = unlock_data["buildings_unlocked"]
 
         return new_building_data
-
-    def _parse_supercharge_data(self):
-        new_supercharge_data = []
-        for supercharge_name, supercharge_data in self.full_supercharges_data.items():
-            target = supercharge_data.get("TargetBuilding")
-            name = self._translate(tid=self.full_building_data.get(target).get("TID"))
-
-            hold_data = {
-                "_id": self.full_building_data.get(target).get("_id"),
-                "name": f"{name} Supercharge",
-                "required_townhall": supercharge_data.get("RequiredTownHallLevel"),
-                "upgrade_resource": self._parse_resource(resource=supercharge_data.get("BuildResource")),
-                "levels": []
-            }
-            for level, level_data in supercharge_data.items():
-                if not isinstance(level_data, dict):
-                    continue
-                upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
-                upgrade_time_seconds += level_data.get("BuildTimeS", 0)
-
-                DPS = level_data.get("DPS", 0)
-                # if the level doesnt have a DPS & there is no hitpoints for this row, that means it is a DPS upgrade
-                # unless it is a resource pump, but we dont handle those anyways
-                if not DPS and not level_data.get("Hitpoints"):
-                    DPS = supercharge_data.get("DPS", 0)
-                hold_data["levels"].append({
-                    "level": int(level),
-                    "upgrade_cost": level_data.get("BuildCost"),
-                    "upgrade_time": upgrade_time_seconds,
-                    "hitpoints_buff": level_data.get("Hitpoints", 0),
-                    "dps_buff": DPS,
-                })
-            new_supercharge_data.append(hold_data)
-
-        return new_supercharge_data
 
     def _parse_seasonal_defense_data(self):
         full_seasonal_defenses = self.open_file("seasonal_defense_archetypes.json")
@@ -1300,7 +1293,6 @@ class StaticUpdater:
 
         master_data = {
             "buildings": self._parse_building_data(),
-            "supercharges": self._parse_supercharge_data(),
             "seasonal_defenses": self._parse_seasonal_defense_data(),
             "traps" : self._parse_trap_data(),
             "troops": self._parse_troop_data(),

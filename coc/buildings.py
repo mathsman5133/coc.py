@@ -87,8 +87,6 @@ class Supercharge(LevelManager):
             initial_level=level,
             static_data=data
         )
-        self.name: str = data["name"]
-        self.required_townhall: int = data["required_townhall"]
         self.upgrade_resource: Resource = Resource(value=data["upgrade_resource"])
 
         self._load_level_data()
@@ -108,14 +106,16 @@ class Building(LeveledUnit):
 
     def __init__(self,
         level: int, data: dict, weapon_level: int = 0,
-        supercharge_level: int = 0, supercharge_data: dict = None,
+        supercharge_level: int = 0,
         seasonal_defenses: list[SeasonalDefense] = None
     ):
         super().__init__(
             initial_level=level,
             static_data=data
         )
+        self._supercharge_level = supercharge_level
         self._weapon_level = weapon_level
+
         self.id: int = data["_id"]
         self.name: str = data["name"]
         self.info: str = data["info"]
@@ -126,8 +126,6 @@ class Building(LeveledUnit):
         self.width: int = data["width"]
         self.is_superchargeable: bool = data["superchargeable"]
 
-        if supercharge_data:
-            self.supercharge = Supercharge(level=supercharge_level, data=supercharge_data)
         # only some buildings
         self.gear_up = None
         if "gear_up" in data:
@@ -154,6 +152,9 @@ class Building(LeveledUnit):
         self.hitpoints: int = level_data["hitpoints"]
         self.dps: int = level_data["dps"]
 
+        self.supercharge: Supercharge | None = None
+        if "supercharge" in level_data:
+            self.supercharge = Supercharge(level=self._supercharge_level, data=level_data["supercharge"])
         # only select buildings
         self.merge_requirement = [MergeRequirement(m) for m in level_data.get("merge_requirement", [])]
 
