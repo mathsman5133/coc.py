@@ -25,6 +25,8 @@ coc.py: A Clash of Clans API Wrapper
    models/wars
    models/raids
    models/game_objects
+   models/enums
+   models/constants
    models/clan_player_attributes
    models/miscellaneous
 

@@ -2698,7 +2698,7 @@ class Client:
 
         Returns
         --------
-        Optional[:class:`Translation`]
+        :class:`Translation` | None
             A Translation object with all language translations, or ``None`` if the TID is not found.
 
         """

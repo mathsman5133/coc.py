@@ -734,9 +734,10 @@ class Translation:
     """Represents translations for multiple languages.
     
     Supports multiple access patterns:
-    - Attribute access: translation.russian, translation.english
-    - Dictionary access (uppercase): translation["RU"], translation["EN"]
-    - Dictionary access (lowercase): translation["ru"], translation["en"]
+    
+    * Attribute access: ``translation.russian``, ``translation.english``
+    * Dictionary access (uppercase): ``translation["RU"]``, ``translation["EN"]``
+    * Dictionary access (lowercase): ``translation["ru"]``, ``translation["en"]``
     
     Attributes
     ----------
