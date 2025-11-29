@@ -2498,7 +2498,7 @@ class Client:
         return AccountData(data=data, client=self)
 
     def get_troop(
-        self, name: str, is_home_village: bool = True, level: int = 1
+        self, name: str, is_home_village: bool = True, level: int = 0
     ) -> Optional["Troop"]:
         """Get a Troop object with the given name and level.
 
@@ -2538,7 +2538,7 @@ class Client:
             return None
         return Troop(data={}, static_data=troop_data, level=level)
 
-    def get_spell(self, name: str, level: int = 1) -> Optional["Spell"]:
+    def get_spell(self, name: str, level: int = 0) -> Optional["Spell"]:
         """Get a Spell object with the given name and level.
 
         Example
@@ -2573,7 +2573,7 @@ class Client:
             return None
         return Spell(data={}, static_data=spell_data, level=level)
 
-    def get_hero(self, name: str, level: int = 1) -> Optional["Hero"]:
+    def get_hero(self, name: str, level: int = 0) -> Optional["Hero"]:
         """Get a Hero object with the given name and level.
 
         Example
@@ -2608,7 +2608,7 @@ class Client:
             return None
         return Hero(data={}, static_data=hero_data, level=level)
 
-    def get_pet(self, name: str, level: int = 1) -> Optional["Pet"]:
+    def get_pet(self, name: str, level: int = 0) -> Optional["Pet"]:
         """Get a Pet object with the given name and level.
 
         Example
@@ -2642,7 +2642,7 @@ class Client:
             return None
         return Pet(data={}, static_data=pet_data, level=level)
 
-    def get_equipment(self, name: str, level: int = 1) -> Optional["Equipment"]:
+    def get_equipment(self, name: str, level: int = 0) -> Optional["Equipment"]:
         """Get an Equipment object with the given name and level.
 
         Example

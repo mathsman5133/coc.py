@@ -209,14 +209,12 @@ class LevelManager:
         if value < 1:
             raise ValueError(f"Level must be greater than 1")
 
-        min_level = 1
-        if self._static_data.get("levels"):
-            min_level = self._static_data["levels"][0].get("level")
-
-        #idk if this is the best thing, but it transparently moves a
-        # lookup for a lv 1 builder base troop to it's "true" level 1
-        if value < min_level:
-            value = min_level
+        #if the level is set to 0, initalize it as the lowest available level
+        if self._level == 0:
+            min_level = 1
+            if self._static_data.get("levels"):
+                min_level = self._static_data["levels"][0].get("level")
+            self._level = min_level
 
         self._level = value
         self._load_level_data()

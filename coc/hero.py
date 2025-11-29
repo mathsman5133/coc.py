@@ -79,7 +79,7 @@ class Hero(LeveledUnit):
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
-            initial_level=level or data["level"],
+            initial_level=data.get("level") or level,
             static_data=static_data
         )
 
@@ -200,7 +200,7 @@ class Pet(LeveledUnit):
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
-            initial_level=level or data["level"],
+            initial_level=data.get("level") or level,
             static_data=static_data
         )
 
@@ -314,7 +314,7 @@ class Equipment(LeveledUnit):
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
-            initial_level=level or data["level"],
+            initial_level=data.get("level") or level,
             static_data=static_data
         )
 
