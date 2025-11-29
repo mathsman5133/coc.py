@@ -401,6 +401,11 @@ class StaticUpdater:
                 "levels": []
             }
 
+            # put seasonal defense onto the crafting station
+            if _id == 1000097:
+                seasonal_def_data = self._parse_seasonal_defense_data()
+                hold_data["seasonal_defenses"] = seasonal_def_data
+
             if building_data.get("GearUpLevelRequirement"):
                 hold_data["gear_up"] = {
                     "level_required": building_data.get("GearUpLevelRequirement"),
@@ -1078,10 +1083,14 @@ class StaticUpdater:
             name = f"{name[1]} {name[0]}"
             if nums:
                 name = f"{name} {nums}"
+
+            # make it match the API enums
+            type_mapping = {"Deco" : "decoration"}
+            slot_type = type_mapping.get(part_data.get("LayoutSlot"), part_data.get("LayoutSlot").lower())
             new_capital_part_data.append({
                 "_id": _id,
                 "name": name.title(),
-                "slot_type": part_data.get("LayoutSlot"),
+                "slot_type": slot_type,
                 "pass_reward": part_data.get("BattlePassReward", False),
             })
 
@@ -1186,6 +1195,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 hold_data["levels"].append({
+                    "level": int(level),
                     "required_townhall": level_data.get("RequiredTownHallLevel"),
                     "upgrade_cost": level_data.get("Cost"),
                     "boost_time_seconds": level_data.get("BoostTimeSeconds"),
@@ -1229,6 +1239,7 @@ class StaticUpdater:
         for _id, (league_name, league_data) in enumerate(full_league_tier_data.items(), 105000000):
             league_tier = _id - 105000000
             hold_data = {
+                "_id": _id,
                 "name": self._translate(tid=league_data.get("TID")),
                 "league_tier": league_tier,
                 "TID": {
@@ -1330,7 +1341,6 @@ class StaticUpdater:
 
         master_data = {
             "buildings": self._parse_building_data(),
-            "seasonal_defenses": self._parse_seasonal_defense_data(),
             "traps" : self._parse_trap_data(),
             "troops": self._parse_troop_data(),
             "guardians": self._parse_guardian_data(),
@@ -1432,7 +1442,6 @@ class StaticUpdater:
         
         print(f"Constants written to {constants_path}")
 
-
     async def download_files(self):
         if not self.FINGERPRINT:
             self.FINGERPRINT = await self.get_fingerprint()
@@ -1470,5 +1479,5 @@ class StaticUpdater:
         asyncio.run(self.download_files())
 
 if __name__ == "__main__":
-    StaticUpdater().generate_constants()
+    StaticUpdater().run()
 

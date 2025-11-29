@@ -8611,7 +8611,895 @@
       "village": "home",
       "width": 3,
       "superchargeable": false,
-      "levels": []
+      "levels": [],
+      "seasonal_defenses": [
+        {
+          "_id": 103000001,
+          "name": "Light Beam",
+          "info": "So bright, even squinting won\u2019t help! The Light Beam has very long range, but its luminosity fades with distance. Closer targets take more damage.",
+          "TID": {
+            "name": "TID_BUILDING_SUN_BEAM",
+            "info": "TID_BUILDING_SUN_BEAM_INFO"
+          },
+          "required_townhall": 18,
+          "modules": [
+            {
+              "_id": 102000015,
+              "name": "Sun Beam HP Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_HP"
+              },
+              "upgrade_resource": "Dark Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "HealthOverride": 600
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 45000,
+                  "upgrade_time": 43200,
+                  "ability_data": {
+                    "HealthOverride": 1200
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 60000,
+                  "upgrade_time": 57600,
+                  "ability_data": {
+                    "HealthOverride": 1800
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 75000,
+                  "upgrade_time": 72000,
+                  "ability_data": {
+                    "HealthOverride": 2400
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 90000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "HealthOverride": 3000
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 95000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "HealthOverride": 3600
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 100000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "HealthOverride": 4200
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 105000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "HealthOverride": 4800
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 110000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "HealthOverride": 5400
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 115000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "HealthOverride": 6000
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000016,
+              "name": "Sun Beam Atk Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_ATTACK"
+              },
+              "upgrade_resource": "Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "Damage": 440,
+                    "Projectile": "SunBeam1"
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 3000000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "Damage": 480,
+                    "Projectile": "SunBeam2"
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 3500000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "Damage": 520,
+                    "Projectile": "SunBeam3"
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 4000000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "Damage": 560,
+                    "Projectile": "SunBeam4"
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 4500000,
+                  "upgrade_time": 223200,
+                  "ability_data": {
+                    "Damage": 600,
+                    "Projectile": "SunBeam5"
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 6000000,
+                  "upgrade_time": 230400,
+                  "ability_data": {
+                    "Damage": 640,
+                    "Projectile": "SunBeam6"
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 7500000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "Damage": 680,
+                    "Projectile": "SunBeam7"
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 9000000,
+                  "upgrade_time": 244800,
+                  "ability_data": {
+                    "Damage": 720,
+                    "Projectile": "SunBeam8"
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 10500000,
+                  "upgrade_time": 252000,
+                  "ability_data": {
+                    "Damage": 760,
+                    "Projectile": "SunBeam9"
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "Damage": 800,
+                    "Projectile": "SunBeam10"
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000017,
+              "name": "Sun Beam Effect Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_EFFECT"
+              },
+              "upgrade_resource": "Gold",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "AttackSpeed": 1900,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 4000000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "AttackSpeed": 1800,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 5000000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "AttackSpeed": 1700,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 6000000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "AttackSpeed": 1600,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 7000000,
+                  "upgrade_time": 151200,
+                  "ability_data": {
+                    "AttackSpeed": 1500,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 8000000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "AttackSpeed": 1400,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 9000000,
+                  "upgrade_time": 194400,
+                  "ability_data": {
+                    "AttackSpeed": 1300,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 10000000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "AttackSpeed": 1200,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 11000000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "AttackSpeed": 1100,
+                    "Damage": 1
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "AttackSpeed": 1000,
+                    "Damage": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": 103000002,
+          "name": "Bomb Hive",
+          "info": "Oh, those bombs of ours, they blow up so fast! Bombs leave the nest in straight lines, exploding when they hit a ground or air target.",
+          "TID": {
+            "name": "TID_BUILDING_BOMB_SPAWNER",
+            "info": "TID_BUILDING_BOMB_SPAWNER_INFO"
+          },
+          "required_townhall": 18,
+          "modules": [
+            {
+              "_id": 102000006,
+              "name": "Log Lobber HP Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_HP"
+              },
+              "upgrade_resource": "Gold",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "HealthOverride": 400
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 3000000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "HealthOverride": 900
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 3500000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "HealthOverride": 1400
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 4000000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "HealthOverride": 1900
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 4500000,
+                  "upgrade_time": 223200,
+                  "ability_data": {
+                    "HealthOverride": 2400
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 6000000,
+                  "upgrade_time": 230400,
+                  "ability_data": {
+                    "HealthOverride": 2900
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 7500000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "HealthOverride": 3400
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 9000000,
+                  "upgrade_time": 244800,
+                  "ability_data": {
+                    "HealthOverride": 3900
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 10500000,
+                  "upgrade_time": 252000,
+                  "ability_data": {
+                    "HealthOverride": 4400
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "HealthOverride": 4900
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000007,
+              "name": "Log Lobber Atk Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_ATTACK"
+              },
+              "upgrade_resource": "Dark Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "Projectile": "SlowLog1"
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 35000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "Projectile": "SlowLog2"
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 45000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "Projectile": "SlowLog3"
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 55000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "Projectile": "SlowLog4"
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 65000,
+                  "upgrade_time": 151200,
+                  "ability_data": {
+                    "Projectile": "SlowLog5"
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 75000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "Projectile": "SlowLog6"
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 85000,
+                  "upgrade_time": 194400,
+                  "ability_data": {
+                    "Projectile": "SlowLog7"
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 95000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "Projectile": "SlowLog8"
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 105000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "Projectile": "SlowLog9"
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 115000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "Projectile": "SlowLog10"
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000008,
+              "name": "Log Lobber Effect Module",
+              "TID": {
+                "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_EFFECT"
+              },
+              "upgrade_resource": "Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "AttackRange": 1100,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 5000000,
+                  "upgrade_time": 43200,
+                  "ability_data": {
+                    "AttackRange": 1200,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 6500000,
+                  "upgrade_time": 57600,
+                  "ability_data": {
+                    "AttackRange": 1300,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 8000000,
+                  "upgrade_time": 72000,
+                  "ability_data": {
+                    "AttackRange": 1400,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 9500000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "AttackRange": 1500,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 10000000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "AttackRange": 1600,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 10500000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "AttackRange": 1700,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 11000000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "AttackRange": 1800,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 11500000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "AttackRange": 1900,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "AttackRange": 2000,
+                    "PenetratingExtraRange": 0,
+                    "PenetratingRadius": 150
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": 103000007,
+          "name": "Hero Bell",
+          "info": "The tolling bell ignites the fighting spirit of defending Heroes, boosting their strength and health. When destroyed, Heroes go back to their regular awesome selves. Boo!",
+          "TID": {
+            "name": "TID_BUILDING_HERO_BOOSTER",
+            "info": "TID_BUILDING_HERO_BOOSTER_INFO"
+          },
+          "required_townhall": 18,
+          "modules": [
+            {
+              "_id": 102000021,
+              "name": "Slowdown Tower HP Module",
+              "TID": {
+                "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_HP"
+              },
+              "upgrade_resource": "Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "HealthOverride": 400
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 4000000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "HealthOverride": 900
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 5000000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "HealthOverride": 1400
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 6000000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "HealthOverride": 1900
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 7000000,
+                  "upgrade_time": 151200,
+                  "ability_data": {
+                    "HealthOverride": 2400
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 8000000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "HealthOverride": 2900
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 9000000,
+                  "upgrade_time": 194400,
+                  "ability_data": {
+                    "HealthOverride": 3400
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 10000000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "HealthOverride": 3900
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 11000000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "HealthOverride": 4400
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "HealthOverride": 4900
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000022,
+              "name": "Slowdown Tower Atk Module",
+              "TID": {
+                "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_ATTACK"
+              },
+              "upgrade_resource": "Gold",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "AuraSpellLevel": 1
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 5000000,
+                  "upgrade_time": 43200,
+                  "ability_data": {
+                    "AuraSpellLevel": 2
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 6500000,
+                  "upgrade_time": 57600,
+                  "ability_data": {
+                    "AuraSpellLevel": 3
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 8000000,
+                  "upgrade_time": 72000,
+                  "ability_data": {
+                    "AuraSpellLevel": 4
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 9500000,
+                  "upgrade_time": 86400,
+                  "ability_data": {
+                    "AuraSpellLevel": 5
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 10000000,
+                  "upgrade_time": 108000,
+                  "ability_data": {
+                    "AuraSpellLevel": 6
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 10500000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "AuraSpellLevel": 7
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 11000000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "AuraSpellLevel": 8
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 11500000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "AuraSpellLevel": 9
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 12000000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "AuraSpellLevel": 10
+                  }
+                }
+              ]
+            },
+            {
+              "_id": 102000023,
+              "name": "Slowdown Tower Effect Module",
+              "TID": {
+                "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_EFFECT"
+              },
+              "upgrade_resource": "Dark Elixir",
+              "levels": [
+                {
+                  "level": 1,
+                  "upgrade_cost": 0,
+                  "upgrade_time": 0,
+                  "ability_data": {
+                    "AuraSpellLevel": 1
+                  }
+                },
+                {
+                  "level": 2,
+                  "upgrade_cost": 25000,
+                  "upgrade_time": 129600,
+                  "ability_data": {
+                    "AuraSpellLevel": 2
+                  }
+                },
+                {
+                  "level": 3,
+                  "upgrade_cost": 30000,
+                  "upgrade_time": 172800,
+                  "ability_data": {
+                    "AuraSpellLevel": 3
+                  }
+                },
+                {
+                  "level": 4,
+                  "upgrade_cost": 35000,
+                  "upgrade_time": 216000,
+                  "ability_data": {
+                    "AuraSpellLevel": 4
+                  }
+                },
+                {
+                  "level": 5,
+                  "upgrade_cost": 40000,
+                  "upgrade_time": 223200,
+                  "ability_data": {
+                    "AuraSpellLevel": 5
+                  }
+                },
+                {
+                  "level": 6,
+                  "upgrade_cost": 55000,
+                  "upgrade_time": 230400,
+                  "ability_data": {
+                    "AuraSpellLevel": 6
+                  }
+                },
+                {
+                  "level": 7,
+                  "upgrade_cost": 70000,
+                  "upgrade_time": 237600,
+                  "ability_data": {
+                    "AuraSpellLevel": 7
+                  }
+                },
+                {
+                  "level": 8,
+                  "upgrade_cost": 85000,
+                  "upgrade_time": 244800,
+                  "ability_data": {
+                    "AuraSpellLevel": 8
+                  }
+                },
+                {
+                  "level": 9,
+                  "upgrade_cost": 100000,
+                  "upgrade_time": 252000,
+                  "ability_data": {
+                    "AuraSpellLevel": 9
+                  }
+                },
+                {
+                  "level": 10,
+                  "upgrade_cost": 115000,
+                  "upgrade_time": 259200,
+                  "ability_data": {
+                    "AuraSpellLevel": 10
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "_id": 1000102,
@@ -8675,894 +9563,6 @@
               }
             ]
           }
-        }
-      ]
-    }
-  ],
-  "seasonal_defenses": [
-    {
-      "_id": 103000001,
-      "name": "Light Beam",
-      "info": "So bright, even squinting won\u2019t help! The Light Beam has very long range, but its luminosity fades with distance. Closer targets take more damage.",
-      "TID": {
-        "name": "TID_BUILDING_SUN_BEAM",
-        "info": "TID_BUILDING_SUN_BEAM_INFO"
-      },
-      "required_townhall": 18,
-      "modules": [
-        {
-          "_id": 102000015,
-          "name": "Sun Beam HP Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_HP"
-          },
-          "upgrade_resource": "Dark Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "HealthOverride": 600
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 45000,
-              "upgrade_time": 43200,
-              "ability_data": {
-                "HealthOverride": 1200
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 60000,
-              "upgrade_time": 57600,
-              "ability_data": {
-                "HealthOverride": 1800
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 75000,
-              "upgrade_time": 72000,
-              "ability_data": {
-                "HealthOverride": 2400
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 90000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "HealthOverride": 3000
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 95000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "HealthOverride": 3600
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 100000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "HealthOverride": 4200
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 105000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "HealthOverride": 4800
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 110000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "HealthOverride": 5400
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 115000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "HealthOverride": 6000
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000016,
-          "name": "Sun Beam Atk Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_ATTACK"
-          },
-          "upgrade_resource": "Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "Damage": 440,
-                "Projectile": "SunBeam1"
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 3000000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "Damage": 480,
-                "Projectile": "SunBeam2"
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 3500000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "Damage": 520,
-                "Projectile": "SunBeam3"
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 4000000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "Damage": 560,
-                "Projectile": "SunBeam4"
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 4500000,
-              "upgrade_time": 223200,
-              "ability_data": {
-                "Damage": 600,
-                "Projectile": "SunBeam5"
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 6000000,
-              "upgrade_time": 230400,
-              "ability_data": {
-                "Damage": 640,
-                "Projectile": "SunBeam6"
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 7500000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "Damage": 680,
-                "Projectile": "SunBeam7"
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 9000000,
-              "upgrade_time": 244800,
-              "ability_data": {
-                "Damage": 720,
-                "Projectile": "SunBeam8"
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 10500000,
-              "upgrade_time": 252000,
-              "ability_data": {
-                "Damage": 760,
-                "Projectile": "SunBeam9"
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "Damage": 800,
-                "Projectile": "SunBeam10"
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000017,
-          "name": "Sun Beam Effect Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_SUN_BEAM_MODULE_EFFECT"
-          },
-          "upgrade_resource": "Gold",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "AttackSpeed": 1900,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 4000000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "AttackSpeed": 1800,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 5000000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "AttackSpeed": 1700,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 6000000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "AttackSpeed": 1600,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 7000000,
-              "upgrade_time": 151200,
-              "ability_data": {
-                "AttackSpeed": 1500,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 8000000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "AttackSpeed": 1400,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 9000000,
-              "upgrade_time": 194400,
-              "ability_data": {
-                "AttackSpeed": 1300,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 10000000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "AttackSpeed": 1200,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 11000000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "AttackSpeed": 1100,
-                "Damage": 1
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "AttackSpeed": 1000,
-                "Damage": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "_id": 103000002,
-      "name": "Bomb Hive",
-      "info": "Oh, those bombs of ours, they blow up so fast! Bombs leave the nest in straight lines, exploding when they hit a ground or air target.",
-      "TID": {
-        "name": "TID_BUILDING_BOMB_SPAWNER",
-        "info": "TID_BUILDING_BOMB_SPAWNER_INFO"
-      },
-      "required_townhall": 18,
-      "modules": [
-        {
-          "_id": 102000006,
-          "name": "Log Lobber HP Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_HP"
-          },
-          "upgrade_resource": "Gold",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "HealthOverride": 400
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 3000000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "HealthOverride": 900
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 3500000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "HealthOverride": 1400
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 4000000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "HealthOverride": 1900
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 4500000,
-              "upgrade_time": 223200,
-              "ability_data": {
-                "HealthOverride": 2400
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 6000000,
-              "upgrade_time": 230400,
-              "ability_data": {
-                "HealthOverride": 2900
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 7500000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "HealthOverride": 3400
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 9000000,
-              "upgrade_time": 244800,
-              "ability_data": {
-                "HealthOverride": 3900
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 10500000,
-              "upgrade_time": 252000,
-              "ability_data": {
-                "HealthOverride": 4400
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "HealthOverride": 4900
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000007,
-          "name": "Log Lobber Atk Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_ATTACK"
-          },
-          "upgrade_resource": "Dark Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "Projectile": "SlowLog1"
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 35000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "Projectile": "SlowLog2"
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 45000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "Projectile": "SlowLog3"
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 55000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "Projectile": "SlowLog4"
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 65000,
-              "upgrade_time": 151200,
-              "ability_data": {
-                "Projectile": "SlowLog5"
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 75000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "Projectile": "SlowLog6"
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 85000,
-              "upgrade_time": 194400,
-              "ability_data": {
-                "Projectile": "SlowLog7"
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 95000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "Projectile": "SlowLog8"
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 105000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "Projectile": "SlowLog9"
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 115000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "Projectile": "SlowLog10"
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000008,
-          "name": "Log Lobber Effect Module",
-          "TID": {
-            "name": "TID_SEAONAL_DEFENSE_LOG_LOBBER_MODULE_EFFECT"
-          },
-          "upgrade_resource": "Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "AttackRange": 1100,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 5000000,
-              "upgrade_time": 43200,
-              "ability_data": {
-                "AttackRange": 1200,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 6500000,
-              "upgrade_time": 57600,
-              "ability_data": {
-                "AttackRange": 1300,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 8000000,
-              "upgrade_time": 72000,
-              "ability_data": {
-                "AttackRange": 1400,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 9500000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "AttackRange": 1500,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 10000000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "AttackRange": 1600,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 10500000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "AttackRange": 1700,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 11000000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "AttackRange": 1800,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 11500000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "AttackRange": 1900,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "AttackRange": 2000,
-                "PenetratingExtraRange": 0,
-                "PenetratingRadius": 150
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "_id": 103000007,
-      "name": "Hero Bell",
-      "info": "The tolling bell ignites the fighting spirit of defending Heroes, boosting their strength and health. When destroyed, Heroes go back to their regular awesome selves. Boo!",
-      "TID": {
-        "name": "TID_BUILDING_HERO_BOOSTER",
-        "info": "TID_BUILDING_HERO_BOOSTER_INFO"
-      },
-      "required_townhall": 18,
-      "modules": [
-        {
-          "_id": 102000021,
-          "name": "Slowdown Tower HP Module",
-          "TID": {
-            "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_HP"
-          },
-          "upgrade_resource": "Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "HealthOverride": 400
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 4000000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "HealthOverride": 900
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 5000000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "HealthOverride": 1400
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 6000000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "HealthOverride": 1900
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 7000000,
-              "upgrade_time": 151200,
-              "ability_data": {
-                "HealthOverride": 2400
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 8000000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "HealthOverride": 2900
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 9000000,
-              "upgrade_time": 194400,
-              "ability_data": {
-                "HealthOverride": 3400
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 10000000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "HealthOverride": 3900
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 11000000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "HealthOverride": 4400
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "HealthOverride": 4900
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000022,
-          "name": "Slowdown Tower Atk Module",
-          "TID": {
-            "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_ATTACK"
-          },
-          "upgrade_resource": "Gold",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "AuraSpellLevel": 1
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 5000000,
-              "upgrade_time": 43200,
-              "ability_data": {
-                "AuraSpellLevel": 2
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 6500000,
-              "upgrade_time": 57600,
-              "ability_data": {
-                "AuraSpellLevel": 3
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 8000000,
-              "upgrade_time": 72000,
-              "ability_data": {
-                "AuraSpellLevel": 4
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 9500000,
-              "upgrade_time": 86400,
-              "ability_data": {
-                "AuraSpellLevel": 5
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 10000000,
-              "upgrade_time": 108000,
-              "ability_data": {
-                "AuraSpellLevel": 6
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 10500000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "AuraSpellLevel": 7
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 11000000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "AuraSpellLevel": 8
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 11500000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "AuraSpellLevel": 9
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 12000000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "AuraSpellLevel": 10
-              }
-            }
-          ]
-        },
-        {
-          "_id": 102000023,
-          "name": "Slowdown Tower Effect Module",
-          "TID": {
-            "name": "TID_SEASONAL_DEFENSE_HERO_BOOSTER_MODULE_EFFECT"
-          },
-          "upgrade_resource": "Dark Elixir",
-          "levels": [
-            {
-              "level": 1,
-              "upgrade_cost": 0,
-              "upgrade_time": 0,
-              "ability_data": {
-                "AuraSpellLevel": 1
-              }
-            },
-            {
-              "level": 2,
-              "upgrade_cost": 25000,
-              "upgrade_time": 129600,
-              "ability_data": {
-                "AuraSpellLevel": 2
-              }
-            },
-            {
-              "level": 3,
-              "upgrade_cost": 30000,
-              "upgrade_time": 172800,
-              "ability_data": {
-                "AuraSpellLevel": 3
-              }
-            },
-            {
-              "level": 4,
-              "upgrade_cost": 35000,
-              "upgrade_time": 216000,
-              "ability_data": {
-                "AuraSpellLevel": 4
-              }
-            },
-            {
-              "level": 5,
-              "upgrade_cost": 40000,
-              "upgrade_time": 223200,
-              "ability_data": {
-                "AuraSpellLevel": 5
-              }
-            },
-            {
-              "level": 6,
-              "upgrade_cost": 55000,
-              "upgrade_time": 230400,
-              "ability_data": {
-                "AuraSpellLevel": 6
-              }
-            },
-            {
-              "level": 7,
-              "upgrade_cost": 70000,
-              "upgrade_time": 237600,
-              "ability_data": {
-                "AuraSpellLevel": 7
-              }
-            },
-            {
-              "level": 8,
-              "upgrade_cost": 85000,
-              "upgrade_time": 244800,
-              "ability_data": {
-                "AuraSpellLevel": 8
-              }
-            },
-            {
-              "level": 9,
-              "upgrade_cost": 100000,
-              "upgrade_time": 252000,
-              "ability_data": {
-                "AuraSpellLevel": 9
-              }
-            },
-            {
-              "level": 10,
-              "upgrade_cost": 115000,
-              "upgrade_time": 259200,
-              "ability_data": {
-                "AuraSpellLevel": 10
-              }
-            }
-          ]
         }
       ]
     }
@@ -54627,895 +54627,895 @@
     {
       "_id": 82000000,
       "name": "Fence Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000001,
       "name": "Terrace Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000002,
       "name": "Stones Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000003,
       "name": "Stones Ground 2",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000004,
       "name": "Gold Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000005,
       "name": "Winter Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000006,
       "name": "Clashmas Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000007,
       "name": "Grass Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000008,
       "name": "Classic Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000009,
       "name": "Classic Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000010,
       "name": "Classic Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000011,
       "name": "Classic Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000013,
       "name": "Thatch Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000014,
       "name": "Thatch Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000015,
       "name": "Square Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000016,
       "name": "Square Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000017,
       "name": "Square Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000019,
       "name": "Tent Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000020,
       "name": "Tent Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000021,
       "name": "Tent Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000022,
       "name": "Tent Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000023,
       "name": "Cross Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000024,
       "name": "Cross Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000025,
       "name": "Cross Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000026,
       "name": "Castle Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000027,
       "name": "Castle Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000028,
       "name": "Castle Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000029,
       "name": "Castle Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000030,
       "name": "Castle Roof 5",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000031,
       "name": "Gold Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000032,
       "name": "Gold Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000033,
       "name": "Gold Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000034,
       "name": "Gold Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000035,
       "name": "Gold Roof 5",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000036,
       "name": "Gold Roof 6",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000037,
       "name": "Gold Roof 7",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000038,
       "name": "Stone Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000039,
       "name": "Grass Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000040,
       "name": "Grass Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000041,
       "name": "Windmill Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000042,
       "name": "Windmill Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000043,
       "name": "Windmill Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000044,
       "name": "Windmill Roof 4",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000045,
       "name": "Windmill Roof 5",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000046,
       "name": "Clashmas Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000047,
       "name": "Winter Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000048,
       "name": "Classic Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000049,
       "name": "Stone Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000050,
       "name": "Stone Foot 2",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000051,
       "name": "Stilt Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000052,
       "name": "Hole Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000053,
       "name": "Thatch Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000054,
       "name": "Grass Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000055,
       "name": "Clashmas Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000056,
       "name": "Winter Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000057,
       "name": "Winter Foot 2",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000058,
       "name": "Mundane Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000059,
       "name": "Mundane Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000060,
       "name": "Mundane Deco 3",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000061,
       "name": "Mundane Deco 4",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000062,
       "name": "Weapon Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000063,
       "name": "Weapon Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000064,
       "name": "Food Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000065,
       "name": "Tree Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000066,
       "name": "Gold Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000067,
       "name": "Clashmas Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000068,
       "name": "Clashmas Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000070,
       "name": "Winter Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000071,
       "name": "Flamingo Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000072,
       "name": "Ground  Emptyhouse 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000073,
       "name": "Ground  Emptyhouse 2",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000074,
       "name": "Roof  Emptyhouse 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000075,
       "name": "Roof  Emptyhouse 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000076,
       "name": "Roof  Emptyhouse 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000077,
       "name": "Deco  Emptyhouse 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000078,
       "name": "Fancy Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000079,
       "name": "Fancy Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": false
     },
     {
       "_id": 82000080,
       "name": "Gold Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000081,
       "name": "Fancy Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000082,
       "name": "Fancy Roof 3",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000083,
       "name": "Stone Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": false
     },
     {
       "_id": 82000084,
       "name": "Fence Ground 2",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000085,
       "name": "Winter Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": false
     },
     {
       "_id": 82000086,
       "name": "Gold Ground 2",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": false
     },
     {
       "_id": 82000087,
       "name": "Goblin Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000088,
       "name": "Goblin Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000089,
       "name": "Goblin Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000090,
       "name": "Goblin Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000091,
       "name": "Chess Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000092,
       "name": "Chess Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000093,
       "name": "Chess Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000094,
       "name": "Chess Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000095,
       "name": "Laundry Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000096,
       "name": "Crystals Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000097,
       "name": "Cauldron Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000098,
       "name": "Chess Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000099,
       "name": "Chess Foot 2",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000100,
       "name": "Greenhouse Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000101,
       "name": "Greenhouse Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000102,
       "name": "Greenhouse Ground 1",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000103,
       "name": "Greenhouse Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000104,
       "name": "Summer Deco 1",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000105,
       "name": "Summer Roof 1",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000106,
       "name": "Summer Foot 1",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000107,
       "name": "Summer Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000108,
       "name": "Halloween23 Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000109,
       "name": "Halloween23 Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000110,
       "name": "Clashmas23 Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000111,
       "name": "Clashmas23 Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000112,
       "name": "Clashmas23 Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000113,
       "name": "Clashmas23 Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000114,
       "name": "Lny24 Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000115,
       "name": "Lny24 Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000116,
       "name": "Lny24 Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000117,
       "name": "Lny24 Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000118,
       "name": "Wildwest Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000119,
       "name": "Wildwest Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000120,
       "name": "Football Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000121,
       "name": "Football Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000122,
       "name": "Football Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000123,
       "name": "Football Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000124,
       "name": "Clashgames Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000125,
       "name": "Clashgames Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000126,
       "name": "Anime Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000127,
       "name": "Anime Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000128,
       "name": "Anime Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000129,
       "name": "Anime Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000130,
       "name": "Ttrpg Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000131,
       "name": "Ttrpg Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000132,
       "name": "Halloween 24 Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000133,
       "name": "Halloween 24 Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000134,
       "name": "Clashmas 24 Roof 2",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000135,
       "name": "Clashmas 24 Deco 2",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000136,
       "name": "Lny25 Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000137,
       "name": "Lny25 Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000138,
       "name": "April25 Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000139,
       "name": "April25 Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000140,
       "name": "Darkdays Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000141,
       "name": "Darkdays Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000142,
       "name": "Clasharama Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000143,
       "name": "Clasharama Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000144,
       "name": "Clasharama Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000145,
       "name": "Clasharama Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000146,
       "name": "Clashoween25 Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000147,
       "name": "Clashoween25 Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     },
     {
       "_id": 82000148,
       "name": "Frostage Deco",
-      "slot_type": "Deco",
+      "slot_type": "decoration",
       "pass_reward": true
     },
     {
       "_id": 82000149,
       "name": "Frostage Roof",
-      "slot_type": "Roof",
+      "slot_type": "roof",
       "pass_reward": true
     },
     {
       "_id": 82000150,
       "name": "Lny26 Ground",
-      "slot_type": "Ground",
+      "slot_type": "ground",
       "pass_reward": true
     },
     {
       "_id": 82000151,
       "name": "Lny26 Foot",
-      "slot_type": "Foot",
+      "slot_type": "foot",
       "pass_reward": true
     }
   ],
@@ -55532,48 +55532,56 @@
       "upgrade_resource": "Gems",
       "levels": [
         {
+          "level": 1,
           "required_townhall": 10,
           "upgrade_cost": 500,
           "boost_time_seconds": 3600,
           "boost_multiplier": 1
         },
         {
+          "level": 2,
           "required_townhall": 10,
           "upgrade_cost": 500,
           "boost_time_seconds": 3600,
           "boost_multiplier": 2
         },
         {
+          "level": 3,
           "required_townhall": 11,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 3
         },
         {
+          "level": 4,
           "required_townhall": 11,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 4
         },
         {
+          "level": 5,
           "required_townhall": 12,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 5
         },
         {
+          "level": 6,
           "required_townhall": 12,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 6
         },
         {
+          "level": 7,
           "required_townhall": 13,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 7
         },
         {
+          "level": 8,
           "required_townhall": 14,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
@@ -55593,72 +55601,84 @@
       "upgrade_resource": "Gems",
       "levels": [
         {
+          "level": 1,
           "required_townhall": 9,
           "upgrade_cost": 0,
           "boost_time_seconds": 3600,
           "boost_multiplier": 1
         },
         {
+          "level": 2,
           "required_townhall": 10,
           "upgrade_cost": 500,
           "boost_time_seconds": 3600,
           "boost_multiplier": 2
         },
         {
+          "level": 3,
           "required_townhall": 10,
           "upgrade_cost": 500,
           "boost_time_seconds": 3600,
           "boost_multiplier": 3
         },
         {
+          "level": 4,
           "required_townhall": 11,
           "upgrade_cost": 500,
           "boost_time_seconds": 3600,
           "boost_multiplier": 4
         },
         {
+          "level": 5,
           "required_townhall": 12,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 5
         },
         {
+          "level": 6,
           "required_townhall": 12,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 6
         },
         {
+          "level": 7,
           "required_townhall": 13,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 7
         },
         {
+          "level": 8,
           "required_townhall": 13,
           "upgrade_cost": 750,
           "boost_time_seconds": 3600,
           "boost_multiplier": 8
         },
         {
+          "level": 9,
           "required_townhall": 14,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 9
         },
         {
+          "level": 10,
           "required_townhall": 14,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 10
         },
         {
+          "level": 11,
           "required_townhall": 15,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
           "boost_multiplier": 11
         },
         {
+          "level": 12,
           "required_townhall": 16,
           "upgrade_cost": 1000,
           "boost_time_seconds": 3600,
@@ -55678,42 +55698,49 @@
       "upgrade_resource": "Gems",
       "levels": [
         {
+          "level": 1,
           "required_townhall": 11,
           "upgrade_cost": 100,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 2,
           "required_townhall": 12,
           "upgrade_cost": 250,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 3,
           "required_townhall": 13,
           "upgrade_cost": 500,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 4,
           "required_townhall": 14,
           "upgrade_cost": 1000,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 5,
           "required_townhall": 15,
           "upgrade_cost": 1000,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 6,
           "required_townhall": 16,
           "upgrade_cost": 1500,
           "boost_time_seconds": 4,
           "boost_multiplier": 0
         },
         {
+          "level": 7,
           "required_townhall": 17,
           "upgrade_cost": 1500,
           "boost_time_seconds": 4,
@@ -56014,6 +56041,7 @@
   ],
   "league_tiers": [
     {
+      "_id": 105000000,
       "name": "Unranked",
       "league_tier": 0,
       "TID": {
@@ -56302,6 +56330,7 @@
       ]
     },
     {
+      "_id": 105000001,
       "name": "Skeleton League 1",
       "league_tier": 1,
       "TID": {
@@ -56334,6 +56363,7 @@
       ]
     },
     {
+      "_id": 105000002,
       "name": "Skeleton League 2",
       "league_tier": 2,
       "TID": {
@@ -56382,6 +56412,7 @@
       ]
     },
     {
+      "_id": 105000003,
       "name": "Skeleton League 3",
       "league_tier": 3,
       "TID": {
@@ -56446,6 +56477,7 @@
       ]
     },
     {
+      "_id": 105000004,
       "name": "Barbarian League 4",
       "league_tier": 4,
       "TID": {
@@ -56526,6 +56558,7 @@
       ]
     },
     {
+      "_id": 105000005,
       "name": "Barbarian League 5",
       "league_tier": 5,
       "TID": {
@@ -56606,6 +56639,7 @@
       ]
     },
     {
+      "_id": 105000006,
       "name": "Barbarian League 6",
       "league_tier": 6,
       "TID": {
@@ -56702,6 +56736,7 @@
       ]
     },
     {
+      "_id": 105000007,
       "name": "Archer League 7",
       "league_tier": 7,
       "TID": {
@@ -56798,6 +56833,7 @@
       ]
     },
     {
+      "_id": 105000008,
       "name": "Archer League 8",
       "league_tier": 8,
       "TID": {
@@ -56910,6 +56946,7 @@
       ]
     },
     {
+      "_id": 105000009,
       "name": "Archer League 9",
       "league_tier": 9,
       "TID": {
@@ -57022,6 +57059,7 @@
       ]
     },
     {
+      "_id": 105000010,
       "name": "Wizard League 10",
       "league_tier": 10,
       "TID": {
@@ -57134,6 +57172,7 @@
       ]
     },
     {
+      "_id": 105000011,
       "name": "Wizard League 11",
       "league_tier": 11,
       "TID": {
@@ -57262,6 +57301,7 @@
       ]
     },
     {
+      "_id": 105000012,
       "name": "Wizard League 12",
       "league_tier": 12,
       "TID": {
@@ -57390,6 +57430,7 @@
       ]
     },
     {
+      "_id": 105000013,
       "name": "Valkyrie League 13",
       "league_tier": 13,
       "TID": {
@@ -57518,6 +57559,7 @@
       ]
     },
     {
+      "_id": 105000014,
       "name": "Valkyrie League 14",
       "league_tier": 14,
       "TID": {
@@ -57662,6 +57704,7 @@
       ]
     },
     {
+      "_id": 105000015,
       "name": "Valkyrie League 15",
       "league_tier": 15,
       "TID": {
@@ -57806,6 +57849,7 @@
       ]
     },
     {
+      "_id": 105000016,
       "name": "Witch League 16",
       "league_tier": 16,
       "TID": {
@@ -57950,6 +57994,7 @@
       ]
     },
     {
+      "_id": 105000017,
       "name": "Witch League 17",
       "league_tier": 17,
       "TID": {
@@ -58110,6 +58155,7 @@
       ]
     },
     {
+      "_id": 105000018,
       "name": "Witch League 18",
       "league_tier": 18,
       "TID": {
@@ -58270,6 +58316,7 @@
       ]
     },
     {
+      "_id": 105000019,
       "name": "Golem League 19",
       "league_tier": 19,
       "TID": {
@@ -58430,6 +58477,7 @@
       ]
     },
     {
+      "_id": 105000020,
       "name": "Golem League 20",
       "league_tier": 20,
       "TID": {
@@ -58590,6 +58638,7 @@
       ]
     },
     {
+      "_id": 105000021,
       "name": "Golem League 21",
       "league_tier": 21,
       "TID": {
@@ -58766,6 +58815,7 @@
       ]
     },
     {
+      "_id": 105000022,
       "name": "P.E.K.K.A League 22",
       "league_tier": 22,
       "TID": {
@@ -58942,6 +58992,7 @@
       ]
     },
     {
+      "_id": 105000023,
       "name": "P.E.K.K.A League 23",
       "league_tier": 23,
       "TID": {
@@ -59118,6 +59169,7 @@
       ]
     },
     {
+      "_id": 105000024,
       "name": "P.E.K.K.A League 24",
       "league_tier": 24,
       "TID": {
@@ -59294,6 +59346,7 @@
       ]
     },
     {
+      "_id": 105000025,
       "name": "Titan League 25",
       "league_tier": 25,
       "TID": {
@@ -59502,6 +59555,7 @@
       ]
     },
     {
+      "_id": 105000026,
       "name": "Titan League 26",
       "league_tier": 26,
       "TID": {
@@ -59710,6 +59764,7 @@
       ]
     },
     {
+      "_id": 105000027,
       "name": "Titan League 27",
       "league_tier": 27,
       "TID": {
@@ -59918,6 +59973,7 @@
       ]
     },
     {
+      "_id": 105000028,
       "name": "Dragon League 28",
       "league_tier": 28,
       "TID": {
@@ -60126,6 +60182,7 @@
       ]
     },
     {
+      "_id": 105000029,
       "name": "Dragon League 29",
       "league_tier": 29,
       "TID": {
@@ -60334,6 +60391,7 @@
       ]
     },
     {
+      "_id": 105000030,
       "name": "Dragon League 30",
       "league_tier": 30,
       "TID": {
@@ -60542,6 +60600,7 @@
       ]
     },
     {
+      "_id": 105000031,
       "name": "Electro League 31",
       "league_tier": 31,
       "TID": {
@@ -60750,6 +60809,7 @@
       ]
     },
     {
+      "_id": 105000032,
       "name": "Electro League 32",
       "league_tier": 32,
       "TID": {
@@ -60958,6 +61018,7 @@
       ]
     },
     {
+      "_id": 105000033,
       "name": "Electro League 33",
       "league_tier": 33,
       "TID": {
@@ -61166,6 +61227,7 @@
       ]
     },
     {
+      "_id": 105000034,
       "name": "Legend League",
       "league_tier": 34,
       "TID": {
