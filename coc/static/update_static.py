@@ -1474,7 +1474,6 @@ class StaticUpdater:
 
         self.create_master_json()
 
-
     def run(self):
         asyncio.run(self.download_files())
 
