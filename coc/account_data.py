@@ -125,8 +125,61 @@ class Boosts:
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs))
 
+class StaticHolder:
+    def __init__(self, data: dict):
+        self._data = data
+        self.helpers: list[Helper] = []
+        self.guardians: list[Guardian] = []
+        self.buildings: list[tuple[Building, int]] = []
+        self.traps: list[tuple[Trap, int]] = []
+        self.decorations: list[tuple[Decoration, int]] = []
+        self.obstacles: list[tuple[Obstacle, int]] = []
+        self.troops: list[Troop] = []
+        self.siege_machines: list[Troop] = []
+        self.heroes: list[Hero] = []
+        self.spells: list[Spell] = []
+        self.pets: list[Pet] = []
+        self.equipment: list[Equipment] = []
+        self.capital_house_parts: list[ClanCapitalHousePart] = []
+        self.skins: list[Skin] = []
+        self.sceneries: list[Scenery] = []
 
-class AccountData:
+        self._load_data()
+
+    def _load_data(self):
+
+        section_class_mapping = {
+            "helpers": Helper,
+            "buildings": Building,
+            "traps": Trap,
+            "troops": Troop,
+            "guardians": Guardian,
+            "spells": Spell,
+            "heroes": Hero,
+            "pets": Pet,
+            "equipment": Equipment,
+            "decos": Decoration,
+            "obstacles": Obstacle,
+            "sceneries": Scenery,
+            "skins": Skin,
+            "capital_house_parts": ClanCapitalHousePart,
+        }
+        for section, items in self._data.items():
+            cls = section_class_mapping.get(section)
+            if cls is None:
+                continue
+
+            for item in items:
+                data = item
+                if section in ["troops", "spells", "heroes", "pets", "equipment"]:
+                    static_data = item
+                    data = {}
+                    self.__getattribute__(section).append(cls(data=data, static_data=static_data))
+                else:
+                    self.__getattribute__(section).append(cls(data=data))
+
+
+class AccountData(StaticHolder):
     """Represents account data parsed from game files.
 
     Attributes
@@ -194,21 +247,7 @@ class AccountData:
     def __init__(self, data: dict, client: 'Client'):
         self._client = client
         self.townhall_level: int = 0
-        self.helpers: list[Helper] = []
-        self.guardians: list[Guardian] = []
-        self.buildings: list[tuple[Building, int]] = []
-        self.traps: list[tuple[Trap, int]] = []
-        self.decorations: list[tuple[Decoration, int]] = []
-        self.obstacles: list[tuple[Obstacle, int]] = []
-        self.troops: list[Troop] = []
-        self.siege_machines: list[Troop] = []
-        self.heroes: list[Hero] = []
-        self.spells: list[Spell] = []
-        self.pets: list[Pet] = []
-        self.equipment: list[Equipment] = []
-        self.capital_house_parts: list[ClanCapitalHousePart] = []
-        self.skins: list[Skin] = []
-        self.sceneries: list[Scenery] = []
+
         self.upgrades: list[Upgrade] = []
         self.boosts: Boosts = Boosts()
 

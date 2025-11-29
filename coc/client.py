@@ -31,7 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 
 import orjson
 
-from .account_data import AccountData, ArmyRecipe
+from .account_data import AccountData, ArmyRecipe, StaticHolder
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
@@ -207,6 +207,7 @@ class Client:
         "_static_data",
         "_translations",
         "_name_to_id_mapping",
+        "static_data",
     )
 
     def __init__(
@@ -276,8 +277,7 @@ class Client:
         self._translations = {}
         self._static_data = {}
         self._name_to_id_mapping = {}
-
-        self._load_holders()
+        self.static_data: StaticHolder = ...
 
     @property
     def _defaults(self):
@@ -354,17 +354,21 @@ class Client:
             ignore_cached_errors=self.ignore_cached_errors,
         )
 
-    def _load_holders(self):
+    def _load_static(self):
         with open(TRANSLATION_PATH, 'rb') as fp:
             self._translations = orjson.loads(fp.read())
 
         with open(STATIC_DATA_PATH, 'rb') as fp:
             static_data = orjson.loads(fp.read())
+            self.static_data = StaticHolder(data=static_data)
             id_mapped_static_data = {}
 
             for section, items in static_data.items():
                 for item in items:
+                    if "_id" not in item: # skips over achievements data, since we don't have ids for those
+                        continue
                     id_mapped_static_data[item['_id']] = item
+
                     if section == "troops":
                         self._name_to_id_mapping[(item['name'], section, item.get("village"))] = item['_id']
                     else:
@@ -385,8 +389,11 @@ class Client:
             return self._static_data.get(item_id)
 
         if village:
-            return self._name_to_id_mapping.get((item_name, section, village))
-        return self._name_to_id_mapping.get((item_name, section))
+            item_id = self._name_to_id_mapping.get((item_name, section, village))
+            return self._static_data.get(item_id)
+
+        item_id = self._name_to_id_mapping.get((item_name, section))
+        return self._static_data.get(item_id)
 
     async def login(self, email: str, password: str) -> None:
         """Retrieves all keys and creates an HTTP connection ready for use.
@@ -405,7 +412,7 @@ class Client:
         await http.create_session(self.connector, self.timeout)
         await http.initialise_keys()
 
-        self._create_holders()
+        self._load_static()
         LOG.debug("HTTP connection created. Client is ready for use.")
 
     def login_with_keys(self, *keys: str) -> None:
@@ -428,7 +435,7 @@ class Client:
         http._keys = keys
         http.keys = cycle(http._keys)
         self.loop.run_until_complete(http.create_session(self.connector, self.timeout))
-        self._create_holders()
+        self._load_static()
 
         LOG.debug("HTTP connection created. Client is ready for use.")
 
@@ -445,7 +452,7 @@ class Client:
         http._keys = tokens
         http.keys = cycle(http._keys)
         await http.create_session(self.connector, self.timeout)
-        self._create_holders()
+        self._load_static()
 
         LOG.debug("HTTP connection created. Client is ready for use.")
 
