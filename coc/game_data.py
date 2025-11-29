@@ -582,7 +582,7 @@ class HeroLoadout:
                 self.equipment.append(
                     Equipment(
                         data={}, level=1,
-                        static_data=self._lookup.equipment.get(e, self._lookup.equipment.getEQUIPMENT_BASE_ID))
+                        static_data=self._lookup.get(e, self._lookup.get(EQUIPMENT_BASE_ID)))
                     )
 
 
