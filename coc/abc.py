@@ -229,6 +229,17 @@ class LevelManager:
     def _load_level_data(self):
         raise NotImplementedError("Subclasses must implement _load_level_data()")
 
+    def __getattribute__(self, name):
+        try:
+            return object.__getattribute__(self, name)
+        except AttributeError:
+            raise AttributeError(
+                f"'{self.__class__.__name__}' object has no attribute '{name}'. "
+                f"This attribute requires static game data to be loaded. "
+                f"Use load_game_data=True when fetching this object."
+            )
+
+
     def __repr__(self):
         attrs = [
             ("name", getattr(self, "name", "Unknown")),
