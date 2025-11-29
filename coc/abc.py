@@ -201,7 +201,8 @@ class LevelManager:
 
         self._level: int = initial_level
         self._static_data = static_data
-        self.max_level: int = 0
+
+        self.max_level: int = len(static_data["levels"]) if static_data else 0
 
     @property
     def level(self) -> int:
