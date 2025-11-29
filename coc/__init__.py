@@ -26,6 +26,7 @@ __version__ = "4.0.0"
 
 from .abc import BasePlayer, BaseClan
 from .account_data import AccountData, ArmyRecipe
+from .buildings import Building, Trap
 from .characters import Guardian, Helper
 from .clans import RankedClan, Clan
 from .client import Client
