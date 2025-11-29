@@ -38,7 +38,7 @@ class SeasonalDefenseModule(LeveledUnit):
         "ability_data",
     )
 
-    def __init__(self, level: int, data: dict):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data
@@ -205,7 +205,7 @@ class TownhallWeapon(LeveledUnit):
         "dps",
     )
 
-    def __init__(self, level: int, data: dict):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data
@@ -252,7 +252,7 @@ class Supercharge(LevelManager):
         "dps_buff",
     )
 
-    def __init__(self, level: int, data: dict):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data
@@ -345,9 +345,9 @@ class Building(LeveledUnit):
     )
 
     def __init__(self,
-        level: int, data: dict, weapon_level: int = 0,
-        supercharge_level: int = 0,
-        seasonal_defenses: list[SeasonalDefense] = None
+         data: dict, level: int = 0, weapon_level: int = 0,
+         supercharge_level: int = 0,
+         seasonal_defenses: list[SeasonalDefense] = None
     ):
         super().__init__(
             initial_level=level,
@@ -372,6 +372,15 @@ class Building(LeveledUnit):
             self.gear_up = GearUp(data=data["gear_up"])
 
         self.seasonal_defenses = seasonal_defenses or []
+        if "seasonal_defenses" in data and not self.seasonal_defenses:
+            # if no seasonal defenses are provided, initialize a set
+            seasonal_defenses = []
+            for defense_data in data["seasonal_defenses"]:
+                modules = []
+                for module_data in defense_data["modules"]:
+                    modules.append(SeasonalDefenseModule(data=module_data))
+                seasonal_defenses.append(SeasonalDefense(data=defense_data, modules=modules))
+            self.seasonal_defenses = seasonal_defenses
 
         self._load_level_data()
 
@@ -452,7 +461,7 @@ class Trap(LeveledUnit):
         "damage",
     )
 
-    def __init__(self, level: int, data: dict):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data

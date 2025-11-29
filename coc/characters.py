@@ -61,7 +61,7 @@ class Guardian(LeveledUnit):
         "required_townhall",
     )
 
-    def __init__(self, level: int, data: dict | None):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data
@@ -124,7 +124,7 @@ class Helper(LeveledUnit):
         "required_townhall",
     )
 
-    def __init__(self, level: int, data: dict | None):
+    def __init__(self, data: dict, level: int = 0):
         super().__init__(
             initial_level=level,
             static_data=data

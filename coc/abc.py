@@ -191,6 +191,14 @@ class LevelManager:
     )
 
     def __init__(self, initial_level: int, static_data: dict | None):
+
+        #if the level is set to 0, initalize it as the lowest available level
+        if initial_level == 0 and static_data:
+            min_level = 1
+            if static_data.get("levels"):
+                min_level = static_data["levels"][0].get("level")
+            initial_level = min_level
+
         self._level: int = initial_level
         self._static_data = static_data
         self.max_level: int = 0
@@ -208,13 +216,6 @@ class LevelManager:
 
         if value < 1:
             raise ValueError(f"Level must be greater than 1")
-
-        #if the level is set to 0, initalize it as the lowest available level
-        if self._level == 0:
-            min_level = 1
-            if self._static_data.get("levels"):
-                min_level = self._static_data["levels"][0].get("level")
-            self._level = min_level
 
         self._level = value
         self._load_level_data()
