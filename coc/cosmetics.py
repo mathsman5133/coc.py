@@ -100,7 +100,7 @@ class Obstacle(BaseDataClass):
         self.width: int = data["width"]
         self.clear_resource = Resource(value=data["clear_resource"])
         self.clear_cost: int = data["clear_cost"]
-        self.loot_resource : Resource | None = Resource(value=data["loot_resource"]) if "loot_resource" in data else None
+        self.loot_resource : Resource | None = data["loot_resource"] and Resource(value=data["loot_resource"])
         self.loot_count: int | None = data["loot_count"]
         self.village = VillageType(value=data["village"])
 
