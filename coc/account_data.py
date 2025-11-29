@@ -125,7 +125,7 @@ class Boosts:
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs))
 
-class StaticHolder:
+class StaticData:
     def __init__(self, data: dict):
         self._data = data
         self.helpers: list[Helper] = []
@@ -179,7 +179,7 @@ class StaticHolder:
                     self.__getattribute__(section).append(cls(data=data))
 
 
-class AccountData(StaticHolder):
+class AccountData(StaticData):
     """Represents account data parsed from game files.
 
     Attributes

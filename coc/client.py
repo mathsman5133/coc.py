@@ -31,7 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 
 import orjson
 
-from .account_data import AccountData, ArmyRecipe, StaticHolder
+from .account_data import AccountData, ArmyRecipe, StaticData
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
@@ -277,7 +277,7 @@ class Client:
         self._translations = {}
         self._static_data = {}
         self._name_to_id_mapping = {}
-        self.static_data: StaticHolder = ...
+        self.static_data: StaticData = ...
 
     @property
     def _defaults(self):
@@ -360,7 +360,7 @@ class Client:
 
         with open(STATIC_DATA_PATH, 'rb') as fp:
             static_data = orjson.loads(fp.read())
-            self.static_data = StaticHolder(data=static_data)
+            self.static_data = StaticData(data=static_data)
             id_mapped_static_data = {}
 
             for section, items in static_data.items():

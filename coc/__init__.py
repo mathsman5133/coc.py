@@ -25,7 +25,7 @@ SOFTWARE.
 __version__ = "4.0.0"
 
 from .abc import BasePlayer, BaseClan
-from .account_data import AccountData, ArmyRecipe
+from .account_data import AccountData, ArmyRecipe, StaticData
 from .buildings import (
     Building,
     Trap,
