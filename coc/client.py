@@ -31,7 +31,7 @@ from typing import AsyncIterator, Iterable, List, Optional, Type, Union, TYPE_CH
 
 import orjson
 
-from .account_data import AccountData, ArmyRecipe, StaticData
+from .static import AccountData, ArmyRecipe, StaticData
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
