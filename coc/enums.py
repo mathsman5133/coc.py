@@ -178,6 +178,10 @@ class VillageType(ExtendedEnum):
     home = "home"
     builder_base = "builderBase"
 
+class SceneryType(ExtendedEnum):
+    home = "home"
+    builder_base = "builderBase"
+    war = "war"
 
 class EquipmentRarity(ExtendedEnum):
     common = "Common"
@@ -191,230 +195,11 @@ class SkinTier(ExtendedEnum):
     legendary = "Legendary"
 
 
+
 class Gender(ExtendedEnum):
     male = "M"
     female = "F"
 
-
-ELIXIR_TROOP_ORDER = [
-    "Barbarian",
-    "Archer",
-    "Giant",
-    "Goblin",
-    "Wall Breaker",
-    "Balloon",
-    "Wizard",
-    "Healer",
-    "Dragon",
-    "P.E.K.K.A",
-    "Baby Dragon",
-    "Miner",
-    "Electro Dragon",
-    "Yeti",
-    "Dragon Rider",
-    "Electro Titan",
-    "Root Rider",
-    "Thrower",
-    "Meteor Golem"
-]
-
-DARK_ELIXIR_TROOP_ORDER = [
-    "Minion",
-    "Hog Rider",
-    "Valkyrie",
-    "Golem",
-    "Witch",
-    "Lava Hound",
-    "Bowler",
-    "Ice Golem",
-    "Headhunter",
-    "Apprentice Warden",
-    "Druid",
-    "Furnace"
-]
-
-SIEGE_MACHINE_ORDER = [
-    "Wall Wrecker",
-    "Battle Blimp",
-    "Stone Slammer",
-    "Siege Barracks",
-    "Log Launcher",
-    "Flame Flinger",
-    "Battle Drill",
-    "Troop Launcher"
-]
-
-SUPER_TROOP_ORDER = [
-    "Super Barbarian",
-    "Super Archer",
-    "Super Giant",
-    "Sneaky Goblin",
-    "Super Wall Breaker",
-    "Rocket Balloon",
-    "Super Wizard",
-    "Super Dragon",
-    "Inferno Dragon",
-    "Super Minion",
-    "Super Valkyrie",
-    "Super Witch",
-    "Ice Hound",
-    "Super Bowler",
-    "Super Miner",
-    "Super Hog Rider",
-    "Super Yeti"
-]
-
-HV_TROOP_ORDER = ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER
-HOME_TROOP_ORDER = HV_TROOP_ORDER + SIEGE_MACHINE_ORDER
-
-BUILDER_TROOPS_ORDER = [
-    "Raged Barbarian",
-    "Sneaky Archer",
-    "Boxer Giant",
-    "Beta Minion",
-    "Bomber",
-    "Baby Dragon",
-    "Cannon Cart",
-    "Night Witch",
-    "Drop Ship",
-    "Power P.E.K.K.A",
-    "Hog Glider",
-    "Electrofire Wizard",
-]
-
-ELIXIR_SPELL_ORDER = [
-    "Lightning Spell",
-    "Healing Spell",
-    "Rage Spell",
-    "Jump Spell",
-    "Freeze Spell",
-    "Clone Spell",
-    "Invisibility Spell",
-    "Recall Spell",
-    "Revive Spell",
-    "Ice Block Spell"
-]
-
-DARK_ELIXIR_SPELL_ORDER = [
-    "Poison Spell",
-    "Earthquake Spell",
-    "Haste Spell",
-    "Skeleton Spell",
-    "Bat Spell",
-    "Overgrowth Spell",
-    "Totem Spell"
-]
-
-SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
-
-HOME_BASE_HERO_ORDER = ["Barbarian King", "Archer Queen", "Minion Prince", "Grand Warden", "Royal Champion"]
-BUILDER_BASE_HERO_ORDER = ["Battle Machine", "Battle Copter"]
-HERO_ORDER = HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER
-
-PETS_ORDER = [
-    "L.A.S.S.I",
-    "Electro Owl",
-    "Mighty Yak",
-    "Unicorn",
-    "Frosty",
-    "Diggy",
-    "Poison Lizard",
-    "Phoenix",
-    "Spirit Fox",
-    "Angry Jelly",
-    "Sneezy"
-]
-
-EQUIPMENT = [
-    "Barbarian Puppet",
-    "Rage Vial",
-    "Archer Puppet",
-    "Invisibility Vial",
-    "Eternal Tome",
-    "Life Gem",
-    "Seeking Shield",
-    "Royal Gem",
-    "Earthquake Boots",
-    "Vampstache",
-    "Giant Arrow",
-    "Healer Puppet",
-    "Rage Gem",
-    "Healing Tome",
-    "Giant Gauntlet",
-    "Frozen Arrow",
-    "Hog Rider Puppet",
-    "Haste Vial",
-    "Fireball",
-    "Spiky Ball",
-    "Rocket Spear",
-    "Lavaloon Puppet",
-    "Magic Mirror",
-    "Henchmen Puppet",
-    "Dark Orb",
-    "Electro Boots",
-    "Snake Bracelet",
-    "Metal Pants",
-    "Noble Iron",
-    "Dark Crown",
-    "Meteor Staff",
-    "Heroic Torch"
-]
-
-ACHIEVEMENT_ORDER = [
-    # Home Base
-    "Keep Your Account Safe!",
-    "Bigger & Better",
-    "Discover New Troops",
-    "Bigger Coffers",
-    "Gold Grab",
-    "Elixir Escapade",
-    "Heroic Heist",
-    "Well Seasoned",
-    "Nice and Tidy",
-    "Empire Builder",
-    "Clan War Wealth",
-    "Friend in Need",
-    "Sharing is caring",
-    "Siege Sharer",
-    "War Hero",
-    "War League Legend",
-    "Games Champion",
-    "Unbreakable",
-    "Sweet Victory!",
-    "Conqueror",
-    "League All-Star",
-    "Humiliator",
-    "Not So Easy This Time",
-    "Union Buster",
-    "Bust This!",
-    "Wall Buster",
-    "Mortar Mauler",
-    "X-Bow Exterminator",
-    "Firefighter",
-    "Anti-Artillery",
-    "Shattered and Scattered",
-    "Counterspell",
-    "Monolith Masher",
-    "Get those Goblins!",
-    "Get those other Goblins!",
-    "Get even more Goblins!",
-    "Dragon Slayer",
-    "Ungrateful Child",
-    "Superb Work",
-    "Supercharger",
-
-    # Builder Base
-    "Master Engineering",
-    "Hidden Treasures",
-    "High Gear",
-    "Next Generation Model",
-    "Un-Build It",
-    "Champion Builder",
-
-    # Clan Capital
-    "Aggressive Capitalism",
-    "Most Valuable Clanmate",
-]
 
 UNRANKED_LEAGUE_DATA = {
     "id": 105000000,
@@ -424,3 +209,5 @@ UNRANKED_LEAGUE_DATA = {
         "large": "https://api-assets.clashofclans.com/leaguetiers/326/yyYo5DUFeFBZvmMEQh0ZxvG-1sUOZ_S3kDMB7RllXX0.png"
     }
 }
+
+
