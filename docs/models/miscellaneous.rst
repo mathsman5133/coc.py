@@ -44,58 +44,9 @@ Location
     :private-members:
 
 
-Achievement
-~~~~~~~~~~~
-.. autoclass:: Achievement()
-    :members:
-    :private-members:
-
-
-LoadGameData
-~~~~~~~~~~~~
-.. autoclass:: LoadGameData()
-    :members:
-    :private-members:
-
-
-BaseLeague
-~~~~~~~~~~
-.. autoclass:: BaseLeague()
-    :members:
-    :private-members:
-
-
-League
-~~~~~~
-.. autoclass:: League()
-    :members:
-    :private-members:
-
-
 Season
 ~~~~~~
 .. autoclass:: Season()
-    :members:
-    :private-members:
-
-
-LegendStatistics
-~~~~~~~~~~~~~~~~
-.. autoclass:: LegendStatistics()
-    :members:
-    :private-members:
-
-
-Label
-~~~~~
-.. autoclass:: Label()
-    :members:
-    :private-members:
-
-
-CapitalDistrict
-~~~~~~~~~~~~~~~
-.. autoclass:: CapitalDistrict()
     :members:
     :private-members:
 
@@ -113,12 +64,6 @@ GoldPassSeason
     :members:
     :private-members:
 
-
-PlayerHouseElement
-~~~~~~~~~~~~~~~~~~
-.. autoclass:: PlayerHouseElement()
-    :members:
-    :private-members:
 
 
 TID
