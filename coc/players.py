@@ -360,7 +360,6 @@ class Player(ClanMember):
         achievement_cls = self.achievement_cls
 
         pet_lookup = PETS_ORDER
-        equipment_lookup = EQUIPMENT
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
@@ -412,14 +411,14 @@ class Player(ClanMember):
         )
 
         self._iter_equipment = (
-            self.pet_cls(
+            self.equipment_cls(
                 data=edata,
                 static_data=self._client._get_static_data(
                     item_name=edata["name"],
                     section="equipment",
                     bypass=not self._load_game_data
                 )
-            ) for edata in data_get('heroEquipment', []) if edata['name'] in equipment_lookup
+            ) for edata in data_get('heroEquipment', [])
         )
 
     def _inject_clan_member(self, member):
