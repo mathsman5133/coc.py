@@ -25,7 +25,6 @@ SOFTWARE.
 __version__ = "4.0.0"
 
 from .abc import BasePlayer, BaseClan
-from .static import AccountData, Upgrade, Boosts, ArmyRecipe, HeroLoadout, StaticData
 from .buildings import (
     Building,
     Trap,
@@ -71,6 +70,7 @@ from .errors import (
     GatewayError,
     PrivateWarLog,
 )
+from .game_data import AccountData, Upgrade, Boosts, ArmyRecipe, HeroLoadout, StaticData
 from .hero import Equipment, Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (

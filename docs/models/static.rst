@@ -1,3 +1,5 @@
+.. py:currentmodule:: coc
+
 Static Data Models
 ==================
 

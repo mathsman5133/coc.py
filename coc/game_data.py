@@ -125,7 +125,67 @@ class Boosts:
         return "<%s %s>" % (
             self.__class__.__name__, " ".join("%s=%r" % t for t in attrs))
 
+
 class StaticData:
+    """Represents static game data loaded from game files.
+    
+    This class loads and organizes all static game data including troops, spells,
+    heroes, buildings, and cosmetic items. It serves as a base class for AccountData
+    and provides access to all available game items.
+    
+    Attributes
+    ----------
+    helpers: List[:class:`Helper`]
+        List of all available helpers.
+    guardians: List[:class:`Guardian`]
+        List of all available guardians.
+    buildings: List[:class:`Building`]
+        List of all available buildings.
+    traps: List[:class:`Trap`]
+        List of all available traps.
+    decorations: List[:class:`Decoration`]
+        List of all available decorations.
+    obstacles: List[:class:`Obstacle`]
+        List of all available obstacles.
+    troops: List[:class:`Troop`]
+        List of all available troops.
+    siege_machines: List[:class:`Troop`]
+        List of all available siege machines.
+    heroes: List[:class:`Hero`]
+        List of all available heroes.
+    spells: List[:class:`Spell`]
+        List of all available spells.
+    pets: List[:class:`Pet`]
+        List of all available pets.
+    equipment: List[:class:`Equipment`]
+        List of all available equipment.
+    capital_house_parts: List[:class:`ClanCapitalHousePart`]
+        List of all available clan capital house parts.
+    skins: List[:class:`Skin`]
+        List of all available skins.
+    sceneries: List[:class:`Scenery`]
+        List of all available sceneries.
+    """
+    
+    __slots__ = (
+        "_data",
+        "helpers",
+        "guardians",
+        "buildings",
+        "traps",
+        "decorations",
+        "obstacles",
+        "troops",
+        "siege_machines",
+        "heroes",
+        "spells",
+        "pets",
+        "equipment",
+        "capital_house_parts",
+        "skins",
+        "sceneries",
+    )
+    
     def __init__(self, data: dict):
         self._data = data
         self.helpers: list[Helper] = []
@@ -181,45 +241,49 @@ class StaticData:
 
 class AccountData(StaticData):
     """Represents account data parsed from game files.
+    
+    This class extends StaticData to include player-specific data such as
+    owned items, ongoing upgrades, and active boosts. It parses the raw
+    account data and creates appropriate game objects.
 
     Attributes
     ----------
     townhall_level: :class:`int`
-        The townhall level.
+        The player's townhall level.
     helpers: List[:class:`Helper`]
-        The list of helpers.
+        The player's helpers with their current levels.
     guardians: List[:class:`Guardian`]
-        The list of guardians.
+        The player's guardians with their current levels.
     buildings: List[Tuple[:class:`Building`, :class:`int`]]
-        The list of buildings with their counts.
+        The player's buildings with their counts (building, quantity).
     traps: List[Tuple[:class:`Trap`, :class:`int`]]
-        The list of traps with their counts.
+        The player's traps with their counts (trap, quantity).
     decorations: List[Tuple[:class:`Decoration`, :class:`int`]]
-        The list of decorations with their counts.
+        The player's decorations with their counts (decoration, quantity).
     obstacles: List[Tuple[:class:`Obstacle`, :class:`int`]]
-        The list of obstacles with their counts.
+        The player's obstacles with their counts (obstacle, quantity).
     troops: List[:class:`Troop`]
-        The list of troops.
+        The player's unlocked troops with their current levels.
     siege_machines: List[:class:`Troop`]
-        The list of siege machines.
+        The player's unlocked siege machines with their current levels.
     heroes: List[:class:`Hero`]
-        The list of heroes.
+        The player's heroes with their current levels.
     spells: List[:class:`Spell`]
-        The list of spells.
+        The player's unlocked spells with their current levels.
     pets: List[:class:`Pet`]
-        The list of pets.
+        The player's pets with their current levels.
     equipment: List[:class:`Equipment`]
-        The list of equipment.
+        The player's equipment with their current levels.
     capital_house_parts: List[:class:`ClanCapitalHousePart`]
-        The list of clan capital house parts.
+        The player's clan capital house parts.
     skins: List[:class:`Skin`]
-        The list of skins.
+        The player's unlocked skins.
     sceneries: List[:class:`Scenery`]
-        The list of sceneries.
+        The player's unlocked sceneries.
     upgrades: List[:class:`Upgrade`]
-        The list of ongoing upgrades.
+        The list of ongoing upgrades (buildings, troops, spells, etc.).
     boosts: :class:`Boosts`
-        The active boosts and cooldowns.
+        The active boosts and cooldowns (builder boost, lab boost, etc.).
     """
 
     __slots__ = (
@@ -245,6 +309,7 @@ class AccountData(StaticData):
     )
 
     def __init__(self, data: dict, client: 'Client'):
+        super().__init__(data)
         self._client = client
         self.townhall_level: int = 0
 
