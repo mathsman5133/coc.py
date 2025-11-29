@@ -218,7 +218,7 @@ class StaticData:
             "heroes": Hero,
             "pets": Pet,
             "equipment": Equipment,
-            "decos": Decoration,
+            "decorations": Decoration,
             "obstacles": Obstacle,
             "sceneries": Scenery,
             "skins": Skin,
