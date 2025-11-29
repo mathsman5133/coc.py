@@ -2468,71 +2468,57 @@ class Client:
 
         Returns
         --------
-        List[Tuple[:class:`Troop`, :class:`int`]], List[Tuple[:class:`Spell`, :class:`int`]]
-            A list of tuples containing the Troop or Spell object, and a quantity (1, 2, 3, 12 etc.)
-            If none is found, this will still return 2 empty lists.
-            If a troop isn't found, it will default to a Barbarian, as this is how the game parses the links.
+        :class:`ArmyRecipe`
+            An ArmyRecipe object containing troops, spells, heroes, clan castle troops, and clan castle spells.
 
         """
         return ArmyRecipe(static_data=self._static_data, link=link)
 
     def parse_account_data(self, data: dict) -> AccountData:
+        """Parse account data JSON from in-game into an AccountData object.
+
+        Parameters
+        ----------
+        data: dict
+            The raw account data.
+
+        Returns
+        --------
+        :class:`AccountData`
+            An AccountData object containing parsed account information.
+
+        """
         return AccountData(data=data, client=self)
 
     def get_troop(
         self, name: str, is_home_village: bool = True, level: int = 1
-    ) -> Optional[Union[Type["Troop"], "Troop"]]:
-        """Get an uninitiated Troop object with the given name.
-
-        .. note::
-
-            You must have Troop metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        .. note::
-
-            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
-
+    ) -> Optional["Troop"]:
+        """Get a Troop object with the given name and level.
 
         Example
         -------
 
         .. code-block:: python3
 
-            troop = client.get_troop("Barbarian")
-
-            for level, dps in enumerate(troop.dps, start=1):
-                print(f"{troop.name} has {dps} DPS at Lv{level}")
+            troop = client.get_troop("Barbarian", level=5)
+            print(f"{troop.name} has {troop.dps} DPS at Lv{troop.level}")
 
 
         Parameters
         ----------
         name: str
-            The troop name, which must match in-game **exactly**, but is case-insensitive.
+            The troop name, which must match in-game **exactly**, and is case-sensitive.
 
         is_home_village: bool
-            Whether the troop belongs to the home village or not. Defaults to True.
+            Whether the troop belongs to the home village or builder base. Defaults to True (home village).
 
-        level: Optional[int]
-            The level to pass into the construction of the :class:`Troop` object. If this is present this will return an
-            :ref:`initiated_objects`.
-
-        townhall: Optional[int]
-            The TH level to pass into the construction of the :class:`Troop` object. If this is ``None``,
-            this will default to the TH level the ``level`` parameter is unlocked at.
-
-        Raises
-        ------
-        RuntimeError
-            Troop and Spell game metadata must be loaded to use this feature.
+        level: int
+            The level of the troop. Defaults to 1.
 
         Returns
         --------
-        :class:`Troop`
-            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
-            otherwise, this will return an :ref:`uninitiated_objects`
-
-            If the troop is not found, this will return ``None``.
+        Optional[:class:`Troop`]
+            A Troop object at the specified level, or ``None`` if the troop is not found.
 
         """
 
@@ -2546,57 +2532,30 @@ class Client:
         return Troop(data={}, static_data=troop_data, level=level)
 
 
-    def get_spell(self, name: str, level: int = 1) -> Optional[Union[Type["Spell"], "Spell"]]:
-        """Get an uninitiated Spell object with the given name.
-
-        .. note::
-
-            You must have Spell metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        .. note::
-
-            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
-
+    def get_spell(self, name: str, level: int = 1) -> Optional["Spell"]:
+        """Get a Spell object with the given name and level.
 
         Example
         -------
 
         .. code-block:: python3
 
-            troop = client.get_spell("Healing Spell")
-
-            for level, cost in enumerate(spell.upgrade_cost, start=1):
-                print(f"{spell.name} has an upgrade cost of {cost} at Lv{level}")
+            spell = client.get_spell("Healing Spell", level=3)
+            print(f"{spell.name} has {spell.upgrade_cost} upgrade cost at Lv{spell.level}")
 
 
         Parameters
         ----------
         name: str
-            The troop name, which must match in-game **exactly**, but is case-insensitive.
+            The spell name, which must match in-game **exactly**, and is case-sensitive.
 
-        level: Optional[int]
-            The level to pass into the construction of the :class:`Spell` object. If this is present this will return an
-            :ref:`initiated_objects`. This can be ``None``, and you will get an uninitiated object.
-
-        townhall: Optional[int]
-            The TH level to pass into the construction of the :class:`Spell` object. If this is ``None``,
-            this will default to the TH level the ``level`` parameter is unlocked at.
-
-
-        Raises
-        ------
-        RuntimeError
-            Troop and Spell game metadata must be loaded to use this feature.
+        level: int
+            The level of the spell. Defaults to 1.
 
         Returns
         --------
-        :class:`Spell`
-            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
-            otherwise, this will return an :ref:`uninitiated_objects`
-
-            If the spell is not found, this will return ``None``.
-
+        Optional[:class:`Spell`]
+            A Spell object at the specified level, or ``None`` if the spell is not found.
 
         """
 
@@ -2608,57 +2567,30 @@ class Client:
             return None
         return Spell(data={}, static_data=spell_data, level=level)
 
-    def get_hero(self, name: str, level: int = 1) -> Optional[Union[Type["Hero"], "Hero"]]:
-        """Get an uninitiated Hero object with the given name.
-
-        .. note::
-
-            You must have Hero metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        .. note::
-
-            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
-
+    def get_hero(self, name: str, level: int = 1) -> Optional["Hero"]:
+        """Get a Hero object with the given name and level.
 
         Example
         -------
 
         .. code-block:: python3
 
-            hero = client.get_hero("Archer Queen")
-
-            for level, cost in enumerate(hero.upgrade_cost, start=1):
-                print(f"{hero.name} has an upgrade cost of {cost} at Lv{level}")
+            hero = client.get_hero("Archer Queen", level=50)
+            print(f"{hero.name} has {hero.upgrade_cost} upgrade cost at Lv{hero.level}")
 
 
         Parameters
         ----------
         name: str
-            The hero name, which must match in-game **exactly**, but is case-insensitive.
+            The hero name, which must match in-game **exactly**, and is case-sensitive.
 
-        level: Optional[int]
-            The level to pass into the construction of the :class:`Hero` object. If this is present this will return an
-            :ref:`initiated_objects`.
-
-        townhall: Optional[int]
-            The TH level to pass into the construction of the :class:`Hero` object. If this is ``None``,
-            this will default to the TH level the ``level`` parameter is unlocked at.
-
-
-        Raises
-        ------
-        RuntimeError
-            Hero game metadata must be loaded to use this feature.
+        level: int
+            The level of the hero. Defaults to 1.
 
         Returns
         --------
-        :class:`Hero`
-            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
-            otherwise, this will return an :ref:`uninitiated_objects`
-
-            If the hero is not found, this will return ``None``.
-
+        Optional[:class:`Hero`]
+            A Hero object at the specified level, or ``None`` if the hero is not found.
 
         """
 
@@ -2670,59 +2602,32 @@ class Client:
             return None
         return Hero(data={}, static_data=hero_data, level=level)
 
-    def get_pet(self, name: str, level: int = 1) -> Optional[Union[Type["Pet"], "Pet"]]:
-        """Get an uninitiated Pet object with the given name.
-
-        .. note::
-
-            You must have Pet metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        .. note::
-
-            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
-
+    def get_pet(self, name: str, level: int = 1) -> Optional["Pet"]:
+        """Get a Pet object with the given name and level.
 
         Example
         -------
 
         .. code-block:: python3
 
-            pet = client.get_pet("Electro Owl")
-
-            for level, cost in enumerate(pet.upgrade_cost, start=1):
-                print(f"{pet.name} has an upgrade cost of {cost} at Lv{level}")
+            pet = client.get_pet("Electro Owl", level=5)
+            print(f"{pet.name} has {pet.upgrade_cost} upgrade cost at Lv{pet.level}")
 
 
         Parameters
         ----------
         name: str
-            The pet name, which must match in-game **exactly**, but is case-insensitive.
+            The pet name, which must match in-game **exactly**, ahd is case-sensitive.
 
-        level: Optional[int]
-            The level to pass into the construction of the :class:`Pet` object. If this is present this will return an
-            :ref:`initiated_objects`.
-
-        townhall: Optional[int]
-            The TH level to pass into the construction of the :class:`Pet` object. If this is ``None``,
-            this will default to the TH level the ``level`` parameter is unlocked at.
-
-        Raises
-        ------
-        RuntimeError
-            Pet game metadata must be loaded to use this feature.
+        level: int
+            The level of the pet. Defaults to 1.
 
         Returns
         --------
-        :class:`Pet`
-            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
-            otherwise, this will return an :ref:`uninitiated_objects`
-
-            If the pet is not found, this will return ``None``.
-
+        Optional[:class:`Pet`]
+            A Pet object at the specified level, or ``None`` if the pet is not found.
 
         """
-
         pet_data = self._get_static_data(
             item_name=name,
             section="pets",
@@ -2731,52 +2636,32 @@ class Client:
             return None
         return Pet(data={}, static_data=pet_data, level=level)
 
-    def get_equipment(self, name: str, level: int = 1) -> Optional[Union[Type["Equipment"], "Equipment"]]:
-        """Get an uninitiated Equipment object with the given name.
-
-        .. note::
-
-            You must have Equipment metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        .. note::
-
-            Please see :ref:`game_data` for more info on how to use initiated vs uninitiated models.
-
+    def get_equipment(self, name: str, level: int = 1) -> Optional["Equipment"]:
+        """Get an Equipment object with the given name and level.
 
         Example
         -------
 
         .. code-block:: python3
 
-            gear = client.get_equipment("Dark Orb")
-
-            for level, cost in enumerate(gear.upgrade_cost, start=1):
-                print(f"{gear.name} has an upgrade cost of {cost} at Lv{level}")
+            gear = client.get_equipment("Dark Orb", level=10)
+            print(f"{gear.name} has {gear.upgrade_cost} upgrade cost at Lv{gear.level}")
 
 
         Parameters
         ----------
         name: str
-            The equipment name, which must match in-game **exactly**, but is case-insensitive.
+            The equipment name, which must match in-game **exactly**, and is case-sensitive.
 
-        level: Optional[int]
-            The level to pass into the construction of the :class:`Equipment` object. If this is present this will return an
-            :ref:`initiated_objects`.
-
+        level: int
+            The level of the equipment. Defaults to 1.
 
         Returns
         --------
-        :class:`Equipment`
-            If ``level`` is not ``None``, this will return an :ref:`initiated_objects`
-            otherwise, this will return an :ref:`uninitiated_objects`
-
-            If the equipment is not found, this will return ``None``.
-
+        Optional[:class:`Equipment`]
+            An Equipment object at the specified level, or ``None`` if the equipment is not found.
 
         """
-
-
         equipment_data = self._get_static_data(
             item_name=name,
             section="equipment",
@@ -2786,8 +2671,30 @@ class Client:
         return Equipment(data={}, static_data=equipment_data, level=level)
 
 
-    def get_extended_cwl_group_data(self, name: str) -> ExtendedCWLGroup | None:
-        cwl_data: dict | None = self._get_static_data(
+    def get_extended_cwl_group_data(self, name: str) -> Optional[ExtendedCWLGroup]:
+        """Get extended CWL group data by league name.
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            cwl_group = client.get_extended_cwl_group_data("Champion League I")
+            print(f"{cwl_group.name}: {cwl_group.first_place_medals} medals for 1st place")
+
+
+        Parameters
+        ----------
+        name: str
+            The CWL league name, which must match in-game **exactly**, and is case-sensitive.
+
+        Returns
+        --------
+        Optional[:class:`ExtendedCWLGroup`]
+            An ExtendedCWLGroup object containing CWL league information, or ``None`` if not found.
+
+        """
+        cwl_data: Optional[dict] = self._get_static_data(
             item_name=name,
             section="war_leagues",
         )
