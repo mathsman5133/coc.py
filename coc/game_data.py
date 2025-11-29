@@ -413,11 +413,14 @@ class AccountData:
                     if "types" in item:
                         crafting_station: list[dict] = item["types"]
                         for seasonal_defense in crafting_station:
-                            seasonal_def_data = self.get_static_data_item(
-                                item_id=seasonal_defense["data"]
-                            )
+                            seasonal_def_data = next((
+                                item for item in item_data["seasonal_defenses"]
+                                if item["_id"] == seasonal_defense["data"]
+                            ))
                             modules = []
                             for module in seasonal_defense["modules"]:
+                                print(module)
+                                print(seasonal_def_data)
                                 module_data = next((
                                     item for item in seasonal_def_data["modules"] if item["_id"] == module["data"]
                                 ))
