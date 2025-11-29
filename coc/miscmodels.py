@@ -805,8 +805,28 @@ class Translation:
         data: :class:`dict`
             Dictionary with language codes (EN, AR, CN, etc.) as keys and translations as values.
         """
-        for code, attr_name in self._LANGUAGE_MAP.items():
-            setattr(self, attr_name, data.get(code, ""))
+        self.english: str = data.get("EN", "")
+        self.arabic: str = data.get("AR", "")
+        self.chinese: str = data.get("CN", "")
+        self.chinese_traditional: str = data.get("CNT", "")
+        self.german: str = data.get("DE", "")
+        self.spanish: str = data.get("ES", "")
+        self.persian: str = data.get("FA", "")
+        self.finnish: str = data.get("FI", "")
+        self.french: str = data.get("FR", "")
+        self.indonesian: str = data.get("ID", "")
+        self.italian: str = data.get("IT", "")
+        self.japanese: str = data.get("JP", "")
+        self.korean: str = data.get("KR", "")
+        self.malay: str = data.get("MS", "")
+        self.dutch: str = data.get("NL", "")
+        self.norwegian: str = data.get("NO", "")
+        self.polish: str = data.get("PL", "")
+        self.portuguese: str = data.get("PT", "")
+        self.russian: str = data.get("RU", "")
+        self.thai: str = data.get("TH", "")
+        self.turkish: str = data.get("TR", "")
+        self.vietnamese: str = data.get("VI", "")
     
     def __getitem__(self, key: str) -> str:
         """Get translation by language code (case-insensitive).
