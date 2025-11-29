@@ -48,7 +48,7 @@ from .iterators import (
 from .players import Player, ClanMember, RankedPlayer
 from .raid import RaidLogEntry
 from .utils import correct_tag, get
-from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup
+from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup, ExtendedCWLGroup
 from .entry_logs import ClanWarLog, RaidLog
 
 if TYPE_CHECKING:
@@ -2764,14 +2764,6 @@ class Client:
             The level to pass into the construction of the :class:`Equipment` object. If this is present this will return an
             :ref:`initiated_objects`.
 
-        townhall: Optional[int]
-            The TH level to pass into the construction of the :class:`Equipment` object. If this is ``None``,
-            this will default to the TH level the ``level`` parameter is unlocked at.
-
-        Raises
-        ------
-        RuntimeError
-            Pet game metadata must be loaded to use this feature.
 
         Returns
         --------
@@ -2792,3 +2784,13 @@ class Client:
         if equipment_data is None:
             return None
         return Equipment(data={}, static_data=equipment_data, level=level)
+
+
+    def get_extended_cwl_group_data(self, name: str) -> ExtendedCWLGroup | None:
+        cwl_data: dict | None = self._get_static_data(
+            item_name=name,
+            section="war_leagues",
+        )
+        if not cwl_data:
+            return None
+        return ExtendedCWLGroup(data=cwl_data)

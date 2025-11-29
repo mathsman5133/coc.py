@@ -30,7 +30,7 @@ from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
 from .enums import BattleModifier, WarResult, WarRound, WarState
 from .iterators import LeagueWarIterator
-from .miscmodels import try_enum, Timestamp
+from .miscmodels import try_enum, Timestamp, TID
 from .utils import cached_property, get
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
@@ -543,3 +543,17 @@ class ClanWarLeagueGroup:
             round_tags = ()
 
         return LeagueWarIterator(client=self._client, tags=round_tags, cls=cls)
+
+
+class ExtendedCWLGroup:
+    def __init__(self, data: dict):
+        self._id: int = data["id"]
+        self.name: str = data["name"]
+        self.TID = TID(data=data["TID"])
+        self.first_place_medals: int = data["cwl_medals"]["first_place"]
+        self.positional_medal_difference: int = data["cwl_medals"]["position_medal_diff"]
+        self.bonus_medals: int = data["cwl_medals"]["bonus_reward"]
+        self.minimum_number_of_bonuses: int = data["cwl_medals"]["minimum_bonus_amount"]
+        self.promotions: int = data["promotions"]
+        self.demotions: int = data["demotions"]
+        self.only15v15: bool = data["only15v15"]
