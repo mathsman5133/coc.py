@@ -122,7 +122,7 @@ class Building(LeveledUnit):
         self.TID: TID = TID(data=data["TID"])
         self.type = BuildingType(value=data["type"])
         self.upgrade_resource: Resource = Resource(value=data["upgrade_resource"])
-        self.village = VillageType(value=data["village_type"])
+        self.village = VillageType(value=data["village"])
         self.width: int = data["width"]
         self.is_superchargeable: bool = data["superchargeable"]
 
@@ -173,7 +173,7 @@ class Trap(LeveledUnit):
         self.TID: TID = TID(data=data["TID"])
 
         self.upgrade_resource: Resource = Resource(value=data["upgrade_resource"])
-        self.village = VillageType(value=data["village_type"])
+        self.village = VillageType(value=data["village"])
         self.width: int = data["width"]
         self.is_air_triggerable: bool = data["air_trigger"]
         self.is_ground_triggerable: bool = data["ground_trigger"]
