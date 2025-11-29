@@ -28,7 +28,10 @@ class ExtendedEnum(Enum):
     """An Enum class that allows for the `__str__` method to be implemented."""
 
     def __str__(self):
-        return self.in_game_name
+        try:
+            return self.in_game_name
+        except NotImplementedError:
+            return self.value
 
     def __eq__(self, other):
         """Check if the enum is equal to another enum or a string."""
