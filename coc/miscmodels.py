@@ -717,17 +717,17 @@ class TID:
     
     Attributes
     ----------
-    name_TID: :class:`str`
+    name: :class:`str`
         The translation ID for the name of the game element.
-    info_TID: :class:`str`
+    info: :class:`str`
         The translation ID for additional info/description of the game element.
     """
     
-    __slots__ = ("name_TID", "info_TID")
+    __slots__ = ("name", "info")
     
     def __init__(self, data: dict):
-        self.name_TID = data["name"]
-        self.info_TID = data.get("info", "")
+        self.name = data["name"]
+        self.info = data.get("info", "")
 
 
 class Translation:
