@@ -149,7 +149,13 @@ class BasePlayer:
 
 
 class BaseDataClass:
-    """Base class for simple data classes with standard repr."""
+    """Base class for simple data classes with standard repr.
+    
+    This class provides a default __repr__ implementation that displays
+    the name and id attributes if they exist.
+    """
+
+    __slots__ = ()
 
     def __repr__(self):
         attrs = [
@@ -163,7 +169,26 @@ class BaseDataClass:
 
 
 class LevelManager:
-    """Handles level property and level data loading."""
+    """Handles level property and level data loading.
+    
+    This class manages the level state and triggers level-specific data loading
+    when the level changes. Subclasses must implement _load_level_data().
+    
+    Attributes
+    ----------
+    level: :class:`int`
+        The current level of the unit.
+    max_level: :class:`int`
+        The maximum level this unit can reach.
+    is_max: :class:`bool`
+        Whether the unit is at its maximum level.
+    """
+
+    __slots__ = (
+        "_level",
+        "_static_data",
+        "max_level",
+    )
 
     def __init__(self, initial_level: int, static_data: dict | None):
         self._level: int = initial_level
@@ -172,11 +197,11 @@ class LevelManager:
 
     @property
     def level(self) -> int:
+        """:class:`int`: The current level of the unit."""
         return self._level
 
     @level.setter
     def level(self, value: int):
-        """Update level and reload level-specific data."""
         if not self._static_data:
             self._level = value
             return
@@ -197,11 +222,11 @@ class LevelManager:
         self._load_level_data()
 
     @property
-    def is_max(self):
+    def is_max(self) -> bool:
+        """:class:`bool`: Whether the unit is at its maximum level."""
         return self.max_level == self.level
 
     def _load_level_data(self):
-        """Override this method to load level-specific data."""
         raise NotImplementedError("Subclasses must implement _load_level_data()")
 
     def __repr__(self):
@@ -216,10 +241,27 @@ class LevelManager:
 
 
 class LeveledUnit(LevelManager):
-    """Base class for units with level-dependent data and additional utilities."""
+    """Base class for units with level-dependent data and additional utilities.
+    
+    Extends LevelManager with townhall-specific level queries.
+    """
 
-    def get_max_level_for_townhall(self, townhall: int):
-        """Get the maximum level for this unit at a given townhall level."""
+    __slots__ = ()
+
+    def get_max_level_for_townhall(self, townhall: int) -> int | None:
+        """Get the maximum level for this unit at a given townhall level.
+
+        Parameters
+        ----------
+        townhall: :class:`int`
+            The townhall level to check.
+
+        Returns
+        -------
+        Optional[:class:`int`]
+            The maximum level this unit can reach at the given townhall level,
+            or ``None`` if no static data is available.
+        """
         if not self._static_data or not self._static_data["levels"]:
             return None
 

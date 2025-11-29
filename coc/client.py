@@ -277,6 +277,8 @@ class Client:
         self._static_data = {}
         self._name_to_id_mapping = {}
 
+        self._load_holders()
+
     @property
     def _defaults(self):
         return {
@@ -353,7 +355,6 @@ class Client:
         )
 
     def _load_holders(self):
-
         with open(TRANSLATION_PATH, 'rb') as fp:
             self._translations = orjson.loads(fp.read())
 
@@ -2432,25 +2433,27 @@ class Client:
         return cls(data=data)
 
     def parse_army_link(self, link: str) -> ArmyRecipe:
-        """Transform an army link from in-game into a list of troops and spells.
-
-        .. note::
-
-            You must have Troop and Spell game metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
+        """Transform an army link from in-game into an ArmyRecipe object.
 
         Example
         -------
 
         .. code-block:: python3
 
-            troops, spells = client.parse_army_link("https://link.clashofclans.com/en?action=CopyArmy&army=u10x0-2x3s1x9-3x2")
+            army = client.parse_army_link("https://link.clashofclans.com/en?action=CopyArmy&army=u10x0-2x3s1x9-3x2")
 
-            for troop, quantity in troops:
-                print("The user wants {} {}s. They each have {} DPS.".format(quantity, troop.name, troops.dps))
+            for troop, quantity in army.troops:
+                print("The user wants {} {}s. They each have {} DPS.".format(quantity, troop.name, troop.dps))
 
-            for spell, quantity in spells:
-                print("The user wants {} {}s.".format(quantity, troop.name))
+            for spell, quantity in army.spells:
+                print("The user wants {} {}s.".format(quantity, spell.name))
+
+            for hero_loadout in army.heroes_loadout:
+                print("Hero: {}, Pet: {}, Equipment: {}".format(
+                    hero_loadout.hero.name,
+                    hero_loadout.pet.name if hero_loadout.pet else None,
+                    [eq.name for eq in hero_loadout.equipment]
+                ))
 
 
         Parameters
@@ -2467,7 +2470,13 @@ class Client:
         Returns
         --------
         :class:`ArmyRecipe`
-            An ArmyRecipe object containing troops, spells, heroes, clan castle troops, and clan castle spells.
+            An ArmyRecipe object with the following attributes:
+            
+            - ``heroes_loadout``: List[:class:`HeroLoadout`] - Hero loadouts with pets and equipment
+            - ``troops``: List[Tuple[:class:`Troop`, int]] - Troops with their quantities
+            - ``spells``: List[Tuple[:class:`Spell`, int]] - Spells with their quantities
+            - ``clan_castle_troops``: List[Tuple[:class:`Troop`, int]] - Clan castle troops with quantities
+            - ``clan_castle_spells``: List[Tuple[:class:`Spell`, int]] - Clan castle spells with quantities
 
         """
         return ArmyRecipe(static_data=self._static_data, link=link)

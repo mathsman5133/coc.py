@@ -5,6 +5,77 @@ from .miscmodels import TimeDelta, TID
 from .enums import Resource, VillageType, ProductionBuildingType, EquipmentRarity
 
 class Hero(LeveledUnit):
+    """Represents a Hero object as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    name: :class:`str`
+        The hero's name.
+    village: :class:`VillageType`
+        The village type (home or builder base) where this hero belongs.
+    max_level: :class:`int`
+        The maximum level this hero can be upgraded to.
+    id: :class:`int`
+        The hero's unique identifier.
+    info: :class:`str`
+        Description of the hero.
+    TID: :class:`TID`
+        The hero's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this hero.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this hero.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this hero.
+    is_flying: :class:`bool`
+        Whether this hero is an air unit.
+    is_air_targeting: :class:`bool`
+        Whether this hero can target air units.
+    is_ground_targeting: :class:`bool`
+        Whether this hero can target ground units.
+    movement_speed: :class:`int`
+        The hero's movement speed.
+    attack_speed: :class:`int`
+        The hero's attack speed.
+    attack_range: :class:`int`
+        The hero's attack range.
+    hitpoints: :class:`int`
+        The hero's hitpoints.
+    dps: :class:`int`
+        The hero's damage per second.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to the next level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_hero_tavern_level: Optional[:class:`int`]
+        The hero tavern level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "is_flying",
+        "is_air_targeting",
+        "is_ground_targeting",
+        "movement_speed",
+        "attack_speed",
+        "attack_range",
+        "hitpoints",
+        "dps",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_hero_tavern_level",
+        "required_townhall",
+    )
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
@@ -40,7 +111,6 @@ class Hero(LeveledUnit):
             self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 
@@ -56,6 +126,77 @@ class Hero(LeveledUnit):
 
 
 class Pet(LeveledUnit):
+    """Represents a Pet object as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    name: :class:`str`
+        The pet's name.
+    village: :class:`VillageType`
+        The village type where this pet belongs.
+    max_level: :class:`int`
+        The maximum level this pet can be upgraded to.
+    id: :class:`int`
+        The pet's unique identifier.
+    info: :class:`str`
+        Description of the pet.
+    TID: :class:`TID`
+        The pet's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this pet.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this pet.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this pet.
+    is_flying: :class:`bool`
+        Whether this pet is an air unit.
+    is_air_targeting: :class:`bool`
+        Whether this pet can target air units.
+    is_ground_targeting: :class:`bool`
+        Whether this pet can target ground units.
+    movement_speed: :class:`int`
+        The pet's movement speed.
+    attack_speed: :class:`int`
+        The pet's attack speed.
+    attack_range: :class:`int`
+        The pet's attack range.
+    hitpoints: :class:`int`
+        The pet's hitpoints.
+    dps: :class:`int`
+        The pet's damage per second.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to the next level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_pet_house_level: Optional[:class:`int`]
+        The pet house level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "is_flying",
+        "is_air_targeting",
+        "is_ground_targeting",
+        "movement_speed",
+        "attack_speed",
+        "attack_range",
+        "hitpoints",
+        "dps",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_pet_house_level",
+        "required_townhall",
+    )
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
@@ -91,7 +232,6 @@ class Pet(LeveledUnit):
             self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 
@@ -106,6 +246,71 @@ class Pet(LeveledUnit):
 
 
 class Equipment(LeveledUnit):
+    """Represents an Equipment object as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    name: :class:`str`
+        The equipment's name.
+    village: :class:`VillageType`
+        The village type where this equipment belongs.
+    max_level: :class:`int`
+        The maximum level this equipment can be upgraded to.
+    id: :class:`int`
+        The equipment's unique identifier.
+    info: :class:`str`
+        Description of the equipment.
+    TID: :class:`TID`
+        The equipment's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this equipment.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this equipment.
+    rarity: :class:`EquipmentRarity`
+        The rarity tier of this equipment.
+    hero: :class:`str`
+        The hero this equipment belongs to.
+    hitpoints: :class:`int`
+        The equipment's hitpoints bonus.
+    dps: :class:`int`
+        The equipment's damage per second bonus.
+    heal_on_activation: :class:`int`
+        The amount of healing provided when the equipment ability is activated.
+    required_blacksmith_level: :class:`int`
+        The blacksmith level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    shiny_ore: :class:`int`
+        The amount of shiny ore required to upgrade to the next level.
+    glowy_ore: :class:`int`
+        The amount of glowy ore required to upgrade to the next level.
+    starry_ore: :class:`int`
+        The amount of starry ore required to upgrade to the next level.
+    abilities: List[:class:`dict`]
+        The list of abilities this equipment provides.
+    """
+
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "rarity",
+        "hero",
+        "hitpoints",
+        "dps",
+        "heal_on_activation",
+        "required_blacksmith_level",
+        "required_townhall",
+        "shiny_ore",
+        "glowy_ore",
+        "starry_ore",
+        "abilities",
+    )
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
@@ -136,7 +341,6 @@ class Equipment(LeveledUnit):
             self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 

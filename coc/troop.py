@@ -5,7 +5,95 @@ from .miscmodels import TimeDelta, TID
 
 
 class Troop(LeveledUnit):
-    """Represents a Troop object as returned by the API, optionally filled with game data."""
+    """Represents a Troop object as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    name: :class:`str`
+        The troop's name.
+    village: :class:`VillageType`
+        The village type (home or builder base) where this troop belongs.
+    max_level: :class:`int`
+        The maximum level this troop can be upgraded to.
+    is_active: :class:`bool`
+        Whether this super troop is currently active/boosted.
+    id: :class:`int`
+        The troop's unique identifier.
+    info: :class:`str`
+        Description of the troop.
+    TID: :class:`TID`
+        The troop's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this troop.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this troop.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this troop.
+    is_flying: :class:`bool`
+        Whether this troop is an air unit.
+    is_air_targeting: :class:`bool`
+        Whether this troop can target air units.
+    is_ground_targeting: :class:`bool`
+        Whether this troop can target ground units.
+    movement_speed: :class:`int`
+        The troop's movement speed.
+    attack_speed: :class:`int`
+        The troop's attack speed.
+    attack_range: :class:`int`
+        The troop's attack range.
+    housing_space: :class:`int`
+        The housing space this troop occupies.
+    is_super_troop: :class:`bool`
+        Whether this is a super troop.
+    is_seasonal: :class:`bool`
+        Whether this is a seasonal/temporary troop.
+    base_troop_id: :class:`int`
+        The ID of the base troop (only for super troops).
+    base_troop_minimum_level: :class:`int`
+        The minimum level of the base troop required to boost this super troop.
+    hitpoints: :class:`int`
+        The troop's hitpoints.
+    dps: :class:`int`
+        The troop's damage per second.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to the next level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_lab_level: Optional[:class:`int`]
+        The laboratory level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "is_active",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "is_flying",
+        "is_air_targeting",
+        "is_ground_targeting",
+        "movement_speed",
+        "attack_speed",
+        "attack_range",
+        "housing_space",
+        "is_super_troop",
+        "is_seasonal",
+        "base_troop_id",
+        "base_troop_minimum_level",
+        "hitpoints",
+        "dps",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_lab_level",
+        "required_townhall",
+    )
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
@@ -51,7 +139,6 @@ class Troop(LeveledUnit):
             self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 

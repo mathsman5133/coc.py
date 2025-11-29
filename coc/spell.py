@@ -4,7 +4,68 @@ from .enums import Resource, VillageType, ProductionBuildingType
 from .miscmodels import TimeDelta, TID
 
 class Spell(LeveledUnit):
-    """Represents a Spell object as returned by the API, optionally filled with game data."""
+    """Represents a Spell object as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    name: :class:`str`
+        The spell's name.
+    village: :class:`VillageType`
+        The village type (home or builder base) where this spell belongs.
+    max_level: :class:`int`
+        The maximum level this spell can be upgraded to.
+    id: :class:`int`
+        The spell's unique identifier.
+    info: :class:`str`
+        Description of the spell.
+    TID: :class:`TID`
+        The spell's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this spell.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this spell.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this spell.
+    housing_space: :class:`int`
+        The housing space this spell occupies.
+    is_seasonal: :class:`bool`
+        Whether this is a seasonal/temporary spell.
+    duration: :class:`TimeDelta`
+        The duration of the spell's effect.
+    damage: :class:`int`
+        The damage dealt by the spell.
+    radius: :class:`float`
+        The spell's area of effect radius.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to this level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to this level.
+    required_lab_level: :class:`int`
+        The laboratory level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "housing_space",
+        "is_seasonal",
+        "duration",
+        "damage",
+        "radius",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_lab_level",
+        "required_townhall",
+    )
 
     def __init__(self, data: dict, static_data: dict | None, level: int = 0):
         super().__init__(
@@ -37,7 +98,6 @@ class Spell(LeveledUnit):
             self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 

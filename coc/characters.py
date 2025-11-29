@@ -4,6 +4,63 @@ from .miscmodels import TID, TimeDelta
 
 
 class Guardian(LeveledUnit):
+    """Represents a Guardian character as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    id: :class:`int`
+        The guardian's unique identifier.
+    name: :class:`str`
+        The guardian's name.
+    info: :class:`str`
+        Description of the guardian.
+    TID: :class:`TID`
+        The guardian's translation IDs for localization.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this guardian.
+    is_flying: :class:`bool`
+        Whether this guardian is an air unit.
+    is_air_targeting: :class:`bool`
+        Whether this guardian can target air units.
+    is_ground_targeting: :class:`bool`
+        Whether this guardian can target ground units.
+    movement_speed: :class:`int`
+        The guardian's movement speed.
+    attack_speed: :class:`int`
+        The guardian's attack speed.
+    attack_range: :class:`int`
+        The guardian's attack range.
+    hitpoints: :class:`int`
+        The guardian's hitpoints.
+    dps: :class:`int`
+        The guardian's damage per second.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to the next level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "id",
+        "name",
+        "info",
+        "TID",
+        "upgrade_resource",
+        "is_flying",
+        "is_air_targeting",
+        "is_ground_targeting",
+        "movement_speed",
+        "attack_speed",
+        "attack_range",
+        "hitpoints",
+        "dps",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_townhall",
+    )
+
     def __init__(self, level: int, data: dict | None):
         super().__init__(
             initial_level=level,
@@ -24,7 +81,6 @@ class Guardian(LeveledUnit):
         self._load_level_data()
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 
@@ -38,6 +94,36 @@ class Guardian(LeveledUnit):
 
 
 class Helper(LeveledUnit):
+    """Represents a Helper character as returned by the API, optionally filled with game data.
+
+    Attributes
+    ----------
+    id: :class:`int`
+        The helper's unique identifier.
+    name: :class:`str`
+        The helper's name.
+    TID: :class:`TID`
+        The helper's translation IDs for localization.
+    gender: :class:`Gender`
+        The helper's gender.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this helper.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
+    """
+
+    __slots__ = (
+        "id",
+        "name",
+        "TID",
+        "gender",
+        "upgrade_resource",
+        "upgrade_cost",
+        "required_townhall",
+    )
+
     def __init__(self, level: int, data: dict | None):
         super().__init__(
             initial_level=level,
@@ -53,7 +139,6 @@ class Helper(LeveledUnit):
 
 
     def _load_level_data(self):
-        """Load data specific to the current level."""
         if not self._static_data:
             return
 

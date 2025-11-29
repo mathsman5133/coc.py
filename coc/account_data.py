@@ -23,6 +23,30 @@ EQUIPMENT_BASE_ID = 90000000
 
 
 class Upgrade:
+    """Represents an ongoing upgrade.
+
+    Attributes
+    ----------
+    is_goblin: :class:`bool`
+        Whether this is a goblin builder upgrade.
+    target: :class:`LeveledUnit`
+        The target item being upgraded.
+    timer: :class:`TimeDelta`
+        The time remaining for the upgrade.
+    helper_timer: Optional[:class:`TimeDelta`]
+        The time remaining for the helper boost.
+    recurrent_helper: :class:`bool`
+        Whether the helper is recurrent.
+    """
+
+    __slots__ = (
+        "is_goblin",
+        "target",
+        "timer",
+        "helper_timer",
+        "recurrent_helper",
+    )
+
     def __init__(self,
                  is_goblin: bool,
                  target: LeveledUnit,
@@ -49,6 +73,36 @@ class Upgrade:
 
 
 class Boosts:
+    """Represents active boosts and cooldowns.
+
+    Attributes
+    ----------
+    builder_boost: :class:`TimeDelta`
+        The time remaining for the builder potion boost.
+    lab_boost: :class:`TimeDelta`
+        The time remaining for the research potion boost.
+    clocktower_boost: :class:`TimeDelta`
+        The time remaining for the clock tower boost.
+    clocktower_cooldown: :class:`TimeDelta`
+        The cooldown time for the clock tower.
+    builder_consumable: :class:`TimeDelta`
+        The time remaining for the builder bite snack.
+    lab_consumable: :class:`TimeDelta`
+        The time remaining for the study soup snack.
+    helper_cooldown: :class:`TimeDelta`
+        The global cooldown timer for helpers.
+    """
+
+    __slots__ = (
+        "builder_boost",
+        "lab_boost",
+        "clocktower_boost",
+        "clocktower_cooldown",
+        "builder_consumable",
+        "lab_consumable",
+        "helper_cooldown",
+    )
+
     def __init__(self, data: dict = {}):
         self.builder_boost: TimeDelta = TimeDelta(seconds=data.get("builder_boost", 0))
         self.lab_boost: TimeDelta = TimeDelta(seconds=data.get("lab_boost", 0))
@@ -73,6 +127,70 @@ class Boosts:
 
 
 class AccountData:
+    """Represents account data parsed from game files.
+
+    Attributes
+    ----------
+    townhall_level: :class:`int`
+        The townhall level.
+    helpers: List[:class:`Helper`]
+        The list of helpers.
+    guardians: List[:class:`Guardian`]
+        The list of guardians.
+    buildings: List[Tuple[:class:`Building`, :class:`int`]]
+        The list of buildings with their counts.
+    traps: List[Tuple[:class:`Trap`, :class:`int`]]
+        The list of traps with their counts.
+    decorations: List[Tuple[:class:`Decoration`, :class:`int`]]
+        The list of decorations with their counts.
+    obstacles: List[Tuple[:class:`Obstacle`, :class:`int`]]
+        The list of obstacles with their counts.
+    troops: List[:class:`Troop`]
+        The list of troops.
+    siege_machines: List[:class:`Troop`]
+        The list of siege machines.
+    heroes: List[:class:`Hero`]
+        The list of heroes.
+    spells: List[:class:`Spell`]
+        The list of spells.
+    pets: List[:class:`Pet`]
+        The list of pets.
+    equipment: List[:class:`Equipment`]
+        The list of equipment.
+    capital_house_parts: List[:class:`ClanCapitalHousePart`]
+        The list of clan capital house parts.
+    skins: List[:class:`Skin`]
+        The list of skins.
+    sceneries: List[:class:`Scenery`]
+        The list of sceneries.
+    upgrades: List[:class:`Upgrade`]
+        The list of ongoing upgrades.
+    boosts: :class:`Boosts`
+        The active boosts and cooldowns.
+    """
+
+    __slots__ = (
+        "_client",
+        "townhall_level",
+        "helpers",
+        "guardians",
+        "buildings",
+        "traps",
+        "decorations",
+        "obstacles",
+        "troops",
+        "siege_machines",
+        "heroes",
+        "spells",
+        "pets",
+        "equipment",
+        "capital_house_parts",
+        "skins",
+        "sceneries",
+        "upgrades",
+        "boosts",
+    )
+
     def __init__(self, data: dict, client: 'Client'):
         self._client = client
         self.townhall_level: int = 0
@@ -315,28 +433,82 @@ class AccountData:
 
 
 class HeroLoadout:
+    """Represents a hero loadout from an army link.
+
+    Attributes
+    ----------
+    hero: :class:`Hero`
+        The hero in this loadout.
+    pet: Optional[:class:`Pet`]
+        The pet assigned to this hero.
+    equipment: List[:class:`Equipment`]
+        The list of equipment assigned to this hero.
+    """
+
+    __slots__ = (
+        "_lookup",
+        "hero",
+        "pet",
+        "equipment",
+    )
+
     def __init__(self, loadout: tuple, lookup):
 
         self._lookup = lookup
 
-        self.hero: Hero = self._lookup.get(loadout[0], HERO_BASE_ID)
-        self.pet: Pet | None = self._lookup.get(loadout[1], PET_BASE_ID) if loadout[1] else None
+        self.hero: Hero = Hero(
+            data={}, level=1,
+            static_data=self._lookup.get(loadout[0], self._lookup.get(HERO_BASE_ID))
+        )
+        self.pet = None
+        if loadout[1]:
+            self.pet: Pet | None = Pet(
+                data={}, level=1,
+                static_data=self._lookup.get(loadout[1], self._lookup.get(PET_BASE_ID))
+            )
         self.equipment: list[Equipment] = []
         for e in loadout[2:]:
             if e:
-                self.equipment.append(self._lookup.equipment.get(e, EQUIPMENT_BASE_ID))
+                self.equipment.append(
+                    Equipment(
+                        data={}, level=1,
+                        static_data=self._lookup.equipment.get(e, self._lookup.equipment.getEQUIPMENT_BASE_ID))
+                    )
 
 
 class ArmyRecipe:
+    """Represents an army composition parsed from an army link.
+
+    Attributes
+    ----------
+    link: :class:`str`
+        The army link string.
+    heroes_loadout: List[:class:`HeroLoadout`]
+        The list of hero loadouts.
+    troops: List[Tuple[:class:`Troop`, :class:`int`]]
+        The list of troops with their quantities.
+    spells: List[Tuple[:class:`Spell`, :class:`int`]]
+        The list of spells with their quantities.
+    clan_castle_troops: List[Tuple[:class:`Troop`, :class:`int`]]
+        The list of clan castle troops with their quantities.
+    clan_castle_spells: List[Tuple[:class:`Spell`, :class:`int`]]
+        The list of clan castle spells with their quantities.
+    """
+
+    __slots__ = (
+        "link",
+        "_lookup",
+        "heroes_loadout",
+        "troops",
+        "spells",
+        "clan_castle_troops",
+        "clan_castle_spells",
+    )
+
     def __init__(self, static_data: dict, link: str):
         self.link = link
 
         self._lookup = static_data
-        self.__heroes = []
-        self.__castle_troops = []
-        self.__castle_spells = []
-        self.__units = []
-        self.__spells = []
 
         self.heroes_loadout: list[HeroLoadout] = []
         self.troops: list[tuple[Troop, int]] = []
