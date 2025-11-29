@@ -23,16 +23,18 @@ SOFTWARE.
 """
 from typing import Optional, List, TYPE_CHECKING
 
-
 from .miscmodels import BaseLeague, PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
+    UNRANKED_LEAGUE_DATA,
+)
+
+from .constants import (
     HERO_ORDER,
     BUILDER_TROOPS_ORDER,
     HOME_TROOP_ORDER,
     SPELL_ORDER,
     SIEGE_MACHINE_ORDER,
-    UNRANKED_LEAGUE_DATA,
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
