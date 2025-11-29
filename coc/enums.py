@@ -163,6 +163,7 @@ class Resource(ExtendedEnum):
     glowy_ore = "Glowy Ore"
     starry_ore = "Starry Ore"
     medal_event_soft_currency = "Medal Event Soft Currency"
+    league_medals = "League Medals"
 
 
 class BuildingType(ExtendedEnum):
