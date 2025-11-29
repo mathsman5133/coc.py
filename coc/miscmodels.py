@@ -634,7 +634,6 @@ class CapitalDistrict:
         self.hall_level: int = data.get("districtHallLevel")
 
 
-
 class ChatLanguage:
     """Represents a clan's chat language.
 
@@ -714,9 +713,130 @@ class PlayerHouseElement:
 
 
 class TID:
+    """Represents a Translation ID (TID) for Clash of Clans game elements.
+    
+    Attributes
+    ----------
+    name_TID: :class:`str`
+        The translation ID for the name of the game element.
+    info_TID: :class:`str`
+        The translation ID for additional info/description of the game element.
+    """
+    
+    __slots__ = ("name_TID", "info_TID")
+    
     def __init__(self, data: dict):
-        self.name = data["name"]
-        self.info = data.get("info", "")
+        self.name_TID = data["name"]
+        self.info_TID = data.get("info", "")
 
+
+class Translation:
+    """Represents translations for multiple languages.
+    
+    Supports multiple access patterns:
+    - Attribute access: translation.russian, translation.english
+    - Dictionary access (uppercase): translation["RU"], translation["EN"]
+    - Dictionary access (lowercase): translation["ru"], translation["en"]
+    
+    Attributes
+    ----------
+    english: :class:`str`
+    arabic: :class:`str`
+    chinese: :class:`str`
+    chinese_traditional: :class:`str`
+    german: :class:`str`
+    spanish: :class:`str`
+    persian: :class:`str`
+    finnish: :class:`str`
+    french: :class:`str`
+    indonesian: :class:`str`
+    italian: :class:`str`
+    japanese: :class:`str`
+    korean: :class:`str`
+    malay: :class:`str`
+    dutch: :class:`str`
+    norwegian: :class:`str`
+    polish: :class:`str`
+    portuguese: :class:`str`
+    russian: :class:`str`
+    thai: :class:`str`
+    turkish: :class:`str`
+    vietnamese: :class:`str`
+    """
+    
+    __slots__ = (
+        "english", "arabic", "chinese", "chinese_traditional", "german",
+        "spanish", "persian", "finnish", "french", "indonesian", "italian",
+        "japanese", "korean", "malay", "dutch", "norwegian", "polish",
+        "portuguese", "russian", "thai", "turkish", "vietnamese"
+    )
+    
+    _LANGUAGE_MAP = {
+        "EN": "english",
+        "AR": "arabic",
+        "CN": "chinese",
+        "CNT": "chinese_traditional",
+        "DE": "german",
+        "ES": "spanish",
+        "FA": "persian",
+        "FI": "finnish",
+        "FR": "french",
+        "ID": "indonesian",
+        "IT": "italian",
+        "JP": "japanese",
+        "KR": "korean",
+        "MS": "malay",
+        "NL": "dutch",
+        "NO": "norwegian",
+        "PL": "polish",
+        "PT": "portuguese",
+        "RU": "russian",
+        "TH": "thai",
+        "TR": "turkish",
+        "VI": "vietnamese"
+    }
+    
+    def __init__(self, data: dict):
+        """Initialize Translation from a dictionary with language codes as keys.
+        
+        Parameters
+        ----------
+        data: :class:`dict`
+            Dictionary with language codes (EN, AR, CN, etc.) as keys and translations as values.
+        """
+        for code, attr_name in self._LANGUAGE_MAP.items():
+            setattr(self, attr_name, data.get(code, ""))
+    
+    def __getitem__(self, key: str) -> str:
+        """Get translation by language code (case-insensitive).
+        
+        Parameters
+        ----------
+        key: :class:`str`
+            Language code (e.g., "EN", "en", "RU", "ru")
+        
+        Returns
+        -------
+        :class:`str`
+            The translation for the specified language.
+        
+        Raises
+        ------
+        KeyError
+            If the language code is not supported.
+        """
+        key_upper = key.upper()
+        if key_upper in self._LANGUAGE_MAP:
+            return getattr(self, self._LANGUAGE_MAP[key_upper])
+        raise KeyError(f"Language code '{key}' not supported")
+    
+    def __repr__(self):
+        return f"<Translation english={self.english!r}>"
+    
+    def __eq__(self, other):
+        return isinstance(other, Translation) and all(
+            getattr(self, attr) == getattr(other, attr)
+            for attr in self.__slots__
+        )
 
 

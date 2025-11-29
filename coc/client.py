@@ -35,7 +35,7 @@ from .account_data import AccountData, ArmyRecipe
 from .clans import Clan, RankedClan
 from .errors import Forbidden, GatewayError, NotFound, PrivateWarLog
 from .enums import WarRound
-from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData
+from .miscmodels import BaseLeague, GoldPassSeason, Label, League, Location, LoadGameData, Translation
 from .http import HTTPClient, BasicThrottler, BatchThrottler
 from .iterators import (
     PlayerIterator,
@@ -2529,7 +2529,6 @@ class Client:
             return None
         return Troop(data={}, static_data=troop_data, level=level)
 
-
     def get_spell(self, name: str, level: int = 1) -> Optional["Spell"]:
         """Get a Spell object with the given name and level.
 
@@ -2668,6 +2667,36 @@ class Client:
             return None
         return Equipment(data={}, static_data=equipment_data, level=level)
 
+    def get_translation(self, translation_id: str) -> Optional[Translation]:
+        """Get translation data for a given Translation ID (TID).
+
+        Example
+        -------
+
+        .. code-block:: python3
+
+            translation = client.get_translation("TID_HERO_PALADIN_CHAMPION")
+            if translation:
+                print(f"English: {translation.english}")
+                print(f"Russian: {translation.russian}")
+                print(f"By code: {translation['RU']}")
+
+
+        Parameters
+        ----------
+        TID: str
+            The Translation ID string (e.g., "TID_HERO_PALADIN_CHAMPION").
+
+        Returns
+        --------
+        Optional[:class:`Translation`]
+            A Translation object with all language translations, or ``None`` if the TID is not found.
+
+        """
+        translation_data: dict | None = self._translations.get(translation_id)
+        if not translation_data:
+            return None
+        return Translation(data=translation_data)
 
     def get_extended_cwl_group_data(self, name: str) -> Optional[ExtendedCWLGroup]:
         """Get extended CWL group data by league name.
