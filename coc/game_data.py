@@ -135,34 +135,34 @@ class StaticData:
     
     Attributes
     ----------
-    helpers: List[:class:`Helper`]
-        List of all available helpers.
-    guardians: List[:class:`Guardian`]
-        List of all available guardians.
     buildings: List[:class:`Building`]
         List of all available buildings.
-    traps: List[:class:`Trap`]
-        List of all available traps.
-    decorations: List[:class:`Decoration`]
-        List of all available decorations.
-    obstacles: List[:class:`Obstacle`]
-        List of all available obstacles.
-    troops: List[:class:`Troop`]
-        List of all available troops & siege machines.
-    heroes: List[:class:`Hero`]
-        List of all available heroes.
-    spells: List[:class:`Spell`]
-        List of all available spells.
-    pets: List[:class:`Pet`]
-        List of all available pets.
-    equipment: List[:class:`Equipment`]
-        List of all available equipment.
     capital_house_parts: List[:class:`ClanCapitalHousePart`]
         List of all available clan capital house parts.
-    skins: List[:class:`Skin`]
-        List of all available skins.
+    decorations: List[:class:`Decoration`]
+        List of all available decorations.
+    equipment: List[:class:`Equipment`]
+        List of all available equipment.
+    guardians: List[:class:`Guardian`]
+        List of all available guardians.
+    helpers: List[:class:`Helper`]
+        List of all available helpers.
+    heroes: List[:class:`Hero`]
+        List of all available heroes.
+    obstacles: List[:class:`Obstacle`]
+        List of all available obstacles.
+    pets: List[:class:`Pet`]
+        List of all available pets.
     sceneries: List[:class:`Scenery`]
         List of all available sceneries.
+    skins: List[:class:`Skin`]
+        List of all available skins.
+    spells: List[:class:`Spell`]
+        List of all available spells.
+    traps: List[:class:`Trap`]
+        List of all available traps.
+    troops: List[:class:`Troop`]
+        List of all available troops & siege machines.
     """
     
     __slots__ = (
@@ -186,20 +186,21 @@ class StaticData:
     
     def __init__(self, data: dict):
         self._data = data
-        self.helpers: list[Helper] = []
-        self.guardians: list[Guardian] = []
+
         self.buildings: list[Building] = []
-        self.traps: list[Trap] = []
-        self.decorations: list[Decoration] = []
-        self.obstacles: list[Obstacle] = []
-        self.troops: list[Troop] = []
-        self.heroes: list[Hero] = []
-        self.spells: list[Spell] = []
-        self.pets: list[Pet] = []
-        self.equipment: list[Equipment] = []
         self.capital_house_parts: list[ClanCapitalHousePart] = []
-        self.skins: list[Skin] = []
+        self.decorations: list[Decoration] = []
+        self.equipment: list[Equipment] = []
+        self.guardians: list[Guardian] = []
+        self.helpers: list[Helper] = []
+        self.heroes: list[Hero] = []
+        self.obstacles: list[Obstacle] = []
+        self.pets: list[Pet] = []
         self.sceneries: list[Scenery] = []
+        self.skins: list[Skin] = []
+        self.spells: list[Spell] = []
+        self.traps: list[Trap] = []
+        self.troops: list[Troop] = []
 
         self._load_data()
 
@@ -247,35 +248,35 @@ class AccountData:
     ----------
     townhall_level: :class:`int`
         The player's current townhall level.
-    helpers: List[:class:`Helper`]
-        Player's helpers with their current levels.
-    guardians: List[:class:`Guardian`]
-        Player's guardians with their current levels.
     buildings: List[Tuple[:class:`Building`, :class:`int`]]
         Player's buildings as tuples of (building, quantity). Buildings can have multiple
         instances (e.g., multiple cannons).
-    traps: List[Tuple[:class:`Trap`, :class:`int`]]
-        Player's traps as tuples of (trap, quantity).
-    decorations: List[Tuple[:class:`Decoration`, :class:`int`]]
-        Player's decorations as tuples of (decoration, quantity).
-    obstacles: List[Tuple[:class:`Obstacle`, :class:`int`]]
-        Player's obstacles as tuples of (obstacle, quantity).
-    troops: List[:class:`Troop`]
-        Player's unlocked troops with their current levels.
-    heroes: List[:class:`Hero`]
-        Player's heroes with their current levels.
-    spells: List[:class:`Spell`]
-        Player's unlocked spells with their current levels.
-    pets: List[:class:`Pet`]
-        Player's pets with their current levels.
-    equipment: List[:class:`Equipment`]
-        Player's equipment with their current levels.
     capital_house_parts: List[:class:`ClanCapitalHousePart`]
         Player's unlocked clan capital house parts.
-    skins: List[:class:`Skin`]
-        Player's unlocked hero skins.
+    decorations: List[Tuple[:class:`Decoration`, :class:`int`]]
+        Player's decorations as tuples of (decoration, quantity).
+    equipment: List[:class:`Equipment`]
+        Player's equipment with their current levels.
+    guardians: List[:class:`Guardian`]
+        Player's guardians with their current levels.
+    helpers: List[:class:`Helper`]
+        Player's helpers with their current levels.
+    heroes: List[:class:`Hero`]
+        Player's heroes with their current levels.
+    obstacles: List[Tuple[:class:`Obstacle`, :class:`int`]]
+        Player's obstacles as tuples of (obstacle, quantity).
+    pets: List[:class:`Pet`]
+        Player's pets with their current levels.
     sceneries: List[:class:`Scenery`]
         Player's unlocked base sceneries.
+    skins: List[:class:`Skin`]
+        Player's unlocked hero skins.
+    spells: List[:class:`Spell`]
+        Player's unlocked spells with their current levels.
+    traps: List[Tuple[:class:`Trap`, :class:`int`]]
+        Player's traps as tuples of (trap, quantity).
+    troops: List[:class:`Troop`]
+        Player's unlocked troops with their current levels.
     upgrades: List[:class:`Upgrade`]
         Currently ongoing upgrades (buildings, troops, spells, heroes, etc.).
     boosts: :class:`Boosts`
@@ -307,21 +308,22 @@ class AccountData:
         self._client = client
         self.townhall_level: int = 0
 
-        self.helpers: list[Helper] = []
-        self.guardians: list[Guardian] = []
         self.buildings: list[tuple[Building, int]] = []
-        self.traps: list[tuple[Trap, int]] = []
-        self.decorations: list[tuple[Decoration, int]] = []
-        self.obstacles: list[tuple[Obstacle, int]] = []
-        self.troops: list[Troop] = []
-        self.heroes: list[Hero] = []
-        self.spells: list[Spell] = []
-        self.pets: list[Pet] = []
-        self.equipment: list[Equipment] = []
         self.capital_house_parts: list[ClanCapitalHousePart] = []
-        self.skins: list[Skin] = []
+        self.decorations: list[tuple[Decoration, int]] = []
+        self.equipment: list[Equipment] = []
+        self.guardians: list[Guardian] = []
+        self.helpers: list[Helper] = []
+        self.heroes: list[Hero] = []
+        self.obstacles: list[tuple[Obstacle, int]] = []
+        self.pets: list[Pet] = []
         self.sceneries: list[Scenery] = []
+        self.skins: list[Skin] = []
+        self.spells: list[Spell] = []
+        self.traps: list[tuple[Trap, int]] = []
+        self.troops: list[Troop] = []
         self.upgrades: list[Upgrade] = []
+
         self.boosts: Boosts = Boosts()
 
         self._load_data(account_data=data)
