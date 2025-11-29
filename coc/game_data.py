@@ -148,9 +148,7 @@ class StaticData:
     obstacles: List[:class:`Obstacle`]
         List of all available obstacles.
     troops: List[:class:`Troop`]
-        List of all available troops.
-    siege_machines: List[:class:`Troop`]
-        List of all available siege machines.
+        List of all available troops & siege machines.
     heroes: List[:class:`Hero`]
         List of all available heroes.
     spells: List[:class:`Spell`]
@@ -195,7 +193,6 @@ class StaticData:
         self.decorations: list[Decoration] = []
         self.obstacles: list[Obstacle] = []
         self.troops: list[Troop] = []
-        self.siege_machines: list[Troop] = []
         self.heroes: list[Hero] = []
         self.spells: list[Spell] = []
         self.pets: list[Pet] = []
@@ -265,8 +262,6 @@ class AccountData:
         Player's obstacles as tuples of (obstacle, quantity).
     troops: List[:class:`Troop`]
         Player's unlocked troops with their current levels.
-    siege_machines: List[:class:`Troop`]
-        Player's unlocked siege machines with their current levels.
     heroes: List[:class:`Hero`]
         Player's heroes with their current levels.
     spells: List[:class:`Spell`]
@@ -297,7 +292,6 @@ class AccountData:
         "decorations",
         "obstacles",
         "troops",
-        "siege_machines",
         "heroes",
         "spells",
         "pets",
@@ -320,7 +314,6 @@ class AccountData:
         self.decorations: list[tuple[Decoration, int]] = []
         self.obstacles: list[tuple[Obstacle, int]] = []
         self.troops: list[Troop] = []
-        self.siege_machines: list[Troop] = []
         self.heroes: list[Hero] = []
         self.spells: list[Spell] = []
         self.pets: list[Pet] = []
@@ -378,6 +371,7 @@ class AccountData:
                 continue
             # this adds builder base troops, heroes etc to the home village counterpart data/lists
             items.extend(account_data.get(f"{section}2", []))
+
             if section == "helpers":
                 for item in items:
                     item_id = item["data"]
@@ -472,7 +466,7 @@ class AccountData:
                     obstacle = Obstacle(data=item_data)
                     self.obstacles.append((obstacle, item.get("cnt", 1)))
 
-            elif section == "units":
+            elif section == "units" or section == "siege_machines":
                 for item in items:
                     item_id = item["data"]
                     item_data = self.get_static_data_item(item_id=item_id)
@@ -491,16 +485,6 @@ class AccountData:
                     spell = Spell(data={}, static_data=item_data, level=item["lvl"])
                     self.add_upgrade(item, spell)
                     self.spells.append(spell)
-
-            elif section == "siege_machines":
-                for item in items:
-                    item_id = item["data"]
-                    item_data = self.get_static_data_item(item_id=item_id)
-                    if item_data is None:
-                        continue
-                    troop = Troop(data={}, static_data=item_data, level=item["lvl"])
-                    self.add_upgrade(item, troop)
-                    self.siege_machines.append(troop)
 
             elif section == "heroes":
                 for item in items:
