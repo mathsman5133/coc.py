@@ -129,9 +129,9 @@ class Boosts:
 class StaticData:
     """Represents static game data loaded from game files.
     
-    This class loads and organizes all static game data including troops, spells,
-    heroes, buildings, and cosmetic items. It serves as a base class for AccountData
-    and provides access to all available game items.
+    This class loads and organizes all static game data from the game's data files.
+    It provides access to all available game items at all levels, useful for looking
+    up item information, max levels, and statistics.
     
     Attributes
     ----------
@@ -190,10 +190,10 @@ class StaticData:
         self._data = data
         self.helpers: list[Helper] = []
         self.guardians: list[Guardian] = []
-        self.buildings: list[tuple[Building, int]] = []
-        self.traps: list[tuple[Trap, int]] = []
-        self.decorations: list[tuple[Decoration, int]] = []
-        self.obstacles: list[tuple[Obstacle, int]] = []
+        self.buildings: list[Building] = []
+        self.traps: list[Trap] = []
+        self.decorations: list[Decoration] = []
+        self.obstacles: list[Obstacle] = []
         self.troops: list[Troop] = []
         self.siege_machines: list[Troop] = []
         self.heroes: list[Hero] = []
@@ -239,51 +239,52 @@ class StaticData:
                     self.__getattribute__(section).append(cls(data=data))
 
 
-class AccountData(StaticData):
-    """Represents account data parsed from game files.
+class AccountData:
+    """Represents player account data parsed from game files.
     
-    This class extends StaticData to include player-specific data such as
-    owned items, ongoing upgrades, and active boosts. It parses the raw
-    account data and creates appropriate game objects.
+    Parses raw account data from game files and creates game objects representing
+    the player's village state, including buildings, troops, heroes, ongoing upgrades,
+    and active boosts. This provides a complete snapshot of a player's account.
 
     Attributes
     ----------
     townhall_level: :class:`int`
-        The player's townhall level.
+        The player's current townhall level.
     helpers: List[:class:`Helper`]
-        The player's helpers with their current levels.
+        Player's helpers with their current levels.
     guardians: List[:class:`Guardian`]
-        The player's guardians with their current levels.
+        Player's guardians with their current levels.
     buildings: List[Tuple[:class:`Building`, :class:`int`]]
-        The player's buildings with their counts (building, quantity).
+        Player's buildings as tuples of (building, quantity). Buildings can have multiple
+        instances (e.g., multiple cannons).
     traps: List[Tuple[:class:`Trap`, :class:`int`]]
-        The player's traps with their counts (trap, quantity).
+        Player's traps as tuples of (trap, quantity).
     decorations: List[Tuple[:class:`Decoration`, :class:`int`]]
-        The player's decorations with their counts (decoration, quantity).
+        Player's decorations as tuples of (decoration, quantity).
     obstacles: List[Tuple[:class:`Obstacle`, :class:`int`]]
-        The player's obstacles with their counts (obstacle, quantity).
+        Player's obstacles as tuples of (obstacle, quantity).
     troops: List[:class:`Troop`]
-        The player's unlocked troops with their current levels.
+        Player's unlocked troops with their current levels.
     siege_machines: List[:class:`Troop`]
-        The player's unlocked siege machines with their current levels.
+        Player's unlocked siege machines with their current levels.
     heroes: List[:class:`Hero`]
-        The player's heroes with their current levels.
+        Player's heroes with their current levels.
     spells: List[:class:`Spell`]
-        The player's unlocked spells with their current levels.
+        Player's unlocked spells with their current levels.
     pets: List[:class:`Pet`]
-        The player's pets with their current levels.
+        Player's pets with their current levels.
     equipment: List[:class:`Equipment`]
-        The player's equipment with their current levels.
+        Player's equipment with their current levels.
     capital_house_parts: List[:class:`ClanCapitalHousePart`]
-        The player's clan capital house parts.
+        Player's unlocked clan capital house parts.
     skins: List[:class:`Skin`]
-        The player's unlocked skins.
+        Player's unlocked hero skins.
     sceneries: List[:class:`Scenery`]
-        The player's unlocked sceneries.
+        Player's unlocked base sceneries.
     upgrades: List[:class:`Upgrade`]
-        The list of ongoing upgrades (buildings, troops, spells, etc.).
+        Currently ongoing upgrades (buildings, troops, spells, heroes, etc.).
     boosts: :class:`Boosts`
-        The active boosts and cooldowns (builder boost, lab boost, etc.).
+        Active boosts and cooldowns (builder boost, lab boost, clock tower, etc.).
     """
 
     __slots__ = (
@@ -309,14 +310,28 @@ class AccountData(StaticData):
     )
 
     def __init__(self, data: dict, client: 'Client'):
-        super().__init__(data)
         self._client = client
         self.townhall_level: int = 0
 
+        self.helpers: list[Helper] = []
+        self.guardians: list[Guardian] = []
+        self.buildings: list[tuple[Building, int]] = []
+        self.traps: list[tuple[Trap, int]] = []
+        self.decorations: list[tuple[Decoration, int]] = []
+        self.obstacles: list[tuple[Obstacle, int]] = []
+        self.troops: list[Troop] = []
+        self.siege_machines: list[Troop] = []
+        self.heroes: list[Hero] = []
+        self.spells: list[Spell] = []
+        self.pets: list[Pet] = []
+        self.equipment: list[Equipment] = []
+        self.capital_house_parts: list[ClanCapitalHousePart] = []
+        self.skins: list[Skin] = []
+        self.sceneries: list[Scenery] = []
         self.upgrades: list[Upgrade] = []
         self.boosts: Boosts = Boosts()
 
-        self._load_data(data)
+        self._load_data(account_data=data)
 
     def __repr__(self):
         attrs = []
@@ -417,7 +432,7 @@ class AccountData(StaticData):
                         supercharge_level=item.get("supercharge", 0),
                         seasonal_defenses=seasonal_defenses
                     )
-                    if building.type == BuildingType.TOWN_HALL:
+                    if building.type == BuildingType.town_hall:
                         self.townhall_level = building.level
                     self.add_upgrade(item, building)
                     self.buildings.append((building, item.get("cnt", 1)))
