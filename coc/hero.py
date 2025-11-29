@@ -57,6 +57,7 @@ class Hero(LeveledUnit):
         "name",
         "village",
         "max_level",
+        "equipment",
         "id",
         "info",
         "TID",
@@ -87,6 +88,9 @@ class Hero(LeveledUnit):
             self.name: str = data["name"]
             self.village = VillageType(value=data["village"])
             self.max_level: int = data["maxLevel"]
+            self.equipment: list['Equipment'] = [
+                Equipment(data=e, static_data=None) for e in data.get("equipment", [])
+            ]
 
         if static_data:
             self.id: int = static_data["_id"]
