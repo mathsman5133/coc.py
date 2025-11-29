@@ -493,11 +493,10 @@ class Player(ClanMember):
         - Spells
         - Un-boosted Super Troops
         """
-        loaded = self._game_files_loaded
         troops = []
 
         for troop in self._iter_troops:
-            if (loaded and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
+            if (self._load_game_data and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
                 self._super_troops.append(troop)
                 if troop.is_active:
                     self._home_troops[troop.name] = troop
