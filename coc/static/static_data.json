@@ -10,7 +10,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -130,7 +130,7 @@
       },
       "type": "Town Hall",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -920,7 +920,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -1098,7 +1098,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -1266,7 +1266,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -1444,7 +1444,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -1612,7 +1612,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -1780,7 +1780,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -1924,7 +1924,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -2113,7 +2113,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -2302,7 +2302,7 @@
       },
       "type": "Wall",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 1,
       "superchargeable": false,
       "levels": [
@@ -2485,7 +2485,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -2656,7 +2656,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -2819,7 +2819,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -2995,7 +2995,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -3123,7 +3123,7 @@
       },
       "type": "Worker",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": true,
       "levels": [
@@ -3214,7 +3214,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": true,
       "levels": [
@@ -3377,7 +3377,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -3465,7 +3465,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -3596,7 +3596,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -3726,7 +3726,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -3846,7 +3846,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -3958,7 +3958,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": true,
       "levels": [
@@ -4081,7 +4081,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -4153,7 +4153,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -4225,7 +4225,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -4297,7 +4297,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -4436,7 +4436,7 @@
       },
       "type": "Wall",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 1,
       "superchargeable": false,
       "levels": [
@@ -4536,7 +4536,7 @@
       },
       "type": "Town Hall2",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -4962,7 +4962,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5058,7 +5058,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5154,7 +5154,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5250,7 +5250,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5346,7 +5346,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -5442,7 +5442,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5554,7 +5554,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5650,7 +5650,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -5665,7 +5665,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -5761,7 +5761,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5857,7 +5857,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -5953,7 +5953,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -6049,7 +6049,7 @@
       },
       "type": "Worker2",
       "upgrade_resource": "Gems",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 2,
       "superchargeable": false,
       "levels": []
@@ -6064,7 +6064,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6160,7 +6160,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -6175,7 +6175,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -6271,7 +6271,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -6367,7 +6367,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6463,7 +6463,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -6478,7 +6478,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6574,7 +6574,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6670,7 +6670,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6766,7 +6766,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6862,7 +6862,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -6958,7 +6958,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -7038,7 +7038,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -7134,7 +7134,7 @@
       },
       "type": "Worker2",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": false,
       "levels": []
@@ -7149,7 +7149,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -7205,7 +7205,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -7288,7 +7288,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -7392,7 +7392,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -7480,7 +7480,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -7592,7 +7592,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 2,
       "superchargeable": false,
       "levels": [
@@ -7632,7 +7632,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Dark Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -7699,7 +7699,7 @@
       },
       "type": "Town Hall2",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 4,
       "superchargeable": false,
       "levels": [
@@ -8125,7 +8125,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -8198,7 +8198,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -8213,7 +8213,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Builder Gold",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -8269,7 +8269,7 @@
       },
       "type": "Army",
       "upgrade_resource": "Builder Elixir",
-      "village_type": "builderBase",
+      "village": "builderBase",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -8333,7 +8333,7 @@
       },
       "type": "Resource",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -8348,7 +8348,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -8429,7 +8429,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -8510,7 +8510,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Dark Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": [
@@ -8542,7 +8542,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -8593,7 +8593,7 @@
       },
       "type": "Helper",
       "upgrade_resource": "Elixir",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -8608,7 +8608,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": false,
       "levels": []
@@ -8623,7 +8623,7 @@
       },
       "type": "Defense",
       "upgrade_resource": "Gold",
-      "village_type": "home",
+      "village": "home",
       "width": 3,
       "superchargeable": true,
       "levels": [
@@ -9581,7 +9581,7 @@
       "ground_trigger": true,
       "damage_radius": 300,
       "trigger_radius": 150,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -9697,7 +9697,7 @@
       "ground_trigger": true,
       "damage_radius": 0,
       "trigger_radius": 100,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -9806,7 +9806,7 @@
       "ground_trigger": true,
       "damage_radius": null,
       "trigger_radius": 200,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -9901,7 +9901,7 @@
       "ground_trigger": false,
       "damage_radius": 300,
       "trigger_radius": 400,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -10010,7 +10010,7 @@
       "ground_trigger": false,
       "damage_radius": 0,
       "trigger_radius": 400,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -10077,7 +10077,7 @@
       "ground_trigger": true,
       "damage_radius": 0,
       "trigger_radius": 500,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -10130,7 +10130,7 @@
       "ground_trigger": true,
       "damage_radius": 0,
       "trigger_radius": 100,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "upgrade_resource": "Builder Gold",
       "levels": [
         {
@@ -10183,7 +10183,7 @@
       "ground_trigger": true,
       "damage_radius": 350,
       "trigger_radius": 100,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "upgrade_resource": "Builder Gold",
       "levels": [
         {
@@ -10271,7 +10271,7 @@
       "ground_trigger": false,
       "damage_radius": 500,
       "trigger_radius": 400,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "upgrade_resource": "Builder Gold",
       "levels": [
         {
@@ -10359,7 +10359,7 @@
       "ground_trigger": false,
       "damage_radius": 400,
       "trigger_radius": 300,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "upgrade_resource": "Builder Gold",
       "levels": [
         {
@@ -10447,7 +10447,7 @@
       "ground_trigger": true,
       "damage_radius": 300,
       "trigger_radius": 300,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -10486,7 +10486,7 @@
       "ground_trigger": true,
       "damage_radius": 450,
       "trigger_radius": 350,
-      "village_type": "home",
+      "village": "home",
       "upgrade_resource": "Gold",
       "levels": [
         {
@@ -10532,7 +10532,7 @@
       "attack_speed": 1000,
       "attack_range": 40,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -10662,7 +10662,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -10801,7 +10801,7 @@
       "attack_speed": 1000,
       "attack_range": 40,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -10904,7 +10904,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 5,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11052,7 +11052,7 @@
       "attack_speed": 1000,
       "attack_range": 50,
       "housing_space": 2,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11200,7 +11200,7 @@
       "attack_speed": 3000,
       "attack_range": 0,
       "housing_space": 5,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11330,7 +11330,7 @@
       "attack_speed": 1500,
       "attack_range": 300,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11478,7 +11478,7 @@
       "attack_speed": 700,
       "attack_range": 450,
       "housing_space": 14,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11599,7 +11599,7 @@
       "attack_speed": 1250,
       "attack_range": 250,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11729,7 +11729,7 @@
       "attack_speed": 1800,
       "attack_range": 80,
       "housing_space": 25,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -11868,7 +11868,7 @@
       "attack_speed": 1000,
       "attack_range": 225,
       "housing_space": 2,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12016,7 +12016,7 @@
       "attack_speed": 1000,
       "attack_range": 60,
       "housing_space": 5,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12164,7 +12164,7 @@
       "attack_speed": 1800,
       "attack_range": 50,
       "housing_space": 8,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12285,7 +12285,7 @@
       "attack_speed": 2400,
       "attack_range": 100,
       "housing_space": 30,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12433,7 +12433,7 @@
       "attack_speed": 700,
       "attack_range": 400,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12518,7 +12518,7 @@
       "attack_speed": 2000,
       "attack_range": 25,
       "housing_space": 30,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12603,7 +12603,7 @@
       "attack_speed": 2200,
       "attack_range": 300,
       "housing_space": 6,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12715,7 +12715,7 @@
       "attack_speed": 1000,
       "attack_range": 225,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12836,7 +12836,7 @@
       "attack_speed": 1700,
       "attack_range": 60,
       "housing_space": 6,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -12966,7 +12966,7 @@
       "attack_speed": 800,
       "attack_range": 60,
       "housing_space": 5,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000000,
         "original_min_level": 7
@@ -13064,7 +13064,7 @@
       "attack_speed": 1500,
       "attack_range": 600,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000001,
         "original_min_level": 7
@@ -13171,7 +13171,7 @@
       "attack_speed": 1000,
       "attack_range": 60,
       "housing_space": 8,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000004,
         "original_min_level": 6
@@ -13287,7 +13287,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000003,
         "original_min_level": 8
@@ -13403,7 +13403,7 @@
       "attack_speed": 1500,
       "attack_range": 300,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -13543,7 +13543,7 @@
       "attack_speed": 800,
       "attack_range": 40,
       "housing_space": 4,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 1,
@@ -13745,7 +13745,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 3,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 1,
@@ -13947,7 +13947,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 3,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 3,
@@ -14131,7 +14131,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 18,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 3,
@@ -14315,7 +14315,7 @@
       "attack_speed": 2000,
       "attack_range": 350,
       "housing_space": 12,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 5,
@@ -14481,7 +14481,7 @@
       "attack_speed": 1800,
       "attack_range": 80,
       "housing_space": 22,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 13,
@@ -14575,7 +14575,7 @@
       "attack_speed": 1200,
       "attack_range": 450,
       "housing_space": 16,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 7,
@@ -14723,7 +14723,7 @@
       "attack_speed": 3500,
       "attack_range": 50,
       "housing_space": 15,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 11,
@@ -14835,7 +14835,7 @@
       "attack_speed": 1000,
       "attack_range": 200,
       "housing_space": 12,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 5,
@@ -15001,7 +15001,7 @@
       "attack_speed": 700,
       "attack_range": 400,
       "housing_space": 14,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 9,
@@ -15131,7 +15131,7 @@
       "attack_speed": 100,
       "attack_range": 60,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -15262,7 +15262,7 @@
       "attack_speed": 1000,
       "attack_range": 50,
       "housing_space": 8,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -15393,7 +15393,7 @@
       "attack_speed": 1000,
       "attack_range": 40,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -15479,7 +15479,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -15601,7 +15601,7 @@
       "attack_speed": 1300,
       "attack_range": 150,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -15677,7 +15677,7 @@
       "attack_speed": 1500,
       "attack_range": 150,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -15744,7 +15744,7 @@
       "attack_speed": 1000,
       "attack_range": 80,
       "housing_space": 18,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -15829,7 +15829,7 @@
       "attack_speed": 1000,
       "attack_range": 40,
       "housing_space": 3,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000002,
         "original_min_level": 6
@@ -15900,7 +15900,7 @@
       "attack_speed": 250,
       "attack_range": 60,
       "housing_space": 24,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000024,
         "original_min_level": 6
@@ -16034,7 +16034,7 @@
       "attack_speed": 3000,
       "attack_range": 0,
       "housing_space": 8,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000005,
         "original_min_level": 7
@@ -16132,7 +16132,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 15,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -16235,7 +16235,7 @@
       "attack_speed": 3500,
       "attack_range": 250,
       "housing_space": 30,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -16338,7 +16338,7 @@
       "attack_speed": 1000,
       "attack_range": 0,
       "housing_space": 5,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -16442,7 +16442,7 @@
       "attack_speed": 2500,
       "attack_range": 0,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -16509,7 +16509,7 @@
       "attack_speed": 128,
       "attack_range": 350,
       "housing_space": 15,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000023,
         "original_min_level": 5
@@ -16634,7 +16634,7 @@
       "attack_speed": 1100,
       "attack_range": 50,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000012,
         "original_min_level": 6
@@ -16759,7 +16759,7 @@
       "attack_speed": 1200,
       "attack_range": 350,
       "housing_space": 25,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -16835,7 +16835,7 @@
       "attack_speed": 700,
       "attack_range": 400,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000015,
         "original_min_level": 4
@@ -16924,7 +16924,7 @@
       "attack_speed": 1000,
       "attack_range": 60,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -17055,7 +17055,7 @@
       "attack_speed": 200,
       "attack_range": 50,
       "housing_space": 12,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 15,
@@ -17131,7 +17131,7 @@
       "attack_speed": 1000,
       "attack_range": 300,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -17262,7 +17262,7 @@
       "attack_speed": 800,
       "attack_range": 0,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -17329,7 +17329,7 @@
       "attack_speed": 2000,
       "attack_range": 25,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000017,
         "original_min_level": 4
@@ -17418,7 +17418,7 @@
       "attack_speed": 2200,
       "attack_range": 300,
       "housing_space": 30,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000022,
         "original_min_level": 3
@@ -17534,7 +17534,7 @@
       "attack_speed": 1800,
       "attack_range": 300,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000008,
         "original_min_level": 6
@@ -17650,7 +17650,7 @@
       "attack_speed": 600,
       "attack_range": 300,
       "housing_space": 6,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -17699,7 +17699,7 @@
       "attack_speed": 2000,
       "attack_range": 350,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000006,
         "original_min_level": 8
@@ -17815,7 +17815,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000010,
         "original_min_level": 7
@@ -17940,7 +17940,7 @@
       "attack_speed": 3000,
       "attack_range": 100,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -18007,7 +18007,7 @@
       "attack_speed": 5000,
       "attack_range": 1005,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -18074,7 +18074,7 @@
       "attack_speed": 1700,
       "attack_range": 100,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -18141,7 +18141,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -18272,7 +18272,7 @@
       "attack_speed": 1500,
       "attack_range": 125,
       "housing_space": 32,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -18330,7 +18330,7 @@
       "attack_speed": 900,
       "attack_range": 500,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -18388,7 +18388,7 @@
       "attack_speed": 1000,
       "attack_range": 60,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000011,
         "original_min_level": 9
@@ -18513,7 +18513,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 3,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -18644,7 +18644,7 @@
       "attack_speed": 2400,
       "attack_range": 100,
       "housing_space": 41,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -18766,7 +18766,7 @@
       "attack_speed": 800,
       "attack_range": 250,
       "housing_space": 7,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -18888,7 +18888,7 @@
       "attack_speed": 2500,
       "attack_range": 0,
       "housing_space": 35,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19019,7 +19019,7 @@
       "attack_speed": 128,
       "attack_range": 350,
       "housing_space": 14,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 17,
@@ -19077,7 +19077,7 @@
       "attack_speed": 2200,
       "attack_range": 100,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -19126,7 +19126,7 @@
       "attack_speed": 1500,
       "attack_range": 60,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19257,7 +19257,7 @@
       "attack_speed": 1800,
       "attack_range": 600,
       "housing_space": 10,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19388,7 +19388,7 @@
       "attack_speed": 1700,
       "attack_range": 250,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19519,7 +19519,7 @@
       "attack_speed": 1300,
       "attack_range": 60,
       "housing_space": 12,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19650,7 +19650,7 @@
       "attack_speed": 1800,
       "attack_range": 70,
       "housing_space": 15,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19781,7 +19781,7 @@
       "attack_speed": 1000,
       "attack_range": 500,
       "housing_space": 16,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -19848,7 +19848,7 @@
       "attack_speed": 1000,
       "attack_range": 350,
       "housing_space": 20,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -19979,7 +19979,7 @@
       "attack_speed": 1000,
       "attack_range": 150,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -20119,7 +20119,7 @@
       "attack_speed": 2500,
       "attack_range": 600,
       "housing_space": 16,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -20177,7 +20177,7 @@
       "attack_speed": 6000,
       "attack_range": 8000,
       "housing_space": 1,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -20235,7 +20235,7 @@
       "attack_speed": 1200,
       "attack_range": 40,
       "housing_space": 4,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -20366,7 +20366,7 @@
       "attack_speed": 1000,
       "attack_range": 0,
       "housing_space": 8,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -20497,7 +20497,7 @@
       "attack_speed": 1000,
       "attack_range": 80,
       "housing_space": 35,
-      "village_type": "home",
+      "village": "home",
       "super_troop": {
         "original_id": 4000053,
         "original_min_level": 2
@@ -20586,7 +20586,7 @@
       "attack_speed": 800,
       "attack_range": 1,
       "housing_space": 18,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -20644,7 +20644,7 @@
       "attack_speed": 2000,
       "attack_range": 100,
       "housing_space": 50,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -20802,7 +20802,7 @@
       "attack_speed": 2500,
       "attack_range": 150,
       "housing_space": 75,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -20960,7 +20960,7 @@
       "attack_speed": 2200,
       "attack_range": 50,
       "housing_space": 60,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -21091,7 +21091,7 @@
       "attack_speed": 2000,
       "attack_range": 650,
       "housing_space": 45,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -21249,7 +21249,7 @@
       "attack_speed": 2000,
       "attack_range": 650,
       "housing_space": 45,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -21407,7 +21407,7 @@
       "attack_speed": 2200,
       "attack_range": 50,
       "housing_space": 60,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -21538,7 +21538,7 @@
       "attack_speed": 1000,
       "attack_range": 500,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "is_seasonal": true,
       "levels": [
         {
@@ -21669,7 +21669,7 @@
       "attack_speed": 1000,
       "attack_range": 500,
       "housing_space": 40,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -21831,12 +21831,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 1,
       "upgrade_resource": "Elixir",
-      "radius": 200,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 2.0,
           "damage": 150,
           "upgrade_time": 7200,
           "upgrade_cost": 50000,
@@ -21846,6 +21846,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 2.0,
           "damage": 180,
           "upgrade_time": 14400,
           "upgrade_cost": 100000,
@@ -21855,6 +21856,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 2.0,
           "damage": 210,
           "upgrade_time": 21600,
           "upgrade_cost": 200000,
@@ -21864,6 +21866,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 2.0,
           "damage": 240,
           "upgrade_time": 86400,
           "upgrade_cost": 600000,
@@ -21873,6 +21876,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 2.0,
           "damage": 270,
           "upgrade_time": 129600,
           "upgrade_cost": 1500000,
@@ -21882,6 +21886,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 2.0,
           "damage": 320,
           "upgrade_time": 259200,
           "upgrade_cost": 2500000,
@@ -21891,6 +21896,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 2.0,
           "damage": 400,
           "upgrade_time": 302400,
           "upgrade_cost": 4200000,
@@ -21900,6 +21906,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 2.0,
           "damage": 480,
           "upgrade_time": 432000,
           "upgrade_cost": 6300000,
@@ -21909,6 +21916,7 @@
         {
           "level": 9,
           "duration": 0,
+          "radius": 2.0,
           "damage": 560,
           "upgrade_time": 518400,
           "upgrade_cost": 10000000,
@@ -21918,6 +21926,7 @@
         {
           "level": 10,
           "duration": 0,
+          "radius": 2.0,
           "damage": 600,
           "upgrade_time": 604800,
           "upgrade_cost": 13500000,
@@ -21927,6 +21936,7 @@
         {
           "level": 11,
           "duration": 0,
+          "radius": 2.0,
           "damage": 640,
           "upgrade_time": 864000,
           "upgrade_cost": 18500000,
@@ -21936,6 +21946,7 @@
         {
           "level": 12,
           "duration": 0,
+          "radius": 2.0,
           "damage": 680,
           "upgrade_time": 1209600,
           "upgrade_cost": 27000000,
@@ -21945,6 +21956,7 @@
         {
           "level": 13,
           "duration": 0,
+          "radius": 2.0,
           "damage": 720,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -21964,12 +21976,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 2,
       "upgrade_resource": "Elixir",
-      "radius": 500,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 12,
+          "radius": 5.0,
           "damage": -15,
           "upgrade_time": 10800,
           "upgrade_cost": 75000,
@@ -21979,6 +21991,7 @@
         {
           "level": 2,
           "duration": 12,
+          "radius": 5.0,
           "damage": -20,
           "upgrade_time": 21600,
           "upgrade_cost": 150000,
@@ -21988,6 +22001,7 @@
         {
           "level": 3,
           "duration": 12,
+          "radius": 5.0,
           "damage": -25,
           "upgrade_time": 43200,
           "upgrade_cost": 300000,
@@ -21997,6 +22011,7 @@
         {
           "level": 4,
           "duration": 12,
+          "radius": 5.0,
           "damage": -30,
           "upgrade_time": 86400,
           "upgrade_cost": 900000,
@@ -22006,6 +22021,7 @@
         {
           "level": 5,
           "duration": 12,
+          "radius": 5.0,
           "damage": -35,
           "upgrade_time": 129600,
           "upgrade_cost": 1800000,
@@ -22015,6 +22031,7 @@
         {
           "level": 6,
           "duration": 12,
+          "radius": 5.0,
           "damage": -40,
           "upgrade_time": 259200,
           "upgrade_cost": 3000000,
@@ -22024,6 +22041,7 @@
         {
           "level": 7,
           "duration": 12,
+          "radius": 5.0,
           "damage": -45,
           "upgrade_time": 432000,
           "upgrade_cost": 6000000,
@@ -22033,6 +22051,7 @@
         {
           "level": 8,
           "duration": 12,
+          "radius": 5.0,
           "damage": -50,
           "upgrade_time": 561600,
           "upgrade_cost": 11000000,
@@ -22042,6 +22061,7 @@
         {
           "level": 9,
           "duration": 12,
+          "radius": 5.0,
           "damage": -55,
           "upgrade_time": 604800,
           "upgrade_cost": 14000000,
@@ -22051,6 +22071,7 @@
         {
           "level": 10,
           "duration": 12,
+          "radius": 5.0,
           "damage": -60,
           "upgrade_time": 907200,
           "upgrade_cost": 19000000,
@@ -22060,6 +22081,7 @@
         {
           "level": 11,
           "duration": 12,
+          "radius": 5.0,
           "damage": -67,
           "upgrade_time": 1296000,
           "upgrade_cost": 29000000,
@@ -22069,6 +22091,7 @@
         {
           "level": 12,
           "duration": 12,
+          "radius": 5.0,
           "damage": -75,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22088,12 +22111,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 3,
       "upgrade_resource": "Elixir",
-      "radius": 500,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 21600,
           "upgrade_cost": 400000,
@@ -22103,6 +22126,7 @@
         {
           "level": 2,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 43200,
           "upgrade_cost": 800000,
@@ -22112,6 +22136,7 @@
         {
           "level": 3,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 1000000,
@@ -22121,6 +22146,7 @@
         {
           "level": 4,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 2000000,
@@ -22130,6 +22156,7 @@
         {
           "level": 5,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 5000000,
@@ -22139,6 +22166,7 @@
         {
           "level": 6,
           "duration": 18,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22158,12 +22186,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 4,
       "upgrade_resource": "Elixir",
-      "radius": 350,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 20,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 1000000,
@@ -22173,6 +22201,7 @@
         {
           "level": 2,
           "duration": 40,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 2000000,
@@ -22182,6 +22211,7 @@
         {
           "level": 3,
           "duration": 60,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 5000000,
@@ -22191,6 +22221,7 @@
         {
           "level": 4,
           "duration": 80,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 561600,
           "upgrade_cost": 8000000,
@@ -22200,6 +22231,7 @@
         {
           "level": 5,
           "duration": 100,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22219,12 +22251,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 4,
       "upgrade_resource": "Elixir",
-      "radius": 350,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 1200000,
@@ -22234,6 +22266,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 129600,
           "upgrade_cost": 1700000,
@@ -22243,6 +22276,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 3000000,
@@ -22252,6 +22286,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 216000,
           "upgrade_cost": 4200000,
@@ -22261,6 +22296,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 302400,
           "upgrade_cost": 6000000,
@@ -22270,6 +22306,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 432000,
           "upgrade_cost": 7000000,
@@ -22279,6 +22316,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22298,13 +22336,13 @@
       "production_building": "Spell Factory",
       "production_building_level": 1,
       "upgrade_resource": "Elixir",
-      "radius": 150,
       "housing_space": 2,
       "is_seasonal": true,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 1.5,
           "damage": 180,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22314,6 +22352,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 1.5,
           "damage": 190,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22323,6 +22362,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 1.5,
           "damage": 200,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22332,6 +22372,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 1.5,
           "damage": 210,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22341,6 +22382,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 1.5,
           "damage": 230,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22350,6 +22392,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 1.5,
           "damage": 260,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22359,6 +22402,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 1.5,
           "damage": 280,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22368,6 +22412,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 1.5,
           "damage": 300,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22377,6 +22422,7 @@
         {
           "level": 9,
           "duration": 0,
+          "radius": 1.5,
           "damage": 330,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22386,6 +22432,7 @@
         {
           "level": 10,
           "duration": 0,
+          "radius": 1.5,
           "damage": 350,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22395,6 +22442,7 @@
         {
           "level": 11,
           "duration": 0,
+          "radius": 1.5,
           "damage": 370,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22404,6 +22452,7 @@
         {
           "level": 12,
           "duration": 0,
+          "radius": 1.5,
           "damage": 390,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22413,6 +22462,7 @@
         {
           "level": 13,
           "duration": 0,
+          "radius": 1.5,
           "damage": 410,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22432,12 +22482,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 1,
       "upgrade_resource": "Dark Elixir",
-      "radius": 400,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 4.0,
           "damage": 90,
           "upgrade_time": 21600,
           "upgrade_cost": 5000,
@@ -22447,6 +22497,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 4.0,
           "damage": 115,
           "upgrade_time": 64800,
           "upgrade_cost": 10000,
@@ -22456,6 +22507,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 4.0,
           "damage": 145,
           "upgrade_time": 172800,
           "upgrade_cost": 21500,
@@ -22465,6 +22517,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 4.0,
           "damage": 180,
           "upgrade_time": 259200,
           "upgrade_cost": 35000,
@@ -22474,6 +22527,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 4.0,
           "damage": 220,
           "upgrade_time": 345600,
           "upgrade_cost": 55000,
@@ -22483,6 +22537,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 4.0,
           "damage": 260,
           "upgrade_time": 432000,
           "upgrade_cost": 77500,
@@ -22492,6 +22547,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 4.0,
           "damage": 280,
           "upgrade_time": 561600,
           "upgrade_cost": 100000,
@@ -22501,6 +22557,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 4.0,
           "damage": 300,
           "upgrade_time": 604800,
           "upgrade_cost": 135000,
@@ -22510,6 +22567,7 @@
         {
           "level": 9,
           "duration": 0,
+          "radius": 4.0,
           "damage": 320,
           "upgrade_time": 691200,
           "upgrade_cost": 175000,
@@ -22519,6 +22577,7 @@
         {
           "level": 10,
           "duration": 0,
+          "radius": 4.0,
           "damage": 340,
           "upgrade_time": 835200,
           "upgrade_cost": 230000,
@@ -22528,6 +22587,7 @@
         {
           "level": 11,
           "duration": 0,
+          "radius": 4.0,
           "damage": 360,
           "upgrade_time": 1252800,
           "upgrade_cost": 350000,
@@ -22537,6 +22597,7 @@
         {
           "level": 12,
           "duration": 0,
+          "radius": 4.0,
           "damage": 380,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22556,12 +22617,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 2,
       "upgrade_resource": "Dark Elixir",
-      "radius": 350,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 43200,
           "upgrade_cost": 6000,
@@ -22571,6 +22632,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 3.8,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 12000,
@@ -22580,6 +22642,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 4.1,
           "damage": 0,
           "upgrade_time": 259200,
           "upgrade_cost": 25500,
@@ -22589,6 +22652,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 4.4,
           "damage": 0,
           "upgrade_time": 302400,
           "upgrade_cost": 42000,
@@ -22598,6 +22662,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 4.7,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22617,12 +22682,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 3,
       "upgrade_resource": "Dark Elixir",
-      "radius": 400,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 8000,
@@ -22632,6 +22697,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 17000,
@@ -22641,6 +22707,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 259200,
           "upgrade_cost": 30000,
@@ -22650,6 +22717,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 38500,
@@ -22659,6 +22727,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 777600,
           "upgrade_cost": 200000,
@@ -22668,6 +22737,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 1080000,
           "upgrade_cost": 320000,
@@ -22677,6 +22747,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22696,12 +22767,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 5,
       "upgrade_resource": "Elixir",
-      "radius": 350,
       "housing_space": 3,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 1500000,
@@ -22711,6 +22782,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 2500000,
@@ -22720,6 +22792,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 194400,
           "upgrade_cost": 3000000,
@@ -22729,6 +22802,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 216000,
           "upgrade_cost": 4000000,
@@ -22738,6 +22812,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 5000000,
@@ -22747,6 +22822,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 432000,
           "upgrade_cost": 8000000,
@@ -22756,6 +22832,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 604800,
           "upgrade_cost": 9000000,
@@ -22765,6 +22842,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22784,12 +22862,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 4,
       "upgrade_resource": "Dark Elixir",
-      "radius": 225,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 11000,
@@ -22799,6 +22877,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 129600,
           "upgrade_cost": 17000,
@@ -22808,6 +22887,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 25000,
@@ -22817,6 +22897,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 216000,
           "upgrade_cost": 40000,
@@ -22826,6 +22907,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 259200,
           "upgrade_cost": 50000,
@@ -22835,6 +22917,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 367200,
           "upgrade_cost": 75000,
@@ -22844,6 +22927,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 561600,
           "upgrade_cost": 135000,
@@ -22853,6 +22937,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22872,12 +22957,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 5,
       "upgrade_resource": "Dark Elixir",
-      "radius": 225,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 86400,
           "upgrade_cost": 13000,
@@ -22887,6 +22972,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 172800,
           "upgrade_cost": 25500,
@@ -22896,6 +22982,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 194400,
           "upgrade_cost": 35000,
@@ -22905,6 +22992,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 47500,
@@ -22914,6 +23002,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 604800,
           "upgrade_cost": 140000,
@@ -22923,6 +23012,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 734400,
           "upgrade_cost": 220000,
@@ -22932,6 +23022,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 1123200,
           "upgrade_cost": 300000,
@@ -22941,6 +23032,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 2.2,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -22960,12 +23052,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 6,
       "upgrade_resource": "Elixir",
-      "radius": 400,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 259200,
           "upgrade_cost": 5000000,
@@ -22975,6 +23067,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 345600,
           "upgrade_cost": 6000000,
@@ -22984,6 +23077,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 432000,
           "upgrade_cost": 7000000,
@@ -22993,6 +23087,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 4.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23012,12 +23107,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 7,
       "upgrade_resource": "Elixir",
-      "radius": 500,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 604800,
           "upgrade_cost": 7500000,
@@ -23027,6 +23122,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 734400,
           "upgrade_cost": 8000000,
@@ -23036,6 +23132,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 820800,
           "upgrade_cost": 9000000,
@@ -23045,6 +23142,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 993600,
           "upgrade_cost": 13000000,
@@ -23054,6 +23152,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 1080000,
           "upgrade_cost": 19000000,
@@ -23063,6 +23162,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23082,12 +23182,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 6,
       "upgrade_resource": "Dark Elixir",
-      "radius": 600,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 6.0,
           "damage": 0,
           "upgrade_time": 475200,
           "upgrade_cost": 62500,
@@ -23097,6 +23197,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 6.0,
           "damage": 0,
           "upgrade_time": 734400,
           "upgrade_cost": 125000,
@@ -23106,6 +23207,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 6.0,
           "damage": 0,
           "upgrade_time": 864000,
           "upgrade_cost": 175000,
@@ -23115,6 +23217,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 6.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23134,13 +23237,13 @@
       "production_building": "Spell Factory",
       "production_building_level": 1,
       "upgrade_resource": "Elixir",
-      "radius": 350,
       "housing_space": 1,
       "is_seasonal": true,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23150,6 +23253,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23159,6 +23263,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23168,6 +23273,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23177,6 +23283,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23186,6 +23293,7 @@
         {
           "level": 6,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23195,6 +23303,7 @@
         {
           "level": 7,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23204,6 +23313,7 @@
         {
           "level": 8,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23213,6 +23323,7 @@
         {
           "level": 9,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23222,6 +23333,7 @@
         {
           "level": 10,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23231,6 +23343,7 @@
         {
           "level": 11,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23240,6 +23353,7 @@
         {
           "level": 12,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23249,6 +23363,7 @@
         {
           "level": 13,
           "duration": 0,
+          "radius": 3.5,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23268,12 +23383,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 8,
       "upgrade_resource": "Elixir",
-      "radius": null,
       "housing_space": 2,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 0.0,
           "damage": 0,
           "upgrade_time": 691200,
           "upgrade_cost": 18000000,
@@ -23283,6 +23398,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 0.0,
           "damage": 0,
           "upgrade_time": 907200,
           "upgrade_cost": 19000000,
@@ -23292,6 +23408,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 0.0,
           "damage": 0,
           "upgrade_time": 993600,
           "upgrade_cost": 20000000,
@@ -23301,6 +23418,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 0.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23320,12 +23438,12 @@
       "production_building": "Dark Spell Factory",
       "production_building_level": 7,
       "upgrade_resource": "Dark Elixir",
-      "radius": 500,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 864000,
           "upgrade_cost": 140000,
@@ -23335,6 +23453,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 950400,
           "upgrade_cost": 200000,
@@ -23344,6 +23463,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 1209600,
           "upgrade_cost": 280000,
@@ -23353,6 +23473,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 1382400,
           "upgrade_cost": 320000,
@@ -23362,6 +23483,7 @@
         {
           "level": 5,
           "duration": 0,
+          "radius": 5.0,
           "damage": 0,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23381,12 +23503,12 @@
       "production_building": "Spell Factory",
       "production_building_level": 9,
       "upgrade_resource": "Elixir",
-      "radius": 600,
       "housing_space": 1,
       "levels": [
         {
           "level": 1,
           "duration": 0,
+          "radius": 6.0,
           "damage": 70,
           "upgrade_time": 1036800,
           "upgrade_cost": 21000000,
@@ -23396,6 +23518,7 @@
         {
           "level": 2,
           "duration": 0,
+          "radius": 6.0,
           "damage": 80,
           "upgrade_time": 1209600,
           "upgrade_cost": 22000000,
@@ -23405,6 +23528,7 @@
         {
           "level": 3,
           "duration": 0,
+          "radius": 6.0,
           "damage": 90,
           "upgrade_time": 1382400,
           "upgrade_cost": 23000000,
@@ -23414,6 +23538,7 @@
         {
           "level": 4,
           "duration": 0,
+          "radius": 6.0,
           "damage": 100,
           "upgrade_time": 0,
           "upgrade_cost": 0,
@@ -23441,7 +23566,7 @@
       "movement_speed": 200,
       "attack_speed": 1200,
       "attack_range": 100,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -24407,7 +24532,7 @@
       "movement_speed": 300,
       "attack_speed": 750,
       "attack_range": 500,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -25373,7 +25498,7 @@
       "movement_speed": 200,
       "attack_speed": 1800,
       "attack_range": 700,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -26114,7 +26239,7 @@
       "movement_speed": 200,
       "attack_speed": 1200,
       "attack_range": 125,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 1,
@@ -26450,7 +26575,7 @@
       "movement_speed": 300,
       "attack_speed": 1200,
       "attack_range": 300,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -26966,7 +27091,7 @@
       "movement_speed": 180,
       "attack_speed": 650,
       "attack_range": 600,
-      "village_type": "builderBase",
+      "village": "builderBase",
       "levels": [
         {
           "level": 15,
@@ -27176,7 +27301,7 @@
       "movement_speed": 300,
       "attack_speed": 850,
       "attack_range": 450,
-      "village_type": "home",
+      "village": "home",
       "levels": [
         {
           "level": 1,
@@ -47832,7 +47957,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000001,
@@ -47846,7 +47971,7 @@
       "max_count": 4,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000003,
@@ -47860,7 +47985,7 @@
       "max_count": 1,
       "build_resource": "Elixir",
       "build_cost": 5000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000004,
@@ -47874,7 +47999,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000005,
@@ -47888,7 +48013,7 @@
       "max_count": 4,
       "build_resource": "Elixir",
       "build_cost": 2500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000006,
@@ -47902,7 +48027,7 @@
       "max_count": 4,
       "build_resource": "Elixir",
       "build_cost": 2500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000007,
@@ -47916,7 +48041,7 @@
       "max_count": 1,
       "build_resource": "Elixir",
       "build_cost": 10000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000008,
@@ -47930,7 +48055,7 @@
       "max_count": 1,
       "build_resource": "Elixir",
       "build_cost": 15000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000009,
@@ -47944,7 +48069,7 @@
       "max_count": 1,
       "build_resource": "Elixir",
       "build_cost": 15000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000010,
@@ -47958,7 +48083,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000033,
@@ -47972,7 +48097,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 1000000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000037,
@@ -47986,7 +48111,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000038,
@@ -48000,7 +48125,7 @@
       "max_count": 4,
       "build_resource": "Builder Gold",
       "build_cost": 5000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000039,
@@ -48014,7 +48139,7 @@
       "max_count": 4,
       "build_resource": "Builder Gold",
       "build_cost": 10000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000040,
@@ -48028,7 +48153,7 @@
       "max_count": 4,
       "build_resource": "Builder Gold",
       "build_cost": 10000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000041,
@@ -48042,7 +48167,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 250,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000042,
@@ -48056,7 +48181,7 @@
       "max_count": 25,
       "build_resource": "Builder Gold",
       "build_cost": 5000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000043,
@@ -48070,7 +48195,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000044,
@@ -48084,7 +48209,7 @@
       "max_count": 3,
       "build_resource": "Builder Gold",
       "build_cost": 20000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000045,
@@ -48098,7 +48223,7 @@
       "max_count": 2,
       "build_resource": "Builder Gold",
       "build_cost": 20000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000046,
@@ -48112,7 +48237,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000047,
@@ -48126,7 +48251,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 2000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000048,
@@ -48140,7 +48265,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 1000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000049,
@@ -48154,7 +48279,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000050,
@@ -48168,7 +48293,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 250,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000051,
@@ -48182,7 +48307,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 100,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000052,
@@ -48196,7 +48321,7 @@
       "max_count": 3,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000053,
@@ -48210,7 +48335,7 @@
       "max_count": 3,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000054,
@@ -48224,7 +48349,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000055,
@@ -48238,7 +48363,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000056,
@@ -48252,7 +48377,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000057,
@@ -48266,7 +48391,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000058,
@@ -48280,7 +48405,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000059,
@@ -48294,7 +48419,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000060,
@@ -48308,7 +48433,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000061,
@@ -48322,7 +48447,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000062,
@@ -48336,7 +48461,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000063,
@@ -48350,7 +48475,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000064,
@@ -48364,7 +48489,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000065,
@@ -48378,7 +48503,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000066,
@@ -48392,7 +48517,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000067,
@@ -48406,7 +48531,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000068,
@@ -48420,7 +48545,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000069,
@@ -48434,7 +48559,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000070,
@@ -48448,7 +48573,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000071,
@@ -48462,7 +48587,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000072,
@@ -48476,7 +48601,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000073,
@@ -48490,7 +48615,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000074,
@@ -48504,7 +48629,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000075,
@@ -48518,7 +48643,7 @@
       "max_count": 2,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000076,
@@ -48532,7 +48657,7 @@
       "max_count": 4,
       "build_resource": "Builder Gold",
       "build_cost": 200000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000077,
@@ -48546,7 +48671,7 @@
       "max_count": 4,
       "build_resource": "Builder Gold",
       "build_cost": 250000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000078,
@@ -48560,7 +48685,7 @@
       "max_count": 3,
       "build_resource": "Builder Gold",
       "build_cost": 500000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000079,
@@ -48574,7 +48699,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000080,
@@ -48588,7 +48713,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 18000081,
@@ -48602,7 +48727,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000082,
@@ -48616,7 +48741,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000083,
@@ -48630,7 +48755,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000084,
@@ -48644,7 +48769,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000085,
@@ -48658,7 +48783,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000086,
@@ -48672,7 +48797,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000087,
@@ -48686,7 +48811,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000088,
@@ -48700,7 +48825,7 @@
       "max_count": 0,
       "build_resource": "Elixir",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000089,
@@ -48714,7 +48839,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000090,
@@ -48728,7 +48853,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000091,
@@ -48742,7 +48867,7 @@
       "max_count": 1,
       "build_resource": "Gold",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000092,
@@ -48756,7 +48881,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000093,
@@ -48770,7 +48895,7 @@
       "max_count": 1,
       "build_resource": "League Medals",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000094,
@@ -48784,7 +48909,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000095,
@@ -48798,7 +48923,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000096,
@@ -48812,7 +48937,7 @@
       "max_count": 3,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000097,
@@ -48826,7 +48951,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000098,
@@ -48840,7 +48965,7 @@
       "max_count": 3,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000099,
@@ -48854,7 +48979,7 @@
       "max_count": 3,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000100,
@@ -48868,7 +48993,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000101,
@@ -48882,7 +49007,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000103,
@@ -48896,7 +49021,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000109,
@@ -48910,7 +49035,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000114,
@@ -48924,7 +49049,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000115,
@@ -48938,7 +49063,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000116,
@@ -48952,7 +49077,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000117,
@@ -48966,7 +49091,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000118,
@@ -48980,7 +49105,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000119,
@@ -48994,7 +49119,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000120,
@@ -49008,7 +49133,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000121,
@@ -49022,7 +49147,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000122,
@@ -49036,7 +49161,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000123,
@@ -49050,7 +49175,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000124,
@@ -49064,7 +49189,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000125,
@@ -49078,7 +49203,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000126,
@@ -49092,7 +49217,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000127,
@@ -49106,7 +49231,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000128,
@@ -49120,7 +49245,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000129,
@@ -49134,7 +49259,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000130,
@@ -49148,7 +49273,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000131,
@@ -49162,7 +49287,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000132,
@@ -49176,7 +49301,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000133,
@@ -49190,7 +49315,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000134,
@@ -49204,7 +49329,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000135,
@@ -49218,7 +49343,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000136,
@@ -49232,7 +49357,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000137,
@@ -49246,7 +49371,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000138,
@@ -49260,7 +49385,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000139,
@@ -49274,7 +49399,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000140,
@@ -49288,7 +49413,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000141,
@@ -49302,7 +49427,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000142,
@@ -49316,7 +49441,7 @@
       "max_count": 0,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000143,
@@ -49330,7 +49455,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000144,
@@ -49344,7 +49469,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000145,
@@ -49358,7 +49483,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000146,
@@ -49372,7 +49497,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000147,
@@ -49386,7 +49511,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000148,
@@ -49400,7 +49525,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000149,
@@ -49414,7 +49539,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000150,
@@ -49428,7 +49553,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000151,
@@ -49442,7 +49567,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000152,
@@ -49456,7 +49581,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000153,
@@ -49470,7 +49595,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000154,
@@ -49484,7 +49609,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000155,
@@ -49498,7 +49623,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000156,
@@ -49512,7 +49637,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000157,
@@ -49526,7 +49651,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000158,
@@ -49540,7 +49665,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000159,
@@ -49554,7 +49679,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000160,
@@ -49568,7 +49693,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000161,
@@ -49582,7 +49707,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000162,
@@ -49596,7 +49721,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000163,
@@ -49610,7 +49735,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000164,
@@ -49624,7 +49749,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000165,
@@ -49638,7 +49763,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000166,
@@ -49652,7 +49777,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000167,
@@ -49666,7 +49791,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000168,
@@ -49680,7 +49805,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000169,
@@ -49694,7 +49819,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000170,
@@ -49708,7 +49833,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000171,
@@ -49722,7 +49847,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000172,
@@ -49736,7 +49861,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000173,
@@ -49750,7 +49875,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000174,
@@ -49764,7 +49889,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000175,
@@ -49778,7 +49903,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000176,
@@ -49792,7 +49917,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000177,
@@ -49806,7 +49931,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000178,
@@ -49820,7 +49945,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000179,
@@ -49834,7 +49959,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000180,
@@ -49848,7 +49973,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000181,
@@ -49862,7 +49987,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000182,
@@ -49876,7 +50001,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000183,
@@ -49890,7 +50015,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000184,
@@ -49904,7 +50029,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000185,
@@ -49918,7 +50043,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000186,
@@ -49932,7 +50057,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000187,
@@ -49946,7 +50071,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000188,
@@ -49960,7 +50085,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000189,
@@ -49974,7 +50099,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000190,
@@ -49988,7 +50113,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000191,
@@ -50002,7 +50127,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000192,
@@ -50016,7 +50141,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000193,
@@ -50030,7 +50155,7 @@
       "max_count": 0,
       "build_resource": "Sparky Stones",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000194,
@@ -50044,7 +50169,7 @@
       "max_count": 0,
       "build_resource": "Sparky Stones",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000195,
@@ -50058,7 +50183,7 @@
       "max_count": 0,
       "build_resource": "Sparky Stones",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000196,
@@ -50072,7 +50197,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000197,
@@ -50086,7 +50211,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000198,
@@ -50100,7 +50225,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000199,
@@ -50114,7 +50239,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000200,
@@ -50128,7 +50253,7 @@
       "max_count": 1,
       "build_resource": "Sparky Stones",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000201,
@@ -50142,7 +50267,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000202,
@@ -50156,7 +50281,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000203,
@@ -50170,7 +50295,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 18000204,
@@ -50184,7 +50309,7 @@
       "max_count": 1,
       "build_resource": "Gems",
       "build_cost": 500,
-      "village_type": "home"
+      "village": "home"
     }
   ],
   "obstacles": [
@@ -50199,7 +50324,7 @@
       "clear_cost": 2000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000001,
@@ -50212,7 +50337,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000002,
@@ -50225,7 +50350,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000003,
@@ -50238,7 +50363,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000004,
@@ -50251,7 +50376,7 @@
       "clear_cost": 250,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000005,
@@ -50264,7 +50389,7 @@
       "clear_cost": 7500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000006,
@@ -50277,7 +50402,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000007,
@@ -50290,7 +50415,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000008,
@@ -50303,7 +50428,7 @@
       "clear_cost": 100,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000009,
@@ -50316,7 +50441,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 20,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000010,
@@ -50329,7 +50454,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000011,
@@ -50342,7 +50467,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000012,
@@ -50355,7 +50480,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000013,
@@ -50368,7 +50493,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000014,
@@ -50381,7 +50506,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000015,
@@ -50394,7 +50519,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000016,
@@ -50407,7 +50532,7 @@
       "clear_cost": 10000,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000017,
@@ -50420,7 +50545,7 @@
       "clear_cost": 10000,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000018,
@@ -50433,7 +50558,7 @@
       "clear_cost": 10000,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000019,
@@ -50446,7 +50571,7 @@
       "clear_cost": 10000,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000020,
@@ -50459,7 +50584,7 @@
       "clear_cost": 10000,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000021,
@@ -50472,7 +50597,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 50000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000022,
@@ -50485,7 +50610,7 @@
       "clear_cost": 0,
       "loot_resource": "Dark Elixir",
       "loot_count": 5,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000023,
@@ -50498,7 +50623,7 @@
       "clear_cost": 0,
       "loot_resource": "Dark Elixir",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000024,
@@ -50511,7 +50636,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000025,
@@ -50524,7 +50649,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000026,
@@ -50537,7 +50662,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000027,
@@ -50550,7 +50675,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000028,
@@ -50563,7 +50688,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000029,
@@ -50576,7 +50701,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 1000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000030,
@@ -50589,7 +50714,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gems",
       "loot_count": 25,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000031,
@@ -50602,7 +50727,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000032,
@@ -50615,7 +50740,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000033,
@@ -50628,7 +50753,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 5000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000034,
@@ -50641,7 +50766,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000035,
@@ -50654,7 +50779,7 @@
       "clear_cost": 0,
       "loot_resource": null,
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000036,
@@ -50667,7 +50792,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000037,
@@ -50680,7 +50805,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000038,
@@ -50693,7 +50818,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 0,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000039,
@@ -50706,7 +50831,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000040,
@@ -50719,7 +50844,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000041,
@@ -50732,7 +50857,7 @@
       "clear_cost": 2000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000042,
@@ -50745,7 +50870,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000043,
@@ -50758,7 +50883,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000044,
@@ -50771,7 +50896,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000045,
@@ -50784,7 +50909,7 @@
       "clear_cost": 250,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000046,
@@ -50797,7 +50922,7 @@
       "clear_cost": 7500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000047,
@@ -50810,7 +50935,7 @@
       "clear_cost": 100,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000048,
@@ -50823,7 +50948,7 @@
       "clear_cost": 0,
       "loot_resource": "Builder Elixir",
       "loot_count": 20,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000049,
@@ -50836,7 +50961,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000050,
@@ -50849,7 +50974,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000051,
@@ -50862,7 +50987,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000052,
@@ -50875,7 +51000,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000053,
@@ -50888,7 +51013,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000054,
@@ -50901,7 +51026,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000055,
@@ -50914,7 +51039,7 @@
       "clear_cost": 200000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000056,
@@ -50927,7 +51052,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000057,
@@ -50940,7 +51065,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000058,
@@ -50953,7 +51078,7 @@
       "clear_cost": 2000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000059,
@@ -50966,7 +51091,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000060,
@@ -50979,7 +51104,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000061,
@@ -50992,7 +51117,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000062,
@@ -51005,7 +51130,7 @@
       "clear_cost": 500,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000063,
@@ -51018,7 +51143,7 @@
       "clear_cost": 50,
       "loot_resource": "Builder Elixir",
       "loot_count": 0,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000064,
@@ -51031,7 +51156,7 @@
       "clear_cost": 50,
       "loot_resource": "Builder Elixir",
       "loot_count": 0,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000065,
@@ -51044,7 +51169,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000066,
@@ -51057,7 +51182,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 5000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000067,
@@ -51070,7 +51195,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000068,
@@ -51083,7 +51208,7 @@
       "clear_cost": 500,
       "loot_resource": "Gold",
       "loot_count": 25000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000069,
@@ -51096,7 +51221,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000070,
@@ -51109,7 +51234,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000071,
@@ -51122,7 +51247,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000072,
@@ -51135,7 +51260,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000073,
@@ -51148,7 +51273,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000074,
@@ -51161,7 +51286,7 @@
       "clear_cost": 1000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000075,
@@ -51174,7 +51299,7 @@
       "clear_cost": 1000,
       "loot_resource": "Builder Elixir",
       "loot_count": 75000,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000076,
@@ -51187,7 +51312,7 @@
       "clear_cost": 7777,
       "loot_resource": "Elixir",
       "loot_count": 77777,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000077,
@@ -51200,7 +51325,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000078,
@@ -51213,7 +51338,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000079,
@@ -51226,7 +51351,7 @@
       "clear_cost": 7777,
       "loot_resource": "Elixir",
       "loot_count": 77777,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000080,
@@ -51239,7 +51364,7 @@
       "clear_cost": 8888,
       "loot_resource": "Gold",
       "loot_count": 88888,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000081,
@@ -51252,7 +51377,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000082,
@@ -51265,7 +51390,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000083,
@@ -51278,7 +51403,7 @@
       "clear_cost": 7777,
       "loot_resource": "Elixir",
       "loot_count": 77777,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000084,
@@ -51291,7 +51416,7 @@
       "clear_cost": 9999,
       "loot_resource": "Gold",
       "loot_count": 99999,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000085,
@@ -51304,7 +51429,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000086,
@@ -51317,7 +51442,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000087,
@@ -51330,7 +51455,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gold",
       "loot_count": 101010,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000088,
@@ -51343,7 +51468,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000089,
@@ -51356,7 +51481,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000090,
@@ -51369,7 +51494,7 @@
       "clear_cost": 7777,
       "loot_resource": "Elixir",
       "loot_count": 77777,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000091,
@@ -51382,7 +51507,7 @@
       "clear_cost": 30000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000092,
@@ -51395,7 +51520,7 @@
       "clear_cost": 80000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000093,
@@ -51408,7 +51533,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000094,
@@ -51421,7 +51546,7 @@
       "clear_cost": 15000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000095,
@@ -51434,7 +51559,7 @@
       "clear_cost": 15000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000096,
@@ -51447,7 +51572,7 @@
       "clear_cost": 40000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000097,
@@ -51460,7 +51585,7 @@
       "clear_cost": 15000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000098,
@@ -51473,7 +51598,7 @@
       "clear_cost": 15000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000099,
@@ -51486,7 +51611,7 @@
       "clear_cost": 15000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000100,
@@ -51499,7 +51624,7 @@
       "clear_cost": 30000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000101,
@@ -51512,7 +51637,7 @@
       "clear_cost": 20000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000102,
@@ -51525,7 +51650,7 @@
       "clear_cost": 10000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000103,
@@ -51538,7 +51663,7 @@
       "clear_cost": 60000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000104,
@@ -51551,7 +51676,7 @@
       "clear_cost": 60000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000105,
@@ -51564,7 +51689,7 @@
       "clear_cost": 90000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000106,
@@ -51577,7 +51702,7 @@
       "clear_cost": 60000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000107,
@@ -51590,7 +51715,7 @@
       "clear_cost": 60000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "builderBase"
+      "village": "builderBase"
     },
     {
       "_id": 8000108,
@@ -51603,7 +51728,7 @@
       "clear_cost": 1100,
       "loot_resource": "Gold",
       "loot_count": 11000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000109,
@@ -51616,7 +51741,7 @@
       "clear_cost": 0,
       "loot_resource": "Medal Event Soft Currency",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000110,
@@ -51629,7 +51754,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000111,
@@ -51642,7 +51767,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000112,
@@ -51655,7 +51780,7 @@
       "clear_cost": 0,
       "loot_resource": "Medal Event Soft Currency",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000113,
@@ -51668,7 +51793,7 @@
       "clear_cost": 8888,
       "loot_resource": "Elixir",
       "loot_count": 88888,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000114,
@@ -51681,7 +51806,7 @@
       "clear_cost": 0,
       "loot_resource": "Elixir",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000115,
@@ -51694,7 +51819,7 @@
       "clear_cost": 3600,
       "loot_resource": "Gems",
       "loot_count": 9,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000116,
@@ -51707,7 +51832,7 @@
       "clear_cost": 1200,
       "loot_resource": "Gold",
       "loot_count": 12000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000117,
@@ -51720,7 +51845,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000118,
@@ -51733,7 +51858,7 @@
       "clear_cost": 1,
       "loot_resource": "Gold",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000119,
@@ -51746,7 +51871,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000120,
@@ -51759,7 +51884,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000121,
@@ -51772,7 +51897,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000122,
@@ -51785,7 +51910,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000123,
@@ -51798,7 +51923,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000124,
@@ -51811,7 +51936,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000125,
@@ -51824,7 +51949,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000126,
@@ -51837,7 +51962,7 @@
       "clear_cost": 2000000,
       "loot_resource": "Gems",
       "loot_count": null,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000127,
@@ -51850,7 +51975,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000128,
@@ -51863,7 +51988,7 @@
       "clear_cost": 888,
       "loot_resource": "Elixir",
       "loot_count": 8888,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000129,
@@ -51876,7 +52001,7 @@
       "clear_cost": 41,
       "loot_resource": "Gold",
       "loot_count": 41000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000130,
@@ -51889,7 +52014,7 @@
       "clear_cost": 0,
       "loot_resource": "Gold",
       "loot_count": 1,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000131,
@@ -51902,7 +52027,7 @@
       "clear_cost": 13,
       "loot_resource": "Gold",
       "loot_count": 13000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000132,
@@ -51915,7 +52040,7 @@
       "clear_cost": 18181,
       "loot_resource": "Shiny Ore",
       "loot_count": 181,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000133,
@@ -51928,7 +52053,7 @@
       "clear_cost": 18181,
       "loot_resource": "Glowy Ore",
       "loot_count": 18,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000134,
@@ -51941,7 +52066,7 @@
       "clear_cost": 181,
       "loot_resource": "Starry Ore",
       "loot_count": 2,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000135,
@@ -51954,7 +52079,7 @@
       "clear_cost": 25000,
       "loot_resource": "Elixir",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000136,
@@ -51967,7 +52092,7 @@
       "clear_cost": 888,
       "loot_resource": "Elixir",
       "loot_count": 8888,
-      "village_type": "home"
+      "village": "home"
     },
     {
       "_id": 8000137,
@@ -51980,7 +52105,7 @@
       "clear_cost": 25000,
       "loot_resource": "Gold",
       "loot_count": 75000,
-      "village_type": "home"
+      "village": "home"
     }
   ],
   "sceneries": [
@@ -61245,6 +61370,1920 @@
             "glowy_ore": 65,
             "starry_ore": 2
           }
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "name": "Bigger Coffers",
+      "info": "Upgrade a Gold Storage to level <number>",
+      "completed_message": "Highest Gold Storage level: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_GOLDSTORAGE_TITLE",
+        "info": "TID_ACHIEVEMENT_GOLDSTORAGE_UPGRADE",
+        "completed_message": "TID_ACHIEVEMENT_GOLDSTORAGE_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 2,
+          "action_data": "Gold Storage",
+          "xp": 10,
+          "gems": 2
+        },
+        {
+          "level": 2,
+          "action_count": 5,
+          "action_data": "Gold Storage",
+          "xp": 100,
+          "gems": 5
+        },
+        {
+          "level": 3,
+          "action_count": 10,
+          "action_data": "Gold Storage",
+          "xp": 1000,
+          "gems": 10
+        }
+      ]
+    },
+    {
+      "name": "Get those Goblins!",
+      "info": "Win <number> Stars on the Campaign Map",
+      "completed_message": "Stars in Campaign Map: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_NPC_STARS_TITLE",
+        "info": "TID_ACHIEVEMENT_NPC_STARS",
+        "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 50,
+          "action_data": null,
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 150,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Bigger & Better",
+      "info": "Upgrade Town Hall to level <number>",
+      "completed_message": "Current Town Hall level: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_TOWN_HALL_TITLE",
+        "info": "TID_ACHIEVEMENT_TOWN_HALL",
+        "completed_message": "TID_ACHIEVEMENT_TOWN_HALL_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 3,
+          "action_data": "Town Hall",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 5,
+          "action_data": "Town Hall",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 8,
+          "action_data": "Town Hall",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Nice and Tidy",
+      "info": "Remove <number> obstacles (trees, rocks, bushes)",
+      "completed_message": "Total obstacles removed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_CLEAR_OBSTACLES_TITLE",
+        "info": "TID_ACHIEVEMENT_CLEAR_OBSTACLES",
+        "completed_message": "TID_ACHIEVEMENT_CLEAR_OBSTACLES_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 5,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 50,
+          "action_data": null,
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 500,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Discover New Troops",
+      "info": "Unlock <name> in the Barracks",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_UNIT_UNLOCK_TITLE",
+        "info": "TID_ACHIEVEMENT_UNIT_UNLOCK",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Archer",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 1,
+          "action_data": "Wall Breaker",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 1,
+          "action_data": "Dragon",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Gold Grab",
+      "info": "Steal <number> Gold",
+      "completed_message": "Total Gold looted: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_LOOT_GOLD_TITLE",
+        "info": "TID_ACHIEVEMENT_LOOT_GOLD",
+        "completed_message": "TID_ACHIEVEMENT_LOOT_GOLD_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20000,
+          "action_data": "Gold",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 1000000,
+          "action_data": "Gold",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 100000000,
+          "action_data": "Gold",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Elixir Escapade",
+      "info": "Steal <number> elixir",
+      "completed_message": "Total Elixir looted: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_LOOT_ELIXIR_TITLE",
+        "info": "TID_ACHIEVEMENT_LOOT_ELIXIR",
+        "completed_message": "TID_ACHIEVEMENT_LOOT_ELIXIR_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20000,
+          "action_data": "Elixir",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 1000000,
+          "action_data": "Elixir",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 100000000,
+          "action_data": "Elixir",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Sweet Victory!",
+      "info": "Achieve a total of <number> trophies in Multiplayer battles",
+      "completed_message": "Trophy record: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_VICTORY_POINTS_TITLE",
+        "info": "TID_ACHIEVEMENT_VICTORY_POINTS",
+        "completed_message": "TID_ACHIEVEMENT_VICTORY_POINTS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 75,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 750,
+          "action_data": null,
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 1250,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 450
+        }
+      ]
+    },
+    {
+      "name": "Empire Builder",
+      "info": "Rebuild the Clan Castle",
+      "completed_message": "Current Clan Castle level: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_CASTLE_TITLE",
+        "info": "TID_ACHIEVEMENT_CASTLE_REPAIR",
+        "completed_message": "TID_ACHIEVEMENT_CASTLE_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Alliance Castle",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 2,
+          "action_data": "Alliance Castle",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 4,
+          "action_data": "Alliance Castle",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Wall Buster",
+      "info": "Destroy <number> Walls in Multiplayer battles",
+      "completed_message": "Total Walls destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_WALLS_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_WALLS",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_WALLS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": "Wall",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": "Wall",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Wall",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Humiliator",
+      "info": "Destroy <number> Town Halls in Multiplayer battles",
+      "completed_message": "Total Town Halls destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_TOWNHALL_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_TOWNHALL",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_TOWNHALL_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": "Town Hall",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": "Town Hall",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Town Hall",
+          "xp": 1000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Union Buster",
+      "info": "Destroy <number> Builder's Huts in Multiplayer battles",
+      "completed_message": "Total Builder's Huts destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_BUILDER_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_BUILDER",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_BUILDER_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 25,
+          "action_data": "Worker Building",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": "Worker Building",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 2500,
+          "action_data": "Worker Building",
+          "xp": 1000,
+          "gems": 30
+        }
+      ]
+    },
+    {
+      "name": "Conqueror",
+      "info": "Win <number> Multiplayer battles",
+      "completed_message": "Total multiplayer battles won: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_PVP_ATTACKS_TITLE",
+        "info": "TID_ACHIEVEMENT_PVP_ATTACKS",
+        "completed_message": "TID_ACHIEVEMENT_PVP_ATTACKS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 25,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": null,
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Unbreakable",
+      "info": "Successfully defend against <number> attacks",
+      "completed_message": "Total defenses won: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_PVP_DEFENSES_TITLE",
+        "info": "TID_ACHIEVEMENT_PVP_DEFENSES",
+        "completed_message": "TID_ACHIEVEMENT_PVP_DEFENSES_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": null,
+          "xp": 100,
+          "gems": 50
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 100
+        }
+      ]
+    },
+    {
+      "name": "Friend in Need",
+      "info": "Donate <number> capacity worth of reinforcements to Clanmates",
+      "completed_message": "Total capacity donated: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DONATE_UNITS_TITLE",
+        "info": "TID_ACHIEVEMENT_DONATE_UNITS",
+        "completed_message": "TID_ACHIEVEMENT_DONATE_UNITS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 100,
+          "action_data": null,
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 5000,
+          "action_data": null,
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 3,
+          "action_count": 25000,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Mortar Mauler",
+      "info": "Destroy <number> Mortars in Multiplayer battles",
+      "completed_message": "Total Mortars destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_MORTARS_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_MORTARS",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_MORTARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 25,
+          "action_data": "Mortar",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 500,
+          "action_data": "Mortar",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": "Mortar",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Heroic Heist",
+      "info": "Steal <number> Dark Elixir",
+      "completed_message": "Total Dark Elixir looted: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_LOOT_DARK_ELIXIR_TITLE",
+        "info": "TID_ACHIEVEMENT_LOOT_DARK_ELIXIR",
+        "completed_message": "TID_ACHIEVEMENT_LOOT_DARK_ELIXIR_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20000,
+          "action_data": "DarkElixir",
+          "xp": 10,
+          "gems": 5
+        },
+        {
+          "level": 2,
+          "action_count": 250000,
+          "action_data": "DarkElixir",
+          "xp": 100,
+          "gems": 10
+        },
+        {
+          "level": 3,
+          "action_count": 1000000,
+          "action_data": "DarkElixir",
+          "xp": 1000,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "League All-Star",
+      "info": "Join the Crystal League",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_LEAGUE_TITLE",
+        "info": "TID_ACHIEVEMENT_LEAGUE_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": null,
+          "xp": 100,
+          "gems": 250
+        },
+        {
+          "level": 2,
+          "action_count": 13,
+          "action_data": null,
+          "xp": 500,
+          "gems": 1000
+        },
+        {
+          "level": 3,
+          "action_count": 16,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 2000
+        }
+      ]
+    },
+    {
+      "name": "X-Bow Exterminator",
+      "info": "Destroy one X-Bow in a Multiplayer battle",
+      "completed_message": "Total X-Bows destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_XBOW_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_XBOW_ONE",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_XBOW_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Bow",
+          "xp": 50,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": "Bow",
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 2500,
+          "action_data": "Bow",
+          "xp": 1000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "Firefighter",
+      "info": "Destroy <number> Inferno Towers in Multiplayer battles",
+      "completed_message": "Total Inferno Towers destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_INFERNO_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_INFERNO",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_INFERNO_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": "Dark Tower",
+          "xp": 50,
+          "gems": 100
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": "Dark Tower",
+          "xp": 500,
+          "gems": 200
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": "Dark Tower",
+          "xp": 5000,
+          "gems": 1000
+        }
+      ]
+    },
+    {
+      "name": "War Hero",
+      "info": "Score <number> Stars for your clan in Clan War battles",
+      "completed_message": "Total Stars scored for clan in Clan War battles: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_WAR_STARS_TITLE",
+        "info": "TID_ACHIEVEMENT_WAR_STARS",
+        "completed_message": "TID_ACHIEVEMENT_WAR_STARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": null,
+          "xp": 50,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 150,
+          "action_data": null,
+          "xp": 500,
+          "gems": 200
+        },
+        {
+          "level": 3,
+          "action_count": 1000,
+          "action_data": null,
+          "xp": 5000,
+          "gems": 1000
+        }
+      ]
+    },
+    {
+      "name": "Clan War Wealth",
+      "info": "Collect <number> Gold from the Clan Castle",
+      "completed_message": "Total Gold collected in Clan War bonuses: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_WAR_LOOT_TITLE",
+        "info": "TID_ACHIEVEMENT_WAR_LOOT",
+        "completed_message": "TID_ACHIEVEMENT_WAR_LOOT_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 800000,
+          "action_data": null,
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 15000000,
+          "action_data": null,
+          "xp": 500,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 100000000,
+          "action_data": null,
+          "xp": 5000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Anti-Artillery",
+      "info": "Destroy <number> Eagle or Inferno Artilleries in Multiplayer battles",
+      "completed_message": "Total Eagle or Inferno Artilleries destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_ARTILLERY_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_ARTILLERY",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_ARTILLERY_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": "Ancient Artillery",
+          "xp": 100,
+          "gems": 150
+        },
+        {
+          "level": 2,
+          "action_count": 200,
+          "action_data": "Ancient Artillery",
+          "xp": 800,
+          "gems": 300
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Ancient Artillery",
+          "xp": 5000,
+          "gems": 1000
+        }
+      ]
+    },
+    {
+      "name": "Sharing is caring",
+      "info": "Donate <number> Spell storage capacity worth of Spells",
+      "completed_message": "Total Spell capacity donated: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_SPELL_DONATION_TITLE",
+        "info": "TID_ACHIEVEMENT_SPELL_DONATION",
+        "completed_message": "TID_ACHIEVEMENT_SPELL_DONATION_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 100,
+          "action_data": null,
+          "xp": 20,
+          "gems": 20
+        },
+        {
+          "level": 2,
+          "action_count": 2000,
+          "action_data": null,
+          "xp": 200,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 10000,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Keep Your Account Safe!",
+      "info": "Protect your Village by connecting to a social network",
+      "completed_message": "Completed!",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_ACCOUNT_BOUND_TITLE",
+        "info": "TID_ACHIEVEMENT_ACCOUNT_BOUND",
+        "completed_message": "TID_ACHIEVEMENT_ACCOUNT_BOUND_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": null,
+          "xp": 100,
+          "gems": 50
+        },
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": null,
+          "xp": 100,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Master Engineering",
+      "info": "Upgrade Builder Hall to level <number>",
+      "completed_message": "Current Builder Hall level: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_TOWN_HALL2_TITLE",
+        "info": "TID_ACHIEVEMENT_TOWN_HALL2",
+        "completed_message": "TID_ACHIEVEMENT_TOWN_HALL2_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 3,
+          "action_data": "Town Hall2",
+          "xp": 20,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 5,
+          "action_data": "Town Hall2",
+          "xp": 200,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 8,
+          "action_data": "Town Hall2",
+          "xp": 2000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Next Generation Model",
+      "info": "Unlock <name> in the Builder Barracks",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_UNIT_UNLOCK2_TITLE",
+        "info": "TID_ACHIEVEMENT_UNIT_UNLOCK2",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Archer2",
+          "xp": 20,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 1,
+          "action_data": "Moving Cannon",
+          "xp": 200,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 1,
+          "action_data": "PEKKA2",
+          "xp": 2000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Un-Build It",
+      "info": "Destroy <number> Builder Halls in Builder Battles",
+      "completed_message": "Total Builder Halls destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_TOWNHALL2_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_TOWNHALL2",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_TOWNHALL2_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 5,
+          "action_data": "Town Hall2",
+          "xp": 20,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": "Town Hall2",
+          "xp": 200,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Town Hall2",
+          "xp": 2000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Champion Builder",
+      "info": "Achieve a total of <number> trophies in Builder Battles",
+      "completed_message": "Builder Trophy record: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_VS_BATTLE_TROPHIES_TITLE",
+        "info": "TID_ACHIEVEMENT_VS_BATTLE_TROPHIES",
+        "completed_message": "TID_ACHIEVEMENT_VS_BATTLE_TROPHIES_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 200,
+          "action_data": null,
+          "xp": 50,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 1000,
+          "action_data": null,
+          "xp": 500,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 3000,
+          "action_data": null,
+          "xp": 5000,
+          "gems": 1000
+        }
+      ]
+    },
+    {
+      "name": "High Gear",
+      "info": "Gear Up one building using the Master Builder",
+      "completed_message": "Total buildings geared up: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_GEAR_UP_TITLE",
+        "info": "TID_ACHIEVEMENT_GEAR_UP_ONE",
+        "completed_message": "TID_ACHIEVEMENT_GEAR_UP_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": null,
+          "xp": 20,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 2,
+          "action_data": null,
+          "xp": 200,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 3,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Hidden Treasures",
+      "info": "Rebuild <name>",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_REPAIR_BUILDING_TITLE",
+        "info": "TID_ACHIEVEMENT_REPAIR_BUILDING",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Gem Mine",
+          "xp": 20,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 1,
+          "action_data": "Clock Tower",
+          "xp": 200,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 1,
+          "action_data": "Hero Altar Warmachine",
+          "xp": 2000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Games Champion",
+      "info": "Earn <number> points in Clan Games",
+      "completed_message": "Total Clan Games points: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_CLAN_GAMES_POINTS_TITLE",
+        "info": "TID_ACHIEVEMENT_CLAN_GAMES_POINTS",
+        "completed_message": "TID_ACHIEVEMENT_CLAN_GAMES_POINTS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10000,
+          "action_data": null,
+          "xp": 20,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 50000,
+          "action_data": null,
+          "xp": 200,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 100000,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Get those other Goblins!",
+      "info": "Win <number> Stars on the Campaign Map",
+      "completed_message": "Stars in Campaign Map: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_NPC_STARS_MORE_TITLE",
+        "info": "TID_ACHIEVEMENT_NPC_STARS",
+        "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 175,
+          "action_data": null,
+          "xp": 200,
+          "gems": 20
+        },
+        {
+          "level": 2,
+          "action_count": 200,
+          "action_data": null,
+          "xp": 500,
+          "gems": 50
+        },
+        {
+          "level": 3,
+          "action_count": 225,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 100
+        }
+      ]
+    },
+    {
+      "name": "Dragon Slayer",
+      "info": "Slay the Giant Dragon on the Campaign Map",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DRAGON_SLAYER_TITLE",
+        "info": "TID_ACHIEVEMENT_DRAGON_SLAYER",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "GoblinDragon",
+          "xp": 200,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "War League Legend",
+      "info": "Score <number> Stars for your clan in War League battles",
+      "completed_message": "Total Stars scored for clan in War League battles: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_WL_STARS_TITLE",
+        "info": "TID_ACHIEVEMENT_WL_STARS",
+        "completed_message": "TID_ACHIEVEMENT_WL_STARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": null,
+          "xp": 200,
+          "gems": 20
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 250,
+          "action_data": null,
+          "xp": 2500,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Well Seasoned",
+      "info": "Earn <number> points in Season Challenges",
+      "completed_message": "Total Season Challenges points: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_SEASON_CHALLENGE_POINTS_TITLE",
+        "info": "TID_ACHIEVEMENT_SEASON_CHALLENGE_POINTS",
+        "completed_message": "TID_ACHIEVEMENT_SEASON_CHALLENGE_POINTS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 5000,
+          "action_data": null,
+          "xp": 20,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 15000,
+          "action_data": null,
+          "xp": 200,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 50000,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Shattered and Scattered",
+      "info": "Destroy <number> Scattershots in Multiplayer battles",
+      "completed_message": "Total Scattershots destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_SCATTERSHOT_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_SCATTERSHOT",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_SCATTERSHOT_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 40,
+          "action_data": "Scattershot",
+          "xp": 100,
+          "gems": 150
+        },
+        {
+          "level": 2,
+          "action_count": 400,
+          "action_data": "Scattershot",
+          "xp": 800,
+          "gems": 300
+        },
+        {
+          "level": 3,
+          "action_count": 4000,
+          "action_data": "Scattershot",
+          "xp": 5000,
+          "gems": 1000
+        }
+      ]
+    },
+    {
+      "name": "Not So Easy This Time",
+      "info": "Destroy <number> weaponized Town Halls in Multiplayer battles",
+      "completed_message": "Weaponized Town Halls destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_TH_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_TH",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_TH_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 10,
+          "action_data": "Town Hall",
+          "xp": 100,
+          "gems": 20
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": "Town Hall",
+          "xp": 800,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Town Hall",
+          "xp": 5000,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Bust This!",
+      "info": "Destroy <number> weaponized Builder's Huts in Multiplayer battles",
+      "completed_message": "Total weaponized Builder's Huts destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_BUILDERS_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_BUILDERS",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_BUILDERS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 25,
+          "action_data": "Worker Building",
+          "xp": 10,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 250,
+          "action_data": "Worker Building",
+          "xp": 100,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 2500,
+          "action_data": "Worker Building",
+          "xp": 1000,
+          "gems": 100
+        }
+      ]
+    },
+    {
+      "name": "Superb Work",
+      "info": "Boost a Super Troop <number> times",
+      "completed_message": "Total times Super Troops boosted: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_ACTIVATE_SUPER_TROOP_TITLE",
+        "info": "TID_ACHIEVEMENT_ACTIVATE_SUPER_TROOP",
+        "completed_message": "TID_ACHIEVEMENT_ACTIVATE_SUPER_TROOP_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": null,
+          "xp": 10,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 100,
+          "action_data": null,
+          "xp": 100,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 250,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 100
+        }
+      ]
+    },
+    {
+      "name": "Siege Sharer",
+      "info": "Donate <number> Siege Machines",
+      "completed_message": "Total Siege Machines donated: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DONATE_SIEGES_TITLE",
+        "info": "TID_ACHIEVEMENT_DONATE_SIEGES",
+        "completed_message": "TID_ACHIEVEMENT_DONATE_SEIGES_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 50,
+          "action_data": null,
+          "xp": 20,
+          "gems": 20
+        },
+        {
+          "level": 2,
+          "action_count": 1000,
+          "action_data": null,
+          "xp": 200,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Aggressive Capitalism",
+      "info": "Loot <number> Capital Gold during Raid attacks",
+      "completed_message": "Total Capital Gold looted: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_LOOT_CAPITAL_TITLE",
+        "info": "TID_ACHIEVEMENT_LOOT_CAPITAL",
+        "completed_message": "TID_ACHIEVEMENT_LOOT_CAPITAL_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20000,
+          "action_data": "CapitalResource",
+          "xp": 10,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 250000,
+          "action_data": "CapitalResource",
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 1000000,
+          "action_data": "CapitalResource",
+          "xp": 1000,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "Most Valuable Clanmate",
+      "info": "Contribute <number> Capital Gold to upgrades in the Clan Capital",
+      "completed_message": "Total Capital Gold contributed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DONATE_CAPITAL_TITLE",
+        "info": "TID_ACHIEVEMENT_DONATE_CAPITAL",
+        "completed_message": "TID_ACHIEVEMENT_DONATE_CAPITAL_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 40000,
+          "action_data": null,
+          "xp": 20,
+          "gems": 75
+        },
+        {
+          "level": 2,
+          "action_count": 500000,
+          "action_data": null,
+          "xp": 200,
+          "gems": 150
+        },
+        {
+          "level": 3,
+          "action_count": 2000000,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Get even more Goblins!",
+      "info": "Win <number> Stars on the Campaign Map",
+      "completed_message": "Stars in Campaign Map: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_NPC_STARS3_TITLE",
+        "info": "TID_ACHIEVEMENT_NPC_STARS",
+        "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 240,
+          "action_data": null,
+          "xp": 500,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 255,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 270,
+          "action_data": null,
+          "xp": 2000,
+          "gems": 150
+        }
+      ]
+    },
+    {
+      "name": "Counterspell",
+      "info": "Destroy <number> Spell Towers in Multiplayer Battles",
+      "completed_message": "Total Spell Towers Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_SPELL_TOWER_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_SPELL_TOWER",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_SPELL_TOWER_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 40,
+          "action_data": "Spell Tower",
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 2,
+          "action_count": 400,
+          "action_data": "Spell Tower",
+          "xp": 800,
+          "gems": 250
+        },
+        {
+          "level": 3,
+          "action_count": 4000,
+          "action_data": "Spell Tower",
+          "xp": 5000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Monolith Masher",
+      "info": "Destroy <number> Monoliths in Multiplayer Battles",
+      "completed_message": "Total Monoliths Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_MONOLITH_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_MONOLITH",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_MONOLITH_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": "Monolith",
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 2,
+          "action_count": 200,
+          "action_data": "Monolith",
+          "xp": 800,
+          "gems": 250
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Monolith",
+          "xp": 5000,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "Ungrateful Child",
+      "info": "Defeat M.O.M.M.A on the Campaign Map",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_PEKKA_SLAYER_TITLE",
+        "info": "TID_ACHIEVEMENT_PEKKA_SLAYER",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 1,
+          "action_data": "Giant PEKKA",
+          "xp": 200,
+          "gems": 20
+        }
+      ]
+    },
+    {
+      "name": "Supercharger",
+      "info": "Supercharge buildings <number> times",
+      "completed_message": "Total Supercharges: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_MINI_LEVEL_TITLE",
+        "info": "TID_ACHIEVEMENT_MINI_LEVEL",
+        "completed_message": "TID_ACHIEVEMENT_MINI_LEVEL_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 5,
+          "action_data": null,
+          "xp": 10,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 25,
+          "action_data": null,
+          "xp": 100,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 75,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Multi-Archer Tower Terminator",
+      "info": "Destroy <number> Multi-Archer Towers in Multiplayer Battles",
+      "completed_message": "Total Multi-Archer Towers Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 50,
+          "action_data": "Merged Archer Tower",
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 500,
+          "action_data": "Merged Archer Tower",
+          "xp": 800,
+          "gems": 75
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": "Merged Archer Tower",
+          "xp": 5000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "Ricochet Cannon Crusher",
+      "info": "Destroy <number> Ricochet Cannons in Multiplayer Battles",
+      "completed_message": "Total Ricochet Cannons Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 50,
+          "action_data": "Merged Cannon",
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 500,
+          "action_data": "Merged Cannon",
+          "xp": 800,
+          "gems": 75
+        },
+        {
+          "level": 3,
+          "action_count": 5000,
+          "action_data": "Merged Cannon",
+          "xp": 5000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "Firespitter Finisher",
+      "info": "Destroy <number> Firespitters in Multiplayer Battles",
+      "completed_message": "Total Firespitters Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 40,
+          "action_data": "Firespitter",
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 400,
+          "action_data": "Firespitter",
+          "xp": 800,
+          "gems": 75
+        },
+        {
+          "level": 3,
+          "action_count": 4000,
+          "action_data": "Firespitter",
+          "xp": 5000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "Multi-Gear Tower Trampler",
+      "info": "Destroy <number> Multi-Gear Towers in Multiplayer Battles",
+      "completed_message": "Total Multi-Gear Towers Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": "Merged Archer Cannon",
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 200,
+          "action_data": "Merged Archer Cannon",
+          "xp": 800,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "Merged Archer Cannon",
+          "xp": 5000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "Crafting Connoisseur",
+      "info": "Upgrade Crafted Defenses <number> times",
+      "completed_message": "Total Crafted Defense upgrades: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_SEASONAL_DEFENSE_TITLE",
+        "info": "TID_ACHIEVEMENT_SEASONAL_DEFENSE",
+        "completed_message": "TID_ACHIEVEMENT_SEASONAL_DEFENSE_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 5,
+          "action_data": null,
+          "xp": 10,
+          "gems": 10
+        },
+        {
+          "level": 2,
+          "action_count": 25,
+          "action_data": null,
+          "xp": 100,
+          "gems": 30
+        },
+        {
+          "level": 3,
+          "action_count": 75,
+          "action_data": null,
+          "xp": 1000,
+          "gems": 50
+        }
+      ]
+    },
+    {
+      "name": "Crafter\u2019s Nightmare",
+      "info": "Destroy <number> Crafted Defenses in Multiplayer Battles",
+      "completed_message": "Total Crafted Defenses Destroyed: <value>",
+      "TID": {
+        "name": "TID_ACHIEVEMENT_DESTROY_SEASONAL_DEFENSE_TITLE",
+        "info": "TID_ACHIEVEMENT_DESTROY_SEASONAL_DEFENSE",
+        "completed_message": "TID_ACHIEVEMENT_DESTROY_SEASONAL_DEFENSE_COMPLETED"
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 20,
+          "action_data": "SeasonalDefensePlatform",
+          "xp": 100,
+          "gems": 25
+        },
+        {
+          "level": 2,
+          "action_count": 200,
+          "action_data": "SeasonalDefensePlatform",
+          "xp": 800,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 2000,
+          "action_data": "SeasonalDefensePlatform",
+          "xp": 5000,
+          "gems": 200
+        }
+      ]
+    },
+    {
+      "name": "League Follower",
+      "info": "Reach League Barbarian 6",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_RANKED_TITLE_1",
+        "info": "TID_ACHIEVEMENT_RANKED_1_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 6,
+          "action_data": null,
+          "xp": 50,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 9,
+          "action_data": null,
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 12,
+          "action_data": null,
+          "xp": 250,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "League Enthusiast",
+      "info": "Reach League Valkyrie 15",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_RANKED_TITLE_2",
+        "info": "TID_ACHIEVEMENT_RANKED_2_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 15,
+          "action_data": null,
+          "xp": 50,
+          "gems": 50
+        },
+        {
+          "level": 2,
+          "action_count": 18,
+          "action_data": null,
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 3,
+          "action_count": 21,
+          "action_data": null,
+          "xp": 250,
+          "gems": 250
+        }
+      ]
+    },
+    {
+      "name": "League Superfan",
+      "info": "Reach League P.E.K.K.A 24",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_RANKED_TITLE_3",
+        "info": "TID_ACHIEVEMENT_RANKED_3_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 24,
+          "action_data": null,
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 2,
+          "action_count": 27,
+          "action_data": null,
+          "xp": 250,
+          "gems": 250
+        },
+        {
+          "level": 3,
+          "action_count": 28,
+          "action_data": null,
+          "xp": 500,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "League Fanatic",
+      "info": "Reach League Dragon 29",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_RANKED_TITLE_4",
+        "info": "TID_ACHIEVEMENT_RANKED_4_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 29,
+          "action_data": null,
+          "xp": 100,
+          "gems": 100
+        },
+        {
+          "level": 2,
+          "action_count": 30,
+          "action_data": null,
+          "xp": 250,
+          "gems": 250
+        },
+        {
+          "level": 3,
+          "action_count": 31,
+          "action_data": null,
+          "xp": 500,
+          "gems": 500
+        }
+      ]
+    },
+    {
+      "name": "League Master",
+      "info": "Reach League Electro 32",
+      "completed_message": null,
+      "TID": {
+        "name": "TID_ACHIEVEMENT_RANKED_TITLE_5",
+        "info": "TID_ACHIEVEMENT_RANKED_5_PROGRESS_1",
+        "completed_message": null
+      },
+      "levels": [
+        {
+          "level": 1,
+          "action_count": 32,
+          "action_data": null,
+          "xp": 250,
+          "gems": 250
+        },
+        {
+          "level": 2,
+          "action_count": 33,
+          "action_data": null,
+          "xp": 350,
+          "gems": 350
+        },
+        {
+          "level": 3,
+          "action_count": 34,
+          "action_data": null,
+          "xp": 500,
+          "gems": 500
         }
       ]
     }
