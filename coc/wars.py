@@ -38,8 +38,6 @@ from .war_attack import WarAttack
 if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .war_members import ClanWarMember  # noqa
-    from .client import Client
-
 
 class ClanWar:
     """Represents a Current Clash of Clans War

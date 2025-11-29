@@ -46,15 +46,13 @@ from .iterators import (
     SeasonIterator
 )
 from .players import Player, ClanMember, RankedPlayer
+from .hero import Hero, Pet, Equipment
+from .spell import Spell
+from .troop import Troop
 from .raid import RaidLogEntry
 from .utils import correct_tag, get
 from .wars import ClanWar, ClanWarLogEntry, ClanWarLeagueGroup, ExtendedCWLGroup
 from .entry_logs import ClanWarLog, RaidLog
-
-if TYPE_CHECKING:
-    from .hero import Hero, Pet, Equipment
-    from .spell import Spell
-    from .troop import Troop
 
 
 LOG = logging.getLogger(__name__)
