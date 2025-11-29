@@ -38,10 +38,11 @@ class Troop(LeveledUnit):
             self.attack_range: int = static_data["attack_range"]
             self.housing_space: int = static_data["housing_space"]
 
-            self.village = VillageType(value=static_data["village_type"])
+            self.village = VillageType(value=static_data["village"])
             self.max_level = len(static_data["levels"])
 
             self.is_super_troop: bool = "super_troop" in static_data
+            self.is_seasonal: bool = static_data.get("is_seasonal", False)
 
             if self.is_super_troop:
                 self.base_troop_id: int = static_data["super_troop"]["original_id"]

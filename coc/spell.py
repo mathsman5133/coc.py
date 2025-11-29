@@ -27,8 +27,9 @@ class Spell(LeveledUnit):
             self.production_building_level: int = static_data["production_building_level"]
             self.upgrade_resource = Resource(value=static_data["upgrade_resource"])
 
-            self.radius: int = static_data["radius"]
             self.housing_space: int = static_data["housing_space"]
+
+            self.is_seasonal: bool = static_data.get("is_seasonal", False)
 
             self.village = VillageType.home
             self.max_level: int = len(static_data["levels"])
@@ -44,6 +45,7 @@ class Spell(LeveledUnit):
 
         self.duration = TimeDelta(seconds=level_data["duration"])
         self.damage: int = level_data["damage"]
+        self.radius: float = level_data["radius"]
         self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
         self.upgrade_cost: int = level_data["upgrade_cost"]
         self.required_lab_level: int = level_data["required_lab_level"]

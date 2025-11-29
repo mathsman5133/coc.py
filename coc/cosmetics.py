@@ -1,6 +1,6 @@
 
 from .abc import BaseDataClass
-from .enums import Resource, PlayerHouseElementType, VillageType
+from .enums import Resource, PlayerHouseElementType, VillageType, SceneryType
 from .miscmodels import TID
 
 
@@ -15,7 +15,7 @@ class Decoration(BaseDataClass):
         self.max_count: int = data["max_count"]
         self.build_resource: Resource = Resource(value=data["build_resource"])
         self.build_cost: int = data["build_cost"]
-        self.village_type = VillageType(value=data["village_type"])
+        self.village = VillageType(value=data["village"])
 
 class Obstacle(BaseDataClass):
     def __init__(self, data: dict):
@@ -27,14 +27,14 @@ class Obstacle(BaseDataClass):
         self.clear_cost: int = data["clear_cost"]
         self.loot_resource : Resource | None = Resource(value=data["loot_resource"]) if "loot_resource" in data else None
         self.loot_count: int | None = data["loot_count"]
-        self.village_type = VillageType(value=data["village_type"])
+        self.village = VillageType(value=data["village"])
 
 class Scenery(BaseDataClass):
     def __init__(self, data: dict):
         self.id: int = data["_id"]
         self.name: str = data["name"]
         self.TID: TID = TID(data=data["TID"])
-        self.type: str = data["type"]
+        self.village = SceneryType(value=data["type"])
         self.has_music: bool = data["music"] is not None
 
 class Skin(BaseDataClass):

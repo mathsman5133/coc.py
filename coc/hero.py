@@ -34,7 +34,7 @@ class Hero(LeveledUnit):
             self.attack_speed: int = static_data["attack_speed"]
             self.attack_range: int = static_data["attack_range"]
 
-            self.village = VillageType(value=static_data["village_type"])
+            self.village = VillageType(value=static_data["village"])
             self.max_level: int = len(static_data["levels"])
 
             self._load_level_data()
