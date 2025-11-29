@@ -66,6 +66,7 @@ coc.py: A Clash of Clans API Wrapper
 
    miscellaneous/index
    miscellaneous/changelog
+   miscellaneous/migrating_to_v4
    miscellaneous/migrating_to_v3
    miscellaneous/migrating_to_v2
    miscellaneous/migrating_to_v1

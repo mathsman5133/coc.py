@@ -171,6 +171,8 @@ class Client:
     ----------
     loop : :class:`asyncio.AbstractEventLoop`
         The loop that is used for HTTP requests
+    static_data : :class:`StaticData`
+        The full static game data loaded from game files
     """
 
     __slots__ = (
