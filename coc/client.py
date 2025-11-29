@@ -355,8 +355,6 @@ class Client:
         )
 
     def _load_holders(self):
-        if self.load_game_data.never:
-            return
 
         with open(TRANSLATION_PATH, 'rb') as fp:
             self._translations = orjson.loads(fp.read())
@@ -369,7 +367,7 @@ class Client:
                 for item in items:
                     id_mapped_static_data[item['_id']] = item
                     if section == "troops":
-                        self._name_to_id_mapping[(item['name'], section, item.get("village_type"))] = item['_id']
+                        self._name_to_id_mapping[(item['name'], section, item.get("village"))] = item['_id']
                     else:
                         self._name_to_id_mapping[(item['name'], section)] = item['_id']
 
@@ -2476,91 +2474,10 @@ class Client:
             If a troop isn't found, it will default to a Barbarian, as this is how the game parses the links.
 
         """
-        if not (self._troop_holder.loaded and self._spell_holder.loaded):
-            raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
-
         return ArmyRecipe(static_data=self._static_data, link=link)
 
-
     def parse_account_data(self, data: dict) -> AccountData:
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
-
         return AccountData(data=data, client=self)
-
-    def create_army_link(self, **kwargs):
-        r"""Transform troops and spells into an in-game army share link.
-
-        .. note::
-
-            You must have Troop and Spell game metadata loaded in order to use this method.
-            This means ``load_game_metadata`` of ``Client`` must be **anything but** ``LoadGameData.never``.
-
-        Example
-        -------
-
-        .. code-block:: python3
-
-            link = client.create_army_link(
-                        barbarian=10,
-                        archer=20,
-                        hog_rider=30,
-                        healing_spell=3,
-                        poison_spell=2,
-                        rage_spell=2
-                    )
-            print(link)  # prints https://link.clashofclans.com/en?action=CopyArmy&army=u0x10-1x20-11x30s1x3-9x2-2x2
-
-
-        Parameters
-        ----------
-        \*\*kwargs
-            Troop name to quantity mapping. See the example for more info.
-            The troop name must match in-game **exactly**, and is case-insensitive.
-            Replace spaces (" ") with an underscore.
-            The quantity must be an integer.
-
-        Raises
-        ------
-        RuntimeError
-            Troop and Spell game metadata must be loaded to use this feature.
-
-        Returns
-        --------
-        :class:`str`
-            The army share link.
-
-        """
-
-        base = "https://link.clashofclans.com/en?action=CopyArmy&army="
-
-        if not (self._troop_holder.loaded and self._spell_holder.loaded):
-            raise RuntimeError("Troop and Spell game metadata must be loaded to use this feature.")
-
-        troops, spells = [], []
-        for key, value in kwargs.items():
-            if not isinstance(value, int):
-                raise TypeError("Expected value to be of type integer.")
-
-            key = key.replace("_", " ")
-
-            troop = self._troop_holder.get(key)
-            if troop:
-                troops.append((troop, value))
-            else:
-                spell = self._spell_holder.get(key)
-                if spell:
-                    spells.append((spell, value))
-                else:
-                    raise ValueError("I couldn't find the troop or spell called '{}'.".format(key))
-
-        if troops:
-            base += "u" + "-".join("{qty}x{id}".format(qty=qty, id=troop.id - 4_000_000) for troop, qty in troops)
-            
-        if spells:
-            base += "s" + "-".join("{qty}x{id}".format(qty=qty, id=spell.id - 26_000_000) for spell, qty in spells)
-
-        return base
 
     def get_troop(
         self, name: str, is_home_village: bool = True, level: int = 1
@@ -2618,8 +2535,6 @@ class Client:
             If the troop is not found, this will return ``None``.
 
         """
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
 
         troop_data = self._get_static_data(
             item_name=name,
@@ -2684,8 +2599,6 @@ class Client:
 
 
         """
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
 
         spell_data = self._get_static_data(
             item_name=name,
@@ -2748,8 +2661,6 @@ class Client:
 
 
         """
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
 
         hero_data = self._get_static_data(
             item_name=name,
@@ -2811,8 +2722,6 @@ class Client:
 
 
         """
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
 
         pet_data = self._get_static_data(
             item_name=name,
@@ -2874,8 +2783,7 @@ class Client:
 
 
         """
-        if not self._static_data:
-            raise RuntimeError("Static data must be loaded to use this feature.")
+
 
         equipment_data = self._get_static_data(
             item_name=name,
