@@ -13,6 +13,10 @@ class Troop(LeveledUnit):
         The troop's name.
     village: :class:`VillageType`
         The village type (home or builder base) where this troop belongs.
+    is_home_base: :class:`bool`
+        Whether this troop belongs to the home village.
+    is_builder_base: :class:`bool`
+        Whether this troop belongs to the builder base.
     max_level: :class:`int`
         The maximum level this troop can be upgraded to.
     is_active: :class:`bool`
@@ -47,6 +51,8 @@ class Troop(LeveledUnit):
         Whether this is a super troop.
     is_seasonal: :class:`bool`
         Whether this is a seasonal/temporary troop.
+    is_siege_machine: :class:`bool`
+        Whether this is a siege machine.
     base_troop_id: :class:`int`
         The ID of the base troop (only for super troops).
     base_troop_minimum_level: :class:`int`
@@ -68,6 +74,8 @@ class Troop(LeveledUnit):
     __slots__ = (
         "name",
         "village",
+        "is_home_base",
+        "is_builder_base",
         "max_level",
         "is_active",
         "id",
@@ -85,6 +93,7 @@ class Troop(LeveledUnit):
         "housing_space",
         "is_super_troop",
         "is_seasonal",
+        "is_siege_machine",
         "base_troop_id",
         "base_troop_minimum_level",
         "hitpoints",
@@ -127,16 +136,19 @@ class Troop(LeveledUnit):
             self.housing_space: int = static_data["housing_space"]
 
             self.village = VillageType(value=static_data["village"])
-            self.max_level = len(static_data["levels"])
 
             self.is_super_troop: bool = "super_troop" in static_data
             self.is_seasonal: bool = static_data.get("is_seasonal", False)
+            self.is_siege_machine: bool = self.production_building == ProductionBuildingType.workshop
 
             if self.is_super_troop:
                 self.base_troop_id: int = static_data["super_troop"]["original_id"]
                 self.base_troop_minimum_level: int = static_data["super_troop"]["original_min_level"]
 
             self._load_level_data()
+
+        self.is_home_base: bool = self.village == VillageType.home
+        self.is_builder_base: bool = self.village == VillageType.builder_base
 
     def _load_level_data(self):
         if not self._static_data:
