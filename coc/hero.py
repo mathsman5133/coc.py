@@ -209,7 +209,7 @@ class Pet(LeveledUnit):
 
         if data:
             self.name: str = data["name"]
-            self.village = VillageType(value=["village"])
+            self.village = VillageType(value=data["village"])
             self.max_level: int = data["maxLevel"]
 
         if static_data:
