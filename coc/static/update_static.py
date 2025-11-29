@@ -1395,7 +1395,7 @@ class StaticUpdater:
             ],
             'HV_TROOP_ORDER': 'ELIXIR_TROOP_ORDER + DARK_ELIXIR_TROOP_ORDER',
             'SIEGE_MACHINE_ORDER': [t["name"] for t in troops if t["production_building"] == "Workshop"],
-            'SUPER_TROOP_ORDER': [t for t in troops if "super_troop" in t],
+            'SUPER_TROOP_ORDER': [t["name"] for t in troops if "super_troop" in t],
             'HOME_TROOP_ORDER': 'HV_TROOP_ORDER + SIEGE_MACHINE_ORDER',
             'SEASONAL_TROOP_ORDER': [t["name"] for t in troops if t.get("is_seasonal", False)],
             'BUILDER_TROOPS_ORDER': [t["name"] for t in troops if t["village"] == "builderBase"],
