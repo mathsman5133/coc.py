@@ -48,7 +48,6 @@ class SeasonalDefenseModule(LeveledUnit):
         self.TID: TID = TID(data=data["TID"])
         self.upgrade_resource = Resource(value=data["upgrade_resource"])
 
-        self.max_level: int = len(data["levels"])
         self._load_level_data()
 
     def _load_level_data(self):

@@ -106,7 +106,6 @@ class Hero(LeveledUnit):
             self.attack_range: int = static_data["attack_range"]
 
             self.village = VillageType(value=static_data["village"])
-            self.max_level: int = len(static_data["levels"])
 
             self._load_level_data()
 
@@ -227,7 +226,6 @@ class Pet(LeveledUnit):
             self.attack_range: int = static_data["attack_range"]
 
             self.village = VillageType.home
-            self.max_level: int = len(static_data["levels"])
 
             self._load_level_data()
 
@@ -335,7 +333,6 @@ class Equipment(LeveledUnit):
             self.rarity = EquipmentRarity(value=static_data["rarity"])
             self.hero: str = static_data["hero"]
 
-            self.max_level: int = len(static_data["levels"])
             self.village = VillageType.home
 
             self._load_level_data()

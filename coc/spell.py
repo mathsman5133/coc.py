@@ -93,7 +93,6 @@ class Spell(LeveledUnit):
             self.is_seasonal: bool = static_data.get("is_seasonal", False)
 
             self.village = VillageType.home
-            self.max_level: int = len(static_data["levels"])
 
             self._load_level_data()
 
