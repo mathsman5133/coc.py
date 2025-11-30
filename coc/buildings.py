@@ -19,12 +19,16 @@ class SeasonalDefenseModule(LeveledUnit):
         The resource type required to upgrade this module.
     max_level: :class:`int`
         The maximum level this module can be upgraded to.
-    upgrade_cost: :class:`int`
-        The cost to upgrade to the next level.
-    upgrade_time: :class:`TimeDelta`
-        The time required to upgrade to the next level.
+    build_cost: :class:`int`
+        The cost to build/upgrade to this level.
+    build_time: :class:`TimeDelta`
+        The time required to build/upgrade to this level.
     ability_data: :class:`dict`
         The ability data for this module.
+    
+    Note
+    ----
+    To get the upgrade cost, access the `build_cost` of the next level.
     """
 
     __slots__ = (
@@ -33,8 +37,8 @@ class SeasonalDefenseModule(LeveledUnit):
         "TID",
         "upgrade_resource",
         "max_level",
-        "upgrade_cost",
-        "upgrade_time",
+        "build_cost",
+        "build_time",
         "ability_data",
     )
 
@@ -56,8 +60,8 @@ class SeasonalDefenseModule(LeveledUnit):
 
         level_data = self._static_data["levels"][self._level - 1]
 
-        self.upgrade_cost: int = level_data.get("upgrade_cost")
-        self.upgrade_time: TimeDelta = TimeDelta(seconds=level_data.get("upgrade_time"))
+        self.build_cost: int = level_data.get("build_cost")
+        self.build_time: TimeDelta = TimeDelta(seconds=level_data.get("build_time"))
         self.ability_data: dict = level_data.get("ability_data")
 
 class SeasonalDefense(BaseDataClass):
@@ -186,12 +190,16 @@ class TownhallWeapon(LeveledUnit):
         The weapon's translation IDs for localization.
     upgrade_resource: :class:`Resource`
         The resource type required to upgrade this weapon.
-    upgrade_cost: :class:`int`
-        The cost to upgrade to the next level.
-    upgrade_time: :class:`TimeDelta`
-        The time required to upgrade to the next level.
+    build_cost: :class:`int`
+        The cost to build/upgrade to this level.
+    build_time: :class:`TimeDelta`
+        The time required to build/upgrade to this level.
     dps: :class:`int`
         The weapon's damage per second.
+    
+    Note
+    ----
+    To get the upgrade cost, access the `build_cost` of the next level.
     """
 
     __slots__ = (
@@ -199,8 +207,8 @@ class TownhallWeapon(LeveledUnit):
         "info",
         "TID",
         "upgrade_resource",
-        "upgrade_cost",
-        "upgrade_time",
+        "build_cost",
+        "build_time",
         "dps",
     )
 
@@ -222,8 +230,8 @@ class TownhallWeapon(LeveledUnit):
 
         level_data = self._static_data["levels"][self._level - 1]
 
-        self.upgrade_cost: int = level_data["upgrade_cost"]
-        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.build_cost: int = level_data["build_cost"]
+        self.build_time = TimeDelta(seconds=level_data["build_time"])
         self.dps: int = level_data["dps"]
 
 class Supercharge(LevelManager):
@@ -233,20 +241,24 @@ class Supercharge(LevelManager):
     ----------
     upgrade_resource: :class:`Resource`
         The resource type required to upgrade this supercharge.
-    upgrade_cost: :class:`int`
-        The cost to upgrade to the next level.
-    upgrade_time: :class:`TimeDelta`
-        The time required to upgrade to the next level.
+    build_cost: :class:`int`
+        The cost to build/upgrade to this level.
+    build_time: :class:`TimeDelta`
+        The time required to build/upgrade to this level.
     hitpoints_buff: :class:`int`
         The hitpoints buff provided by this supercharge.
     dps_buff: :class:`int`
         The damage per second buff provided by this supercharge.
+    
+    Note
+    ----
+    To get the upgrade cost, access the `build_cost` of the next level.
     """
 
     __slots__ = (
         "upgrade_resource",
-        "upgrade_cost",
-        "upgrade_time",
+        "build_cost",
+        "build_time",
         "hitpoints_buff",
         "dps_buff",
     )
@@ -266,8 +278,8 @@ class Supercharge(LevelManager):
 
         level_data = self._static_data["levels"][self._level - 1]
 
-        self.upgrade_cost: int = level_data["upgrade_cost"]
-        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.build_cost: int = level_data["build_cost"]
+        self.build_time = TimeDelta(seconds=level_data["build_time"])
         self.hitpoints_buff: int = level_data["hitpoints_buff"]
         self.dps_buff: int = level_data["dps_buff"]
 
@@ -300,12 +312,12 @@ class Building(LeveledUnit):
         The list of seasonal defenses for this building (Crafting Station only).
     weapon: Optional[:class:`TownhallWeapon`]
         The townhall weapon (only for townhall).
-    upgrade_cost: :class:`int`
-        The cost to upgrade to the next level.
-    upgrade_time: :class:`TimeDelta`
-        The time required to upgrade to the next level.
+    build_cost: :class:`int`
+        The cost to build/upgrade to this level.
+    build_time: :class:`TimeDelta`
+        The time required to build/upgrade to this level.
     required_townhall: :class:`int`
-        The townhall level required to upgrade to the next level.
+        The townhall level required to build/upgrade to this level.
     hitpoints: :class:`int`
         The building's hitpoints.
     dps: :class:`int`
@@ -316,6 +328,10 @@ class Building(LeveledUnit):
         The merge requirements for this building.
     unlocks: List[:class:`TownhallUnlock`]
         The unlocks provided by this building (only for townhall).
+    
+    Note
+    ----
+    To get the upgrade cost, access the `build_cost` of the next level.
     """
 
     __slots__ = (
@@ -333,8 +349,8 @@ class Building(LeveledUnit):
         "gear_up",
         "seasonal_defenses",
         "weapon",
-        "upgrade_cost",
-        "upgrade_time",
+        "build_cost",
+        "build_time",
         "required_townhall",
         "hitpoints",
         "dps",
@@ -393,8 +409,8 @@ class Building(LeveledUnit):
         if "weapon" in level_data:
             self.weapon = TownhallWeapon(level=self._weapon_level, data=level_data["weapon"])
 
-        self.upgrade_cost: int = level_data["upgrade_cost"]
-        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.build_cost: int = level_data["build_cost"]
+        self.build_time = TimeDelta(seconds=level_data["build_time"])
         self.required_townhall: int = level_data["required_townhall"]
         self.hitpoints: int = level_data["hitpoints"]
         self.dps: int = level_data["dps"]
@@ -433,14 +449,18 @@ class Trap(LeveledUnit):
         The damage radius of the trap.
     trigger_radius: :class:`int`
         The trigger radius of the trap.
-    upgrade_cost: :class:`int`
-        The cost to upgrade to the next level.
-    upgrade_time: :class:`TimeDelta`
-        The time required to upgrade to the next level.
+    build_cost: :class:`int`
+        The cost to build/upgrade to this level.
+    build_time: :class:`TimeDelta`
+        The time required to build/upgrade to this level.
     required_townhall: :class:`int`
-        The townhall level required to upgrade to the next level.
+        The townhall level required to build/upgrade to this level.
     damage: :class:`int`
         The damage dealt by the trap.
+    
+    Note
+    ----
+    To get the upgrade cost, access the `build_cost` of the next level.
     """
 
     __slots__ = (
@@ -454,8 +474,8 @@ class Trap(LeveledUnit):
         "is_ground_triggerable",
         "damage_radius",
         "trigger_radius",
-        "upgrade_cost",
-        "upgrade_time",
+        "build_cost",
+        "build_time",
         "required_townhall",
         "damage",
     )
@@ -484,7 +504,7 @@ class Trap(LeveledUnit):
 
         level_data = self._static_data["levels"][self._level - 1]
 
-        self.upgrade_cost: int = level_data["upgrade_cost"]
-        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.build_cost: int = level_data["build_cost"]
+        self.build_time = TimeDelta(seconds=level_data["build_time"])
         self.required_townhall: int = level_data["required_townhall"]
         self.damage: int = level_data["damage"]
