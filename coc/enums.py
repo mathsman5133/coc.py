@@ -202,13 +202,4 @@ class SkinTier(ExtendedEnum):
     legendary = "Legendary"
 
 
-UNRANKED_LEAGUE_DATA = {
-    "id": 105000000,
-    "name": "Unranked",
-    "iconUrls": {
-        "small": "https://api-assets.clashofclans.com/leaguetiers/125/yyYo5DUFeFBZvmMEQh0ZxvG-1sUOZ_S3kDMB7RllXX0.png",
-        "large": "https://api-assets.clashofclans.com/leaguetiers/326/yyYo5DUFeFBZvmMEQh0ZxvG-1sUOZ_S3kDMB7RllXX0.png"
-    }
-}
-
 
