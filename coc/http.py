@@ -474,7 +474,7 @@ class HTTPClient:
     # leagues
 
     def search_leagues(self, **kwargs):
-        return self.request(Route("GET", self.base_url, "/leagues", **kwargs), **kwargs)
+        return self.request(Route("GET", self.base_url, "/leaguetiers", **kwargs), **kwargs)
 
     def search_capital_leagues(self, **kwargs):
         return self.request(Route("GET", self.base_url, "/capitalleagues", **kwargs), **kwargs)
