@@ -1,5 +1,5 @@
 {
-  "tag": "#8GLYGGJQ",
+  "tag": "#2PP",
   "timestamp": 1764426382,
   "helpers": [
     {
@@ -41,7 +41,7 @@
       "data": 1000084,
       "lvl": 3,
       "timer": 323827,
-      "helper_recurrent": True
+      "helper_recurrent": true
     },
     {
       "data": 1000097,
