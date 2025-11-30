@@ -486,7 +486,7 @@ class HTTPClient:
         return self.request(Route("GET", self.base_url, "/builderbaseleagues", **kwargs), **kwargs)
 
     def get_league(self, league_id, **kwargs):
-        return self.request(Route("GET", self.base_url, "/leagues/{}".format(league_id)), **kwargs)
+        return self.request(Route("GET", self.base_url, "/leaguetiers/{}".format(league_id)), **kwargs)
 
     def get_capital_league(self, league_id, **kwargs):
         return self.request(Route("GET", self.base_url, "/capitalleagues/{}".format(league_id)), **kwargs)
