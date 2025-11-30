@@ -152,9 +152,9 @@ SPELL_ORDER = ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER
 HOME_BASE_HERO_ORDER = [
     'Barbarian King',
     'Archer Queen',
+    'Minion Prince',
     'Grand Warden',
     'Royal Champion',
-    'Minion Prince',
 ]
 
 BUILDER_BASE_HERO_ORDER = [
