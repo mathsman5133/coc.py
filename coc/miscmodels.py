@@ -21,11 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from datetime import datetime, timezone
-from typing import Any, Type, TypeVar, Optional
+from datetime import datetime
+from typing import Any, Optional, Type, TypeVar
 
-import coc
-from .enums import ExtendedEnum, PlayerHouseElementType
+from .enums import ExtendedEnum, PlayerHouseElementType, VillageType
 from .utils import from_timestamp
 
 T = TypeVar("T")
@@ -90,17 +89,22 @@ class Achievement:
         self.target: int = data["target"]
         self.info: str = data["info"]
         self.completion_info: str = data["completionInfo"]
-        self.village: str = data["village"]
+        self.village = VillageType(value=data["village"])
 
     @property
     def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the builder base"""
-        return self.village == "builderBase"
+        return self.village == VillageType.builder_base
 
     @property
     def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the home base"""
-        return self.village == "home"
+        return self.village == VillageType.home
+
+    @property
+    def is_clan_capital(self) -> bool:
+        """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the clan capital"""
+        return self.village == VillageType.clan_capital
 
     @property
     def is_completed(self) -> bool:
@@ -175,18 +179,13 @@ class TimeDelta:
 
     """
     def __init__(self, days=0, hours=0, minutes=0, seconds=0):
-        total_seconds = (
-                (days or 0) * 86400 +
-                (hours or 0) * 3600 +
-                (minutes or 0) * 60 +
-                (seconds or 0)
-        )
-        
-        self._total_seconds = total_seconds
-        
-        self.days, rem = divmod(total_seconds, 86400)
-        self.hours, rem = divmod(rem, 3600)
-        self.minutes, self.seconds = divmod(rem, 60)
+        _days, _hours = divmod(hours, 24)
+        _hours_left, _mins = divmod(minutes, 60)
+
+        self.days = days + _days
+        self.hours = hours + _hours + _hours_left
+        self.minutes = minutes + _mins
+        self.seconds = seconds
 
     def total_seconds(self):
         """Returns the total number of seconds in the time object.
@@ -197,13 +196,10 @@ class TimeDelta:
         -------
         int
             The number of seconds"""
-        return self._total_seconds
-    
-    def __repr__(self):
-        return f"<TimeDelta {self.days}d {self.hours}:{self.minutes}:{self.seconds}s>"
-    
-    def __str__(self):
-        return f"{self.days}d {self.hours}h {self.minutes}m {self.seconds}s"
+        return self.days * 24 * 60 * 60 + \
+               self.hours * 60 * 60 + \
+               self.minutes * 60 + \
+               self.seconds
 
 
 class Location:
@@ -566,7 +562,7 @@ class Timestamp:
     @property
     def now(self) -> datetime:
         """:class:`datetime`: Returns the time of the timestamp as a datetime object in UTC."""
-        return datetime.now(tz=timezone.utc).replace(tzinfo=None)
+        return datetime.utcnow()
 
     @property
     def seconds_until(self) -> int:
@@ -641,7 +637,6 @@ class CapitalDistrict:
         self.id: int = data.get("id")
         self.name: str = data.get("name")
         self.hall_level: int = data.get("districtHallLevel")
-
 
 
 class ChatLanguage:
@@ -720,3 +715,154 @@ class PlayerHouseElement:
         return (isinstance(other, PlayerHouseElement)
                 and self.id == other.id
                 and self.type == other.type)
+
+
+class TID:
+    """Represents a Translation ID (TID) for Clash of Clans game elements.
+    
+    Attributes
+    ----------
+    name: :class:`str`
+        The translation ID for the name of the game element.
+    info: :class:`str`
+        The translation ID for additional info/description of the game element.
+    """
+    
+    __slots__ = ("name", "info")
+    
+    def __init__(self, data: dict):
+        self.name = data["name"]
+        self.info = data.get("info", "")
+
+
+class Translation:
+    """Represents translations for multiple languages.
+    
+    Supports multiple access patterns:
+    
+    * Attribute access: ``translation.russian``, ``translation.english``
+    * Dictionary access (uppercase): ``translation["RU"]``, ``translation["EN"]``
+    * Dictionary access (lowercase): ``translation["ru"]``, ``translation["en"]``
+    
+    Attributes
+    ----------
+    english: :class:`str`
+    arabic: :class:`str`
+    chinese: :class:`str`
+    chinese_traditional: :class:`str`
+    german: :class:`str`
+    spanish: :class:`str`
+    persian: :class:`str`
+    finnish: :class:`str`
+    french: :class:`str`
+    indonesian: :class:`str`
+    italian: :class:`str`
+    japanese: :class:`str`
+    korean: :class:`str`
+    malay: :class:`str`
+    dutch: :class:`str`
+    norwegian: :class:`str`
+    polish: :class:`str`
+    portuguese: :class:`str`
+    russian: :class:`str`
+    thai: :class:`str`
+    turkish: :class:`str`
+    vietnamese: :class:`str`
+    """
+    
+    __slots__ = (
+        "english", "arabic", "chinese", "chinese_traditional", "german",
+        "spanish", "persian", "finnish", "french", "indonesian", "italian",
+        "japanese", "korean", "malay", "dutch", "norwegian", "polish",
+        "portuguese", "russian", "thai", "turkish", "vietnamese"
+    )
+    
+    _LANGUAGE_MAP = {
+        "EN": "english",
+        "AR": "arabic",
+        "CN": "chinese",
+        "CNT": "chinese_traditional",
+        "DE": "german",
+        "ES": "spanish",
+        "FA": "persian",
+        "FI": "finnish",
+        "FR": "french",
+        "ID": "indonesian",
+        "IT": "italian",
+        "JP": "japanese",
+        "KR": "korean",
+        "MS": "malay",
+        "NL": "dutch",
+        "NO": "norwegian",
+        "PL": "polish",
+        "PT": "portuguese",
+        "RU": "russian",
+        "TH": "thai",
+        "TR": "turkish",
+        "VI": "vietnamese"
+    }
+    
+    def __init__(self, data: dict):
+        """Initialize Translation from a dictionary with language codes as keys.
+        
+        Parameters
+        ----------
+        data: :class:`dict`
+            Dictionary with language codes (EN, AR, CN, etc.) as keys and translations as values.
+        """
+        self.english: str = data.get("EN", "")
+        self.arabic: str = data.get("AR", "")
+        self.chinese: str = data.get("CN", "")
+        self.chinese_traditional: str = data.get("CNT", "")
+        self.german: str = data.get("DE", "")
+        self.spanish: str = data.get("ES", "")
+        self.persian: str = data.get("FA", "")
+        self.finnish: str = data.get("FI", "")
+        self.french: str = data.get("FR", "")
+        self.indonesian: str = data.get("ID", "")
+        self.italian: str = data.get("IT", "")
+        self.japanese: str = data.get("JP", "")
+        self.korean: str = data.get("KR", "")
+        self.malay: str = data.get("MS", "")
+        self.dutch: str = data.get("NL", "")
+        self.norwegian: str = data.get("NO", "")
+        self.polish: str = data.get("PL", "")
+        self.portuguese: str = data.get("PT", "")
+        self.russian: str = data.get("RU", "")
+        self.thai: str = data.get("TH", "")
+        self.turkish: str = data.get("TR", "")
+        self.vietnamese: str = data.get("VI", "")
+    
+    def __getitem__(self, key: str) -> str:
+        """Get translation by language code (case-insensitive).
+        
+        Parameters
+        ----------
+        key: :class:`str`
+            Language code (e.g., "EN", "en", "RU", "ru")
+        
+        Returns
+        -------
+        :class:`str`
+            The translation for the specified language.
+        
+        Raises
+        ------
+        KeyError
+            If the language code is not supported.
+        """
+        key_upper = key.upper()
+        if key_upper in self._LANGUAGE_MAP:
+            return getattr(self, self._LANGUAGE_MAP[key_upper])
+        raise KeyError(f"Language code '{key}' not supported")
+    
+    def __repr__(self):
+        return f"<Translation english={self.english!r}>"
+    
+    def __eq__(self, other):
+        return isinstance(other, Translation) and all(
+            getattr(self, attr) == getattr(other, attr)
+            for attr in self.__slots__
+        )
+
+

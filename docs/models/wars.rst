@@ -27,15 +27,12 @@ Clan War League Group
     :inherited-members:
     
 
-War Round
-~~~~~~~~~
-.. class:: WarRound
-
-    An Enumeration with the following Clan War League War Round types.
-
-    .. py:attribute:: previous_war
-    .. py:attribute:: current_war
-    .. py:attribute:: current_preparation
+Extended CWL Group
+~~~~~~~~~~~~~~~~~~
+.. autoclass:: ExtendedCWLGroup()
+    :members:
+    :private-members:
+    :inherited-members:
 
 
 War Attack

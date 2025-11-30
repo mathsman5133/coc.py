@@ -23,16 +23,18 @@ SOFTWARE.
 """
 from typing import Optional, List, TYPE_CHECKING
 
-
 from .miscmodels import BaseLeague, PlayerHouseElement, try_enum, Achievement, Label, League, LegendStatistics
 from .enums import (
     Role,
+    UNRANKED_LEAGUE_DATA,
+)
+
+from .constants import (
     HERO_ORDER,
     BUILDER_TROOPS_ORDER,
     HOME_TROOP_ORDER,
     SPELL_ORDER,
     SIEGE_MACHINE_ORDER,
-    UNRANKED_LEAGUE_DATA,
     ACHIEVEMENT_ORDER,
     SUPER_TROOP_ORDER,
     PETS_ORDER,
@@ -49,6 +51,7 @@ from .utils import cached_property
 if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .clans import Clan  # noqa
+    from .client import Client
 
 
 class ClanMember(BasePlayer):
@@ -94,7 +97,7 @@ class ClanMember(BasePlayer):
     league_cls: :class:`coc.League`
         The class to use to create the :attr:`ClanMember.league` attribute.
         Ensure any overriding of this inherits from :class:`coc.League`.
-    builder_base_league_cls: :class:`coc.League`
+    builder_base_league_cls: Optional[:class:`coc.League`]
         The class to use to create the :attr:`ClanMember.builder_base_league` attribute.
         Ensure any overriding of this inherits from :class:`coc.BaseLeague`.
     """
@@ -148,9 +151,14 @@ class ClanMember(BasePlayer):
         self.received: int = data_get("donationsReceived")
         player_house_element_cls = self.player_house_element_cls
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
-        self.league = try_enum(self.league_cls, data=data_get("league") or UNRANKED_LEAGUE_DATA, client=self._client)
+        self.league = try_enum(self.league_cls, data=data_get("leagueTier"), client=self._client)
+
+        # fall back if no league given, this is what in-game shows
         self.builder_base_league = try_enum(self.builder_base_league_cls,
-                                            data=data_get("builderBaseLeague") or UNRANKED_LEAGUE_DATA,
+                                            data=data_get(
+                                                "builderBaseLeague",
+                                                {"id":44000000,"name":"Wood League V"}
+                                            ),
                                             client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
         self.town_hall: int = data_get("townHallLevel")
@@ -305,7 +313,7 @@ class Player(ClanMember):
 
     )
 
-    def __init__(self, *, data, client, load_game_data=None, **_):
+    def __init__(self, *, data, client: 'Client', load_game_data=None, **_):
         self._client = client
 
         self._achievements = None  # type: Optional[dict]
@@ -325,10 +333,6 @@ class Player(ClanMember):
         self.pet_cls = Pet
         self.equipment_cls = Equipment
 
-        if self._client and self._client._troop_holder.loaded:
-            self._game_files_loaded = True
-        else:
-            self._game_files_loaded = False
 
         if load_game_data is not None:
             self._load_game_data = load_game_data
@@ -336,6 +340,9 @@ class Player(ClanMember):
             self._load_game_data = False
         else:
             self._load_game_data = True
+
+        if self._load_game_data and client is None:
+            raise RuntimeError("Client must be provided if load_game_data is True.")
 
         super().__init__(data=data, client=client)
 
@@ -361,64 +368,72 @@ class Player(ClanMember):
 
         label_cls = self.label_cls
         achievement_cls = self.achievement_cls
-        troop_loader = self._client._troop_holder.load if self._client else None
-        hero_loader = self._client._hero_holder.load if self._client else None
-        spell_loader = self._client._spell_holder.load if self._client else None
-        pet_loader = self._client._pet_holder.load if self._client else None
-        equipment_loader = self._client._equipment_holder.load if self._client else None
 
-        if self._game_files_loaded:
-            pet_lookup = [p.name for p in self._client._pet_holder.items]
-            equipment_lookup = [e.name for e in self._client._equipment_holder.items]
-        else:
-            pet_lookup = PETS_ORDER
-            equipment_lookup = EQUIPMENT
+        pet_lookup = PETS_ORDER
 
         self._iter_labels = (label_cls(data=ldata, client=self._client) for ldata in data_get("labels", []))
         self._iter_achievements = (achievement_cls(data=adata) for adata in data_get("achievements", []))
+
         self._iter_troops = (
-            troop_loader(
+            self.troop_cls(
+                client=self._client,
                 data=tdata,
-                townhall=self.town_hall,
-                default=self.troop_cls,
-                load_game_data=self._load_game_data,
+                static_data=self._client._get_static_data(
+                    item_name=tdata["name"],
+                    village=tdata["village"],
+                    section="troops",
+                    bypass=not self._load_game_data
+                ) if self._client else None
             ) for tdata in data_get("troops", []) if tdata["name"] not in pet_lookup
         )
 
         self._iter_heroes = (
-            hero_loader(
+            self.hero_cls(
+                client=self._client,
                 data=hdata,
-                townhall=self.town_hall,
-                default=self.hero_cls,
-                load_game_data=self._load_game_data,
+                static_data=self._client._get_static_data(
+                    item_name=hdata["name"],
+                    village=hdata["village"],
+                    section="heroes",
+                    bypass=not self._load_game_data
+                ) if self._client else None
             ) for hdata in data_get("heroes", [])
         )
 
         self._iter_spells = (
-            spell_loader(
+            self.spell_cls(
+                client=self._client,
                 data=sdata,
-                townhall=self.town_hall,
-                default=self.spell_cls,
-                load_game_data=self._load_game_data,
+                static_data=self._client._get_static_data(
+                    item_name=sdata["name"],
+                    section="spells",
+                    bypass=not self._load_game_data
+                ) if self._client else None
             ) for sdata in data_get("spells", [])
         )
 
         self._iter_pets = (
-            pet_loader(
+            self.pet_cls(
+                client=self._client,
                 data=tdata,
-                townhall=self.town_hall,
-                default=self.pet_cls,
-                load_game_data=self._load_game_data,
+                static_data=self._client._get_static_data(
+                    item_name=tdata["name"],
+                    section="pets",
+                    bypass=not self._load_game_data
+                ) if self._client else None
             ) for tdata in data_get("troops", []) if tdata["name"] in pet_lookup
         )
 
         self._iter_equipment = (
-            equipment_loader(
+            self.equipment_cls(
+                client=self._client,
                 data=edata,
-                townhall=self.town_hall,
-                default=self.equipment_cls,
-                load_game_data=self._load_game_data,
-            ) for edata in data_get('heroEquipment', []) if edata['name'] in equipment_lookup
+                static_data=self._client._get_static_data(
+                    item_name=edata["name"],
+                    section="equipment",
+                    bypass=not self._load_game_data
+                ) if self._client else None
+            ) for edata in data_get('heroEquipment', [])
         )
 
     def _inject_clan_member(self, member):
@@ -426,39 +441,6 @@ class Player(ClanMember):
             self.clan_rank = getattr(member, "clan_rank", None)
             self.clan_previous_rank = getattr(member, "clan_previous_rank", None)
 
-    def load_game_data(self):
-        """Load game data for this player's troops and spells.
-
-        .. note::
-
-            This is not the preferred way to load game data.
-            The best way to load game data is to pass ``load_game_data=True`` into your ``get_player`` call,
-            or to have ``load_game_data=LoadGameData(default=True)`` in your client initiation.
-
-            This method is provided as a utility for events where loading game data is not desirable unless a
-            change has been observed.
-
-        .. note::
-
-            This operation may be slow if you have not loaded the game files during the current session yet.
-
-        """
-        # if self._game_files_loaded:
-        #     return True
-
-        holders = (self._client._troop_holder, self._client._hero_holder, self._client._spell_holder,
-                   self._client._pet_holder, self._client._equipment_holder)
-        if not all(holder.loaded for holder in holders):
-            self._client._load_holders()
-
-        for items, holder in zip((self.troops, self.heroes, self.spells, self.pets, self.equipment), holders):
-            for item in items:
-                if not item.is_loaded:
-                    if isinstance(item, Troop):
-                        base = holder.get(item.name, item.is_home_base)
-                        item._load_from_parent(base)
-                    else:
-                        item._load_from_parent(holder.get(item.name))
 
     @cached_property("_cs_labels")
     def labels(self) -> List[Label]:
@@ -524,11 +506,10 @@ class Player(ClanMember):
         - Spells
         - Un-boosted Super Troops
         """
-        loaded = self._game_files_loaded
         troops = []
 
         for troop in self._iter_troops:
-            if (loaded and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
+            if (self._load_game_data and troop.is_super_troop) or troop.name in SUPER_TROOP_ORDER:
                 self._super_troops.append(troop)
                 if troop.is_active:
                     self._home_troops[troop.name] = troop

@@ -1,172 +1,115 @@
-import orjson
 
-from typing import Type, Dict, List
-from pathlib import Path
+from .abc import LeveledUnit
+from .enums import Resource, VillageType, ProductionBuildingType
+from .miscmodels import TimeDelta, TID
 
-from .abc import DataContainer, DataContainerHolder
-from .enums import Resource
-from .miscmodels import TimeDelta
-
-SPELLS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spells.json"))
-ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/spell_ids.json"))
-
-
-class Spell(DataContainer):
+class Spell(LeveledUnit):
     """Represents a Spell object as returned by the API, optionally filled with game data.
 
     Attributes
     ----------
-    id: :class:`int`
-        The spell's unique ID.
     name: :class:`str`
         The spell's name.
-    range: :class:`int`
-        The spell's attack range.
-    upgrade_cost: :class:`int`
-        The amount of resources required to upgrade the spell to the next level.
-    upgrade_resource: :class:`Resource`
-        The type of resource used to upgrade this spell.
-    upgrade_time: :class:`TimeDelta`
-        The time taken to upgrade this spell to the next level.
-    training_cost: :class:`int`
-        The amount of resources required to train this spell.
-    training_resource: :class:`Resource`
-        The type of resource used to train this spell.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this spell.
-    is_elixir_spell: :class:`bool`
-        Whether this spell is a regular spell from the Barracks
-    is_dark_spell: :class:`bool`
-        Whether this spell is a dark-spell, trained in the Dark Barracks.
-    is_loaded: :class:`bool`
-        Whether the API data has been loaded for this spell.
-    level: :class:`int`
-        The spell's level
+    village: :class:`VillageType`
+        The village type (home or builder base) where this spell belongs.
     max_level: :class:`int`
-        The max level for this spell.
-    village: :class:`str`
-        Either ``home`` or ``builderBase``, indicating which village this spell belongs to.
+        The maximum level this spell can be upgraded to.
+    id: :class:`int`
+        The spell's unique identifier.
+    info: :class:`str`
+        Description of the spell.
+    TID: :class:`TID`
+        The spell's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this spell.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this spell.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this spell.
+    housing_space: :class:`int`
+        The housing space this spell occupies.
+    is_seasonal: :class:`bool`
+        Whether this is a seasonal/temporary spell.
+    duration: :class:`TimeDelta`
+        The duration of the spell's effect.
+    damage: :class:`int`
+        The damage dealt by the spell.
+    radius: :class:`float`
+        The spell's area of effect radius.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to this level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to this level.
+    required_lab_level: :class:`int`
+        The laboratory level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
     """
-    name: str
-    level: int
-    max_level: int
-    village: str
-    is_active: bool
 
-    id: int
-    range: int
-    dps: int
-    ground_target: bool
-    speed: int
-    upgrade_cost: int
-    upgrade_resource: "Resource"
-    upgrade_time: "TimeDelta"
-    training_cost: int
-    training_resource: "Resource"
-    training_time: "TimeDelta"
+    __slots__ = (
+        "name",
+        "village",
+        "max_level",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "housing_space",
+        "is_seasonal",
+        "duration",
+        "damage",
+        "radius",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_lab_level",
+        "required_townhall",
+        "_raw_data"
+    )
 
-    is_elixir_spell: bool = False
-    is_dark_spell: bool = False
-    is_loaded: bool = False
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
+        super().__init__(
+            initial_level=data.get("level") or level,
+            static_data=static_data
+        )
 
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("id", self.id),
-        ]
-        return "<%s %s>" % (
-            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
-    @property
-    def is_max_for_townhall(self):
-        """:class:`bool`:
-            Returns a boolean that indicates whether the spell is the max level for the player's townhall level.
-        """
-        if self.is_max:
-            return True
+        if data:
+            self.name: str = data["name"]
+            self.village = VillageType(value=data["village"])
+            self.max_level: int = data["maxLevel"]
 
-        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 1-indexed
-        # 2. TH-lab levels in-game and here are 1-indexed
-        # 3. We then want to check that for the level less than this troop the req'd
-        #    TH is less than or equal to current TH,
-        #    and for troop level above, it requires a higher TH than we currently have.
-        #    Maybe there's a better way to go about doing this.
-        return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
-             < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
+        if static_data:
+            self.id: int = static_data["_id"]
+            self.name: str = static_data["name"]
+            self.info: str = static_data["info"]
+            self.TID: TID = TID(data=static_data["TID"])
 
-    @classmethod
-    def get_max_level_for_townhall(cls, townhall):
-        """Get the maximum level for a spell for a given townhall level.
+            self.production_building = ProductionBuildingType(value=static_data["production_building"])
+            self.production_building_level: int = static_data["production_building_level"]
+            self.upgrade_resource = Resource(value=static_data["upgrade_resource"])
 
-        Parameters
-        ----------
-        townhall
-            The townhall level to get the maximum spell level for.
+            self.housing_space: int = static_data["housing_space"]
 
-        Returns
-        --------
-        :class:`int`
-            The maximum spell level, or ``None`` if the spell hasn't been unlocked at that level.
+            self.is_seasonal: bool = static_data.get("is_seasonal", False)
 
-        """
-        for lab_level, th_level in cls.lab_to_townhall.items():
-            if th_level != townhall:
-                continue
+            self.village = VillageType.home
 
-            levels = [spell_level for spell_level, lab in enumerate(cls.lab_level, start=1) if lab <= lab_level]
-            return levels and max(levels) or None
+            self._load_level_data()
 
-        raise ValueError("The townhall level was not valid.")
+    def _load_level_data(self):
+        if not self._static_data:
+            return
 
+        level_data = self._static_data["levels"][self._level - 1]
 
-class SpellHolder(DataContainerHolder):
-    items: List[Type[Spell]] = []
-    item_lookup: Dict[str, Type[Spell]]
-
-    FILE_PATH = SPELLS_FILE_PATH
-    data_object = Spell
-
-    def _load_json(self, english_aliases, lab_to_townhall):
-        with open(SPELLS_FILE_PATH, 'rb') as fp:
-            spell_data = orjson.loads(fp.read())
-        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
-            army_link_ids = orjson.loads(fp.read())
-
-        id = 2000  # fallback ID for non-standard spells
-        for supercell_name, spell_meta in spell_data.items():
-
-            if not spell_meta.get("TID"):
-                continue
-
-            # ignore deprecated content
-            if spell_meta.get("Deprecated") or  spell_meta.get("DisableProduction"):
-                continue
-
-            spell_name = english_aliases[spell_meta.get("TID")]
-            new_spell: Type[Spell] = type('Spell', Spell.__bases__, dict(Spell.__dict__))
-            spell_id = army_link_ids.get(spell_name, id)
-            if spell_id == id:
-                id += 1
-
-            new_spell._load_json_meta(
-                spell_meta,
-                id=spell_id,
-                name=spell_name,
-                lab_to_townhall=lab_to_townhall,
-                internal_name=supercell_name,
-            )
-            self.items.append(new_spell)
-            self.item_lookup[(new_spell.name, new_spell._is_home_village)] = new_spell
-
-        self.loaded = True
-
-    def load(self, data, townhall: int, default: "Spell" = Spell, load_game_data: bool = None) -> Spell:
-        if load_game_data is True:
-            try:
-                spell = self.item_lookup[(data["name"], True)]
-            except KeyError:
-                spell = default
-        else:
-            spell = default
-
-        return spell(data=data, townhall=townhall)
+        self.duration = TimeDelta(seconds=level_data["duration"])
+        self.damage: int = level_data["damage"]
+        self.radius: float = level_data["radius"]
+        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.upgrade_cost: int = level_data["upgrade_cost"]
+        self.required_lab_level: int = level_data["required_lab_level"]
+        self.required_townhall: int = level_data["required_townhall"]

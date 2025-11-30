@@ -30,7 +30,7 @@ from typing import AsyncIterator, List, Optional, Type, TYPE_CHECKING, Union
 
 from .enums import BattleModifier, WarResult, WarRound, WarState
 from .iterators import LeagueWarIterator
-from .miscmodels import try_enum, Timestamp
+from .miscmodels import try_enum, Timestamp, TID
 from .utils import cached_property, get
 from .war_clans import WarClan, ClanWarLeagueClan
 from .war_attack import WarAttack
@@ -38,8 +38,6 @@ from .war_attack import WarAttack
 if TYPE_CHECKING:
     # pylint: disable=cyclic-import
     from .war_members import ClanWarMember  # noqa
-    from .client import Client
-
 
 class ClanWar:
     """Represents a Current Clash of Clans War
@@ -101,7 +99,7 @@ class ClanWar:
         self._from_data(data)
 
         self.clan_tag = self.clan and self.clan.tag or self.clan_tag
-        self.league_group = kwargs.pop("league_group", None)
+        self.league_group: ClanWarLeagueGroup | None = kwargs.pop("league_group", None)
 
     def _from_data(self, data: dict) -> None:
         data_get = data.get
@@ -135,6 +133,13 @@ class ClanWar:
                                  client=self._client, war=self)
             self.opponent = try_enum(self.clan_cls, data=clan_data,
                                      client=self._client, war=self)
+
+    def __eq__(self, other):
+        if not isinstance(other, ClanWar):
+            return NotImplemented
+        return {self.clan.tag, self.opponent.tag} == {other.clan.tag, other.opponent.tag} and \
+            self.preparation_start_time == other.preparation_start_time
+
 
     @property
     def attacks(self) -> List[WarAttack]:
@@ -536,3 +541,17 @@ class ClanWarLeagueGroup:
             round_tags = ()
 
         return LeagueWarIterator(client=self._client, tags=round_tags, cls=cls)
+
+
+class ExtendedCWLGroup:
+    def __init__(self, data: dict):
+        self._id: int = data["id"]
+        self.name: str = data["name"]
+        self.TID = TID(data=data["TID"])
+        self.first_place_medals: int = data["cwl_medals"]["first_place"]
+        self.positional_medal_difference: int = data["cwl_medals"]["position_medal_diff"]
+        self.bonus_medals: int = data["cwl_medals"]["bonus_reward"]
+        self.minimum_number_of_bonuses: int = data["cwl_medals"]["minimum_bonus_amount"]
+        self.promotions: int = data["promotions"]
+        self.demotions: int = data["demotions"]
+        self.only15v15: bool = data["only15v15"]

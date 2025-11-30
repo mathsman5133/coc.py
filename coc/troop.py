@@ -1,241 +1,177 @@
-from typing import Dict, List, Optional, Tuple, Type
-from pathlib import Path
 
-import orjson
-
-from .abc import DataContainer, DataContainerHolder
-from .enums import Resource
-from .miscmodels import TimeDelta, try_enum
-from .utils import UnitStat
-
-TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/characters.json"))
-SUPER_TROOPS_FILE_PATH = Path(__file__).parent.joinpath(Path("static/supers.json"))
-ARMY_LINK_ID_FILE_PATH = Path(__file__).parent.joinpath(Path("static/troop_ids.json"))
+from .abc import LeveledUnit
+from .enums import Resource, VillageType, ProductionBuildingType
+from .miscmodels import TimeDelta, TID
 
 
-class Troop(DataContainer):
+class Troop(LeveledUnit):
     """Represents a Troop object as returned by the API, optionally filled with game data.
 
     Attributes
     ----------
-    id: :class:`int`
-        The troop's unique ID.
     name: :class:`str`
         The troop's name.
-    range: :class:`int`
-        The troop's attack range.
-    lab_level: :class:`int`
-        The required labatory level to upgrade the troop to this level.
-    dps: :class:`int`
-        The troop's Damage Per Second (DPS).
-    hitpoints: :class:`int`
-        The number of hitpoints the troop has at this level.
-    ground_target: :class:`bool`
-        Whether the troop is ground-targetting.
-    speed: :class:`int`
-        The troop's speed.
-    upgrade_cost: :class:`int`
-        The amount of resources required to upgrade the troop to the next level.
-    upgrade_resource: :class:`Resource`
-        The type of resource used to upgrade this troop.
-    upgrade_time: :class:`TimeDelta`
-        The time taken to upgrade this troop to the next level.
-    training_cost: :class:`int`
-        The amount of resources required to train this troop.
-    training_resource: :class:`Resource`
-        The type of resource used to train this troop.
-    training_time: :class:`TimeDelta`
-        The amount of time required to train this troop.
-    is_elixir_troop: :class:`bool`
-        Whether this troop is a regular troop from the Barracks
-    is_dark_troop: :class:`bool`
-        Whether this troop is a dark-troop, trained in the Dark Barracks.
-    is_siege_machine: :class:`bool`
-        Whether this troop is a Siege Machine.
-    is_super_troop: :class:`bool`
-        Whether this troop is a Super Troop.
-
-    cooldown: :class:`TimeDelta`
-        The cooldown on this super troop before being able to be reactivated [Super Troops Only].
-    duration: :class:`TimeDelta`
-        The length of time this super troop is active for [Super Troops Only].
-    min_original_level: :class:`int`
-        The minimum level required of the original troop in order to boost this troop [Super Troops Only].
-    original_troop: :class:`Troop`
-        The "original" counterpart troop to this super troop [Super Troops Only].
-
-    is_loaded: :class:`bool`
-        Whether the API data has been loaded for this troop.
-    level: :class:`int`
-        The troop's level
+    village: :class:`VillageType`
+        The village type (home or builder base) where this troop belongs.
+    is_home_base: :class:`bool`
+        Whether this troop belongs to the home village.
+    is_builder_base: :class:`bool`
+        Whether this troop belongs to the builder base.
     max_level: :class:`int`
-        The max level for this troop.
-    village: :class:`str`
-        Either ``home`` or ``builderBase``, indicating which village this troop belongs to.
+        The maximum level this troop can be upgraded to.
+    is_active: :class:`bool`
+        Whether this super troop is currently active/boosted.
+    id: :class:`int`
+        The troop's unique identifier.
+    info: :class:`str`
+        Description of the troop.
+    TID: :class:`TID`
+        The troop's translation IDs for localization.
+    production_building: :class:`ProductionBuildingType`
+        The building type that produces this troop.
+    production_building_level: :class:`int`
+        The required level of the production building to unlock this troop.
+    upgrade_resource: :class:`Resource`
+        The resource type required to upgrade this troop.
+    is_flying: :class:`bool`
+        Whether this troop is an air unit.
+    is_air_targeting: :class:`bool`
+        Whether this troop can target air units.
+    is_ground_targeting: :class:`bool`
+        Whether this troop can target ground units.
+    movement_speed: :class:`int`
+        The troop's movement speed.
+    attack_speed: :class:`int`
+        The troop's attack speed.
+    attack_range: :class:`int`
+        The troop's attack range.
+    housing_space: :class:`int`
+        The housing space this troop occupies.
+    is_super_troop: :class:`bool`
+        Whether this is a super troop.
+    is_seasonal: :class:`bool`
+        Whether this is a seasonal/temporary troop.
+    is_siege_machine: :class:`bool`
+        Whether this is a siege machine.
+    base_troop_id: :class:`int`
+        The ID of the base troop (only for super troops).
+    base_troop_minimum_level: :class:`int`
+        The minimum level of the base troop required to boost this super troop.
+    hitpoints: :class:`int`
+        The troop's hitpoints.
+    dps: :class:`int`
+        The troop's damage per second.
+    upgrade_time: :class:`TimeDelta`
+        The time required to upgrade to the next level.
+    upgrade_cost: :class:`int`
+        The cost to upgrade to the next level.
+    required_lab_level: Optional[:class:`int`]
+        The laboratory level required to upgrade to the next level.
+    required_townhall: :class:`int`
+        The townhall level required to upgrade to the next level.
     """
-    name: str
-    level: int
-    max_level: int
-    village: str
-    is_active: bool
 
-    id: int
-    range: int
-    dps: int
-    ground_target: bool
-    speed: int
-    upgrade_cost: int
-    upgrade_resource: "Resource"
-    upgrade_time: "TimeDelta"
-    training_cost: int
-    training_resource: "Resource"
-    training_time: "TimeDelta"
+    __slots__ = (
+        "name",
+        "village",
+        "is_home_base",
+        "is_builder_base",
+        "max_level",
+        "is_active",
+        "id",
+        "info",
+        "TID",
+        "production_building",
+        "production_building_level",
+        "upgrade_resource",
+        "is_flying",
+        "is_air_targeting",
+        "is_ground_targeting",
+        "movement_speed",
+        "attack_speed",
+        "attack_range",
+        "housing_space",
+        "is_super_troop",
+        "is_seasonal",
+        "is_siege_machine",
+        "base_troop_id",
+        "base_troop_minimum_level",
+        "hitpoints",
+        "dps",
+        "upgrade_time",
+        "upgrade_cost",
+        "required_lab_level",
+        "required_townhall",
+        "_raw_data",
+        "__data"
+    )
 
-    cooldown: "TimeDelta"
-    duration: "TimeDelta"
-    min_original_level: int
-    original_troop: "Troop"
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
+        super().__init__(
+            initial_level=data.get("level") or level,
+            static_data=static_data
+        )
 
-    is_elixir_troop: bool = False
-    is_dark_troop: bool = False
-    is_siege_machine: bool = False
-    is_super_troop: bool = False
-    is_loaded: bool = False
+        self.__data = data
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
-    def __repr__(self):
-        attrs = [
-            ("name", self.name),
-            ("id", self.id),
-        ]
-        return "<%s %s>" % (
-            self.__class__.__name__, " ".join("%s=%r" % t for t in attrs),)
+        if data:
+            self.name: str = data["name"]
+            self.village = VillageType(value=data["village"])
+            self.max_level: int = data["maxLevel"]
+            self.is_active: bool = data.get("superTroopIsActive", False)
 
-    @classmethod
-    def _inject_super_meta(cls, troop_meta):
-        cls.is_super_troop = True
-        levels_available = [key for key in troop_meta.keys() if key.isnumeric()]
-        cls.cooldown = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("CooldownH") for level in levels_available]])
-        cls.duration = try_enum(UnitStat, [TimeDelta(hours=hours) for hours in [troop_meta.get(level).get("DurationH") for level in levels_available]])
-        cls.min_original_level = troop_meta["MinOriginalLevel"]
-        cls._original = troop_meta["Original"]
+        if static_data:
+            self.id: int = static_data["_id"]
+            self.name: str = static_data["name"]
+            self.info: str = static_data["info"]
+            self.TID: TID = TID(data=static_data["TID"])
 
-        return cls
+            self.production_building = ProductionBuildingType(value=static_data["production_building"])
+            self.production_building_level: int = static_data["production_building_level"]
+            self.upgrade_resource = Resource(value=static_data["upgrade_resource"])
 
-    @property
-    def is_max_for_townhall(self):
-        """:class:`bool`:
-            Returns a boolean that indicates whether the troop is the max level for the player's townhall level.
-        """
-        if self.is_max:
-            return True
+            self.is_flying: bool = static_data["is_flying"]
+            self.is_air_targeting: bool = static_data["is_air_targeting"]
+            self.is_ground_targeting: bool = static_data["is_ground_targeting"]
 
-        # 1. Hero/troop levels in-game are 1-indexed, UnitStat is 1-indexed
-        # 2. TH-lab levels in-game and here are 1-indexed
-        # 3. We then want to check that for the level less than this troop the req'd
-        #    TH is less than or equal to current TH,
-        #    and for troop level above, it requires a higher TH than we currently have.
-        #    Maybe there's a better way to go about doing this.
-        return self.lab_to_townhall[self.__class__.lab_level[self.level]] <= self._townhall \
-             < self.lab_to_townhall[self.__class__.lab_level[self.level + 1]]
+            self.movement_speed: int = static_data["movement_speed"]
+            self.attack_speed: int = static_data["attack_speed"]
+            self.attack_range: int = static_data["attack_range"]
+            self.housing_space: int = static_data["housing_space"]
 
-    @classmethod
-    def get_max_level_for_townhall(cls, townhall):
-        """Get the maximum level for a troop for a given townhall level.
+            self.village = VillageType(value=static_data["village"])
 
-        Parameters
-        ----------
-        townhall
-            The townhall level to get the maximum troop level for.
+            self.is_super_troop: bool = "super_troop" in static_data
+            self.is_seasonal: bool = static_data.get("is_seasonal", False)
+            self.is_siege_machine: bool = self.production_building == ProductionBuildingType.workshop
 
-        Returns
-        --------
-        :class:`int`
-            The maximum troop level, or ``None`` if the troop hasn't been unlocked at that level.
+            if self.is_super_troop:
+                self.base_troop_id: int = static_data["super_troop"]["original_id"]
+                self.base_troop_minimum_level: int = static_data["super_troop"]["original_min_level"]
 
-        """
-        for lab_level, th_level in cls.lab_to_townhall.items():
-            if th_level != townhall:
-                continue
+        self.is_home_base: bool = self.village == VillageType.home
+        self.is_builder_base: bool = self.village == VillageType.builder_base
 
-            levels = [troop_level for troop_level, lab in enumerate(cls.lab_level, start=1) if lab <= lab_level]
-            return levels and max(levels) or None
+        self._load_level_data()
 
-        raise ValueError("The townhall level was not valid.")
+    def _load_level_data(self):
+        if not self._static_data:
+            return
 
+        start_level = self._static_data["levels"][0]["level"]
+        # hacky way to deal with lv 1 builder base troops showing as lv 1 instead of correct level
+        if self.__data and self._level == 1 and self.is_builder_base:
+            self._level = self._static_data["levels"][0]["level"] + self._level - 1
 
-class TroopHolder(DataContainerHolder):
-    items: List[Type[Troop]] = []
-    item_lookup: Dict[Tuple[str, bool], Type[Troop]]
+        level_data = self._static_data["levels"][self._level - start_level]
 
-    def _load_json(self, english_aliases: dict, lab_to_townhall):
-        with open(TROOPS_FILE_PATH, 'rb') as fp:
-            troop_data = orjson.loads(fp.read())
-        with open(SUPER_TROOPS_FILE_PATH, 'rb') as fp:
-            super_troop_data = orjson.loads(fp.read())
-        with open(ARMY_LINK_ID_FILE_PATH, 'rb') as fp:
-            army_link_ids: dict = orjson.loads(fp.read())
+        self.hitpoints: int = level_data["hitpoints"]
+        self.dps: int = level_data["dps"]
+        self.upgrade_time = TimeDelta(seconds=level_data["upgrade_time"])
+        self.upgrade_cost: int = level_data["upgrade_cost"]
 
-        super_data: dict = {v["Replacement"]: v for item in super_troop_data.values() for v in item.values()}
-
-        id = 1000  # fallback ID for builder base troops
-        for supercell_name, troop_meta in troop_data.items(): #type: str, dict
-
-            if troop_meta.get("Deprecated") or troop_meta.get("1", {}).get("Deprecated"):
-                continue
-
-            if troop_meta.get("DisableProduction") or troop_meta.get("1", {}).get("DisableProduction"):
-                continue
-
-            if "_DEF" in supercell_name:
-                continue
-
-            #is seasonal
-            if troop_meta.get("EnabledByCalendar") or troop_meta.get("1", {}).get("EnabledByCalendar"):
-                continue
-
-            troop_name = english_aliases.get(troop_meta.get("TID"))
-
-            new_troop: Type[Troop] = type('Troop', Troop.__bases__, dict(Troop.__dict__))
-            # hacky way to prevent builder base baby dragon from taking spot of home village one
-            troop_id = army_link_ids.get(f"BB_{troop_name}" if troop_meta.get("VillageType") else troop_name, id)
-            if troop_id == id:
-                id += 1
-
-            new_troop._load_json_meta(
-                troop_meta,
-                id=troop_id,
-                name=troop_name,
-                lab_to_townhall=lab_to_townhall,
-                internal_name=supercell_name,
-            )
-            self.items.append(new_troop)
-            self.item_lookup[(new_troop.name, new_troop._is_home_village)] = new_troop
-            try:
-                super_meta = super_data[supercell_name]
-            except KeyError:
-                pass
-            else:
-                new_troop._inject_super_meta(super_meta)
-
-        for troop in filter(lambda t: t.is_super_troop, self.items):
-            sc_name = troop_data[troop._original].get("TID")
-            troop.original_troop = self.get(english_aliases.get(sc_name))
-
-        self.loaded = True
-
-    def load(self, data, townhall: int, default: "Troop" = Troop, load_game_data: bool = None) -> Troop:
-        if load_game_data is True:
-            try:
-                troop = self.item_lookup[(data["name"], data["village"] == "home")]
-            except KeyError:
-                troop = default
-        else:
-            troop = default
-
-        return troop(data=data, townhall=townhall)
-
-    def get(self, name, home_village=True) -> Optional[Type[Troop]]:
-        try:
-            return self.item_lookup[(name, home_village)]
-        except KeyError:
-            return None
+        #is None for seasonal troops
+        self.required_lab_level: int | None = level_data["required_lab_level"]
+        self.required_townhall: int = level_data["required_townhall"]
