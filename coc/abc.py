@@ -233,11 +233,18 @@ class LevelManager:
         try:
             return object.__getattribute__(self, name)
         except AttributeError:
-            raise AttributeError(
-                f"'{self.__class__.__name__}' object has no attribute '{name}'. "
-                f"This attribute requires static game data to be loaded. "
-                f"Use load_game_data=True when fetching this object."
-            )
+            if name == "_raw_data":
+                raise AttributeError(
+                    f"'{self.__class__.__name__}' object has no attribute '{name}'. "
+                    f"This attribute requires client raw_attribute to be enabled and set to True."
+                    f"Additionally must be an API data filled unit."
+                )
+            else:
+                raise AttributeError(
+                    f"'{self.__class__.__name__}' object has no attribute '{name}'. "
+                    f"This attribute requires static game data to be loaded. "
+                    f"Use load_game_data=True when fetching this object."
+                )
 
 
     def __repr__(self):

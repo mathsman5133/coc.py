@@ -82,13 +82,17 @@ class Hero(LeveledUnit):
         "upgrade_cost",
         "required_hero_tavern_level",
         "required_townhall",
+        "_raw_data"
     )
 
-    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
         super().__init__(
             initial_level=data.get("level") or level,
             static_data=static_data
         )
+
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
         if data:
             self.name: str = data["name"]
@@ -208,13 +212,17 @@ class Pet(LeveledUnit):
         "upgrade_cost",
         "required_pet_house_level",
         "required_townhall",
+        "_raw_data"
     )
 
-    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
         super().__init__(
             initial_level=data.get("level") or level,
             static_data=static_data
         )
+
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
         if data:
             self.name: str = data["name"]
@@ -321,13 +329,17 @@ class Equipment(LeveledUnit):
         "glowy_ore",
         "starry_ore",
         "abilities",
+        "_raw_data"
     )
 
-    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
         super().__init__(
             initial_level=data.get("level") or level,
             static_data=static_data
         )
+
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
         if data:
             self.name: str = data["name"]

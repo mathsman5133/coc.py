@@ -102,13 +102,19 @@ class Troop(LeveledUnit):
         "upgrade_cost",
         "required_lab_level",
         "required_townhall",
+        "_raw_data",
+        "__data"
     )
 
-    def __init__(self, data: dict, static_data: dict | None, level: int = 0):
+    def __init__(self, data: dict, static_data: dict | None, level: int = 0, client = None):
         super().__init__(
             initial_level=data.get("level") or level,
             static_data=static_data
         )
+
+        self.__data = data
+        if client and client.raw_attribute and data:
+            self._raw_data = data
 
         if data:
             self.name: str = data["name"]
@@ -145,16 +151,20 @@ class Troop(LeveledUnit):
                 self.base_troop_id: int = static_data["super_troop"]["original_id"]
                 self.base_troop_minimum_level: int = static_data["super_troop"]["original_min_level"]
 
-            self._load_level_data()
-
         self.is_home_base: bool = self.village == VillageType.home
         self.is_builder_base: bool = self.village == VillageType.builder_base
+
+        self._load_level_data()
 
     def _load_level_data(self):
         if not self._static_data:
             return
 
         start_level = self._static_data["levels"][0]["level"]
+        # hacky way to deal with lv 1 builder base troops showing as lv 1 instead of correct level
+        if self.__data and self._level == 1 and self.is_builder_base:
+            self._level = self._static_data["levels"][0]["level"] + self._level - 1
+
         level_data = self._static_data["levels"][self._level - start_level]
 
         self.hitpoints: int = level_data["hitpoints"]

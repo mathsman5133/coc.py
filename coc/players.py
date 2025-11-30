@@ -336,6 +336,9 @@ class Player(ClanMember):
         else:
             self._load_game_data = True
 
+        if self._load_game_data and client is None:
+            raise RuntimeError("Client must be provided if load_game_data is True.")
+
         super().__init__(data=data, client=client)
 
     def _from_data(self, data: dict) -> None:
@@ -368,58 +371,63 @@ class Player(ClanMember):
 
         self._iter_troops = (
             self.troop_cls(
+                client=self._client,
                 data=tdata,
                 static_data=self._client._get_static_data(
                     item_name=tdata["name"],
                     village=tdata["village"],
                     section="troops",
                     bypass=not self._load_game_data
-                )
+                ) if self._client else None
             ) for tdata in data_get("troops", []) if tdata["name"] not in pet_lookup
         )
 
         self._iter_heroes = (
             self.hero_cls(
+                client=self._client,
                 data=hdata,
                 static_data=self._client._get_static_data(
                     item_name=hdata["name"],
                     village=hdata["village"],
                     section="heroes",
                     bypass=not self._load_game_data
-                )
+                ) if self._client else None
             ) for hdata in data_get("heroes", [])
         )
 
         self._iter_spells = (
             self.spell_cls(
+                client=self._client,
                 data=sdata,
                 static_data=self._client._get_static_data(
                     item_name=sdata["name"],
                     section="spells",
                     bypass=not self._load_game_data
-                )
+                ) if self._client else None
             ) for sdata in data_get("spells", [])
         )
 
         self._iter_pets = (
             self.pet_cls(
+                client=self._client,
                 data=tdata,
                 static_data=self._client._get_static_data(
                     item_name=tdata["name"],
                     section="pets",
                     bypass=not self._load_game_data
-                )
+                ) if self._client else None
             ) for tdata in data_get("troops", []) if tdata["name"] in pet_lookup
         )
 
         self._iter_equipment = (
             self.equipment_cls(
+                client=self._client,
                 data=edata,
                 static_data=self._client._get_static_data(
                     item_name=edata["name"],
                     section="equipment",
                     bypass=not self._load_game_data
-                )
+                ) if self._client else None
             ) for edata in data_get('heroEquipment', [])
         )
 
