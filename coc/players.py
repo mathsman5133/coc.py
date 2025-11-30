@@ -155,7 +155,10 @@ class ClanMember(BasePlayer):
 
         # fall back if no league given, this is what in-game shows
         self.builder_base_league = try_enum(self.builder_base_league_cls,
-                                            data=self.builder_base_league or {"id":44000000,"name":"Wood League V"},
+                                            data=data_get(
+                                                "builderBaseLeague",
+                                                {"id":44000000,"name":"Wood League V"}
+                                            ),
                                             client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
         self.town_hall: int = data_get("townHallLevel")
