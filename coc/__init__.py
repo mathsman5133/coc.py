@@ -27,14 +27,14 @@ __version__ = "4.0.0"
 from .abc import BasePlayer, BaseClan
 from .buildings import (
     Building,
-    Trap,
+    GearUp,
+    MergeRequirement,
     SeasonalDefenseModule,
     SeasonalDefense,
-    MergeRequirement,
-    GearUp,
+    Supercharge,
     TownhallUnlock,
     TownhallWeapon,
-    Supercharge,
+    Trap,
 )
 from .characters import Guardian, Helper
 from .clans import RankedClan, Clan
