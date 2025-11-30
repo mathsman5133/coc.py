@@ -201,12 +201,6 @@ class SkinTier(ExtendedEnum):
     legendary = "Legendary"
 
 
-
-class Gender(ExtendedEnum):
-    male = "M"
-    female = "F"
-
-
 UNRANKED_LEAGUE_DATA = {
     "id": 105000000,
     "name": "Unranked",

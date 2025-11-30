@@ -1,5 +1,5 @@
 from .abc import LeveledUnit
-from .enums import Resource, Gender
+from .enums import Resource
 from .miscmodels import TID, TimeDelta
 
 
@@ -104,8 +104,6 @@ class Helper(LeveledUnit):
         The helper's name.
     TID: :class:`TID`
         The helper's translation IDs for localization.
-    gender: :class:`Gender`
-        The helper's gender.
     upgrade_resource: :class:`Resource`
         The resource type required to upgrade this helper.
     upgrade_cost: :class:`int`
@@ -118,7 +116,6 @@ class Helper(LeveledUnit):
         "id",
         "name",
         "TID",
-        "gender",
         "upgrade_resource",
         "upgrade_cost",
         "required_townhall",
@@ -132,7 +129,6 @@ class Helper(LeveledUnit):
         self.id: int = data["_id"]
         self.name: str = data["name"]
         self.TID: TID = TID(data=data["TID"])
-        self.gender = Gender(value=data["gender"])
         self.upgrade_resource: Resource = Resource(value=data["upgrade_resource"])
 
         self._load_level_data()

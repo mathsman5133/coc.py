@@ -1181,7 +1181,6 @@ class StaticUpdater:
                     "name": helper_data.get("TID"),
                     "info": helper_data.get("InfoTID"),
                 },
-                "gender": helper_data.get("Gender"),
                 "upgrade_resource": self._parse_resource(resource=helper_data.get("CostResource")),
                 "levels": []
             }

@@ -56,7 +56,6 @@ from .enums import (
     SceneryType,
     EquipmentRarity,
     SkinTier,
-    Gender,
     UNRANKED_LEAGUE_DATA,
 )
 from .errors import (
