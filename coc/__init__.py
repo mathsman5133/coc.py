@@ -75,8 +75,8 @@ from .hero import Equipment, Hero, Pet
 from .http import BasicThrottler, BatchThrottler, HTTPClient
 from .iterators import (
     ClanIterator,
-    PlayerIterator,
     ClanWarIterator,
+    PlayerIterator,
     LeagueWarIterator,
     CurrentWarIterator,
 )
