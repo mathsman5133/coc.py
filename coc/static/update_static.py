@@ -49,7 +49,6 @@ class StaticUpdater:
         self.bb_lab_to_townhall = {}
         self.pethouse_to_townhall = {}
 
-
     async def download(self, url: str, as_json: bool = False):
         async with aiohttp.request('GET', url) as fp:
             if as_json:
@@ -269,6 +268,13 @@ class StaticUpdater:
         self.USED_TIDS.add(tid)
         return self.translation_data.get(tid, {}).get("EN")
 
+    def _parse_upgrade_time(self, level_data: dict) -> int:
+        upgrade_time_seconds = (level_data.get("BuildTimeD") or level_data.get("UpgradeTimeD", 0)) * 24 * 60 * 60
+        upgrade_time_seconds += (level_data.get("BuildTimeH") or level_data.get("UpgradeTimeH", 0)) * 60 * 60
+        upgrade_time_seconds += (level_data.get("BuildTimeM") or level_data.get("UpgradeTimeM", 0)) * 60
+        upgrade_time_seconds += level_data.get("BuildTimeS") or level_data.get("UpgradeTimeS", 0)
+        return upgrade_time_seconds
+
     def _parse_resource(self, resource: str) -> str:
         resource_TID: str = self.full_resource_data.get(resource, {}).get("TID")
         return self._translate(resource_TID)
@@ -360,10 +366,7 @@ class StaticUpdater:
                     for level, level_data in supercharge_data.items():
                         if not isinstance(level_data, dict):
                             continue
-                        upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                        upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
-                        upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
-                        upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+                        upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                         DPS = level_data.get("DPS", 0)
                         # if the level doesnt have a DPS & there is no hitpoints for this row, that means it is a DPS upgrade
@@ -372,8 +375,8 @@ class StaticUpdater:
                             DPS = supercharge_data.get("DPS", 0)
                         hold_data["levels"].append({
                             "level": int(level),
-                            "upgrade_cost": level_data.get("BuildCost"),
-                            "upgrade_time": upgrade_time_seconds,
+                            "build_cost": level_data.get("BuildCost"),
+                            "build_time": upgrade_time_seconds,
                             "hitpoints_buff": level_data.get("Hitpoints", 0),
                             "dps_buff": DPS,
                         })
@@ -405,6 +408,7 @@ class StaticUpdater:
 
             # put seasonal defense onto the crafting station
             if _id == 1000097:
+                # seasonal defenses are a max townhall thing
                 seasonal_def_data = self._parse_seasonal_defense_data()
                 hold_data["seasonal_defenses"] = seasonal_def_data
 
@@ -415,19 +419,16 @@ class StaticUpdater:
                     "building_id": self.full_building_data.get(building_data.get("GearUpBuilding")).get("_id")
                 }
 
+
             for level, level_data in building_data.items():
                 if not isinstance(level_data, dict):
                     continue
 
-                upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
-                upgrade_time_seconds += level_data.get("BuildTimeS", 0)
-
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
                 hold_level_data = {
                     "level": level_data.get("BuildingLevel"),
-                    "upgrade_cost": level_data.get("BuildCost", 0),
-                    "upgrade_time": upgrade_time_seconds,
+                    "build_cost": level_data.get("BuildCost", 0),
+                    "build_time": upgrade_time_seconds,
                     "required_townhall": level_data.get("TownHallLevel"),
                     "hitpoints": level_data.get("Hitpoints", 0),
                     "dps": level_data.get("DPS", 0) or level_data.get("Damage", 0),
@@ -475,15 +476,11 @@ class StaticUpdater:
                             if not isinstance(weapon_level_data, dict):
                                 continue
 
-                            upgrade_time_seconds = weapon_level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                            upgrade_time_seconds += weapon_level_data.get("BuildTimeH", 0) * 60 * 60
-                            upgrade_time_seconds += weapon_level_data.get("BuildTimeM", 0) * 60
-                            upgrade_time_seconds += weapon_level_data.get("BuildTimeS", 0)
-
+                            upgrade_time_seconds = self._parse_upgrade_time(weapon_level_data)
                             hold_weapon_data["levels"].append({
                                 "level": weapon_level_data.get("Level"),
-                                "upgrade_cost": level_data.get("BuildCost"),
-                                "upgrade_time": upgrade_time_seconds,
+                                "build_cost": level_data.get("BuildCost"),
+                                "build_time": upgrade_time_seconds,
                                 "dps": weapon_level_data.get("DPS"),
                             })
                         hold_level_data["weapon"] = hold_weapon_data
@@ -580,10 +577,7 @@ class StaticUpdater:
                 for level, level_data in module_data.items():
                     if not isinstance(level_data, dict):
                         continue
-                    upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                    upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
-                    upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
-                    upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+                    upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                     ability_data = self.full_abilities_data.get(module_data.get("SpecialAbility")).get(level)
                     ability_data.pop("ActivateFromGameSystem", None)
@@ -592,8 +586,8 @@ class StaticUpdater:
 
                     module_hold_data["levels"].append({
                         "level": int(level),
-                        "upgrade_cost": level_data.get("BuildCost"),
-                        "upgrade_time": upgrade_time_seconds,
+                        "build_cost": level_data.get("BuildCost"),
+                        "build_time": upgrade_time_seconds,
                         "ability_data": ability_data
                     })
 
@@ -659,7 +653,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 #convert times to seconds, all times for all things will be in seconds
-                upgrade_time_seconds = level_data.get("UpgradeTimeH", 0) * 60 * 60
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 if not is_super_troop and not is_seasonal_troop:
                     required_lab_level = level_data.get("LaboratoryLevel")
@@ -725,7 +719,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 #convert times to seconds, all times for all things will be in seconds
-                upgrade_time_seconds = level_data.get("UpgradeTimeH", 0) * 60 * 60
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 #hard coded for now, didn't find where this is defined, except "HousesGuardians" on the Townhall data
                 required_townhall = 18
@@ -776,7 +770,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 # convert times to seconds, all times for all things will be in seconds
-                upgrade_time_seconds = level_data.get("UpgradeTimeH", 0) * 60 * 60
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 duration_ms = level_data.get("NumberOfHits", 0) * level_data.get("TimeBetweenHitsMS", 0)
                 radius = spell_data.get("Radius", 0) or level_data.get("Radius", 0)
@@ -831,7 +825,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 # convert times to seconds, all times for all things will be in seconds
-                upgrade_time_seconds = level_data.get("UpgradeTimeH", 0) * 60 * 60
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 new_level_data = {
                     "level": int(level),
@@ -884,7 +878,7 @@ class StaticUpdater:
                 if not isinstance(level_data, dict):
                     continue
                 # convert times to seconds, all times for all things will be in seconds
-                upgrade_time_seconds = level_data.get("UpgradeTimeH", 0) * 60 * 60
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 new_level_data = {
                     "level": int(level),
@@ -1027,15 +1021,13 @@ class StaticUpdater:
             for level, level_data in trap_data.items():
                 if not isinstance(level_data, dict):
                     continue
-                upgrade_time_seconds = level_data.get("BuildTimeD", 0) * 24 * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeH", 0) * 60 * 60
-                upgrade_time_seconds += level_data.get("BuildTimeM", 0) * 60
-                upgrade_time_seconds += level_data.get("BuildTimeS", 0)
+
+                upgrade_time_seconds = self._parse_upgrade_time(level_data)
 
                 hold_data["levels"].append({
                     "level": int(level),
-                    "upgrade_cost": level_data.get("BuildCost"),
-                    "upgrade_time": upgrade_time_seconds,
+                    "build_cost": level_data.get("BuildCost"),
+                    "build_time": upgrade_time_seconds,
                     "required_townhall": level_data.get("TownHallLevel"),
                     "damage": level_data.get("Damage", 0),
                 })
@@ -1419,7 +1411,10 @@ class StaticUpdater:
             'DARK_ELIXIR_SPELL_ORDER': [s["name"] for s in spells if s["upgrade_resource"] == "Dark Elixir"],
             'SEASONAL_SPELL_ORDER': [s["name"] for s in spells if s.get("is_seasonal", False)],
             'SPELL_ORDER': 'ELIXIR_SPELL_ORDER + DARK_ELIXIR_SPELL_ORDER',
-            'HOME_BASE_HERO_ORDER': [h["name"] for h in heroes if h["village"] == "home"],
+            'HOME_BASE_HERO_ORDER': [
+                h["name"] for h in sorted(heroes, key=lambda x: x["levels"][0]["required_townhall"])
+                if h["village"] == "home"
+            ],
             'BUILDER_BASE_HERO_ORDER': [h["name"] for h in heroes if h["village"] == "builderBase"],
             'HERO_ORDER': 'HOME_BASE_HERO_ORDER + BUILDER_BASE_HERO_ORDER',
             'PETS_ORDER': [p["name"] for p in pets],
@@ -1483,5 +1478,5 @@ class StaticUpdater:
         asyncio.run(self.download_files())
 
 if __name__ == "__main__":
-    StaticUpdater().generate_constants()
+    StaticUpdater().run()
 

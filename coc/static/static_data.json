@@ -13558,7 +13558,7 @@
           "level": 2,
           "hitpoints": 500,
           "dps": 45,
-          "upgrade_time": 0,
+          "upgrade_time": 300,
           "upgrade_cost": 7000,
           "required_lab_level": 1,
           "required_townhall": 1
@@ -13567,7 +13567,7 @@
           "level": 3,
           "hitpoints": 550,
           "dps": 58,
-          "upgrade_time": 0,
+          "upgrade_time": 900,
           "upgrade_cost": 10000,
           "required_lab_level": 2,
           "required_townhall": 2
@@ -13751,7 +13751,7 @@
           "level": 1,
           "hitpoints": 196,
           "dps": 60,
-          "upgrade_time": 0,
+          "upgrade_time": 180,
           "upgrade_cost": 5000,
           "required_lab_level": 1,
           "required_townhall": 1
@@ -13760,7 +13760,7 @@
           "level": 2,
           "hitpoints": 196,
           "dps": 60,
-          "upgrade_time": 0,
+          "upgrade_time": 600,
           "upgrade_cost": 8000,
           "required_lab_level": 1,
           "required_townhall": 1
@@ -13769,7 +13769,7 @@
           "level": 3,
           "hitpoints": 216,
           "dps": 66,
-          "upgrade_time": 0,
+          "upgrade_time": 1800,
           "upgrade_cost": 12000,
           "required_lab_level": 2,
           "required_townhall": 2
