@@ -24,7 +24,7 @@ SOFTWARE.
 from datetime import datetime
 from typing import Any, Optional, Type, TypeVar
 
-from .enums import ExtendedEnum, PlayerHouseElementType
+from .enums import ExtendedEnum, PlayerHouseElementType, VillageType
 from .utils import from_timestamp
 
 T = TypeVar("T")
@@ -89,17 +89,22 @@ class Achievement:
         self.target: int = data["target"]
         self.info: str = data["info"]
         self.completion_info: str = data["completionInfo"]
-        self.village: str = data["village"]
+        self.village = VillageType(value=data["village"])
 
     @property
     def is_builder_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the builder base"""
-        return self.village == "builderBase"
+        return self.village == VillageType.builder_base
 
     @property
     def is_home_base(self) -> bool:
         """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the home base"""
-        return self.village == "home"
+        return self.village == VillageType.home
+
+    @property
+    def is_clan_capital(self) -> bool:
+        """:class:`bool`: Returns a boolean which indicates if the achievement belongs to the clan capital"""
+        return self.village == VillageType.clan_capital
 
     @property
     def is_completed(self) -> bool:

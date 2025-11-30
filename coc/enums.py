@@ -183,6 +183,7 @@ class BuildingType(ExtendedEnum):
 class VillageType(ExtendedEnum):
     home = "home"
     builder_base = "builderBase"
+    clan_capital = "clanCapital"
 
 class SceneryType(ExtendedEnum):
     home = "home"
