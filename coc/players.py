@@ -98,7 +98,7 @@ class ClanMember(BasePlayer):
         The class to use to create the :attr:`ClanMember.league` attribute.
         Ensure any overriding of this inherits from :class:`coc.League`.
     builder_base_league_cls: Optional[:class:`coc.League`]
-        The class to use to create the :attr:`ClanMember.builder_base_league` attribute. None if not in a league.
+        The class to use to create the :attr:`ClanMember.builder_base_league` attribute.
         Ensure any overriding of this inherits from :class:`coc.BaseLeague`.
     """
 
@@ -153,11 +153,10 @@ class ClanMember(BasePlayer):
         self.clan = try_enum(self.clan_cls, data=data_get("clan"), client=self._client)
         self.league = try_enum(self.league_cls, data=data_get("leagueTier"), client=self._client)
 
-        self.builder_base_league = data_get("builderBaseLeague")
-        if self.builder_base_league is not None:
-            self.builder_base_league = try_enum(self.builder_base_league_cls,
-                                                data=self.builder_base_league,
-                                                client=self._client)
+        # fall back if no league given, this is what in-game shows
+        self.builder_base_league = try_enum(self.builder_base_league_cls,
+                                            data=self.builder_base_league or {"id":44000000,"name":"Wood League V"},
+                                            client=self._client)
         self.role = data_get("role") and Role(value=data["role"])
         self.town_hall: int = data_get("townHallLevel")
         self._iter_player_house_elements = (player_house_element_cls(data=adata)
