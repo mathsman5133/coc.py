@@ -26,7 +26,7 @@ import logging
 import re
 
 from collections import deque
-from datetime import datetime
+from datetime import datetime, timezone
 from itertools import cycle
 from time import process_time, perf_counter
 from typing import Optional
@@ -300,7 +300,8 @@ class HTTPClient:
             try:
                 data = cache[cache_control_key]
                 status_code = data.get("status_code")
-                if data.get("timestamp") and data.get("timestamp") + data.get("_response_retry", 0) < datetime.utcnow().timestamp():
+                if data.get("timestamp") and data.get("timestamp") + data.get("_response_retry", 0) < datetime.now(
+                        tz=timezone.utc).timestamp():
                     self._cache_remove(cache_control_key)
                 elif not status_code or 200 <= status_code < 300:
                     return data
@@ -331,8 +332,9 @@ class HTTPClient:
 
                         LOG.debug("API HTTP Request: %s", str(log_info))
                         data = (await json_or_text(response)) or {}
-                        data["status_code"] = response.status
-                        data["timestamp"] = datetime.utcnow().timestamp()
+                        if isinstance(data, dict):
+                            data["status_code"] = response.status
+                            data["timestamp"] = datetime.now(tz=timezone.utc).timestamp()
                         try:
                             # set a callback to remove the item from cache once it's stale.
                             delta = int(response.headers["Cache-Control"].strip("max-age=").strip("public max-age="))
@@ -547,7 +549,7 @@ class HTTPClient:
             LOG.info("Found IP address to be %s", ip)
 
             resp = await session.post("https://developer.clashofclans.com/api/apikey/list")
-            keys = (await resp.json())["keys"]
+            keys = (await resp.json()).get("keys",{})
             for key in keys:
                 LOG.debug(f"Key {key}")
                 if key["name"] != self.key_names or ip not in key["cidrRanges"]:

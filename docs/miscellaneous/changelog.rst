@@ -7,6 +7,30 @@ Changelog
 This page keeps a fairly detailed, human readable version
 of what has changed, and whats new for each version of the lib.
 
+v3.10.0
+------
+
+Changes:
+~~~~~~~~
+- Support for Th18
+    - New Spell: Totem Spell
+    - New Troop: Meteor Golem
+Bugs Fixed:
+~~~~~~~~~~~
+- Documentation fix for a couple functions in clans.py and players.py which in newer python versions were complaining invalid escape sequence
+
+v3.9.2
+------
+
+Changes:
+~~~~~~~~
+- Removal of calls to `datetime.datetime.utcnow()` in favor of `datetime.datetime.now()` to avoid issues with timezones and prevent DeprecationWarnings.
+
+Bugs Fixed:
+~~~~~~~~~~~
+- Fixed a bug occuring when the CoC API returns a text response instead of a json response.
+
+
 v3.9.1
 ------
 

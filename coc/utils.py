@@ -27,7 +27,7 @@ import calendar
 import re
 
 from collections import deque, UserDict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from functools import wraps
 from operator import attrgetter
 from typing import Any, Callable, Generic, Iterable, List, Optional, Type, TypeVar, Union
@@ -268,7 +268,7 @@ def get_season_start(month: Optional[int] = None, year: Optional[int] = None) ->
         # they want a specific month/year combo
         return get_start_for_month_year(month, year)
 
-    now = datetime.utcnow()
+    now = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     start = get_start_for_month_year(now.month, now.year)
     if now > start:
         # we got the right one, season started this month
@@ -315,7 +315,7 @@ def get_season_end(month: Optional[int] = None, year: Optional[int] = None) -> d
             next_year = year
         return get_season_start(next_month, next_year)
 
-    now = datetime.utcnow()
+    now = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     end = get_season_start(now.month, now.year)
     if end > now:
         return end
@@ -351,7 +351,7 @@ def get_clan_games_start(time: Optional[datetime] = None) -> datetime:
         The start of the next or running clan games.
     """
     if time is None:
-        time = datetime.utcnow()
+        time = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     month = time.month
     year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
@@ -384,7 +384,7 @@ def get_clan_games_end(time: Optional[datetime] = None) -> datetime:
         The end of the next or running clan games.
     """
     if time is None:
-        time = datetime.utcnow()
+        time = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     month = time.month
     year = time.year
     this_months_cg_end = datetime(year=time.year, month=time.month, day=28, hour=8, minute=0, second=0)
@@ -417,7 +417,7 @@ def get_raid_weekend_start(time: Optional[datetime] = None) -> datetime:
         The start of the raid weekend.
     """
     if time is None:
-        time = datetime.utcnow()
+        time = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     time = get_raid_weekend_end(time)
     time = time - timedelta(days=3)
     return time
@@ -445,7 +445,7 @@ def get_raid_weekend_end(time: Optional[datetime] = None) -> datetime:
     """
     # Shift the time so that we can pretend the raid ends just after midnight
     if time is None:
-        time = datetime.utcnow()
+        time = datetime.now(tz=timezone.utc).replace(tzinfo=None)
     time = time - timedelta(hours=7, microseconds=1)
     time = time + timedelta(weeks=1, days=-time.weekday())  # Go to the next monday
     time = time.replace(hour=7, minute=0, second=0, microsecond=0)

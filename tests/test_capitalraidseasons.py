@@ -20,14 +20,15 @@ class TestRaids(unittest.TestCase):
 		data = MOCK_CAPITALRAIDSEASON["body"]
 		clan_tag = MOCK_CAPITALRAIDSEASON["clantag"]
 		raidlog = RaidLog(client=None, clan_tag=clan_tag, limit=2,
-		                  page=False, json_resp=data, model=RaidLogEntry)
+						  page=False, json_resp=data, model=RaidLogEntry,
+                          lookup_cache=False, update_cache=False, ignore_cached_errors=[])
 		# test last raid log entry
-		self.test_raidlog_entry(raidlog[0], data["items"][0])
+		self.raidlog_entry(raidlog[0], data["items"][0])
 
 		# test second last raid log entry
-		self.test_raidlog_entry(raidlog[1], data["items"][1])
+		self.raidlog_entry(raidlog[1], data["items"][1])
 
-	def test_raidlog_entry(self, raidlogentry, mock_data):
+	def raidlog_entry(self, raidlogentry, mock_data):
 		map_raw_to_cocpy = {
 			"state"                  : "state",
 			"capitalTotalLoot"       : "total_loot",
@@ -39,7 +40,7 @@ class TestRaids(unittest.TestCase):
 		}
 		for k, v in map_raw_to_cocpy.items():
 			self.assertEqual(mock_data.get(k), raidlogentry.__getattribute__(v),
-			                 f'{k=} {v=} {mock_data.get(k)=} {raidlogentry.__getattribute__(v)}')
+							 f'{k=} {v=} {mock_data.get(k)=} {raidlogentry.__getattribute__(v)}')
 
 		# test non trivial data
 
@@ -51,26 +52,26 @@ class TestRaids(unittest.TestCase):
 
 		# test attack log
 		for c, adata in enumerate(mock_data.get("attackLog", [])):
-			self.test_raid_clan(raidlogentry.attack_log[c], adata, c)
+			self.raid_clan(raidlogentry.attack_log[c], adata, c)
 
 		# test defense log
 		for c, adata in enumerate(mock_data.get("defenseLog", [])):
-			self.test_raid_clan(raidlogentry.defense_log[c], adata, c)
+			self.raid_clan(raidlogentry.defense_log[c], adata, c)
 
 		# test members
 		for member in mock_data.get("members", []):
-			self.test_raid_member(raidlogentry, member)
+			self.raid_member(raidlogentry, member)
 
 			# test member attacks
 			mock_attacks = [attack for attack_raid in mock_data.get("attackLog", []) for district in attack_raid.get(
 					"districts", []) for attack in district.get("attacks", [])
-			                if attack and attack.get("attacker", {}).get("tag") == member.get("tag")]
+							if attack and attack.get("attacker", {}).get("tag") == member.get("tag")]
 			raidmember = raidlogentry.get_member(member.get("tag"))
 			attacks = raidmember.attacks
 			self.assertEqual(len(mock_attacks), len(attacks))
 			self.assertEqual(len(mock_attacks), raidmember.attack_count)
 			for attack, mock_attack in zip(attacks, mock_attacks):
-				self.test_raid_attack(attack, mock_attack)
+				self.raid_attack(attack, mock_attack)
 
 		# test defensive custom properties
 		defensive_loot = raidlogentry.total_defensive_loot
@@ -87,9 +88,9 @@ class TestRaids(unittest.TestCase):
 		self.assertEqual(defensive_loot, defensive_loot_mock, "RaidLogEntry.total_defensive_loot")
 		self.assertEqual(defensive_attack_count, defensive_attack_count_mock, "RaidLogEntry.defense_attack_count")
 		self.assertEqual(defensive_destroyed_districts, defensive_destroyed_districts_mock,
-		                 "RaidLogEntry.defensive_destroyed_district_count")
+						 "RaidLogEntry.defensive_destroyed_district_count")
 
-	def test_raid_clan(self, raidclan: RaidClan, mock_data, index):
+	def raid_clan(self, raidclan: RaidClan, mock_data, index):
 		map_raw_to_cocpy = {
 			"attackCount"       : "attack_count",
 			"districtCount"     : "district_count",
@@ -101,7 +102,7 @@ class TestRaids(unittest.TestCase):
 		self.assertEqual(raidclan.index, index)
 		for k, v in map_raw_to_cocpy.items():
 			self.assertEqual(mock_data.get(k), raidclan.__getattribute__(v),
-			                 f'{k=} {v=} {mock_data.get(k)=} {raidclan.__getattribute__(v)}')
+							 f'{k=} {v=} {mock_data.get(k)=} {raidclan.__getattribute__(v)}')
 
 		# test non trivial data
 
@@ -109,7 +110,7 @@ class TestRaids(unittest.TestCase):
 		loot_mock = 0
 		destroyed_mock = 0
 		for c, data in enumerate(mock_data.get("districts", [])):
-			self.test_raid_district(raidclan.districts[c], data)
+			self.raid_district(raidclan.districts[c], data)
 			loot_mock += data.get("totalLooted", 0)
 			destroyed_mock += 1 if data.get("destructionPercent") == 100 else 0
 
@@ -121,9 +122,9 @@ class TestRaids(unittest.TestCase):
 		attacks = raidclan.attacks
 		self.assertEqual(len(mock_attacks), len(attacks))
 		for data, mock in zip(attacks, mock_attacks):
-			self.test_raid_attack(data, mock)
+			self.raid_attack(data, mock)
 
-	def test_raid_district(self, raiddistrict, mock_data):
+	def raid_district(self, raiddistrict, mock_data):
 		map_raw_to_cocpy = {
 			"id"                : "id",
 			"name"              : "name",
@@ -135,21 +136,21 @@ class TestRaids(unittest.TestCase):
 
 		for k, v in map_raw_to_cocpy.items():
 			self.assertEqual(mock_data.get(k), raiddistrict.__getattribute__(v),
-			                 f'{k=} {v=} {mock_data.get(k)=} {raiddistrict.__getattribute__(v)}')
+							 f'{k=} {v=} {mock_data.get(k)=} {raiddistrict.__getattribute__(v)}')
 
 		# test non trivial data
 
 		# test raid districts
 		for c, data in enumerate(mock_data.get("attacks", [])):
-			self.test_raid_attack(raiddistrict.attacks[c], data)
+			self.raid_attack(raiddistrict.attacks[c], data)
 
-	def test_raid_attack(self, raidattack: RaidAttack, mock_data):
+	def raid_attack(self, raidattack: RaidAttack, mock_data):
 		self.assertEqual(mock_data.get("attacker", mock_data.get("defender", {})).get("tag"), raidattack.attacker_tag)
 		self.assertEqual(mock_data.get("attacker", mock_data.get("defender", {})).get("name"), raidattack.attacker_name)
 		self.assertEqual(mock_data.get("stars"), raidattack.stars)
 		self.assertEqual(mock_data.get("destructionPercent"), raidattack.destruction)
 
-	def test_raid_member(self, raidlogentry: RaidLogEntry, mock_data):
+	def raid_member(self, raidlogentry: RaidLogEntry, mock_data):
 		raidmember = raidlogentry.get_member(mock_data.get("tag"))
 		self.assertIsInstance(raidmember, RaidMember)
 		self.assertEqual(raidmember.name, mock_data.get("name"))
