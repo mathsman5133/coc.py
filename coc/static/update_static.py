@@ -30,7 +30,6 @@ class StaticUpdater:
         # base path for the static files to be stored in
         self.BASE_PATH = ""
 
-
         self.FINGERPRINT = "475cb6a2d13043762034ddd6a198bad23e0782eb"
         self.CLASH_VERSION = "" or "latest"
         self.VERSION_PARAM = "version" if self.CLASH_VERSION == "latest" else "versionCode"
@@ -298,6 +297,7 @@ class StaticUpdater:
         new_achievement_data = {}
         for achievement_name, achievement_data in self.full_achievement_data.items():
             tid = achievement_data.get("TID")
+            group_map = {0: "home", 1: "builderBase", 2: "clanCapital"}
             if tid not in new_achievement_data:
                 new_achievement_data[tid] = {
                     "name": self._translate(achievement_data.get("TID")),
@@ -308,6 +308,8 @@ class StaticUpdater:
                         "info": achievement_data.get("InfoTID"),
                         "completed_message": achievement_data.get("CompletedTID"),
                     },
+                    "village": group_map.get(achievement_data["UIGroup"]),
+                    "ui_priority": achievement_data.get("UIPriority", 0),
                     "levels" : [{
                         "level": achievement_data.get("Level") + 1,
                         "action_count": achievement_data.get("ActionCount"),
@@ -1423,9 +1425,12 @@ class StaticUpdater:
             'PETS_ORDER': [p["name"] for p in pets],
             'EQUIPMENT': [e["name"] for e in equipment],
             'HV_BUILDINGS': [b["name"] for b in buildings if b["village"] == "home"],
-            'ACHIEVEMENT_ORDER': [a["name"] for a in achievements],
+            'ACHIEVEMENT_ORDER': [
+                a["name"] for a in sorted(achievements,
+                key=lambda x: ({'home': 0, 'builderBase': 1, 'clanCapital': 2}.get(
+                x["village"], 0), -x["ui_priority"]))
+            ], # same order as in-game
         }
-
         constants_path = Path(__file__).parent.parent / "constants.py"
 
         with open(constants_path, 'w') as f:
@@ -1478,5 +1483,5 @@ class StaticUpdater:
         asyncio.run(self.download_files())
 
 if __name__ == "__main__":
-    StaticUpdater().run()
+    StaticUpdater().generate_constants()
 

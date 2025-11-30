@@ -61446,6 +61446,8 @@
         "info": "TID_ACHIEVEMENT_GOLDSTORAGE_UPGRADE",
         "completed_message": "TID_ACHIEVEMENT_GOLDSTORAGE_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 96,
       "levels": [
         {
           "level": 1,
@@ -61479,6 +61481,8 @@
         "info": "TID_ACHIEVEMENT_NPC_STARS",
         "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 3,
       "levels": [
         {
           "level": 1,
@@ -61512,6 +61516,8 @@
         "info": "TID_ACHIEVEMENT_TOWN_HALL",
         "completed_message": "TID_ACHIEVEMENT_TOWN_HALL_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 99,
       "levels": [
         {
           "level": 1,
@@ -61545,6 +61551,8 @@
         "info": "TID_ACHIEVEMENT_CLEAR_OBSTACLES",
         "completed_message": "TID_ACHIEVEMENT_CLEAR_OBSTACLES_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 90,
       "levels": [
         {
           "level": 1,
@@ -61578,6 +61586,8 @@
         "info": "TID_ACHIEVEMENT_UNIT_UNLOCK",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 98,
       "levels": [
         {
           "level": 1,
@@ -61611,6 +61621,8 @@
         "info": "TID_ACHIEVEMENT_LOOT_GOLD",
         "completed_message": "TID_ACHIEVEMENT_LOOT_GOLD_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 95,
       "levels": [
         {
           "level": 1,
@@ -61644,6 +61656,8 @@
         "info": "TID_ACHIEVEMENT_LOOT_ELIXIR",
         "completed_message": "TID_ACHIEVEMENT_LOOT_ELIXIR_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 94,
       "levels": [
         {
           "level": 1,
@@ -61677,6 +61691,8 @@
         "info": "TID_ACHIEVEMENT_VICTORY_POINTS",
         "completed_message": "TID_ACHIEVEMENT_VICTORY_POINTS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 76,
       "levels": [
         {
           "level": 1,
@@ -61710,6 +61726,8 @@
         "info": "TID_ACHIEVEMENT_CASTLE_REPAIR",
         "completed_message": "TID_ACHIEVEMENT_CASTLE_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 89,
       "levels": [
         {
           "level": 1,
@@ -61743,6 +61761,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_WALLS",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_WALLS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 65,
       "levels": [
         {
           "level": 1,
@@ -61776,6 +61796,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_TOWNHALL",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_TOWNHALL_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 67,
       "levels": [
         {
           "level": 1,
@@ -61809,6 +61831,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_BUILDER",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_BUILDER_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 66,
       "levels": [
         {
           "level": 1,
@@ -61842,6 +61866,8 @@
         "info": "TID_ACHIEVEMENT_PVP_ATTACKS",
         "completed_message": "TID_ACHIEVEMENT_PVP_ATTACKS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 75,
       "levels": [
         {
           "level": 1,
@@ -61875,6 +61901,8 @@
         "info": "TID_ACHIEVEMENT_PVP_DEFENSES",
         "completed_message": "TID_ACHIEVEMENT_PVP_DEFENSES_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 77,
       "levels": [
         {
           "level": 1,
@@ -61908,6 +61936,8 @@
         "info": "TID_ACHIEVEMENT_DONATE_UNITS",
         "completed_message": "TID_ACHIEVEMENT_DONATE_UNITS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 88,
       "levels": [
         {
           "level": 1,
@@ -61941,6 +61971,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_MORTARS",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_MORTARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 64,
       "levels": [
         {
           "level": 1,
@@ -61974,6 +62006,8 @@
         "info": "TID_ACHIEVEMENT_LOOT_DARK_ELIXIR",
         "completed_message": "TID_ACHIEVEMENT_LOOT_DARK_ELIXIR_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 93,
       "levels": [
         {
           "level": 1,
@@ -62007,6 +62041,8 @@
         "info": "TID_ACHIEVEMENT_LEAGUE_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
@@ -62040,6 +62076,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_XBOW_ONE",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_XBOW_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 63,
       "levels": [
         {
           "level": 1,
@@ -62073,6 +62111,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_INFERNO",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_INFERNO_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 62,
       "levels": [
         {
           "level": 1,
@@ -62106,6 +62146,8 @@
         "info": "TID_ACHIEVEMENT_WAR_STARS",
         "completed_message": "TID_ACHIEVEMENT_WAR_STARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 85,
       "levels": [
         {
           "level": 1,
@@ -62139,6 +62181,8 @@
         "info": "TID_ACHIEVEMENT_WAR_LOOT",
         "completed_message": "TID_ACHIEVEMENT_WAR_LOOT_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 89,
       "levels": [
         {
           "level": 1,
@@ -62172,6 +62216,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_ARTILLERY",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_ARTILLERY_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 61,
       "levels": [
         {
           "level": 1,
@@ -62205,6 +62251,8 @@
         "info": "TID_ACHIEVEMENT_SPELL_DONATION",
         "completed_message": "TID_ACHIEVEMENT_SPELL_DONATION_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 87,
       "levels": [
         {
           "level": 1,
@@ -62238,6 +62286,8 @@
         "info": "TID_ACHIEVEMENT_ACCOUNT_BOUND",
         "completed_message": "TID_ACHIEVEMENT_ACCOUNT_BOUND_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 100,
       "levels": [
         {
           "level": 1,
@@ -62264,6 +62314,8 @@
         "info": "TID_ACHIEVEMENT_TOWN_HALL2",
         "completed_message": "TID_ACHIEVEMENT_TOWN_HALL2_COMPLETED"
       },
+      "village": "builderBase",
+      "ui_priority": 3,
       "levels": [
         {
           "level": 1,
@@ -62297,6 +62349,8 @@
         "info": "TID_ACHIEVEMENT_UNIT_UNLOCK2",
         "completed_message": null
       },
+      "village": "builderBase",
+      "ui_priority": 0,
       "levels": [
         {
           "level": 1,
@@ -62330,6 +62384,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_TOWNHALL2",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_TOWNHALL2_COMPLETED"
       },
+      "village": "builderBase",
+      "ui_priority": 0,
       "levels": [
         {
           "level": 1,
@@ -62363,6 +62419,8 @@
         "info": "TID_ACHIEVEMENT_VS_BATTLE_TROPHIES",
         "completed_message": "TID_ACHIEVEMENT_VS_BATTLE_TROPHIES_COMPLETED"
       },
+      "village": "builderBase",
+      "ui_priority": 0,
       "levels": [
         {
           "level": 1,
@@ -62396,6 +62454,8 @@
         "info": "TID_ACHIEVEMENT_GEAR_UP_ONE",
         "completed_message": "TID_ACHIEVEMENT_GEAR_UP_COMPLETED"
       },
+      "village": "builderBase",
+      "ui_priority": 1,
       "levels": [
         {
           "level": 1,
@@ -62429,6 +62489,8 @@
         "info": "TID_ACHIEVEMENT_REPAIR_BUILDING",
         "completed_message": null
       },
+      "village": "builderBase",
+      "ui_priority": 2,
       "levels": [
         {
           "level": 1,
@@ -62462,6 +62524,8 @@
         "info": "TID_ACHIEVEMENT_CLAN_GAMES_POINTS",
         "completed_message": "TID_ACHIEVEMENT_CLAN_GAMES_POINTS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 81,
       "levels": [
         {
           "level": 1,
@@ -62495,6 +62559,8 @@
         "info": "TID_ACHIEVEMENT_NPC_STARS",
         "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 2,
       "levels": [
         {
           "level": 1,
@@ -62528,6 +62594,8 @@
         "info": "TID_ACHIEVEMENT_DRAGON_SLAYER",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 1,
       "levels": [
         {
           "level": 1,
@@ -62547,6 +62615,8 @@
         "info": "TID_ACHIEVEMENT_WL_STARS",
         "completed_message": "TID_ACHIEVEMENT_WL_STARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 84,
       "levels": [
         {
           "level": 1,
@@ -62580,6 +62650,8 @@
         "info": "TID_ACHIEVEMENT_SEASON_CHALLENGE_POINTS",
         "completed_message": "TID_ACHIEVEMENT_SEASON_CHALLENGE_POINTS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 91,
       "levels": [
         {
           "level": 1,
@@ -62613,6 +62685,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_SCATTERSHOT",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_SCATTERSHOT_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -62646,6 +62720,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_TH",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_TH_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 67,
       "levels": [
         {
           "level": 1,
@@ -62679,6 +62755,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_BUILDERS",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_WEAPONISED_BUILDERS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 66,
       "levels": [
         {
           "level": 1,
@@ -62712,6 +62790,8 @@
         "info": "TID_ACHIEVEMENT_ACTIVATE_SUPER_TROOP",
         "completed_message": "TID_ACHIEVEMENT_ACTIVATE_SUPER_TROOP_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 0,
       "levels": [
         {
           "level": 1,
@@ -62745,6 +62825,8 @@
         "info": "TID_ACHIEVEMENT_DONATE_SIEGES",
         "completed_message": "TID_ACHIEVEMENT_DONATE_SEIGES_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 87,
       "levels": [
         {
           "level": 1,
@@ -62778,6 +62860,8 @@
         "info": "TID_ACHIEVEMENT_LOOT_CAPITAL",
         "completed_message": "TID_ACHIEVEMENT_LOOT_CAPITAL_COMPLETED"
       },
+      "village": "clanCapital",
+      "ui_priority": 1,
       "levels": [
         {
           "level": 1,
@@ -62811,6 +62895,8 @@
         "info": "TID_ACHIEVEMENT_DONATE_CAPITAL",
         "completed_message": "TID_ACHIEVEMENT_DONATE_CAPITAL_COMPLETED"
       },
+      "village": "clanCapital",
+      "ui_priority": 0,
       "levels": [
         {
           "level": 1,
@@ -62844,6 +62930,8 @@
         "info": "TID_ACHIEVEMENT_NPC_STARS",
         "completed_message": "TID_ACHIEVEMENT_NPC_STARS_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 2,
       "levels": [
         {
           "level": 1,
@@ -62877,6 +62965,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_SPELL_TOWER",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_SPELL_TOWER_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -62910,6 +63000,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_MONOLITH",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_MONOLITH_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -62943,6 +63035,8 @@
         "info": "TID_ACHIEVEMENT_PEKKA_SLAYER",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 1,
       "levels": [
         {
           "level": 1,
@@ -62962,6 +63056,8 @@
         "info": "TID_ACHIEVEMENT_MINI_LEVEL",
         "completed_message": "TID_ACHIEVEMENT_MINI_LEVEL_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 3,
       "levels": [
         {
           "level": 1,
@@ -62995,6 +63091,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_MULTI_ARCHER_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -63028,6 +63126,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_RICOCHET_CANNON_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -63061,6 +63161,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_FIRESPITTER_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -63094,6 +63196,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_MULTI_GEAR_TOWER_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -63127,6 +63231,8 @@
         "info": "TID_ACHIEVEMENT_SEASONAL_DEFENSE",
         "completed_message": "TID_ACHIEVEMENT_SEASONAL_DEFENSE_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 3,
       "levels": [
         {
           "level": 1,
@@ -63160,6 +63266,8 @@
         "info": "TID_ACHIEVEMENT_DESTROY_SEASONAL_DEFENSE",
         "completed_message": "TID_ACHIEVEMENT_DESTROY_SEASONAL_DEFENSE_COMPLETED"
       },
+      "village": "home",
+      "ui_priority": 60,
       "levels": [
         {
           "level": 1,
@@ -63193,6 +63301,8 @@
         "info": "TID_ACHIEVEMENT_RANKED_1_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
@@ -63226,6 +63336,8 @@
         "info": "TID_ACHIEVEMENT_RANKED_2_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
@@ -63259,6 +63371,8 @@
         "info": "TID_ACHIEVEMENT_RANKED_3_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
@@ -63292,6 +63406,8 @@
         "info": "TID_ACHIEVEMENT_RANKED_4_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
@@ -63325,6 +63441,8 @@
         "info": "TID_ACHIEVEMENT_RANKED_5_PROGRESS_1",
         "completed_message": null
       },
+      "village": "home",
+      "ui_priority": 72,
       "levels": [
         {
           "level": 1,
