@@ -137,6 +137,10 @@ class Pet(LeveledUnit):
         The pet's name.
     village: :class:`VillageType`
         The village type where this pet belongs.
+    is_home_base: :class:`bool`
+        Whether this hero belongs to the home village.
+    is_builder_base: :class:`bool`
+        Whether this hero belongs to the builder base.
     max_level: :class:`int`
         The maximum level this pet can be upgraded to.
     id: :class:`int`
@@ -180,6 +184,8 @@ class Pet(LeveledUnit):
     __slots__ = (
         "name",
         "village",
+        "is_home_base",
+        "is_builder_base",
         "max_level",
         "id",
         "info",
@@ -232,6 +238,9 @@ class Pet(LeveledUnit):
             self.village = VillageType.home
 
             self._load_level_data()
+
+        self.is_home_base: bool = self.village == VillageType.home
+        self.is_builder_base: bool = self.village == VillageType.builder_base
 
     def _load_level_data(self):
         if not self._static_data:
