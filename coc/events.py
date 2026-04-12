@@ -1093,7 +1093,7 @@ class EventsClient(Client):
             meth = self.get_clan_war
 
         try:
-            war = await meth(clan_tag, cls=self.war_cls, round=cwl_round)
+            war = await meth(clan_tag, cls=self.war_cls, cwl_round=cwl_round)
         except (Maintenance, PrivateWarLog):
             self._safe_unlock(lock)
             return
