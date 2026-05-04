@@ -1109,8 +1109,9 @@ class EventsClient(Client):
         # sleep for either the global retry or whenever a new war object is available, whichever is smaller.
         self.loop.call_later(max(war._response_retry, self.war_retry_interval), self._safe_unlock, lock)
 
-        cached_war = self._get_cached_war(clan_tag)
-        self._update_war(clan_tag, war)
+        # use war:cwl_round:clan_tag key to fetch the right war during cwl
+        cached_war = self._get_cached_war(key)
+        self._update_war(key, war)
 
         if not cached_war:
             self._safe_unlock(lock)
