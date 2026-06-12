@@ -436,7 +436,6 @@ class EventsClient(Client):
         self.player_loops_run = 0
         self.war_loops_run = 0
 
-        self.is_cwl_active = options.pop("cwl_active", True)
         self.check_cwl_prep = options.pop("check_cwl_prep", False)
 
         self._locks = {}
@@ -909,7 +908,7 @@ class EventsClient(Client):
 
                 self.dispatch("war_loop_start", self.war_loops_run)
 
-                if self.is_cwl_active and self.check_cwl_prep:
+                if self.check_cwl_prep:
                     options = (WarRound.current_war, WarRound.current_preparation)
                 else:
                     options = (WarRound.current_war, )
@@ -1087,13 +1086,8 @@ class EventsClient(Client):
             return
         await lock.acquire()
 
-        if self.is_cwl_active:
-            meth = self.get_current_war
-        else:
-            meth = self.get_clan_war
-
         try:
-            war = await meth(clan_tag, cls=self.war_cls, cwl_round=cwl_round)
+            war = await self.get_current_war(clan_tag, cls=self.war_cls, cwl_round=cwl_round)
         except (Maintenance, PrivateWarLog):
             self._safe_unlock(lock)
             return

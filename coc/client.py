@@ -1293,8 +1293,9 @@ class Client:
                     # last round is still in preparation
                     last_round_active = False
                     break
+
         if cwl_round is WarRound.current_war and league_group.state == "preparation":
-            return None  # for round 1 and 15min prep between rounds this is a shortcut.
+            round_tags = league_group.rounds[-1]  # for round 1 and 15min prep between rounds
         elif cwl_round is WarRound.current_preparation and league_group.state == "ended":
             return None  # for the end of CWL there's no next prep day.
         elif cwl_round is WarRound.current_war and len(league_group.rounds) < 2:
