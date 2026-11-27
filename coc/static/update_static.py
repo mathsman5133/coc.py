@@ -5,6 +5,7 @@ If new files need to be added, then place them in the TARGETS list.
 """
 import aiohttp
 import asyncio
+import copy
 import json
 import logging
 import csv
@@ -12,6 +13,7 @@ import os
 import zipfile
 import zstandard
 import lzma
+import struct
 from pathlib import Path
 
 class StaticUpdater:
@@ -27,10 +29,15 @@ class StaticUpdater:
         self.KEEP_JSON = False
         # removes any TIDs not used in the static files
         self.PRUNE_TRANSLATIONS = True
+        # align the generated data with a reference copy of static_data.json: keep the items (and levels)
+        # it has, plus anything already in the previous static_data.json
+        self.USE_REFERENCE_DATA = True
+        self.REFERENCE_DATA_URL = "https://raw.githubusercontent.com/ClashKingInc/ClashKingAssets/main/assets/static_data.json"
+        self.reference_data = None
         # base path for the static files to be stored in
         self.BASE_PATH = ""
 
-        self.FINGERPRINT = "475cb6a2d13043762034ddd6a198bad23e0782eb"
+        self.FINGERPRINT = "0f8af5ebc59dc7b88f884643c1fb8b57928113d6"  # Clash of Clans 19.32.4 (Town Hall 19)
         self.CLASH_VERSION = "" or "latest"
         self.VERSION_PARAM = "version" if self.CLASH_VERSION == "latest" else "versionCode"
         self.APK_URL = f"https://d.apkpure.net/b/APK/com.supercell.clashofclans?{self.VERSION_PARAM}={self.CLASH_VERSION}"
@@ -144,11 +151,26 @@ class StaticUpdater:
         columns   = rows[0]
         types_row = rows[1]
 
+        # newer CSVs insert a "GlobalID" column at index 1, which would otherwise be
+        # mistaken for the level column. Move it to the end so the level column is
+        # back at index 1 (GlobalID is only set on the first row, so it gets promoted
+        # to the item level below).
+        if len(columns) > 1 and columns[1] == "GlobalID":
+            columns   = [columns[0]] + columns[2:] + [columns[1]]
+            types_row = [types_row[0]] + types_row[2:] + [types_row[1]]
+            rows = rows[:2] + [
+                [row[0]] + row[2:] + [row[1]] if len(row) > 1 else row
+                for row in rows[2:]
+            ]
+
         # detect if col[1] really is a numeric level
         is_numeric_level = (
             types_row[1].lower() == "int"
             or "level" in columns[1].lower()
         )
+        # VisualLevel can repeat across consecutive real levels (e.g. Smasher levels
+        # 5-10 all have VisualLevel 5); those rows must not be merged into one level
+        is_visual_level = columns[1] == "VisualLevel"
 
         final_data     = {}
         current_troop  = None
@@ -176,7 +198,11 @@ class StaticUpdater:
             if is_numeric_level:
                 # existing behavior: use col[1]
                 if len(row) > 1 and row[1].strip():
-                    current_level = row[1].strip()
+                    new_level = row[1].strip()
+                    if is_visual_level and current_level is not None and new_level.isdigit() \
+                            and int(new_level) <= int(current_level):
+                        new_level = str(int(current_level) + 1)
+                    current_level = new_level
                 if not current_level:
                     continue
                 lvl_key = current_level
@@ -258,6 +284,118 @@ class StaticUpdater:
             return False
         # Default to compressed if we're not sure
         return True
+
+    @staticmethod
+    def decode_decos_scindex(data: bytes) -> dict:
+        """Decode logic/decos_logic.scindex (which replaced decos.csv) into the same
+        {name: {column: value}} shape process_csv produces for the other logic files."""
+        pos = 0
+
+        def take(n):
+            nonlocal pos
+            chunk = data[pos:pos + n]
+            if len(chunk) != n:
+                raise ValueError("decos_logic.scindex: unexpected end of data")
+            pos += n
+            return chunk
+
+        def u8():
+            return take(1)[0]
+
+        def u32():
+            return struct.unpack("<I", take(4))[0]
+
+        version = u32()
+        if version != 1:
+            raise ValueError(f"decos_logic.scindex: unsupported version {version}")
+        take(16)  # fingerprint
+        u32()  # total row count
+        value_count = u32()
+        values = [take(16) for _ in range(value_count)]
+        for _ in range(value_count):
+            if u8():  # optional asset path
+                take(u32())
+
+        rows = []
+        for _ in range(u32()):  # tables
+            table_name = take(u32()).decode("utf-8")
+            for _ in range(u32()):
+                key_index = u32()
+                take(8)  # checksum
+                rows.append((table_name, key_index, take(u32())))
+
+        def blocks(payload):
+            # 1 byte padding length + padding, then blocks with a u32 header:
+            # low 24 bits = size, high nibble = padding bytes before the block
+            p = 1 + payload[0]
+            out = []
+            while p < len(payload):
+                header = struct.unpack_from("<I", payload, p)[0]
+                p += 4 + (header >> 28)
+                size = header & 0xFFFFFF
+                out.append(payload[p:p + size])
+                p += size
+            return out
+
+        def strings(block):
+            out, p = [], 0
+            while p < len(block):
+                n = struct.unpack_from("<I", block, p)[0]
+                out.append(block[p + 4:p + 4 + n].decode("utf-8"))
+                p += 4 + n
+            return out
+
+        class Table:
+            """Minimal FlatBuffers table reader."""
+            def __init__(self, buf):
+                self.buf = buf
+                self.table = struct.unpack_from("<I", buf, 0)[0]
+                self.vtable = self.table - struct.unpack_from("<i", buf, self.table)[0]
+                self.vtable_size = struct.unpack_from("<H", buf, self.vtable)[0]
+
+            def _offset(self, slot):
+                entry = self.vtable + 4 + slot * 2
+                if entry + 2 > self.vtable + self.vtable_size:
+                    return None
+                rel = struct.unpack_from("<H", self.buf, entry)[0]
+                return self.table + rel if rel else None
+
+            def uint(self, slot, default=0):
+                off = self._offset(slot)
+                return default if off is None else struct.unpack_from("<I", self.buf, off)[0]
+
+            def boolean(self, slot, default=False):
+                off = self._offset(slot)
+                return default if off is None else bool(self.buf[off])
+
+            def string(self, slot):
+                off = self._offset(slot)
+                if off is None:
+                    return None
+                target = off + struct.unpack_from("<I", self.buf, off)[0]
+                n = struct.unpack_from("<I", self.buf, target)[0]
+                return self.buf[target + 4:target + 4 + n].decode("utf-8")
+
+        result = {}
+        for table_name, key_index, payload in rows:
+            if table_name != "logic-deco-data":
+                continue
+            global_id = struct.unpack("<QQ", values[key_index])[0]
+            names, base, details = blocks(payload)[:3]
+            name, tid = strings(names)[:2]
+            base, details = Table(base), Table(details)
+            result[name] = {
+                "GlobalID": global_id,
+                "TID": tid,
+                "Width": details.uint(0),
+                "MaxCount": details.uint(5),
+                "BuildResource": details.string(12),
+                "BuildCost": details.uint(13),
+                "NotInShop": not details.boolean(19),
+                "BPReward": details.boolean(32),
+                "VillageType": base.uint(0),
+            }
+        return result
 
     def open_file(self, file_path: str) -> dict:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -345,9 +483,11 @@ class StaticUpdater:
 
         #fill in ids, make it easier
         for _id, (building_name, building_data) in enumerate(self.full_building_data.items(), 1000000):
+            _id = building_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             building_data["_id"] = _id
 
         for _id, (building_name, building_data) in enumerate(self.full_building_data.items(), 1000000):
+            _id = building_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if building_data.get("BuildingClass") in ["Npc", "NonFunctional",
                                                       "Npc Town Hall"] or "Unused" in building_name:
                 continue
@@ -395,7 +535,8 @@ class StaticUpdater:
                     "name": building_data.get("TID"),
                     "info": building_data.get("InfoTID"),
                 },
-                "type": building_data.get("BuildingClass"),
+                # the builder hall class was renamed from "Town Hall2" to "BB Builder Hall"; keep the old value
+                "type": {"BB Builder Hall": "Town Hall2"}.get(building_data.get("BuildingClass"), building_data.get("BuildingClass")),
                 # we are going to do this purely for builder hut purposes bc lv 1 is gems
                 "upgrade_resource": self._parse_resource(
                     resource=building_data.get("BuildResource") or building_data.get("2").get("BuildResource")
@@ -537,11 +678,13 @@ class StaticUpdater:
         current_seasonal_defenses: list[str] = [v.get("Archetypes") for k, v in current_season.items() if k.isdigit()]
 
         for _id, (n, d) in enumerate(full_seasonal_modules.items(), 102000000):
+            _id = d.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             d["_id"] = _id
 
         current_max_townhall = int(list(self.full_townhall_data.keys())[-1])
         new_seasonal_defense_data = []
         for _id, (seasonal_def_name, seasonal_def_data) in enumerate(full_seasonal_defenses.items(), 103000000):
+            _id = seasonal_def_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
 
             if seasonal_def_name not in current_seasonal_defenses:
                 continue
@@ -605,6 +748,7 @@ class StaticUpdater:
         name_to_id = {}
         new_troop_data = []
         for _id, (troop_name, troop_data) in enumerate(self.full_troop_data.items(), 4000000):
+            _id = troop_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if troop_data.get("DisableProduction", False):
                 continue
             village_type = troop_data.get("VillageType", 0)
@@ -646,7 +790,7 @@ class StaticUpdater:
             hold_data["levels"] = []
 
             max_townhall_converter = self.lab_to_townhall
-            if troop_data.get("ProductionBuilding") == "Barrack2":
+            if troop_data.get("ProductionBuilding") in ("Barrack2", "BB Barracks"):  # renamed in newer CSVs
                 max_townhall_converter = self.bb_lab_to_townhall
 
             for level, level_data in troop_data.items():
@@ -691,6 +835,7 @@ class StaticUpdater:
 
         new_guardian_data = []
         for _id, (guardian_name, guardian_data) in enumerate(full_guardian_data.items(), 107000000):
+            _id = guardian_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if guardian_data.get("Deprecated", False):
                 continue
             character_data = self.full_troop_data.get(guardian_data.get("CharacterDatas"))
@@ -744,6 +889,7 @@ class StaticUpdater:
 
         new_spell_data = []
         for _id, (spell_name, spell_data) in enumerate(full_spell_data.items(), 26000000):
+            _id = spell_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if spell_data.get("DisableProduction", False):
                 continue
 
@@ -797,6 +943,7 @@ class StaticUpdater:
 
         new_hero_data = []
         for _id, (hero_name, hero_data) in enumerate(self.full_hero_data.items(), 28000000):
+            _id = hero_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             village_type = hero_data.get("VillageType", 0)
             hold_data = {
                 "_id": _id,
@@ -849,7 +996,8 @@ class StaticUpdater:
 
         new_pet_data = []
         for _id, (pet_name, pet_data) in enumerate(full_pet_data.items(), 73000000):
-            if pet_data.get("Deprecated", False) or pet_name in ["PhoenixEgg"]:
+            _id = pet_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
+            if pet_data.get("Deprecated", False) or pet_name in ["PhoenixEgg", "Phoenix Egg"]:
                 continue
 
             hold_data = {
@@ -901,7 +1049,16 @@ class StaticUpdater:
 
         new_equipment_data = []
         for _id, (equipment_name, equipment_data) in enumerate(full_equipment_data.items(), 90000000):
+            _id = equipment_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if equipment_data.get("Deprecated", False):
+                continue
+            # skip equipment whose required Blacksmith level isn't in the Blacksmith data
+            if any(
+                isinstance(level_data, dict)
+                and level_data.get("RequiredBlacksmithLevel") not in self.smithy_to_townhall
+                for level_data in equipment_data.values()
+            ):
+                logging.warning(f"Skipping equipment {equipment_name}: unknown Blacksmith level")
                 continue
 
             main_abilities = equipment_data.get("MainAbilities").split(";")
@@ -918,7 +1075,7 @@ class StaticUpdater:
                 },
                 "production_building": self._translate(tid="TID_SMITHY"),
                 "production_building_level": equipment_data.get("1").get("RequiredBlacksmithLevel"),
-                "rarity": equipment_data.get("Rarity"),
+                "rarity": (equipment_data.get("Rarity") or "").title(),  # now upper-case (e.g. "EPIC") in the CSV
                 "hero": self._translate(tid=hero_TID),
                 "levels": []
             }
@@ -996,6 +1153,7 @@ class StaticUpdater:
 
         new_trap_data = []
         for _id, (trap_name, trap_data) in enumerate(full_trap_data.items(), 12000000):
+            _id = trap_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if trap_data.get("Disabled", False) or trap_data.get("EnabledByCalendar", False):
                 continue
             village_type = trap_data.get("VillageType", 0)
@@ -1039,8 +1197,11 @@ class StaticUpdater:
     def _parse_decoration_data(self):
         full_deco_data = self.open_file("decos.json")
         new_deco_data = []
-        for _id, (deco_name, deco_data) in enumerate(full_deco_data.items(), 18000000):
+        for fallback_id, (deco_name, deco_data) in enumerate(full_deco_data.items(), 18000000):
+            _id = deco_data.get("GlobalID", fallback_id)
             if deco_data.get("TID") in ["TID_DECORATION_GENERIC", "TID_DECORATION_NATIONAL_FLAG"]:
+                continue
+            if "placeholder" in deco_name.lower() or deco_name == "Unused":
                 continue
             village_type = deco_data.get("VillageType", 0)
             hold_data = {
@@ -1065,6 +1226,7 @@ class StaticUpdater:
         full_capital_part_data = self.open_file("building_parts.json")
         new_capital_part_data = []
         for _id, (part_name, part_data) in enumerate(full_capital_part_data.items(), 82000000):
+            _id = part_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if part_data.get("Deprecated", False):
                 continue
             name = part_name.replace("PlayerHouse_", "").replace("_", " ").title()
@@ -1095,6 +1257,7 @@ class StaticUpdater:
 
         new_obstacle_data = []
         for _id, (obstacle_name, obstacle_data) in enumerate(full_obstacle_data.items(), 8000000):
+            _id = obstacle_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             village_type = obstacle_data.get("VillageType", 0)
             hold_data = {
                 "_id": _id,
@@ -1118,6 +1281,7 @@ class StaticUpdater:
 
         new_scenery_data = []
         for _id, (scenery_name, scenery_data) in enumerate(full_scenery_data.items(), 60000000):
+            _id = scenery_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             type_map = {
                 "WAR" : "war",
                 "BB" : "builderBase",
@@ -1152,6 +1316,7 @@ class StaticUpdater:
 
         new_skins_data = []
         for _id, (skin_name, skin_data) in enumerate(full_skin_data.items(), 52000000):
+            _id = skin_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             character = skin_data.get("character") or skin_data.get("Character")
             if not skin_data.get("TID") or character not in self.full_hero_data.keys() or not skin_data.get("Tier"):
                 continue
@@ -1173,6 +1338,7 @@ class StaticUpdater:
 
         new_helper_data = []
         for _id, (helper_name, helper_data) in enumerate(full_helper_data.items(), 93000000):
+            _id = helper_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             hold_data = {
                 "_id": _id,
                 "name": self._translate(tid=helper_data.get("TID")),
@@ -1204,6 +1370,7 @@ class StaticUpdater:
 
         new_war_league_data = []
         for _id, (war_league_name, war_league_data) in enumerate(full_war_league_data.items(), 48000000):
+            _id = war_league_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             if not war_league_data.get("Name"): #skip Unranked, no data
                 continue
             new_war_league_data.append({
@@ -1230,6 +1397,7 @@ class StaticUpdater:
 
         new_league_tier_data = []
         for _id, (league_name, league_data) in enumerate(full_league_tier_data.items(), 105000000):
+            _id = league_data.get("GlobalID", _id)  # newer CSVs carry the real id; row order no longer matches it
             league_tier = _id - 105000000
             hold_data = {
                 "_id": _id,
@@ -1351,8 +1519,23 @@ class StaticUpdater:
             "league_tiers": self._parse_league_tier_data(),
             "achievements": self._parse_achievement_data(),
         }
+        if self.USE_REFERENCE_DATA and self.reference_data is not None:
+            previous_data = {}
+            if os.path.exists(f"{self.BASE_PATH}static_data.json"):
+                previous_data = self.open_file(f"{self.BASE_PATH}static_data.json")
+            previous_translations = {}
+            if os.path.exists(f"{self.BASE_PATH}translations.json"):
+                previous_translations = self.open_file(f"{self.BASE_PATH}translations.json")
+            self.align_with_reference(master_data, self.reference_data, previous_data, previous_translations)
+
+        # CSV row order no longer follows the ids, so sort by id to keep a stable order
+        # (the generated constants and name -> id lookups rely on it)
+        for items in master_data.values():
+            if all(isinstance(item, dict) and "_id" in item for item in items):
+                items.sort(key=lambda item: item["_id"])
+
         with open(f"{self.BASE_PATH}static_data.json", "w", encoding="utf-8") as jf:
-            jf.write(json.dumps(master_data, indent=2))
+            jf.write(json.dumps(master_data, separators=(",", ":")))
 
         if self.PRUNE_TRANSLATIONS:
             for key in list(self.translation_data.keys()):
@@ -1360,7 +1543,7 @@ class StaticUpdater:
                     del self.translation_data[key]
 
         with open(f"{self.BASE_PATH}translations.json", "w", encoding="utf-8") as jf:
-            jf.write(json.dumps(self.translation_data, indent=2))
+            jf.write(json.dumps(self.translation_data, separators=(",", ":")))
 
         for file_path in self.TARGETS:
             # 6) Delete the extra jsons
@@ -1371,6 +1554,52 @@ class StaticUpdater:
                 os.remove(file_path)
             except OSError as e:
                 logging.warning(f"Could not delete {file_path}: {e}")
+
+    @staticmethod
+    def _item_key(item):
+        return ("id", item["_id"]) if "_id" in item else ("name", item.get("name"))
+
+    @staticmethod
+    def _tids(obj):
+        if isinstance(obj, dict):
+            return set().union(*(StaticUpdater._tids(v) for v in obj.values())) if obj else set()
+        if isinstance(obj, list):
+            return set().union(*(StaticUpdater._tids(v) for v in obj)) if obj else set()
+        return {obj} if isinstance(obj, str) and obj.startswith("TID_") else set()
+
+    def align_with_reference(self, master_data: dict, reference_data: dict, previous_data: dict,
+                             previous_translations: dict):
+        """Align master_data with reference_data: keep items that are in reference_data or previous_data,
+        cap level lists at reference_data's length, and use reference_data's version of nested lists
+        (e.g. the Crafting Station's seasonal defenses) when ours has entries it doesn't. Translations no
+        longer referenced by the data, reference_data or the previous translations are pruned."""
+        for section, items in master_data.items():
+            reference = {self._item_key(i): i for i in reference_data.get(section, []) if isinstance(i, dict)}
+            previous = {self._item_key(i) for i in previous_data.get(section, []) if isinstance(i, dict)}
+            kept = []
+            for item in items:
+                key = self._item_key(item)
+                if key not in reference and key not in previous:
+                    continue
+                reference_item = reference.get(key, {})
+                reference_levels = reference_item.get("levels")
+                if isinstance(reference_levels, list) and isinstance(item.get("levels"), list) \
+                        and len(item["levels"]) > len(reference_levels):
+                    if not reference_levels:
+                        continue  # no level data in the reference, and the models need at least one level
+                    item["levels"] = item["levels"][:len(reference_levels)]
+                for field, value in item.items():
+                    reference_value = reference_item.get(field)
+                    if field == "levels" or not isinstance(value, list) or not isinstance(reference_value, list):
+                        continue
+                    ours = {v["_id"] for v in value if isinstance(v, dict) and "_id" in v}
+                    theirs = {v["_id"] for v in reference_value if isinstance(v, dict) and "_id" in v}
+                    if ours - theirs:
+                        item[field] = copy.deepcopy(reference_value)
+                kept.append(item)
+            items[:] = kept
+        referenced = self._tids(master_data) | self._tids(reference_data) | set(previous_translations)
+        self.USED_TIDS &= referenced
 
     def generate_constants(self):
         static_data = self.open_file("static_data.json")
@@ -1454,6 +1683,21 @@ class StaticUpdater:
             if not file_path.startswith("logic/") and not file_path.startswith("localization/"):
                 continue
 
+            # decos.csv was replaced by a binary decos_logic.scindex file
+            if file_path == "logic/decos_logic.scindex":
+                download_url = f"{BASE_URL}/{file_path}"
+                print(f"Downloading: {download_url}")
+                data = await self.download(url=download_url)
+                print(f"Processing: {file_path}")
+                with open("decos.json", "w", encoding="utf-8") as jf:
+                    json.dump(self.decode_decos_scindex(data), jf, indent=2)
+                self.TARGETS.append("decos.csv")
+                continue
+
+            # skip any other non-CSV files
+            if not file_path.endswith(".csv"):
+                continue
+
             download_url = f"{BASE_URL}/{file_path}"
             print(f"Downloading: {download_url}")
             data = await self.download(url=download_url)
@@ -1470,6 +1714,10 @@ class StaticUpdater:
             print(f"Processing: {save_path}")
             self.process_csv(data=data, file_path=save_path, save_name=save_path.split(".")[0])
             self.TARGETS.append(save_path)
+
+        if self.USE_REFERENCE_DATA:
+            # served as text/plain, so parse it ourselves
+            self.reference_data = json.loads(await self.download(url=self.REFERENCE_DATA_URL))
 
         self.create_master_json()
 

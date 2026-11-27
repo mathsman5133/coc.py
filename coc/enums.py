@@ -149,6 +149,7 @@ class ProductionBuildingType(ExtendedEnum):
     blacksmith = "Blacksmith"
     pet_house = "Pet House"
     workshop = "Workshop"
+    squad_barracks = "Squad Barracks"
     none = "None"
 
 
