@@ -228,6 +228,8 @@ class StaticData:
                 continue
 
             for item in items:
+                if section == "helpers" and not item.get("levels"):
+                    continue  # helpers are leveled; skip any listed without level data
                 data = item
                 if section in ["troops", "spells", "heroes", "pets", "equipment"]:
                     static_data = item

@@ -413,7 +413,7 @@ class Building(LeveledUnit):
         self.build_time = TimeDelta(seconds=level_data["build_time"])
         self.required_townhall: int = level_data["required_townhall"]
         self.hitpoints: int = level_data["hitpoints"]
-        self.dps: int = level_data["dps"]
+        self.dps: int = level_data.get("dps", 0)
 
         self.supercharge: Supercharge | None = None
         if "supercharge" in level_data:
