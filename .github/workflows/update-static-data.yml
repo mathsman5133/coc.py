@@ -1,0 +1,70 @@
+name: Update static data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-static-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: update-static-data
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: master
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Update static data
+        run: python .github/scripts/update_static_data.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump patch version
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          python - <<'EOF'
+          import re
+          from pathlib import Path
+
+          init = Path("coc/__init__.py")
+          current = re.search(r'__version__ = "(\d+)\.(\d+)\.(\d+)"', init.read_text()).groups()
+          new = f"{current[0]}.{current[1]}.{int(current[2]) + 1}"
+          for path, pattern in ((init, r'__version__ = "[^"]+"'), (Path("pyproject.toml"), r'(?m)^version = "[^"]+"')):
+              text = path.read_text()
+              replacement = f'__version__ = "{new}"' if path == init else f'version = "{new}"'
+              path.write_text(re.sub(pattern, replacement, text, count=1))
+          print("version", new)
+          EOF
+
+      - name: Open or update pull request
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git commit -am "Update static data"
+          git push --force origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base master --head "$BRANCH" --title "Update static data" --body "Updated assets."
+          fi

@@ -33,6 +33,7 @@ DARK_ELIXIR_TROOP_ORDER = [
     'Ice Golem',
     'Headhunter',
     'Apprentice Warden',
+    'Ruin Witch',
     'Druid',
     'Furnace',
 ]
@@ -48,6 +49,7 @@ SIEGE_MACHINE_ORDER = [
     'Flame Flinger',
     'Battle Drill',
     'Troop Launcher',
+    'Sky Wagon',
 ]
 
 SUPER_TROOP_ORDER = [
@@ -99,9 +101,10 @@ SEASONAL_TROOP_ORDER = [
     'K.A.N.E',
     'The Disarmer',
     'YEETer',
-    'YEETer',
-    'The Disarmer',
     'Meteor Golem',
+    'Elephant Rider',
+    'Yeti Undertaker',
+    'Totem Thrower',
 ]
 
 BUILDER_TROOPS_ORDER = [
@@ -130,6 +133,7 @@ ELIXIR_SPELL_ORDER = [
     'Recall Spell',
     'Revive Spell',
     'Totem Spell',
+    'Heroic Spell',
 ]
 
 DARK_ELIXIR_SPELL_ORDER = [
@@ -140,6 +144,7 @@ DARK_ELIXIR_SPELL_ORDER = [
     'Bat Spell',
     'Overgrowth Spell',
     'Ice Block Spell',
+    'Angry Spell',
 ]
 
 SEASONAL_SPELL_ORDER = [
@@ -155,6 +160,7 @@ HOME_BASE_HERO_ORDER = [
     'Minion Prince',
     'Grand Warden',
     'Royal Champion',
+    'Dragon Duke',
 ]
 
 BUILDER_BASE_HERO_ORDER = [
@@ -176,6 +182,7 @@ PETS_ORDER = [
     'Spirit Fox',
     'Angry Jelly',
     'Sneezy',
+    'Greedy Raven',
 ]
 
 EQUIPMENT = [
@@ -195,6 +202,7 @@ EQUIPMENT = [
     'Rocket Spear',
     'Spiky Ball',
     'Frozen Arrow',
+    'Monolith Arrow',
     'Giant Arrow',
     'Heroic Torch',
     'Healer Puppet',
@@ -214,6 +222,13 @@ EQUIPMENT = [
     'Meteor Staff',
     'Frost Flake',
     'Stick Horse',
+    'Fire Heart',
+    'Rocket Backpack',
+    'Stun Blaster',
+    'Flame Blower',
+    'Electro Fangs',
+    'Revenge Deck',
+    'Portal Pendant',
 ]
 
 HV_BUILDINGS = [
@@ -253,7 +268,6 @@ HV_BUILDINGS = [
     'Spell Tower',
     'Monolith',
     'Multi-Gear Tower',
-    'Sour Elixir Cauldron',
     'Multi-Archer Tower',
     'Ricochet Cannon',
     'Revenge Tower',
@@ -261,6 +275,10 @@ HV_BUILDINGS = [
     'Helper Hut',
     'Crafting Station',
     'Super Wizard Tower',
+    'Guardian Shrine',
+    'Squad Barracks',
+    'Spiky Tower',
+    'Firecracker Tower',
 ]
 
 ACHIEVEMENT_ORDER = [

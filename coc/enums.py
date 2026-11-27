@@ -149,6 +149,7 @@ class ProductionBuildingType(ExtendedEnum):
     blacksmith = "Blacksmith"
     pet_house = "Pet House"
     workshop = "Workshop"
+    squad_barracks = "Squad Barracks"
     none = "None"
 
 
@@ -171,7 +172,7 @@ class BuildingType(ExtendedEnum):
     army = "Army"
     town_hall = "Town Hall"
     town_hall_weapon = "Town Hall Weapon"
-    builder_hall = "Town Hall2"
+    builder_hall = "BB Builder Hall"
     resource = "Resource"
     wall = "Wall"
     defense = "Defense"
